@@ -1,0 +1,1043 @@
+#include<iostream>
+using namespace std;
+//一、构造函数与初始化
+//1.构造函数与类同名 eg. stock::stock
+//其中有两种，第一种是只创建一个类
+//stock::stock()
+//{
+//ch=" ";
+//a=0;
+//};
+//另一种是带值创建stock::stock（int a,...)
+//{
+//  =a;
+//};
+//一般会默认是第一种，但如果写了第二种，第一种也要自己写
+// 注意，当在类里面写，不用写类名:: ，类外用
+//2.private与protected的区别:
+//private无法继承，protected皆可以继承
+// 3：复制构造函数【没什么用】
+// 类名（const 类名&);
+// 类名&operator=(const类名&）;
+// 二者一起用
+// 在主函数可以在创建完现有类对象基础上eg:A Obj2=Obj1;来初始化新的对象
+// 
+//二、运算符重载与友元
+//1.静态成员 static
+//把成员和函数变成全局！
+//所有成员公用这一个数据！改变了也是！!
+//注意只能在类内声明，必须在类外定义初始化
+//static int a;
+//int stock::a=0;
+//2.静态函数
+//只能使用静态成员作为参数
+//就是对静态成员作出修改的工具
+//需要类内定义
+//类外访问需要stock::函数名（）来使用
+//注意：静态成员及函数都不是类的成份。
+//2.友元函数与友元类
+//可以无视private protected 等限制,多用来给private赋值改值
+//没有this指针
+//友元函数怎么用：
+//类内声明
+//friend 返回类型 函数名(类名* , 参数类型1，参数类型2...）//类名*是要调用private
+//类外定义（像普通函数一样定义就可以）
+//eg.void hanshu(student*a,int a)
+//{
+//  a->id=...;（把private：id赋上值）
+//}
+//友元类怎么用：
+//类内声明
+//friend class 类名
+//类外定义（像普通的类就可以）
+//eg.
+class A1
+{ 
+public:
+	friend class B;
+private:
+	int x;
+};
+class B
+{
+ public: 
+ void set(int i)
+ {
+ Aobject.x=i;
+ }//给A private对象x赋值
+ private: 
+ A1 Aobject;//!!友元类一般会有个private，里面的数会与A的private一一代表
+};
+//3.运算符重载
+// 补充：类型转换函数：
+// X::operator 数据类型()
+// { return 改后的数据类型（数据成员名）;}
+// eg: 
+// int A; int B;
+// operator double()
+// {return double(A)/double(B);}
+// 注意：只为成员函数
+// 
+// 注意： .   .*   ::  ?:  sizeof 五大不能重载
+// 用处：类成员运算必须用到重载运算符，因为类成员访问是类名.成员名
+// 第一种：当为一元运算或者左侧为类对象，用成员函数重载
+// eg:
+class Person
+{
+public:
+	//成员函数重载运算符
+	//Person operator+(Person& p)
+	//{
+	//	Person t;
+	//	t.m_a = m_a + p.m_a;
+	//	t.m_b = m_b + p.m_b;
+	//	return t;
+	//}
+	int m_a;
+	int m_b;
+};
+//全局函数重载运算符：
+Person operator + (Person& p1, Person& p2)//加号运算符重载
+{
+	Person t;
+	t.m_a = p1.m_a + p2.m_a;
+	t.m_b = p1.m_b + p2.m_b;
+	return t;
+}
+Person operator+(Person& p1, int a)
+{
+	Person t;
+	t.m_a = p1.m_a + a;
+	t.m_b = p1.m_b + a;
+	return t;
+}
+Person & operator++(Person& p1)
+{
+	Person t;
+	t.m_a = t.m_a + t.m_a;
+}
+//cout属于输出流类型ostream
+ostream& operator<<(ostream& cout, Person& p)
+{
+	cout << "m_a=" << p.m_a << " m_b=" << p.m_b;
+	return cout; //链式编程的思想
+}
+class Man
+{
+public:
+	Man() {}
+	Man(int age)
+	{
+		m_age = new int(age);
+	}
+	~Man()
+	{
+		if (m_age != NULL)
+		{
+			delete m_age;
+			m_age = NULL;
+		}
+	}
+	//重载复制运算符 =
+	Man& operator=(Man& m)
+	{
+		if (m_age != NULL)
+		{
+			delete m_age;
+			m_age = NULL;
+		}
+		m_age = new int(*m.m_age);
+		return *this;
+	}
+
+	int* m_age;
+};
+class MyPrint
+{
+public:
+	void operator()(string t)
+	{
+		cout << t << endl;
+	}
+};
+class MyAdd
+{
+public:
+	int operator()(int a, int b)
+	{
+		return a + b;
+	}
+};
+void test1()
+{
+	//+
+	Person p1;
+	p1.m_a = 10; p1.m_b = 20;
+	Person p2;
+	p2.m_a = 30; p2.m_b = 40;
+
+	Person p3 = p1 + p2;
+	//本质是：p3 = p1.operator+(p2); 或 p3=operator(p1,p2);
+	cout << "p3.m_a=" << p3.m_a << "  p3.m_b=" << p3.m_b << endl;
+	//运算符重载还能发生函数重载
+	Person p4 = p1 + 100;
+	cout << "p4.m_a=" << p4.m_a << "  p4.m_b=" << p4.m_b << endl;
+	cout << endl;
+
+	// <<  （左移运算符）
+	cout << p1 << endl;
+	cout << endl;
+
+	//++
+	class Myint :public Person
+	{
+	public:
+		Myint();
+	};
+
+	Myint myint;
+	cout << myint.m_a << endl;//0
+	cout << ++myint.m_a << endl;//1
+	cout << ++(++myint.m_a) << endl;//3
+	cout << myint.m_a++ << endl;//3
+	cout << myint.m_a << endl;//4
+	cout << endl;
+
+	// =
+	Man m1(18);
+	Man m2(20);
+	cout << *m1.m_age << endl;
+	cout << *m2.m_age << endl;
+	m2 = m1;
+	cout << *m2.m_age << endl;
+	//赋值运算符是从右往左运算：(把右值赋给左值）
+	int a = 10, b = 20, c = 30;
+	a = b = c;
+	cout << "a=" << a << " b=" << b << " c=" << c << endl;//30 30 30
+	//链式编程思想
+	Man m3(28);
+	m1 = m2 = m3;
+	cout << "m1=" << *m1.m_age << " m2=" << *m2.m_age << " m3=" << *m3.m_age << endl;
+	cout << endl;
+	// > < 和上面同理
+
+
+	//函数调用运算符 () 的重载
+	//重载后的使用方式非常像函数的调用，也成为仿函数，没有固定写法，非常灵活
+	MyPrint mp;
+	mp("hello world");//很像函数调用
+	MyAdd ma;
+	int ret = ma(10, 8);
+	cout << "ret=" << ret << endl;
+	//匿名函数对象
+	cout << MyAdd()(100, 100) << endl;//MyAdd()为匿名对象
+}
+int main()
+{
+	test1();
+	return 0;
+}
+// ！！总结：
+// 1：成员函数如果不改变数据成员的值可以在（）那行后加const
+// 2：
+// 重载运算符只能用成员重载的有= () [] ->,其他都用友元就行
+//成员函数重载格式：
+// ！1当需要复制构造函数或者修改对象值时重载（）
+// class A 
+// public: 
+// A & operator=(A & Obj)//obj是A的一个对象
+// {
+//  if (A的数据成员!= NULL)
+//		{
+//			delete A的数据成员;
+//			A的数据成员 = NULL;
+//		}
+//		A的数据成员 = new int (*Obj.数据成员);
+//		return *this;
+// }
+//！2（）和【】在数组中的重载
+class MyArray
+{
+public:
+	//重写赋值运算符重载函数
+	MyArray& operator=(const MyArray& m);
+	int *pArray;
+	int mCapacity;
+	int mSize;
+	//要能当左右值
+	int& operator[](int index);
+
+};
+MyArray& MyArray::operator=(const MyArray& m)
+{
+	cout << "赋值函数" << endl;
+	//1.释放原来的空间
+	if (this->pArray != NULL)
+	{
+		delete[]this->pArray;
+		this->pArray = NULL;
+	}
+	this->mCapacity = m.mCapacity;
+	this->mSize = m.mSize;
+	//2.申请空间，大小由m决定
+	this->pArray = new int[m.mCapacity];
+	//3.拷贝数据
+	cout << "this->mSize:" << this->mSize << endl;
+	for (int i = 0; i < this->mCapacity; i++)
+	{
+		this->pArray[i] = m.pArray[i];
+	}
+
+	return *this;
+}
+//要能当左右值
+int &MyArray:: operator[](int index)
+{
+
+ if (this->mSize <=index)
+{
+	this->mSize++;
+}
+
+return this->pArray[index];
+}
+//！3（）不常见，略
+// 
+// 友元函数重载格式
+// 类内声明：
+// class A
+// friend A operator符号（ const A& t1 const A& t2或者值 int &a)
+// !!当自增自减时候别用const,只引用就行，此外当前置自运算应：A&operator
+// 类外定义：同友元函数
+// A operator符号（ const A& t1 ，const A& t2或者值 int &a)
+// {
+// 
+// }即可
+// 对于重载，大部分都会在内部操作引用对象的成员，最后return想要的东西,最后在main里面用类名做运算
+// 这里写重载范例 - -- >> << 
+//1：-
+class C
+{
+public:
+	friend C operator- (const C& c1, const C& c2);
+	double Real;
+	double Image;
+	C();
+	C(double r, double i) : Real(r), Image(i){}
+};
+ C operator - ( const C & c1, const C & c2)
+{
+	double r = c1.Real - c2.Real; double i = c1.Image - c2.Image;
+	return C(r, i);
+ }
+//2：后置自减
+class D
+ {
+ public:
+	 friend D operator-- (D & d1);
+	 double Real;
+	 D();
+	 D(double r) : Real(r){}
+ };
+ D operator -- (D& d1)
+ {
+	 d1.Real--;
+	 return d1;
+ }
+ //3：输入输出流、
+ class E
+ {
+ public:
+	 friend ostream& operator<<(ostream& output, E&);
+	 friend istream& operator>>(istream& input, E&);
+	 int& operator[](int i);
+	 E();
+	 E(int size)
+	 {
+		 if (size <= 0 || size > 100)
+		 {
+			 cout << "The size of " << size << "is null !\n"; exit(0);
+		 }
+		 v = new int[size];
+		 len = size;
+	 }
+	 ~E() { delete[] v; len = 0; }
+ private:
+	 int len;
+	 int* v;
+ };	 
+
+ int& E:: operator []( int i )
+ { if (i >= 0 && i < len) return v[i];
+ cout << "The subscript " << i << "is outside !\n"; exit(0);
+ }
+ ostream& operator << (ostream& output, E& ary)
+ {
+	 for (int i = 0; i < ary.len; i++) output << ary[i] << " ";
+	 output << endl;
+	 return output;
+ }
+ istream& operator >> (istream& input, E& ary)
+ {
+	 for (int i = 0; i < ary.len; i++) input >> ary[i];
+	 return input;
+ }
+//三、类的包含与继承
+//1.类的包含
+//可以把旧的类以private成员形式，被大类调用，然后实现复合功能。
+//eg.
+class Point
+{ 
+public:
+Point(int xi=0, int yi=0) {x=xi; y =yi;}
+int GetX(){return x; }
+int GetY(){return y; }
+private:
+int x;
+int y;
+};
+class Distance
+{
+public:
+	Distance(Point xp1, Point xp2);
+	double GetDis() { return dist; }
+private:
+	Point p1, p2;
+	double dist;
+};	
+Distance::Distance(Point xp1, Point xp2) :p1(xp1), p2(xp2)
+{
+	double x = double(p1.GetX() - p2.GetX());
+	double y = double(p1.GetY() - p2.GetY());
+	dist = sqrt(x * x + y * y);
+}
+int main()
+{
+	Point mp1(5, 10), mp2(20, 30);
+	Distance mdist(mp1, mp2);
+	cout << "The distance is " << mdist.GetDis() << endl;
+}
+//
+// 2.类的继承
+// 方式实现：class 子类 : 继承方式  父类 
+//  { 
+// 
+//  };
+// 子类 也称为 派生类
+// 父类 也称为 基类
+//可以减少重复的代码
+//*1父类private无论如何都不会被子类继承
+//public继承父类成员性质不变，pri和pro继承则父类的pub和pro变成该继承方式的派生类成员
+//！！子类访问父类函数：用子类对象名.父类函数即可
+//！！子类访问父类成员：直接用就行
+//！！！父类静态函数子类也直接用就行
+//！！子类继承父类的重载运算符
+// 为了不强制转换类型，需要在子类如此操作：
+//// 假设父类为person 子类为student 重载=符
+//// student& operator=(const student& s)
+//{
+//if (this != &s)
+//{
+//person: : operator=(s);
+//_grade = s._ grade;
+//}
+//return *this;
+// }
+// 当父子出现同名情况需要如此区分
+// eg:b.a b.A::a
+// b.func(); b.A::func();
+//构造函数执行顺序：基类构造函数-对象成员构造函数-派生类本身的构造函数
+// 3.虚继承
+// 为了解决父类被多个派生类调用反复构造而报错的问题
+// class A 父类，有B，C两个派生类
+// 则：class B :virtual public A
+//     class C :virtual public A
+//虚基类只会初始化一次，因此在多级派生，虚基类初始化由最后一级派生类负责
+// 总结：1.不可滥用封装特性,不要把不相干的数据和函数封装到类中。
+// 2.√【规则1】:如果类A和类B毫不相关,不可以为了使B的功能更多一些
+//而让B继承A的功能和属性。
+//√【规则2】 : 若在逻辑上B是A的“一种”(is - a - kind - of), 则允许B
+//继承A的功能和属性。
+// 
+// 四、虚函数与多态性
+// 1.类指针
+// ①基类指针指向派生类：只能访问派生类从基类继承的成员
+// class A
+//{
+// };
+//class B:public A
+// {
+// };
+// int main()
+// {
+//   A* A_p; A_p可以用A_p->A函数名();来访问A的成员函数
+//   (B*)A_p->B函数名(); 通过强制类型转换访问B的函数 
+// }
+//②派生类指针只有经过强制类型转换之后,才能引用基类对象
+//在class B 中，通过(（A*)this)->A函数名(); 这样的结构可以访问A的函数
+// 当然，完全可以A::函数名();来实现访问A函数的功能
+//2.虚函数、动态联编
+// 虚函数需要在基类定义，除构造外的一切成员函数都可以，派生类中重载基类的虚函数要求函数名、返回类型
+// 参数个数、参数类型和顺序完全相同，且只需要基类前面写virtual
+// 用处是可以通过调用基类指针访问所有此类函数：简单地说，
+// 就是假如这个派生类没有特定的鬼东西，那就直接调用基类说明，
+// 有特殊的鬼东西，就自己写个同样的函数框架，内容改一改就行。
+// eg:
+class Base
+{
+public:
+	Base(char xx) { x = xx; } 
+	void who() { cout << "Base class: " << x << "n"; }
+protected:char x;
+};
+class First_d : public Base
+{
+public:
+	First_d(char xx, char yy) :Base(xx) { y = yy; }
+	void who() { cout << "First derived class: " << x << ", " << y << "n"; }
+protected:char y;
+};
+class Second_d : public First_d
+{
+public:
+	Second_d(char xx, char yy, char zz) : First_d(xx, yy) { z = zz; }
+	void who() { cout << "Second derived class: " << x << ", " << y << ", " << z << "n"; }
+protected:	char z;
+};
+int main()
+{
+	Base B_obj('A'); First_d F_obj('T', 'O'); Second_d S_obj('E', 'N', 'D');
+	Base* p;
+	p = &B_obj; p->who();
+	p = &F_obj; p->who();
+	p = &S_obj; p->who();
+	F_obj.who();//或者(（First_d*)p)->who();
+	((Second_d*)p)->who();//或者S_obj.who;
+}
+//这是输出结果为：
+//Base class: A
+//Base class :T
+//Base class :E
+//First derived class: T, 0
+//Second derived class : E, N, D
+
+//当virtual void who()时可以不加最后两行代码
+//输出结果为：
+//Base class: A
+//First derived class: T, 0
+//Second derived class : E, N, D
+// 因此析构函数整成virtual会很棒
+// 注意，析构函数只需要virtual~基类(){...};
+// 派生类中 ~派生类仍然适用
+// 当构造了一个A *Ap= new B;这种使用了new的对象
+// ！！！且AB有继承关系
+// 使用虚析构用函数之后delete Ap即可delete B后 delete A
+
+//3.纯虚函数、抽象类
+//!!纯虚函数其实就是一种提醒或契约，它告诉派生类必须实现该函数，否则编译器会报错。
+//
+// ①抽象类是含有纯虚函数的基类 
+// 此外，抽象类不能建立对象，但可以使用指针，不能作为参数，但是可以通过引用传进去
+// ②纯虚函数同样定义在基类
+// virtual 类型 函数名(参数)=0;
+//  ③如果继承的子类不把virtual去掉再重申一次，子类仍为抽象类！！
+
+// 抽象类引用
+// 首先，如果想要调用抽象类函数，必须引用，因为抽象类不能创建对象
+//例如：
+class Number
+{
+public: virtual void show() = 0;
+};
+void fun(Number& n)
+{
+	n.show();
+//	Number::show(); 会报错！
+}
+//四、模板、输入输出流
+// 1.模板
+// 就是规范化写程序
+// ①函数模板 
+template <typename T>
+T Max(const T a, const T b)
+{
+	return a > b ? a : b;
+}
+//之后就可以Max( , )里面什么类型都可以比
+template <typename T1>
+void SortBubble(T1* a, int size)
+{
+	int i, work;
+	ElementType temp;
+	for (int pass = 1; pass < size; pass++)
+	{
+		work = 1;
+		for (i = 0; i < size - pass; i++)
+			if (a[i] > a[i + 1])
+			{
+				temp = a[i]; a[i] = a[i + 1]; a[i + 1] = temp; work = 0;
+			}
+		if (work) break;
+	}
+}//例2：冒泡排序函数模板
+// ！之后就用 Sort Bubble（数组名，数组大小）
+
+// ②重载函数模板
+// 因为就搞了个T，当比较两种不同类型时不能隐式转换，需要自己在后面写一个例子
+// 例如：
+template <typename T>
+T Max(const T a, const T b)
+{
+	return a > b ? a : b;
+}
+int Max(int a, char b)
+{
+	return a > b ? a : b;
+}
+//之后出现int char想干啥干啥，前后顺序无关 
+// ！！注意：使用模板说明：
+// 匹配约定：
+//>寻找和使用最符合函数名和参数类型的函数, 若找到则调用它;
+//> 否则, 寻找一个函数模板, 将其实例化产生一个匹配的模板函数, 若找到
+//  则调用它;
+//> 否则, 寻找可以通过类型转换进行参数匹配的重载函数, 若找到则调用它
+//> 如果按以上步骤均未能找到匹配函数, 则调用错误。
+//> 如果调用有多于一个的匹配选择, 则调用匹配出现二义性。
+// 
+// ②类模板：
+// 1.类模板的成员函数为函数模板
+// 2.类模板的半产物是模板类,就是把T换成了具体数据类型；
+// 同一个T可以用于多个模板，T可以是参数类型，返回类型，函数中的变量
+// 类模板作函数形参可以是类模板或类模板的引用;
+// 对应的实际参数是该类模板实例化的模板类对象;
+//① 函数f1成为类模板X实例化的每个模板类的友元函数:
+// template <typename T> class X
+// { // ......
+//	friend void f10;
+// }
+//②对特定类型(如double), 使模板函数f2(X<double>&)成为X<double>
+//的友元:
+//
+//		template <typename T> class X
+//	{ // ......
+//		template <typename T> friend void f2(X<T>&);
+//  }
+//③数函元友的类板模个每的化例实X板模类为成f3数函员成的类A:
+//template <typename T> class X
+//{ // ......
+//	friend void A::f30;
+//}
+//④对特定类型(如double),使模板类B<double>的成员函数
+//f4(X<double>&)成为模板类X<double>的友元
+//template <typename T> class X
+//{ // ......
+//	template <typename T> friend void B<T> ::f4(X<T>&);
+// }
+// ⑤Y类的每个成员函数成为类模板X实例化的每个模板类的友元函数
+// template <typename T> class X
+//{ // ......
+//	friend class Y;
+//}
+//⑥对特定类型(如double),使模板类Z<double>所有成员函数成为模板
+//类X<double>的友元:
+//template <typename T> class X
+//{ // ......
+//	template <typename T> friend class Z<T>;
+//}
+// ⑦一个用Array<T>作参数的函数模板
+//
+//template < typename T >
+//void Tfun(const Array <T>& x, int index)
+//{
+//	cout << x.Entry(index) << endl;
+//}
+//
+//⑧调用函数模板
+//
+//Array <double> DouAry(5);
+//
+//...
+//
+//Tfun(DouAry, 3);
+// 
+// 
+// 
+//
+//template< typename T3 >
+//class Array
+//{
+//public:
+//	Array(int s);
+//	virtual ~Array();
+//	virtual const T3& Entry(int index) const;
+//	virtual void Enter(int index, const T3&value);
+//protected:
+//	int size;
+//	T3* element;
+//	template<typename T3> Array<T3>::Array(int s)
+//	{
+//		if (s > 1) size = s; else size = 1;
+//		element = new T3[size];
+//	}
+//	template < typename T3 > Array < T3 > :: ~Array()
+//		{ delete[] element; }
+//	template < typename T3 > const T3& Array <T3 > ::Entry(int index) const
+//	{
+//		return element[index];
+//	}
+//	template < typename T3 > void Array <T3> ::Enter(int index, const T3&value)
+//	{
+//		element[index] = value;
+//	}
+//};
+//int main()
+//{
+//	Array<int>IntAry(5);
+//	int i;
+//	for (i = 0; i < 5; i++) IntAry.Enter(i, i);
+//	cout << "Integer Array :\n";
+//	for (i = 0; i < 5; i++) cout << IntAry.Entry(i) << '\t';
+//	cout << endl;
+//	Array <double> DouAry(5);
+//	for (i = 0; i < 5; i++) DouAry.Enter(i, (i + 1) * 0.35);
+//	cout << "Double Array : \n";
+//	for (i = 0; i < 5; i++) cout << DouAry.Entry(i) << '\t';
+//	cout << endl;
+//}
+////eg2:
+//template<typename T>//定义类模板
+//class A
+//{
+//public:
+//	A(T x = 0) { t = x; total = total + 1; }
+//	//静态数据成员为抽象类型T
+//static T total;
+//protected:
+//	T t;
+//};
+//	template<typename T> T A<T> ::total;
+//
+//	int main()
+//	{
+//		A <int> a, b;
+//		cout << "A<int>total=" << A<int> ::total << endl;
+//		A <double> x, y, z;
+//		cout << "A<double>total=" << A<double> ::total << endl;
+//	}
+// 
+// 输出结果为A<int>total=2
+// 	        A<double>total=3
+// 
+// 
+// 利用模板类写链表：
+#include <iostream>
+
+	template <typename T>
+	class Node {
+	public:
+		T data;
+		Node<T>* next;
+
+		Node(T value) : data(value), next(nullptr) {}
+	};
+
+	template <typename T>
+	class LinkedList {
+	private:
+		Node<T>* head;
+		Node<T>* tail;
+	public:
+		LinkedList() : head(nullptr), tail(nullptr) {}
+
+		void insert(T value) {
+			Node<T>* newNode = new Node<T>(value);
+			if (head == nullptr) {
+				head = tail = newNode;
+			}
+			else {
+				tail->next = newNode;
+				tail = newNode;
+			}
+		}
+
+		void display() {
+			Node<T>* current = head;
+			while (current != nullptr) {
+				std::cout << current->data << std::endl;
+				current = current->next;
+			}
+		}
+	};
+	//这样就生成了一个先输入长度,再输入内容的链表
+	int main() {
+		int length;
+		std::cin >> length;
+
+		LinkedList<int> myList;
+
+		for (int i = 0; i < length; ++i) {
+			int value;
+			std::cin >> value;
+			myList.insert(value);
+		}
+
+		myList.display();
+
+		return 0;
+	}
+//五、输入流，输出流，文件流
+//1.C++的I/O流类库是把所有的输入输出功能封装在数量相对较少的几个流类中。
+// 自定义类则是通过重载机制使得流类对象能够对自定义类的对象进行输入输出操作。
+//2.流库(stream library)是用面向对象的设计建立的输入输出类库;
+//流库具有两个平行的基类:streambuf和ios类, 所有流类均以两者之一作为基类。
+//3.streambuf类提供对缓冲区的低级操作
+//①设置缓冲区
+//②对缓冲区指针操作
+//③向缓冲区存 / 取字符
+//4.ios 类及其派生类提供用户使用流类的接口
+// 支持对streambuf的缓冲区输入 / 输出的格式化或非格式化转换(函数参数即为一个例子）
+//5.头文件fstream 处理文件信息,包括建立文件,读/写文件的各种操作接口
+//注意：流的操作是流类的公有成员函数
+//(1) cin istream 类的对象,通常连向显示器, 可以重定向
+//
+//(2) cout ostream类的对象, 通常连向显示器, 可以重定向
+//
+//(3) cerr ostream类的对象, 连向显示器。不能重定向
+//cerr 对输出的错误信息不缓冲, 因而发送给它的任何内容都立即输出。
+//(4) clog ostream类的对象, 连向打印机。不能重定向
+//clog 输出的错误信息被缓冲, 当缓冲区满时才进行输出, 也可以通过刷新流的方式
+// (遇到操纵符endl或flush)强迫刷新缓冲区导致显示输出。
+//6.输入流操作
+//①read:无格式输入指定字节数
+// 	   格式：
+//istream& read(char* pch, int nCount);
+//②get:从流中提取字符,包括空格
+// 	   格式：
+//int get();
+//istream& get( char* pch, int nCount, char delim = n' );
+//③getline:从流中提取一行字符
+//     格式：
+//istream& getline( char* pch, int nCount, char delim = "n' );
+//两个无格式化提取操作成员函数:
+//istream& istream::get(char*, int, char = "\n') ;
+//istream & istream::getline(char*, int, char = '\n');
+//作用:从文本中提取指定个数的字符, 并在串数组末添加一个空字符
+//其中, 第一个参数指向接受字符数据的字符数组
+//      第二个参数指定字符数组最多可容纳的字符个数
+//      第三个参数用于指定一个终止符, 缺省为换行符
+//操作遇到终止符或提取到规定个数字符时, 提取终止
+//④ignore:提取并丢弃流中指定字符
+// 	   格式：
+istream& ignore( int nCount = 1, int delim = EOF ); //nCount指的是忽略字符数量，int delim =EOF不用管，
+//一般调用的时候就是cin.ignore()()中写忽略的数量就行。
+//⑤gcount:统计最后输入字符个数
+// 格式：int gcount()const;
+// ⑥eatwhite:忽略前导空格
+// 格式：void eatwhite();
+// 
+// 7.输出流操作
+// ①put:无格式,插入一个字节
+// 格式：ostream& put( char ch );
+// ②write:从无格式,插入一序列
+// 格式：ostream& write( const char* pch, int nCount );
+//③flush:刷新输出流
+// 格式：ostream& flush();
+//8.应用实例：
+//输出：
+//cout << setw(10) << setfill(#') << setiosflags(ios :: right) << k << endl ;
+//          宽度         填充符             输入哪方对齐
+//cout << setw(10) << setbase(8) << setfill('*')<< resetiosflags(ios::right) << setiosflags(ios::left) << k << endl;
+//                       进制                      清除上一次的输出格式并重设     覆盖左侧的对齐指令
+// 清除左对齐标志位,置右对齐显示+(showpos)	
+
+//     ios::scientific//科学计数法
+//输入：
+// cin>>dec 
+//      oct 
+//      hex
+// 9.串流 istringstream ostringstream
+// 首先，string类的一个对象为iss读取
+// eg: string test(" ")
+// string s1,s2;
+// double x,y;
+//istringstream input(test);
+// input>>s1>>s2>>x>>y;
+// 
+// ostringstream Output;
+// double x,y;
+// Output<<x<<"*"<<y<<x*y<<endl;
+// cout<<Output.str();
+//10.文件处理
+// C++把文件看成无结构的字节流,
+//编码方式:文本文件 二进制文件
+//存取方式 : 顺序文件 随机文件
+//fstream、ofstream和fstream类用于内存与文件之间的数据传输
+//1：打开文件：
+//首先建立流对象,然后调用fstream :: open()函数连接外部文件
+//格式：流类 对象名(文件名, 方式); 或者  流类 对象名；
+//                                      对象名.open(文件名, 方式);
+//
+//流类有三个，ifstream ofstream fstream
+//文件名记得""括起来，方式主要有以下几种
+// ios::in(记得搭配ifs或者fs)读方式打开
+// ios::out(ofs或者fs)写方式打开
+// ios::app：追加操作
+#include<fstream>
+#include<iostream>
+using namespace std;
+int main()
+{
+	char str[] = "\tNew string";
+	ofstream f2("d:\\testnew", ios::app);
+	if (!f2)
+	{
+		cout << "cannot open testnew for ouput. ";
+		return 0;
+	}
+	f2 << str;
+	f2.close(); //这样就在源文件末尾加了一个隔着四个字符长度的New string
+}
+// ios::trunc 删除现有内容
+// ios::nocreate 不存在文件则打开失败
+// ios::noreplace存在文件则打开失败
+// ios::binary二进制打开，默认文本方式
+// 这些操作可以都写在方式里，并用|隔开
+// 2：关闭文件
+#include<iostream>
+#include<fstream>
+using namespace std;
+int main()
+{
+	ofstream ost;//创建输入流对象
+	ost.open("d:my1.dat ");
+	ost << 20 << endl << 30.5 << endl;
+	ost.close();
+	ifstream ist("d:\\my1.dat");//创建输出流对象
+	int n;
+	double d;
+	ist >> n >> d; //从流中提取数据
+	cout << n << endl << d << endl;
+}
+//3、文本文件
+//ifstream afin;//（内有两个数）
+//af>>a>>b;//（读文件，把数字分给a,b）
+// ofstream afout;
+// int c;
+// c=a+b;
+// afout<<"c="<<c<<endl;
+#include<iostream>
+#include <fstream>
+using namespace std;
+int main()
+{
+	char ch;
+	ifstream f1("d:\\test");
+	if (!f1) { cout << "cannot open 'test' for input."; return 0; }
+	ofstream f2("d:\\testnew");
+	if (!f2) {
+		cout << "cannot open testnew for ouput."; return 0;
+		while (f1 && f1.get(ch)) f2.put(ch);
+		f1.close();
+		f2.close();
+		cout << "It is over !\n";
+		//虽然表面上看起来只复制了一个小char，其实txt可以视作一个大char，所以其实进行了文件的复制
+		// 下面是文件的输入与输出访问实例
+//#include<iostream>
+//#include <fstream>
+//using namespace std;
+//int main()
+//{
+//	char fileName[30], name[30]; int number, score;
+//	int n = 0, max, min, total = 0; double ave;
+//	ofstream outstuf;                    //建立输出文件流对象
+//	cout << "Please input the name of students file :\n";
+//	cin >> fileName;                  //输入文件名
+//	outstuf.open(fileName, ios::out);//连接文件,指定打开方式
+//	if (!outstuf)                  //调用重载算符函数测试流
+//	{
+//		cerr << "File could not be open." << endl; abort();
+//	}
+//	outstuf << "学生成绩文件\n";//写入一行标题
+//	cout << "Input the number, name, and score : (Enter Ctrl-Z to end input)\n? ";
+//	while (cin >> number >> name >> score)
+//	{
+//		outstuf << number << " " << name << " " << score << endl; //向流插入数据
+//		cout << "? ";
+//	}
+//	outstuf.close();
+//
+//
+//	ifstream instuf("d:\\students.txt", ios::in);//打开文件
+//	if (!instuf)
+//	{
+//		cerr << "File could not be open." << endl; abort();
+//	}
+//	instuf.getline(s, 80);//略去标题行
+//	while (instuf >> number >> name >> score)//提取并测试
+//	{
+//		cout << number << '\t' << name << '\t' << score << '\n';
+//		if (n == 0) { max = min = score; }//对变量置初值
+//		else { if (score > max) max = score; if (score < min) min = score; }
+//		total += score;	n++;	//统计
+//	}
+//	ave = double(total) / n;	//求平均值
+//	cout << "maximal is : " << max << endl << "minimal is : " << min << endl
+//		<< "average is :" << ave << endl;//屏幕显示
+//	instuf.close();		//关闭文件
+//}
+// 
+// 		   浏览文件：
+// 		   void browseFile( char * fileName, int delLine )//文件名做参数
+		//{
+		//	ifstream inf(fileName, ios::in);
+		//	char s[80];
+		//	for (int i = 1; i <= delLine; i++)//不显示开始的指定行数
+		//		inf.getline(s, 80);
+		//	while (!inf.eof())
+		//	{
+		//		inf.getline(s, 80);//按行读出文件
+		//		cout << s << endl;
+		//	}
+		//		inf.close();
+	 //       }
+// 总结：1:能用char别用string，后者在文件操作可能报错
+// 		 2：文件操作一般作为一个void函数进行使用
+//
+//
+//11.二进制文件：
+// 	打开方式指定ios::binary，不对写入或者读出的数据做格式转换
+// 		   ①输出：
+//1、包含头文件ofstream
+//2、创建输出流对象3、打开文件
+// ofstream ofs("person.txt", ios::out | ios::binary);
+//Person p = { "张三”,18};
+//4、写文件
+//ofs.write((const char*)&p, sizeof(p));//强制类型转换：必须，且接口名称为.write
+//5、关闭文件
+// ofs.close();
+//  ②输入
+//1、包含头文件ifstream
+//2、创建输入流对象3、打开文件
+// ifstream ifs("person.txt", ios::in | ios::binary);
+//Person p;
+//4、写文件
+//ifs.read((char*)&p, sizeof(p));//强制类型转换：必须，且接口名称为.read
+// 		   cout<<"姓名："<<p.m_Name<<"年龄："<<p.m_Age<<endl;
+//5、关闭文件
+// ifs.close();
+// 		  
+// 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
