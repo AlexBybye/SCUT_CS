@@ -29,8 +29,9 @@
 
 # 请 诚 信 学 习 ！
 ## 支持我们
-如果觉得仓库内容有帮助，可通过 **buy us a coffee** 
-![buy us a coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)请 contributors 喝杯咖啡，你的支持会让我们更有动力完善资料～  
-
+如果觉得仓库内容有帮助，可通过 **buy us a coffee** ，请 contributors 喝杯咖啡，你的支持会让我们更有动力完善资料～  
+<a href="https://github.com/SCUTCSWeaver/SCUT_CS/blob/master/resources_for_repo/sponsorship.png">
+<img src= "https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png">
+</a>
 
 若使用中遇问题或有建议，欢迎随时反馈，期待与你共同完善这份学习资料宝库！
