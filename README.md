@@ -1,5 +1,8 @@
-# 华南理工大学计算机科学与工程学院学习资料汇总仓库说明
-![index](resources_for_repo\index.png)
+<h1 align='center'>华南理工大学计算机科学与工程学院学习资料汇总仓库说明</h1>
+<img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=/SCUTCSWeaver/SCUT_CS">
+
+[![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
+![index](resources_for_repo/index.png)
 ## 项目概览
 
 欢迎来到华南理工大学计算机科学与工程学院学习资料汇总仓库！这里是 SCUTCSer 学习资源的宝库，旨在为同学们提供丰富、实用的学习资料 。  
