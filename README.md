@@ -30,7 +30,7 @@
 # 请 诚 信 学 习 ！
 ## 支持我们
 如果觉得仓库内容有帮助，可通过 **buy us a coffee** ，请 contributors 喝杯咖啡，你的支持会让我们更有动力完善资料～  
-<a href="https://github.com/SCUTCSWeaver/SCUT_CS/blob/master/resources_for_repo/sponsorship.png">
+<a href="https://github.com/SCUTCSWeaver/SCUT_CS/blob/master/resources_for_repo/sponsorship.jpg">
 <img src= "https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png">
 </a>
 
