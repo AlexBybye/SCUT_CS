@@ -1,0 +1,29 @@
+Parsing started.
+
+Syntax Tree:
+
+root -> program -> declaration_list -> declaration -> fun_declaration
+    -> type_specifier -> INT
+    -> IDENTIFIER (main)
+    -> LPARENTHESE
+    -> params -> VOID
+    -> RPARENTHESE
+    -> compound_stmt -> LBRACE
+        -> local_declarations -> epsilon
+        -> statement_list -> statement -> expression_stmt
+             -> expression -> var_declaration -> type_specifier -> FLOAT
+             -> IDENTIFIER (x)
+             -> ASSIN
+             -> FLOATPOINT (3.14)
+             -> SEMICOLON
+        -> statement -> selection_stmt
+             -> IF
+             -> LPARENTHESE
+             -> expression -> simple_expression -> additive_expression -> factor -> var -> IDENTIFIER (x)
+             -> RPARENTHESE
+             -> statement -> return_stmt -> RETURN -> expression -> var -> IDENTIFIER (x) -> SEMICOLON
+             -> ELSE
+             -> statement -> return_stmt -> RETURN -> expression -> factor -> SUB -> INTEGER (0) -> SUB -> var -> IDENTIFIER (x) -> SEMICOLON
+        -> RBRACE
+
+Parsing completed successfully.
