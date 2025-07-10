@@ -1,3 +1,0 @@
-学科资料/公益传播/*.zip filter=lfs diff=lfs merge=lfs -text
-学科资料/高中学科笔记（高度总结：家教用）/*.zip filter=lfs diff=lfs merge=lfs -text
-*.zip filter=lfs diff=lfs merge=lfs -text
