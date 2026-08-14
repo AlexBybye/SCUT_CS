@@ -91,6 +91,22 @@
 ##### IV.大一开学二次选拔、培养计划及规划与便携索引（开源/待开发）
 提供大一新生选拔信息及培养计划，帮助新生更好地规划大学生活。
 
+##### V.SCUT_SKILL（征集中）
+> 学生向 AI Skill 索引--资料是死的，怎么读、怎么划重点、怎么在两天内把一门课过一遍，是活的。
+**方法上的信息差，比资料上的信息差更大。**
+[`SCUT_SKILL/`](SCUT_SKILL/) 收录学院同学写的、以及实际用过好评的第三方 Agent Skill（Claude Code / Codex / Cursor 等），**只放超链接和介绍，不放 skill 本体** —— 不占 git-lfs 限额，也不会把别人的仓库拷成过期快照。
+
+- 📋 [Summary_Skill.md](SCUT_SKILL/Summary_Skill.md) —— skill 清单，分「本院开发」和「外部工具」两栏
+- 📖 [README.md](SCUT_SKILL/README.md) —— 建立初衷、收录标准、提交方式
+
+在自己仓库里写好 skill，然后提 PR 往 `Summary_Skill.md` 加一条就行，不用动别的文件。也是 🔴 高等目标里 skill 市场的前身。
+
+> ⚠️ Skill 会被 Agent 直接执行，存在提示词注入和数据外传风险。装任何第三方 skill 前，建议先用清单里的 `skill-scanner` 扫一遍。
+
+注意：本仓库不对任何第三方 skill 进行任何检查，仅作为索引，不承担任何责任。请在使用前先检查，确保安全。
+
+##### VI.智能复习助手“SCUT老学长”（开发中）
+
 #### 2.推荐方法(更新，务必查看)
 
 - 建议Star在云端并每次取用单独view raw单项进行下载。介于部分学科内容庞杂，` chrome://extensions/?id=ffabmkklhbepgcgfonabamgnfafbdlkn `这个插件已经被证实可以整个文件夹进行取用（使用方式：打开chrome，打开链接，个性化配置）
