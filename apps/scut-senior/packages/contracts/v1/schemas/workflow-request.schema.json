@@ -1,0 +1,539 @@
+{
+  "$defs": {
+    "AnswerMode": {
+      "enum": [
+        "concise",
+        "detailed",
+        "example",
+        "step_by_step"
+      ],
+      "title": "AnswerMode",
+      "type": "string"
+    },
+    "CourseScope": {
+      "enum": [
+        "single",
+        "cross"
+      ],
+      "title": "CourseScope",
+      "type": "string"
+    },
+    "ExamReviewPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "available_hours": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 10000,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Available Hours"
+        },
+        "exam_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exam Date"
+        },
+        "goals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Goals",
+          "type": "array"
+        },
+        "syllabus": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Syllabus"
+        },
+        "weak_topics": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Weak Topics",
+          "type": "array"
+        }
+      },
+      "required": [
+        "goals",
+        "weak_topics"
+      ],
+      "title": "ExamReviewPayload",
+      "type": "object"
+    },
+    "HelpLevel": {
+      "enum": [
+        "concept",
+        "approach",
+        "step_by_step",
+        "full_explanation",
+        "answer_analysis"
+      ],
+      "title": "HelpLevel",
+      "type": "string"
+    },
+    "KnowledgeQaPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "question": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Question",
+          "type": "string"
+        }
+      },
+      "required": [
+        "question"
+      ],
+      "title": "KnowledgeQaPayload",
+      "type": "object"
+    },
+    "KnowledgeScope": {
+      "enum": [
+        "course_only",
+        "course_first"
+      ],
+      "title": "KnowledgeScope",
+      "type": "string"
+    },
+    "MistakeReviewPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "original_answer": {
+          "maxLength": 40000,
+          "minLength": 1,
+          "title": "Original Answer",
+          "type": "string"
+        },
+        "problem": {
+          "maxLength": 40000,
+          "minLength": 1,
+          "title": "Problem",
+          "type": "string"
+        },
+        "reference_answer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reference Answer"
+        },
+        "review_focus": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Review Focus"
+        }
+      },
+      "required": [
+        "problem",
+        "original_answer"
+      ],
+      "title": "MistakeReviewPayload",
+      "type": "object"
+    },
+    "ModelSource": {
+      "enum": [
+        "platform_default",
+        "user_key"
+      ],
+      "title": "ModelSource",
+      "type": "string"
+    },
+    "ProblemTutorPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "help_level": {
+          "$ref": "#/$defs/HelpLevel"
+        },
+        "problem": {
+          "maxLength": 40000,
+          "minLength": 1,
+          "title": "Problem",
+          "type": "string"
+        },
+        "problem_source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Problem Source"
+        },
+        "user_answer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "User Answer"
+        }
+      },
+      "required": [
+        "problem",
+        "help_level"
+      ],
+      "title": "ProblemTutorPayload",
+      "type": "object"
+    },
+    "TemporaryMaterialReadingPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "material_text": {
+          "maxLength": 100000,
+          "minLength": 1,
+          "title": "Material Text",
+          "type": "string"
+        },
+        "reading_goal": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reading Goal"
+        }
+      },
+      "required": [
+        "material_text"
+      ],
+      "title": "TemporaryMaterialReadingPayload",
+      "type": "object"
+    },
+    "Tone": {
+      "enum": [
+        "teaching_assistant",
+        "study_partner",
+        "senior_student"
+      ],
+      "title": "Tone",
+      "type": "string"
+    },
+    "WorkflowType": {
+      "enum": [
+        "knowledge_qa",
+        "exam_review",
+        "problem_tutor",
+        "mistake_review",
+        "temporary_material_reading"
+      ],
+      "title": "WorkflowType",
+      "type": "string"
+    }
+  },
+  "$id": "https://scut-senior.local/contracts/v1/workflow-request.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "course_scope": {
+            "const": "single"
+          }
+        },
+        "required": [
+          "course_scope"
+        ]
+      },
+      "then": {
+        "properties": {
+          "allowed_course_ids": {
+            "maxItems": 0
+          },
+          "course_id": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "course_id"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "course_scope": {
+            "const": "cross"
+          }
+        },
+        "required": [
+          "course_scope"
+        ]
+      },
+      "then": {
+        "properties": {
+          "allowed_course_ids": {
+            "minItems": 2,
+            "uniqueItems": true
+          },
+          "course_id": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "workflow_type": {
+            "const": "knowledge_qa"
+          }
+        },
+        "required": [
+          "workflow_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "workflow_payload": {
+            "$ref": "#/$defs/KnowledgeQaPayload"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "workflow_type": {
+            "const": "exam_review"
+          }
+        },
+        "required": [
+          "workflow_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "workflow_payload": {
+            "$ref": "#/$defs/ExamReviewPayload"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "workflow_type": {
+            "const": "problem_tutor"
+          }
+        },
+        "required": [
+          "workflow_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "workflow_payload": {
+            "$ref": "#/$defs/ProblemTutorPayload"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "workflow_type": {
+            "const": "mistake_review"
+          }
+        },
+        "required": [
+          "workflow_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "workflow_payload": {
+            "$ref": "#/$defs/MistakeReviewPayload"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "workflow_type": {
+            "const": "temporary_material_reading"
+          }
+        },
+        "required": [
+          "workflow_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "workflow_payload": {
+            "$ref": "#/$defs/TemporaryMaterialReadingPayload"
+          }
+        }
+      }
+    }
+  ],
+  "properties": {
+    "allowed_course_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Allowed Course Ids",
+      "type": "array",
+      "uniqueItems": true
+    },
+    "answer_mode": {
+      "$ref": "#/$defs/AnswerMode"
+    },
+    "attachments": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "maxItems": 0,
+      "title": "Attachments",
+      "type": "array"
+    },
+    "context_refs": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Context Refs",
+      "type": "array"
+    },
+    "conversation_id": {
+      "format": "uuid",
+      "title": "Conversation Id",
+      "type": "string"
+    },
+    "course_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Course Id"
+    },
+    "course_scope": {
+      "$ref": "#/$defs/CourseScope"
+    },
+    "include_bilibili_resources": {
+      "title": "Include Bilibili Resources",
+      "type": "boolean"
+    },
+    "knowledge_scope": {
+      "$ref": "#/$defs/KnowledgeScope"
+    },
+    "model_id": {
+      "maxLength": 100,
+      "minLength": 1,
+      "title": "Model Id",
+      "type": "string"
+    },
+    "model_source": {
+      "$ref": "#/$defs/ModelSource"
+    },
+    "provider_id": {
+      "maxLength": 100,
+      "minLength": 1,
+      "title": "Provider Id",
+      "type": "string"
+    },
+    "tone": {
+      "$ref": "#/$defs/Tone"
+    },
+    "user_input": {
+      "maxLength": 100000,
+      "minLength": 1,
+      "title": "User Input",
+      "type": "string"
+    },
+    "workflow_payload": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/KnowledgeQaPayload"
+        },
+        {
+          "$ref": "#/$defs/ExamReviewPayload"
+        },
+        {
+          "$ref": "#/$defs/ProblemTutorPayload"
+        },
+        {
+          "$ref": "#/$defs/MistakeReviewPayload"
+        },
+        {
+          "$ref": "#/$defs/TemporaryMaterialReadingPayload"
+        }
+      ],
+      "title": "Workflow Payload"
+    },
+    "workflow_type": {
+      "$ref": "#/$defs/WorkflowType"
+    }
+  },
+  "required": [
+    "workflow_type",
+    "course_scope",
+    "allowed_course_ids",
+    "conversation_id",
+    "model_source",
+    "provider_id",
+    "model_id",
+    "user_input",
+    "answer_mode",
+    "tone",
+    "knowledge_scope",
+    "include_bilibili_resources",
+    "context_refs",
+    "attachments",
+    "workflow_payload"
+  ],
+  "title": "WorkflowRunRequest",
+  "type": "object"
+}

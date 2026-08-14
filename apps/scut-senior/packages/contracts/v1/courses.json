@@ -1,0 +1,120 @@
+{
+  "contract_version": "v1",
+  "courses": [
+    {
+      "course_id": "engineering_math_analysis_1",
+      "display_name": "工科数学分析 I",
+      "aliases": [
+        "工科数学分析I",
+        "工科数学分析（一）",
+        "工科数学分析上",
+        "工数上"
+      ],
+      "repository_paths": ["学科资料/工科数学分析I"],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "engineering_math_analysis_2",
+      "display_name": "工科数学分析 II",
+      "aliases": [
+        "工科数学分析II",
+        "工科数学分析（二）",
+        "工科数学分析下",
+        "工数下"
+      ],
+      "repository_paths": ["学科资料/工科数学分析II"],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "linear_algebra",
+      "display_name": "线性代数",
+      "aliases": ["线性代数与解析几何", "线代解几"],
+      "repository_paths": ["学科资料/线性代数"],
+      "is_open": false,
+      "fixture_available": true
+    },
+    {
+      "course_id": "probability_theory",
+      "display_name": "概率论",
+      "aliases": ["概率论与数理统计", "概率统计"],
+      "repository_paths": ["学科资料/概率论"],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "cpp",
+      "display_name": "C++（上及下）",
+      "aliases": [
+        "C++",
+        "C++程序设计",
+        "C++程序设计基础",
+        "高级语言程序设计（C++）（一）",
+        "高级语言程序设计（C++）（二）",
+        "C++II"
+      ],
+      "repository_paths": ["学科资料/C++（上及下）"],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "discrete_mathematics",
+      "display_name": "离散数学",
+      "aliases": [],
+      "repository_paths": ["学科资料/离散数学"],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "english",
+      "display_name": "英语",
+      "aliases": [
+        "学术英语（一）",
+        "学术英语（二）",
+        "大学英语（一）",
+        "大学英语（二）"
+      ],
+      "repository_paths": ["学科资料/英语"],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "computer_science_intro",
+      "display_name": "计算机科学概论",
+      "aliases": ["计概"],
+      "repository_paths": ["学科资料/计算机科学概论"],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "information_security_intro",
+      "display_name": "信息安全导论",
+      "aliases": ["信息安全", "信安导论"],
+      "repository_paths": ["学科资料/信息安全"],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "university_physics_3_1",
+      "display_name": "大学物理 III（一）",
+      "aliases": [
+        "大物上",
+        "大学物理（I）",
+        "大学物理（一）",
+        "大学物理1"
+      ],
+      "repository_paths": ["学科资料/大物上"],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "university_physics_lab_1",
+      "display_name": "大学物理实验（一）",
+      "aliases": ["大物上实验", "大物上实验合辑", "大物实验"],
+      "repository_paths": ["学科资料/大物上实验合辑"],
+      "is_open": false,
+      "fixture_available": false
+    }
+  ]
+}

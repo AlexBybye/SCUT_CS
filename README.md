@@ -107,6 +107,12 @@
 
 ##### VI.智能复习助手“SCUT老学长”（开发中）
 
+项目目前处于迭代 0，仅提供工程源码与本地开发入口，**尚无正式在线地址**。
+
+- [查看助手源码](apps/scut-senior/)
+- [本地运行与参与开发](apps/scut-senior/README.md)
+- [课程资料贡献说明](CONTRIBUTING.md)
+
 #### 2.推荐方法(更新，务必查看)
 
 - 建议Star在云端并每次取用单独view raw单项进行下载。介于部分学科内容庞杂，` chrome://extensions/?id=ffabmkklhbepgcgfonabamgnfafbdlkn `这个插件已经被证实可以整个文件夹进行取用（使用方式：打开chrome，打开链接，个性化配置）

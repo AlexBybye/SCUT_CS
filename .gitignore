@@ -23,6 +23,38 @@ x86/
 # 其他冗余
 *.log
 *.tmp
+.DS_Store
+
+# Node / Vue
+node_modules/
+dist/
+coverage/
+.vite/
+.npm/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# 本地环境变量与运行数据
+.env
+.env.*
+!.env.example
+!*.env.example
+.cache/
+apps/scut-senior/.local/
+apps/scut-senior/**/*.db
+apps/scut-senior/**/*.sqlite
+apps/scut-senior/**/*.sqlite3
+apps/scut-senior/**/uploads/
+apps/scut-senior/**/indexes/
 
 # 开发计划
 docs/

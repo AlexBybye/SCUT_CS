@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "scut-senior-api"
+version = "0.1.0"
+description = "Iteration 0 contract and mock vertical slice for SCUT Senior"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.116,<1",
+  "jsonschema>=4.25,<5",
+  "pydantic>=2.11,<3",
+  "PyYAML>=6,<7",
+  "scut-senior-worker==0.1.0",
+  "uvicorn[standard]>=0.35,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "httpx>=0.28,<1",
+  "pytest>=8.4,<9",
+  "pytest-cov>=6.2,<7",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scut_senior_api"]
+
+[tool.uv.sources]
+scut-senior-worker = { path = "../worker", editable = true }
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers"
+pythonpath = ["src", "../worker/src"]
+testpaths = ["../tests/python"]
+
+[tool.coverage.run]
+branch = true
+source = ["scut_senior_api", "scut_senior_worker"]
