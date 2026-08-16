@@ -56,5 +56,8 @@ apps/scut-senior/**/*.sqlite3
 apps/scut-senior/**/uploads/
 apps/scut-senior/**/indexes/
 
-# 开发计划
-docs/
+# 开发计划：跟踪当前已确认基座与代码迭代 SOP，其余本地草稿继续忽略
+docs/*
+!docs/PLAN-1.md
+!docs/CODE_ITERATION_SOP.md
+!docs/MATERIAL_TO_MARKDOWN_SOP.md

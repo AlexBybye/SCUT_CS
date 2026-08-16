@@ -29,5 +29,6 @@ describe("shared V1 enums", () => {
     expect([...ANSWER_BLOCK_TYPES]).toEqual(sharedEnums.answer_block_type);
     expect([...TRACE_EVENT_STATUSES]).toEqual(sharedEnums.trace_event_status);
     expect([...HELP_LEVELS]).toEqual(sharedEnums.help_level);
+    expect(sharedEnums.bilibili_review_status).toEqual(["unreviewed_live_search"]);
   });
 });

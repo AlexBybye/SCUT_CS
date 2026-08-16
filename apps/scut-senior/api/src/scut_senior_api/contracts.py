@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import date, datetime
 from enum import StrEnum
 from typing import Annotated, Any, Literal
+from urllib.parse import parse_qs, urlsplit
 from uuid import UUID
 
 from pydantic import (
@@ -10,6 +11,9 @@ from pydantic import (
     ConfigDict,
     Field,
     HttpUrl,
+    RootModel,
+    SecretStr,
+    field_validator,
     model_serializer,
     model_validator,
 )
@@ -196,11 +200,71 @@ class ConversationCreate(ContractModel):
     course_id: Annotated[str, Field(min_length=1, max_length=100)]
 
 
+class ConversationRename(ContractModel):
+    title: Annotated[str, Field(min_length=1, max_length=100)]
+
+    @field_validator("title")
+    @classmethod
+    def strip_title(cls, value: str) -> str:
+        normalized = value.strip()
+        if not normalized:
+            raise ValueError("conversation title must not be blank")
+        return normalized
+
+
+class ModelCredentialUpsert(ContractModel):
+    api_key: Annotated[SecretStr, Field(min_length=1, max_length=8192)]
+
+
+class ModelCredentialStatus(ContractModel):
+    provider_id: Literal["openrouter", "deepseek", "siliconflow", "zhipu"]
+    model_id: Literal[
+        "deepseek/deepseek-v4-flash-0731",
+        "deepseek-v4-flash",
+        "Pro/zai-org/GLM-4.7",
+        "glm-5.2",
+    ]
+    configured: bool
+    masked_key: Literal["••••••••"] | None
+    expires_at: datetime | None
+
+    @model_validator(mode="after")
+    def enforce_configuration_metadata(self) -> "ModelCredentialStatus":
+        expected_model = {
+            "openrouter": "deepseek/deepseek-v4-flash-0731",
+            "deepseek": "deepseek-v4-flash",
+            "siliconflow": "Pro/zai-org/GLM-4.7",
+            "zhipu": "glm-5.2",
+        }[self.provider_id]
+        if self.model_id != expected_model:
+            raise ValueError("credential provider and model must match the fixed catalog")
+        if self.configured and (
+            self.masked_key is None or self.expires_at is None
+        ):
+            raise ValueError(
+                "configured credentials require masked_key and expires_at"
+            )
+        if not self.configured and (
+            self.masked_key is not None or self.expires_at is not None
+        ):
+            raise ValueError(
+                "unconfigured credentials cannot expose key metadata"
+            )
+        return self
+
+
+class ModelCredentialStatusList(RootModel[list[ModelCredentialStatus]]):
+    pass
+
+
 class ConversationSummary(ContractModel):
     conversation_id: UUID
     user_id: str
     course_id: str
+    title: str
     created_at: datetime
+    updated_at: datetime
+    expires_at: datetime
     mock_only: Literal[True] = True
 
 
@@ -263,16 +327,43 @@ class Citation(ContractModel):
 
 
 class ExternalResource(ContractModel):
-    resource_id: str | None = None
+    resource_id: None
     course_id: str
     platform: Literal["bilibili"]
-    resource_type: Literal["video", "search"]
+    resource_type: Literal["search"]
     title: str
     url: HttpUrl
     matched_topic: str
-    review_status: Literal["reviewed", "pending", "rejected", "unavailable"]
-    catalog_version: str | None = None
+    review_status: Literal["unreviewed_live_search"]
+    catalog_version: None
+    query_keywords: list[Annotated[str, Field(min_length=1, max_length=32)]] = Field(
+        min_length=1, max_length=3
+    )
+    generated_at: datetime
     evidence_role: Literal["supplementary_only"]
+
+    @model_validator(mode="after")
+    def enforce_bilibili_resource_invariants(self) -> "ExternalResource":
+        parsed = urlsplit(str(self.url))
+        query = parse_qs(parsed.query, keep_blank_values=True)
+        if (
+            self.generated_at.utcoffset() is None
+            or parsed.scheme != "https"
+            or parsed.hostname != "search.bilibili.com"
+            or parsed.username is not None
+            or parsed.password is not None
+            or parsed.port is not None
+            or parsed.path != "/all"
+            or bool(parsed.fragment)
+            or set(query) != {"keyword"}
+            or len(query["keyword"]) != 1
+            or not query["keyword"][0].strip()
+            or query["keyword"][0] != " ".join(self.query_keywords)
+        ):
+            raise ValueError(
+                "Bilibili resources require one fixed anonymous search URL"
+            )
+        return self
 
 
 class TraceSourceSummary(ContractModel):
@@ -291,6 +382,7 @@ class TraceSafeResult(ContractModel):
     course_scope: CourseScope | None = None
     course_ids: list[str] | None = None
     knowledge_scope: KnowledgeScope | None = None
+    auth_mode: Literal["mock", "github_oauth"] | None = None
     mode: Literal["mock", "synthetic_fixture_only"] | None = None
     hit_count: Annotated[int | None, Field(ge=0)] = None
     sources: list[TraceSourceSummary] | None = None
@@ -318,7 +410,7 @@ class TraceSafeResult(ContractModel):
     accepted_count: Annotated[int | None, Field(ge=0)] = None
     external_resources_separate: bool | None = None
     stored: bool | None = None
-    adapter: Literal["sqlite_mock"] | None = None
+    adapter: Literal["sqlite_mock", "sqlite"] | None = None
 
     @model_serializer(mode="wrap")
     def serialize_only_present_safe_fields(self, handler: Any) -> dict[str, Any]:
@@ -359,7 +451,7 @@ class WorkflowResult(ContractModel):
     citations: list[Citation]
     related_topics: list[str]
     related_questions: list[str]
-    external_resources: list[ExternalResource]
+    external_resources: list[ExternalResource] = Field(max_length=1)
     coverage_gaps: list[str]
     trace: list[TraceEvent]
     corpus_version: str
@@ -370,5 +462,30 @@ class WorkflowResult(ContractModel):
     availability_status: str
 
 
+class WorkflowAttempt(ContractModel):
+    workflow_run_id: UUID
+    attempt_group_id: UUID
+    regenerated_from_run_id: UUID | None
+    request: WorkflowRunRequest
+    result: WorkflowResult
+    created_at: datetime
+    updated_at: datetime
+    expires_at: datetime
+
+    @model_validator(mode="after")
+    def enforce_attempt_links(self) -> "WorkflowAttempt":
+        if self.workflow_run_id != self.result.workflow_run_id:
+            raise ValueError("attempt workflow_run_id must match result")
+        if self.request.conversation_id != self.result.conversation_id:
+            raise ValueError("attempt request and result must share a conversation")
+        if self.regenerated_from_run_id == self.workflow_run_id:
+            raise ValueError("an attempt cannot regenerate itself")
+        if self.updated_at < self.created_at:
+            raise ValueError("attempt updated_at cannot precede created_at")
+        if self.expires_at <= self.created_at:
+            raise ValueError("attempt expires_at must follow created_at")
+        return self
+
+
 class ConversationDetail(ConversationSummary):
-    runs: list[WorkflowResult] = Field(default_factory=list)
+    runs: list[WorkflowAttempt] = Field(default_factory=list)

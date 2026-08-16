@@ -3,6 +3,12 @@ from __future__ import annotations
 from time import perf_counter
 from uuid import UUID, uuid4
 
+from .auth import AuthRequired, AuthenticatedPrincipal
+from .byok_catalog import (
+    ByokModelNotRegistered,
+    ByokProviderDisabled,
+    ByokProviderNotRegistered,
+)
 from .config import Settings
 from .contracts import (
     AnswerBlock,
@@ -20,15 +26,20 @@ from .contracts import (
     TraceEvent,
     TraceEventStatus,
     TraceSafeResult,
+    WorkflowAttempt,
     WorkflowResult,
     WorkflowRunRequest,
 )
+from .model_catalog import ModelCatalog, ModelCatalogEntry
+from .model_credentials import ModelCredentialError, ModelCredentialManager
 from .ports import (
     CapabilityUnavailable,
-    ExternalResourceCatalog,
-    IdentityProvider,
+    ExternalResourceDiscovery,
     ModelGateway,
+    RetrievalBatch,
     RetrievalGateway,
+    UserKeyModelGateway,
+    UserIdentity,
     WorkflowRepository,
 )
 from .registry import CourseRegistry, UnknownCourseError
@@ -43,50 +54,124 @@ class ContractConflict(ValueError):
     pass
 
 
+RequestIdentity = UserIdentity | AuthenticatedPrincipal
+
+
 class IterationZeroService:
     def __init__(
         self,
         settings: Settings,
         registry: CourseRegistry,
-        identity: IdentityProvider,
         retrieval: RetrievalGateway,
         model: ModelGateway,
-        resources: ExternalResourceCatalog,
+        resources: ExternalResourceDiscovery,
         repository: WorkflowRepository,
+        model_catalog: ModelCatalog,
+        credential_manager: ModelCredentialManager,
+        byok_model: UserKeyModelGateway,
     ):
         self.settings = settings
         self.registry = registry
-        self.identity = identity
         self.retrieval = retrieval
         self.model = model
         self.resources = resources
         self.repository = repository
+        self.model_catalog = model_catalog
+        self.credential_manager = credential_manager
+        self.byok_model = byok_model
 
-    def create_conversation(self, course_id_or_alias: str) -> ConversationSummary:
-        user = self.identity.current_user()
+    def create_conversation(
+        self, user: RequestIdentity, course_id_or_alias: str
+    ) -> ConversationSummary:
         course = self.registry.resolve(course_id_or_alias)
-        if not course.fixture_available:
+        if not self._retrieval_course_available(course.course_id):
             raise CapabilityUnavailable(
                 "course",
-                f"{course.course_id} is closed and has no iteration-0 fixture",
+                f"{course.course_id} is not enabled for the configured retrieval mode",
             )
-        return self.repository.create_conversation(user.user_id, course.course_id)
+        return self.repository.create_conversation(
+            str(user.user_id), course.course_id, course.display_name
+        )
 
-    def get_conversation(self, conversation_id: UUID) -> ConversationDetail:
-        user = self.identity.current_user()
-        conversation = self.repository.get_conversation(user.user_id, conversation_id)
+    def _retrieval_course_available(self, course_id: str) -> bool:
+        check = getattr(self.retrieval, "is_course_available", None)
+        if callable(check):
+            return bool(check(course_id))
+        if self.settings.retrieval_mode == "fixture":
+            # Compatibility is limited to injected legacy test doubles. An
+            # explicit local corpus must always prove active-course state.
+            return self.registry.get(course_id).fixture_available
+        raise CapabilityUnavailable(
+            "retrieval", "local corpus adapter cannot verify active course state"
+        )
+
+    def list_conversations(
+        self, user: RequestIdentity
+    ) -> list[ConversationSummary]:
+        return self.repository.list_conversations(str(user.user_id))
+
+    def get_conversation(
+        self, user: RequestIdentity, conversation_id: UUID
+    ) -> ConversationDetail:
+        conversation = self.repository.get_conversation(str(user.user_id), conversation_id)
         if conversation is None:
             raise ResourceNotFound("conversation not found")
         return conversation
 
-    def get_run(self, run_id: UUID) -> WorkflowResult:
-        user = self.identity.current_user()
-        result = self.repository.get_run(user.user_id, run_id)
+    def rename_conversation(
+        self, user: RequestIdentity, conversation_id: UUID, title: str
+    ) -> ConversationSummary:
+        conversation = self.repository.rename_conversation(
+            str(user.user_id), conversation_id, title
+        )
+        if conversation is None:
+            raise ResourceNotFound("conversation not found")
+        return conversation
+
+    def delete_conversation(
+        self, user: RequestIdentity, conversation_id: UUID
+    ) -> None:
+        if not self.repository.delete_conversation(
+            str(user.user_id), conversation_id
+        ):
+            raise ResourceNotFound("conversation not found")
+
+    def get_run(self, user: RequestIdentity, run_id: UUID) -> WorkflowResult:
+        result = self.repository.get_run(str(user.user_id), run_id)
         if result is None:
             raise ResourceNotFound("workflow run not found")
         return result
 
-    def run(self, request: WorkflowRunRequest) -> WorkflowResult:
+    def run(self, user: RequestIdentity, request: WorkflowRunRequest) -> WorkflowResult:
+        return self._run(user, request)
+
+    def regenerate(
+        self, user: RequestIdentity, run_id: UUID
+    ) -> WorkflowAttempt:
+        previous = self.repository.get_attempt(str(user.user_id), run_id)
+        if previous is None:
+            raise ResourceNotFound("workflow run not found")
+        result = self._run(
+            user,
+            previous.request.model_copy(deep=True),
+            attempt_group_id=previous.attempt_group_id,
+            regenerated_from_run_id=previous.workflow_run_id,
+        )
+        attempt = self.repository.get_attempt(
+            str(user.user_id), result.workflow_run_id
+        )
+        if attempt is None:
+            raise RuntimeError("regenerated attempt was not persisted")
+        return attempt
+
+    def _run(
+        self,
+        user: RequestIdentity,
+        request: WorkflowRunRequest,
+        *,
+        attempt_group_id: UUID | None = None,
+        regenerated_from_run_id: UUID | None = None,
+    ) -> WorkflowResult:
         if request.course_scope == CourseScope.CROSS:
             if not self.settings.cross_course_enabled:
                 raise CapabilityUnavailable(
@@ -97,19 +182,70 @@ class IterationZeroService:
                 "cross_course",
                 "iteration 0 freezes the contract but has no cross-course runtime",
             )
-        if request.model_source != ModelSource.PLATFORM_DEFAULT:
-            raise CapabilityUnavailable(
-                "user_key", "BYOK is disabled until iteration 1"
-            )
-        if request.provider_id != "mock" or request.model_id != "deterministic-fixture-v1":
-            raise CapabilityUnavailable(
-                "model",
-                "no real platform model is configured; use the explicit iteration-0 mock",
-            )
+        model_entry: ModelCatalogEntry | None = None
+        use_user_key = request.model_source == ModelSource.USER_KEY
+        if not use_user_key:
+            if self.settings.model_mode == "mock":
+                if (
+                    request.provider_id != "mock"
+                    or request.model_id != "deterministic-fixture-v1"
+                ):
+                    raise CapabilityUnavailable(
+                        "model",
+                        "no real platform model is configured; use the explicit iteration-0 mock",
+                    )
+                model_provider_id = "mock"
+                model_id = "deterministic-fixture-v1"
+                billing_label = "not_applicable_mock"
+                availability_status = "mock_only"
+                mock_only = True
+            else:
+                model_entry = self.model_catalog.resolve(
+                    request.provider_id,
+                    request.model_id,
+                    request.model_source,
+                )
+                model_provider_id = model_entry.provider_id
+                model_id = model_entry.model_id
+                billing_label = model_entry.billing_label
+                availability_status = model_entry.availability_status
+                mock_only = False
+        else:
+            if not isinstance(user, AuthenticatedPrincipal) or user.is_mock:
+                raise AuthRequired()
+            try:
+                provider = self.model_catalog.byok_catalog.require_enabled(
+                    request.provider_id
+                )
+                selected_model = self.model_catalog.byok_catalog.resolve_model(
+                    request.provider_id, request.model_id
+                )
+            except ByokProviderNotRegistered:
+                raise ModelCredentialError(
+                    status_code=422,
+                    code="byok_provider_not_registered",
+                    detail="该 BYOK 供应商未登记。",
+                ) from None
+            except ByokProviderDisabled:
+                raise ModelCredentialError(
+                    status_code=503,
+                    code="byok_provider_disabled",
+                    detail="该 BYOK 供应商当前未启用。",
+                ) from None
+            except ByokModelNotRegistered:
+                raise ModelCredentialError(
+                    status_code=422,
+                    code="byok_model_not_registered",
+                    detail="该 BYOK 模型未登记。",
+                ) from None
+            model_provider_id = provider.provider_id.value
+            model_id = selected_model.model_id
+            billing_label = "user_provider_billing"
+            availability_status = "user_key_enabled"
+            mock_only = False
 
-        user = self.identity.current_user()
         conversation = self.repository.get_conversation(
-            user.user_id, request.conversation_id
+            str(user.user_id), request.conversation_id
         )
         if conversation is None:
             raise ResourceNotFound("conversation not found")
@@ -124,14 +260,18 @@ class IterationZeroService:
             raise ContractConflict(
                 "workflow course does not match the bound conversation course"
             )
-        if not course.fixture_available:
+        if not self._retrieval_course_available(course.course_id):
             raise CapabilityUnavailable(
-                "course", f"{course.course_id} has no iteration-0 fixture"
+                "course",
+                f"{course.course_id} is not enabled for the configured retrieval mode",
             )
 
         machine = RunStateMachine()
         machine.transition(RunStatus.RUNNING)
         trace: list[TraceEvent] = []
+        run_id = uuid4()
+        message_id = uuid4()
+        answer_id = uuid4()
 
         _append_trace(
             trace,
@@ -145,28 +285,104 @@ class IterationZeroService:
         )
         _append_trace(
             trace,
-            node="mock_identity",
-            result={"mode": "mock"},
+            node="identity",
+            result={"auth_mode": "mock" if user.is_mock else "github_oauth"},
         )
 
+        retrieval_node = (
+            "local_corpus_retrieval"
+            if self.settings.retrieval_mode == "local_corpus"
+            else "fixture_retrieval"
+        )
+        corpus_version = (
+            "local-corpus-unavailable"
+            if self.settings.retrieval_mode == "local_corpus"
+            else "fixture-corpus-v1"
+        )
+        course_pack_version: str | None = None
         started = perf_counter()
-        sources = self.retrieval.search([course.course_id], request.user_input)
-        invalid_source_ids = [
-            source.chunk_id
-            for source in sources
-            if source.course_id != course.course_id
-        ]
-        if invalid_source_ids:
-            raise ContractConflict(
-                "source authorization guard rejected a source outside the conversation course"
+        try:
+            retrieval_batch = self.retrieval.search(
+                [course.course_id], request.user_input
             )
+            if not isinstance(retrieval_batch, RetrievalBatch):
+                # Keep injected iteration-1 test doubles compatible, but never
+                # accept an unversioned result in explicit local-corpus mode.
+                if self.settings.retrieval_mode == "local_corpus":
+                    raise ContractConflict(
+                        "local corpus retrieval returned an unversioned candidate set"
+                    )
+                sources = list(retrieval_batch)
+            else:
+                sources = list(retrieval_batch.sources)
+                corpus_version = retrieval_batch.corpus_version
+                course_pack_version = retrieval_batch.course_pack_version
+                if (
+                    not isinstance(corpus_version, str)
+                    or not corpus_version.strip()
+                    or (
+                        course_pack_version is not None
+                        and (
+                            not isinstance(course_pack_version, str)
+                            or not course_pack_version.strip()
+                        )
+                    )
+                ):
+                    raise ContractConflict(
+                        "retrieval returned an invalid corpus version binding"
+                    )
+                if (
+                    self.settings.retrieval_mode == "local_corpus"
+                    and course_pack_version is None
+                ):
+                    raise ContractConflict(
+                        "local corpus retrieval returned no course pack version"
+                    )
+            invalid_source_ids = [
+                source.chunk_id
+                for source in sources
+                if source.course_id != course.course_id
+            ]
+            if invalid_source_ids:
+                raise ContractConflict(
+                    "source authorization guard rejected a source outside the conversation course"
+                )
+        except Exception:
+            self._persist_failed_attempt(
+                user=user,
+                request=request,
+                course_id=course.course_id,
+                machine=machine,
+                trace=trace,
+                failure_node=retrieval_node,
+                duration_ms=_elapsed_ms(started),
+                run_id=run_id,
+                message_id=message_id,
+                answer_id=answer_id,
+                model_provider_id=model_provider_id,
+                model_id=model_id,
+                billing_label=billing_label,
+                mock_only=mock_only,
+                corpus_version=corpus_version,
+                course_pack_version=course_pack_version,
+                attempt_group_id=attempt_group_id,
+                regenerated_from_run_id=regenerated_from_run_id,
+            )
+            raise
         _append_trace(
             trace,
-            node="fixture_retrieval",
+            node=retrieval_node,
             duration_ms=_elapsed_ms(started),
             result={
-                "mode": "synthetic_fixture_only",
+                **(
+                    {"mode": "synthetic_fixture_only"}
+                    if self.settings.retrieval_mode == "fixture"
+                    else {}
+                ),
                 "hit_count": len(sources),
+                "candidate_order": [
+                    f"S{index}" for index in range(1, len(sources) + 1)
+                ],
                 "sources": [
                     {
                         "course_id": source.course_id,
@@ -187,21 +403,73 @@ class IterationZeroService:
         )
 
         started = perf_counter()
-        generated = self.model.generate(request, sources)
+        api_key: str | None = None
+        try:
+            if use_user_key:
+                assert isinstance(user, AuthenticatedPrincipal)
+                api_key = self.credential_manager.load_api_key(
+                    user, request.provider_id
+                )
+                generated = self.byok_model.generate(
+                    api_key=api_key,
+                    request=request,
+                    sources=sources,
+                )
+            else:
+                generated = self.model.generate(request, sources)
+        except AuthRequired:
+            raise
+        except Exception:
+            self._persist_failed_attempt(
+                user=user,
+                request=request,
+                course_id=course.course_id,
+                machine=machine,
+                trace=trace,
+                failure_node="byok_model" if use_user_key else (
+                    "mock_model" if mock_only else "openrouter_model"
+                ),
+                duration_ms=_elapsed_ms(started),
+                run_id=run_id,
+                message_id=message_id,
+                answer_id=answer_id,
+                model_provider_id=model_provider_id,
+                model_id=model_id,
+                billing_label=billing_label,
+                mock_only=mock_only,
+                corpus_version=corpus_version,
+                course_pack_version=course_pack_version,
+                attempt_group_id=attempt_group_id,
+                regenerated_from_run_id=regenerated_from_run_id,
+            )
+            raise
+        finally:
+            api_key = None
         _append_trace(
             trace,
-            node="mock_model",
+            node=(
+                "byok_model"
+                if use_user_key
+                else "mock_model" if mock_only else "openrouter_model"
+            ),
             duration_ms=_elapsed_ms(started),
             result={
-                "provider_id": "mock",
-                "model_id": "deterministic-fixture-v1",
-                "real_model_called": False,
+                "model_source": request.model_source.value,
+                "provider_id": model_provider_id,
+                "model_id": model_id,
+                "billing_label": billing_label,
+                "availability_status": availability_status,
+                "real_model_called": not mock_only,
             },
         )
 
+        citation_source_map = {
+            f"S{index}": source
+            for index, source in enumerate(sources, start=1)
+        }
         citations = [
             Citation(
-                citation_id=f"S{index}",
+                citation_id=citation_id,
                 chunk_id=source.chunk_id,
                 course_id=source.course_id,
                 course_title=self.registry.get(source.course_id).display_name,
@@ -213,35 +481,73 @@ class IterationZeroService:
                 question_id=source.question_id,
                 heading_path=list(source.heading_path),
             )
-            for index, source in enumerate(sources, start=1)
+            for citation_id, source in citation_source_map.items()
         ]
 
         if (
             request.include_bilibili_resources
             and request.knowledge_scope != KnowledgeScope.COURSE_ONLY
-            and self.settings.bilibili_catalog_enabled
+            and self.settings.bilibili_resources_enabled
         ):
-            started = perf_counter()
-            external_resources = self.resources.match(
-                course.course_id, request.user_input, limit=3
-            )
-            _append_trace(
-                trace,
-                node="bilibili_fixture_match",
-                duration_ms=_elapsed_ms(started),
-                result={
-                    "catalog_version": self.resources.catalog_version,
-                    "hit_count": len(external_resources),
-                    "fixture_only": True,
-                },
-            )
+            focused_keywords = generated.bilibili_search_keywords
+            if focused_keywords:
+                started = perf_counter()
+                try:
+                    external_resources = self.resources.discover(
+                        course_id=course.course_id,
+                        course_title=course.display_name,
+                        keywords=tuple(focused_keywords),
+                    )
+                except Exception:
+                    external_resources = []
+                    _append_trace(
+                        trace,
+                        node="bilibili_link_discovery",
+                        status=TraceEventStatus.FAILED,
+                        duration_ms=_elapsed_ms(started),
+                        result={
+                            "failure_code": "bilibili_link_discovery_failed",
+                            "external_resources_separate": True,
+                        },
+                    )
+                else:
+                    normalized_topics = (
+                        external_resources[0].query_keywords
+                        if external_resources
+                        else []
+                    )
+                    _append_trace(
+                        trace,
+                        node="bilibili_link_discovery",
+                        duration_ms=_elapsed_ms(started),
+                        result={
+                            "hit_count": len(external_resources),
+                            "normalized_topics": normalized_topics,
+                            "unreviewed_search_returned": bool(external_resources),
+                            "external_resources_separate": True,
+                        },
+                    )
+            else:
+                external_resources = []
+                _append_trace(
+                    trace,
+                    node="bilibili_link_discovery",
+                    status=TraceEventStatus.SKIPPED,
+                    result={
+                        "reason_code": "no_focused_topic",
+                        "external_resources_separate": True,
+                    },
+                )
         else:
             external_resources = []
             _append_trace(
                 trace,
-                node="bilibili_fixture_match",
+                node="bilibili_link_discovery",
                 status=TraceEventStatus.SKIPPED,
-                result={"reason_code": "disabled_by_scope_or_configuration"},
+                result={
+                    "reason_code": "disabled_by_scope_or_configuration",
+                    "external_resources_separate": True,
+                },
             )
 
         _append_trace(
@@ -256,12 +562,11 @@ class IterationZeroService:
 
         machine.transition(RunStatus.COMPLETED)
         has_evidence = bool(citations)
-        run_id = uuid4()
         result = WorkflowResult(
             workflow_run_id=run_id,
             conversation_id=request.conversation_id,
-            message_id=uuid4(),
-            answer_id=uuid4(),
+            message_id=message_id,
+            answer_id=answer_id,
             run_status=machine.status,
             answer_status=(
                 AnswerStatus.ANSWERED
@@ -282,6 +587,7 @@ class IterationZeroService:
             workflow_output={
                 "contract_only": True,
                 "payload_type": request.workflow_type.value,
+                "source_candidate_ids": list(citation_source_map),
             },
             evidence_status=(
                 EvidenceStatus.SUFFICIENT
@@ -295,32 +601,136 @@ class IterationZeroService:
             coverage_gaps=(
                 []
                 if has_evidence
-                else ["没有匹配到合成 passed Fixture；未尝试真实课程资料"]
+                else [
+                    "当前启用课程语料没有匹配到可回查的检索候选。"
+                    if self.settings.retrieval_mode == "local_corpus"
+                    else "没有匹配到合成 passed Fixture；未尝试真实课程资料"
+                ]
             ),
             trace=trace,
-            corpus_version="fixture-corpus-v1",
-            course_pack_version=None,
+            corpus_version=corpus_version,
+            course_pack_version=course_pack_version,
             workflow_version="workflow-contract-v1",
             model_source=request.model_source,
             model=ModelMetadata(
-                provider_id="mock",
-                model_id="deterministic-fixture-v1",
-                billing_label="not_applicable_mock",
-                mock_only=True,
+                provider_id=model_provider_id,
+                model_id=model_id,
+                billing_label=billing_label,
+                mock_only=mock_only,
             ),
-            availability_status="mock_only",
+            availability_status=availability_status,
         )
 
-        # First commit proves the answer/source/trace payload is durable. The
-        # second upsert records the persistence event produced by that commit.
-        self.repository.save_run(user.user_id, request, result)
         _append_trace(
             result.trace,
             node="persistence",
-            result={"stored": True, "adapter": "sqlite_mock"},
+            result={"stored": True, "adapter": self.settings.storage_mode},
         )
-        self.repository.save_run(user.user_id, request, result)
+        self.repository.save_run(
+            str(user.user_id),
+            request,
+            result,
+            attempt_group_id=attempt_group_id,
+            regenerated_from_run_id=regenerated_from_run_id,
+            auth_session_id=(
+                user.auth_session_id
+                if isinstance(user, AuthenticatedPrincipal)
+                else None
+            ),
+        )
         return result
+
+    def _persist_failed_attempt(
+        self,
+        *,
+        user: RequestIdentity,
+        request: WorkflowRunRequest,
+        course_id: str,
+        machine: RunStateMachine,
+        trace: list[TraceEvent],
+        failure_node: str,
+        duration_ms: int,
+        run_id: UUID,
+        message_id: UUID,
+        answer_id: UUID,
+        model_provider_id: str,
+        model_id: str,
+        billing_label: str,
+        mock_only: bool,
+        corpus_version: str,
+        course_pack_version: str | None,
+        attempt_group_id: UUID | None,
+        regenerated_from_run_id: UUID | None,
+    ) -> None:
+        machine.transition(RunStatus.FAILED)
+        _append_trace(
+            trace,
+            node=failure_node,
+            status=TraceEventStatus.FAILED,
+            duration_ms=duration_ms,
+            result={
+                "failure_code": "workflow_execution_failed",
+                "model_source": request.model_source.value,
+                "provider_id": model_provider_id,
+                "model_id": model_id,
+                "billing_label": billing_label,
+                "availability_status": "execution_failed",
+            },
+        )
+        result = WorkflowResult(
+            workflow_run_id=run_id,
+            conversation_id=request.conversation_id,
+            message_id=message_id,
+            answer_id=answer_id,
+            run_status=machine.status,
+            answer_status=AnswerStatus.ERROR,
+            workflow_type=request.workflow_type,
+            course_scope=request.course_scope,
+            course_ids=[course_id],
+            repository_answer=None,
+            general_supplement=None,
+            answer_blocks=[],
+            workflow_output={
+                "contract_only": True,
+                "payload_type": request.workflow_type.value,
+                "failure_code": "workflow_execution_failed",
+            },
+            evidence_status=EvidenceStatus.NOT_EVALUATED,
+            citations=[],
+            related_topics=[],
+            related_questions=[],
+            external_resources=[],
+            coverage_gaps=["本次同步执行失败，未生成回答。"],
+            trace=trace,
+            corpus_version=corpus_version,
+            course_pack_version=course_pack_version,
+            workflow_version="workflow-contract-v1",
+            model_source=request.model_source,
+            model=ModelMetadata(
+                provider_id=model_provider_id,
+                model_id=model_id,
+                billing_label=billing_label,
+                mock_only=mock_only,
+            ),
+            availability_status="execution_failed",
+        )
+        _append_trace(
+            result.trace,
+            node="persistence",
+            result={"stored": True, "adapter": self.settings.storage_mode},
+        )
+        self.repository.save_run(
+            str(user.user_id),
+            request,
+            result,
+            attempt_group_id=attempt_group_id,
+            regenerated_from_run_id=regenerated_from_run_id,
+            auth_session_id=(
+                user.auth_session_id
+                if isinstance(user, AuthenticatedPrincipal)
+                else None
+            ),
+        )
 
 
 def _append_trace(

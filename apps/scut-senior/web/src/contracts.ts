@@ -93,6 +93,71 @@ export interface Course {
   mock_available: boolean;
 }
 
+export interface ModelCatalogItem {
+  provider_id: string;
+  model_id: string;
+  company: string;
+  display_name: string;
+  model_source: ModelSource;
+  billing_label: string;
+  availability_status: string;
+  context_length: number;
+  input_modalities: string[];
+  supports_structured_outputs: boolean;
+  is_preview: boolean;
+  user_selectable: boolean;
+  last_checked_at: string | null;
+}
+
+export interface ModelCatalog {
+  catalog_version: string;
+  platform_credential_configured: boolean;
+  real_platform_default_available: boolean;
+  health_checked_at: string | null;
+  byok_available: boolean;
+  byok_catalog_version: string;
+  byok_providers: ByokProviderCatalogItem[];
+  quota_notice: string;
+  quota_exhausted_message: string;
+  models: ModelCatalogItem[];
+}
+
+export interface ByokModelCatalogItem {
+  model_id: string;
+  company: string;
+  display_name: string;
+}
+
+export type ByokProviderId = "openrouter" | "deepseek" | "siliconflow" | "zhipu";
+
+export interface ByokProviderCatalogItem {
+  provider_id: ByokProviderId;
+  company: string;
+  display_name: string;
+  enabled: boolean;
+  models_confirmed: boolean;
+  models: ByokModelCatalogItem[];
+  custom_base_url_allowed: false;
+  endpoint_policy: "fixed_provider_endpoint";
+}
+
+export interface ByokCredentialStatus {
+  provider_id: ByokProviderId;
+  model_id: string;
+  configured: boolean;
+  masked_key: string | null;
+  expires_at: string | null;
+}
+
+export interface AuthUser {
+  user_id: string;
+  display_name: string;
+  auth_mode: "mock" | "github_oauth";
+  is_mock: boolean;
+  github_login: string | null;
+  session_expires_at: string | null;
+}
+
 export interface KnowledgeQaPayload {
   question: string;
 }
@@ -168,15 +233,17 @@ export interface Citation {
 }
 
 export interface ExternalResource {
-  resource_id?: string | null;
+  resource_id: null;
   course_id: string;
   platform: "bilibili";
-  resource_type: "video" | "search";
+  resource_type: "search";
   title: string;
   url: string;
   matched_topic: string;
-  review_status: "reviewed" | "pending" | "rejected" | "unavailable";
-  catalog_version?: string | null;
+  review_status: "unreviewed_live_search";
+  catalog_version: null;
+  query_keywords: string[];
+  generated_at: string;
   evidence_role: "supplementary_only";
 }
 
@@ -191,6 +258,7 @@ export interface TraceSafeResult {
   course_scope?: CourseScope | null;
   course_ids?: string[] | null;
   knowledge_scope?: KnowledgeScope | null;
+  auth_mode?: "mock" | "github_oauth" | null;
   mode?: "mock" | "synthetic_fixture_only" | null;
   hit_count?: number | null;
   sources?: TraceSourceSummary[] | null;
@@ -218,7 +286,7 @@ export interface TraceSafeResult {
   accepted_count?: number | null;
   external_resources_separate?: boolean | null;
   stored?: boolean | null;
-  adapter?: "sqlite_mock" | null;
+  adapter?: "sqlite_mock" | "sqlite" | null;
 }
 
 export interface TraceEvent {
@@ -271,11 +339,28 @@ export interface ModelMetadata {
   mock_only: boolean;
 }
 
-export interface Conversation {
+export interface WorkflowAttempt {
+  workflow_run_id: string;
+  attempt_group_id: string;
+  regenerated_from_run_id: string | null;
+  request: WorkflowRunRequest;
+  result: WorkflowRunResult;
+  created_at: string;
+  updated_at: string;
+  expires_at: string;
+}
+
+export interface ConversationSummary {
   conversation_id: string;
   user_id: string;
   course_id: string;
+  title: string;
   created_at: string;
+  updated_at: string;
+  expires_at: string;
   mock_only: boolean;
-  runs?: WorkflowRunResult[];
+}
+
+export interface ConversationDetail extends ConversationSummary {
+  runs: WorkflowAttempt[];
 }

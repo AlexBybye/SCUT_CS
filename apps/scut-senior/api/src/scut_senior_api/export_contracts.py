@@ -5,13 +5,24 @@ import json
 from pathlib import Path
 from typing import Any
 
-from .contracts import WorkflowResult, WorkflowRunRequest
+from .contracts import (
+    ConversationDetail,
+    ModelCredentialStatusList,
+    ModelCredentialUpsert,
+    WorkflowResult,
+    WorkflowRunRequest,
+)
+from .model_catalog import ModelCatalogResponse
 from .paths import CONTRACT_ROOT
 
 
 SCHEMA_MODELS = {
     "workflow-request.schema.json": WorkflowRunRequest,
     "workflow-result.schema.json": WorkflowResult,
+    "conversation-detail.schema.json": ConversationDetail,
+    "model-catalog.schema.json": ModelCatalogResponse,
+    "model-credential-list.schema.json": ModelCredentialStatusList,
+    "model-credential-upsert.schema.json": ModelCredentialUpsert,
 }
 
 WORKFLOW_PAYLOAD_DEFS = {
@@ -169,6 +180,15 @@ def _add_result_cross_field_invariants(schema: dict[str, Any]) -> None:
             },
         },
     ]
+
+    external_resource = schema["$defs"]["ExternalResource"]
+    external_resource["properties"]["url"] = {
+        "type": "string",
+        "format": "uri",
+        "minLength": 1,
+        "maxLength": 2083,
+        "pattern": "^https://search\\.bilibili\\.com/all\\?keyword=[^&#]+$",
+    }
 
 
 def check_schema_files(schema_root: Path | None = None) -> list[str]:

@@ -38,5 +38,5 @@
   ],
   "manifest_status": ["pending", "passed", "needs_fix", "rejected"],
   "locator_type": ["page", "slide", "heading", "none"],
-  "bilibili_review_status": ["reviewed", "pending", "rejected", "unavailable"]
+  "bilibili_review_status": ["unreviewed_live_search"]
 }

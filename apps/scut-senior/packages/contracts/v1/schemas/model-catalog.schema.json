@@ -1,0 +1,286 @@
+{
+  "$defs": {
+    "PublicByokModelEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "company": {
+          "enum": [
+            "DeepSeek",
+            "Z.ai",
+            "Zhipu AI"
+          ],
+          "title": "Company",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "Display Name",
+          "type": "string"
+        },
+        "model_id": {
+          "enum": [
+            "deepseek/deepseek-v4-flash-0731",
+            "deepseek-v4-flash",
+            "Pro/zai-org/GLM-4.7",
+            "glm-5.2"
+          ],
+          "title": "Model Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "model_id",
+        "company",
+        "display_name"
+      ],
+      "title": "PublicByokModelEntry",
+      "type": "object"
+    },
+    "PublicByokProviderEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "company": {
+          "enum": [
+            "OpenRouter",
+            "DeepSeek",
+            "SiliconFlow",
+            "Zhipu AI"
+          ],
+          "title": "Company",
+          "type": "string"
+        },
+        "custom_base_url_allowed": {
+          "const": false,
+          "title": "Custom Base Url Allowed",
+          "type": "boolean"
+        },
+        "display_name": {
+          "title": "Display Name",
+          "type": "string"
+        },
+        "enabled": {
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "endpoint_policy": {
+          "const": "fixed_provider_endpoint",
+          "title": "Endpoint Policy",
+          "type": "string"
+        },
+        "models": {
+          "items": {
+            "$ref": "#/$defs/PublicByokModelEntry"
+          },
+          "maxItems": 1,
+          "minItems": 1,
+          "title": "Models",
+          "type": "array"
+        },
+        "models_confirmed": {
+          "const": true,
+          "title": "Models Confirmed",
+          "type": "boolean"
+        },
+        "provider_id": {
+          "enum": [
+            "openrouter",
+            "deepseek",
+            "siliconflow",
+            "zhipu"
+          ],
+          "title": "Provider Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "provider_id",
+        "company",
+        "display_name",
+        "enabled",
+        "models_confirmed",
+        "models",
+        "custom_base_url_allowed",
+        "endpoint_policy"
+      ],
+      "title": "PublicByokProviderEntry",
+      "type": "object"
+    },
+    "PublicModelCatalogEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "availability_status": {
+          "enum": [
+            "available",
+            "platform_credential_not_configured",
+            "health_check_required",
+            "health_check_failed",
+            "model_unavailable",
+            "pricing_or_terms_changed",
+            "structured_outputs_unavailable"
+          ],
+          "title": "Availability Status",
+          "type": "string"
+        },
+        "billing_label": {
+          "const": "platform_daily_free_quota",
+          "title": "Billing Label",
+          "type": "string"
+        },
+        "company": {
+          "title": "Company",
+          "type": "string"
+        },
+        "context_length": {
+          "exclusiveMinimum": 0,
+          "title": "Context Length",
+          "type": "integer"
+        },
+        "display_name": {
+          "title": "Display Name",
+          "type": "string"
+        },
+        "input_modalities": {
+          "items": {
+            "enum": [
+              "text",
+              "image",
+              "video"
+            ],
+            "type": "string"
+          },
+          "title": "Input Modalities",
+          "type": "array"
+        },
+        "is_preview": {
+          "title": "Is Preview",
+          "type": "boolean"
+        },
+        "last_checked_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Last Checked At"
+        },
+        "model_id": {
+          "title": "Model Id",
+          "type": "string"
+        },
+        "model_source": {
+          "const": "platform_default",
+          "title": "Model Source",
+          "type": "string"
+        },
+        "provider_id": {
+          "const": "openrouter",
+          "title": "Provider Id",
+          "type": "string"
+        },
+        "supports_structured_outputs": {
+          "title": "Supports Structured Outputs",
+          "type": "boolean"
+        },
+        "user_selectable": {
+          "title": "User Selectable",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "provider_id",
+        "model_id",
+        "company",
+        "display_name",
+        "model_source",
+        "billing_label",
+        "availability_status",
+        "context_length",
+        "input_modalities",
+        "supports_structured_outputs",
+        "is_preview",
+        "user_selectable",
+        "last_checked_at"
+      ],
+      "title": "PublicModelCatalogEntry",
+      "type": "object"
+    }
+  },
+  "$id": "https://scut-senior.local/contracts/v1/model-catalog.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "byok_available": {
+      "title": "Byok Available",
+      "type": "boolean"
+    },
+    "byok_catalog_version": {
+      "const": "byok-models-v4",
+      "title": "Byok Catalog Version",
+      "type": "string"
+    },
+    "byok_providers": {
+      "items": {
+        "$ref": "#/$defs/PublicByokProviderEntry"
+      },
+      "title": "Byok Providers",
+      "type": "array"
+    },
+    "catalog_version": {
+      "const": "openrouter-platform-free-v2",
+      "title": "Catalog Version",
+      "type": "string"
+    },
+    "health_checked_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Health Checked At"
+    },
+    "models": {
+      "items": {
+        "$ref": "#/$defs/PublicModelCatalogEntry"
+      },
+      "title": "Models",
+      "type": "array"
+    },
+    "platform_credential_configured": {
+      "title": "Platform Credential Configured",
+      "type": "boolean"
+    },
+    "quota_exhausted_message": {
+      "title": "Quota Exhausted Message",
+      "type": "string"
+    },
+    "quota_notice": {
+      "title": "Quota Notice",
+      "type": "string"
+    },
+    "real_platform_default_available": {
+      "title": "Real Platform Default Available",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "catalog_version",
+    "platform_credential_configured",
+    "real_platform_default_available",
+    "health_checked_at",
+    "byok_available",
+    "byok_catalog_version",
+    "byok_providers",
+    "quota_notice",
+    "quota_exhausted_message",
+    "models"
+  ],
+  "title": "ModelCatalogResponse",
+  "type": "object"
+}

@@ -10,7 +10,7 @@
 
 ## 枚举
 
-`enums.json` 冻结五个 Workflow、回答方式、表达风格、知识范围、课程范围、模型来源、运行/回答/证据/Trace 状态、回答块来源类型、题目帮助层级，以及 manifest、locator 和 Bilibili 审核状态。Python、Worker 与 Vue 都有一致性测试；调用方不得通过自由字符串扩展枚举。
+`enums.json` 冻结五个 Workflow、回答方式、表达风格、知识范围、课程范围、模型来源、运行/回答/证据/Trace 状态、回答块来源类型、题目帮助层级，以及 manifest、locator 和 Bilibili 匿名搜索状态。Bilibili 状态只允许 `unreviewed_live_search`，不保留人工视频审核状态。Python、Worker 与 Vue 都有一致性测试；调用方不得通过自由字符串扩展枚举。
 
 ## Workflow 最小结构
 
@@ -100,9 +100,9 @@ availability_status
 
 `answer_blocks[]` 每块使用字段 `type` 表示 `answer_block_type` 枚举值。`citations[]` 必须带 `course_id/course_title`，来源名称和 locator 由后端已验证元数据生成；`locator_type=none` 时不得补造页码或题号。`trace[].result` 使用拒绝额外字段的学生可见白名单，不接受 Key、token、prompt、堆栈或内部路径字段。
 
-`schemas/workflow-request.schema.json` 与 `schemas/workflow-result.schema.json` 由可执行 Pydantic 模型生成，导出器同时补入 `model_validator` 中可由标准 JSON Schema 表达的 Workflow/scope/附件和 Citation locator 跨字段规则；修改 API 契约后必须重新生成，并运行 `make check-contracts` 防止提交陈旧 Schema。Pydantic 仍是运行时规范实现，例如 locator 的 `end >= start` 由它执行。
+`schemas/workflow-request.schema.json` 与 `schemas/workflow-result.schema.json` 由可执行 Pydantic 模型生成，导出器同时补入 `model_validator` 中可由标准 JSON Schema 表达的 Workflow/scope/附件、Citation locator 和 Bilibili 资源跨字段规则；修改 API 契约后必须重新生成，并运行 `make check-contracts` 防止提交陈旧 Schema。Pydantic 仍是运行时规范实现，例如 locator 的 `end >= start` 和 Bilibili 搜索 URL 的唯一 `keyword` 参数由它执行。
 
-Bilibili 资源只能进入 `external_resources[]`，不能进入 `citations[]` 或提高 `evidence_status`。
+Bilibili 资源只能进入 `external_resources[]`，不能进入 `citations[]` 或提高 `evidence_status`。本次模型只提供 0～3 个聚焦词；清洗后关键词非空时，后端只固定生成 1 条 `search.bilibili.com/all?keyword=...` 匿名搜索入口，不返回具体视频直链。搜索入口必须是 `resource_type=search`、`resource_id=null`、`review_status=unreviewed_live_search`，URL 不能来自模型或前端。项目不建设、审核或维护任何具体 Bilibili 视频资产。
 
 ## Manifest 和 Markdown
 
@@ -138,6 +138,6 @@ Markdown frontmatter 的规范课程字段是 `course_id`。为兼容资料流�
 6. `cross_course_scope`；
 7. `source_marking`。
 
-`schemas/evaluation-case.schema.json` 和 `schemas/evaluation-runner.schema.json` 分别约束单个 case 与 runner 配置。它们在迭代 0 只冻结契约样例，尚未实现评测执行器，也不表示七类预期已经跑通。Bilibili Fixture 由 `schemas/bilibili-fixture-catalog.schema.json` 约束，顶层必须为 `fixture_only=true`，运行时也会再次校验，不得作为正式视频目录发布。
+`schemas/evaluation-case.schema.json` 和 `schemas/evaluation-runner.schema.json` 分别约束单个 case 与 runner 配置。它们在迭代 0 只冻结契约样例，尚未实现评测执行器，也不表示七类预期已经跑通。Bilibili 运行时只遵守上文的 search-only Workflow 结果契约；不再规划具体视频目录及其维护契约。
 
 评测 case 的 `course_id` 与 `allowed_course_ids[]` 直接复用 Workflow 请求不变量：`single` 使用一个 `course_id` 和空数组，`cross` 使用 `course_id=null` 和显式课程集合；评测 runner 不得自行扩大课程范围。

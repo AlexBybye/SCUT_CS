@@ -1,0 +1,393 @@
+from __future__ import annotations
+
+import base64
+import json
+import sqlite3
+from collections.abc import Callable
+from pathlib import Path
+
+import pytest
+from fastapi.testclient import TestClient
+
+from scut_senior_api.adapters.byok import (
+    DEEPSEEK_BYOK_ENDPOINT,
+    OPENROUTER_BYOK_ENDPOINT,
+    SILICONFLOW_BYOK_ENDPOINT,
+    ZHIPU_BYOK_ENDPOINT,
+)
+from scut_senior_api.adapters.openrouter import HttpResponse
+from scut_senior_api.auth import GitHubUserProfile, SESSION_COOKIE_NAME
+from scut_senior_api.config import Settings
+from scut_senior_api.main import create_app
+
+
+MASTER_KEY = base64.b64encode(b"B" * 32).decode("ascii")
+ROUTES = (
+    (
+        "openrouter",
+        "deepseek/deepseek-v4-flash-0731",
+        OPENROUTER_BYOK_ENDPOINT,
+        "json_schema",
+    ),
+    ("deepseek", "deepseek-v4-flash", DEEPSEEK_BYOK_ENDPOINT, "json_object"),
+    (
+        "siliconflow",
+        "Pro/zai-org/GLM-4.7",
+        SILICONFLOW_BYOK_ENDPOINT,
+        "json_object",
+    ),
+    ("zhipu", "glm-5.2", ZHIPU_BYOK_ENDPOINT, "json_object"),
+)
+
+
+class RecordingHttpClient:
+    def __init__(
+        self,
+        response: HttpResponse | None = None,
+        callback: Callable[[], HttpResponse] | None = None,
+    ):
+        self.response = response or success_response()
+        self.callback = callback
+        self.calls: list[dict[str, object]] = []
+
+    def post_json(self, url, *, headers, payload, timeout_seconds):
+        self.calls.append(
+            {
+                "url": url,
+                "headers": dict(headers),
+                "payload": dict(payload),
+                "timeout_seconds": timeout_seconds,
+            }
+        )
+        return self.callback() if self.callback is not None else self.response
+
+
+def success_response() -> HttpResponse:
+    structured = {
+        "repository_answer": "矩阵秩是线性无关方向的数量。[S1]",
+        "related_topics": ["初等行变换"],
+        "related_questions": ["如何计算秩？"],
+        "bilibili_search_keywords": ["矩阵的秩"],
+    }
+    return HttpResponse(
+        200,
+        json.dumps(
+            {"choices": [{"message": {"content": json.dumps(structured)}}]}
+        ).encode(),
+    )
+
+
+def settings(database_path: Path) -> Settings:
+    return Settings(
+        app_env="test",
+        identity_mode="github_oauth",
+        storage_mode="sqlite",
+        database_path=database_path,
+        github_client_id="client",
+        github_client_secret="secret",
+        github_callback_url="https://testserver/api/v1/auth/github/callback",
+        post_login_redirect_url="https://testserver/",
+        byok_master_key=MASTER_KEY,
+        byok_key_version=3,
+    )
+
+
+def authenticated_app(
+    tmp_path: Path, http_client: RecordingHttpClient | None
+) -> tuple[object, TestClient, str, str]:
+    app = create_app(
+        settings(tmp_path / "byok-runtime.db"),
+        byok_http_client=http_client,
+    )
+    repository = app.state.repository
+    user_id = repository.upsert_github_user(GitHubUserProfile(1001, "student"))
+    session = repository.issue_session(user_id)
+    client = TestClient(app, base_url="https://testserver")
+    client.cookies.set(SESSION_COOKIE_NAME, session.token, path="/")
+    conversation = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    )
+    assert conversation.status_code == 201
+    return app, client, session.token, conversation.json()["conversation_id"]
+
+
+def workflow_request(
+    conversation_id: str, provider_id: str, model_id: str
+) -> dict[str, object]:
+    return {
+        "workflow_type": "knowledge_qa",
+        "course_scope": "single",
+        "course_id": "linear_algebra",
+        "allowed_course_ids": [],
+        "conversation_id": conversation_id,
+        "model_source": "user_key",
+        "provider_id": provider_id,
+        "model_id": model_id,
+        "user_input": "请解释矩阵的秩",
+        "answer_mode": "detailed",
+        "tone": "teaching_assistant",
+        "knowledge_scope": "course_first",
+        "include_bilibili_resources": False,
+        "context_refs": [],
+        "attachments": [],
+        "workflow_payload": {"question": "请解释矩阵的秩"},
+    }
+
+
+@pytest.mark.parametrize(
+    ("provider_id", "model_id", "endpoint", "response_format"), ROUTES
+)
+def test_four_byok_routes_use_one_fixed_endpoint_model_and_user_billing(
+    tmp_path: Path,
+    provider_id: str,
+    model_id: str,
+    endpoint: str,
+    response_format: str,
+) -> None:
+    http = RecordingHttpClient()
+    app, client, _, conversation_id = authenticated_app(tmp_path, http)
+    api_key = f"sk-{provider_id}-private"
+    assert client.put(
+        f"/api/v1/model-credentials/{provider_id}", json={"api_key": api_key}
+    ).status_code == 200
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(conversation_id, provider_id, model_id),
+    )
+
+    assert response.status_code == 201, response.text
+    assert len(http.calls) == 1
+    call = http.calls[0]
+    assert call["url"] == endpoint
+    assert call["headers"]["Authorization"] == f"Bearer {api_key}"
+    assert call["payload"]["model"] == model_id
+    assert "models" not in call["payload"]
+    assert "fallbacks" not in call["payload"]
+    assert "base_url" not in call["payload"]
+    assert call["payload"]["response_format"]["type"] == response_format
+    if provider_id == "openrouter":
+        assert call["payload"]["provider"] == {"require_parameters": True}
+        assert call["payload"]["response_format"]["json_schema"]["strict"] is True
+    else:
+        assert "provider" not in call["payload"]
+        assert "json_schema" not in call["payload"]["response_format"]
+
+    result = response.json()
+    assert result["model_source"] == "user_key"
+    assert result["model"] == {
+        "provider_id": provider_id,
+        "model_id": model_id,
+        "billing_label": "user_provider_billing",
+        "mock_only": False,
+    }
+    assert result["availability_status"] == "user_key_enabled"
+    assert api_key not in response.text
+    with sqlite3.connect(app.state.settings.database_path) as connection:
+        persisted = "|".join(
+            str(value)
+            for row in connection.execute(
+                "SELECT request_json, result_json FROM workflow_runs"
+            )
+            for value in row
+        )
+    assert api_key not in persisted
+
+
+def test_arbitrary_byok_model_is_rejected_before_decryption_or_http(
+    tmp_path: Path,
+) -> None:
+    http = RecordingHttpClient()
+    app, client, _, conversation_id = authenticated_app(tmp_path, http)
+    assert client.put(
+        "/api/v1/model-credentials/zhipu", json={"api_key": "sk-zhipu"}
+    ).status_code == 200
+    payload = workflow_request(conversation_id, "zhipu", "glm-5.3")
+    response = client.post("/api/v1/workflow-runs", json=payload)
+
+    assert response.status_code == 422
+    assert response.json()["error"]["code"] == "byok_model_not_registered"
+    assert http.calls == []
+    with sqlite3.connect(app.state.settings.database_path) as connection:
+        assert connection.execute(
+            "SELECT COUNT(*) FROM workflow_runs"
+        ).fetchone()[0] == 0
+
+
+@pytest.mark.parametrize(
+    ("api_key", "private_marker"),
+    [
+        ("sk-good\r\nX-Evil: 1", "X-Evil"),
+        ("sk-good\x00nul-private-marker", "nul-private-marker"),
+    ],
+)
+def test_control_characters_are_rejected_before_storage_or_provider_http(
+    tmp_path: Path,
+    api_key: str,
+    private_marker: str,
+) -> None:
+    http = RecordingHttpClient()
+    app, client, _, conversation_id = authenticated_app(tmp_path, http)
+
+    saved = client.put(
+        "/api/v1/model-credentials/openrouter", json={"api_key": api_key}
+    )
+
+    assert saved.status_code == 422
+    assert saved.json()["error"]["code"] == "invalid_model_credential"
+    assert private_marker not in saved.text
+    with sqlite3.connect(app.state.settings.database_path) as connection:
+        assert connection.execute(
+            "SELECT COUNT(*) FROM model_credentials"
+        ).fetchone()[0] == 0
+
+    attempted = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(
+            conversation_id,
+            "openrouter",
+            "deepseek/deepseek-v4-flash-0731",
+        ),
+    )
+    assert attempted.status_code == 409
+    assert attempted.json()["error"]["code"] == "model_credential_not_configured"
+    assert http.calls == []
+
+
+def test_missing_key_and_upstream_failure_persist_sanitized_failed_attempts(
+    tmp_path: Path,
+) -> None:
+    private_body = "upstream-private-body"
+    http = RecordingHttpClient(HttpResponse(500, private_body.encode()))
+    app, client, _, conversation_id = authenticated_app(tmp_path, http)
+    request = workflow_request(
+        conversation_id, "openrouter", "deepseek/deepseek-v4-flash-0731"
+    )
+
+    missing = client.post("/api/v1/workflow-runs", json=request)
+    assert missing.status_code == 409
+    assert missing.json()["error"]["code"] == "model_credential_not_configured"
+
+    api_key = "sk-upstream-secret"
+    assert client.put(
+        "/api/v1/model-credentials/openrouter", json={"api_key": api_key}
+    ).status_code == 200
+    failed = client.post("/api/v1/workflow-runs", json=request)
+    assert failed.status_code == 502
+    assert failed.json()["error"]["code"] == "byok_provider_unavailable"
+    assert private_body not in failed.text
+    assert api_key not in failed.text
+
+    history = client.get(f"/api/v1/conversations/{conversation_id}").json()
+    assert len(history["runs"]) == 2
+    for attempt in history["runs"]:
+        result = attempt["result"]
+        assert result["run_status"] == "failed"
+        assert result["answer_status"] == "error"
+        assert result["repository_answer"] is None
+        assert result["citations"] == []
+        assert result["external_resources"] == []
+        failed_event = next(
+            event for event in result["trace"] if event["status"] == "failed"
+        )
+        assert failed_event["result"]["failure_code"] == "workflow_execution_failed"
+    serialized = json.dumps(history, ensure_ascii=False)
+    assert api_key not in serialized
+    assert private_body not in serialized
+    with sqlite3.connect(app.state.settings.database_path) as connection:
+        database_payload = "|".join(
+            str(value)
+            for row in connection.execute(
+                "SELECT request_json, result_json FROM workflow_runs"
+            )
+            for value in row
+        )
+    assert api_key not in database_payload
+    assert private_body not in database_payload
+
+
+@pytest.mark.parametrize(
+    ("upstream_status", "expected_status", "expected_code"),
+    [
+        (401, 422, "byok_provider_authentication_failed"),
+        (402, 402, "byok_provider_credit_unavailable"),
+        (429, 429, "byok_provider_rate_limited"),
+        (504, 504, "byok_provider_timeout"),
+    ],
+)
+def test_user_key_permission_credit_and_rate_errors_are_safe(
+    tmp_path: Path,
+    upstream_status: int,
+    expected_status: int,
+    expected_code: str,
+) -> None:
+    private_body = "provider-account-private-diagnostic"
+    key = "sk-provider-private"
+    http = RecordingHttpClient(HttpResponse(upstream_status, private_body.encode()))
+    _, client, _, conversation_id = authenticated_app(tmp_path, http)
+    assert client.put(
+        "/api/v1/model-credentials/zhipu", json={"api_key": key}
+    ).status_code == 200
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(conversation_id, "zhipu", "glm-5.2"),
+    )
+
+    assert response.status_code == expected_status
+    assert response.json()["error"]["code"] == expected_code
+    assert key not in response.text
+    assert private_body not in response.text
+
+
+@pytest.mark.parametrize("upstream_succeeds", [True, False])
+def test_logout_during_provider_call_prevents_late_success_or_failed_history(
+    tmp_path: Path, upstream_succeeds: bool
+) -> None:
+    http = RecordingHttpClient()
+    app, client, token, conversation_id = authenticated_app(tmp_path, http)
+    assert client.put(
+        "/api/v1/model-credentials/deepseek", json={"api_key": "sk-race"}
+    ).status_code == 200
+
+    def revoke_during_call() -> HttpResponse:
+        assert app.state.repository.revoke_session(token) is True
+        return success_response() if upstream_succeeds else HttpResponse(500, b"private")
+
+    http.callback = revoke_during_call
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(conversation_id, "deepseek", "deepseek-v4-flash"),
+    )
+
+    assert response.status_code == 401
+    assert response.json()["error"]["code"] == "auth_required"
+    with sqlite3.connect(app.state.settings.database_path) as connection:
+        assert connection.execute(
+            "SELECT COUNT(*) FROM workflow_runs"
+        ).fetchone()[0] == 0
+        assert connection.execute(
+            "SELECT COUNT(*) FROM model_credentials"
+        ).fetchone()[0] == 0
+
+
+def test_test_profile_without_injected_byok_transport_fails_closed(
+    tmp_path: Path,
+) -> None:
+    app, client, _, conversation_id = authenticated_app(tmp_path, None)
+    key = "sk-no-network"
+    assert client.put(
+        "/api/v1/model-credentials/openrouter", json={"api_key": key}
+    ).status_code == 200
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(
+            conversation_id,
+            "openrouter",
+            "deepseek/deepseek-v4-flash-0731",
+        ),
+    )
+    assert response.status_code == 503
+    assert response.json()["error"]["code"] == "byok_provider_unavailable"
+    assert key not in response.text

@@ -9,7 +9,28 @@ const common = {
   tone: "teaching_assistant" as const,
   knowledgeScope: "course_first" as const,
   includeBilibiliResources: true,
+  modelSource: "platform_default" as const,
+  providerId: "mock",
+  modelId: "deterministic-fixture-v1",
 };
+
+const selectableModels = [
+  {
+    modelSource: "platform_default" as const,
+    providerId: "openrouter",
+    modelId: "google/gemma-4-26b-a4b-it:free",
+  },
+  {
+    modelSource: "platform_default" as const,
+    providerId: "openrouter",
+    modelId: "dots-studio/dots-3-note-preview:free",
+  },
+  {
+    modelSource: "platform_default" as const,
+    providerId: "openrouter",
+    modelId: "nvidia/nemotron-3-super-120b-a12b:free",
+  },
+];
 
 describe("buildWorkflowRequest", () => {
   it("构造固定的迭代 0 外层请求字段", () => {
@@ -49,6 +70,24 @@ describe("buildWorkflowRequest", () => {
 
     expect(request.include_bilibili_resources).toBe(false);
   });
+
+  it.each(selectableModels)(
+    "把显式选择的 $modelId 写入请求，而不是硬编码单一模型",
+    (selection) => {
+      const request = buildWorkflowRequest({
+        ...common,
+        ...selection,
+        workflowType: "knowledge_qa",
+        workflowPayload: { question: "矩阵的秩" },
+      });
+
+      expect(request).toMatchObject({
+        model_source: selection.modelSource,
+        provider_id: selection.providerId,
+        model_id: selection.modelId,
+      });
+    },
+  );
 
   it("构造 knowledge_qa payload", () => {
     const request = buildWorkflowRequest({

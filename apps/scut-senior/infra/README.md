@@ -2,7 +2,9 @@
 
 当前部署状态是**显式关闭**。应用镜像未来进入华为云 SWR，再由 ECS 部署；真实认证、灰度与回滚方式尚未确认，本目录不会用占位命令冒充可用部署。部署工作流提供默认的 `validation_only=true` 人工模式，只验证受限检出和镜像构建，成功后停止，不接触 SWR 或 ECS。
 
-迭代 0 镜像只用于本地和 CI 的开发验证，仍包含 Mock 身份、Mock 模型与 SQLite Mock 存储，不能作为线上服务运行。未来 ECS 运行配置必须显式设置 `SCUT_SENIOR_APP_ENV=production`；当前 API 会在生产环境检测到任一 Mock 适配器时拒绝启动。
+预算获批前不创建或修改任何华为云资源，`DEPLOYMENT_ENABLED` 必须保持未设置或 `false`。未来首发基线已经缩减为华南-广州优先的 1 vCPU／2GB、40GB 系统盘、1～2Mbps；ECS 只承载 Web、API、生产 SQLite 和轻量检索，不部署大模型，也不承担 OCR、embedding、全量索引或课程包构建。包年购买前应先用按需实例验证 OpenRouter、DeepSeek、硅基流动和智谱四家固定 endpoint 的出站连通性。
+
+当前镜像只用于本地和 CI 的开发验证，仍包含 Mock 身份、Fixture 检索与 SQLite Mock 存储，不能作为线上服务运行。即使配置了 OpenRouter 平台模型，当前 API 也会在 `SCUT_SENIOR_APP_ENV=production` 下拒绝启动。未来 ECS 的 OpenRouter 项目 Key、BYOK 加密主密钥和 OAuth Secret 只能进入受保护的运行 Secret，不能写入镜像、仓库、构建日志或前端。
 
 ## 已冻结的安全边界
 

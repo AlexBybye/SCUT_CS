@@ -26,16 +26,34 @@ def trigger_paths(workflow: dict[str, object], event: str) -> list[str]:
 def test_app_and_corpus_triggers_are_separate_with_dual_check_paths() -> None:
     app = load_workflow("app-ci.yml")
     corpus = load_workflow("corpus-ci.yml")
-    app_paths = trigger_paths(app, "pull_request")
-    corpus_paths = trigger_paths(corpus, "pull_request")
+    for event in ("pull_request", "push"):
+        app_paths = trigger_paths(app, event)
+        corpus_paths = trigger_paths(corpus, event)
 
-    assert "knowledge/**" not in app_paths
-    assert "knowledge/**" in corpus_paths
-    assert "apps/scut-senior/worker/**" in corpus_paths
-    assert "apps/scut-senior/packages/**" in corpus_paths
-    assert "apps/scut-senior/**" in app_paths
-    assert "apps/scut-senior/web/**" not in corpus_paths
-    assert "apps/scut-senior/api/**" not in corpus_paths
+        assert "knowledge/**" not in app_paths
+        assert "knowledge/**" in corpus_paths
+        assert "apps/scut-senior/worker/**" in corpus_paths
+        assert "apps/scut-senior/packages/**" in corpus_paths
+        assert "apps/scut-senior/**" in app_paths
+        assert "apps/scut-senior/web/**" not in corpus_paths
+        assert "apps/scut-senior/api/**" not in corpus_paths
+
+
+def test_corpus_ci_builds_a_fixed_real_candidate_without_activation() -> None:
+    text = (WORKFLOW_ROOT / "corpus-ci.yml").read_text(encoding="utf-8")
+
+    assert "--manifest knowledge/manifest.csv" in text
+    assert 'PYTHONDONTWRITEBYTECODE: "1"' in text
+    assert "python -m scut_senior_worker.corpus_builder build" in text
+    assert 'source_commit="$(git rev-parse HEAD)"' in text
+    assert '--source-commit "${source_commit}"' in text
+    assert "--repository-root ." in text
+    assert "python -m scut_senior_worker.corpus_builder validate" in text
+    assert "git ls-files -- 'active.json' ':(glob)**/active.json'" in text
+    assert 'find "${store_root}" -type f -name active.json' in text
+    assert "scut_senior_worker.corpus_builder activate" not in text
+    assert "apps/scut-senior/tests/python/test_corpus_builder.py" in text
+    assert "apps/scut-senior/tests/fixtures/corpus/manifest.csv" in text
 
 
 def test_ci_combines_partial_clone_sparse_checkout_and_lfs_skip() -> None:

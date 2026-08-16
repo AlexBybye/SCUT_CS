@@ -107,14 +107,6 @@
       "repository_paths": ["学科资料/大物上"],
       "is_open": false,
       "fixture_available": false
-    },
-    {
-      "course_id": "university_physics_lab_1",
-      "display_name": "大学物理实验（一）",
-      "aliases": ["大物上实验", "大物上实验合辑", "大物实验"],
-      "repository_paths": ["学科资料/大物上实验合辑"],
-      "is_open": false,
-      "fixture_available": false
     }
   ]
 }

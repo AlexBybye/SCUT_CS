@@ -1,6 +1,7 @@
 import type {
   AnswerMode,
   KnowledgeScope,
+  ModelSource,
   Tone,
   WorkflowPayloadMap,
   WorkflowRunRequest,
@@ -16,6 +17,9 @@ export interface BuildWorkflowRequestInput<T extends WorkflowType> {
   tone: Tone;
   knowledgeScope: KnowledgeScope;
   includeBilibiliResources: boolean;
+  modelSource: ModelSource;
+  providerId: string;
+  modelId: string;
   workflowPayload: WorkflowPayloadMap[T];
 }
 
@@ -93,9 +97,11 @@ export function buildWorkflowRequest<T extends WorkflowType>(
   const courseId = input.courseId.trim();
   const conversationId = input.conversationId.trim();
   const userInput = input.userInput.trim();
+  const providerId = input.providerId.trim();
+  const modelId = input.modelId.trim();
 
-  if (!courseId || !conversationId || !userInput) {
-    throw new Error("课程、会话和请求内容不能为空");
+  if (!courseId || !conversationId || !userInput || !providerId || !modelId) {
+    throw new Error("课程、会话、请求内容和模型不能为空");
   }
 
   return {
@@ -104,9 +110,9 @@ export function buildWorkflowRequest<T extends WorkflowType>(
     course_id: courseId,
     allowed_course_ids: [],
     conversation_id: conversationId,
-    model_source: "platform_default",
-    provider_id: "mock",
-    model_id: "deterministic-fixture-v1",
+    model_source: input.modelSource,
+    provider_id: providerId,
+    model_id: modelId,
     user_input: userInput,
     answer_mode: input.answerMode,
     tone: input.tone,

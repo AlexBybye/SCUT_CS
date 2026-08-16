@@ -1,28 +1,95 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from "vue";
 import {
+  ApiError,
   createConversation,
+  deleteByokCredential,
+  deleteConversation,
+  getByokCredentials,
+  getMe,
   getConversation,
   getCourses,
+  getModels,
+  githubLoginUrl,
+  listConversations,
+  logout,
+  regenerateWorkflowRun,
+  renameConversation,
   runWorkflow,
+  saveByokCredential,
 } from "./api";
 import WorkflowResult from "./components/WorkflowResult.vue";
+import {
+  FROZEN_BYOK_PROVIDERS,
+  isCurrentByokCatalogVersion,
+  mergeByokProvidersForDisplay,
+} from "./byokCatalog";
+import { canManageByokCredentials } from "./byokSession";
 import {
   ANSWER_MODES,
   HELP_LEVELS,
   TONES,
   WORKFLOW_TYPES,
+  type AuthUser,
   type AnswerMode,
-  type Conversation,
+  type ByokCredentialStatus,
+  type ByokProviderCatalogItem,
+  type ByokProviderId,
+  type ConversationDetail,
+  type ConversationSummary,
   type Course,
   type HelpLevel,
   type KnowledgeScope,
+  type ModelCatalog,
+  type ModelCatalogItem,
   type Tone,
+  type WorkflowAttempt,
   type WorkflowRunRequest,
   type WorkflowRunResult,
   type WorkflowType,
 } from "./contracts";
+import {
+  configuredByokModelOptions,
+  initialModelSelectionKey,
+  modelKey,
+  modelsForRuntime,
+} from "./modelSelection";
+import { createRequestEpoch } from "./requestEpoch";
 import { buildWorkflowRequest } from "./workflowRequest";
+
+const ITERATION_ZERO_MOCK_MODEL: ModelCatalogItem = {
+  provider_id: "mock",
+  model_id: "deterministic-fixture-v1",
+  company: "本地 Mock",
+  display_name: "Deterministic Fixture V1",
+  model_source: "platform_default",
+  billing_label: "not_applicable_mock",
+  availability_status: "mock_only",
+  context_length: 0,
+  input_modalities: ["text"],
+  supports_structured_outputs: true,
+  is_preview: false,
+  user_selectable: true,
+  last_checked_at: null,
+};
+
+const FAIL_CLOSED_MODEL_CATALOG: ModelCatalog = {
+  catalog_version: "model-catalog-unavailable",
+  platform_credential_configured: false,
+  real_platform_default_available: false,
+  health_checked_at: null,
+  byok_available: false,
+  byok_catalog_version: "byok-models-v4-fail-closed",
+  byok_providers: FROZEN_BYOK_PROVIDERS,
+  quota_notice: "模型目录尚未加载；平台与 BYOK 模型请求均保持关闭。",
+  quota_exhausted_message:
+    "今日平台免费额度已用完，第二天再来重试吧！着急请使用你自己的 API Key。",
+  models: [],
+};
+
+function emptyByokKeyDrafts(): Record<ByokProviderId, string> {
+  return { openrouter: "", deepseek: "", siliconflow: "", zhipu: "" };
+}
 
 const workflowCopy: Record<
   WorkflowType,
@@ -82,7 +149,10 @@ const helpLevelLabels: Record<HelpLevel, string> = {
 };
 
 const courses = ref<Course[]>([]);
+const modelCatalog = ref<ModelCatalog>(FAIL_CLOSED_MODEL_CATALOG);
+const modelCatalogLoadSucceeded = ref(false);
 const selectedCourseId = ref("");
+const selectedModelKey = ref("");
 const workflowType = ref<WorkflowType>("knowledge_qa");
 const answerMode = ref<AnswerMode>("detailed");
 const tone = ref<Tone>("teaching_assistant");
@@ -104,18 +174,158 @@ const reviewFocus = ref("");
 const readingGoal = ref("");
 
 const conversationId = ref("");
-const conversationSnapshot = ref<Conversation | null>(null);
+const conversationHistory = ref<ConversationSummary[]>([]);
+const conversationSnapshot = ref<ConversationDetail | null>(null);
+const selectedAttemptId = ref("");
 const result = ref<WorkflowRunResult | null>(null);
 const isLoadingCourses = ref(true);
+const isLoadingModels = ref(true);
+const isLoadingHistory = ref(false);
+const loadingConversationId = ref("");
+const editingConversationId = ref("");
+const conversationTitleDraft = ref("");
+const renamingConversationId = ref("");
+const deleteConfirmId = ref("");
+const deletingConversationId = ref("");
+const isRegenerating = ref(false);
 const isRunning = ref(false);
 const isReloading = ref(false);
 const errorMessage = ref("");
 const noticeMessage = ref("");
+const modelCatalogMessage = ref("");
+const currentUser = ref<AuthUser | null>(null);
+const isLoadingAuth = ref(true);
+const authMessage = ref("");
+const historyMessage = ref("");
+const historyMessageIsError = ref(false);
+const byokCredentialStatuses = ref<ByokCredentialStatus[]>([]);
+const byokKeyDrafts = ref<Record<ByokProviderId, string>>(emptyByokKeyDrafts());
+const isLoadingByokCredentials = ref(false);
+const savingByokProviderId = ref<ByokProviderId | "">("");
+const deletingByokProviderId = ref<ByokProviderId | "">("");
+const byokMessage = ref("");
+const byokMessageIsError = ref(false);
+const privateRequestEpoch = createRequestEpoch();
+let conversationLoadSequence = 0;
+let isApplyingHistoryCourse = false;
 
 const selectedCourse = computed(() =>
   courses.value.find((course) => course.course_id === selectedCourseId.value),
 );
 const activeWorkflow = computed(() => workflowCopy[workflowType.value]);
+const byokCatalogIsCurrent = computed(
+  () =>
+    modelCatalogLoadSucceeded.value &&
+    isCurrentByokCatalogVersion(modelCatalog.value.byok_catalog_version) &&
+    Array.isArray(modelCatalog.value.byok_providers),
+);
+const byokProvidersForDisplay = computed<ByokProviderCatalogItem[]>(() =>
+  mergeByokProvidersForDisplay(
+    byokCatalogIsCurrent.value ? modelCatalog.value.byok_providers : [],
+  ),
+);
+const byokRuntimeAvailable = computed(
+  () => byokCatalogIsCurrent.value && modelCatalog.value.byok_available,
+);
+const modelsForSelection = computed<ModelCatalogItem[]>(() => [
+  ...modelsForRuntime(
+    modelCatalog.value,
+    modelCatalog.value.models,
+    ITERATION_ZERO_MOCK_MODEL,
+    modelCatalogLoadSucceeded.value,
+  ),
+  ...configuredByokModelOptions(
+    byokRuntimeAvailable.value ? byokProvidersForDisplay.value : [],
+    byokCredentialStatuses.value,
+  ),
+]);
+const selectedModel = computed(() =>
+  modelsForSelection.value.find((model) => modelKey(model) === selectedModelKey.value),
+);
+const selectedModelIsMock = computed(
+  () =>
+    selectedModel.value?.availability_status === "mock_only" ||
+    selectedModel.value?.provider_id === "mock",
+);
+const attempts = computed<WorkflowAttempt[]>(() => conversationSnapshot.value?.runs ?? []);
+const latestAttempt = computed<WorkflowAttempt | null>(
+  () => attempts.value[attempts.value.length - 1] ?? null,
+);
+const historyIsBusy = computed(
+  () =>
+    isLoadingHistory.value ||
+    Boolean(loadingConversationId.value) ||
+    Boolean(renamingConversationId.value) ||
+    Boolean(deletingConversationId.value) ||
+    isRegenerating.value ||
+    isRunning.value ||
+    isReloading.value,
+);
+const byokIsBusy = computed(
+  () =>
+    isLoadingByokCredentials.value ||
+    Boolean(savingByokProviderId.value) ||
+    Boolean(deletingByokProviderId.value),
+);
+const runtimeNoticeTitle = computed(() =>
+  selectedModelIsMock.value
+    ? "迭代 0 Mock，不是正式 OAuth / 模型 / 检索"
+    : "显式模型选择，不会自动切换模型或 BYOK",
+);
+const runtimeNoticeDetail = computed(() => {
+  if (selectedModelIsMock.value) {
+    return "当前页面保留 Mock 持久化路径；未伪装成真实平台默认模型。";
+  }
+  if (!isLoadingModels.value && !modelCatalogLoadSucceeded.value) {
+    return "模型目录加载失败，平台、Mock 与 BYOK 请求均已关闭。";
+  }
+  if (!isLoadingModels.value && !selectedModel.value) {
+    return "请先从平台目录中选择一个模型；页面不会替你预选。";
+  }
+  if (!modelCatalog.value.real_platform_default_available) {
+    return "正式平台默认池不可用；本次只使用你明确选中的可用模型。";
+  }
+  return "请求会携带当前模型来源、供应商和模型 ID。";
+});
+
+function modelOptionLabel(model: ModelCatalogItem): string {
+  const suffixes = [
+    model.billing_label === "platform_daily_free_quota" ? "平台每日免费" : "",
+    model.is_preview ? "Preview" : "",
+    model.user_selectable ? "" : "不可选",
+  ].filter(Boolean);
+  return `${model.company} · ${model.display_name}${suffixes.length ? ` / ${suffixes.join(" / ")}` : ""}`;
+}
+
+function billingLabel(model: ModelCatalogItem): string {
+  const labels: Record<string, string> = {
+    not_applicable_mock: "不产生真实模型费用",
+    platform_daily_free_quota: "平台每日免费额度",
+    user_free_quota: "用户账户免费额度",
+    promotional: "促销额度",
+    paid: "付费",
+    unknown: "计费状态待核验",
+    user_key: "使用你的供应商账户，额度／费用由供应商决定",
+  };
+  return labels[model.billing_label] ?? model.billing_label;
+}
+
+function availabilityLabel(model: ModelCatalogItem): string {
+  const labels: Record<string, string> = {
+    available: "可用",
+    mock_only: "仅本地 Mock",
+    platform_credential_not_configured: "平台凭据尚未配置",
+    health_check_required: "等待模型健康检查",
+    health_check_failed: "模型健康检查失败",
+    model_unavailable: "模型已不在上游目录",
+    pricing_or_terms_changed: "免费条款或价格已变化",
+    structured_outputs_unavailable: "结构化输出能力不可用",
+    platform_daily_quota_exhausted: "今日平台额度已用完",
+    provider_rate_limited: "供应商暂时限流",
+    unavailable: "不可用",
+  };
+  return labels[model.availability_status] ?? model.availability_status;
+}
 
 function splitList(value: string): string[] {
   return value
@@ -125,10 +335,230 @@ function splitList(value: string): string[] {
 }
 
 function toMessage(error: unknown): string {
-  return error instanceof Error ? error.message : "请求失败，请检查 Mock API 是否运行。";
+  if (error instanceof ApiError && error.status === 429) return error.message;
+  return error instanceof Error ? error.message : "请求失败，请检查 API 服务是否运行。";
+}
+
+function formatHistoryTime(value: string): string {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return new Intl.DateTimeFormat("zh-CN", {
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(date);
+}
+
+function byokCredentialStatus(providerId: ByokProviderId): ByokCredentialStatus | null {
+  return (
+    byokCredentialStatuses.value.find((status) => status.provider_id === providerId) ?? null
+  );
+}
+
+function byokProviderDisabledReason(provider: ByokProviderCatalogItem): string {
+  if (!modelCatalogLoadSucceeded.value) {
+    return "模型目录未加载成功，凭据保存保持关闭。";
+  }
+  if (!byokCatalogIsCurrent.value) {
+    return "BYOK 目录版本不匹配，凭据保存保持关闭。";
+  }
+  if (currentUser.value?.is_mock) {
+    return "BYOK 需要真实 GitHub 登录；Mock 身份只保留入口展示。";
+  }
+  if (!byokRuntimeAvailable.value || !provider.enabled) {
+    return "当前服务端未开启；需先满足会话级加密主密钥等安全运行条件。";
+  }
+  if (!currentUser.value) return "使用真实 GitHub 身份登录后可管理当前会话凭据。";
+  return "";
+}
+
+function canSaveByokCredential(provider: ByokProviderCatalogItem): boolean {
+  return Boolean(
+    byokRuntimeAvailable.value &&
+      canManageByokCredentials(currentUser.value) &&
+      provider.enabled &&
+      byokKeyDrafts.value[provider.provider_id].trim() &&
+      !byokIsBusy.value,
+  );
+}
+
+function canDeleteByokCredential(providerId: ByokProviderId): boolean {
+  return Boolean(
+    canManageByokCredentials(currentUser.value) &&
+      byokCredentialStatus(providerId)?.configured &&
+      !byokIsBusy.value,
+  );
+}
+
+function setByokMessage(message: string, isError = false): void {
+  byokMessage.value = message;
+  byokMessageIsError.value = isError;
+}
+
+function upsertByokCredentialStatus(status: ByokCredentialStatus): void {
+  byokCredentialStatuses.value = [
+    ...byokCredentialStatuses.value.filter(
+      (item) => item.provider_id !== status.provider_id,
+    ),
+    status,
+  ];
+}
+
+function clearUnavailableByokSelection(): void {
+  if (
+    selectedModelKey.value.startsWith("user_key:") &&
+    !modelsForSelection.value.some((model) => modelKey(model) === selectedModelKey.value)
+  ) {
+    selectedModelKey.value = "";
+  }
+}
+
+function courseName(courseId: string): string {
+  return courses.value.find((course) => course.course_id === courseId)?.display_name ?? courseId;
+}
+
+function setHistoryMessage(message: string, isError = false): void {
+  historyMessage.value = message;
+  historyMessageIsError.value = isError;
+}
+
+function clearActiveConversation(): void {
+  conversationId.value = "";
+  conversationSnapshot.value = null;
+  selectedAttemptId.value = "";
+  result.value = null;
+  noticeMessage.value = "";
+  isRegenerating.value = false;
+  isReloading.value = false;
+}
+
+function clearPrivateState(): void {
+  conversationLoadSequence += 1;
+  clearActiveConversation();
+  conversationHistory.value = [];
+  editingConversationId.value = "";
+  conversationTitleDraft.value = "";
+  renamingConversationId.value = "";
+  deleteConfirmId.value = "";
+  deletingConversationId.value = "";
+  loadingConversationId.value = "";
+  selectedAttemptId.value = "";
+  isLoadingHistory.value = false;
+  isRegenerating.value = false;
+  isRunning.value = false;
+  isReloading.value = false;
+  byokCredentialStatuses.value = [];
+  byokKeyDrafts.value = emptyByokKeyDrafts();
+  isLoadingByokCredentials.value = false;
+  savingByokProviderId.value = "";
+  deletingByokProviderId.value = "";
+  clearUnavailableByokSelection();
+  setByokMessage("");
+  setHistoryMessage("");
+}
+
+function applyAuthFailure(error: unknown): void {
+  if (error instanceof ApiError && error.code === "auth_required") {
+    privateRequestEpoch.invalidate();
+    currentUser.value = null;
+    clearPrivateState();
+  }
+}
+
+function privateRequestIsCurrent(epoch: number, userId: string): boolean {
+  return (
+    privateRequestEpoch.isCurrent(epoch) &&
+    currentUser.value?.user_id === userId
+  );
+}
+
+function conversationSummary(detail: ConversationDetail): ConversationSummary {
+  return {
+    conversation_id: detail.conversation_id,
+    user_id: detail.user_id,
+    course_id: detail.course_id,
+    title: detail.title,
+    created_at: detail.created_at,
+    updated_at: detail.updated_at,
+    expires_at: detail.expires_at,
+    mock_only: detail.mock_only,
+  };
+}
+
+function upsertConversationSummary(summary: ConversationSummary): void {
+  conversationHistory.value = [
+    summary,
+    ...conversationHistory.value.filter(
+      (item) => item.conversation_id !== summary.conversation_id,
+    ),
+  ].sort((left, right) => right.updated_at.localeCompare(left.updated_at));
+}
+
+function showAttempt(attempt: WorkflowAttempt): void {
+  selectedAttemptId.value = attempt.workflow_run_id;
+  result.value = attempt.result;
+}
+
+function applyConversationDetail(
+  conversation: ConversationDetail,
+  preferredAttemptId = "",
+): void {
+  isApplyingHistoryCourse = true;
+  selectedCourseId.value = conversation.course_id;
+  isApplyingHistoryCourse = false;
+  conversationId.value = conversation.conversation_id;
+  conversationSnapshot.value = conversation;
+  upsertConversationSummary(conversationSummary(conversation));
+
+  const preferredAttempt = conversation.runs.find(
+    (attempt) => attempt.workflow_run_id === preferredAttemptId,
+  );
+  const attempt = preferredAttempt ?? conversation.runs[conversation.runs.length - 1];
+  if (attempt) {
+    showAttempt(attempt);
+  } else {
+    selectedAttemptId.value = "";
+    result.value = null;
+  }
+}
+
+function startNewConversation(): void {
+  conversationLoadSequence += 1;
+  clearActiveConversation();
+  editingConversationId.value = "";
+  deleteConfirmId.value = "";
+  errorMessage.value = "";
+  setHistoryMessage("已切换到新会话，首次运行时创建记录。", false);
+}
+
+function beginRename(conversation: ConversationSummary): void {
+  editingConversationId.value = conversation.conversation_id;
+  conversationTitleDraft.value = conversation.title;
+  deleteConfirmId.value = "";
+  setHistoryMessage("");
+}
+
+function cancelRename(): void {
+  editingConversationId.value = "";
+  conversationTitleDraft.value = "";
+}
+
+function beginDelete(targetConversationId: string): void {
+  cancelRename();
+  deleteConfirmId.value = targetConversationId;
+  setHistoryMessage("");
+}
+
+function cancelDelete(): void {
+  deleteConfirmId.value = "";
 }
 
 function makeRequest(activeConversationId: string): WorkflowRunRequest {
+  if (!selectedModel.value?.user_selectable) {
+    throw new Error("请选择一个当前可用的模型。");
+  }
+
   const common = {
     courseId: selectedCourseId.value,
     conversationId: activeConversationId,
@@ -137,6 +567,9 @@ function makeRequest(activeConversationId: string): WorkflowRunRequest {
     tone: tone.value,
     knowledgeScope: knowledgeScope.value,
     includeBilibiliResources: includeBilibiliResources.value,
+    modelSource: selectedModel.value.model_source,
+    providerId: selectedModel.value.provider_id,
+    modelId: selectedModel.value.model_id,
   };
 
   switch (workflowType.value) {
@@ -193,13 +626,211 @@ function makeRequest(activeConversationId: string): WorkflowRunRequest {
 }
 
 function validateForm(): string | null {
+  if (!currentUser.value) return "请先使用 GitHub 登录。";
   if (!selectedCourseId.value) return "请先选择课程。";
   if (!selectedCourse.value?.mock_available) return "该课程的 Mock Fixture 尚不可用。";
+  if (!selectedModel.value?.user_selectable) return "请选择一个当前可用的模型。";
   if (!userInput.value.trim()) return `请填写${activeWorkflow.value.inputLabel}。`;
   if (workflowType.value === "mistake_review" && !originalAnswer.value.trim()) {
     return "错题复盘需要填写原答案。";
   }
   return null;
+}
+
+async function loadAuth(): Promise<void> {
+  isLoadingAuth.value = true;
+  authMessage.value = "";
+  const authEpoch = privateRequestEpoch.snapshot();
+  try {
+    const user = await getMe();
+    if (!privateRequestEpoch.isCurrent(authEpoch)) return;
+    currentUser.value = user;
+    await Promise.all([
+      loadHistory(true),
+      canManageByokCredentials(user) ? loadByokCredentials() : Promise.resolve(),
+    ]);
+  } catch (error) {
+    if (!privateRequestEpoch.isCurrent(authEpoch)) return;
+    currentUser.value = null;
+    clearPrivateState();
+    if (!(error instanceof ApiError && error.code === "auth_required")) {
+      authMessage.value = toMessage(error);
+    }
+  } finally {
+    isLoadingAuth.value = false;
+  }
+}
+
+async function loadConversationFromHistory(
+  targetConversationId: string,
+  preferredAttemptId = "",
+  announce = true,
+): Promise<void> {
+  const requestUserId = currentUser.value?.user_id;
+  if (!requestUserId) return;
+  const requestEpoch = privateRequestEpoch.snapshot();
+  const loadSequence = ++conversationLoadSequence;
+  loadingConversationId.value = targetConversationId;
+  errorMessage.value = "";
+  if (announce) setHistoryMessage("");
+
+  try {
+    const conversation = await getConversation(targetConversationId);
+    if (
+      !privateRequestIsCurrent(requestEpoch, requestUserId) ||
+      loadSequence !== conversationLoadSequence
+    ) {
+      return;
+    }
+    applyConversationDetail(conversation, preferredAttemptId);
+    if (announce) {
+      setHistoryMessage(
+        conversation.runs.length
+          ? `已恢复“${conversation.title}”及 ${conversation.runs.length} 次回答。`
+          : `已恢复“${conversation.title}”，当前还没有回答。`,
+      );
+    }
+  } catch (error) {
+    if (
+      !privateRequestIsCurrent(requestEpoch, requestUserId) ||
+      loadSequence !== conversationLoadSequence
+    ) {
+      return;
+    }
+    applyAuthFailure(error);
+    setHistoryMessage(toMessage(error), true);
+  } finally {
+    if (loadSequence === conversationLoadSequence) loadingConversationId.value = "";
+  }
+}
+
+async function loadHistory(restoreLatest: boolean): Promise<void> {
+  const requestUserId = currentUser.value?.user_id;
+  if (!requestUserId) return;
+  const requestEpoch = privateRequestEpoch.snapshot();
+  isLoadingHistory.value = true;
+  setHistoryMessage("");
+
+  try {
+    const history = await listConversations();
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    conversationHistory.value = history;
+    if (restoreLatest && history[0]) {
+      await loadConversationFromHistory(history[0].conversation_id, "", false);
+    } else if (restoreLatest) {
+      clearActiveConversation();
+    }
+  } catch (error) {
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    applyAuthFailure(error);
+    setHistoryMessage(toMessage(error), true);
+  } finally {
+    if (privateRequestIsCurrent(requestEpoch, requestUserId)) {
+      isLoadingHistory.value = false;
+    }
+  }
+}
+
+async function loadByokCredentials(): Promise<void> {
+  const requestUserId = currentUser.value?.user_id;
+  if (!requestUserId || !canManageByokCredentials(currentUser.value)) return;
+  const requestEpoch = privateRequestEpoch.snapshot();
+  isLoadingByokCredentials.value = true;
+  setByokMessage("");
+
+  try {
+    const statuses = await getByokCredentials();
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    byokCredentialStatuses.value = statuses;
+    clearUnavailableByokSelection();
+  } catch (error) {
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    applyAuthFailure(error);
+    if (currentUser.value?.user_id === requestUserId) {
+      setByokMessage(toMessage(error), true);
+    }
+  } finally {
+    if (privateRequestIsCurrent(requestEpoch, requestUserId)) {
+      isLoadingByokCredentials.value = false;
+    }
+  }
+}
+
+async function submitByokCredential(provider: ByokProviderCatalogItem): Promise<void> {
+  const requestUserId = currentUser.value?.user_id;
+  if (!requestUserId || !canSaveByokCredential(provider)) return;
+  const requestEpoch = privateRequestEpoch.snapshot();
+  const providerId = provider.provider_id;
+  const apiKey = byokKeyDrafts.value[providerId].trim();
+  savingByokProviderId.value = providerId;
+  setByokMessage("");
+
+  try {
+    const status = await saveByokCredential(providerId, apiKey);
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    upsertByokCredentialStatus(status);
+    setByokMessage(
+      `${provider.display_name} 凭据状态已更新；模型仍需由你显式选择。`,
+    );
+  } catch (error) {
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    applyAuthFailure(error);
+    if (currentUser.value?.user_id === requestUserId) {
+      setByokMessage(toMessage(error), true);
+    }
+  } finally {
+    if (privateRequestIsCurrent(requestEpoch, requestUserId)) {
+      byokKeyDrafts.value[providerId] = "";
+      if (savingByokProviderId.value === providerId) savingByokProviderId.value = "";
+    }
+  }
+}
+
+async function removeByokCredential(provider: ByokProviderCatalogItem): Promise<void> {
+  const requestUserId = currentUser.value?.user_id;
+  const providerId = provider.provider_id;
+  if (!requestUserId || !canDeleteByokCredential(providerId)) return;
+  const requestEpoch = privateRequestEpoch.snapshot();
+  deletingByokProviderId.value = providerId;
+  setByokMessage("");
+
+  try {
+    await deleteByokCredential(providerId);
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    byokCredentialStatuses.value = byokCredentialStatuses.value.filter(
+      (status) => status.provider_id !== providerId,
+    );
+    clearUnavailableByokSelection();
+    setByokMessage(`${provider.display_name} 凭据已从当前登录会话删除。`);
+  } catch (error) {
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    applyAuthFailure(error);
+    if (currentUser.value?.user_id === requestUserId) {
+      setByokMessage(toMessage(error), true);
+    }
+  } finally {
+    if (privateRequestIsCurrent(requestEpoch, requestUserId)) {
+      byokKeyDrafts.value[providerId] = "";
+      if (deletingByokProviderId.value === providerId) deletingByokProviderId.value = "";
+    }
+  }
+}
+
+function startGithubLogin(): void {
+  window.location.assign(githubLoginUrl());
+}
+
+async function signOut(): Promise<void> {
+  authMessage.value = "";
+  privateRequestEpoch.invalidate();
+  currentUser.value = null;
+  clearPrivateState();
+  try {
+    await logout();
+  } catch (error) {
+    applyAuthFailure(error);
+    authMessage.value = toMessage(error);
+  }
 }
 
 async function loadCourses(): Promise<void> {
@@ -208,11 +839,167 @@ async function loadCourses(): Promise<void> {
   try {
     courses.value = await getCourses();
     const firstMockCourse = courses.value.find((course) => course.mock_available);
-    selectedCourseId.value = firstMockCourse?.course_id ?? courses.value[0]?.course_id ?? "";
+    const selectedCourseStillExists = courses.value.some(
+      (course) => course.course_id === selectedCourseId.value,
+    );
+    if (!selectedCourseStillExists) {
+      selectedCourseId.value = firstMockCourse?.course_id ?? courses.value[0]?.course_id ?? "";
+    }
   } catch (error) {
+    applyAuthFailure(error);
     errorMessage.value = toMessage(error);
   } finally {
     isLoadingCourses.value = false;
+  }
+}
+
+async function loadModels(): Promise<void> {
+  isLoadingModels.value = true;
+  modelCatalogLoadSucceeded.value = false;
+  selectedModelKey.value = "";
+  modelCatalogMessage.value = "";
+  try {
+    modelCatalog.value = await getModels();
+    modelCatalogLoadSucceeded.value = true;
+  } catch (error) {
+    modelCatalog.value = FAIL_CLOSED_MODEL_CATALOG;
+    modelCatalogMessage.value = `${toMessage(error)} 模型目录加载失败，模型请求已关闭。`;
+  } finally {
+    selectedModelKey.value = modelCatalogLoadSucceeded.value
+      ? initialModelSelectionKey(
+          modelCatalog.value,
+          modelsForSelection.value,
+          ITERATION_ZERO_MOCK_MODEL,
+        )
+      : "";
+    isLoadingModels.value = false;
+  }
+}
+
+async function saveConversationTitle(): Promise<void> {
+  const targetConversationId = editingConversationId.value;
+  const title = conversationTitleDraft.value.trim();
+  const requestUserId = currentUser.value?.user_id;
+  if (!targetConversationId || !requestUserId) return;
+  if (!title) {
+    setHistoryMessage("会话名称不能为空。", true);
+    return;
+  }
+
+  const requestEpoch = privateRequestEpoch.snapshot();
+  renamingConversationId.value = targetConversationId;
+  setHistoryMessage("");
+  try {
+    const renamed = await renameConversation(targetConversationId, title);
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    upsertConversationSummary(renamed);
+    if (conversationSnapshot.value?.conversation_id === targetConversationId) {
+      conversationSnapshot.value = {
+        ...conversationSnapshot.value,
+        title: renamed.title,
+        updated_at: renamed.updated_at,
+        expires_at: renamed.expires_at,
+      };
+    }
+    cancelRename();
+    setHistoryMessage(`已重命名为“${renamed.title}”。`);
+  } catch (error) {
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    applyAuthFailure(error);
+    setHistoryMessage(toMessage(error), true);
+  } finally {
+    if (
+      privateRequestIsCurrent(requestEpoch, requestUserId) &&
+      renamingConversationId.value === targetConversationId
+    ) {
+      renamingConversationId.value = "";
+    }
+  }
+}
+
+async function confirmDeleteConversation(targetConversationId: string): Promise<void> {
+  const requestUserId = currentUser.value?.user_id;
+  if (!requestUserId) return;
+  const requestEpoch = privateRequestEpoch.snapshot();
+  deletingConversationId.value = targetConversationId;
+  setHistoryMessage("");
+
+  try {
+    await deleteConversation(targetConversationId);
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    conversationHistory.value = conversationHistory.value.filter(
+      (item) => item.conversation_id !== targetConversationId,
+    );
+    deleteConfirmId.value = "";
+    if (conversationId.value === targetConversationId) {
+      conversationLoadSequence += 1;
+      clearActiveConversation();
+      const nextConversation = conversationHistory.value[0];
+      if (nextConversation) {
+        await loadConversationFromHistory(nextConversation.conversation_id, "", false);
+      }
+    }
+    if (privateRequestIsCurrent(requestEpoch, requestUserId)) {
+      setHistoryMessage("会话及其回答记录已删除。", false);
+    }
+  } catch (error) {
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    applyAuthFailure(error);
+    setHistoryMessage(toMessage(error), true);
+  } finally {
+    if (
+      privateRequestIsCurrent(requestEpoch, requestUserId) &&
+      deletingConversationId.value === targetConversationId
+    ) {
+      deletingConversationId.value = "";
+    }
+  }
+}
+
+async function regenerateLatestAttempt(): Promise<void> {
+  const sourceAttempt = latestAttempt.value;
+  const activeConversationId = conversationId.value;
+  const requestUserId = currentUser.value?.user_id;
+  if (!sourceAttempt || !activeConversationId || !requestUserId) return;
+  const requestEpoch = privateRequestEpoch.snapshot();
+  isRegenerating.value = true;
+  errorMessage.value = "";
+  setHistoryMessage("");
+
+  try {
+    const regenerated = await regenerateWorkflowRun(sourceAttempt.workflow_run_id);
+    if (
+      !privateRequestIsCurrent(requestEpoch, requestUserId) ||
+      conversationId.value !== activeConversationId ||
+      !conversationSnapshot.value
+    ) {
+      return;
+    }
+    const retainedAttempts = conversationSnapshot.value.runs.filter(
+      (attempt) => attempt.workflow_run_id !== regenerated.workflow_run_id,
+    );
+    const updatedConversation: ConversationDetail = {
+      ...conversationSnapshot.value,
+      updated_at: regenerated.updated_at,
+      expires_at: regenerated.expires_at,
+      runs: [...retainedAttempts, regenerated],
+    };
+    applyConversationDetail(updatedConversation, regenerated.workflow_run_id);
+    noticeMessage.value = "已创建新的回答尝试，旧回答仍保留在历史中。";
+    setHistoryMessage(
+      `已生成第 ${updatedConversation.runs.length} 次回答；可切换查看旧版本。`,
+    );
+  } catch (error) {
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    applyAuthFailure(error);
+    setHistoryMessage(toMessage(error), true);
+  } finally {
+    if (
+      privateRequestIsCurrent(requestEpoch, requestUserId) &&
+      conversationId.value === activeConversationId
+    ) {
+      isRegenerating.value = false;
+    }
   }
 }
 
@@ -225,23 +1012,39 @@ async function submitWorkflow(): Promise<void> {
     return;
   }
 
+  const requestEpoch = privateRequestEpoch.snapshot();
+  const requestUserId = currentUser.value!.user_id;
   isRunning.value = true;
   try {
     let activeConversationId = conversationId.value;
     if (!activeConversationId) {
       const conversation = await createConversation(selectedCourseId.value);
+      if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
       activeConversationId = conversation.conversation_id;
       conversationId.value = activeConversationId;
-      conversationSnapshot.value = conversation;
+      conversationSnapshot.value = { ...conversation, runs: [] };
+      upsertConversationSummary(conversation);
     }
 
     const request = makeRequest(activeConversationId);
-    result.value = await runWorkflow(request);
-    noticeMessage.value = "Mock 运行已保存，可以重新读取会话验证持久化。";
+    const workflowResult = await runWorkflow(request);
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    result.value = workflowResult;
+    selectedAttemptId.value = workflowResult.workflow_run_id;
+    const restoredConversation = await getConversation(activeConversationId);
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    applyConversationDetail(restoredConversation, workflowResult.workflow_run_id);
+    noticeMessage.value = selectedModelIsMock.value
+      ? "Mock 运行已保存，可以重新读取会话验证持久化。"
+      : "运行已保存，可以重新读取会话验证持久化。";
   } catch (error) {
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    applyAuthFailure(error);
     errorMessage.value = toMessage(error);
   } finally {
-    isRunning.value = false;
+    if (privateRequestIsCurrent(requestEpoch, requestUserId)) {
+      isRunning.value = false;
+    }
   }
 }
 
@@ -249,17 +1052,32 @@ async function reloadConversation(): Promise<void> {
   if (!conversationId.value) return;
   errorMessage.value = "";
   noticeMessage.value = "";
+  const requestEpoch = privateRequestEpoch.snapshot();
+  const requestUserId = currentUser.value?.user_id;
+  if (!requestUserId) return;
+  const targetConversationId = conversationId.value;
   isReloading.value = true;
   try {
-    const conversation = await getConversation(conversationId.value);
-    conversationSnapshot.value = conversation;
-    const runs = conversation.runs ?? [];
-    result.value = runs[runs.length - 1] ?? result.value;
+    const conversation = await getConversation(targetConversationId);
+    if (
+      !privateRequestIsCurrent(requestEpoch, requestUserId) ||
+      conversationId.value !== targetConversationId
+    ) {
+      return;
+    }
+    applyConversationDetail(conversation);
     noticeMessage.value = "会话已从 GET 接口重新读取。";
   } catch (error) {
+    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    applyAuthFailure(error);
     errorMessage.value = toMessage(error);
   } finally {
-    isReloading.value = false;
+    if (
+      privateRequestIsCurrent(requestEpoch, requestUserId) &&
+      conversationId.value === targetConversationId
+    ) {
+      isReloading.value = false;
+    }
   }
 }
 
@@ -267,14 +1085,23 @@ watch(knowledgeScope, (scope) => {
   if (scope === "course_only") includeBilibiliResources.value = false;
 });
 
-watch(selectedCourseId, () => {
-  conversationId.value = "";
-  conversationSnapshot.value = null;
-  result.value = null;
-  noticeMessage.value = "";
-});
+watch(
+  selectedCourseId,
+  () => {
+    if (isApplyingHistoryCourse) return;
+    conversationLoadSequence += 1;
+    clearActiveConversation();
+    editingConversationId.value = "";
+    deleteConfirmId.value = "";
+  },
+  { flush: "sync" },
+);
 
-onMounted(loadCourses);
+onMounted(() => {
+  void loadAuth();
+  void loadCourses();
+  void loadModels();
+});
 </script>
 
 <template>
@@ -288,24 +1115,288 @@ onMounted(loadCourses);
           <span>课程 Workflow 契约验证</span>
         </div>
       </div>
-      <div class="runtime-facts" aria-label="固定 Mock 运行配置">
-        <span>provider: mock</span>
-        <span>model: deterministic-fixture-v1</span>
+      <div class="runtime-facts" aria-label="当前模型运行配置">
+        <span>provider: {{ selectedModel?.provider_id ?? (isLoadingModels ? "loading" : "not selected") }}</span>
+        <span>model: {{ selectedModel?.model_id ?? (isLoadingModels ? "loading" : "not selected") }}</span>
+      </div>
+      <div class="auth-controls" aria-label="登录状态">
+        <span v-if="isLoadingAuth">正在确认登录状态</span>
+        <template v-else-if="currentUser">
+          <span>
+            {{ currentUser.is_mock ? "本地 Mock 身份" : `GitHub · @${currentUser.github_login}` }}
+          </span>
+          <button v-if="!currentUser.is_mock" type="button" @click="signOut">退出</button>
+        </template>
+        <button v-else type="button" @click="startGithubLogin">使用 GitHub 登录</button>
       </div>
     </header>
 
+    <p v-if="authMessage" class="auth-message" role="alert">{{ authMessage }}</p>
+
     <aside class="mock-notice" role="note">
-      <strong>迭代 0 Mock，不是正式 OAuth / 模型 / 检索</strong>
-      <span>当前页面只验证请求、持久化、来源分离和 Trace 契约。</span>
+      <strong>{{ runtimeNoticeTitle }}</strong>
+      <span>{{ runtimeNoticeDetail }}</span>
     </aside>
 
     <main id="main-content" class="workspace">
+      <aside class="history-shell" aria-labelledby="history-heading">
+        <header class="history-header">
+          <div>
+            <p class="section-kicker">30 天历史</p>
+            <h2 id="history-heading">历史会话</h2>
+          </div>
+          <button
+            type="button"
+            class="history-new-button"
+            :disabled="!currentUser || historyIsBusy"
+            @click="startNewConversation"
+          >
+            新会话
+          </button>
+        </header>
+
+        <p
+          v-if="historyMessage"
+          class="history-message"
+          :class="historyMessageIsError ? 'history-message-error' : 'history-message-success'"
+          :role="historyMessageIsError ? 'alert' : 'status'"
+        >
+          {{ historyMessage }}
+        </p>
+
+        <div v-if="!currentUser" class="history-empty">
+          登录后可恢复最近会话和全部回答尝试。
+        </div>
+        <div v-else-if="isLoadingHistory" class="history-empty" role="status">
+          正在读取历史记录。
+        </div>
+        <div v-else-if="!conversationHistory.length" class="history-empty">
+          暂无历史。首次运行后会保留 30 天。
+        </div>
+        <ul v-else class="history-list" aria-label="历史会话列表">
+          <li
+            v-for="conversation in conversationHistory"
+            :key="conversation.conversation_id"
+            :class="{ active: conversationId === conversation.conversation_id }"
+          >
+            <button
+              type="button"
+              class="history-select-button"
+              :aria-current="conversationId === conversation.conversation_id ? 'page' : undefined"
+              :disabled="historyIsBusy"
+              @click="loadConversationFromHistory(conversation.conversation_id)"
+            >
+              <strong>{{ conversation.title }}</strong>
+              <span>{{ courseName(conversation.course_id) }}</span>
+              <small>
+                {{ loadingConversationId === conversation.conversation_id ? "读取中" : formatHistoryTime(conversation.updated_at) }}
+              </small>
+            </button>
+
+            <form
+              v-if="editingConversationId === conversation.conversation_id"
+              class="history-rename-form"
+              @submit.prevent="saveConversationTitle"
+            >
+              <label :for="`history-title-${conversation.conversation_id}`">会话名称</label>
+              <input
+                :id="`history-title-${conversation.conversation_id}`"
+                v-model="conversationTitleDraft"
+                type="text"
+                maxlength="100"
+                :disabled="renamingConversationId === conversation.conversation_id"
+                required
+              />
+              <div>
+                <button type="submit" :disabled="renamingConversationId === conversation.conversation_id">
+                  {{ renamingConversationId === conversation.conversation_id ? "保存中" : "保存" }}
+                </button>
+                <button type="button" :disabled="Boolean(renamingConversationId)" @click="cancelRename">
+                  取消
+                </button>
+              </div>
+            </form>
+
+            <div v-else-if="deleteConfirmId === conversation.conversation_id" class="history-delete-confirm">
+              <span>会同时删除全部回答，确定吗？</span>
+              <div>
+                <button
+                  type="button"
+                  class="danger-button"
+                  :disabled="deletingConversationId === conversation.conversation_id"
+                  @click="confirmDeleteConversation(conversation.conversation_id)"
+                >
+                  {{ deletingConversationId === conversation.conversation_id ? "删除中" : "确认删除" }}
+                </button>
+                <button type="button" :disabled="Boolean(deletingConversationId)" @click="cancelDelete">
+                  取消
+                </button>
+              </div>
+            </div>
+
+            <div v-else class="history-item-actions">
+              <button type="button" :disabled="historyIsBusy" @click="beginRename(conversation)">
+                重命名
+              </button>
+              <button type="button" :disabled="historyIsBusy" @click="beginDelete(conversation.conversation_id)">
+                删除
+              </button>
+            </div>
+          </li>
+        </ul>
+
+        <section v-if="conversationSnapshot" class="attempt-history" aria-labelledby="attempt-heading">
+          <div class="attempt-header">
+            <div>
+              <h3 id="attempt-heading">回答尝试</h3>
+              <span>{{ attempts.length }} 次</span>
+            </div>
+            <button
+              type="button"
+              :disabled="historyIsBusy || !latestAttempt"
+              @click="regenerateLatestAttempt"
+            >
+              {{ isRegenerating ? "重新生成中" : "重新生成最新回答" }}
+            </button>
+          </div>
+          <p v-if="!attempts.length" class="attempt-empty">当前会话还没有回答。</p>
+          <ol v-else class="attempt-list">
+            <li v-for="(attempt, index) in attempts" :key="attempt.workflow_run_id">
+              <button
+                type="button"
+                :class="{ active: selectedAttemptId === attempt.workflow_run_id }"
+                :aria-current="selectedAttemptId === attempt.workflow_run_id ? 'true' : undefined"
+                :disabled="historyIsBusy"
+                @click="showAttempt(attempt)"
+              >
+                <span>
+                  <strong>第 {{ index + 1 }} 次</strong>
+                  <small v-if="index === attempts.length - 1">最新</small>
+                  <small v-else-if="attempt.regenerated_from_run_id">重新生成</small>
+                  <small v-else>初始回答</small>
+                </span>
+                <span>{{ formatHistoryTime(attempt.created_at) }}</span>
+                <code>{{ attempt.result.model.model_id }}</code>
+              </button>
+            </li>
+          </ol>
+        </section>
+      </aside>
+
       <section class="control-shell" aria-labelledby="control-heading">
         <div class="control-intro">
-          <p class="section-kicker">发起一次 Mock 运行</p>
+          <p class="section-kicker">发起一次 Workflow 运行</p>
           <h1 id="control-heading">选择课程与 Workflow</h1>
           <p>正式课程均保持关闭，只有带 Fixture 的课程可用于本轮契约验证。</p>
         </div>
+
+        <section class="byok-panel" aria-labelledby="byok-heading">
+          <div class="byok-panel-header">
+            <div>
+              <p class="section-kicker">BYOK · 当前登录会话</p>
+              <h2 id="byok-heading">使用自己的 API Key</h2>
+            </div>
+            <span class="byok-evidence-badge">本地安全链路已接入</span>
+          </div>
+          <p class="byok-boundary-note">
+            Key 只在密码输入框中短暂存在，保存请求结束即清空；不会写入浏览器存储、URL、历史或模型目录。
+            本轮未用真实用户 Key 形成实网调用证据，余额、权限及上游错误以实际调用结果为准。
+          </p>
+          <p v-if="isLoadingByokCredentials" class="byok-message" role="status">
+            正在读取当前登录会话的脱敏凭据状态。
+          </p>
+          <p
+            v-else-if="byokMessage"
+            class="byok-message"
+            :class="byokMessageIsError ? 'byok-message-error' : 'byok-message-success'"
+            :role="byokMessageIsError ? 'alert' : 'status'"
+          >
+            {{ byokMessage }}
+          </p>
+
+          <div class="byok-provider-grid">
+            <article
+              v-for="provider in byokProvidersForDisplay"
+              :key="provider.provider_id"
+              class="byok-provider-card"
+              :class="{ 'byok-provider-card-disabled': !byokRuntimeAvailable || !provider.enabled }"
+            >
+              <header class="byok-provider-header">
+                <div>
+                  <strong>{{ provider.display_name }}</strong>
+                  <span>{{ provider.company }}</span>
+                </div>
+                <span
+                  class="byok-provider-state"
+                  :class="byokRuntimeAvailable && provider.enabled ? 'status-available' : 'status-closed'"
+                >
+                  {{ byokRuntimeAvailable && provider.enabled ? "服务端已启用" : "服务端未开启" }}
+                </span>
+              </header>
+
+              <div v-if="provider.models[0]" class="byok-fixed-model">
+                <span>固定模型</span>
+                <strong>{{ provider.models[0].company }} · {{ provider.models[0].display_name }}</strong>
+                <code>{{ provider.models[0].model_id }}</code>
+              </div>
+
+              <div
+                v-if="byokCredentialStatus(provider.provider_id)?.configured"
+                class="byok-credential-status"
+              >
+                <strong>当前会话已配置</strong>
+                <span>{{ byokCredentialStatus(provider.provider_id)?.masked_key || "Key 已脱敏" }}</span>
+                <span v-if="byokCredentialStatus(provider.provider_id)?.expires_at">
+                  到期：{{ formatHistoryTime(byokCredentialStatus(provider.provider_id)?.expires_at || "") }}
+                </span>
+              </div>
+
+              <p v-if="byokProviderDisabledReason(provider)" class="byok-disabled-reason">
+                {{ byokProviderDisabledReason(provider) }}
+              </p>
+
+              <form class="byok-credential-form" @submit.prevent="submitByokCredential(provider)">
+                <label :for="`byok-key-${provider.provider_id}`">API Key</label>
+                <input
+                  :id="`byok-key-${provider.provider_id}`"
+                  v-model="byokKeyDrafts[provider.provider_id]"
+                  type="password"
+                  autocomplete="new-password"
+                  autocapitalize="none"
+                  spellcheck="false"
+                  maxlength="512"
+                  placeholder="输入后仅提交给本站后端"
+                  :disabled="!canManageByokCredentials(currentUser) || !byokRuntimeAvailable || !provider.enabled || byokIsBusy"
+                />
+
+                <div class="byok-card-actions">
+                  <button
+                    type="submit"
+                    class="primary-button"
+                    :disabled="!canSaveByokCredential(provider)"
+                  >
+                    {{
+                      savingByokProviderId === provider.provider_id
+                        ? "保存中"
+                        : byokCredentialStatus(provider.provider_id)?.configured
+                          ? "替换 Key"
+                          : "保存 Key"
+                    }}
+                  </button>
+                  <button
+                    v-if="byokCredentialStatus(provider.provider_id)?.configured"
+                    type="button"
+                    class="secondary-button"
+                    :disabled="!canDeleteByokCredential(provider.provider_id)"
+                    @click="removeByokCredential(provider)"
+                  >
+                    {{ deletingByokProviderId === provider.provider_id ? "删除中" : "删除" }}
+                  </button>
+                </div>
+              </form>
+            </article>
+          </div>
+        </section>
 
         <div v-if="isLoadingCourses" class="inline-state" role="status">正在读取课程注册表。</div>
 
@@ -329,6 +1420,46 @@ onMounted(loadCourses);
               </span>
               <span class="status-closed">正式开放：{{ selectedCourse.is_open ? "是" : "否" }}</span>
             </div>
+          </div>
+
+          <div class="field-group">
+            <label for="model">模型</label>
+            <select
+              id="model"
+              v-model="selectedModelKey"
+              :disabled="isRunning || isLoadingModels || !modelCatalogLoadSucceeded"
+            >
+              <option v-if="isLoadingModels" :value="selectedModelKey">正在读取模型目录</option>
+              <option v-else-if="!modelCatalogLoadSucceeded" value="">
+                模型目录不可用，模型请求已关闭
+              </option>
+              <template v-else>
+                <option value="" disabled>请选择模型</option>
+                <option
+                  v-for="model in modelsForSelection"
+                  :key="modelKey(model)"
+                  :value="modelKey(model)"
+                  :disabled="!model.user_selectable"
+                >
+                  {{ modelOptionLabel(model) }}
+                </option>
+              </template>
+            </select>
+            <div v-if="selectedModel" class="model-summary">
+              <div class="model-name-line">
+                <strong>{{ selectedModel.company }} · {{ selectedModel.display_name }}</strong>
+                <span v-if="selectedModel.is_preview" class="preview-badge">Preview</span>
+              </div>
+              <span>{{ billingLabel(selectedModel) }}</span>
+              <span>状态：{{ availabilityLabel(selectedModel) }}</span>
+              <span v-if="selectedModel.last_checked_at">
+                健康检查：{{ new Date(selectedModel.last_checked_at).toLocaleString("zh-CN") }}
+              </span>
+            </div>
+            <p class="quota-notice" role="note">{{ modelCatalog.quota_notice }}</p>
+            <p v-if="modelCatalogMessage" class="model-catalog-message" role="alert">
+              {{ modelCatalogMessage }}
+            </p>
           </div>
 
           <fieldset class="field-group">
@@ -452,7 +1583,7 @@ onMounted(loadCourses);
             />
             <span>
               <strong>返回 B站延伸学习</strong>
-              <small>仅课程资料模式会在请求构造阶段强制关闭。</small>
+              <small>模型给出聚焦词后只返回匿名搜索链接，不返回具体视频直链。仅课程资料模式强制关闭。</small>
             </span>
           </label>
 
@@ -460,8 +1591,12 @@ onMounted(loadCourses);
           <div v-if="noticeMessage" class="form-message success-message" role="status">{{ noticeMessage }}</div>
 
           <div class="form-actions">
-            <button type="submit" class="primary-button" :disabled="isRunning || isLoadingCourses">
-              {{ isRunning ? "正在运行" : "运行 Mock Workflow" }}
+            <button
+              type="submit"
+              class="primary-button"
+              :disabled="isRunning || isLoadingCourses || isLoadingModels || !currentUser || !selectedModel?.user_selectable"
+            >
+              {{ isRunning ? "正在运行" : selectedModelIsMock ? "运行 Mock Workflow" : "运行 Workflow" }}
             </button>
             <button
               type="button"
@@ -485,6 +1620,14 @@ onMounted(loadCourses);
             <div>
               <dt>allowed_course_ids</dt>
               <dd>[]</dd>
+            </div>
+            <div>
+              <dt>model_source</dt>
+              <dd>{{ selectedModel?.model_source ?? (isLoadingModels ? "读取中" : "未选择") }}</dd>
+            </div>
+            <div>
+              <dt>catalog_version</dt>
+              <dd>{{ modelCatalog.catalog_version }}</dd>
             </div>
           </dl>
         </form>
