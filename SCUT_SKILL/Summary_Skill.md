@@ -27,6 +27,31 @@
 
 **和上一条的关系**：功能重叠。想个人上手选这个，需要完整生命周期管理再上 Skill Optimizer。⚠️**别两个同时装。**
 
+### Code Analyzer（codebase-learning-skill）
+
+[AlexBybye/codebase-learning-skill](https://github.com/AlexBybye/codebase-learning-skill) · 插件式布局，`SKILL.md` 在 `skills/code-analyzer/`
+
+读懂一个陌生仓库，产出一份有边界的学习地图（写到目标仓库的 `doc/analysis/` 下）。覆盖 Web、Mobile、Backend、Data/Infra、AI 五个域：先做一次浅层发现定路由，只加载相关域的合同，空的域直接跳过不生成空模板。混合仓库至少给一条逐跳有证据的端到端路径。
+
+真正有用的是它的证据分级 —— 每条结论都要标 `source`：`code`（源码符号直接证明）、`config`（配置/schema/migration 证明）、`inferred`（至少两个独立锚点，并写出推断过程）、`unavailable`（边界闭不上，说明查了哪儿、缺哪一环）。证据只能用相对目标根目录的 `path#symbol` 或行号锚点。
+
+**不做什么**：不做单文件讲解、code review、bug 诊断修复、只要架构图、安全或许可审计，也不改业务源码。默认不跑目标应用/测试/构建、不装依赖、不联网。不从静态结构推断线上部署状态、运行性能、模型质量或生产就绪 —— 这些一律标 `unavailable`。
+
+**适合谁**：接手学长的课设代码、读开源项目、`软件工程` / `操作系统课程设计` 之类要先看懂再动手的活。作者在 README 里注明了一点值得学：那些行数、字节的下降幅度衡量的是文件和指令合同，**不是实测 Token、运行时间或回答质量**。
+
+### jargon-codec-zh
+
+[AlexBybye/jargon-codec-zh](https://github.com/AlexBybye/jargon-codec-zh) · 插件式布局，`SKILL.md` 在 `skills/jargon-codec-zh/`
+
+"把人话压进 PPT，也把 PPT 放回人间。" 普通话和互联网大厂黑话之间的双向转换，覆盖产品、运营、商业、研发、管理和 AI 语境（RAG、Agent、MCP、Eval 这些也算黑话，不另设模式）。
+
+- **黑话 → 普通话**：把"赋能、抓手、闭环、拉通、沉淀、链路"还原成谁做什么、何时完成、如何验收。
+- **普通话 → 黑话**：两个档位。`自然`（真实工作可用，每句只引入一两个真正增加精度的术语）和 `无所不用其极`（密度拉满，可叠加 `bilingual`，每句混一到两个英文词）。用户没指定档位时它只问，不偷偷代选。
+
+**不做什么**：不做普通润色、摘要、外语翻译、事实核查、技术问答、代码任务、动机判断，也不在没有原文的情况下随机生成黑话。**黑话可以拉满，事实不能缩水** —— 不新增项目阶段、上下游、数据来源、业绩、指标、权限或承诺，不把"计划、可能"升级成"完成、保证"，不删改负责人和截止时间。原文只覆盖小范围时不给你写"端到端、全链路"。
+
+**适合谁**：读实习 JD 和大厂技术文章、写 SRP 结题报告和竞赛答辩、看不懂群里学长在说什么。反向用法也实在 —— 简历和答辩稿有时确实需要那套话术，只要别顺手把没做过的事写进去。在此，致敬酥神（doge.）
+
 ### humanizer-zh（humanizer-CN）
 
 [AlexBybye/humanizer-CN](https://github.com/AlexBybye/humanizer-CN)

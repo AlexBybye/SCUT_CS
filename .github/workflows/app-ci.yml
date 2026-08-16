@@ -1,0 +1,116 @@
+name: App CI
+
+on:
+  pull_request:
+    paths:
+      - "apps/scut-senior/**"
+      - "tools/corpus/**"
+      - ".github/workflows/**"
+  push:
+    branches:
+      - master
+    paths:
+      - "apps/scut-senior/**"
+      - "tools/corpus/**"
+      - ".github/workflows/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: app-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GIT_LFS_SKIP_SMUDGE: "1"
+
+jobs:
+  application-tests:
+    name: Application tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      # actions/checkout@v4 makes `filter` override `sparse-checkout`; keep the
+      # sequence explicit so both boundaries are active before checkout.
+      - name: Partial and sparse checkout of application paths without LFS
+        shell: bash
+        run: |
+          git clone --filter=blob:none --sparse --no-checkout --depth=1 --no-tags \
+            "https://github.com/${GITHUB_REPOSITORY}.git" .
+          git sparse-checkout set --no-cone -- \
+            /apps/scut-senior/ \
+            /tools/corpus/ \
+            /.github/workflows/
+          git fetch --no-tags --depth=1 --filter=blob:none origin "${GITHUB_REF}"
+          git checkout --detach FETCH_HEAD
+          test "$(git config --get remote.origin.partialclonefilter)" = blob:none
+          test "$(git config --bool core.sparseCheckout)" = true
+          test ! -e "学科资料"
+          test ! -e knowledge
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install web dependencies
+        working-directory: apps/scut-senior/web
+        shell: bash
+        run: |
+          if [[ -f package-lock.json ]]; then
+            npm ci
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Test, type-check, and build the Vue application
+        working-directory: apps/scut-senior/web
+        run: |
+          npm run test
+          npm run typecheck
+          npm run build
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install the API and test runner
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install ./apps/scut-senior/worker
+          python -m pip install './apps/scut-senior/api[dev]'
+
+      - name: Run Python application and contract tests
+        env:
+          PYTHONPATH: apps/scut-senior/api/src:apps/scut-senior/worker/src
+        run: python -m pytest apps/scut-senior/tests/python
+
+  docker-build:
+    name: Application image build
+    needs: application-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Partial and sparse checkout of Docker inputs without LFS
+        shell: bash
+        run: |
+          git clone --filter=blob:none --sparse --no-checkout --depth=1 --no-tags \
+            "https://github.com/${GITHUB_REPOSITORY}.git" .
+          git sparse-checkout set --no-cone -- \
+            /apps/scut-senior/ \
+            /.github/workflows/app-ci.yml
+          git fetch --no-tags --depth=1 --filter=blob:none origin "${GITHUB_REF}"
+          git checkout --detach FETCH_HEAD
+          test "$(git config --get remote.origin.partialclonefilter)" = blob:none
+          test "$(git config --bool core.sparseCheckout)" = true
+          test ! -e "学科资料"
+          test ! -e knowledge
+
+      - name: Build the application image from the bounded context
+        run: >-
+          docker build
+          --file apps/scut-senior/Dockerfile
+          --tag scut-senior:${{ github.sha }}
+          apps/scut-senior

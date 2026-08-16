@@ -1,0 +1,120 @@
+import type {
+  AnswerMode,
+  KnowledgeScope,
+  Tone,
+  WorkflowPayloadMap,
+  WorkflowRunRequest,
+  WorkflowType,
+} from "./contracts";
+
+export interface BuildWorkflowRequestInput<T extends WorkflowType> {
+  workflowType: T;
+  courseId: string;
+  conversationId: string;
+  userInput: string;
+  answerMode: AnswerMode;
+  tone: Tone;
+  knowledgeScope: KnowledgeScope;
+  includeBilibiliResources: boolean;
+  workflowPayload: WorkflowPayloadMap[T];
+}
+
+function optionalText(value: string | undefined): string | undefined {
+  const normalized = value?.trim();
+  return normalized ? normalized : undefined;
+}
+
+function normalizeList(values: string[]): string[] {
+  return values.map((value) => value.trim()).filter(Boolean);
+}
+
+export function normalizeWorkflowPayload<T extends WorkflowType>(
+  workflowType: T,
+  payload: WorkflowPayloadMap[T],
+): WorkflowPayloadMap[T] {
+  switch (workflowType) {
+    case "knowledge_qa": {
+      const value = payload as WorkflowPayloadMap["knowledge_qa"];
+      return { question: value.question.trim() } as WorkflowPayloadMap[T];
+    }
+    case "exam_review": {
+      const value = payload as WorkflowPayloadMap["exam_review"];
+      return {
+        ...(optionalText(value.syllabus) ? { syllabus: optionalText(value.syllabus) } : {}),
+        ...(optionalText(value.exam_date) ? { exam_date: optionalText(value.exam_date) } : {}),
+        ...(typeof value.available_hours === "number" && value.available_hours > 0
+          ? { available_hours: value.available_hours }
+          : {}),
+        goals: normalizeList(value.goals),
+        weak_topics: normalizeList(value.weak_topics),
+      } as WorkflowPayloadMap[T];
+    }
+    case "problem_tutor": {
+      const value = payload as WorkflowPayloadMap["problem_tutor"];
+      return {
+        problem: value.problem.trim(),
+        ...(optionalText(value.user_answer) ? { user_answer: optionalText(value.user_answer) } : {}),
+        help_level: value.help_level,
+        ...(optionalText(value.problem_source)
+          ? { problem_source: optionalText(value.problem_source) }
+          : {}),
+      } as WorkflowPayloadMap[T];
+    }
+    case "mistake_review": {
+      const value = payload as WorkflowPayloadMap["mistake_review"];
+      return {
+        problem: value.problem.trim(),
+        original_answer: value.original_answer.trim(),
+        ...(optionalText(value.reference_answer)
+          ? { reference_answer: optionalText(value.reference_answer) }
+          : {}),
+        ...(optionalText(value.review_focus)
+          ? { review_focus: optionalText(value.review_focus) }
+          : {}),
+      } as WorkflowPayloadMap[T];
+    }
+    case "temporary_material_reading": {
+      const value = payload as WorkflowPayloadMap["temporary_material_reading"];
+      return {
+        material_text: value.material_text.trim(),
+        ...(optionalText(value.reading_goal)
+          ? { reading_goal: optionalText(value.reading_goal) }
+          : {}),
+      } as WorkflowPayloadMap[T];
+    }
+    default:
+      throw new Error(`不支持的 workflow_type: ${String(workflowType)}`);
+  }
+}
+
+export function buildWorkflowRequest<T extends WorkflowType>(
+  input: BuildWorkflowRequestInput<T>,
+): WorkflowRunRequest<T> {
+  const courseId = input.courseId.trim();
+  const conversationId = input.conversationId.trim();
+  const userInput = input.userInput.trim();
+
+  if (!courseId || !conversationId || !userInput) {
+    throw new Error("课程、会话和请求内容不能为空");
+  }
+
+  return {
+    workflow_type: input.workflowType,
+    course_scope: "single",
+    course_id: courseId,
+    allowed_course_ids: [],
+    conversation_id: conversationId,
+    model_source: "platform_default",
+    provider_id: "mock",
+    model_id: "deterministic-fixture-v1",
+    user_input: userInput,
+    answer_mode: input.answerMode,
+    tone: input.tone,
+    knowledge_scope: input.knowledgeScope,
+    include_bilibili_resources:
+      input.knowledgeScope === "course_first" && input.includeBilibiliResources,
+    context_refs: [],
+    attachments: [],
+    workflow_payload: normalizeWorkflowPayload(input.workflowType, input.workflowPayload),
+  };
+}

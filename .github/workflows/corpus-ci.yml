@@ -1,0 +1,107 @@
+name: Corpus CI
+
+on:
+  pull_request:
+    paths:
+      - "knowledge/**"
+      - "tools/corpus/**"
+      - "apps/scut-senior/worker/**"
+      - "apps/scut-senior/packages/**"
+      - "apps/scut-senior/tests/fixtures/**"
+      - "apps/scut-senior/tests/python/test_corpus*.py"
+      - "apps/scut-senior/tests/python/test_contract*.py"
+      - "apps/scut-senior/tests/python/test_manifest*.py"
+      - "apps/scut-senior/tests/python/test_locator*.py"
+      - "apps/scut-senior/tests/python/test_schema*.py"
+      - "apps/scut-senior/**/chunk*"
+      - "apps/scut-senior/**/manifest*"
+      - "apps/scut-senior/**/locator*"
+      - "apps/scut-senior/**/schema*"
+      - ".github/workflows/corpus-ci.yml"
+  push:
+    branches:
+      - master
+    paths:
+      - "knowledge/**"
+      - "tools/corpus/**"
+      - "apps/scut-senior/worker/**"
+      - "apps/scut-senior/packages/**"
+      - "apps/scut-senior/tests/fixtures/**"
+      - "apps/scut-senior/tests/python/test_corpus*.py"
+      - "apps/scut-senior/tests/python/test_contract*.py"
+      - "apps/scut-senior/tests/python/test_manifest*.py"
+      - "apps/scut-senior/tests/python/test_locator*.py"
+      - "apps/scut-senior/tests/python/test_schema*.py"
+      - "apps/scut-senior/**/chunk*"
+      - "apps/scut-senior/**/manifest*"
+      - "apps/scut-senior/**/locator*"
+      - "apps/scut-senior/**/schema*"
+      - ".github/workflows/corpus-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: corpus-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GIT_LFS_SKIP_SMUDGE: "1"
+
+jobs:
+  fixture-compatibility:
+    name: Contract and candidate compatibility fixtures
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # actions/checkout@v4 makes `filter` override `sparse-checkout`; keep the
+      # sequence explicit so both boundaries are active before checkout.
+      - name: Partial and sparse checkout of corpus inputs without LFS
+        shell: bash
+        run: |
+          git clone --filter=blob:none --sparse --no-checkout --depth=1 --no-tags \
+            "https://github.com/${GITHUB_REPOSITORY}.git" .
+          git sparse-checkout set --no-cone -- \
+            /knowledge/ \
+            /tools/corpus/ \
+            /apps/scut-senior/worker/ \
+            /apps/scut-senior/packages/ \
+            /apps/scut-senior/tests/ \
+            /.github/workflows/corpus-ci.yml
+          git fetch --no-tags --depth=1 --filter=blob:none origin "${GITHUB_REF}"
+          git checkout --detach FETCH_HEAD
+          test "$(git config --get remote.origin.partialclonefilter)" = blob:none
+          test "$(git config --bool core.sparseCheckout)" = true
+          test ! -e "学科资料"
+          test ! -e apps/scut-senior/web
+          test ! -e apps/scut-senior/api
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install the corpus test runner
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install \
+            ./apps/scut-senior/worker \
+            'pytest>=8.4,<9' \
+            'jsonschema>=4.25,<5'
+
+      - name: Run contract and corpus validator tests
+        env:
+          PYTHONPATH: apps/scut-senior/worker/src
+        run: >-
+          python -m pytest
+          apps/scut-senior/tests/python/test_corpus_validator.py
+          apps/scut-senior/tests/python/test_contract_assets.py
+
+      - name: Validate the passed corpus fixture through the worker entry point
+        env:
+          PYTHONPATH: apps/scut-senior/worker/src
+        run: >-
+          python -m scut_senior_worker.corpus_validator
+          --manifest apps/scut-senior/tests/fixtures/corpus/manifest.csv
+          --pretty

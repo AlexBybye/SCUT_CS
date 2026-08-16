@@ -1,0 +1,109 @@
+name: App deployment skeleton
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "apps/scut-senior/web/**"
+      - "apps/scut-senior/api/**"
+      - "apps/scut-senior/packages/**"
+      - "apps/scut-senior/tests/fixtures/**"
+      - "apps/scut-senior/worker/**"
+      - "apps/scut-senior/infra/**"
+      - "apps/scut-senior/Dockerfile"
+      - "apps/scut-senior/.dockerignore"
+      - ".github/workflows/app-deploy.yml"
+  workflow_dispatch:
+    inputs:
+      validation_only:
+        description: Build the bounded image without publishing or changing ECS
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scut-senior-production
+  cancel-in-progress: false
+
+env:
+  GIT_LFS_SKIP_SMUDGE: "1"
+
+jobs:
+  validation-only:
+    name: Validate the bounded deployment skeleton
+    if: >-
+      github.repository == 'AlexBybye/SCUT_CS' &&
+      github.event_name == 'workflow_dispatch' &&
+      inputs.validation_only == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Partial and sparse checkout of validation inputs without LFS
+        shell: bash
+        run: |
+          git clone --filter=blob:none --sparse --no-checkout --depth=1 --no-tags \
+            "https://github.com/${GITHUB_REPOSITORY}.git" .
+          git sparse-checkout set --no-cone -- \
+            /apps/scut-senior/ \
+            /.github/workflows/app-deploy.yml
+          git fetch --no-tags --depth=1 --filter=blob:none origin "${GITHUB_REF}"
+          git checkout --detach FETCH_HEAD
+          test "$(git config --get remote.origin.partialclonefilter)" = blob:none
+          test "$(git config --bool core.sparseCheckout)" = true
+          test ! -e "学科资料"
+          test ! -e knowledge
+
+      - name: Build the validation image from the bounded context
+        run: >-
+          docker build
+          --file apps/scut-senior/Dockerfile
+          --tag scut-senior:validation-${{ github.sha }}
+          apps/scut-senior
+
+      - name: Confirm validation-only boundary
+        run: >-
+          echo "Deployment skeleton validated without logging in to SWR,
+          pushing an image, reading deployment secrets, or changing ECS."
+
+  deployment-skeleton:
+    name: Protected SWR to ECS deployment gate
+    if: >-
+      github.repository == 'AlexBybye/SCUT_CS' &&
+      vars.DEPLOYMENT_ENABLED == 'true' &&
+      (github.event_name != 'workflow_dispatch' || inputs.validation_only != true)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: scut-senior-production
+    steps:
+      - name: Partial and sparse checkout of deployment inputs without LFS
+        shell: bash
+        run: |
+          git clone --filter=blob:none --sparse --no-checkout --depth=1 --no-tags \
+            "https://github.com/${GITHUB_REPOSITORY}.git" .
+          git sparse-checkout set --no-cone -- \
+            /apps/scut-senior/ \
+            /.github/workflows/app-deploy.yml
+          git fetch --no-tags --depth=1 --filter=blob:none origin "${GITHUB_REF}"
+          git checkout --detach FETCH_HEAD
+          test "$(git config --get remote.origin.partialclonefilter)" = blob:none
+          test "$(git config --bool core.sparseCheckout)" = true
+          test ! -e "学科资料"
+          test ! -e knowledge
+
+      - name: Build the release image locally from the bounded context
+        run: >-
+          docker build
+          --file apps/scut-senior/Dockerfile
+          --tag scut-senior:${{ github.sha }}
+          apps/scut-senior
+
+      - name: Block publishing until SWR authentication and ECS rollout are frozen
+        shell: bash
+        run: |
+          echo "::error title=Deployment intentionally unavailable::SWR authentication, ECS rollout, grey release, and rollback have not been selected. Keep DEPLOYMENT_ENABLED=false until this step is replaced by reviewed deployment code."
+          exit 1

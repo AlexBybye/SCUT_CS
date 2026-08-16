@@ -1,0 +1,19 @@
+# The build command must use apps/scut-senior as its context. These rules keep
+# local dependencies, tests, offline workers, and credentials out of the image.
+**/.DS_Store
+**/.env
+**/.env.*
+**/.git
+**/.github
+**/__pycache__
+**/*.py[cod]
+**/.pytest_cache
+**/.mypy_cache
+**/.ruff_cache
+**/.venv
+**/node_modules
+web/dist
+tests/*
+!tests/fixtures/
+!tests/fixtures/**
+infra

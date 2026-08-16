@@ -1,0 +1,3 @@
+source_id,course,title,original_path,format,document_role,year,output_md,locator_type,method,ocr_used,ocr_confidence,ocr_warning,status,reviewer,notes
+synthetic-linear-algebra-exam,linear_algebra,合成线性代数页码题目,sources/linear-algebra-exam.txt,txt,past_exam,2023,linear_algebra/synthetic-linear-algebra-exam.md,page,synthetic,false,,,passed,fixture-reviewer,fixture_only
+synthetic-linear-algebra-pending,线性代数,合成线性代数待审笔记,sources/linear-algebra-pending.txt,txt,note,,linear_algebra/synthetic-linear-algebra-pending.md,heading,synthetic,false,,,pending,,fixture_only

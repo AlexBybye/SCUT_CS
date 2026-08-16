@@ -1,0 +1,18 @@
+{
+  "fixture_only": true,
+  "contract_version": "v1",
+  "runner_id": "iteration0-mock-seven-category",
+  "execution_mode": "mock",
+  "case_file": "cases.json",
+  "case_ids": [
+    "course-knowledge-001",
+    "past-paper-question-001",
+    "sparse-general-supplement-001",
+    "insufficient-evidence-001",
+    "multi-turn-followup-001",
+    "cross-course-scope-001",
+    "source-marking-001"
+  ],
+  "group_by": ["course_id", "category"],
+  "fail_on_missing_case": true
+}

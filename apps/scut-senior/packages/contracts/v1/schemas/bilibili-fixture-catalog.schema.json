@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scut-senior.invalid/contracts/v1/bilibili-fixture-catalog.schema.json",
+  "title": "SCUT Senior Bilibili Fixture Catalog V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["fixture_only", "contract_version", "catalog_version", "resources"],
+  "properties": {
+    "fixture_only": {"const": true},
+    "contract_version": {"const": "v1"},
+    "catalog_version": {"type": "string", "minLength": 1},
+    "resources": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "resource_id",
+          "title",
+          "bvid",
+          "url",
+          "course_id",
+          "knowledge_point_id",
+          "knowledge_point",
+          "aliases",
+          "keywords",
+          "review_status"
+        ],
+        "properties": {
+          "resource_id": {"type": "string", "pattern": "^fixture-[a-z0-9-]+$"},
+          "title": {"type": "string", "minLength": 1},
+          "bvid": {"type": "string", "pattern": "^BV[0-9A-Za-z]{10}$"},
+          "url": {
+            "type": "string",
+            "pattern": "^https://www\\.bilibili\\.com/video/BV[0-9A-Za-z]{10}/?$"
+          },
+          "course_id": {"type": "string", "minLength": 1},
+          "knowledge_point_id": {"type": "string", "minLength": 1},
+          "knowledge_point": {"type": "string", "minLength": 1},
+          "aliases": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "keywords": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "review_status": {
+            "enum": ["reviewed", "pending", "rejected", "unavailable"]
+          }
+        }
+      }
+    }
+  }
+}

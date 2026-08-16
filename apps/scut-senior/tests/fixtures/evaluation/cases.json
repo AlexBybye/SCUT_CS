@@ -1,0 +1,154 @@
+{
+  "contract_version": "v1",
+  "fixture_only": true,
+  "cases": [
+    {
+      "fixture_only": true,
+      "case_id": "course-knowledge-001",
+      "category": "course_knowledge",
+      "course_id": "linear_algebra",
+      "workflow_type": "knowledge_qa",
+      "knowledge_scope": "course_only",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {"role": "user", "content": "请根据合成资料解释单位矩阵的秩。"}
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": ["repository"],
+        "requires_citation": true,
+        "allows_general": false,
+        "required_locator_types": ["page", "heading"]
+      }
+    },
+    {
+      "fixture_only": true,
+      "case_id": "past-paper-question-001",
+      "category": "past_paper_question",
+      "course_id": "linear_algebra",
+      "workflow_type": "problem_tutor",
+      "knowledge_scope": "course_only",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {"role": "user", "content": "讲解合成 2023 A 卷第 1 题。"}
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": ["repository"],
+        "requires_citation": true,
+        "allows_general": false,
+        "required_locator_types": ["page", "question"]
+      }
+    },
+    {
+      "fixture_only": true,
+      "case_id": "sparse-general-supplement-001",
+      "category": "sparse_general_supplement",
+      "course_id": "linear_algebra",
+      "workflow_type": "knowledge_qa",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {"role": "user", "content": "先引用合成资料，再明确标记通用补充。"}
+      ],
+      "expected": {
+        "answer_status": "partial",
+        "evidence_status": "partial",
+        "required_answer_block_types": ["repository", "general"],
+        "requires_citation": true,
+        "allows_general": true
+      }
+    },
+    {
+      "fixture_only": true,
+      "case_id": "insufficient-evidence-001",
+      "category": "insufficient_evidence",
+      "course_id": "linear_algebra",
+      "workflow_type": "knowledge_qa",
+      "knowledge_scope": "course_only",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {"role": "user", "content": "询问合成资料中不存在的第三题。"}
+      ],
+      "expected": {
+        "answer_status": "insufficient_evidence",
+        "evidence_status": "insufficient",
+        "required_answer_block_types": [],
+        "requires_citation": false,
+        "allows_general": false
+      }
+    },
+    {
+      "fixture_only": true,
+      "case_id": "multi-turn-followup-001",
+      "category": "multi_turn_followup",
+      "course_id": "linear_algebra",
+      "workflow_type": "knowledge_qa",
+      "knowledge_scope": "course_only",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {"role": "user", "content": "解释合成资料第 1 题。"},
+        {"role": "assistant", "content": "Mock 回答已引用第 1 页第 1 题。"},
+        {"role": "user", "content": "再用分步骤方式解释。"}
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": ["repository"],
+        "requires_citation": true,
+        "allows_general": false,
+        "required_locator_types": ["page", "question"]
+      }
+    },
+    {
+      "fixture_only": true,
+      "case_id": "cross-course-scope-001",
+      "category": "cross_course_scope",
+      "course_id": null,
+      "workflow_type": "knowledge_qa",
+      "knowledge_scope": "course_first",
+      "course_scope": "cross",
+      "allowed_course_ids": ["linear_algebra", "probability_theory"],
+      "turns": [
+        {"role": "user", "content": "只在显式选择的两个课程范围内做合成对比。"}
+      ],
+      "expected": {
+        "answer_status": "partial",
+        "evidence_status": "partial",
+        "required_answer_block_types": ["repository"],
+        "requires_citation": true,
+        "allows_general": true,
+        "required_locator_types": ["page"]
+      }
+    },
+    {
+      "fixture_only": true,
+      "case_id": "source-marking-001",
+      "category": "source_marking",
+      "course_id": "linear_algebra",
+      "workflow_type": "knowledge_qa",
+      "knowledge_scope": "course_only",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {"role": "user", "content": "回答时显示 manifest 标题和合成题号。"}
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": ["repository"],
+        "requires_citation": true,
+        "allows_general": false,
+        "required_locator_types": ["page", "question", "heading"],
+        "notes": "source_title 必须来自 manifest.title"
+      }
+    }
+  ]
+}

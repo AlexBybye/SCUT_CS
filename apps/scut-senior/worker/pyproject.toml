@@ -1,0 +1,16 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "scut-senior-worker"
+version = "0.1.0"
+description = "Deterministic corpus contract validation for SCUT Senior"
+requires-python = ">=3.12"
+dependencies = ["PyYAML>=6,<7"]
+
+[project.scripts]
+scut-senior-corpus-validate = "scut_senior_worker.corpus_validator:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scut_senior_worker"]
