@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from datetime import UTC, datetime
 from pathlib import Path
 from uuid import uuid4
 
@@ -14,9 +15,11 @@ from scut_senior_api.contracts import (
     Citation,
     CourseScope,
     EvidenceStatus,
+    ExternalResource,
     HelpLevel,
     KnowledgeScope,
     ModelSource,
+    ModelCredentialStatus,
     RunStatus,
     Tone,
     TraceEvent,
@@ -24,6 +27,32 @@ from scut_senior_api.contracts import (
     WorkflowRunRequest,
     WorkflowType,
 )
+
+
+@pytest.mark.parametrize(
+    "overrides",
+    [
+        {"configured": True, "masked_key": None},
+        {"configured": True, "expires_at": None},
+        {"configured": False, "masked_key": "••••••••"},
+        {"configured": False, "expires_at": datetime(2026, 8, 23, tzinfo=UTC)},
+        {"model_id": "deepseek-v4-flash"},
+    ],
+)
+def test_model_credential_status_enforces_fixed_safe_metadata(
+    overrides: dict[str, object],
+) -> None:
+    payload: dict[str, object] = {
+        "provider_id": "openrouter",
+        "model_id": "deepseek/deepseek-v4-flash-0731",
+        "configured": True,
+        "masked_key": "••••••••",
+        "expires_at": datetime(2026, 8, 23, tzinfo=UTC),
+    }
+    payload.update(overrides)
+
+    with pytest.raises(ValidationError):
+        ModelCredentialStatus.model_validate(payload)
 
 
 CONTRACT_ROOT = Path(__file__).resolve().parents[2] / "packages" / "contracts" / "v1"
@@ -156,6 +185,84 @@ def test_course_only_forces_external_resources_off() -> None:
 
     assert parsed.knowledge_scope == KnowledgeScope.COURSE_ONLY
     assert parsed.include_bilibili_resources is False
+
+
+def test_bilibili_search_resource_requires_a_fixed_anonymous_search_link() -> None:
+    resource = ExternalResource.model_validate(
+        {
+            "resource_id": None,
+            "course_id": "linear_algebra",
+            "platform": "bilibili",
+            "resource_type": "search",
+            "title": "在哔哩哔哩搜索：矩阵的秩",
+            "url": "https://search.bilibili.com/all?keyword=%E7%9F%A9%E9%98%B5%E7%9A%84%E7%A7%A9",
+            "matched_topic": "矩阵的秩",
+            "review_status": "unreviewed_live_search",
+            "catalog_version": None,
+            "query_keywords": ["矩阵的秩"],
+            "generated_at": "2026-08-15T12:00:00Z",
+            "evidence_role": "supplementary_only",
+        }
+    )
+
+    assert resource.resource_id is None
+    assert resource.review_status == "unreviewed_live_search"
+    assert resource.query_keywords == ["矩阵的秩"]
+
+
+def test_bilibili_workflow_resource_rejects_video_direct_links() -> None:
+    with pytest.raises(ValidationError):
+        ExternalResource.model_validate(
+            {
+                "resource_id": "reviewed-1",
+                "course_id": "linear_algebra",
+                "platform": "bilibili",
+                "resource_type": "video",
+                "title": "具体视频",
+                "url": "https://www.bilibili.com/video/BV1FIXTURE01",
+                "matched_topic": "矩阵的秩",
+                "review_status": "reviewed",
+                "catalog_version": "fixture-v1",
+                "query_keywords": ["矩阵的秩"],
+                "generated_at": None,
+                "evidence_role": "supplementary_only",
+            }
+        )
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("resource_id", "model-invented-id"),
+        ("review_status", "reviewed"),
+        ("catalog_version", "catalog-v1"),
+        ("query_keywords", []),
+        ("query_keywords", ["别的关键词"]),
+        ("url", "https://evil.example/all?keyword=rank"),
+        ("url", "https://search.bilibili.com/all?order=click"),
+    ],
+)
+def test_bilibili_search_resource_rejects_model_urls_or_reviewed_metadata(
+    field: str, value: object
+) -> None:
+    payload: dict[str, object] = {
+        "resource_id": None,
+        "course_id": "linear_algebra",
+        "platform": "bilibili",
+        "resource_type": "search",
+        "title": "在哔哩哔哩搜索：线性代数 矩阵的秩",
+        "url": "https://search.bilibili.com/all?keyword=rank",
+        "matched_topic": "矩阵的秩",
+        "review_status": "unreviewed_live_search",
+        "catalog_version": None,
+        "query_keywords": ["矩阵的秩"],
+        "generated_at": "2026-08-15T12:00:00Z",
+        "evidence_role": "supplementary_only",
+    }
+    payload[field] = value
+
+    with pytest.raises(ValidationError):
+        ExternalResource.model_validate(payload)
 
 
 def test_cross_scope_requires_explicit_course_set() -> None:

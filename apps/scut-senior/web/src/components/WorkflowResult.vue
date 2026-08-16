@@ -29,6 +29,7 @@ function citationLocator(citation: Citation): string {
   }
   return parts.length ? parts.join(" · ") : "资料名定位";
 }
+
 </script>
 
 <template>
@@ -48,12 +49,12 @@ function citationLocator(citation: Citation): string {
       <span class="skeleton-line skeleton-line-long"></span>
       <span class="skeleton-line"></span>
       <span class="skeleton-line skeleton-line-short"></span>
-      <p>正在执行确定性 Mock 链路并保存结果。</p>
+      <p>正在执行 Workflow 并保存结果。</p>
     </div>
 
     <div v-else-if="!result" class="result-empty">
       <p>尚未运行 Workflow。</p>
-      <span>提交左侧表单后，这里会分别呈现回答、仓库引用、外部资源和真实 Mock Trace。</span>
+      <span>提交左侧表单后，这里会分别呈现回答、仓库引用、外部资源和安全 Trace。</span>
     </div>
 
     <template v-else>
@@ -83,14 +84,14 @@ function citationLocator(citation: Citation): string {
             <code>{{ citation.citation_id }}</code>
           </article>
         </div>
-        <p v-else class="section-empty">本次 Mock 没有仓库引用。</p>
+        <p v-else class="section-empty">本次没有仓库引用。</p>
       </section>
 
       <section class="result-section external-section" aria-labelledby="resources-heading">
         <div class="result-section-heading">
           <div>
             <h3 id="resources-heading">B站延伸学习</h3>
-            <p>外部资源不属于仓库引用，也不改变证据状态。</p>
+            <p>聚焦词只生成 B站匿名搜索入口；搜索结果未经本项目审核，也不属于仓库引用或回答证据。</p>
           </div>
           <span>{{ externalResources.length }} 条</span>
         </div>
@@ -100,14 +101,14 @@ function citationLocator(citation: Citation): string {
             :key="resource.resource_id || resource.url"
             :href="resource.url"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             class="resource-item"
           >
             <span>
               <strong>{{ resource.title }}</strong>
-              <small>{{ resource.matched_topic }} / {{ resource.review_status }}</small>
+              <small>{{ resource.matched_topic }} / 匿名搜索 / 结果未审核</small>
             </span>
-            <span aria-hidden="true">打开</span>
+            <span aria-hidden="true">查看搜索结果</span>
           </a>
         </div>
         <p v-else class="section-empty">本次没有返回外部资源。</p>

@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from shutil import copytree
 
@@ -8,7 +7,6 @@ import pytest
 from fastapi.testclient import TestClient
 
 from scut_senior_api.adapters.mock import (
-    FixtureBilibiliCatalog,
     FixtureContractViolation,
     FixtureRetrievalGateway,
 )
@@ -69,6 +67,16 @@ def test_mock_vertical_slice_persists_answer_sources_and_trace(
     assert result["citations"][0]["course_title"] == "线性代数"
     assert result["citations"][0]["source_title"] == "合成线性代数页码题目"
     assert all(resource["platform"] == "bilibili" for resource in result["external_resources"])
+    assert [resource["resource_type"] for resource in result["external_resources"]] == [
+        "search",
+    ]
+    search_resource = result["external_resources"][0]
+    assert search_resource["resource_id"] is None
+    assert search_resource["review_status"] == "unreviewed_live_search"
+    assert search_resource["query_keywords"] == ["矩阵的秩", "初等行变换"]
+    assert search_resource["url"].startswith(
+        "https://search.bilibili.com/all?keyword="
+    )
     assert all("url" not in citation for citation in result["citations"])
     assert [event["sequence"] for event in result["trace"]] == list(
         range(len(result["trace"]))
@@ -76,9 +84,16 @@ def test_mock_vertical_slice_persists_answer_sources_and_trace(
     assert result["trace"][-1]["node"] == "persistence"
     assert all("user_id" not in event["result"] for event in result["trace"])
     identity_event = next(
-        event for event in result["trace"] if event["node"] == "mock_identity"
+        event for event in result["trace"] if event["node"] == "identity"
     )
-    assert identity_event["result"] == {"mode": "mock"}
+    assert identity_event["result"] == {"auth_mode": "mock"}
+    persistence_event = next(
+        event for event in result["trace"] if event["node"] == "persistence"
+    )
+    assert persistence_event["result"] == {
+        "stored": True,
+        "adapter": "sqlite_mock",
+    }
 
     restarted_client = TestClient(create_app(settings))
     restored = restarted_client.get(
@@ -87,7 +102,13 @@ def test_mock_vertical_slice_persists_answer_sources_and_trace(
     assert restored.status_code == 200
     restored_runs = restored.json()["runs"]
     assert len(restored_runs) == 1
-    assert restored_runs[0] == result
+    assert restored_runs[0]["workflow_run_id"] == result["workflow_run_id"]
+    assert restored_runs[0]["attempt_group_id"] == result["workflow_run_id"]
+    assert restored_runs[0]["regenerated_from_run_id"] is None
+    assert restored_runs[0]["request"] == workflow_request(
+        conversation["conversation_id"]
+    )
+    assert restored_runs[0]["result"] == result
 
     restored_run = restarted_client.get(
         f"/api/v1/workflow-runs/{result['workflow_run_id']}"
@@ -96,7 +117,7 @@ def test_mock_vertical_slice_persists_answer_sources_and_trace(
     assert restored_run.json() == result
 
 
-def test_course_only_never_returns_bilibili_fixture(tmp_path: Path) -> None:
+def test_course_only_never_returns_bilibili_search_link(tmp_path: Path) -> None:
     client = TestClient(
         create_app(Settings(app_env="test", database_path=tmp_path / "course-only.db"))
     )
@@ -114,9 +135,47 @@ def test_course_only_never_returns_bilibili_fixture(tmp_path: Path) -> None:
     bilibili_event = next(
         event
         for event in result.json()["trace"]
-        if event["node"] == "bilibili_fixture_match"
+        if event["node"] == "bilibili_link_discovery"
     )
     assert bilibili_event["status"] == "skipped"
+
+
+def test_bilibili_discovery_failure_does_not_block_the_main_answer(
+    tmp_path: Path,
+) -> None:
+    app = create_app(
+        Settings(app_env="test", database_path=tmp_path / "bilibili-failure.db")
+    )
+    client = TestClient(app)
+    conversation = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    ).json()
+
+    class FailingDiscovery:
+        def discover(self, **_: object):
+            raise RuntimeError("private Bilibili adapter detail")
+
+    app.state.service.resources = FailingDiscovery()
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(conversation["conversation_id"]),
+    )
+
+    assert response.status_code == 201
+    assert response.json()["answer_status"] == "answered"
+    assert response.json()["citations"]
+    assert response.json()["external_resources"] == []
+    event = next(
+        item
+        for item in response.json()["trace"]
+        if item["node"] == "bilibili_link_discovery"
+    )
+    assert event["status"] == "failed"
+    assert event["result"] == {
+        "failure_code": "bilibili_link_discovery_failed",
+        "external_resources_separate": True,
+    }
+    assert "private Bilibili adapter detail" not in response.text
 
 
 def test_unconfirmed_capabilities_fail_closed(tmp_path: Path) -> None:
@@ -132,8 +191,8 @@ def test_unconfirmed_capabilities_fail_closed(tmp_path: Path) -> None:
 
     result = client.post("/api/v1/workflow-runs", json=request)
 
-    assert result.status_code == 503
-    assert result.json()["error"]["capability"] == "user_key"
+    assert result.status_code == 401
+    assert result.json()["error"]["code"] == "auth_required"
 
 
 def test_non_fixture_course_stays_closed(tmp_path: Path) -> None:
@@ -165,18 +224,6 @@ def test_mock_retrieval_fails_closed_when_fixture_contract_is_invalid(
 
     with pytest.raises(FixtureContractViolation, match="failed validation"):
         gateway.search(["linear_algebra"], "矩阵的秩")
-
-
-def test_bilibili_runtime_rejects_a_non_fixture_catalog(tmp_path: Path) -> None:
-    payload = json.loads(
-        (FIXTURE_ROOT / "bilibili" / "catalog.json").read_text(encoding="utf-8")
-    )
-    payload["fixture_only"] = False
-    catalog_path = tmp_path / "catalog.json"
-    catalog_path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
-
-    with pytest.raises(FixtureContractViolation, match="failed validation"):
-        FixtureBilibiliCatalog(catalog_path)
 
 
 def test_source_authorization_guard_runs_before_model_call(tmp_path: Path) -> None:

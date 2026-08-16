@@ -304,16 +304,8 @@
       "additionalProperties": false,
       "properties": {
         "catalog_version": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Catalog Version"
+          "title": "Catalog Version",
+          "type": "null"
         },
         "course_id": {
           "title": "Course Id",
@@ -322,6 +314,11 @@
         "evidence_role": {
           "const": "supplementary_only",
           "title": "Evidence Role",
+          "type": "string"
+        },
+        "generated_at": {
+          "format": "date-time",
+          "title": "Generated At",
           "type": "string"
         },
         "matched_topic": {
@@ -333,33 +330,28 @@
           "title": "Platform",
           "type": "string"
         },
+        "query_keywords": {
+          "items": {
+            "maxLength": 32,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "title": "Query Keywords",
+          "type": "array"
+        },
         "resource_id": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Resource Id"
+          "title": "Resource Id",
+          "type": "null"
         },
         "resource_type": {
-          "enum": [
-            "video",
-            "search"
-          ],
+          "const": "search",
           "title": "Resource Type",
           "type": "string"
         },
         "review_status": {
-          "enum": [
-            "reviewed",
-            "pending",
-            "rejected",
-            "unavailable"
-          ],
+          "const": "unreviewed_live_search",
           "title": "Review Status",
           "type": "string"
         },
@@ -371,11 +363,12 @@
           "format": "uri",
           "maxLength": 2083,
           "minLength": 1,
-          "title": "Url",
+          "pattern": "^https://search\\.bilibili\\.com/all\\?keyword=[^&#]+$",
           "type": "string"
         }
       },
       "required": [
+        "resource_id",
         "course_id",
         "platform",
         "resource_type",
@@ -383,6 +376,9 @@
         "url",
         "matched_topic",
         "review_status",
+        "catalog_version",
+        "query_keywords",
+        "generated_at",
         "evidence_role"
       ],
       "title": "ExternalResource",
@@ -514,7 +510,10 @@
         "adapter": {
           "anyOf": [
             {
-              "const": "sqlite_mock",
+              "enum": [
+                "sqlite_mock",
+                "sqlite"
+              ],
               "type": "string"
             },
             {
@@ -523,6 +522,22 @@
           ],
           "default": null,
           "title": "Adapter"
+        },
+        "auth_mode": {
+          "anyOf": [
+            {
+              "enum": [
+                "mock",
+                "github_oauth"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Auth Mode"
         },
         "availability_status": {
           "anyOf": [
@@ -1030,6 +1045,7 @@
       "items": {
         "$ref": "#/$defs/ExternalResource"
       },
+      "maxItems": 1,
       "title": "External Resources",
       "type": "array"
     },

@@ -1,15 +1,12 @@
 from __future__ import annotations
 
-import json
 import re
 from pathlib import Path
 
-from jsonschema import Draft202012Validator
-from jsonschema.exceptions import SchemaError, ValidationError as JsonSchemaValidationError
 from scut_senior_worker.corpus_validator import parse_markdown, validate_corpus
 
-from ..contracts import ExternalResource, WorkflowRunRequest
-from ..paths import CONTRACT_ROOT, FIXTURE_ROOT
+from ..contracts import WorkflowRunRequest
+from ..paths import FIXTURE_ROOT
 from ..ports import GeneratedAnswer, RetrievedSource, UserIdentity
 from ..registry import CourseRegistry
 
@@ -71,7 +68,8 @@ class MockModelGateway:
                 repository_answer=(
                     "迭代 0 Mock 未找到可用的 passed Fixture。"
                     "这只表示契约测试资料不足，不代表真实课程资料结论。"
-                )
+                ),
+                bilibili_search_keywords=("矩阵的秩", "初等行变换"),
             )
         source = sources[0]
         preview = re.sub(r"\s+", " ", source.text).strip()[:180]
@@ -85,71 +83,8 @@ class MockModelGateway:
             repository_answer=answer,
             related_topics=("矩阵", "线性方程组"),
             related_questions=("如何判断矩阵的秩？",),
+            bilibili_search_keywords=("矩阵的秩", "初等行变换"),
         )
-
-
-class FixtureBilibiliCatalog:
-    def __init__(self, path: Path | None = None):
-        self.path = path or FIXTURE_ROOT / "bilibili" / "catalog.json"
-        schema_path = (
-            CONTRACT_ROOT / "schemas" / "bilibili-fixture-catalog.schema.json"
-        )
-        try:
-            schema = json.loads(schema_path.read_text(encoding="utf-8"))
-            payload = json.loads(self.path.read_text(encoding="utf-8"))
-            Draft202012Validator.check_schema(schema)
-            Draft202012Validator(schema).validate(payload)
-        except (
-            OSError,
-            json.JSONDecodeError,
-            SchemaError,
-            JsonSchemaValidationError,
-        ) as exc:
-            raise FixtureContractViolation(
-                f"synthetic Bilibili fixture failed validation: {exc}"
-            ) from exc
-        self._payload = payload
-
-    @property
-    def catalog_version(self) -> str:
-        return self._payload.get("catalog_version", "fixture-unknown")
-
-    def match(
-        self, course_id: str, query: str, limit: int = 3
-    ) -> list[ExternalResource]:
-        normalized_query = query.casefold()
-        matches: list[ExternalResource] = []
-        for item in self._payload.get("resources", []):
-            if item.get("course_id") != course_id:
-                continue
-            if item.get("review_status") != "reviewed":
-                continue
-            terms = [
-                item.get("knowledge_point", ""),
-                *item.get("aliases", []),
-                *item.get("keywords", []),
-            ]
-            if terms and not any(
-                str(term).casefold() in normalized_query for term in terms if term
-            ):
-                continue
-            matches.append(
-                ExternalResource(
-                    resource_id=item.get("resource_id"),
-                    course_id=course_id,
-                    platform="bilibili",
-                    resource_type="video",
-                    title=item["title"],
-                    url=item.get("canonical_url") or item["url"],
-                    matched_topic=item.get("knowledge_point", ""),
-                    review_status=item["review_status"],
-                    catalog_version=self.catalog_version,
-                    evidence_role="supplementary_only",
-                )
-            )
-            if len(matches) >= min(max(limit, 0), 3):
-                break
-        return matches
 
 
 def _source_from_validated_fixture(body: str, record: dict[str, object], parsed) -> RetrievedSource:

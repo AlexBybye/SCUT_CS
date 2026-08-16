@@ -1,0 +1,1488 @@
+{
+  "$defs": {
+    "AnswerBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "title": "Content",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/AnswerBlockType"
+        }
+      },
+      "required": [
+        "type",
+        "content"
+      ],
+      "title": "AnswerBlock",
+      "type": "object"
+    },
+    "AnswerBlockType": {
+      "enum": [
+        "repository",
+        "user_material",
+        "general",
+        "personalized_analysis"
+      ],
+      "title": "AnswerBlockType",
+      "type": "string"
+    },
+    "AnswerMode": {
+      "enum": [
+        "concise",
+        "detailed",
+        "example",
+        "step_by_step"
+      ],
+      "title": "AnswerMode",
+      "type": "string"
+    },
+    "AnswerStatus": {
+      "enum": [
+        "answered",
+        "partial",
+        "insufficient_evidence",
+        "needs_clarification",
+        "refused",
+        "error"
+      ],
+      "title": "AnswerStatus",
+      "type": "string"
+    },
+    "Citation": {
+      "additionalProperties": false,
+      "properties": {
+        "chunk_id": {
+          "title": "Chunk Id",
+          "type": "string"
+        },
+        "citation_id": {
+          "title": "Citation Id",
+          "type": "string"
+        },
+        "course_id": {
+          "title": "Course Id",
+          "type": "string"
+        },
+        "course_title": {
+          "title": "Course Title",
+          "type": "string"
+        },
+        "heading_path": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Heading Path",
+          "type": "array"
+        },
+        "locator_end": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Locator End"
+        },
+        "locator_start": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Locator Start"
+        },
+        "locator_type": {
+          "enum": [
+            "page",
+            "slide",
+            "heading",
+            "question",
+            "none"
+          ],
+          "title": "Locator Type",
+          "type": "string"
+        },
+        "question_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question Id"
+        },
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_title": {
+          "title": "Source Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "citation_id",
+        "chunk_id",
+        "course_id",
+        "course_title",
+        "source_id",
+        "source_title",
+        "locator_type"
+      ],
+      "title": "Citation",
+      "type": "object"
+    },
+    "CourseScope": {
+      "enum": [
+        "single",
+        "cross"
+      ],
+      "title": "CourseScope",
+      "type": "string"
+    },
+    "EvidenceStatus": {
+      "enum": [
+        "sufficient",
+        "partial",
+        "insufficient",
+        "not_evaluated"
+      ],
+      "title": "EvidenceStatus",
+      "type": "string"
+    },
+    "ExamReviewPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "available_hours": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 10000,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Available Hours"
+        },
+        "exam_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exam Date"
+        },
+        "goals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Goals",
+          "type": "array"
+        },
+        "syllabus": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Syllabus"
+        },
+        "weak_topics": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Weak Topics",
+          "type": "array"
+        }
+      },
+      "required": [
+        "goals",
+        "weak_topics"
+      ],
+      "title": "ExamReviewPayload",
+      "type": "object"
+    },
+    "ExternalResource": {
+      "additionalProperties": false,
+      "properties": {
+        "catalog_version": {
+          "title": "Catalog Version",
+          "type": "null"
+        },
+        "course_id": {
+          "title": "Course Id",
+          "type": "string"
+        },
+        "evidence_role": {
+          "const": "supplementary_only",
+          "title": "Evidence Role",
+          "type": "string"
+        },
+        "generated_at": {
+          "format": "date-time",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "matched_topic": {
+          "title": "Matched Topic",
+          "type": "string"
+        },
+        "platform": {
+          "const": "bilibili",
+          "title": "Platform",
+          "type": "string"
+        },
+        "query_keywords": {
+          "items": {
+            "maxLength": 32,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "title": "Query Keywords",
+          "type": "array"
+        },
+        "resource_id": {
+          "title": "Resource Id",
+          "type": "null"
+        },
+        "resource_type": {
+          "const": "search",
+          "title": "Resource Type",
+          "type": "string"
+        },
+        "review_status": {
+          "const": "unreviewed_live_search",
+          "title": "Review Status",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "resource_id",
+        "course_id",
+        "platform",
+        "resource_type",
+        "title",
+        "url",
+        "matched_topic",
+        "review_status",
+        "catalog_version",
+        "query_keywords",
+        "generated_at",
+        "evidence_role"
+      ],
+      "title": "ExternalResource",
+      "type": "object"
+    },
+    "HelpLevel": {
+      "enum": [
+        "concept",
+        "approach",
+        "step_by_step",
+        "full_explanation",
+        "answer_analysis"
+      ],
+      "title": "HelpLevel",
+      "type": "string"
+    },
+    "KnowledgeQaPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "question": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Question",
+          "type": "string"
+        }
+      },
+      "required": [
+        "question"
+      ],
+      "title": "KnowledgeQaPayload",
+      "type": "object"
+    },
+    "KnowledgeScope": {
+      "enum": [
+        "course_only",
+        "course_first"
+      ],
+      "title": "KnowledgeScope",
+      "type": "string"
+    },
+    "MistakeReviewPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "original_answer": {
+          "maxLength": 40000,
+          "minLength": 1,
+          "title": "Original Answer",
+          "type": "string"
+        },
+        "problem": {
+          "maxLength": 40000,
+          "minLength": 1,
+          "title": "Problem",
+          "type": "string"
+        },
+        "reference_answer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reference Answer"
+        },
+        "review_focus": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Review Focus"
+        }
+      },
+      "required": [
+        "problem",
+        "original_answer"
+      ],
+      "title": "MistakeReviewPayload",
+      "type": "object"
+    },
+    "ModelMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "billing_label": {
+          "title": "Billing Label",
+          "type": "string"
+        },
+        "mock_only": {
+          "title": "Mock Only",
+          "type": "boolean"
+        },
+        "model_id": {
+          "title": "Model Id",
+          "type": "string"
+        },
+        "provider_id": {
+          "title": "Provider Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "provider_id",
+        "model_id",
+        "billing_label",
+        "mock_only"
+      ],
+      "title": "ModelMetadata",
+      "type": "object"
+    },
+    "ModelSource": {
+      "enum": [
+        "platform_default",
+        "user_key"
+      ],
+      "title": "ModelSource",
+      "type": "string"
+    },
+    "ProblemTutorPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "help_level": {
+          "$ref": "#/$defs/HelpLevel"
+        },
+        "problem": {
+          "maxLength": 40000,
+          "minLength": 1,
+          "title": "Problem",
+          "type": "string"
+        },
+        "problem_source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Problem Source"
+        },
+        "user_answer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "User Answer"
+        }
+      },
+      "required": [
+        "problem",
+        "help_level"
+      ],
+      "title": "ProblemTutorPayload",
+      "type": "object"
+    },
+    "RunStatus": {
+      "enum": [
+        "created",
+        "running",
+        "completed",
+        "interrupted",
+        "failed"
+      ],
+      "title": "RunStatus",
+      "type": "string"
+    },
+    "TemporaryMaterialReadingPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "material_text": {
+          "maxLength": 100000,
+          "minLength": 1,
+          "title": "Material Text",
+          "type": "string"
+        },
+        "reading_goal": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reading Goal"
+        }
+      },
+      "required": [
+        "material_text"
+      ],
+      "title": "TemporaryMaterialReadingPayload",
+      "type": "object"
+    },
+    "Tone": {
+      "enum": [
+        "teaching_assistant",
+        "study_partner",
+        "senior_student"
+      ],
+      "title": "Tone",
+      "type": "string"
+    },
+    "TraceEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "duration_ms": {
+          "minimum": 0,
+          "title": "Duration Ms",
+          "type": "integer"
+        },
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "node": {
+          "pattern": "^[a-z][a-z0-9_]{0,99}$",
+          "title": "Node",
+          "type": "string"
+        },
+        "result": {
+          "$ref": "#/$defs/TraceSafeResult"
+        },
+        "sequence": {
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "status": {
+          "$ref": "#/$defs/TraceEventStatus"
+        }
+      },
+      "required": [
+        "event_id",
+        "sequence",
+        "node",
+        "status",
+        "duration_ms",
+        "result"
+      ],
+      "title": "TraceEvent",
+      "type": "object"
+    },
+    "TraceEventStatus": {
+      "enum": [
+        "started",
+        "completed",
+        "failed",
+        "skipped"
+      ],
+      "title": "TraceEventStatus",
+      "type": "string"
+    },
+    "TraceSafeResult": {
+      "additionalProperties": false,
+      "description": "Student-visible Trace fields; unknown keys fail closed.",
+      "properties": {
+        "accepted_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Accepted Count"
+        },
+        "adapter": {
+          "anyOf": [
+            {
+              "enum": [
+                "sqlite_mock",
+                "sqlite"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Adapter"
+        },
+        "auth_mode": {
+          "anyOf": [
+            {
+              "enum": [
+                "mock",
+                "github_oauth"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Auth Mode"
+        },
+        "availability_status": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z][a-z0-9_]{0,99}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Availability Status"
+        },
+        "billing_label": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z][a-z0-9_]{0,99}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Billing Label"
+        },
+        "cache_hit": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cache Hit"
+        },
+        "candidate_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Candidate Count"
+        },
+        "candidate_order": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Candidate Order"
+        },
+        "catalog_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Catalog Version"
+        },
+        "course_ids": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Course Ids"
+        },
+        "course_scope": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CourseScope"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "degradation_code": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z][a-z0-9_]{0,99}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Degradation Code"
+        },
+        "evidence_status": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EvidenceStatus"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "external_resources_separate": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "External Resources Separate"
+        },
+        "failure_code": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z][a-z0-9_]{0,99}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Failure Code"
+        },
+        "fixture_only": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fixture Only"
+        },
+        "hit_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Hit Count"
+        },
+        "knowledge_scope": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/KnowledgeScope"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "mode": {
+          "anyOf": [
+            {
+              "enum": [
+                "mock",
+                "synthetic_fixture_only"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mode"
+        },
+        "model_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model Id"
+        },
+        "model_source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ModelSource"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "normalized_topics": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalized Topics"
+        },
+        "provider_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Provider Id"
+        },
+        "real_model_called": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Real Model Called"
+        },
+        "reason_code": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z][a-z0-9_]{0,99}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason Code"
+        },
+        "reranked_order": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reranked Order"
+        },
+        "retry_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Retry Count"
+        },
+        "rewritten_query": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rewritten Query"
+        },
+        "sources": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/TraceSourceSummary"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sources"
+        },
+        "stored": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stored"
+        },
+        "unreviewed_search_returned": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unreviewed Search Returned"
+        },
+        "used_general_knowledge": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Used General Knowledge"
+        },
+        "workflow_type": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/WorkflowType"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "title": "TraceSafeResult",
+      "type": "object"
+    },
+    "TraceSourceSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "course_id": {
+          "title": "Course Id",
+          "type": "string"
+        },
+        "locator": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Locator"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "course_id",
+        "title"
+      ],
+      "title": "TraceSourceSummary",
+      "type": "object"
+    },
+    "WorkflowAttempt": {
+      "additionalProperties": false,
+      "properties": {
+        "attempt_group_id": {
+          "format": "uuid",
+          "title": "Attempt Group Id",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "expires_at": {
+          "format": "date-time",
+          "title": "Expires At",
+          "type": "string"
+        },
+        "regenerated_from_run_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Regenerated From Run Id"
+        },
+        "request": {
+          "$ref": "#/$defs/WorkflowRunRequest"
+        },
+        "result": {
+          "$ref": "#/$defs/WorkflowResult"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        },
+        "workflow_run_id": {
+          "format": "uuid",
+          "title": "Workflow Run Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "workflow_run_id",
+        "attempt_group_id",
+        "regenerated_from_run_id",
+        "request",
+        "result",
+        "created_at",
+        "updated_at",
+        "expires_at"
+      ],
+      "title": "WorkflowAttempt",
+      "type": "object"
+    },
+    "WorkflowResult": {
+      "additionalProperties": false,
+      "properties": {
+        "answer_blocks": {
+          "items": {
+            "$ref": "#/$defs/AnswerBlock"
+          },
+          "title": "Answer Blocks",
+          "type": "array"
+        },
+        "answer_id": {
+          "format": "uuid",
+          "title": "Answer Id",
+          "type": "string"
+        },
+        "answer_status": {
+          "$ref": "#/$defs/AnswerStatus"
+        },
+        "availability_status": {
+          "title": "Availability Status",
+          "type": "string"
+        },
+        "citations": {
+          "items": {
+            "$ref": "#/$defs/Citation"
+          },
+          "title": "Citations",
+          "type": "array"
+        },
+        "conversation_id": {
+          "format": "uuid",
+          "title": "Conversation Id",
+          "type": "string"
+        },
+        "corpus_version": {
+          "title": "Corpus Version",
+          "type": "string"
+        },
+        "course_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Course Ids",
+          "type": "array"
+        },
+        "course_pack_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Course Pack Version"
+        },
+        "course_scope": {
+          "$ref": "#/$defs/CourseScope"
+        },
+        "coverage_gaps": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Coverage Gaps",
+          "type": "array"
+        },
+        "evidence_status": {
+          "$ref": "#/$defs/EvidenceStatus"
+        },
+        "external_resources": {
+          "items": {
+            "$ref": "#/$defs/ExternalResource"
+          },
+          "maxItems": 1,
+          "title": "External Resources",
+          "type": "array"
+        },
+        "general_supplement": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "General Supplement"
+        },
+        "message_id": {
+          "format": "uuid",
+          "title": "Message Id",
+          "type": "string"
+        },
+        "model": {
+          "$ref": "#/$defs/ModelMetadata"
+        },
+        "model_source": {
+          "$ref": "#/$defs/ModelSource"
+        },
+        "related_questions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Questions",
+          "type": "array"
+        },
+        "related_topics": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Topics",
+          "type": "array"
+        },
+        "repository_answer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Repository Answer"
+        },
+        "run_status": {
+          "$ref": "#/$defs/RunStatus"
+        },
+        "trace": {
+          "items": {
+            "$ref": "#/$defs/TraceEvent"
+          },
+          "title": "Trace",
+          "type": "array"
+        },
+        "workflow_output": {
+          "additionalProperties": true,
+          "title": "Workflow Output",
+          "type": "object"
+        },
+        "workflow_run_id": {
+          "format": "uuid",
+          "title": "Workflow Run Id",
+          "type": "string"
+        },
+        "workflow_type": {
+          "$ref": "#/$defs/WorkflowType"
+        },
+        "workflow_version": {
+          "title": "Workflow Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "workflow_run_id",
+        "conversation_id",
+        "message_id",
+        "answer_id",
+        "run_status",
+        "answer_status",
+        "workflow_type",
+        "course_scope",
+        "course_ids",
+        "repository_answer",
+        "general_supplement",
+        "answer_blocks",
+        "workflow_output",
+        "evidence_status",
+        "citations",
+        "related_topics",
+        "related_questions",
+        "external_resources",
+        "coverage_gaps",
+        "trace",
+        "corpus_version",
+        "course_pack_version",
+        "workflow_version",
+        "model_source",
+        "model",
+        "availability_status"
+      ],
+      "title": "WorkflowResult",
+      "type": "object"
+    },
+    "WorkflowRunRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_course_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Allowed Course Ids",
+          "type": "array"
+        },
+        "answer_mode": {
+          "$ref": "#/$defs/AnswerMode"
+        },
+        "attachments": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Attachments",
+          "type": "array"
+        },
+        "context_refs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Context Refs",
+          "type": "array"
+        },
+        "conversation_id": {
+          "format": "uuid",
+          "title": "Conversation Id",
+          "type": "string"
+        },
+        "course_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Course Id"
+        },
+        "course_scope": {
+          "$ref": "#/$defs/CourseScope"
+        },
+        "include_bilibili_resources": {
+          "title": "Include Bilibili Resources",
+          "type": "boolean"
+        },
+        "knowledge_scope": {
+          "$ref": "#/$defs/KnowledgeScope"
+        },
+        "model_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Model Id",
+          "type": "string"
+        },
+        "model_source": {
+          "$ref": "#/$defs/ModelSource"
+        },
+        "provider_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Provider Id",
+          "type": "string"
+        },
+        "tone": {
+          "$ref": "#/$defs/Tone"
+        },
+        "user_input": {
+          "maxLength": 100000,
+          "minLength": 1,
+          "title": "User Input",
+          "type": "string"
+        },
+        "workflow_payload": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/KnowledgeQaPayload"
+            },
+            {
+              "$ref": "#/$defs/ExamReviewPayload"
+            },
+            {
+              "$ref": "#/$defs/ProblemTutorPayload"
+            },
+            {
+              "$ref": "#/$defs/MistakeReviewPayload"
+            },
+            {
+              "$ref": "#/$defs/TemporaryMaterialReadingPayload"
+            }
+          ],
+          "title": "Workflow Payload"
+        },
+        "workflow_type": {
+          "$ref": "#/$defs/WorkflowType"
+        }
+      },
+      "required": [
+        "workflow_type",
+        "course_scope",
+        "allowed_course_ids",
+        "conversation_id",
+        "model_source",
+        "provider_id",
+        "model_id",
+        "user_input",
+        "answer_mode",
+        "tone",
+        "knowledge_scope",
+        "include_bilibili_resources",
+        "context_refs",
+        "attachments",
+        "workflow_payload"
+      ],
+      "title": "WorkflowRunRequest",
+      "type": "object"
+    },
+    "WorkflowType": {
+      "enum": [
+        "knowledge_qa",
+        "exam_review",
+        "problem_tutor",
+        "mistake_review",
+        "temporary_material_reading"
+      ],
+      "title": "WorkflowType",
+      "type": "string"
+    }
+  },
+  "$id": "https://scut-senior.local/contracts/v1/conversation-detail.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "conversation_id": {
+      "format": "uuid",
+      "title": "Conversation Id",
+      "type": "string"
+    },
+    "course_id": {
+      "title": "Course Id",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "expires_at": {
+      "format": "date-time",
+      "title": "Expires At",
+      "type": "string"
+    },
+    "mock_only": {
+      "const": true,
+      "default": true,
+      "title": "Mock Only",
+      "type": "boolean"
+    },
+    "runs": {
+      "items": {
+        "$ref": "#/$defs/WorkflowAttempt"
+      },
+      "title": "Runs",
+      "type": "array"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "title": "Updated At",
+      "type": "string"
+    },
+    "user_id": {
+      "title": "User Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "conversation_id",
+    "user_id",
+    "course_id",
+    "title",
+    "created_at",
+    "updated_at",
+    "expires_at"
+  ],
+  "title": "ConversationDetail",
+  "type": "object"
+}

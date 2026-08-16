@@ -12,6 +12,67 @@ def test_committed_workflow_schemas_match_executable_pydantic_contracts() -> Non
     assert check_schema_files() == []
 
 
+def test_model_catalog_schema_freezes_health_and_credential_fields() -> None:
+    schema = json.loads(render_schema_files()["model-catalog.schema.json"])
+
+    assert {
+        "catalog_version",
+        "platform_credential_configured",
+        "real_platform_default_available",
+        "health_checked_at",
+        "byok_available",
+        "byok_catalog_version",
+        "byok_providers",
+        "quota_notice",
+        "quota_exhausted_message",
+        "models",
+    } == set(schema["required"])
+    model_entry = schema["$defs"]["PublicModelCatalogEntry"]
+    assert "last_checked_at" in model_entry["required"]
+    assert "health_check_required" in str(
+        model_entry["properties"]["availability_status"]
+    )
+
+
+def test_model_credential_schemas_never_expose_ciphertext_or_plaintext_status() -> None:
+    rendered = render_schema_files()
+    status = json.loads(rendered["model-credential-list.schema.json"])
+    upsert = json.loads(rendered["model-credential-upsert.schema.json"])
+
+    status_entry = status["$defs"]["ModelCredentialStatus"]
+    assert set(status_entry["required"]) == {
+        "provider_id",
+        "model_id",
+        "configured",
+        "masked_key",
+        "expires_at",
+    }
+    serialized = json.dumps(status, ensure_ascii=False)
+    assert "ciphertext" not in serialized
+    assert "nonce" not in serialized
+    assert upsert["properties"]["api_key"]["format"] == "password"
+    assert upsert["properties"]["api_key"]["writeOnly"] is True
+    assert set(upsert["properties"]) == {"api_key"}
+
+
+def test_conversation_schema_exposes_linked_attempts_instead_of_bare_results() -> None:
+    schema = json.loads(render_schema_files()["conversation-detail.schema.json"])
+
+    assert schema["properties"]["runs"]["items"] == {
+        "$ref": "#/$defs/WorkflowAttempt"
+    }
+    assert {
+        "workflow_run_id",
+        "attempt_group_id",
+        "regenerated_from_run_id",
+        "request",
+        "result",
+        "created_at",
+        "updated_at",
+        "expires_at",
+    } == set(schema["$defs"]["WorkflowAttempt"]["required"])
+
+
 def test_workflow_result_schema_requires_the_complete_plan_v1_surface() -> None:
     schema = json.loads(render_schema_files()["workflow-result.schema.json"])
 
@@ -118,3 +179,45 @@ def test_exported_citation_schema_rejects_precision_when_locator_is_none() -> No
     }
 
     assert list(Draft202012Validator(citation_schema).iter_errors(payload))
+
+
+def test_exported_bilibili_search_schema_rejects_non_bilibili_url() -> None:
+    schema = json.loads(render_schema_files()["workflow-result.schema.json"])
+    resource_schema = schema["$defs"]["ExternalResource"]
+    payload = {
+        "resource_id": None,
+        "course_id": "linear_algebra",
+        "platform": "bilibili",
+        "resource_type": "search",
+        "title": "在哔哩哔哩搜索：矩阵的秩",
+        "url": "https://evil.example/all?keyword=rank",
+        "matched_topic": "矩阵的秩",
+        "review_status": "unreviewed_live_search",
+        "catalog_version": None,
+        "query_keywords": ["矩阵的秩"],
+        "generated_at": "2026-08-15T12:00:00Z",
+        "evidence_role": "supplementary_only",
+    }
+
+    assert list(Draft202012Validator(resource_schema).iter_errors(payload))
+
+
+def test_exported_workflow_resource_schema_rejects_video_direct_link() -> None:
+    schema = json.loads(render_schema_files()["workflow-result.schema.json"])
+    resource_schema = schema["$defs"]["ExternalResource"]
+    payload = {
+        "resource_id": "reviewed-1",
+        "course_id": "linear_algebra",
+        "platform": "bilibili",
+        "resource_type": "video",
+        "title": "具体视频",
+        "url": "https://www.bilibili.com/video/BV1FIXTURE01",
+        "matched_topic": "矩阵的秩",
+        "review_status": "reviewed",
+        "catalog_version": "fixture-v1",
+        "query_keywords": ["矩阵的秩"],
+        "generated_at": None,
+        "evidence_role": "supplementary_only",
+    }
+
+    assert list(Draft202012Validator(resource_schema).iter_errors(payload))

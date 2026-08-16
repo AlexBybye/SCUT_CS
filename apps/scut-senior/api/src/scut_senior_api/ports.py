@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from datetime import datetime
 from typing import Protocol
 from uuid import UUID
 
@@ -8,6 +9,7 @@ from .contracts import (
     ConversationDetail,
     ConversationSummary,
     ExternalResource,
+    WorkflowAttempt,
     WorkflowResult,
     WorkflowRunRequest,
 )
@@ -46,6 +48,19 @@ class GeneratedAnswer:
     repository_answer: str
     related_topics: tuple[str, ...] = ()
     related_questions: tuple[str, ...] = ()
+    bilibili_search_keywords: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True, slots=True)
+class StoredModelCredential:
+    user_id: UUID
+    auth_session_id: UUID
+    provider_id: str
+    ciphertext: bytes = field(repr=False)
+    nonce: bytes = field(repr=False)
+    algorithm: str
+    key_version: int
+    expires_at: datetime
 
 
 class IdentityProvider(Protocol):
@@ -62,29 +77,85 @@ class ModelGateway(Protocol):
     ) -> GeneratedAnswer: ...
 
 
-class ExternalResourceCatalog(Protocol):
-    @property
-    def catalog_version(self) -> str: ...
+class UserKeyModelGateway(Protocol):
+    def generate(
+        self,
+        *,
+        api_key: str,
+        request: WorkflowRunRequest,
+        sources: list[RetrievedSource],
+    ) -> GeneratedAnswer: ...
 
-    def match(
-        self, course_id: str, query: str, limit: int = 3
+
+class ExternalResourceDiscovery(Protocol):
+    def discover(
+        self,
+        *,
+        course_id: str,
+        course_title: str,
+        keywords: tuple[str, ...],
     ) -> list[ExternalResource]: ...
 
 
 class WorkflowRepository(Protocol):
     def create_conversation(
-        self, user_id: str, course_id: str
+        self, user_id: str, course_id: str, title: str
     ) -> ConversationSummary: ...
+
+    def list_conversations(self, user_id: str) -> list[ConversationSummary]: ...
 
     def get_conversation(
         self, user_id: str, conversation_id: UUID
     ) -> ConversationDetail | None: ...
 
+    def rename_conversation(
+        self, user_id: str, conversation_id: UUID, title: str
+    ) -> ConversationSummary | None: ...
+
+    def delete_conversation(self, user_id: str, conversation_id: UUID) -> bool: ...
+
     def save_run(
-        self, user_id: str, request: WorkflowRunRequest, result: WorkflowResult
+        self,
+        user_id: str,
+        request: WorkflowRunRequest,
+        result: WorkflowResult,
+        *,
+        attempt_group_id: UUID | None = None,
+        regenerated_from_run_id: UUID | None = None,
+        auth_session_id: UUID | None = None,
     ) -> None: ...
 
     def get_run(self, user_id: str, run_id: UUID) -> WorkflowResult | None: ...
+
+    def get_attempt(self, user_id: str, run_id: UUID) -> WorkflowAttempt | None: ...
+
+
+class ModelCredentialRepository(Protocol):
+    def list_model_credentials(
+        self, user_id: UUID, auth_session_id: UUID
+    ) -> list[StoredModelCredential]: ...
+
+    def get_model_credential(
+        self, user_id: UUID, auth_session_id: UUID, provider_id: str
+    ) -> StoredModelCredential | None: ...
+
+    def upsert_model_credential(
+        self,
+        *,
+        user_id: UUID,
+        auth_session_id: UUID,
+        provider_id: str,
+        ciphertext: bytes,
+        nonce: bytes,
+        algorithm: str,
+        key_version: int,
+    ) -> StoredModelCredential: ...
+
+    def delete_model_credential(
+        self, user_id: UUID, auth_session_id: UUID, provider_id: str
+    ) -> bool: ...
+
+    def session_is_active(self, user_id: UUID, auth_session_id: UUID) -> bool: ...
 
 
 class VectorIndex(Protocol):
@@ -114,4 +185,3 @@ class DisabledCapability:
             self.capability,
             f"{self.capability} is disabled until its decision gate is confirmed",
         )
-

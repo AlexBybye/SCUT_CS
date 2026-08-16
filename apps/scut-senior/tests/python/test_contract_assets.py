@@ -117,6 +117,7 @@ def test_shared_enums_are_exact() -> None:
     ]
     assert set(payload["manifest_status"]) == MANIFEST_STATUSES
     assert set(payload["locator_type"]) == LOCATOR_TYPES - {""}
+    assert payload["bilibili_review_status"] == ["unreviewed_live_search"]
 
 
 def test_evaluation_schemas_validate_exactly_seven_fixture_categories() -> None:
@@ -161,28 +162,6 @@ def test_evaluation_schemas_validate_exactly_seven_fixture_categories() -> None:
     )
     invalid_cross["course_id"] = "linear_algebra"
     assert list(validator.iter_errors(invalid_cross))
-
-
-def test_bilibili_catalog_is_fixture_only_and_covers_review_states() -> None:
-    schema = _load_json(
-        CONTRACT_ROOT / "schemas" / "bilibili-fixture-catalog.schema.json"
-    )
-    catalog = _load_json(FIXTURE_ROOT / "bilibili" / "catalog.json")
-    Draft202012Validator.check_schema(schema)
-    Draft202012Validator(schema).validate(catalog)
-
-    assert catalog["fixture_only"] is True
-    assert {resource["review_status"] for resource in catalog["resources"]} == {
-        "reviewed",
-        "pending",
-        "rejected",
-        "unavailable",
-    }
-    assert [
-        resource["resource_id"]
-        for resource in catalog["resources"]
-        if resource["review_status"] == "reviewed"
-    ] == ["fixture-linear-algebra-reviewed"]
 
 
 def test_corpus_fixture_is_synthetic_and_has_only_passed_and_pending() -> None:

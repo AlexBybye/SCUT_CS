@@ -1,6 +1,6 @@
 # SCUT 老学长
 
-这里是 SCUT 老学长的唯一应用源码目录。当前只完成迭代 0 的契约与 Mock 工程基座，目的是验证：
+这里是 SCUT 老学长的唯一应用源码目录。迭代 0 的契约与 Mock 工程基座已经完成；迭代 1 当前新增了本地／测试 GitHub OAuth、固定 7 天服务端会话、资源所有权、SQLite 恢复、受保护的 OpenRouter 平台模型目录、四家 BYOK 会话凭据／固定调用链路和 Bilibili 匿名搜索链接契约。真实 GitHub 凭据联调、用户真实 Key 的供应商实网验证和生产 HTTPS／部署仍未完成。
 
 ```text
 选择课程与 Workflow
@@ -10,12 +10,29 @@
 → 重启后重新读取
 ```
 
-当前页面、身份、模型、检索、Bilibili 目录和 SQLite 都是本地测试适配器。它们不是正式 GitHub OAuth、真实大模型、生产检索、正式视频目录或云端数据库；生产环境会拒绝以 Mock 配置启动。
+默认配置仍使用 Mock 身份、Mock 模型、Fixture 检索和本地 SQLite。显式 `github_oauth` 模式已经在本地／测试中闭合 OAuth `state`、GitHub 数字 ID 映射、7 天服务端会话、安全 Cookie、登出／到期、受保护接口、资源所有权以及 SQLite 重启／备份恢复；测试使用可注入回调和替身，不等于已用真实 GitHub 凭据完成线上联调。模型会在同一次结构化回答中给出 0～3 个聚焦词；关键词清洗后非空时，后端只固定生成 1 条 Bilibili 匿名搜索链接，不返回视频直链，不访问 Bilibili API，也不抓取搜索结果。项目不建设、审核或维护任何具体 Bilibili 视频资产。生产环境在真实 HTTPS、凭据和部署边界未验收前继续拒绝启动。
+
+平台每日免费额度目录固定登记三项模型，页面显示公司名并由用户显式选择：
+
+- Google · Gemma 4 26B A4B；
+- Dots Studio · Dots3 Note Preview；
+- NVIDIA · Nemotron 3 Super 120B A12B。
+
+该通道每日刷新但不是无限额度。额度耗尽、分钟限流或上游繁忙会分别报错，不会自动切换模型、用户 Key 或付费端点。
+
+BYOK 首批每家只保留一个固定目录模型：
+
+- OpenRouter：`deepseek/deepseek-v4-flash-0731`（当日 OpenRouter 周榜第 1）；
+- DeepSeek：`deepseek-v4-flash`（官方稳定别名）；
+- 硅基流动（SiliconFlow）：`Pro/zai-org/GLM-4.7`（2026-08-16 官方 Chat Completions 默认示例）；
+- 智谱（Zhipu）：`glm-5.2`（2026-08-16 当前可调用旗舰与 OpenAI 兼容示例；GLM-5.3 当日仍未开放 API）。
+
+四家卡片始终显示，地址和模型均由服务端固定，不需要也不允许用户选择地区或地址、填写 `base_url` 或修改 `model_id`。服务端满足 GitHub OAuth、SQLite 和 AES-256-GCM 主密钥条件后将四家标记为启用；只有当前登录会话已保存对应 Key 的模型才进入可选列表，保存 Key 后也不会自动切换模型。Key 密文绑定 `user_id + auth_session_id + provider_id`，不晚于 7 天登录会话到期，并在删除、登出、到期或备份恢复失效会话时清理。自动化测试通过注入 HTTP 替身验证固定路由和安全错误边界，不代表已持有用户供应商账号或形成真实 Key 的实网证据。
 
 ## 目录
 
 - `web/`：Vue 3 学生端 Mock 界面；
-- `api/`：FastAPI 契约、端口、Mock 运行链路和本地 SQLite 适配器；
+- `api/`：FastAPI 契约、本地／测试 OAuth 与会话链路、Mock Workflow 和 SQLite 适配器；
 - `worker/`：manifest/frontmatter/locator 校验入口；
 - `packages/`：V1 枚举、课程注册表、Workflow 和评测契约；
 - `infra/`：不含真实 Secret 的 SWR→ECS 部署骨架；
@@ -44,6 +61,38 @@ npm run dev
 
 默认 API 为 `http://127.0.0.1:8000`，Vite 开发服务器会代理 `/api`。本地 SQLite 写入 `apps/scut-senior/.local/`，不会提交到 Git。
 
+### 本地验证 OpenRouter 平台通道
+
+先在 OpenRouter 控制台创建一枚新的服务端 Key，并只通过本机环境变量提供；不要把 Key 写入 `.env.example`、Git、前端或聊天记录。真实平台通道会消耗共享额度，因此开发环境也必须同时启用 GitHub OAuth 与正式 SQLite 身份存储，不能搭配匿名 Mock 身份：
+
+```bash
+export SCUT_SENIOR_APP_ENV=development
+export SCUT_SENIOR_IDENTITY_MODE=github_oauth
+export SCUT_SENIOR_STORAGE_MODE=sqlite
+export SCUT_SENIOR_DATABASE_PATH='.local/iteration-one.db'
+export SCUT_SENIOR_GITHUB_CLIENT_ID='<GITHUB_CLIENT_ID>'
+export SCUT_SENIOR_GITHUB_CLIENT_SECRET='<GITHUB_CLIENT_SECRET>'
+export SCUT_SENIOR_GITHUB_CALLBACK_URL='https://<YOUR_HTTPS_HOST>/api/v1/auth/github/callback'
+export SCUT_SENIOR_POST_LOGIN_REDIRECT_URL='https://<YOUR_HTTPS_HOST>/'
+export SCUT_SENIOR_MODEL_MODE=openrouter_platform
+export SCUT_SENIOR_OPENROUTER_API_KEY='<ROTATED_SERVER_SIDE_KEY>'
+make dev-api
+```
+
+默认 `mock` 模式不读取该变量。`openrouter_platform` 暂时只供受认证的本地开发验证，检索仍是合成 Fixture；模型在公开目录中通过“仍存在、文本输入输出价格为零、支持结构化输出”的健康检查并记录 `last_checked_at` 后才可选择。`SCUT_SENIOR_APP_ENV=production` 仍会拒绝启动。
+
+### 本地验证 BYOK
+
+项目方不需要持有四家供应商账号或余额。服务端只需在真实 GitHub 登录、SQLite 和 HTTPS 边界上额外配置一枚稳定的 32 字节 AES 主密钥；普通用户随后只在页面对应卡片中提交自己的供应商 API Key：
+
+```bash
+openssl rand -base64 32
+export SCUT_SENIOR_BYOK_MASTER_KEY='<PASTE_THE_BASE64_VALUE>'
+export SCUT_SENIOR_BYOK_KEY_VERSION=1
+```
+
+主密钥不能使用供应商 API Key 代替，也不能提交到 Git、写入浏览器或随意更换；正式部署时应进入受保护的运行 Secret。配置满足后四家卡片会显示为“服务端已启用”，但模型仍要等当前登录会话保存对应用户 Key 后才可选择。用户 Key 只通过 `PUT /api/v1/model-credentials/{provider_id}` 提交，返回值只有脱敏状态与到期时间；真实调用只会发往代码内固定的四个地址。没有用户 Key 时不能验证该用户账户的余额、权限或供应商实网响应，但这不影响固定路由、加密、清理和泄漏边界的自动化验收。
+
 ## 单独检出应用目录
 
 仓库含大量普通 Git 大文件和 LFS 对象，仅设置 `GIT_LFS_SKIP_SMUDGE=1` 不足以避免下载。轻量开发应同时使用 partial clone 与 sparse checkout：
@@ -58,13 +107,16 @@ GIT_LFS_SKIP_SMUDGE=1 git checkout master
 
 ## 明确关闭或待确认
 
-- 真实 GitHub OAuth、默认模型池和 BYOK：迭代 1；
+- OpenRouter 三模型平台目录、显式选择、目录健康检查和本地开发调用适配器：迭代 1 已实现；健康检查不发起推理，不能当作真实回答可用性证据；
+- BYOK 固定目录、会话级 AES-256-GCM 保存／替换／删除／清理、四家固定调用和安全错误映射：迭代 1 已在本地／测试实现；未使用真实用户 Key 做四家实网联调；
+- GitHub OAuth：本地／测试适配器、7 天会话、所有权和 SQLite 恢复已实现；真实 GitHub 凭据回调、生产 HTTPS 与部署尚未联调，生产继续 fail-closed；
+- 平台限流状态目前是单进程内存态；多 worker 共享限流、周期清理任务和生产启用仍未完成；
 - 真实 `passed` Markdown、candidate/active 和索引：迭代 2；
 - 真实 Workflow Runtime 与流式 Trace：迭代 3；
-- PostgreSQL、向量索引、对象存储、任务系统、GitHub App、SWR 认证、ECS 灰度/回滚：只保留可替换边界；
+- 华为云部署：预算获批前保持 validation-only／fail-closed，不创建资源；未来首发基线为华南-广州优先的 1C2G、40GB、1～2Mbps，不在 ECS 部署大模型；
+- PostgreSQL、Qdrant、对象存储、任务系统、GitHub App、SWR 认证、ECS 灰度/回滚：首发不购买或只保留可替换边界；
 - 跨课程：契约已冻结，feature flag 默认关闭；
-- Bilibili：仅有 `fixture_only` 测试目录，正式目录和 fallback 未确认；
+- Bilibili：只保留 0～3 个聚焦词和关键词非空时由后端生成的唯一匿名搜索链接；不建设或维护具体视频资产，不返回或抓取具体视频；
 - 正式在线 Chat：迭代 4 验收前不提供地址。
 
-迭代 0 的基线、测试证据和未确认项见 [ITERATION_0_STATUS.md](ITERATION_0_STATUS.md)。
-
+迭代 0 的完整基线见 [ITERATION_0_STATUS.md](ITERATION_0_STATUS.md)；当前平台模型切片和仍未完成的迭代 1 边界见 [ITERATION_1_STATUS.md](ITERATION_1_STATUS.md)。

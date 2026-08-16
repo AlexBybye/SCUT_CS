@@ -6,6 +6,8 @@
 
 本地验收日期：2026-08-14（Asia/Shanghai）
 
+> 2026-08-15 后续产品边界更新：迭代 0 当时创建的 Bilibili 合成目录／Fixture 仅作为历史测试证据保留，不再作为维护契约或后续迭代输入；当前产品只采用模型聚焦词与后端固定匿名搜索入口。
+
 ## 进入检查
 
 - 进入分支：`master`；实施分支：`codex/scut-senior-iteration-0`；
@@ -27,7 +29,7 @@
 - 模型：`mock/deterministic-fixture-v1`，不调用真实供应商；
 - 身份：固定 Mock 用户；
 - 持久化：本地 `sqlite_mock` 适配器，只是关系存储端口的开发实现，不是云端选型；
-- Fixture：仅位于 `tests/fixtures/` 的合成 Markdown、manifest、历年题、Bilibili 和评测契约样例；
+- Fixture：仅位于 `tests/fixtures/` 的合成 Markdown、manifest、历年题、当时的 Bilibili 合成目录和评测契约样例；
 - `cases.json` 与 `runner.json` 只冻结 Schema 和七类样例。迭代 0 没有实现评测执行器，Mock retrieval 也不按 query 评估相关性，因此不能称七类评测已执行或通过。
 
 ## 已实现能力
@@ -39,7 +41,7 @@
 - `citations[]`、`external_resources[]` 和 Trace 分离。Citation 的课程名来自课程注册表，资料名来自 manifest，页面同时组合展示页码/幻灯片、题号和章节；`locator_type=none` 时退化为资料名，不补造定位；
 - Trace 来自实际 Mock 节点，`result` 使用拒绝额外字段的学生可见白名单；Mock 身份事件不保存 `user_id`，Key、token、prompt、堆栈和内部路径字段会被契约拒绝；
 - manifest/frontmatter/page/slide/question/heading 校验器：只让结构有效的 `passed` 行进入检索，允许不确定的 `document_role/year` 留空，拒绝额外 CSV 列、路径逃逸、无效 locator、倒序/重复定位和标题跳级；
-- Bilibili 合成目录的 Schema、审核状态和确定性课程/关键词匹配；运行时再次强制 `fixture_only=true`。外链不进入 Citation，也不改变证据状态；
+- 迭代 0 当时实现了 Bilibili 合成目录的 Schema、审核状态和确定性课程／关键词匹配；该历史测试资产已被 2026-08-15 的 search-only 决策废止，不进入后续产品计划；
 - Mock 身份、Mock 模型、合成检索与 SQLite 的可持久化闭环：选课与 Workflow → 运行 → 保存回答/来源/外部资源/Trace → 重启或 GET 后恢复；
 - 模型、关系存储、向量索引、对象存储、任务系统和 GitHub App 的可替换端口；未确认能力保持 disabled；
 - Vue 3 单页 Mock 界面，五个 Workflow 共用一套 Chat 控制层，明确标注 Mock/合成 Fixture/无正式在线地址；
@@ -50,7 +52,7 @@
 ## 未实现或关闭能力
 
 - 真实 GitHub OAuth、真实模型、平台默认模型池、BYOK、生产检索、candidate/active、课程包和真实历史期限清理；
-- 正式 Bilibili 目录与无命中搜索 fallback；
+- Bilibili search-only 真实 Workflow Runtime；
 - 跨课程执行；
 - PostgreSQL、向量索引、对象存储、离线任务和 GitHub App；
 - SWR 认证、镜像推送、ECS 更新、灰度、健康检查与回滚；
@@ -116,8 +118,7 @@ git diff --check
 4. 华为云内关系存储、向量索引、对象存储、离线任务、GitHub App，以及 SWR→ECS 认证、灰度和回滚方式；
 5. 账号注销、历史提前删除和数据导出；
 6. 跨课程正式开放门槛、最大课程数和提示文案；
-7. 正式 Bilibili 目录、负责人和搜索 fallback；
-8. GitHub `scut-senior-production` Environment、required reviewers 和 `DEPLOYMENT_ENABLED` 的实际仓库配置。
+7. GitHub `scut-senior-production` Environment、required reviewers 和 `DEPLOYMENT_ENABLED` 的实际仓库配置。
 
 ## 已知降级
 
@@ -133,7 +134,7 @@ git diff --check
 - `packages/contracts/v1/courses.json` 与 `enums.json`；
 - 五种 `workflow_payload`、`WorkflowRunRequest`、`WorkflowResult` 及对应生成 Schema；
 - Citation、ExternalResource、Trace 安全白名单和 `course_only` 强制规则；
-- manifest/frontmatter/locator、Bilibili Fixture、evaluation case/runner Schema；
+- manifest/frontmatter/locator 和 evaluation case/runner Schema；
 - 本地 SQLite 迁移与 Mock 垂直链路；
 - App CI/corpus CI 的路径边界、受保护部署门和受限 Docker context。
 
