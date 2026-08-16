@@ -24,7 +24,6 @@ EXPECTED_COURSE_IDS = [
     "computer_science_intro",
     "information_security_intro",
     "university_physics_3_1",
-    "university_physics_lab_1",
 ]
 EXPECTED_EVALUATION_CATEGORIES = {
     "course_knowledge",

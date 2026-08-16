@@ -20,6 +20,7 @@ from .adapters.github import (
     GitHubOAuthAdapter,
     GitHubOAuthError,
 )
+from .adapters.local_corpus import LocalCorpusRetrievalGateway
 from .adapters.mock import (
     FixtureRetrievalGateway,
     MockIdentityProvider,
@@ -107,7 +108,11 @@ def create_app(
     active_settings.assert_safe()
     registry = CourseRegistry.load()
     mock_identity = MockIdentityProvider().current_user()
-    retrieval = FixtureRetrievalGateway(registry)
+    retrieval = (
+        LocalCorpusRetrievalGateway(active_settings.corpus_store_path)
+        if active_settings.retrieval_mode == "local_corpus"
+        else FixtureRetrievalGateway(registry)
+    )
     platform_credential_configured = (
         active_settings.model_mode == "openrouter_platform"
     )
@@ -206,6 +211,7 @@ def create_app(
     app.state.model_catalog = model_catalog
     app.state.byok_catalog = model_catalog.byok_catalog
     app.state.credential_manager = credential_manager
+    app.state.retrieval = retrieval
     app.state.unconfirmed_ports = {
         "vector_index": DisabledCapability("vector_index"),
         "object_store": DisabledCapability("object_store"),
@@ -314,6 +320,9 @@ def create_app(
                     active_settings.bilibili_resources_enabled
                 ),
                 "production_retrieval": False,
+                "local_corpus_retrieval": (
+                    active_settings.retrieval_mode == "local_corpus"
+                ),
                 "cross_course": active_settings.cross_course_enabled,
                 "mock_vertical_slice": (
                     active_settings.identity_mode == "mock"
@@ -473,7 +482,7 @@ def create_app(
     def courses() -> dict[str, object]:
         return {
             "contract_version": registry.contract_version,
-            "runtime": "mock_only",
+            "runtime": active_settings.retrieval_mode,
             "courses": [
                 {
                     "course_id": course.course_id,

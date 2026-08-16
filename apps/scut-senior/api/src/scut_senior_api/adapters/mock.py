@@ -7,7 +7,7 @@ from scut_senior_worker.corpus_validator import parse_markdown, validate_corpus
 
 from ..contracts import WorkflowRunRequest
 from ..paths import FIXTURE_ROOT
-from ..ports import GeneratedAnswer, RetrievedSource, UserIdentity
+from ..ports import GeneratedAnswer, RetrievalBatch, RetrievedSource, UserIdentity
 from ..registry import CourseRegistry
 
 
@@ -36,10 +36,17 @@ class FixtureRetrievalGateway:
         self.knowledge_root = knowledge_root or FIXTURE_ROOT / "corpus"
         self.manifest_path = self.knowledge_root / "manifest.csv"
 
-    def search(self, course_ids: list[str], query: str) -> list[RetrievedSource]:
+    def is_course_available(self, course_id: str) -> bool:
+        return self.registry.get(course_id).fixture_available
+
+    def search(self, course_ids: list[str], query: str) -> RetrievalBatch:
         del query  # Iteration 0 proves filtering/contracts, not retrieval quality.
+        if len(course_ids) != 1:
+            raise FixtureContractViolation(
+                "synthetic fixture retrieval requires exactly one course"
+            )
         if not self.manifest_path.exists():
-            return []
+            return RetrievalBatch((), "fixture-corpus-v1")
         report = validate_corpus(self.manifest_path, self.knowledge_root)
         if report.errors:
             raise FixtureContractViolation(
@@ -53,7 +60,7 @@ class FixtureRetrievalGateway:
             markdown_path = self.knowledge_root / record["output_md"]
             parsed = parse_markdown(markdown_path)
             results.append(_source_from_validated_fixture(parsed.body, record, parsed))
-        return results[:5]
+        return RetrievalBatch(tuple(results[:5]), "fixture-corpus-v1")
 
 
 class MockModelGateway:

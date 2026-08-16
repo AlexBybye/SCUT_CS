@@ -48,10 +48,12 @@ concurrency:
 
 env:
   GIT_LFS_SKIP_SMUDGE: "1"
+  # Manifest validation runs before the builder's clean-checkout gate.
+  PYTHONDONTWRITEBYTECODE: "1"
 
 jobs:
   fixture-compatibility:
-    name: Contract and candidate compatibility fixtures
+    name: Real candidate and fixture compatibility
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -90,11 +92,60 @@ jobs:
             'pytest>=8.4,<9' \
             'jsonschema>=4.25,<5'
 
-      - name: Run contract and corpus validator tests
+      - name: Validate the repository manifest
+        env:
+          PYTHONPATH: apps/scut-senior/worker/src
+        run: >-
+          python -m scut_senior_worker.corpus_validator
+          --manifest knowledge/manifest.csv
+          --knowledge-root knowledge
+          --pretty
+
+      - name: Build and validate a real candidate without activation
+        env:
+          PYTHONPATH: apps/scut-senior/worker/src
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ -n "$(git ls-files -- 'active.json' ':(glob)**/active.json')" ]]; then
+            echo "active.json must not be committed"
+            exit 1
+          fi
+
+          store_root="$(mktemp -d "${RUNNER_TEMP}/scut-senior-corpus.XXXXXX")"
+          source_commit="$(git rev-parse HEAD)"
+
+          python -m scut_senior_worker.corpus_builder build \
+            --manifest knowledge/manifest.csv \
+            --knowledge-root knowledge \
+            --store-root "${store_root}" \
+            --source-commit "${source_commit}" \
+            --repository-root .
+
+          mapfile -t candidates < <(
+            find "${store_root}/candidates" \
+              -mindepth 1 -maxdepth 1 -type d -print
+          )
+          if [[ "${#candidates[@]}" -ne 1 ]]; then
+            echo "expected exactly one generated candidate"
+            exit 1
+          fi
+
+          python -m scut_senior_worker.corpus_builder validate \
+            --candidate "${candidates[0]}"
+
+          if [[ -n "$(find "${store_root}" -type f -name active.json -print -quit)" ]]; then
+            echo "candidate validation must not generate active.json"
+            exit 1
+          fi
+
+      - name: Run corpus lifecycle, contract, and fixture tests
         env:
           PYTHONPATH: apps/scut-senior/worker/src
         run: >-
           python -m pytest
+          apps/scut-senior/tests/python/test_corpus_builder.py
           apps/scut-senior/tests/python/test_corpus_validator.py
           apps/scut-senior/tests/python/test_contract_assets.py
 

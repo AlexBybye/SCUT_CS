@@ -107,10 +107,11 @@
 
 ##### VI.智能复习助手“SCUT老学长”（开发中）
 
-项目目前处于迭代 0，仅提供工程源码与本地开发入口，**尚无正式在线地址**。
+项目目前处于迭代 2 开发阶段：首批范围固定为 10 门课程，已有 2 份经 `Klosure` 人工审核通过的 Markdown 可作为 candidate 输入，其余 21 份仍为 `pending`（其中 8 份纯图片资料继续待审）。正式 corpus 尚未激活，默认仍使用合成 Fixture。这里只提供工程源码与本地开发入口，**尚无正式在线地址**。
 
 - [查看助手源码](apps/scut-senior/)
 - [本地运行与参与开发](apps/scut-senior/README.md)
+- [查看迭代 2 当前状态与激活限制](apps/scut-senior/ITERATION_2_STATUS.md)
 - [课程资料贡献说明](CONTRIBUTING.md)
 
 #### 2.推荐方法(更新，务必查看)

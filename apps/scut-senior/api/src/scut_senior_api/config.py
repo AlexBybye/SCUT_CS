@@ -21,7 +21,9 @@ class Settings:
     identity_mode: Literal["mock", "github_oauth", "disabled"] = "mock"
     model_mode: Literal["mock", "openrouter_platform", "disabled"] = "mock"
     storage_mode: Literal["sqlite_mock", "sqlite", "disabled"] = "sqlite_mock"
+    retrieval_mode: Literal["fixture", "local_corpus"] = "fixture"
     database_path: Path = APP_ROOT / ".local" / "iteration-zero.db"
+    corpus_store_path: Path = APP_ROOT / ".local" / "corpus-store"
     cross_course_enabled: bool = False
     bilibili_resources_enabled: bool = True
     openrouter_api_key: str | None = field(default=None, repr=False)
@@ -39,10 +41,17 @@ class Settings:
             identity_mode=os.getenv("SCUT_SENIOR_IDENTITY_MODE", "mock"),
             model_mode=os.getenv("SCUT_SENIOR_MODEL_MODE", "mock"),
             storage_mode=os.getenv("SCUT_SENIOR_STORAGE_MODE", "sqlite_mock"),
+            retrieval_mode=os.getenv("SCUT_SENIOR_RETRIEVAL_MODE", "fixture"),
             database_path=Path(
                 os.getenv(
                     "SCUT_SENIOR_DATABASE_PATH",
                     str(APP_ROOT / ".local" / "iteration-zero.db"),
+                )
+            ),
+            corpus_store_path=Path(
+                os.getenv(
+                    "SCUT_SENIOR_CORPUS_STORE_PATH",
+                    str(APP_ROOT / ".local" / "corpus-store"),
                 )
             ),
             cross_course_enabled=_env_bool("SCUT_SENIOR_CROSS_COURSE_ENABLED", False),
@@ -108,6 +117,17 @@ class Settings:
         if self.storage_mode not in {"sqlite_mock", "sqlite"}:
             raise UnsafeRuntimeConfiguration(
                 f"unknown storage mode: {self.storage_mode}"
+            )
+        if self.retrieval_mode not in {"fixture", "local_corpus"}:
+            raise UnsafeRuntimeConfiguration(
+                "retrieval adapter must be explicit fixture or local_corpus"
+            )
+        if (
+            self.retrieval_mode == "local_corpus"
+            and not self.corpus_store_path.is_absolute()
+        ):
+            raise UnsafeRuntimeConfiguration(
+                "local_corpus requires an absolute SCUT_SENIOR_CORPUS_STORE_PATH"
             )
         if self.model_mode not in {"mock", "openrouter_platform"}:
             raise UnsafeRuntimeConfiguration(
