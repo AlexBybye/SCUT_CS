@@ -8,6 +8,7 @@ COPY web/package*.json ./
 RUN if [ -f package-lock.json ]; then npm ci; else npm install --no-audit --no-fund; fi
 
 COPY web/ ./
+COPY packages/ /build/packages/
 RUN npm run build
 
 
