@@ -159,7 +159,7 @@ def test_course_resolution_is_normalized_exact_not_substring() -> None:
 
     assert registry.resolve(" 工科数学分析 Ｉ ") == "engineering_math_analysis_1"
     assert registry.resolve("C++程序设计基础") == "cpp"
-    assert registry.resolve("大物上实验合辑") == "university_physics_lab_1"
+    assert registry.resolve("大物上实验合辑") is None
     assert registry.resolve("信息安全") == "information_security_intro"
     assert registry.resolve("信息安全数学基础") is None
     assert registry.resolve("线性代数课程") is None

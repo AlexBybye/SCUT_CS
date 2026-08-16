@@ -44,6 +44,15 @@ class RetrievedSource:
 
 
 @dataclass(frozen=True, slots=True)
+class RetrievalBatch:
+    """One request-local, version-bound set of validated retrieval candidates."""
+
+    sources: tuple[RetrievedSource, ...]
+    corpus_version: str
+    course_pack_version: str | None = None
+
+
+@dataclass(frozen=True, slots=True)
 class GeneratedAnswer:
     repository_answer: str
     related_topics: tuple[str, ...] = ()
@@ -68,7 +77,9 @@ class IdentityProvider(Protocol):
 
 
 class RetrievalGateway(Protocol):
-    def search(self, course_ids: list[str], query: str) -> list[RetrievedSource]: ...
+    def is_course_available(self, course_id: str) -> bool: ...
+
+    def search(self, course_ids: list[str], query: str) -> RetrievalBatch: ...
 
 
 class ModelGateway(Protocol):

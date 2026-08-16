@@ -7,6 +7,8 @@
 本地验收日期：2026-08-14（Asia/Shanghai）
 
 > 2026-08-15 后续产品边界更新：迭代 0 当时创建的 Bilibili 合成目录／Fixture 仅作为历史测试证据保留，不再作为维护契约或后续迭代输入；当前产品只采用模型聚焦词与后端固定匿名搜索入口。
+>
+> 2026-08-16 后续课程边界更新：当前首批注册表已收敛为 10 门，大学物理实验与 SRP 不进入 manifest 或检索语料；下文课程注册表描述只记录迭代 0 当时的历史基线，不再代表当前范围。
 
 ## 进入检查
 
@@ -35,7 +37,7 @@
 ## 已实现能力
 
 - 单一主仓应用目录 `apps/scut-senior/`，包含 `web/`、`api/`、`worker/`、`packages/`、`infra/`、`tests/` 和本地迁移；
-- 11 门首批课程注册表，包含显示名、别名、仓库路径和课程开关。别名只做 Unicode NFKC、大小写折叠、空白移除后的完整等值匹配，不做子串匹配；
+- 迭代 0 当时的课程注册表，包含显示名、别名、仓库路径和课程开关；当前数量与排除项以上述后续课程边界更新为准。别名只做 Unicode NFKC、大小写折叠、空白移除后的完整等值匹配，不做子串匹配；
 - 五个 Workflow 分型 payload，以及回答方式、风格、知识范围、课程范围、模型来源、运行/回答/证据/Trace 状态和帮助层级枚举；
 - 可执行 Pydantic 请求/结果契约及生成的 `workflow-request.schema.json`、`workflow-result.schema.json`；Python、Worker 和 Vue 会与共享 `enums.json` 交叉校验；
 - `citations[]`、`external_resources[]` 和 Trace 分离。Citation 的课程名来自课程注册表，资料名来自 manifest，页面同时组合展示页码/幻灯片、题号和章节；`locator_type=none` 时退化为资料名，不补造定位；

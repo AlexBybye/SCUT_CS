@@ -36,6 +36,7 @@ from .ports import (
     CapabilityUnavailable,
     ExternalResourceDiscovery,
     ModelGateway,
+    RetrievalBatch,
     RetrievalGateway,
     UserKeyModelGateway,
     UserIdentity,
@@ -83,13 +84,25 @@ class IterationZeroService:
         self, user: RequestIdentity, course_id_or_alias: str
     ) -> ConversationSummary:
         course = self.registry.resolve(course_id_or_alias)
-        if not course.fixture_available:
+        if not self._retrieval_course_available(course.course_id):
             raise CapabilityUnavailable(
                 "course",
-                f"{course.course_id} is closed and has no iteration-0 fixture",
+                f"{course.course_id} is not enabled for the configured retrieval mode",
             )
         return self.repository.create_conversation(
             str(user.user_id), course.course_id, course.display_name
+        )
+
+    def _retrieval_course_available(self, course_id: str) -> bool:
+        check = getattr(self.retrieval, "is_course_available", None)
+        if callable(check):
+            return bool(check(course_id))
+        if self.settings.retrieval_mode == "fixture":
+            # Compatibility is limited to injected legacy test doubles. An
+            # explicit local corpus must always prove active-course state.
+            return self.registry.get(course_id).fixture_available
+        raise CapabilityUnavailable(
+            "retrieval", "local corpus adapter cannot verify active course state"
         )
 
     def list_conversations(
@@ -247,9 +260,10 @@ class IterationZeroService:
             raise ContractConflict(
                 "workflow course does not match the bound conversation course"
             )
-        if not course.fixture_available:
+        if not self._retrieval_course_available(course.course_id):
             raise CapabilityUnavailable(
-                "course", f"{course.course_id} has no iteration-0 fixture"
+                "course",
+                f"{course.course_id} is not enabled for the configured retrieval mode",
             )
 
         machine = RunStateMachine()
@@ -275,9 +289,55 @@ class IterationZeroService:
             result={"auth_mode": "mock" if user.is_mock else "github_oauth"},
         )
 
+        retrieval_node = (
+            "local_corpus_retrieval"
+            if self.settings.retrieval_mode == "local_corpus"
+            else "fixture_retrieval"
+        )
+        corpus_version = (
+            "local-corpus-unavailable"
+            if self.settings.retrieval_mode == "local_corpus"
+            else "fixture-corpus-v1"
+        )
+        course_pack_version: str | None = None
         started = perf_counter()
         try:
-            sources = self.retrieval.search([course.course_id], request.user_input)
+            retrieval_batch = self.retrieval.search(
+                [course.course_id], request.user_input
+            )
+            if not isinstance(retrieval_batch, RetrievalBatch):
+                # Keep injected iteration-1 test doubles compatible, but never
+                # accept an unversioned result in explicit local-corpus mode.
+                if self.settings.retrieval_mode == "local_corpus":
+                    raise ContractConflict(
+                        "local corpus retrieval returned an unversioned candidate set"
+                    )
+                sources = list(retrieval_batch)
+            else:
+                sources = list(retrieval_batch.sources)
+                corpus_version = retrieval_batch.corpus_version
+                course_pack_version = retrieval_batch.course_pack_version
+                if (
+                    not isinstance(corpus_version, str)
+                    or not corpus_version.strip()
+                    or (
+                        course_pack_version is not None
+                        and (
+                            not isinstance(course_pack_version, str)
+                            or not course_pack_version.strip()
+                        )
+                    )
+                ):
+                    raise ContractConflict(
+                        "retrieval returned an invalid corpus version binding"
+                    )
+                if (
+                    self.settings.retrieval_mode == "local_corpus"
+                    and course_pack_version is None
+                ):
+                    raise ContractConflict(
+                        "local corpus retrieval returned no course pack version"
+                    )
             invalid_source_ids = [
                 source.chunk_id
                 for source in sources
@@ -294,7 +354,7 @@ class IterationZeroService:
                 course_id=course.course_id,
                 machine=machine,
                 trace=trace,
-                failure_node="fixture_retrieval",
+                failure_node=retrieval_node,
                 duration_ms=_elapsed_ms(started),
                 run_id=run_id,
                 message_id=message_id,
@@ -303,17 +363,26 @@ class IterationZeroService:
                 model_id=model_id,
                 billing_label=billing_label,
                 mock_only=mock_only,
+                corpus_version=corpus_version,
+                course_pack_version=course_pack_version,
                 attempt_group_id=attempt_group_id,
                 regenerated_from_run_id=regenerated_from_run_id,
             )
             raise
         _append_trace(
             trace,
-            node="fixture_retrieval",
+            node=retrieval_node,
             duration_ms=_elapsed_ms(started),
             result={
-                "mode": "synthetic_fixture_only",
+                **(
+                    {"mode": "synthetic_fixture_only"}
+                    if self.settings.retrieval_mode == "fixture"
+                    else {}
+                ),
                 "hit_count": len(sources),
+                "candidate_order": [
+                    f"S{index}" for index in range(1, len(sources) + 1)
+                ],
                 "sources": [
                     {
                         "course_id": source.course_id,
@@ -368,6 +437,8 @@ class IterationZeroService:
                 model_id=model_id,
                 billing_label=billing_label,
                 mock_only=mock_only,
+                corpus_version=corpus_version,
+                course_pack_version=course_pack_version,
                 attempt_group_id=attempt_group_id,
                 regenerated_from_run_id=regenerated_from_run_id,
             )
@@ -392,9 +463,13 @@ class IterationZeroService:
             },
         )
 
+        citation_source_map = {
+            f"S{index}": source
+            for index, source in enumerate(sources, start=1)
+        }
         citations = [
             Citation(
-                citation_id=f"S{index}",
+                citation_id=citation_id,
                 chunk_id=source.chunk_id,
                 course_id=source.course_id,
                 course_title=self.registry.get(source.course_id).display_name,
@@ -406,7 +481,7 @@ class IterationZeroService:
                 question_id=source.question_id,
                 heading_path=list(source.heading_path),
             )
-            for index, source in enumerate(sources, start=1)
+            for citation_id, source in citation_source_map.items()
         ]
 
         if (
@@ -512,6 +587,7 @@ class IterationZeroService:
             workflow_output={
                 "contract_only": True,
                 "payload_type": request.workflow_type.value,
+                "source_candidate_ids": list(citation_source_map),
             },
             evidence_status=(
                 EvidenceStatus.SUFFICIENT
@@ -525,11 +601,15 @@ class IterationZeroService:
             coverage_gaps=(
                 []
                 if has_evidence
-                else ["没有匹配到合成 passed Fixture；未尝试真实课程资料"]
+                else [
+                    "当前启用课程语料没有匹配到可回查的检索候选。"
+                    if self.settings.retrieval_mode == "local_corpus"
+                    else "没有匹配到合成 passed Fixture；未尝试真实课程资料"
+                ]
             ),
             trace=trace,
-            corpus_version="fixture-corpus-v1",
-            course_pack_version=None,
+            corpus_version=corpus_version,
+            course_pack_version=course_pack_version,
             workflow_version="workflow-contract-v1",
             model_source=request.model_source,
             model=ModelMetadata(
@@ -577,6 +657,8 @@ class IterationZeroService:
         model_id: str,
         billing_label: str,
         mock_only: bool,
+        corpus_version: str,
+        course_pack_version: str | None,
         attempt_group_id: UUID | None,
         regenerated_from_run_id: UUID | None,
     ) -> None:
@@ -620,8 +702,8 @@ class IterationZeroService:
             external_resources=[],
             coverage_gaps=["本次同步执行失败，未生成回答。"],
             trace=trace,
-            corpus_version="fixture-corpus-v1",
-            course_pack_version=None,
+            corpus_version=corpus_version,
+            course_pack_version=course_pack_version,
             workflow_version="workflow-contract-v1",
             model_source=request.model_source,
             model=ModelMetadata(

@@ -1,6 +1,6 @@
 # SCUT 老学长
 
-这里是 SCUT 老学长的唯一应用源码目录。迭代 0 的契约与 Mock 工程基座已经完成；迭代 1 当前新增了本地／测试 GitHub OAuth、固定 7 天服务端会话、资源所有权、SQLite 恢复、受保护的 OpenRouter 平台模型目录、四家 BYOK 会话凭据／固定调用链路和 Bilibili 匿名搜索链接契约。真实 GitHub 凭据联调、用户真实 Key 的供应商实网验证和生产 HTTPS／部署仍未完成。
+这里是 SCUT 老学长的唯一应用源码目录。迭代 0 的契约与 Mock 工程基座已经完成；迭代 1 已新增本地／测试 GitHub OAuth、固定 7 天服务端会话、资源所有权、SQLite 恢复、受保护的 OpenRouter 平台模型目录、四家 BYOK 会话凭据／固定调用链路和 Bilibili 匿名搜索链接契约。迭代 2 已在固定基座上完成真实 Markdown candidate 与本地检索适配器的实现和自动化验证，但合并 `master` 前不允许激活 corpus，默认运行仍使用合成 Fixture；远端 CI 与合并后真实 active／回退闭环尚未形成。真实 GitHub 凭据联调、用户真实 Key 的供应商实网验证和生产 HTTPS／部署仍未完成。
 
 ```text
 选择课程与 Workflow
@@ -32,8 +32,8 @@ BYOK 首批每家只保留一个固定目录模型：
 ## 目录
 
 - `web/`：Vue 3 学生端 Mock 界面；
-- `api/`：FastAPI 契约、本地／测试 OAuth 与会话链路、Mock Workflow 和 SQLite 适配器；
-- `worker/`：manifest/frontmatter/locator 校验入口；
+- `api/`：FastAPI 契约、本地／测试 OAuth 与会话链路、Mock Workflow、SQLite 和本地 corpus 检索适配器；
+- `worker/`：manifest/frontmatter/locator 校验及 candidate 构建、验证、激活门与回退工具；
 - `packages/`：V1 枚举、课程注册表、Workflow 和评测契约；
 - `infra/`：不含真实 Secret 的 SWR→ECS 部署骨架；
 - `tests/`：纯合成 Fixture、单元测试和端到端契约测试。
@@ -60,6 +60,10 @@ npm run dev
 ```
 
 默认 API 为 `http://127.0.0.1:8000`，Vite 开发服务器会代理 `/api`。本地 SQLite 写入 `apps/scut-senior/.local/`，不会提交到 Git。
+
+### 检索模式边界
+
+默认 `SCUT_SENIOR_RETRIEVAL_MODE=fixture`，继续读取合成测试语料。`local_corpus` 不能直接读取当前迭代分支生成的 candidate；只有 candidate 的 `source_commit` 已进入受信 `master`、且通过单独激活门后，才可将 `SCUT_SENIOR_CORPUS_STORE_PATH` 配置为该 corpus store 的绝对路径。缺少有效 `active.json`、课程未启用或版本绑定不完整时，本地语料检索会故障安全关闭，不回退到跨课程或未审核资料。
 
 ### 本地验证 OpenRouter 平台通道
 
@@ -111,7 +115,7 @@ GIT_LFS_SKIP_SMUDGE=1 git checkout master
 - BYOK 固定目录、会话级 AES-256-GCM 保存／替换／删除／清理、四家固定调用和安全错误映射：迭代 1 已在本地／测试实现；未使用真实用户 Key 做四家实网联调；
 - GitHub OAuth：本地／测试适配器、7 天会话、所有权和 SQLite 恢复已实现；真实 GitHub 凭据回调、生产 HTTPS 与部署尚未联调，生产继续 fail-closed；
 - 平台限流状态目前是单进程内存态；多 worker 共享限流、周期清理任务和生产启用仍未完成；
-- 真实 `passed` Markdown、candidate/active 和索引：迭代 2；
+- 首批课程固定为 10 门；真实 manifest 当前有 2 份经 `Klosure` 人工审核的 `passed` Markdown，其余 21 份保持 `pending`，其中 8 份纯图片资料继续待审；candidate／检索链路已通过本地自动化验证，但合并 `master` 前不生成或使用正式 `active.json`，默认检索仍是 Fixture，远端 CI 与合并后真实 active／回退证据仍缺失；
 - 真实 Workflow Runtime 与流式 Trace：迭代 3；
 - 华为云部署：预算获批前保持 validation-only／fail-closed，不创建资源；未来首发基线为华南-广州优先的 1C2G、40GB、1～2Mbps，不在 ECS 部署大模型；
 - PostgreSQL、Qdrant、对象存储、任务系统、GitHub App、SWR 认证、ECS 灰度/回滚：首发不购买或只保留可替换边界；
@@ -119,4 +123,4 @@ GIT_LFS_SKIP_SMUDGE=1 git checkout master
 - Bilibili：只保留 0～3 个聚焦词和关键词非空时由后端生成的唯一匿名搜索链接；不建设或维护具体视频资产，不返回或抓取具体视频；
 - 正式在线 Chat：迭代 4 验收前不提供地址。
 
-迭代 0 的完整基线见 [ITERATION_0_STATUS.md](ITERATION_0_STATUS.md)；当前平台模型切片和仍未完成的迭代 1 边界见 [ITERATION_1_STATUS.md](ITERATION_1_STATUS.md)。
+迭代 0 的完整基线见 [ITERATION_0_STATUS.md](ITERATION_0_STATUS.md)；平台模型切片和仍未完成的迭代 1 边界见 [ITERATION_1_STATUS.md](ITERATION_1_STATUS.md)；迭代 2 的开发门、审核状态与激活限制见 [ITERATION_2_STATUS.md](ITERATION_2_STATUS.md)。
