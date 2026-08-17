@@ -27,33 +27,33 @@ locator_type: heading
 
 ## 一、填空题（每小题3分，共18分）
 
-设随机变量![](assets/probability-theory-007/image-013.png)服从参数为![](assets/probability-theory-007/image-014.png)的Poisson分布，且已知![](assets/probability-theory-007/image-015.png)，则![](assets/probability-theory-007/image-016.png)。
-2．随机变量*X*的概率密度函数![](assets/probability-theory-007/image-017.png)，则*E*(*X*)= 。
+设随机变量$X$服从参数为$λ$的Poisson分布，且已知$E\left[ (X-1)(X-2) \right]=1$，则$\lambda=\underline{\qquad}$。
+2．随机变量*X*的概率密度函数$f(x)=\frac{1}{\sqrt{\pi}}{e}^{-{x}^{2}+2x-1}$，则*E*(*X*)= 。
 设随机变量*X*服从以*n*,*p*为参数的二项分布，且*EX*=15，*DX*=10，则*n*= 。
-甲乙二人独立地同时破译密码，甲破译的概率为![](assets/probability-theory-007/image-018.png)，乙破译的概率为![](assets/probability-theory-007/image-019.png)，则该密码被破译的概率为_______。
-![](assets/probability-theory-007/image-020.png)独立且均服从分布![](assets/probability-theory-007/image-021.png)，则![](assets/probability-theory-007/image-022.png)服从_____________分布。
-设总体![](assets/probability-theory-007/image-023.png)，![](assets/probability-theory-007/image-024.png)为来自![](assets/probability-theory-007/image-025.png)的样本，则当常数![](assets/probability-theory-007/image-026.png)=_________时，![](assets/probability-theory-007/image-027.png)是未知参数![](assets/probability-theory-007/image-028.png)的无偏估计。
+甲乙二人独立地同时破译密码，甲破译的概率为$\frac{1}{2}$，乙破译的概率为$\frac{1}{3}$，则该密码被破译的概率为_______。
+${Y}_{1},{Y}_{2},{Y}_{3}$独立且均服从分布${\chi}^{2}(n)$，则$\frac{2{Y}_{1}}{{Y}_{2}+{Y}_{3}}$服从_____________分布。
+设总体$X~N(\mu,{\sigma}^{2})$，$X_1,X_2,X_3$为来自$X$的样本，则当常数$a$=_________时，$\hat \mu =\frac { 1 } { 4 }X_{ 1 }  +aX_{ 2 }  +\frac { 1 } { 2 }X_{ 3 }$是未知参数$\mu$的无偏估计。
 答案:
-1 2．1 3．45 4．![](assets/probability-theory-007/image-029.png)5．![](assets/probability-theory-007/image-030.png)6．![](assets/probability-theory-007/image-031.png)
+1 2．1 3．45 4．$\frac{2}{3}$5．$F(n,2n)$6．$\frac{1}{4}$
 
 <!-- question: 2 -->
 
 ## 二、单项选择题（每小题3分，共18分）
 
-设随机变量![](assets/probability-theory-007/image-032.png)服从参数为3的泊松分布，![](assets/probability-theory-007/image-033.png)，且![](assets/probability-theory-007/image-034.png)相互独立，则![](assets/probability-theory-007/image-035.png)=（ ）。
-（A）![](assets/probability-theory-007/image-036.png)（B）15 （C）19 （D）23
-有![](assets/probability-theory-007/image-037.png)个球，随机地放在![](assets/probability-theory-007/image-038.png)个盒子中（![](assets/probability-theory-007/image-039.png)），则某指定的![](assets/probability-theory-007/image-040.png)个盒子中各有一球的概率为( ).
-![](assets/probability-theory-007/image-041.png)B.![](assets/probability-theory-007/image-042.png)C.![](assets/probability-theory-007/image-043.png)D.![](assets/probability-theory-007/image-044.png)
-设![](assets/probability-theory-007/image-045.png)，则事件![](assets/probability-theory-007/image-046.png)与![](assets/probability-theory-007/image-047.png)（ ）
+设随机变量$X$服从参数为3的泊松分布，$Y\sim B\left(8,\frac13\right)$，且$X,Y$相互独立，则$D(X-3Y-4)$=（ ）。
+（A）$-13$（B）15 （C）19 （D）23
+有$m$个球，随机地放在$n$个盒子中（$m\le n$），则某指定的$m$个盒子中各有一球的概率为( ).
+$\frac { m\,! } { n ^ { m }  }$B.$\frac { C_{ n }  ^{ m }m\,! } { n ^ { m }  }$C.$\frac { n! } { m\, ^ { n }  }$D.$\frac { C_{ m }  ^{ n }n! } { m\, ^ { n }  }$
+设$0<P(A)<1,\quad 0<P(B)<1,\quad P(A\mid B)+P(\bar A\mid\bar B)=1$，则事件$A$与$B$（ ）
 互不相容 B. 互相对立 C. 互不独立 D. 相互独立
-随机变量![](assets/probability-theory-007/image-048.png)的概率密度函数为![](assets/probability-theory-007/image-049.png)，则![](assets/probability-theory-007/image-050.png)的密度函数![](assets/probability-theory-007/image-051.png)( )
-![](assets/probability-theory-007/image-052.png)B.![](assets/probability-theory-007/image-053.png)
-![](assets/probability-theory-007/image-054.png)D.![](assets/probability-theory-007/image-055.png)
-设随机变量![](assets/probability-theory-007/image-056.png)服从正态分布![](assets/probability-theory-007/image-057.png),对给定的![](assets/probability-theory-007/image-058.png),数![](assets/probability-theory-007/image-059.png)满足![](assets/probability-theory-007/image-060.png).若![](assets/probability-theory-007/image-061.png),则![](assets/probability-theory-007/image-062.png)等于( ).
-(A)![](assets/probability-theory-007/image-063.png)(B)![](assets/probability-theory-007/image-064.png)(C)![](assets/probability-theory-007/image-065.png)(D)![](assets/probability-theory-007/image-066.png)
-设![](assets/probability-theory-007/image-067.png)为总体![](assets/probability-theory-007/image-068.png)的一个样本，![](assets/probability-theory-007/image-069.png)为样本均值，则下列结论中正确的是（ ）。
-![](assets/probability-theory-007/image-070.png)； B.![](assets/probability-theory-007/image-071.png)；
-![](assets/probability-theory-007/image-072.png)； D.![](assets/probability-theory-007/image-073.png)；
+随机变量$X$的概率密度函数为$f_{ X }  (x)=\frac { 1 } { \pi (1+x ^ { 2 } ) },\ x\in R$，则$Y=3X$的密度函数$f_{ Y }  (y)=$( )
+$\frac { 1 } { \pi (1+y ^ { 2 } ) },\quad y\in R$B.$\frac { 3 } { \pi (9+y ^ { 2 } ) },\quad y\in R$
+$\frac { 1 } { \pi (1+\frac { y ^ { 2 }  } { 9 }) },\quad y\in R$D.$\frac { 1 } { \pi (1+9y ^ { 2 } ) },\quad y\in R$
+设随机变量$X$服从正态分布$N(0,1)$,对给定的$\alpha\ (0<\alpha<1)$,数$u_\alpha$满足$P\{X>u_\alpha\}=\alpha$.若$P\{|X|<x\}=\alpha$,则$x$等于( ).
+(A)$u_{\alpha/2}$(B)$u_{1-\alpha/2}$(C)$u_{(1-\alpha)/2}$(D)$u_{1-\alpha}$
+设$(X_1,X_2,\ldots,X_n)$为总体$N(1,2^2)$的一个样本，$\bar X$为样本均值，则下列结论中正确的是（ ）。
+$\frac{\bar X-1}{2/\sqrt n}\sim t(n)$； B.$\frac14\sum_{i=1}^n(X_i-1)^2\sim F(n,1)$；
+$\frac{\bar X-1}{\sqrt2/\sqrt n}\sim N(0,1)$； D.$\frac14\sum_{i=1}^n(X_i-1)^2\sim\chi^2(n)$；
 
 答案：
 C 2. A； 3. D； 4. B；5. C；6. D；
@@ -62,81 +62,139 @@ C 2. A； 3. D； 4. B；5. C；6. D；
 
 ## 三、(10分）
 
-某人去参加某课程的笔试和口试，笔试及格的概率为![](assets/probability-theory-007/image-074.png)，若笔试及格则口试及格的概率也为![](assets/probability-theory-007/image-075.png)，若笔试不及格则口试及格的概率为![](assets/probability-theory-007/image-076.png)。
+某人去参加某课程的笔试和口试，笔试及格的概率为$p$，若笔试及格则口试及格的概率也为$p$，若笔试不及格则口试及格的概率为$\frac{p}{2}$。
 (1) 如果笔试和口试中至少有一个及格，则他能取得某种资格。求他能取得该资格的概率。
 (2) 如果已知他口试已经及格，求他笔试及格的概率.
-解：用![](assets/probability-theory-007/image-077.png)、![](assets/probability-theory-007/image-078.png)分别表示某人参加“笔试”和“口试”的事件，![](assets/probability-theory-007/image-079.png)表示“他能取得该种资格”。
-由已知条件得![](assets/probability-theory-007/image-080.png)，![](assets/probability-theory-007/image-081.png)，![](assets/probability-theory-007/image-082.png)，![](assets/probability-theory-007/image-083.png).
+解：用${A}_{1}$、${A}_{2}$分别表示某人参加“笔试”和“口试”的事件，$A$表示“他能取得该种资格”。
+由已知条件得$P({A}_{1})=p$，$P(\bar A_1)=1-p$，$P(A_2\mid A_1)=p$，$P(A_2\mid\bar A_1)=\frac p2$.
 所求概率为
-(1)![](assets/probability-theory-007/image-084.png)
-![](assets/probability-theory-007/image-085.png)(5分)
-(2)![](assets/probability-theory-007/image-086.png)
+(1)$P(A)=P(A_1\cup\bar A_1A_2)=P(A_1)+P(\bar A_1A_2)=p+P(A_2\mid\bar A_1)P(\bar A_1)$
+$$
+=p+\frac p2(1-p)=\frac32p-\frac12p^2
+$$
+
+(5分)
+(2)
+
+$$
+P(A_1\mid A_2)=\frac{P(A_1A_2)}{P(A_2)}
+=\frac{P(A_2\mid A_1)P(A_1)}{P(A_2\mid A_1)P(A_1)+P(A_2\mid\bar A_1)P(\bar A_1)}
+=\frac{2p}{1+p}
+$$
+
 (10分)
 
 <!-- question: 4 -->
 
 ## 四、（16分）
 
-设二维随机变量![](assets/probability-theory-007/image-087.png)的概率密度为
-![](assets/probability-theory-007/image-088.png).
-(1) 确定常数![](assets/probability-theory-007/image-089.png)； (2) 求![](assets/probability-theory-007/image-090.png)分布函数![](assets/probability-theory-007/image-091.png)；
-(3) 求![](assets/probability-theory-007/image-092.png)； (4) 判断![](assets/probability-theory-007/image-093.png)与![](assets/probability-theory-007/image-094.png)是相互否独立。
+设二维随机变量$(X,\ \ Y)$的概率密度为
+$f(x,y)=\begin{cases}ke^{-(2x+3y)},&x>0,\ y>0,\\0,&\text{其他}.\end{cases}$.
+(1) 确定常数$k$； (2) 求$(X,\ \ Y)$分布函数$F(x,y)$；
+(3) 求$P\left \{ \begin{array}{l} X < Y \end{array} \right \}$； (4) 判断$X$与$Y$是相互否独立。
 
-解 (1) 由![](assets/probability-theory-007/image-095.png)，有
+解 (1) 由$\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f(x,y)\,dx\,dy=1$，有
 
-![](assets/probability-theory-007/image-096.png)
+$$
+\begin{aligned}
+\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f(x,y)\,dx\,dy
+&=\int_0^{+\infty}\int_0^{+\infty}ke^{-(2x+3y)}\,dx\,dy\\
+&=k\int_0^{+\infty}e^{-2x}\,dx\int_0^{+\infty}e^{-3y}\,dy\\
+&=k\left[-\frac12e^{-2x}\right]_0^{+\infty}\left[-\frac13e^{-3y}\right]_0^{+\infty}
+=\frac{k}{6}=1
+\end{aligned}
+$$
 
-所以，![](assets/probability-theory-007/image-097.png). （2分）
+所以，$k=6$. （2分）
 
 (2)
 
-![](assets/probability-theory-007/image-098.png)
+$$
+F(x,y)=\begin{cases}(1-e^{-2x})(1-e^{-3y}),&x>0,\ y>0,\\0,&\text{其他}.\end{cases}
+$$
 
 （5分）
 
-(3)![](assets/probability-theory-007/image-099.png)
+(3)$P\{X<Y\}=\iint_{x<y}f(x,y)\,dx\,dy=\int_0^{+\infty}\left[\int_0^y6e^{-(2x+3y)}\,dx\right]dy$
 
-![](assets/probability-theory-007/image-100.png)
+$$
+=\int_0^{+\infty}3e^{-3y}(1-e^{-2y})\,dy=\int_0^{+\infty}3e^{-3y}\,dy-\int_0^{+\infty}3e^{-5y}\,dy
+$$
 
-![](assets/probability-theory-007/image-101.png)（10分）
+$$
+=1-\frac { 3 } { 5 }=\frac { 2 } { 5 }.
+$$
 
-(4)![](assets/probability-theory-007/image-102.png)与![](assets/probability-theory-007/image-103.png)的边缘密度分别为
+（10分）
 
-![](assets/probability-theory-007/image-104.png)（12分）
+(4)$X$与$Y$的边缘密度分别为
 
-![](assets/probability-theory-007/image-105.png)（14分）
+$$
+f_X(x)=\int_{-\infty}^{+\infty}f(x,y)\,dy
+=\begin{cases}6e^{-2x}\int_0^{+\infty}e^{-3y}\,dy,&x>0,\\0,&\text{其他}\end{cases}
+=\begin{cases}2e^{-2x},&x>0,\\0,&\text{其他}.\end{cases}
+$$
 
-显然，![](assets/probability-theory-007/image-106.png)，所以![](assets/probability-theory-007/image-107.png)与![](assets/probability-theory-007/image-108.png)相互独立. （16分）
+（12分）
+
+$$
+f_Y(y)=\int_{-\infty}^{+\infty}f(x,y)\,dx
+=\begin{cases}6e^{-3y}\int_0^{+\infty}e^{-2x}\,dx,&y>0,\\0,&\text{其他}\end{cases}
+=\begin{cases}3e^{-3y},&y>0,\\0,&\text{其他}.\end{cases}
+$$
+
+（14分）
+
+显然，$f(x,y)=f_{ X }  (x)f_{ Y }  (y)$，所以$X$与$Y$相互独立. （16分）
 
 <!-- question: 5 -->
 
 ## 五、（10分）
 
-设二维离散型随机变量（![](assets/probability-theory-007/image-109.png)）的联合分布列
+设二维离散型随机变量 $(\xi,\eta)$ 的联合分布列为
 
-| ![](assets/probability-theory-007/image-110.png) ![](assets/probability-theory-007/image-111.png) | ![](assets/probability-theory-007/image-112.png)0 1 |
-|---|---|
-| 0 1 | ![](assets/probability-theory-007/image-113.png)![](assets/probability-theory-007/image-114.png)![](assets/probability-theory-007/image-115.png) ![](assets/probability-theory-007/image-116.png)0![](assets/probability-theory-007/image-117.png) |
+| $\xi\backslash\eta$ | $-1$ | $0$ | $1$ |
+|---|---:|---:|---:|
+| $0$ | $\frac16$ | $\frac13$ | $\frac16$ |
+| $1$ | $\frac16$ | $0$ | $\frac16$ |
 
-求（1）![](assets/probability-theory-007/image-118.png)； （2）![](assets/probability-theory-007/image-119.png)
+求：（1）$\rho_{\xi\eta}$；（2）$D(\xi-\eta)$。
 
-解、![](assets/probability-theory-007/image-120.png)0 1![](assets/probability-theory-007/image-121.png)-1 0 1
+解：$\xi$、$\eta$ 的边缘分布列分别为
 
-![](assets/probability-theory-007/image-122.png)![](assets/probability-theory-007/image-123.png)![](assets/probability-theory-007/image-124.png)![](assets/probability-theory-007/image-125.png)![](assets/probability-theory-007/image-126.png)![](assets/probability-theory-007/image-127.png)![](assets/probability-theory-007/image-128.png)
+| $\xi$ | $0$ | $1$ |
+|---|---:|---:|
+| $P$ | $\frac23$ | $\frac13$ |
 
-![](assets/probability-theory-007/image-129.png)-1 0 1
+| $\eta$ | $-1$ | $0$ | $1$ |
+|---|---:|---:|---:|
+| $P$ | $\frac13$ | $\frac13$ | $\frac13$ |
 
-![](assets/probability-theory-007/image-130.png)![](assets/probability-theory-007/image-131.png)![](assets/probability-theory-007/image-132.png)![](assets/probability-theory-007/image-133.png)
+$$
+E\xi=\frac13,\qquad E\eta=0.
+$$
 
-![](assets/probability-theory-007/image-134.png)![](assets/probability-theory-007/image-135.png)(2分)
+（2分）
 
-![](assets/probability-theory-007/image-136.png)![](assets/probability-theory-007/image-137.png)（4分）
+$$
+D\xi=\frac29,\qquad D\eta=\frac23.
+$$
 
-![](assets/probability-theory-007/image-138.png)=![](assets/probability-theory-007/image-139.png)
+（4分）
 
-![](assets/probability-theory-007/image-140.png)（5分）
+$$
+E(\xi-E\xi)(\eta-E\eta)=E(\xi\eta)-E\xi\cdot E\eta=0.
+$$
 
-![](assets/probability-theory-007/image-141.png)（8分）
+因此 $\rho_{\xi\eta}=0$。（5分）
+
+$$
+\begin{aligned}
+D(\xi-\eta)
+&=E(\xi-\eta)^2-[E(\xi-\eta)]^2\\
+&=D\xi+D\eta=\frac89.
+\end{aligned}
+$$
 
 （10分）
 
@@ -144,57 +202,115 @@ C 2. A； 3. D； 4. B；5. C；6. D；
 
 ## 六、（8分）
 
-有一批种子，其中良种占![](assets/probability-theory-007/image-142.png)，从中任取180粒，问能以0.99的概率保证其中良种的比例与![](assets/probability-theory-007/image-143.png)相差多少？![](assets/probability-theory-007/image-144.png)
+有一批种子，其中良种占$\frac{1}{6}$，从中任取180粒，问能以0.99的概率保证其中良种的比例与$\frac{1}{6}$相差多少？$\Phi (2.33)=0.99;\quad \Phi (2.48)=0.995$
 
-解：令![](assets/probability-theory-007/image-145.png)![](assets/probability-theory-007/image-146.png)（1分）
+解：令![公式原图（条件文字缺字，待人工恢复）](assets/probability-theory-007/image-145.png)$i=1,2,\ldots,180$（1分）
 
-则![](assets/probability-theory-007/image-147.png)（2分）
+则$P(h_i=1)=\frac16=p,\qquad q=1-p=\frac56$（2分）
 
-![](assets/probability-theory-007/image-148.png)（5分）
+$$
+P\left(\left|\frac1{180}\sum_{i=1}^{180}h_i-\frac16\right|<C\right)
+=P\left(\left|\frac{\sum_{i=1}^{180}h_i-180\times\frac16}{\sqrt{180\times\frac16\times\frac56}}\right|
+<\frac{\sqrt{180}\,C}{\sqrt{\frac16\times\frac56}}\right)
+$$
 
-![](assets/probability-theory-007/image-149.png)
+（5分）
 
-![](assets/probability-theory-007/image-150.png)2![](assets/probability-theory-007/image-151.png)
+$$
+=P\left(\left|\frac{\sum_{i=1}^{180}h_i-30}{5}\right|<36C\right)
+$$
 
-![](assets/probability-theory-007/image-152.png)（7分）
+$$
+\begin{aligned}
+&\approx\int_{-36C}^{36C}\frac1{\sqrt{2\pi}}e^{-x^2/2}\,dx\\
+&=2\int_{-\infty}^{36C}\frac1{\sqrt{2\pi}}e^{-x^2/2}\,dx-1\\
+&=2\Phi(36C)-1=0.99.
+\end{aligned}
+$$
 
-![](assets/probability-theory-007/image-153.png)![](assets/probability-theory-007/image-154.png)![](assets/probability-theory-007/image-155.png)（8分）
+（7分）
+
+$$
+\Phi(36C)=0.995,\qquad 36C=2.48,\qquad
+C=\frac{2.48}{36}=\frac{31}{450}=0.07.
+$$
+
+（8分）
 
 <!-- question: 7 -->
 
 ## 七、（10分）
 
-⑴ 设总体等可能地取值，，，，，其中是未知的正整数。是取自该总体中的一个样本．试求的最大似然估计量．（7分）![](assets/probability-theory-007/image-156.png)![](assets/probability-theory-007/image-157.png)![](assets/probability-theory-007/image-158.png)![](assets/probability-theory-007/image-159.png)![](assets/probability-theory-007/image-160.png)![](assets/probability-theory-007/image-161.png)![](assets/probability-theory-007/image-162.png)![](assets/probability-theory-007/image-163.png)![](assets/probability-theory-007/image-164.png)
-⑵ 某单位的自行车棚内存放了辆自行车，其编号分别为1，2，3，…，，假定职工从车棚中取出自行车是等可能的。某人连续12天记录下他观察到的取走的第一辆自行车的编号为![](assets/probability-theory-007/image-165.png)![](assets/probability-theory-007/image-166.png)
-12， 203， 23， 7， 239， 45， 73， 189， 95， 112， 73， 159。
-试求在上述样本观测值下，的最大似然估计值．（3分）![](assets/probability-theory-007/image-167.png)
-解： ⑴ 总体的分布列为 ， ．![](assets/probability-theory-007/image-168.png)![](assets/probability-theory-007/image-169.png)![](assets/probability-theory-007/image-170.png)
-所以似然函数为 ， ．……..3分![](assets/probability-theory-007/image-171.png)![](assets/probability-theory-007/image-172.png)
-当越小时，似然函数越大；另一方面，还要满足：，即．![](assets/probability-theory-007/image-173.png)![](assets/probability-theory-007/image-174.png)![](assets/probability-theory-007/image-175.png)![](assets/probability-theory-007/image-176.png)![](assets/probability-theory-007/image-177.png)
-所以，的最大似然估计量为．……..7分![](assets/probability-theory-007/image-178.png)![](assets/probability-theory-007/image-179.png)
-⑵ 由上面的所求，可知的最大似然估计值为．……..10分![](assets/probability-theory-007/image-180.png)![](assets/probability-theory-007/image-181.png)
+（1）设总体 $X$ 等可能地取值 $1,2,3,\ldots,N$，其中 $N$ 是未知的正整数。$(X_1,X_2,\ldots,X_n)$ 是取自总体 $X$ 的一个样本，试求 $N$ 的最大似然估计量。（7分）
+
+（2）某单位的自行车棚内存放了 $N$ 辆自行车，其编号分别为 $1,2,3,\ldots,N$。假定职工从车棚中取出自行车是等可能的。某人连续12天记录下他观察到的第一辆自行车编号：
+
+12，203，23，7，239，45，73，189，95，112，73，159。
+
+试求在上述样本观测值下，$N$ 的最大似然估计值。（3分）
+
+解：
+
+（1）总体的分布列为
+
+$$
+P\{X=x\}=\frac1N,\qquad x=1,2,\ldots,N.
+$$
+
+所以似然函数为
+
+$$
+L(N)=\prod_{i=1}^{n}P\{X_i=x_i\}=\frac1{N^n},
+\qquad 1\le x_i\le N\ (i=1,2,\ldots,n).
+$$
+
+当 $N$ 越小时，似然函数 $L(N)$ 越大；另一方面还要满足
+
+$$
+N\ge\max\{x_1,x_2,\ldots,x_n\}=x_{(n)}.
+$$
+
+所以，$N$ 的最大似然估计量为
+
+$$
+\hat N=X_{(n)}.
+$$
+
+（7分）
+
+（2）由上面的结果可知，$N$ 的最大似然估计值为
+
+$$
+\hat N=x_{(n)}=239.
+$$
+
+（10分）
 
 <!-- question: 8 -->
 
 ## 八、（10分）
 
-已知多名实习生相互独立地测量同一块土地的面积，设每名实习生得到的测量数据![](assets/probability-theory-007/image-182.png)(平方米)服从正态分布![](assets/probability-theory-007/image-183.png)，从这些测量数据中随机抽取7个，经计算，其平均面积为125平方米，修正标准差为![](assets/probability-theory-007/image-184.png)平方米.
-(1) 求![](assets/probability-theory-007/image-185.png)的置信度为90%的置信区间；
-(2)能否认为这块土地的平均面积为124平方米（显著性水平![](assets/probability-theory-007/image-186.png)）？
-![](assets/probability-theory-007/image-187.png)
+已知多名实习生相互独立地测量同一块土地的面积，设每名实习生得到的测量数据$X$(平方米)服从正态分布$N(\mu ,\sigma  ^ { 2 } )$，从这些测量数据中随机抽取7个，经计算，其平均面积为125平方米，修正标准差为$S_{ n }  ^{ * }=2.71$平方米.
+(1) 求$\mu$的置信度为90%的置信区间；
+(2)能否认为这块土地的平均面积为124平方米（显著性水平$\alpha =0.1$）？
+$$
+u_{0.9}=1.29,\quad u_{0.95}=1.65,\quad t_{0.9}(7)=1.415,\quad t_{0.9}(6)=1.440,\quad t_{0.95}(7)=1.895,\quad t_{0.95}(6)=1.943
+$$
 
-解 （1）![](assets/probability-theory-007/image-188.png)的置信度为![](assets/probability-theory-007/image-189.png)下的置信区间为
+解 （1）$\mu$的置信度为$1-\alpha$下的置信区间为
 
-![](assets/probability-theory-007/image-190.png)
+$$
+( \bar X-t_{ 1-\alpha /2 }  (n-1)\frac { S_{ n }  ^{ * } } { \sqrt{ n } },\quad  \bar X+t_{ 1-\alpha /2 }  (n-1)\frac { S_{ n }  ^{ * } } { \sqrt{ n } })
+$$
 
-其中，![](assets/probability-theory-007/image-191.png)表示样本均值，![](assets/probability-theory-007/image-192.png)表示样本修正标准差，![](assets/probability-theory-007/image-193.png)表示样本容量，又![](assets/probability-theory-007/image-194.png)
+其中，$\bar X$表示样本均值，$S_{ n }  ^{ * }$表示样本修正标准差，$n$表示样本容量，又$\bar X=125,  S_{ n }  ^{ * }=2.71,  n=7,  \alpha =0.1,  t_{ 0.95 }  (6)=1.943$
 
-所以![](assets/probability-theory-007/image-195.png)的置信度为90%的置信区间为（123，127）. (5分)
+所以$\mu$的置信度为90%的置信区间为（123，127）. (5分)
 
-（2）本问题是在![](assets/probability-theory-007/image-196.png)下检验假设![](assets/probability-theory-007/image-197.png)
+（2）本问题是在$\alpha =0.10$下检验假设$H_{ 0 }  :\mu =124,\ \ H_{ 1 }  :\mu \ne 124,$
 
-由于正态总体的方差![](assets/probability-theory-007/image-198.png)未知，所以选择统计量![](assets/probability-theory-007/image-199.png)， (6分)
+由于正态总体的方差$\sigma  ^ { 2 }$未知，所以选择统计量$T=\frac {  \bar X-\mu _{ 0 }   } { S_{ n }  ^{ * }/\sqrt{ n } }$， (6分)
 
-由已知得统计量的观测值![](assets/probability-theory-007/image-200.png)，临界值![](assets/probability-theory-007/image-201.png)，
+由已知得统计量的观测值$T=\frac { 125-124 } { 2.71/\sqrt{ 7 } }=0.976$，临界值$t_{ 1-\frac { \alpha  } { 2 } }  (n-1)=t_{ 0.95 }  (6)=1.943$，
 
-因为![](assets/probability-theory-007/image-202.png)，所以接受原假设![](assets/probability-theory-007/image-203.png)，即在显著性水平![](assets/probability-theory-007/image-204.png)下，可以认为这块土地的平均面积为124平方米. (10分)
+因为$\left | { T } \right  |=0.976 < 1.943=t_{ 0.95 }  (6)$，所以接受原假设$H_{ 0 }$，即在显著性水平$\alpha =0.1$下，可以认为这块土地的平均面积为124平方米. (10分)

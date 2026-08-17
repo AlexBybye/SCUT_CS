@@ -11,6 +11,7 @@ from .contracts import (
     ModelCredentialUpsert,
     WorkflowResult,
     WorkflowRunRequest,
+    WorkflowStreamEvent,
 )
 from .model_catalog import ModelCatalogResponse
 from .paths import CONTRACT_ROOT
@@ -19,6 +20,7 @@ from .paths import CONTRACT_ROOT
 SCHEMA_MODELS = {
     "workflow-request.schema.json": WorkflowRunRequest,
     "workflow-result.schema.json": WorkflowResult,
+    "workflow-stream-event.schema.json": WorkflowStreamEvent,
     "conversation-detail.schema.json": ConversationDetail,
     "model-catalog.schema.json": ModelCatalogResponse,
     "model-credential-list.schema.json": ModelCredentialStatusList,

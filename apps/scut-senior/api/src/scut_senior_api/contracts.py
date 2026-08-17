@@ -462,6 +462,54 @@ class WorkflowResult(ContractModel):
     availability_status: str
 
 
+class AnswerDelta(ContractModel):
+    block_index: Annotated[int, Field(ge=0)]
+    type: AnswerBlockType
+    delta: Annotated[str, Field(min_length=1, max_length=4_000)]
+
+
+class WorkflowStreamError(ContractModel):
+    code: TraceCode
+    detail: Annotated[str, Field(min_length=1, max_length=500)]
+
+
+class WorkflowStreamEvent(ContractModel):
+    """One ordered NDJSON event from a single Workflow Runtime execution."""
+
+    kind: Literal["trace", "answer_delta", "result", "error"]
+    workflow_run_id: UUID | None
+    sequence: Annotated[int, Field(ge=0)]
+    trace_event: TraceEvent | None = None
+    answer_delta: AnswerDelta | None = None
+    result: WorkflowResult | None = None
+    error: WorkflowStreamError | None = None
+
+    @model_validator(mode="after")
+    def enforce_exact_event_payload(self) -> "WorkflowStreamEvent":
+        payloads = {
+            "trace": self.trace_event,
+            "answer_delta": self.answer_delta,
+            "result": self.result,
+            "error": self.error,
+        }
+        if payloads[self.kind] is None or any(
+            value is not None for key, value in payloads.items() if key != self.kind
+        ):
+            raise ValueError("stream events require exactly the payload matching kind")
+        if self.kind != "error" and self.workflow_run_id is None:
+            raise ValueError("non-error stream events require workflow_run_id")
+        if self.result is not None:
+            if self.workflow_run_id != self.result.workflow_run_id:
+                raise ValueError("stream result must belong to workflow_run_id")
+            if self.result.run_status not in {
+                RunStatus.COMPLETED,
+                RunStatus.INTERRUPTED,
+                RunStatus.FAILED,
+            }:
+                raise ValueError("stream result must be terminal")
+        return self
+
+
 class WorkflowAttempt(ContractModel):
     workflow_run_id: UUID
     attempt_group_id: UUID
