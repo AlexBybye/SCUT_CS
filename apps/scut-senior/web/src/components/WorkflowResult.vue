@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import type {
   AnswerBlock,
   AnswerBlockType,
   Citation,
+  FeedbackType,
   WorkflowRunResult,
 } from "../contracts";
+import { submitFeedback } from "../api";
 import type { WorkflowStreamState } from "../workflowStream";
 
 const props = defineProps<{
@@ -13,6 +15,37 @@ const props = defineProps<{
   isRunning: boolean;
   streamState: WorkflowStreamState | null;
 }>();
+
+const feedbackType = ref<FeedbackType | null>(null);
+const feedbackNote = ref("");
+const feedbackSubmitted = ref(false);
+const feedbackError = ref("");
+const feedbackBusy = ref(false);
+
+async function sendFeedback(): Promise<void> {
+  if (!props.result || !feedbackType.value) return;
+  feedbackBusy.value = true;
+  feedbackError.value = "";
+  try {
+    await submitFeedback(
+      props.result.workflow_run_id,
+      feedbackType.value,
+      feedbackNote.value,
+    );
+    feedbackSubmitted.value = true;
+  } catch (error) {
+    feedbackError.value = error instanceof Error ? error.message : "反馈提交失败。";
+  } finally {
+    feedbackBusy.value = false;
+  }
+}
+
+function resetFeedback(): void {
+  feedbackType.value = null;
+  feedbackNote.value = "";
+  feedbackSubmitted.value = false;
+  feedbackError.value = "";
+}
 
 const citations = computed(() => props.result?.citations ?? []);
 const externalResources = computed(() => props.result?.external_resources ?? []);
@@ -211,6 +244,57 @@ function citationLocator(citation: Citation): string {
         <p v-else class="section-empty">
           {{ isRunning ? "正在等待第一个安全 Trace 事件。" : "本次没有 Trace 事件。" }}
         </p>
+      </section>
+
+      <section v-if="result && !isRunning" class="result-section feedback-section" aria-labelledby="feedback-heading">
+        <div class="result-section-heading">
+          <div>
+            <h3 id="feedback-heading">回答反馈</h3>
+            <p>反馈只进入待处理列表，不会自动修改知识库或后续回答。</p>
+          </div>
+          <span v-if="feedbackSubmitted" class="feedback-ok">已提交</span>
+        </div>
+        <div v-if="!feedbackSubmitted" class="feedback-form">
+          <div class="feedback-buttons" role="group" aria-label="回答反馈类型">
+            <button
+              v-for="option in ([
+                ['helpful', '有帮助'],
+                ['not_helpful', '没帮助'],
+                ['knowledge_error', '知识错误'],
+                ['did_not_answer', '没回答问题'],
+              ] as const)"
+              :key="option[0]"
+              type="button"
+              :class="['feedback-button', { 'feedback-button-active': feedbackType === option[0] }]"
+              :aria-pressed="feedbackType === option[0]"
+              @click="feedbackType = feedbackType === option[0] ? null : option[0]"
+            >
+              {{ option[1] }}
+            </button>
+          </div>
+          <textarea
+            v-model="feedbackNote"
+            class="feedback-note"
+            rows="2"
+            maxlength="2000"
+            placeholder="可选：简短说明（如具体错误位置）"
+          ></textarea>
+          <div class="feedback-actions">
+            <button
+              type="button"
+              class="feedback-submit"
+              :disabled="!feedbackType || feedbackBusy"
+              @click="sendFeedback"
+            >
+              {{ feedbackBusy ? "提交中…" : "提交反馈" }}
+            </button>
+            <span v-if="feedbackError" class="feedback-error" role="alert">{{ feedbackError }}</span>
+          </div>
+        </div>
+        <div v-else class="feedback-done">
+          <p>感谢反馈。修复问题后重新运行会生成新的回答尝试。</p>
+          <button type="button" class="feedback-again" @click="resetFeedback">再提交一条</button>
+        </div>
       </section>
     </template>
   </section>

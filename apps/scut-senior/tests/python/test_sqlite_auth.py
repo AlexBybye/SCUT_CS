@@ -63,6 +63,7 @@ def test_auth_migrations_are_ledgered_and_sqlite_runtime_pragmas_are_enabled(
             "0003_conversation_history.sql",
             "0004_model_credentials.sql",
             "0005_finalize_model_credentials.sql",
+            "0006_feedback.sql",
         ]
         assert connection.execute("PRAGMA foreign_keys").fetchone()[0] == 1
         assert connection.execute("PRAGMA journal_mode").fetchone()[0] == "wal"

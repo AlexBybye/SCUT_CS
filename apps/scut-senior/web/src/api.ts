@@ -5,6 +5,8 @@ import type {
   ConversationDetail,
   ConversationSummary,
   Course,
+  FeedbackRecord,
+  FeedbackType,
   ModelCatalog,
   WorkflowAttempt,
   WorkflowRunRequest,
@@ -198,4 +200,15 @@ export async function getWorkflowRun(workflowRunId: string): Promise<WorkflowRun
     `/api/v1/workflow-runs/${encodeURIComponent(workflowRunId)}`,
   );
   return validateWorkflowRunResult(result, { expectedRunId: workflowRunId });
+}
+
+export async function submitFeedback(
+  runId: string,
+  feedbackType: FeedbackType,
+  note?: string,
+): Promise<FeedbackRecord> {
+  return apiRequest<FeedbackRecord>("/api/v1/feedback", {
+    method: "POST",
+    body: JSON.stringify({ run_id: runId, feedback_type: feedbackType, note: note || null }),
+  });
 }

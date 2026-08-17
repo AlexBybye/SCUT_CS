@@ -1,4 +1,4 @@
-.PHONY: sync dev-api test test-api test-web build-web validate-fixtures check-contracts
+.PHONY: sync dev-api serve-online test test-api test-web build-web validate-fixtures check-contracts
 
 sync:
 	uv sync --project api --extra dev
@@ -6,6 +6,11 @@ sync:
 
 dev-api:
 	uv run --project api uvicorn scut_senior_api.main:app --reload --host 127.0.0.1 --port 8000
+
+# 在线部署（本地 + HTTPS 隧道，当前启用路径）：先 make build-web，
+# 再按 README「在线部署」节设置环境变量后执行；前端与 API 由同一进程提供。
+serve-online:
+	uv run --project api uvicorn scut_senior_api.main:app --host 0.0.0.0 --port 8000
 
 test: test-api test-web
 

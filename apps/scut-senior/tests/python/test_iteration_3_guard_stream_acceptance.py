@@ -414,8 +414,8 @@ def test_humanizer_cannot_inject_a_bilibili_link(unsafe_url: str) -> None:
 
 def test_runtime_rejects_in_place_humanizer_mutation(tmp_path: Path) -> None:
     class ScriptedModel:
-        def generate(self, request, sources):
-            del request, sources
+        def generate(self, request, sources, history=()):
+            del request, sources, history
             return GeneratedAnswer(
                 repository_answer="矩阵可逆，见 [S1]。",
                 related_topics=("矩阵",),
@@ -463,8 +463,8 @@ def test_model_suggestions_cannot_leak_bilibili_urls_or_text_into_trace(
     private_topic_marker = "错答正文私人标记不应写入Trace"
 
     class ScriptedModel:
-        def generate(self, request, sources):
-            del request, sources
+        def generate(self, request, sources, history=()):
+            del request, sources, history
             return GeneratedAnswer(
                 repository_answer="矩阵秩回答 [S1]。",
                 citation_ids=("S1",),
@@ -620,8 +620,8 @@ def test_disconnect_while_model_is_blocked_finishes_as_interrupted_after_return(
     release_model = Event()
 
     class BlockingModel:
-        def generate(self, request, sources):
-            del request, sources
+        def generate(self, request, sources, history=()):
+            del request, sources, history
             model_entered.set()
             if not release_model.wait(timeout=2):
                 raise TimeoutError("test model was not released")
@@ -674,8 +674,8 @@ def test_closing_the_stream_route_cancels_and_persists_the_same_run(
     release_model = Event()
 
     class BlockingModel:
-        def generate(self, request, sources):
-            del request, sources
+        def generate(self, request, sources, history=()):
+            del request, sources, history
             model_entered.set()
             if not release_model.wait(timeout=2):
                 raise TimeoutError("test model was not released")
@@ -745,8 +745,8 @@ def test_cancellation_wins_when_blocked_retrieval_returns_an_error(
             raise RuntimeError("retrieval failed after cancellation")
 
     class ModelMustNotRun:
-        def generate(self, request, sources):
-            del request, sources
+        def generate(self, request, sources, history=()):
+            del request, sources, history
             raise AssertionError("model must not run after cancelled retrieval")
 
     app = create_app(
@@ -800,8 +800,8 @@ def test_cancellation_wins_model_failure_and_prevents_retry(
         def __init__(self) -> None:
             self.calls = 0
 
-        def generate(self, request, sources):
-            del request, sources
+        def generate(self, request, sources, history=()):
+            del request, sources, history
             self.calls += 1
             model_entered.set()
             if not release_model.wait(timeout=2):
@@ -945,8 +945,8 @@ def test_transient_model_failure_retries_the_same_gateway_instance_once(
         def __init__(self) -> None:
             self.calls = 0
 
-        def generate(self, request, sources):
-            del request, sources
+        def generate(self, request, sources, history=()):
+            del request, sources, history
             self.calls += 1
             if self.calls == 1:
                 raise TimeoutError("temporary upstream timeout")
@@ -992,8 +992,8 @@ def test_running_and_terminal_state_are_observable_for_the_same_stream_run(
             self.started = Event()
             self.release = Event()
 
-        def generate(self, request, sources):
-            del request, sources
+        def generate(self, request, sources, history=()):
+            del request, sources, history
             self.started.set()
             assert self.release.wait(timeout=5), "test did not release the model"
             return GeneratedAnswer("阻塞结束后的回答 [S1]。", citation_ids=("S1",))

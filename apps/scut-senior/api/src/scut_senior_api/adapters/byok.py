@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from typing import Mapping
 
 from ..contracts import WorkflowRunRequest
-from ..ports import GeneratedAnswer, RetrievedSource
+from ..ports import ConversationTurn, GeneratedAnswer, RetrievedSource
 from ..workflow_focus import (
     build_response_control_directive,
     build_workflow_focus,
@@ -80,6 +80,7 @@ class FixedByokModelGateway:
         api_key: str,
         request: WorkflowRunRequest,
         sources: list[RetrievedSource],
+        history: tuple[ConversationTurn, ...] = (),
     ) -> GeneratedAnswer:
         route = FIXED_BYOK_ROUTES.get(request.provider_id)
         if route is None or request.model_id != route.model_id:
@@ -94,7 +95,7 @@ class FixedByokModelGateway:
                 code="invalid_model_credential",
                 detail="已保存的 API Key 无效，请重新保存。",
             )
-        payload = _build_byok_request(request, sources)
+        payload = _build_byok_request(request, sources, history)
         try:
             response = self._http_client.post_json(
                 route.endpoint,
@@ -124,7 +125,9 @@ class FixedByokModelGateway:
 
 
 def _build_byok_request(
-    request: WorkflowRunRequest, sources: list[RetrievedSource]
+    request: WorkflowRunRequest,
+    sources: list[RetrievedSource],
+    history: tuple[ConversationTurn, ...] = (),
 ) -> dict[str, object]:
     workflow_focus = build_workflow_focus(request)
     response_controls = build_response_control_directive(request)
@@ -151,6 +154,7 @@ def _build_byok_request(
                     f"{workflow_focus.prompt_directive}"
                 ),
             },
+            *_history_messages(history),
             {
                 "role": "user",
                 "content": (
@@ -335,3 +339,20 @@ def _parse_byok_answer(response: HttpResponse) -> GeneratedAnswer:
 
 def _is_string_list(value: object) -> bool:
     return isinstance(value, list) and all(isinstance(item, str) for item in value)
+
+
+def _history_messages(
+    history: tuple[ConversationTurn, ...],
+) -> list[dict[str, str]]:
+    """Emit bounded prior turns as plain chat messages.
+
+    History is server-derived context from completed attempts in the same
+    conversation; the current request remains the authority for course,
+    workflow and knowledge scope.
+    """
+
+    return [
+        {"role": turn.role, "content": turn.content}
+        for turn in history
+        if turn.role in ("user", "assistant") and turn.content
+    ]

@@ -323,8 +323,8 @@ def test_local_mode_rejects_an_unversioned_course_pack_before_model_call(
     class ModelCallSpy:
         called = False
 
-        def generate(self, request, sources):
-            del request, sources
+        def generate(self, request, sources, history=()):
+            del request, sources, history
             self.called = True
             raise AssertionError("model must not receive an unversioned local batch")
 

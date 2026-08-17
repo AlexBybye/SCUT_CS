@@ -25,6 +25,13 @@ export const COURSE_SCOPES = ["single", "cross"] as const;
 
 export const MODEL_SOURCES = ["platform_default", "user_key"] as const;
 
+export const FEEDBACK_TYPES = [
+  "helpful",
+  "not_helpful",
+  "knowledge_error",
+  "did_not_answer",
+] as const;
+
 export const RUN_STATUSES = [
   "created",
   "running",
@@ -82,8 +89,23 @@ export type EvidenceStatus = (typeof EVIDENCE_STATUSES)[number];
 export type AnswerBlockType = (typeof ANSWER_BLOCK_TYPES)[number];
 export type CourseScope = (typeof COURSE_SCOPES)[number];
 export type ModelSource = (typeof MODEL_SOURCES)[number];
+export type FeedbackType = (typeof FEEDBACK_TYPES)[number];
 export type TraceEventStatus = (typeof TRACE_EVENT_STATUSES)[number];
 export type LocatorType = "page" | "slide" | "heading" | "question" | "none";
+
+export interface FeedbackRecord {
+  feedback_id: string;
+  user_id: string;
+  run_id: string;
+  conversation_id: string;
+  course_id: string;
+  workflow_type: WorkflowType;
+  feedback_type: FeedbackType;
+  note: string | null;
+  answer_status: AnswerStatus;
+  created_at: string;
+  expires_at: string;
+}
 
 export interface Course {
   course_id: string;
