@@ -9,6 +9,33 @@ from ..contracts import WorkflowRunRequest
 from ..paths import FIXTURE_ROOT
 from ..ports import GeneratedAnswer, RetrievalBatch, RetrievedSource, UserIdentity
 from ..registry import CourseRegistry
+from ..workflow_focus import FocusStrategy, build_workflow_focus
+
+
+_FIXTURE_FOCUS_OUTPUTS: dict[
+    FocusStrategy, tuple[tuple[str, ...], tuple[str, ...]]
+] = {
+    FocusStrategy.QUESTION_CONCEPT: (
+        ("矩阵", "线性方程组"),
+        ("矩阵的秩", "初等行变换"),
+    ),
+    FocusStrategy.SYLLABUS_WEAK_TOPICS: (
+        ("复习大纲", "初等行变换"),
+        ("初等行变换复习", "矩阵复习"),
+    ),
+    FocusStrategy.PROBLEM_MAIN_TOPIC: (
+        ("矩阵题主知识点",),
+        ("矩阵秩题目",),
+    ),
+    FocusStrategy.MISTAKE_ROOT_CAUSE: (
+        ("矩阵概念错误根因",),
+        ("矩阵秩错误原因",),
+    ),
+    FocusStrategy.MATERIAL_TITLE_MAIN_TOPICS: (
+        ("临时材料主要知识点",),
+        ("矩阵材料精读",),
+    ),
+}
 
 
 class MockIdentityProvider:
@@ -70,13 +97,23 @@ class MockModelGateway:
     def generate(
         self, request: WorkflowRunRequest, sources: list[RetrievedSource]
     ) -> GeneratedAnswer:
+        workflow_focus = build_workflow_focus(request)
+        control_note = (
+            f"Fixture 已接收回答方式 `{request.answer_mode.value}` 与表达风格 "
+            f"`{request.tone.value}`。"
+        )
+        related_topics, search_keywords = _FIXTURE_FOCUS_OUTPUTS[
+            workflow_focus.focus_strategy
+        ]
         if not sources:
             return GeneratedAnswer(
                 repository_answer=(
                     "迭代 0 Mock 未找到可用的 passed Fixture。"
                     "这只表示契约测试资料不足，不代表真实课程资料结论。"
+                    f"{control_note}"
                 ),
-                bilibili_search_keywords=("矩阵的秩", "初等行变换"),
+                related_topics=related_topics,
+                bilibili_search_keywords=search_keywords,
             )
         source = sources[0]
         preview = re.sub(r"\s+", " ", source.text).strip()[:180]
@@ -85,12 +122,19 @@ class MockModelGateway:
             f"已从合成 Fixture《{source.source_title}》读取：{preview}\n\n"
             f"本次结构化输入类型为 `{request.workflow_type.value}`；"
             "尚未调用真实模型，也未运行生产检索。"
+            f"{control_note}"
         )
         return GeneratedAnswer(
             repository_answer=answer,
-            related_topics=("矩阵", "线性方程组"),
+            related_topics=related_topics,
             related_questions=("如何判断矩阵的秩？",),
-            bilibili_search_keywords=("矩阵的秩", "初等行变换"),
+            bilibili_search_keywords=search_keywords,
+            # The deterministic fixture explicitly selects its request-local
+            # candidates. The service no longer turns every retrieval hit into
+            # a citation on the model's behalf.
+            citation_ids=tuple(
+                f"S{index}" for index in range(1, len(sources) + 1)
+            ),
         )
 
 

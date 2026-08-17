@@ -1,15 +1,61 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import type { Citation, WorkflowRunResult } from "../contracts";
+import type {
+  AnswerBlock,
+  AnswerBlockType,
+  Citation,
+  WorkflowRunResult,
+} from "../contracts";
+import type { WorkflowStreamState } from "../workflowStream";
 
 const props = defineProps<{
   result: WorkflowRunResult | null;
   isRunning: boolean;
+  streamState: WorkflowStreamState | null;
 }>();
 
 const citations = computed(() => props.result?.citations ?? []);
 const externalResources = computed(() => props.result?.external_resources ?? []);
-const trace = computed(() => props.result?.trace ?? []);
+const coverageGaps = computed(() => props.result?.coverage_gaps ?? []);
+const trace = computed(() => props.result?.trace ?? props.streamState?.traceEvents ?? []);
+const streamError = computed(() => props.result ? null : props.streamState?.error ?? null);
+const streamPhase = computed(() => props.result?.run_status ?? props.streamState?.phase ?? "idle");
+const hasStreamActivity = computed(() => Boolean(
+  props.streamState && (
+    props.streamState.phase !== "idle" ||
+    props.streamState.answerBlocks.length ||
+    props.streamState.traceEvents.length
+  ),
+));
+
+const answerBlocks = computed<AnswerBlock[]>(() => {
+  if (props.result?.answer_blocks.length) return props.result.answer_blocks;
+  if (props.streamState?.answerBlocks.length) {
+    return props.streamState.answerBlocks.filter((block) => block.content.length > 0);
+  }
+  const legacyBlocks: AnswerBlock[] = [];
+  if (props.result?.repository_answer) {
+    legacyBlocks.push({ type: "repository", content: props.result.repository_answer });
+  }
+  if (props.result?.general_supplement) {
+    legacyBlocks.push({ type: "general", content: props.result.general_supplement });
+  }
+  return legacyBlocks;
+});
+
+const answerBlockLabels: Record<AnswerBlockType, string> = {
+  repository: "课程资料回答",
+  user_material: "用户材料",
+  general: "通用知识补充",
+  personalized_analysis: "个性化分析",
+};
+
+const answerBlockNotes: Record<AnswerBlockType, string> = {
+  repository: "结论受仓库引用与证据状态约束",
+  user_material: "仅基于你在本次 Workflow 提供的材料",
+  general: "不作为课程仓库证据，也不附仓库引用",
+  personalized_analysis: "结合本次作答或学习目标生成",
+};
 
 function citationLocator(citation: Citation): string {
   const parts: string[] = [];
@@ -39,39 +85,66 @@ function citationLocator(citation: Citation): string {
         <p class="section-kicker">契约返回</p>
         <h2 id="result-heading">回答、来源与 Trace</h2>
       </div>
-      <div v-if="result" class="status-pair" aria-label="运行状态">
-        <span>{{ result.run_status }}</span>
-        <span>{{ result.answer_status }}</span>
+      <div v-if="result || hasStreamActivity" class="status-pair" aria-label="运行状态">
+        <span>{{ streamPhase }}</span>
+        <span>{{ result?.answer_status ?? (isRunning ? "streaming" : streamError?.code ?? "partial") }}</span>
+        <span v-if="result">证据状态：{{ result.evidence_status }}</span>
       </div>
     </header>
 
-    <div v-if="isRunning" class="result-loading" role="status">
+    <div v-if="isRunning && !hasStreamActivity" class="result-loading" role="status">
       <span class="skeleton-line skeleton-line-long"></span>
       <span class="skeleton-line"></span>
       <span class="skeleton-line skeleton-line-short"></span>
-      <p>正在执行 Workflow 并保存结果。</p>
+      <p>正在建立 Workflow 事件流。</p>
     </div>
 
-    <div v-else-if="!result" class="result-empty">
+    <div v-else-if="!result && !hasStreamActivity" class="result-empty">
       <p>尚未运行 Workflow。</p>
       <span>提交左侧表单后，这里会分别呈现回答、仓库引用、外部资源和安全 Trace。</span>
     </div>
 
     <template v-else>
-      <article class="answer-block">
-        <div class="answer-meta">
-          <span>课程资料回答</span>
-          <span v-if="result.evidence_status">证据状态：{{ result.evidence_status }}</span>
-        </div>
-        <p class="answer-copy">{{ result.repository_answer || "本次没有仓库资料回答。" }}</p>
-      </article>
+      <p
+        v-if="streamError"
+        class="stream-message"
+        :class="streamPhase === 'interrupted' ? 'stream-message-interrupted' : 'stream-message-error'"
+        role="alert"
+      >
+        {{ streamError.detail }}
+      </p>
 
-      <article v-if="result.general_supplement" class="supplement-block">
-        <h3>通用补充</h3>
-        <p>{{ result.general_supplement }}</p>
-      </article>
+      <section class="answer-stack" aria-label="回答内容">
+        <article
+          v-for="(block, index) in answerBlocks"
+          :key="`${block.type}-${index}`"
+          class="semantic-answer-block"
+          :class="`semantic-answer-block-${block.type}`"
+        >
+          <div class="answer-meta">
+            <span>{{ answerBlockLabels[block.type] }}</span>
+            <span v-if="isRunning && !result">生成中</span>
+          </div>
+          <p class="answer-block-note">{{ answerBlockNotes[block.type] }}</p>
+          <p class="answer-copy">{{ block.content }}</p>
+        </article>
+        <p v-if="!answerBlocks.length" class="section-empty answer-pending">
+          {{ isRunning ? "Workflow 已开始，正在等待回答内容。" : "本次没有返回回答内容。" }}
+        </p>
+      </section>
 
-      <section class="result-section" aria-labelledby="citations-heading">
+      <section
+        v-if="coverageGaps.length"
+        class="coverage-gap-block"
+        aria-labelledby="coverage-gap-heading"
+      >
+        <h3 id="coverage-gap-heading">资料覆盖说明</h3>
+        <ul>
+          <li v-for="gap in coverageGaps" :key="gap">{{ gap }}</li>
+        </ul>
+      </section>
+
+      <section v-if="result" class="result-section" aria-labelledby="citations-heading">
         <div class="result-section-heading">
           <h3 id="citations-heading">仓库引用</h3>
           <span>{{ citations.length }} 条</span>
@@ -87,7 +160,7 @@ function citationLocator(citation: Citation): string {
         <p v-else class="section-empty">本次没有仓库引用。</p>
       </section>
 
-      <section class="result-section external-section" aria-labelledby="resources-heading">
+      <section v-if="result" class="result-section external-section" aria-labelledby="resources-heading">
         <div class="result-section-heading">
           <div>
             <h3 id="resources-heading">B站延伸学习</h3>
@@ -123,7 +196,7 @@ function citationLocator(citation: Citation): string {
           <span>{{ trace.length }} 个节点</span>
         </div>
         <ol v-if="trace.length" class="trace-list">
-          <li v-for="(event, index) in trace" :key="`${event.node}-${index}`">
+          <li v-for="(event, index) in trace" :key="event.event_id">
             <span class="trace-index">{{ String(index + 1).padStart(2, "0") }}</span>
             <div>
               <strong>{{ event.node }}</strong>
@@ -135,7 +208,9 @@ function citationLocator(citation: Citation): string {
             </div>
           </li>
         </ol>
-        <p v-else class="section-empty">本次没有 Trace 事件。</p>
+        <p v-else class="section-empty">
+          {{ isRunning ? "正在等待第一个安全 Trace 事件。" : "本次没有 Trace 事件。" }}
+        </p>
       </section>
     </template>
   </section>

@@ -9,8 +9,10 @@ from .contracts import (
     ConversationDetail,
     ModelCredentialStatusList,
     ModelCredentialUpsert,
+    RunStatus,
     WorkflowResult,
     WorkflowRunRequest,
+    WorkflowStreamEvent,
 )
 from .model_catalog import ModelCatalogResponse
 from .paths import CONTRACT_ROOT
@@ -19,6 +21,7 @@ from .paths import CONTRACT_ROOT
 SCHEMA_MODELS = {
     "workflow-request.schema.json": WorkflowRunRequest,
     "workflow-result.schema.json": WorkflowResult,
+    "workflow-stream-event.schema.json": WorkflowStreamEvent,
     "conversation-detail.schema.json": ConversationDetail,
     "model-catalog.schema.json": ModelCatalogResponse,
     "model-credential-list.schema.json": ModelCredentialStatusList,
@@ -33,6 +36,19 @@ WORKFLOW_PAYLOAD_DEFS = {
     "temporary_material_reading": "TemporaryMaterialReadingPayload",
 }
 
+STREAM_EVENT_PAYLOAD_DEFS = {
+    "trace": ("trace_event", "TraceEvent"),
+    "answer_delta": ("answer_delta", "AnswerDelta"),
+    "result": ("result", "WorkflowResult"),
+    "error": ("error", "WorkflowStreamError"),
+}
+
+TERMINAL_RUN_STATUSES = [
+    RunStatus.COMPLETED.value,
+    RunStatus.INTERRUPTED.value,
+    RunStatus.FAILED.value,
+]
+
 
 def render_schema_files() -> dict[str, str]:
     rendered: dict[str, str] = {}
@@ -42,6 +58,8 @@ def render_schema_files() -> dict[str, str]:
             _add_request_cross_field_invariants(schema)
         elif filename == "workflow-result.schema.json":
             _add_result_cross_field_invariants(schema)
+        elif filename == "workflow-stream-event.schema.json":
+            _add_stream_event_cross_field_invariants(schema)
         schema["$id"] = f"https://scut-senior.local/contracts/v1/{filename}"
         schema["$schema"] = "https://json-schema.org/draft/2020-12/schema"
         rendered[filename] = (
@@ -189,6 +207,65 @@ def _add_result_cross_field_invariants(schema: dict[str, Any]) -> None:
         "maxLength": 2083,
         "pattern": "^https://search\\.bilibili\\.com/all\\?keyword=[^&#]+$",
     }
+
+
+def _add_stream_event_cross_field_invariants(schema: dict[str, Any]) -> None:
+    """Add the stream invariants expressible in standard Draft 2020-12.
+
+    Equality between the outer and nested workflow_run_id remains a runtime
+    Pydantic/client check because standard JSON Schema has no cross-value
+    equality keyword.
+    """
+
+    conditions: list[dict[str, Any]] = []
+    payload_fields = [
+        payload_field for payload_field, _ in STREAM_EVENT_PAYLOAD_DEFS.values()
+    ]
+    for kind, (matching_field, payload_def) in STREAM_EVENT_PAYLOAD_DEFS.items():
+        matching_schema: dict[str, Any] = {"$ref": f"#/$defs/{payload_def}"}
+        if kind == "result":
+            matching_schema = {
+                "allOf": [
+                    matching_schema,
+                    {
+                        "properties": {
+                            "run_status": {"enum": TERMINAL_RUN_STATUSES}
+                        },
+                        "required": ["run_status"],
+                        "type": "object",
+                    },
+                ]
+            }
+
+        properties: dict[str, Any] = {
+            payload_field: (
+                matching_schema if payload_field == matching_field else {"type": "null"}
+            )
+            for payload_field in payload_fields
+        }
+        if kind != "error":
+            properties["workflow_run_id"] = {
+                "format": "uuid",
+                "type": "string",
+            }
+
+        required = [matching_field]
+        if kind != "error":
+            required.append("workflow_run_id")
+
+        conditions.append(
+            {
+                "if": {
+                    "properties": {"kind": {"const": kind}},
+                    "required": ["kind"],
+                },
+                "then": {
+                    "properties": properties,
+                    "required": required,
+                },
+            }
+        )
+    schema["allOf"] = conditions
 
 
 def check_schema_files(schema_root: Path | None = None) -> list[str]:

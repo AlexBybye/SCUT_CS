@@ -29,7 +29,14 @@ function optionalText(value: string | undefined): string | undefined {
 }
 
 function normalizeList(values: string[]): string[] {
-  return values.map((value) => value.trim()).filter(Boolean);
+  const seen = new Set<string>();
+  return values
+    .map((value) => value.trim())
+    .filter((value) => {
+      if (!value || seen.has(value)) return false;
+      seen.add(value);
+      return true;
+    });
 }
 
 export function normalizeWorkflowPayload<T extends WorkflowType>(
@@ -80,6 +87,9 @@ export function normalizeWorkflowPayload<T extends WorkflowType>(
     case "temporary_material_reading": {
       const value = payload as WorkflowPayloadMap["temporary_material_reading"];
       return {
+        ...(optionalText(value.material_title)
+          ? { material_title: optionalText(value.material_title) }
+          : {}),
         material_text: value.material_text.trim(),
         ...(optionalText(value.reading_goal)
           ? { reading_goal: optionalText(value.reading_goal) }
@@ -104,6 +114,24 @@ export function buildWorkflowRequest<T extends WorkflowType>(
     throw new Error("课程、会话、请求内容和模型不能为空");
   }
 
+  const normalizedPayload = normalizeWorkflowPayload(
+    input.workflowType,
+    input.workflowPayload,
+  );
+  const workflowPayload =
+    input.workflowType === "exam_review"
+      ? ({
+          ...(normalizedPayload as WorkflowPayloadMap["exam_review"]),
+          // The backend intentionally ignores outer user_input for execution.
+          // Preserve the main review request as typed model context while
+          // retrieval remains limited to syllabus + weak_topics.
+          goals: normalizeList([
+            userInput,
+            ...(normalizedPayload as WorkflowPayloadMap["exam_review"]).goals,
+          ]),
+        } as WorkflowPayloadMap[T])
+      : normalizedPayload;
+
   return {
     workflow_type: input.workflowType,
     course_scope: "single",
@@ -121,6 +149,6 @@ export function buildWorkflowRequest<T extends WorkflowType>(
       input.knowledgeScope === "course_first" && input.includeBilibiliResources,
     context_refs: [],
     attachments: [],
-    workflow_payload: normalizeWorkflowPayload(input.workflowType, input.workflowPayload),
+    workflow_payload: workflowPayload,
   };
 }

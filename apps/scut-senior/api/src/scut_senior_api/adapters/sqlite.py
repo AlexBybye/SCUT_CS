@@ -874,7 +874,7 @@ class SQLiteWorkflowRepository:
                     raise PermissionError(
                         "regenerated attempt parent is missing or belongs to another history"
                     )
-            connection.execute(
+            run_cursor = connection.execute(
                 """
                 INSERT INTO workflow_runs (
                     workflow_run_id, conversation_id, user_id, run_status,
@@ -888,6 +888,7 @@ class SQLiteWorkflowRepository:
                     result_json = excluded.result_json,
                     updated_at = excluded.updated_at,
                     expires_at = excluded.expires_at
+                WHERE workflow_runs.run_status IN ('created', 'running')
                 """,
                 (
                     str(result.workflow_run_id),
@@ -909,6 +910,8 @@ class SQLiteWorkflowRepository:
                     expires_at,
                 ),
             )
+            if run_cursor.rowcount != 1:
+                raise ValueError("workflow run is already terminal")
             connection.execute(
                 """
                 UPDATE conversations
@@ -998,6 +1001,20 @@ class SQLiteWorkflowRepository:
     def get_run(self, user_id: str, run_id: UUID) -> WorkflowResult | None:
         attempt = self.get_attempt(user_id, run_id)
         return attempt.result if attempt is not None else None
+
+    def discard_nonterminal_run(self, user_id: str, run_id: UUID) -> bool:
+        """Remove an abandoned pre-terminal run without touching completed history."""
+
+        with self._connect() as connection:
+            cursor = connection.execute(
+                """
+                DELETE FROM workflow_runs
+                WHERE workflow_run_id = ? AND user_id = ?
+                  AND run_status IN ('created', 'running')
+                """,
+                (str(run_id), user_id),
+            )
+        return cursor.rowcount == 1
 
     def get_attempt(self, user_id: str, run_id: UUID) -> WorkflowAttempt | None:
         self.cleanup_history_records()

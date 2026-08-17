@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import {
   ApiError,
   createConversation,
@@ -15,8 +15,8 @@ import {
   logout,
   regenerateWorkflowRun,
   renameConversation,
-  runWorkflow,
   saveByokCredential,
+  startWorkflowRunStream,
 } from "./api";
 import WorkflowResult from "./components/WorkflowResult.vue";
 import {
@@ -56,6 +56,12 @@ import {
 } from "./modelSelection";
 import { createRequestEpoch } from "./requestEpoch";
 import { buildWorkflowRequest } from "./workflowRequest";
+import { selectConversationAttempt } from "./workflowResultValidation";
+import {
+  createInitialWorkflowStreamState,
+  type WorkflowStreamHandle,
+  type WorkflowStreamState,
+} from "./workflowStream";
 
 const ITERATION_ZERO_MOCK_MODEL: ModelCatalogItem = {
   provider_id: "mock",
@@ -171,6 +177,7 @@ const problemSource = ref("");
 const originalAnswer = ref("");
 const referenceAnswer = ref("");
 const reviewFocus = ref("");
+const materialTitle = ref("");
 const readingGoal = ref("");
 
 const conversationId = ref("");
@@ -189,6 +196,8 @@ const deleteConfirmId = ref("");
 const deletingConversationId = ref("");
 const isRegenerating = ref(false);
 const isRunning = ref(false);
+const canCancelWorkflow = ref(false);
+const workflowStreamState = ref<WorkflowStreamState | null>(null);
 const isReloading = ref(false);
 const errorMessage = ref("");
 const noticeMessage = ref("");
@@ -208,6 +217,7 @@ const byokMessageIsError = ref(false);
 const privateRequestEpoch = createRequestEpoch();
 let conversationLoadSequence = 0;
 let isApplyingHistoryCourse = false;
+let activeWorkflowStream: WorkflowStreamHandle | null = null;
 
 const selectedCourse = computed(() =>
   courses.value.find((course) => course.course_id === selectedCourseId.value),
@@ -423,11 +433,20 @@ function setHistoryMessage(message: string, isError = false): void {
   historyMessageIsError.value = isError;
 }
 
+function abortActiveWorkflow(detail: string): void {
+  if (activeWorkflowStream && !activeWorkflowStream.signal.aborted) {
+    activeWorkflowStream.abort(detail);
+  }
+  canCancelWorkflow.value = false;
+}
+
 function clearActiveConversation(): void {
+  abortActiveWorkflow("当前会话已切换，运行已取消。");
   conversationId.value = "";
   conversationSnapshot.value = null;
   selectedAttemptId.value = "";
   result.value = null;
+  workflowStreamState.value = null;
   noticeMessage.value = "";
   isRegenerating.value = false;
   isReloading.value = false;
@@ -447,6 +466,7 @@ function clearPrivateState(): void {
   isLoadingHistory.value = false;
   isRegenerating.value = false;
   isRunning.value = false;
+  canCancelWorkflow.value = false;
   isReloading.value = false;
   byokCredentialStatuses.value = [];
   byokKeyDrafts.value = emptyByokKeyDrafts();
@@ -496,6 +516,7 @@ function upsertConversationSummary(summary: ConversationSummary): void {
 }
 
 function showAttempt(attempt: WorkflowAttempt): void {
+  workflowStreamState.value = null;
   selectedAttemptId.value = attempt.workflow_run_id;
   result.value = attempt.result;
 }
@@ -504,6 +525,8 @@ function applyConversationDetail(
   conversation: ConversationDetail,
   preferredAttemptId = "",
 ): void {
+  const attempt = selectConversationAttempt(conversation, preferredAttemptId);
+
   isApplyingHistoryCourse = true;
   selectedCourseId.value = conversation.course_id;
   isApplyingHistoryCourse = false;
@@ -511,10 +534,6 @@ function applyConversationDetail(
   conversationSnapshot.value = conversation;
   upsertConversationSummary(conversationSummary(conversation));
 
-  const preferredAttempt = conversation.runs.find(
-    (attempt) => attempt.workflow_run_id === preferredAttemptId,
-  );
-  const attempt = preferredAttempt ?? conversation.runs[conversation.runs.length - 1];
   if (attempt) {
     showAttempt(attempt);
   } else {
@@ -618,6 +637,7 @@ function makeRequest(activeConversationId: string): WorkflowRunRequest {
         ...common,
         workflowType: "temporary_material_reading",
         workflowPayload: {
+          material_title: materialTitle.value,
           material_text: userInput.value,
           reading_goal: readingGoal.value,
         },
@@ -1015,6 +1035,10 @@ async function submitWorkflow(): Promise<void> {
   const requestEpoch = privateRequestEpoch.snapshot();
   const requestUserId = currentUser.value!.user_id;
   isRunning.value = true;
+  canCancelWorkflow.value = false;
+  result.value = null;
+  selectedAttemptId.value = "";
+  workflowStreamState.value = createInitialWorkflowStreamState();
   try {
     let activeConversationId = conversationId.value;
     if (!activeConversationId) {
@@ -1027,16 +1051,60 @@ async function submitWorkflow(): Promise<void> {
     }
 
     const request = makeRequest(activeConversationId);
-    const workflowResult = await runWorkflow(request);
-    if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+    const streamHandle = startWorkflowRunStream(request, (nextState) => {
+      if (
+        privateRequestIsCurrent(requestEpoch, requestUserId) &&
+        conversationId.value === activeConversationId
+      ) {
+        workflowStreamState.value = nextState;
+        if (nextState.result) result.value = nextState.result;
+      }
+    });
+    activeWorkflowStream = streamHandle;
+    canCancelWorkflow.value = true;
+    const finalState = await streamHandle.done;
+    if (
+      activeWorkflowStream === streamHandle
+    ) {
+      activeWorkflowStream = null;
+      canCancelWorkflow.value = false;
+    }
+    if (
+      !privateRequestIsCurrent(requestEpoch, requestUserId) ||
+      conversationId.value !== activeConversationId
+    ) {
+      return;
+    }
+    workflowStreamState.value = finalState;
+
+    const workflowResult = finalState.result;
+    if (!workflowResult) {
+      const streamError = finalState.error;
+      if (streamError?.code === "auth_required") {
+        applyAuthFailure(new ApiError(streamError.detail, 401, streamError.code));
+        errorMessage.value = streamError.detail;
+      } else if (streamError?.code === "client_interrupted") {
+        noticeMessage.value = "已取消本次运行；后端会尽力保存 interrupted 状态，可稍后重新读取会话。";
+      } else {
+        errorMessage.value = streamError?.detail ?? "流式运行未返回最终结果。";
+      }
+      return;
+    }
+
     result.value = workflowResult;
     selectedAttemptId.value = workflowResult.workflow_run_id;
     const restoredConversation = await getConversation(activeConversationId);
     if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
     applyConversationDetail(restoredConversation, workflowResult.workflow_run_id);
-    noticeMessage.value = selectedModelIsMock.value
-      ? "Mock 运行已保存，可以重新读取会话验证持久化。"
-      : "运行已保存，可以重新读取会话验证持久化。";
+    if (workflowResult.run_status === "completed") {
+      noticeMessage.value = selectedModelIsMock.value
+        ? "Mock 运行已保存，可以重新读取会话验证持久化。"
+        : "运行已保存，可以重新读取会话验证持久化。";
+    } else if (workflowResult.run_status === "interrupted") {
+      noticeMessage.value = "运行已中断并保存，可在回答尝试中重新查看。";
+    } else {
+      errorMessage.value = "运行失败状态已保存，请查看安全 Trace 后重试。";
+    }
   } catch (error) {
     if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
     applyAuthFailure(error);
@@ -1046,6 +1114,12 @@ async function submitWorkflow(): Promise<void> {
       isRunning.value = false;
     }
   }
+}
+
+function cancelWorkflow(): void {
+  if (!activeWorkflowStream || activeWorkflowStream.signal.aborted) return;
+  noticeMessage.value = "正在取消本次运行。";
+  abortActiveWorkflow("用户取消了本次运行。");
 }
 
 async function reloadConversation(): Promise<void> {
@@ -1101,6 +1175,10 @@ onMounted(() => {
   void loadAuth();
   void loadCourses();
   void loadModels();
+});
+
+onBeforeUnmount(() => {
+  abortActiveWorkflow("页面已离开，运行已取消。");
 });
 </script>
 
@@ -1542,6 +1620,10 @@ onMounted(() => {
           </section>
 
           <section v-if="workflowType === 'temporary_material_reading'" class="workflow-fields" aria-label="临时材料精读专属字段">
+            <div class="field-group">
+              <label for="material-title">材料标题（可选）</label>
+              <input id="material-title" v-model="materialTitle" type="text" maxlength="200" placeholder="例如：特征值与特征向量复习提纲" />
+            </div>
             <div class="field-group full-width">
               <label for="reading-goal">精读目标（可选）</label>
               <input id="reading-goal" v-model="readingGoal" type="text" placeholder="例如：提取考试范围并指出与课程资料的冲突" />
@@ -1599,6 +1681,15 @@ onMounted(() => {
               {{ isRunning ? "正在运行" : selectedModelIsMock ? "运行 Mock Workflow" : "运行 Workflow" }}
             </button>
             <button
+              v-if="isRunning && canCancelWorkflow"
+              type="button"
+              class="secondary-button cancel-button"
+              @click="cancelWorkflow"
+            >
+              取消本次运行
+            </button>
+            <button
+              v-else
               type="button"
               class="secondary-button"
               :disabled="!conversationId || isReloading || isRunning"
@@ -1633,7 +1724,11 @@ onMounted(() => {
         </form>
       </section>
 
-      <WorkflowResult :result="result" :is-running="isRunning" />
+      <WorkflowResult
+        :result="result"
+        :is-running="isRunning"
+        :stream-state="workflowStreamState"
+      />
     </main>
   </div>
 </template>

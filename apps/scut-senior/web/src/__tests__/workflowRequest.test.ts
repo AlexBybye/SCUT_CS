@@ -102,12 +102,13 @@ describe("buildWorkflowRequest", () => {
   it("构造 exam_review payload 并省略空可选字段", () => {
     const request = buildWorkflowRequest({
       ...common,
+      userInput: "  制定两周复习安排  ",
       workflowType: "exam_review",
       workflowPayload: {
         syllabus: "  第一章到第五章  ",
         exam_date: "",
         available_hours: 12,
-        goals: [" 通过考试 ", "", "掌握矩阵"],
+        goals: [" 通过考试 ", "制定两周复习安排", "", "掌握矩阵"],
         weak_topics: ["特征值", "  二次型  "],
       },
     });
@@ -115,7 +116,7 @@ describe("buildWorkflowRequest", () => {
     expect(request.workflow_payload).toEqual({
       syllabus: "第一章到第五章",
       available_hours: 12,
-      goals: ["通过考试", "掌握矩阵"],
+      goals: ["制定两周复习安排", "通过考试", "掌握矩阵"],
       weak_topics: ["特征值", "二次型"],
     });
   });
@@ -165,12 +166,14 @@ describe("buildWorkflowRequest", () => {
       ...common,
       workflowType: "temporary_material_reading",
       workflowPayload: {
+        material_title: "  线性代数考试范围  ",
         material_text: "  本次考试覆盖矩阵与向量空间。  ",
         reading_goal: "  提取考试范围  ",
       },
     });
 
     expect(request.workflow_payload).toEqual({
+      material_title: "线性代数考试范围",
       material_text: "本次考试覆盖矩阵与向量空间。",
       reading_goal: "提取考试范围",
     });

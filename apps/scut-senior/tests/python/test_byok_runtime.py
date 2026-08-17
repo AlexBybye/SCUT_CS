@@ -4,7 +4,10 @@ import base64
 import json
 import sqlite3
 from collections.abc import Callable
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+from threading import Event
+from urllib.error import URLError
 
 import pytest
 from fastapi.testclient import TestClient
@@ -18,7 +21,10 @@ from scut_senior_api.adapters.byok import (
 from scut_senior_api.adapters.openrouter import HttpResponse
 from scut_senior_api.auth import GitHubUserProfile, SESSION_COOKIE_NAME
 from scut_senior_api.config import Settings
+from scut_senior_api.contracts import RunStatus, WorkflowRunRequest
 from scut_senior_api.main import create_app
+from scut_senior_api.ports import GeneratedAnswer
+from scut_senior_api.workflow_stream import WorkflowStreamSession
 
 
 MASTER_KEY = base64.b64encode(b"B" * 32).decode("ascii")
@@ -194,6 +200,65 @@ def test_four_byok_routes_use_one_fixed_endpoint_model_and_user_billing(
     assert api_key not in persisted
 
 
+def test_cancel_during_key_load_prevents_the_first_byok_provider_call(
+    tmp_path: Path,
+) -> None:
+    key_load_entered = Event()
+    release_key_load = Event()
+
+    class BlockingCredentialManager:
+        def load_api_key(self, principal, provider_id):
+            del principal, provider_id
+            key_load_entered.set()
+            if not release_key_load.wait(timeout=2):
+                raise TimeoutError("test key load was not released")
+            return "sk-private-must-not-be-used"
+
+    class RecordingByokModel:
+        def __init__(self) -> None:
+            self.calls = 0
+
+        def generate(self, *, api_key, request, sources):
+            del api_key, request, sources
+            self.calls += 1
+            return GeneratedAnswer(repository_answer="不得调用供应商。")
+
+    app, client, token, conversation_id = authenticated_app(tmp_path, None)
+    principal = app.state.repository.authenticate_session(token)
+    assert principal is not None
+    model = RecordingByokModel()
+    app.state.service.credential_manager = BlockingCredentialManager()
+    app.state.service.byok_model = model
+    request = WorkflowRunRequest.model_validate(
+        workflow_request(
+            conversation_id,
+            "openrouter",
+            "deepseek/deepseek-v4-flash-0731",
+        )
+    )
+    session = WorkflowStreamSession(lambda _: None)
+
+    with ThreadPoolExecutor(max_workers=1) as executor:
+        future = executor.submit(
+            app.state.service.run_stream,
+            principal,
+            request,
+            session,
+        )
+        try:
+            assert key_load_entered.wait(timeout=1)
+            session.cancel()
+        finally:
+            release_key_load.set()
+        result = future.result(timeout=2)
+
+    assert model.calls == 0
+    assert result.run_status == RunStatus.INTERRUPTED
+    restored = client.get(f"/api/v1/workflow-runs/{result.workflow_run_id}")
+    assert restored.status_code == 200
+    assert restored.json()["run_status"] == "interrupted"
+
+
 def test_arbitrary_byok_model_is_rejected_before_decryption_or_http(
     tmp_path: Path,
 ) -> None:
@@ -275,6 +340,7 @@ def test_missing_key_and_upstream_failure_persist_sanitized_failed_attempts(
     failed = client.post("/api/v1/workflow-runs", json=request)
     assert failed.status_code == 502
     assert failed.json()["error"]["code"] == "byok_provider_unavailable"
+    assert len(http.calls) == 1
     assert private_body not in failed.text
     assert api_key not in failed.text
 
@@ -312,6 +378,7 @@ def test_missing_key_and_upstream_failure_persist_sanitized_failed_attempts(
         (401, 422, "byok_provider_authentication_failed"),
         (402, 402, "byok_provider_credit_unavailable"),
         (429, 429, "byok_provider_rate_limited"),
+        (408, 504, "byok_provider_timeout"),
         (504, 504, "byok_provider_timeout"),
     ],
 )
@@ -336,8 +403,97 @@ def test_user_key_permission_credit_and_rate_errors_are_safe(
 
     assert response.status_code == expected_status
     assert response.json()["error"]["code"] == expected_code
+    assert len(http.calls) == (2 if expected_code == "byok_provider_timeout" else 1)
     assert key not in response.text
     assert private_body not in response.text
+
+
+@pytest.mark.parametrize(
+    "failure",
+    [
+        TimeoutError("private provider timeout"),
+        URLError(TimeoutError("private wrapped provider timeout")),
+    ],
+    ids=["direct", "urllib_wrapped"],
+)
+def test_byok_transport_timeout_retries_the_same_route_and_key_once(
+    tmp_path: Path,
+    failure: OSError,
+) -> None:
+    attempts = 0
+
+    def timeout_then_succeed() -> HttpResponse:
+        nonlocal attempts
+        attempts += 1
+        if attempts == 1:
+            raise failure
+        return success_response()
+
+    http = RecordingHttpClient(callback=timeout_then_succeed)
+    _, client, _, conversation_id = authenticated_app(tmp_path, http)
+    key = "sk-private-retry"
+    assert client.put(
+        "/api/v1/model-credentials/deepseek", json={"api_key": key}
+    ).status_code == 200
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(conversation_id, "deepseek", "deepseek-v4-flash"),
+    )
+
+    assert response.status_code == 201, response.text
+    assert len(http.calls) == 2
+    assert {call["url"] for call in http.calls} == {DEEPSEEK_BYOK_ENDPOINT}
+    assert {call["payload"]["model"] for call in http.calls} == {
+        "deepseek-v4-flash"
+    }
+    assert {call["headers"]["Authorization"] for call in http.calls} == {
+        f"Bearer {key}"
+    }
+    retry = next(
+        event
+        for event in response.json()["trace"]
+        if event["node"] == "model_output_retry"
+    )
+    assert retry["result"] == {
+        "retry_count": 1,
+        "failure_code": "model_output_retryable_failure",
+    }
+    assert key not in response.text
+
+
+def test_byok_invalid_response_retries_the_same_route_and_key_once(
+    tmp_path: Path,
+) -> None:
+    attempts = 0
+
+    def invalid_then_succeed() -> HttpResponse:
+        nonlocal attempts
+        attempts += 1
+        if attempts == 1:
+            return HttpResponse(200, b"{invalid-json")
+        return success_response()
+
+    http = RecordingHttpClient(callback=invalid_then_succeed)
+    _, client, _, conversation_id = authenticated_app(tmp_path, http)
+    key = "sk-private-invalid-retry"
+    assert client.put(
+        "/api/v1/model-credentials/zhipu", json={"api_key": key}
+    ).status_code == 200
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(conversation_id, "zhipu", "glm-5.2"),
+    )
+
+    assert response.status_code == 201, response.text
+    assert len(http.calls) == 2
+    assert {call["url"] for call in http.calls} == {ZHIPU_BYOK_ENDPOINT}
+    assert {call["payload"]["model"] for call in http.calls} == {"glm-5.2"}
+    assert {call["headers"]["Authorization"] for call in http.calls} == {
+        f"Bearer {key}"
+    }
+    assert key not in response.text
 
 
 @pytest.mark.parametrize("upstream_succeeds", [True, False])

@@ -30,6 +30,7 @@ from .corpus_validator import (
     _FENCE_RE,
     _HEADING_RE,
     _LOCATOR_RE,
+    _normalize_optional_year,
     _safe_output_path,
     _validate_frontmatter,
     _validate_locators,
@@ -597,7 +598,7 @@ def _manifest_rows(
                 "output_md": output_md,
                 "source_id": source_id,
                 "source_title": row["title"].strip(),
-                "year": row["year"].strip() or None,
+                "year": _normalize_optional_year(row["year"]) or None,
             }
             passed.append((row, parsed, source, markdown_path, assets))
     if errors:

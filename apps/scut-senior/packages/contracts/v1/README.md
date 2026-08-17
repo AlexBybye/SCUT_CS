@@ -63,9 +63,12 @@ mistake_review:
   review_focus?: string | null
 
 temporary_material_reading:
+  material_title?: string | null
   material_text: string
   reading_goal?: string | null
 ```
+
+Runtime 只把与 `workflow_type` 匹配的分型 `workflow_payload` 作为检索与模型执行权威；外层 `user_input` 只保留原始用户消息和历史展示语义，冲突时不会进入检索查询或供应商 prompt。前端会把 `exam_review` 的主复习请求去重后放入 `goals[]` 供回答理解，但检索权威仍只取 `syllabus + weak_topics`；API 调用方不得只填写外层字段而省略对应的分型内容。
 
 结果字段固定为：
 
@@ -100,7 +103,7 @@ availability_status
 
 `answer_blocks[]` 每块使用字段 `type` 表示 `answer_block_type` 枚举值。`citations[]` 必须带 `course_id/course_title`，来源名称和 locator 由后端已验证元数据生成；`locator_type=none` 时不得补造页码或题号。`trace[].result` 使用拒绝额外字段的学生可见白名单，不接受 Key、token、prompt、堆栈或内部路径字段。
 
-`schemas/workflow-request.schema.json` 与 `schemas/workflow-result.schema.json` 由可执行 Pydantic 模型生成，导出器同时补入 `model_validator` 中可由标准 JSON Schema 表达的 Workflow/scope/附件、Citation locator 和 Bilibili 资源跨字段规则；修改 API 契约后必须重新生成，并运行 `make check-contracts` 防止提交陈旧 Schema。Pydantic 仍是运行时规范实现，例如 locator 的 `end >= start` 和 Bilibili 搜索 URL 的唯一 `keyword` 参数由它执行。
+`schemas/workflow-request.schema.json`、`schemas/workflow-result.schema.json` 与 `schemas/workflow-stream-event.schema.json` 由可执行 Pydantic 模型生成，导出器同时补入 `model_validator` 中可由标准 JSON Schema 表达的 Workflow/scope/附件、Citation locator、Bilibili 资源和流事件 kind/payload/run 状态跨字段规则；修改 API 契约后必须重新生成，并运行 `make check-contracts` 防止提交陈旧 Schema。Pydantic 仍是运行时规范实现，例如 locator 的 `end >= start`、Bilibili 搜索 URL 的唯一 `keyword` 参数，以及流事件外层与 result 内层 `workflow_run_id` 相等关系由它执行；最后一项无法用标准 Draft 2020-12 的跨值相等关键字表达，前端流解析器也会再次校验。
 
 Bilibili 资源只能进入 `external_resources[]`，不能进入 `citations[]` 或提高 `evidence_status`。本次模型只提供 0～3 个聚焦词；清洗后关键词非空时，后端只固定生成 1 条 `search.bilibili.com/all?keyword=...` 匿名搜索入口，不返回具体视频直链。搜索入口必须是 `resource_type=search`、`resource_id=null`、`review_status=unreviewed_live_search`，URL 不能来自模型或前端。项目不建设、审核或维护任何具体 Bilibili 视频资产。
 
