@@ -383,6 +383,20 @@ def _as_contract_string(value: Any) -> str:
     return "" if value is None else str(value).strip()
 
 
+def _normalize_optional_year(value: Any) -> str:
+    """Normalize an optional year field to a blank string when absent.
+
+    Blank cells and the literal ``null`` / ``none`` markers (some CSV exports
+    write them explicitly) all mean "year unknown" and must not fail
+    validation or mismatch a frontmatter ``year:`` null.
+    """
+
+    text = _as_contract_string(value)
+    if text.casefold() in {"", "null", "none"}:
+        return ""
+    return text
+
+
 def _strictly_increasing(values: Sequence[int]) -> bool:
     return all(current > previous for previous, current in zip(values, values[1:]))
 
@@ -437,8 +451,9 @@ def _validate_manifest_values(row: dict[str, str], registry: CourseRegistry) -> 
         else:
             if not 0 <= confidence <= 1:
                 errors.append(f"{source_id}: ocr_confidence must be between 0 and 1")
-    if row["year"].strip() and not re.fullmatch(r"[0-9]{4}", row["year"].strip()):
-        errors.append(f"{source_id}: year must be blank or four digits")
+    year_text = _normalize_optional_year(row["year"])
+    if year_text and not re.fullmatch(r"[0-9]{4}", year_text):
+        errors.append(f"{source_id}: year must be null, blank, or four digits")
     if row["status"].strip() == "passed" and not row["reviewer"].strip():
         errors.append(f"{source_id}: passed source requires reviewer")
     if row["status"].strip() in {"needs_fix", "rejected"} and not row[
@@ -524,9 +539,12 @@ def _validate_frontmatter(
         ("locator_type", "locator_type"),
     )
     for frontmatter_field, manifest_field in exact_pairs:
-        if _as_contract_string(frontmatter.get(frontmatter_field)) != row[
-            manifest_field
-        ].strip():
+        front_value = _as_contract_string(frontmatter.get(frontmatter_field))
+        manifest_value = row[manifest_field].strip()
+        if frontmatter_field == "year":
+            front_value = _normalize_optional_year(front_value)
+            manifest_value = _normalize_optional_year(manifest_value)
+        if front_value != manifest_value:
             errors.append(
                 f"{source_id}: frontmatter {frontmatter_field} does not match manifest {manifest_field}"
             )
@@ -594,7 +612,7 @@ def _source_record(
         "output_md": row["output_md"].strip(),
         "locator_type": row["locator_type"].strip() or "none",
         "document_role": row["document_role"].strip(),
-        "year": row["year"].strip() or None,
+        "year": _normalize_optional_year(row["year"]) or None,
         "first_page": parsed.first_page,
         "first_slide": parsed.first_slide,
         "first_question": parsed.first_question,

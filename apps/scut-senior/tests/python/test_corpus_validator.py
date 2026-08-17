@@ -393,3 +393,73 @@ def test_cli_outputs_json_and_success() -> None:
     payload = json.loads(result.stdout)
     assert payload["ok"] is True
     assert len(payload["searchable_sources"]) == 1
+
+
+@pytest.mark.parametrize("blank_year", ["", "null", "none", "NULL", "None"])
+def test_manifest_accepts_blank_and_null_literal_years(
+    tmp_path: Path, blank_year: str
+) -> None:
+    row = _row_for_invalid_fixture("locator-non-increasing.md")
+    row["year"] = blank_year
+    manifest = _write_manifest(tmp_path, row)
+
+    report = validate_corpus(manifest, knowledge_root=CORPUS_ROOT)
+
+    assert not any("year" in error for error in report.errors)
+
+
+def test_manifest_rejects_non_numeric_year(tmp_path: Path) -> None:
+    row = _row_for_invalid_fixture("locator-non-increasing.md")
+    row["year"] = "2022级"
+    manifest = _write_manifest(tmp_path, row)
+
+    report = validate_corpus(manifest, knowledge_root=CORPUS_ROOT)
+
+    assert any(
+        "year must be null, blank, or four digits" in error for error in report.errors
+    )
+
+
+def test_frontmatter_null_year_matches_manifest_null_year(tmp_path: Path) -> None:
+    markdown = tmp_path / "null-year.md"
+    markdown.write_text(
+        """---
+source_id: null-year
+course_id: linear_algebra
+title: 合成年份为空资料
+original_file: sources/null-year.txt
+document_role: note
+year: null
+locator_type: heading
+---
+
+# 合成年份为空资料
+
+这段内容验证 frontmatter 的 year 为 null 时与 manifest 的 null 一致。
+""",
+        encoding="utf-8",
+    )
+    row = {
+        "source_id": "null-year",
+        "course": "linear_algebra",
+        "title": "合成年份为空资料",
+        "original_path": "sources/null-year.txt",
+        "format": "txt",
+        "document_role": "note",
+        "year": "null",
+        "output_md": markdown.name,
+        "locator_type": "heading",
+        "method": "synthetic",
+        "ocr_used": "false",
+        "ocr_confidence": "",
+        "ocr_warning": "",
+        "status": "passed",
+        "reviewer": "fixture-reviewer",
+        "notes": "fixture_only",
+    }
+    manifest = _write_manifest(tmp_path, row)
+
+    report = validate_corpus(manifest, knowledge_root=tmp_path)
+
+    assert report.errors == []
+    assert [source["year"] for source in report.searchable_sources] == [None]
