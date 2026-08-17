@@ -256,8 +256,8 @@ def test_source_authorization_guard_runs_before_model_call(tmp_path: Path) -> No
     class ModelCallSpy:
         called = False
 
-        def generate(self, request, sources):
-            del request, sources
+        def generate(self, request, sources, history=()):
+            del request, sources, history
             self.called = True
             raise AssertionError("model must not receive an unauthorized source")
 

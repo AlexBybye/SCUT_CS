@@ -11,6 +11,7 @@ import {
   runWorkflow,
   saveByokCredential,
   startWorkflowRunStream,
+  submitFeedback,
 } from "../api";
 import type { WorkflowRunResult } from "../contracts";
 import { buildWorkflowRequest } from "../workflowRequest";
@@ -383,5 +384,49 @@ describe("BYOK credential API", () => {
     for (const [url] of fetchMock.mock.calls as [string, RequestInit][]) {
       expect(url).not.toContain(dummyKey);
     }
+  });
+});
+
+describe("feedback API", () => {
+  it("提交反馈只走固定 /api/v1/feedback 路由并携带会话 Cookie 与备注", async () => {
+    const record = {
+      feedback_id: "feedback-001",
+      user_id: "user-1",
+      run_id: "11111111-1111-1111-1111-111111111111",
+      conversation_id: "22222222-2222-2222-2222-222222222222",
+      course_id: "linear_algebra",
+      workflow_type: "knowledge_qa",
+      feedback_type: "knowledge_error",
+      note: "第三行有误",
+      answer_status: "answered",
+      created_at: "2026-08-17T08:00:00Z",
+      expires_at: "2026-09-16T08:00:00Z",
+    };
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValue(
+        new Response(JSON.stringify(record), {
+          status: 201,
+          headers: { "Content-Type": "application/json" },
+        }),
+      );
+    vi.stubGlobal("fetch", fetchMock);
+
+    await expect(
+      submitFeedback(record.run_id, "knowledge_error", "第三行有误"),
+    ).resolves.toEqual(record);
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      "/api/v1/feedback",
+      expect.objectContaining({
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify({
+          run_id: record.run_id,
+          feedback_type: "knowledge_error",
+          note: "第三行有误",
+        }),
+      }),
+    );
   });
 });

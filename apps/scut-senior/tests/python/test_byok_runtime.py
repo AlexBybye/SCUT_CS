@@ -218,8 +218,8 @@ def test_cancel_during_key_load_prevents_the_first_byok_provider_call(
         def __init__(self) -> None:
             self.calls = 0
 
-        def generate(self, *, api_key, request, sources):
-            del api_key, request, sources
+        def generate(self, *, api_key, request, sources, history=()):
+            del api_key, request, sources, history
             self.calls += 1
             return GeneratedAnswer(repository_answer="不得调用供应商。")
 

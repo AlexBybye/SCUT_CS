@@ -10,6 +10,7 @@ from .contracts import (
     ConversationDetail,
     ConversationSummary,
     ExternalResource,
+    FeedbackRecord,
     WorkflowAttempt,
     WorkflowResult,
     WorkflowRunRequest,
@@ -65,6 +66,19 @@ class GeneratedAnswer:
     personalized_analysis: str = ""
 
 
+@dataclass(frozen=True, slots=True)
+class ConversationTurn:
+    """One prior user/assistant exchange bound to the same conversation.
+
+    History is derived server-side from persisted attempts only; it is never
+    client-controlled and never changes the current request's course, workflow
+    or knowledge scope.
+    """
+
+    role: str
+    content: str
+
+
 class HumanizerGateway(Protocol):
     def humanize(
         self,
@@ -98,7 +112,10 @@ class RetrievalGateway(Protocol):
 
 class ModelGateway(Protocol):
     def generate(
-        self, request: WorkflowRunRequest, sources: list[RetrievedSource]
+        self,
+        request: WorkflowRunRequest,
+        sources: list[RetrievedSource],
+        history: tuple[ConversationTurn, ...] = (),
     ) -> GeneratedAnswer: ...
 
 
@@ -109,6 +126,7 @@ class UserKeyModelGateway(Protocol):
         api_key: str,
         request: WorkflowRunRequest,
         sources: list[RetrievedSource],
+        history: tuple[ConversationTurn, ...] = (),
     ) -> GeneratedAnswer: ...
 
 
@@ -155,6 +173,10 @@ class WorkflowRepository(Protocol):
     def get_attempt(self, user_id: str, run_id: UUID) -> WorkflowAttempt | None: ...
 
     def discard_nonterminal_run(self, user_id: str, run_id: UUID) -> bool: ...
+
+    def save_feedback(self, user_id: str, record: FeedbackRecord) -> None: ...
+
+    def list_feedback(self, user_id: str) -> list[FeedbackRecord]: ...
 
 
 class ModelCredentialRepository(Protocol):

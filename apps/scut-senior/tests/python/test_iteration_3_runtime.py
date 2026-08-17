@@ -170,8 +170,8 @@ def test_runtime_retries_the_same_model_once_after_citation_guard_rejection(
         def __init__(self) -> None:
             self.calls = 0
 
-        def generate(self, request, sources):
-            del request, sources
+        def generate(self, request, sources, history=()):
+            del request, sources, history
             self.calls += 1
             citation_id = "S999" if self.calls == 1 else "S1"
             return GeneratedAnswer(

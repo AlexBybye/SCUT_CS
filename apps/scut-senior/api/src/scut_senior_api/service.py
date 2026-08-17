@@ -1,9 +1,10 @@
 from __future__ import annotations
 
+from datetime import timedelta
 from time import perf_counter
 from uuid import UUID, uuid4
 
-from .auth import AuthRequired, AuthenticatedPrincipal
+from .auth import AuthRequired, AuthenticatedPrincipal, utc_now
 from .adapters.bilibili import normalize_keywords
 from .byok_catalog import (
     ByokModelNotRegistered,
@@ -21,6 +22,8 @@ from .contracts import (
     CourseScope,
     EvidenceStatus,
     ExternalResource,
+    FeedbackCreate,
+    FeedbackRecord,
     KnowledgeScope,
     ModelMetadata,
     ModelSource,
@@ -36,6 +39,7 @@ from .model_catalog import ModelCatalog, ModelCatalogEntry
 from .model_credentials import ModelCredentialError, ModelCredentialManager
 from .ports import (
     CapabilityUnavailable,
+    ConversationTurn,
     ExternalResourceDiscovery,
     HumanizerGateway,
     ModelGateway,
@@ -154,6 +158,30 @@ class IterationZeroService:
         if result is None:
             raise ResourceNotFound("workflow run not found")
         return result
+
+    def submit_feedback(
+        self, user: RequestIdentity, payload: FeedbackCreate
+    ) -> FeedbackRecord:
+        result = self.get_run(user, payload.run_id)
+        now = utc_now()
+        record = FeedbackRecord(
+            feedback_id=uuid4(),
+            user_id=str(user.user_id),
+            run_id=payload.run_id,
+            conversation_id=result.conversation_id,
+            course_id=result.course_ids[0] if result.course_ids else "",
+            workflow_type=result.workflow_type,
+            feedback_type=payload.feedback_type,
+            note=payload.note,
+            answer_status=result.answer_status,
+            created_at=now,
+            expires_at=now + FEEDBACK_TTL,
+        )
+        self.repository.save_feedback(str(user.user_id), record)
+        return record
+
+    def list_feedback(self, user: RequestIdentity) -> list[FeedbackRecord]:
+        return self.repository.list_feedback(str(user.user_id))
 
     def run(self, user: RequestIdentity, request: WorkflowRunRequest) -> WorkflowResult:
         return self._run(user, request)
@@ -291,6 +319,8 @@ class IterationZeroService:
                 "course",
                 f"{course.course_id} is not enabled for the configured retrieval mode",
             )
+
+        history = _build_conversation_history(conversation)
 
         machine = RunStateMachine()
         machine.transition(RunStatus.RUNNING)
@@ -567,9 +597,12 @@ class IterationZeroService:
                             api_key=api_key,
                             request=request,
                             sources=sources,
+                            history=history,
                         )
                     else:
-                        generated = self.model.generate(request, sources)
+                        generated = self.model.generate(
+                            request, sources, history=history
+                        )
                 except Exception as model_error:
                     interrupted = finish_interrupted()
                     if interrupted is not None:
@@ -1304,3 +1337,51 @@ def _is_retryable_model_output_error(error: Exception) -> bool:
         "byok_provider_invalid_response",
         "byok_provider_timeout",
     }
+
+
+_MAX_HISTORY_TURNS = 6
+_MAX_HISTORY_TURN_CHARS = 2_000
+FEEDBACK_TTL = timedelta(days=30)
+
+
+def _build_conversation_history(
+    conversation: ConversationDetail,
+) -> tuple[ConversationTurn, ...]:
+    """Derive bounded multi-turn context from completed prior attempts.
+
+    Only completed attempts become context; the current run is never part of
+    its own history. History is server-derived context, not an instruction
+    source, and it never changes the current request's course, workflow or
+    knowledge scope.
+    """
+
+    turns: list[ConversationTurn] = []
+    for attempt in conversation.runs:
+        if attempt.result.run_status != RunStatus.COMPLETED:
+            continue
+        user_question = build_workflow_focus(attempt.request).authoritative_query
+        assistant_answer = _completed_answer_text(attempt.result)
+        if user_question:
+            turns.append(
+                ConversationTurn(
+                    role="user", content=user_question[:_MAX_HISTORY_TURN_CHARS]
+                )
+            )
+        if assistant_answer:
+            turns.append(
+                ConversationTurn(
+                    role="assistant",
+                    content=assistant_answer[:_MAX_HISTORY_TURN_CHARS],
+                )
+            )
+        if len(turns) >= _MAX_HISTORY_TURNS * 2:
+            break
+    return tuple(turns[-(_MAX_HISTORY_TURNS * 2) :])
+
+
+def _completed_answer_text(result: WorkflowResult) -> str:
+    if result.repository_answer:
+        return result.repository_answer
+    return " ".join(
+        block.content for block in result.answer_blocks if block.content
+    ).strip()

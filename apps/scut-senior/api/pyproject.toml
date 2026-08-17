@@ -25,6 +25,9 @@ dev = [
   "pytest-cov>=6.2,<7",
 ]
 
+[project.scripts]
+scut-senior-eval = "scut_senior_api.eval_runner:main"
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/scut_senior_api"]
 

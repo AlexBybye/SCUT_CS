@@ -7,7 +7,13 @@ from scut_senior_worker.corpus_validator import parse_markdown, validate_corpus
 
 from ..contracts import WorkflowRunRequest
 from ..paths import FIXTURE_ROOT
-from ..ports import GeneratedAnswer, RetrievalBatch, RetrievedSource, UserIdentity
+from ..ports import (
+    ConversationTurn,
+    GeneratedAnswer,
+    RetrievalBatch,
+    RetrievedSource,
+    UserIdentity,
+)
 from ..registry import CourseRegistry
 from ..workflow_focus import FocusStrategy, build_workflow_focus
 
@@ -95,12 +101,20 @@ class MockModelGateway:
     model_id = "deterministic-fixture-v1"
 
     def generate(
-        self, request: WorkflowRunRequest, sources: list[RetrievedSource]
+        self,
+        request: WorkflowRunRequest,
+        sources: list[RetrievedSource],
+        history: tuple[ConversationTurn, ...] = (),
     ) -> GeneratedAnswer:
         workflow_focus = build_workflow_focus(request)
         control_note = (
             f"Fixture 已接收回答方式 `{request.answer_mode.value}` 与表达风格 "
             f"`{request.tone.value}`。"
+        )
+        history_note = (
+            f"\n\n（Mock 已接收 {len(history)} 条历史消息作为多轮上下文。）"
+            if history
+            else ""
         )
         related_topics, search_keywords = _FIXTURE_FOCUS_OUTPUTS[
             workflow_focus.focus_strategy
@@ -110,7 +124,7 @@ class MockModelGateway:
                 repository_answer=(
                     "迭代 0 Mock 未找到可用的 passed Fixture。"
                     "这只表示契约测试资料不足，不代表真实课程资料结论。"
-                    f"{control_note}"
+                    f"{control_note}{history_note}"
                 ),
                 related_topics=related_topics,
                 bilibili_search_keywords=search_keywords,
@@ -122,7 +136,7 @@ class MockModelGateway:
             f"已从合成 Fixture《{source.source_title}》读取：{preview}\n\n"
             f"本次结构化输入类型为 `{request.workflow_type.value}`；"
             "尚未调用真实模型，也未运行生产检索。"
-            f"{control_note}"
+            f"{control_note}{history_note}"
         )
         return GeneratedAnswer(
             repository_answer=answer,

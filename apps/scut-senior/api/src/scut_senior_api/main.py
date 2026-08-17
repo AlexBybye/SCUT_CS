@@ -58,6 +58,8 @@ from .contracts import (
     ConversationDetail,
     ConversationRename,
     ConversationSummary,
+    FeedbackCreate,
+    FeedbackRecord,
     ModelCredentialStatus,
     ModelCredentialUpsert,
     WorkflowAttempt,
@@ -771,6 +773,19 @@ def create_app(
             "trace": [event.model_dump(mode="json") for event in result.trace],
         }
 
+    @app.post("/api/v1/feedback", response_model=FeedbackRecord, status_code=201)
+    def submit_feedback(
+        payload: FeedbackCreate,
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> FeedbackRecord:
+        return service.submit_feedback(user, payload)
+
+    @app.get("/api/v1/feedback", response_model=list[FeedbackRecord])
+    def list_feedback(
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> list[FeedbackRecord]:
+        return service.list_feedback(user)
+
     static_root = APP_ROOT / "web" / "dist"
     if static_root.is_dir():
         app.mount("/", StaticFiles(directory=static_root, html=True), name="web")
@@ -804,6 +819,7 @@ def _is_protected_api_path(path: str) -> bool:
         "/api/v1/conversations",
         "/api/v1/workflow-runs",
         "/api/v1/model-credentials",
+        "/api/v1/feedback",
     )
     return any(path == root or path.startswith(f"{root}/") for root in protected_roots)
 

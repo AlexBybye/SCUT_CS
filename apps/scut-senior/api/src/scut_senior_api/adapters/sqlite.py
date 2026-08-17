@@ -28,6 +28,7 @@ from ..auth import (
 from ..contracts import (
     ConversationDetail,
     ConversationSummary,
+    FeedbackRecord,
     WorkflowAttempt,
     WorkflowResult,
     WorkflowRunRequest,
@@ -130,6 +131,23 @@ def _prepare_database_path(path: Path) -> None:
 class HistoryCleanupCounts:
     workflow_runs: int
     conversations: int
+    feedback: int
+
+
+def _feedback_record(row: sqlite3.Row) -> FeedbackRecord:
+    return FeedbackRecord(
+        feedback_id=UUID(row["feedback_id"]),
+        user_id=row["user_id"],
+        run_id=UUID(row["run_id"]),
+        conversation_id=UUID(row["conversation_id"]),
+        course_id=row["course_id"],
+        workflow_type=row["workflow_type"],
+        feedback_type=row["feedback_type"],
+        note=row["note"],
+        answer_status=row["answer_status"],
+        created_at=datetime.fromisoformat(row["created_at"]),
+        expires_at=datetime.fromisoformat(row["expires_at"]),
+    )
 
 
 class SQLiteWorkflowRepository:
@@ -397,7 +415,21 @@ class SQLiteWorkflowRepository:
                 "DELETE FROM conversations WHERE expires_at <= ?",
                 (now,),
             ).rowcount
-        return HistoryCleanupCounts(runs, conversations)
+            # The feedback table arrives with migration 0006; older databases
+            # must keep working until that migration is applied.
+            tables = {
+                row["name"]
+                for row in connection.execute(
+                    "SELECT name FROM sqlite_master WHERE type = 'table'"
+                )
+            }
+            feedback = 0
+            if "feedback" in tables:
+                feedback = connection.execute(
+                    "DELETE FROM feedback WHERE expires_at <= ?",
+                    (now,),
+                ).rowcount
+        return HistoryCleanupCounts(runs, conversations, feedback)
 
     def session_is_active(self, user_id: UUID, auth_session_id: UUID) -> bool:
         now = self._now().isoformat()
@@ -730,6 +762,47 @@ class SQLiteWorkflowRepository:
                 (user_id,),
             ).fetchall()
         return [self._conversation_summary(row) for row in rows]
+
+    def save_feedback(self, user_id: str, record: FeedbackRecord) -> None:
+        with self._connect() as connection:
+            connection.execute(
+                """
+                INSERT INTO feedback (
+                    feedback_id, user_id, run_id, conversation_id, course_id,
+                    workflow_type, feedback_type, note, answer_status,
+                    created_at, expires_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    str(record.feedback_id),
+                    user_id,
+                    str(record.run_id),
+                    str(record.conversation_id),
+                    record.course_id,
+                    record.workflow_type.value,
+                    record.feedback_type.value,
+                    record.note,
+                    record.answer_status.value,
+                    record.created_at.isoformat(),
+                    record.expires_at.isoformat(),
+                ),
+            )
+
+    def list_feedback(self, user_id: str) -> list[FeedbackRecord]:
+        self.cleanup_history_records()
+        with self._connect() as connection:
+            rows = connection.execute(
+                """
+                SELECT feedback_id, user_id, run_id, conversation_id, course_id,
+                       workflow_type, feedback_type, note, answer_status,
+                       created_at, expires_at
+                FROM feedback
+                WHERE user_id = ?
+                ORDER BY created_at DESC, feedback_id DESC
+                """,
+                (user_id,),
+            ).fetchall()
+        return [_feedback_record(row) for row in rows]
 
     def get_conversation(
         self, user_id: str, conversation_id: UUID

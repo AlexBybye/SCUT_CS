@@ -114,6 +114,7 @@ GIT_LFS_SKIP_SMUDGE=1 git checkout master
 
 ## 明确关闭或待确认
 
+- 迭代 4 切片（进行中）：多轮上下文已接入——服务端从会话历史派生最多 6 轮已完成尝试作为模型上下文，历史不改变当前请求的课程、Workflow 或知识范围；回答反馈已闭环——`POST/GET /api/v1/feedback` 绑定运行归属并随 30 天历史清理，反馈只进入列表、不自动修改知识库；评测执行器 `scut-senior-eval` 已可执行 7 类 fixture case 并输出逐课程报告，当前 fixture+mock 仅覆盖 answered/repository/page 契约，其余期望须待真实 corpus 与真实模型（不伪造通过）；
 - OpenRouter 三模型平台目录、显式选择、目录健康检查和本地开发调用适配器：迭代 1 已实现；健康检查不发起推理，不能当作真实回答可用性证据；
 - BYOK 固定目录、会话级 AES-256-GCM 保存／替换／删除／清理、四家固定调用和安全错误映射：迭代 1 已在本地／测试实现；未使用真实用户 Key 做四家实网联调；
 - GitHub OAuth：本地／测试适配器、7 天会话、所有权和 SQLite 恢复已实现；真实 GitHub 凭据回调、生产 HTTPS 与部署尚未联调，生产继续 fail-closed；

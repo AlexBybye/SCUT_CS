@@ -544,3 +544,38 @@ class WorkflowAttempt(ContractModel):
 
 class ConversationDetail(ConversationSummary):
     runs: list[WorkflowAttempt] = Field(default_factory=list)
+
+
+class FeedbackType(StrEnum):
+    HELPFUL = "helpful"
+    NOT_HELPFUL = "not_helpful"
+    KNOWLEDGE_ERROR = "knowledge_error"
+    DID_NOT_ANSWER = "did_not_answer"
+
+
+class FeedbackCreate(ContractModel):
+    run_id: UUID
+    feedback_type: FeedbackType
+    note: Annotated[str | None, Field(max_length=2_000)] = None
+
+    @field_validator("note")
+    @classmethod
+    def strip_note(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        normalized = value.strip()
+        return normalized or None
+
+
+class FeedbackRecord(ContractModel):
+    feedback_id: UUID
+    user_id: str
+    run_id: UUID
+    conversation_id: UUID
+    course_id: str
+    workflow_type: WorkflowType
+    feedback_type: FeedbackType
+    note: str | None
+    answer_status: AnswerStatus
+    created_at: datetime
+    expires_at: datetime
