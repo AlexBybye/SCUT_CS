@@ -110,30 +110,37 @@ class KnowledgeQaPayload(ContractModel):
 
 
 class ExamReviewPayload(ContractModel):
-    syllabus: str | None = None
+    syllabus: Annotated[str | None, Field(max_length=20_000)] = None
     exam_date: date | None = None
     available_hours: Annotated[float | None, Field(gt=0, le=10_000)] = None
-    goals: list[str]
-    weak_topics: list[str]
+    goals: Annotated[
+        list[Annotated[str, Field(max_length=4_000)]],
+        Field(max_length=32),
+    ]
+    weak_topics: Annotated[
+        list[Annotated[str, Field(max_length=500)]],
+        Field(max_length=64),
+    ]
 
 
 class ProblemTutorPayload(ContractModel):
     problem: Annotated[str, Field(min_length=1, max_length=40_000)]
-    user_answer: str | None = None
+    user_answer: Annotated[str | None, Field(max_length=40_000)] = None
     help_level: HelpLevel
-    problem_source: str | None = None
+    problem_source: Annotated[str | None, Field(max_length=2_000)] = None
 
 
 class MistakeReviewPayload(ContractModel):
     problem: Annotated[str, Field(min_length=1, max_length=40_000)]
     original_answer: Annotated[str, Field(min_length=1, max_length=40_000)]
-    reference_answer: str | None = None
-    review_focus: str | None = None
+    reference_answer: Annotated[str | None, Field(max_length=40_000)] = None
+    review_focus: Annotated[str | None, Field(max_length=4_000)] = None
 
 
 class TemporaryMaterialReadingPayload(ContractModel):
+    material_title: Annotated[str | None, Field(max_length=200)] = None
     material_text: Annotated[str, Field(min_length=1, max_length=100_000)]
-    reading_goal: str | None = None
+    reading_goal: Annotated[str | None, Field(max_length=4_000)] = None
 
 
 WorkflowPayload = (

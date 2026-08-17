@@ -185,6 +185,7 @@ export interface MistakeReviewPayload {
 }
 
 export interface TemporaryMaterialReadingPayload {
+  material_title?: string;
   material_text: string;
   reading_goal?: string;
 }
@@ -296,6 +297,29 @@ export interface TraceEvent {
   status: TraceEventStatus;
   duration_ms: number;
   result: TraceSafeResult;
+}
+
+export interface AnswerDelta {
+  block_index: number;
+  type: AnswerBlockType;
+  delta: string;
+}
+
+export interface WorkflowStreamError {
+  code: string;
+  detail: string;
+}
+
+export type WorkflowStreamKind = "trace" | "answer_delta" | "result" | "error";
+
+export interface WorkflowStreamEvent {
+  kind: WorkflowStreamKind;
+  workflow_run_id: string | null;
+  sequence: number;
+  trace_event?: TraceEvent;
+  answer_delta?: AnswerDelta;
+  result?: WorkflowRunResult;
+  error?: WorkflowStreamError;
 }
 
 export interface WorkflowRunResult {

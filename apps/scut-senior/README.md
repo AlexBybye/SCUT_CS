@@ -1,13 +1,16 @@
 # SCUT 老学长
 
-这里是 SCUT 老学长的唯一应用源码目录。迭代 0 的契约与 Mock 工程基座已经完成；迭代 1 已新增本地／测试 GitHub OAuth、固定 7 天服务端会话、资源所有权、SQLite 恢复、受保护的 OpenRouter 平台模型目录、四家 BYOK 会话凭据／固定调用链路和 Bilibili 匿名搜索链接契约。迭代 2 已在固定基座上完成真实 Markdown candidate 与本地检索适配器的实现和自动化验证，但合并 `master` 前不允许激活 corpus，默认运行仍使用合成 Fixture；远端 CI 与合并后真实 active／回退闭环尚未形成。真实 GitHub 凭据联调、用户真实 Key 的供应商实网验证和生产 HTTPS／部署仍未完成。
+这里是 SCUT 老学长的唯一应用源码目录。迭代 0 的契约与 Mock 工程基座、迭代 1 的本地／测试身份与模型通道、迭代 2 的 candidate／本地检索适配器均已形成代码基座。迭代 3 已在本地／测试环境实现五类 Workflow 共用 Runtime、严格 NDJSON 事件流、同一 run 的运行中／终态持久化、取消与中断、引用和 humanizer Guard、四类回答块以及 Bilibili search-only 降级链路。默认运行仍使用合成 Fixture；在受信 `master` 上生成并激活真实 corpus 之前，迭代 3 只能称为“本地实现与验证完成”，不能称为正式退出。真实 GitHub 凭据回调、用户真实 Key 的供应商实网响应和生产 HTTPS／部署也仍未形成证据。
 
 ```text
 选择课程与 Workflow
-→ 合成 passed Fixture
-→ 确定性 Mock 回答
-→ 保存回答、citation、external_resources 和真实节点 Trace
-→ 重启后重新读取
+→ 创建并保存 running run
+→ 权威 Workflow 输入聚焦与课程内检索
+→ 模型结构化回答
+→ 引用／回答块／humanizer 安全校验
+→ 可选 Bilibili 匿名搜索入口
+→ 同一 run 的 Trace、answer_delta 与终态事件
+→ 保存并从历史恢复
 ```
 
 默认配置仍使用 Mock 身份、Mock 模型、Fixture 检索和本地 SQLite。显式 `github_oauth` 模式已经在本地／测试中闭合 OAuth `state`、GitHub 数字 ID 映射、7 天服务端会话、安全 Cookie、登出／到期、受保护接口、资源所有权以及 SQLite 重启／备份恢复；测试使用可注入回调和替身，不等于已用真实 GitHub 凭据完成线上联调。模型会在同一次结构化回答中给出 0～3 个聚焦词；关键词清洗后非空时，后端只固定生成 1 条 Bilibili 匿名搜索链接，不返回视频直链，不访问 Bilibili API，也不抓取搜索结果。项目不建设、审核或维护任何具体 Bilibili 视频资产。生产环境在真实 HTTPS、凭据和部署边界未验收前继续拒绝启动。
@@ -31,8 +34,8 @@ BYOK 首批每家只保留一个固定目录模型：
 
 ## 目录
 
-- `web/`：Vue 3 学生端 Mock 界面；
-- `api/`：FastAPI 契约、本地／测试 OAuth 与会话链路、Mock Workflow、SQLite 和本地 corpus 检索适配器；
+- `web/`：Vue 3 学生端及严格流事件客户端；
+- `api/`：FastAPI 契约、本地／测试 OAuth 与会话链路、Workflow Runtime、SQLite 和本地 corpus 检索适配器；
 - `worker/`：manifest/frontmatter/locator 校验及 candidate 构建、验证、激活门与回退工具；
 - `packages/`：V1 枚举、课程注册表、Workflow 和评测契约；
 - `infra/`：不含真实 Secret 的 SWR→ECS 部署骨架；
@@ -115,12 +118,12 @@ GIT_LFS_SKIP_SMUDGE=1 git checkout master
 - BYOK 固定目录、会话级 AES-256-GCM 保存／替换／删除／清理、四家固定调用和安全错误映射：迭代 1 已在本地／测试实现；未使用真实用户 Key 做四家实网联调；
 - GitHub OAuth：本地／测试适配器、7 天会话、所有权和 SQLite 恢复已实现；真实 GitHub 凭据回调、生产 HTTPS 与部署尚未联调，生产继续 fail-closed；
 - 平台限流状态目前是单进程内存态；多 worker 共享限流、周期清理任务和生产启用仍未完成；
-- 首批课程固定为 10 门；真实 manifest 当前有 2 份经 `Klosure` 人工审核的 `passed` Markdown，其余 21 份保持 `pending`，其中 8 份纯图片资料继续待审；candidate／检索链路已通过本地自动化验证，但合并 `master` 前不生成或使用正式 `active.json`，默认检索仍是 Fixture，远端 CI 与合并后真实 active／回退证据仍缺失；
-- 真实 Workflow Runtime 与流式 Trace：迭代 3；
+- 首批课程固定为 10 门；本轮不改 manifest 的 reviewer 或 `passed/pending`，也不把用户的 Markdown 公式替换等同于 corpus 激活。当前没有正式 `active.json`，默认检索仍是 Fixture，远端 CI 与受信 `master` 上的真实 active／回退证据仍缺失；
+- Workflow Runtime 与严格 NDJSON Trace：迭代 3 已完成本地／测试实现；供应商回答会先完整通过结构化解析与 Guard，再按安全回答块发送 `answer_delta`，不是上游 token 原样透传；页面断开会停止后续节点并保存 `interrupted`，但同步 urllib 调用在返回或超时前不能保证终止上游推理或计费；
 - 华为云部署：预算获批前保持 validation-only／fail-closed，不创建资源；未来首发基线为华南-广州优先的 1C2G、40GB、1～2Mbps，不在 ECS 部署大模型；
 - PostgreSQL、Qdrant、对象存储、任务系统、GitHub App、SWR 认证、ECS 灰度/回滚：首发不购买或只保留可替换边界；
 - 跨课程：契约已冻结，feature flag 默认关闭；
 - Bilibili：只保留 0～3 个聚焦词和关键词非空时由后端生成的唯一匿名搜索链接；不建设或维护具体视频资产，不返回或抓取具体视频；
 - 正式在线 Chat：迭代 4 验收前不提供地址。
 
-迭代 0 的完整基线见 [ITERATION_0_STATUS.md](ITERATION_0_STATUS.md)；平台模型切片和仍未完成的迭代 1 边界见 [ITERATION_1_STATUS.md](ITERATION_1_STATUS.md)；迭代 2 的开发门、审核状态与激活限制见 [ITERATION_2_STATUS.md](ITERATION_2_STATUS.md)。
+迭代 0 的完整基线见 [ITERATION_0_STATUS.md](ITERATION_0_STATUS.md)；平台模型切片和仍未完成的迭代 1 边界见 [ITERATION_1_STATUS.md](ITERATION_1_STATUS.md)；迭代 2 的开发门与激活限制见 [ITERATION_2_STATUS.md](ITERATION_2_STATUS.md)；迭代 3 的实现、验证和正式退出阻塞见 [ITERATION_3_STATUS.md](ITERATION_3_STATUS.md)。

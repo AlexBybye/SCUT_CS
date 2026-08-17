@@ -4,6 +4,7 @@ from time import perf_counter
 from uuid import UUID, uuid4
 
 from .auth import AuthRequired, AuthenticatedPrincipal
+from .adapters.bilibili import normalize_keywords
 from .byok_catalog import (
     ByokModelNotRegistered,
     ByokProviderDisabled,
@@ -19,6 +20,7 @@ from .contracts import (
     ConversationSummary,
     CourseScope,
     EvidenceStatus,
+    ExternalResource,
     KnowledgeScope,
     ModelMetadata,
     ModelSource,
@@ -35,6 +37,7 @@ from .model_credentials import ModelCredentialError, ModelCredentialManager
 from .ports import (
     CapabilityUnavailable,
     ExternalResourceDiscovery,
+    HumanizerGateway,
     ModelGateway,
     RetrievalBatch,
     RetrievalGateway,
@@ -43,7 +46,15 @@ from .ports import (
     WorkflowRepository,
 )
 from .registry import CourseRegistry, UnknownCourseError
+from .runtime_guards import (
+    RuntimeGuardError,
+    build_guarded_answer,
+    normalize_topics,
+    protect_humanizer_output,
+)
 from .state_machine import RunStateMachine
+from .workflow_stream import StreamingTrace, WorkflowStreamSession
+from .workflow_focus import build_workflow_focus
 
 
 class ResourceNotFound(LookupError):
@@ -69,6 +80,7 @@ class IterationZeroService:
         model_catalog: ModelCatalog,
         credential_manager: ModelCredentialManager,
         byok_model: UserKeyModelGateway,
+        humanizer: HumanizerGateway | None = None,
     ):
         self.settings = settings
         self.registry = registry
@@ -79,6 +91,7 @@ class IterationZeroService:
         self.model_catalog = model_catalog
         self.credential_manager = credential_manager
         self.byok_model = byok_model
+        self.humanizer = humanizer
 
     def create_conversation(
         self, user: RequestIdentity, course_id_or_alias: str
@@ -145,6 +158,18 @@ class IterationZeroService:
     def run(self, user: RequestIdentity, request: WorkflowRunRequest) -> WorkflowResult:
         return self._run(user, request)
 
+    def run_stream(
+        self,
+        user: RequestIdentity,
+        request: WorkflowRunRequest,
+        session: WorkflowStreamSession,
+    ) -> WorkflowResult:
+        result = self._run(user, request, stream_session=session)
+        if result.run_status == RunStatus.COMPLETED:
+            session.emit_answer_blocks(result.answer_blocks)
+        session.emit_result(result)
+        return result
+
     def regenerate(
         self, user: RequestIdentity, run_id: UUID
     ) -> WorkflowAttempt:
@@ -171,6 +196,7 @@ class IterationZeroService:
         *,
         attempt_group_id: UUID | None = None,
         regenerated_from_run_id: UUID | None = None,
+        stream_session: WorkflowStreamSession | None = None,
     ) -> WorkflowResult:
         if request.course_scope == CourseScope.CROSS:
             if not self.settings.cross_course_enabled:
@@ -268,8 +294,12 @@ class IterationZeroService:
 
         machine = RunStateMachine()
         machine.transition(RunStatus.RUNNING)
-        trace: list[TraceEvent] = []
-        run_id = uuid4()
+        trace: list[TraceEvent] = StreamingTrace(stream_session)
+        run_id = (
+            stream_session.workflow_run_id
+            if stream_session is not None
+            else uuid4()
+        )
         message_id = uuid4()
         answer_id = uuid4()
 
@@ -300,10 +330,114 @@ class IterationZeroService:
             else "fixture-corpus-v1"
         )
         course_pack_version: str | None = None
+        self._persist_running_attempt(
+            user=user,
+            request=request,
+            course_id=course.course_id,
+            trace=trace,
+            run_id=run_id,
+            message_id=message_id,
+            answer_id=answer_id,
+            model_provider_id=model_provider_id,
+            model_id=model_id,
+            billing_label=billing_label,
+            mock_only=mock_only,
+            availability_status=availability_status,
+            corpus_version=corpus_version,
+            course_pack_version=course_pack_version,
+            attempt_group_id=attempt_group_id,
+            regenerated_from_run_id=regenerated_from_run_id,
+        )
+        _append_trace(
+            trace,
+            node="run_record",
+            result={"stored": True, "adapter": self.settings.storage_mode},
+        )
+
+        def finish_interrupted() -> WorkflowResult | None:
+            return self._finish_interrupted_if_requested(
+                stream_session=stream_session,
+                user=user,
+                request=request,
+                course_id=course.course_id,
+                machine=machine,
+                trace=trace,
+                run_id=run_id,
+                message_id=message_id,
+                answer_id=answer_id,
+                model_provider_id=model_provider_id,
+                model_id=model_id,
+                billing_label=billing_label,
+                mock_only=mock_only,
+                corpus_version=corpus_version,
+                course_pack_version=course_pack_version,
+                attempt_group_id=attempt_group_id,
+                regenerated_from_run_id=regenerated_from_run_id,
+            )
+
+        def interrupt_if_step_not_claimed() -> WorkflowResult | None:
+            if (
+                stream_session is None
+                or stream_session.try_claim_step_start()
+            ):
+                return None
+            interrupted_result = finish_interrupted()
+            if interrupted_result is None:
+                raise RuntimeError(
+                    "workflow step admission failed without cancellation"
+                )
+            return interrupted_result
+
+        def persist_failed_or_interrupted(
+            *, failure_node: str, duration_ms: int
+        ) -> WorkflowResult | None:
+            interrupted_result = finish_interrupted()
+            if interrupted_result is not None:
+                return interrupted_result
+            if (
+                stream_session is not None
+                and not stream_session.try_claim_terminal()
+            ):
+                interrupted_result = finish_interrupted()
+                if interrupted_result is not None:
+                    return interrupted_result
+                raise RuntimeError(
+                    "workflow failure terminal claim was already consumed"
+                )
+            self._persist_failed_attempt(
+                user=user,
+                request=request,
+                course_id=course.course_id,
+                machine=machine,
+                trace=trace,
+                failure_node=failure_node,
+                duration_ms=duration_ms,
+                run_id=run_id,
+                message_id=message_id,
+                answer_id=answer_id,
+                model_provider_id=model_provider_id,
+                model_id=model_id,
+                billing_label=billing_label,
+                mock_only=mock_only,
+                corpus_version=corpus_version,
+                course_pack_version=course_pack_version,
+                attempt_group_id=attempt_group_id,
+                regenerated_from_run_id=regenerated_from_run_id,
+            )
+            return None
+
+        interrupted = finish_interrupted()
+        if interrupted is not None:
+            return interrupted
+
+        workflow_focus = build_workflow_focus(request)
+        interrupted = interrupt_if_step_not_claimed()
+        if interrupted is not None:
+            return interrupted
         started = perf_counter()
         try:
             retrieval_batch = self.retrieval.search(
-                [course.course_id], request.user_input
+                [course.course_id], workflow_focus.authoritative_query
             )
             if not isinstance(retrieval_batch, RetrievalBatch):
                 # Keep injected iteration-1 test doubles compatible, but never
@@ -348,26 +482,12 @@ class IterationZeroService:
                     "source authorization guard rejected a source outside the conversation course"
                 )
         except Exception:
-            self._persist_failed_attempt(
-                user=user,
-                request=request,
-                course_id=course.course_id,
-                machine=machine,
-                trace=trace,
+            interrupted = persist_failed_or_interrupted(
                 failure_node=retrieval_node,
                 duration_ms=_elapsed_ms(started),
-                run_id=run_id,
-                message_id=message_id,
-                answer_id=answer_id,
-                model_provider_id=model_provider_id,
-                model_id=model_id,
-                billing_label=billing_label,
-                mock_only=mock_only,
-                corpus_version=corpus_version,
-                course_pack_version=course_pack_version,
-                attempt_group_id=attempt_group_id,
-                regenerated_from_run_id=regenerated_from_run_id,
             )
+            if interrupted is not None:
+                return interrupted
             raise
         _append_trace(
             trace,
@@ -401,57 +521,131 @@ class IterationZeroService:
                 "accepted_count": len(sources),
             },
         )
+        _append_trace(
+            trace,
+            node="cache_policy",
+            status=TraceEventStatus.SKIPPED,
+            result={
+                "cache_hit": False,
+                "reason_code": "runtime_cache_not_configured",
+            },
+        )
+
+        interrupted = finish_interrupted()
+        if interrupted is not None:
+            return interrupted
 
         started = perf_counter()
         api_key: str | None = None
+        retry_count = 0
+        model_node = (
+            "byok_model"
+            if use_user_key
+            else "mock_model" if mock_only else "openrouter_model"
+        )
+
         try:
             if use_user_key:
                 assert isinstance(user, AuthenticatedPrincipal)
+                interrupted = interrupt_if_step_not_claimed()
+                if interrupted is not None:
+                    return interrupted
                 api_key = self.credential_manager.load_api_key(
                     user, request.provider_id
                 )
-                generated = self.byok_model.generate(
-                    api_key=api_key,
-                    request=request,
-                    sources=sources,
-                )
-            else:
-                generated = self.model.generate(request, sources)
+            while True:
+                # Admission and cancellation share a short lifecycle lock. A
+                # claim that wins is considered in flight; cancel never waits
+                # for the synchronous provider call and wins at the next node.
+                interrupted = interrupt_if_step_not_claimed()
+                if interrupted is not None:
+                    return interrupted
+                try:
+                    if use_user_key:
+                        assert api_key is not None
+                        generated = self.byok_model.generate(
+                            api_key=api_key,
+                            request=request,
+                            sources=sources,
+                        )
+                    else:
+                        generated = self.model.generate(request, sources)
+                except Exception as model_error:
+                    interrupted = finish_interrupted()
+                    if interrupted is not None:
+                        return interrupted
+                    if (
+                        retry_count >= 1
+                        or not _is_retryable_model_output_error(model_error)
+                    ):
+                        raise
+                    retry_count += 1
+                    _append_trace(
+                        trace,
+                        node="model_output_retry",
+                        result={
+                            "retry_count": retry_count,
+                            "failure_code": "model_output_retryable_failure",
+                        },
+                    )
+                    interrupted = finish_interrupted()
+                    if interrupted is not None:
+                        return interrupted
+                    continue
+                interrupted = finish_interrupted()
+                if interrupted is not None:
+                    return interrupted
+                try:
+                    guarded = build_guarded_answer(
+                        request=request,
+                        answer=generated,
+                        sources=sources,
+                        course_ids={course.course_id},
+                    )
+                except RuntimeGuardError:
+                    interrupted = finish_interrupted()
+                    if interrupted is not None:
+                        return interrupted
+                    if retry_count >= 1:
+                        interrupted = persist_failed_or_interrupted(
+                            failure_node="citation_guard",
+                            duration_ms=_elapsed_ms(started),
+                        )
+                        if interrupted is not None:
+                            return interrupted
+                        raise
+                    retry_count += 1
+                    _append_trace(
+                        trace,
+                        node="model_output_retry",
+                        result={
+                            "retry_count": retry_count,
+                            "failure_code": "model_output_guard_rejected",
+                        },
+                    )
+                    interrupted = finish_interrupted()
+                    if interrupted is not None:
+                        return interrupted
+                    continue
+                break
         except AuthRequired:
+            self.repository.discard_nonterminal_run(str(user.user_id), run_id)
+            raise
+        except RuntimeGuardError:
             raise
         except Exception:
-            self._persist_failed_attempt(
-                user=user,
-                request=request,
-                course_id=course.course_id,
-                machine=machine,
-                trace=trace,
-                failure_node="byok_model" if use_user_key else (
-                    "mock_model" if mock_only else "openrouter_model"
-                ),
+            interrupted = persist_failed_or_interrupted(
+                failure_node=model_node,
                 duration_ms=_elapsed_ms(started),
-                run_id=run_id,
-                message_id=message_id,
-                answer_id=answer_id,
-                model_provider_id=model_provider_id,
-                model_id=model_id,
-                billing_label=billing_label,
-                mock_only=mock_only,
-                corpus_version=corpus_version,
-                course_pack_version=course_pack_version,
-                attempt_group_id=attempt_group_id,
-                regenerated_from_run_id=regenerated_from_run_id,
             )
+            if interrupted is not None:
+                return interrupted
             raise
         finally:
             api_key = None
         _append_trace(
             trace,
-            node=(
-                "byok_model"
-                if use_user_key
-                else "mock_model" if mock_only else "openrouter_model"
-            ),
+            node=model_node,
             duration_ms=_elapsed_ms(started),
             result={
                 "model_source": request.model_source.value,
@@ -460,6 +654,7 @@ class IterationZeroService:
                 "billing_label": billing_label,
                 "availability_status": availability_status,
                 "real_model_called": not mock_only,
+                "retry_count": retry_count,
             },
         )
 
@@ -481,23 +676,145 @@ class IterationZeroService:
                 question_id=source.question_id,
                 heading_path=list(source.heading_path),
             )
-            for citation_id, source in citation_source_map.items()
+            for citation_id in guarded.citation_ids
+            for source in (citation_source_map[citation_id],)
         ]
+
+        _append_trace(
+            trace,
+            node="citation_guard",
+            result={
+                "candidate_count": len(sources),
+                "accepted_count": len(citations),
+                "evidence_status": guarded.evidence_status.value,
+                "external_resources_separate": True,
+            },
+        )
+
+        related_topics = normalize_topics(generated.related_topics)
+        related_questions = normalize_topics(generated.related_questions)
+        _append_trace(
+            trace,
+            node="knowledge_point_normalization",
+            result={
+                "reason_code": workflow_focus.focus_strategy.value,
+                "candidate_count": len(generated.related_topics),
+                "accepted_count": len(related_topics),
+            },
+        )
+        protected_terms = normalize_topics(
+            (
+                *related_topics,
+                course.display_name,
+                *(source.source_title for source in sources),
+                *(
+                    heading
+                    for source in sources
+                    for heading in source.heading_path
+                ),
+            ),
+            max_items=32,
+        )
+        original_blocks = [block.model_copy(deep=True) for block in guarded.blocks]
+        if self.humanizer is None:
+            interrupted = finish_interrupted()
+            if interrupted is not None:
+                return interrupted
+            answer_blocks = original_blocks
+            _append_trace(
+                trace,
+                node="humanizer",
+                status=TraceEventStatus.SKIPPED,
+                result={"reason_code": "humanizer_not_configured"},
+            )
+        else:
+            interrupted = interrupt_if_step_not_claimed()
+            if interrupted is not None:
+                return interrupted
+            try:
+                candidate_blocks = self.humanizer.humanize(
+                    blocks=[block.model_copy(deep=True) for block in original_blocks],
+                    protected_terms=protected_terms,
+                )
+                humanizer_outcome = protect_humanizer_output(
+                    original=original_blocks,
+                    candidate=list(candidate_blocks),
+                    protected_terms=protected_terms,
+                )
+            except Exception:
+                answer_blocks = original_blocks
+                _append_trace(
+                    trace,
+                    node="humanizer",
+                    status=TraceEventStatus.FAILED,
+                    result={"degradation_code": "humanizer_gateway_fallback"},
+                )
+            else:
+                answer_blocks = list(humanizer_outcome.blocks)
+                _append_trace(
+                    trace,
+                    node="humanizer",
+                    result={
+                        "reason_code": (
+                            "humanizer_applied"
+                            if humanizer_outcome.applied
+                            else (
+                                "humanizer_protected_fallback"
+                                if humanizer_outcome.fallback
+                                else "humanizer_no_change"
+                            )
+                        ),
+                        **(
+                            {
+                                "degradation_code": (
+                                    "humanizer_"
+                                    + (humanizer_outcome.reason or "fallback")
+                                )
+                            }
+                            if humanizer_outcome.fallback
+                            else {}
+                        ),
+                    },
+                )
+
+        interrupted = finish_interrupted()
+        if interrupted is not None:
+            return interrupted
 
         if (
             request.include_bilibili_resources
             and request.knowledge_scope != KnowledgeScope.COURSE_ONLY
             and self.settings.bilibili_resources_enabled
         ):
-            focused_keywords = generated.bilibili_search_keywords
+            focused_keywords = normalize_keywords(
+                generated.bilibili_search_keywords
+            )
             if focused_keywords:
+                interrupted = interrupt_if_step_not_claimed()
+                if interrupted is not None:
+                    return interrupted
                 started = perf_counter()
                 try:
-                    external_resources = self.resources.discover(
+                    discovered_resources = self.resources.discover(
                         course_id=course.course_id,
                         course_title=course.display_name,
                         keywords=tuple(focused_keywords),
                     )
+                    if len(discovered_resources) != 1:
+                        raise ValueError(
+                            "Bilibili discovery must return exactly one search entry"
+                        )
+                    external_resources = [
+                        ExternalResource.model_validate(resource)
+                        for resource in discovered_resources
+                    ]
+                    if any(
+                        resource.course_id != course.course_id
+                        for resource in external_resources
+                    ):
+                        raise ValueError(
+                            "Bilibili discovery returned a cross-course entry"
+                        )
                 except Exception:
                     external_resources = []
                     _append_trace(
@@ -511,18 +828,16 @@ class IterationZeroService:
                         },
                     )
                 else:
-                    normalized_topics = (
-                        external_resources[0].query_keywords
-                        if external_resources
-                        else []
-                    )
                     _append_trace(
                         trace,
                         node="bilibili_link_discovery",
                         duration_ms=_elapsed_ms(started),
                         result={
                             "hit_count": len(external_resources),
-                            "normalized_topics": normalized_topics,
+                            "candidate_count": len(
+                                generated.bilibili_search_keywords
+                            ),
+                            "accepted_count": len(focused_keywords),
                             "unreviewed_search_returned": bool(external_resources),
                             "external_resources_separate": True,
                         },
@@ -550,63 +865,55 @@ class IterationZeroService:
                 },
             )
 
-        _append_trace(
-            trace,
-            node="citation_guard",
-            result={
-                "candidate_count": len(citations),
-                "accepted_count": len(citations),
-                "external_resources_separate": True,
-            },
-        )
+        interrupted = finish_interrupted()
+        if interrupted is not None:
+            return interrupted
+        if (
+            stream_session is not None
+            and not stream_session.try_claim_terminal()
+        ):
+            interrupted = finish_interrupted()
+            if interrupted is not None:
+                return interrupted
+            raise RuntimeError(
+                "workflow completion terminal claim was already consumed"
+            )
 
         machine.transition(RunStatus.COMPLETED)
-        has_evidence = bool(citations)
+        repository_answer = _answer_block_content(
+            answer_blocks, AnswerBlockType.REPOSITORY
+        )
+        general_supplement = _answer_block_content(
+            answer_blocks, AnswerBlockType.GENERAL
+        )
+        persistence_event = _append_pending_persistence_trace(
+            trace, adapter=self.settings.storage_mode
+        )
         result = WorkflowResult(
             workflow_run_id=run_id,
             conversation_id=request.conversation_id,
             message_id=message_id,
             answer_id=answer_id,
             run_status=machine.status,
-            answer_status=(
-                AnswerStatus.ANSWERED
-                if has_evidence
-                else AnswerStatus.INSUFFICIENT_EVIDENCE
-            ),
+            answer_status=guarded.answer_status,
             workflow_type=request.workflow_type,
             course_scope=request.course_scope,
             course_ids=[course.course_id],
-            repository_answer=generated.repository_answer,
-            general_supplement=None,
-            answer_blocks=[
-                AnswerBlock(
-                    type=AnswerBlockType.REPOSITORY,
-                    content=generated.repository_answer,
-                )
-            ],
+            repository_answer=repository_answer,
+            general_supplement=general_supplement,
+            answer_blocks=answer_blocks,
             workflow_output={
-                "contract_only": True,
+                "runtime_version": "workflow-runtime-v1",
                 "payload_type": request.workflow_type.value,
                 "source_candidate_ids": list(citation_source_map),
+                "selected_citation_ids": list(guarded.citation_ids),
             },
-            evidence_status=(
-                EvidenceStatus.SUFFICIENT
-                if has_evidence
-                else EvidenceStatus.INSUFFICIENT
-            ),
+            evidence_status=guarded.evidence_status,
             citations=citations,
-            related_topics=list(generated.related_topics),
-            related_questions=list(generated.related_questions),
+            related_topics=list(related_topics),
+            related_questions=list(related_questions),
             external_resources=external_resources,
-            coverage_gaps=(
-                []
-                if has_evidence
-                else [
-                    "当前启用课程语料没有匹配到可回查的检索候选。"
-                    if self.settings.retrieval_mode == "local_corpus"
-                    else "没有匹配到合成 passed Fixture；未尝试真实课程资料"
-                ]
-            ),
+            coverage_gaps=list(guarded.coverage_gaps),
             trace=trace,
             corpus_version=corpus_version,
             course_pack_version=course_pack_version,
@@ -621,23 +928,228 @@ class IterationZeroService:
             availability_status=availability_status,
         )
 
-        _append_trace(
-            result.trace,
-            node="persistence",
-            result={"stored": True, "adapter": self.settings.storage_mode},
-        )
-        self.repository.save_run(
-            str(user.user_id),
-            request,
-            result,
+        self._save_run_state(
+            user=user,
+            request=request,
+            result=result,
             attempt_group_id=attempt_group_id,
             regenerated_from_run_id=regenerated_from_run_id,
-            auth_session_id=(
-                user.auth_session_id
-                if isinstance(user, AuthenticatedPrincipal)
-                else None
-            ),
         )
+        _emit_confirmed_persistence_trace(trace, persistence_event)
+        return result
+
+    def _persist_running_attempt(
+        self,
+        *,
+        user: RequestIdentity,
+        request: WorkflowRunRequest,
+        course_id: str,
+        trace: list[TraceEvent],
+        run_id: UUID,
+        message_id: UUID,
+        answer_id: UUID,
+        model_provider_id: str,
+        model_id: str,
+        billing_label: str,
+        mock_only: bool,
+        availability_status: str,
+        corpus_version: str,
+        course_pack_version: str | None,
+        attempt_group_id: UUID | None,
+        regenerated_from_run_id: UUID | None,
+    ) -> None:
+        """Create the observable run before retrieval or model execution begins."""
+
+        result = WorkflowResult(
+            workflow_run_id=run_id,
+            conversation_id=request.conversation_id,
+            message_id=message_id,
+            answer_id=answer_id,
+            run_status=RunStatus.RUNNING,
+            answer_status=AnswerStatus.PARTIAL,
+            workflow_type=request.workflow_type,
+            course_scope=request.course_scope,
+            course_ids=[course_id],
+            repository_answer=None,
+            general_supplement=None,
+            answer_blocks=[],
+            workflow_output={
+                "runtime_version": "workflow-runtime-v1",
+                "payload_type": request.workflow_type.value,
+                "execution_state": "running",
+            },
+            evidence_status=EvidenceStatus.NOT_EVALUATED,
+            citations=[],
+            related_topics=[],
+            related_questions=[],
+            external_resources=[],
+            coverage_gaps=["本次运行仍在进行中。"],
+            trace=list(trace),
+            corpus_version=corpus_version,
+            course_pack_version=course_pack_version,
+            workflow_version="workflow-contract-v1",
+            model_source=request.model_source,
+            model=ModelMetadata(
+                provider_id=model_provider_id,
+                model_id=model_id,
+                billing_label=billing_label,
+                mock_only=mock_only,
+            ),
+            availability_status=availability_status,
+        )
+        self._save_run_state(
+            user=user,
+            request=request,
+            result=result,
+            attempt_group_id=attempt_group_id,
+            regenerated_from_run_id=regenerated_from_run_id,
+        )
+
+    def _save_run_state(
+        self,
+        *,
+        user: RequestIdentity,
+        request: WorkflowRunRequest,
+        result: WorkflowResult,
+        attempt_group_id: UUID | None,
+        regenerated_from_run_id: UUID | None,
+    ) -> None:
+        try:
+            self.repository.save_run(
+                str(user.user_id),
+                request,
+                result,
+                attempt_group_id=attempt_group_id,
+                regenerated_from_run_id=regenerated_from_run_id,
+                auth_session_id=(
+                    user.auth_session_id
+                    if isinstance(user, AuthenticatedPrincipal)
+                    else None
+                ),
+            )
+        except AuthRequired:
+            self.repository.discard_nonterminal_run(
+                str(user.user_id), result.workflow_run_id
+            )
+            raise
+
+    def _finish_interrupted_if_requested(
+        self,
+        *,
+        stream_session: WorkflowStreamSession | None,
+        user: RequestIdentity,
+        request: WorkflowRunRequest,
+        course_id: str,
+        machine: RunStateMachine,
+        trace: list[TraceEvent],
+        run_id: UUID,
+        message_id: UUID,
+        answer_id: UUID,
+        model_provider_id: str,
+        model_id: str,
+        billing_label: str,
+        mock_only: bool,
+        corpus_version: str,
+        course_pack_version: str | None,
+        attempt_group_id: UUID | None,
+        regenerated_from_run_id: UUID | None,
+    ) -> WorkflowResult | None:
+        if stream_session is None or not stream_session.cancelled:
+            return None
+        return self._persist_interrupted_attempt(
+            user=user,
+            request=request,
+            course_id=course_id,
+            machine=machine,
+            trace=trace,
+            run_id=run_id,
+            message_id=message_id,
+            answer_id=answer_id,
+            model_provider_id=model_provider_id,
+            model_id=model_id,
+            billing_label=billing_label,
+            mock_only=mock_only,
+            corpus_version=corpus_version,
+            course_pack_version=course_pack_version,
+            attempt_group_id=attempt_group_id,
+            regenerated_from_run_id=regenerated_from_run_id,
+        )
+
+    def _persist_interrupted_attempt(
+        self,
+        *,
+        user: RequestIdentity,
+        request: WorkflowRunRequest,
+        course_id: str,
+        machine: RunStateMachine,
+        trace: list[TraceEvent],
+        run_id: UUID,
+        message_id: UUID,
+        answer_id: UUID,
+        model_provider_id: str,
+        model_id: str,
+        billing_label: str,
+        mock_only: bool,
+        corpus_version: str,
+        course_pack_version: str | None,
+        attempt_group_id: UUID | None,
+        regenerated_from_run_id: UUID | None,
+    ) -> WorkflowResult:
+        machine.transition(RunStatus.INTERRUPTED)
+        _append_trace(
+            trace,
+            node="workflow_interrupted",
+            status=TraceEventStatus.FAILED,
+            result={"failure_code": "client_interrupted"},
+        )
+        persistence_event = _append_pending_persistence_trace(
+            trace, adapter=self.settings.storage_mode
+        )
+        result = WorkflowResult(
+            workflow_run_id=run_id,
+            conversation_id=request.conversation_id,
+            message_id=message_id,
+            answer_id=answer_id,
+            run_status=machine.status,
+            answer_status=AnswerStatus.PARTIAL,
+            workflow_type=request.workflow_type,
+            course_scope=request.course_scope,
+            course_ids=[course_id],
+            repository_answer=None,
+            general_supplement=None,
+            answer_blocks=[],
+            workflow_output={
+                "runtime_version": "workflow-runtime-v1",
+                "payload_type": request.workflow_type.value,
+                "failure_code": "client_interrupted",
+            },
+            evidence_status=EvidenceStatus.NOT_EVALUATED,
+            citations=[],
+            related_topics=[],
+            related_questions=[],
+            external_resources=[],
+            coverage_gaps=["本次运行已中断，未生成完整回答。"],
+            trace=trace,
+            corpus_version=corpus_version,
+            course_pack_version=course_pack_version,
+            workflow_version="workflow-contract-v1",
+            model_source=request.model_source,
+            model=ModelMetadata(
+                provider_id=model_provider_id,
+                model_id=model_id,
+                billing_label=billing_label,
+                mock_only=mock_only,
+            ),
+            availability_status="interrupted",
+        )
+        self._save_run_state(
+            user=user,
+            request=request,
+            result=result,
+            attempt_group_id=attempt_group_id,
+            regenerated_from_run_id=regenerated_from_run_id,
+        )
+        _emit_confirmed_persistence_trace(trace, persistence_event)
         return result
 
     def _persist_failed_attempt(
@@ -677,6 +1189,9 @@ class IterationZeroService:
                 "availability_status": "execution_failed",
             },
         )
+        persistence_event = _append_pending_persistence_trace(
+            trace, adapter=self.settings.storage_mode
+        )
         result = WorkflowResult(
             workflow_run_id=run_id,
             conversation_id=request.conversation_id,
@@ -691,7 +1206,7 @@ class IterationZeroService:
             general_supplement=None,
             answer_blocks=[],
             workflow_output={
-                "contract_only": True,
+                "runtime_version": "workflow-runtime-v1",
                 "payload_type": request.workflow_type.value,
                 "failure_code": "workflow_execution_failed",
             },
@@ -714,23 +1229,14 @@ class IterationZeroService:
             ),
             availability_status="execution_failed",
         )
-        _append_trace(
-            result.trace,
-            node="persistence",
-            result={"stored": True, "adapter": self.settings.storage_mode},
-        )
-        self.repository.save_run(
-            str(user.user_id),
-            request,
-            result,
+        self._save_run_state(
+            user=user,
+            request=request,
+            result=result,
             attempt_group_id=attempt_group_id,
             regenerated_from_run_id=regenerated_from_run_id,
-            auth_session_id=(
-                user.auth_session_id
-                if isinstance(user, AuthenticatedPrincipal)
-                else None
-            ),
         )
+        _emit_confirmed_persistence_trace(trace, persistence_event)
 
 
 def _append_trace(
@@ -740,18 +1246,61 @@ def _append_trace(
     result: TraceSafeResult | dict[str, object],
     status: TraceEventStatus = TraceEventStatus.COMPLETED,
     duration_ms: int = 0,
-) -> None:
-    trace.append(
-        TraceEvent(
-            event_id=str(uuid4()),
-            sequence=len(trace),
-            node=node,
-            status=status,
-            duration_ms=max(duration_ms, 0),
-            result=result,
-        )
+) -> TraceEvent:
+    event = TraceEvent(
+        event_id=str(uuid4()),
+        sequence=len(trace),
+        node=node,
+        status=status,
+        duration_ms=max(duration_ms, 0),
+        result=result,
     )
+    trace.append(event)
+    return event
 
 
 def _elapsed_ms(started: float) -> int:
     return max(int((perf_counter() - started) * 1000), 0)
+
+
+def _append_pending_persistence_trace(
+    trace: list[TraceEvent], *, adapter: str
+) -> TraceEvent:
+    event = TraceEvent(
+        event_id=str(uuid4()),
+        sequence=len(trace),
+        node="persistence",
+        status=TraceEventStatus.COMPLETED,
+        duration_ms=0,
+        result={"stored": True, "adapter": adapter},
+    )
+    if isinstance(trace, StreamingTrace):
+        trace.append_without_emit(event)
+    else:
+        trace.append(event)
+    return event
+
+
+def _emit_confirmed_persistence_trace(
+    trace: list[TraceEvent], event: TraceEvent
+) -> None:
+    if isinstance(trace, StreamingTrace):
+        trace.emit_appended(event)
+
+
+def _answer_block_content(
+    blocks: list[AnswerBlock], block_type: AnswerBlockType
+) -> str | None:
+    for block in blocks:
+        if block.type == block_type:
+            return block.content
+    return None
+
+
+def _is_retryable_model_output_error(error: Exception) -> bool:
+    return isinstance(error, TimeoutError) or getattr(error, "code", None) in {
+        "platform_model_invalid_response",
+        "platform_model_timeout",
+        "byok_provider_invalid_response",
+        "byok_provider_timeout",
+    }

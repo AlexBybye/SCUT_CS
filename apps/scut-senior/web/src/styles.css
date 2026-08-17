@@ -1113,6 +1113,16 @@ textarea:focus {
   color: var(--accent);
 }
 
+.cancel-button {
+  border-color: color-mix(in srgb, var(--error-text) 45%, var(--line));
+  color: var(--error-text);
+}
+
+.cancel-button:hover:not(:disabled) {
+  border-color: var(--error-text);
+  color: var(--error-text);
+}
+
 .contract-facts {
   display: grid;
   gap: 8px;
@@ -1229,8 +1239,96 @@ textarea:focus {
 
 .answer-block,
 .supplement-block,
+.answer-stack,
+.stream-message,
+.coverage-gap-block,
 .result-section {
   margin: 24px 30px;
+}
+
+.answer-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.semantic-answer-block {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  background: var(--surface-subtle);
+}
+
+.semantic-answer-block-repository {
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--line));
+  background: var(--accent-soft);
+}
+
+.semantic-answer-block-general {
+  border-left: 3px solid var(--line-strong);
+}
+
+.semantic-answer-block-user_material {
+  border-left: 3px solid var(--warning-line);
+}
+
+.semantic-answer-block-personalized_analysis {
+  border-left: 3px solid var(--accent);
+}
+
+.answer-block-note {
+  margin: 7px 0 0;
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  line-height: 1.5;
+}
+
+.semantic-answer-block .answer-copy {
+  margin-top: 16px;
+}
+
+.answer-pending {
+  margin: 0;
+  padding: 18px 20px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-control);
+}
+
+.stream-message {
+  padding: 12px 14px;
+  border-radius: var(--radius-control);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.stream-message-interrupted {
+  border: 1px solid var(--warning-line);
+  background: var(--warning-surface);
+  color: var(--warning-text);
+}
+
+.stream-message-error {
+  background: var(--error-surface);
+  color: var(--error-text);
+}
+
+.coverage-gap-block {
+  padding: 16px 18px;
+  border: 1px solid var(--warning-line);
+  border-radius: var(--radius-control);
+  background: var(--warning-surface);
+}
+
+.coverage-gap-block h3 {
+  margin: 0 0 8px;
+  color: var(--warning-text);
+  font-size: 0.9rem;
+}
+
+.coverage-gap-block ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--text-muted);
+  line-height: 1.65;
 }
 
 .answer-block {
@@ -1560,6 +1658,9 @@ pre {
 
   .answer-block,
   .supplement-block,
+  .answer-stack,
+  .stream-message,
+  .coverage-gap-block,
   .result-section {
     margin-right: 20px;
     margin-left: 20px;

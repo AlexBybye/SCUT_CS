@@ -4,6 +4,7 @@ import json
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Mapping
+from urllib.error import URLError
 
 import pytest
 from fastapi.testclient import TestClient
@@ -69,6 +70,57 @@ class RecordingHttpClient:
             }
         )
         return self.response
+
+
+class TimeoutOnceHttpClient(RecordingHttpClient):
+    def __init__(self, response: HttpResponse, failure: OSError):
+        super().__init__(response)
+        self._failure = failure
+        self._timed_out = False
+
+    def post_json(
+        self,
+        url: str,
+        *,
+        headers: Mapping[str, str],
+        payload: Mapping[str, object],
+        timeout_seconds: float,
+    ) -> HttpResponse:
+        response = super().post_json(
+            url,
+            headers=headers,
+            payload=payload,
+            timeout_seconds=timeout_seconds,
+        )
+        if not self._timed_out:
+            self._timed_out = True
+            raise self._failure
+        return response
+
+
+class InvalidResponseOnceHttpClient(RecordingHttpClient):
+    def __init__(self, response: HttpResponse):
+        super().__init__(response)
+        self._invalid_returned = False
+
+    def post_json(
+        self,
+        url: str,
+        *,
+        headers: Mapping[str, str],
+        payload: Mapping[str, object],
+        timeout_seconds: float,
+    ) -> HttpResponse:
+        response = super().post_json(
+            url,
+            headers=headers,
+            payload=payload,
+            timeout_seconds=timeout_seconds,
+        )
+        if not self._invalid_returned:
+            self._invalid_returned = True
+            return HttpResponse(status_code=200, body=b"{invalid-json")
+        return response
 
 
 class HealthyCatalogChecker:
@@ -589,6 +641,84 @@ def test_non_rate_limit_upstream_body_and_platform_key_are_not_reflected(
     serialized = json.dumps(history, ensure_ascii=False)
     assert api_key not in serialized
     assert private_body not in serialized
+
+
+@pytest.mark.parametrize(
+    "failure",
+    [
+        TimeoutError("private transport timeout"),
+        URLError(TimeoutError("private wrapped transport timeout")),
+    ],
+    ids=["direct", "urllib_wrapped"],
+)
+def test_platform_transport_timeout_retries_the_same_model_once(
+    tmp_path: Path,
+    failure: OSError,
+) -> None:
+    http_client = TimeoutOnceHttpClient(_success_response(), failure)
+    client, conversation_id = _client_with_conversation(tmp_path, http_client)
+    model_id = "google/gemma-4-26b-a4b-it:free"
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=_workflow_request(conversation_id, model_id),
+    )
+
+    assert response.status_code == 201, response.text
+    assert len(http_client.calls) == 2
+    assert {call["url"] for call in http_client.calls} == {
+        "https://openrouter.ai/api/v1/chat/completions"
+    }
+    assert {call["payload"]["model"] for call in http_client.calls} == {model_id}
+    retry = next(
+        event
+        for event in response.json()["trace"]
+        if event["node"] == "model_output_retry"
+    )
+    assert retry["result"] == {
+        "retry_count": 1,
+        "failure_code": "model_output_retryable_failure",
+    }
+
+
+@pytest.mark.parametrize("upstream_status", [408, 504])
+def test_platform_http_timeout_retries_once_without_fallback(
+    tmp_path: Path, upstream_status: int
+) -> None:
+    http_client = RecordingHttpClient(HttpResponse(status_code=upstream_status))
+    client, conversation_id = _client_with_conversation(tmp_path, http_client)
+    model_id = "google/gemma-4-26b-a4b-it:free"
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=_workflow_request(conversation_id, model_id),
+    )
+
+    assert response.status_code == 503
+    assert response.json()["error"]["code"] == "platform_model_timeout"
+    assert len(http_client.calls) == 2
+    assert {call["payload"]["model"] for call in http_client.calls} == {model_id}
+
+
+def test_platform_invalid_response_retries_the_same_model_once(tmp_path: Path) -> None:
+    http_client = InvalidResponseOnceHttpClient(_success_response())
+    client, conversation_id = _client_with_conversation(tmp_path, http_client)
+    model_id = "google/gemma-4-26b-a4b-it:free"
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=_workflow_request(conversation_id, model_id),
+    )
+
+    assert response.status_code == 201, response.text
+    assert len(http_client.calls) == 2
+    assert {call["payload"]["model"] for call in http_client.calls} == {model_id}
+    retry = next(
+        event
+        for event in response.json()["trace"]
+        if event["node"] == "model_output_retry"
+    )
+    assert retry["result"]["retry_count"] == 1
 
 
 def test_platform_enforces_twenty_requests_per_minute_before_upstream(

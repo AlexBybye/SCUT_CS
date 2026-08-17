@@ -1,11 +1,13 @@
 from __future__ import annotations
 
+import asyncio
+import json
 from hmac import compare_digest
 from uuid import UUID
 
 from fastapi import Depends, FastAPI, Request
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi.responses import JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import Response
 
@@ -72,13 +74,96 @@ from .model_catalog import (
 )
 from .model_credentials import ModelCredentialError, ModelCredentialManager
 from .paths import APP_ROOT
-from .ports import CapabilityUnavailable, DisabledCapability
+from .ports import CapabilityUnavailable, DisabledCapability, HumanizerGateway
 from .ports import UserIdentity
 from .registry import CourseRegistry, UnknownCourseError
+from .runtime_guards import RuntimeGuardError
 from .service import ContractConflict, IterationZeroService, ResourceNotFound
+from .workflow_stream import WorkflowStreamSession
 
 
 OAUTH_STATE_COOKIE_NAME = "__Host-scut_senior_oauth_state"
+MAX_REQUEST_BODY_BYTES = 2 * 1024 * 1024
+MAX_BUFFERED_REQUEST_MESSAGES = 4096
+
+
+class _RequestBodyLimitMiddleware:
+    """Bound JSON/body memory before FastAPI parses user-controlled payloads."""
+
+    def __init__(self, app, *, max_body_bytes: int) -> None:
+        self.app = app
+        self.max_body_bytes = max_body_bytes
+
+    async def __call__(self, scope, receive, send) -> None:
+        if scope.get("type") != "http":
+            await self.app(scope, receive, send)
+            return
+
+        declared_lengths = [
+            value
+            for key, value in scope.get("headers", [])
+            if key.lower() == b"content-length"
+        ]
+        if declared_lengths:
+            try:
+                declared = int(declared_lengths[-1])
+            except (TypeError, ValueError):
+                declared = -1
+            if declared > self.max_body_bytes:
+                await self._reject(scope, receive, send)
+                return
+
+        received = 0
+        buffered_messages = []
+        while True:
+            message = await receive()
+            if len(buffered_messages) >= MAX_BUFFERED_REQUEST_MESSAGES:
+                await self._reject(scope, receive, send)
+                return
+            if message.get("type") == "http.request":
+                body = message.get("body", b"")
+                if received + len(body) > self.max_body_bytes:
+                    await self._reject(scope, receive, send)
+                    return
+                received += len(body)
+
+            # Preserve each ASGI message instead of coalescing the request body.
+            # This keeps the downstream receive order intact while bounding the
+            # cached body to max_body_bytes (plus the one chunk being inspected).
+            buffered_messages.append(message)
+            if message.get("type") == "http.disconnect" or (
+                message.get("type") == "http.request"
+                and not message.get("more_body", False)
+            ):
+                break
+
+        replay_index = 0
+
+        async def replay_receive():
+            nonlocal replay_index
+            if replay_index < len(buffered_messages):
+                message = buffered_messages[replay_index]
+                replay_index += 1
+                return message
+            # Streaming responses can continue listening for a disconnect after
+            # the complete request body has been replayed.
+            return await receive()
+
+        await self.app(scope, replay_receive, send)
+
+    @staticmethod
+    async def _reject(scope, receive, send) -> None:
+        response = JSONResponse(
+            status_code=413,
+            content={
+                "error": {
+                    "code": "request_body_too_large",
+                    "detail": "请求内容过大，请缩短后重试。",
+                }
+            },
+            headers={"Cache-Control": "private, no-store"},
+        )
+        await response(scope, receive, send)
 
 
 class _FailClosedModelHealthChecker:
@@ -103,6 +188,7 @@ def create_app(
     clock: Clock = utc_now,
     oauth_state_token_factory: TokenFactory = secure_token,
     session_token_factory: TokenFactory = secure_token,
+    humanizer: HumanizerGateway | None = None,
 ) -> FastAPI:
     active_settings = settings or Settings.from_env()
     active_settings.assert_safe()
@@ -188,12 +274,17 @@ def create_app(
         model_catalog=model_catalog,
         credential_manager=credential_manager,
         byok_model=byok_model,
+        humanizer=humanizer,
     )
 
     app = FastAPI(
         title="SCUT Senior API",
         version="0.1.0",
         description="SCUT Senior backend contract and guarded model-routing slice.",
+    )
+    app.add_middleware(
+        _RequestBodyLimitMiddleware,
+        max_body_bytes=MAX_REQUEST_BODY_BYTES,
     )
 
     @app.middleware("http")
@@ -295,13 +386,29 @@ def create_app(
     async def model_credential_error_handler(_, exc: ModelCredentialError):
         return _error_response(exc.status_code, exc.code, exc.detail)
 
+    @app.exception_handler(RuntimeGuardError)
+    async def runtime_guard_error_handler(_, __: RuntimeGuardError):
+        return _error_response(
+            502,
+            "workflow_output_rejected",
+            "模型输出未通过引用与证据校验，请重试。",
+        )
+
     @app.get("/api/v1/health")
     def health() -> dict[str, object]:
         model_catalog.refresh_health()
+        active_corpus_configured = (
+            active_settings.retrieval_mode == "local_corpus"
+        )
         return {
             "status": "ok",
-            "iteration": 1,
-            "iteration_status": "partial_fail_closed",
+            "iteration": 3,
+            "iteration_status": (
+                "local_runtime_with_active_corpus"
+                if active_corpus_configured
+                else "local_fixture_runtime_active_corpus_required"
+            ),
+            "formal_exit_blocked": not active_corpus_configured,
             "runtime": (
                 f"{active_settings.model_mode}_with_"
                 f"{active_settings.identity_mode}_{active_settings.storage_mode}"
@@ -319,6 +426,11 @@ def create_app(
                 "bilibili_anonymous_search_links": (
                     active_settings.bilibili_resources_enabled
                 ),
+                "workflow_runtime": True,
+                "workflow_stream_ndjson": True,
+                "citation_guard": True,
+                "humanizer_guard": True,
+                "active_corpus_configured": active_corpus_configured,
                 "production_retrieval": False,
                 "local_corpus_retrieval": (
                     active_settings.retrieval_mode == "local_corpus"
@@ -556,6 +668,80 @@ def create_app(
     ) -> WorkflowResult:
         return service.run(user, payload)
 
+    @app.post("/api/v1/workflow-runs/stream")
+    async def stream_workflow(
+        payload: WorkflowRunRequest,
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> StreamingResponse:
+        loop = asyncio.get_running_loop()
+        queue: asyncio.Queue[object] = asyncio.Queue()
+        finished = object()
+
+        def enqueue_event(event: object) -> None:
+            try:
+                loop.call_soon_threadsafe(queue.put_nowait, event)
+            except RuntimeError:
+                session.cancel()
+
+        session = WorkflowStreamSession(enqueue_event)
+
+        def execute() -> None:
+            try:
+                service.run_stream(user, payload, session)
+            except Exception as exc:
+                if not session.terminal_emitted:
+                    # Failed attempts are persisted by the Runtime, while the
+                    # stream keeps the provider's bounded public error code so
+                    # quota/auth guidance is not lost behind a generic result.
+                    code, detail = _safe_stream_error(exc)
+                    session.emit_error(code, detail)
+            finally:
+                try:
+                    loop.call_soon_threadsafe(queue.put_nowait, finished)
+                except RuntimeError:
+                    session.cancel()
+
+        async def event_source():
+            task = asyncio.create_task(asyncio.to_thread(execute))
+            try:
+                while True:
+                    item = await queue.get()
+                    if item is finished:
+                        break
+                    # Omitting unrelated payload fields is part of the wire
+                    # protocol; explicit null siblings are rejected by clients.
+                    event_payload = item.model_dump(mode="json")
+                    for sibling in (
+                        "trace_event",
+                        "answer_delta",
+                        "result",
+                        "error",
+                    ):
+                        if event_payload.get(sibling) is None:
+                            event_payload.pop(sibling, None)
+                    yield json.dumps(
+                        event_payload,
+                        ensure_ascii=False,
+                        separators=(",", ":"),
+                    ) + "\n"
+                await task
+            except asyncio.CancelledError:
+                session.cancel()
+                raise
+            finally:
+                session.cancel()
+                if task.done() and not task.cancelled():
+                    task.exception()
+
+        return StreamingResponse(
+            event_source(),
+            media_type="application/x-ndjson",
+            headers={
+                "Cache-Control": "private, no-store",
+                "X-Accel-Buffering": "no",
+            },
+        )
+
     @app.post(
         "/api/v1/workflow-runs/{run_id}/regenerate",
         response_model=WorkflowAttempt,
@@ -634,6 +820,31 @@ def _error_response(
     if capability is not None:
         payload["error"]["capability"] = capability  # type: ignore[index]
     return JSONResponse(status_code=status_code, content=payload)
+
+
+def _safe_stream_error(exc: Exception) -> tuple[str, str]:
+    """Map execution failures to the same bounded public error vocabulary."""
+
+    if isinstance(exc, AuthRequired):
+        return "auth_required", "请先使用 GitHub 登录。"
+    if isinstance(exc, RuntimeGuardError):
+        return (
+            "workflow_output_rejected",
+            "模型输出未通过引用与证据校验，请重试。",
+        )
+    if isinstance(exc, OpenRouterGatewayError | ByokGatewayError):
+        return exc.code, exc.detail
+    if isinstance(exc, ModelCredentialError):
+        return exc.code, exc.detail
+    if isinstance(exc, CapabilityUnavailable):
+        return "capability_unavailable", exc.detail
+    if isinstance(exc, ModelNotRegistered):
+        return "model_not_registered", "所选模型未登记。"
+    if isinstance(exc, ResourceNotFound):
+        return "not_found", "请求的资源不存在。"
+    if isinstance(exc, ContractConflict | UnknownCourseError):
+        return "contract_conflict", "请求与当前会话或课程范围冲突。"
+    return "workflow_execution_failed", "本次运行失败，请稍后重试。"
 
 
 app = create_app()

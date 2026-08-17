@@ -50,14 +50,17 @@
         },
         "goals": {
           "items": {
+            "maxLength": 4000,
             "type": "string"
           },
+          "maxItems": 32,
           "title": "Goals",
           "type": "array"
         },
         "syllabus": {
           "anyOf": [
             {
+              "maxLength": 20000,
               "type": "string"
             },
             {
@@ -69,8 +72,10 @@
         },
         "weak_topics": {
           "items": {
+            "maxLength": 500,
             "type": "string"
           },
+          "maxItems": 64,
           "title": "Weak Topics",
           "type": "array"
         }
@@ -135,6 +140,7 @@
         "reference_answer": {
           "anyOf": [
             {
+              "maxLength": 40000,
               "type": "string"
             },
             {
@@ -147,6 +153,7 @@
         "review_focus": {
           "anyOf": [
             {
+              "maxLength": 4000,
               "type": "string"
             },
             {
@@ -187,6 +194,7 @@
         "problem_source": {
           "anyOf": [
             {
+              "maxLength": 2000,
               "type": "string"
             },
             {
@@ -199,6 +207,7 @@
         "user_answer": {
           "anyOf": [
             {
+              "maxLength": 40000,
               "type": "string"
             },
             {
@@ -225,9 +234,23 @@
           "title": "Material Text",
           "type": "string"
         },
+        "material_title": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Material Title"
+        },
         "reading_goal": {
           "anyOf": [
             {
+              "maxLength": 4000,
               "type": "string"
             },
             {

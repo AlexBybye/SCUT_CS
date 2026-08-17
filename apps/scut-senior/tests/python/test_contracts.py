@@ -134,7 +134,11 @@ def base_request() -> dict[str, object]:
         ),
         (
             "temporary_material_reading",
-            {"material_text": "矩阵课程临时说明", "reading_goal": "解释"},
+            {
+                "material_title": "矩阵课程说明",
+                "material_text": "矩阵课程临时说明",
+                "reading_goal": "解释",
+            },
         ),
     ],
 )
@@ -148,6 +152,75 @@ def test_all_workflow_payloads_are_explicitly_typed(
     parsed = WorkflowRunRequest.model_validate(request)
 
     assert parsed.workflow_type.value == workflow_type
+
+
+@pytest.mark.parametrize(
+    ("workflow_type", "payload"),
+    [
+        (
+            "exam_review",
+            {"syllabus": "X" * 20_001, "goals": [], "weak_topics": []},
+        ),
+        (
+            "exam_review",
+            {"goals": ["X" * 4_001], "weak_topics": []},
+        ),
+        (
+            "exam_review",
+            {"goals": ["目标"] * 33, "weak_topics": []},
+        ),
+        (
+            "exam_review",
+            {"goals": [], "weak_topics": ["X" * 501]},
+        ),
+        (
+            "problem_tutor",
+            {
+                "problem": "题目",
+                "user_answer": "X" * 40_001,
+                "help_level": "step_by_step",
+            },
+        ),
+        (
+            "problem_tutor",
+            {
+                "problem": "题目",
+                "help_level": "step_by_step",
+                "problem_source": "X" * 2_001,
+            },
+        ),
+        (
+            "mistake_review",
+            {
+                "problem": "题目",
+                "original_answer": "错答",
+                "reference_answer": "X" * 40_001,
+            },
+        ),
+        (
+            "mistake_review",
+            {
+                "problem": "题目",
+                "original_answer": "错答",
+                "review_focus": "X" * 4_001,
+            },
+        ),
+        (
+            "temporary_material_reading",
+            {"material_text": "材料", "reading_goal": "X" * 4_001},
+        ),
+    ],
+)
+def test_all_provider_prompt_fields_and_lists_are_bounded(
+    workflow_type: str,
+    payload: dict[str, object],
+) -> None:
+    request = base_request()
+    request["workflow_type"] = workflow_type
+    request["workflow_payload"] = payload
+
+    with pytest.raises(ValidationError):
+        WorkflowRunRequest.model_validate(request)
 
 
 def test_payload_cannot_silently_switch_workflow() -> None:

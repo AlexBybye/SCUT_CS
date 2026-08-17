@@ -6,13 +6,12 @@ from typing import Callable, Sequence
 from urllib.parse import quote, urlencode
 
 from ..contracts import ExternalResource
+from ..url_safety import contains_url_like_text
 
 BILIBILI_SEARCH_URL = "https://search.bilibili.com/all"
 MAX_KEYWORDS = 3
 MAX_KEYWORD_LENGTH = 32
 MAX_COURSE_TITLE_LENGTH = 40
-
-
 class BilibiliLinkDiscoveryAdapter:
     """Build one anonymous Bilibili search link from focused keywords.
 
@@ -83,7 +82,7 @@ def normalize_keywords(keywords: Sequence[str]) -> tuple[str, ...]:
         if not isinstance(value, str):
             continue
         keyword = _normalize_text(value, max_length=MAX_KEYWORD_LENGTH)
-        if not keyword:
+        if not keyword or contains_url_like_text(value):
             continue
         dedupe_key = keyword.casefold()
         if dedupe_key in seen:

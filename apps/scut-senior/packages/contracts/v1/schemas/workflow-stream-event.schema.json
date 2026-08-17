@@ -28,15 +28,31 @@
       "title": "AnswerBlockType",
       "type": "string"
     },
-    "AnswerMode": {
-      "enum": [
-        "concise",
-        "detailed",
-        "example",
-        "step_by_step"
+    "AnswerDelta": {
+      "additionalProperties": false,
+      "properties": {
+        "block_index": {
+          "minimum": 0,
+          "title": "Block Index",
+          "type": "integer"
+        },
+        "delta": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Delta",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/AnswerBlockType"
+        }
+      },
+      "required": [
+        "block_index",
+        "type",
+        "delta"
       ],
-      "title": "AnswerMode",
-      "type": "string"
+      "title": "AnswerDelta",
+      "type": "object"
     },
     "AnswerStatus": {
       "enum": [
@@ -168,75 +184,6 @@
       "title": "EvidenceStatus",
       "type": "string"
     },
-    "ExamReviewPayload": {
-      "additionalProperties": false,
-      "properties": {
-        "available_hours": {
-          "anyOf": [
-            {
-              "exclusiveMinimum": 0,
-              "maximum": 10000,
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Available Hours"
-        },
-        "exam_date": {
-          "anyOf": [
-            {
-              "format": "date",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Exam Date"
-        },
-        "goals": {
-          "items": {
-            "maxLength": 4000,
-            "type": "string"
-          },
-          "maxItems": 32,
-          "title": "Goals",
-          "type": "array"
-        },
-        "syllabus": {
-          "anyOf": [
-            {
-              "maxLength": 20000,
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Syllabus"
-        },
-        "weak_topics": {
-          "items": {
-            "maxLength": 500,
-            "type": "string"
-          },
-          "maxItems": 64,
-          "title": "Weak Topics",
-          "type": "array"
-        }
-      },
-      "required": [
-        "goals",
-        "weak_topics"
-      ],
-      "title": "ExamReviewPayload",
-      "type": "object"
-    },
     "ExternalResource": {
       "additionalProperties": false,
       "properties": {
@@ -321,33 +268,6 @@
       "title": "ExternalResource",
       "type": "object"
     },
-    "HelpLevel": {
-      "enum": [
-        "concept",
-        "approach",
-        "step_by_step",
-        "full_explanation",
-        "answer_analysis"
-      ],
-      "title": "HelpLevel",
-      "type": "string"
-    },
-    "KnowledgeQaPayload": {
-      "additionalProperties": false,
-      "properties": {
-        "question": {
-          "maxLength": 20000,
-          "minLength": 1,
-          "title": "Question",
-          "type": "string"
-        }
-      },
-      "required": [
-        "question"
-      ],
-      "title": "KnowledgeQaPayload",
-      "type": "object"
-    },
     "KnowledgeScope": {
       "enum": [
         "course_only",
@@ -355,55 +275,6 @@
       ],
       "title": "KnowledgeScope",
       "type": "string"
-    },
-    "MistakeReviewPayload": {
-      "additionalProperties": false,
-      "properties": {
-        "original_answer": {
-          "maxLength": 40000,
-          "minLength": 1,
-          "title": "Original Answer",
-          "type": "string"
-        },
-        "problem": {
-          "maxLength": 40000,
-          "minLength": 1,
-          "title": "Problem",
-          "type": "string"
-        },
-        "reference_answer": {
-          "anyOf": [
-            {
-              "maxLength": 40000,
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Reference Answer"
-        },
-        "review_focus": {
-          "anyOf": [
-            {
-              "maxLength": 4000,
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Review Focus"
-        }
-      },
-      "required": [
-        "problem",
-        "original_answer"
-      ],
-      "title": "MistakeReviewPayload",
-      "type": "object"
     },
     "ModelMetadata": {
       "additionalProperties": false,
@@ -442,52 +313,6 @@
       "title": "ModelSource",
       "type": "string"
     },
-    "ProblemTutorPayload": {
-      "additionalProperties": false,
-      "properties": {
-        "help_level": {
-          "$ref": "#/$defs/HelpLevel"
-        },
-        "problem": {
-          "maxLength": 40000,
-          "minLength": 1,
-          "title": "Problem",
-          "type": "string"
-        },
-        "problem_source": {
-          "anyOf": [
-            {
-              "maxLength": 2000,
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Problem Source"
-        },
-        "user_answer": {
-          "anyOf": [
-            {
-              "maxLength": 40000,
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "User Answer"
-        }
-      },
-      "required": [
-        "problem",
-        "help_level"
-      ],
-      "title": "ProblemTutorPayload",
-      "type": "object"
-    },
     "RunStatus": {
       "enum": [
         "created",
@@ -497,57 +322,6 @@
         "failed"
       ],
       "title": "RunStatus",
-      "type": "string"
-    },
-    "TemporaryMaterialReadingPayload": {
-      "additionalProperties": false,
-      "properties": {
-        "material_text": {
-          "maxLength": 100000,
-          "minLength": 1,
-          "title": "Material Text",
-          "type": "string"
-        },
-        "material_title": {
-          "anyOf": [
-            {
-              "maxLength": 200,
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Material Title"
-        },
-        "reading_goal": {
-          "anyOf": [
-            {
-              "maxLength": 4000,
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Reading Goal"
-        }
-      },
-      "required": [
-        "material_text"
-      ],
-      "title": "TemporaryMaterialReadingPayload",
-      "type": "object"
-    },
-    "Tone": {
-      "enum": [
-        "teaching_assistant",
-        "study_partner",
-        "senior_student"
-      ],
-      "title": "Tone",
       "type": "string"
     },
     "TraceEvent": {
@@ -1069,66 +843,6 @@
       "title": "TraceSourceSummary",
       "type": "object"
     },
-    "WorkflowAttempt": {
-      "additionalProperties": false,
-      "properties": {
-        "attempt_group_id": {
-          "format": "uuid",
-          "title": "Attempt Group Id",
-          "type": "string"
-        },
-        "created_at": {
-          "format": "date-time",
-          "title": "Created At",
-          "type": "string"
-        },
-        "expires_at": {
-          "format": "date-time",
-          "title": "Expires At",
-          "type": "string"
-        },
-        "regenerated_from_run_id": {
-          "anyOf": [
-            {
-              "format": "uuid",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "title": "Regenerated From Run Id"
-        },
-        "request": {
-          "$ref": "#/$defs/WorkflowRunRequest"
-        },
-        "result": {
-          "$ref": "#/$defs/WorkflowResult"
-        },
-        "updated_at": {
-          "format": "date-time",
-          "title": "Updated At",
-          "type": "string"
-        },
-        "workflow_run_id": {
-          "format": "uuid",
-          "title": "Workflow Run Id",
-          "type": "string"
-        }
-      },
-      "required": [
-        "workflow_run_id",
-        "attempt_group_id",
-        "regenerated_from_run_id",
-        "request",
-        "result",
-        "created_at",
-        "updated_at",
-        "expires_at"
-      ],
-      "title": "WorkflowAttempt",
-      "type": "object"
-    },
     "WorkflowResult": {
       "additionalProperties": false,
       "properties": {
@@ -1312,127 +1026,26 @@
       "title": "WorkflowResult",
       "type": "object"
     },
-    "WorkflowRunRequest": {
+    "WorkflowStreamError": {
       "additionalProperties": false,
       "properties": {
-        "allowed_course_ids": {
-          "items": {
-            "type": "string"
-          },
-          "title": "Allowed Course Ids",
-          "type": "array"
-        },
-        "answer_mode": {
-          "$ref": "#/$defs/AnswerMode"
-        },
-        "attachments": {
-          "items": {
-            "additionalProperties": true,
-            "type": "object"
-          },
-          "title": "Attachments",
-          "type": "array"
-        },
-        "context_refs": {
-          "items": {
-            "type": "string"
-          },
-          "title": "Context Refs",
-          "type": "array"
-        },
-        "conversation_id": {
-          "format": "uuid",
-          "title": "Conversation Id",
+        "code": {
+          "pattern": "^[a-z][a-z0-9_]{0,99}$",
+          "title": "Code",
           "type": "string"
         },
-        "course_id": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Course Id"
-        },
-        "course_scope": {
-          "$ref": "#/$defs/CourseScope"
-        },
-        "include_bilibili_resources": {
-          "title": "Include Bilibili Resources",
-          "type": "boolean"
-        },
-        "knowledge_scope": {
-          "$ref": "#/$defs/KnowledgeScope"
-        },
-        "model_id": {
-          "maxLength": 100,
+        "detail": {
+          "maxLength": 500,
           "minLength": 1,
-          "title": "Model Id",
+          "title": "Detail",
           "type": "string"
-        },
-        "model_source": {
-          "$ref": "#/$defs/ModelSource"
-        },
-        "provider_id": {
-          "maxLength": 100,
-          "minLength": 1,
-          "title": "Provider Id",
-          "type": "string"
-        },
-        "tone": {
-          "$ref": "#/$defs/Tone"
-        },
-        "user_input": {
-          "maxLength": 100000,
-          "minLength": 1,
-          "title": "User Input",
-          "type": "string"
-        },
-        "workflow_payload": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/KnowledgeQaPayload"
-            },
-            {
-              "$ref": "#/$defs/ExamReviewPayload"
-            },
-            {
-              "$ref": "#/$defs/ProblemTutorPayload"
-            },
-            {
-              "$ref": "#/$defs/MistakeReviewPayload"
-            },
-            {
-              "$ref": "#/$defs/TemporaryMaterialReadingPayload"
-            }
-          ],
-          "title": "Workflow Payload"
-        },
-        "workflow_type": {
-          "$ref": "#/$defs/WorkflowType"
         }
       },
       "required": [
-        "workflow_type",
-        "course_scope",
-        "allowed_course_ids",
-        "conversation_id",
-        "model_source",
-        "provider_id",
-        "model_id",
-        "user_input",
-        "answer_mode",
-        "tone",
-        "knowledge_scope",
-        "include_bilibili_resources",
-        "context_refs",
-        "attachments",
-        "workflow_payload"
+        "code",
+        "detail"
       ],
-      "title": "WorkflowRunRequest",
+      "title": "WorkflowStreamError",
       "type": "object"
     },
     "WorkflowType": {
@@ -1447,65 +1060,248 @@
       "type": "string"
     }
   },
-  "$id": "https://scut-senior.local/contracts/v1/conversation-detail.schema.json",
+  "$id": "https://scut-senior.local/contracts/v1/workflow-stream-event.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "additionalProperties": false,
-  "properties": {
-    "conversation_id": {
-      "format": "uuid",
-      "title": "Conversation Id",
-      "type": "string"
-    },
-    "course_id": {
-      "title": "Course Id",
-      "type": "string"
-    },
-    "created_at": {
-      "format": "date-time",
-      "title": "Created At",
-      "type": "string"
-    },
-    "expires_at": {
-      "format": "date-time",
-      "title": "Expires At",
-      "type": "string"
-    },
-    "mock_only": {
-      "const": true,
-      "default": true,
-      "title": "Mock Only",
-      "type": "boolean"
-    },
-    "runs": {
-      "items": {
-        "$ref": "#/$defs/WorkflowAttempt"
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "trace"
+          }
+        },
+        "required": [
+          "kind"
+        ]
       },
-      "title": "Runs",
-      "type": "array"
+      "then": {
+        "properties": {
+          "answer_delta": {
+            "type": "null"
+          },
+          "error": {
+            "type": "null"
+          },
+          "result": {
+            "type": "null"
+          },
+          "trace_event": {
+            "$ref": "#/$defs/TraceEvent"
+          },
+          "workflow_run_id": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "trace_event",
+          "workflow_run_id"
+        ]
+      }
     },
-    "title": {
-      "title": "Title",
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "answer_delta"
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "answer_delta": {
+            "$ref": "#/$defs/AnswerDelta"
+          },
+          "error": {
+            "type": "null"
+          },
+          "result": {
+            "type": "null"
+          },
+          "trace_event": {
+            "type": "null"
+          },
+          "workflow_run_id": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "answer_delta",
+          "workflow_run_id"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "result"
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "answer_delta": {
+            "type": "null"
+          },
+          "error": {
+            "type": "null"
+          },
+          "result": {
+            "allOf": [
+              {
+                "$ref": "#/$defs/WorkflowResult"
+              },
+              {
+                "properties": {
+                  "run_status": {
+                    "enum": [
+                      "completed",
+                      "interrupted",
+                      "failed"
+                    ]
+                  }
+                },
+                "required": [
+                  "run_status"
+                ],
+                "type": "object"
+              }
+            ]
+          },
+          "trace_event": {
+            "type": "null"
+          },
+          "workflow_run_id": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result",
+          "workflow_run_id"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "error"
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "answer_delta": {
+            "type": "null"
+          },
+          "error": {
+            "$ref": "#/$defs/WorkflowStreamError"
+          },
+          "result": {
+            "type": "null"
+          },
+          "trace_event": {
+            "type": "null"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      }
+    }
+  ],
+  "description": "One ordered NDJSON event from a single Workflow Runtime execution.",
+  "properties": {
+    "answer_delta": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AnswerDelta"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "error": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/WorkflowStreamError"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "kind": {
+      "enum": [
+        "trace",
+        "answer_delta",
+        "result",
+        "error"
+      ],
+      "title": "Kind",
       "type": "string"
     },
-    "updated_at": {
-      "format": "date-time",
-      "title": "Updated At",
-      "type": "string"
+    "result": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/WorkflowResult"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
     },
-    "user_id": {
-      "title": "User Id",
-      "type": "string"
+    "sequence": {
+      "minimum": 0,
+      "title": "Sequence",
+      "type": "integer"
+    },
+    "trace_event": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/TraceEvent"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "workflow_run_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Workflow Run Id"
     }
   },
   "required": [
-    "conversation_id",
-    "user_id",
-    "course_id",
-    "title",
-    "created_at",
-    "updated_at",
-    "expires_at"
+    "kind",
+    "workflow_run_id",
+    "sequence"
   ],
-  "title": "ConversationDetail",
+  "title": "WorkflowStreamEvent",
   "type": "object"
 }

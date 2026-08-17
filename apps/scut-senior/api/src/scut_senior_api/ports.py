@@ -6,6 +6,7 @@ from typing import Protocol
 from uuid import UUID
 
 from .contracts import (
+    AnswerBlock,
     ConversationDetail,
     ConversationSummary,
     ExternalResource,
@@ -58,6 +59,19 @@ class GeneratedAnswer:
     related_topics: tuple[str, ...] = ()
     related_questions: tuple[str, ...] = ()
     bilibili_search_keywords: tuple[str, ...] = ()
+    citation_ids: tuple[str, ...] = ()
+    general_supplement: str = ""
+    user_material_answer: str = ""
+    personalized_analysis: str = ""
+
+
+class HumanizerGateway(Protocol):
+    def humanize(
+        self,
+        *,
+        blocks: list[AnswerBlock],
+        protected_terms: tuple[str, ...],
+    ) -> list[AnswerBlock]: ...
 
 
 @dataclass(frozen=True, slots=True)
@@ -139,6 +153,8 @@ class WorkflowRepository(Protocol):
     def get_run(self, user_id: str, run_id: UUID) -> WorkflowResult | None: ...
 
     def get_attempt(self, user_id: str, run_id: UUID) -> WorkflowAttempt | None: ...
+
+    def discard_nonterminal_run(self, user_id: str, run_id: UUID) -> bool: ...
 
 
 class ModelCredentialRepository(Protocol):

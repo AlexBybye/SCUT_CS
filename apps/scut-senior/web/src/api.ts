@@ -10,6 +10,16 @@ import type {
   WorkflowRunRequest,
   WorkflowRunResult,
 } from "./contracts";
+import {
+  startWorkflowStreamRequest,
+  type WorkflowStreamHandle,
+  type WorkflowStreamState,
+} from "./workflowStream";
+import {
+  validateConversationDetail,
+  validateWorkflowAttempt,
+  validateWorkflowRunResult,
+} from "./workflowResultValidation";
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/$/, "");
 
@@ -116,16 +126,42 @@ export async function listConversations(): Promise<ConversationSummary[]> {
 export async function runWorkflow(
   request: WorkflowRunRequest,
 ): Promise<WorkflowRunResult> {
-  return apiRequest<WorkflowRunResult>("/api/v1/workflow-runs", {
+  const result = await apiRequest<unknown>("/api/v1/workflow-runs", {
     method: "POST",
     body: JSON.stringify(request),
   });
+  return validateWorkflowRunResult(result, {
+    expectedConversationId: request.conversation_id,
+  });
+}
+
+export function startWorkflowRunStream(
+  request: WorkflowRunRequest,
+  onState?: (state: WorkflowStreamState) => void,
+): WorkflowStreamHandle {
+  return startWorkflowStreamRequest(
+    `${API_BASE}/api/v1/workflow-runs/stream`,
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/x-ndjson",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
+      credentials: "include",
+    },
+    {
+      onEvent: (_event, state) => onState?.(state),
+      expectedConversationId: request.conversation_id,
+    },
+  );
 }
 
 export async function getConversation(conversationId: string): Promise<ConversationDetail> {
-  return apiRequest<ConversationDetail>(
+  const conversation = await apiRequest<unknown>(
     `/api/v1/conversations/${encodeURIComponent(conversationId)}`,
   );
+  return validateConversationDetail(conversation, conversationId);
 }
 
 export async function renameConversation(
@@ -148,14 +184,18 @@ export async function deleteConversation(conversationId: string): Promise<void> 
 }
 
 export async function regenerateWorkflowRun(workflowRunId: string): Promise<WorkflowAttempt> {
-  return apiRequest<WorkflowAttempt>(
+  const attempt = await apiRequest<unknown>(
     `/api/v1/workflow-runs/${encodeURIComponent(workflowRunId)}/regenerate`,
     { method: "POST" },
   );
+  return validateWorkflowAttempt(attempt, {
+    expectedRegeneratedFromRunId: workflowRunId,
+  });
 }
 
 export async function getWorkflowRun(workflowRunId: string): Promise<WorkflowRunResult> {
-  return apiRequest<WorkflowRunResult>(
+  const result = await apiRequest<unknown>(
     `/api/v1/workflow-runs/${encodeURIComponent(workflowRunId)}`,
   );
+  return validateWorkflowRunResult(result, { expectedRunId: workflowRunId });
 }

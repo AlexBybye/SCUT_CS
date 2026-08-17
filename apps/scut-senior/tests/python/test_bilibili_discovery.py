@@ -67,7 +67,7 @@ def test_valid_keywords_always_produce_one_anonymous_live_search_link() -> None:
     assert parse_qs(parsed.query) == {"keyword": ["矩阵的秩 线性无关"]}
 
 
-def test_url_encoding_prevents_keyword_or_course_title_injection() -> None:
+def test_url_like_keywords_are_dropped_and_reserved_characters_stay_query_data() -> None:
     resources = BilibiliLinkDiscoveryAdapter().discover(
         course_id="linear_algebra",
         course_title="线性代数&order=click",
@@ -84,9 +84,38 @@ def test_url_encoding_prevents_keyword_or_course_title_injection() -> None:
     assert parsed.path == "/all"
     assert parsed.fragment == ""
     assert set(query) == {"keyword"}
-    assert query["keyword"] == [
-        "秩&duration=4#fragment https://evil.example/x?keyword=p"
-    ]
+    assert query["keyword"] == ["秩&duration=4#fragment"]
+
+
+@pytest.mark.parametrize(
+    "url_like",
+    [
+        "https://evil.example/path",
+        "//www.bilibili.com/video/BV1unsafe",
+        "www.example.com/path",
+        "b23.tv/BV1unsafe",
+        "请看evil.example/path",
+        "https://www。bilibili。com/video/BV1unsafe",
+        "https://bilibili｡com/video/BV1unsafe",
+        "www%2Eexample%2Ecom/path",
+        "bilibili%E3%80%82com/video/BV1unsafe",
+        "https%3A%2F%2Fwww%252Ebilibili%252Ecom/video/BV1unsafe",
+        "https://www.bili\u034fbili.com/video/BV1unsafe",
+        "https://b2\u034f3.tv/BV1unsafe",
+        "https://www.bili\u180bbili.com/video/BV1unsafe",
+        "https://www.bili\ufe0fbili.com/video/BV1unsafe",
+        "https://www.bili\u115fbili.com/video/BV1unsafe",
+    ],
+)
+def test_url_like_model_keywords_are_not_used_for_search(url_like: str) -> None:
+    assert normalize_keywords([url_like]) == ()
+
+
+def test_url_detection_canonicalization_does_not_rewrite_safe_keywords() -> None:
+    assert normalize_keywords(["C%2B%2B 模板", "概率 95% 区间"]) == (
+        "C%2B%2B 模板",
+        "概率 95% 区间",
+    )
 
 
 def test_empty_normalized_keywords_return_nothing() -> None:
