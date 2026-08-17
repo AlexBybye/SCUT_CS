@@ -100,6 +100,72 @@ export SCUT_SENIOR_BYOK_KEY_VERSION=1
 
 主密钥不能使用供应商 API Key 代替，也不能提交到 Git、写入浏览器或随意更换；正式部署时应进入受保护的运行 Secret。配置满足后四家卡片会显示为“服务端已启用”，但模型仍要等当前登录会话保存对应用户 Key 后才可选择。用户 Key 只通过 `PUT /api/v1/model-credentials/{provider_id}` 提交，返回值只有脱敏状态与到期时间；真实调用只会发往代码内固定的四个地址。没有用户 Key 时不能验证该用户账户的余额、权限或供应商实网响应，但这不影响固定路由、加密、清理和泄漏边界的自动化验收。
 
+## 在线部署：本地运行 + HTTPS 隧道（当前启用路径）
+
+当前启用路径是**本机运行 + HTTPS 隧道**：前端与 API 由同一进程提供，隧道把本机端口暴露成公网 HTTPS 域名，满足 GitHub OAuth 回调与 Secure Cookie 要求。**华为云 SWR→ECS 部署设计原样保留**（见下文“明确关闭或待确认”），预算获批后作为后续可选目标切换，不需要改动应用代码。
+
+> ⚠️ 会话 Cookie 为 `Secure`，**OAuth 联调必须通过隧道的 HTTPS 域名访问，不能走 `http://127.0.0.1`**。
+
+### 1. 构建前端并启动服务
+
+```bash
+cd apps/scut-senior
+make build-web
+make serve-online   # uvicorn 0.0.0.0:8000，前端与 API 同一进程
+```
+
+### 2. 暴露公网 HTTPS（二选一，都免费）
+
+**Tailscale Funnel（推荐，零域名成本、URL 稳定）：**
+
+```bash
+tailscale up
+tailscale funnel 8000
+# 得到稳定地址：https://<machine-name>.ts.net  （重启后不变）
+```
+
+**Cloudflare 命名隧道（需要你控制的域名）：**
+
+```bash
+cloudflared tunnel login
+cloudflared tunnel create scut-senior
+cloudflared tunnel route dns scut-senior <your-domain>
+# config.yml: 将 https://<your-domain> 转发到 http://localhost:8000
+cloudflared tunnel run scut-senior
+```
+
+### 3. 创建 GitHub OAuth App 并配置环境变量
+
+GitHub 设置 → Developer settings → OAuth Apps → New OAuth App：
+
+- **Homepage URL**：`https://<隧道域名>/`
+- **Authorization callback URL**：`https://<隧道域名>/api/v1/auth/github/callback`
+
+启动前导出（不要提交到 Git）：
+
+```bash
+export SCUT_SENIOR_APP_ENV=development
+export SCUT_SENIOR_IDENTITY_MODE=github_oauth
+export SCUT_SENIOR_STORAGE_MODE=sqlite
+export SCUT_SENIOR_DATABASE_PATH='.local/online.db'
+export SCUT_SENIOR_GITHUB_CLIENT_ID='<GITHUB_CLIENT_ID>'
+export SCUT_SENIOR_GITHUB_CLIENT_SECRET='<GITHUB_CLIENT_SECRET>'
+export SCUT_SENIOR_GITHUB_CALLBACK_URL='https://<隧道域名>/api/v1/auth/github/callback'
+export SCUT_SENIOR_POST_LOGIN_REDIRECT_URL='https://<隧道域名>/'
+export SCUT_SENIOR_MODEL_MODE=openrouter_platform
+export SCUT_SENIOR_OPENROUTER_API_KEY='<服务端项目 Key>'
+```
+
+BYOK 真实调用另需稳定的 32 字节 AES 主密钥（见上文“本地验证 BYOK”）。`SCUT_SENIOR_APP_ENV=production` 仍拒绝启动；迭代 4 验收与实网联调使用 `development`。
+
+### 4. 验收清单
+
+- [ ] `https://<隧道域名>/` 能打开 SPA；
+- [ ] GitHub 登录回调完成（`/api/v1/auth/github/callback` 302 到首页）；
+- [ ] 登录后 `/api/v1/models` 显示平台三模型或已保存 Key 的 BYOK；
+- [ ] 一次真实模型 Workflow run 返回 `run_status=completed`；
+- [ ] `/api/v1/feedback` 提交与列表可用。
+
 ## 单独检出应用目录
 
 仓库含大量普通 Git 大文件和 LFS 对象，仅设置 `GIT_LFS_SKIP_SMUDGE=1` 不足以避免下载。轻量开发应同时使用 partial clone 与 sparse checkout：
@@ -121,10 +187,10 @@ GIT_LFS_SKIP_SMUDGE=1 git checkout master
 - 平台限流状态目前是单进程内存态；多 worker 共享限流、周期清理任务和生产启用仍未完成；
 - 首批课程固定为 10 门；本轮不改 manifest 的 reviewer 或 `passed/pending`，也不把用户的 Markdown 公式替换等同于 corpus 激活。当前没有正式 `active.json`，默认检索仍是 Fixture，远端 CI 与受信 `master` 上的真实 active／回退证据仍缺失；
 - Workflow Runtime 与严格 NDJSON Trace：迭代 3 已完成本地／测试实现；供应商回答会先完整通过结构化解析与 Guard，再按安全回答块发送 `answer_delta`，不是上游 token 原样透传；页面断开会停止后续节点并保存 `interrupted`，但同步 urllib 调用在返回或超时前不能保证终止上游推理或计费；
-- 华为云部署：预算获批前保持 validation-only／fail-closed，不创建资源；未来首发基线为华南-广州优先的 1C2G、40GB、1～2Mbps，不在 ECS 部署大模型；
+- 华为云部署：**设计原样保留，作为后续可选目标**；预算获批前保持 validation-only／fail-closed，不创建资源；未来首发基线为华南-广州优先的 1C2G、40GB、1～2Mbps，不在 ECS 部署大模型。当前启用路径为“本机运行 + HTTPS 隧道”（见上文“在线部署”节）；
 - PostgreSQL、Qdrant、对象存储、任务系统、GitHub App、SWR 认证、ECS 灰度/回滚：首发不购买或只保留可替换边界；
 - 跨课程：契约已冻结，feature flag 默认关闭；
 - Bilibili：只保留 0～3 个聚焦词和关键词非空时由后端生成的唯一匿名搜索链接；不建设或维护具体视频资产，不返回或抓取具体视频；
-- 正式在线 Chat：迭代 4 验收前不提供地址。
+- 正式在线 Chat：迭代 4 验收前不提供对外地址；联调地址由本机 + HTTPS 隧道提供。
 
 迭代 0 的完整基线见 [ITERATION_0_STATUS.md](ITERATION_0_STATUS.md)；平台模型切片和仍未完成的迭代 1 边界见 [ITERATION_1_STATUS.md](ITERATION_1_STATUS.md)；迭代 2 的开发门与激活限制见 [ITERATION_2_STATUS.md](ITERATION_2_STATUS.md)；迭代 3 的实现、验证和正式退出阻塞见 [ITERATION_3_STATUS.md](ITERATION_3_STATUS.md)。
