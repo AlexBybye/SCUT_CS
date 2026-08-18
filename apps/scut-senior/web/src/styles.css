@@ -22,6 +22,7 @@
   --accent: #315cad;
   --accent-hover: #244b92;
   --accent-soft: #e0e9fb;
+  --accent-contrast: #f7f9fc;
   --focus: #1f66d1;
   --warning-surface: #fff3d8;
   --warning-line: #cc9a3c;
@@ -49,6 +50,7 @@
     --accent: #93ade2;
     --accent-hover: #adc1ea;
     --accent-soft: #253a62;
+    --accent-contrast: #10151f;
     --focus: #9cbbf6;
     --warning-surface: #3a301e;
     --warning-line: #b78b3d;
@@ -114,7 +116,7 @@ a {
   padding: 10px 14px;
   border-radius: var(--radius-control);
   background: var(--accent);
-  color: #f7f9fc;
+  color: var(--accent-contrast);
   transform: translateY(-160%);
 }
 
@@ -146,7 +148,7 @@ a {
   place-items: center;
   border-radius: 12px;
   background: var(--accent);
-  color: #f7f9fc;
+  color: var(--accent-contrast);
   font-size: 1.1rem;
   font-weight: 800;
 }
@@ -287,7 +289,7 @@ a {
   border: 1px solid var(--accent);
   border-radius: 8px;
   background: var(--accent);
-  color: #f7f9fc;
+  color: var(--accent-contrast);
   font-size: 0.72rem;
   font-weight: 750;
 }
@@ -1099,12 +1101,18 @@ textarea:focus {
 .primary-button {
   border: 1px solid var(--accent);
   background: var(--accent);
-  color: #f7f9fc;
+  color: var(--accent-contrast);
 }
 
 .primary-button:hover:not(:disabled) {
   border-color: var(--accent-hover);
   background: var(--accent-hover);
+}
+
+.primary-button:active:not(:disabled),
+.secondary-button:active:not(:disabled),
+.cancel-button:active:not(:disabled) {
+  transform: translateY(1px);
 }
 
 .secondary-button {
@@ -1232,6 +1240,53 @@ textarea:focus {
   margin-top: 12px;
   border-radius: 5px;
   background: var(--surface-strong);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skeleton-line {
+    background: linear-gradient(
+      100deg,
+      var(--surface-strong) 40%,
+      color-mix(in srgb, var(--surface-strong) 55%, var(--line)) 50%,
+      var(--surface-strong) 60%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.4s ease-in-out infinite;
+  }
+
+  @keyframes skeleton-shimmer {
+    from {
+      background-position: 120% 0;
+    }
+    to {
+      background-position: -80% 0;
+    }
+  }
+
+  .stream-caret {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    margin-left: 3px;
+    vertical-align: -0.15em;
+    border-radius: 1px;
+    background: var(--accent);
+    animation: caret-pulse 1.1s ease-in-out infinite;
+  }
+
+  @keyframes caret-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.25;
+    }
+  }
+}
+
+.stream-caret[hidden] {
+  display: none;
 }
 
 .skeleton-line-long {
@@ -1444,7 +1499,7 @@ textarea:focus {
   border: 1px solid var(--accent);
   border-radius: var(--radius-control);
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-contrast);
   font-size: 0.8rem;
   cursor: pointer;
 }

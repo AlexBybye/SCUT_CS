@@ -1378,7 +1378,6 @@ onBeforeUnmount(() => {
         <section class="byok-panel" aria-labelledby="byok-heading">
           <div class="byok-panel-header">
             <div>
-              <p class="section-kicker">BYOK · 当前登录会话</p>
               <h2 id="byok-heading">使用自己的 API Key</h2>
             </div>
             <span class="byok-evidence-badge">本地安全链路已接入</span>
