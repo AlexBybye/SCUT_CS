@@ -55,3 +55,17 @@
 - 真实模型实网调用与 BYOK 四家实网联调；
 - 生产 OAuth 回调（当前联调走 Tailscale 隧道 HTTPS）；
 - 正式在线 Chat 地址与云端部署（华为云设计保留，本地+隧道为当前启用路径）。
+
+## 追加：真实模型联调尝试（2026-08-17，诚实记录）
+
+在线实例（`openrouter_platform_with_github_oauth_sqlite`）已恢复运行，Tailscale 隧道 200。服务端直接驱动真实 OpenRouter 网关做了两次真实调用：
+
+1. `google/gemma-4-26b-a4b-it:free`：真实网关连通，免费通道返回 **429 限流**，按设计映射为 `platform_model_rate_limited` fail-closed（不重试、不自动切换）。
+2. `nvidia/nemotron-3-super-120b-a12b:free`：真实推理返回 200，但响应未通过严格结构化 JSON 解析，按设计映射为 `平台模型返回了无法处理的结果` fail-closed。
+
+结论：真实 Key 认证、真实网关可达、守卫/解析/错误映射管线按设计拦截均已获得外部证据；**“真实模型 run 完成”仍缺一次返回合规 JSON 的真实响应**（需额度恢复或换模型重试），不伪造通过。
+
+## 追加：合并就绪检查（2026-08-17）
+
+- `git merge-tree`：iteration-3 → master 与 iteration-4 → master 均为 **0 冲突**；master 是 iteration-4 的祖先（领先 19 提交）。
+- ⚠️ 注意：分支历史中 `e08dfb3`（SCUT_SKILL/README.md、Summary_Skill.md）与 `987d1da`（CONTRIBUTING.md）修改了 master 上的 SCUT_SKILL 内容；合并会**静默采用分支版本**。合并 master 前需决策：接受、回退这两个文件的改动，或以路径级策略排除。
