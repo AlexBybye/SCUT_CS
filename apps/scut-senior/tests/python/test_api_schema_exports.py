@@ -46,6 +46,9 @@ def test_model_credential_schemas_never_expose_ciphertext_or_plaintext_status() 
         "configured",
         "masked_key",
         "expires_at",
+        "writable",
+        "source",
+        "updated_at",
     }
     serialized = json.dumps(status, ensure_ascii=False)
     assert "ciphertext" not in serialized

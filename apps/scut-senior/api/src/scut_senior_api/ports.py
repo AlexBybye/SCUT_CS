@@ -98,6 +98,7 @@ class StoredModelCredential:
     algorithm: str
     key_version: int
     expires_at: datetime
+    updated_at: datetime
 
 
 class IdentityProvider(Protocol):

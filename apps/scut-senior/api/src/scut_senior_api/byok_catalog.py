@@ -32,9 +32,22 @@ class ByokProviderDisabled(RuntimeError):
 
 @dataclass(frozen=True, slots=True)
 class ByokModelEntry:
+    """One fixed model per BYOK provider.
+
+    ``default_max_tokens`` and ``default_temperature`` are server-side call
+    defaults declared next to the model (adopted from DSH's adapter-owned
+    capability metadata). They stay out of the public payload on purpose: the
+    web client keeps a fail-closed frozen copy with exact-key matching, so
+    server-side fields must not drift that contract.
+    """
+
     model_id: str
     company: str
     display_name: str
+    input_modalities: tuple[str, ...] = ("text",)
+    supports_structured_outputs: bool = True
+    default_max_tokens: int = 2048
+    default_temperature: float = 0.2
 
     def as_public_dict(self) -> dict[str, str]:
         return {

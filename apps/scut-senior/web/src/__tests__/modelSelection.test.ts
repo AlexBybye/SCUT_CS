@@ -143,6 +143,9 @@ const byokStatuses: ByokCredentialStatus[] = [
     configured: true,
     masked_key: "sk-or-****1234",
     expires_at: "2026-08-20T08:00:00Z",
+    writable: true,
+    source: "user_key",
+    updated_at: "2026-08-17T08:00:00Z",
   },
   {
     provider_id: "siliconflow",
@@ -150,6 +153,9 @@ const byokStatuses: ByokCredentialStatus[] = [
     configured: true,
     masked_key: "sk-****5678",
     expires_at: "2026-08-20T08:00:00Z",
+    writable: true,
+    source: "user_key",
+    updated_at: "2026-08-17T08:00:00Z",
   },
 ];
 

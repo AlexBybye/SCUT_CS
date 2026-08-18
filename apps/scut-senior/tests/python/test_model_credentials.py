@@ -184,6 +184,9 @@ def test_crud_returns_only_masked_metadata_and_database_contains_only_aead(
     assert initial.headers["cache-control"] == "private, no-store"
     assert [item["provider_id"] for item in initial.json()] == list(PROVIDERS)
     assert all(item["configured"] is False for item in initial.json())
+    assert all(item["writable"] is False for item in initial.json())
+    assert all(item["source"] == "user_key" for item in initial.json())
+    assert all(item["updated_at"] is None for item in initial.json())
 
     saved = client.put(
         "/api/v1/model-credentials/openrouter",
@@ -197,6 +200,9 @@ def test_crud_returns_only_masked_metadata_and_database_contains_only_aead(
         "configured": True,
         "masked_key": "••••••••",
         "expires_at": saved.json()["expires_at"],
+        "writable": True,
+        "source": "user_key",
+        "updated_at": saved.json()["updated_at"],
     }
     assert secret not in saved.text
     assert token not in saved.text

@@ -1,0 +1,440 @@
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+import pytest
+from fastapi.testclient import TestClient
+
+from scut_senior_api.adapters.mock import FixtureRetrievalGateway
+from scut_senior_api.config import Settings
+from scut_senior_api.contracts import WorkflowRunRequest, WorkflowType
+from scut_senior_api.harness_registry import (
+    AGENT_PRESETS,
+    CONTROLLED_TOOL_CATALOG,
+    HARNESS_REGISTRY,
+    MAINTAINER_SKILLS,
+    AgentPreset,
+    ControlledTool,
+    ControlledToolMetadata,
+    HarnessRegistry,
+    MaintainerSkillMetadata,
+    MaterialConversionSkillStatus,
+    derive_course_plugin_states,
+)
+from scut_senior_api.main import create_app
+from scut_senior_api.registry import CourseRegistry
+from scut_senior_api.workflow_focus import (
+    FocusStrategy,
+    build_workflow_focus,
+)
+
+EXPECTED_FOCUS_BY_WORKFLOW = {
+    WorkflowType.KNOWLEDGE_QA: FocusStrategy.QUESTION_CONCEPT,
+    WorkflowType.EXAM_REVIEW: FocusStrategy.SYLLABUS_WEAK_TOPICS,
+    WorkflowType.PROBLEM_TUTOR: FocusStrategy.PROBLEM_MAIN_TOPIC,
+    WorkflowType.MISTAKE_REVIEW: FocusStrategy.MISTAKE_ROOT_CAUSE,
+    WorkflowType.TEMPORARY_MATERIAL_READING: FocusStrategy.MATERIAL_TITLE_MAIN_TOPICS,
+}
+
+WORKFLOW_PAYLOADS: dict[str, dict[str, object]] = {
+    "knowledge_qa": {"question": "请解释矩阵的秩"},
+    "exam_review": {
+        "syllabus": "矩阵与线性方程组",
+        "exam_date": None,
+        "available_hours": 4,
+        "goals": ["复习矩阵的秩"],
+        "weak_topics": ["初等行变换"],
+    },
+    "problem_tutor": {
+        "problem": "求一个矩阵的秩",
+        "user_answer": None,
+        "help_level": "step_by_step",
+        "problem_source": None,
+    },
+    "mistake_review": {
+        "problem": "求一个矩阵的秩",
+        "original_answer": "秩等于矩阵的行数",
+        "reference_answer": None,
+        "review_focus": "定位概念错误",
+    },
+    "temporary_material_reading": {
+        "material_title": "矩阵秩复习说明",
+        "material_text": "初等行变换不改变矩阵的秩。",
+        "reading_goal": "理解矩阵秩",
+    },
+}
+
+
+def _request_dict(
+    conversation_id: str,
+    *,
+    workflow_type: str = "knowledge_qa",
+    model_id: str = "deterministic-fixture-v1",
+) -> dict[str, object]:
+    return {
+        "workflow_type": workflow_type,
+        "course_scope": "single",
+        "course_id": "linear_algebra",
+        "allowed_course_ids": [],
+        "conversation_id": conversation_id,
+        "model_source": "platform_default",
+        "provider_id": "mock" if model_id == "deterministic-fixture-v1" else "openrouter",
+        "model_id": model_id,
+        "user_input": "请解释矩阵的秩",
+        "answer_mode": "detailed",
+        "tone": "teaching_assistant",
+        "knowledge_scope": "course_first",
+        "include_bilibili_resources": False,
+        "context_refs": [],
+        "attachments": [],
+        "workflow_payload": WORKFLOW_PAYLOADS[workflow_type],
+    }
+
+
+def _preset(workflow_type: WorkflowType) -> AgentPreset:
+    preset = HARNESS_REGISTRY.resolve_preset(workflow_type)
+    assert preset is not None
+    return preset
+
+
+def _registry_with(presets: list[AgentPreset]) -> HarnessRegistry:
+    return HarnessRegistry(
+        version="test-registry-v1",
+        presets=presets,
+        tools=CONTROLLED_TOOL_CATALOG,
+        skills=MAINTAINER_SKILLS,
+    )
+
+
+def test_registry_exposes_exactly_five_presets_covering_all_workflow_types() -> None:
+    assert len(HARNESS_REGISTRY.presets) == 5
+    assert {preset.workflow_type for preset in HARNESS_REGISTRY.presets} == set(
+        WorkflowType
+    )
+    assert len({preset.preset_id for preset in HARNESS_REGISTRY.presets}) == 5
+    assert HARNESS_REGISTRY.version == "harness-registry-v1"
+    tool_ids = {tool.tool_id for tool in CONTROLLED_TOOL_CATALOG}
+
+    for preset in HARNESS_REGISTRY.presets:
+        assert preset.preset_id.startswith("preset_")
+        assert preset.preset_version == "v1"
+        assert preset.display_name
+        assert preset.required_input_modalities == ("text",)
+        assert preset.requires_structured_outputs is True
+        assert preset.allowed_tools
+        assert set(preset.allowed_tools) <= tool_ids
+        assert preset.focus_strategy == EXPECTED_FOCUS_BY_WORKFLOW[preset.workflow_type]
+
+
+def test_preset_focus_strategies_match_the_runtime_focus_builder() -> None:
+    for workflow_type in WorkflowType:
+        request = WorkflowRunRequest.model_validate(
+            _request_dict(
+                "11111111-1111-1111-1111-111111111111",
+                workflow_type=workflow_type.value,
+            )
+        )
+        assert build_workflow_focus(request).focus_strategy == EXPECTED_FOCUS_BY_WORKFLOW[
+            workflow_type
+        ]
+
+
+def test_preset_metadata_never_contains_prompt_text() -> None:
+    serialized = json.dumps([preset.as_public_dict() for preset in AGENT_PRESETS])
+    for forbidden in ("prompt", "directive", "authoritative_query", "anchor_context"):
+        assert forbidden not in serialized
+
+
+def test_registry_construction_rejects_incomplete_workflow_coverage() -> None:
+    with pytest.raises(ValueError, match="cover WorkflowType exactly"):
+        _registry_with(list(AGENT_PRESETS)[:4])
+
+
+def test_registry_construction_rejects_duplicate_workflow_coverage() -> None:
+    duplicate = AgentPreset(
+        preset_id="preset_knowledge_qa_duplicate",
+        preset_version="v1",
+        display_name="重复预设",
+        workflow_type=WorkflowType.KNOWLEDGE_QA,
+        focus_strategy=FocusStrategy.QUESTION_CONCEPT,
+        allowed_tools=(ControlledTool.COURSE_RETRIEVAL,),
+        required_input_modalities=("text",),
+        requires_structured_outputs=True,
+    )
+    with pytest.raises(ValueError, match="exactly one preset"):
+        _registry_with([duplicate, *AGENT_PRESETS])
+
+
+def test_registry_construction_rejects_unknown_tool_reference() -> None:
+    presets = [
+        AgentPreset(
+            preset_id="preset_with_unknown_tool",
+            preset_version="v1",
+            display_name="未知工具预设",
+            workflow_type=WorkflowType.KNOWLEDGE_QA,
+            focus_strategy=FocusStrategy.QUESTION_CONCEPT,
+            allowed_tools=(ControlledTool.BILIBILI_ANONYMOUS_SEARCH,),
+            required_input_modalities=("text",),
+            requires_structured_outputs=True,
+        ),
+        *AGENT_PRESETS[1:],
+    ]
+    tools = (
+        ControlledToolMetadata(
+            tool_id=ControlledTool.COURSE_RETRIEVAL,
+            display_name="课程检索",
+            description="测试目录",
+        ),
+    )
+    with pytest.raises(ValueError, match="references unknown tools"):
+        HarnessRegistry(
+            version="test-registry-v1",
+            presets=presets,
+            tools=tools,
+            skills=MAINTAINER_SKILLS,
+        )
+
+
+def test_registry_construction_rejects_unknown_required_modality() -> None:
+    presets = [
+        AgentPreset(
+            preset_id="preset_with_unknown_modality",
+            preset_version="v1",
+            display_name="未知模态预设",
+            workflow_type=WorkflowType.KNOWLEDGE_QA,
+            focus_strategy=FocusStrategy.QUESTION_CONCEPT,
+            allowed_tools=(ControlledTool.COURSE_RETRIEVAL,),
+            required_input_modalities=("haptic",),
+            requires_structured_outputs=True,
+        ),
+        *AGENT_PRESETS[1:],
+    ]
+    with pytest.raises(ValueError, match="unknown modalities"):
+        _registry_with(presets)
+
+
+def test_model_compatibility_requires_all_modalities_and_structured_outputs() -> None:
+    preset = _preset(WorkflowType.KNOWLEDGE_QA)
+
+    assert (
+        preset.check_model_compatibility(
+            input_modalities=("text",),
+            supports_structured_outputs=True,
+        )
+        is None
+    )
+    missing_modality = preset.check_model_compatibility(
+        input_modalities=("image",),
+        supports_structured_outputs=True,
+    )
+    assert missing_modality is not None
+    assert "text" in missing_modality
+    assert "preset_knowledge_qa" in missing_modality
+
+    missing_structured = preset.check_model_compatibility(
+        input_modalities=("text",),
+        supports_structured_outputs=False,
+    )
+    assert missing_structured is not None
+    assert "structured outputs" in missing_structured
+
+
+def test_course_plugin_states_never_mark_cpp_active_or_claim_workflows() -> None:
+    registry = CourseRegistry.load()
+    gateway = FixtureRetrievalGateway(registry)
+
+    states = derive_course_plugin_states(registry, gateway, retrieval_mode="fixture")
+
+    by_id = {state.course_id: state for state in states}
+    assert len(by_id) == 10
+    assert by_id["linear_algebra"].state.value == "active"
+    assert [workflow.value for workflow in by_id["linear_algebra"].enabled_workflows] == [
+        workflow.value for workflow in WorkflowType
+    ]
+    assert by_id["cpp"].state.value == "registered"
+    assert by_id["cpp"].enabled_workflows == ()
+    assert all(
+        state.state.value == "registered" and state.enabled_workflows == ()
+        for course_id, state in by_id.items()
+        if course_id != "linear_algebra"
+    )
+
+
+def test_course_plugin_states_fail_closed_without_gateway_availability() -> None:
+    registry = CourseRegistry.load()
+
+    class UnavailableGateway:
+        def is_course_available(self, course_id: str) -> bool:
+            del course_id
+            raise RuntimeError("local corpus store is missing")
+
+    states = derive_course_plugin_states(
+        registry, UnavailableGateway(), retrieval_mode="local_corpus"
+    )
+    by_id = {state.course_id: state for state in states}
+    assert by_id["linear_algebra"].state.value == "fixture_only"
+    assert by_id["cpp"].state.value == "registered"
+    assert all(state.enabled_workflows == () for state in states)
+
+
+def test_plugin_registry_endpoint_reports_honest_metadata(tmp_path: Path) -> None:
+    client = TestClient(
+        create_app(Settings(app_env="test", database_path=tmp_path / "plugin.db"))
+    )
+
+    response = client.get("/api/v1/plugin-registry")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["registry_version"] == "harness-registry-v1"
+    assert len(body["agent_presets"]) == 5
+    assert {preset["workflow_type"] for preset in body["agent_presets"]} == {
+        workflow.value for workflow in WorkflowType
+    }
+    assert all(
+        preset["required_input_modalities"] == ["text"]
+        and preset["requires_structured_outputs"] is True
+        for preset in body["agent_presets"]
+    )
+    assert len(body["controlled_tools"]) == 4
+    assert all(tool["model_callable"] is False for tool in body["controlled_tools"])
+    assert [tool["tool_id"] for tool in body["controlled_tools"]] == [
+        "course_retrieval",
+        "evidence_location",
+        "bilibili_anonymous_search",
+        "temporary_material_read",
+    ]
+
+    assert len(body["maintainer_skills"]) == 1
+    skill = body["maintainer_skills"][0]
+    assert skill["skill_id"] == "material_conversion"
+    assert skill["status"] == "contract_only"
+    assert skill["human_review_required"] is True
+    assert skill["can_mark_passed_or_active"] is False
+
+    courses = {course["course_id"]: course for course in body["courses"]}
+    assert len(courses) == 10
+    assert courses["linear_algebra"]["state"] == "active"
+    assert len(courses["linear_algebra"]["enabled_workflows"]) == 5
+    assert courses["cpp"]["state"] == "registered"
+    assert courses["cpp"]["enabled_workflows"] == []
+
+    serialized = json.dumps(body)
+    for forbidden in ("prompt", "directive", "authoritative_query", "anchor_context"):
+        assert forbidden not in serialized
+
+
+def test_request_validation_trace_includes_preset_identity(tmp_path: Path) -> None:
+    client = TestClient(
+        create_app(Settings(app_env="test", database_path=tmp_path / "trace.db"))
+    )
+    conversation = client.post(
+        "/api/v1/conversations", json={"course_id": "线性代数"}
+    ).json()
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=_request_dict(conversation["conversation_id"]),
+    )
+
+    assert response.status_code == 201, response.text
+    result = response.json()
+    assert result["run_status"] == "completed"
+    validation = next(
+        event
+        for event in result["trace"]
+        if event["node"] == "request_validation"
+    )
+    assert validation["result"] == {
+        "workflow_type": "knowledge_qa",
+        "course_scope": "single",
+        "course_ids": ["linear_algebra"],
+        "knowledge_scope": "course_first",
+        "agent_preset_id": "preset_knowledge_qa",
+        "agent_preset_version": "v1",
+    }
+
+    restored = client.get(f"/api/v1/workflow-runs/{result['workflow_run_id']}")
+    assert restored.status_code == 200
+    restored_validation = next(
+        event
+        for event in restored.json()["trace"]
+        if event["node"] == "request_validation"
+    )
+    assert restored_validation["result"]["agent_preset_id"] == "preset_knowledge_qa"
+    assert restored_validation["result"]["agent_preset_version"] == "v1"
+
+
+def test_real_platform_model_missing_modality_fails_closed(tmp_path: Path) -> None:
+    app = create_app(
+        Settings(
+            app_env="test",
+            model_mode="openrouter_platform",
+            database_path=tmp_path / "compat.db",
+            openrouter_api_key="server-only-secret",
+        )
+    )
+    client = TestClient(app)
+    conversation = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    ).json()
+
+    class IncompatibleModelEntry:
+        provider_id = "openrouter"
+        model_id = "google/gemma-4-26b-a4b-it:free"
+        billing_label = "platform_daily_free_quota"
+        availability_status = "available"
+        input_modalities = ("image",)
+        supports_structured_outputs = True
+
+    class StubModelCatalog:
+        byok_catalog = None
+
+        def resolve(self, provider_id: str, model_id: str, model_source):
+            del provider_id, model_id, model_source
+            return IncompatibleModelEntry()
+
+    app.state.service.model_catalog = StubModelCatalog()
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=_request_dict(
+            conversation["conversation_id"],
+            model_id="google/gemma-4-26b-a4b-it:free",
+        ),
+    )
+
+    assert response.status_code == 503
+    error = response.json()["error"]
+    assert error["code"] == "capability_unavailable"
+    assert error["capability"] == "model"
+    assert "preset_knowledge_qa" in error["detail"]
+    assert "text" in error["detail"]
+
+
+def test_mock_platform_models_skip_preset_capability_gate(tmp_path: Path) -> None:
+    app = create_app(Settings(app_env="test", database_path=tmp_path / "mock.db"))
+    client = TestClient(app)
+    conversation = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    ).json()
+
+    # The mock adapter is not in the model catalog, so the mock path must never
+    # consult preset compatibility and must remain fully usable.
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=_request_dict(conversation["conversation_id"]),
+    )
+
+    assert response.status_code == 201, response.text
+    assert response.json()["model"]["mock_only"] is True
+
+
+def test_maintainer_skill_is_metadata_only_and_cannot_approve_content() -> None:
+    assert len(MAINTAINER_SKILLS) == 1
+    skill = MAINTAINER_SKILLS[0]
+    assert skill.status == MaterialConversionSkillStatus.CONTRACT_ONLY
+    assert skill.human_review_required is True
+    assert skill.can_mark_passed_or_active is False
+    assert skill.version == "v1"

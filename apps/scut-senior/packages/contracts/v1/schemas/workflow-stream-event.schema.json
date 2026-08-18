@@ -407,6 +407,32 @@
           "default": null,
           "title": "Adapter"
         },
+        "agent_preset_id": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z][a-z0-9_]{0,99}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Agent Preset Id"
+        },
+        "agent_preset_version": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z][a-z0-9_]{0,99}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Agent Preset Version"
+        },
         "auth_mode": {
           "anyOf": [
             {

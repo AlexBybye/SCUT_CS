@@ -234,6 +234,12 @@ class ModelCredentialStatus(ContractModel):
     configured: bool
     masked_key: Literal["••••••••"] | None
     expires_at: datetime | None
+    # DSH credential-seam describe semantics: safe status fields that never
+    # expose the secret value. ``writable`` is whether a replacement could be
+    # persisted right now (encryption configured and the auth session active).
+    writable: bool
+    source: Literal["user_key"]
+    updated_at: datetime | None
 
     @model_validator(mode="after")
     def enforce_configuration_metadata(self) -> "ModelCredentialStatus":
@@ -246,13 +252,16 @@ class ModelCredentialStatus(ContractModel):
         if self.model_id != expected_model:
             raise ValueError("credential provider and model must match the fixed catalog")
         if self.configured and (
-            self.masked_key is None or self.expires_at is None
+            self.masked_key is None or self.expires_at is None or self.updated_at is None
         ):
             raise ValueError(
-                "configured credentials require masked_key and expires_at"
+                "configured credentials require masked_key, expires_at and updated_at"
             )
         if not self.configured and (
-            self.masked_key is not None or self.expires_at is not None
+            self.masked_key is not None
+            or self.expires_at is not None
+            or self.updated_at is not None
+            or self.writable
         ):
             raise ValueError(
                 "unconfigured credentials cannot expose key metadata"
@@ -389,6 +398,8 @@ class TraceSafeResult(ContractModel):
     course_scope: CourseScope | None = None
     course_ids: list[str] | None = None
     knowledge_scope: KnowledgeScope | None = None
+    agent_preset_id: TraceCode | None = None
+    agent_preset_version: TraceCode | None = None
     auth_mode: Literal["mock", "github_oauth"] | None = None
     mode: Literal["mock", "synthetic_fixture_only"] | None = None
     hit_count: Annotated[int | None, Field(ge=0)] = None

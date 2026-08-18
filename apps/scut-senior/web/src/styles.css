@@ -702,6 +702,11 @@ a {
   font-size: 0.68rem;
 }
 
+.byok-credential-status > .byok-credential-readonly {
+  color: var(--accent-warning, #a16207);
+  font-weight: 600;
+}
+
 .byok-fixed-model strong,
 .byok-credential-status strong {
   font-size: 0.76rem;
