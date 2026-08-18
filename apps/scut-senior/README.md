@@ -193,4 +193,4 @@ GIT_LFS_SKIP_SMUDGE=1 git checkout master
 - Bilibili：只保留 0～3 个聚焦词和关键词非空时由后端生成的唯一匿名搜索链接；不建设或维护具体视频资产，不返回或抓取具体视频；
 - 正式在线 Chat：迭代 4 验收前不提供对外地址；联调地址由本机 + HTTPS 隧道提供。
 
-迭代 0 的完整基线见 [ITERATION_0_STATUS.md](ITERATION_0_STATUS.md)；平台模型切片和仍未完成的迭代 1 边界见 [ITERATION_1_STATUS.md](ITERATION_1_STATUS.md)；迭代 2 的开发门与激活限制见 [ITERATION_2_STATUS.md](ITERATION_2_STATUS.md)；迭代 3 的实现、验证和正式退出阻塞见 [ITERATION_3_STATUS.md](ITERATION_3_STATUS.md)。
+迭代 0 的完整基线见 [ITERATION_0_STATUS.md](ITERATION_0_STATUS.md)；平台模型切片和仍未完成的迭代 1 边界见 [ITERATION_1_STATUS.md](ITERATION_1_STATUS.md)；迭代 2 的开发门与激活限制见 [ITERATION_2_STATUS.md](ITERATION_2_STATUS.md)；迭代 3 的实现、验证和正式退出阻塞见 [ITERATION_3_STATUS.md](ITERATION_3_STATUS.md)；迭代 4 的 DSH 启发的受控插件化、BYOK 对齐、五 Workflow 打通与前端打磨见 [ITERATION_4_STATUS.md](ITERATION_4_STATUS.md)。
