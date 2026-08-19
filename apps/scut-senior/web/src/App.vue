@@ -1226,7 +1226,8 @@ onBeforeUnmount(() => {
     </aside>
 
     <main id="main-content" class="workspace">
-      <aside class="history-shell" aria-labelledby="history-heading">
+      <div class="app-frame-row">
+      <aside class="history-shell app-sidebar-column" aria-labelledby="history-heading">
         <header class="history-header">
           <div>
             <p class="section-kicker">30 天历史</p>
@@ -1370,125 +1371,13 @@ onBeforeUnmount(() => {
         </section>
       </aside>
 
+      <div class="app-main-column">
       <section class="control-shell" aria-labelledby="control-heading">
         <div class="control-intro">
           <p class="section-kicker">发起一次 Workflow 运行</p>
           <h1 id="control-heading">选择课程与 Workflow</h1>
           <p>正式课程均保持关闭，只有带 Fixture 的课程可用于本轮契约验证。</p>
         </div>
-
-        <section class="byok-panel" aria-labelledby="byok-heading">
-          <div class="byok-panel-header">
-            <div>
-              <h2 id="byok-heading">使用自己的 API Key</h2>
-            </div>
-            <span class="byok-evidence-badge">本地安全链路已接入</span>
-          </div>
-          <p class="byok-boundary-note">
-            Key 只在密码输入框中短暂存在，保存请求结束即清空；不会写入浏览器存储、URL、历史或模型目录。
-            本轮未用真实用户 Key 形成实网调用证据，余额、权限及上游错误以实际调用结果为准。
-          </p>
-          <p v-if="isLoadingByokCredentials" class="byok-message" role="status">
-            正在读取当前登录会话的脱敏凭据状态。
-          </p>
-          <p
-            v-else-if="byokMessage"
-            class="byok-message"
-            :class="byokMessageIsError ? 'byok-message-error' : 'byok-message-success'"
-            :role="byokMessageIsError ? 'alert' : 'status'"
-          >
-            {{ byokMessage }}
-          </p>
-
-          <div class="byok-provider-grid">
-            <article
-              v-for="provider in byokProvidersForDisplay"
-              :key="provider.provider_id"
-              class="byok-provider-card"
-              :class="{ 'byok-provider-card-disabled': !byokRuntimeAvailable || !provider.enabled }"
-            >
-              <header class="byok-provider-header">
-                <div>
-                  <strong>{{ provider.display_name }}</strong>
-                  <span>{{ provider.company }}</span>
-                </div>
-                <span
-                  class="byok-provider-state"
-                  :class="byokRuntimeAvailable && provider.enabled ? 'status-available' : 'status-closed'"
-                >
-                  {{ byokRuntimeAvailable && provider.enabled ? "服务端已启用" : "服务端未开启" }}
-                </span>
-              </header>
-
-              <div v-if="provider.models[0]" class="byok-fixed-model">
-                <span>固定模型</span>
-                <strong>{{ provider.models[0].company }} · {{ provider.models[0].display_name }}</strong>
-                <code>{{ provider.models[0].model_id }}</code>
-              </div>
-
-              <div
-                v-if="byokCredentialStatus(provider.provider_id)?.configured"
-                class="byok-credential-status"
-              >
-                <strong>当前会话已配置</strong>
-                <span>{{ byokCredentialStatus(provider.provider_id)?.masked_key || "Key 已脱敏" }}</span>
-                <span v-if="byokCredentialStatus(provider.provider_id)?.expires_at">
-                  到期：{{ formatHistoryTime(byokCredentialStatus(provider.provider_id)?.expires_at || "") }}
-                </span>
-                <span
-                  v-if="byokCredentialStatus(provider.provider_id)?.configured && !byokCredentialWritable(provider.provider_id)"
-                  class="byok-credential-readonly"
-                >
-                  只读：当前会话不可替换或删除
-                </span>
-              </div>
-
-              <p v-if="byokProviderDisabledReason(provider)" class="byok-disabled-reason">
-                {{ byokProviderDisabledReason(provider) }}
-              </p>
-
-              <form class="byok-credential-form" @submit.prevent="submitByokCredential(provider)">
-                <label :for="`byok-key-${provider.provider_id}`">API Key</label>
-                <input
-                  :id="`byok-key-${provider.provider_id}`"
-                  v-model="byokKeyDrafts[provider.provider_id]"
-                  type="password"
-                  autocomplete="new-password"
-                  autocapitalize="none"
-                  spellcheck="false"
-                  maxlength="512"
-                  placeholder="输入后仅提交给本站后端"
-                  :disabled="!canManageByokCredentials(currentUser) || !byokRuntimeAvailable || !provider.enabled || byokIsBusy"
-                />
-
-                <div class="byok-card-actions">
-                  <button
-                    type="submit"
-                    class="primary-button"
-                    :disabled="!canSaveByokCredential(provider)"
-                  >
-                    {{
-                      savingByokProviderId === provider.provider_id
-                        ? "保存中"
-                        : byokCredentialStatus(provider.provider_id)?.configured
-                          ? "替换 Key"
-                          : "保存 Key"
-                    }}
-                  </button>
-                  <button
-                    v-if="byokCredentialStatus(provider.provider_id)?.configured"
-                    type="button"
-                    class="secondary-button"
-                    :disabled="!canDeleteByokCredential(provider.provider_id)"
-                    @click="removeByokCredential(provider)"
-                  >
-                    {{ deletingByokProviderId === provider.provider_id ? "删除中" : "删除" }}
-                  </button>
-                </div>
-              </form>
-            </article>
-          </div>
-        </section>
 
         <div v-if="isLoadingCourses" class="inline-state" role="status">正在读取课程注册表。</div>
 
@@ -1755,6 +1644,123 @@ onBeforeUnmount(() => {
       </button>
       <div v-if="showPluginPanel" id="plugin-panel-region">
         <PluginRegistryPanel :can-manage-plugins="Boolean(currentUser && !currentUser.is_mock)" />
+      </div>
+      </div>
+
+      <aside class="app-details-column" aria-label="模型凭据设置">
+        <section class="byok-panel" aria-labelledby="byok-heading">
+          <div class="byok-panel-header">
+            <div>
+              <h2 id="byok-heading">使用自己的 API Key</h2>
+            </div>
+            <span class="byok-evidence-badge">本地安全链路已接入</span>
+          </div>
+          <p class="byok-boundary-note">
+            Key 只在密码输入框中短暂存在，保存请求结束即清空；不会写入浏览器存储、URL、历史或模型目录。
+            本轮未用真实用户 Key 形成实网调用证据，余额、权限及上游错误以实际调用结果为准。
+          </p>
+          <p v-if="isLoadingByokCredentials" class="byok-message" role="status">
+            正在读取当前登录会话的脱敏凭据状态。
+          </p>
+          <p
+            v-else-if="byokMessage"
+            class="byok-message"
+            :class="byokMessageIsError ? 'byok-message-error' : 'byok-message-success'"
+            :role="byokMessageIsError ? 'alert' : 'status'"
+          >
+            {{ byokMessage }}
+          </p>
+
+          <div class="byok-provider-grid">
+            <article
+              v-for="provider in byokProvidersForDisplay"
+              :key="provider.provider_id"
+              class="byok-provider-card"
+              :class="{ 'byok-provider-card-disabled': !byokRuntimeAvailable || !provider.enabled }"
+            >
+              <header class="byok-provider-header">
+                <div>
+                  <strong>{{ provider.display_name }}</strong>
+                  <span>{{ provider.company }}</span>
+                </div>
+                <span
+                  class="byok-provider-state"
+                  :class="byokRuntimeAvailable && provider.enabled ? 'status-available' : 'status-closed'"
+                >
+                  {{ byokRuntimeAvailable && provider.enabled ? "服务端已启用" : "服务端未开启" }}
+                </span>
+              </header>
+
+              <div v-if="provider.models[0]" class="byok-fixed-model">
+                <span>固定模型</span>
+                <strong>{{ provider.models[0].company }} · {{ provider.models[0].display_name }}</strong>
+                <code>{{ provider.models[0].model_id }}</code>
+              </div>
+
+              <div
+                v-if="byokCredentialStatus(provider.provider_id)?.configured"
+                class="byok-credential-status"
+              >
+                <strong>当前会话已配置</strong>
+                <span>{{ byokCredentialStatus(provider.provider_id)?.masked_key || "Key 已脱敏" }}</span>
+                <span v-if="byokCredentialStatus(provider.provider_id)?.expires_at">
+                  到期：{{ formatHistoryTime(byokCredentialStatus(provider.provider_id)?.expires_at || "") }}
+                </span>
+                <span
+                  v-if="byokCredentialStatus(provider.provider_id)?.configured && !byokCredentialWritable(provider.provider_id)"
+                  class="byok-credential-readonly"
+                >
+                  只读：当前会话不可替换或删除
+                </span>
+              </div>
+
+              <p v-if="byokProviderDisabledReason(provider)" class="byok-disabled-reason">
+                {{ byokProviderDisabledReason(provider) }}
+              </p>
+
+              <form class="byok-credential-form" @submit.prevent="submitByokCredential(provider)">
+                <label :for="`byok-key-${provider.provider_id}`">API Key</label>
+                <input
+                  :id="`byok-key-${provider.provider_id}`"
+                  v-model="byokKeyDrafts[provider.provider_id]"
+                  type="password"
+                  autocomplete="new-password"
+                  autocapitalize="none"
+                  spellcheck="false"
+                  maxlength="512"
+                  placeholder="输入后仅提交给本站后端"
+                  :disabled="!canManageByokCredentials(currentUser) || !byokRuntimeAvailable || !provider.enabled || byokIsBusy"
+                />
+
+                <div class="byok-card-actions">
+                  <button
+                    type="submit"
+                    class="primary-button"
+                    :disabled="!canSaveByokCredential(provider)"
+                  >
+                    {{
+                      savingByokProviderId === provider.provider_id
+                        ? "保存中"
+                        : byokCredentialStatus(provider.provider_id)?.configured
+                          ? "替换 Key"
+                          : "保存 Key"
+                    }}
+                  </button>
+                  <button
+                    v-if="byokCredentialStatus(provider.provider_id)?.configured"
+                    type="button"
+                    class="secondary-button"
+                    :disabled="!canDeleteByokCredential(provider.provider_id)"
+                    @click="removeByokCredential(provider)"
+                  >
+                    {{ deletingByokProviderId === provider.provider_id ? "删除中" : "删除" }}
+                  </button>
+                </div>
+              </form>
+            </article>
+          </div>
+        </section>
+      </aside>
       </div>
     </main>
   </div>
