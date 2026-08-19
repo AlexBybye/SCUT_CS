@@ -169,6 +169,9 @@ export interface ByokCredentialStatus {
   configured: boolean;
   masked_key: string | null;
   expires_at: string | null;
+  writable: boolean;
+  source: "user_key";
+  updated_at: string | null;
 }
 
 export interface AuthUser {
@@ -282,6 +285,8 @@ export interface TraceSafeResult {
   course_ids?: string[] | null;
   knowledge_scope?: KnowledgeScope | null;
   auth_mode?: "mock" | "github_oauth" | null;
+  agent_preset_id?: string | null;
+  agent_preset_version?: string | null;
   mode?: "mock" | "synthetic_fixture_only" | null;
   hit_count?: number | null;
   sources?: TraceSourceSummary[] | null;

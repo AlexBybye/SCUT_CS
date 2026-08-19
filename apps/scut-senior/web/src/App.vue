@@ -388,6 +388,7 @@ function canSaveByokCredential(provider: ByokProviderCatalogItem): boolean {
     byokRuntimeAvailable.value &&
       canManageByokCredentials(currentUser.value) &&
       provider.enabled &&
+      byokCredentialStatus(provider.provider_id)?.writable !== false &&
       byokKeyDrafts.value[provider.provider_id].trim() &&
       !byokIsBusy.value,
   );
@@ -397,8 +398,14 @@ function canDeleteByokCredential(providerId: ByokProviderId): boolean {
   return Boolean(
     canManageByokCredentials(currentUser.value) &&
       byokCredentialStatus(providerId)?.configured &&
+      byokCredentialStatus(providerId)?.writable !== false &&
       !byokIsBusy.value,
   );
+}
+
+function byokCredentialWritable(providerId: ByokProviderId): boolean {
+  const status = byokCredentialStatus(providerId);
+  return Boolean(status && status.configured && status.writable);
 }
 
 function setByokMessage(message: string, isError = false): void {
@@ -1371,7 +1378,6 @@ onBeforeUnmount(() => {
         <section class="byok-panel" aria-labelledby="byok-heading">
           <div class="byok-panel-header">
             <div>
-              <p class="section-kicker">BYOK · 当前登录会话</p>
               <h2 id="byok-heading">使用自己的 API Key</h2>
             </div>
             <span class="byok-evidence-badge">本地安全链路已接入</span>
@@ -1426,6 +1432,12 @@ onBeforeUnmount(() => {
                 <span>{{ byokCredentialStatus(provider.provider_id)?.masked_key || "Key 已脱敏" }}</span>
                 <span v-if="byokCredentialStatus(provider.provider_id)?.expires_at">
                   到期：{{ formatHistoryTime(byokCredentialStatus(provider.provider_id)?.expires_at || "") }}
+                </span>
+                <span
+                  v-if="byokCredentialStatus(provider.provider_id)?.configured && !byokCredentialWritable(provider.provider_id)"
+                  class="byok-credential-readonly"
+                >
+                  只读：当前会话不可替换或删除
                 </span>
               </div>
 

@@ -67,6 +67,12 @@ from .contracts import (
     WorkflowRunRequest,
 )
 from .credentials import CredentialCipher
+from .harness_registry import (
+    CONTROLLED_TOOL_CATALOG,
+    HARNESS_REGISTRY,
+    MAINTAINER_SKILLS,
+    derive_course_plugin_states,
+)
 from .model_catalog import (
     ModelCatalog,
     ModelCatalogResponse,
@@ -253,7 +259,10 @@ def create_app(
     )
     if active_settings.app_env == "test" and byok_http_client is None:
         byok_http_client = FailClosedJsonHttpClient()
-    byok_model = FixedByokModelGateway(http_client=byok_http_client)
+    byok_model = FixedByokModelGateway(
+        http_client=byok_http_client,
+        catalog=model_catalog.byok_catalog,
+    )
     oauth_adapter = github_oauth_adapter
     if active_settings.identity_mode == "github_oauth" and oauth_adapter is None:
         oauth_adapter = GitHubOAuthAdapter(
@@ -609,6 +618,46 @@ def create_app(
             ],
         }
 
+    @app.get("/api/v1/plugin-registry")
+    def plugin_registry() -> dict[str, object]:
+        """Read-only controlled plugin metadata for future internal management.
+
+        Safe by construction: immutable registry metadata only. It never
+        exposes prompts, directives, secrets or user data. Course states are
+        derived honestly from the CourseRegistry plus current RetrievalGateway
+        availability; unavailable courses are never marked active and never
+        claim enabled workflows.
+        """
+        course_states = derive_course_plugin_states(
+            registry,
+            retrieval,
+            retrieval_mode=active_settings.retrieval_mode,
+        )
+        return {
+            "registry_version": HARNESS_REGISTRY.version,
+            "retrieval_mode": active_settings.retrieval_mode,
+            "agent_presets": [
+                preset.as_public_dict() for preset in HARNESS_REGISTRY.presets
+            ],
+            "controlled_tools": [
+                tool.as_public_dict() for tool in CONTROLLED_TOOL_CATALOG
+            ],
+            "maintainer_skills": [
+                skill.as_public_dict() for skill in MAINTAINER_SKILLS
+            ],
+            "courses": [
+                {
+                    "course_id": state.course_id,
+                    "display_name": state.display_name,
+                    "state": state.state.value,
+                    "enabled_workflows": [
+                        workflow.value for workflow in state.enabled_workflows
+                    ],
+                }
+                for state in course_states
+            ],
+        }
+
     @app.post(
         "/api/v1/conversations",
         response_model=ConversationSummary,
@@ -820,6 +869,7 @@ def _is_protected_api_path(path: str) -> bool:
         "/api/v1/workflow-runs",
         "/api/v1/model-credentials",
         "/api/v1/feedback",
+        "/api/v1/plugin-registry",
     )
     return any(path == root or path.startswith(f"{root}/") for root in protected_roots)
 

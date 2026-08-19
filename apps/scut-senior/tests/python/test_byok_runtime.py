@@ -168,6 +168,10 @@ def test_four_byok_routes_use_one_fixed_endpoint_model_and_user_billing(
     assert call["url"] == endpoint
     assert call["headers"]["Authorization"] == f"Bearer {api_key}"
     assert call["payload"]["model"] == model_id
+    # Call defaults are declared on the fixed catalog entry, not hard-coded
+    # in the request builder.
+    assert call["payload"]["max_tokens"] == 2048
+    assert call["payload"]["temperature"] == 0.2
     assert "models" not in call["payload"]
     assert "fallbacks" not in call["payload"]
     assert "base_url" not in call["payload"]
@@ -547,3 +551,36 @@ def test_test_profile_without_injected_byok_transport_fails_closed(
     assert response.status_code == 503
     assert response.json()["error"]["code"] == "byok_provider_unavailable"
     assert key not in response.text
+
+
+def test_padded_key_is_rejected_consistently_on_save_and_generate(tmp_path: Path) -> None:
+    """The shared validator must reject a padded paste on both paths."""
+    from scut_senior_api.adapters.byok import ByokGatewayError, FixedByokModelGateway
+    from scut_senior_api.credentials import validate_user_api_key
+
+    for padded in ("  sk-padded", "sk-padded  ", "sk pa dded", "\tsk-tab"):
+        with pytest.raises(ValueError):
+            validate_user_api_key(padded)
+
+    http = RecordingHttpClient()
+    app, client, _, conversation_id = authenticated_app(tmp_path, http)
+
+    saved = client.put(
+        "/api/v1/model-credentials/openrouter", json={"api_key": "  sk-padded"}
+    )
+    assert saved.status_code == 422
+    assert saved.json()["error"]["code"] == "invalid_model_credential"
+
+    gateway = FixedByokModelGateway(http_client=http)
+    request = WorkflowRunRequest.model_validate(
+        workflow_request(conversation_id, "openrouter", "deepseek/deepseek-v4-flash-0731")
+    )
+    with pytest.raises(ByokGatewayError) as exc_info:
+        gateway.generate(
+            api_key="sk-padded ",
+            request=request,
+            sources=[],
+        )
+    assert exc_info.value.status_code == 422
+    assert exc_info.value.code == "invalid_model_credential"
+    assert http.calls == []

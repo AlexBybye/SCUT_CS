@@ -135,7 +135,15 @@ def test_evaluation_schemas_validate_exactly_seven_fixture_categories() -> None:
     Draft202012Validator(runner_schema).validate(runner_payload)
 
     assert case_payload["fixture_only"] is True
-    assert len(case_payload["cases"]) == 7
+    assert len(case_payload["cases"]) == 10
+    # The five Workflow types each have at least one fixture case.
+    assert {case["workflow_type"] for case in case_payload["cases"]} == {
+        "knowledge_qa",
+        "exam_review",
+        "problem_tutor",
+        "mistake_review",
+        "temporary_material_reading",
+    }
     assert {case["category"] for case in case_payload["cases"]} == EXPECTED_EVALUATION_CATEGORIES
     assert runner_payload["case_ids"] == [
         case["case_id"] for case in case_payload["cases"]

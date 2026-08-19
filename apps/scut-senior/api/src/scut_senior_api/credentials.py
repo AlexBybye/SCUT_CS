@@ -17,6 +17,28 @@ class CredentialDecryptionError(RuntimeError):
     """Safe failure for a wrong key version, AAD binding, or modified ciphertext."""
 
 
+def validate_user_api_key(value: str) -> str:
+    """Strict single definition of an acceptable user API Key.
+
+    The key must be non-empty, exactly equal to its own stripped form (so a
+    padded paste is rejected instead of silently trimmed), and contain no
+    whitespace or control characters. Shared by credential save and BYOK
+    request generation so both paths enforce the same rule.
+    """
+    if (
+        not value
+        or value != value.strip()
+        or any(
+            character.isspace()
+            or ord(character) < 0x20
+            or ord(character) == 0x7F
+            for character in value
+        )
+    ):
+        raise ValueError("invalid user API key")
+    return value
+
+
 @dataclass(frozen=True, slots=True)
 class EncryptedCredential:
     ciphertext: bytes = field(repr=False)

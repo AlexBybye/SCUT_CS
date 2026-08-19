@@ -455,6 +455,7 @@ class SQLiteWorkflowRepository:
             algorithm=row["algorithm"],
             key_version=row["key_version"],
             expires_at=datetime.fromisoformat(row["expires_at"]),
+            updated_at=datetime.fromisoformat(row["updated_at"]),
         )
 
     def list_model_credentials(
@@ -467,7 +468,7 @@ class SQLiteWorkflowRepository:
                 """
                 SELECT c.user_id, c.auth_session_id, c.provider_id,
                        c.ciphertext, c.nonce, c.algorithm, c.key_version,
-                       c.expires_at
+                       c.expires_at, c.updated_at
                 FROM model_credentials AS c
                 JOIN auth_sessions AS s
                   ON s.auth_session_id = c.auth_session_id
@@ -491,7 +492,7 @@ class SQLiteWorkflowRepository:
                 """
                 SELECT c.user_id, c.auth_session_id, c.provider_id,
                        c.ciphertext, c.nonce, c.algorithm, c.key_version,
-                       c.expires_at
+                       c.expires_at, c.updated_at
                 FROM model_credentials AS c
                 JOIN auth_sessions AS s
                   ON s.auth_session_id = c.auth_session_id
@@ -578,7 +579,7 @@ class SQLiteWorkflowRepository:
             row = connection.execute(
                 """
                 SELECT user_id, auth_session_id, provider_id, ciphertext,
-                       nonce, algorithm, key_version, expires_at
+                       nonce, algorithm, key_version, expires_at, updated_at
                 FROM model_credentials
                 WHERE auth_session_id = ? AND provider_id = ?
                 """,

@@ -115,7 +115,6 @@ function citationLocator(citation: Citation): string {
   <section class="result-shell" aria-labelledby="result-heading" aria-live="polite">
     <header class="result-header">
       <div>
-        <p class="section-kicker">契约返回</p>
         <h2 id="result-heading">回答、来源与 Trace</h2>
       </div>
       <div v-if="result || hasStreamActivity" class="status-pair" aria-label="运行状态">
@@ -159,7 +158,14 @@ function citationLocator(citation: Citation): string {
             <span v-if="isRunning && !result">生成中</span>
           </div>
           <p class="answer-block-note">{{ answerBlockNotes[block.type] }}</p>
-          <p class="answer-copy">{{ block.content }}</p>
+          <p class="answer-copy">
+            {{ block.content }}
+            <span
+              v-if="isRunning && !result"
+              class="stream-caret"
+              aria-hidden="true"
+            ></span>
+          </p>
         </article>
         <p v-if="!answerBlocks.length" class="section-empty answer-pending">
           {{ isRunning ? "Workflow 已开始，正在等待回答内容。" : "本次没有返回回答内容。" }}

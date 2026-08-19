@@ -35,6 +35,7 @@ from .contracts import (
     WorkflowResult,
     WorkflowRunRequest,
 )
+from .harness_registry import HARNESS_REGISTRY
 from .model_catalog import ModelCatalog, ModelCatalogEntry
 from .model_credentials import ModelCredentialError, ModelCredentialManager
 from .ports import (
@@ -236,6 +237,10 @@ class IterationZeroService:
                 "cross_course",
                 "iteration 0 freezes the contract but has no cross-course runtime",
             )
+        # Every run is bound to exactly one Agent Preset, resolved 1:1 from the
+        # validated workflow_type. The immutable registry covers WorkflowType
+        # exactly, so this cannot fail for a contract-valid request.
+        preset = HARNESS_REGISTRY.resolve_preset(request.workflow_type)
         model_entry: ModelCatalogEntry | None = None
         use_user_key = request.model_source == ModelSource.USER_KEY
         if not use_user_key:
@@ -259,6 +264,16 @@ class IterationZeroService:
                     request.model_id,
                     request.model_source,
                 )
+                # Fail closed: the selected real platform model must satisfy the
+                # preset's required input modalities and structured-output
+                # requirement. Mock stays usable for fixture tests, and BYOK
+                # models carry no modality metadata in their fixed catalog.
+                compatibility_reason = preset.check_model_compatibility(
+                    input_modalities=model_entry.input_modalities,
+                    supports_structured_outputs=model_entry.supports_structured_outputs,
+                )
+                if compatibility_reason is not None:
+                    raise CapabilityUnavailable("model", compatibility_reason)
                 model_provider_id = model_entry.provider_id
                 model_id = model_entry.model_id
                 billing_label = model_entry.billing_label
@@ -297,6 +312,14 @@ class IterationZeroService:
             billing_label = "user_provider_billing"
             availability_status = "user_key_enabled"
             mock_only = False
+            # Fail closed for user-key models too: the fixed catalog carries
+            # modality and structured-output capability for each BYOK model.
+            compatibility_reason = preset.check_model_compatibility(
+                input_modalities=selected_model.input_modalities,
+                supports_structured_outputs=selected_model.supports_structured_outputs,
+            )
+            if compatibility_reason is not None:
+                raise CapabilityUnavailable("model", compatibility_reason)
 
         conversation = self.repository.get_conversation(
             str(user.user_id), request.conversation_id
@@ -341,6 +364,8 @@ class IterationZeroService:
                 "course_scope": request.course_scope.value,
                 "course_ids": [course.course_id],
                 "knowledge_scope": request.knowledge_scope.value,
+                "agent_preset_id": preset.preset_id,
+                "agent_preset_version": preset.preset_version,
             },
         )
         _append_trace(

@@ -149,6 +149,69 @@
         "required_locator_types": ["page", "question", "heading"],
         "notes": "source_title 必须来自 manifest.title"
       }
+    },
+    {
+      "fixture_only": true,
+      "case_id": "exam-review-fixture-001",
+      "category": "course_knowledge",
+      "course_id": "linear_algebra",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_only",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {"role": "user", "content": "请按合成大纲整理矩阵章节复习重点。"}
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": ["repository"],
+        "requires_citation": true,
+        "allows_general": false,
+        "required_locator_types": ["page"]
+      }
+    },
+    {
+      "fixture_only": true,
+      "case_id": "mistake-review-fixture-001",
+      "category": "course_knowledge",
+      "course_id": "linear_algebra",
+      "workflow_type": "mistake_review",
+      "knowledge_scope": "course_only",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {"role": "user", "content": "复盘我在求秩时的错误答案。"}
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": ["repository"],
+        "requires_citation": true,
+        "allows_general": false,
+        "required_locator_types": ["page"]
+      }
+    },
+    {
+      "fixture_only": true,
+      "case_id": "temporary-material-fixture-001",
+      "category": "course_knowledge",
+      "course_id": "linear_algebra",
+      "workflow_type": "temporary_material_reading",
+      "knowledge_scope": "course_only",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {"role": "user", "content": "精读这段临时材料：# 秩\n矩阵的秩是线性无关行的数量。"}
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": ["repository"],
+        "requires_citation": true,
+        "allows_general": false,
+        "required_locator_types": ["page"]
+      }
     }
   ]
 }

@@ -49,6 +49,8 @@ const TRACE_RESULT_FIELDS = new Set<keyof TraceSafeResult>([
   "course_ids",
   "knowledge_scope",
   "auth_mode",
+  "agent_preset_id",
+  "agent_preset_version",
   "mode",
   "hit_count",
   "sources",
@@ -266,6 +268,8 @@ function assertTraceResult(value: unknown): asserts value is TraceSafeResult {
     "provider_id",
     "model_id",
     "catalog_version",
+    "agent_preset_id",
+    "agent_preset_version",
   ];
   for (const field of stringFields) {
     if (hasOwn(value, field)) assertNullableString(value[field], `Trace ${field}`);

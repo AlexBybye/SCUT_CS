@@ -11,6 +11,7 @@ from .credentials import (
     CredentialCipher,
     CredentialDecryptionError,
     EncryptedCredential,
+    validate_user_api_key,
 )
 from .ports import ModelCredentialRepository, StoredModelCredential
 
@@ -71,21 +72,14 @@ class ModelCredentialManager:
             )
         self._require_active_session(principal)
         api_key = payload.api_key.get_secret_value()
-        if (
-            not api_key
-            or api_key != api_key.strip()
-            or any(
-                character.isspace()
-                or ord(character) < 0x20
-                or ord(character) == 0x7F
-                for character in api_key
-            )
-        ):
+        try:
+            validate_user_api_key(api_key)
+        except ValueError:
             raise ModelCredentialError(
                 status_code=422,
                 code="invalid_model_credential",
                 detail="API Key 格式无效。",
-            )
+            ) from None
         encrypted = cipher.encrypt(
             api_key,
             user_id=principal.user_id,
@@ -209,6 +203,9 @@ class ModelCredentialManager:
                 configured=False,
                 masked_key=None,
                 expires_at=None,
+                writable=False,
+                source="user_key",
+                updated_at=None,
             )
         return ModelCredentialStatus(
             provider_id=provider_id,
@@ -216,4 +213,9 @@ class ModelCredentialManager:
             configured=True,
             masked_key=MASKED_MODEL_KEY,
             expires_at=record.expires_at,
+            writable=self._cipher is not None and self._repository.session_is_active(
+                record.user_id, record.auth_session_id
+            ),
+            source="user_key",
+            updated_at=record.updated_at,
         )

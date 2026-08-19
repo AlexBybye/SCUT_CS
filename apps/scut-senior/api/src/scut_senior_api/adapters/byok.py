@@ -5,7 +5,9 @@ import re
 from dataclasses import dataclass
 from typing import Mapping
 
+from ..byok_catalog import ByokProviderCatalog
 from ..contracts import WorkflowRunRequest
+from ..credentials import validate_user_api_key
 from ..ports import ConversationTurn, GeneratedAnswer, RetrievedSource
 from ..workflow_focus import (
     build_response_control_directive,
@@ -70,9 +72,13 @@ class FixedByokModelGateway:
         *,
         http_client: JsonHttpClient | None = None,
         timeout_seconds: float = 60.0,
+        catalog: ByokProviderCatalog | None = None,
     ):
         self._http_client = http_client or UrllibJsonHttpClient()
         self._timeout_seconds = timeout_seconds
+        # Call defaults (max_tokens / temperature) come from the fixed catalog
+        # so the request builder never hard-codes provider defaults.
+        self._catalog = catalog or ByokProviderCatalog()
 
     def generate(
         self,
@@ -89,13 +95,24 @@ class FixedByokModelGateway:
                 code="byok_route_not_registered",
                 detail="所选 BYOK 供应商或模型未登记。",
             )
-        if not api_key or api_key != api_key.strip():
+        try:
+            validate_user_api_key(api_key)
+        except ValueError:
             raise ByokGatewayError(
                 status_code=422,
                 code="invalid_model_credential",
                 detail="已保存的 API Key 无效，请重新保存。",
-            )
-        payload = _build_byok_request(request, sources, history)
+            ) from None
+        model_entry = self._catalog.resolve_model(
+            request.provider_id, request.model_id
+        )
+        payload = _build_byok_request(
+            request,
+            sources,
+            history,
+            max_tokens=model_entry.default_max_tokens,
+            temperature=model_entry.default_temperature,
+        )
         try:
             response = self._http_client.post_json(
                 route.endpoint,
@@ -128,6 +145,9 @@ def _build_byok_request(
     request: WorkflowRunRequest,
     sources: list[RetrievedSource],
     history: tuple[ConversationTurn, ...] = (),
+    *,
+    max_tokens: int,
+    temperature: float,
 ) -> dict[str, object]:
     workflow_focus = build_workflow_focus(request)
     response_controls = build_response_control_directive(request)
@@ -171,8 +191,8 @@ def _build_byok_request(
                 ),
             },
         ],
-        "max_tokens": 2048,
-        "temperature": 0.2,
+        "max_tokens": max_tokens,
+        "temperature": temperature,
     }
     if request.provider_id == "openrouter":
         payload["response_format"] = {

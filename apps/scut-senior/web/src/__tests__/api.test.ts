@@ -338,6 +338,9 @@ describe("BYOK credential API", () => {
       configured: true,
       masked_key: "sk-or-****1234",
       expires_at: "2026-08-20T08:00:00Z",
+      writable: true,
+      source: "user_key" as const,
+      updated_at: "2026-08-17T08:00:00Z",
     };
     const dummyKey = "test-only-openrouter-key";
     const fetchMock = vi
