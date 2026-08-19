@@ -47,6 +47,13 @@ function resetFeedback(): void {
   feedbackError.value = "";
 }
 
+const feedbackOptions = [
+  ["helpful", "有帮助"],
+  ["not_helpful", "没帮助"],
+  ["knowledge_error", "知识错误"],
+  ["did_not_answer", "没回答问题"],
+] as const;
+
 const citations = computed(() => props.result?.citations ?? []);
 const externalResources = computed(() => props.result?.external_resources ?? []);
 const coverageGaps = computed(() => props.result?.coverage_gaps ?? []);
@@ -112,69 +119,62 @@ function citationLocator(citation: Citation): string {
 </script>
 
 <template>
-  <section class="result-shell" aria-labelledby="result-heading" aria-live="polite">
-    <header class="result-header">
-      <div>
-        <h2 id="result-heading">回答、来源与 Trace</h2>
-      </div>
-      <div v-if="result || hasStreamActivity" class="status-pair" aria-label="运行状态">
-        <span>{{ streamPhase }}</span>
-        <span>{{ result?.answer_status ?? (isRunning ? "streaming" : streamError?.code ?? "partial") }}</span>
-        <span v-if="result">证据状态：{{ result.evidence_status }}</span>
-      </div>
+  <section class="run" aria-labelledby="result-heading" aria-live="polite">
+    <header class="run-head">
+      <h2 id="result-heading" class="run-head-label">回答、来源与 Trace</h2>
+      <template v-if="result || hasStreamActivity">
+        <span class="chip chip-accent">{{ streamPhase }}</span>
+        <span class="chip">
+          {{ result?.answer_status ?? (isRunning ? "streaming" : streamError?.code ?? "partial") }}
+        </span>
+        <span v-if="result" class="chip">证据状态：{{ result.evidence_status }}</span>
+      </template>
     </header>
 
-    <div v-if="isRunning && !hasStreamActivity" class="result-loading" role="status">
-      <span class="skeleton-line skeleton-line-long"></span>
-      <span class="skeleton-line"></span>
-      <span class="skeleton-line skeleton-line-short"></span>
+    <div v-if="isRunning && !hasStreamActivity" class="skeleton" role="status">
+      <span></span>
+      <span></span>
+      <span></span>
       <p>正在建立 Workflow 事件流。</p>
     </div>
 
-    <div v-else-if="!result && !hasStreamActivity" class="result-empty">
-      <p>尚未运行 Workflow。</p>
-      <span>提交左侧表单后，这里会分别呈现回答、仓库引用、外部资源和安全 Trace。</span>
-    </div>
+    <p v-else-if="!result && !hasStreamActivity" class="empty-line">
+      本次会话还没有回答记录。
+    </p>
 
     <template v-else>
       <p
         v-if="streamError"
-        class="stream-message"
-        :class="streamPhase === 'interrupted' ? 'stream-message-interrupted' : 'stream-message-error'"
+        class="note"
+        :class="streamPhase === 'interrupted' ? 'note-warn' : 'note-bad'"
         role="alert"
       >
         {{ streamError.detail }}
       </p>
 
-      <section class="answer-stack" aria-label="回答内容">
-        <article
-          v-for="(block, index) in answerBlocks"
-          :key="`${block.type}-${index}`"
-          class="semantic-answer-block"
-          :class="`semantic-answer-block-${block.type}`"
-        >
-          <div class="answer-meta">
-            <span>{{ answerBlockLabels[block.type] }}</span>
-            <span v-if="isRunning && !result">生成中</span>
-          </div>
-          <p class="answer-block-note">{{ answerBlockNotes[block.type] }}</p>
-          <p class="answer-copy">
-            {{ block.content }}
-            <span
-              v-if="isRunning && !result"
-              class="stream-caret"
-              aria-hidden="true"
-            ></span>
-          </p>
-        </article>
-        <p v-if="!answerBlocks.length" class="section-empty answer-pending">
-          {{ isRunning ? "Workflow 已开始，正在等待回答内容。" : "本次没有返回回答内容。" }}
+      <article
+        v-for="(block, index) in answerBlocks"
+        :key="`${block.type}-${index}`"
+        class="block"
+        :class="`block-${block.type}`"
+      >
+        <div class="block-head">
+          <strong>{{ answerBlockLabels[block.type] }}</strong>
+          <span class="block-note">{{ answerBlockNotes[block.type] }}</span>
+          <span v-if="isRunning && !result" class="chip chip-accent">生成中</span>
+        </div>
+        <p class="block-body">
+          {{ block.content }}
+          <span v-if="isRunning && !result" class="caret" aria-hidden="true"></span>
         </p>
-      </section>
+      </article>
+      <p v-if="!answerBlocks.length" class="empty-line">
+        {{ isRunning ? "Workflow 已开始，正在等待回答内容。" : "本次没有返回回答内容。" }}
+      </p>
 
       <section
         v-if="coverageGaps.length"
-        class="coverage-gap-block"
+        class="note note-warn"
         aria-labelledby="coverage-gap-heading"
       >
         <h3 id="coverage-gap-heading">资料覆盖说明</h3>
@@ -183,125 +183,131 @@ function citationLocator(citation: Citation): string {
         </ul>
       </section>
 
-      <section v-if="result" class="result-section" aria-labelledby="citations-heading">
-        <div class="result-section-heading">
-          <h3 id="citations-heading">仓库引用</h3>
-          <span>{{ citations.length }} 条</span>
-        </div>
-        <div v-if="citations.length" class="citation-list">
-          <article v-for="citation in citations" :key="citation.citation_id" class="citation-item">
-            <strong>{{ citation.source_title }}</strong>
-            <span>{{ citation.course_title }}</span>
-            <span>{{ citationLocator(citation) }}</span>
-            <code>{{ citation.citation_id }}</code>
-          </article>
-        </div>
-        <p v-else class="section-empty">本次没有仓库引用。</p>
-      </section>
-
-      <section v-if="result" class="result-section external-section" aria-labelledby="resources-heading">
-        <div class="result-section-heading">
-          <div>
-            <h3 id="resources-heading">B站延伸学习</h3>
-            <p>聚焦词只生成 B站匿名搜索入口；搜索结果未经本项目审核，也不属于仓库引用或回答证据。</p>
-          </div>
-          <span>{{ externalResources.length }} 条</span>
-        </div>
-        <div v-if="externalResources.length" class="resource-list">
-          <a
-            v-for="resource in externalResources"
-            :key="resource.resource_id || resource.url"
-            :href="resource.url"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="resource-item"
-          >
-            <span>
-              <strong>{{ resource.title }}</strong>
-              <small>{{ resource.matched_topic }} / 匿名搜索 / 结果未审核</small>
-            </span>
-            <span aria-hidden="true">查看搜索结果</span>
-          </a>
-        </div>
-        <p v-else class="section-empty">本次没有返回外部资源。</p>
-      </section>
-
-      <section class="result-section" aria-labelledby="trace-heading">
-        <div class="result-section-heading">
-          <div>
-            <h3 id="trace-heading">Trace</h3>
-            <p>仅展示后端返回的安全字段。</p>
-          </div>
-          <span>{{ trace.length }} 个节点</span>
-        </div>
-        <ol v-if="trace.length" class="trace-list">
-          <li v-for="(event, index) in trace" :key="event.event_id">
-            <span class="trace-index">{{ String(index + 1).padStart(2, "0") }}</span>
-            <div>
-              <strong>{{ event.node }}</strong>
-              <span>{{ event.status }}<template v-if="event.duration_ms !== undefined"> / {{ event.duration_ms }} ms</template></span>
-              <details v-if="event.result && Object.keys(event.result).length">
-                <summary>查看安全结果</summary>
-                <pre>{{ JSON.stringify(event.result, null, 2) }}</pre>
-              </details>
+      <div class="evidence">
+        <details v-if="result" class="evidence-group">
+          <summary>
+            <span>仓库引用</span>
+            <span class="chip">{{ citations.length }}</span>
+          </summary>
+          <div class="evidence-body">
+            <div v-if="citations.length" class="cites">
+              <article v-for="citation in citations" :key="citation.citation_id" class="cite">
+                <strong>{{ citation.source_title }}</strong>
+                <span>{{ citation.course_title }}</span>
+                <span>{{ citationLocator(citation) }}</span>
+                <code>{{ citation.citation_id }}</code>
+              </article>
             </div>
-          </li>
-        </ol>
-        <p v-else class="section-empty">
-          {{ isRunning ? "正在等待第一个安全 Trace 事件。" : "本次没有 Trace 事件。" }}
-        </p>
-      </section>
+            <p v-else class="empty-line">本次没有仓库引用。</p>
+          </div>
+        </details>
 
-      <section v-if="result && !isRunning" class="result-section feedback-section" aria-labelledby="feedback-heading">
-        <div class="result-section-heading">
-          <div>
-            <h3 id="feedback-heading">回答反馈</h3>
-            <p>反馈只进入待处理列表，不会自动修改知识库或后续回答。</p>
+        <details v-if="result" class="evidence-group">
+          <summary>
+            <span>B站延伸学习</span>
+            <span class="chip">{{ externalResources.length }}</span>
+          </summary>
+          <p class="evidence-group-note">
+            聚焦词只生成 B站匿名搜索入口；搜索结果未经本项目审核，也不属于仓库引用或回答证据。
+          </p>
+          <div class="evidence-body">
+            <div v-if="externalResources.length" class="links">
+              <a
+                v-for="resource in externalResources"
+                :key="resource.resource_id || resource.url"
+                :href="resource.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="link-row"
+              >
+                <span>
+                  <strong>{{ resource.title }}</strong>
+                  <small>{{ resource.matched_topic }} / 匿名搜索 / 结果未审核</small>
+                </span>
+                <span aria-hidden="true">查看搜索结果</span>
+              </a>
+            </div>
+            <p v-else class="empty-line">本次没有返回外部资源。</p>
           </div>
-          <span v-if="feedbackSubmitted" class="feedback-ok">已提交</span>
-        </div>
-        <div v-if="!feedbackSubmitted" class="feedback-form">
-          <div class="feedback-buttons" role="group" aria-label="回答反馈类型">
-            <button
-              v-for="option in ([
-                ['helpful', '有帮助'],
-                ['not_helpful', '没帮助'],
-                ['knowledge_error', '知识错误'],
-                ['did_not_answer', '没回答问题'],
-              ] as const)"
-              :key="option[0]"
-              type="button"
-              :class="['feedback-button', { 'feedback-button-active': feedbackType === option[0] }]"
-              :aria-pressed="feedbackType === option[0]"
-              @click="feedbackType = feedbackType === option[0] ? null : option[0]"
-            >
-              {{ option[1] }}
-            </button>
+        </details>
+
+        <details class="evidence-group">
+          <summary>
+            <span>Trace</span>
+            <span class="chip">{{ trace.length }}</span>
+          </summary>
+          <p class="evidence-group-note">仅展示后端返回的安全字段。</p>
+          <div class="evidence-body">
+            <ol v-if="trace.length" class="trace">
+              <li v-for="(event, index) in trace" :key="event.event_id">
+                <span class="trace-n">{{ String(index + 1).padStart(2, "0") }}</span>
+                <div class="trace-main">
+                  <strong>{{ event.node }}</strong>
+                  <span>
+                    {{ event.status }}<template v-if="event.duration_ms !== undefined"> / {{ event.duration_ms }} ms</template>
+                  </span>
+                  <details v-if="event.result && Object.keys(event.result).length">
+                    <summary>查看安全结果</summary>
+                    <pre>{{ JSON.stringify(event.result, null, 2) }}</pre>
+                  </details>
+                </div>
+              </li>
+            </ol>
+            <p v-else class="empty-line">
+              {{ isRunning ? "正在等待第一个安全 Trace 事件。" : "本次没有 Trace 事件。" }}
+            </p>
           </div>
-          <textarea
-            v-model="feedbackNote"
-            class="feedback-note"
-            rows="2"
-            maxlength="2000"
-            placeholder="可选：简短说明（如具体错误位置）"
-          ></textarea>
-          <div class="feedback-actions">
-            <button
-              type="button"
-              class="feedback-submit"
-              :disabled="!feedbackType || feedbackBusy"
-              @click="sendFeedback"
-            >
-              {{ feedbackBusy ? "提交中…" : "提交反馈" }}
-            </button>
-            <span v-if="feedbackError" class="feedback-error" role="alert">{{ feedbackError }}</span>
+        </details>
+      </div>
+
+      <details v-if="result && !isRunning" class="evidence-group" aria-labelledby="feedback-heading">
+        <summary>
+          <span id="feedback-heading">回答反馈</span>
+          <span v-if="feedbackSubmitted" class="chip chip-ok">已提交</span>
+        </summary>
+        <p class="evidence-group-note">反馈只进入待处理列表，不会自动修改知识库或后续回答。</p>
+        <div class="evidence-body">
+          <div v-if="!feedbackSubmitted" class="fb">
+            <div class="seg" role="group" aria-label="回答反馈类型">
+              <label v-for="option in feedbackOptions" :key="option[0]" class="seg-item">
+                <input
+                  v-model="feedbackType"
+                  type="radio"
+                  name="feedback-type"
+                  :value="option[0]"
+                />
+                <span>{{ option[1] }}</span>
+              </label>
+            </div>
+            <label class="visually-hidden" for="feedback-note">反馈说明</label>
+            <textarea
+              id="feedback-note"
+              v-model="feedbackNote"
+              class="fb-note"
+              rows="2"
+              maxlength="2000"
+              placeholder="可选：简短说明，例如具体错误位置"
+            ></textarea>
+            <div class="fb-row">
+              <button
+                type="button"
+                class="btn btn-primary"
+                :disabled="!feedbackType || feedbackBusy"
+                @click="sendFeedback"
+              >
+                {{ feedbackBusy ? "提交中" : "提交反馈" }}
+              </button>
+              <span v-if="feedbackError" class="note note-bad" role="alert">
+                {{ feedbackError }}
+              </span>
+            </div>
+          </div>
+          <div v-else class="fb-row">
+            <p class="empty-line">感谢反馈。修复问题后重新运行会生成新的回答尝试。</p>
+            <button type="button" class="btn btn-quiet" @click="resetFeedback">再提交一条</button>
           </div>
         </div>
-        <div v-else class="feedback-done">
-          <p>感谢反馈。修复问题后重新运行会生成新的回答尝试。</p>
-          <button type="button" class="feedback-again" @click="resetFeedback">再提交一条</button>
-        </div>
-      </section>
+      </details>
     </template>
   </section>
 </template>

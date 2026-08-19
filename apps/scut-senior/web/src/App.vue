@@ -161,7 +161,6 @@ const modelCatalogLoadSucceeded = ref(false);
 const selectedCourseId = ref("");
 const selectedModelKey = ref("");
 const workflowType = ref<WorkflowType>("knowledge_qa");
-const showPluginPanel = ref(false);
 const answerMode = ref<AnswerMode>("detailed");
 const tone = ref<Tone>("teaching_assistant");
 const knowledgeScope = ref<KnowledgeScope>("course_first");
@@ -181,6 +180,16 @@ const referenceAnswer = ref("");
 const reviewFocus = ref("");
 const materialTitle = ref("");
 const readingGoal = ref("");
+
+type InspectorTab = "attempts" | "credentials" | "plugins";
+
+const railOpen = ref(false);
+// 窄屏下检查器是浮层，默认展开会盖住记录区；宽屏是常驻第三列，默认展开。
+const inspectorOpen = ref(
+  typeof window === "undefined" || window.innerWidth >= 1280,
+);
+const inspectorTab = ref<InspectorTab>("attempts");
+const drawerOpen = ref(false);
 
 const conversationId = ref("");
 const conversationHistory = ref<ConversationSummary[]>([]);
@@ -278,6 +287,37 @@ const byokIsBusy = computed(
     isLoadingByokCredentials.value ||
     Boolean(savingByokProviderId.value) ||
     Boolean(deletingByokProviderId.value),
+);
+const activeAttempt = computed<WorkflowAttempt | null>(
+  () =>
+    attempts.value.find((attempt) => attempt.workflow_run_id === selectedAttemptId.value) ??
+    null,
+);
+const activeAttemptIndex = computed(() =>
+  attempts.value.findIndex((attempt) => attempt.workflow_run_id === selectedAttemptId.value),
+);
+// 记录区展示的提问：优先取选中尝试的请求，其次取正在输入的草稿。
+const transcriptAsk = computed(() => {
+  if (activeAttempt.value) return activeAttempt.value.request.user_input;
+  if (isRunning.value) return userInput.value;
+  return "";
+});
+const transcriptHasContent = computed(
+  () => Boolean(result.value) || Boolean(workflowStreamState.value) || isRunning.value,
+);
+// 只有这三个 Workflow 带专属字段；其余进抽屉只为输出偏好。
+const workflowHasExtraFields = computed(() =>
+  ["exam_review", "problem_tutor", "mistake_review", "temporary_material_reading"].includes(
+    workflowType.value,
+  ),
+);
+const canSubmitWorkflow = computed(
+  () =>
+    !isRunning.value &&
+    !isLoadingCourses.value &&
+    !isLoadingModels.value &&
+    Boolean(currentUser.value) &&
+    Boolean(selectedModel.value?.user_selectable),
 );
 const runtimeNoticeTitle = computed(() =>
   selectedModelIsMock.value
@@ -431,6 +471,18 @@ function clearUnavailableByokSelection(): void {
   ) {
     selectedModelKey.value = "";
   }
+}
+
+function openInspector(tab: InspectorTab): void {
+  inspectorTab.value = tab;
+  inspectorOpen.value = true;
+}
+
+// Enter 提交，Shift+Enter 换行：与 composer 的对话预期一致。
+function onComposerKeydown(event: KeyboardEvent): void {
+  if (event.key !== "Enter" || event.shiftKey || event.isComposing) return;
+  event.preventDefault();
+  if (canSubmitWorkflow.value) void submitWorkflow();
 }
 
 function courseName(courseId: string): string {
@@ -1180,62 +1232,108 @@ watch(
   { flush: "sync" },
 );
 
+// 浮层态的左轨与检查器需要 Escape 退出，否则窄屏下只能靠再次点按钮。
+function onGlobalKeydown(event: KeyboardEvent): void {
+  if (event.key !== "Escape") return;
+  if (railOpen.value && window.innerWidth < 1024) {
+    railOpen.value = false;
+  } else if (inspectorOpen.value && window.innerWidth < 1280) {
+    inspectorOpen.value = false;
+  }
+}
+
 onMounted(() => {
   void loadAuth();
   void loadCourses();
   void loadModels();
+  window.addEventListener("keydown", onGlobalKeydown);
 });
 
 onBeforeUnmount(() => {
+  window.removeEventListener("keydown", onGlobalKeydown);
   abortActiveWorkflow("页面已离开，运行已取消。");
 });
 </script>
 
 <template>
-  <div class="app-frame">
+  <div class="shell">
+    <a href="#transcript" class="skip-link">跳到运行记录</a>
+
     <header class="topbar">
-      <a href="#main-content" class="skip-link">跳到主内容</a>
-      <div class="brand-lockup">
-        <span class="brand-mark" aria-hidden="true">S</span>
-        <div>
-          <strong>SCUT 老学长</strong>
-          <span>课程 Workflow 契约验证</span>
-        </div>
+      <button
+        type="button"
+        class="btn btn-quiet rail-toggle"
+        :aria-expanded="railOpen ? 'true' : 'false'"
+        aria-controls="conversation-rail"
+        @click="railOpen = !railOpen"
+      >
+        会话
+      </button>
+      <p class="topbar-brand">
+        <span class="topbar-mark" aria-hidden="true">S</span>
+        SCUT 老学长
+      </p>
+      <div class="topbar-runtime" aria-label="当前模型运行配置">
+        <span class="chip chip-mono truncate">
+          {{ selectedModel?.provider_id ?? (isLoadingModels ? "loading" : "未选择") }}
+        </span>
+        <span class="chip chip-mono truncate">
+          {{ selectedModel?.model_id ?? (isLoadingModels ? "loading" : "未选择") }}
+        </span>
       </div>
-      <div class="runtime-facts" aria-label="当前模型运行配置">
-        <span>provider: {{ selectedModel?.provider_id ?? (isLoadingModels ? "loading" : "not selected") }}</span>
-        <span>model: {{ selectedModel?.model_id ?? (isLoadingModels ? "loading" : "not selected") }}</span>
-      </div>
-      <div class="auth-controls" aria-label="登录状态">
+      <span class="topbar-spacer"></span>
+      <div class="topbar-auth" aria-label="登录状态">
         <span v-if="isLoadingAuth">正在确认登录状态</span>
         <template v-else-if="currentUser">
-          <span>
-            {{ currentUser.is_mock ? "本地 Mock 身份" : `GitHub · @${currentUser.github_login}` }}
+          <span class="truncate">
+            {{ currentUser.is_mock ? "本地 Mock 身份" : `@${currentUser.github_login}` }}
           </span>
-          <button v-if="!currentUser.is_mock" type="button" @click="signOut">退出</button>
+          <button v-if="!currentUser.is_mock" type="button" class="btn" @click="signOut">
+            退出
+          </button>
         </template>
-        <button v-else type="button" @click="startGithubLogin">使用 GitHub 登录</button>
+        <button v-else type="button" class="btn btn-primary" @click="startGithubLogin">
+          使用 GitHub 登录
+        </button>
       </div>
+      <button
+        type="button"
+        class="btn btn-quiet inspector-toggle"
+        :aria-expanded="inspectorOpen ? 'true' : 'false'"
+        aria-controls="inspector-panel"
+        @click="inspectorOpen = !inspectorOpen"
+      >
+        详情
+      </button>
     </header>
 
-    <p v-if="authMessage" class="auth-message" role="alert">{{ authMessage }}</p>
-
-    <aside class="mock-notice" role="note">
+    <!-- 运行边界常驻一行：Mock 与真实模型的差别必须始终可见，不能藏进抽屉。 -->
+    <p class="runtime-banner" role="note">
       <strong>{{ runtimeNoticeTitle }}</strong>
       <span>{{ runtimeNoticeDetail }}</span>
-    </aside>
+    </p>
 
-    <main id="main-content" class="workspace">
-      <div class="app-frame-row">
-      <aside class="history-shell app-sidebar-column" aria-labelledby="history-heading">
-        <header class="history-header">
-          <div>
-            <p class="section-kicker">30 天历史</p>
-            <h2 id="history-heading">历史会话</h2>
-          </div>
+    <div
+      class="shell-body"
+      :data-rail="railOpen ? 'open' : 'closed'"
+      :data-inspector="inspectorOpen ? 'open' : 'closed'"
+    >
+      <!-- 窄屏浮层的点击遮罩；宽屏下由 CSS 隐藏，不参与布局。 -->
+      <button
+        type="button"
+        class="scrim"
+        :data-rail="railOpen ? 'open' : 'closed'"
+        :data-inspector="inspectorOpen ? 'open' : 'closed'"
+        aria-label="关闭浮层"
+        @click="railOpen = false; inspectorOpen = false"
+      ></button>
+
+      <aside id="conversation-rail" class="rail" aria-labelledby="history-heading">
+        <header class="rail-head">
+          <h2 id="history-heading">会话 · 保留 30 天</h2>
           <button
             type="button"
-            class="history-new-button"
+            class="btn"
             :disabled="!currentUser || historyIsBusy"
             @click="startNewConversation"
           >
@@ -1243,525 +1341,746 @@ onBeforeUnmount(() => {
           </button>
         </header>
 
-        <p
-          v-if="historyMessage"
-          class="history-message"
-          :class="historyMessageIsError ? 'history-message-error' : 'history-message-success'"
-          :role="historyMessageIsError ? 'alert' : 'status'"
-        >
-          {{ historyMessage }}
-        </p>
-
-        <div v-if="!currentUser" class="history-empty">
-          登录后可恢复最近会话和全部回答尝试。
-        </div>
-        <div v-else-if="isLoadingHistory" class="history-empty" role="status">
-          正在读取历史记录。
-        </div>
-        <div v-else-if="!conversationHistory.length" class="history-empty">
-          暂无历史。首次运行后会保留 30 天。
-        </div>
-        <ul v-else class="history-list" aria-label="历史会话列表">
-          <li
-            v-for="conversation in conversationHistory"
-            :key="conversation.conversation_id"
-            :class="{ active: conversationId === conversation.conversation_id }"
+        <div class="rail-scroll">
+          <p
+            v-if="historyMessage"
+            class="note rail-msg"
+            :class="historyMessageIsError ? 'note-bad' : 'note-ok'"
+            :role="historyMessageIsError ? 'alert' : 'status'"
           >
-            <button
-              type="button"
-              class="history-select-button"
-              :aria-current="conversationId === conversation.conversation_id ? 'page' : undefined"
-              :disabled="historyIsBusy"
-              @click="loadConversationFromHistory(conversation.conversation_id)"
-            >
-              <strong>{{ conversation.title }}</strong>
-              <span>{{ courseName(conversation.course_id) }}</span>
-              <small>
-                {{ loadingConversationId === conversation.conversation_id ? "读取中" : formatHistoryTime(conversation.updated_at) }}
-              </small>
-            </button>
+            {{ historyMessage }}
+          </p>
 
-            <form
-              v-if="editingConversationId === conversation.conversation_id"
-              class="history-rename-form"
-              @submit.prevent="saveConversationTitle"
+          <p v-if="!currentUser" class="rail-empty">
+            登录后可恢复最近会话和全部回答尝试。
+          </p>
+          <p v-else-if="isLoadingHistory" class="rail-empty" role="status">
+            正在读取历史记录。
+          </p>
+          <p v-else-if="!conversationHistory.length" class="rail-empty">
+            还没有会话。首次运行后会保留 30 天。
+          </p>
+          <ul v-else aria-label="历史会话列表">
+            <li
+              v-for="conversation in conversationHistory"
+              :key="conversation.conversation_id"
+              class="convo"
+              :class="{ 'convo-open': conversationId === conversation.conversation_id }"
             >
-              <label :for="`history-title-${conversation.conversation_id}`">会话名称</label>
-              <input
-                :id="`history-title-${conversation.conversation_id}`"
-                v-model="conversationTitleDraft"
-                type="text"
-                maxlength="100"
-                :disabled="renamingConversationId === conversation.conversation_id"
-                required
-              />
-              <div>
-                <button type="submit" :disabled="renamingConversationId === conversation.conversation_id">
-                  {{ renamingConversationId === conversation.conversation_id ? "保存中" : "保存" }}
-                </button>
-                <button type="button" :disabled="Boolean(renamingConversationId)" @click="cancelRename">
-                  取消
-                </button>
+              <button
+                type="button"
+                class="convo-pick"
+                :aria-current="conversationId === conversation.conversation_id ? 'page' : undefined"
+                :disabled="historyIsBusy"
+                @click="loadConversationFromHistory(conversation.conversation_id)"
+              >
+                <strong class="truncate">{{ conversation.title }}</strong>
+                <span class="convo-meta">
+                  <span>{{ courseName(conversation.course_id) }}</span>
+                  <time>
+                    {{
+                      loadingConversationId === conversation.conversation_id
+                        ? "读取中"
+                        : formatHistoryTime(conversation.updated_at)
+                    }}
+                  </time>
+                </span>
+              </button>
+
+              <form
+                v-if="editingConversationId === conversation.conversation_id"
+                class="convo-form"
+                @submit.prevent="saveConversationTitle"
+              >
+                <label :for="`history-title-${conversation.conversation_id}`" class="field-hint">
+                  会话名称
+                </label>
+                <input
+                  :id="`history-title-${conversation.conversation_id}`"
+                  v-model="conversationTitleDraft"
+                  type="text"
+                  maxlength="100"
+                  :disabled="renamingConversationId === conversation.conversation_id"
+                  required
+                />
+                <div class="convo-form-row">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    :disabled="renamingConversationId === conversation.conversation_id"
+                  >
+                    {{ renamingConversationId === conversation.conversation_id ? "保存中" : "保存" }}
+                  </button>
+                  <button
+                    type="button"
+                    class="btn"
+                    :disabled="Boolean(renamingConversationId)"
+                    @click="cancelRename"
+                  >
+                    取消
+                  </button>
+                </div>
+              </form>
+
+              <div
+                v-else-if="deleteConfirmId === conversation.conversation_id"
+                class="convo-danger"
+              >
+                <span>会同时删除全部回答，确定吗？</span>
+                <div class="convo-form-row">
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    :disabled="deletingConversationId === conversation.conversation_id"
+                    @click="confirmDeleteConversation(conversation.conversation_id)"
+                  >
+                    {{
+                      deletingConversationId === conversation.conversation_id
+                        ? "删除中"
+                        : "确认删除"
+                    }}
+                  </button>
+                  <button
+                    type="button"
+                    class="btn"
+                    :disabled="Boolean(deletingConversationId)"
+                    @click="cancelDelete"
+                  >
+                    取消
+                  </button>
+                </div>
               </div>
-            </form>
 
-            <div v-else-if="deleteConfirmId === conversation.conversation_id" class="history-delete-confirm">
-              <span>会同时删除全部回答，确定吗？</span>
-              <div>
+              <div v-else class="convo-acts">
                 <button
                   type="button"
-                  class="danger-button"
-                  :disabled="deletingConversationId === conversation.conversation_id"
-                  @click="confirmDeleteConversation(conversation.conversation_id)"
+                  class="btn btn-quiet"
+                  :disabled="historyIsBusy"
+                  @click="beginRename(conversation)"
                 >
-                  {{ deletingConversationId === conversation.conversation_id ? "删除中" : "确认删除" }}
+                  重命名
                 </button>
-                <button type="button" :disabled="Boolean(deletingConversationId)" @click="cancelDelete">
-                  取消
+                <button
+                  type="button"
+                  class="btn btn-quiet"
+                  :disabled="historyIsBusy"
+                  @click="beginDelete(conversation.conversation_id)"
+                >
+                  删除
                 </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="main-head">
+          <h1>{{ conversationSnapshot?.title || "新会话" }}</h1>
+          <div class="main-head-facts">
+            <span class="chip">{{ selectedCourse?.display_name ?? "未选课程" }}</span>
+            <span class="chip">{{ activeWorkflow.label }}</span>
+          </div>
+        </div>
+
+        <div id="transcript" class="transcript">
+          <p v-if="authMessage" class="note note-bad" role="alert">{{ authMessage }}</p>
+
+          <!-- 空态用排版承载，不套卡片：说明运行边界与当前配置。 -->
+          <div v-if="!transcriptHasContent" class="transcript-blank">
+            <h2>{{ activeWorkflow.label }}</h2>
+            <p>{{ activeWorkflow.description }}正式课程保持关闭，只有带 Fixture 的课程可用于本轮契约验证。</p>
+            <dl>
+              <div>
+                <dt>课程状态</dt>
+                <dd v-if="selectedCourse">
+                  Mock {{ selectedCourse.mock_available ? "可用" : "关闭" }} · 正式开放
+                  {{ selectedCourse.is_open ? "是" : "否" }}
+                </dd>
+                <dd v-else>{{ isLoadingCourses ? "正在读取课程注册表" : "请先选择课程" }}</dd>
+              </div>
+              <div>
+                <dt>模型</dt>
+                <dd>
+                  {{
+                    selectedModel
+                      ? `${selectedModel.company} · ${selectedModel.display_name}`
+                      : isLoadingModels
+                        ? "正在读取模型目录"
+                        : "请先选择模型"
+                  }}
+                </dd>
+              </div>
+              <div>
+                <dt>目录版本</dt>
+                <dd>{{ modelCatalog.catalog_version }}</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div v-else class="transcript-inner">
+            <article v-if="transcriptAsk" class="turn-ask">
+              <div class="turn-ask-head">
+                <span>{{ activeWorkflow.inputLabel }}</span>
+                <span v-if="activeAttemptIndex >= 0">第 {{ activeAttemptIndex + 1 }} 次</span>
+              </div>
+              <p>{{ transcriptAsk }}</p>
+            </article>
+
+            <WorkflowResult
+              :result="result"
+              :is-running="isRunning"
+              :stream-state="workflowStreamState"
+            />
+          </div>
+        </div>
+
+        <div class="composer">
+          <div class="composer-inner">
+            <div v-if="errorMessage || noticeMessage || modelCatalogMessage" class="composer-msgs">
+              <p v-if="errorMessage" class="note note-bad" role="alert">{{ errorMessage }}</p>
+              <p v-if="noticeMessage" class="note note-ok" role="status">{{ noticeMessage }}</p>
+              <p v-if="modelCatalogMessage" class="note note-warn" role="alert">
+                {{ modelCatalogMessage }}
+              </p>
+            </div>
+
+            <!-- 配置条：课程、模型、Workflow 收在输入框上沿，不再是独立表单区。 -->
+            <div class="composer-bar">
+              <label class="visually-hidden" for="course">课程</label>
+              <select id="course" v-model="selectedCourseId" :disabled="isRunning || !courses.length">
+                <option v-if="!courses.length" value="">暂无课程</option>
+                <option
+                  v-for="course in courses"
+                  :key="course.course_id"
+                  :value="course.course_id"
+                  :disabled="!course.mock_available"
+                >
+                  {{ course.display_name }}{{ course.mock_available ? "" : "（Mock 未配置）" }}
+                </option>
+              </select>
+
+              <label class="visually-hidden" for="model">模型</label>
+              <select
+                id="model"
+                v-model="selectedModelKey"
+                :disabled="isRunning || isLoadingModels || !modelCatalogLoadSucceeded"
+              >
+                <option v-if="isLoadingModels" :value="selectedModelKey">正在读取模型目录</option>
+                <option v-else-if="!modelCatalogLoadSucceeded" value="">模型目录不可用</option>
+                <template v-else>
+                  <option value="" disabled>请选择模型</option>
+                  <option
+                    v-for="model in modelsForSelection"
+                    :key="modelKey(model)"
+                    :value="modelKey(model)"
+                    :disabled="!model.user_selectable"
+                  >
+                    {{ modelOptionLabel(model) }}
+                  </option>
+                </template>
+              </select>
+
+              <span class="composer-bar-sep" aria-hidden="true"></span>
+
+              <label class="visually-hidden" for="workflow-select">Workflow</label>
+              <select id="workflow-select" v-model="workflowType" :disabled="isRunning">
+                <option v-for="type in WORKFLOW_TYPES" :key="type" :value="type">
+                  {{ workflowCopy[type].label }}
+                </option>
+              </select>
+
+              <button
+                type="button"
+                class="btn btn-quiet"
+                :aria-expanded="drawerOpen ? 'true' : 'false'"
+                aria-controls="composer-drawer"
+                @click="drawerOpen = !drawerOpen"
+              >
+                {{ drawerOpen ? "收起选项" : workflowHasExtraFields ? "更多选项与字段" : "更多选项" }}
+              </button>
+            </div>
+
+            <!-- 抽屉：Workflow 专属字段 + 输出偏好，默认收起以保住记录区高度。 -->
+            <div v-if="drawerOpen" id="composer-drawer" class="drawer">
+              <section
+                v-if="workflowType === 'exam_review'"
+                class="drawer-grid"
+                aria-label="备考复习专属字段"
+              >
+                <div class="field drawer-span">
+                  <label for="syllabus">考试大纲（可选）</label>
+                  <textarea
+                    id="syllabus"
+                    v-model="syllabus"
+                    rows="2"
+                    placeholder="粘贴大纲或范围说明。"
+                  ></textarea>
+                </div>
+                <div class="field">
+                  <label for="exam-date">考试日期（可选）</label>
+                  <input id="exam-date" v-model="examDate" type="date" />
+                </div>
+                <div class="field">
+                  <label for="available-hours">可投入小时（可选）</label>
+                  <input
+                    id="available-hours"
+                    v-model.number="availableHours"
+                    type="number"
+                    min="0"
+                    step="0.5"
+                  />
+                </div>
+                <div class="field">
+                  <label for="goals">目标</label>
+                  <input id="goals" v-model="goalsText" type="text" placeholder="逗号或换行分隔" />
+                </div>
+                <div class="field">
+                  <label for="weak-topics">薄弱知识点</label>
+                  <input
+                    id="weak-topics"
+                    v-model="weakTopicsText"
+                    type="text"
+                    placeholder="逗号或换行分隔"
+                  />
+                </div>
+              </section>
+
+              <section
+                v-if="workflowType === 'problem_tutor'"
+                class="drawer-grid"
+                aria-label="题目辅导专属字段"
+              >
+                <div class="field drawer-span">
+                  <label for="user-answer">我的作答（可选）</label>
+                  <textarea id="user-answer" v-model="userAnswer" rows="2"></textarea>
+                </div>
+                <div class="field">
+                  <label for="help-level">帮助层级</label>
+                  <select id="help-level" v-model="helpLevel">
+                    <option v-for="level in HELP_LEVELS" :key="level" :value="level">
+                      {{ helpLevelLabels[level] }}
+                    </option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="problem-source">题目来源（可选）</label>
+                  <input
+                    id="problem-source"
+                    v-model="problemSource"
+                    type="text"
+                    placeholder="例如：2023 期末 A 卷"
+                  />
+                </div>
+              </section>
+
+              <section
+                v-if="workflowType === 'mistake_review'"
+                class="drawer-grid"
+                aria-label="错题复盘专属字段"
+              >
+                <div class="field drawer-span">
+                  <label for="original-answer">原答案</label>
+                  <textarea id="original-answer" v-model="originalAnswer" rows="2" required></textarea>
+                </div>
+                <div class="field">
+                  <label for="reference-answer">参考答案（可选）</label>
+                  <textarea id="reference-answer" v-model="referenceAnswer" rows="2"></textarea>
+                </div>
+                <div class="field">
+                  <label for="review-focus">复盘重点（可选）</label>
+                  <textarea id="review-focus" v-model="reviewFocus" rows="2"></textarea>
+                </div>
+              </section>
+
+              <section
+                v-if="workflowType === 'temporary_material_reading'"
+                class="drawer-grid"
+                aria-label="临时材料精读专属字段"
+              >
+                <div class="field">
+                  <label for="material-title">材料标题（可选）</label>
+                  <input
+                    id="material-title"
+                    v-model="materialTitle"
+                    type="text"
+                    maxlength="200"
+                    placeholder="例如：特征值与特征向量复习提纲"
+                  />
+                </div>
+                <div class="field">
+                  <label for="reading-goal">精读目标（可选）</label>
+                  <input
+                    id="reading-goal"
+                    v-model="readingGoal"
+                    type="text"
+                    placeholder="例如：提取考试范围并指出与课程资料的冲突"
+                  />
+                </div>
+              </section>
+
+              <div class="drawer-grid">
+                <div class="field">
+                  <label for="answer-mode">回答方式</label>
+                  <select id="answer-mode" v-model="answerMode">
+                    <option v-for="mode in ANSWER_MODES" :key="mode" :value="mode">
+                      {{ answerModeLabels[mode] }}
+                    </option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="tone">表达风格</label>
+                  <select id="tone" v-model="tone">
+                    <option v-for="item in TONES" :key="item" :value="item">
+                      {{ toneLabels[item] }}
+                    </option>
+                  </select>
+                </div>
+                <fieldset class="field drawer-span">
+                  <legend>知识范围</legend>
+                  <div class="seg">
+                    <label class="seg-item">
+                      <input v-model="knowledgeScope" type="radio" value="course_first" />
+                      <span>资料优先，允许标记的通用补充</span>
+                    </label>
+                    <label class="seg-item">
+                      <input v-model="knowledgeScope" type="radio" value="course_only" />
+                      <span>仅课程资料，证据不足即停</span>
+                    </label>
+                  </div>
+                </fieldset>
+                <label class="check drawer-span">
+                  <input
+                    v-model="includeBilibiliResources"
+                    type="checkbox"
+                    :disabled="knowledgeScope === 'course_only'"
+                  />
+                  <span>
+                    <strong>返回 B站延伸学习</strong>
+                    <small>
+                      模型给出聚焦词后只返回匿名搜索链接，不返回具体视频直链。仅课程资料模式强制关闭。
+                    </small>
+                  </span>
+                </label>
+              </div>
+
+              <div v-if="selectedModel" class="field">
+                <span class="drawer-sub">当前模型</span>
+                <p class="field-hint">
+                  {{ selectedModel.company }} · {{ selectedModel.display_name }}
+                  {{ selectedModel.is_preview ? "（Preview）" : "" }} ·
+                  {{ billingLabel(selectedModel) }} · 状态 {{ availabilityLabel(selectedModel) }}
+                  <template v-if="selectedModel.last_checked_at">
+                    · 健康检查
+                    {{ new Date(selectedModel.last_checked_at).toLocaleString("zh-CN") }}
+                  </template>
+                </p>
+                <p class="field-hint">{{ modelCatalog.quota_notice }}</p>
               </div>
             </div>
 
-            <div v-else class="history-item-actions">
-              <button type="button" :disabled="historyIsBusy" @click="beginRename(conversation)">
-                重命名
-              </button>
-              <button type="button" :disabled="historyIsBusy" @click="beginDelete(conversation.conversation_id)">
-                删除
-              </button>
+            <div class="composer-box">
+              <label class="visually-hidden" for="user-input">{{ activeWorkflow.inputLabel }}</label>
+              <textarea
+                id="user-input"
+                v-model="userInput"
+                rows="3"
+                :placeholder="activeWorkflow.placeholder"
+                :disabled="isRunning"
+                @keydown="onComposerKeydown"
+              ></textarea>
+              <div class="composer-foot">
+                <span class="composer-foot-hint">
+                  Enter 运行，Shift + Enter 换行
+                </span>
+                <div class="composer-foot-acts">
+                  <button
+                    v-if="isRunning && canCancelWorkflow"
+                    type="button"
+                    class="btn btn-danger"
+                    @click="cancelWorkflow"
+                  >
+                    取消运行
+                  </button>
+                  <button
+                    v-else
+                    type="button"
+                    class="btn"
+                    :disabled="!conversationId || isReloading || isRunning"
+                    @click="reloadConversation"
+                  >
+                    {{ isReloading ? "正在读取" : "重新读取" }}
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    :disabled="!canSubmitWorkflow"
+                    @click="submitWorkflow"
+                  >
+                    {{ isRunning ? "正在运行" : selectedModelIsMock ? "运行 Mock" : "运行" }}
+                  </button>
+                </div>
+              </div>
             </div>
-          </li>
-        </ul>
+          </div>
+        </div>
+      </main>
 
-        <section v-if="conversationSnapshot" class="attempt-history" aria-labelledby="attempt-heading">
-          <div class="attempt-header">
-            <div>
+      <aside id="inspector-panel" class="inspector" aria-label="运行详情">
+        <div class="tabs" role="tablist" aria-label="详情分区">
+          <button
+            type="button"
+            class="tab"
+            role="tab"
+            :aria-selected="inspectorTab === 'attempts'"
+            @click="openInspector('attempts')"
+          >
+            回答尝试
+          </button>
+          <button
+            type="button"
+            class="tab"
+            role="tab"
+            :aria-selected="inspectorTab === 'credentials'"
+            @click="openInspector('credentials')"
+          >
+            我的 Key
+          </button>
+          <button
+            type="button"
+            class="tab"
+            role="tab"
+            :aria-selected="inspectorTab === 'plugins'"
+            @click="openInspector('plugins')"
+          >
+            插件
+          </button>
+          <button
+            type="button"
+            class="btn btn-quiet tab-close inspector-toggle"
+            @click="inspectorOpen = false"
+          >
+            关闭
+          </button>
+        </div>
+
+        <div class="inspector-scroll">
+          <!-- 回答尝试 -->
+          <section
+            v-if="inspectorTab === 'attempts'"
+            class="inspector-section"
+            aria-labelledby="attempt-heading"
+          >
+            <div class="inspector-head">
               <h3 id="attempt-heading">回答尝试</h3>
-              <span>{{ attempts.length }} 次</span>
+              <span class="chip">{{ attempts.length }}</span>
             </div>
+            <p class="inspector-note">
+              重新生成会追加新尝试，旧回答仍保留在会话中，可随时切回查看。
+            </p>
             <button
               type="button"
+              class="btn btn-tall"
               :disabled="historyIsBusy || !latestAttempt"
               @click="regenerateLatestAttempt"
             >
               {{ isRegenerating ? "重新生成中" : "重新生成最新回答" }}
             </button>
-          </div>
-          <p v-if="!attempts.length" class="attempt-empty">当前会话还没有回答。</p>
-          <ol v-else class="attempt-list">
-            <li v-for="(attempt, index) in attempts" :key="attempt.workflow_run_id">
-              <button
-                type="button"
-                :class="{ active: selectedAttemptId === attempt.workflow_run_id }"
-                :aria-current="selectedAttemptId === attempt.workflow_run_id ? 'true' : undefined"
-                :disabled="historyIsBusy"
-                @click="showAttempt(attempt)"
-              >
-                <span>
-                  <strong>第 {{ index + 1 }} 次</strong>
-                  <small v-if="index === attempts.length - 1">最新</small>
-                  <small v-else-if="attempt.regenerated_from_run_id">重新生成</small>
-                  <small v-else>初始回答</small>
-                </span>
-                <span>{{ formatHistoryTime(attempt.created_at) }}</span>
-                <code>{{ attempt.result.model.model_id }}</code>
-              </button>
-            </li>
-          </ol>
-        </section>
-      </aside>
 
-      <div class="app-main-column">
-      <section class="control-shell" aria-labelledby="control-heading">
-        <div class="control-intro">
-          <p class="section-kicker">发起一次 Workflow 运行</p>
-          <h1 id="control-heading">选择课程与 Workflow</h1>
-          <p>正式课程均保持关闭，只有带 Fixture 的课程可用于本轮契约验证。</p>
-        </div>
-
-        <div v-if="isLoadingCourses" class="inline-state" role="status">正在读取课程注册表。</div>
-
-        <form v-else class="workflow-form" @submit.prevent="submitWorkflow">
-          <div class="field-group">
-            <label for="course">课程</label>
-            <select id="course" v-model="selectedCourseId" :disabled="isRunning || !courses.length">
-              <option v-if="!courses.length" value="">暂无课程</option>
-              <option
-                v-for="course in courses"
-                :key="course.course_id"
-                :value="course.course_id"
-                :disabled="!course.mock_available"
-              >
-                {{ course.display_name }}{{ course.mock_available ? " / Mock 可用" : " / Mock 未配置" }}
-              </option>
-            </select>
-            <div v-if="selectedCourse" class="course-status">
-              <span :class="selectedCourse.mock_available ? 'status-available' : 'status-closed'">
-                Mock：{{ selectedCourse.mock_available ? "可用" : "关闭" }}
-              </span>
-              <span class="status-closed">正式开放：{{ selectedCourse.is_open ? "是" : "否" }}</span>
-            </div>
-          </div>
-
-          <div class="field-group">
-            <label for="model">模型</label>
-            <select
-              id="model"
-              v-model="selectedModelKey"
-              :disabled="isRunning || isLoadingModels || !modelCatalogLoadSucceeded"
-            >
-              <option v-if="isLoadingModels" :value="selectedModelKey">正在读取模型目录</option>
-              <option v-else-if="!modelCatalogLoadSucceeded" value="">
-                模型目录不可用，模型请求已关闭
-              </option>
-              <template v-else>
-                <option value="" disabled>请选择模型</option>
-                <option
-                  v-for="model in modelsForSelection"
-                  :key="modelKey(model)"
-                  :value="modelKey(model)"
-                  :disabled="!model.user_selectable"
-                >
-                  {{ modelOptionLabel(model) }}
-                </option>
-              </template>
-            </select>
-            <div v-if="selectedModel" class="model-summary">
-              <div class="model-name-line">
-                <strong>{{ selectedModel.company }} · {{ selectedModel.display_name }}</strong>
-                <span v-if="selectedModel.is_preview" class="preview-badge">Preview</span>
-              </div>
-              <span>{{ billingLabel(selectedModel) }}</span>
-              <span>状态：{{ availabilityLabel(selectedModel) }}</span>
-              <span v-if="selectedModel.last_checked_at">
-                健康检查：{{ new Date(selectedModel.last_checked_at).toLocaleString("zh-CN") }}
-              </span>
-            </div>
-            <p class="quota-notice" role="note">{{ modelCatalog.quota_notice }}</p>
-            <p v-if="modelCatalogMessage" class="model-catalog-message" role="alert">
-              {{ modelCatalogMessage }}
+            <p v-if="!conversationSnapshot" class="inspector-note">
+              还没有会话。运行一次后这里会列出全部尝试。
             </p>
-          </div>
+            <p v-else-if="!attempts.length" class="inspector-note">当前会话还没有回答。</p>
+            <ol v-else class="attempts">
+              <li v-for="(attempt, index) in attempts" :key="attempt.workflow_run_id">
+                <button
+                  type="button"
+                  class="attempt"
+                  :aria-current="selectedAttemptId === attempt.workflow_run_id ? 'true' : undefined"
+                  :disabled="historyIsBusy"
+                  @click="showAttempt(attempt)"
+                >
+                  <span class="attempt-top">
+                    <strong>第 {{ index + 1 }} 次</strong>
+                    <span class="chip">
+                      {{
+                        index === attempts.length - 1
+                          ? "最新"
+                          : attempt.regenerated_from_run_id
+                            ? "重新生成"
+                            : "初始回答"
+                      }}
+                    </span>
+                    <time>{{ formatHistoryTime(attempt.created_at) }}</time>
+                  </span>
+                  <code>{{ attempt.result.model.model_id }}</code>
+                </button>
+              </li>
+            </ol>
 
-          <fieldset class="field-group">
-            <legend>Workflow</legend>
-            <div class="workflow-options">
-              <label v-for="type in WORKFLOW_TYPES" :key="type" class="workflow-option">
-                <input v-model="workflowType" type="radio" name="workflow" :value="type" />
-                <span>
-                  <strong>{{ workflowCopy[type].label }}</strong>
-                  <small>{{ workflowCopy[type].description }}</small>
-                </span>
-              </label>
-            </div>
-          </fieldset>
-
-          <div class="field-group">
-            <label for="user-input">{{ activeWorkflow.inputLabel }}</label>
-            <textarea
-              id="user-input"
-              v-model="userInput"
-              rows="5"
-              :placeholder="activeWorkflow.placeholder"
-              required
-            ></textarea>
-          </div>
-
-          <section v-if="workflowType === 'exam_review'" class="workflow-fields" aria-label="备考复习专属字段">
-            <div class="field-group full-width">
-              <label for="syllabus">考试大纲（可选）</label>
-              <textarea id="syllabus" v-model="syllabus" rows="3" placeholder="粘贴大纲或范围说明。"></textarea>
-            </div>
-            <div class="field-group">
-              <label for="exam-date">考试日期（可选）</label>
-              <input id="exam-date" v-model="examDate" type="date" />
-            </div>
-            <div class="field-group">
-              <label for="available-hours">可投入小时（可选）</label>
-              <input id="available-hours" v-model.number="availableHours" type="number" min="0" step="0.5" />
-            </div>
-            <div class="field-group">
-              <label for="goals">目标</label>
-              <input id="goals" v-model="goalsText" type="text" placeholder="逗号或换行分隔" />
-            </div>
-            <div class="field-group">
-              <label for="weak-topics">薄弱知识点</label>
-              <input id="weak-topics" v-model="weakTopicsText" type="text" placeholder="逗号或换行分隔" />
-            </div>
+            <dl class="facts" aria-label="本次请求的契约字段">
+              <div>
+                <dt>conversation_id</dt>
+                <dd>{{ conversationId || "首次运行时创建" }}</dd>
+              </div>
+              <div>
+                <dt>course_scope</dt>
+                <dd>single</dd>
+              </div>
+              <div>
+                <dt>allowed_course_ids</dt>
+                <dd>[]</dd>
+              </div>
+              <div>
+                <dt>model_source</dt>
+                <dd>{{ selectedModel?.model_source ?? (isLoadingModels ? "读取中" : "未选择") }}</dd>
+              </div>
+              <div>
+                <dt>catalog_version</dt>
+                <dd>{{ modelCatalog.catalog_version }}</dd>
+              </div>
+            </dl>
           </section>
 
-          <section v-if="workflowType === 'problem_tutor'" class="workflow-fields" aria-label="题目辅导专属字段">
-            <div class="field-group full-width">
-              <label for="user-answer">我的作答（可选）</label>
-              <textarea id="user-answer" v-model="userAnswer" rows="3"></textarea>
-            </div>
-            <div class="field-group">
-              <label for="help-level">帮助层级</label>
-              <select id="help-level" v-model="helpLevel">
-                <option v-for="level in HELP_LEVELS" :key="level" :value="level">{{ helpLevelLabels[level] }}</option>
-              </select>
-            </div>
-            <div class="field-group">
-              <label for="problem-source">题目来源（可选）</label>
-              <input id="problem-source" v-model="problemSource" type="text" placeholder="例如：2023 期末 A 卷" />
-            </div>
-          </section>
-
-          <section v-if="workflowType === 'mistake_review'" class="workflow-fields" aria-label="错题复盘专属字段">
-            <div class="field-group full-width">
-              <label for="original-answer">原答案</label>
-              <textarea id="original-answer" v-model="originalAnswer" rows="3" required></textarea>
-            </div>
-            <div class="field-group">
-              <label for="reference-answer">参考答案（可选）</label>
-              <textarea id="reference-answer" v-model="referenceAnswer" rows="3"></textarea>
-            </div>
-            <div class="field-group">
-              <label for="review-focus">复盘重点（可选）</label>
-              <textarea id="review-focus" v-model="reviewFocus" rows="3"></textarea>
-            </div>
-          </section>
-
-          <section v-if="workflowType === 'temporary_material_reading'" class="workflow-fields" aria-label="临时材料精读专属字段">
-            <div class="field-group">
-              <label for="material-title">材料标题（可选）</label>
-              <input id="material-title" v-model="materialTitle" type="text" maxlength="200" placeholder="例如：特征值与特征向量复习提纲" />
-            </div>
-            <div class="field-group full-width">
-              <label for="reading-goal">精读目标（可选）</label>
-              <input id="reading-goal" v-model="readingGoal" type="text" placeholder="例如：提取考试范围并指出与课程资料的冲突" />
-            </div>
-          </section>
-
-          <div class="control-grid">
-            <div class="field-group">
-              <label for="answer-mode">回答方式</label>
-              <select id="answer-mode" v-model="answerMode">
-                <option v-for="mode in ANSWER_MODES" :key="mode" :value="mode">{{ answerModeLabels[mode] }}</option>
-              </select>
-            </div>
-            <div class="field-group">
-              <label for="tone">表达风格</label>
-              <select id="tone" v-model="tone">
-                <option v-for="item in TONES" :key="item" :value="item">{{ toneLabels[item] }}</option>
-              </select>
-            </div>
-          </div>
-
-          <fieldset class="field-group scope-fieldset">
-            <legend>知识范围</legend>
-            <label>
-              <input v-model="knowledgeScope" type="radio" value="course_first" />
-              <span><strong>资料优先</strong><small>允许明确标记的通用补充</small></span>
-            </label>
-            <label>
-              <input v-model="knowledgeScope" type="radio" value="course_only" />
-              <span><strong>仅课程资料</strong><small>证据不足时停止猜测</small></span>
-            </label>
-          </fieldset>
-
-          <label class="checkbox-field" :class="{ disabled: knowledgeScope === 'course_only' }">
-            <input
-              v-model="includeBilibiliResources"
-              type="checkbox"
-              :disabled="knowledgeScope === 'course_only'"
-            />
-            <span>
-              <strong>返回 B站延伸学习</strong>
-              <small>模型给出聚焦词后只返回匿名搜索链接，不返回具体视频直链。仅课程资料模式强制关闭。</small>
-            </span>
-          </label>
-
-          <div v-if="errorMessage" class="form-message error-message" role="alert">{{ errorMessage }}</div>
-          <div v-if="noticeMessage" class="form-message success-message" role="status">{{ noticeMessage }}</div>
-
-          <div class="form-actions">
-            <button
-              type="submit"
-              class="primary-button"
-              :disabled="isRunning || isLoadingCourses || isLoadingModels || !currentUser || !selectedModel?.user_selectable"
-            >
-              {{ isRunning ? "正在运行" : selectedModelIsMock ? "运行 Mock Workflow" : "运行 Workflow" }}
-            </button>
-            <button
-              v-if="isRunning && canCancelWorkflow"
-              type="button"
-              class="secondary-button cancel-button"
-              @click="cancelWorkflow"
-            >
-              取消本次运行
-            </button>
-            <button
-              v-else
-              type="button"
-              class="secondary-button"
-              :disabled="!conversationId || isReloading || isRunning"
-              @click="reloadConversation"
-            >
-              {{ isReloading ? "正在读取" : "重新读取会话" }}
-            </button>
-          </div>
-
-          <dl class="contract-facts">
-            <div>
-              <dt>course_scope</dt>
-              <dd>single</dd>
-            </div>
-            <div>
-              <dt>conversation_id</dt>
-              <dd>{{ conversationId || "首次运行时创建" }}</dd>
-            </div>
-            <div>
-              <dt>allowed_course_ids</dt>
-              <dd>[]</dd>
-            </div>
-            <div>
-              <dt>model_source</dt>
-              <dd>{{ selectedModel?.model_source ?? (isLoadingModels ? "读取中" : "未选择") }}</dd>
-            </div>
-            <div>
-              <dt>catalog_version</dt>
-              <dd>{{ modelCatalog.catalog_version }}</dd>
-            </div>
-          </dl>
-        </form>
-      </section>
-
-      <WorkflowResult
-        :result="result"
-        :is-running="isRunning"
-        :stream-state="workflowStreamState"
-      />
-
-      <button
-        type="button"
-        class="secondary-button plugin-toggle"
-        :aria-expanded="showPluginPanel ? 'true' : 'false'"
-        aria-controls="plugin-panel-region"
-        @click="showPluginPanel = !showPluginPanel"
-      >
-        {{ showPluginPanel ? "收起内部插件管理" : "内部插件管理" }}
-      </button>
-      <div v-if="showPluginPanel" id="plugin-panel-region">
-        <PluginRegistryPanel :can-manage-plugins="Boolean(currentUser && !currentUser.is_mock)" />
-      </div>
-      </div>
-
-      <aside class="app-details-column" aria-label="模型凭据设置">
-        <section class="byok-panel" aria-labelledby="byok-heading">
-          <div class="byok-panel-header">
-            <div>
-              <h2 id="byok-heading">使用自己的 API Key</h2>
-            </div>
-            <span class="byok-evidence-badge">本地安全链路已接入</span>
-          </div>
-          <p class="byok-boundary-note">
-            Key 只在密码输入框中短暂存在，保存请求结束即清空；不会写入浏览器存储、URL、历史或模型目录。
-            本轮未用真实用户 Key 形成实网调用证据，余额、权限及上游错误以实际调用结果为准。
-          </p>
-          <p v-if="isLoadingByokCredentials" class="byok-message" role="status">
-            正在读取当前登录会话的脱敏凭据状态。
-          </p>
-          <p
-            v-else-if="byokMessage"
-            class="byok-message"
-            :class="byokMessageIsError ? 'byok-message-error' : 'byok-message-success'"
-            :role="byokMessageIsError ? 'alert' : 'status'"
+          <!-- BYOK 凭据 -->
+          <section
+            v-else-if="inspectorTab === 'credentials'"
+            class="inspector-section"
+            aria-labelledby="byok-heading"
           >
-            {{ byokMessage }}
-          </p>
+            <div class="inspector-head">
+              <h3 id="byok-heading">使用自己的 API Key</h3>
+              <span class="chip chip-ok">安全链路已接入</span>
+            </div>
+            <p class="inspector-note">
+              Key 只在密码输入框中短暂存在，保存请求结束即清空；不会写入浏览器存储、URL、历史或模型目录。
+              本轮未用真实用户 Key 形成实网调用证据，余额、权限及上游错误以实际调用结果为准。
+            </p>
 
-          <div class="byok-provider-grid">
-            <article
-              v-for="provider in byokProvidersForDisplay"
-              :key="provider.provider_id"
-              class="byok-provider-card"
-              :class="{ 'byok-provider-card-disabled': !byokRuntimeAvailable || !provider.enabled }"
+            <p v-if="isLoadingByokCredentials" class="note note-plain" role="status">
+              正在读取当前登录会话的脱敏凭据状态。
+            </p>
+            <p
+              v-else-if="byokMessage"
+              class="note"
+              :class="byokMessageIsError ? 'note-bad' : 'note-ok'"
+              :role="byokMessageIsError ? 'alert' : 'status'"
             >
-              <header class="byok-provider-header">
-                <div>
-                  <strong>{{ provider.display_name }}</strong>
-                  <span>{{ provider.company }}</span>
-                </div>
-                <span
-                  class="byok-provider-state"
-                  :class="byokRuntimeAvailable && provider.enabled ? 'status-available' : 'status-closed'"
-                >
-                  {{ byokRuntimeAvailable && provider.enabled ? "服务端已启用" : "服务端未开启" }}
-                </span>
-              </header>
+              {{ byokMessage }}
+            </p>
 
-              <div v-if="provider.models[0]" class="byok-fixed-model">
-                <span>固定模型</span>
-                <strong>{{ provider.models[0].company }} · {{ provider.models[0].display_name }}</strong>
-                <code>{{ provider.models[0].model_id }}</code>
-              </div>
-
-              <div
-                v-if="byokCredentialStatus(provider.provider_id)?.configured"
-                class="byok-credential-status"
+            <div class="byok">
+              <article
+                v-for="provider in byokProvidersForDisplay"
+                :key="provider.provider_id"
+                class="byok-card"
+                :class="{ 'byok-card-off': !byokRuntimeAvailable || !provider.enabled }"
               >
-                <strong>当前会话已配置</strong>
-                <span>{{ byokCredentialStatus(provider.provider_id)?.masked_key || "Key 已脱敏" }}</span>
-                <span v-if="byokCredentialStatus(provider.provider_id)?.expires_at">
-                  到期：{{ formatHistoryTime(byokCredentialStatus(provider.provider_id)?.expires_at || "") }}
-                </span>
-                <span
-                  v-if="byokCredentialStatus(provider.provider_id)?.configured && !byokCredentialWritable(provider.provider_id)"
-                  class="byok-credential-readonly"
-                >
-                  只读：当前会话不可替换或删除
-                </span>
-              </div>
-
-              <p v-if="byokProviderDisabledReason(provider)" class="byok-disabled-reason">
-                {{ byokProviderDisabledReason(provider) }}
-              </p>
-
-              <form class="byok-credential-form" @submit.prevent="submitByokCredential(provider)">
-                <label :for="`byok-key-${provider.provider_id}`">API Key</label>
-                <input
-                  :id="`byok-key-${provider.provider_id}`"
-                  v-model="byokKeyDrafts[provider.provider_id]"
-                  type="password"
-                  autocomplete="new-password"
-                  autocapitalize="none"
-                  spellcheck="false"
-                  maxlength="512"
-                  placeholder="输入后仅提交给本站后端"
-                  :disabled="!canManageByokCredentials(currentUser) || !byokRuntimeAvailable || !provider.enabled || byokIsBusy"
-                />
-
-                <div class="byok-card-actions">
-                  <button
-                    type="submit"
-                    class="primary-button"
-                    :disabled="!canSaveByokCredential(provider)"
+                <header class="byok-card-head">
+                  <strong>{{ provider.display_name }}</strong>
+                  <span
+                    class="chip"
+                    :class="byokRuntimeAvailable && provider.enabled ? 'chip-ok' : ''"
                   >
-                    {{
-                      savingByokProviderId === provider.provider_id
-                        ? "保存中"
-                        : byokCredentialStatus(provider.provider_id)?.configured
-                          ? "替换 Key"
-                          : "保存 Key"
-                    }}
-                  </button>
-                  <button
-                    v-if="byokCredentialStatus(provider.provider_id)?.configured"
-                    type="button"
-                    class="secondary-button"
-                    :disabled="!canDeleteByokCredential(provider.provider_id)"
-                    @click="removeByokCredential(provider)"
-                  >
-                    {{ deletingByokProviderId === provider.provider_id ? "删除中" : "删除" }}
-                  </button>
+                    {{ byokRuntimeAvailable && provider.enabled ? "已启用" : "未开启" }}
+                  </span>
+                </header>
+
+                <div v-if="provider.models[0]" class="byok-model">
+                  <span>固定模型</span>
+                  <strong>
+                    {{ provider.models[0].company }} · {{ provider.models[0].display_name }}
+                  </strong>
+                  <code>{{ provider.models[0].model_id }}</code>
                 </div>
-              </form>
-            </article>
-          </div>
-        </section>
+
+                <div
+                  v-if="byokCredentialStatus(provider.provider_id)?.configured"
+                  class="byok-state"
+                >
+                  <strong>当前会话已配置</strong>
+                  <span>
+                    {{ byokCredentialStatus(provider.provider_id)?.masked_key || "Key 已脱敏" }}
+                  </span>
+                  <span v-if="byokCredentialStatus(provider.provider_id)?.expires_at">
+                    到期
+                    {{
+                      formatHistoryTime(byokCredentialStatus(provider.provider_id)?.expires_at || "")
+                    }}
+                  </span>
+                  <span v-if="!byokCredentialWritable(provider.provider_id)">
+                    只读：当前会话不可替换或删除
+                  </span>
+                </div>
+
+                <p v-if="byokProviderDisabledReason(provider)" class="note note-warn">
+                  {{ byokProviderDisabledReason(provider) }}
+                </p>
+
+                <form class="byok-form" @submit.prevent="submitByokCredential(provider)">
+                  <label :for="`byok-key-${provider.provider_id}`" class="field-hint">
+                    API Key
+                  </label>
+                  <input
+                    :id="`byok-key-${provider.provider_id}`"
+                    v-model="byokKeyDrafts[provider.provider_id]"
+                    type="password"
+                    autocomplete="new-password"
+                    autocapitalize="none"
+                    spellcheck="false"
+                    maxlength="512"
+                    placeholder="输入后仅提交给本站后端"
+                    :disabled="
+                      !canManageByokCredentials(currentUser) ||
+                      !byokRuntimeAvailable ||
+                      !provider.enabled ||
+                      byokIsBusy
+                    "
+                  />
+                  <div class="byok-form-acts">
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      :disabled="!canSaveByokCredential(provider)"
+                    >
+                      {{
+                        savingByokProviderId === provider.provider_id
+                          ? "保存中"
+                          : byokCredentialStatus(provider.provider_id)?.configured
+                            ? "替换"
+                            : "保存"
+                      }}
+                    </button>
+                    <button
+                      v-if="byokCredentialStatus(provider.provider_id)?.configured"
+                      type="button"
+                      class="btn btn-danger"
+                      :disabled="!canDeleteByokCredential(provider.provider_id)"
+                      @click="removeByokCredential(provider)"
+                    >
+                      {{ deletingByokProviderId === provider.provider_id ? "删除中" : "删除" }}
+                    </button>
+                  </div>
+                </form>
+              </article>
+            </div>
+          </section>
+
+          <!-- 插件注册表 -->
+          <section
+            v-else
+            class="inspector-section"
+            aria-labelledby="plugin-panel-heading"
+          >
+            <div class="inspector-head">
+              <h3 id="plugin-panel-heading">内部插件管理</h3>
+            </div>
+            <PluginRegistryPanel
+              :can-manage-plugins="Boolean(currentUser && !currentUser.is_mock)"
+            />
+          </section>
+        </div>
       </aside>
-      </div>
-    </main>
+    </div>
   </div>
 </template>

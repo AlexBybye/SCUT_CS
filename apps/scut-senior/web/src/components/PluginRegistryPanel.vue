@@ -18,6 +18,12 @@ const stateLabel: Record<string, string> = {
   registered: "已登记",
 };
 
+const pluginStateChip: Record<string, string> = {
+  active: "chip-ok",
+  fixture_only: "chip-warn",
+  registered: "",
+};
+
 onMounted(async () => {
   try {
     registry.value = await getPluginRegistry();
@@ -55,134 +61,105 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
 </script>
 
 <template>
-  <section class="plugin-panel" aria-labelledby="plugin-panel-heading">
-    <header class="plugin-panel-header">
-      <div>
-        <h2 id="plugin-panel-heading">内部插件管理</h2>
-        <p v-if="registry">
-          注册表版本 {{ registry.registry_version }} · 检索模式
-          {{ registry.retrieval_mode === "local_corpus" ? "本地语料" : "Fixture" }}
-          · 课程插件可装载与卸载
-        </p>
-      </div>
-      <span v-if="registry" class="plugin-count-badge">
-        {{ registry.agent_presets.length }} 预设 · {{ registry.controlled_tools.length }} 工具 ·
-        {{ registry.courses.length }} 课程
-      </span>
-    </header>
-
-    <div v-if="loading" class="inline-state" role="status">正在读取插件注册表。</div>
-    <div v-else-if="errorMessage" class="inline-state" role="alert">{{ errorMessage }}</div>
+  <div class="plugins">
+    <p v-if="loading" class="note note-plain" role="status">正在读取插件注册表。</p>
+    <p v-else-if="errorMessage" class="note note-bad" role="alert">{{ errorMessage }}</p>
 
     <template v-else-if="registry">
-      <div class="plugin-columns">
-        <section class="plugin-card" aria-labelledby="presets-heading">
-          <div class="plugin-card-heading">
-            <h3 id="presets-heading">Agent Preset（与 Workflow 一一对应）</h3>
-            <span>{{ registry.agent_presets.length }}</span>
-          </div>
-          <p class="plugin-card-note">
-            每个 Workflow 由且仅由一个预设描述能力与工具边界；预设不含提示词。
-          </p>
-          <div class="plugin-rows">
-            <article
-              v-for="preset in registry.agent_presets"
-              :key="preset.preset_id"
-              class="plugin-row"
-            >
-              <div class="plugin-row-main">
-                <strong>{{ preset.display_name }}</strong>
-                <code>{{ preset.workflow_type }}</code>
-                <span>v{{ preset.preset_version }} · {{ preset.focus_strategy }}</span>
-              </div>
-              <div class="plugin-row-meta">
-                <span>工具：{{ presetTools(preset.preset_id).join("、") || "无" }}</span>
-                <span>
-                  模态：{{ preset.required_input_modalities.join("/") }} ·
-                  结构化输出：{{ preset.requires_structured_outputs ? "必需" : "否" }}
-                </span>
-              </div>
-            </article>
-          </div>
-        </section>
+      <p class="inspector-note">
+        注册表 {{ registry.registry_version }} · 检索
+        {{ registry.retrieval_mode === "local_corpus" ? "本地语料" : "Fixture" }}
+      </p>
 
-        <section class="plugin-card" aria-labelledby="courses-heading">
-          <div class="plugin-card-heading">
-            <h3 id="courses-heading">课程插件</h3>
-            <span>{{ registry.courses.length }}</span>
-          </div>
-          <p class="plugin-card-note">
-            状态由检索可用性与插件装载状态共同决定；卸载后课程不可建会话、不可运行。
-          </p>
-          <div class="plugin-rows">
-            <article
-              v-for="course in registry.courses"
-              :key="course.course_id"
-              class="plugin-row"
+      <section class="plugin-group" aria-labelledby="courses-heading">
+        <div class="inspector-head">
+          <h3 id="courses-heading">课程插件</h3>
+          <span class="chip">{{ registry.courses.length }}</span>
+        </div>
+        <p class="inspector-note">
+          状态由检索可用性与装载状态共同决定；卸载后课程不可建会话、不可运行。
+        </p>
+        <article v-for="course in registry.courses" :key="course.course_id" class="plugin-row">
+          <div class="plugin-row-top">
+            <strong>{{ course.display_name }}</strong>
+            <span
+              class="chip"
+              :class="course.loaded ? pluginStateChip[course.state] : ''"
             >
-              <div class="plugin-row-main">
-                <strong>{{ course.display_name }}</strong>
-                <code>{{ course.course_id }}</code>
-              </div>
-              <div class="plugin-row-meta">
-                <span
-                  class="plugin-state"
-                  :class="course.loaded ? `plugin-state-${course.state}` : 'plugin-state-registered'"
-                >
-                  {{ course.loaded ? stateLabel[course.state] : "已卸载" }}
-                </span>
-                <span>
-                  {{
-                    course.loaded
-                      ? course.enabled_workflows.length
-                        ? `支持 ${course.enabled_workflows.length} 个 Workflow`
-                        : "未启用 Workflow"
-                      : "插件未装载"
-                  }}
-                </span>
-              </div>
-              <div v-if="canManagePlugins" class="plugin-row-actions">
-                <button
-                  type="button"
-                  class="secondary-button plugin-action-button"
-                  :disabled="busyCourseId !== ''"
-                  @click="togglePlugin(course)"
-                >
-                  {{ busyCourseId === course.course_id ? "处理中" : course.loaded ? "卸载" : "装载" }}
-                </button>
-              </div>
-            </article>
+              {{ course.loaded ? stateLabel[course.state] : "已卸载" }}
+            </span>
           </div>
-          <p v-if="!canManagePlugins" class="plugin-card-note">
-            装载/卸载需要真实 GitHub 登录；当前只读展示。
-          </p>
-        </section>
-      </div>
+          <div class="plugin-row-meta">
+            <code>{{ course.course_id }}</code>
+            <span>
+              {{
+                course.loaded
+                  ? course.enabled_workflows.length
+                    ? `支持 ${course.enabled_workflows.length} 个 Workflow`
+                    : "未启用 Workflow"
+                  : "插件未装载"
+              }}
+            </span>
+          </div>
+          <div v-if="canManagePlugins" class="plugin-row-acts">
+            <button
+              type="button"
+              class="btn btn-quiet"
+              :disabled="busyCourseId !== ''"
+              @click="togglePlugin(course)"
+            >
+              {{ busyCourseId === course.course_id ? "处理中" : course.loaded ? "卸载" : "装载" }}
+            </button>
+          </div>
+        </article>
+        <p v-if="!canManagePlugins" class="inspector-note">
+          装载与卸载需要真实 GitHub 登录；当前只读展示。
+        </p>
+      </section>
 
-      <div class="plugin-columns">
-        <section class="plugin-card" aria-labelledby="tools-heading">
-          <div class="plugin-card-heading">
-            <h3 id="tools-heading">受控工具</h3>
-            <span>{{ registry.controlled_tools.length }}</span>
+      <section class="plugin-group" aria-labelledby="presets-heading">
+        <div class="inspector-head">
+          <h3 id="presets-heading">Agent Preset</h3>
+          <span class="chip">{{ registry.agent_presets.length }}</span>
+        </div>
+        <p class="inspector-note">
+          每个 Workflow 由且仅由一个预设描述能力与工具边界；预设不含提示词。
+        </p>
+        <article v-for="preset in registry.agent_presets" :key="preset.preset_id" class="plugin-row">
+          <div class="plugin-row-top">
+            <strong>{{ preset.display_name }}</strong>
+            <span class="chip chip-mono">v{{ preset.preset_version }}</span>
           </div>
-          <p class="plugin-card-note">
-            全部由服务端编排，模型不可直接调用（model_callable=false）。
-          </p>
-          <div class="plugin-rows">
-            <article
-              v-for="tool in registry.controlled_tools"
-              :key="tool.tool_id"
-              class="plugin-row"
-            >
-              <div class="plugin-row-main">
-                <strong>{{ tool.display_name }}</strong>
-                <code>{{ tool.tool_id }}</code>
-              </div>
-              <p class="plugin-row-description">{{ tool.description }}</p>
-            </article>
+          <div class="plugin-row-meta">
+            <code>{{ preset.workflow_type }}</code>
+            <span>聚焦：{{ preset.focus_strategy }}</span>
+            <span>工具：{{ presetTools(preset.preset_id).join("、") || "无" }}</span>
+            <span>
+              模态：{{ preset.required_input_modalities.join("/") }} ·
+              结构化输出：{{ preset.requires_structured_outputs ? "必需" : "否" }}
+            </span>
           </div>
-        </section>
-      </div>
+        </article>
+      </section>
+
+      <section class="plugin-group" aria-labelledby="tools-heading">
+        <div class="inspector-head">
+          <h3 id="tools-heading">受控工具</h3>
+          <span class="chip">{{ registry.controlled_tools.length }}</span>
+        </div>
+        <p class="inspector-note">
+          全部由服务端编排，模型不可直接调用（model_callable=false）。
+        </p>
+        <article v-for="tool in registry.controlled_tools" :key="tool.tool_id" class="plugin-row">
+          <div class="plugin-row-top">
+            <strong>{{ tool.display_name }}</strong>
+          </div>
+          <div class="plugin-row-meta">
+            <code>{{ tool.tool_id }}</code>
+            <span>{{ tool.description }}</span>
+          </div>
+        </article>
+      </section>
     </template>
-  </section>
+  </div>
 </template>
