@@ -2032,3 +2032,13 @@ pre {
   width: fit-content;
   margin-top: 4px;
 }
+
+.plugin-row-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.plugin-action-button {
+  padding: 4px 10px;
+  font-size: 0.7rem;
+}

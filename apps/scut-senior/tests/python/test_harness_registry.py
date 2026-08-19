@@ -306,12 +306,7 @@ def test_plugin_registry_endpoint_reports_honest_metadata(tmp_path: Path) -> Non
         "temporary_material_read",
     ]
 
-    assert len(body["maintainer_skills"]) == 1
-    skill = body["maintainer_skills"][0]
-    assert skill["skill_id"] == "material_conversion"
-    assert skill["status"] == "contract_only"
-    assert skill["human_review_required"] is True
-    assert skill["can_mark_passed_or_active"] is False
+    assert body["maintainer_skills"] == []
 
     courses = {course["course_id"]: course for course in body["courses"]}
     assert len(courses) == 10
@@ -431,10 +426,73 @@ def test_mock_platform_models_skip_preset_capability_gate(tmp_path: Path) -> Non
     assert response.json()["model"]["mock_only"] is True
 
 
-def test_maintainer_skill_is_metadata_only_and_cannot_approve_content() -> None:
-    assert len(MAINTAINER_SKILLS) == 1
-    skill = MAINTAINER_SKILLS[0]
-    assert skill.status == MaterialConversionSkillStatus.CONTRACT_ONLY
-    assert skill.human_review_required is True
-    assert skill.can_mark_passed_or_active is False
-    assert skill.version == "v1"
+def test_maintainer_skills_are_empty_after_removing_the_conversion_entry() -> None:
+    assert MAINTAINER_SKILLS == ()
+
+
+def test_course_plugin_load_unload_persists_and_gates_runtime(tmp_path: Path) -> None:
+    from fastapi.testclient import TestClient
+
+    from scut_senior_api.auth import GitHubUserProfile, SESSION_COOKIE_NAME
+
+    plugin_settings = Settings(
+        app_env="test",
+        identity_mode="github_oauth",
+        storage_mode="sqlite",
+        database_path=tmp_path / "plugin.db",
+        github_client_id="client",
+        github_client_secret="secret",
+        github_callback_url="https://testserver/api/v1/auth/github/callback",
+        post_login_redirect_url="https://testserver/",
+    )
+    app = create_app(plugin_settings)
+    client = TestClient(app, base_url="https://testserver")
+
+    # Load/unload requires a real GitHub login.
+    assert (
+        client.post("/api/v1/plugin-registry/courses/linear_algebra/unload").status_code
+        == 401
+    )
+
+    repository = app.state.repository
+    user_id = repository.upsert_github_user(GitHubUserProfile(9001, "maintainer"))
+    session = repository.issue_session(user_id)
+    client.cookies.set(SESSION_COOKIE_NAME, session.token, path="/")
+
+    unloaded = client.post(
+        "/api/v1/plugin-registry/courses/linear_algebra/unload"
+    )
+    assert unloaded.status_code == 200, unloaded.text
+    assert unloaded.json() == {"course_id": "linear_algebra", "loaded": False}
+
+    body = client.get("/api/v1/plugin-registry").json()
+    course = next(
+        item for item in body["courses"] if item["course_id"] == "linear_algebra"
+    )
+    assert course["loaded"] is False
+    assert course["state"] == "active"
+    assert course["enabled_workflows"] == []
+
+    # An unloaded plugin blocks conversation creation and workflow runs.
+    blocked = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    )
+    assert blocked.status_code == 503
+    assert blocked.json()["error"]["code"] == "capability_unavailable"
+
+    # Load restores the plugin; the same persisted state survives a restart.
+    loaded = client.post("/api/v1/plugin-registry/courses/linear_algebra/load")
+    assert loaded.status_code == 200
+    assert loaded.json() == {"course_id": "linear_algebra", "loaded": True}
+
+    restarted = create_app(Settings(app_env="test", database_path=tmp_path / "plugin.db"))
+    assert restarted.state.repository.is_course_plugin_loaded("linear_algebra") is True
+    created = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    )
+    assert created.status_code == 201, created.text
+
+    # Unknown course ids fail closed.
+    unknown = client.post("/api/v1/plugin-registry/courses/not-a-course/load")
+    assert unknown.status_code == 422
+    assert unknown.json()["error"]["code"] == "unknown_course"

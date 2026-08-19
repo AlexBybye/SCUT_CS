@@ -275,21 +275,12 @@ CONTROLLED_TOOL_CATALOG = (
     ),
 )
 
-MAINTAINER_SKILLS = (
-    MaintainerSkillMetadata(
-        skill_id="material_conversion",
-        display_name="资料 Markdown 转换",
-        version="v1",
-        description=(
-            "维护者在离线 pipeline 中把学科资料转换为带 frontmatter 的 "
-            "Markdown 并通过 manifest 校验。本注册表只定义契约元数据："
-            "Runtime 不执行转换，转换也不能把资料标记为 passed 或 active。"
-        ),
-        status=MaterialConversionSkillStatus.CONTRACT_ONLY,
-        human_review_required=True,
-        can_mark_passed_or_active=False,
-    ),
-)
+# Maintainer skills are intentionally empty: the material-conversion pipeline
+# is owned by an external contributor track (SOP 4.5) and the harness registry
+# no longer carries contract-only skill metadata for it. The skill type and
+# registry slot stay so future maintainer skills can register without schema
+# churn.
+MAINTAINER_SKILLS: tuple[MaintainerSkillMetadata, ...] = ()
 
 AGENT_PRESETS = (
     AgentPreset(

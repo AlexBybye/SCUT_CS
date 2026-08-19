@@ -96,6 +96,20 @@ export async function getPluginRegistry(): Promise<PluginRegistry> {
   return apiRequest<PluginRegistry>("/api/v1/plugin-registry");
 }
 
+export async function loadCoursePlugin(courseId: string): Promise<{ course_id: string; loaded: boolean }> {
+  return apiRequest<{ course_id: string; loaded: boolean }>(
+    `/api/v1/plugin-registry/courses/${encodeURIComponent(courseId)}/load`,
+    { method: "POST" },
+  );
+}
+
+export async function unloadCoursePlugin(courseId: string): Promise<{ course_id: string; loaded: boolean }> {
+  return apiRequest<{ course_id: string; loaded: boolean }>(
+    `/api/v1/plugin-registry/courses/${encodeURIComponent(courseId)}/unload`,
+    { method: "POST" },
+  );
+}
+
 export async function getByokCredentials(): Promise<ByokCredentialStatus[]> {
   return apiRequest<ByokCredentialStatus[]>("/api/v1/model-credentials");
 }

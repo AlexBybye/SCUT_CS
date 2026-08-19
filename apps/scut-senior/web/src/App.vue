@@ -1754,7 +1754,7 @@ onBeforeUnmount(() => {
         {{ showPluginPanel ? "收起内部插件管理" : "内部插件管理" }}
       </button>
       <div v-if="showPluginPanel" id="plugin-panel-region">
-        <PluginRegistryPanel />
+        <PluginRegistryPanel :can-manage-plugins="Boolean(currentUser && !currentUser.is_mock)" />
       </div>
     </main>
   </div>

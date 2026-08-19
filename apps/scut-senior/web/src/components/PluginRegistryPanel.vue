@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import { getPluginRegistry } from "../api";
-import type { PluginRegistry } from "../contracts";
+import { getPluginRegistry, loadCoursePlugin, unloadCoursePlugin } from "../api";
+import type { CoursePluginEntry, PluginRegistry } from "../contracts";
+
+const props = defineProps<{
+  canManagePlugins: boolean;
+}>();
 
 const registry = ref<PluginRegistry | null>(null);
 const loading = ref(true);
 const errorMessage = ref("");
+const busyCourseId = ref("");
 
 const stateLabel: Record<string, string> = {
   active: "可用",
@@ -30,21 +35,39 @@ function presetTools(presetId: string): string[] {
   );
   return preset?.allowed_tools ?? [];
 }
+
+async function togglePlugin(course: CoursePluginEntry): Promise<void> {
+  if (!props.canManagePlugins || busyCourseId.value) return;
+  busyCourseId.value = course.course_id;
+  errorMessage.value = "";
+  try {
+    await (course.loaded
+      ? unloadCoursePlugin(course.course_id)
+      : loadCoursePlugin(course.course_id));
+    registry.value = await getPluginRegistry();
+  } catch (error) {
+    errorMessage.value =
+      error instanceof Error ? error.message : "装载/卸载失败。";
+  } finally {
+    busyCourseId.value = "";
+  }
+}
 </script>
 
 <template>
   <section class="plugin-panel" aria-labelledby="plugin-panel-heading">
     <header class="plugin-panel-header">
       <div>
-        <h2 id="plugin-panel-heading">内部插件管理（只读）</h2>
+        <h2 id="plugin-panel-heading">内部插件管理</h2>
         <p v-if="registry">
           注册表版本 {{ registry.registry_version }} · 检索模式
           {{ registry.retrieval_mode === "local_corpus" ? "本地语料" : "Fixture" }}
+          · 课程插件可装载与卸载
         </p>
       </div>
       <span v-if="registry" class="plugin-count-badge">
         {{ registry.agent_presets.length }} 预设 · {{ registry.controlled_tools.length }} 工具 ·
-        {{ registry.maintainer_skills.length }} 技能 · {{ registry.courses.length }} 课程
+        {{ registry.courses.length }} 课程
       </span>
     </header>
 
@@ -85,11 +108,11 @@ function presetTools(presetId: string): string[] {
 
         <section class="plugin-card" aria-labelledby="courses-heading">
           <div class="plugin-card-heading">
-            <h3 id="courses-heading">课程插件状态</h3>
+            <h3 id="courses-heading">课程插件</h3>
             <span>{{ registry.courses.length }}</span>
           </div>
           <p class="plugin-card-note">
-            状态由当前检索适配器实际可用性派生；未激活课程不声明可用 Workflow。
+            状态由检索可用性与插件装载状态共同决定；卸载后课程不可建会话、不可运行。
           </p>
           <div class="plugin-rows">
             <article
@@ -104,20 +127,35 @@ function presetTools(presetId: string): string[] {
               <div class="plugin-row-meta">
                 <span
                   class="plugin-state"
-                  :class="`plugin-state-${course.state}`"
+                  :class="course.loaded ? `plugin-state-${course.state}` : 'plugin-state-registered'"
                 >
-                  {{ stateLabel[course.state] }}
+                  {{ course.loaded ? stateLabel[course.state] : "已卸载" }}
                 </span>
                 <span>
                   {{
-                    course.enabled_workflows.length
-                      ? `支持 ${course.enabled_workflows.length} 个 Workflow`
-                      : "未启用 Workflow"
+                    course.loaded
+                      ? course.enabled_workflows.length
+                        ? `支持 ${course.enabled_workflows.length} 个 Workflow`
+                        : "未启用 Workflow"
+                      : "插件未装载"
                   }}
                 </span>
               </div>
+              <div v-if="canManagePlugins" class="plugin-row-actions">
+                <button
+                  type="button"
+                  class="secondary-button plugin-action-button"
+                  :disabled="busyCourseId !== ''"
+                  @click="togglePlugin(course)"
+                >
+                  {{ busyCourseId === course.course_id ? "处理中" : course.loaded ? "卸载" : "装载" }}
+                </button>
+              </div>
             </article>
           </div>
+          <p v-if="!canManagePlugins" class="plugin-card-note">
+            装载/卸载需要真实 GitHub 登录；当前只读展示。
+          </p>
         </section>
       </div>
 
@@ -141,30 +179,6 @@ function presetTools(presetId: string): string[] {
                 <code>{{ tool.tool_id }}</code>
               </div>
               <p class="plugin-row-description">{{ tool.description }}</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="plugin-card" aria-labelledby="skills-heading">
-          <div class="plugin-card-heading">
-            <h3 id="skills-heading">维护者技能</h3>
-            <span>{{ registry.maintainer_skills.length }}</span>
-          </div>
-          <p class="plugin-card-note">
-            仅登记契约元数据；技能不能自行把资料标记为 passed 或 active。
-          </p>
-          <div class="plugin-rows">
-            <article
-              v-for="skill in registry.maintainer_skills"
-              :key="skill.skill_id"
-              class="plugin-row"
-            >
-              <div class="plugin-row-main">
-                <strong>{{ skill.display_name }}</strong>
-                <code>{{ skill.skill_id }}@{{ skill.version }}</code>
-                <span>状态：{{ skill.status }} · 需人工审核：{{ skill.human_review_required ? "是" : "否" }}</span>
-              </div>
-              <p class="plugin-row-description">{{ skill.description }}</p>
             </article>
           </div>
         </section>

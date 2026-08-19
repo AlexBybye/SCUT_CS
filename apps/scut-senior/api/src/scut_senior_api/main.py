@@ -620,13 +620,12 @@ def create_app(
 
     @app.get("/api/v1/plugin-registry")
     def plugin_registry() -> dict[str, object]:
-        """Read-only controlled plugin metadata for future internal management.
+        """Controlled plugin metadata for internal management.
 
-        Safe by construction: immutable registry metadata only. It never
-        exposes prompts, directives, secrets or user data. Course states are
-        derived honestly from the CourseRegistry plus current RetrievalGateway
-        availability; unavailable courses are never marked active and never
-        claim enabled workflows.
+        Safe by construction: immutable registry metadata plus honest
+        per-course states derived from the CourseRegistry, the current
+        RetrievalGateway availability and the persisted plugin load state.
+        Never exposes prompts, directives, secrets or user data.
         """
         course_states = derive_course_plugin_states(
             registry,
@@ -650,13 +649,33 @@ def create_app(
                     "course_id": state.course_id,
                     "display_name": state.display_name,
                     "state": state.state.value,
-                    "enabled_workflows": [
-                        workflow.value for workflow in state.enabled_workflows
-                    ],
+                    "loaded": repository.is_course_plugin_loaded(state.course_id),
+                    "enabled_workflows": (
+                        [
+                            workflow.value
+                            for workflow in state.enabled_workflows
+                        ]
+                        if repository.is_course_plugin_loaded(state.course_id)
+                        else []
+                    ),
                 }
                 for state in course_states
             ],
         }
+
+    @app.post("/api/v1/plugin-registry/courses/{course_id}/load")
+    def load_course_plugin(
+        course_id: str,
+        user: AuthenticatedPrincipal = Depends(require_github_user),
+    ) -> dict[str, object]:
+        return {"course_id": service.load_course_plugin(user, course_id), "loaded": True}
+
+    @app.post("/api/v1/plugin-registry/courses/{course_id}/unload")
+    def unload_course_plugin(
+        course_id: str,
+        user: AuthenticatedPrincipal = Depends(require_github_user),
+    ) -> dict[str, object]:
+        return {"course_id": service.unload_course_plugin(user, course_id), "loaded": False}
 
     @app.post(
         "/api/v1/conversations",

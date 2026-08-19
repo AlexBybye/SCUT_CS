@@ -102,7 +102,7 @@ class IterationZeroService:
         self, user: RequestIdentity, course_id_or_alias: str
     ) -> ConversationSummary:
         course = self.registry.resolve(course_id_or_alias)
-        if not self._retrieval_course_available(course.course_id):
+        if not self._course_available(course.course_id):
             raise CapabilityUnavailable(
                 "course",
                 f"{course.course_id} is not enabled for the configured retrieval mode",
@@ -110,6 +110,30 @@ class IterationZeroService:
         return self.repository.create_conversation(
             str(user.user_id), course.course_id, course.display_name
         )
+
+    def load_course_plugin(
+        self, user: RequestIdentity, course_id_or_alias: str
+    ) -> str:
+        course = self.registry.resolve(course_id_or_alias)
+        self.repository.set_course_plugin_loaded(
+            course.course_id, True, str(user.user_id)
+        )
+        return course.course_id
+
+    def unload_course_plugin(
+        self, user: RequestIdentity, course_id_or_alias: str
+    ) -> str:
+        course = self.registry.resolve(course_id_or_alias)
+        self.repository.set_course_plugin_loaded(
+            course.course_id, False, str(user.user_id)
+        )
+        return course.course_id
+
+    def _course_available(self, course_id: str) -> bool:
+        """A course is usable only when its plugin is loaded AND retrieval serves it."""
+        if not self.repository.is_course_plugin_loaded(course_id):
+            return False
+        return self._retrieval_course_available(course_id)
 
     def _retrieval_course_available(self, course_id: str) -> bool:
         check = getattr(self.retrieval, "is_course_available", None)
@@ -337,7 +361,7 @@ class IterationZeroService:
             raise ContractConflict(
                 "workflow course does not match the bound conversation course"
             )
-        if not self._retrieval_course_available(course.course_id):
+        if not self._course_available(course.course_id):
             raise CapabilityUnavailable(
                 "course",
                 f"{course.course_id} is not enabled for the configured retrieval mode",

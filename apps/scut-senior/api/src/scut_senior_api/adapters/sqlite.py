@@ -431,6 +431,39 @@ class SQLiteWorkflowRepository:
                 ).rowcount
         return HistoryCleanupCounts(runs, conversations, feedback)
 
+    def is_course_plugin_loaded(self, course_id: str) -> bool:
+        """A course plugin is loaded unless an explicit unload row exists.
+
+        Absence of a row means loaded (the registry default), so pre-0007
+        databases and never-touched courses behave identically.
+        """
+        with self._connect() as connection:
+            row = connection.execute(
+                "SELECT loaded FROM course_plugin_states WHERE course_id = ?",
+                (course_id,),
+            ).fetchone()
+        return row is None or bool(row["loaded"])
+
+    def set_course_plugin_loaded(
+        self,
+        course_id: str,
+        loaded: bool,
+        updated_by_user_id: str | None = None,
+    ) -> None:
+        now = self._now().isoformat()
+        with self._connect() as connection:
+            connection.execute(
+                """
+                INSERT INTO course_plugin_states (course_id, loaded, updated_at, updated_by_user_id)
+                VALUES (?, ?, ?, ?)
+                ON CONFLICT(course_id) DO UPDATE SET
+                    loaded = excluded.loaded,
+                    updated_at = excluded.updated_at,
+                    updated_by_user_id = excluded.updated_by_user_id
+                """,
+                (course_id, 1 if loaded else 0, now, updated_by_user_id),
+            )
+
     def session_is_active(self, user_id: UUID, auth_session_id: UUID) -> bool:
         now = self._now().isoformat()
         with self._connect() as connection:

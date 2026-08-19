@@ -128,6 +128,7 @@ export interface CoursePluginEntry {
   course_id: string;
   display_name: string;
   state: CoursePluginState;
+  loaded: boolean;
   enabled_workflows: WorkflowType[];
 }
 

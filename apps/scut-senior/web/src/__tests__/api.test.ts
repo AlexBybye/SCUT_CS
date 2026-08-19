@@ -372,6 +372,7 @@ describe("plugin registry API", () => {
           course_id: "cpp",
           display_name: "C++（上及下）",
           state: "registered",
+          loaded: true,
           enabled_workflows: [],
         },
       ],
