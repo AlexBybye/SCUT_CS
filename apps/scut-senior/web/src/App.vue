@@ -19,6 +19,7 @@ import {
   startWorkflowRunStream,
 } from "./api";
 import WorkflowResult from "./components/WorkflowResult.vue";
+import PluginRegistryPanel from "./components/PluginRegistryPanel.vue";
 import {
   FROZEN_BYOK_PROVIDERS,
   isCurrentByokCatalogVersion,
@@ -160,6 +161,7 @@ const modelCatalogLoadSucceeded = ref(false);
 const selectedCourseId = ref("");
 const selectedModelKey = ref("");
 const workflowType = ref<WorkflowType>("knowledge_qa");
+const showPluginPanel = ref(false);
 const answerMode = ref<AnswerMode>("detailed");
 const tone = ref<Tone>("teaching_assistant");
 const knowledgeScope = ref<KnowledgeScope>("course_first");
@@ -1741,6 +1743,19 @@ onBeforeUnmount(() => {
         :is-running="isRunning"
         :stream-state="workflowStreamState"
       />
+
+      <button
+        type="button"
+        class="secondary-button plugin-toggle"
+        :aria-expanded="showPluginPanel ? 'true' : 'false'"
+        aria-controls="plugin-panel-region"
+        @click="showPluginPanel = !showPluginPanel"
+      >
+        {{ showPluginPanel ? "收起内部插件管理" : "内部插件管理" }}
+      </button>
+      <div v-if="showPluginPanel" id="plugin-panel-region">
+        <PluginRegistryPanel />
+      </div>
     </main>
   </div>
 </template>

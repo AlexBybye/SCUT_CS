@@ -5,6 +5,7 @@ import {
   getByokCredentials,
   getConversation,
   getMe,
+  getPluginRegistry,
   listConversations,
   regenerateWorkflowRun,
   renameConversation,
@@ -13,7 +14,7 @@ import {
   startWorkflowRunStream,
   submitFeedback,
 } from "../api";
-import type { WorkflowRunResult } from "../contracts";
+import type { PluginRegistry, WorkflowRunResult } from "../contracts";
 import { buildWorkflowRequest } from "../workflowRequest";
 
 afterEach(() => {
@@ -327,6 +328,67 @@ describe("conversation history API", () => {
 
     await expect(getConversation(conversationId)).rejects.toThrow(/another run/i);
     await expect(getConversation(conversationId)).rejects.toThrow(/fixed anonymous search URL/i);
+  });
+});
+
+describe("plugin registry API", () => {
+  it("读取只读插件注册表并保持契约字段", async () => {
+    const registry: PluginRegistry = {
+      registry_version: "harness-registry-v1",
+      retrieval_mode: "fixture",
+      agent_presets: [
+        {
+          preset_id: "preset_knowledge_qa",
+          preset_version: "v1",
+          display_name: "知识点问答",
+          workflow_type: "knowledge_qa",
+          focus_strategy: "question_concept",
+          allowed_tools: ["course_retrieval", "evidence_location"],
+          required_input_modalities: ["text"],
+          requires_structured_outputs: true,
+        },
+      ],
+      controlled_tools: [
+        {
+          tool_id: "course_retrieval",
+          display_name: "课程检索",
+          description: "服务端编排的课程范围检索。",
+          model_callable: false,
+        },
+      ],
+      maintainer_skills: [
+        {
+          skill_id: "material_conversion",
+          display_name: "资料 Markdown 转换",
+          version: "v1",
+          description: "契约元数据。",
+          status: "contract_only",
+          human_review_required: true,
+          can_mark_passed_or_active: false,
+        },
+      ],
+      courses: [
+        {
+          course_id: "cpp",
+          display_name: "C++（上及下）",
+          state: "registered",
+          enabled_workflows: [],
+        },
+      ],
+    };
+    const fetchMock = vi.fn().mockResolvedValueOnce(
+      new Response(JSON.stringify(registry), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    await expect(getPluginRegistry()).resolves.toEqual(registry);
+    expect(fetchMock).toHaveBeenCalledWith(
+      "/api/v1/plugin-registry",
+      expect.objectContaining({ credentials: "include" }),
+    );
   });
 });
 

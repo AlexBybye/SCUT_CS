@@ -93,6 +93,53 @@ export type FeedbackType = (typeof FEEDBACK_TYPES)[number];
 export type TraceEventStatus = (typeof TRACE_EVENT_STATUSES)[number];
 export type LocatorType = "page" | "slide" | "heading" | "question" | "none";
 
+export const COURSE_PLUGIN_STATES = ["active", "fixture_only", "registered"] as const;
+export type CoursePluginState = (typeof COURSE_PLUGIN_STATES)[number];
+
+export interface AgentPresetEntry {
+  preset_id: string;
+  preset_version: string;
+  display_name: string;
+  workflow_type: WorkflowType;
+  focus_strategy: string;
+  allowed_tools: string[];
+  required_input_modalities: string[];
+  requires_structured_outputs: boolean;
+}
+
+export interface ControlledToolEntry {
+  tool_id: string;
+  display_name: string;
+  description: string;
+  model_callable: boolean;
+}
+
+export interface MaintainerSkillEntry {
+  skill_id: string;
+  display_name: string;
+  version: string;
+  description: string;
+  status: "contract_only";
+  human_review_required: boolean;
+  can_mark_passed_or_active: boolean;
+}
+
+export interface CoursePluginEntry {
+  course_id: string;
+  display_name: string;
+  state: CoursePluginState;
+  enabled_workflows: WorkflowType[];
+}
+
+export interface PluginRegistry {
+  registry_version: string;
+  retrieval_mode: "fixture" | "local_corpus";
+  agent_presets: AgentPresetEntry[];
+  controlled_tools: ControlledToolEntry[];
+  maintainer_skills: MaintainerSkillEntry[];
+  courses: CoursePluginEntry[];
+}
+
 export interface FeedbackRecord {
   feedback_id: string;
   user_id: string;

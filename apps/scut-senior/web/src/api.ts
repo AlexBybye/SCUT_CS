@@ -8,6 +8,7 @@ import type {
   FeedbackRecord,
   FeedbackType,
   ModelCatalog,
+  PluginRegistry,
   WorkflowAttempt,
   WorkflowRunRequest,
   WorkflowRunResult,
@@ -89,6 +90,10 @@ export async function getCourses(): Promise<Course[]> {
 
 export async function getModels(): Promise<ModelCatalog> {
   return apiRequest<ModelCatalog>("/api/v1/models");
+}
+
+export async function getPluginRegistry(): Promise<PluginRegistry> {
+  return apiRequest<PluginRegistry>("/api/v1/plugin-registry");
 }
 
 export async function getByokCredentials(): Promise<ByokCredentialStatus[]> {
