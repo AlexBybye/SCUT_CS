@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import {
   ApiError,
   createConversation,
@@ -192,7 +192,9 @@ const readingGoal = ref("");
 
 type InspectorTab = "attempts" | "credentials" | "plugins";
 
-const railOpen = ref(false);
+const railOpen = ref(
+  typeof window === "undefined" || window.innerWidth >= 1024,
+);
 // 窄屏下检查器是浮层，默认展开会盖住记录区；宽屏是常驻第三列，默认展开。
 const inspectorOpen = ref(
   typeof window === "undefined" || window.innerWidth >= 1280,
@@ -282,6 +284,62 @@ const attempts = computed<WorkflowAttempt[]>(() => conversationSnapshot.value?.r
 const latestAttempt = computed<WorkflowAttempt | null>(
   () => attempts.value[attempts.value.length - 1] ?? null,
 );
+
+// 左轨按课程分文件夹；每个文件夹下是该课程的全部会话（含多次回答尝试）。
+const historyFolders = computed(() => {
+  const order: string[] = [];
+  const groups = new Map<string, ConversationSummary[]>();
+  for (const conversation of conversationHistory.value) {
+    const courseId = conversation.course_id || "__uncategorized__";
+    if (!groups.has(courseId)) {
+      groups.set(courseId, []);
+      order.push(courseId);
+    }
+    groups.get(courseId)!.push(conversation);
+  }
+  return order.map((courseId) => ({
+    courseId,
+    label: courseId === "__uncategorized__" ? "未分类" : courseName(courseId),
+    conversations: groups.get(courseId)!,
+  }));
+});
+
+const openFolderIds = ref<string[]>([]);
+const accountMenuOpen = ref(false);
+const accountTab = ref<"credentials" | "plugins">("credentials");
+
+function folderIsOpen(courseId: string): boolean {
+  return openFolderIds.value.includes(courseId);
+}
+
+function toggleFolder(courseId: string): void {
+  openFolderIds.value = folderIsOpen(courseId)
+    ? openFolderIds.value.filter((id) => id !== courseId)
+    : [...openFolderIds.value, courseId];
+}
+
+function revealFolderFor(courseId: string): void {
+  if (courseId && !folderIsOpen(courseId)) {
+    openFolderIds.value = [...openFolderIds.value, courseId];
+  }
+}
+
+function startNewConversationInCourse(courseId: string): void {
+  isApplyingHistoryCourse = true;
+  selectedCourseId.value = courseId;
+  isApplyingHistoryCourse = false;
+  revealFolderFor(courseId);
+  startNewConversation();
+}
+
+function githubAvatarUrl(): string {
+  const login = currentUser.value?.github_login;
+  return login ? `https://github.com/${login}.png?size=96` : "";
+}
+
+function openAccountTab(tab: "credentials" | "plugins"): void {
+  accountTab.value = tab;
+}
 const historyIsBusy = computed(
   () =>
     isLoadingHistory.value ||
@@ -312,6 +370,16 @@ const displayedAnswerMode = computed<AnswerMode | null>(() =>
 const displayedTone = computed<Tone | null>(() =>
   activeAttempt.value?.request.tone ?? (isRunning.value ? tone.value : null),
 );
+// 会话内所有已完成回答，按顺序渲染成连续对话（不再按"第 N 次"切分）。
+const completedTurns = computed(() =>
+  (conversationSnapshot.value?.runs ?? []).map((run) => ({
+    id: run.workflow_run_id,
+    ask: run.request.user_input,
+    result: run.result,
+    answerMode: run.request.answer_mode,
+    tone: run.request.tone,
+  })),
+);
 // 记录区展示的提问：优先取选中尝试的请求，其次取正在输入的草稿。
 const transcriptAsk = computed(() => {
   if (activeAttempt.value) return activeAttempt.value.request.user_input;
@@ -339,7 +407,7 @@ const canSubmitWorkflow = computed(
 const runtimeNoticeTitle = computed(() =>
   selectedModelIsMock.value
     ? "迭代 0 Mock，不是正式 OAuth / 模型 / 检索"
-    : "显式模型选择，不会自动切换模型或 BYOK",
+    : "模型由服务端目录自动选取，不会自动切换模型或 BYOK",
 );
 const runtimeNoticeDetail = computed(() => {
   if (selectedModelIsMock.value) {
@@ -348,11 +416,8 @@ const runtimeNoticeDetail = computed(() => {
   if (!isLoadingModels.value && !modelCatalogLoadSucceeded.value) {
     return "模型目录加载失败，平台、Mock 与 BYOK 请求均已关闭。";
   }
-  if (!isLoadingModels.value && !selectedModel.value) {
-    return "请先从平台目录中选择一个模型；页面不会替你预选。";
-  }
   if (!modelCatalog.value.real_platform_default_available) {
-    return "正式平台默认池不可用；本次只使用你明确选中的可用模型。";
+    return "正式平台默认池不可用；本次使用服务端选中的可用模型。";
   }
   return "请求会携带当前模型来源、供应商和模型 ID。";
 });
@@ -611,6 +676,7 @@ function applyConversationDetail(
   conversationId.value = conversation.conversation_id;
   conversationSnapshot.value = conversation;
   upsertConversationSummary(conversationSummary(conversation));
+  revealFolderFor(conversation.course_id);
 
   if (attempt) {
     showAttempt(attempt);
@@ -950,6 +1016,11 @@ async function loadCourses(): Promise<void> {
   }
 }
 
+function onPluginChanged(): void {
+  // 插件装载/卸载后，课程列表与各课程插件状态需与个人中心同步刷新。
+  void loadCourses();
+}
+
 async function loadModels(): Promise<void> {
   isLoadingModels.value = true;
   modelCatalogLoadSucceeded.value = false;
@@ -1248,14 +1319,60 @@ watch(
   { flush: "sync" },
 );
 
+// 自动滚动：内容更新后（新回合、流式事件、打字机增长）把记录区滚动到底部，
+// 用 nextTick 确保 DOM 更新完成后再执行 scrollTop = scrollHeight。
+const transcriptEl = ref<HTMLElement | null>(null);
+let transcriptScrollTimer: number | null = null;
+
+function scrollTranscriptToBottom(): void {
+  void nextTick(() => {
+    const el = transcriptEl.value;
+    if (el) el.scrollTop = el.scrollHeight;
+  });
+}
+
+const transcriptContentSignature = computed(() => ({
+  turns: completedTurns.value
+    .map((turn) => `${turn.id}:${turn.result?.answer_blocks.length ?? 0}`)
+    .join("|"),
+  running: isRunning.value,
+  events: workflowStreamState.value?.traceEvents.length ?? 0,
+  blocks: workflowStreamState.value?.answerBlocks.length ?? 0,
+  result: result.value?.workflow_run_id ?? "",
+}));
+
+watch(transcriptContentSignature, () => {
+  scrollTranscriptToBottom();
+});
+
+watch(
+  isRunning,
+  (running) => {
+    if (transcriptScrollTimer !== null) {
+      window.clearInterval(transcriptScrollTimer);
+      transcriptScrollTimer = null;
+    }
+    if (running) {
+      // 生成期间持续跟随最新内容（打字机逐字增长时也保持到底）。
+      transcriptScrollTimer = window.setInterval(scrollTranscriptToBottom, 1000);
+    }
+  },
+  { immediate: true },
+);
+
 // 浮层态的左轨与检查器需要 Escape 退出，否则窄屏下只能靠再次点按钮。
 function onGlobalKeydown(event: KeyboardEvent): void {
   if (event.key !== "Escape") return;
-  if (railOpen.value && window.innerWidth < 1024) {
+  if (accountMenuOpen.value) {
+    accountMenuOpen.value = false;
+  } else if (railOpen.value && window.innerWidth < 640) {
     railOpen.value = false;
-  } else if (inspectorOpen.value && window.innerWidth < 1280) {
-    inspectorOpen.value = false;
   }
+}
+
+function onWindowResize(): void {
+  // 窗口缩到手机宽度时强制收起左轨；放大后保持用户当前状态。
+  if (window.innerWidth < 640) railOpen.value = false;
 }
 
 onMounted(() => {
@@ -1263,10 +1380,12 @@ onMounted(() => {
   void loadCourses();
   void loadModels();
   window.addEventListener("keydown", onGlobalKeydown);
+  window.addEventListener("resize", onWindowResize);
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener("keydown", onGlobalKeydown);
+  window.removeEventListener("resize", onWindowResize);
   abortActiveWorkflow("页面已离开，运行已取消。");
 });
 </script>
@@ -1283,77 +1402,232 @@ onBeforeUnmount(() => {
         aria-controls="conversation-rail"
         @click="railOpen = !railOpen"
       >
-        会话
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h10" />
+        </svg>
+        历史记录
       </button>
-      <p class="topbar-brand">
-        <span class="topbar-mark" aria-hidden="true">S</span>
-        SCUT 老学长
-      </p>
-      <div class="topbar-runtime" aria-label="当前模型运行配置">
-        <span class="chip chip-mono truncate">
-          {{ selectedModel?.provider_id ?? (isLoadingModels ? "loading" : "未选择") }}
-        </span>
-        <span class="chip chip-mono truncate">
-          {{ selectedModel?.model_id ?? (isLoadingModels ? "loading" : "未选择") }}
-        </span>
-      </div>
+
+      <a
+        class="brand"
+        href="https://github.com/AlexBybye/SCUT_CS"
+        target="_blank"
+        rel="noopener"
+        title="前往 GitHub 仓库"
+      >
+        <img class="brand-icon" src="/icon.jpeg" alt="SCUT 老学长" />
+        <span class="brand-name">SCUT 老学长</span>
+      </a>
+
       <span class="topbar-spacer"></span>
-      <div class="topbar-auth" aria-label="登录状态">
-        <span v-if="isLoadingAuth">正在确认登录状态</span>
+
+      <div class="account">
+        <span v-if="isLoadingAuth" class="account-muted">正在确认登录状态</span>
         <template v-else-if="currentUser">
-          <span class="truncate">
-            {{ currentUser.is_mock ? "本地 Mock 身份" : `@${currentUser.github_login}` }}
-          </span>
-          <button v-if="!currentUser.is_mock" type="button" class="btn" @click="signOut">
-            退出
+          <button
+            type="button"
+            class="account-button"
+            :aria-expanded="accountMenuOpen ? 'true' : 'false'"
+            @click="accountMenuOpen = !accountMenuOpen"
+          >
+            <img v-if="githubAvatarUrl()" class="avatar" :src="githubAvatarUrl()" alt="" />
+            <span class="account-name">
+              {{ currentUser.is_mock ? "本地 Mock" : `@${currentUser.github_login}` }}
+            </span>
+            <svg class="account-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
           </button>
+
+          <div v-if="accountMenuOpen" class="account-menu" role="menu">
+            <div class="account-menu-head">
+              <span class="account-menu-title">个人中心</span>
+              <span class="chip chip-mono">
+                {{ selectedModel?.display_name ?? (isLoadingModels ? "模型目录加载中" : "模型目录不可用") }}
+              </span>
+            </div>
+            <div class="account-tabs" role="tablist">
+              <button
+                type="button"
+                class="account-tab"
+                role="tab"
+                :aria-selected="accountTab === 'credentials'"
+                @click="openAccountTab('credentials')"
+              >
+                我的 Key
+              </button>
+              <button
+                type="button"
+                class="account-tab"
+                role="tab"
+                :aria-selected="accountTab === 'plugins'"
+                @click="openAccountTab('plugins')"
+              >
+                插件
+              </button>
+            </div>
+
+            <div class="account-scroll">
+              <section v-if="accountTab === 'credentials'" class="account-section" aria-label="使用自己的 API Key">
+                <div class="account-section-head">
+                  <h3>使用自己的 API Key</h3>
+                  <span class="chip chip-ok">会话级加密</span>
+                </div>
+                <p class="account-note">
+                  Key 只在密码输入框中短暂存在，保存请求结束即清空；不会写入浏览器存储、URL、历史或模型目录。
+                </p>
+
+                <p v-if="isLoadingByokCredentials" class="note note-plain" role="status">
+                  正在读取当前登录会话的脱敏凭据状态。
+                </p>
+                <p
+                  v-else-if="byokMessage"
+                  class="note"
+                  :class="byokMessageIsError ? 'note-bad' : 'note-ok'"
+                  :role="byokMessageIsError ? 'alert' : 'status'"
+                >
+                  {{ byokMessage }}
+                </p>
+
+                <div class="byok">
+                  <article
+                    v-for="provider in byokProvidersForDisplay"
+                    :key="provider.provider_id"
+                    class="byok-card"
+                    :class="{ 'byok-card-off': !byokRuntimeAvailable || !provider.enabled }"
+                  >
+                    <header class="byok-card-head">
+                      <strong>{{ provider.display_name }}</strong>
+                      <span class="chip" :class="byokRuntimeAvailable && provider.enabled ? 'chip-ok' : ''">
+                        {{ byokRuntimeAvailable && provider.enabled ? "已启用" : "未开启" }}
+                      </span>
+                    </header>
+
+                    <div v-if="provider.models[0]" class="byok-model">
+                      <span>固定模型</span>
+                      <strong>{{ provider.models[0].company }} · {{ provider.models[0].display_name }}</strong>
+                      <code>{{ provider.models[0].model_id }}</code>
+                    </div>
+
+                    <div v-if="byokCredentialStatus(provider.provider_id)?.configured" class="byok-state">
+                      <strong>当前会话已配置</strong>
+                      <span>{{ byokCredentialStatus(provider.provider_id)?.masked_key || "Key 已脱敏" }}</span>
+                      <span v-if="byokCredentialStatus(provider.provider_id)?.expires_at">
+                        到期 {{ formatHistoryTime(byokCredentialStatus(provider.provider_id)?.expires_at || "") }}
+                      </span>
+                      <span v-if="!byokCredentialWritable(provider.provider_id)">只读：当前会话不可替换或删除</span>
+                    </div>
+
+                    <p v-if="byokProviderDisabledReason(provider)" class="note note-warn">
+                      {{ byokProviderDisabledReason(provider) }}
+                    </p>
+
+                    <form class="byok-form" @submit.prevent="submitByokCredential(provider)">
+                      <label :for="`byok-key-${provider.provider_id}`" class="field-hint">API Key</label>
+                      <input
+                        :id="`byok-key-${provider.provider_id}`"
+                        v-model="byokKeyDrafts[provider.provider_id]"
+                        type="password"
+                        autocomplete="new-password"
+                        autocapitalize="none"
+                        spellcheck="false"
+                        maxlength="512"
+                        placeholder="输入后仅提交给本站后端"
+                        :disabled="
+                          !canManageByokCredentials(currentUser) ||
+                          !byokRuntimeAvailable ||
+                          !provider.enabled ||
+                          byokIsBusy
+                        "
+                      />
+                      <div class="byok-form-acts">
+                        <button
+                          type="submit"
+                          class="btn btn-primary"
+                          :disabled="!canSaveByokCredential(provider)"
+                        >
+                          {{
+                            savingByokProviderId === provider.provider_id
+                              ? "保存中"
+                              : byokCredentialStatus(provider.provider_id)?.configured
+                                ? "替换"
+                                : "保存"
+                          }}
+                        </button>
+                        <button
+                          v-if="byokCredentialStatus(provider.provider_id)?.configured"
+                          type="button"
+                          class="btn btn-danger"
+                          :disabled="!canDeleteByokCredential(provider.provider_id)"
+                          @click="removeByokCredential(provider)"
+                        >
+                          {{ deletingByokProviderId === provider.provider_id ? "删除中" : "删除" }}
+                        </button>
+                      </div>
+                    </form>
+                  </article>
+                </div>
+              </section>
+
+              <section v-else class="account-section" aria-label="内部插件管理">
+                <div class="account-section-head">
+                  <h3>内部插件管理</h3>
+                </div>
+                <PluginRegistryPanel
+                  :can-manage-plugins="Boolean(currentUser && !currentUser.is_mock)"
+                  @changed="onPluginChanged"
+                />
+              </section>
+            </div>
+
+            <button
+              v-if="!currentUser.is_mock"
+              type="button"
+              class="btn btn-quiet account-signout"
+              @click="signOut"
+            >
+              退出登录
+            </button>
+          </div>
         </template>
         <button v-else type="button" class="btn btn-primary" @click="startGithubLogin">
           使用 GitHub 登录
         </button>
       </div>
-      <button
-        type="button"
-        class="btn btn-quiet inspector-toggle"
-        :aria-expanded="inspectorOpen ? 'true' : 'false'"
-        aria-controls="inspector-panel"
-        @click="inspectorOpen = !inspectorOpen"
-      >
-        详情
-      </button>
     </header>
 
-    <!-- 运行边界常驻一行：Mock 与真实模型的差别必须始终可见，不能藏进抽屉。 -->
-    <p class="runtime-banner" role="note">
-      <strong>{{ runtimeNoticeTitle }}</strong>
-      <span>{{ runtimeNoticeDetail }}</span>
-    </p>
-
-    <div
-      class="shell-body"
-      :data-rail="railOpen ? 'open' : 'closed'"
-      :data-inspector="inspectorOpen ? 'open' : 'closed'"
-    >
+    <div class="shell-body" :data-rail="railOpen ? 'open' : 'closed'">
       <!-- 窄屏浮层的点击遮罩；宽屏下由 CSS 隐藏，不参与布局。 -->
       <button
         type="button"
         class="scrim"
         :data-rail="railOpen ? 'open' : 'closed'"
-        :data-inspector="inspectorOpen ? 'open' : 'closed'"
         aria-label="关闭浮层"
-        @click="railOpen = false; inspectorOpen = false"
+        @click="railOpen = false"
       ></button>
 
       <aside id="conversation-rail" class="rail" aria-labelledby="history-heading">
         <header class="rail-head">
-          <h2 id="history-heading">会话 · 保留 30 天</h2>
           <button
             type="button"
-            class="btn"
+            class="btn btn-primary rail-new"
             :disabled="!currentUser || historyIsBusy"
             @click="startNewConversation"
           >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M12 5v14M5 12h14" />
+            </svg>
             新会话
+          </button>
+          <button
+            type="button"
+            class="btn btn-quiet rail-collapse"
+            aria-label="折叠课程栏"
+            @click="railOpen = false"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m11 17-5-5 5-5M18 17l-5-5 5-5" />
+            </svg>
           </button>
         </header>
 
@@ -1367,126 +1641,133 @@ onBeforeUnmount(() => {
             {{ historyMessage }}
           </p>
 
-          <p v-if="!currentUser" class="rail-empty">
-            登录后可恢复最近会话和全部回答尝试。
-          </p>
-          <p v-else-if="isLoadingHistory" class="rail-empty" role="status">
-            正在读取历史记录。
-          </p>
-          <p v-else-if="!conversationHistory.length" class="rail-empty">
-            还没有会话。首次运行后会保留 30 天。
-          </p>
-          <ul v-else aria-label="历史会话列表">
-            <li
-              v-for="conversation in conversationHistory"
-              :key="conversation.conversation_id"
-              class="convo"
-              :class="{ 'convo-open': conversationId === conversation.conversation_id }"
-            >
-              <button
-                type="button"
-                class="convo-pick"
-                :aria-current="conversationId === conversation.conversation_id ? 'page' : undefined"
-                :disabled="historyIsBusy"
-                @click="loadConversationFromHistory(conversation.conversation_id)"
-              >
-                <strong class="truncate">{{ conversation.title }}</strong>
-                <span class="convo-meta">
-                  <span>{{ courseName(conversation.course_id) }}</span>
-                  <time>
-                    {{
-                      loadingConversationId === conversation.conversation_id
-                        ? "读取中"
-                        : formatHistoryTime(conversation.updated_at)
-                    }}
-                  </time>
-                </span>
-              </button>
+          <p v-if="!currentUser" class="rail-empty">登录后可恢复最近会话和全部回答尝试。</p>
+          <p v-else-if="isLoadingHistory" class="rail-empty" role="status">正在读取历史记录。</p>
+          <p v-else-if="!historyFolders.length" class="rail-empty">还没有会话。运行后按课程归档，保留 30 天。</p>
 
-              <form
-                v-if="editingConversationId === conversation.conversation_id"
-                class="convo-form"
-                @submit.prevent="saveConversationTitle"
-              >
-                <label :for="`history-title-${conversation.conversation_id}`" class="field-hint">
-                  会话名称
-                </label>
-                <input
-                  :id="`history-title-${conversation.conversation_id}`"
-                  v-model="conversationTitleDraft"
-                  type="text"
-                  maxlength="100"
-                  :disabled="renamingConversationId === conversation.conversation_id"
-                  required
-                />
-                <div class="convo-form-row">
-                  <button
-                    type="submit"
-                    class="btn btn-primary"
-                    :disabled="renamingConversationId === conversation.conversation_id"
-                  >
-                    {{ renamingConversationId === conversation.conversation_id ? "保存中" : "保存" }}
-                  </button>
-                  <button
-                    type="button"
-                    class="btn"
-                    :disabled="Boolean(renamingConversationId)"
-                    @click="cancelRename"
-                  >
-                    取消
-                  </button>
-                </div>
-              </form>
-
-              <div
-                v-else-if="deleteConfirmId === conversation.conversation_id"
-                class="convo-danger"
-              >
-                <span>会同时删除全部回答，确定吗？</span>
-                <div class="convo-form-row">
-                  <button
-                    type="button"
-                    class="btn btn-danger"
-                    :disabled="deletingConversationId === conversation.conversation_id"
-                    @click="confirmDeleteConversation(conversation.conversation_id)"
-                  >
-                    {{
-                      deletingConversationId === conversation.conversation_id
-                        ? "删除中"
-                        : "确认删除"
-                    }}
-                  </button>
-                  <button
-                    type="button"
-                    class="btn"
-                    :disabled="Boolean(deletingConversationId)"
-                    @click="cancelDelete"
-                  >
-                    取消
-                  </button>
-                </div>
-              </div>
-
-              <div v-else class="convo-acts">
+          <div v-else class="folders">
+            <section v-for="folder in historyFolders" :key="folder.courseId" class="folder">
+              <div class="folder-row">
                 <button
                   type="button"
-                  class="btn btn-quiet"
-                  :disabled="historyIsBusy"
-                  @click="beginRename(conversation)"
+                  class="folder-toggle"
+                  :aria-expanded="folderIsOpen(folder.courseId) ? 'true' : 'false'"
+                  @click="toggleFolder(folder.courseId)"
                 >
-                  重命名
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" />
+                  </svg>
+                  <span class="folder-name">{{ folder.label }}</span>
+                  <span class="chip">{{ folder.conversations.length }}</span>
                 </button>
                 <button
                   type="button"
-                  class="btn btn-quiet"
+                  class="btn btn-quiet folder-new"
+                  aria-label="在该课程下新建会话"
                   :disabled="historyIsBusy"
-                  @click="beginDelete(conversation.conversation_id)"
+                  @click="startNewConversationInCourse(folder.courseId)"
                 >
-                  删除
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                    <path d="M12 5v14M5 12h14" />
+                  </svg>
                 </button>
               </div>
-            </li>
-          </ul>
+
+              <ul v-if="folderIsOpen(folder.courseId)" class="folder-list">
+                <li
+                  v-for="conversation in folder.conversations"
+                  :key="conversation.conversation_id"
+                  class="convo"
+                  :class="{ 'convo-open': conversationId === conversation.conversation_id }"
+                >
+                  <button
+                    type="button"
+                    class="convo-pick"
+                    :aria-current="conversationId === conversation.conversation_id ? 'page' : undefined"
+                    :disabled="historyIsBusy"
+                    @click="loadConversationFromHistory(conversation.conversation_id)"
+                  >
+                    <strong class="truncate">{{ conversation.title }}</strong>
+                    <span class="convo-meta">
+                      <time>
+                        {{
+                          loadingConversationId === conversation.conversation_id
+                            ? "读取中"
+                            : formatHistoryTime(conversation.updated_at)
+                        }}
+                      </time>
+                    </span>
+                  </button>
+
+                  <div class="convo-acts">
+                    <button type="button" class="btn btn-quiet" :disabled="historyIsBusy" @click="beginRename(conversation)">
+                      重命名
+                    </button>
+                    <button type="button" class="btn btn-quiet" :disabled="historyIsBusy" @click="beginDelete(conversation.conversation_id)">
+                      删除
+                    </button>
+                  </div>
+
+                  <form
+                    v-if="editingConversationId === conversation.conversation_id"
+                    class="convo-form"
+                    @submit.prevent="saveConversationTitle"
+                  >
+                    <label :for="`history-title-${conversation.conversation_id}`" class="field-hint">
+                      会话名称
+                    </label>
+                    <input
+                      :id="`history-title-${conversation.conversation_id}`"
+                      v-model="conversationTitleDraft"
+                      type="text"
+                      maxlength="100"
+                      :disabled="renamingConversationId === conversation.conversation_id"
+                      required
+                    />
+                    <div class="convo-form-row">
+                      <button
+                        type="submit"
+                        class="btn btn-primary"
+                        :disabled="renamingConversationId === conversation.conversation_id"
+                      >
+                        {{ renamingConversationId === conversation.conversation_id ? "保存中" : "保存" }}
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        :disabled="Boolean(renamingConversationId)"
+                        @click="cancelRename"
+                      >
+                        取消
+                      </button>
+                    </div>
+                  </form>
+
+                  <div v-else-if="deleteConfirmId === conversation.conversation_id" class="convo-danger">
+                    <span>会同时删除全部回答，确定吗？</span>
+                    <div class="convo-form-row">
+                      <button
+                        type="button"
+                        class="btn btn-danger"
+                        :disabled="deletingConversationId === conversation.conversation_id"
+                        @click="confirmDeleteConversation(conversation.conversation_id)"
+                      >
+                        {{ deletingConversationId === conversation.conversation_id ? "删除中" : "确认删除" }}
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        :disabled="Boolean(deletingConversationId)"
+                        @click="cancelDelete"
+                      >
+                        取消
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </section>
+          </div>
         </div>
       </aside>
 
@@ -1499,11 +1780,11 @@ onBeforeUnmount(() => {
           </div>
         </div>
 
-        <div id="transcript" class="transcript">
+        <div id="transcript" ref="transcriptEl" class="transcript">
           <p v-if="authMessage" class="note note-bad" role="alert">{{ authMessage }}</p>
 
           <!-- 空态用排版承载，不套卡片：说明运行边界与当前配置。 -->
-          <div v-if="!transcriptHasContent" class="transcript-blank">
+          <div v-if="!completedTurns.length && !isRunning" class="transcript-blank">
             <h2>{{ activeWorkflow.label }}</h2>
             <p>{{ activeWorkflow.description }} {{ courseRuntimeDescription(retrievalMode) }}</p>
             <dl>
@@ -1523,7 +1804,7 @@ onBeforeUnmount(() => {
                       ? `${selectedModel.company} · ${selectedModel.display_name}`
                       : isLoadingModels
                         ? "正在读取模型目录"
-                        : "请先选择模型"
+                        : "模型目录不可用"
                   }}
                 </dd>
               </div>
@@ -1535,21 +1816,37 @@ onBeforeUnmount(() => {
           </div>
 
           <div v-else class="transcript-inner">
-            <article v-if="transcriptAsk" class="turn-ask">
-              <div class="turn-ask-head">
-                <span>{{ activeWorkflow.inputLabel }}</span>
-                <span v-if="activeAttemptIndex >= 0">第 {{ activeAttemptIndex + 1 }} 次</span>
+            <article v-for="turn in completedTurns" :key="turn.id" class="turn">
+              <div class="turn-ask">
+                <div class="turn-ask-head">
+                  <span>{{ activeWorkflow.inputLabel }}</span>
+                </div>
+                <p>{{ turn.ask }}</p>
               </div>
-              <p>{{ transcriptAsk }}</p>
+              <WorkflowResult
+                :result="turn.result"
+                :is-running="false"
+                :stream-state="null"
+                :answer-mode="turn.answerMode"
+                :tone="turn.tone"
+              />
             </article>
 
-            <WorkflowResult
-              :result="result"
-              :is-running="isRunning"
-              :stream-state="workflowStreamState"
-              :answer-mode="displayedAnswerMode"
-              :tone="displayedTone"
-            />
+            <article v-if="isRunning" class="turn turn-live">
+              <div class="turn-ask">
+                <div class="turn-ask-head">
+                  <span>{{ activeWorkflow.inputLabel }}</span>
+                </div>
+                <p>{{ transcriptAsk }}</p>
+              </div>
+              <WorkflowResult
+                :result="null"
+                :is-running="true"
+                :stream-state="workflowStreamState"
+                :answer-mode="answerMode"
+                :tone="tone"
+              />
+            </article>
           </div>
         </div>
 
@@ -1563,7 +1860,7 @@ onBeforeUnmount(() => {
               </p>
             </div>
 
-            <!-- 配置条：课程、模型、Workflow 收在输入框上沿，不再是独立表单区。 -->
+            <!-- 配置条：课程、模型、Workflow 收在输入框上沿。 -->
             <div class="composer-bar">
               <label class="visually-hidden" for="course">课程</label>
               <select id="course" v-model="selectedCourseId" :disabled="isRunning || !courses.length">
@@ -1845,261 +2142,6 @@ onBeforeUnmount(() => {
         </div>
       </main>
 
-      <aside id="inspector-panel" class="inspector" aria-label="运行详情">
-        <div class="tabs" role="tablist" aria-label="详情分区">
-          <button
-            type="button"
-            class="tab"
-            role="tab"
-            :aria-selected="inspectorTab === 'attempts'"
-            @click="openInspector('attempts')"
-          >
-            回答尝试
-          </button>
-          <button
-            type="button"
-            class="tab"
-            role="tab"
-            :aria-selected="inspectorTab === 'credentials'"
-            @click="openInspector('credentials')"
-          >
-            我的 Key
-          </button>
-          <button
-            type="button"
-            class="tab"
-            role="tab"
-            :aria-selected="inspectorTab === 'plugins'"
-            @click="openInspector('plugins')"
-          >
-            插件
-          </button>
-          <button
-            type="button"
-            class="btn btn-quiet tab-close inspector-toggle"
-            @click="inspectorOpen = false"
-          >
-            关闭
-          </button>
-        </div>
-
-        <div class="inspector-scroll">
-          <!-- 回答尝试 -->
-          <section
-            v-if="inspectorTab === 'attempts'"
-            class="inspector-section"
-            aria-labelledby="attempt-heading"
-          >
-            <div class="inspector-head">
-              <h3 id="attempt-heading">回答尝试</h3>
-              <span class="chip">{{ attempts.length }}</span>
-            </div>
-            <p class="inspector-note">
-              重新生成会追加新尝试，旧回答仍保留在会话中，可随时切回查看。
-            </p>
-            <button
-              type="button"
-              class="btn btn-tall"
-              :disabled="historyIsBusy || !latestAttempt"
-              @click="regenerateLatestAttempt"
-            >
-              {{ isRegenerating ? "重新生成中" : "重新生成最新回答" }}
-            </button>
-
-            <p v-if="!conversationSnapshot" class="inspector-note">
-              还没有会话。运行一次后这里会列出全部尝试。
-            </p>
-            <p v-else-if="!attempts.length" class="inspector-note">当前会话还没有回答。</p>
-            <ol v-else class="attempts">
-              <li v-for="(attempt, index) in attempts" :key="attempt.workflow_run_id">
-                <button
-                  type="button"
-                  class="attempt"
-                  :aria-current="selectedAttemptId === attempt.workflow_run_id ? 'true' : undefined"
-                  :disabled="historyIsBusy"
-                  @click="showAttempt(attempt)"
-                >
-                  <span class="attempt-top">
-                    <strong>第 {{ index + 1 }} 次</strong>
-                    <span class="chip">
-                      {{
-                        index === attempts.length - 1
-                          ? "最新"
-                          : attempt.regenerated_from_run_id
-                            ? "重新生成"
-                            : "初始回答"
-                      }}
-                    </span>
-                    <time>{{ formatHistoryTime(attempt.created_at) }}</time>
-                  </span>
-                  <code>{{ attempt.result.model.model_id }}</code>
-                </button>
-              </li>
-            </ol>
-
-            <dl class="facts" aria-label="本次请求的契约字段">
-              <div>
-                <dt>conversation_id</dt>
-                <dd>{{ conversationId || "首次运行时创建" }}</dd>
-              </div>
-              <div>
-                <dt>course_scope</dt>
-                <dd>single</dd>
-              </div>
-              <div>
-                <dt>allowed_course_ids</dt>
-                <dd>[]</dd>
-              </div>
-              <div>
-                <dt>model_source</dt>
-                <dd>{{ selectedModel?.model_source ?? (isLoadingModels ? "读取中" : "未选择") }}</dd>
-              </div>
-              <div>
-                <dt>catalog_version</dt>
-                <dd>{{ modelCatalog.catalog_version }}</dd>
-              </div>
-            </dl>
-          </section>
-
-          <!-- BYOK 凭据 -->
-          <section
-            v-else-if="inspectorTab === 'credentials'"
-            class="inspector-section"
-            aria-labelledby="byok-heading"
-          >
-            <div class="inspector-head">
-              <h3 id="byok-heading">使用自己的 API Key</h3>
-              <span class="chip chip-ok">安全链路已接入</span>
-            </div>
-            <p class="inspector-note">
-              Key 只在密码输入框中短暂存在，保存请求结束即清空；不会写入浏览器存储、URL、历史或模型目录。
-              本轮未用真实用户 Key 形成实网调用证据，余额、权限及上游错误以实际调用结果为准。
-            </p>
-
-            <p v-if="isLoadingByokCredentials" class="note note-plain" role="status">
-              正在读取当前登录会话的脱敏凭据状态。
-            </p>
-            <p
-              v-else-if="byokMessage"
-              class="note"
-              :class="byokMessageIsError ? 'note-bad' : 'note-ok'"
-              :role="byokMessageIsError ? 'alert' : 'status'"
-            >
-              {{ byokMessage }}
-            </p>
-
-            <div class="byok">
-              <article
-                v-for="provider in byokProvidersForDisplay"
-                :key="provider.provider_id"
-                class="byok-card"
-                :class="{ 'byok-card-off': !byokRuntimeAvailable || !provider.enabled }"
-              >
-                <header class="byok-card-head">
-                  <strong>{{ provider.display_name }}</strong>
-                  <span
-                    class="chip"
-                    :class="byokRuntimeAvailable && provider.enabled ? 'chip-ok' : ''"
-                  >
-                    {{ byokRuntimeAvailable && provider.enabled ? "已启用" : "未开启" }}
-                  </span>
-                </header>
-
-                <div v-if="provider.models[0]" class="byok-model">
-                  <span>固定模型</span>
-                  <strong>
-                    {{ provider.models[0].company }} · {{ provider.models[0].display_name }}
-                  </strong>
-                  <code>{{ provider.models[0].model_id }}</code>
-                </div>
-
-                <div
-                  v-if="byokCredentialStatus(provider.provider_id)?.configured"
-                  class="byok-state"
-                >
-                  <strong>当前会话已配置</strong>
-                  <span>
-                    {{ byokCredentialStatus(provider.provider_id)?.masked_key || "Key 已脱敏" }}
-                  </span>
-                  <span v-if="byokCredentialStatus(provider.provider_id)?.expires_at">
-                    到期
-                    {{
-                      formatHistoryTime(byokCredentialStatus(provider.provider_id)?.expires_at || "")
-                    }}
-                  </span>
-                  <span v-if="!byokCredentialWritable(provider.provider_id)">
-                    只读：当前会话不可替换或删除
-                  </span>
-                </div>
-
-                <p v-if="byokProviderDisabledReason(provider)" class="note note-warn">
-                  {{ byokProviderDisabledReason(provider) }}
-                </p>
-
-                <form class="byok-form" @submit.prevent="submitByokCredential(provider)">
-                  <label :for="`byok-key-${provider.provider_id}`" class="field-hint">
-                    API Key
-                  </label>
-                  <input
-                    :id="`byok-key-${provider.provider_id}`"
-                    v-model="byokKeyDrafts[provider.provider_id]"
-                    type="password"
-                    autocomplete="new-password"
-                    autocapitalize="none"
-                    spellcheck="false"
-                    maxlength="512"
-                    placeholder="输入后仅提交给本站后端"
-                    :disabled="
-                      !canManageByokCredentials(currentUser) ||
-                      !byokRuntimeAvailable ||
-                      !provider.enabled ||
-                      byokIsBusy
-                    "
-                  />
-                  <div class="byok-form-acts">
-                    <button
-                      type="submit"
-                      class="btn btn-primary"
-                      :disabled="!canSaveByokCredential(provider)"
-                    >
-                      {{
-                        savingByokProviderId === provider.provider_id
-                          ? "保存中"
-                          : byokCredentialStatus(provider.provider_id)?.configured
-                            ? "替换"
-                            : "保存"
-                      }}
-                    </button>
-                    <button
-                      v-if="byokCredentialStatus(provider.provider_id)?.configured"
-                      type="button"
-                      class="btn btn-danger"
-                      :disabled="!canDeleteByokCredential(provider.provider_id)"
-                      @click="removeByokCredential(provider)"
-                    >
-                      {{ deletingByokProviderId === provider.provider_id ? "删除中" : "删除" }}
-                    </button>
-                  </div>
-                </form>
-              </article>
-            </div>
-          </section>
-
-          <!-- 插件注册表 -->
-          <section
-            v-else
-            class="inspector-section"
-            aria-labelledby="plugin-panel-heading"
-          >
-            <div class="inspector-head">
-              <h3 id="plugin-panel-heading">内部插件管理</h3>
-            </div>
-            <PluginRegistryPanel
-              :can-manage-plugins="Boolean(currentUser && !currentUser.is_mock)"
-            />
-          </section>
-        </div>
-      </aside>
     </div>
   </div>
 </template>

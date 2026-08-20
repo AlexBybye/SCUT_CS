@@ -7,6 +7,10 @@ const props = defineProps<{
   canManagePlugins: boolean;
 }>();
 
+const emit = defineEmits<{
+  changed: [];
+}>();
+
 const registry = ref<PluginRegistry | null>(null);
 const loading = ref(true);
 const errorMessage = ref("");
@@ -51,6 +55,7 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
       ? unloadCoursePlugin(course.course_id)
       : loadCoursePlugin(course.course_id));
     registry.value = await getPluginRegistry();
+    emit("changed");
   } catch (error) {
     errorMessage.value =
       error instanceof Error ? error.message : "装载/卸载失败。";

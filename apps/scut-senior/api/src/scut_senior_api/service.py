@@ -53,6 +53,7 @@ from .ports import (
 )
 from .registry import CourseRegistry, UnknownCourseError
 from .runtime_guards import (
+    GuardedAnswer,
     RuntimeGuardError,
     build_guarded_answer,
     normalize_topics,
@@ -690,6 +691,14 @@ class IterationZeroService:
                     interrupted = finish_interrupted()
                     if interrupted is not None:
                         return interrupted
+                    if not sources:
+                        # Zero candidates make every citation impossible, so a
+                        # guard rejection (hallucinated [S#], out-of-scope block,
+                        # or URL) cannot be repaired by regenerating. Degrade to
+                        # an honest insufficient-evidence result instead of
+                        # failing the run after a long model call.
+                        guarded = _empty_candidate_insufficient_evidence()
+                        break
                     if retry_count >= 1:
                         interrupted = persist_failed_or_interrupted(
                             failure_node="citation_guard",
@@ -1465,6 +1474,25 @@ def _enforce_primary_answer_tone(
         )
         return [*blocks[:index], normalized, *blocks[index + 1 :]]
     return blocks
+
+
+def _empty_candidate_insufficient_evidence() -> GuardedAnswer:
+    """Deterministic result when retrieval found no candidates at all.
+
+    Zero sources make every citation impossible, so a guard rejection cannot
+    be repaired by regenerating. Return an honest ``insufficient_evidence``
+    result instead of failing the run after a long model call.
+    """
+
+    return GuardedAnswer(
+        blocks=(),
+        citation_ids=(),
+        evidence_status=EvidenceStatus.INSUFFICIENT,
+        answer_status=AnswerStatus.INSUFFICIENT_EVIDENCE,
+        coverage_gaps=(
+            "本次课程资料候选不足，未找到与问题匹配的可引用资料；已停止补充通用知识。",
+        ),
+    )
 
 
 def _is_retryable_model_output_error(error: Exception) -> bool:

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, onBeforeUnmount, ref, watch } from "vue";
 import type {
   AnswerBlock,
   AnswerBlockType,
@@ -73,6 +73,111 @@ const hasStreamActivity = computed(() => Boolean(
   ),
 ));
 
+// 打字机：生成中逐字缓慢揭示正文最后一块；结果落定后若尚未打完则继续打完，
+// 历史加载（无实时生成）则直接显示完整。目标文本缓存为 computed。
+const typewriterTarget = computed<string>(() => {
+  const blocks = props.result?.answer_blocks.length
+    ? props.result.answer_blocks
+    : (props.streamState?.answerBlocks ?? []);
+  const last = blocks[blocks.length - 1];
+  return last ? last.content : "";
+});
+const typedLength = ref(0);
+let typeTimer: number | null = null;
+
+function stopTypeTimer(): void {
+  if (typeTimer !== null) {
+    window.clearInterval(typeTimer);
+    typeTimer = null;
+  }
+}
+
+watch(
+  () => [props.isRunning, typewriterTarget.value] as const,
+  ([running, target]) => {
+    if (!target) {
+      typedLength.value = 0;
+      stopTypeTimer();
+      return;
+    }
+    if (running) {
+      if (typedLength.value > target.length) typedLength.value = target.length;
+      if (typeTimer === null && typedLength.value < target.length && typeof window !== "undefined") {
+        typeTimer = window.setInterval(() => {
+          const full = typewriterTarget.value.length;
+          if (typedLength.value < full) {
+            typedLength.value = Math.min(full, typedLength.value + 2);
+          }
+          if (typedLength.value >= full) stopTypeTimer();
+        }, 70);
+      }
+    } else if (typeTimer === null) {
+      // 不在生成、也没有进行中的打字（历史/初始）：直接完整显示。
+      typedLength.value = target.length;
+    }
+    // 不在生成但定时器仍在跑（刚结束）：不打断，让它继续打完。
+  },
+  { immediate: true },
+);
+
+onBeforeUnmount(stopTypeTimer);
+
+// 流动 trace：真实 trace 事件逐步展示；每步停留 2s，
+// 当前步展示满 2s 且下一步已到达时立刻前进一格（不跳到最新、不跳步）。
+const flowTrace = computed(() => props.result?.trace ?? props.streamState?.traceEvents ?? []);
+const flowStep = ref(0);
+let flowTimer: number | null = null;
+let flowAdvanceAt = 0;
+
+function stopFlowTimer(): void {
+  if (flowTimer !== null) {
+    window.clearInterval(flowTimer);
+    flowTimer = null;
+  }
+}
+
+function advanceFlowStep(): void {
+  if (flowStep.value < flowTrace.value.length - 1) {
+    flowStep.value += 1;
+    flowAdvanceAt = Date.now();
+  }
+}
+
+watch(
+  () => props.isRunning,
+  (running) => {
+    stopFlowTimer();
+    if (!running) {
+      flowStep.value = 0;
+      flowAdvanceAt = 0;
+      return;
+    }
+    flowStep.value = 0;
+    flowAdvanceAt = Date.now();
+    flowTimer = window.setInterval(() => {
+      if (Date.now() - flowAdvanceAt >= 2000) advanceFlowStep();
+    }, 200);
+  },
+  { immediate: true },
+);
+
+watch(
+  () => flowTrace.value.length,
+  () => {
+    if (!props.isRunning || !flowTrace.value.length) return;
+    if (flowStep.value < flowTrace.value.length - 1 && Date.now() - flowAdvanceAt >= 2000) {
+      advanceFlowStep();
+    }
+  },
+);
+
+onBeforeUnmount(stopFlowTimer);
+
+// 运行中逐条揭示（未到的框不显示）；结束后展示全部。
+const visibleFlowTrace = computed(() =>
+  props.isRunning ? flowTrace.value.slice(0, flowStep.value + 1) : flowTrace.value,
+);
+
 const answerBlocks = computed<AnswerBlock[]>(() => {
   if (props.result?.answer_blocks.length) return props.result.answer_blocks;
   if (props.streamState?.answerBlocks.length) {
@@ -127,6 +232,13 @@ function renderedAnswer(content: string): string {
   return renderAnswerMarkdown(content);
 }
 
+function displayedBlockContent(block: AnswerBlock, index: number): string {
+  if (index === answerBlocks.value.length - 1 && typedLength.value < block.content.length) {
+    return block.content.slice(0, typedLength.value);
+  }
+  return block.content;
+}
+
 function citationLocator(citation: Citation): string {
   const parts: string[] = [];
   if (citation.locator_start !== undefined && citation.locator_start !== null) {
@@ -163,6 +275,31 @@ function citationLocator(citation: Citation): string {
       </template>
     </header>
 
+    <div v-if="isRunning || flowTrace.length" class="flow" aria-live="polite">
+      <div v-if="isRunning" class="flow-head">
+        <span class="flow-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="flow-label">思考中</span>
+      </div>
+      <ol v-if="visibleFlowTrace.length" class="flow-trace">
+        <li
+          v-for="(event, index) in visibleFlowTrace"
+          :key="event.event_id"
+          class="flow-step"
+          :class="{ 'flow-step-on': isRunning && index === flowStep }"
+        >
+          <div class="flow-step-row">
+            <strong>{{ event.node }}</strong>
+            <span>{{ isRunning && index === flowStep ? "运行中" : event.status }}</span>
+            <details v-if="event.result && Object.keys(event.result).length" class="flow-result">
+              <summary>查看安全结果</summary>
+              <pre>{{ JSON.stringify(event.result, null, 2) }}</pre>
+            </details>
+          </div>
+        </li>
+      </ol>
+      <p v-else-if="isRunning" class="flow-wait">正在等待第一个安全 Trace 事件。</p>
+    </div>
+
     <div v-if="isRunning && !hasStreamActivity" class="skeleton" role="status">
       <span></span>
       <span></span>
@@ -196,7 +333,7 @@ function citationLocator(citation: Citation): string {
           <span v-if="isRunning && !result" class="chip chip-accent">生成中</span>
         </div>
         <div class="block-body">
-          <div class="markdown-body" v-html="renderedAnswer(block.content)"></div>
+          <div class="markdown-body" v-html="renderedAnswer(displayedBlockContent(block, index))"></div>
           <span v-if="isRunning && !result" class="caret" aria-hidden="true"></span>
         </div>
       </article>
@@ -260,34 +397,6 @@ function citationLocator(citation: Citation): string {
               </a>
             </div>
             <p v-else class="empty-line">本次没有返回外部资源。</p>
-          </div>
-        </details>
-
-        <details class="evidence-group">
-          <summary>
-            <span>Trace</span>
-            <span class="chip">{{ trace.length }}</span>
-          </summary>
-          <p class="evidence-group-note">仅展示后端返回的安全字段。</p>
-          <div class="evidence-body">
-            <ol v-if="trace.length" class="trace">
-              <li v-for="(event, index) in trace" :key="event.event_id">
-                <span class="trace-n">{{ String(index + 1).padStart(2, "0") }}</span>
-                <div class="trace-main">
-                  <strong>{{ event.node }}</strong>
-                  <span>
-                    {{ event.status }}<template v-if="event.duration_ms !== undefined"> / {{ event.duration_ms }} ms</template>
-                  </span>
-                  <details v-if="event.result && Object.keys(event.result).length">
-                    <summary>查看安全结果</summary>
-                    <pre>{{ JSON.stringify(event.result, null, 2) }}</pre>
-                  </details>
-                </div>
-              </li>
-            </ol>
-            <p v-else class="empty-line">
-              {{ isRunning ? "正在等待第一个安全 Trace 事件。" : "本次没有 Trace 事件。" }}
-            </p>
           </div>
         </details>
       </div>
