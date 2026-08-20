@@ -436,7 +436,7 @@ def test_openrouter_accepts_a_plain_text_complex_answer_without_retry(
     general_supplement = result["general_supplement"]
     assert general_supplement.startswith(plain_text)
     assert general_supplement.count(
-        "> **助教提示：** 先核对定义、条件和符号，再给出可复核的结论。"
+        "> **助教提示：** 定义、前提、符号先摆齐，少一步都不给分。"
     ) == 1
     assert result["answer_blocks"] == [
         {"type": "general", "content": general_supplement}
@@ -522,7 +522,7 @@ def test_missing_or_invalid_bilibili_keywords_fall_back_to_model_core_topics(
     result = response.json()
     assert result["repository_answer"].startswith("矩阵秩的说明。[S1]")
     assert result["repository_answer"].count(
-        "> **助教提示：** 先核对定义、条件和符号，再给出可复核的结论。"
+        "> **助教提示：** 定义、前提、符号先摆齐，少一步都不给分。"
     ) == 1
     search = result["external_resources"][-1]
     assert search["query_keywords"] == ["矩阵的秩"]

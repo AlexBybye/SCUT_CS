@@ -20,6 +20,7 @@ from scut_senior_api.adapters.byok import (
 )
 from scut_senior_api.adapters.openrouter import HttpResponse
 from scut_senior_api.auth import GitHubUserProfile, SESSION_COOKIE_NAME
+from scut_senior_api.byok_catalog import ByokProviderCatalog
 from scut_senior_api.config import Settings
 from scut_senior_api.contracts import RunStatus, WorkflowRunRequest
 from scut_senior_api.main import create_app
@@ -166,9 +167,11 @@ def test_four_byok_routes_use_one_fixed_endpoint_model_without_response_schema(
     assert call["headers"]["Authorization"] == f"Bearer {api_key}"
     assert call["payload"]["model"] == model_id
     # Call defaults are declared on the fixed catalog entry, not hard-coded
-    # in the request builder.
-    assert call["payload"]["max_tokens"] == 2048
-    assert call["payload"]["temperature"] == 0.2
+    # in the request builder; assert against the catalog so a provider-specific
+    # default (e.g. a larger budget for reasoning models) stays correct.
+    catalog_entry = ByokProviderCatalog().resolve_model(provider_id, model_id)
+    assert call["payload"]["max_tokens"] == catalog_entry.default_max_tokens
+    assert call["payload"]["temperature"] == catalog_entry.default_temperature
     assert "models" not in call["payload"]
     assert "fallbacks" not in call["payload"]
     assert "base_url" not in call["payload"]
@@ -229,7 +232,7 @@ def test_byok_accepts_a_plain_text_complex_answer_without_retry(tmp_path: Path) 
     general_supplement = result["general_supplement"]
     assert general_supplement.startswith(plain_text)
     assert general_supplement.count(
-        "> **助教提示：** 先核对定义、条件和符号，再给出可复核的结论。"
+        "> **助教提示：** 定义、前提、符号先摆齐，少一步都不给分。"
     ) == 1
     assert result["answer_blocks"] == [
         {"type": "general", "content": general_supplement}

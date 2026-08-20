@@ -22,6 +22,13 @@ from ..workflow_focus import (
 )
 
 
+_TONE_FIXTURE_NOTES: dict[Tone, str] = {
+    Tone.TEACHING_ASSISTANT: "（Mock 助教口径：依据先摆齐，结论才给分。）",
+    Tone.SENIOR_STUDENT: "（Mock 学长口径：主线就一条，卡住回定义，稳的。）",
+    Tone.STUDY_PARTNER: "（Mock 学妹口径：这一步可别偷懒哦～自己先算一遍，我再帮你对答案！）",
+}
+
+
 _FIXTURE_FOCUS_OUTPUTS: dict[
     FocusStrategy, tuple[tuple[str, ...], tuple[str, ...]]
 ] = {
@@ -184,6 +191,7 @@ def _render_fixture_answer(
     tone_callout = build_tone_visible_callout(tone)
     context = (
         "这是迭代 0 的确定性 Mock 回答，仅用于验证契约、来源与持久化链路。\n\n"
+        f"{_TONE_FIXTURE_NOTES[tone]}\n\n"
         f"已从合成 Fixture《{source_title}》读取：{preview}\n\n"
         f"本次结构化输入类型为 `{workflow_type}`；"
         "尚未调用真实模型，也未运行生产检索。"

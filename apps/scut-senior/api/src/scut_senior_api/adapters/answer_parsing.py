@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import logging
 import re
 from collections.abc import Iterable, Mapping
 
@@ -17,6 +18,8 @@ class ModelAnswerParseError(ValueError):
     """
 
 
+logger = logging.getLogger("scut_senior_api.adapters.answer_parsing")
+
 _JSON_FENCE_RE = re.compile(
     r"^\s*```(?:json)?\s*\n(?P<body>[\s\S]*?)\n?```\s*$",
     re.IGNORECASE,
@@ -29,11 +32,20 @@ _SCUT_META_COMMENT_RE = re.compile(
 
 
 def parse_chat_completion_answer(body: bytes) -> GeneratedAnswer:
-    """Extract a best-effort answer from a Chat Completions response body."""
+    """Extract a best-effort answer from a Chat Completions response body.
+
+    Real OpenAI-compatible providers differ in the assistant payload shape:
+    ``message.content`` may be a plain string, a list of typed content parts
+    (multimodal ``{"type": "text", "text": ...}`` items), or a single part
+    mapping. All of these are normalized here; anything else still fails
+    closed with a server-side shape diagnostic so a broken upstream is not
+    silently turned into a student-visible answer.
+    """
 
     try:
         payload = json.loads(body.decode("utf-8"))
-        content = payload["choices"][0]["message"]["content"]
+        message = payload["choices"][0]["message"]
+        content = message.get("content")
     except (
         AttributeError,
         UnicodeDecodeError,
@@ -43,9 +55,74 @@ def parse_chat_completion_answer(body: bytes) -> GeneratedAnswer:
         TypeError,
     ):
         raise ModelAnswerParseError("chat completion has no assistant content") from None
-    if not isinstance(content, str) or not content.strip():
+
+    text = _assistant_text(content)
+    if not text.strip():
+        _log_unparsable_shape(body, content)
         raise ModelAnswerParseError("chat completion assistant content is empty")
-    return parse_answer_content(content)
+    return parse_answer_content(text)
+
+
+def _assistant_text(content: object) -> str:
+    """Normalize plain-string, part-list, and single-part assistant content."""
+
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        return "".join(
+            part.get("text", "")
+            for part in content
+            if isinstance(part, Mapping) and isinstance(part.get("text"), str)
+        )
+    if isinstance(content, Mapping):
+        candidate = content.get("text")
+        if isinstance(candidate, str):
+            return candidate
+        # A structured envelope object (e.g. {"markdown": ...}) is re-serialized
+        # so the downstream parser can decode it as a structured completion.
+        return json.dumps(content, ensure_ascii=False)
+    return ""
+
+
+def _log_unparsable_shape(body: bytes, content: object) -> None:
+    """Record why an upstream completion was rejected, without leaking it to
+    the student-visible Trace or answer. Detail stays server-side."""
+
+    try:
+        payload = json.loads(body.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        payload = None
+    top_keys = list(payload) if isinstance(payload, Mapping) else []
+    message: object = None
+    finish_reason: object = None
+    if isinstance(payload, Mapping) and isinstance(payload.get("choices"), list):
+        for choice in payload["choices"]:
+            if not isinstance(choice, Mapping):
+                continue
+            if isinstance(choice.get("message"), Mapping):
+                message = choice["message"]
+            finish_reason = choice.get("finish_reason")
+            break
+    msg_keys = list(message) if isinstance(message, Mapping) else []
+    content_len = len(content) if isinstance(content, (str, list, Mapping)) else -1
+    reasoning_len = -1
+    if (
+        isinstance(message, Mapping)
+        and isinstance(message.get("reasoning_content"), str)
+    ):
+        reasoning_len = len(message["reasoning_content"])
+    logger.warning(
+        "chat completion assistant content is unusable: content_type=%s "
+        "content_len=%s top_keys=%s msg_keys=%s reasoning_content_len=%s "
+        "finish_reason=%s body_preview=%r",
+        type(content).__name__,
+        content_len,
+        top_keys,
+        msg_keys,
+        reasoning_len,
+        finish_reason,
+        body[:120].decode("utf-8", errors="replace"),
+    )
 
 
 def parse_answer_content(content: str) -> GeneratedAnswer:
@@ -84,6 +161,9 @@ def _from_mapping(value: Mapping[object, object]) -> GeneratedAnswer:
         "answer",
         "content",
         "response",
+        "markdown",
+        "output",
+        "text",
     )
     repository_answer, comment_metadata = _extract_scut_metadata(repository_answer)
     general_supplement = _text(value.get("general_supplement"))

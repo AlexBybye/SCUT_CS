@@ -4,10 +4,13 @@ import json
 
 import pytest
 
-from scut_senior_api.adapters.answer_parsing import parse_chat_completion_answer
+from scut_senior_api.adapters.answer_parsing import (
+    ModelAnswerParseError,
+    parse_chat_completion_answer,
+)
 
 
-def _chat_completion_body(content: str) -> bytes:
+def _chat_completion_body(content: object) -> bytes:
     return json.dumps({"choices": [{"message": {"content": content}}]}).encode()
 
 
@@ -107,3 +110,65 @@ def test_parser_defers_duplicate_and_unknown_citation_claims_to_the_runtime_guar
     # Parsing only preserves the provider's explicit claims. The request-local
     # citation guard later rejects duplicate IDs and IDs absent from candidates.
     assert answer.citation_ids == ("S1", "S1", "S999")
+
+
+def test_parser_accepts_multimodal_content_parts_list() -> None:
+    body = json.dumps(
+        {
+            "choices": [
+                {
+                    "message": {
+                        "content": [
+                            {"type": "text", "text": "先求主元，"},
+                            {"type": "image_url", "image_url": {"url": "ignored"}},
+                            {"type": "text", "text": "再判断秩。[S1]"},
+                        ]
+                    }
+                }
+            ]
+        }
+    ).encode()
+
+    answer = parse_chat_completion_answer(body)
+
+    assert answer.repository_answer == "先求主元，再判断秩。[S1]"
+    assert answer.citation_ids == ("S1",)
+
+
+def test_parser_accepts_single_part_content_mapping() -> None:
+    body = _chat_completion_body({"type": "text", "text": "答案是 2。[S2]"})
+
+    answer = parse_chat_completion_answer(body)
+
+    assert answer.repository_answer == "答案是 2。[S2]"
+    assert answer.citation_ids == ("S2",)
+
+
+@pytest.mark.parametrize(
+    ("key", "expected"),
+    [
+        ("markdown", "## 结论\n\n行列式按行展开。[S3]"),
+        ("output", "直接输出：秩等于主元个数。"),
+        ("text", "用 text 键包裹的正文。"),
+    ],
+)
+def test_parser_accepts_common_envelope_keys(key: str, expected: str) -> None:
+    answer = parse_chat_completion_answer(_chat_completion_body({key: expected}))
+
+    assert answer.repository_answer == expected
+
+
+@pytest.mark.parametrize(
+    "content",
+    [
+        None,
+        "",
+        [],
+        [{"type": "image_url", "image_url": {"url": "x"}}],
+        {"type": "image_url"},
+        {"unknown": "no answer text"},
+    ],
+)
+def test_parser_still_fails_closed_on_unusable_assistant_content(content: object) -> None:
+    with pytest.raises(ModelAnswerParseError):
+        parse_chat_completion_answer(_chat_completion_body(content))
