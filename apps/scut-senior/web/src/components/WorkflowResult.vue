@@ -3,17 +3,22 @@ import { computed, ref } from "vue";
 import type {
   AnswerBlock,
   AnswerBlockType,
+  AnswerMode,
   Citation,
   FeedbackType,
+  Tone,
   WorkflowRunResult,
 } from "../contracts";
 import { submitFeedback } from "../api";
+import { renderAnswerMarkdown } from "../markdown";
 import type { WorkflowStreamState } from "../workflowStream";
 
 const props = defineProps<{
   result: WorkflowRunResult | null;
   isRunning: boolean;
   streamState: WorkflowStreamState | null;
+  answerMode?: AnswerMode | null;
+  tone?: Tone | null;
 }>();
 
 const feedbackType = ref<FeedbackType | null>(null);
@@ -90,12 +95,37 @@ const answerBlockLabels: Record<AnswerBlockType, string> = {
   personalized_analysis: "个性化分析",
 };
 
+const answerModeLabels: Record<AnswerMode, string> = {
+  concise: "简短",
+  detailed: "详细",
+  example: "举例",
+  step_by_step: "分步骤",
+};
+
+const answerModeLabel = computed(() => (
+  props.answerMode ? answerModeLabels[props.answerMode] : null
+));
+
+const toneLabels: Record<Tone, string> = {
+  teaching_assistant: "助教",
+  senior_student: "学长",
+  study_partner: "复习搭子",
+};
+
+const toneLabel = computed(() => (
+  props.tone ? toneLabels[props.tone] : null
+));
+
 const answerBlockNotes: Record<AnswerBlockType, string> = {
   repository: "结论受仓库引用与证据状态约束",
   user_material: "仅基于你在本次 Workflow 提供的材料",
   general: "不作为课程仓库证据，也不附仓库引用",
   personalized_analysis: "结合本次作答或学习目标生成",
 };
+
+function renderedAnswer(content: string): string {
+  return renderAnswerMarkdown(content);
+}
 
 function citationLocator(citation: Citation): string {
   const parts: string[] = [];
@@ -128,6 +158,8 @@ function citationLocator(citation: Citation): string {
           {{ result?.answer_status ?? (isRunning ? "streaming" : streamError?.code ?? "partial") }}
         </span>
         <span v-if="result" class="chip">证据状态：{{ result.evidence_status }}</span>
+        <span v-if="answerModeLabel" class="chip">输出偏好：{{ answerModeLabel }}</span>
+        <span v-if="toneLabel" class="chip">表达风格：{{ toneLabel }}</span>
       </template>
     </header>
 
@@ -163,10 +195,10 @@ function citationLocator(citation: Citation): string {
           <span class="block-note">{{ answerBlockNotes[block.type] }}</span>
           <span v-if="isRunning && !result" class="chip chip-accent">生成中</span>
         </div>
-        <p class="block-body">
-          {{ block.content }}
+        <div class="block-body">
+          <div class="markdown-body" v-html="renderedAnswer(block.content)"></div>
           <span v-if="isRunning && !result" class="caret" aria-hidden="true"></span>
-        </p>
+        </div>
       </article>
       <p v-if="!answerBlocks.length" class="empty-line">
         {{ isRunning ? "Workflow 已开始，正在等待回答内容。" : "本次没有返回回答内容。" }}

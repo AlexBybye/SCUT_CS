@@ -96,6 +96,15 @@ export type LocatorType = "page" | "slide" | "heading" | "question" | "none";
 export const COURSE_PLUGIN_STATES = ["active", "fixture_only", "registered"] as const;
 export type CoursePluginState = (typeof COURSE_PLUGIN_STATES)[number];
 
+export const RETRIEVAL_MODES = ["fixture", "local_corpus"] as const;
+export const RETRIEVAL_AVAILABILITIES = [
+  "fixture",
+  "local_corpus",
+  "unavailable",
+] as const;
+export type RetrievalMode = (typeof RETRIEVAL_MODES)[number];
+export type RetrievalAvailability = (typeof RETRIEVAL_AVAILABILITIES)[number];
+
 export interface AgentPresetEntry {
   preset_id: string;
   preset_version: string;
@@ -161,6 +170,16 @@ export interface Course {
   aliases: string[];
   is_open: boolean;
   mock_available: boolean;
+  retrieval_availability: RetrievalAvailability;
+  retrieval_available: boolean;
+  plugin_loaded: boolean;
+  selectable: boolean;
+}
+
+export interface CourseCatalog {
+  contract_version: string;
+  retrieval_mode: RetrievalMode;
+  courses: Course[];
 }
 
 export interface ModelCatalogItem {

@@ -13,13 +13,15 @@ from scut_senior_api.byok_catalog import ByokProviderCatalog
 from scut_senior_api.config import Settings
 from scut_senior_api.contracts import WorkflowRunRequest
 from scut_senior_api.main import create_app
-from scut_senior_api.ports import RetrievalBatch
+from scut_senior_api.ports import RetrievedSource, RetrievalBatch
 from scut_senior_api.workflow_focus import (
     MAX_AUTHORITATIVE_QUERY_CHARS,
     MAX_FOCUS_CONTEXT_CHARS,
     FocusStrategy,
     build_response_control_directive,
+    build_tone_visible_callout,
     build_workflow_focus,
+    enforce_tone_visible_callout,
 )
 
 
@@ -194,6 +196,8 @@ def test_answer_mode_and_tone_change_both_provider_prompts_and_mock_output() -> 
         assert concise_system != step_system
         assert build_response_control_directive(concise) in concise_system
         assert build_response_control_directive(step_by_step) in step_system
+        assert "数学公式都必须独占一个 Markdown 段落，并用 `$$...$$` 包裹" in concise_system
+        assert "所有数学公式必须独占一行" not in concise_system
 
     mock = MockModelGateway()
     concise_answer = mock.generate(concise, []).repository_answer
@@ -201,6 +205,198 @@ def test_answer_mode_and_tone_change_both_provider_prompts_and_mock_output() -> 
     assert concise_answer != step_answer
     assert "`concise`" in concise_answer
     assert "`senior_student`" in step_answer
+
+
+@pytest.mark.parametrize(
+    ("tone", "directive_markers"),
+    [
+        (
+            "teaching_assistant",
+            ("【表达风格：助教】", "严肃、认真、可复核", "不居高临下"),
+        ),
+        (
+            "senior_student",
+            ("【表达风格：学长】", "稳重、亲切", "不虚构个人经历"),
+        ),
+        (
+            "study_partner",
+            ("【表达风格：复习搭子】", "轻松、俏皮、略带傲娇", "绝不使用辱骂"),
+        ),
+    ],
+)
+def test_tone_is_a_safe_visible_markdown_contract_in_prompt_and_mock(
+    tone: str,
+    directive_markers: tuple[str, ...],
+) -> None:
+    request = _request(
+        "knowledge_qa",
+        {"question": "什么是矩阵的秩？"},
+        answer_mode="example",
+        tone=tone,
+    )
+
+    directive = build_response_control_directive(request)
+    answer = MockModelGateway().generate(request, []).repository_answer
+    callout = build_tone_visible_callout(request.tone)
+
+    assert all(marker in directive for marker in directive_markers)
+    assert "回答方式决定正文结构" in directive
+    assert "整个正文必须且只能出现一次" in directive
+    assert "人格介绍" in directive
+    assert "只输出学生可读、可渲染的 Markdown 正文" in directive
+    assert "数学公式都必须独占一个 Markdown 段落，并用 `$$...$$` 包裹" in directive
+    assert "[S#]" in directive
+    assert directive.count(callout) == 1
+    assert answer.count(callout) == 1
+    assert answer.index("## 结论") < answer.index(callout) < answer.index("## 例子")
+
+
+@pytest.mark.parametrize(
+    "tone",
+    ("teaching_assistant", "senior_student", "study_partner"),
+)
+def test_visible_tone_callout_is_enforced_once_without_touching_math_or_citations(
+    tone: str,
+) -> None:
+    request = _request(
+        "knowledge_qa",
+        {"question": "什么是矩阵的秩？"},
+        answer_mode="concise",
+        tone=tone,
+    )
+    source = "\n\n".join(
+        (
+            "## 结论\n\n矩阵的秩可以由主元个数判断 [S1]。",
+            "> **助教提示：** 旧标记一。",
+            "> **学长提醒：** 旧标记二。",
+            "> **复习搭子提醒：** 旧标记三。",
+            "$$\\operatorname{rank}(A)=2$$",
+            "## 要点\n\n- 非零行数量等于秩。",
+        )
+    )
+
+    normalized = enforce_tone_visible_callout(source, request.tone)
+    expected = build_tone_visible_callout(request.tone)
+
+    assert normalized.count(expected) == 1
+    assert "旧标记一" not in normalized
+    assert "旧标记二" not in normalized
+    assert "旧标记三" not in normalized
+    assert "[S1]" in normalized
+    assert "$$\\operatorname{rank}(A)=2$$" in normalized
+    assert normalized.index("## 结论") < normalized.index(expected) < normalized.index("## 要点")
+
+
+@pytest.mark.parametrize(
+    ("answer_mode", "expected_sections"),
+    [
+        ("concise", ("## 结论", "## 要点")),
+        ("detailed", ("## 结论", "## 原理与依据", "## 易错点或适用边界")),
+        ("example", ("## 结论", "## 例子", "## 从例子得到的判断")),
+        ("step_by_step", ("## 步骤", "## 结论")),
+    ],
+)
+def test_tone_changes_visible_callout_without_changing_answer_mode_sections(
+    answer_mode: str,
+    expected_sections: tuple[str, ...],
+) -> None:
+    answers = {}
+    requests = {}
+    for tone in ("teaching_assistant", "senior_student", "study_partner"):
+        request = _request(
+            "knowledge_qa",
+            {"question": "什么是矩阵的秩？"},
+            answer_mode=answer_mode,
+            tone=tone,
+        )
+        requests[tone] = request
+        answers[tone] = MockModelGateway().generate(request, []).repository_answer
+
+    assert len(set(answers.values())) == 3
+    for tone, answer in answers.items():
+        headings = tuple(
+            line for line in answer.splitlines() if line.startswith("## ")
+        )
+        callout = build_tone_visible_callout(requests[tone].tone)
+        assert headings == expected_sections
+        assert answer.count(callout) == 1
+        assert (
+            answer.index(expected_sections[0])
+            < answer.index(callout)
+            < answer.index(expected_sections[1])
+        )
+
+
+@pytest.mark.parametrize(
+    ("answer_mode", "required_sections"),
+    [
+        ("concise", ("## 结论", "## 要点")),
+        ("detailed", ("## 原理与依据", "## 易错点或适用边界")),
+        ("example", ("## 例子", "## 从例子得到的判断")),
+        ("step_by_step", ("## 步骤", "1. **目的：**")),
+    ],
+)
+def test_mock_model_visibly_exercises_each_answer_mode(
+    answer_mode: str,
+    required_sections: tuple[str, ...],
+) -> None:
+    request = _request(
+        "knowledge_qa",
+        {"question": "什么是矩阵的秩？"},
+        answer_mode=answer_mode,
+    )
+
+    answer = MockModelGateway().generate(
+        request,
+        [
+            RetrievedSource(
+                chunk_id="fixture:p1:c01",
+                course_id="linear_algebra",
+                source_id="fixture",
+                source_title="合成线性代数资料",
+                text="矩阵的秩可以由主元个数判断。",
+                locator_type="page",
+                locator_start=1,
+                locator_end=1,
+                question_id=None,
+                heading_path=(),
+            )
+        ],
+    ).repository_answer
+
+    assert all(section in answer for section in required_sections)
+    assert "确定性 Mock 回答" in answer
+
+
+@pytest.mark.parametrize(
+    ("answer_mode", "required_sections"),
+    [
+        ("concise", ("【回答方式：简短】", "## 结论", "## 要点")),
+        (
+            "detailed",
+            ("【回答方式：详细】", "## 原理与依据", "## 推导或判断过程"),
+        ),
+        ("example", ("【回答方式：举例】", "## 例子", "## 从例子得到的判断")),
+        ("step_by_step", ("【回答方式：分步骤】", "## 步骤", "有序列表")),
+    ],
+)
+def test_answer_mode_is_an_explicit_markdown_output_contract(
+    answer_mode: str,
+    required_sections: tuple[str, ...],
+) -> None:
+    request = _request(
+        "knowledge_qa",
+        {"question": "为什么初等行变换不改变矩阵的秩？"},
+        answer_mode=answer_mode,
+    )
+
+    directive = build_response_control_directive(request)
+
+    assert "【生成表达约束】" in directive
+    assert "必须在正文中体现" in directive
+    assert "直接输出学生可读的 Markdown 正文" in directive
+    assert all(section in directive for section in required_sections)
+    assert "<!-- scut-meta:" in directive
 
 
 def test_knowledge_qa_uses_only_the_typed_question_as_its_anchor() -> None:

@@ -43,12 +43,20 @@ import {
   type KnowledgeScope,
   type ModelCatalog,
   type ModelCatalogItem,
+  type RetrievalMode,
   type Tone,
   type WorkflowAttempt,
   type WorkflowRunRequest,
   type WorkflowRunResult,
   type WorkflowType,
 } from "./contracts";
+import {
+  courseAvailabilitySummary,
+  courseOptionLabel,
+  courseRuntimeDescription,
+  courseSelectionError,
+  selectSelectableCourseId,
+} from "./courseAvailability";
 import {
   configuredByokModelOptions,
   initialModelSelectionKey,
@@ -156,6 +164,7 @@ const helpLevelLabels: Record<HelpLevel, string> = {
 };
 
 const courses = ref<Course[]>([]);
+const retrievalMode = ref<RetrievalMode | null>(null);
 const modelCatalog = ref<ModelCatalog>(FAIL_CLOSED_MODEL_CATALOG);
 const modelCatalogLoadSucceeded = ref(false);
 const selectedCourseId = ref("");
@@ -233,6 +242,7 @@ let activeWorkflowStream: WorkflowStreamHandle | null = null;
 const selectedCourse = computed(() =>
   courses.value.find((course) => course.course_id === selectedCourseId.value),
 );
+const hasSelectableCourse = computed(() => courses.value.some((course) => course.selectable));
 const activeWorkflow = computed(() => workflowCopy[workflowType.value]);
 const byokCatalogIsCurrent = computed(
   () =>
@@ -296,6 +306,12 @@ const activeAttempt = computed<WorkflowAttempt | null>(
 const activeAttemptIndex = computed(() =>
   attempts.value.findIndex((attempt) => attempt.workflow_run_id === selectedAttemptId.value),
 );
+const displayedAnswerMode = computed<AnswerMode | null>(() =>
+  activeAttempt.value?.request.answer_mode ?? (isRunning.value ? answerMode.value : null),
+);
+const displayedTone = computed<Tone | null>(() =>
+  activeAttempt.value?.request.tone ?? (isRunning.value ? tone.value : null),
+);
 // 记录区展示的提问：优先取选中尝试的请求，其次取正在输入的草稿。
 const transcriptAsk = computed(() => {
   if (activeAttempt.value) return activeAttempt.value.request.user_input;
@@ -317,6 +333,7 @@ const canSubmitWorkflow = computed(
     !isLoadingCourses.value &&
     !isLoadingModels.value &&
     Boolean(currentUser.value) &&
+    Boolean(selectedCourse.value?.selectable) &&
     Boolean(selectedModel.value?.user_selectable),
 );
 const runtimeNoticeTitle = computed(() =>
@@ -709,7 +726,7 @@ function makeRequest(activeConversationId: string): WorkflowRunRequest {
 function validateForm(): string | null {
   if (!currentUser.value) return "请先使用 GitHub 登录。";
   if (!selectedCourseId.value) return "请先选择课程。";
-  if (!selectedCourse.value?.mock_available) return "该课程的 Mock Fixture 尚不可用。";
+  if (!selectedCourse.value?.selectable) return courseSelectionError(selectedCourse.value);
   if (!selectedModel.value?.user_selectable) return "请选择一个当前可用的模型。";
   if (!userInput.value.trim()) return `请填写${activeWorkflow.value.inputLabel}。`;
   if (workflowType.value === "mistake_review" && !originalAnswer.value.trim()) {
@@ -918,14 +935,13 @@ async function loadCourses(): Promise<void> {
   isLoadingCourses.value = true;
   errorMessage.value = "";
   try {
-    courses.value = await getCourses();
-    const firstMockCourse = courses.value.find((course) => course.mock_available);
-    const selectedCourseStillExists = courses.value.some(
-      (course) => course.course_id === selectedCourseId.value,
+    const catalog = await getCourses();
+    courses.value = catalog.courses;
+    retrievalMode.value = catalog.retrieval_mode;
+    selectedCourseId.value = selectSelectableCourseId(
+      courses.value,
+      selectedCourseId.value,
     );
-    if (!selectedCourseStillExists) {
-      selectedCourseId.value = firstMockCourse?.course_id ?? courses.value[0]?.course_id ?? "";
-    }
   } catch (error) {
     applyAuthFailure(error);
     errorMessage.value = toMessage(error);
@@ -1489,13 +1505,13 @@ onBeforeUnmount(() => {
           <!-- 空态用排版承载，不套卡片：说明运行边界与当前配置。 -->
           <div v-if="!transcriptHasContent" class="transcript-blank">
             <h2>{{ activeWorkflow.label }}</h2>
-            <p>{{ activeWorkflow.description }}正式课程保持关闭，只有带 Fixture 的课程可用于本轮契约验证。</p>
+            <p>{{ activeWorkflow.description }} {{ courseRuntimeDescription(retrievalMode) }}</p>
             <dl>
               <div>
                 <dt>课程状态</dt>
                 <dd v-if="selectedCourse">
-                  Mock {{ selectedCourse.mock_available ? "可用" : "关闭" }} · 正式开放
-                  {{ selectedCourse.is_open ? "是" : "否" }}
+                  {{ courseAvailabilitySummary(selectedCourse) }} · 插件
+                  {{ selectedCourse.plugin_loaded ? "已加载" : "未加载" }}
                 </dd>
                 <dd v-else>{{ isLoadingCourses ? "正在读取课程注册表" : "请先选择课程" }}</dd>
               </div>
@@ -1531,6 +1547,8 @@ onBeforeUnmount(() => {
               :result="result"
               :is-running="isRunning"
               :stream-state="workflowStreamState"
+              :answer-mode="displayedAnswerMode"
+              :tone="displayedTone"
             />
           </div>
         </div>
@@ -1550,13 +1568,14 @@ onBeforeUnmount(() => {
               <label class="visually-hidden" for="course">课程</label>
               <select id="course" v-model="selectedCourseId" :disabled="isRunning || !courses.length">
                 <option v-if="!courses.length" value="">暂无课程</option>
+                <option v-else-if="!hasSelectableCourse" value="" disabled>暂无可用课程</option>
                 <option
                   v-for="course in courses"
                   :key="course.course_id"
                   :value="course.course_id"
-                  :disabled="!course.mock_available"
+                  :disabled="!course.selectable"
                 >
-                  {{ course.display_name }}{{ course.mock_available ? "" : "（Mock 未配置）" }}
+                  {{ courseOptionLabel(course) }}
                 </option>
               </select>
 

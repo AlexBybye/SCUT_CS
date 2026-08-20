@@ -37,11 +37,11 @@ class MaterialConversionSkillStatus(StrEnum):
 class CourseState(StrEnum):
     """Honest runtime state of one registered course plugin.
 
-    ``active`` means the current RetrievalGateway can actually serve the course
-    right now. ``fixture_only`` means only the synthetic fixture corpus covers
-    it (usable in fixture mode, never claimed as an active course). ``registered``
-    means it is a contract-registered course with neither active nor fixture
-    coverage.
+    ``active`` means the current local corpus gateway has verified it can serve
+    the course right now. ``fixture_only`` means only the synthetic fixture
+    corpus covers it (usable in fixture mode, never claimed as an active
+    course). ``registered`` means it is a contract-registered course with
+    neither active nor fixture coverage.
     """
 
     ACTIVE = "active"
@@ -119,8 +119,10 @@ class AgentPreset:
         """Return a clear reason when a model cannot serve this preset.
 
         Returns ``None`` when the model satisfies every required modality and
-        the structured-output requirement. Fail-closed callers raise a
-        capability error on any non-None result.
+        any explicitly declared structured-output requirement. Current student
+        Workflow presets accept ordinary text; the capability remains only for
+        a future preset that deliberately opts into it. Fail-closed callers
+        raise a capability error on any non-None result.
         """
         available = set(input_modalities)
         missing = tuple(
@@ -295,7 +297,7 @@ AGENT_PRESETS = (
             ControlledTool.BILIBILI_ANONYMOUS_SEARCH,
         ),
         required_input_modalities=("text",),
-        requires_structured_outputs=True,
+        requires_structured_outputs=False,
     ),
     AgentPreset(
         preset_id="preset_exam_review",
@@ -309,7 +311,7 @@ AGENT_PRESETS = (
             ControlledTool.BILIBILI_ANONYMOUS_SEARCH,
         ),
         required_input_modalities=("text",),
-        requires_structured_outputs=True,
+        requires_structured_outputs=False,
     ),
     AgentPreset(
         preset_id="preset_problem_tutor",
@@ -323,7 +325,7 @@ AGENT_PRESETS = (
             ControlledTool.BILIBILI_ANONYMOUS_SEARCH,
         ),
         required_input_modalities=("text",),
-        requires_structured_outputs=True,
+        requires_structured_outputs=False,
     ),
     AgentPreset(
         preset_id="preset_mistake_review",
@@ -337,7 +339,7 @@ AGENT_PRESETS = (
             ControlledTool.BILIBILI_ANONYMOUS_SEARCH,
         ),
         required_input_modalities=("text",),
-        requires_structured_outputs=True,
+        requires_structured_outputs=False,
     ),
     AgentPreset(
         preset_id="preset_temporary_material_reading",
@@ -352,7 +354,7 @@ AGENT_PRESETS = (
             ControlledTool.TEMPORARY_MATERIAL_READ,
         ),
         required_input_modalities=("text",),
-        requires_structured_outputs=True,
+        requires_structured_outputs=False,
     ),
 )
 
@@ -380,14 +382,17 @@ def derive_course_plugin_states(
 ) -> tuple[CoursePluginState, ...]:
     """Derive honest course states from CourseRegistry plus gateway availability.
 
-    A course is ``active`` only when the current RetrievalGateway can serve it
-    right now. A course with only synthetic fixture coverage is ``fixture_only``;
-    everything else is merely ``registered``. Unavailable courses never claim
-    enabled workflows.
+    A course is ``active`` only when the current local corpus gateway proves it
+    can serve the course right now. A course with only synthetic fixture
+    coverage is ``fixture_only``; everything else is merely ``registered``.
+    Unavailable courses never claim enabled workflows.
     """
     states: list[CoursePluginState] = []
     for course in registry.records:
-        if _gateway_serves_course(retrieval, course, retrieval_mode):
+        if (
+            retrieval_mode == "local_corpus"
+            and _gateway_serves_course(retrieval, course, retrieval_mode)
+        ):
             state = CourseState.ACTIVE
             enabled_workflows = tuple(WorkflowType)
         elif course.fixture_available:
@@ -410,6 +415,11 @@ def derive_course_plugin_states(
 def _gateway_serves_course(
     retrieval: object, course: object, retrieval_mode: str
 ) -> bool:
+    if retrieval_mode != "local_corpus":
+        # Fixture availability is deliberately reported as ``fixture_only``;
+        # it must never be promoted to an active course merely because the
+        # synthetic gateway can answer from its fixture corpus.
+        return False
     check = getattr(retrieval, "is_course_available", None)
     if callable(check):
         try:
@@ -417,7 +427,6 @@ def _gateway_serves_course(
         except Exception:
             # A broken/unavailable gateway must never claim active courses.
             return False
-    # Mirrors the runtime's legacy test-double compatibility: without an
-    # availability check only a fixture-available course can be served, and the
-    # local corpus adapter must always prove active state itself.
-    return retrieval_mode == "fixture" and bool(course.fixture_available)
+    # A local corpus adapter must explicitly prove availability.  A missing
+    # check is not evidence that a course is active.
+    return False

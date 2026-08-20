@@ -5,7 +5,7 @@ from pathlib import Path
 
 from scut_senior_worker.corpus_validator import parse_markdown, validate_corpus
 
-from ..contracts import WorkflowRunRequest
+from ..contracts import AnswerMode, Tone, WorkflowRunRequest
 from ..paths import FIXTURE_ROOT
 from ..ports import (
     ConversationTurn,
@@ -15,7 +15,11 @@ from ..ports import (
     UserIdentity,
 )
 from ..registry import CourseRegistry
-from ..workflow_focus import FocusStrategy, build_workflow_focus
+from ..workflow_focus import (
+    FocusStrategy,
+    build_tone_visible_callout,
+    build_workflow_focus,
+)
 
 
 _FIXTURE_FOCUS_OUTPUTS: dict[
@@ -121,22 +125,31 @@ class MockModelGateway:
         ]
         if not sources:
             return GeneratedAnswer(
-                repository_answer=(
-                    "迭代 0 Mock 未找到可用的 passed Fixture。"
-                    "这只表示契约测试资料不足，不代表真实课程资料结论。"
-                    f"{control_note}{history_note}"
+                repository_answer=_render_fixture_answer(
+                    answer_mode=request.answer_mode,
+                    tone=request.tone,
+                    source_title="无可用 passed Fixture",
+                    preview=(
+                        "没有读取到合成课程片段；这只表示契约测试资料不足，"
+                        "不代表真实课程资料结论。"
+                    ),
+                    workflow_type=request.workflow_type.value,
+                    control_note=control_note,
+                    history_note=history_note,
                 ),
                 related_topics=related_topics,
                 bilibili_search_keywords=search_keywords,
             )
         source = sources[0]
         preview = re.sub(r"\s+", " ", source.text).strip()[:180]
-        answer = (
-            "这是迭代 0 的确定性 Mock 回答，仅用于验证契约、来源与持久化链路。\n\n"
-            f"已从合成 Fixture《{source.source_title}》读取：{preview}\n\n"
-            f"本次结构化输入类型为 `{request.workflow_type.value}`；"
-            "尚未调用真实模型，也未运行生产检索。"
-            f"{control_note}{history_note}"
+        answer = _render_fixture_answer(
+            answer_mode=request.answer_mode,
+            tone=request.tone,
+            source_title=source.source_title,
+            preview=preview,
+            workflow_type=request.workflow_type.value,
+            control_note=control_note,
+            history_note=history_note,
         )
         return GeneratedAnswer(
             repository_answer=answer,
@@ -150,6 +163,73 @@ class MockModelGateway:
                 f"S{index}" for index in range(1, len(sources) + 1)
             ),
         )
+
+
+def _render_fixture_answer(
+    *,
+    answer_mode: AnswerMode,
+    tone: Tone,
+    source_title: str,
+    preview: str,
+    workflow_type: str,
+    control_note: str,
+    history_note: str,
+) -> str:
+    """Make the local fixture visibly exercise the selected presentation mode.
+
+    This remains deterministic test data, not a claim that a real model has
+    semantically followed the same contract.
+    """
+
+    tone_callout = build_tone_visible_callout(tone)
+    context = (
+        "这是迭代 0 的确定性 Mock 回答，仅用于验证契约、来源与持久化链路。\n\n"
+        f"已从合成 Fixture《{source_title}》读取：{preview}\n\n"
+        f"本次结构化输入类型为 `{workflow_type}`；"
+        "尚未调用真实模型，也未运行生产检索。"
+    )
+    if answer_mode == AnswerMode.CONCISE:
+        return (
+            "## 结论\n\n"
+            f"{context}\n\n"
+            f"{tone_callout}\n\n"
+            "## 要点\n\n"
+            f"- {control_note}{history_note}"
+        )
+    if answer_mode == AnswerMode.DETAILED:
+        return (
+            "## 结论\n\n"
+            f"{context}\n\n"
+            f"{tone_callout}\n\n"
+            "## 原理与依据\n\n"
+            f"{control_note}\n\n"
+            "## 易错点或适用边界\n\n"
+            f"这只是合成 Fixture，不代表真实课程资料结论。{history_note}"
+        )
+    if answer_mode == AnswerMode.EXAMPLE:
+        return (
+            "## 结论\n\n"
+            f"{context}\n\n"
+            f"{tone_callout}\n\n"
+            "## 例子\n\n"
+            f"已知条件：合成 Fixture《{source_title}》。\n\n"
+            f"操作或计算：读取其片段“{preview}”。\n\n"
+            "得到的结果：该片段只用于验证本地链路。\n\n"
+            "## 从例子得到的判断\n\n"
+            f"{control_note}{history_note}"
+        )
+    return (
+        "## 步骤\n\n"
+        "1. **目的：** 确认本地 Fixture 是否可读取。\n"
+        f"   **操作或判断：** 读取《{source_title}》。\n"
+        "   **本步结果：** 已得到合成资料片段。\n\n"
+        "2. **目的：** 保持回答的证据边界。\n"
+        "   **操作或判断：** 仅把片段用于 Runtime 链路验证。\n"
+        "   **本步结果：** 不把 Fixture 表述为真实课程结论。\n\n"
+        f"{tone_callout}\n\n"
+        "## 结论\n\n"
+        f"{context}\n\n{control_note}{history_note}"
+    )
 
 
 def _source_from_validated_fixture(body: str, record: dict[str, object], parsed) -> RetrievedSource:

@@ -256,7 +256,9 @@ def test_health_reports_iteration_three_without_claiming_active_corpus(
         "workflow_runtime": True,
         "workflow_stream_ndjson": True,
         "citation_guard": True,
+        "response_style_control": True,
         "humanizer_guard": True,
+        "humanizer_configured": False,
         "active_corpus_configured": False,
     } == health["capabilities"]
 

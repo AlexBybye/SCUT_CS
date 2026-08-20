@@ -8,6 +8,7 @@ from fastapi.testclient import TestClient
 
 from scut_senior_api.adapters.mock import FixtureRetrievalGateway
 from scut_senior_api.config import Settings
+from scut_senior_api.course_availability import derive_course_runtime_availability
 from scut_senior_api.contracts import WorkflowRunRequest, WorkflowType
 from scut_senior_api.harness_registry import (
     AGENT_PRESETS,
@@ -121,7 +122,7 @@ def test_registry_exposes_exactly_five_presets_covering_all_workflow_types() -> 
         assert preset.preset_version == "v1"
         assert preset.display_name
         assert preset.required_input_modalities == ("text",)
-        assert preset.requires_structured_outputs is True
+        assert preset.requires_structured_outputs is False
         assert preset.allowed_tools
         assert set(preset.allowed_tools) <= tool_ids
         assert preset.focus_strategy == EXPECTED_FOCUS_BY_WORKFLOW[preset.workflow_type]
@@ -160,7 +161,7 @@ def test_registry_construction_rejects_duplicate_workflow_coverage() -> None:
         focus_strategy=FocusStrategy.QUESTION_CONCEPT,
         allowed_tools=(ControlledTool.COURSE_RETRIEVAL,),
         required_input_modalities=("text",),
-        requires_structured_outputs=True,
+        requires_structured_outputs=False,
     )
     with pytest.raises(ValueError, match="exactly one preset"):
         _registry_with([duplicate, *AGENT_PRESETS])
@@ -176,7 +177,7 @@ def test_registry_construction_rejects_unknown_tool_reference() -> None:
             focus_strategy=FocusStrategy.QUESTION_CONCEPT,
             allowed_tools=(ControlledTool.BILIBILI_ANONYMOUS_SEARCH,),
             required_input_modalities=("text",),
-            requires_structured_outputs=True,
+            requires_structured_outputs=False,
         ),
         *AGENT_PRESETS[1:],
     ]
@@ -206,7 +207,7 @@ def test_registry_construction_rejects_unknown_required_modality() -> None:
             focus_strategy=FocusStrategy.QUESTION_CONCEPT,
             allowed_tools=(ControlledTool.COURSE_RETRIEVAL,),
             required_input_modalities=("haptic",),
-            requires_structured_outputs=True,
+            requires_structured_outputs=False,
         ),
         *AGENT_PRESETS[1:],
     ]
@@ -214,7 +215,7 @@ def test_registry_construction_rejects_unknown_required_modality() -> None:
         _registry_with(presets)
 
 
-def test_model_compatibility_requires_all_modalities_and_structured_outputs() -> None:
+def test_model_compatibility_requires_text_modality_but_not_structured_outputs() -> None:
     preset = _preset(WorkflowType.KNOWLEDGE_QA)
 
     assert (
@@ -232,15 +233,14 @@ def test_model_compatibility_requires_all_modalities_and_structured_outputs() ->
     assert "text" in missing_modality
     assert "preset_knowledge_qa" in missing_modality
 
-    missing_structured = preset.check_model_compatibility(
+    structured_output_optional = preset.check_model_compatibility(
         input_modalities=("text",),
         supports_structured_outputs=False,
     )
-    assert missing_structured is not None
-    assert "structured outputs" in missing_structured
+    assert structured_output_optional is None
 
 
-def test_course_plugin_states_never_mark_cpp_active_or_claim_workflows() -> None:
+def test_course_plugin_states_report_fixture_coverage_without_claiming_active() -> None:
     registry = CourseRegistry.load()
     gateway = FixtureRetrievalGateway(registry)
 
@@ -248,10 +248,8 @@ def test_course_plugin_states_never_mark_cpp_active_or_claim_workflows() -> None
 
     by_id = {state.course_id: state for state in states}
     assert len(by_id) == 10
-    assert by_id["linear_algebra"].state.value == "active"
-    assert [workflow.value for workflow in by_id["linear_algebra"].enabled_workflows] == [
-        workflow.value for workflow in WorkflowType
-    ]
+    assert by_id["linear_algebra"].state.value == "fixture_only"
+    assert by_id["linear_algebra"].enabled_workflows == ()
     assert by_id["cpp"].state.value == "registered"
     assert by_id["cpp"].enabled_workflows == ()
     assert all(
@@ -259,6 +257,26 @@ def test_course_plugin_states_never_mark_cpp_active_or_claim_workflows() -> None
         for course_id, state in by_id.items()
         if course_id != "linear_algebra"
     )
+
+
+def test_course_plugin_states_mark_only_verified_local_corpus_active() -> None:
+    registry = CourseRegistry.load()
+
+    class ActiveLocalCorpusGateway:
+        def is_course_available(self, course_id: str) -> bool:
+            return course_id == "linear_algebra"
+
+    states = derive_course_plugin_states(
+        registry, ActiveLocalCorpusGateway(), retrieval_mode="local_corpus"
+    )
+
+    by_id = {state.course_id: state for state in states}
+    assert by_id["linear_algebra"].state.value == "active"
+    assert [workflow.value for workflow in by_id["linear_algebra"].enabled_workflows] == [
+        workflow.value for workflow in WorkflowType
+    ]
+    assert by_id["cpp"].state.value == "registered"
+    assert by_id["cpp"].enabled_workflows == ()
 
 
 def test_course_plugin_states_fail_closed_without_gateway_availability() -> None:
@@ -278,6 +296,72 @@ def test_course_plugin_states_fail_closed_without_gateway_availability() -> None
     assert all(state.enabled_workflows == () for state in states)
 
 
+def test_course_runtime_availability_fails_closed_when_plugin_state_cannot_be_read() -> None:
+    registry = CourseRegistry.load()
+    gateway = FixtureRetrievalGateway(registry)
+
+    class BrokenPluginRepository:
+        def is_course_plugin_loaded(self, course_id: str) -> bool:
+            del course_id
+            raise RuntimeError("plugin state store is unavailable")
+
+    states = derive_course_runtime_availability(
+        registry,
+        gateway,
+        BrokenPluginRepository(),  # type: ignore[arg-type]
+        retrieval_mode="fixture",
+    )
+    linear_algebra = next(
+        state for state in states if state.course.course_id == "linear_algebra"
+    )
+
+    assert linear_algebra.retrieval_availability == "fixture"
+    assert linear_algebra.retrieval_available is True
+    assert linear_algebra.plugin_loaded is False
+    assert linear_algebra.selectable is False
+
+
+def test_courses_endpoint_exposes_runtime_selection_gates(tmp_path: Path) -> None:
+    app = create_app(Settings(app_env="test", database_path=tmp_path / "courses.db"))
+    client = TestClient(app)
+
+    response = client.get("/api/v1/courses")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["contract_version"] == "v1"
+    assert body["retrieval_mode"] == "fixture"
+    assert body["runtime"] == "fixture"
+    courses = {course["course_id"]: course for course in body["courses"]}
+    assert courses["linear_algebra"] == {
+        "course_id": "linear_algebra",
+        "display_name": "线性代数",
+        "aliases": ["线性代数与解析几何", "线代解几"],
+        "is_open": False,
+        "mock_available": True,
+        "retrieval_availability": "fixture",
+        "retrieval_available": True,
+        "plugin_loaded": True,
+        "selectable": True,
+    }
+    assert courses["cpp"]["mock_available"] is False
+    assert courses["cpp"]["retrieval_availability"] == "unavailable"
+    assert courses["cpp"]["retrieval_available"] is False
+    assert courses["cpp"]["plugin_loaded"] is True
+    assert courses["cpp"]["selectable"] is False
+
+    app.state.repository.set_course_plugin_loaded("linear_algebra", False)
+    after_unload = client.get("/api/v1/courses").json()
+    linear_algebra = next(
+        course
+        for course in after_unload["courses"]
+        if course["course_id"] == "linear_algebra"
+    )
+    assert linear_algebra["retrieval_available"] is True
+    assert linear_algebra["plugin_loaded"] is False
+    assert linear_algebra["selectable"] is False
+
+
 def test_plugin_registry_endpoint_reports_honest_metadata(tmp_path: Path) -> None:
     client = TestClient(
         create_app(Settings(app_env="test", database_path=tmp_path / "plugin.db"))
@@ -294,7 +378,7 @@ def test_plugin_registry_endpoint_reports_honest_metadata(tmp_path: Path) -> Non
     }
     assert all(
         preset["required_input_modalities"] == ["text"]
-        and preset["requires_structured_outputs"] is True
+        and preset["requires_structured_outputs"] is False
         for preset in body["agent_presets"]
     )
     assert len(body["controlled_tools"]) == 4
@@ -310,8 +394,8 @@ def test_plugin_registry_endpoint_reports_honest_metadata(tmp_path: Path) -> Non
 
     courses = {course["course_id"]: course for course in body["courses"]}
     assert len(courses) == 10
-    assert courses["linear_algebra"]["state"] == "active"
-    assert len(courses["linear_algebra"]["enabled_workflows"]) == 5
+    assert courses["linear_algebra"]["state"] == "fixture_only"
+    assert courses["linear_algebra"]["enabled_workflows"] == []
     assert courses["cpp"]["state"] == "registered"
     assert courses["cpp"]["enabled_workflows"] == []
 
@@ -459,6 +543,12 @@ def test_course_plugin_load_unload_persists_and_gates_runtime(tmp_path: Path) ->
     session = repository.issue_session(user_id)
     client.cookies.set(SESSION_COOKIE_NAME, session.token, path="/")
 
+    existing = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    )
+    assert existing.status_code == 201, existing.text
+    existing_conversation_id = existing.json()["conversation_id"]
+
     unloaded = client.post(
         "/api/v1/plugin-registry/courses/linear_algebra/unload"
     )
@@ -470,21 +560,41 @@ def test_course_plugin_load_unload_persists_and_gates_runtime(tmp_path: Path) ->
         item for item in body["courses"] if item["course_id"] == "linear_algebra"
     )
     assert course["loaded"] is False
-    assert course["state"] == "active"
+    assert course["state"] == "fixture_only"
     assert course["enabled_workflows"] == []
 
-    # An unloaded plugin blocks conversation creation and workflow runs.
+    # An unloaded plugin blocks workflow runs for conversations that already
+    # existed before the unload, proving this is a runtime gate rather than UI
+    # state or only a new-conversation check.
+    blocked_run = client.post(
+        "/api/v1/workflow-runs",
+        json=_request_dict(existing_conversation_id),
+    )
+    assert blocked_run.status_code == 503, blocked_run.text
+    blocked_error = blocked_run.json()["error"]
+    assert blocked_error["code"] == "capability_unavailable"
+    assert blocked_error["capability"] == "course"
+
+    # New conversations are blocked too.
     blocked = client.post(
         "/api/v1/conversations", json={"course_id": "linear_algebra"}
     )
     assert blocked.status_code == 503
     assert blocked.json()["error"]["code"] == "capability_unavailable"
 
-    # Load restores the plugin; the same persisted state survives a restart.
+    # Loading restores the same pre-existing conversation as well.
     loaded = client.post("/api/v1/plugin-registry/courses/linear_algebra/load")
     assert loaded.status_code == 200
     assert loaded.json() == {"course_id": "linear_algebra", "loaded": True}
 
+    resumed_run = client.post(
+        "/api/v1/workflow-runs",
+        json=_request_dict(existing_conversation_id),
+    )
+    assert resumed_run.status_code == 201, resumed_run.text
+    assert resumed_run.json()["run_status"] == "completed"
+
+    # The loaded state also survives a restart.
     restarted = create_app(Settings(app_env="test", database_path=tmp_path / "plugin.db"))
     assert restarted.state.repository.is_course_plugin_loaded("linear_algebra") is True
     created = client.post(

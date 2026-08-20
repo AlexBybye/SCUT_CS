@@ -140,27 +140,53 @@ def build_guarded_answer(
         answer=answer, sources=sources, course_ids=course_ids
     )
     blocks: list[AnswerBlock] = []
+    repository_answer = answer.repository_answer.strip()
+    uncited_repository_answer = repository_answer if not citation_ids else ""
+    # A provider is no longer required to manufacture a full JSON envelope.
+    # In course-first mode, a useful answer without a request-local source is
+    # still useful as explicitly non-repository guidance.  In course-only mode
+    # it remains hidden so the UI never presents an uncited statement as a
+    # course-material conclusion.
     repository_answer_dropped = bool(
-        answer.repository_answer.strip() and not citation_ids
+        uncited_repository_answer
+        and request.knowledge_scope == KnowledgeScope.COURSE_ONLY
     )
-    if answer.repository_answer.strip() and citation_ids:
+    if repository_answer and citation_ids:
         blocks.append(
-            AnswerBlock(type=AnswerBlockType.REPOSITORY, content=answer.repository_answer.strip())
+            AnswerBlock(type=AnswerBlockType.REPOSITORY, content=repository_answer)
         )
-    if answer.user_material_answer.strip():
+    user_material_answer = answer.user_material_answer.strip()
+    if (
+        uncited_repository_answer
+        and request.knowledge_scope != KnowledgeScope.COURSE_ONLY
+        and request.workflow_type == WorkflowType.TEMPORARY_MATERIAL_READING
+    ):
+        user_material_answer = _join_answer_text(
+            uncited_repository_answer, user_material_answer
+        )
+    if user_material_answer:
         if request.workflow_type != WorkflowType.TEMPORARY_MATERIAL_READING:
             raise RuntimeGuardError("user_material 回答块只能用于临时材料 Workflow。")
         blocks.append(
             AnswerBlock(
                 type=AnswerBlockType.USER_MATERIAL,
-                content=answer.user_material_answer.strip(),
+                content=user_material_answer,
             )
         )
-    if answer.general_supplement.strip():
+    general_supplement = answer.general_supplement.strip()
+    if (
+        uncited_repository_answer
+        and request.knowledge_scope != KnowledgeScope.COURSE_ONLY
+        and request.workflow_type != WorkflowType.TEMPORARY_MATERIAL_READING
+    ):
+        general_supplement = _join_answer_text(
+            uncited_repository_answer, general_supplement
+        )
+    if general_supplement:
         if request.knowledge_scope == KnowledgeScope.COURSE_ONLY:
             raise RuntimeGuardError("仅课程资料模式不得生成 general 回答块。")
         blocks.append(
-            AnswerBlock(type=AnswerBlockType.GENERAL, content=answer.general_supplement.strip())
+            AnswerBlock(type=AnswerBlockType.GENERAL, content=general_supplement)
         )
     if answer.personalized_analysis.strip():
         if request.workflow_type not in {
@@ -196,12 +222,23 @@ def build_guarded_answer(
         evidence_status = EvidenceStatus.INSUFFICIENT
         answer_status = AnswerStatus.PARTIAL
         gaps = (
-            "本次回答没有可回查的课程资料候选；无引用的课程资料正文未进入结果。",
+            "本次回答没有可回查的课程资料候选；无引用内容已作为通用补充展示，未作为课程资料结论。",
         )
     # Keep this explicit so an unused local cannot accidentally become a future
     # citation source without passing through the guard above.
     del selected_sources
     return GuardedAnswer(tuple(blocks), citation_ids, evidence_status, answer_status, gaps)
+
+
+def _join_answer_text(*parts: str) -> str:
+    """Join non-empty answer sections without duplicating identical text."""
+
+    joined: list[str] = []
+    for part in parts:
+        text = part.strip()
+        if text and text not in joined:
+            joined.append(text)
+    return "\n\n".join(joined)
 
 
 def _protected_fingerprint(text: str, protected_terms: tuple[str, ...]) -> tuple[str, ...]:

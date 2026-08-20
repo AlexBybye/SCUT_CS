@@ -4,7 +4,7 @@ import type {
   ByokProviderId,
   ConversationDetail,
   ConversationSummary,
-  Course,
+  CourseCatalog,
   FeedbackRecord,
   FeedbackType,
   ModelCatalog,
@@ -83,9 +83,8 @@ export async function logout(): Promise<void> {
   });
 }
 
-export async function getCourses(): Promise<Course[]> {
-  const body = await apiRequest<Course[] | { courses: Course[] }>("/api/v1/courses");
-  return Array.isArray(body) ? body : body.courses;
+export async function getCourses(): Promise<CourseCatalog> {
+  return apiRequest<CourseCatalog>("/api/v1/courses");
 }
 
 export async function getModels(): Promise<ModelCatalog> {

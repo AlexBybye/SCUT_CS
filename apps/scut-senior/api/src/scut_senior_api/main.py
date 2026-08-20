@@ -53,6 +53,7 @@ from .auth import (
     utc_now,
 )
 from .config import Settings
+from .course_availability import derive_course_runtime_availability
 from .contracts import (
     ConversationCreate,
     ConversationDetail,
@@ -405,12 +406,34 @@ def create_app(
             "模型输出未通过引用与证据校验，请重试。",
         )
 
+    def current_course_runtime_availability():
+        """Read the same runtime gates used by the workflow service.
+
+        The catalog is intentionally derived per request: a plugin may be
+        loaded or unloaded while the app stays up, and a local corpus pointer
+        can become invalid without a process restart.
+        """
+
+        return derive_course_runtime_availability(
+            registry,
+            service.retrieval,
+            service.repository,
+            retrieval_mode=active_settings.retrieval_mode,
+        )
+
     @app.get("/api/v1/health")
     def health() -> dict[str, object]:
         model_catalog.refresh_health()
-        active_corpus_configured = (
-            active_settings.retrieval_mode == "local_corpus"
+        course_states = current_course_runtime_availability()
+        local_corpus_retrieval_available_course_count = sum(
+            state.retrieval_availability == "local_corpus"
+            for state in course_states
         )
+        retrieval_available_course_count = sum(
+            state.retrieval_available for state in course_states
+        )
+        selectable_course_count = sum(state.selectable for state in course_states)
+        active_corpus_configured = local_corpus_retrieval_available_course_count > 0
         return {
             "status": "ok",
             "iteration": 3,
@@ -424,6 +447,18 @@ def create_app(
                 f"{active_settings.model_mode}_with_"
                 f"{active_settings.identity_mode}_{active_settings.storage_mode}"
             ),
+            # Configuration and usable corpus state are intentionally separate:
+            # local_corpus mode alone does not prove an active.json is valid.
+            "retrieval_mode": active_settings.retrieval_mode,
+            "local_corpus_mode_configured": (
+                active_settings.retrieval_mode == "local_corpus"
+            ),
+            "local_corpus_available": active_corpus_configured,
+            "local_corpus_retrieval_available_course_count": (
+                local_corpus_retrieval_available_course_count
+            ),
+            "retrieval_available_course_count": retrieval_available_course_count,
+            "selectable_course_count": selectable_course_count,
             "capabilities": {
                 "github_oauth": active_settings.identity_mode == "github_oauth",
                 "server_sessions_7_day": (
@@ -440,12 +475,12 @@ def create_app(
                 "workflow_runtime": True,
                 "workflow_stream_ndjson": True,
                 "citation_guard": True,
+                "response_style_control": True,
                 "humanizer_guard": True,
+                "humanizer_configured": humanizer is not None,
                 "active_corpus_configured": active_corpus_configured,
                 "production_retrieval": False,
-                "local_corpus_retrieval": (
-                    active_settings.retrieval_mode == "local_corpus"
-                ),
+                "local_corpus_retrieval": active_corpus_configured,
                 "cross_course": active_settings.cross_course_enabled,
                 "mock_vertical_slice": (
                     active_settings.identity_mode == "mock"
@@ -603,19 +638,14 @@ def create_app(
 
     @app.get("/api/v1/courses")
     def courses() -> dict[str, object]:
+        course_states = current_course_runtime_availability()
         return {
             "contract_version": registry.contract_version,
+            "retrieval_mode": active_settings.retrieval_mode,
+            # Keep the older field during the transition; new clients must use
+            # retrieval_mode and each course's runtime availability instead.
             "runtime": active_settings.retrieval_mode,
-            "courses": [
-                {
-                    "course_id": course.course_id,
-                    "display_name": course.display_name,
-                    "aliases": list(course.aliases),
-                    "is_open": course.is_open,
-                    "mock_available": course.fixture_available,
-                }
-                for course in registry.records
-            ],
+            "courses": [state.as_public_dict() for state in course_states],
         }
 
     @app.get("/api/v1/plugin-registry")

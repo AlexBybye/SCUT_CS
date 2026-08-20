@@ -1053,10 +1053,62 @@ input[type="checkbox"] {
 }
 
 .block-body {
-  white-space: pre-wrap;
   font-size: var(--fs-md);
   line-height: 1.75;
   overflow-wrap: anywhere;
+}
+
+.markdown-body > :first-child {
+  margin-top: 0;
+}
+
+.markdown-body > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body p,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body pre,
+.markdown-body blockquote {
+  margin: 0.55em 0;
+}
+
+.markdown-body blockquote {
+  padding: 0.5rem 0.75rem;
+  border-inline-start: 3px solid var(--accent);
+  border-radius: var(--r-sm);
+  background: var(--accent-wash);
+  color: var(--text);
+}
+
+.markdown-body blockquote > p {
+  margin: 0;
+}
+
+.markdown-body pre,
+.markdown-body code {
+  font-family: var(--font-mono);
+}
+
+.markdown-body pre {
+  padding: 0.6rem 0.75rem;
+  overflow-x: auto;
+  background: var(--sunken);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+}
+
+.markdown-body :not(pre) > code {
+  padding: 0.08em 0.3em;
+  background: var(--sunken);
+  border-radius: var(--r-xs);
+}
+
+.markdown-body .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0.75em 0;
 }
 
 .caret {
