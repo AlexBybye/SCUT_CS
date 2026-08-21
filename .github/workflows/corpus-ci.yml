@@ -3,7 +3,7 @@ name: Corpus CI
 on:
   pull_request:
     paths:
-      - "knowledge/**"
+      - "apps/scut-senior/knowledge/**"
       - "tools/corpus/**"
       - "apps/scut-senior/worker/**"
       - "apps/scut-senior/packages/**"
@@ -22,7 +22,7 @@ on:
     branches:
       - master
     paths:
-      - "knowledge/**"
+      - "apps/scut-senior/knowledge/**"
       - "tools/corpus/**"
       - "apps/scut-senior/worker/**"
       - "apps/scut-senior/packages/**"
@@ -65,7 +65,7 @@ jobs:
           git clone --filter=blob:none --sparse --no-checkout --depth=1 --no-tags \
             "https://github.com/${GITHUB_REPOSITORY}.git" .
           git sparse-checkout set --no-cone -- \
-            /knowledge/ \
+            /apps/scut-senior/knowledge/ \
             /tools/corpus/ \
             /apps/scut-senior/worker/ \
             /apps/scut-senior/packages/ \
@@ -97,8 +97,8 @@ jobs:
           PYTHONPATH: apps/scut-senior/worker/src
         run: >-
           python -m scut_senior_worker.corpus_validator
-          --manifest knowledge/manifest.csv
-          --knowledge-root knowledge
+          --manifest apps/scut-senior/knowledge/manifest.csv
+          --knowledge-root apps/scut-senior/knowledge
           --pretty
 
       - name: Build and validate a real candidate without activation
@@ -117,8 +117,8 @@ jobs:
           source_commit="$(git rev-parse HEAD)"
 
           python -m scut_senior_worker.corpus_builder build \
-            --manifest knowledge/manifest.csv \
-            --knowledge-root knowledge \
+            --manifest apps/scut-senior/knowledge/manifest.csv \
+            --knowledge-root apps/scut-senior/knowledge \
             --store-root "${store_root}" \
             --source-commit "${source_commit}" \
             --repository-root .

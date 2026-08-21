@@ -30,8 +30,8 @@ def test_app_and_corpus_triggers_are_separate_with_dual_check_paths() -> None:
         app_paths = trigger_paths(app, event)
         corpus_paths = trigger_paths(corpus, event)
 
-        assert "knowledge/**" not in app_paths
-        assert "knowledge/**" in corpus_paths
+        assert "apps/scut-senior/knowledge/**" not in app_paths
+        assert "apps/scut-senior/knowledge/**" in corpus_paths
         assert "apps/scut-senior/worker/**" in corpus_paths
         assert "apps/scut-senior/packages/**" in corpus_paths
         assert "apps/scut-senior/**" in app_paths
@@ -42,7 +42,9 @@ def test_app_and_corpus_triggers_are_separate_with_dual_check_paths() -> None:
 def test_corpus_ci_builds_a_fixed_real_candidate_without_activation() -> None:
     text = (WORKFLOW_ROOT / "corpus-ci.yml").read_text(encoding="utf-8")
 
-    assert "--manifest knowledge/manifest.csv" in text
+    assert "--manifest apps/scut-senior/knowledge/manifest.csv" in text
+    assert "--knowledge-root apps/scut-senior/knowledge" in text
+    assert "/apps/scut-senior/knowledge/" in text
     assert 'PYTHONDONTWRITEBYTECODE: "1"' in text
     assert "python -m scut_senior_worker.corpus_builder build" in text
     assert 'source_commit="$(git rev-parse HEAD)"' in text
@@ -95,3 +97,12 @@ def test_docker_build_context_is_bounded_to_application_directory() -> None:
     assert expected in deploy
     assert "apps/scut-senior\n" in app_ci
     assert "apps/scut-senior\n" in deploy
+
+    # knowledge 已移入 apps/scut-senior/knowledge：镜像边界改由 .dockerignore
+    # 保证，两个工作流都必须显式断言该排除规则存在。
+    for text in (app_ci, deploy):
+        assert "grep -qx 'knowledge' apps/scut-senior/.dockerignore" in text
+    dockerignore = (
+        REPOSITORY_ROOT / "apps/scut-senior" / ".dockerignore"
+    ).read_text(encoding="utf-8")
+    assert "\nknowledge\n" in dockerignore

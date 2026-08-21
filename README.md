@@ -91,13 +91,14 @@
 ##### IV.大一开学二次选拔、培养计划及规划与便携索引（开源/待开发）
 提供大一新生选拔信息及培养计划，帮助新生更好地规划大学生活。
 
-##### V.SCUT_SKILL（征集中）
+##### V.SCUT_SKILL及模版（征集中）
 > 学生向 AI Skill 索引--资料是死的，怎么读、怎么划重点、怎么在两天内把一门课过一遍，是活的。
 **方法上的信息差，比资料上的信息差更大。**
-[`SCUT_SKILL/`](SCUT_SKILL/) 收录学院同学写的、以及实际用过好评的第三方 Agent Skill（Claude Code / Codex / Cursor 等），**只放超链接和介绍，不放 skill 本体** —— 不占 git-lfs 限额，也不会把别人的仓库拷成过期快照。
+[`SCUT_SKILL及模版/`](SCUT_SKILL及模版/) 收录学院同学写的、以及实际用过好评的第三方 Agent Skill（Claude Code / Codex / Cursor 等），**只放超链接和介绍，不放 skill 本体** —— 不占 git-lfs 限额，也不会把别人的仓库拷成过期快照。论文与报告等课程模板也一并收在本面板的二级目录下。
 
-- 📋 [Summary_Skill.md](SCUT_SKILL/Summary_Skill.md) —— skill 清单，分「本院开发」和「外部工具」两栏
-- 📖 [README.md](SCUT_SKILL/README.md) —— 建立初衷、收录标准、提交方式
+- 📋 [Summary_Skill.md](SCUT_SKILL及模版/Summary_Skill.md) —— skill 清单，分「本院开发」和「外部工具」两栏
+- 📖 [README.md](SCUT_SKILL及模版/README.md) —— 建立初衷、收录标准、提交方式
+- 📄 [论文&报告等模板/](SCUT_SKILL及模版/论文&报告等模板/) —— 课程论文与报告模板
 
 在自己仓库里写好 skill，然后提 PR 往 `Summary_Skill.md` 加一条就行，不用动别的文件。也是 🔴 高等目标里 skill 市场的前身。
 

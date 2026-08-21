@@ -38,7 +38,7 @@ def _build_store(
     tmp_path: Path, *, enabled: bool = True
 ) -> tuple[Path, str, str]:
     repository = tmp_path / "repository"
-    knowledge = repository / "knowledge"
+    knowledge = repository / "apps" / "scut-senior" / "knowledge"
     markdown = knowledge / COURSE_ID / "security.md"
     markdown.parent.mkdir(parents=True)
     markdown.write_text(
@@ -106,7 +106,7 @@ The principle of least privilege limits each account to required permissions.
     _git(
         repository,
         "add",
-        "knowledge",
+        "apps/scut-senior/knowledge",
         "apps/scut-senior/worker",
         "apps/scut-senior/packages/contracts/v1",
     )

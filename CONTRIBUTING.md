@@ -38,13 +38,13 @@ fork并clone本地，再在本地进行调整，适合批量上传，删除的�
 如果你要提的是 Agent Skill（Claude Code / Codex / Cursor 等），流程不一样：skill 本体留在**你自己的仓库**，本仓库只收索引。
 
 1. 在你自己的仓库里写好 skill，确认有 `SKILL.md`；
-2. Fork 本仓库 → 编辑 [`SCUT_SKILL/Summary_Skill.md`](SCUT_SKILL/Summary_Skill.md)，照现有条目的格式加一条；
+2. Fork 本仓库 → 编辑 [`SCUT_SKILL及模版/Summary_Skill.md`](SCUT_SKILL及模版/Summary_Skill.md)，照现有条目的格式加一条；
 3. 提 PR，标题写 `[SKILL] 你的 skill 名`。
 
 注意⚠️:
-- 1:这里的编辑同样不需要clone本地！指的是进入https://你个人的fork仓库地址/SCUT_SKILL/Summary_Skill.md，然后点击右上角的编辑✏️这个icon,然后在线对你的fork仓库进行写入，确认无误后提merge request。
+- 1:这里的编辑同样不需要clone本地！指的是进入https://你个人的fork仓库地址/SCUT_SKILL及模版/Summary_Skill.md，然后点击右上角的编辑✏️这个icon,然后在线对你的fork仓库进行写入，确认无误后提merge request。
 
-- 2:介绍里**必须写清它不做什么** —— 只写优点的介绍等于让读者自己去踩坑。完整收录标准见 [`SCUT_SKILL/README.md`](SCUT_SKILL/README.md)。
+- 2:介绍里**必须写清它不做什么** —— 只写优点的介绍等于让读者自己去踩坑。完整收录标准见 [`SCUT_SKILL及模版/README.md`](SCUT_SKILL及模版/README.md)。
 
 清单里的条目可能**不是永久有效的**。发现某条链接失效、仓库归档，或者实际效果和描述不符，直接提 PR 删掉或改掉 —— 删除同样是贡献，一份烂掉的链接列表比没有列表更糟。
 

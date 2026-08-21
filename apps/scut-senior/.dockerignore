@@ -17,3 +17,7 @@ tests/*
 !tests/fixtures/
 !tests/fixtures/**
 infra
+# 真实语料库已移入 apps/scut-senior/knowledge，只服务 corpus CI 与本地构建，
+# 不进入应用镜像的构建上下文（app CI/deploy 以 grep 断言此规则存在）。
+knowledge
+docs

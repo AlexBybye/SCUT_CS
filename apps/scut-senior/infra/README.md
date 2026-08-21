@@ -13,7 +13,7 @@
 - 部署任务绑定 `scut-senior-production` Environment；启用前必须在 GitHub 仓库设置中为它配置 required reviewers 等保护规则；
 - 仓库配置变量 `vars.DEPLOYMENT_ENABLED` 不是字符串 `true` 时，部署任务保持 skipped；
 - checkout 在取出工作树前同时启用 `filter: blob:none` 与 sparse checkout，并以 `GIT_LFS_SKIP_SMUDGE=1` 保持 LFS 下载关闭；
-- Docker build context 固定为 `apps/scut-senior/`，不读取 `学科资料/` 或 `knowledge/`；
+- Docker build context 固定为 `apps/scut-senior/`，不读取仓库根的 `学科资料/`；`knowledge/` 虽已移入 context 目录内，但由 `.dockerignore` 排除，镜像不包含真实语料；
 - 普通 App CI 和 corpus CI 只使用 `contents: read`，不读取部署 Secret。
 
 ## 当前故障安全行为

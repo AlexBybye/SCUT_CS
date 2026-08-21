@@ -55,7 +55,8 @@ jobs:
           test "$(git config --get remote.origin.partialclonefilter)" = blob:none
           test "$(git config --bool core.sparseCheckout)" = true
           test ! -e "学科资料"
-          test ! -e knowledge
+          # knowledge 现位于 apps/scut-senior/knowledge，镜像边界由 .dockerignore 保证
+          grep -qx 'knowledge' apps/scut-senior/.dockerignore
 
       - name: Build the validation image from the bounded context
         run: >-
@@ -93,7 +94,8 @@ jobs:
           test "$(git config --get remote.origin.partialclonefilter)" = blob:none
           test "$(git config --bool core.sparseCheckout)" = true
           test ! -e "学科资料"
-          test ! -e knowledge
+          # knowledge 现位于 apps/scut-senior/knowledge，镜像边界由 .dockerignore 保证
+          grep -qx 'knowledge' apps/scut-senior/.dockerignore
 
       - name: Build the release image locally from the bounded context
         run: >-
