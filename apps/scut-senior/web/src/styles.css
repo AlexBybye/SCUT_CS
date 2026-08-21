@@ -81,28 +81,31 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --page: #111722;
-    --surface: #19212e;
-    --surface-subtle: #202a39;
-    --surface-strong: #293447;
+    --page: #0f141c;
+    --panel: #171e2a;
+    --raised: #1f2836;
+    --sunken: #0a0e14;
     --text: #eef1f6;
     --text-muted: #b5bfce;
     --text-soft: #8f9baf;
-    --line: #344155;
-    --line-strong: #526178;
+    --line: #2a3547;
+    --line-strong: #3d4a5f;
     --accent: #93ade2;
     --accent-hover: #adc1ea;
-    --accent-soft: #253a62;
-    --accent-contrast: #10151f;
+    --accent-wash: #24375c;
+    --accent-on: #10151f;
     --focus: #9cbbf6;
-    --warning-surface: #3a301e;
-    --warning-line: #b78b3d;
-    --warning-text: #f2d28f;
-    --success-surface: #20382c;
-    --success-text: #a9dbbd;
-    --error-surface: #45282d;
-    --error-text: #f2b8c0;
-    --shadow: 0 20px 60px rgba(3, 7, 13, 0.28);
+    --warn-wash: #3a301e;
+    --warn-line: #b78b3d;
+    --warn-text: #f2d28f;
+    --ok-wash: #20382c;
+    --ok-line: #5da384;
+    --ok-text: #a9dbbd;
+    --bad-wash: #45282d;
+    --bad-line: #d18a94;
+    --bad-text: #f2b8c0;
+    --shadow-panel: 0 1px 2px rgb(0 0 0 / 0.4);
+    --shadow-float: 0 12px 32px rgb(0 0 0 / 0.5);
   }
 }
 
