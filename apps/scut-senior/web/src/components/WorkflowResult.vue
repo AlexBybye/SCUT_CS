@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, ref, watch } from "vue";
+import { computed, nextTick, onBeforeUnmount, ref, watch } from "vue";
 import type {
   AnswerBlock,
   AnswerBlockType,
@@ -137,10 +137,11 @@ watch(
 
 onBeforeUnmount(stopTypeTimer);
 
-// 流动 trace：真实 trace 事件逐步展示；每步停留 2s，
-// 当前步展示满 2s 且下一步已到达时立刻前进一格（不跳到最新、不跳步）。
+// 流动 trace：运行中真实事件逐步展示（每步随机停留 ≤2s、不跳步）；
+// 运行一结束就停止逐条揭示，立刻完整展示全部 trace（见 visibleFlowTrace）。
 const flowTrace = computed(() => props.result?.trace ?? props.streamState?.traceEvents ?? []);
 const flowStep = ref(0);
+const traceListEl = ref<HTMLElement | null>(null);
 let flowTimer: number | null = null;
 let flowAdvanceAt = 0;
 let flowStepDelay = 0;
@@ -152,11 +153,21 @@ function stopFlowTimer(): void {
   }
 }
 
+// 列表限高内滚后，新步骤在盒子内部追加。只有用户本就贴着底部时才自动跟随，
+// 避免把正在上翻阅读 trace 的用户拽回去；完成瞬间的整体揭示则强制贴底。
+function scrollTraceListToEnd(force = false): void {
+  const el = traceListEl.value;
+  if (!el) return;
+  const nearBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 32;
+  if (force || nearBottom) el.scrollTop = el.scrollHeight;
+}
+
 function advanceFlowStep(): void {
   if (flowStep.value < flowTrace.value.length - 1) {
     flowStep.value += 1;
     flowAdvanceAt = Date.now();
     flowStepDelay = Math.random() * 2000;
+    void nextTick(() => scrollTraceListToEnd());
   } else {
     stopFlowTimer();
   }
@@ -165,12 +176,14 @@ function advanceFlowStep(): void {
 watch(
   () => props.isRunning,
   (running) => {
+    stopFlowTimer();
     if (!running) {
-      // 生成结束：不打断，让定时器继续逐条揭示剩余 trace。
+      // 生成结束：不再让定时器逐条挤牙膏，全部 trace 立刻渲染；
+      // 盒子限高内滚，整段插入不会撑高页面造成滚动跳动。
+      void nextTick(() => scrollTraceListToEnd(true));
       return;
     }
     // 开始生成：重置并启动定时器。
-    stopFlowTimer();
     flowStep.value = 0;
     flowAdvanceAt = Date.now();
     flowStepDelay = Math.random() * 2000;
@@ -193,11 +206,10 @@ watch(
 
 onBeforeUnmount(stopFlowTimer);
 
-// 运行中或收尾中逐步揭示（未到的框不显示）；历史数据直接展示全部。
-const visibleFlowTrace = computed(() => {
-  if (!props.isRunning && flowTimer === null) return flowTrace.value;
-  return flowTrace.value.slice(0, flowStep.value + 1);
-});
+// 运行中只显示已揭示的步骤；一旦不在运行（回答输出完成/历史加载），立刻展示全部。
+const visibleFlowTrace = computed(() =>
+  props.isRunning ? flowTrace.value.slice(0, flowStep.value + 1) : flowTrace.value,
+);
 
 const answerBlocks = computed<AnswerBlock[]>(() => {
   if (props.result?.answer_blocks.length) return props.result.answer_blocks;
@@ -301,7 +313,7 @@ function citationLocator(citation: Citation): string {
         <span class="flow-dots" aria-hidden="true"><i></i><i></i><i></i></span>
         <span class="flow-label">思考中</span>
       </div>
-      <ol v-if="visibleFlowTrace.length" class="flow-trace">
+      <ol v-if="visibleFlowTrace.length" ref="traceListEl" class="flow-trace">
         <li
           v-for="(event, index) in visibleFlowTrace"
           :key="event.event_id"
@@ -886,6 +898,11 @@ function citationLocator(citation: Citation): string {
   gap: 6px;
   margin: 0;
   list-style: none;
+  /* 限高内滚：完成瞬间整段揭示全部 trace，也不会把记录区顶得一泻千里地跳动；
+     滚到边界不 chaining，内滚不会突然带动整页。 */
+  max-height: 240px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .flow-step {
@@ -952,11 +969,10 @@ function citationLocator(citation: Citation): string {
   }
 }
 
-/* 低矮窗口：trace 列表限制高度。 */
+/* 低矮窗口：trace 列表限高更紧。 */
 @media (max-height: 640px) {
   .flow-trace {
     max-height: 22vh;
-    overflow-y: auto;
   }
 }
 </style>
