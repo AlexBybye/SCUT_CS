@@ -103,11 +103,10 @@ def test_health_checker_requires_model_presence_zero_price_and_structured_output
     results = checker.check((*MODEL_IDS, "missing/model:free"))
 
     assert results[MODEL_IDS[0]].availability_status == "available"
+    assert results[MODEL_IDS[0]].supports_structured_outputs is True
     assert results[MODEL_IDS[1]].availability_status == "pricing_or_terms_changed"
-    assert (
-        results[MODEL_IDS[2]].availability_status
-        == "structured_outputs_unavailable"
-    )
+    assert results[MODEL_IDS[2]].availability_status == "available"
+    assert results[MODEL_IDS[2]].supports_structured_outputs is False
     assert results["missing/model:free"].availability_status == "model_unavailable"
     assert all(result.checked_at == checked_at for result in results.values())
     assert client.calls == [
