@@ -52,6 +52,37 @@ MODEL_FIXTURES = [
 ]
 
 
+ZHIPU_FIXTURES = [
+    {
+        "provider_id": "zhipu",
+        "model_id": "glm-4.7-flash",
+        "company": "Zhipu AI",
+        "display_name": "GLM-4.7-Flash",
+        "context_length": 200_000,
+        "input_modalities": ["text"],
+        "is_preview": False,
+    },
+    {
+        "provider_id": "zhipu",
+        "model_id": "glm-4-flash-250414",
+        "company": "Zhipu AI",
+        "display_name": "GLM-4-Flash-250414",
+        "context_length": 128_000,
+        "input_modalities": ["text"],
+        "is_preview": False,
+    },
+    {
+        "provider_id": "zhipu",
+        "model_id": "glm-4.6v-flash",
+        "company": "Zhipu AI",
+        "display_name": "GLM-4.6V-Flash",
+        "context_length": 128_000,
+        "input_modalities": ["text", "image", "video"],
+        "is_preview": False,
+    },
+]
+
+
 class RecordingHttpClient:
     def __init__(self, response: HttpResponse):
         self.response = response
@@ -201,7 +232,7 @@ def _client_with_conversation(
     return client, conversation.json()["conversation_id"]
 
 
-def test_model_catalog_returns_only_the_three_fixed_openrouter_entries(
+def test_model_catalog_returns_fixed_openrouter_and_zhipu_entries(
     tmp_path: Path,
 ) -> None:
     client = TestClient(
@@ -249,9 +280,14 @@ def test_model_catalog_returns_only_the_three_fixed_openrouter_entries(
     assert all(len(item["models"]) == 1 for item in body["byok_providers"])
     assert body["quota_notice"]
     assert body["quota_exhausted_message"] == PLATFORM_DAILY_QUOTA_EXHAUSTED_MESSAGE
-    assert len(body["models"]) == 3
+    assert len(body["models"]) == 6
 
-    for actual, expected in zip(body["models"], MODEL_FIXTURES, strict=True):
+    openrouter_models = [m for m in body["models"] if m["provider_id"] == "openrouter"]
+    zhipu_models = [m for m in body["models"] if m["provider_id"] == "zhipu"]
+    assert len(openrouter_models) == 3
+    assert len(zhipu_models) == 3
+
+    for actual, expected in zip(openrouter_models, MODEL_FIXTURES, strict=True):
         for key, value in expected.items():
             assert actual[key] == value
         assert actual["provider_id"] == "openrouter"
@@ -259,6 +295,19 @@ def test_model_catalog_returns_only_the_three_fixed_openrouter_entries(
         assert actual["billing_label"] == "platform_daily_free_quota"
         assert actual["availability_status"] == "platform_credential_not_configured"
         assert actual["supports_structured_outputs"] is True
+        assert actual["user_selectable"] is False
+        assert actual["last_checked_at"] is None
+
+    for actual, expected in zip(zhipu_models, ZHIPU_FIXTURES, strict=True):
+        for key, value in expected.items():
+            assert actual[key] == value
+        assert actual["model_source"] == "platform_default"
+        assert actual["billing_label"] == "platform_daily_free_quota"
+        assert actual["availability_status"] == "platform_credential_not_configured"
+        # glm-4.6v-flash does not declare structured output; the others do.
+        assert actual["supports_structured_outputs"] == (
+            actual["model_id"] != "glm-4.6v-flash"
+        )
         assert actual["user_selectable"] is False
         assert actual["last_checked_at"] is None
 
@@ -278,15 +327,32 @@ def test_openrouter_mode_marks_fixed_catalog_available_without_exposing_key(
     assert response.status_code == 200
     assert response.json()["platform_credential_configured"] is True
     assert response.json()["real_platform_default_available"] is True
-    assert all(item["user_selectable"] for item in response.json()["models"])
+    openrouter_models = [
+        item for item in response.json()["models"]
+        if item["provider_id"] == "openrouter"
+    ]
+    zhipu_models = [
+        item for item in response.json()["models"]
+        if item["provider_id"] == "zhipu"
+    ]
+    assert len(openrouter_models) == 3
+    assert len(zhipu_models) == 3
+    assert all(item["user_selectable"] for item in openrouter_models)
     assert all(
         item["availability_status"] == "available"
-        for item in response.json()["models"]
+        for item in openrouter_models
+    )
+    # Zhipu is a separate provider with its own key; without it all fixed
+    # entries stay unconfigured and unselectable.
+    assert all(not item["user_selectable"] for item in zhipu_models)
+    assert all(
+        item["availability_status"] == "platform_credential_not_configured"
+        for item in zhipu_models
     )
     assert response.json()["health_checked_at"] == "2026-08-16T00:00:00Z"
     assert all(
         item["last_checked_at"] == "2026-08-16T00:00:00Z"
-        for item in response.json()["models"]
+        for item in openrouter_models
     )
     assert secret not in response.text
     assert secret not in repr(app.state.settings)
@@ -320,7 +386,9 @@ def test_test_profile_defaults_platform_health_and_inference_to_fail_closed(
     assert catalog.status_code == 200
     assert catalog.json()["real_platform_default_available"] is False
     assert {
-        model["availability_status"] for model in catalog.json()["models"]
+        model["availability_status"]
+        for model in catalog.json()["models"]
+        if model["provider_id"] == "openrouter"
     } == {"health_check_failed"}
 
     # Even if a fake health result says selectable, the absent inference

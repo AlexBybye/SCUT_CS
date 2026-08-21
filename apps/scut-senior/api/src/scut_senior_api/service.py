@@ -88,11 +88,13 @@ class IterationZeroService:
         credential_manager: ModelCredentialManager,
         byok_model: UserKeyModelGateway,
         humanizer: HumanizerGateway | None = None,
+        zhipu_model: ModelGateway | None = None,
     ):
         self.settings = settings
         self.registry = registry
         self.retrieval = retrieval
         self.model = model
+        self.zhipu_model = zhipu_model
         self.resources = resources
         self.repository = repository
         self.model_catalog = model_catalog
@@ -623,7 +625,9 @@ class IterationZeroService:
         model_node = (
             "byok_model"
             if use_user_key
-            else "mock_model" if mock_only else "openrouter_model"
+            else "mock_model"
+            if mock_only
+            else "zhipu_model" if model_provider_id == "zhipu" else "openrouter_model"
         )
 
         try:
@@ -652,7 +656,13 @@ class IterationZeroService:
                             history=history,
                         )
                     else:
-                        generated = self.model.generate(
+                        platform_model = (
+                            self.zhipu_model
+                            if model_provider_id == "zhipu"
+                            and self.zhipu_model is not None
+                            else self.model
+                        )
+                        generated = platform_model.generate(
                             request, sources, history=history
                         )
                 except Exception as model_error:

@@ -13,12 +13,12 @@ from .byok_catalog import BYOK_CATALOG_VERSION, ByokProviderCatalog
 from .contracts import ModelSource
 
 
-CATALOG_VERSION = "openrouter-platform-free-v2"
+CATALOG_VERSION = "platform-free-v3"
 PLATFORM_BILLING_LABEL = "platform_daily_free_quota"
 MODEL_HEALTH_TTL = timedelta(minutes=5)
 PLATFORM_QUOTA_NOTICE = (
     "平台免费额度由所有用户共享、每日刷新但有限，"
-    "并受 OpenRouter 每分钟额度及上游可用性限制。"
+    "并受各上游供应商（OpenRouter、智谱 bigmodel）的每分钟额度及可用性限制。"
 )
 PLATFORM_DAILY_QUOTA_EXHAUSTED_MESSAGE = (
     "今日平台免费额度已用完，第二天再来重试吧！"
@@ -102,7 +102,7 @@ class ModelNotRegistered(ValueError):
 class PublicModelCatalogEntry(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    provider_id: Literal["openrouter"]
+    provider_id: Literal["openrouter", "zhipu"]
     model_id: str
     company: str
     display_name: str
@@ -146,7 +146,7 @@ class PublicByokProviderEntry(BaseModel):
 class ModelCatalogResponse(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    catalog_version: Literal["openrouter-platform-free-v2"]
+    catalog_version: Literal["platform-free-v3"]
     platform_credential_configured: bool
     real_platform_default_available: bool
     health_checked_at: datetime | None
@@ -204,19 +204,76 @@ _OPENROUTER_PLATFORM_MODELS = (
 )
 
 
+_ZHIPU_PLATFORM_MODELS = (
+    ModelCatalogEntry(
+        provider_id="zhipu",
+        model_id="glm-4.7-flash",
+        company="Zhipu AI",
+        display_name="GLM-4.7-Flash",
+        model_source=ModelSource.PLATFORM_DEFAULT,
+        billing_label=PLATFORM_BILLING_LABEL,
+        availability_status="platform_credential_not_configured",
+        context_length=200_000,
+        input_modalities=("text",),
+        supports_structured_outputs=True,
+        is_preview=False,
+        user_selectable=False,
+    ),
+    ModelCatalogEntry(
+        provider_id="zhipu",
+        model_id="glm-4-flash-250414",
+        company="Zhipu AI",
+        display_name="GLM-4-Flash-250414",
+        model_source=ModelSource.PLATFORM_DEFAULT,
+        billing_label=PLATFORM_BILLING_LABEL,
+        availability_status="platform_credential_not_configured",
+        context_length=128_000,
+        input_modalities=("text",),
+        supports_structured_outputs=True,
+        is_preview=False,
+        user_selectable=False,
+    ),
+    ModelCatalogEntry(
+        provider_id="zhipu",
+        model_id="glm-4.6v-flash",
+        company="Zhipu AI",
+        display_name="GLM-4.6V-Flash",
+        model_source=ModelSource.PLATFORM_DEFAULT,
+        billing_label=PLATFORM_BILLING_LABEL,
+        availability_status="platform_credential_not_configured",
+        context_length=128_000,
+        input_modalities=("text", "image", "video"),
+        supports_structured_outputs=False,
+        is_preview=False,
+        user_selectable=False,
+    ),
+)
+
+
 class ModelCatalog:
     def __init__(
         self,
         *,
-        platform_credential_configured: bool,
+        openrouter_credential_configured: bool = False,
+        zhipu_credential_configured: bool = False,
         byok_runtime_enabled: bool = False,
-        health_checker: ModelHealthChecker | None = None,
+        openrouter_health_checker: ModelHealthChecker | None = None,
+        zhipu_health_checker: ModelHealthChecker | None = None,
         clock: Clock = utc_now,
         monotonic_clock: MonotonicClock = monotonic,
         health_ttl: timedelta = MODEL_HEALTH_TTL,
     ):
-        self.platform_credential_configured = platform_credential_configured
-        self._health_checker = health_checker
+        self._credential_configured = {
+            "openrouter": openrouter_credential_configured,
+            "zhipu": zhipu_credential_configured,
+        }
+        self._health_checkers = {
+            "openrouter": openrouter_health_checker,
+            "zhipu": zhipu_health_checker,
+        }
+        self.platform_credential_configured = any(
+            self._credential_configured.values()
+        )
         self._clock = clock
         self._monotonic_clock = monotonic_clock
         self._health_ttl = health_ttl
@@ -232,13 +289,13 @@ class ModelCatalog:
                 entry,
                 availability_status=(
                     "health_check_required"
-                    if platform_credential_configured
+                    if self._credential_configured[entry.provider_id]
                     else "platform_credential_not_configured"
                 ),
                 user_selectable=False,
                 last_checked_at=None,
             )
-            for entry in _OPENROUTER_PLATFORM_MODELS
+            for entry in (*_OPENROUTER_PLATFORM_MODELS, *_ZHIPU_PLATFORM_MODELS)
         )
         self._rebuild_index()
 
@@ -272,33 +329,62 @@ class ModelCatalog:
                 < self._health_ttl.total_seconds()
             ):
                 return
-            if self._health_checker is None or self._health_refreshing:
+            if self._health_refreshing:
                 return
             self._health_refreshing = True
-            model_ids = [entry.model_id for entry in self.entries]
+            model_ids_by_provider = {
+                provider_id: [entry.model_id for entry in self.entries
+                              if entry.provider_id == provider_id]
+                for provider_id, configured in self._credential_configured.items()
+                if configured
+            }
             self.entries = tuple(
                 replace(
                     entry,
-                    availability_status="health_check_required",
+                    availability_status=(
+                        "health_check_required"
+                        if self._credential_configured[entry.provider_id]
+                        else "platform_credential_not_configured"
+                    ),
                     user_selectable=False,
                 )
                 for entry in self.entries
             )
             self._rebuild_index()
-        try:
-            checked = self._health_checker.check(model_ids)
-        except Exception:
-            checked = {
-                model_id: ModelHealthResult(
-                    availability_status="health_check_failed",
-                    checked_at=now,
+        checked: dict[str, ModelHealthResult] = {}
+        for provider_id in model_ids_by_provider:
+            checker = self._health_checkers[provider_id]
+            model_ids = model_ids_by_provider[provider_id]
+            if checker is None:
+                checked.update(
+                    {
+                        model_id: ModelHealthResult(
+                            availability_status="health_check_failed",
+                            checked_at=now,
+                        )
+                        for model_id in model_ids
+                    }
                 )
-                for model_id in model_ids
-            }
+                continue
+            try:
+                checked.update(checker.check(model_ids))
+            except Exception:
+                checked.update(
+                    {
+                        model_id: ModelHealthResult(
+                            availability_status="health_check_failed",
+                            checked_at=now,
+                        )
+                        for model_id in model_ids
+                    }
+                )
         try:
             refreshed: list[ModelCatalogEntry] = []
             check_times: list[datetime] = []
             for entry in self.entries:
+                if not self._credential_configured[entry.provider_id]:
+                    refreshed.append(entry)
+                    continue
                 result = checked.get(entry.model_id)
                 if result is None:
                     result = ModelHealthResult("model_unavailable", now)
@@ -335,6 +421,8 @@ class ModelCatalog:
                     user_selectable=False,
                     last_checked_at=now,
                 )
+                if self._credential_configured[entry.provider_id]
+                else entry
                 for entry in self.entries
             ]
             check_times = [now]

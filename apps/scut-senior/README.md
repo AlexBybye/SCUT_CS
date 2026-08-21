@@ -83,10 +83,12 @@ export SCUT_SENIOR_GITHUB_CALLBACK_URL='https://<YOUR_HTTPS_HOST>/api/v1/auth/gi
 export SCUT_SENIOR_POST_LOGIN_REDIRECT_URL='https://<YOUR_HTTPS_HOST>/'
 export SCUT_SENIOR_MODEL_MODE=openrouter_platform
 export SCUT_SENIOR_OPENROUTER_API_KEY='<ROTATED_SERVER_SIDE_KEY>'
+# 可选：智谱 bigmodel 免费模型（GLM-4.7-Flash / GLM-4-Flash-250414 / GLM-4.6V-Flash）
+export SCUT_SENIOR_ZHIPU_API_KEY='<ZHIPU_FREE_KEY>'
 make dev-api
 ```
 
-默认 `mock` 模式不读取该变量。`openrouter_platform` 暂时只供受认证的本地开发验证，检索仍是合成 Fixture；模型在公开目录中通过“仍存在、文本输入输出价格为零、支持结构化输出”的健康检查并记录 `last_checked_at` 后才可选择。`SCUT_SENIOR_APP_ENV=production` 仍会拒绝启动。
+默认 `mock` 模式不读取该变量。`openrouter_platform` 暂时只供受认证的本地开发验证，检索仍是合成 Fixture；至少配置一个平台 Key（OpenRouter 和/或智谱 bigmodel）即可启用对应供应商的模型。OpenRouter 模型在公开目录中通过“仍存在、文本输入输出价格为零、支持结构化输出”的健康检查后才可选择；智谱的三个一方固定免费模型（`glm-4.7-flash`、`glm-4-flash-250414`、`glm-4.6v-flash`）无公开零价目录可复核，按“Key 已配置即声明可用、未知模型不可用”的失败关闭策略处理，其中 `glm-4.6v-flash` 未声明结构化输出能力。三者均记录 `last_checked_at`。`SCUT_SENIOR_APP_ENV=production` 仍会拒绝启动。
 
 ### 本地验证 BYOK
 
@@ -154,6 +156,8 @@ export SCUT_SENIOR_GITHUB_CALLBACK_URL='https://<隧道域名>/api/v1/auth/githu
 export SCUT_SENIOR_POST_LOGIN_REDIRECT_URL='https://<隧道域名>/'
 export SCUT_SENIOR_MODEL_MODE=openrouter_platform
 export SCUT_SENIOR_OPENROUTER_API_KEY='<服务端项目 Key>'
+# 可选：智谱 bigmodel 免费模型（GLM-4.7-Flash / GLM-4-Flash-250414 / GLM-4.6V-Flash）
+export SCUT_SENIOR_ZHIPU_API_KEY='<智谱免费 Key>'
 ```
 
 BYOK 真实调用另需稳定的 32 字节 AES 主密钥（见上文“本地验证 BYOK”）。`SCUT_SENIOR_APP_ENV=production` 仍拒绝启动；迭代 4 验收与实网联调使用 `development`。

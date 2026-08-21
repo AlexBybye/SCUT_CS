@@ -27,6 +27,7 @@ class Settings:
     cross_course_enabled: bool = False
     bilibili_resources_enabled: bool = True
     openrouter_api_key: str | None = field(default=None, repr=False)
+    zhipu_api_key: str | None = field(default=None, repr=False)
     byok_master_key: str | None = field(default=None, repr=False)
     byok_key_version: int = 1
     github_client_id: str | None = None
@@ -59,6 +60,7 @@ class Settings:
                 "SCUT_SENIOR_BILIBILI_RESOURCES_ENABLED", True
             ),
             openrouter_api_key=os.getenv("SCUT_SENIOR_OPENROUTER_API_KEY"),
+            zhipu_api_key=os.getenv("SCUT_SENIOR_ZHIPU_API_KEY"),
             byok_master_key=os.getenv("SCUT_SENIOR_BYOK_MASTER_KEY"),
             byok_key_version=_env_positive_int(
                 "SCUT_SENIOR_BYOK_KEY_VERSION", 1
@@ -133,15 +135,19 @@ class Settings:
             raise UnsafeRuntimeConfiguration(
                 "the model adapter must be explicit mock or openrouter_platform"
             )
-        if self.model_mode == "openrouter_platform" and not (
-            self.openrouter_api_key and self.openrouter_api_key.strip()
-        ):
+        platform_key_configured = bool(
+            (self.openrouter_api_key and self.openrouter_api_key.strip())
+            or (self.zhipu_api_key and self.zhipu_api_key.strip())
+        )
+        if self.model_mode == "openrouter_platform" and not platform_key_configured:
             raise UnsafeRuntimeConfiguration(
-                "openrouter_platform requires SCUT_SENIOR_OPENROUTER_API_KEY"
+                "openrouter_platform requires SCUT_SENIOR_OPENROUTER_API_KEY "
+                "or SCUT_SENIOR_ZHIPU_API_KEY"
             )
         # Test keeps a narrow exception for injected, non-network HTTP transports.
         # Any runnable development or production profile must authenticate users
-        # before it can spend the shared server-side OpenRouter credential.
+        # before it can spend the shared server-side platform credentials
+        # (OpenRouter and/or Zhipu bigmodel).
         if self.model_mode == "openrouter_platform" and self.app_env != "test":
             if self.identity_mode != "github_oauth" or self.storage_mode != "sqlite":
                 raise UnsafeRuntimeConfiguration(

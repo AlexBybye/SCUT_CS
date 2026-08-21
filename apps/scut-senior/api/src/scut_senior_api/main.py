@@ -34,6 +34,8 @@ from .adapters.openrouter import (
     OpenRouterModelGateway,
 )
 from .adapters.openrouter_health import OpenRouterCatalogHealthChecker
+from .adapters.zhipu import ZhipuPlatformGatewayError, ZhipuPlatformModelGateway
+from .adapters.zhipu_health import ZhipuPlatformHealthChecker
 from .adapters.sqlite import SQLiteWorkflowRepository
 from .auth import (
     OAUTH_STATE_TTL,
@@ -84,7 +86,7 @@ from .model_catalog import (
 from .model_credentials import ModelCredentialError, ModelCredentialManager
 from .paths import APP_ROOT
 from .ports import CapabilityUnavailable, DisabledCapability, HumanizerGateway
-from .ports import UserIdentity
+from .ports import ModelGateway, UserIdentity
 from .registry import CourseRegistry, UnknownCourseError
 from .runtime_guards import RuntimeGuardError
 from .service import ContractConflict, IterationZeroService, ResourceNotFound
@@ -191,8 +193,10 @@ def create_app(
     settings: Settings | None = None,
     *,
     model_http_client: JsonHttpClient | None = None,
+    zhipu_http_client: JsonHttpClient | None = None,
     byok_http_client: JsonHttpClient | None = None,
     model_health_checker: ModelHealthChecker | None = None,
+    zhipu_health_checker: ModelHealthChecker | None = None,
     github_oauth_adapter: GitHubOAuthAdapter | None = None,
     clock: Clock = utc_now,
     oauth_state_token_factory: TokenFactory = secure_token,
@@ -211,37 +215,74 @@ def create_app(
     platform_credential_configured = (
         active_settings.model_mode == "openrouter_platform"
     )
+    openrouter_configured = bool(
+        active_settings.openrouter_api_key
+        and active_settings.openrouter_api_key.strip()
+    )
+    zhipu_configured = bool(
+        active_settings.zhipu_api_key and active_settings.zhipu_api_key.strip()
+    )
     byok_master_key = active_settings.byok_master_key_bytes()
     byok_runtime_enabled = (
         byok_master_key is not None
         and active_settings.identity_mode == "github_oauth"
         and active_settings.storage_mode == "sqlite"
     )
-    if platform_credential_configured and model_health_checker is None:
-        if active_settings.app_env == "test":
-            model_health_checker = _FailClosedModelHealthChecker(clock)
-        else:
-            model_health_checker = OpenRouterCatalogHealthChecker(
-                api_key=active_settings.openrouter_api_key or "",
+    if platform_credential_configured and openrouter_configured:
+        if model_health_checker is None:
+            if active_settings.app_env == "test":
+                model_health_checker = _FailClosedModelHealthChecker(clock)
+            else:
+                model_health_checker = OpenRouterCatalogHealthChecker(
+                    api_key=active_settings.openrouter_api_key or "",
+                    clock=clock,
+                )
+    if platform_credential_configured and zhipu_configured:
+        if zhipu_health_checker is None:
+            zhipu_health_checker = ZhipuPlatformHealthChecker(
+                api_key=active_settings.zhipu_api_key or "",
                 clock=clock,
             )
     model_catalog = ModelCatalog(
-        platform_credential_configured=platform_credential_configured,
+        openrouter_credential_configured=(
+            platform_credential_configured and openrouter_configured
+        ),
+        zhipu_credential_configured=(
+            platform_credential_configured and zhipu_configured
+        ),
         byok_runtime_enabled=byok_runtime_enabled,
-        health_checker=model_health_checker,
+        openrouter_health_checker=model_health_checker,
+        zhipu_health_checker=zhipu_health_checker,
         clock=clock,
     )
-    if platform_credential_configured:
+    if platform_credential_configured and openrouter_configured:
         if active_settings.app_env == "test" and model_http_client is None:
             model_http_client = FailClosedJsonHttpClient()
         model = OpenRouterModelGateway(
             api_key=active_settings.openrouter_api_key or "",
-            allowed_model_ids=[entry.model_id for entry in model_catalog.entries],
+            allowed_model_ids=[
+                entry.model_id
+                for entry in model_catalog.entries
+                if entry.provider_id == "openrouter"
+            ],
             http_client=model_http_client,
             clock=clock,
         )
     else:
         model = MockModelGateway()
+    zhipu_model: ModelGateway | None = None
+    if platform_credential_configured and zhipu_configured:
+        if active_settings.app_env == "test" and zhipu_http_client is None:
+            zhipu_http_client = FailClosedJsonHttpClient()
+        zhipu_model = ZhipuPlatformModelGateway(
+            api_key=active_settings.zhipu_api_key or "",
+            allowed_model_ids=[
+                entry.model_id
+                for entry in model_catalog.entries
+                if entry.provider_id == "zhipu"
+            ],
+            http_client=zhipu_http_client,
+        )
     resources = BilibiliLinkDiscoveryAdapter()
     repository = SQLiteWorkflowRepository(
         active_settings.database_path,
@@ -281,6 +322,7 @@ def create_app(
         registry=registry,
         retrieval=retrieval,
         model=model,
+        zhipu_model=zhipu_model,
         resources=resources,
         repository=repository,
         model_catalog=model_catalog,
@@ -388,6 +430,10 @@ def create_app(
 
     @app.exception_handler(OpenRouterGatewayError)
     async def openrouter_gateway_error_handler(_, exc: OpenRouterGatewayError):
+        return _error_response(exc.status_code, exc.code, exc.detail)
+
+    @app.exception_handler(ZhipuPlatformGatewayError)
+    async def zhipu_gateway_error_handler(_, exc: ZhipuPlatformGatewayError):
         return _error_response(exc.status_code, exc.code, exc.detail)
 
     @app.exception_handler(ByokGatewayError)
@@ -947,7 +993,9 @@ def _safe_stream_error(exc: Exception) -> tuple[str, str]:
             "workflow_output_rejected",
             "模型输出未通过引用与证据校验，请重试。",
         )
-    if isinstance(exc, OpenRouterGatewayError | ByokGatewayError):
+    if isinstance(
+        exc, OpenRouterGatewayError | ZhipuPlatformGatewayError | ByokGatewayError
+    ):
         return exc.code, exc.detail
     if isinstance(exc, ModelCredentialError):
         return exc.code, exc.detail

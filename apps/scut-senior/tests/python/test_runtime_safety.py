@@ -58,6 +58,7 @@ def test_oauth_and_platform_secrets_are_absent_from_settings_repr(tmp_path: Path
         model_mode="openrouter_platform",
         database_path=tmp_path / "safe.db",
         openrouter_api_key="platform-secret-value",
+        zhipu_api_key="zhipu-secret-value",
         github_client_id="public-client-id",
         github_client_secret="oauth-secret-value",
         github_callback_url="https://testserver/api/v1/auth/github/callback",
@@ -66,6 +67,7 @@ def test_oauth_and_platform_secrets_are_absent_from_settings_repr(tmp_path: Path
 
     rendered = repr(settings)
     assert "platform-secret-value" not in rendered
+    assert "zhipu-secret-value" not in rendered
     assert "oauth-secret-value" not in rendered
 
 

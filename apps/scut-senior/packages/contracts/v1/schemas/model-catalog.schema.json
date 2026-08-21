@@ -176,7 +176,10 @@
           "type": "string"
         },
         "provider_id": {
-          "const": "openrouter",
+          "enum": [
+            "openrouter",
+            "zhipu"
+          ],
           "title": "Provider Id",
           "type": "string"
         },
@@ -229,7 +232,7 @@
       "type": "array"
     },
     "catalog_version": {
-      "const": "openrouter-platform-free-v2",
+      "const": "platform-free-v3",
       "title": "Catalog Version",
       "type": "string"
     },
