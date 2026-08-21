@@ -104,7 +104,7 @@ const store = useAppStore();
   gap: 8px;
   padding: 5px 9px 5px 5px;
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: var(--r-sm);
   background: var(--raised);
   color: var(--text);
   cursor: pointer;
