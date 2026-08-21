@@ -94,10 +94,6 @@ _BYOK_PROVIDER_ENTRIES = (
                 model_id="deepseek/deepseek-v4-flash-0731",
                 company="DeepSeek",
                 display_name="DeepSeek V4 Flash 0731",
-                # DeepSeek is a reasoning model: its thinking consumes part of
-                # the token budget, so a small max_tokens can return an empty
-                # final ``content``. Keep headroom for reasoning + answer.
-                default_max_tokens=8192,
             ),
         ),
     ),
@@ -111,8 +107,6 @@ _BYOK_PROVIDER_ENTRIES = (
                 model_id="deepseek-v4-flash",
                 company="DeepSeek",
                 display_name="DeepSeek V4 Flash",
-                # Same reasoning-model note as the OpenRouter DeepSeek route.
-                default_max_tokens=8192,
             ),
         ),
     ),

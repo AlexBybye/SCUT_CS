@@ -40,9 +40,6 @@ ModelAvailabilityStatus = Literal[
 class ModelHealthResult:
     availability_status: ModelAvailabilityStatus
     checked_at: datetime
-    # This is descriptive metadata, not a Workflow admission requirement.
-    # Legacy health-check implementations can omit it and remain compatible.
-    supports_structured_outputs: bool | None = None
 
 
 class ModelHealthChecker(Protocol):
@@ -302,17 +299,6 @@ class ModelCatalog:
                 result = checked.get(entry.model_id)
                 if result is None:
                     result = ModelHealthResult("model_unavailable", now)
-                availability_status = result.availability_status
-                # A pre-relaxation health checker can still report this legacy
-                # status. Structured JSON is now optional, so it must not make
-                # an otherwise callable free model disappear from the catalog.
-                if availability_status == "structured_outputs_unavailable":
-                    availability_status = "available"
-                    supports_structured_outputs = False
-                elif result.supports_structured_outputs is None:
-                    supports_structured_outputs = entry.supports_structured_outputs
-                else:
-                    supports_structured_outputs = result.supports_structured_outputs
                 checked_at = result.checked_at
                 if checked_at.tzinfo is None or checked_at.utcoffset() is None:
                     raise ValueError("model health timestamps must be timezone-aware")
@@ -321,9 +307,12 @@ class ModelCatalog:
                 refreshed.append(
                     replace(
                         entry,
-                        availability_status=availability_status,
-                        supports_structured_outputs=supports_structured_outputs,
-                        user_selectable=availability_status == "available",
+                        availability_status=result.availability_status,
+                        supports_structured_outputs=(
+                            result.availability_status
+                            != "structured_outputs_unavailable"
+                        ),
+                        user_selectable=result.availability_status == "available",
                         last_checked_at=checked_at,
                     )
                 )

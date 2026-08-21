@@ -237,25 +237,6 @@ def test_explicit_local_mode_uses_only_active_validated_payload_for_s1(
         )
     )
     client = TestClient(app)
-    catalog = client.get("/api/v1/courses")
-    assert catalog.status_code == 200
-    courses = {course["course_id"]: course for course in catalog.json()["courses"]}
-    assert catalog.json()["retrieval_mode"] == "local_corpus"
-    assert courses[COURSE_ID]["mock_available"] is False
-    assert courses[COURSE_ID]["retrieval_availability"] == "local_corpus"
-    assert courses[COURSE_ID]["retrieval_available"] is True
-    assert courses[COURSE_ID]["plugin_loaded"] is True
-    assert courses[COURSE_ID]["selectable"] is True
-    assert courses["linear_algebra"]["retrieval_availability"] == "unavailable"
-    assert courses["linear_algebra"]["selectable"] is False
-
-    health = client.get("/api/v1/health").json()
-    assert health["local_corpus_mode_configured"] is True
-    assert health["local_corpus_available"] is True
-    assert health["local_corpus_retrieval_available_course_count"] == 1
-    assert health["selectable_course_count"] == 1
-    assert health["formal_exit_blocked"] is False
-
     conversation_response = client.post(
         "/api/v1/conversations", json={"course_id": COURSE_ID}
     )
@@ -300,32 +281,16 @@ def test_explicit_local_mode_uses_only_active_validated_payload_for_s1(
 
 def test_local_mode_does_not_fall_back_when_active_is_missing(tmp_path: Path) -> None:
     store = tmp_path / "missing-store"
-    app = create_app(
-        Settings(
-            app_env="test",
-            retrieval_mode="local_corpus",
-            corpus_store_path=store,
-            database_path=tmp_path / "missing-active.db",
+    client = TestClient(
+        create_app(
+            Settings(
+                app_env="test",
+                retrieval_mode="local_corpus",
+                corpus_store_path=store,
+                database_path=tmp_path / "missing-active.db",
+            )
         )
     )
-    client = TestClient(app)
-
-    catalog = client.get("/api/v1/courses")
-    assert catalog.status_code == 200
-    assert catalog.json()["retrieval_mode"] == "local_corpus"
-    assert all(
-        course["retrieval_availability"] == "unavailable"
-        and course["retrieval_available"] is False
-        and course["selectable"] is False
-        for course in catalog.json()["courses"]
-    )
-
-    health = client.get("/api/v1/health").json()
-    assert health["local_corpus_mode_configured"] is True
-    assert health["local_corpus_available"] is False
-    assert health["local_corpus_retrieval_available_course_count"] == 0
-    assert health["selectable_course_count"] == 0
-    assert health["formal_exit_blocked"] is True
 
     response = client.post(
         "/api/v1/conversations", json={"course_id": "linear_algebra"}

@@ -20,7 +20,6 @@ from scut_senior_api.adapters.byok import (
 )
 from scut_senior_api.adapters.openrouter import HttpResponse
 from scut_senior_api.auth import GitHubUserProfile, SESSION_COOKIE_NAME
-from scut_senior_api.byok_catalog import ByokProviderCatalog
 from scut_senior_api.config import Settings
 from scut_senior_api.contracts import RunStatus, WorkflowRunRequest
 from scut_senior_api.main import create_app
@@ -34,14 +33,16 @@ ROUTES = (
         "openrouter",
         "deepseek/deepseek-v4-flash-0731",
         OPENROUTER_BYOK_ENDPOINT,
+        "json_schema",
     ),
-    ("deepseek", "deepseek-v4-flash", DEEPSEEK_BYOK_ENDPOINT),
+    ("deepseek", "deepseek-v4-flash", DEEPSEEK_BYOK_ENDPOINT, "json_object"),
     (
         "siliconflow",
         "Pro/zai-org/GLM-4.7",
         SILICONFLOW_BYOK_ENDPOINT,
+        "json_object",
     ),
-    ("zhipu", "glm-5.2", ZHIPU_BYOK_ENDPOINT),
+    ("zhipu", "glm-5.2", ZHIPU_BYOK_ENDPOINT, "json_object"),
 )
 
 
@@ -140,13 +141,14 @@ def workflow_request(
 
 
 @pytest.mark.parametrize(
-    ("provider_id", "model_id", "endpoint"), ROUTES
+    ("provider_id", "model_id", "endpoint", "response_format"), ROUTES
 )
-def test_four_byok_routes_use_one_fixed_endpoint_model_without_response_schema(
+def test_four_byok_routes_use_one_fixed_endpoint_model_and_user_billing(
     tmp_path: Path,
     provider_id: str,
     model_id: str,
     endpoint: str,
+    response_format: str,
 ) -> None:
     http = RecordingHttpClient()
     app, client, _, conversation_id = authenticated_app(tmp_path, http)
@@ -167,17 +169,19 @@ def test_four_byok_routes_use_one_fixed_endpoint_model_without_response_schema(
     assert call["headers"]["Authorization"] == f"Bearer {api_key}"
     assert call["payload"]["model"] == model_id
     # Call defaults are declared on the fixed catalog entry, not hard-coded
-    # in the request builder; assert against the catalog so a provider-specific
-    # default (e.g. a larger budget for reasoning models) stays correct.
-    catalog_entry = ByokProviderCatalog().resolve_model(provider_id, model_id)
-    assert call["payload"]["max_tokens"] == catalog_entry.default_max_tokens
-    assert call["payload"]["temperature"] == catalog_entry.default_temperature
+    # in the request builder.
+    assert call["payload"]["max_tokens"] == 2048
+    assert call["payload"]["temperature"] == 0.2
     assert "models" not in call["payload"]
     assert "fallbacks" not in call["payload"]
     assert "base_url" not in call["payload"]
-    assert "provider" not in call["payload"]
-    assert "response_format" not in call["payload"]
-    assert api_key not in json.dumps(call["payload"], ensure_ascii=False)
+    assert call["payload"]["response_format"]["type"] == response_format
+    if provider_id == "openrouter":
+        assert call["payload"]["provider"] == {"require_parameters": True}
+        assert call["payload"]["response_format"]["json_schema"]["strict"] is True
+    else:
+        assert "provider" not in call["payload"]
+        assert "json_schema" not in call["payload"]["response_format"]
 
     result = response.json()
     assert result["model_source"] == "user_key"
@@ -198,48 +202,6 @@ def test_four_byok_routes_use_one_fixed_endpoint_model_without_response_schema(
             for value in row
         )
     assert api_key not in persisted
-
-
-def test_byok_accepts_a_plain_text_complex_answer_without_retry(tmp_path: Path) -> None:
-    plain_text = (
-        "先通过初等行变换把矩阵化为阶梯形，再数每一行的首个非零元。"
-        "这些主元的个数就是秩；零行不计入。"
-    )
-    http = RecordingHttpClient(
-        HttpResponse(
-            200,
-            json.dumps(
-                {"choices": [{"message": {"content": plain_text}}]},
-                ensure_ascii=False,
-            ).encode(),
-        )
-    )
-    _, client, _, conversation_id = authenticated_app(tmp_path, http)
-    key = "sk-deepseek-plain-text"
-    assert client.put(
-        "/api/v1/model-credentials/deepseek", json={"api_key": key}
-    ).status_code == 200
-
-    response = client.post(
-        "/api/v1/workflow-runs",
-        json=workflow_request(conversation_id, "deepseek", "deepseek-v4-flash"),
-    )
-
-    assert response.status_code == 201, response.text
-    assert len(http.calls) == 1
-    result = response.json()
-    assert result["repository_answer"] is None
-    general_supplement = result["general_supplement"]
-    assert general_supplement.startswith(plain_text)
-    assert general_supplement.count(
-        "> **助教提示：** 定义、前提、符号先摆齐，少一步都不给分。"
-    ) == 1
-    assert result["answer_blocks"] == [
-        {"type": "general", "content": general_supplement}
-    ]
-    assert result["citations"] == []
-    assert all(event["node"] != "model_output_retry" for event in result["trace"])
-    assert key not in response.text
 
 
 def test_cancel_during_key_load_prevents_the_first_byok_provider_call(

@@ -8,7 +8,6 @@ import pytest
 from scut_senior_api.adapters.bilibili import (
     MAX_KEYWORD_LENGTH,
     BilibiliLinkDiscoveryAdapter,
-    derive_question_keywords,
     normalize_keywords,
 )
 
@@ -37,12 +36,6 @@ def test_non_string_and_control_only_keywords_are_ignored() -> None:
     normalized = normalize_keywords(["\x00\u200b", 42, None, "秩"])  # type: ignore[list-item]
 
     assert normalized == ("秩",)
-
-
-def test_question_keywords_are_a_bounded_combination_from_the_current_question() -> None:
-    assert derive_question_keywords(
-        "为什么初等行变换不改变矩阵的秩，并给出一个三行三列矩阵的计算示例？"
-    ) == ("初等行变换不改变矩阵的秩 三行三列矩阵的计算示例",)
 
 
 def test_valid_keywords_always_produce_one_anonymous_live_search_link() -> None:

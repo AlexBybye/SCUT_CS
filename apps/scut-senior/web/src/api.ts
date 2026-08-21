@@ -4,11 +4,10 @@ import type {
   ByokProviderId,
   ConversationDetail,
   ConversationSummary,
-  CourseCatalog,
+  Course,
   FeedbackRecord,
   FeedbackType,
   ModelCatalog,
-  PluginRegistry,
   WorkflowAttempt,
   WorkflowRunRequest,
   WorkflowRunResult,
@@ -83,30 +82,13 @@ export async function logout(): Promise<void> {
   });
 }
 
-export async function getCourses(): Promise<CourseCatalog> {
-  return apiRequest<CourseCatalog>("/api/v1/courses");
+export async function getCourses(): Promise<Course[]> {
+  const body = await apiRequest<Course[] | { courses: Course[] }>("/api/v1/courses");
+  return Array.isArray(body) ? body : body.courses;
 }
 
 export async function getModels(): Promise<ModelCatalog> {
   return apiRequest<ModelCatalog>("/api/v1/models");
-}
-
-export async function getPluginRegistry(): Promise<PluginRegistry> {
-  return apiRequest<PluginRegistry>("/api/v1/plugin-registry");
-}
-
-export async function loadCoursePlugin(courseId: string): Promise<{ course_id: string; loaded: boolean }> {
-  return apiRequest<{ course_id: string; loaded: boolean }>(
-    `/api/v1/plugin-registry/courses/${encodeURIComponent(courseId)}/load`,
-    { method: "POST" },
-  );
-}
-
-export async function unloadCoursePlugin(courseId: string): Promise<{ course_id: string; loaded: boolean }> {
-  return apiRequest<{ course_id: string; loaded: boolean }>(
-    `/api/v1/plugin-registry/courses/${encodeURIComponent(courseId)}/unload`,
-    { method: "POST" },
-  );
 }
 
 export async function getByokCredentials(): Promise<ByokCredentialStatus[]> {

@@ -19,7 +19,6 @@ from ..workflow_focus import (
     build_response_control_directive,
     build_workflow_focus,
 )
-from .answer_parsing import ModelAnswerParseError, parse_chat_completion_answer
 from .http_security import build_no_redirect_opener, is_timeout_transport_error
 
 
@@ -245,12 +244,17 @@ def _build_structured_request(
                 "role": "system",
                 "content": (
                     "你是 SCUT 课程助教。只能把下方 [S1]、[S2] 等候选编号视为"
-                    "课程资料来源，不得编造来源。若答案依据课程资料，请在对应说法后"
-                    "标出实际使用的 [S#]；没有可验证来源时不要伪造引用。"
-                    "不要输出 URL、推荐理由或思考过程。请直接输出适合学生阅读的自然语言"
-                    "回答；使用 Markdown 排版，不要用 JSON 包裹学生正文或解释格式。"
-                    "Markdown、公式、引用和 B 站元数据格式严格遵守下方生成表达约束。"
-                    f"\n\n{response_controls}\n\n"
+                    "课程资料来源，不得编造来源。citation_ids 只能列出真正支撑 "
+                    "repository_answer 的候选编号，且不得重复；其他回答块不得引用"
+                    "这些编号。repository_answer 只写课程资料支持的内容；"
+                    "general_supplement 只写资料优先模式下的通用补充；"
+                    "user_material_answer 只用于临时材料精读；personalized_analysis "
+                    "只用于复习、题目辅导或错题复盘。无对应内容时返回空字符串。"
+                    "所有模型控制的回答与建议字段都不得包含任何 URL。"
+                    "输出必须符合给定 JSON Schema。"
+                    "bilibili_search_keywords 只能包含问题对应的 0～3 个短检索词，"
+                    "不能包含 URL、推荐理由或模型思考过程。"
+                    f"{response_controls}"
                     f"{workflow_focus.prompt_directive}"
                 ),
             },
@@ -260,8 +264,8 @@ def _build_structured_request(
                 "content": (
                     f"Workflow: {request.workflow_type.value}\n"
                     f"知识范围: {request.knowledge_scope.value}\n"
-                    "Bilibili 搜索词：系统优先使用受控元数据中的显式搜索词，其次是"
-                    "模型给出的本题核心知识点，最后才回退到当前问题；不要在正文中输出链接。\n"
+                    "Bilibili 搜索词: "
+                    f"{'可返回 0～3 个；没有合适聚焦词时返回空数组' if request.include_bilibili_resources else '必须为空数组'}\n"
                     "权威检索与回答输入（仅来自匹配字段的 JSON 字符串）:\n"
                     f"{json.dumps(workflow_focus.authoritative_query, ensure_ascii=False)}\n\n"
                     f"结构化 Workflow 输入: {request.workflow_payload.model_dump_json()}\n\n"
@@ -271,6 +275,55 @@ def _build_structured_request(
                 ),
             },
         ],
+        "response_format": {
+            "type": "json_schema",
+            "json_schema": {
+                "name": "scut_senior_workflow_answer",
+                "strict": True,
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "repository_answer": {"type": "string"},
+                        "citation_ids": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "pattern": "^S[1-9][0-9]*$",
+                            },
+                            "uniqueItems": True,
+                        },
+                        "general_supplement": {"type": "string"},
+                        "user_material_answer": {"type": "string"},
+                        "personalized_analysis": {"type": "string"},
+                        "related_topics": {
+                            "type": "array",
+                            "items": {"type": "string"},
+                        },
+                        "related_questions": {
+                            "type": "array",
+                            "items": {"type": "string"},
+                        },
+                        "bilibili_search_keywords": {
+                            "type": "array",
+                            "items": {"type": "string", "maxLength": 32},
+                            "maxItems": 3,
+                        },
+                    },
+                    "required": [
+                        "repository_answer",
+                        "citation_ids",
+                        "general_supplement",
+                        "user_material_answer",
+                        "personalized_analysis",
+                        "related_topics",
+                        "related_questions",
+                        "bilibili_search_keywords",
+                    ],
+                    "additionalProperties": False,
+                },
+            },
+        },
+        "provider": {"require_parameters": True},
         "max_tokens": 2048,
         "temperature": 0.2,
     }
@@ -365,13 +418,73 @@ def _safe_upstream_error(status_code: int) -> OpenRouterGatewayError:
 
 def _parse_generated_answer(body: bytes) -> GeneratedAnswer:
     try:
-        return parse_chat_completion_answer(body)
-    except ModelAnswerParseError:
+        payload = json.loads(body.decode("utf-8"))
+        choices = payload["choices"]
+        content = choices[0]["message"]["content"]
+        structured = json.loads(content)
+        if not isinstance(structured, dict):
+            raise TypeError("structured answer must be an object")
+        answer = structured.get("repository_answer", "")
+        general = structured.get("general_supplement", "")
+        user_material = structured.get("user_material_answer", "")
+        personalized = structured.get("personalized_analysis", "")
+        topics = structured["related_topics"]
+        questions = structured["related_questions"]
+        keywords = structured.get("bilibili_search_keywords", [])
+        citation_ids = structured.get("citation_ids")
+        if not all(
+            isinstance(value, str)
+            for value in (answer, general, user_material, personalized)
+        ):
+            raise TypeError("answer blocks must be strings")
+        if not any(
+            value.strip()
+            for value in (answer, general, user_material, personalized)
+        ):
+            raise TypeError("at least one answer block is required")
+        if not _is_string_list(topics) or not _is_string_list(questions):
+            raise TypeError("related fields must be string lists")
+        if not _is_string_list(keywords):
+            # Bilibili is supplementary. A provider that ignores this new
+            # optional field must not invalidate an otherwise usable answer.
+            keywords = []
+        if citation_ids is None:
+            # Compatibility for recorded iteration-1 fixtures. Live requests
+            # use the strict schema above; only explicit inline [S#] markers
+            # are recovered here, never every retrieval candidate.
+            citation_ids = list(dict.fromkeys(re.findall(r"\[S([1-9][0-9]*)\]", answer)))
+            citation_ids = [f"S{number}" for number in citation_ids]
+        if not _is_string_list(citation_ids):
+            raise TypeError("citation_ids must be a string list")
+    except (
+        AttributeError,
+        UnicodeDecodeError,
+        json.JSONDecodeError,
+        KeyError,
+        IndexError,
+        TypeError,
+    ):
         raise OpenRouterGatewayError(
             status_code=502,
             code="platform_model_invalid_response",
             detail="平台模型返回了无法处理的结果，请稍后重试。",
         ) from None
+    return GeneratedAnswer(
+        repository_answer=answer.strip(),
+        citation_ids=tuple(item.strip() for item in citation_ids),
+        general_supplement=general.strip(),
+        user_material_answer=user_material.strip(),
+        personalized_analysis=personalized.strip(),
+        related_topics=tuple(item.strip() for item in topics if item.strip()),
+        related_questions=tuple(item.strip() for item in questions if item.strip()),
+        bilibili_search_keywords=tuple(
+            item.strip() for item in keywords[:3] if item.strip()
+        ),
+    )
+
+
+def _is_string_list(value: object) -> bool:
+    return isinstance(value, list) and all(isinstance(item, str) for item in value)
 
 
 def _history_messages(

@@ -18,7 +18,6 @@ from scut_senior_api.contracts import (
     AnswerStatus,
     EvidenceStatus,
     RunStatus,
-    Tone,
     TraceEvent,
     WorkflowRunRequest,
 )
@@ -29,7 +28,6 @@ from scut_senior_api.runtime_guards import (
     build_guarded_answer,
     protect_humanizer_output,
 )
-from scut_senior_api.workflow_focus import build_tone_visible_callout
 from scut_senior_api.workflow_stream import WorkflowStreamSession
 
 
@@ -447,11 +445,9 @@ def test_runtime_rejects_in_place_humanizer_mutation(tmp_path: Path) -> None:
 
     assert response.status_code == 201, response.text
     result = response.json()
-    assert result["answer_blocks"][0]["type"] == "repository"
-    assert result["answer_blocks"][0]["content"].startswith("矩阵可逆，见 [S1]。")
-    assert result["answer_blocks"][0]["content"].count(
-        build_tone_visible_callout(Tone.TEACHING_ASSISTANT)
-    ) == 1
+    assert result["answer_blocks"] == [
+        {"type": "repository", "content": "矩阵可逆，见 [S1]。"}
+    ]
     humanizer_event = next(
         event for event in result["trace"] if event["node"] == "humanizer"
     )
@@ -459,39 +455,6 @@ def test_runtime_rejects_in_place_humanizer_mutation(tmp_path: Path) -> None:
         "reason_code": "humanizer_protected_fallback",
         "degradation_code": "humanizer_unverified_text_change",
     }
-
-
-def test_runtime_enforces_the_selected_visible_tone_contract(tmp_path: Path) -> None:
-    class ScriptedModel:
-        def generate(self, request, sources, history=()):
-            del request, sources, history
-            return GeneratedAnswer(
-                repository_answer=(
-                    "## 结论\n\n矩阵的秩可由主元个数判断 [S1]。\n\n"
-                    "## 要点\n\n- 非零行的数量给出秩。"
-                ),
-                citation_ids=("S1",),
-            )
-
-    app = create_app(
-        Settings(app_env="test", database_path=tmp_path / "tone-contract.db")
-    )
-    app.state.service.model = ScriptedModel()
-    client = TestClient(app)
-    conversation = client.post(
-        "/api/v1/conversations", json={"course_id": "linear_algebra"}
-    ).json()
-    request_payload = _request_dict(conversation["conversation_id"])
-    request_payload["answer_mode"] = "concise"
-    request_payload["tone"] = "study_partner"
-
-    response = client.post("/api/v1/workflow-runs", json=request_payload)
-
-    assert response.status_code == 201, response.text
-    content = response.json()["answer_blocks"][0]["content"]
-    callout = build_tone_visible_callout(Tone.STUDY_PARTNER)
-    assert content.count(callout) == 1
-    assert content.index("## 结论") < content.index(callout) < content.index("## 要点")
 
 
 def test_model_suggestions_cannot_leak_bilibili_urls_or_text_into_trace(
@@ -1134,7 +1097,7 @@ def test_all_five_workflows_share_the_same_runtime_pipeline(tmp_path: Path) -> N
         "mock_model",
         "citation_guard",
         "knowledge_point_normalization",
-        "response_style_control",
+        "humanizer",
         "bilibili_link_discovery",
         "persistence",
     ]
@@ -1171,22 +1134,12 @@ def test_all_five_workflows_share_the_same_runtime_pipeline(tmp_path: Path) -> N
         assert result["external_resources"][0]["url"].startswith(
             "https://search.bilibili.com/all?keyword="
         )
-        bilibili_event = next(
-            event
-            for event in result["trace"]
-            if event["node"] == "bilibili_link_discovery"
+        humanizer_event = next(
+            event for event in result["trace"] if event["node"] == "humanizer"
         )
-        assert bilibili_event["result"]["reason_code"] == (
-            "model_bilibili_search_keywords"
-        )
-        response_style_event = next(
-            event
-            for event in result["trace"]
-            if event["node"] == "response_style_control"
-        )
-        assert response_style_event["status"] == "completed"
-        assert response_style_event["result"] == {
-            "reason_code": "single_pass_model_prompt"
+        assert humanizer_event["status"] == "skipped"
+        assert humanizer_event["result"] == {
+            "reason_code": "humanizer_not_configured"
         }
         assert result["run_status"] == "completed"
         assert result["answer_blocks"]

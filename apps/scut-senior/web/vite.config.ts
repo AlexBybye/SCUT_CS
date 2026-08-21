@@ -8,7 +8,6 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [vue()],
     server: {
-      allowedHosts: ["alex-3.tail26d033.ts.net"],
       proxy: {
         "/api": {
           target: env.VITE_API_PROXY_TARGET || "http://127.0.0.1:8000",

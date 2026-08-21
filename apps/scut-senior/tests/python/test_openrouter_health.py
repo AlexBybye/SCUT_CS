@@ -76,7 +76,7 @@ def model_row(
     }
 
 
-def test_health_checker_requires_model_presence_and_zero_price_with_structured_support_as_metadata() -> None:
+def test_health_checker_requires_model_presence_zero_price_and_structured_output() -> None:
     checked_at = datetime(2026, 8, 16, 2, 30, tzinfo=UTC)
     client = RecordingReadClient(
         HttpResponse(
@@ -103,10 +103,11 @@ def test_health_checker_requires_model_presence_and_zero_price_with_structured_s
     results = checker.check((*MODEL_IDS, "missing/model:free"))
 
     assert results[MODEL_IDS[0]].availability_status == "available"
-    assert results[MODEL_IDS[0]].supports_structured_outputs is True
     assert results[MODEL_IDS[1]].availability_status == "pricing_or_terms_changed"
-    assert results[MODEL_IDS[2]].availability_status == "available"
-    assert results[MODEL_IDS[2]].supports_structured_outputs is False
+    assert (
+        results[MODEL_IDS[2]].availability_status
+        == "structured_outputs_unavailable"
+    )
     assert results["missing/model:free"].availability_status == "model_unavailable"
     assert all(result.checked_at == checked_at for result in results.values())
     assert client.calls == [
@@ -189,7 +190,7 @@ def test_catalog_is_unselectable_until_health_check_and_caches_fresh_result() ->
     assert checker.calls == 2
 
 
-def test_catalog_keeps_models_selectable_when_structured_output_is_unavailable() -> None:
+def test_catalog_does_not_claim_structured_output_support_when_health_rejects_it() -> None:
     checked_at = datetime(2026, 8, 16, 3, 0, tzinfo=UTC)
 
     class NoStructuredOutputChecker:
@@ -208,9 +209,8 @@ def test_catalog_keeps_models_selectable_when_structured_output_is_unavailable()
     )
     payload = catalog.public_payload()
 
-    assert payload["real_platform_default_available"] is True
-    assert all(model["user_selectable"] is True for model in payload["models"])
-    assert all(model["availability_status"] == "available" for model in payload["models"])
+    assert payload["real_platform_default_available"] is False
+    assert all(model["user_selectable"] is False for model in payload["models"])
     assert all(
         model["supports_structured_outputs"] is False
         for model in payload["models"]

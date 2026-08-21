@@ -2,7 +2,7 @@ import { renderToString } from "@vue/server-renderer";
 import { createSSRApp, h } from "vue";
 import { describe, expect, it } from "vitest";
 import WorkflowResult from "../components/WorkflowResult.vue";
-import type { AnswerMode, ConversationDetail, Tone, WorkflowRunResult } from "../contracts";
+import type { ConversationDetail, WorkflowRunResult } from "../contracts";
 import { selectConversationAttempt } from "../workflowResultValidation";
 
 function workflowResult(coverageGaps: string[]): WorkflowRunResult {
@@ -41,18 +41,12 @@ function workflowResult(coverageGaps: string[]): WorkflowRunResult {
   };
 }
 
-async function renderResult(
-  result: WorkflowRunResult,
-  answerMode: AnswerMode | null = null,
-  tone: Tone | null = null,
-): Promise<string> {
+async function renderResult(result: WorkflowRunResult): Promise<string> {
   return renderToString(createSSRApp({
     render: () => h(WorkflowResult, {
       result,
       isRunning: false,
       streamState: null,
-      answerMode,
-      tone,
     }),
   }));
 }
@@ -85,29 +79,6 @@ describe("WorkflowResult coverage gaps", () => {
     expect(html).toContain("证据状态：insufficient");
     expect(html).toContain("通用知识补充");
     expect(html).not.toContain("课程资料回答");
-  });
-
-  it("shows the selected output preference without claiming strict model compliance", async () => {
-    const html = await renderResult(workflowResult([]), "example");
-
-    expect(html).toContain("输出偏好：举例");
-    expect(html).not.toContain("模型已严格遵守");
-  });
-
-  it("shows the request's selected expression style as a factual label", async () => {
-    const html = await renderResult(workflowResult([]), "detailed", "senior_student");
-
-    expect(html).toContain("表达风格：学长");
-    expect(html).not.toContain("模型已严格遵守");
-  });
-
-  it.each([
-    ["teaching_assistant", "助教"],
-    ["study_partner", "复习搭子"],
-  ] as const)("labels %s as %s", async (tone, label) => {
-    const html = await renderResult(workflowResult([]), null, tone);
-
-    expect(html).toContain(`表达风格：${label}`);
   });
 });
 

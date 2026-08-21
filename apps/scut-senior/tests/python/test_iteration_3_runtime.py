@@ -19,12 +19,7 @@ from scut_senior_api.main import (
     _RequestBodyLimitMiddleware,
     create_app,
 )
-from scut_senior_api.ports import (
-    GeneratedAnswer,
-    RetrievalBatch,
-    RetrievedSource,
-    UserIdentity,
-)
+from scut_senior_api.ports import GeneratedAnswer, RetrievedSource, UserIdentity
 from scut_senior_api.runtime_guards import (
     RuntimeGuardError,
     build_guarded_answer,
@@ -203,60 +198,6 @@ def test_runtime_retries_the_same_model_once_after_citation_guard_rejection(
     }
 
 
-def test_zero_candidates_degrades_to_insufficient_evidence_without_retry(
-    tmp_path: Path,
-) -> None:
-    app = create_app(
-        Settings(app_env="test", database_path=tmp_path / "empty-retrieval.db")
-    )
-    client = TestClient(app)
-    conversation = client.post(
-        "/api/v1/conversations", json={"course_id": "linear_algebra"}
-    ).json()
-
-    class HallucinatingModel:
-        def __init__(self) -> None:
-            self.calls = 0
-
-        def generate(self, request, sources, history=()):
-            del request, sources, history
-            self.calls += 1
-            return GeneratedAnswer(
-                repository_answer="莱布尼兹公式的结论 [S1]。",
-                citation_ids=("S1",),
-                related_topics=("莱布尼兹公式",),
-            )
-
-    class EmptyRetrieval:
-        def is_course_available(self, course_id: str) -> bool:
-            del course_id
-            return True
-
-        def search(self, course_ids, query):
-            del course_ids, query
-            return RetrievalBatch((), "fixture-corpus-v1", None)
-
-    model = HallucinatingModel()
-    app.state.service.model = model
-    app.state.service.retrieval = EmptyRetrieval()
-
-    response = client.post(
-        "/api/v1/workflow-runs",
-        json=_request(conversation["conversation_id"]),
-    )
-
-    # With zero candidates every citation is impossible; the run must degrade
-    # honestly instead of retrying and failing after a long model call.
-    assert response.status_code == 201, response.text
-    assert model.calls == 1
-    result = response.json()
-    assert result["run_status"] == "completed"
-    assert result["answer_status"] == "insufficient_evidence"
-    assert result["citations"] == []
-    assert result["repository_answer"] is None
-    assert any("候选不足" in gap for gap in result["coverage_gaps"])
-
-
 def test_ndjson_endpoint_uses_one_run_and_omits_null_payload_siblings(
     tmp_path: Path,
 ) -> None:
@@ -315,9 +256,7 @@ def test_health_reports_iteration_three_without_claiming_active_corpus(
         "workflow_runtime": True,
         "workflow_stream_ndjson": True,
         "citation_guard": True,
-        "response_style_control": True,
         "humanizer_guard": True,
-        "humanizer_configured": False,
         "active_corpus_configured": False,
     } == health["capabilities"]
 

@@ -5,7 +5,7 @@ from time import perf_counter
 from uuid import UUID, uuid4
 
 from .auth import AuthRequired, AuthenticatedPrincipal, utc_now
-from .adapters.bilibili import derive_question_keywords, normalize_keywords
+from .adapters.bilibili import normalize_keywords
 from .byok_catalog import (
     ByokModelNotRegistered,
     ByokProviderDisabled,
@@ -42,7 +42,6 @@ from .ports import (
     CapabilityUnavailable,
     ConversationTurn,
     ExternalResourceDiscovery,
-    GeneratedAnswer,
     HumanizerGateway,
     ModelGateway,
     RetrievalBatch,
@@ -53,7 +52,6 @@ from .ports import (
 )
 from .registry import CourseRegistry, UnknownCourseError
 from .runtime_guards import (
-    GuardedAnswer,
     RuntimeGuardError,
     build_guarded_answer,
     normalize_topics,
@@ -61,7 +59,7 @@ from .runtime_guards import (
 )
 from .state_machine import RunStateMachine
 from .workflow_stream import StreamingTrace, WorkflowStreamSession
-from .workflow_focus import build_workflow_focus, enforce_tone_visible_callout
+from .workflow_focus import build_workflow_focus
 
 
 class ResourceNotFound(LookupError):
@@ -104,7 +102,7 @@ class IterationZeroService:
         self, user: RequestIdentity, course_id_or_alias: str
     ) -> ConversationSummary:
         course = self.registry.resolve(course_id_or_alias)
-        if not self._course_available(course.course_id):
+        if not self._retrieval_course_available(course.course_id):
             raise CapabilityUnavailable(
                 "course",
                 f"{course.course_id} is not enabled for the configured retrieval mode",
@@ -112,30 +110,6 @@ class IterationZeroService:
         return self.repository.create_conversation(
             str(user.user_id), course.course_id, course.display_name
         )
-
-    def load_course_plugin(
-        self, user: RequestIdentity, course_id_or_alias: str
-    ) -> str:
-        course = self.registry.resolve(course_id_or_alias)
-        self.repository.set_course_plugin_loaded(
-            course.course_id, True, str(user.user_id)
-        )
-        return course.course_id
-
-    def unload_course_plugin(
-        self, user: RequestIdentity, course_id_or_alias: str
-    ) -> str:
-        course = self.registry.resolve(course_id_or_alias)
-        self.repository.set_course_plugin_loaded(
-            course.course_id, False, str(user.user_id)
-        )
-        return course.course_id
-
-    def _course_available(self, course_id: str) -> bool:
-        """A course is usable only when its plugin is loaded AND retrieval serves it."""
-        if not self.repository.is_course_plugin_loaded(course_id):
-            return False
-        return self._retrieval_course_available(course_id)
 
     def _retrieval_course_available(self, course_id: str) -> bool:
         check = getattr(self.retrieval, "is_course_available", None)
@@ -290,10 +264,10 @@ class IterationZeroService:
                     request.model_id,
                     request.model_source,
                 )
-                # The selected real platform model must satisfy the preset's
-                # required input modalities. Structured-output metadata is
-                # retained for catalog visibility, but current Workflow presets
-                # accept ordinary text rather than requiring a JSON envelope.
+                # Fail closed: the selected real platform model must satisfy the
+                # preset's required input modalities and structured-output
+                # requirement. Mock stays usable for fixture tests, and BYOK
+                # models carry no modality metadata in their fixed catalog.
                 compatibility_reason = preset.check_model_compatibility(
                     input_modalities=model_entry.input_modalities,
                     supports_structured_outputs=model_entry.supports_structured_outputs,
@@ -338,9 +312,8 @@ class IterationZeroService:
             billing_label = "user_provider_billing"
             availability_status = "user_key_enabled"
             mock_only = False
-            # Apply the same input-modality compatibility check to BYOK. Its
-            # structured-output metadata remains descriptive for the current
-            # text-capable presets.
+            # Fail closed for user-key models too: the fixed catalog carries
+            # modality and structured-output capability for each BYOK model.
             compatibility_reason = preset.check_model_compatibility(
                 input_modalities=selected_model.input_modalities,
                 supports_structured_outputs=selected_model.supports_structured_outputs,
@@ -364,7 +337,7 @@ class IterationZeroService:
             raise ContractConflict(
                 "workflow course does not match the bound conversation course"
             )
-        if not self._course_available(course.course_id):
+        if not self._retrieval_course_available(course.course_id):
             raise CapabilityUnavailable(
                 "course",
                 f"{course.course_id} is not enabled for the configured retrieval mode",
@@ -691,14 +664,6 @@ class IterationZeroService:
                     interrupted = finish_interrupted()
                     if interrupted is not None:
                         return interrupted
-                    if not sources:
-                        # Zero candidates make every citation impossible, so a
-                        # guard rejection (hallucinated [S#], out-of-scope block,
-                        # or URL) cannot be repaired by regenerating. Degrade to
-                        # an honest insufficient-evidence result instead of
-                        # failing the run after a long model call.
-                        guarded = _empty_candidate_insufficient_evidence()
-                        break
                     if retry_count >= 1:
                         interrupted = persist_failed_or_interrupted(
                             failure_node="citation_guard",
@@ -816,8 +781,9 @@ class IterationZeroService:
             answer_blocks = original_blocks
             _append_trace(
                 trace,
-                node="response_style_control",
-                result={"reason_code": "single_pass_model_prompt"},
+                node="humanizer",
+                status=TraceEventStatus.SKIPPED,
+                result={"reason_code": "humanizer_not_configured"},
             )
         else:
             interrupted = interrupt_if_step_not_claimed()
@@ -869,8 +835,6 @@ class IterationZeroService:
                     },
                 )
 
-        answer_blocks = _enforce_primary_answer_tone(answer_blocks, request)
-
         interrupted = finish_interrupted()
         if interrupted is not None:
             return interrupted
@@ -880,17 +844,8 @@ class IterationZeroService:
             and request.knowledge_scope != KnowledgeScope.COURSE_ONLY
             and self.settings.bilibili_resources_enabled
         ):
-            (
-                focused_keywords,
-                keyword_source,
-                keyword_candidate_count,
-            ) = _select_bilibili_keywords(
-                generated=generated,
-                related_topics=related_topics,
-                authoritative_query=workflow_focus.authoritative_query,
-                request_input=request.user_input,
-                course_title=course.display_name,
-                course_id=course.course_id,
+            focused_keywords = normalize_keywords(
+                generated.bilibili_search_keywords
             )
             if focused_keywords:
                 interrupted = interrupt_if_step_not_claimed()
@@ -936,9 +891,10 @@ class IterationZeroService:
                         node="bilibili_link_discovery",
                         duration_ms=_elapsed_ms(started),
                         result={
-                            "reason_code": keyword_source,
                             "hit_count": len(external_resources),
-                            "candidate_count": keyword_candidate_count,
+                            "candidate_count": len(
+                                generated.bilibili_search_keywords
+                            ),
                             "accepted_count": len(focused_keywords),
                             "unreviewed_search_returned": bool(external_resources),
                             "external_resources_separate": True,
@@ -1341,63 +1297,6 @@ class IterationZeroService:
         _emit_confirmed_persistence_trace(trace, persistence_event)
 
 
-def _select_bilibili_keywords(
-    *,
-    generated: GeneratedAnswer,
-    related_topics: tuple[str, ...],
-    authoritative_query: str,
-    request_input: str,
-    course_title: str,
-    course_id: str,
-) -> tuple[tuple[str, ...], str, int]:
-    """Choose one safe search query while preserving an explicit fallback order.
-
-    The provider may return ordinary Markdown, in which case it has no
-    machine-readable topic fields.  When it does return them, an explicit
-    Bilibili query takes precedence and the model's normalized core topics are
-    the next-best representation of what it just answered.  The typed current
-    question is a reliable last semantic fallback, followed by request/course
-    identity values solely to keep the selected live-search option non-empty.
-    """
-
-    candidates = (
-        (
-            "model_bilibili_search_keywords",
-            len(generated.bilibili_search_keywords),
-            normalize_keywords(generated.bilibili_search_keywords),
-        ),
-        (
-            "model_related_topics",
-            len(related_topics),
-            normalize_keywords(related_topics),
-        ),
-        (
-            "current_question_keyword_combination",
-            1,
-            derive_question_keywords(authoritative_query),
-        ),
-        (
-            "request_input_fallback",
-            1,
-            normalize_keywords((request_input,)),
-        ),
-        (
-            "course_title_fallback",
-            1,
-            normalize_keywords((course_title,)),
-        ),
-        (
-            "course_id_fallback",
-            1,
-            normalize_keywords((course_id,)),
-        ),
-    )
-    for source, candidate_count, keywords in candidates:
-        if keywords:
-            return keywords, source, candidate_count
-    return (), "no_focused_topic", 0
-
-
 def _append_trace(
     trace: list[TraceEvent],
     *,
@@ -1454,45 +1353,6 @@ def _answer_block_content(
         if block.type == block_type:
             return block.content
     return None
-
-
-def _enforce_primary_answer_tone(
-    blocks: list[AnswerBlock], request: WorkflowRunRequest
-) -> list[AnswerBlock]:
-    """Apply the visible tone contract once to the first student-facing block."""
-
-    for index, block in enumerate(blocks):
-        if not block.content.strip():
-            continue
-        normalized = block.model_copy(
-            update={
-                "content": enforce_tone_visible_callout(
-                    block.content,
-                    request.tone,
-                )
-            }
-        )
-        return [*blocks[:index], normalized, *blocks[index + 1 :]]
-    return blocks
-
-
-def _empty_candidate_insufficient_evidence() -> GuardedAnswer:
-    """Deterministic result when retrieval found no candidates at all.
-
-    Zero sources make every citation impossible, so a guard rejection cannot
-    be repaired by regenerating. Return an honest ``insufficient_evidence``
-    result instead of failing the run after a long model call.
-    """
-
-    return GuardedAnswer(
-        blocks=(),
-        citation_ids=(),
-        evidence_status=EvidenceStatus.INSUFFICIENT,
-        answer_status=AnswerStatus.INSUFFICIENT_EVIDENCE,
-        coverage_gaps=(
-            "本次课程资料候选不足，未找到与问题匹配的可引用资料；已停止补充通用知识。",
-        ),
-    )
 
 
 def _is_retryable_model_output_error(error: Exception) -> bool:
