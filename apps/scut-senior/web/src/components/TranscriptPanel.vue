@@ -5,9 +5,57 @@ import {
   courseAvailabilitySummary,
   courseRuntimeDescription,
 } from "../courseAvailability";
+import type { AnswerMode, Tone, WorkflowRunResult } from "../contracts";
 import { useAppStore } from "../composables/useAppStore";
 
 const store = useAppStore();
+
+type TranscriptTurn = {
+  id: string;
+  ask: string;
+  result: WorkflowRunResult | null;
+  answerMode: AnswerMode;
+  tone: Tone;
+  live: boolean;
+};
+
+// 统一回合列表：进行中的回合与已完成回合放进同一个 v-for，用 workflow_run_id 作 key。
+// 这样运行完成时，live 回合直接"原地"变成 completed 回合（key 不变），Vue 复用同一个
+// <WorkflowResult> 实例，打字机的 typedLength / typeTimer 不丢失，尾巴能继续打完而非整段泄洪。
+const turns = computed<TranscriptTurn[]>(() => {
+  const completed: TranscriptTurn[] = store.completedTurns.map((turn) => ({
+    id: turn.id,
+    ask: turn.ask,
+    result: turn.result,
+    answerMode: turn.answerMode,
+    tone: turn.tone,
+    live: false,
+  }));
+
+  if (!store.isRunning) return completed;
+
+  const liveRunId = store.workflowStreamState?.workflowRunId ?? null;
+  const liveIndex = liveRunId ? completed.findIndex((turn) => turn.id === liveRunId) : -1;
+
+  // applyConversationDetail 之后、isRunning=false 之前，run 可能已进入 completedTurns，
+  // 复用那份而不是重复追加，避免同一 key 出现两次。
+  if (liveIndex >= 0) {
+    const existing = completed[liveIndex]!;
+    completed[liveIndex] = { ...existing, live: true };
+    return completed;
+  }
+
+  completed.push({
+    id: liveRunId ?? "__live__",
+    ask: store.transcriptAsk,
+    result: null,
+    answerMode: store.answerMode,
+    tone: store.tone,
+    live: true,
+  });
+
+  return completed;
+});
 
 // 自动滚动：内容更新后（新回合、流式事件、打字机增长）把记录区滚动到底部，
 // 用 nextTick 确保 DOM 更新完成后再执行 scrollTop = scrollHeight。
@@ -45,7 +93,21 @@ watch(
     if (running) {
       // 生成期间持续跟随最新内容（打字机逐字增长时也保持到底）。
       transcriptScrollTimer = window.setInterval(scrollTranscriptToBottom, 1000);
+      return;
     }
+    // 运行结束后的加速收尾约 18 tick × 70ms ≈ 1.26s，这里再补滚 2 次，
+    // 让最后这段揭示也保持在视野底部，而不是在折叠线下悄悄打完。
+    let graceTicks = 2;
+    transcriptScrollTimer = window.setInterval(() => {
+      scrollTranscriptToBottom();
+      graceTicks -= 1;
+      if (graceTicks <= 0) {
+        if (transcriptScrollTimer !== null) {
+          window.clearInterval(transcriptScrollTimer);
+          transcriptScrollTimer = null;
+        }
+      }
+    }, 650);
   },
   { immediate: true },
 );
@@ -95,7 +157,12 @@ onBeforeUnmount(() => {
     </div>
 
     <div v-else class="transcript-inner">
-      <article v-for="turn in store.completedTurns" :key="turn.id" class="turn">
+      <article
+        v-for="turn in turns"
+        :key="turn.id"
+        class="turn"
+        :class="{ 'turn-live': turn.live }"
+      >
         <div class="turn-ask">
           <div class="turn-ask-head">
             <span>{{ store.activeWorkflow.inputLabel }}</span>
@@ -104,26 +171,10 @@ onBeforeUnmount(() => {
         </div>
         <WorkflowResult
           :result="turn.result"
-          :is-running="false"
-          :stream-state="null"
+          :is-running="turn.live"
+          :stream-state="turn.live ? store.workflowStreamState : null"
           :answer-mode="turn.answerMode"
           :tone="turn.tone"
-        />
-      </article>
-
-      <article v-if="store.isRunning" class="turn turn-live">
-        <div class="turn-ask">
-          <div class="turn-ask-head">
-            <span>{{ store.activeWorkflow.inputLabel }}</span>
-          </div>
-          <p>{{ store.transcriptAsk }}</p>
-        </div>
-        <WorkflowResult
-          :result="null"
-          :is-running="true"
-          :stream-state="store.workflowStreamState"
-          :answer-mode="store.answerMode"
-          :tone="store.tone"
         />
       </article>
     </div>

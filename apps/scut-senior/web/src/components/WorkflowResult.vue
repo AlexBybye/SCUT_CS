@@ -97,7 +97,17 @@ watch(
         typeTimer = window.setInterval(() => {
           const full = typewriterTarget.value.length;
           if (typedLength.value < full) {
-            typedLength.value = Math.min(full, typedLength.value + 2);
+            if (typewriterFinishing) {
+              // 收尾阶段：按剩余量加速，约 18 个 tick（≈1.26s）内打完，
+              // 避免运行已结束却还以 2 字/70ms 慢爬一段很长的 backlog。
+              const remaining = full - typedLength.value;
+              typedLength.value = Math.min(
+                full,
+                typedLength.value + Math.max(2, Math.ceil(remaining / 18)),
+              );
+            } else {
+              typedLength.value = Math.min(full, typedLength.value + 2);
+            }
           }
           if (typedLength.value >= full) {
             stopTypeTimer();
