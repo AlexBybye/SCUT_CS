@@ -69,3 +69,38 @@
 
 - `git merge-tree`：iteration-3 → master 与 iteration-4 → master 均为 **0 冲突**；master 是 iteration-4 的祖先（领先 19 提交）。
 - ⚠️ 注意：分支历史中 `e08dfb3`（SCUT_SKILL/README.md、Summary_Skill.md）与 `987d1da`（CONTRIBUTING.md）修改了 master 上的 SCUT_SKILL 内容；合并会**静默采用分支版本**。合并 master 前需决策：接受、回退这两个文件的改动，或以路径级策略排除。
+
+## 追加：harness-refactor 重构迭代（2026-08-19 ～ 08-20，代码超前于上文 status-4 快照）
+
+上文各节描述的是 iteration-4 合并（`c0f4de6`）当时的快照。此后在 `codex/scut-senior-harness-refactor` 分支新增 7 个提交（`e834830`、`dfdb431`、`cc06e2a`、`595cbe0`、`9672746`、`c4fe232`、`7a33b31`），本轮验证在分支 HEAD（`7a33b31`）上全量重跑。以下为 status-4 未记录的超前实现、新证据与诚实差异。
+
+### 1. 超前实现（status-4 未记录）
+
+- **内部插件管理页从“预留 API”落地为交互面板**：status-4 只记录了 `GET /api/v1/plugin-registry` 供未来内部页面消费；现 web 已实现 `PluginRegistryPanel.vue`，展示五类 Agent Preset、受控工具（全部 `model_callable=false`）、维护者技能槽和逐课程诚实状态。
+- **课程插件 load/unload**：新增迁移 `0007_course_plugin_states.sql`（显式 unload 行是唯一关闭方式，缺省即 loaded，未迁移数据库行为不变）；服务层课程可用 = 插件 loaded 且检索可服务；`POST /api/v1/plugin-registry/courses/{id}/load|unload` 要求真实 GitHub 登录；unloaded 课程 `enabled_workflows` 归零。SOP 4.5 受控插件的“装载/卸载”管理语义至此落库可操作。
+- **维护者技能元数据已清空（与 status-4 的差异）**：`MAINTAINER_SKILLS` 由 status-4 记录的 `material_conversion` contract_only 元数据改为空元组；material-conversion 轨道按 SOP 4.5 归外部治理，保留 skill 类型与注册表槽位供未来注册。
+- **课程选择与运行时可用性**：新增 `api/src/scut_senior_api/course_availability.py` 与 web `courseAvailability.ts`，逐课程投影 `retrieval_availability`（`fixture`/`local_corpus`/`unavailable`）、`retrieval_available`、`plugin_loaded`、`selectable`；前端课程选项标签、选择错误文案和课程目录结构相应更新。
+- **前端 shell 重构**：DSH 启发的三栏布局（sidebar | main | details，1120/840px 折叠断点）；status-4 的暗色对比度与动效门控继续保留。
+- **Markdown 渲染升级（KaTeX/LaTeX）**：新增 `web/src/markdown.ts` 与 katex 依赖，支持 `$$...$$` 公式渲染。⚠️ **status-4 的性能结论已过期**：JS gzip 从 49.00 kB 增至 154.84 kB（CSS 5.59 → 14.50 kB），此前“无需拆包或懒加载”的审计结论不再成立，应重新评估 KaTeX 按需加载。
+- **回答解析重构**：`adapters/answer_parsing.py` 兼容自然语言、JSON 对象、fenced JSON 三类供应商输出，统一抽取正文并校验 `scut-meta` 侧车。status-4 追加记录中“nemotron 200 但未过严格结构化解析”的失败路径在重构解析器中有对应容错分支，但仍需一次返回合规内容的真实响应验证，不冒充已修复。
+- `workflow_focus.py` 指令化重构、助教/学长/复习搭子可见提示行、Bilibili 关键词兜底；Vite `allowedHosts`（隧道域名联调用）。
+
+### 2. 本地 corpus 激活证据（status-4 列为“仍待外部证据”，现本地已有部分证据）
+
+- `.local/corpus-store/active.json`（2026-08-20 16:00）：`active_corpus_version=corpus-14b63e204eb3-…`，`source_commit=14b63e2`（已用 `git merge-base --is-ancestor` 证明为受信 `master` 祖先），`trusted_master_commit=c0f4de6`（当前 master tip），`trusted_master_ref=refs/heads/master`，10 门课程开关全部为 true。
+- `SCUT_SENIOR_RETRIEVAL_MODE=local_corpus` 下实测：health 返回 `iteration_status=local_runtime_with_active_corpus`、`formal_exit_blocked=False`、`local_corpus_available=True`、10/10 课程 `selectable`；plugin-registry 10 门课程 `state=active` 且 loaded，`enabled_workflows` 非空；`LocalCorpusRetrievalGateway` 对 `cpp`/`information_security_intro`/`linear_algebra`/`computer_science_intro` 均 `is_course_available=True`（cpp 51 chunks），检索“模拟机试/图像相似度”返回真实命中；跨课程检索被 `CapabilityUnavailable` 拒绝。
+- **诚实边界**：这是本地证据（`.local` 不入库、非远端 CI/提交证据）；激活门“source_commit 进入受信 master”本地已满足，但**逐课程评测（真实 corpus + 真实模型行为）仍未完成**。
+
+### 3. 验证证据（分支 HEAD 全量重跑）
+
+- Python：`476 passed, 1 warning`（status-4 记录 431 → **+45**）。
+- Web：`76 passed`（status-4 记录 59 → **+17**）；typecheck 通过；build 通过（JS 488.52 kB / gzip 154.84 kB，CSS 60.48 kB / gzip 14.50 kB）。
+- 契约：`export_contracts --check` 通过，无漂移。
+- 评测：与 status-4 一致，`10 cases, 3 passed, 6 failed, 1 skipped`；fixture+mock 下不伪造通过，真实模型合规响应仍缺。
+
+### 4. 已知不一致（如实记录）
+
+- health 端点仍返回 `"iteration": 3`（`test_iteration_3_runtime.py:309` 断言锁定），相对 iteration-4 完成与重构迭代已滞后；本轮不改代码，仅记录。
+- README「明确关闭或待确认」仍写“迭代 4 切片（进行中）”，与 status-4 完成描述不一致（历史遗留，未在本轮改写）。
+- KaTeX 使 gzip 体积翻约三倍，status-4 性能审计结论需更新（见上）。
+- **未进入迭代 5（备考复习）**：`exam_review` 仍是共用 Runtime 的 payload（`syllabus`/`weak_topics`/…），SOP §10 的大纲/无大纲双路径、年份覆盖/题型统计与 AI 样题标记均未实现。

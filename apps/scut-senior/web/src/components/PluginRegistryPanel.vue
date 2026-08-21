@@ -168,3 +168,78 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
     </template>
   </div>
 </template>
+
+<style>
+.plugins {
+  display: grid;
+  gap: 12px;
+}
+
+.plugin-group {
+  display: grid;
+  gap: 6px;
+}
+
+.plugin-row {
+  display: grid;
+  gap: 3px;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--raised);
+}
+
+.plugin-row-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 5px 7px;
+  min-width: 0;
+}
+
+.plugin-row-top strong {
+  font-size: var(--fs-xs);
+  font-weight: 650;
+}
+
+.plugin-row-top code {
+  color: var(--text-muted);
+  font-size: var(--fs-2xs);
+  overflow-wrap: anywhere;
+}
+
+.plugin-row-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 10px;
+  color: var(--text-muted);
+  font-size: var(--fs-2xs);
+  line-height: 1.55;
+}
+
+.plugin-row-acts {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.inspector-head {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.inspector-head h3 {
+  font-size: var(--fs-xs);
+  font-weight: 650;
+}
+
+.inspector-head > span:last-child {
+  margin-left: auto;
+}
+
+.inspector-note {
+  color: var(--text-muted);
+  font-size: var(--fs-2xs);
+  line-height: 1.6;
+}
+</style>

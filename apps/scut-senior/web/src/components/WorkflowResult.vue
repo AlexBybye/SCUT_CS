@@ -452,3 +452,490 @@ function citationLocator(citation: Citation): string {
     </template>
   </section>
 </template>
+
+<style>
+.run {
+  display: grid;
+  gap: 10px;
+}
+
+.run-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--line);
+}
+
+.run-head-label {
+  margin-right: auto;
+  color: var(--text-muted);
+  font-size: var(--fs-2xs);
+  font-weight: 650;
+}
+
+/* 回答块：左侧色条区分证据来源，无卡片框。 */
+.block {
+  padding: 2px 0 2px 12px;
+  border-left: 2px solid var(--line-strong);
+}
+
+.block-repository {
+  border-left-color: var(--accent);
+}
+
+.block-user_material {
+  border-left-color: var(--warn-line);
+}
+
+.block-personalized_analysis {
+  border-left-color: var(--ok-line);
+}
+
+.block-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 7px;
+  margin-bottom: 2px;
+}
+
+.block-head strong {
+  font-size: var(--fs-xs);
+  font-weight: 650;
+}
+
+.block-note {
+  color: var(--text-soft);
+  font-size: var(--fs-2xs);
+}
+
+.block-body {
+  font-size: var(--fs-md);
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+
+.markdown-body > :first-child {
+  margin-top: 0;
+}
+
+.markdown-body > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body p,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body pre,
+.markdown-body blockquote {
+  margin: 0.55em 0;
+}
+
+.markdown-body blockquote {
+  padding: 0.5rem 0.75rem;
+  border-inline-start: 3px solid var(--accent);
+  border-radius: var(--r-sm);
+  background: var(--accent-wash);
+  color: var(--text);
+}
+
+.markdown-body blockquote > p {
+  margin: 0;
+}
+
+.markdown-body pre,
+.markdown-body code {
+  font-family: var(--font-mono);
+}
+
+.markdown-body pre {
+  padding: 0.6rem 0.75rem;
+  overflow-x: auto;
+  background: var(--sunken);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+}
+
+.markdown-body :not(pre) > code {
+  padding: 0.08em 0.3em;
+  background: var(--sunken);
+  border-radius: var(--r-xs);
+}
+
+.markdown-body .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0.75em 0;
+}
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -0.14em;
+  background: var(--accent);
+}
+
+.caret[hidden] {
+  display: none;
+}
+
+/* 骨架屏：形状对齐最终回答，不是转圈。 */
+.skeleton {
+  display: grid;
+  gap: 8px;
+  padding-left: 12px;
+  border-left: 2px solid var(--line);
+}
+
+.skeleton span {
+  display: block;
+  height: 9px;
+  border-radius: var(--r-sm);
+  background: var(--sunken);
+}
+
+.skeleton span:nth-child(1) {
+  width: 100%;
+}
+
+.skeleton span:nth-child(2) {
+  width: 82%;
+}
+
+.skeleton span:nth-child(3) {
+  width: 54%;
+}
+
+.skeleton p {
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+}
+
+/* 动效有动机：shimmer 表示「正在生成」，光标表示「还在流」。两者都门控。 */
+@media (prefers-reduced-motion: no-preference) {
+  .skeleton span {
+    background: linear-gradient(
+      100deg,
+      var(--sunken) 42%,
+      color-mix(in srgb, var(--sunken) 55%, var(--line)) 50%,
+      var(--sunken) 58%
+    );
+    background-size: 220% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    from {
+      background-position: 130% 0;
+    }
+    to {
+      background-position: -90% 0;
+    }
+  }
+
+  .caret {
+    animation: caret 1.1s steps(2, jump-none) infinite;
+  }
+
+  @keyframes caret {
+    50% {
+      opacity: 0.2;
+    }
+  }
+}
+
+/* 证据区：可折叠，默认收起，避免抢走回答的注意力。 */
+.evidence {
+  display: grid;
+  gap: 2px;
+}
+
+.evidence-group {
+  border-top: 1px solid var(--line);
+}
+
+.evidence-group > summary {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 2px;
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  list-style: none;
+}
+
+.evidence-group > summary::-webkit-details-marker {
+  display: none;
+}
+
+.evidence-group > summary::before {
+  content: "";
+  width: 0;
+  height: 0;
+  flex: 0 0 auto;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 5px solid currentColor;
+}
+
+.evidence-group[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.evidence-group > summary:hover {
+  color: var(--text);
+}
+
+.evidence-group-note {
+  padding: 0 2px 8px;
+  color: var(--text-soft);
+  font-size: var(--fs-2xs);
+  line-height: 1.55;
+}
+
+.evidence-body {
+  padding-bottom: 10px;
+}
+
+/* 引用：两列网格，紧凑。 */
+.cites {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
+  gap: 6px;
+}
+
+.cite {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  padding: 7px 9px;
+  border-radius: var(--r-sm);
+  background: var(--sunken);
+}
+
+.cite strong {
+  font-size: var(--fs-xs);
+  font-weight: 650;
+}
+
+.cite span {
+  color: var(--text-muted);
+  font-size: var(--fs-2xs);
+}
+
+.cite code {
+  color: var(--text-soft);
+  font-size: var(--fs-2xs);
+  overflow-wrap: anywhere;
+}
+
+/* 外部资源：行式链接。 */
+.links {
+  display: grid;
+  gap: 4px;
+}
+
+.link-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--raised);
+  text-decoration: none;
+}
+
+.link-row:hover {
+  border-color: var(--accent);
+}
+
+.link-row > span:first-child {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+
+.link-row strong {
+  font-size: var(--fs-xs);
+  font-weight: 650;
+}
+
+.link-row small,
+.link-row > span:last-child {
+  color: var(--text-muted);
+  font-size: var(--fs-2xs);
+}
+
+.link-row > span:last-child {
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: var(--accent);
+}
+
+.empty-line {
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+}
+
+/* 反馈：一行分段 + 可选备注。 */
+.fb {
+  display: grid;
+  gap: 7px;
+}
+
+.fb-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.fb-note {
+  min-height: 46px;
+}
+
+/* ── 流动 trace ─────────────────────────────────────── */
+
+.flow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+  padding: 10px 12px;
+  border: 1px solid var(--accent-wash);
+  border-radius: var(--r-md);
+  background: var(--accent-wash);
+  color: var(--accent);
+}
+
+.flow-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flow-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.flow-dots i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: flow-dot-breathe 1.2s ease-in-out infinite;
+}
+
+.flow-dots i:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.flow-dots i:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes flow-dot-breathe {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+.flow-label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.flow-trace {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  list-style: none;
+}
+
+.flow-step {
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  padding: 6px 8px;
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+}
+
+.flow-step-on {
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  background: var(--raised);
+  color: var(--text);
+}
+
+.flow-step-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.flow-step-row strong {
+  font-family: var(--font-mono);
+  font-weight: 650;
+}
+
+.flow-step-row > span {
+  color: var(--text-soft);
+}
+
+.flow-result {
+  flex-basis: 100%;
+}
+
+.flow-result summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-size: var(--fs-xs);
+}
+
+.flow-result pre {
+  margin: 6px 0 0;
+  padding: 8px;
+  border-radius: var(--r-sm);
+  background: var(--sunken);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+.flow-wait {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+}
+
+@media (max-width: 719px) {
+  .cites {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 低矮窗口：trace 列表限制高度。 */
+@media (max-height: 640px) {
+  .flow-trace {
+    max-height: 22vh;
+    overflow-y: auto;
+  }
+}
+</style>
