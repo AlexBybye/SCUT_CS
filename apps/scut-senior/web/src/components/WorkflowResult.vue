@@ -412,7 +412,7 @@ function citationLocator(citation: Citation): string {
               >
                 <span>
                   <strong>{{ resource.title }}</strong>
-                  <small>{{ resource.matched_topic }} / 匿名搜索 / 结果未审核</small>
+                  <small>{{ resource.matched_topic }} </small>
                 </span>
                 <span aria-hidden="true">查看搜索结果</span>
               </a>
