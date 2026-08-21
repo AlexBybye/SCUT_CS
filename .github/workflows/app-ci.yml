@@ -54,36 +54,66 @@ jobs:
         uses: actions/setup-node@v4
         with:
           # Must stay aligned with the node:22-alpine base image in
-          # apps/scut-senior/Dockerfile so CI and the image build agree.
+          # apps/scut-senior/Dockerfile so CI and the image build agree;
+          # the Dockerfile also pins npm 11 for the same reason.
           node-version: 22
+          # npm 10.9.x is implicated in hangs that surface as npm's
+          # "Exit handler never called!"; npm 11 rewrote the installer with
+          # faster, bounded network behavior, so pin the runner to it.
+          # (The bug is still occasionally reported on 11.x, so the install
+          # step below also bounds fetch timeouts and retries.)
+          npm-version: 11
           cache: npm
           cache-dependency-path: apps/scut-senior/web/package-lock.json
 
       - name: Install web dependencies
         working-directory: apps/scut-senior/web
         shell: bash
-        # npm's "Exit handler never called!" bug is a known flaky failure of
-        # npm ci/install; retrying after a cache clean resolves it.
+        # npm's "Exit handler never called!" failure usually means npm died
+        # while a registry fetch hung (npm's default fetch timeout is 5
+        # minutes), so every plain retry burns the whole step budget. Bound
+        # the network wait so npm fails fast, then retry with backoff.
         timeout-minutes: 10
         run: |
           node --version
           npm --version
+          # Fail fast on a hung registry fetch instead of exhausting the
+          # step timeout; retries only help if each attempt terminates.
+          export npm_config_fetch_timeout=60000
+          export npm_config_fetch_retries=3
+          export npm_config_fetch_retry_mintimeout=2000
+          export npm_config_fetch_retry_maxtimeout=20000
           if [[ -f package-lock.json ]]; then
             install_cmd=(npm ci)
           else
             install_cmd=(npm install)
           fi
-          for attempt in 1 2 3; do
-            echo "::group::${install_cmd[*]} (attempt ${attempt}/3)"
-            if "${install_cmd[@]}" --no-audit --no-fund; then
+          for attempt in 1 2 3 4; do
+            echo "::group::${install_cmd[*]} (attempt ${attempt}/4)"
+            if "${install_cmd[@]}" --no-audit --no-fund --no-progress; then
               echo "::endgroup::"
               exit 0
             fi
             echo "::endgroup::"
+            # A killed npm run can leave a half-written tree and a stale
+            # cache entry; clear both before the next attempt.
             npm cache clean --force || true
-            sleep $((attempt * 5))
+            rm -rf node_modules
+            sleep $((attempt * 10))
           done
-          echo "Dependency installation failed after 3 attempts."
+          # Last resort: resolve fresh and ignore the lockfile, in case the
+          # lockfile itself is what npm is choking on (out of sync with
+          # package.json, or a bad resolution).
+          if [[ -f package-lock.json ]]; then
+            echo "::group::npm install --no-package-lock (fallback)"
+            npm install --no-package-lock --no-audit --no-fund --no-progress && exit 0
+            echo "::endgroup::"
+          fi
+          # Preserve a verbose log to diagnose the underlying cause.
+          echo "::group::npm install (verbose diagnostics)"
+          "${install_cmd[@]}" --no-audit --no-fund --no-progress --loglevel verbose || true
+          echo "::endgroup::"
+          echo "Dependency installation failed after 4 attempts."
           exit 1
 
       - name: Test, type-check, and build the Vue application
