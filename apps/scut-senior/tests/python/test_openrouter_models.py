@@ -9,7 +9,11 @@ from urllib.error import URLError
 import pytest
 from fastapi.testclient import TestClient
 
-from scut_senior_api.adapters.openrouter import HttpResponse, _quota_reset_at
+from scut_senior_api.adapters.openrouter import (
+    OPENROUTER_CHAT_COMPLETIONS_URL,
+    HttpResponse,
+    _quota_reset_at,
+)
 from scut_senior_api.config import Settings, UnsafeRuntimeConfiguration
 from scut_senior_api.byok_catalog import BYOK_CATALOG_VERSION
 from scut_senior_api.main import create_app
@@ -170,11 +174,13 @@ def _success_response() -> HttpResponse:
         "related_questions": ["如何用初等变换求秩？"],
         "bilibili_search_keywords": ["矩阵的秩", "初等行变换"],
     }
+    return _chat_completion_response(json.dumps(structured, ensure_ascii=False))
+
+
+def _chat_completion_response(content: str) -> HttpResponse:
     return HttpResponse(
         status_code=200,
-        body=json.dumps(
-            {"choices": [{"message": {"content": json.dumps(structured)}}]}
-        ).encode(),
+        body=json.dumps({"choices": [{"message": {"content": content}}]}).encode(),
     )
 
 
@@ -367,7 +373,7 @@ def test_unregistered_model_is_rejected_before_any_upstream_call(tmp_path: Path)
     assert http_client.calls == []
 
 
-def test_openrouter_uses_one_exact_model_and_requires_structured_parameters(
+def test_openrouter_uses_one_exact_model_without_a_structured_output_contract(
     tmp_path: Path,
 ) -> None:
     http_client = RecordingHttpClient(_success_response())
@@ -384,19 +390,13 @@ def test_openrouter_uses_one_exact_model_and_requires_structured_parameters(
     call = http_client.calls[0]
     payload = call["payload"]
     assert isinstance(payload, dict)
+    assert call["url"] == OPENROUTER_CHAT_COMPLETIONS_URL
     assert payload["model"] == selected_model
     assert "models" not in payload
     assert "fallbacks" not in payload
-    assert payload["provider"] == {"require_parameters": True}
+    assert "provider" not in payload
+    assert "response_format" not in payload
     assert payload["max_tokens"] == 2048
-    assert payload["response_format"]["type"] == "json_schema"
-    answer_schema = payload["response_format"]["json_schema"]["schema"]
-    assert answer_schema["properties"]["bilibili_search_keywords"] == {
-        "type": "array",
-        "items": {"type": "string", "maxLength": 32},
-        "maxItems": 3,
-    }
-    assert "bilibili_search_keywords" in answer_schema["required"]
     assert call["headers"]["Authorization"] == "Bearer server-only-secret"
     assert "server-only-secret" not in json.dumps(payload, ensure_ascii=False)
 
@@ -414,7 +414,61 @@ def test_openrouter_uses_one_exact_model_and_requires_structured_parameters(
     assert model_event["result"]["real_model_called"] is True
 
 
-def test_openrouter_keywords_create_bilibili_search_without_a_second_model_call(
+def test_openrouter_accepts_a_plain_text_complex_answer_without_retry(
+    tmp_path: Path,
+) -> None:
+    plain_text = (
+        "可以先把矩阵化为阶梯形，再统计主元个数。这个过程等价于判断独立行"
+        "（或列）的最大数量；如果计算中出现零行，它不贡献秩。"
+    )
+    http_client = RecordingHttpClient(_chat_completion_response(plain_text))
+    client, conversation_id = _client_with_conversation(tmp_path, http_client)
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=_workflow_request(conversation_id, "google/gemma-4-26b-a4b-it:free"),
+    )
+
+    assert response.status_code == 201, response.text
+    assert len(http_client.calls) == 1
+    result = response.json()
+    assert result["repository_answer"] is None
+    general_supplement = result["general_supplement"]
+    assert general_supplement.startswith(plain_text)
+    assert general_supplement.count(
+        "> **助教提示：** 定义、前提、符号先摆齐，少一步都不给分。"
+    ) == 1
+    assert result["answer_blocks"] == [
+        {"type": "general", "content": general_supplement}
+    ]
+    assert result["citations"] == []
+    assert all(event["node"] != "model_output_retry" for event in result["trace"])
+
+
+def test_openrouter_hides_uncited_plain_text_in_course_only_mode(tmp_path: Path) -> None:
+    http_client = RecordingHttpClient(
+        _chat_completion_response("没有来源标记的模型正文不应被显示为课程资料结论。")
+    )
+    client, conversation_id = _client_with_conversation(tmp_path, http_client)
+    request = _workflow_request(
+        conversation_id, "google/gemma-4-26b-a4b-it:free"
+    )
+    request["knowledge_scope"] = "course_only"
+
+    response = client.post("/api/v1/workflow-runs", json=request)
+
+    assert response.status_code == 201, response.text
+    assert len(http_client.calls) == 1
+    result = response.json()
+    assert result["answer_blocks"] == []
+    assert result["repository_answer"] is None
+    assert result["general_supplement"] is None
+    assert result["answer_status"] == "insufficient_evidence"
+    assert result["evidence_status"] == "insufficient"
+    assert all(event["node"] != "model_output_retry" for event in result["trace"])
+
+
+def test_openrouter_model_search_keywords_take_precedence_for_bilibili_without_a_second_model_call(
     tmp_path: Path,
 ) -> None:
     http_client = RecordingHttpClient(_success_response())
@@ -428,13 +482,18 @@ def test_openrouter_keywords_create_bilibili_search_without_a_second_model_call(
 
     assert response.status_code == 201, response.text
     assert len(http_client.calls) == 1
-    search = response.json()["external_resources"][-1]
+    result = response.json()
+    search = result["external_resources"][-1]
     assert search["resource_type"] == "search"
     assert search["query_keywords"] == ["矩阵的秩", "初等行变换"]
     assert search["review_status"] == "unreviewed_live_search"
+    event = next(
+        item for item in result["trace"] if item["node"] == "bilibili_link_discovery"
+    )
+    assert event["result"]["reason_code"] == "model_bilibili_search_keywords"
 
 
-def test_invalid_optional_bilibili_keywords_do_not_create_search_or_lose_answer(
+def test_missing_or_invalid_bilibili_keywords_fall_back_to_model_core_topics(
     tmp_path: Path,
 ) -> None:
     structured = {
@@ -460,9 +519,47 @@ def test_invalid_optional_bilibili_keywords_do_not_create_search_or_lose_answer(
     response = client.post("/api/v1/workflow-runs", json=request)
 
     assert response.status_code == 201, response.text
-    assert response.json()["repository_answer"] == "矩阵秩的说明。[S1]"
-    assert response.json()["external_resources"] == []
+    result = response.json()
+    assert result["repository_answer"].startswith("矩阵秩的说明。[S1]")
+    assert result["repository_answer"].count(
+        "> **助教提示：** 定义、前提、符号先摆齐，少一步都不给分。"
+    ) == 1
+    search = result["external_resources"][-1]
+    assert search["query_keywords"] == ["矩阵的秩"]
+    event = next(
+        item for item in result["trace"] if item["node"] == "bilibili_link_discovery"
+    )
+    assert event["result"]["reason_code"] == "model_related_topics"
     assert len(http_client.calls) == 1
+
+
+def test_missing_model_keywords_and_topics_fall_back_to_current_question_search(
+    tmp_path: Path,
+) -> None:
+    structured = {
+        "repository_answer": "矩阵秩的说明。[S1]",
+        "related_topics": [],
+        "bilibili_search_keywords": [],
+    }
+    http_client = RecordingHttpClient(
+        _chat_completion_response(json.dumps(structured, ensure_ascii=False))
+    )
+    client, conversation_id = _client_with_conversation(tmp_path, http_client)
+    request = _workflow_request(
+        conversation_id, "google/gemma-4-26b-a4b-it:free"
+    )
+    request["include_bilibili_resources"] = True
+
+    response = client.post("/api/v1/workflow-runs", json=request)
+
+    assert response.status_code == 201, response.text
+    result = response.json()
+    search = result["external_resources"][-1]
+    assert search["query_keywords"] == ["矩阵的秩"]
+    event = next(
+        item for item in result["trace"] if item["node"] == "bilibili_link_discovery"
+    )
+    assert event["result"]["reason_code"] == "current_question_keyword_combination"
 
 
 def test_daily_quota_429_uses_exact_safe_error_without_fallback_or_leak(

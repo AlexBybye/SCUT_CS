@@ -83,6 +83,14 @@ def test_mock_vertical_slice_persists_answer_sources_and_trace(
     )
     assert result["trace"][-1]["node"] == "persistence"
     assert all("user_id" not in event["result"] for event in result["trace"])
+    bilibili_event = next(
+        event
+        for event in result["trace"]
+        if event["node"] == "bilibili_link_discovery"
+    )
+    assert bilibili_event["result"]["reason_code"] == (
+        "model_bilibili_search_keywords"
+    )
     identity_event = next(
         event for event in result["trace"] if event["node"] == "identity"
     )

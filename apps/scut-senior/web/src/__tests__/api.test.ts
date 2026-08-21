@@ -5,15 +5,18 @@ import {
   getByokCredentials,
   getConversation,
   getMe,
+  getPluginRegistry,
   listConversations,
+  loadCoursePlugin,
   regenerateWorkflowRun,
   renameConversation,
   runWorkflow,
   saveByokCredential,
   startWorkflowRunStream,
   submitFeedback,
+  unloadCoursePlugin,
 } from "../api";
-import type { WorkflowRunResult } from "../contracts";
+import type { PluginRegistry, WorkflowRunResult } from "../contracts";
 import { buildWorkflowRequest } from "../workflowRequest";
 
 afterEach(() => {
@@ -327,6 +330,139 @@ describe("conversation history API", () => {
 
     await expect(getConversation(conversationId)).rejects.toThrow(/another run/i);
     await expect(getConversation(conversationId)).rejects.toThrow(/fixed anonymous search URL/i);
+  });
+});
+
+describe("plugin registry API", () => {
+  it("读取只读插件注册表并保持契约字段", async () => {
+    const registry: PluginRegistry = {
+      registry_version: "harness-registry-v1",
+      retrieval_mode: "fixture",
+      agent_presets: [
+        {
+          preset_id: "preset_knowledge_qa",
+          preset_version: "v1",
+          display_name: "知识点问答",
+          workflow_type: "knowledge_qa",
+          focus_strategy: "question_concept",
+          allowed_tools: ["course_retrieval", "evidence_location"],
+          required_input_modalities: ["text"],
+          requires_structured_outputs: true,
+        },
+      ],
+      controlled_tools: [
+        {
+          tool_id: "course_retrieval",
+          display_name: "课程检索",
+          description: "服务端编排的课程范围检索。",
+          model_callable: false,
+        },
+      ],
+      maintainer_skills: [
+        {
+          skill_id: "material_conversion",
+          display_name: "资料 Markdown 转换",
+          version: "v1",
+          description: "契约元数据。",
+          status: "contract_only",
+          human_review_required: true,
+          can_mark_passed_or_active: false,
+        },
+      ],
+      courses: [
+        {
+          course_id: "cpp",
+          display_name: "C++（上及下）",
+          state: "registered",
+          loaded: true,
+          enabled_workflows: [],
+        },
+      ],
+    };
+    const fetchMock = vi.fn().mockResolvedValueOnce(
+      new Response(JSON.stringify(registry), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    await expect(getPluginRegistry()).resolves.toEqual(registry);
+    expect(fetchMock).toHaveBeenCalledWith(
+      "/api/v1/plugin-registry",
+      expect.objectContaining({ credentials: "include" }),
+    );
+  });
+});
+
+describe("course plugin mutation API", () => {
+  it("装载使用精确编码后的 POST 路由并携带会话 Cookie", async () => {
+    const courseId = "linear algebra/2026";
+    const response = { course_id: courseId, loaded: true };
+    const fetchMock = vi.fn().mockResolvedValueOnce(
+      new Response(JSON.stringify(response), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    await expect(loadCoursePlugin(courseId)).resolves.toEqual(response);
+    expect(fetchMock).toHaveBeenCalledWith(
+      "/api/v1/plugin-registry/courses/linear%20algebra%2F2026/load",
+      expect.objectContaining({ method: "POST", credentials: "include" }),
+    );
+  });
+
+  it("卸载使用精确编码后的 POST 路由并携带会话 Cookie", async () => {
+    const courseId = "linear algebra/2026";
+    const response = { course_id: courseId, loaded: false };
+    const fetchMock = vi.fn().mockResolvedValueOnce(
+      new Response(JSON.stringify(response), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    await expect(unloadCoursePlugin(courseId)).resolves.toEqual(response);
+    expect(fetchMock).toHaveBeenCalledWith(
+      "/api/v1/plugin-registry/courses/linear%20algebra%2F2026/unload",
+      expect.objectContaining({ method: "POST", credentials: "include" }),
+    );
+  });
+
+  it("装载与卸载均保留后端错误详情、状态码和错误码", async () => {
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            error: { code: "method_not_allowed", detail: "Method Not Allowed" },
+          }),
+          { status: 405, headers: { "Content-Type": "application/json" } },
+        ),
+      )
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            error: { code: "auth_required", detail: "请先使用 GitHub 登录。" },
+          }),
+          { status: 401, headers: { "Content-Type": "application/json" } },
+        ),
+      );
+    vi.stubGlobal("fetch", fetchMock);
+
+    await expect(loadCoursePlugin("linear_algebra")).rejects.toMatchObject({
+      message: "Method Not Allowed",
+      status: 405,
+      code: "method_not_allowed",
+    });
+    await expect(unloadCoursePlugin("linear_algebra")).rejects.toMatchObject({
+      message: "请先使用 GitHub 登录。",
+      status: 401,
+      code: "auth_required",
+    });
   });
 });
 

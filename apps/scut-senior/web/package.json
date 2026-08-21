@@ -11,10 +11,16 @@
     "build": "npm run typecheck && vite build"
   },
   "dependencies": {
+    "@types/dompurify": "^3.0.5",
+    "@types/katex": "^0.16.8",
+    "dompurify": "^3.4.14",
+    "katex": "^0.18.4",
+    "marked": "^18.0.10",
     "vue": "^3.5.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
+    "jsdom": "^30.0.1",
     "typescript": "~5.7.2",
     "vite": "^6.1.0",
     "vitest": "^3.0.5",

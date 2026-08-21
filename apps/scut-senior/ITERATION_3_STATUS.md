@@ -17,9 +17,9 @@
 - `POST /api/v1/workflow-runs/stream` 返回严格 NDJSON：事件序列从 0 连续递增，只允许 `trace`、`answer_delta`、`result`、`error` 四类事件和一个终态；前端拒绝缺号、重复、倒序、跨 run、未知安全字段和终态后的事件。
 - 回答固定拆分为 `repository`、`user_material`、`general`、`personalized_analysis` 四类块；`citations[]`、`external_resources[]` 和 `evidence_status` 独立保存与展示。
 - 引用 Guard 只接受本次候选中的唯一 `[S1] [S2] ...`，拒绝重复、越界、跨课程、未声明引用以及非 repository 块引用。`course_only` 无有效引用时丢弃无依据的 repository 正文并返回 `insufficient_evidence`。
-- Bilibili 仍为 search-only：模型只提供 0～3 个聚焦词，后端执行 NFKC、控制字符、空白、去重、数量、长度和 URL-like 文本过滤，只能生成一条固定 `https://search.bilibili.com/all?keyword=...`。回答和 humanizer 结果中的 HTTP、scheme-relative、短链或裸域名形式均被拦截；不抓搜索结果、不维护视频单、不返回视频直链。
+- Bilibili 仍为 search-only：选择 B站延伸学习时，模型在 Markdown 末尾的不可见 sidecar 提供可选搜索词与本题核心知识点；后端按“显式搜索词 → 核心知识点 → 当前问题关键词组合 → 请求／课程兜底”执行 NFKC、控制字符、空白、去重、数量、长度和 URL-like 文本过滤，并固定生成一条 `https://search.bilibili.com/all?keyword=...`。不抓搜索结果、不维护视频单、不返回视频直链。
 - OpenRouter 与 BYOK 的 transport 超时（包括 urllib 包装的 timeout）分别映射为 `platform_model_timeout` 和 `byok_provider_timeout`；超时或无效结构化响应只允许同一模型、同一 endpoint、同一 Key 重试一次。认证、额度、429 和普通 5xx 不重试。
-- 默认未配置 humanizer，Trace 明确记录 `skipped / humanizer_not_configured`。注入 humanizer 时使用深拷贝基线；数字、公式、引用、术语、链接或任何无法证明等价的文本变化都会回退，原地修改也不能篡改基线。当前没有启用真实润色能力。
+- 正常 Runtime 不再把未配置的 post-generation humanizer 伪装成一个已执行的节点：自然、清晰的表达与四种回答方式都作为单次模型生成提示的一部分，Trace 记录 `response_style_control / single_pass_model_prompt`。测试仍可注入 humanizer 验证 Guard；其输出使用深拷贝基线，数字、公式、引用、术语、链接或任何无法证明等价的文本变化都会回退。当前没有启用第二次模型调用的真实后处理润色能力。
 
 ## 五类 Workflow 聚焦
 

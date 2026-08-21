@@ -67,8 +67,9 @@ class OpenRouterCatalogHealthChecker:
 
     Credential validity is checked only against OpenRouter's fixed key-status URL;
     the project Key is never sent to the public model-list request. A valid secret
-    alone is not treated as evidence that a model remains free or supports the
-    structured response required by this application.
+    alone is not treated as evidence that a model remains free and callable.
+    Structured-output support is exposed as descriptive capability metadata;
+    ordinary text responses remain a supported workflow path.
     """
 
     def __init__(
@@ -132,13 +133,18 @@ class OpenRouterCatalogHealthChecker:
             row = by_id.get(model_id)
             if not isinstance(row, dict):
                 status = "model_unavailable"
+                supports_structured_outputs = False
             elif not model_id.endswith(":free") or not _has_zero_price(row):
                 status = "pricing_or_terms_changed"
-            elif not _supports_structured_outputs(row):
-                status = "structured_outputs_unavailable"
+                supports_structured_outputs = _supports_structured_outputs(row)
             else:
                 status = "available"
-            results[model_id] = ModelHealthResult(status, checked_at)
+                supports_structured_outputs = _supports_structured_outputs(row)
+            results[model_id] = ModelHealthResult(
+                status,
+                checked_at,
+                supports_structured_outputs=supports_structured_outputs,
+            )
         return results
 
 
@@ -148,7 +154,9 @@ def _same_result(
     checked_at: datetime,
 ) -> dict[str, ModelHealthResult]:
     return {
-        model_id: ModelHealthResult(status, checked_at)
+        model_id: ModelHealthResult(
+            status, checked_at, supports_structured_outputs=False
+        )
         for model_id in model_ids
     }
 

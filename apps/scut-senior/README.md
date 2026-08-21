@@ -1,19 +1,19 @@
 # SCUT 老学长
 
-这里是 SCUT 老学长的唯一应用源码目录。迭代 0 的契约与 Mock 工程基座、迭代 1 的本地／测试身份与模型通道、迭代 2 的 candidate／本地检索适配器均已形成代码基座。迭代 3 已在本地／测试环境实现五类 Workflow 共用 Runtime、严格 NDJSON 事件流、同一 run 的运行中／终态持久化、取消与中断、引用和 humanizer Guard、四类回答块以及 Bilibili search-only 降级链路。默认运行仍使用合成 Fixture；在受信 `master` 上生成并激活真实 corpus 之前，迭代 3 只能称为“本地实现与验证完成”，不能称为正式退出。真实 GitHub 凭据回调、用户真实 Key 的供应商实网响应和生产 HTTPS／部署也仍未形成证据。
+这里是 SCUT 老学长的唯一应用源码目录。迭代 0 的契约与 Mock 工程基座、迭代 1 的本地／测试身份与模型通道、迭代 2 的 candidate／本地检索适配器均已形成代码基座。迭代 3 已在本地／测试环境实现五类 Workflow 共用 Runtime、严格 NDJSON 事件流、同一 run 的运行中／终态持久化、取消与中断、引用 Guard、单次模型生成风格约束、四类回答块以及 Bilibili search-only 降级链路。默认运行仍使用合成 Fixture；在受信 `master` 上生成并激活真实 corpus 之前，迭代 3 只能称为“本地实现与验证完成”，不能称为正式退出。真实 GitHub 凭据回调、用户真实 Key 的供应商实网响应和生产 HTTPS／部署也仍未形成证据。
 
 ```text
 选择课程与 Workflow
 → 创建并保存 running run
 → 权威 Workflow 输入聚焦与课程内检索
-→ 模型结构化回答
-→ 引用／回答块／humanizer 安全校验
+→ 模型 Markdown 回答与输出风格约束
+→ 引用／回答块安全校验
 → 可选 Bilibili 匿名搜索入口
 → 同一 run 的 Trace、answer_delta 与终态事件
 → 保存并从历史恢复
 ```
 
-默认配置仍使用 Mock 身份、Mock 模型、Fixture 检索和本地 SQLite。显式 `github_oauth` 模式已经在本地／测试中闭合 OAuth `state`、GitHub 数字 ID 映射、7 天服务端会话、安全 Cookie、登出／到期、受保护接口、资源所有权以及 SQLite 重启／备份恢复；测试使用可注入回调和替身，不等于已用真实 GitHub 凭据完成线上联调。模型会在同一次结构化回答中给出 0～3 个聚焦词；关键词清洗后非空时，后端只固定生成 1 条 Bilibili 匿名搜索链接，不返回视频直链，不访问 Bilibili API，也不抓取搜索结果。项目不建设、审核或维护任何具体 Bilibili 视频资产。生产环境在真实 HTTPS、凭据和部署边界未验收前继续拒绝启动。
+默认配置仍使用 Mock 身份、Mock 模型、Fixture 检索和本地 SQLite。显式 `github_oauth` 模式已经在本地／测试中闭合 OAuth `state`、GitHub 数字 ID 映射、7 天服务端会话、安全 Cookie、登出／到期、受保护接口、资源所有权以及 SQLite 重启／备份恢复；测试使用可注入回调和替身，不等于已用真实 GitHub 凭据完成线上联调。模型直接生成 Markdown；选择 B站延伸学习时，模型在不可见 sidecar 中返回可选核心知识点和搜索词，后端按“显式搜索词 → 核心知识点 → 当前问题 → 请求／课程兜底”清洗并固定生成 1 条 Bilibili 匿名搜索链接，不返回视频直链，不访问 Bilibili API，也不抓取搜索结果。项目不建设、审核或维护任何具体 Bilibili 视频资产。生产环境在真实 HTTPS、凭据和部署边界未验收前继续拒绝启动。
 
 平台每日免费额度目录固定登记三项模型，页面显示公司名并由用户显式选择：
 
@@ -186,7 +186,7 @@ GIT_LFS_SKIP_SMUDGE=1 git checkout master
 - GitHub OAuth：本地／测试适配器、7 天会话、所有权和 SQLite 恢复已实现；真实 GitHub 凭据回调、生产 HTTPS 与部署尚未联调，生产继续 fail-closed；
 - 平台限流状态目前是单进程内存态；多 worker 共享限流、周期清理任务和生产启用仍未完成；
 - 首批课程固定为 10 门；本轮不改 manifest 的 reviewer 或 `passed/pending`，也不把用户的 Markdown 公式替换等同于 corpus 激活。当前没有正式 `active.json`，默认检索仍是 Fixture，远端 CI 与受信 `master` 上的真实 active／回退证据仍缺失；
-- Workflow Runtime 与严格 NDJSON Trace：迭代 3 已完成本地／测试实现；供应商回答会先完整通过结构化解析与 Guard，再按安全回答块发送 `answer_delta`，不是上游 token 原样透传；页面断开会停止后续节点并保存 `interrupted`，但同步 urllib 调用在返回或超时前不能保证终止上游推理或计费；
+- Workflow Runtime 与严格 NDJSON Trace：迭代 3 已完成本地／测试实现；供应商回答会先经兼容解析（自然语言、JSON 或 JSON 代码围栏）与来源 Guard，再按安全回答块发送 `answer_delta`，不是上游 token 原样透传；页面断开会停止后续节点并保存 `interrupted`，但同步 urllib 调用在返回或超时前不能保证终止上游推理或计费；
 - 华为云部署：**设计原样保留，作为后续可选目标**；预算获批前保持 validation-only／fail-closed，不创建资源；未来首发基线为华南-广州优先的 1C2G、40GB、1～2Mbps，不在 ECS 部署大模型。当前启用路径为“本机运行 + HTTPS 隧道”（见上文“在线部署”节）；
 - PostgreSQL、Qdrant、对象存储、任务系统、GitHub App、SWR 认证、ECS 灰度/回滚：首发不购买或只保留可替换边界；
 - 跨课程：契约已冻结，feature flag 默认关闭；

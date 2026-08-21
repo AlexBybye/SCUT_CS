@@ -179,6 +179,15 @@ class WorkflowRepository(Protocol):
 
     def list_feedback(self, user_id: str) -> list[FeedbackRecord]: ...
 
+    def is_course_plugin_loaded(self, course_id: str) -> bool: ...
+
+    def set_course_plugin_loaded(
+        self,
+        course_id: str,
+        loaded: bool,
+        updated_by_user_id: str | None = None,
+    ) -> None: ...
+
 
 class ModelCredentialRepository(Protocol):
     def list_model_credentials(

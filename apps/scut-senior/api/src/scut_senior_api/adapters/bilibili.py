@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 import unicodedata
 from datetime import datetime, timezone
 from typing import Callable, Sequence
@@ -12,6 +13,18 @@ BILIBILI_SEARCH_URL = "https://search.bilibili.com/all"
 MAX_KEYWORDS = 3
 MAX_KEYWORD_LENGTH = 32
 MAX_COURSE_TITLE_LENGTH = 40
+
+_QUESTION_SPLIT_RE = re.compile(r"[,，。；、！？?!]+")
+_QUESTION_PREFIX_RE = re.compile(
+    r"^(?:请(?:帮我)?|麻烦(?:你)?|能否|可以|为什么|如何|怎么(?:样)?|什么是|"
+    r"解释(?:一下)?|讲解(?:一下)?|说明(?:一下)?|我想知道)\s*"
+)
+_EXAMPLE_PREFIX_RE = re.compile(
+    r"^(?:并且|并|再|以及)?(?:给出|举(?:一个|个)?例(?:说明)?|提供)"
+    r"(?:一个|一[个种])?\s*"
+)
+
+
 class BilibiliLinkDiscoveryAdapter:
     """Build one anonymous Bilibili search link from focused keywords.
 
@@ -92,6 +105,40 @@ def normalize_keywords(keywords: Sequence[str]) -> tuple[str, ...]:
         if len(normalized) >= MAX_KEYWORDS:
             break
     return tuple(normalized)
+
+
+def derive_question_keywords(question: str) -> tuple[str, ...]:
+    """Build one bounded Bilibili query from the current workflow question.
+
+    This intentionally does not reuse model-generated topics: the live-search
+    entry must reflect what the student just asked, even when a provider emits
+    ordinary Markdown rather than the optional JSON envelope.
+    """
+
+    normalized = _normalize_text(question, max_length=MAX_KEYWORD_LENGTH * 8)
+    if not normalized or contains_url_like_text(normalized):
+        return ()
+
+    parts: list[str] = []
+    for raw_part in _QUESTION_SPLIT_RE.split(normalized):
+        part = raw_part
+        while True:
+            stripped = _QUESTION_PREFIX_RE.sub("", part)
+            if stripped == part:
+                break
+            part = stripped
+        part = _EXAMPLE_PREFIX_RE.sub("", part)
+        part = part.strip()
+        if not part or contains_url_like_text(part):
+            continue
+        separator = " " if parts else ""
+        if len(" ".join(parts)) + len(separator) + len(part) > MAX_KEYWORD_LENGTH:
+            if not parts:
+                parts.append(part[:MAX_KEYWORD_LENGTH].strip())
+            break
+        parts.append(part)
+
+    return normalize_keywords((" ".join(parts),)) if parts else ()
 
 
 def _normalize_text(value: str, *, max_length: int) -> str:
