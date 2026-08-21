@@ -52,17 +52,38 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
+          # Must stay aligned with the node:22-alpine base image in
+          # apps/scut-senior/Dockerfile so CI and the image build agree.
           node-version: 22
+          cache: npm
+          cache-dependency-path: apps/scut-senior/web/package-lock.json
 
       - name: Install web dependencies
         working-directory: apps/scut-senior/web
         shell: bash
+        # npm's "Exit handler never called!" bug is a known flaky failure of
+        # npm ci/install; retrying after a cache clean resolves it.
+        timeout-minutes: 10
         run: |
+          node --version
+          npm --version
           if [[ -f package-lock.json ]]; then
-            npm ci
+            install_cmd=(npm ci)
           else
-            npm install --no-audit --no-fund
+            install_cmd=(npm install)
           fi
+          for attempt in 1 2 3; do
+            echo "::group::${install_cmd[*]} (attempt ${attempt}/3)"
+            if "${install_cmd[@]}" --no-audit --no-fund; then
+              echo "::endgroup::"
+              exit 0
+            fi
+            echo "::endgroup::"
+            npm cache clean --force || true
+            sleep $((attempt * 5))
+          done
+          echo "Dependency installation failed after 3 attempts."
+          exit 1
 
       - name: Test, type-check, and build the Vue application
         working-directory: apps/scut-senior/web

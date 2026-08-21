@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import PluginRegistryPanel from "./PluginRegistryPanel.vue";
 import ByokCredentialsPanel from "./ByokCredentialsPanel.vue";
+import AssistantSettingsPanel from "./AssistantSettingsPanel.vue";
 import { useAppStore } from "../composables/useAppStore";
 
 const store = useAppStore();
@@ -33,10 +34,20 @@ const store = useAppStore();
       >
         插件
       </button>
+      <button
+        type="button"
+        class="account-tab"
+        role="tab"
+        :aria-selected="store.accountTab === 'assistant'"
+        @click="store.openAccountTab('assistant')"
+      >
+        助手设置
+      </button>
     </div>
 
     <div class="account-scroll">
       <ByokCredentialsPanel v-if="store.accountTab === 'credentials'" />
+      <AssistantSettingsPanel v-else-if="store.accountTab === 'assistant'" />
       <section v-else class="account-section" aria-label="内部插件管理">
         <div class="account-section-head">
           <h3>内部插件管理</h3>

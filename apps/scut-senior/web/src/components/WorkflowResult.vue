@@ -11,6 +11,7 @@ import type {
 } from "../contracts";
 import { submitFeedback } from "../api";
 import { renderAnswerMarkdown } from "../markdown";
+import { createBottomFollower } from "../scrollFollow";
 import type { WorkflowStreamState } from "../workflowStream";
 
 const props = defineProps<{
@@ -137,13 +138,30 @@ watch(
 
 onBeforeUnmount(stopTypeTimer);
 
-// 流动 trace：真实 trace 事件逐步展示；每步停留 2s，
-// 当前步展示满 2s 且下一步已到达时立刻前进一格（不跳到最新、不跳步）。
+// 流动 trace：运行中真实事件逐步展示（每步随机停留 ≤2s、不跳步）；
+// 运行一结束就停止逐条揭示，立刻完整展示全部 trace（见 visibleFlowTrace）。
 const flowTrace = computed(() => props.result?.trace ?? props.streamState?.traceEvents ?? []);
 const flowStep = ref(0);
 let flowTimer: number | null = null;
 let flowAdvanceAt = 0;
 let flowStepDelay = 0;
+
+// trace 内滚跟随：与大滚动条同一套贴底机制，0.5s 节流——步进再密也至多
+// 半秒写一次 scrollTop。是否跟随只看 tracePinned，而它只在用户真实的
+// scroll 事件里重估：内容追加不触发 scroll，pinned 不会被新步骤挤掉，
+// 流式期间因此能稳定追到最新一步；上翻阅读即解除跟随，滚回底部自动恢复。
+const traceListEl = ref<HTMLElement | null>(null);
+const tracePinned = ref(true);
+
+function onTraceScroll(): void {
+  const el = traceListEl.value;
+  if (!el) return;
+  tracePinned.value = el.scrollHeight - el.scrollTop - el.clientHeight < 32;
+}
+
+const traceFollower = createBottomFollower(() => traceListEl.value, 500, {
+  shouldFollow: () => tracePinned.value,
+});
 
 function stopFlowTimer(): void {
   if (flowTimer !== null) {
@@ -165,18 +183,24 @@ function advanceFlowStep(): void {
 watch(
   () => props.isRunning,
   (running) => {
+    stopFlowTimer();
+    traceFollower.stop();
     if (!running) {
-      // 生成结束：不打断，让定时器继续逐条揭示剩余 trace。
+      // 生成结束：全部 trace 立刻渲染并强制回到最新步骤；盒子限高内滚，
+      // 整段插入不会撑高页面造成滚动跳动。
+      tracePinned.value = true;
+      traceFollower.force();
       return;
     }
-    // 开始生成：重置并启动定时器。
-    stopFlowTimer();
+    // 开始生成：重置并启动揭示定时器与内滚跟随（新一轮默认贴底跟随）。
     flowStep.value = 0;
+    tracePinned.value = true;
     flowAdvanceAt = Date.now();
     flowStepDelay = Math.random() * 2000;
     flowTimer = window.setInterval(() => {
       if (Date.now() - flowAdvanceAt >= flowStepDelay) advanceFlowStep();
     }, 200);
+    traceFollower.start();
   },
   { immediate: true },
 );
@@ -191,13 +215,15 @@ watch(
   },
 );
 
-onBeforeUnmount(stopFlowTimer);
-
-// 运行中或收尾中逐步揭示（未到的框不显示）；历史数据直接展示全部。
-const visibleFlowTrace = computed(() => {
-  if (!props.isRunning && flowTimer === null) return flowTrace.value;
-  return flowTrace.value.slice(0, flowStep.value + 1);
+onBeforeUnmount(() => {
+  stopFlowTimer();
+  traceFollower.stop();
 });
+
+// 运行中只显示已揭示的步骤；一旦不在运行（回答输出完成/历史加载），立刻展示全部。
+const visibleFlowTrace = computed(() =>
+  props.isRunning ? flowTrace.value.slice(0, flowStep.value + 1) : flowTrace.value,
+);
 
 const answerBlocks = computed<AnswerBlock[]>(() => {
   if (props.result?.answer_blocks.length) return props.result.answer_blocks;
@@ -301,7 +327,12 @@ function citationLocator(citation: Citation): string {
         <span class="flow-dots" aria-hidden="true"><i></i><i></i><i></i></span>
         <span class="flow-label">思考中</span>
       </div>
-      <ol v-if="visibleFlowTrace.length" class="flow-trace">
+      <ol
+        v-if="visibleFlowTrace.length"
+        ref="traceListEl"
+        class="flow-trace"
+        @scroll="onTraceScroll"
+      >
         <li
           v-for="(event, index) in visibleFlowTrace"
           :key="event.event_id"
@@ -412,7 +443,7 @@ function citationLocator(citation: Citation): string {
               >
                 <span>
                   <strong>{{ resource.title }}</strong>
-                  <small>{{ resource.matched_topic }} / 匿名搜索 / 结果未审核</small>
+                  <small>{{ resource.matched_topic }} </small>
                 </span>
                 <span aria-hidden="true">查看搜索结果</span>
               </a>
@@ -886,6 +917,11 @@ function citationLocator(citation: Citation): string {
   gap: 6px;
   margin: 0;
   list-style: none;
+  /* 限高内滚：完成瞬间整段揭示全部 trace，也不会把记录区顶得一泻千里地跳动；
+     滚到边界不 chaining，内滚不会突然带动整页。 */
+  max-height: 240px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .flow-step {
@@ -952,11 +988,10 @@ function citationLocator(citation: Citation): string {
   }
 }
 
-/* 低矮窗口：trace 列表限制高度。 */
+/* 低矮窗口：trace 列表限高更紧。 */
 @media (max-height: 640px) {
   .flow-trace {
     max-height: 22vh;
-    overflow-y: auto;
   }
 }
 </style>

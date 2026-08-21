@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, ref, watch } from "vue";
+import { computed, onBeforeUnmount, ref, watch } from "vue";
 import WorkflowResult from "./WorkflowResult.vue";
 import {
   courseAvailabilitySummary,
   courseRuntimeDescription,
 } from "../courseAvailability";
 import type { AnswerMode, Tone, WorkflowRunResult } from "../contracts";
+import { createBottomFollower } from "../scrollFollow";
 import { useAppStore } from "../composables/useAppStore";
 
 const store = useAppStore();
@@ -57,17 +58,11 @@ const turns = computed<TranscriptTurn[]>(() => {
   return completed;
 });
 
-// 自动滚动：内容更新后（新回合、流式事件、打字机增长）把记录区滚动到底部，
-// 用 nextTick 确保 DOM 更新完成后再执行 scrollTop = scrollHeight。
+// 自动滚动：大滚动条与 trace 内滚共用同一套贴底跟随（scrollFollow）。
+// 生成期间 1s 一跳的节流轮询；内容签名变化与收尾补滚走 force() 立即执行。
 const transcriptEl = ref<HTMLElement | null>(null);
-let transcriptScrollTimer: number | null = null;
-
-function scrollTranscriptToBottom(): void {
-  void nextTick(() => {
-    const el = transcriptEl.value;
-    if (el) el.scrollTop = el.scrollHeight;
-  });
-}
+const transcriptFollower = createBottomFollower(() => transcriptEl.value, 1000);
+let transcriptGraceTimer: number | null = null;
 
 const transcriptContentSignature = computed(() => ({
   turns: store.completedTurns
@@ -80,32 +75,31 @@ const transcriptContentSignature = computed(() => ({
 }));
 
 watch(transcriptContentSignature, () => {
-  scrollTranscriptToBottom();
+  transcriptFollower.force();
 });
 
 watch(
   () => store.isRunning,
   (running) => {
-    if (transcriptScrollTimer !== null) {
-      window.clearInterval(transcriptScrollTimer);
-      transcriptScrollTimer = null;
+    transcriptFollower.stop();
+    if (transcriptGraceTimer !== null) {
+      window.clearInterval(transcriptGraceTimer);
+      transcriptGraceTimer = null;
     }
     if (running) {
       // 生成期间持续跟随最新内容（打字机逐字增长时也保持到底）。
-      transcriptScrollTimer = window.setInterval(scrollTranscriptToBottom, 1000);
+      transcriptFollower.start();
       return;
     }
     // 运行结束后的加速收尾约 18 tick × 70ms ≈ 1.26s，这里再补滚 2 次，
     // 让最后这段揭示也保持在视野底部，而不是在折叠线下悄悄打完。
     let graceTicks = 2;
-    transcriptScrollTimer = window.setInterval(() => {
-      scrollTranscriptToBottom();
+    transcriptGraceTimer = window.setInterval(() => {
+      transcriptFollower.force();
       graceTicks -= 1;
-      if (graceTicks <= 0) {
-        if (transcriptScrollTimer !== null) {
-          window.clearInterval(transcriptScrollTimer);
-          transcriptScrollTimer = null;
-        }
+      if (graceTicks <= 0 && transcriptGraceTimer !== null) {
+        window.clearInterval(transcriptGraceTimer);
+        transcriptGraceTimer = null;
       }
     }, 650);
   },
@@ -113,9 +107,10 @@ watch(
 );
 
 onBeforeUnmount(() => {
-  if (transcriptScrollTimer !== null) {
-    window.clearInterval(transcriptScrollTimer);
-    transcriptScrollTimer = null;
+  transcriptFollower.stop();
+  if (transcriptGraceTimer !== null) {
+    window.clearInterval(transcriptGraceTimer);
+    transcriptGraceTimer = null;
   }
 });
 </script>

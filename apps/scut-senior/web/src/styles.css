@@ -16,7 +16,8 @@
  *   --r-sm 4px  → 输入框、按钮、状态片、代码块
  *   --r-md 6px  → 面板、卡片、抽屉
  * 强调色规则：全站只有一个强调色 --accent。
- * 主题规则：整页统一跟随 prefers-color-scheme。
+ * 主题规则：默认跟随 prefers-color-scheme；个人中心「助手设置」可通过
+ *   <html data-theme="light|dark"> 强制恒亮/恒暗（auto 时属性为 "auto"，仍走媒体查询）。
  */
 
 :root {
@@ -80,7 +81,9 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  /* auto 与显式 data-theme="dark" 都走深色令牌；只有手动恒亮排除在外。 */
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
     --page: #0f141c;
     --panel: #171e2a;
     --raised: #1f2836;
@@ -107,6 +110,41 @@
     --shadow-panel: 0 1px 2px rgb(0 0 0 / 0.4);
     --shadow-float: 0 12px 32px rgb(0 0 0 / 0.5);
   }
+}
+
+/* 手动恒暗：系统是亮色时也要能锁深色。令牌与上方媒体查询块保持一致，改动需同步两处。 */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0f141c;
+  --panel: #171e2a;
+  --raised: #1f2836;
+  --sunken: #0a0e14;
+  --text: #eef1f6;
+  --text-muted: #b5bfce;
+  --text-soft: #8f9baf;
+  --line: #2a3547;
+  --line-strong: #3d4a5f;
+  --accent: #93ade2;
+  --accent-hover: #adc1ea;
+  --accent-wash: #24375c;
+  --accent-on: #10151f;
+  --focus: #9cbbf6;
+  --warn-wash: #3a301e;
+  --warn-line: #b78b3d;
+  --warn-text: #f2d28f;
+  --ok-wash: #20382c;
+  --ok-line: #5da384;
+  --ok-text: #a9dbbd;
+  --bad-wash: #45282d;
+  --bad-line: #d18a94;
+  --bad-text: #f2b8c0;
+  --shadow-panel: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-float: 0 12px 32px rgb(0 0 0 / 0.5);
+}
+
+/* 手动恒亮：系统是暗色时锁住亮色 UA 控件（滚动条/表单）。颜色令牌沿用 :root 默认。 */
+:root[data-theme="light"] {
+  color-scheme: light;
 }
 
 * {
