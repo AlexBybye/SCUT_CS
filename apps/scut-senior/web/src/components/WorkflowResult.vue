@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, ref, watch } from "vue";
+import { computed, onBeforeUnmount, ref, watch } from "vue";
 import type {
   AnswerBlock,
   AnswerBlockType,
@@ -11,6 +11,7 @@ import type {
 } from "../contracts";
 import { submitFeedback } from "../api";
 import { renderAnswerMarkdown } from "../markdown";
+import { createBottomFollower } from "../scrollFollow";
 import type { WorkflowStreamState } from "../workflowStream";
 
 const props = defineProps<{
@@ -141,10 +142,26 @@ onBeforeUnmount(stopTypeTimer);
 // 运行一结束就停止逐条揭示，立刻完整展示全部 trace（见 visibleFlowTrace）。
 const flowTrace = computed(() => props.result?.trace ?? props.streamState?.traceEvents ?? []);
 const flowStep = ref(0);
-const traceListEl = ref<HTMLElement | null>(null);
 let flowTimer: number | null = null;
 let flowAdvanceAt = 0;
 let flowStepDelay = 0;
+
+// trace 内滚跟随：与大滚动条同一套贴底机制，0.5s 节流——步进再密也至多
+// 半秒写一次 scrollTop。是否跟随只看 tracePinned，而它只在用户真实的
+// scroll 事件里重估：内容追加不触发 scroll，pinned 不会被新步骤挤掉，
+// 流式期间因此能稳定追到最新一步；上翻阅读即解除跟随，滚回底部自动恢复。
+const traceListEl = ref<HTMLElement | null>(null);
+const tracePinned = ref(true);
+
+function onTraceScroll(): void {
+  const el = traceListEl.value;
+  if (!el) return;
+  tracePinned.value = el.scrollHeight - el.scrollTop - el.clientHeight < 32;
+}
+
+const traceFollower = createBottomFollower(() => traceListEl.value, 500, {
+  shouldFollow: () => tracePinned.value,
+});
 
 function stopFlowTimer(): void {
   if (flowTimer !== null) {
@@ -153,21 +170,11 @@ function stopFlowTimer(): void {
   }
 }
 
-// 列表限高内滚后，新步骤在盒子内部追加。只有用户本就贴着底部时才自动跟随，
-// 避免把正在上翻阅读 trace 的用户拽回去；完成瞬间的整体揭示则强制贴底。
-function scrollTraceListToEnd(force = false): void {
-  const el = traceListEl.value;
-  if (!el) return;
-  const nearBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 32;
-  if (force || nearBottom) el.scrollTop = el.scrollHeight;
-}
-
 function advanceFlowStep(): void {
   if (flowStep.value < flowTrace.value.length - 1) {
     flowStep.value += 1;
     flowAdvanceAt = Date.now();
     flowStepDelay = Math.random() * 2000;
-    void nextTick(() => scrollTraceListToEnd());
   } else {
     stopFlowTimer();
   }
@@ -177,19 +184,23 @@ watch(
   () => props.isRunning,
   (running) => {
     stopFlowTimer();
+    traceFollower.stop();
     if (!running) {
-      // 生成结束：不再让定时器逐条挤牙膏，全部 trace 立刻渲染；
-      // 盒子限高内滚，整段插入不会撑高页面造成滚动跳动。
-      void nextTick(() => scrollTraceListToEnd(true));
+      // 生成结束：全部 trace 立刻渲染并强制回到最新步骤；盒子限高内滚，
+      // 整段插入不会撑高页面造成滚动跳动。
+      tracePinned.value = true;
+      traceFollower.force();
       return;
     }
-    // 开始生成：重置并启动定时器。
+    // 开始生成：重置并启动揭示定时器与内滚跟随（新一轮默认贴底跟随）。
     flowStep.value = 0;
+    tracePinned.value = true;
     flowAdvanceAt = Date.now();
     flowStepDelay = Math.random() * 2000;
     flowTimer = window.setInterval(() => {
       if (Date.now() - flowAdvanceAt >= flowStepDelay) advanceFlowStep();
     }, 200);
+    traceFollower.start();
   },
   { immediate: true },
 );
@@ -204,7 +215,10 @@ watch(
   },
 );
 
-onBeforeUnmount(stopFlowTimer);
+onBeforeUnmount(() => {
+  stopFlowTimer();
+  traceFollower.stop();
+});
 
 // 运行中只显示已揭示的步骤；一旦不在运行（回答输出完成/历史加载），立刻展示全部。
 const visibleFlowTrace = computed(() =>
@@ -313,7 +327,12 @@ function citationLocator(citation: Citation): string {
         <span class="flow-dots" aria-hidden="true"><i></i><i></i><i></i></span>
         <span class="flow-label">思考中</span>
       </div>
-      <ol v-if="visibleFlowTrace.length" ref="traceListEl" class="flow-trace">
+      <ol
+        v-if="visibleFlowTrace.length"
+        ref="traceListEl"
+        class="flow-trace"
+        @scroll="onTraceScroll"
+      >
         <li
           v-for="(event, index) in visibleFlowTrace"
           :key="event.event_id"
