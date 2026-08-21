@@ -1,11 +1,13 @@
 from __future__ import annotations
 
+from dataclasses import dataclass
 from datetime import timedelta
 from time import perf_counter
 from uuid import UUID, uuid4
 
 from .auth import AuthRequired, AuthenticatedPrincipal, utc_now
 from .adapters.bilibili import derive_question_keywords, normalize_keywords
+from .adapters.exam_facts import ExamFactsUnavailable
 from .byok_catalog import (
     ByokModelNotRegistered,
     ByokProviderDisabled,
@@ -21,6 +23,7 @@ from .contracts import (
     ConversationSummary,
     CourseScope,
     EvidenceStatus,
+    ExamReviewPayload,
     ExternalResource,
     FeedbackCreate,
     FeedbackRecord,
@@ -34,6 +37,13 @@ from .contracts import (
     WorkflowAttempt,
     WorkflowResult,
     WorkflowRunRequest,
+    WorkflowType,
+)
+from .exam_review import (
+    ExamReviewPlan,
+    build_exam_review_plan,
+    compose_retrieval_query,
+    render_exam_review_appendix,
 )
 from .harness_registry import HARNESS_REGISTRY
 from .model_catalog import ModelCatalog, ModelCatalogEntry
@@ -75,6 +85,14 @@ class ContractConflict(ValueError):
 RequestIdentity = UserIdentity | AuthenticatedPrincipal
 
 
+@dataclass(frozen=True, slots=True)
+class ExamReviewPlanContext:
+    """One request-local deterministic exam-review plan and its query."""
+
+    plan: "ExamReviewPlan"
+    retrieval_query: str
+
+
 class IterationZeroService:
     def __init__(
         self,
@@ -89,6 +107,7 @@ class IterationZeroService:
         byok_model: UserKeyModelGateway,
         humanizer: HumanizerGateway | None = None,
         zhipu_model: ModelGateway | None = None,
+        exam_facts: object | None = None,
     ):
         self.settings = settings
         self.registry = registry
@@ -101,6 +120,9 @@ class IterationZeroService:
         self.credential_manager = credential_manager
         self.byok_model = byok_model
         self.humanizer = humanizer
+        # Optional iteration-5 exam-review facts provider (fixture or local
+        # corpus). ``None`` keeps the pre-iteration-5 behaviour exactly.
+        self.exam_facts = exam_facts
 
     def create_conversation(
         self, user: RequestIdentity, course_id_or_alias: str
@@ -515,13 +537,23 @@ class IterationZeroService:
             return interrupted
 
         workflow_focus = build_workflow_focus(request)
+        # Iteration 5: deterministic exam-review planning happens before
+        # retrieval so the “历年题优先” path can contribute objective topic
+        # terms when no syllabus narrows the scope. Any failure degrades to
+        # the pre-iteration-5 behaviour without failing the run.
+        exam_plan = self._plan_exam_review(request, course, trace)
+        retrieval_query = (
+            exam_plan.retrieval_query
+            if exam_plan is not None
+            else workflow_focus.authoritative_query
+        )
         interrupted = interrupt_if_step_not_claimed()
         if interrupted is not None:
             return interrupted
         started = perf_counter()
         try:
             retrieval_batch = self.retrieval.search(
-                [course.course_id], workflow_focus.authoritative_query
+                [course.course_id], retrieval_query
             )
             if not isinstance(retrieval_batch, RetrievalBatch):
                 # Keep injected iteration-1 test doubles compatible, but never
@@ -881,6 +913,15 @@ class IterationZeroService:
 
         answer_blocks = _enforce_primary_answer_tone(answer_blocks, request)
 
+        # Iteration 5: append the deterministic, system-generated exam-review
+        # appendix (scope statement, objective past-exam statistics, knowledge
+        # point groups, uncovered syllabus items) after the humanizer so the
+        # protected deterministic content is never rewritten.
+        if exam_plan is not None:
+            answer_blocks = _inject_exam_review_appendix(
+                answer_blocks, render_exam_review_appendix(exam_plan.plan)
+            )
+
         interrupted = finish_interrupted()
         if interrupted is not None:
             return interrupted
@@ -897,7 +938,7 @@ class IterationZeroService:
             ) = _select_bilibili_keywords(
                 generated=generated,
                 related_topics=related_topics,
-                authoritative_query=workflow_focus.authoritative_query,
+                authoritative_query=retrieval_query,
                 request_input=request.user_input,
                 course_title=course.display_name,
                 course_id=course.course_id,
@@ -1019,6 +1060,11 @@ class IterationZeroService:
                 "payload_type": request.workflow_type.value,
                 "source_candidate_ids": list(citation_source_map),
                 "selected_citation_ids": list(guarded.citation_ids),
+                **(
+                    {"exam_review": exam_plan.plan.to_output_dict()}
+                    if exam_plan is not None
+                    else {}
+                ),
             },
             evidence_status=guarded.evidence_status,
             citations=citations,
@@ -1049,6 +1095,78 @@ class IterationZeroService:
         )
         _emit_confirmed_persistence_trace(trace, persistence_event)
         return result
+
+    def _plan_exam_review(
+        self,
+        request: WorkflowRunRequest,
+        course: object,
+        trace: "StreamingTrace | list[TraceEvent]",
+    ) -> "ExamReviewPlanContext | None":
+        """Build the deterministic exam-review plan, degrading honestly.
+
+        Returns ``None`` (legacy behaviour, no plan node) for every non
+        exam_review workflow, when the feature flag is off, or when no facts
+        provider is configured. Provider failures emit a skipped Trace event
+        and never fail the run.
+        """
+
+        if (
+            request.workflow_type is not WorkflowType.EXAM_REVIEW
+            or not self.settings.exam_review_plan_enabled
+            or self.exam_facts is None
+        ):
+            return None
+        typed = request.workflow_payload
+        if not isinstance(typed, ExamReviewPayload):  # pragma: no cover - guarded by contract
+            return None
+        load = getattr(self.exam_facts, "load", None)
+        if not callable(load):
+            return None
+        started = perf_counter()
+        try:
+            facts = load(course.course_id)
+            plan = build_exam_review_plan(
+                course_id=course.course_id,
+                payload_syllabus=typed.syllabus,
+                payload_weak_topics=typed.weak_topics,
+                payload_available_hours=typed.available_hours,
+                knowledge_scope_allows_general=(
+                    request.knowledge_scope != KnowledgeScope.COURSE_ONLY
+                ),
+                facts=facts,
+            )
+        except Exception:
+            _append_trace(
+                trace,
+                node="exam_review_plan",
+                status=TraceEventStatus.SKIPPED,
+                duration_ms=_elapsed_ms(started),
+                result={
+                    "degradation_code": "exam_review_facts_unavailable",
+                },
+            )
+            return None
+        _append_trace(
+            trace,
+            node="exam_review_plan",
+            duration_ms=_elapsed_ms(started),
+            result={
+                # Trace stays free of private syllabus/weak-topic content:
+                # only the path code and objective corpus counts are safe.
+                "review_path": plan.path.value,
+                "reason_code": plan.path.value,
+                "candidate_count": int(
+                    plan.past_exam_stats.get("question_count", 0)
+                ),
+                "sample_years": list(plan.past_exam_stats.get("sample_years") or []),
+            },
+        )
+        retrieval_query = compose_retrieval_query(
+            syllabus=typed.syllabus,
+            weak_topics=typed.weak_topics,
+            plan=plan,
+        )
+        return ExamReviewPlanContext(plan=plan, retrieval_query=retrieval_query)
 
     def _persist_running_attempt(
         self,
@@ -1483,6 +1601,27 @@ def _enforce_primary_answer_tone(
             }
         )
         return [*blocks[:index], normalized, *blocks[index + 1 :]]
+    return blocks
+
+
+def _inject_exam_review_appendix(
+    blocks: list[AnswerBlock], appendix: str
+) -> list[AnswerBlock]:
+    """Append the deterministic exam-review appendix to the repository block.
+
+    The appendix is system-generated corpus statistics; it is never sent
+    through the model, the humanizer or the citation guard. Runs without a
+    repository block (for example honest insufficient-evidence results) keep
+    their answer untouched.
+    """
+
+    if not appendix.strip():
+        return blocks
+    for index, block in enumerate(blocks):
+        if block.type != AnswerBlockType.REPOSITORY or not block.content.strip():
+            continue
+        updated = block.model_copy(update={"content": f"{block.content}\n\n{appendix}"})
+        return [*blocks[:index], updated, *blocks[index + 1 :]]
     return blocks
 
 

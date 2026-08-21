@@ -14,8 +14,13 @@
     "source-marking-001",
     "exam-review-fixture-001",
     "mistake-review-fixture-001",
-    "temporary-material-fixture-001"
+    "temporary-material-fixture-001",
+    "exam-review-with-syllabus-001",
+    "exam-review-past-exam-first-001"
   ],
-  "group_by": ["course_id", "category"],
+  "group_by": [
+    "course_id",
+    "category"
+  ],
   "fail_on_missing_case": true
 }

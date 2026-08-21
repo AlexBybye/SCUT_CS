@@ -376,6 +376,8 @@ export interface TraceSafeResult {
   fixture_only?: boolean | null;
   normalized_topics?: string[] | null;
   unreviewed_search_returned?: boolean | null;
+  review_path?: string | null;
+  sample_years?: number[] | null;
   reason_code?: string | null;
   candidate_count?: number | null;
   accepted_count?: number | null;

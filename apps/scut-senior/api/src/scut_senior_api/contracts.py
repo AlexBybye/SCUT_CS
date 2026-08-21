@@ -423,6 +423,11 @@ class TraceSafeResult(ContractModel):
     fixture_only: bool | None = None
     normalized_topics: list[str] | None = None
     unreviewed_search_returned: bool | None = None
+    # Iteration 5 exam-review plan node: the selected evidence path code and
+    # the objective past-exam sample years. Private syllabus/weak-topic text
+    # never enters Trace.
+    review_path: TraceCode | None = None
+    sample_years: list[Annotated[int, Field(ge=1, le=9999)]] | None = None
     reason_code: TraceCode | None = None
     candidate_count: Annotated[int | None, Field(ge=0)] = None
     accepted_count: Annotated[int | None, Field(ge=0)] = None

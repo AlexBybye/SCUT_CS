@@ -22,6 +22,10 @@ from .adapters.github import (
     GitHubOAuthAdapter,
     GitHubOAuthError,
 )
+from .adapters.exam_facts import (
+    FixtureExamFactsProvider,
+    LocalCorpusExamFactsProvider,
+)
 from .adapters.local_corpus import LocalCorpusRetrievalGateway
 from .adapters.mock import (
     FixtureRetrievalGateway,
@@ -329,6 +333,11 @@ def create_app(
         credential_manager=credential_manager,
         byok_model=byok_model,
         humanizer=humanizer,
+        exam_facts=(
+            LocalCorpusExamFactsProvider(active_settings.corpus_store_path)
+            if active_settings.retrieval_mode == "local_corpus"
+            else FixtureExamFactsProvider()
+        ),
     )
 
     app = FastAPI(

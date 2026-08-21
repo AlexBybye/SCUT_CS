@@ -757,6 +757,19 @@
           "default": null,
           "title": "Retry Count"
         },
+        "review_path": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z][a-z0-9_]{0,99}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Review Path"
+        },
         "rewritten_query": {
           "anyOf": [
             {
@@ -768,6 +781,23 @@
           ],
           "default": null,
           "title": "Rewritten Query"
+        },
+        "sample_years": {
+          "anyOf": [
+            {
+              "items": {
+                "maximum": 9999,
+                "minimum": 1,
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sample Years"
         },
         "sources": {
           "anyOf": [

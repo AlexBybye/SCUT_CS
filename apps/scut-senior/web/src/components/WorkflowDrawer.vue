@@ -19,6 +19,10 @@ const store = useAppStore();
       class="drawer-grid"
       aria-label="备考复习专属字段"
     >
+      <p class="drawer-hint drawer-span">
+        填了大纲：按“用户大纲 &gt; 课程资料 &gt; 历年题”组织；不填大纲：按“历年题
+        &gt; 课程资料”组织，并明确声明不是官方范围、不构成考试重点预测。
+      </p>
       <div class="field drawer-span">
         <label for="syllabus">考试大纲（可选）</label>
         <textarea
@@ -217,6 +221,12 @@ const store = useAppStore();
   font-size: var(--fs-2xs);
   font-weight: 650;
   letter-spacing: 0.02em;
+}
+
+.drawer-hint {
+  color: var(--text-muted);
+  font-size: var(--fs-2xs);
+  line-height: 1.55;
 }
 
 .check {

@@ -38,16 +38,21 @@ _MOCK_USER: UserIdentity = MockIdentityProvider().current_user()
 _WORKFLOW_NAMES = {workflow.value for workflow in WorkflowType}
 
 
-def _payload_for(workflow_type: str, content: str) -> dict[str, object]:
+def _payload_for(
+    workflow_type: str, content: str, case: dict[str, object]
+) -> dict[str, object]:
     if workflow_type == "knowledge_qa":
         return {"question": content}
     if workflow_type == "exam_review":
+        # An explicit null ``syllabus`` selects the 无大纲 path; only an
+        # absent key falls back to the turn content.
+        syllabus = case["syllabus"] if "syllabus" in case else content
         return {
-            "syllabus": content,
+            "syllabus": syllabus,
             "exam_date": None,
             "available_hours": 4,
             "goals": [],
-            "weak_topics": [],
+            "weak_topics": list(case.get("weak_topics") or []),
         }
     if workflow_type == "problem_tutor":
         return {
@@ -90,7 +95,7 @@ def _request_for_case(
         "include_bilibili_resources": False,
         "context_refs": [],
         "attachments": [],
-        "workflow_payload": _payload_for(workflow_type, content),
+        "workflow_payload": _payload_for(workflow_type, content, case),
     }
 
 
@@ -122,6 +127,19 @@ def _check_expected(
     for locator in expected.get("required_locator_types") or []:
         if locator not in locator_types:
             reasons.append(f"引用缺少 locator_type={locator}")
+    # Iteration 5: deterministic exam-review plan expectations.
+    requires_plan = bool(expected.get("requires_exam_review_plan"))
+    exam_output = (result.workflow_output or {}).get("exam_review")
+    if requires_plan and not isinstance(exam_output, dict):
+        reasons.append("requires_exam_review_plan 但结果没有备考复习计划")
+    expected_path = expected.get("review_path")
+    if expected_path is not None:
+        if not isinstance(exam_output, dict):
+            reasons.append(f"review_path={expected_path} 但没有备考复习计划")
+        elif exam_output.get("path") != expected_path:
+            reasons.append(
+                f"review_path={exam_output.get('path')} != {expected_path}"
+            )
     return reasons
 
 

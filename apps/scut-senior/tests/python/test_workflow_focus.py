@@ -563,6 +563,49 @@ def test_exam_review_without_syllabus_or_weak_topics_has_no_fallback_query() -> 
     assert "外层冲突内容" not in focus.authoritative_query
 
 
+def test_exam_review_directive_declares_syllabus_path_and_ai_sample_boundary() -> None:
+    with_syllabus = build_workflow_focus(
+        _request(
+            "exam_review",
+            {
+                "syllabus": "矩阵与线性方程组",
+                "exam_date": None,
+                "available_hours": None,
+                "goals": [],
+                "weak_topics": [],
+            },
+        )
+    )
+    without_syllabus = build_workflow_focus(
+        _request(
+            "exam_review",
+            {
+                "syllabus": None,
+                "exam_date": None,
+                "available_hours": None,
+                "goals": [],
+                "weak_topics": [],
+            },
+        )
+    )
+
+    # 有大纲路径：用户大纲优先。
+    assert "有大纲备考路径" in with_syllabus.prompt_directive
+    assert "用户大纲 > 课程资料 > 历年题" in with_syllabus.prompt_directive
+    # 无大纲路径：诚实边界，不做预测。
+    assert "无大纲备考路径" in without_syllabus.prompt_directive
+    assert "不是官方考试范围" in without_syllabus.prompt_directive or (
+        "不得宣称官方考试范围" in without_syllabus.prompt_directive
+    )
+    assert "命题概率" in without_syllabus.prompt_directive
+    for focus in (with_syllabus, without_syllabus):
+        # AI 样题必须明确标记，且统计事实归系统附录。
+        assert "AI 生成样题" in focus.prompt_directive
+        assert "非历年真题" in focus.prompt_directive
+        assert "备考复习统计（系统生成）" in focus.prompt_directive
+        assert "不得自行编造或改写统计数字" in focus.prompt_directive
+
+
 def test_focus_context_is_nfkc_normalized_control_free_json_and_strictly_bounded() -> None:
     noisy_question = ('ＭＡＴＲＩＸ\x00\n  秩  " \\ ' * 1_500)[:20_000]
     focus = build_workflow_focus(

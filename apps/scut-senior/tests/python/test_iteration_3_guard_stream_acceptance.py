@@ -1124,10 +1124,12 @@ def test_all_five_workflows_share_the_same_runtime_pipeline(tmp_path: Path) -> N
         assert response.status_code == 201, response.text
         results[workflow_type] = response.json()
 
-    expected_nodes = [
+    shared_nodes = [
         "request_validation",
         "identity",
         "run_record",
+        # Iteration 5: exam_review inserts its deterministic plan node here;
+        # the other four workflows keep the exact pre-iteration-5 sequence.
         "fixture_retrieval",
         "source_authorization_guard",
         "cache_policy",
@@ -1141,6 +1143,15 @@ def test_all_five_workflows_share_the_same_runtime_pipeline(tmp_path: Path) -> N
     assert len({result["workflow_run_id"] for result in results.values()}) == 5
     for workflow_type, result in results.items():
         expected_focus = WORKFLOW_FOCUS_EXPECTATIONS[workflow_type]
+        expected_nodes = (
+            [
+                *shared_nodes[:3],
+                "exam_review_plan",
+                *shared_nodes[3:],
+            ]
+            if workflow_type == "exam_review"
+            else shared_nodes
+        )
         assert result["workflow_type"] == workflow_type
         assert result["workflow_output"]["runtime_version"] == "workflow-runtime-v1"
         assert result["workflow_output"]["payload_type"] == workflow_type

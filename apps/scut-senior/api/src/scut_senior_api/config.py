@@ -26,6 +26,10 @@ class Settings:
     corpus_store_path: Path = APP_ROOT / ".local" / "corpus-store"
     cross_course_enabled: bool = False
     bilibili_resources_enabled: bool = True
+    # Iteration 5 (SOP §10): deterministic exam-review planning. The flag
+    # only gates the plan node, appendix and past-exam-first retrieval query;
+    # turning it off restores the pre-iteration-5 exam_review behaviour.
+    exam_review_plan_enabled: bool = True
     openrouter_api_key: str | None = field(default=None, repr=False)
     zhipu_api_key: str | None = field(default=None, repr=False)
     byok_master_key: str | None = field(default=None, repr=False)
@@ -58,6 +62,9 @@ class Settings:
             cross_course_enabled=_env_bool("SCUT_SENIOR_CROSS_COURSE_ENABLED", False),
             bilibili_resources_enabled=_env_bool(
                 "SCUT_SENIOR_BILIBILI_RESOURCES_ENABLED", True
+            ),
+            exam_review_plan_enabled=_env_bool(
+                "SCUT_SENIOR_EXAM_REVIEW_PLAN_ENABLED", True
             ),
             openrouter_api_key=os.getenv("SCUT_SENIOR_OPENROUTER_API_KEY"),
             zhipu_api_key=os.getenv("SCUT_SENIOR_ZHIPU_API_KEY"),

@@ -33,6 +33,9 @@ EXPECTED_EVALUATION_CATEGORIES = {
     "multi_turn_followup",
     "cross_course_scope",
     "source_marking",
+    # Iteration 5: the two evidence-backed exam-review paths.
+    "exam_review_with_syllabus",
+    "exam_review_without_syllabus",
 }
 
 
@@ -135,7 +138,7 @@ def test_evaluation_schemas_validate_exactly_seven_fixture_categories() -> None:
     Draft202012Validator(runner_schema).validate(runner_payload)
 
     assert case_payload["fixture_only"] is True
-    assert len(case_payload["cases"]) == 10
+    assert len(case_payload["cases"]) == 12
     # The five Workflow types each have at least one fixture case.
     assert {case["workflow_type"] for case in case_payload["cases"]} == {
         "knowledge_qa",

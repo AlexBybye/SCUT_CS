@@ -11,6 +11,7 @@ from .contracts import (
     AnswerMode,
     ExamReviewPayload,
     KnowledgeQaPayload,
+    KnowledgeScope,
     MistakeReviewPayload,
     ProblemTutorPayload,
     TemporaryMaterialReadingPayload,
@@ -294,11 +295,27 @@ def build_workflow_focus(request: WorkflowRunRequest) -> WorkflowFocus:
     elif request.workflow_type == WorkflowType.EXAM_REVIEW:
         typed = _require_payload(payload, ExamReviewPayload, request.workflow_type)
         strategy = FocusStrategy.SYLLABUS_WEAK_TOPICS
+        general_allowed = request.knowledge_scope != KnowledgeScope.COURSE_ONLY
+        if typed.syllabus and typed.syllabus.strip():
+            path_directive = (
+                "本次为有大纲备考路径：证据顺序固定为“用户大纲 > 课程资料 > 历年题"
+                + (" > 标记的通用知识”" if general_allowed else "”")
+                + "；优先解释大纲内条目，资料未覆盖的大纲条目如实说明，不得补造。"
+            )
+        else:
+            path_directive = (
+                "本次为无大纲备考路径：不得宣称官方考试范围，不得输出考试重点预测、"
+                "命题概率或“必考”表述；以系统提供的历年题客观结构为起点组织复习。"
+            )
         directive = (
             common
-            + "仅根据 exam_review.syllabus 与 weak_topics 聚焦大纲和薄弱点；"
-            "exam_date、available_hours 与 goals 不作为检索词来源。"
-            "若大纲和薄弱点都为空，检索词必须为空。"
+            + path_directive
+            + "检索聚焦只来自 exam_review.syllabus 与 weak_topics；"
+            "exam_date、available_hours 与 goals 不作为检索词来源；"
+            "系统生成的“备考复习统计（系统生成）”附录是年份、题号与出现次数的唯一事实，"
+            "不得自行编造或改写统计数字。"
+            "你自己补充的练习样题必须放入以「AI 生成样题」开头的标题小节，"
+            "并在小节首行标注“以下样题为 AI 生成，非历年真题”；不得把样题伪装成真题。"
         )
         anchors = {
             "syllabus": _clean_optional_text(typed.syllabus, 2_500),
