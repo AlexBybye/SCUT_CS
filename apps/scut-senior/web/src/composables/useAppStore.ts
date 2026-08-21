@@ -359,11 +359,15 @@ function createAppStore() {
   }
 
   function canSaveByokCredential(provider: ByokProviderCatalogItem): boolean {
+    const status = byokCredentialStatus(provider.provider_id);
+    // 后端契约：未配置的供应商 writable=false（没有可管理的既有凭据），
+    // 但此时恰恰允许首次保存。因此只有「已配置且当前会话只读」才禁止保存。
+    const writableForSave = status === null || !status.configured || status.writable;
     return Boolean(
       byokRuntimeAvailable.value &&
         canManageByokCredentials(currentUser.value) &&
         provider.enabled &&
-        byokCredentialStatus(provider.provider_id)?.writable !== false &&
+        writableForSave &&
         byokKeyDrafts.value[provider.provider_id].trim() &&
         !byokIsBusy.value,
     );
