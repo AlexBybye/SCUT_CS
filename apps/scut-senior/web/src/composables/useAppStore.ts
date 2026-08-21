@@ -53,6 +53,12 @@ import {
   modelsForRuntime,
 } from "../modelSelection";
 import { createRequestEpoch } from "../requestEpoch";
+import {
+  applyThemeMode,
+  readStoredThemeMode,
+  writeStoredThemeMode,
+  type ThemeMode,
+} from "../themePreference";
 import { buildWorkflowRequest } from "../workflowRequest";
 import { selectConversationAttempt } from "../workflowResultValidation";
 import {
@@ -70,7 +76,7 @@ import {
 } from "../appConfig";
 
 export type InspectorTab = "attempts" | "credentials" | "plugins";
-export type AccountTab = "credentials" | "plugins";
+export type AccountTab = "credentials" | "plugins" | "assistant";
 
 function createAppStore() {
   const courses = ref<Course[]>([]);
@@ -215,6 +221,14 @@ function createAppStore() {
   const openFolderIds = ref<string[]>([]);
   const accountMenuOpen = ref(false);
   const accountTab = ref<AccountTab>("credentials");
+  // 外观主题偏好（0 Auto / 1 恒亮 / 2 恒暗）：设备级设置，登出不清除；
+  // 当前存 localStorage，后续作为用户设置字段与 API Key 一同同步到服务器。
+  const themeMode = ref<ThemeMode>(readStoredThemeMode());
+  applyThemeMode(themeMode.value);
+  watch(themeMode, (mode) => {
+    writeStoredThemeMode(mode);
+    applyThemeMode(mode);
+  });
 
   function folderIsOpen(courseId: string): boolean {
     return openFolderIds.value.includes(courseId);
@@ -247,6 +261,11 @@ function createAppStore() {
 
   function openAccountTab(tab: AccountTab): void {
     accountTab.value = tab;
+  }
+
+  // 收口主题档位写入：滑块拖动与键盘都走这里，非法值被夹回 0..2。
+  function setThemeMode(mode: number): void {
+    themeMode.value = Math.min(2, Math.max(0, Math.round(mode))) as ThemeMode;
   }
 
   const historyIsBusy = computed(
@@ -1023,6 +1042,8 @@ function createAppStore() {
   }
 
   async function submitWorkflow(): Promise<void> {
+    // 发送即收起「更多选项」抽屉：无论校验是否通过都收起，不做任何条件判断。
+    drawerOpen.value = false;
     errorMessage.value = "";
     noticeMessage.value = "";
     const validationError = validateForm();
@@ -1205,6 +1226,7 @@ function createAppStore() {
     drawerOpen,
     accountMenuOpen,
     accountTab,
+    themeMode,
     openFolderIds,
     // 会话
     conversationId,
@@ -1275,6 +1297,7 @@ function createAppStore() {
     startNewConversationInCourse,
     githubAvatarUrl,
     openAccountTab,
+    setThemeMode,
     courseName,
     byokCredentialStatus,
     byokProviderDisabledReason,
