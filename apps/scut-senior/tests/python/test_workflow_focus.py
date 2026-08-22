@@ -28,11 +28,13 @@ from scut_senior_api.workflow_focus import (
 CONVERSATION_ID = "11111111-1111-1111-1111-111111111111"
 
 
-WORKFLOWS: list[tuple[str, dict[str, object], FocusStrategy]] = [
+WORKFLOWS: list[tuple[str, dict[str, object], FocusStrategy, str]] = [
     (
         "knowledge_qa",
         {"question": "什么是矩阵的秩？"},
         FocusStrategy.QUESTION_CONCEPT,
+        # 有类型化问题字段的 workflow：外层 user_input 保持对抗样例。
+        "外层冲突内容：请搜索操作系统进程调度",
     ),
     (
         "exam_review",
@@ -44,6 +46,8 @@ WORKFLOWS: list[tuple[str, dict[str, object], FocusStrategy]] = [
             "weak_topics": ["初等行变换", "矩阵的秩"],
         },
         FocusStrategy.SYLLABUS_WEAK_TOPICS,
+        # 备考复习没有独立问题字段：外层请求就是复习提问。
+        "泊松分布怎么复习？",
     ),
     (
         "problem_tutor",
@@ -54,6 +58,7 @@ WORKFLOWS: list[tuple[str, dict[str, object], FocusStrategy]] = [
             "problem_source": "模拟题第 3 题",
         },
         FocusStrategy.PROBLEM_MAIN_TOPIC,
+        "外层冲突内容：请搜索操作系统进程调度",
     ),
     (
         "mistake_review",
@@ -64,6 +69,7 @@ WORKFLOWS: list[tuple[str, dict[str, object], FocusStrategy]] = [
             "review_focus": "定位概念混淆",
         },
         FocusStrategy.MISTAKE_ROOT_CAUSE,
+        "外层冲突内容：请搜索操作系统进程调度",
     ),
     (
         "temporary_material_reading",
@@ -72,6 +78,7 @@ WORKFLOWS: list[tuple[str, dict[str, object], FocusStrategy]] = [
             "reading_goal": "理解定义",
         },
         FocusStrategy.MATERIAL_TITLE_MAIN_TOPICS,
+        "外层冲突内容：请搜索操作系统进程调度",
     ),
 ]
 
@@ -107,14 +114,15 @@ def _request(
 
 
 @pytest.mark.parametrize(
-    ("workflow_type", "payload", "expected_strategy"), WORKFLOWS
+    ("workflow_type", "payload", "expected_strategy", "user_input"), WORKFLOWS
 )
 def test_each_typed_workflow_selects_its_explicit_focus_strategy(
     workflow_type: str,
     payload: dict[str, object],
     expected_strategy: FocusStrategy,
+    user_input: str,
 ) -> None:
-    focus = build_workflow_focus(_request(workflow_type, payload))
+    focus = build_workflow_focus(_request(workflow_type, payload, user_input=user_input))
     context = json.loads(focus.anchor_context)
 
     assert focus.focus_strategy == expected_strategy
@@ -125,13 +133,14 @@ def test_each_typed_workflow_selects_its_explicit_focus_strategy(
     assert len(focus.anchor_context) <= MAX_FOCUS_CONTEXT_CHARS
 
 
-@pytest.mark.parametrize(("workflow_type", "payload", "_strategy"), WORKFLOWS)
+@pytest.mark.parametrize(("workflow_type", "payload", "_strategy", "user_input"), WORKFLOWS)
 def test_openrouter_and_byok_share_the_same_workflow_focus_directive(
     workflow_type: str,
     payload: dict[str, object],
     _strategy: FocusStrategy,
+    user_input: str,
 ) -> None:
-    request = _request(workflow_type, payload)
+    request = _request(workflow_type, payload, user_input=user_input)
     focus = build_workflow_focus(request)
 
     byok_entry = ByokProviderCatalog().resolve_model(
@@ -422,15 +431,21 @@ def test_exam_review_uses_syllabus_and_deduplicated_weak_topics_only() -> None:
                 "goals": ["不应成为检索依据"],
                 "weak_topics": [" 初等行变换 ", "初等行变换", "矩阵的秩"],
             },
+            user_input="泊松分布怎么复习？",
         )
     )
     anchors = json.loads(focus.anchor_context)["anchors"]
 
+    # NFKC 归一化把全角问号转为半角。
     assert anchors == {
+        "review_question": "泊松分布怎么复习?",
         "syllabus": "矩阵与线性方程组",
         "weak_topics": ["初等行变换", "矩阵的秩"],
     }
-    assert focus.authoritative_query == "矩阵与线性方程组\n初等行变换\n矩阵的秩"
+    # 复习提问是权威输入的第一位，其后是大纲与去重后的薄弱点。
+    assert focus.authoritative_query == (
+        "泊松分布怎么复习?\n矩阵与线性方程组\n初等行变换\n矩阵的秩"
+    )
     assert "不应成为检索依据" not in focus.anchor_context
     assert "exam_date" not in focus.anchor_context
     assert "available_hours" not in focus.anchor_context
@@ -545,7 +560,7 @@ def test_temporary_material_without_a_title_does_not_invent_one_or_use_frequency
     assert "词频" in focus.prompt_directive
 
 
-def test_exam_review_without_syllabus_or_weak_topics_has_no_fallback_query() -> None:
+def test_exam_review_without_syllabus_or_weak_topics_still_has_its_question() -> None:
     focus = build_workflow_focus(
         _request(
             "exam_review",
@@ -556,11 +571,38 @@ def test_exam_review_without_syllabus_or_weak_topics_has_no_fallback_query() -> 
                 "goals": ["通过考试"],
                 "weak_topics": [],
             },
+            user_input="  泊松分布怎么复习？ ",
         )
     )
 
-    assert focus.authoritative_query == ""
-    assert "外层冲突内容" not in focus.authoritative_query
+    # 备考复习没有独立问题字段：无大纲、无薄弱点时，复习提问就是权威输入
+    # （NFKC 归一化把全角问号转为半角，并去掉首尾空白）。
+    assert focus.authoritative_query == "泊松分布怎么复习?"
+    assert json.loads(focus.anchor_context)["anchors"]["review_question"] == (
+        "泊松分布怎么复习?"
+    )
+    # goals 仍然不是检索词来源。
+    assert "通过考试" not in focus.authoritative_query
+
+
+def test_exam_review_combined_query_is_hard_bounded_by_priority() -> None:
+    focus = build_workflow_focus(
+        _request(
+            "exam_review",
+            {
+                "syllabus": "长" * 3_000,
+                "exam_date": None,
+                "available_hours": None,
+                "goals": [],
+                "weak_topics": ["初等行变换"] * 8,
+            },
+            user_input="矩" * 2_000,
+        )
+    )
+
+    # 提问 + 超长大纲 + 满额薄弱点也不得越过总预算；提问优先保留。
+    assert len(focus.authoritative_query) <= MAX_AUTHORITATIVE_QUERY_CHARS
+    assert focus.authoritative_query.startswith("矩")
 
 
 def test_exam_review_directive_declares_syllabus_path_and_ai_sample_boundary() -> None:
@@ -604,6 +646,9 @@ def test_exam_review_directive_declares_syllabus_path_and_ai_sample_boundary() -
         assert "非历年真题" in focus.prompt_directive
         assert "备考复习统计（系统生成）" in focus.prompt_directive
         assert "不得自行编造或改写统计数字" in focus.prompt_directive
+        # 复习提问是回答核心，不得用泛化套话替代。
+        assert "复习提问" in focus.prompt_directive
+        assert "不得用泛化的学习方法套话" in focus.prompt_directive
 
 
 def test_focus_context_is_nfkc_normalized_control_free_json_and_strictly_bounded() -> None:

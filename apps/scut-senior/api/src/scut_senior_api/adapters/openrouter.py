@@ -271,7 +271,9 @@ def _build_structured_request(
                 ),
             },
         ],
-        "max_tokens": 2048,
+        # 详细模式 + 公式 + 附录引用很容易超过 2048 token（线上实测被截断）；
+        # 8192 与 BYOK 目录默认值对齐，只影响实际生成量。
+        "max_tokens": 8192,
         "temperature": 0.2,
     }
 

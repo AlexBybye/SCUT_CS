@@ -118,19 +118,6 @@ export function buildWorkflowRequest<T extends WorkflowType>(
     input.workflowType,
     input.workflowPayload,
   );
-  const workflowPayload =
-    input.workflowType === "exam_review"
-      ? ({
-          ...(normalizedPayload as WorkflowPayloadMap["exam_review"]),
-          // The backend intentionally ignores outer user_input for execution.
-          // Preserve the main review request as typed model context while
-          // retrieval remains limited to syllabus + weak_topics.
-          goals: normalizeList([
-            userInput,
-            ...(normalizedPayload as WorkflowPayloadMap["exam_review"]).goals,
-          ]),
-        } as WorkflowPayloadMap[T])
-      : normalizedPayload;
 
   return {
     workflow_type: input.workflowType,
@@ -141,6 +128,8 @@ export function buildWorkflowRequest<T extends WorkflowType>(
     model_source: input.modelSource,
     provider_id: providerId,
     model_id: modelId,
+    // 备考复习没有独立问题字段：后端把外层 user_input 当作本次复习提问，
+    // 用于检索聚焦与计划排序；其余 workflow 仍以类型化 payload 字段为准。
     user_input: userInput,
     answer_mode: input.answerMode,
     tone: input.tone,
@@ -149,6 +138,6 @@ export function buildWorkflowRequest<T extends WorkflowType>(
       input.knowledgeScope === "course_first" && input.includeBilibiliResources,
     context_refs: [],
     attachments: [],
-    workflow_payload: workflowPayload,
+    workflow_payload: normalizedPayload,
   };
 }

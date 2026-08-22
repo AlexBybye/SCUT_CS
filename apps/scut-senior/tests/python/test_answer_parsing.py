@@ -144,6 +144,66 @@ def test_parser_accepts_single_part_content_mapping() -> None:
     assert answer.citation_ids == ("S2",)
 
 
+def test_parser_appends_honest_notice_when_output_hits_length_cap() -> None:
+    body = json.dumps(
+        {
+            "choices": [
+                {
+                    "message": {"content": "## 结论\n\n代入公式 $$P(3;2)=\\frac{"},
+                    "finish_reason": "length",
+                }
+            ]
+        }
+    ).encode()
+
+    answer = parse_chat_completion_answer(body)
+
+    assert answer.repository_answer.startswith("## 结论\n\n代入公式")
+    assert "达到单次输出长度上限" in answer.repository_answer
+    assert "被截断" in answer.repository_answer
+
+
+def test_truncation_notice_stays_before_a_wellformed_scut_meta_sidecar() -> None:
+    content = (
+        "## 结论\n\n初等行变换不改变矩阵的秩。[S1]\n\n"
+        + "<!-- scut-meta: "
+        + json.dumps(
+            {"related_topics": ["初等行变换"], "bilibili_search_keywords": ["初等行变换"]},
+            ensure_ascii=False,
+        )
+        + " -->"
+    )
+    body = json.dumps(
+        {
+            "choices": [
+                {"message": {"content": content}, "finish_reason": "length"}
+            ]
+        }
+    ).encode()
+
+    answer = parse_chat_completion_answer(body)
+
+    # 提示插入正文与注释之间；注释仍被正常剥离为结构化元数据。
+    assert "达到单次输出长度上限" in answer.repository_answer
+    assert "scut-meta" not in answer.repository_answer
+    assert answer.related_topics == ("初等行变换",)
+
+
+def test_parser_ignores_non_length_finish_reasons() -> None:
+    body = json.dumps(
+        {
+            "choices": [
+                {"message": {"content": "完整结论。[S1]"}, "finish_reason": "stop"}
+            ]
+        }
+    ).encode()
+
+    answer = parse_chat_completion_answer(body)
+
+    assert answer.repository_answer == "完整结论。[S1]"
+    assert "截断" not in answer.repository_answer
+
+
 @pytest.mark.parametrize(
     ("key", "expected"),
     [

@@ -196,14 +196,27 @@ const store = useAppStore();
 </template>
 
 <style>
-/* 抽屉：Workflow 专属字段与输出偏好，默认收起。 */
+/* 抽屉：Workflow 专属字段与输出偏好，默认收起。
+   高度封顶并内部滚动：内容再长也只压缩自己，
+   不把下方输入框的发送区挤出可视范围。 */
 .drawer {
   display: grid;
+  align-content: start;
   gap: 12px;
   padding: 11px;
   border: 1px solid var(--line);
   border-radius: var(--r-md);
   background: var(--sunken);
+  max-height: min(46vh, 480px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* 低矮窗口：进一步压低抽屉上限，保住输入框可用高度。 */
+@media (max-height: 560px) {
+  .drawer {
+    max-height: 34vh;
+  }
 }
 
 .drawer-grid {

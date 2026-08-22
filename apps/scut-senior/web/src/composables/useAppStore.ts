@@ -1071,6 +1071,9 @@ function createAppStore() {
       }
 
       const request = makeRequest(activeConversationId);
+      // 请求已构建完成即视为发送受理：清空主输入框，
+      // 「更多选项」等抽屉配置保持不变，方便连发不同问题。
+      userInput.value = "";
       const streamHandle = startWorkflowRunStream(request, (nextState) => {
         if (
           privateRequestIsCurrent(requestEpoch, requestUserId) &&

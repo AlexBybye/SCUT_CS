@@ -94,6 +94,39 @@ describe("parseExamReviewPlan", () => {
     expect(plan?.past_exam_stats.year_coverage).toEqual([]);
     expect(plan?.past_exam_stats.type_distribution).toEqual([]);
   });
+
+  it("parses objective question groups for corpora without knowledge-point headings", () => {
+    const plan = parseExamReviewPlan({
+      ...validPlan,
+      knowledge_points: [],
+      past_exam_stats: {
+        ...validPlan.past_exam_stats,
+        question_groups: [
+          {
+            source_id: "s1",
+            source_title: "2023 期末 A 卷",
+            year: 2023,
+            question_count: 3,
+            questions: [
+              { question_id: "Q1", year: 2023 },
+              { question_id: "Q2" },
+              { nope: true },
+              null,
+            ],
+          },
+          { source_title: "" },
+        ],
+      },
+    });
+
+    expect(plan?.past_exam_stats.question_groups).toHaveLength(1);
+    expect(plan?.past_exam_stats.question_groups[0]?.source_title).toBe("2023 期末 A 卷");
+    expect(plan?.past_exam_stats.question_groups[0]?.question_count).toBe(3);
+    expect(plan?.past_exam_stats.question_groups[0]?.questions).toEqual([
+      { question_id: "Q1", year: 2023 },
+      { question_id: "Q2", year: null },
+    ]);
+  });
 });
 
 describe("labels", () => {

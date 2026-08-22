@@ -113,10 +113,13 @@ describe("buildWorkflowRequest", () => {
       },
     });
 
+    // 外层 user_input 原样进入请求（后端把它当作复习提问），
+    // 不再被塞进 goals；payload 的 goals 保持去重后的原列表。
+    expect(request.user_input).toBe("制定两周复习安排");
     expect(request.workflow_payload).toEqual({
       syllabus: "第一章到第五章",
       available_hours: 12,
-      goals: ["制定两周复习安排", "通过考试", "掌握矩阵"],
+      goals: ["通过考试", "制定两周复习安排", "掌握矩阵"],
       weak_topics: ["特征值", "二次型"],
     });
   });

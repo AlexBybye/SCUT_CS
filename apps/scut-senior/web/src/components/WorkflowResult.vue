@@ -481,6 +481,24 @@ function citationLocator(citation: Citation): string {
                 </ul>
               </li>
             </ol>
+            <div
+              v-else-if="examPlan.past_exam_stats.question_groups.length"
+              class="exam-plan-groups"
+            >
+              <p class="empty-line">
+                当前历年题语料没有可按知识点归组的标题；以下题组是仅有的客观结构，题型不是知识点。
+              </p>
+              <ul>
+                <li v-for="group in examPlan.past_exam_stats.question_groups" :key="group.source_id">
+                  《{{ group.source_title }}》
+                  <template v-if="group.year">（{{ group.year }}）</template>
+                  ：共 {{ group.question_count || group.questions.length }} 题
+                  <small v-if="group.questions.length">
+                    代表题号：{{ group.questions.map((q) => q.question_id).join("、") }}
+                  </small>
+                </li>
+              </ul>
+            </div>
             <ul v-if="examPlan.review_suggestions.length" class="exam-plan-suggestions">
               <li v-for="suggestion in examPlan.review_suggestions" :key="suggestion">
                 {{ suggestion }}
@@ -857,6 +875,19 @@ function citationLocator(citation: Citation): string {
 .exam-plan-points > li + li,
 .exam-plan-suggestions li + li {
   margin-top: 5px;
+}
+
+/* 题组：语料没有知识点标题时的客观回退结构。 */
+.exam-plan-groups ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 4px;
+  color: var(--text-soft);
+}
+
+.exam-plan-groups small {
+  color: var(--text-muted);
 }
 
 .exam-plan-uncovered h4 {

@@ -56,7 +56,8 @@ def _facts() -> ExamCorpusFacts:
         questions=(
             ExamQuestionFact(
                 "Q1", "exam-2013", "2013 期末 A 卷", 2013,
-                ("2013 期末 A 卷", "一、填空题（每空3分，共15分）"), "page", 1, 1,
+                ("2013 期末 A 卷", "一、填空题（每空3分，共15分）", "矩阵的秩"),
+                "page", 1, 1,
             ),
             ExamQuestionFact(
                 "Q2", "exam-2013", "2013 期末 A 卷", 2013,
@@ -64,7 +65,8 @@ def _facts() -> ExamCorpusFacts:
             ),
             ExamQuestionFact(
                 "Q3", "exam-2023", "2023 期末 A 卷", 2023,
-                ("2023 期末 A 卷", "一、填空题（每空2分，共10分）"), "page", 1, 1,
+                ("2023 期末 A 卷", "一、填空题（每空2分，共10分）", "矩阵的秩"),
+                "page", 1, 1,
             ),
             ExamQuestionFact(
                 "Q4", "exam-2023", "2023 期末 A 卷", 2023,
@@ -75,7 +77,11 @@ def _facts() -> ExamCorpusFacts:
     )
 
 
-def _plan(syllabus: str | None, weak: list[str] | None = None, **kwargs):
+def _plan(
+    syllabus: str | None,
+    weak: list[str] | None = None,
+    **kwargs,
+):
     return build_exam_review_plan(
         course_id=COURSE_ID,
         payload_syllabus=syllabus,
@@ -83,6 +89,7 @@ def _plan(syllabus: str | None, weak: list[str] | None = None, **kwargs):
         payload_available_hours=kwargs.pop("available_hours", None),
         knowledge_scope_allows_general=kwargs.pop("general", True),
         facts=kwargs.pop("facts", _facts()),
+        payload_review_question=kwargs.pop("review_question", None),
     )
 
 
@@ -119,7 +126,7 @@ def test_general_step_only_enters_priority_when_scope_allows() -> None:
 
 def test_retrieval_query_follows_the_selected_path() -> None:
     with_syllabus = _plan("矩阵的秩")
-    without_syllabus = _plan(None, ["矩阵的秩"])
+    without_syllabus = _plan(None, ["初等行变换"])
     empty = build_exam_review_plan(
         course_id=COURSE_ID,
         payload_syllabus=None,
@@ -135,16 +142,31 @@ def test_retrieval_query_follows_the_selected_path() -> None:
     assert with_query.startswith("矩阵的秩")
 
     without_query = compose_retrieval_query(
-        syllabus=None, weak_topics=["矩阵的秩"], plan=without_syllabus
+        syllabus=None, weak_topics=["初等行变换"], plan=without_syllabus
     )
+    # 薄弱点在前，客观题组主题补充进检索词，保持无大纲路径可检索。
+    assert without_query.startswith("初等行变换")
     assert "矩阵的秩" in without_query
-    # 历年题优先：客观题组主题补充进检索词。
-    assert "填空题" in without_query or "期末" in without_query
 
     empty_query = compose_retrieval_query(
         syllabus=None, weak_topics=[], plan=empty
     )
     assert empty_query  # past-exam topics keep the no-syllabus path searchable
+
+
+def test_review_question_leads_the_retrieval_query() -> None:
+    plan = _plan(None, ["初等行变换"])
+
+    query = compose_retrieval_query(
+        syllabus=None,
+        weak_topics=["初等行变换"],
+        plan=plan,
+        review_question="泊松分布怎么复习？",
+    )
+
+    # 复习提问永远排在检索词第一位（NFKC 归一化会把全角问号转半角）。
+    assert query.startswith("泊松分布怎么复习?")
+    assert "初等行变换" in query
 
 
 def test_retrieval_query_without_plan_or_facts_stays_payload_only() -> None:
@@ -221,11 +243,12 @@ def test_empty_past_exam_corpus_is_reported_honestly() -> None:
 
 
 def test_knowledge_points_carry_layers_locations_and_order() -> None:
-    plan = _plan(None, ["填空题"])
+    plan = _plan(None, ["矩阵的秩"])
     points = plan.knowledge_points
 
     assert points
     first = points[0]
+    assert first["topic"] == "矩阵的秩"
     assert first["weak_topic_matched"] is True
     assert first["order_reasons"] and "匹配薄弱点" in first["order_reasons"]
     assert 1 <= first["layer"] <= 3
@@ -233,6 +256,87 @@ def test_knowledge_points_carry_layers_locations_and_order() -> None:
     location = first["material_locations"][0]
     assert location["source_id"] == "exam-2013"
     assert first["questions"][0]["question_id"]
+
+
+def test_question_type_headings_never_become_knowledge_point_topics() -> None:
+    # 真实语料常见形态：题目只挂在“卷名 + 题型”标题下。题型是统计维度，
+    # 卷名不是知识点；两者都必须诚实降级为题组，不得伪装成知识点分层。
+    type_only_facts = ExamCorpusFacts(
+        course_id=COURSE_ID,
+        corpus_version="corpus-test",
+        course_pack_version="pack-test",
+        sources=(ExamSourceFact("exam-2022", "2022 期末 B 卷", "past_exam", 2022),),
+        questions=(
+            ExamQuestionFact(
+                "Q11", "exam-2022", "2022 期末 B 卷", 2022,
+                ("2022 期末 B 卷", "二、填空题（每空3分）"), "heading", None, None,
+            ),
+            ExamQuestionFact(
+                "Q21", "exam-2022", "2022 期末 B 卷", 2022,
+                ("2022 期末 B 卷", "三、计算题"), "heading", None, None,
+            ),
+        ),
+        heading_topics=(),
+    )
+    plan = _plan(None, facts=type_only_facts)
+
+    assert plan.past_exam_stats["question_count"] == 2
+    assert plan.knowledge_points == ()
+    appendix = render_exam_review_appendix(plan)
+    assert "没有可按知识点归组的标题" in appendix
+    assert "历年题题组" in appendix
+    assert "《2022 期末 B 卷》" in appendix
+    assert "代表题号：Q11、Q21" in appendix
+
+
+def test_paper_title_heading_with_year_prefix_never_becomes_topic() -> None:
+    # 线上真实语料回归（iteration 5 实测）：卷名 H1 带 “2022级” 前缀时，
+    # 剥序不一致会让 “级大学物理…” 漏过卷名比对，把整份卷当成一个知识点。
+    paper_title = "2022级大学物理（一）期末试卷答案及评分标准（B卷）"
+    facts = ExamCorpusFacts(
+        course_id=COURSE_ID,
+        corpus_version="corpus-test",
+        course_pack_version="pack-test",
+        sources=(
+            ExamSourceFact("exam-2022-b", paper_title, "past_exam_answer", 2022),
+        ),
+        questions=tuple(
+            ExamQuestionFact(
+                question_id, "exam-2022-b", paper_title, 2022,
+                (paper_title, section), "heading", None, None,
+            )
+            for question_id, section in (
+                ("2022-B-Q1-Q10", "一、选择题"),
+                ("2022-B-Q11", "二、填空题"),
+                ("2022-B-Q21", "三、计算题"),
+            )
+        ),
+        heading_topics=(),
+    )
+    plan = _plan(None, review_question="泊松分布怎么复习", facts=facts)
+
+    assert plan.knowledge_points == ()
+    appendix = render_exam_review_appendix(plan)
+    assert paper_title not in appendix.split("### 历年题客观统计")[0]
+    assert "《2022级大学物理（一）期末试卷答案及评分标准（B卷）》" in appendix
+
+
+def test_review_question_boosts_matching_knowledge_point_order() -> None:
+    plan = _plan(None, review_question="矩阵的秩怎么复习？")
+    points = plan.knowledge_points
+
+    assert points
+    first = points[0]
+    assert first["topic"] == "矩阵的秩"
+    assert first["question_matched"] is True
+    assert "匹配你的提问" in first["order_reasons"]
+
+
+def test_review_question_never_enters_public_plan_output() -> None:
+    plan = _plan(None, review_question="私有提问背景甲乙丙")
+
+    serialized = json.dumps(plan.to_output_dict(), ensure_ascii=False)
+    assert "私有提问背景甲乙丙" not in serialized
 
 
 def test_uncovered_syllabus_items_are_listed_only_with_syllabus() -> None:

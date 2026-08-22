@@ -464,7 +464,7 @@ def test_openrouter_uses_one_exact_model_without_a_structured_output_contract(
     assert "fallbacks" not in payload
     assert "provider" not in payload
     assert "response_format" not in payload
-    assert payload["max_tokens"] == 2048
+    assert payload["max_tokens"] == 8192
     assert call["headers"]["Authorization"] == "Bearer server-only-secret"
     assert "server-only-secret" not in json.dumps(payload, ensure_ascii=False)
 

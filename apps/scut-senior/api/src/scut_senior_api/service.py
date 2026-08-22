@@ -1134,6 +1134,9 @@ class IterationZeroService:
                     request.knowledge_scope != KnowledgeScope.COURSE_ONLY
                 ),
                 facts=facts,
+                # 外层 user_input 是本次复习提问：参与知识点排序与检索聚焦，
+                # 但不进入 Trace 或课程包。
+                payload_review_question=request.user_input,
             )
         except Exception:
             _append_trace(
@@ -1165,6 +1168,7 @@ class IterationZeroService:
             syllabus=typed.syllabus,
             weak_topics=typed.weak_topics,
             plan=plan,
+            review_question=request.user_input,
         )
         return ExamReviewPlanContext(plan=plan, retrieval_query=retrieval_query)
 

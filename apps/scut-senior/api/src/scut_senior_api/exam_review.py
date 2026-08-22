@@ -182,8 +182,16 @@ def build_exam_review_plan(
     payload_available_hours: float | None,
     knowledge_scope_allows_general: bool,
     facts: ExamCorpusFacts | None,
+    payload_review_question: str | None = None,
 ) -> ExamReviewPlan:
-    """Build the deterministic plan; ``facts=None`` yields an honest empty plan."""
+    """Build the deterministic plan; ``facts=None`` yields an honest empty plan.
+
+    ``payload_review_question`` is the student's free-text review question
+    (the composer's outer ``user_input``). It never enters corpus facts or
+    Trace; it only boosts knowledge-point groups whose reviewed headings
+    match what was actually asked, so “泊松分布怎么复习” orders the plan
+    around Poisson instead of falling back to raw corpus frequency.
+    """
 
     with_syllabus = has_user_syllabus(payload_syllabus)
     path = ExamReviewPath.WITH_SYLLABUS if with_syllabus else ExamReviewPath.WITHOUT_SYLLABUS
@@ -198,6 +206,8 @@ def build_exam_review_plan(
         for topic in (payload_weak_topics or [])
         if _normalize_topic(topic)
     }
+    review_question = _clean_text(payload_review_question or "", 400)
+    focus_keys = {_normalize_topic(review_question)} if review_question else set()
 
     past_exam_source_ids = {
         source.source_id
@@ -216,6 +226,7 @@ def build_exam_review_plan(
         questions=past_exam_questions,
         all_questions=tuple(facts.questions if facts else ()),
         weak_keys=weak_keys,
+        focus_keys=focus_keys,
         material_topics=material_topics,
     )
     uncovered = (
@@ -278,9 +289,11 @@ def compose_retrieval_query(
     syllabus: str | None,
     weak_topics: list[str],
     plan: ExamReviewPlan | None,
+    review_question: str | None = None,
 ) -> str:
     """Compose the deterministic retrieval query for the selected path.
 
+    The student's review question always leads: it is what the run is about.
     ``with_syllabus`` keeps the iteration-4 semantics (syllabus first, then
     weak topics). ``without_syllabus`` follows “历年题优先”: weak topics come
     first when present, and objective past-exam topic terms fill the query so
@@ -288,6 +301,9 @@ def compose_retrieval_query(
     """
 
     parts: list[str] = []
+    cleaned_question = _clean_text(review_question or "", 400)
+    if cleaned_question:
+        parts.append(cleaned_question)
     if has_user_syllabus(syllabus):
         parts.append(_clean_text(syllabus or "", 2_500))
     cleaned_weak = _clean_unique_list(weak_topics, limit=8, max_chars=240)
@@ -357,7 +373,25 @@ def render_exam_review_appendix(plan: ExamReviewPlan) -> str:
                 line += f"；代表性真题：{question_text}"
             lines.append(line)
     else:
-        lines.append("当前语料没有可组织的历年题题组；知识点请以课程资料目录为准。")
+        lines.append(
+            "当前历年题语料没有可按知识点归组的标题；"
+            "以下题组是仅有的客观结构，请逐题回查来源，不要把题型当成知识点。"
+        )
+        groups = stats.get("question_groups") or []
+        if groups:
+            lines.append("")
+            lines.append("### 历年题题组")
+            lines.append("")
+            for group in groups:
+                ids = "、".join(
+                    str(q["question_id"]) for q in group.get("questions") or []
+                )
+                year = group.get("year") or "年份未标注"
+                count = group.get("question_count") or len(group.get("questions") or [])
+                line = f"- 《{group['source_title']}》（{year}）：共 {count} 题"
+                if ids:
+                    line += f"；代表题号：{ids}"
+                lines.append(line)
     lines.append("")
 
     lines.append("### 复习建议")
@@ -405,6 +439,25 @@ def _build_past_exam_stats(
                 "count": type_counter[_UNTYPED_KEY],
             }
         )
+    # 题组：按来源归组的真题清单。当语料没有可按知识点归组的标题时，
+    # 这是学生唯一能回查的客观结构，绝不把卷名或题型伪装成知识点。
+    groups_by_source: dict[str, dict[str, Any]] = {}
+    for question in sorted(questions, key=_question_sort_key):
+        group = groups_by_source.setdefault(
+            question.source_id,
+            {
+                "source_id": question.source_id,
+                "source_title": question.source_title,
+                "year": question.year,
+                "question_count": 0,
+                "questions": [],
+            },
+        )
+        group["question_count"] += 1
+        if len(group["questions"]) < MAX_QUESTIONS_PER_GROUP:
+            group["questions"].append(
+                {"question_id": question.question_id, "year": question.year}
+            )
     return {
         "question_count": len(questions),
         "source_count": len({question.source_id for question in questions}),
@@ -412,6 +465,7 @@ def _build_past_exam_stats(
         "sample_years": sorted(years_counter)[:MAX_SAMPLE_YEARS],
         "year_coverage": year_coverage,
         "type_distribution": distribution,
+        "question_groups": list(groups_by_source.values())[:MAX_SAMPLE_YEARS],
         "questions": [
             {
                 "question_id": question.question_id,
@@ -432,12 +486,15 @@ def _build_knowledge_points(
     questions: tuple[ExamQuestionFact, ...],
     all_questions: tuple[ExamQuestionFact, ...],
     weak_keys: set[str],
+    focus_keys: set[str],
     material_topics: tuple[str, ...],
 ) -> tuple[dict[str, Any], ...]:
     grouped: dict[str, dict[str, Any]] = {}
     for question in questions:
         topic = _topic_of_question(question)
         if not topic:
+            # 没有主题标题（只有卷名/题型/纯编号）的题目只进客观统计与
+            # 题组列表，不参与知识点分组。
             continue
         key = _normalize_topic(topic)
         group = grouped.setdefault(
@@ -473,6 +530,7 @@ def _build_knowledge_points(
             )
         ordered = sorted(members, key=_question_sort_key)
         matched_weak = _matches_weak_topic(key, weak_keys)
+        matched_focus = _matches_weak_topic(key, focus_keys)
         group_source_ids = {member.source_id for member in members}
         related_material_hits = sum(
             1
@@ -486,6 +544,8 @@ def _build_knowledge_points(
         if any(_normalize_topic(topic) == key for topic in material_topics):
             related_material_hits += 1
         order_reasons: list[str] = []
+        if matched_focus:
+            order_reasons.append("匹配你的提问")
         if matched_weak:
             order_reasons.append("匹配薄弱点")
         if len(members) > 1:
@@ -511,12 +571,14 @@ def _build_knowledge_points(
                 ],
                 "objective_count": len(members),
                 "weak_topic_matched": matched_weak,
+                "question_matched": matched_focus,
                 "order_reasons": order_reasons,
             }
         )
 
-    def sort_key(point: dict[str, Any]) -> tuple[int, int, str, str]:
+    def sort_key(point: dict[str, Any]) -> tuple[int, int, int, str, str]:
         return (
+            0 if point["question_matched"] else 1,
             0 if point["weak_topic_matched"] else 1,
             -point["objective_count"],
             _normalize_topic("、".join(point["heading_path"]) or point["topic"]),
@@ -584,6 +646,11 @@ def _build_review_suggestions(
             f"按建议顺序从「{knowledge_points[0]['topic']}」开始；"
             "每个知识点先读资料位置，再做代表性真题。"
         )
+    elif stats.get("question_count"):
+        suggestions.append(
+            "历年题语料没有可按知识点归组的标题；"
+            "先按上方题组逐题回查资料与答案来源，再回到课程资料目录补齐定义。"
+        )
     if weak_count:
         suggestions.append(
             f"你登记了 {weak_count} 个薄弱点，排在前面的匹配知识点建议优先安排两轮。"
@@ -638,32 +705,49 @@ def _matches_weak_topic(group_key: str, weak_keys: set[str]) -> bool:
     )
 
 
-def _topic_of_question(question: ExamQuestionFact) -> str:
-    """Pick the most specific reviewed heading as the group topic.
+def _heading_candidate_text(value: str) -> str:
+    """Normalize one heading/title string into comparable candidate text.
 
-    Pure numbering headings (``第 1 题``、``三、``) carry no topic signal and
-    are skipped; the source title (with year/semester noise stripped) is the
-    honest fallback. Display text keeps its original case; only matching keys
-    are casefolded elsewhere.
+    The strip order matters and must be identical for headings and for the
+    source title keys: noise prefixes（“2022级”“2013—2024学年”）先剥，
+    再剥尾部标点与计分括号，最后剥编号前缀。否则 `_HEADING_PREFIX_RE`
+    会把 “2022级大学物理…” 的 “2022” 当编号吃掉，留下无法与正文标题
+    对齐的 “级大学物理…”。
     """
 
+    candidate = _strip_noise_prefix(value.strip())
+    candidate = _TRAILING_PUNCT_RE.sub("", candidate)
+    candidate = _SCORE_PAREN_RE.sub("", candidate)
+    return _HEADING_PREFIX_RE.sub("", candidate).strip()
+
+
+def _topic_of_question(question: ExamQuestionFact) -> str | None:
+    """Pick the most specific reviewed heading as the group topic.
+
+    Pure numbering headings (``第 1 题``、``三、``) carry no topic signal;
+    neither do objective 题型标题（``二、填空题``）——题型是统计维度，不是
+    知识点；文档自身标题（heading_path 里的卷名 H1）也不比回退多携带任何
+    信号。没有可用主题标题时返回 ``None``：这类题目只进入客观统计与题组
+    列表，绝不把卷名或题型伪装成知识点。
+    """
+
+    title_keys = {
+        _normalize_topic(question.source_title),
+        # 标题在 heading_path 里常以剥掉年份/学期噪声后的形态重复出现。
+        _normalize_topic(_heading_candidate_text(question.source_title)),
+    }
+    title_keys.discard("")
     for heading in reversed(question.heading_path):
-        # Noise prefixes must be stripped before the numbering pattern,
-        # otherwise “2014春…” loses its year to the [0-9]+ rule first.
-        candidate = _strip_noise_prefix(heading.strip())
-        candidate = _TRAILING_PUNCT_RE.sub("", candidate)
-        candidate = _SCORE_PAREN_RE.sub("", candidate)
-        candidate = _HEADING_PREFIX_RE.sub("", candidate).strip()
+        candidate = _heading_candidate_text(heading)
         if not candidate or _GENERIC_TOPIC_RE.match(candidate):
+            continue
+        if _QUESTION_TYPE_TOPIC_RE.match(candidate):
+            continue
+        if _normalize_topic(candidate) in title_keys:
             continue
         if len(candidate) >= MIN_TOPIC_CHARS:
             return candidate[:80]
-    title = _clean_text(question.source_title, 80)
-    title = _SCORE_PAREN_RE.sub("", _HEADING_PREFIX_RE.sub("", title)).strip() or title
-    title = _strip_noise_prefix(title)
-    if len(title) >= MIN_TOPIC_CHARS:
-        return title
-    return _clean_text(question.source_title, 80)
+    return None
 
 
 def _strip_noise_prefix(value: str) -> str:
@@ -678,6 +762,12 @@ def _strip_noise_prefix(value: str) -> str:
 _GENERIC_TOPIC_RE = re.compile(
     r"^(?:第\s*[0-9一二三四五六七八九十百]+\s*(?:部分|章|节|题)?|[0-9]+|题目|试题|试卷|答案"
     r"|（?\s*[0-9]+\s*）?)$"
+)
+# 题型标题（“一、选择题”“二、计算题（共30分）”剥掉计分括号后）只描述
+# 客观题型，不是知识点；命中即跳过，防止题型统计伪装成知识点分层。
+_QUESTION_TYPE_TOPIC_RE = re.compile(
+    r"^(?:[一二三四五六七八九十百0-9]+\s*[、.．:：]?\s*)?"
+    r"(?:填空|选择|判断|计算|证明|解答|应用|综合|作图|简答)题?$"
 )
 _TRAILING_PUNCT_RE = re.compile(r"[。．.，,；;：:\s]+$")
 # Reviewed titles often open with administrative noise (“2023—2024学年第二

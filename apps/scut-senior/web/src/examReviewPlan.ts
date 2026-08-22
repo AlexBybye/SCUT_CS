@@ -42,9 +42,19 @@ export interface ExamReviewPlan {
     sample_years: number[];
     year_coverage: Array<{ year: number; count: number }>;
     type_distribution: Array<{ key: string; label: string; count: number }>;
+    // 语料没有可按知识点归组的标题时的客观题组（按来源归组）。
+    question_groups: ExamReviewQuestionGroup[];
   };
   review_suggestions: string[];
   uncovered_items: string[];
+}
+
+export interface ExamReviewQuestionGroup {
+  source_id: string;
+  source_title: string;
+  year?: number | null;
+  question_count: number;
+  questions: Array<{ question_id: string; year?: number | null }>;
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -153,6 +163,36 @@ function asStats(value: unknown): ExamReviewPlan["past_exam_stats"] {
       }
     }
   }
+  const questionGroups: ExamReviewPlan["past_exam_stats"]["question_groups"] = [];
+  if (Array.isArray(raw.question_groups)) {
+    for (const item of raw.question_groups) {
+      // 没有可读来源标题的题组无法回查，直接丢弃。
+      if (!isRecord(item) || typeof item.source_title !== "string" || !item.source_title) {
+        continue;
+      }
+      const questions: ExamReviewQuestionGroup["questions"] = [];
+      if (Array.isArray(item.questions)) {
+        for (const question of item.questions) {
+          if (!isRecord(question) || typeof question.question_id !== "string") continue;
+          questions.push({
+            question_id: question.question_id,
+            year:
+              typeof question.year === "number" && Number.isInteger(question.year)
+                ? question.year
+                : null,
+          });
+        }
+      }
+      questionGroups.push({
+        source_id: asString(item.source_id),
+        source_title: item.source_title,
+        year:
+          typeof item.year === "number" && Number.isInteger(item.year) ? item.year : null,
+        question_count: asNumber(item.question_count),
+        questions,
+      });
+    }
+  }
   return {
     question_count: asNumber(raw.question_count),
     source_count: asNumber(raw.source_count),
@@ -160,6 +200,7 @@ function asStats(value: unknown): ExamReviewPlan["past_exam_stats"] {
     sample_years: asYearList(raw.sample_years),
     year_coverage: coverage,
     type_distribution: distribution,
+    question_groups: questionGroups,
   };
 }
 

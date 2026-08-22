@@ -30,6 +30,13 @@ _SCUT_META_COMMENT_RE = re.compile(
     re.IGNORECASE,
 )
 
+# finish_reason == "length"：输出达到 max_tokens 上限被截断。正文保留，
+# 但必须在学生可见位置诚实标注，不能让一句没说完的话伪装成完整结论。
+LENGTH_TRUNCATION_NOTICE = (
+    "\n\n> **提示：** 本次回答达到单次输出长度上限，内容在句中被截断；"
+    "可缩小提问范围（如只问一个知识点）后重新运行。"
+)
+
 
 def parse_chat_completion_answer(body: bytes) -> GeneratedAnswer:
     """Extract a best-effort answer from a Chat Completions response body.
@@ -44,7 +51,8 @@ def parse_chat_completion_answer(body: bytes) -> GeneratedAnswer:
 
     try:
         payload = json.loads(body.decode("utf-8"))
-        message = payload["choices"][0]["message"]
+        choice = payload["choices"][0]
+        message = choice["message"]
         content = message.get("content")
     except (
         AttributeError,
@@ -60,6 +68,18 @@ def parse_chat_completion_answer(body: bytes) -> GeneratedAnswer:
     if not text.strip():
         _log_unparsable_shape(body, content)
         raise ModelAnswerParseError("chat completion assistant content is empty")
+    if choice.get("finish_reason") == "length":
+        # 末尾的 scut-meta 注释必须保持在正文末尾才能被剥离，
+        # 截断提示插到它前面。
+        meta_match = _SCUT_META_COMMENT_RE.search(text)
+        if meta_match:
+            text = (
+                text[: meta_match.start()]
+                + LENGTH_TRUNCATION_NOTICE
+                + text[meta_match.start() :]
+            )
+        else:
+            text += LENGTH_TRUNCATION_NOTICE
     return parse_answer_content(text)
 
 

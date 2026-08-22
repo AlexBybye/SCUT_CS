@@ -267,9 +267,12 @@ def build_response_control_directive(request: WorkflowRunRequest) -> str:
 def build_workflow_focus(request: WorkflowRunRequest) -> WorkflowFocus:
     """Build the workflow-specific focus plan from the typed payload.
 
-    The outer ``user_input`` is intentionally ignored. The discriminated
-    ``workflow_payload`` is the authority for focus selection, which prevents
-    contradictory duplicated text from silently switching the workflow.
+    For every workflow with a typed primary field (question/problem/material),
+    the outer ``user_input`` is intentionally ignored so contradictory
+    duplicated text cannot silently switch the focus. The one exception is
+    ``exam_review``: its payload has no question field and the composer
+    requires a non-empty outer request, so ``user_input`` IS the review
+    question and leads the authoritative query.
     """
 
     payload = request.workflow_payload
@@ -307,10 +310,16 @@ def build_workflow_focus(request: WorkflowRunRequest) -> WorkflowFocus:
                 "本次为无大纲备考路径：不得宣称官方考试范围，不得输出考试重点预测、"
                 "命题概率或“必考”表述；以系统提供的历年题客观结构为起点组织复习。"
             )
+        # 备考复习的 payload 没有独立问题字段，composer 又强制外层请求非空：
+        # 外层 user_input 就是本次复习提问，必须作为权威输入的第一位。
+        review_question = _clean_text(request.user_input, 1_400)
         directive = (
             common
+            + "复习提问（review_question）是本次回答的核心问题："
+            "所有复习建议必须围绕它展开，先直接回应所问知识点，"
+            "不得用泛化的学习方法套话替代对所问知识点的回答。"
             + path_directive
-            + "检索聚焦只来自 exam_review.syllabus 与 weak_topics；"
+            + "检索聚焦只来自复习提问、exam_review.syllabus 与 weak_topics；"
             "exam_date、available_hours 与 goals 不作为检索词来源；"
             "系统生成的“备考复习统计（系统生成）”附录是年份、题号与出现次数的唯一事实，"
             "不得自行编造或改写统计数字。"
@@ -318,11 +327,15 @@ def build_workflow_focus(request: WorkflowRunRequest) -> WorkflowFocus:
             "并在小节首行标注“以下样题为 AI 生成，非历年真题”；不得把样题伪装成真题。"
         )
         anchors = {
+            "review_question": review_question,
             "syllabus": _clean_optional_text(typed.syllabus, 2_500),
             "weak_topics": _clean_text_list(typed.weak_topics),
         }
-        authoritative_query = _join_query_parts(
-            anchors["syllabus"], *anchors["weak_topics"]
+        authoritative_query = _join_query_parts_bounded(
+            anchors["review_question"],
+            anchors["syllabus"],
+            *anchors["weak_topics"],
+            budget=MAX_AUTHORITATIVE_QUERY_CHARS,
         )
     elif request.workflow_type == WorkflowType.PROBLEM_TUTOR:
         typed = _require_payload(payload, ProblemTutorPayload, request.workflow_type)
@@ -455,6 +468,29 @@ def _join_query_parts(*parts: object) -> str:
     )
 
 
+def _join_query_parts_bounded(*parts: str, budget: int) -> str:
+    """Join query parts in priority order under a hard character budget.
+
+    Each part is already individually capped; this walk additionally bounds
+    the combined query so a long question plus a long syllabus can never trip
+    the fail-closed total-length assertion. Earlier parts win the budget:
+    the review question is never silently dropped by later fields.
+    """
+
+    included: list[str] = []
+    used = 0
+    for part in parts:
+        if not part:
+            continue
+        remaining = budget - used - (1 if included else 0)
+        if remaining <= 0:
+            break
+        accepted = part[:remaining]
+        included.append(accepted)
+        used += len(accepted) + (1 if len(included) > 1 else 0)
+    return "\n".join(included)
+
+
 def _first_markdown_heading(material_text: str) -> str | None:
     candidates: list[tuple[int, str]] = []
     for pattern in (_ATX_HEADING_RE, _SETEXT_HEADING_RE):
@@ -491,4 +527,3 @@ def _serialize_context(
         # prompt context accidentally.
         raise ValueError("workflow focus context exceeds its safety limit")
     return serialized
-    Tone,

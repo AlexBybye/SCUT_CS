@@ -256,5 +256,11 @@ const store = useAppStore();
   .composer-inner {
     padding-block: 6px;
   }
+
+  /* 输入框上限同步压低，保证发送按钮行始终留在可视范围内。 */
+  .composer-box textarea {
+    min-height: 48px;
+    max-height: 140px;
+  }
 }
 </style>
