@@ -140,7 +140,7 @@ onBeforeUnmount(() => {
                 ? `${store.selectedModel.company} · ${store.selectedModel.display_name}`
                 : store.isLoadingModels
                   ? "正在读取模型目录"
-                  : "模型目录不可用"
+                  : "模型待选择"
             }}
           </dd>
         </div>

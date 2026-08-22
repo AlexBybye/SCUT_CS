@@ -43,7 +43,7 @@ const store = useAppStore();
           :disabled="store.isRunning || store.isLoadingModels || !store.modelCatalogLoadSucceeded"
         >
           <option v-if="store.isLoadingModels" :value="store.selectedModelKey">正在读取模型目录</option>
-          <option v-else-if="!store.modelCatalogLoadSucceeded" value="">模型目录不可用</option>
+          <option v-else-if="!store.modelCatalogLoadSucceeded" value="">模型待选择</option>
           <template v-else>
             <option value="" disabled>请选择模型</option>
             <option
