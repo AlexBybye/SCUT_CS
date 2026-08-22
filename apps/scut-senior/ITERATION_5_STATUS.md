@@ -60,14 +60,38 @@
 
 ## 已知限制与诚实边界
 
-1. **逐课程真实模型评测未完成**：评测执行器的 exam_review 断言基于 fixture+mock；真实模型下"AI 样题标记"依赖指令遵从，确定性层只能保证系统附录的边界声明，不能强制改写模型正文。
+1. **逐课程真实模型评测未完成**：评测执行器的 exam_review 断言基于 fixture+mock；真实模型下"AI 样题标记"依赖指令遵从，确定性层只能保证系统附录的边界声明，不能强制改写模型正文。（2026-08-22 部分解除：两条真实模型 exam_review 线上运行验证了指令遵从与解析兼容，见文末追加；逐课程 ×10 双路径 eval 仍未执行。）
 2. **统计粒度受已审核语料限制**：题型只识别标题中明确写出的类型（未标注如实计数）；无 `<!-- question: -->` 标记的历年卷不产生题目级统计；知识点分组来自已审核标题结构，不是语义抽取。
-3. **health 端点仍返回 `"iteration": 3`**（既有滞后，本轮不改，避免破坏现有断言链）。
+3. ~~**health 端点仍返回 `"iteration": 3`**（既有滞后，本轮不改，避免破坏现有断言链）。~~ 已于 2026-08-22 解决：health 现返回 `"iteration": 5`，`iteration_status` 取值升级为带迭代号的 `iteration5_*` 自声明口径（见文末追加）。
 4. KaTeX 体积问题沿用迭代 4 重构记录，未在本轮处理。
 5. 分支基于 `codex/repo-path-migration`；另一并行 CI 修复工作流在检出同一分支期间把 `bdd8ab8`（npm 拉包超时加固）提交并推送到本分支，该提交不属于本迭代范围，本迭代未改动其内容。
 
 ## 下一步进入条件
 
 - 受信 `master` 上重新构建并激活含题号标记的 corpus 后，用 `scut-senior-eval` 对 10 门课逐课程跑 exam_review 双路径；
-- 真实平台模型额度恢复后补一次真实模型 exam_review 运行，验证指令遵从与解析兼容；
-- 决定是否把 health 端点的 iteration 字段推进到 5（需同步更新既有断言）。
+- 真实平台模型额度恢复后补一次真实模型 exam_review 运行，验证指令遵从与解析兼容；（2026-08-22 已完成，见文末追加）
+- ~~决定是否把 health 端点的 iteration 字段推进到 5（需同步更新既有断言）。~~ 已决定并执行（2026-08-22，见文末追加）。
+
+## 追加（2026-08-22）：health iteration 推进到 5 与真实模型线上实测
+
+### health 端点口径变更
+
+- `"iteration"`：`3` → `5`。此前迭代 4/5 两轮均记录"字段停在 3 的滞后"，本轮随真实模型实测证据一并推进。
+- `"iteration_status"` 取值升级为**带迭代号的自声明口径**：`iteration5_runtime_with_active_corpus` / `iteration5_fixture_runtime_active_corpus_required`，取代迭代 3 时代的历史取值 `local_runtime_with_active_corpus` / `local_fixture_runtime_active_corpus_required`。口径含义不变（仍由 active corpus 可用性二分），但状态字符串自声明所属迭代，后续迭代推进时不会再出现静默滞后。
+- `"status": "ok"` 保持存活语义不变：语料与模型状态继续由 `iteration_status` 与 `capabilities` 承担。
+- 断言同步更新：`test_iteration_3_runtime.py` 中原 `test_health_reports_iteration_three_without_claiming_active_corpus` 更名为 `test_health_reports_iteration_five_without_claiming_active_corpus`，断言 `iteration == 5` 与新状态值；全仓无其他代码引用旧取值（历史 STATUS 文档中的旧值作为当时快照保留，不改写）。
+
+### 真实模型线上实测证据
+
+- `.local/online.db` 两条 exam_review 真实运行均 `run_status=completed`：
+  - `49ab1d7b`：`user_key / deepseek / deepseek-v4-flash`（BYOK）；
+  - `c3263d68`：`platform_default / openrouter / nvidia/nemotron-3-super-120b-a12b:free`。
+- 「AI 生成样题」小节按 workflow_focus 指令正确标注且首行声明"非历年真题"；回答正文围绕所问知识点（泊松分布）；未触发长度截断（BYOK `default_max_tokens=8192` 与截断提示路径就绪）。
+- 诚实边界符合设计：检索仅命中历年卷（hit_count=1）→ citations 为空、`evidence=insufficient`、`answer_status=partial`，回答以通用补充展示并明确声明无可回查课程资料候选。
+- 验证基线：Python **522 passed**；Web 94 passed + typecheck + build 通过。
+
+### 本轮附带修复（同日）
+
+- 流式断线语义分离：客户端连接中断不再取消运行（后台继续执行并持久化终态）；显式取消走新增 `POST /api/v1/workflow-runs/{run_id}/cancel`。
+- 会话详情排除非终态尝试（后端过滤 + 前端防御跳过），修复运行中刷新触发 "invalid Workflow result run_status"。
+- 全部 fetch 路径网络错误中文化，流式中断后自动轮询取回结果。

@@ -495,11 +495,12 @@ def create_app(
         active_corpus_configured = local_corpus_retrieval_available_course_count > 0
         return {
             "status": "ok",
-            "iteration": 3,
+            "iteration": 5,
+            # 口径自声明：状态值内嵌迭代号，避免再次出现字段停在旧迭代的静默滞后。
             "iteration_status": (
-                "local_runtime_with_active_corpus"
+                "iteration5_runtime_with_active_corpus"
                 if active_corpus_configured
-                else "local_fixture_runtime_active_corpus_required"
+                else "iteration5_fixture_runtime_active_corpus_required"
             ),
             "formal_exit_blocked": not active_corpus_configured,
             "runtime": (
