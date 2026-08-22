@@ -636,6 +636,13 @@ input[type="checkbox"] {
   *::after {
     scroll-behavior: auto !important;
   }
+
+  /* 历史记录开合动画在减弱动态设置下直接跳变。 */
+  .shell-body,
+  .rail,
+  .scrim {
+    transition: none !important;
+  }
 }
 
 /* ── 响应式重整：≥640px 左轨为推挤列（窗口化适配），<640px 才浮层 ── */
@@ -653,27 +660,28 @@ input[type="checkbox"] {
 
   .shell-body {
     grid-template-columns: var(--rail-w) minmax(0, 1fr);
+    /* 开合动画：过渡第一列轨道宽度（--rail-w ⇄ 0）。
+       轨道保持显式两列，main 始终落在第二列——
+       不再用 display:none，也就没有自动放置把 main 挤进 0px 轨道的老 bug。 */
+    transition: grid-template-columns 0.28s ease;
   }
 
-  /* 折叠时整列收起。不能写 0 minmax(0,1fr)：
-     轨元素 display:none 后不参与自动放置，main 会被放进 0px 轨道，
-     自身 0 宽、子元素按内容固有宽度溢出（342/352px 收缩 bug）。 */
   .shell-body[data-rail="closed"] {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: 0px minmax(0, 1fr);
   }
 
+  /* 轨内容固定宽度，轨道收窄时被裁切而不是挤压重排；
+     visibility 过渡保证折叠后内部按钮不残留焦点命中。 */
   .rail {
     position: static;
     width: var(--rail-w);
+    overflow: hidden;
     box-shadow: none;
+    transition: visibility 0.28s ease;
   }
 
   .shell-body[data-rail="closed"] .rail {
-    display: none;
-  }
-
-  .shell-body[data-rail="open"] .rail {
-    animation: rail-slide-in 0.3s ease;
+    visibility: hidden;
   }
 
   .scrim {
@@ -692,6 +700,7 @@ input[type="checkbox"] {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  /* 窄屏抽屉：滑入/滑出动画，折叠后不可聚焦。 */
   .rail {
     position: absolute;
     top: 0;
@@ -700,27 +709,31 @@ input[type="checkbox"] {
     z-index: 30;
     width: min(var(--rail-w), 86vw);
     box-shadow: var(--shadow-float);
+    transition:
+      transform 0.28s ease,
+      visibility 0.28s ease;
   }
 
   .shell-body[data-rail="closed"] .rail {
-    display: none;
+    transform: translateX(-106%);
+    visibility: hidden;
   }
 
-  .scrim[data-rail="open"] {
+  /* 遮罩常驻 DOM，用透明度过渡实现淡入淡出。 */
+  .scrim {
     display: block;
     position: absolute;
     inset: 0;
     z-index: 20;
     border: 0;
     background: rgb(10 12 14 / 0.32);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.28s ease;
   }
-}
 
-@keyframes rail-slide-in {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
+  .scrim[data-rail="open"] {
+    opacity: 1;
+    pointer-events: auto;
   }
 }

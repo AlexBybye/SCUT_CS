@@ -296,7 +296,7 @@ def test_ndjson_endpoint_uses_one_run_and_omits_null_payload_siblings(
         }
 
 
-def test_health_reports_iteration_five_without_claiming_active_corpus(
+def test_health_reports_iteration_seven_without_claiming_active_corpus(
     tmp_path: Path,
 ) -> None:
     app = create_app(
@@ -306,9 +306,9 @@ def test_health_reports_iteration_five_without_claiming_active_corpus(
 
     assert response.status_code == 200
     health = response.json()
-    assert health["iteration"] == 5
+    assert health["iteration"] == 7
     assert health["iteration_status"] == (
-        "iteration5_fixture_runtime_active_corpus_required"
+        "iteration7_fixture_runtime_active_corpus_required"
     )
     assert health["formal_exit_blocked"] is True
     assert health["capabilities"] | {
@@ -319,6 +319,10 @@ def test_health_reports_iteration_five_without_claiming_active_corpus(
         "humanizer_guard": True,
         "humanizer_configured": False,
         "active_corpus_configured": False,
+        # 迭代 7：临时材料治理与待处理队列已实现；自动 PR 决策门仍未确认。
+        "temporary_material_ttl_7d": True,
+        "contribution_maintainer_queue": True,
+        "github_app_auto_pr": False,
     } == health["capabilities"]
 
 

@@ -40,12 +40,17 @@ onBeforeUnmount(() => {
       class="btn btn-quiet rail-toggle"
       :aria-expanded="store.railOpen ? 'true' : 'false'"
       aria-controls="conversation-rail"
+      aria-label="历史记录"
       @click="store.railOpen = !store.railOpen"
     >
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
-        <path d="M4 6h16M4 12h16M4 18h10" />
+      <!-- 侧栏开合图标：展开时箭头朝左（收起），折叠时朝右（展开）。 -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="4.5" width="18" height="15" rx="2" />
+        <path d="M9.5 4.5v15" />
+        <path v-if="store.railOpen" d="m16 9.5-2.5 2.5L16 14.5" />
+        <path v-else d="m11.5 9.5 2.5 2.5-2.5 2.5" />
       </svg>
-      历史记录
+      <span class="rail-toggle-label">历史记录</span>
     </button>
 
     <a
@@ -112,6 +117,12 @@ onBeforeUnmount(() => {
   font-weight: 800;
   letter-spacing: -0.01em;
   white-space: nowrap;
+  /* 品牌名任何窗口宽度都不消失、不被压缩截断。 */
+  flex: 0 0 auto;
+}
+
+.rail-toggle-label {
+  white-space: nowrap;
 }
 
 .account {
@@ -160,15 +171,51 @@ onBeforeUnmount(() => {
   color: var(--text-soft);
 }
 
-/* 窄窗口：顶栏只留图标与头像。 */
+/* 窄窗口：账号名收进头像；品牌名始终保留，只做缩放让位。 */
 @media (max-width: 899px) {
-  .brand-name,
   .account-name {
     display: none;
   }
 
   .account-button {
     padding: 4px;
+  }
+}
+
+/* 极窄窗口：进一步压缩非品牌元素，保住“SCUT 老学长”完整可读。 */
+@media (max-width: 479px) {
+  .topbar {
+    gap: 7px;
+    padding: 0 10px;
+  }
+
+  .rail-toggle {
+    font-size: 0;
+    gap: 0;
+    padding: 0 8px;
+  }
+
+  .rail-toggle .btn,
+  .rail-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .rail-toggle-label {
+    display: none;
+  }
+
+  .brand {
+    gap: 7px;
+  }
+
+  .brand-name {
+    font-size: var(--fs-sm);
+  }
+
+  .brand-icon {
+    width: 30px;
+    height: 30px;
   }
 }
 </style>

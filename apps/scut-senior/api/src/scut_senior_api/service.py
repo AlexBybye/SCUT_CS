@@ -19,6 +19,12 @@ from .contracts import (
     AnswerBlockType,
     AnswerStatus,
     Citation,
+    ContributionDraftSubmit,
+    ContributionPreview,
+    ContributionPreviewRequest,
+    ContributionRecord,
+    ContributionState,
+    ContributionSubmit,
     ConversationDetail,
     ConversationSummary,
     CourseScope,
@@ -28,9 +34,14 @@ from .contracts import (
     FeedbackCreate,
     FeedbackRecord,
     KnowledgeScope,
+    MaintainerContributionExport,
+    MaintainerContributionTransition,
     ModelMetadata,
     ModelSource,
     RunStatus,
+    TemporaryMaterialCreate,
+    TemporaryMaterialDetail,
+    TemporaryMaterialRecord,
     TraceEvent,
     TraceEventStatus,
     TraceSafeResult,
@@ -38,6 +49,17 @@ from .contracts import (
     WorkflowResult,
     WorkflowRunRequest,
     WorkflowType,
+)
+from .contributions import (
+    build_contribution_preview,
+    derive_proposed_repo_path,
+    derive_proposed_source_id,
+    normalize_contribution_markdown,
+    resolve_transition_target,
+    states_allowed_for_target,
+    validate_contribution_transition,
+    validate_github_pr_url,
+    ContributionTransitionError,
 )
 from .exam_review import (
     ExamReviewPlan,
@@ -233,6 +255,290 @@ class IterationZeroService:
 
     def list_feedback(self, user: RequestIdentity) -> list[FeedbackRecord]:
         return self.repository.list_feedback(str(user.user_id))
+
+    # ------------------------------------------------------------------
+    # 迭代 7（SOP §12）：临时材料精读治理与贡献待处理队列。
+    # 临时材料只属于当前用户、只在会话内联合检索，默认不进入公共索引、
+    # 课程包或跨用户缓存；GitHub App 决策门未确认，提交一律进入维护者
+    # 待处理队列，不实现也不冒充自动 PR。
+    # ------------------------------------------------------------------
+
+    def _require_contribution_capable_repository(self):
+        repository = self.repository
+        save_material = getattr(repository, "save_temporary_material", None)
+        if save_material is None or not callable(save_material):
+            raise CapabilityUnavailable(
+                "temporary_materials",
+                "the configured storage adapter does not support iteration-7 "
+                "temporary materials yet",
+            )
+        return repository
+
+    def _resolve_material_course(self, course_id: str):
+        try:
+            course = self.registry.get(course_id)
+        except UnknownCourseError as exc:
+            raise ContractConflict(str(exc)) from exc
+        return course
+
+    def save_temporary_material(
+        self,
+        user: RequestIdentity,
+        payload: TemporaryMaterialCreate,
+    ) -> TemporaryMaterialDetail:
+        course = self._resolve_material_course(payload.course_id)
+        if not self._course_available(course.course_id):
+            raise CapabilityUnavailable(
+                "course",
+                f"{course.course_id} is not enabled for the configured retrieval mode",
+            )
+        conversation = self.repository.get_conversation(
+            str(user.user_id), payload.conversation_id
+        )
+        if conversation is None:
+            raise ResourceNotFound("conversation not found")
+        if conversation.course_id != course.course_id:
+            raise ContractConflict(
+                "temporary material course does not match the bound conversation course"
+            )
+        repository = self._require_contribution_capable_repository()
+        material = repository.save_temporary_material(
+            user_id=str(user.user_id),
+            conversation_id=payload.conversation_id,
+            course_id=course.course_id,
+            title=payload.title,
+            content=payload.content,
+        )
+        assert isinstance(material, TemporaryMaterialDetail)
+        return material
+
+    def list_temporary_materials(
+        self, user: RequestIdentity
+    ) -> list[TemporaryMaterialRecord]:
+        self._require_contribution_capable_repository()
+        return list(self.repository.list_temporary_materials(str(user.user_id)))
+
+    def get_temporary_material(
+        self,
+        user: RequestIdentity,
+        material_id: UUID,
+    ) -> TemporaryMaterialDetail:
+        self._require_contribution_capable_repository()
+        record = self.repository.get_temporary_material(
+            str(user.user_id), material_id, include_content=True
+        )
+        if record is None or not isinstance(record, TemporaryMaterialDetail):
+            raise ResourceNotFound("temporary material not found")
+        return record
+
+    def delete_temporary_material(
+        self, user: RequestIdentity, material_id: UUID
+    ) -> None:
+        self._require_contribution_capable_repository()
+        deleted = self.repository.delete_temporary_material(
+            str(user.user_id), material_id
+        )
+        if not deleted:
+            raise ResourceNotFound("temporary material not found")
+
+    def build_contribution_preview(
+        self,
+        user: RequestIdentity,
+        payload: ContributionPreviewRequest,
+    ) -> ContributionPreview:
+        """确定性转换预览：不落库、不调用模型、不改变原始内容。"""
+
+        course = self._resolve_material_course(payload.course_id)
+        preview = build_contribution_preview(
+            course_id=payload.course_id,
+            title=payload.title,
+            content=payload.content,
+        )
+        return preview.model_copy(
+            update={
+                "proposed_repo_path": derive_proposed_repo_path(
+                    course.repository_paths,
+                    course_id=course.course_id,
+                    title=payload.title,
+                    content=payload.content,
+                )
+            }
+        )
+
+    def submit_contribution(
+        self,
+        user: RequestIdentity,
+        payload: ContributionSubmit,
+    ) -> ContributionRecord:
+        """从已保存的临时材料创建贡献（add file 语义，落点为学科资料）。
+
+        GitHub App 未确认：`as_draft=False` 直接进入维护者待处理队列
+        （submitted），绝不创建 PR，也不使用用户 OAuth token 冒充自动 PR。
+        """
+
+        course = self._resolve_material_course(payload.course_id)
+        repository = self._require_contribution_capable_repository()
+        material = repository.get_temporary_material(
+            str(user.user_id), payload.material_id, include_content=True
+        )
+        if material is None or not isinstance(material, TemporaryMaterialDetail):
+            raise ResourceNotFound("temporary material not found")
+        if material.course_id != payload.course_id:
+            raise ContractConflict(
+                "contribution course must match the temporary material course"
+            )
+        title = (
+            payload.title
+            or material.title
+            or (
+                normalize_contribution_markdown(material.content)
+                .split("\n", 1)[0]
+                .lstrip("#")
+                .strip()
+                or f"{course.display_name} 贡献"
+            )
+        )
+        state = (
+            ContributionState.DRAFT if payload.as_draft else ContributionState.SUBMITTED
+        )
+        return repository.create_contribution(
+            user_id=str(user.user_id),
+            material_id=payload.material_id,
+            course_id=material.course_id,
+            proposed_source_id=derive_proposed_source_id(
+                material.course_id,
+                normalize_contribution_markdown(material.content),
+            ),
+            proposed_repo_path=derive_proposed_repo_path(
+                course.repository_paths,
+                course_id=course.course_id,
+                title=title,
+                content=material.content,
+            ),
+            title=title[:200],
+            content_snapshot=material.content,
+            state=state,
+        )
+
+    def submit_contribution_draft(
+        self,
+        user: RequestIdentity,
+        contribution_id: UUID,
+        payload: ContributionDraftSubmit,
+    ) -> ContributionRecord:
+        """把草稿推进到 submitted（进入待处理队列），需要完整确认。"""
+
+        repository = self._require_contribution_capable_repository()
+        current = repository.get_contribution(str(user.user_id), contribution_id)
+        if current is None:
+            raise ResourceNotFound("contribution not found")
+        validate_contribution_transition(current.state, action="submit")
+        return repository.transition_contribution(
+            contribution_id,
+            from_states=frozenset({ContributionState.DRAFT}),
+            target_state=ContributionState.SUBMITTED,
+            pr_url=None,
+            note=None,
+        )  # type: ignore[return-value]
+
+    def list_contributions(self, user: RequestIdentity) -> list[ContributionRecord]:
+        self._require_contribution_capable_repository()
+        return list(self.repository.list_contributions(str(user.user_id)))
+
+    def get_contribution(
+        self, user: RequestIdentity, contribution_id: UUID
+    ) -> ContributionRecord:
+        self._require_contribution_capable_repository()
+        record = self.repository.get_contribution(str(user.user_id), contribution_id)
+        if record is None:
+            raise ResourceNotFound("contribution not found")
+        return record
+
+    def maintainer_transition_contribution(
+        self,
+        contribution_id: UUID,
+        payload: MaintainerContributionTransition,
+    ) -> ContributionRecord:
+        """维护者队列推进：只改状态与人工填写的 PR 链接，永不自动合并仓库。"""
+
+        repository = self._require_contribution_capable_repository()
+        target_state = resolve_transition_target(payload.action)
+        pr_url: str | None = None
+        if target_state == ContributionState.PR_OPEN:
+            if payload.pr_url is None:
+                raise ContractConflict("mark_pr_open requires a PR link")
+            pr_url = validate_github_pr_url(str(payload.pr_url))
+        elif payload.pr_url is not None:
+            raise ContractConflict(
+                "pr_url is only accepted with the mark_pr_open action"
+            )
+        allowed = states_allowed_for_target(target_state)
+        record = repository.transition_contribution(
+            contribution_id,
+            from_states=allowed,
+            target_state=target_state,
+            pr_url=pr_url,
+            note=payload.note,
+        )
+        if record is None:
+            raise ContractConflict(
+                "contribution is not in a state that accepts this transition"
+            )
+        return record
+
+    def list_maintainer_queue(
+        self, state: ContributionState | None = None
+    ) -> list[ContributionRecord]:
+        self._require_contribution_capable_repository()
+        return list(self.repository.list_maintainer_queue(state))
+
+    def maintainer_export_contribution(
+        self, contribution_id: UUID
+    ) -> MaintainerContributionExport:
+        """维护者导出包：一次人工 add file 操作所需的路径、内容与命令。
+
+        应用不写工作树、不执行 git；推送与 PR 永远由维护者人工完成。
+        """
+
+        repository = self._require_contribution_capable_repository()
+        fetched = repository.get_contribution_with_payload(contribution_id)
+        if fetched is None:
+            raise ResourceNotFound("contribution not found")
+        record, content = fetched
+        if not content:
+            raise ContractConflict(
+                "该贡献的待审副本已到期清理，无法导出。"
+            )
+        repo_path = record.proposed_repo_path or derive_proposed_repo_path(
+            self.registry.get(record.course_id).repository_paths,
+            course_id=record.course_id,
+            title=record.title,
+            content=content,
+        )
+        filename = repo_path.rsplit("/", 1)[-1]
+        branch = f"contribution-{record.contribution_id.hex[:8]}"
+        directory = repo_path.rsplit("/", 1)[0]
+        suggested_commands = [
+            f"git checkout -b {branch}",
+            f"mkdir -p '{directory}'",
+            f"# 将导出的内容写入：{repo_path}",
+            f"git add '{repo_path}'",
+            f"git commit -m '资料贡献：{record.title}（{record.course_id}）'",
+            f"git push -u origin {branch}",
+            "# 在 GitHub 上发起 PR 后，回队列执行 mark_pr_open 并填入 PR 链接",
+        ]
+        return MaintainerContributionExport(
+            contribution_id=record.contribution_id,
+            state=record.state,
+            course_id=record.course_id,
+            title=record.title,
+            repo_path=repo_path,
+            filename=filename,
+            content_snapshot=content,
+            char_count=len(content),
+            suggested_branch=branch,
+            suggested_commands=suggested_commands,
+        )
 
     def run(self, user: RequestIdentity, request: WorkflowRunRequest) -> WorkflowResult:
         return self._run(user, request)

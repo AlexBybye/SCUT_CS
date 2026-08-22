@@ -8,6 +8,7 @@ import {
   toneLabels,
 } from "../appConfig";
 import { useAppStore } from "../composables/useAppStore";
+import MaterialContributionPanel from "./MaterialContributionPanel.vue";
 
 const store = useAppStore();
 </script>
@@ -132,6 +133,7 @@ const store = useAppStore();
           placeholder="例如：提取考试范围并指出与课程资料的冲突"
         />
       </div>
+      <MaterialContributionPanel />
     </section>
 
     <div class="drawer-grid">
