@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import csv
 import re
+import os
 import shutil
 import sys
 from pathlib import Path
@@ -142,7 +143,7 @@ def run(args):
 
         # ---- body
         if "pages_md" in res:
-            body = "\n".join(res["pages_md"]).replace("{ASSETS_DIR}", assets_rel)
+            body = "\n".join(res["pages_md"]).replace("{ASSETS_DIR}", sid)
             locator = "page"
         elif "slides" in res:
             chunks = []
@@ -154,7 +155,7 @@ def run(args):
                         continue
                     if t.isdigit() and int(t) == no:
                         continue
-                    filtered.append(ln.replace("{ASSETS_DIR}", assets_rel))
+                    filtered.append(ln.replace("{ASSETS_DIR}", sid))
                 chunk = [f"<!-- slide: {no} -->", ""]
                 chunk += filtered
                 if notes:
@@ -163,7 +164,7 @@ def run(args):
             body = "\n\n".join(chunks)
             locator = "slide"
         else:
-            body = res["md"].replace("{ASSETS_DIR}", assets_rel)
+            body = res["md"].replace("{ASSETS_DIR}", sid)
             has_heading = bool(re.search(r"^#{1,6} ", body, re.M))
             locator = res.get("locator") or ("heading" if has_heading else "none")
             if locator == "heading" and not has_heading:
@@ -191,6 +192,7 @@ def run(args):
             "locator_type": locator})
         md = fm + "\n\n# " + title + "\n\n" + body.strip() + "\n"
         md = merge_emphasis(clamp_headings(md))
+        md = re.sub(r"\]\(assets/assets/", "](assets/", md)
 
         out_rel = str(kdir.relative_to(KNOWLEDGE) / f"{sid}.md")
         out_path = KNOWLEDGE / out_rel
@@ -288,12 +290,26 @@ def main(argv=None):
     ap.add_argument("--validate", action="store_true", help="结束后运行 corpus validator")
     ap.add_argument("--emit-ai-jobs", nargs="?", const="", help="导出AI任务包到 .ai_jobs/<sid>/（可限定课程）")
     ap.add_argument("--finalize", nargs="?", const="", help="把 .ai_jobs/ 中AI回填结果应用到 knowledge + manifest（可限定课程）")
+    ap.add_argument("--vision-run", nargs="?", const="all", help="GLM-4V 视觉转写全部待转公式（可给数字限制张数，如 --vision-run 20）")
+    ap.add_argument("--vision-workers", type=int, default=4, help="视觉转写并发数（默认4）")
+    ap.add_argument("--vision-propagate", action="store_true", help="把转写结果按内容哈希传播进 formulas.json")
     args = ap.parse_args(argv)
     if args.emit_ai_jobs is not None:
         from .ai_stage import emit_ai_jobs
         em = emit_ai_jobs(args.emit_ai_jobs or None)
         print(f"emitted AI jobs: {len(em)}")
         for s in em: print("  ", s)
+        return 0
+    if args.vision_run is not None:
+        os.environ.setdefault("MPLCONFIGDIR", str(REPO / ".cache/mpl"))
+        (REPO / ".cache/mpl").mkdir(parents=True, exist_ok=True)
+        from .vision_worker import run as vision_run
+        lim = None if args.vision_run == "all" else int(args.vision_run)
+        vision_run(limit=lim, workers=args.vision_workers)
+        return 0
+    if args.vision_propagate:
+        from .propagate_vision import main as prop
+        prop()
         return 0
     if args.finalize is not None:
         from .ai_stage import finalize_ai

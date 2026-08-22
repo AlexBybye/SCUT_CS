@@ -29,40 +29,40 @@ locator_type: none
 | **得 分** |  |  |  |  |  |  |
 
 **一、填空题**（每小题3分，共15分）
-  - 微分方程![formula-object](assets/engineering-mathematical-analysis-2-022/image-001.png)的特解形式为                                     ；
-  - 设![formula-object](assets/engineering-mathematical-analysis-2-022/image-002.png)满足方程![formula-object](assets/engineering-mathematical-analysis-2-022/image-003.png)其中![formula-object](assets/engineering-mathematical-analysis-2-022/image-004.png)可微，![formula-object](assets/engineering-mathematical-analysis-2-022/image-005.png)为常数，则![formula-object](assets/engineering-mathematical-analysis-2-022/image-006.png)                  ；
-  - 函数![formula-object](assets/engineering-mathematical-analysis-2-022/image-007.png)在点![formula-object](assets/engineering-mathematical-analysis-2-022/image-008.png)处使方向导数取得最大的方向
+  - 微分方程$y''-4y=xe^{2x}$的特解形式为                                     ；
+  - 设$z=z(x,y)$满足方程$x-az=\varphi(y-bz),$其中$\phi$可微，$a,b$为常数，则$a\frac{\partial z}{\partial x}+b\frac{\partial z}{\partial y}=$                  ；
+  - 函数$f(x,y,z)=\cos(xyz)$在点$P\left(\frac{1}{3},1,\pi\right)$处使方向导数取得最大的方向
 
 是                               ；
-  - 设![formula-object](assets/engineering-mathematical-analysis-2-022/image-009.png)取逆时针方向，则![formula-object](assets/engineering-mathematical-analysis-2-022/image-010.png)               ；
-  - 设幂级数![formula-object](assets/engineering-mathematical-analysis-2-022/image-011.png)在![formula-object](assets/engineering-mathematical-analysis-2-022/image-012.png)条件收敛，则该幂级数的收敛半径为![formula-object](assets/engineering-mathematical-analysis-2-022/image-013.png)            。
+  - 设$L:x^{2}+y^{2}=a^{2},$取逆时针方向，则$\int_L2xydx+(x^2+8y^2)dy$               ；
+  - 设幂级数$\sum_{n=0}^{\infty}a_nx^n$在$x=-3$条件收敛，则该幂级数的收敛半径为$R=$            。
 
 二、**计算题**（每小题8分，共40分）
 
-1.  设函数![formula-object](assets/engineering-mathematical-analysis-2-022/image-014.png)，其中![formula-object](assets/engineering-mathematical-analysis-2-022/image-015.png)具有连续的二阶偏导数，求![formula-object](assets/engineering-mathematical-analysis-2-022/image-016.png)。
+1.  设函数$z=f\left(xy,\frac{x}{y}\right)$，其中$f(\xi,n)$具有连续的二阶偏导数，求$\frac{\partial^2z}{\partial x\partial y}$。
 
-2.    计算曲线积分![formula-object](assets/engineering-mathematical-analysis-2-022/image-017.png)，其中![formula-object](assets/engineering-mathematical-analysis-2-022/image-018.png)是球面![formula-object](assets/engineering-mathematical-analysis-2-022/image-019.png)与平面![formula-object](assets/engineering-mathematical-analysis-2-022/image-020.png)的交线。
+2.    计算曲线积分$I=\int_{\Gamma}x^{2}ds$，其中$\Gamma$是球面$x^{2}+y^{2}+z^{2}=a^{2}$与平面$x+y+z=0$的交线。
 
-3.  设曲线积分![formula-object](assets/engineering-mathematical-analysis-2-022/image-021.png)与路径无关，其中![formula-object](assets/engineering-mathematical-analysis-2-022/image-022.png)有一阶的连续导数，且![formula-object](assets/engineering-mathematical-analysis-2-022/image-023.png)。
+3.  设曲线积分![formula-object](assets/engineering-mathematical-analysis-2-022/image-021.png)与路径无关，其中$f(x)$有一阶的连续导数，且$f(0)=0$。
 
-（1） 求![formula-object](assets/engineering-mathematical-analysis-2-022/image-024.png)； （2）计算曲线积分![formula-object](assets/engineering-mathematical-analysis-2-022/image-025.png)。
+（1） 求$f(x)$； （2）计算曲线积分![formula-object](assets/engineering-mathematical-analysis-2-022/image-025.png)。
 
-4．设![formula-object](assets/engineering-mathematical-analysis-2-022/image-026.png)为平面![formula-object](assets/engineering-mathematical-analysis-2-022/image-027.png)被柱面![formula-object](assets/engineering-mathematical-analysis-2-022/image-028.png)所截得的部分，计算曲面积分![formula-object](assets/engineering-mathematical-analysis-2-022/image-029.png)
+4．设![formula-object](assets/engineering-mathematical-analysis-2-022/image-026.png)为平面$y+z=5$被柱面$x^2+y^2=25$所截得的部分，计算曲面积分$I=\iint_{\Sigma}(x+y+z)dS$
 
-5.    设![formula-object](assets/engineering-mathematical-analysis-2-022/image-030.png)是上半球面![formula-object](assets/engineering-mathematical-analysis-2-022/image-031.png)，取上侧，计算曲面积分![formula-object](assets/engineering-mathematical-analysis-2-022/image-032.png)。
+5.    设![formula-object](assets/engineering-mathematical-analysis-2-022/image-030.png)是上半球面$z=\sqrt{a^{2}-x^{2}-y^{2}}\quad(a>0)$，取上侧，计算曲面积分$I=\iint_{\Sigma}(x^3-xy^2)dydz+(y^3-yz^2)dzdx+(z^3-zx^2)dxdy$。
 
 三、**解答题**（每小题9分，共18分）
 
-1.    将函数![formula-object](assets/engineering-mathematical-analysis-2-022/image-033.png)展开成![formula-object](assets/engineering-mathematical-analysis-2-022/image-034.png)的幂级数，并求数项级数![formula-object](assets/engineering-mathematical-analysis-2-022/image-035.png)的和。
+1.    将函数$\frac{d}{dx}\left(\frac{e^{x}-1}{x}\right)$展开成$x$的幂级数，并求数项级数$\sum_{n=1}^{\infty}\frac{n}{(n+1)!}$的和。
 
-2.  求微分方程![formula-object](assets/engineering-mathematical-analysis-2-022/image-036.png)的通解。
+2.  求微分方程$y'tanx=ylny$的通解。
 
 四、**证明题**（每小题9分，共18分）
 
-1．设![formula-object](assets/engineering-mathematical-analysis-2-022/image-037.png)，证明：![formula-object](assets/engineering-mathematical-analysis-2-022/image-038.png)。
+1．设![formula-object](assets/engineering-mathematical-analysis-2-022/image-037.png)，证明：$\int_{a}^{b}dx\int_{a}^{x}f(y)dy=\int_{a}^{b}f(y)(b-y)dy$。
 
-2． 证明：函数项级数![formula-object](assets/engineering-mathematical-analysis-2-022/image-039.png)在![formula-object](assets/engineering-mathematical-analysis-2-022/image-040.png)上一致收敛。
+2． 证明：函数项级数$\sum_{n=1}^{\infty}\frac{(-1)^n(1-e^{-nx})}{n^2+x^2}$在![formula-object](assets/engineering-mathematical-analysis-2-022/image-040.png)上一致收敛。
 
 五、应用题（本题9分）
 
-从斜边之长为![formula-object](assets/engineering-mathematical-analysis-2-022/image-041.png)的一切直角三角形中，求有最大周长的直角三角形。
+从斜边之长为$a$的一切直角三角形中，求有最大周长的直角三角形。

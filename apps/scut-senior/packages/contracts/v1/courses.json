@@ -10,7 +10,9 @@
         "工科数学分析上",
         "工数上"
       ],
-      "repository_paths": ["学科资料/工科数学分析I"],
+      "repository_paths": [
+        "学科资料/工科数学分析I"
+      ],
       "is_open": false,
       "fixture_available": false
     },
@@ -23,23 +25,35 @@
         "工科数学分析下",
         "工数下"
       ],
-      "repository_paths": ["学科资料/工科数学分析II"],
+      "repository_paths": [
+        "学科资料/工科数学分析II"
+      ],
       "is_open": false,
       "fixture_available": false
     },
     {
       "course_id": "linear_algebra",
       "display_name": "线性代数",
-      "aliases": ["线性代数与解析几何", "线代解几"],
-      "repository_paths": ["学科资料/线性代数"],
+      "aliases": [
+        "线性代数与解析几何",
+        "线代解几"
+      ],
+      "repository_paths": [
+        "学科资料/线性代数"
+      ],
       "is_open": false,
       "fixture_available": true
     },
     {
       "course_id": "probability_theory",
       "display_name": "概率论",
-      "aliases": ["概率论与数理统计", "概率统计"],
-      "repository_paths": ["学科资料/概率论"],
+      "aliases": [
+        "概率论与数理统计",
+        "概率统计"
+      ],
+      "repository_paths": [
+        "学科资料/概率论"
+      ],
       "is_open": false,
       "fixture_available": false
     },
@@ -54,7 +68,9 @@
         "高级语言程序设计（C++）（二）",
         "C++II"
       ],
-      "repository_paths": ["学科资料/C++（上及下）"],
+      "repository_paths": [
+        "学科资料/C++（上及下）"
+      ],
       "is_open": false,
       "fixture_available": false
     },
@@ -62,7 +78,9 @@
       "course_id": "discrete_mathematics",
       "display_name": "离散数学",
       "aliases": [],
-      "repository_paths": ["学科资料/离散数学"],
+      "repository_paths": [
+        "学科资料/离散数学"
+      ],
       "is_open": false,
       "fixture_available": false
     },
@@ -75,23 +93,34 @@
         "大学英语（一）",
         "大学英语（二）"
       ],
-      "repository_paths": ["学科资料/英语"],
+      "repository_paths": [
+        "学科资料/英语"
+      ],
       "is_open": false,
       "fixture_available": false
     },
     {
       "course_id": "computer_science_intro",
       "display_name": "计算机科学概论",
-      "aliases": ["计概"],
-      "repository_paths": ["学科资料/计算机科学概论"],
+      "aliases": [
+        "计概"
+      ],
+      "repository_paths": [
+        "学科资料/计算机科学概论"
+      ],
       "is_open": false,
       "fixture_available": false
     },
     {
       "course_id": "information_security_intro",
       "display_name": "信息安全导论",
-      "aliases": ["信息安全", "信安导论"],
-      "repository_paths": ["学科资料/信息安全"],
+      "aliases": [
+        "信息安全",
+        "信安导论"
+      ],
+      "repository_paths": [
+        "学科资料/信息安全"
+      ],
       "is_open": false,
       "fixture_available": false
     },
@@ -104,7 +133,522 @@
         "大学物理（一）",
         "大学物理1"
       ],
-      "repository_paths": ["学科资料/大物上"],
+      "repository_paths": [
+        "学科资料/大物上"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "data_structure",
+      "display_name": "数据结构",
+      "aliases": [
+        "数据结构与算法"
+      ],
+      "repository_paths": [
+        "学科资料/数据结构"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "digital_logic",
+      "display_name": "数字逻辑",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/数字逻辑"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "computer_organization",
+      "display_name": "计算机组成与体系结构",
+      "aliases": [
+        "计算机组成原理",
+        "计组"
+      ],
+      "repository_paths": [
+        "学科资料/计算机组成原理"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "compiler_principles",
+      "display_name": "编译原理",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/编译原理"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "algorithm_design_and_analysis",
+      "display_name": "算法设计与分析",
+      "aliases": [
+        "算法"
+      ],
+      "repository_paths": [
+        "学科资料/算法设计与分析"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "database",
+      "display_name": "数据库",
+      "aliases": [
+        "数据库系统"
+      ],
+      "repository_paths": [
+        "学科资料/数据库"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "embedded_systems",
+      "display_name": "嵌入式系统",
+      "aliases": [
+        "嵌入式"
+      ],
+      "repository_paths": [
+        "学科资料/嵌入式"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "artificial_intelligence_intro",
+      "display_name": "人工智能导论",
+      "aliases": [
+        "AI导论"
+      ],
+      "repository_paths": [
+        "学科资料/人工智能导论"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "intelligent_algorithms",
+      "display_name": "智能算法及应用",
+      "aliases": [
+        "智能算法"
+      ],
+      "repository_paths": [
+        "学科资料/智能算法"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "university_physics_3_2",
+      "display_name": "大学物理 III（二）",
+      "aliases": [
+        "大物下",
+        "大学物理（II）",
+        "大学物理（二）",
+        "大学物理2"
+      ],
+      "repository_paths": [
+        "学科资料/大物下"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "electrical_engineering",
+      "display_name": "电工学",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/电工学"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "electrical_engineering_lab",
+      "display_name": "电工实验",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/电工实验"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "signals_and_communication",
+      "display_name": "信号处理与通信基础",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/信号处理与通信基础"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "java_programming",
+      "display_name": "Java程序设计",
+      "aliases": [
+        "Java"
+      ],
+      "repository_paths": [
+        "学科资料/Java"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "python_programming",
+      "display_name": "Python语言程序设计",
+      "aliases": [
+        "Python程序设计",
+        "Python"
+      ],
+      "repository_paths": [
+        "学科资料/Python程序设计"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "operating_systems",
+      "display_name": "操作系统",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/操作系统"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "software_engineering",
+      "display_name": "软件工程",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/软件工程"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "computer_networks",
+      "display_name": "计算机网络",
+      "aliases": [
+        "计算机网络（全英）",
+        "计网"
+      ],
+      "repository_paths": [
+        "学科资料/计算机网络（全英&普通）"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "software_testing",
+      "display_name": "软件测试与质量保证",
+      "aliases": [
+        "软测"
+      ],
+      "repository_paths": [
+        "学科资料/软件测试与质量保证"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "computing_methods",
+      "display_name": "计算方法",
+      "aliases": [
+        "数值分析",
+        "数值计算方法"
+      ],
+      "repository_paths": [
+        "学科资料/计算方法"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "mathematical_modeling",
+      "display_name": "数学建模",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/数学建模[包括课外]"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "computer_graphics",
+      "display_name": "计算机图形学",
+      "aliases": [
+        "图形学"
+      ],
+      "repository_paths": [
+        "学科资料/计算机图形学"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "mobile_application_development",
+      "display_name": "移动应用开发",
+      "aliases": [
+        "移动开发"
+      ],
+      "repository_paths": [
+        "学科资料/移动应用开发"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "swarm_intelligence",
+      "display_name": "群体智能",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/群体智能"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "information_security_mathematics",
+      "display_name": "信息安全数学基础",
+      "aliases": [
+        "信安数学"
+      ],
+      "repository_paths": [
+        "学科资料/信息安全数学基础"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "web_frontend_fundamentals",
+      "display_name": "Web开发前端技术基础",
+      "aliases": [
+        "web开发前端技术基础",
+        "前端技术基础"
+      ],
+      "repository_paths": [
+        "学科资料/web开发前端技术基础"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "network_management",
+      "display_name": "网络管理与未来网络",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/网络管理与未来网络"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "digital_system_creative_design",
+      "display_name": "数字系统创意设计",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/数字系统创意设计"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "network_application_architecture",
+      "display_name": "网络应用架构设计",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/网络应用架构设计"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "next_generation_network_architecture",
+      "display_name": "新一代网络体系结构",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/新一代网络体系结构"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "circuit_and_electronics_lab",
+      "display_name": "电路与电子技术实验",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/电路与电子技术实验"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "data_structure_course_project",
+      "display_name": "数据结构课程设计",
+      "aliases": [
+        "数据结构大作业"
+      ],
+      "repository_paths": [
+        "学科资料/数据结构课程设计"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "os_course_project",
+      "display_name": "操作系统课程设计",
+      "aliases": [
+        "操作系统课设"
+      ],
+      "repository_paths": [
+        "学科资料/操作系统课程设计"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "multimedia_technology",
+      "display_name": "多媒体技术",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/多媒体技术"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "machine_learning",
+      "display_name": "机器学习与模式识别",
+      "aliases": [
+        "机器学习"
+      ],
+      "repository_paths": [
+        "学科资料/机器学习"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "open_source_technologies",
+      "display_name": "开源技术及其应用",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/开源技术及其应用"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "ideology_morality_and_rule_of_law",
+      "display_name": "思想道德与法治",
+      "aliases": [
+        "思修"
+      ],
+      "repository_paths": [
+        "学科资料/思想道德与法治"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "marxist_basic_principles",
+      "display_name": "马克思主义基本原理",
+      "aliases": [
+        "马原"
+      ],
+      "repository_paths": [
+        "学科资料/马原"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "mao_zedong_thought_overview",
+      "display_name": "毛泽东思想和中国特色社会主义理论体系概论",
+      "aliases": [
+        "毛概"
+      ],
+      "repository_paths": [
+        "学科资料/毛概"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "xi_thought_overview",
+      "display_name": "习近平新时代中国特色社会主义思想概论",
+      "aliases": [
+        "习概"
+      ],
+      "repository_paths": [
+        "学科资料/习概"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "modern_chinese_history_outline",
+      "display_name": "中国近现代史纲要",
+      "aliases": [
+        "近代史",
+        "史纲"
+      ],
+      "repository_paths": [
+        "学科资料/近代史"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "national_history",
+      "display_name": "国史",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/国史"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "internet_plus_data_security",
+      "display_name": "面向互联网+的数据安全",
+      "aliases": [],
+      "repository_paths": [
+        "学科资料/面向互联网+的数据安全"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "university_physics_lab_1",
+      "display_name": "大学物理实验（一）",
+      "aliases": [
+        "大物上实验"
+      ],
+      "repository_paths": [
+        "学科资料/大物上实验合辑"
+      ],
+      "is_open": false,
+      "fixture_available": false
+    },
+    {
+      "course_id": "university_physics_lab_2",
+      "display_name": "大学物理实验（二）",
+      "aliases": [
+        "大物下实验"
+      ],
+      "repository_paths": [
+        "学科资料/大物下实验合辑"
+      ],
       "is_open": false,
       "fixture_available": false
     }

@@ -31,62 +31,62 @@ locator_type: none
 
 **一、单项选择题**（每小题3分，共15分）
 
-1．初值问题![formula-object](assets/engineering-mathematical-analysis-2-015/image-001.png)的解为（        ）。
+1．初值问题$y''+4y'+4y=0,\quady(0)=1,\quady'(0)=3$的解为（        ）。
 
-A．  ![formula-object](assets/engineering-mathematical-analysis-2-015/image-002.png)；                        B．  ![formula-object](assets/engineering-mathematical-analysis-2-015/image-003.png)；
+A．  $y=(C_1+C_2x)e^{-2x}$；                        B．  $y=(1+5x)e^{-2x}$；
 
-C． ![formula-object](assets/engineering-mathematical-analysis-2-015/image-004.png)；                              D．![formula-object](assets/engineering-mathematical-analysis-2-015/image-005.png)．
+C． $y=(1+3x)e^{-2x}$；                              D．$y=\mathrm{e}^{-2x}+5\mathrm{e}^{2x}$．
 
-2．对于二元函数![formula-object](assets/engineering-mathematical-analysis-2-015/image-006.png)，下列说法正确的是（        ）。
+2．对于二元函数$z=f(x,y)$，下列说法正确的是（        ）。
 
-A．若函数![formula-object](assets/engineering-mathematical-analysis-2-015/image-007.png)在![formula-object](assets/engineering-mathematical-analysis-2-015/image-008.png)连续，则函数在该点一定存在偏导数；
+A．若函数$z=f(x,y)$在$(x_0,y_0)$连续，则函数在该点一定存在偏导数；
 
-B．若函数![formula-object](assets/engineering-mathematical-analysis-2-015/image-009.png)在![formula-object](assets/engineering-mathematical-analysis-2-015/image-010.png)存在偏导数，则函数在该点一定连续；
+B．若函数$z=f(x,y)$在$(x_0,y_0)$存在偏导数，则函数在该点一定连续；
 
-C．若函数![formula-object](assets/engineering-mathematical-analysis-2-015/image-011.png)在![formula-object](assets/engineering-mathematical-analysis-2-015/image-012.png)的偏导数连续，则函数在该点一定可微；
+C．若函数$z=f(x,y)$在$(x_0,y_0)$的偏导数连续，则函数在该点一定可微；
 
-D．若函数![formula-object](assets/engineering-mathematical-analysis-2-015/image-013.png)在![formula-object](assets/engineering-mathematical-analysis-2-015/image-014.png)可微，则函数在该点的偏导数一定连续．
+D．若函数$z=f(x,y)$在$(x_0,y_0)$可微，则函数在该点的偏导数一定连续．
 
-3．曲面![formula-object](assets/engineering-mathematical-analysis-2-015/image-015.png)上点![formula-object](assets/engineering-mathematical-analysis-2-015/image-016.png)处的切平面与平面![formula-object](assets/engineering-mathematical-analysis-2-015/image-017.png)的夹角是（    ）。
+3．曲面$3x^{2}+y^{2}+z^{2}=12$上点$M(-1,0,3)$处的切平面与平面$Z=0$的夹角是（    ）。
 
-A．![formula-object](assets/engineering-mathematical-analysis-2-015/image-018.png)；            B．![formula-object](assets/engineering-mathematical-analysis-2-015/image-019.png)；                  C．![formula-object](assets/engineering-mathematical-analysis-2-015/image-020.png)；              D．![formula-object](assets/engineering-mathematical-analysis-2-015/image-021.png)．
+A．$\frac{\pi}{6}$；            B．$\frac{\pi}{4}$；                  C．$\frac{\pi}{3}$；              D．$\frac{\pi}{2}$．
 
-4．已知![formula-object](assets/engineering-mathematical-analysis-2-015/image-022.png)是球面![formula-object](assets/engineering-mathematical-analysis-2-015/image-023.png)与平面![formula-object](assets/engineering-mathematical-analysis-2-015/image-024.png)的交线，则第一类曲线积分![formula-object](assets/engineering-mathematical-analysis-2-015/image-025.png)（        ）。
+4．已知$L$是球面$x^2+y^2+z^2=1$与平面$x+y+z=0$的交线，则第一类曲线积分$\int_Lx^2ds=$（        ）。
 
-A．![formula-object](assets/engineering-mathematical-analysis-2-015/image-026.png)；              B．![formula-object](assets/engineering-mathematical-analysis-2-015/image-027.png)；            C．![formula-object](assets/engineering-mathematical-analysis-2-015/image-028.png)；              D．![formula-object](assets/engineering-mathematical-analysis-2-015/image-029.png)．
+A．$0$；              B．$\frac{2}{3}\pi$；            C．$\frac{1}{3}\pi$；              D．$\frac{4}{3}\pi$．
 
-5． 幂级数![formula-object](assets/engineering-mathematical-analysis-2-015/image-030.png)的和函数是（          ）。
+5． 幂级数$\sum_{n=1}^{\infty}\frac{x^n}{n}$的和函数是（          ）。
 
-A．![formula-object](assets/engineering-mathematical-analysis-2-015/image-031.png)；          B．![formula-object](assets/engineering-mathematical-analysis-2-015/image-032.png)![formula-object](assets/engineering-mathematical-analysis-2-015/image-033.png)；        C．![formula-object](assets/engineering-mathematical-analysis-2-015/image-034.png)；            D．![formula-object](assets/engineering-mathematical-analysis-2-015/image-035.png)．
+A．![formula-object](assets/engineering-mathematical-analysis-2-015/image-031.png)；          B．$s(x)=-\ln(x-1),(-1<x<1)$![formula-object](assets/engineering-mathematical-analysis-2-015/image-033.png)；        C．![formula-object](assets/engineering-mathematical-analysis-2-015/image-034.png)；            D．![formula-object](assets/engineering-mathematical-analysis-2-015/image-035.png)．
 - **填空题**（每小题3分，共15分）
-1. 已知![formula-object](assets/engineering-mathematical-analysis-2-015/image-036.png)，则![formula-object](assets/engineering-mathematical-analysis-2-015/image-037.png)                 ；
-1. 微分方程![formula-object](assets/engineering-mathematical-analysis-2-015/image-038.png)的通解为                                          ；
+1. 已知$f(x,y)=sinxln(y+1)+cosyln(1-x)$，则![formula-object](assets/engineering-mathematical-analysis-2-015/image-037.png)                 ；
+1. 微分方程$y^{(4)}-y=0$的通解为                                          ；
 
-3．设![formula-object](assets/engineering-mathematical-analysis-2-015/image-039.png)，则二重积分![formula-object](assets/engineering-mathematical-analysis-2-015/image-040.png)                            ；
+3．设$D=[0,1;0,2]$，则二重积分$\iint_{D}\sqrt{x+y}\,dx\,dy=$                            ；
 
-4．设![formula-object](assets/engineering-mathematical-analysis-2-015/image-041.png)是任意一条光滑闭曲线，则![formula-object](assets/engineering-mathematical-analysis-2-015/image-042.png)          ；
+4．设$L$是任意一条光滑闭曲线，则![formula-object](assets/engineering-mathematical-analysis-2-015/image-042.png)          ；
 
-5．函数项级数![formula-object](assets/engineering-mathematical-analysis-2-015/image-043.png)的收敛域为                                        ．
+5．函数项级数$\sum_{n=1}^\infty\frac{1}{n}\left(\frac{x-1}{x}\right)^n$的收敛域为                                        ．
 - **计算题**（每小题10分，共50分）
 
-1．求曲面![formula-object](assets/engineering-mathematical-analysis-2-015/image-044.png)的切平面，使它垂直于平面![formula-object](assets/engineering-mathematical-analysis-2-015/image-045.png)和![formula-object](assets/engineering-mathematical-analysis-2-015/image-046.png)．
+1．求曲面![formula-object](assets/engineering-mathematical-analysis-2-015/image-044.png)的切平面，使它垂直于平面![formula-object](assets/engineering-mathematical-analysis-2-015/image-045.png)和$x-y-\frac{1}{2}z=2$．
 
-2.求微分方程![formula-object](assets/engineering-mathematical-analysis-2-015/image-047.png)的通解．
+2.求微分方程$y''+(4x+e^{2y})(y')^3=0$的通解．
 
-3.  计算三重积分![formula-object](assets/engineering-mathematical-analysis-2-015/image-048.png)，其中![formula-object](assets/engineering-mathematical-analysis-2-015/image-049.png)是由圆锥面![formula-object](assets/engineering-mathematical-analysis-2-015/image-050.png)与平面![formula-object](assets/engineering-mathematical-analysis-2-015/image-051.png)所围成的区域．
+3.  计算三重积分$I=\iiint_{D}(x^{2}+y^{2})\,dx\,dy\,dz$，其中![formula-object](assets/engineering-mathematical-analysis-2-015/image-049.png)是由圆锥面$x^{2}+y^{2}=z^{2}$与平面$z=1$所围成的区域．
 
-4.  设![formula-object](assets/engineering-mathematical-analysis-2-015/image-052.png)为曲面![formula-object](assets/engineering-mathematical-analysis-2-015/image-053.png)，计算曲面积分![formula-object](assets/engineering-mathematical-analysis-2-015/image-054.png)．
+4.  设![formula-object](assets/engineering-mathematical-analysis-2-015/image-052.png)为曲面$x^{2}+y^{2}+z^{2}=2ax(a>0)$，计算曲面积分$I=\iint_{\Sigma}(x^2+y^2+z^2)dS$．
 
-5.  将函数![formula-object](assets/engineering-mathematical-analysis-2-015/image-055.png)在![formula-object](assets/engineering-mathematical-analysis-2-015/image-056.png)处展成幂级数．
+5.  将函数$f(x)=\frac{1}{x^{2}+4x+3}$在$x=1$处展成幂级数．
 
 <!-- question: engineering-mathematical-analysis-2-015-Q1 -->
 
 四、**证明题**（本题10分）
 
-设![formula-object](assets/engineering-mathematical-analysis-2-015/image-057.png)都是由方程![formula-object](assets/engineering-mathematical-analysis-2-015/image-058.png)所确定的具有连续偏导数的函数，证明![formula-object](assets/engineering-mathematical-analysis-2-015/image-059.png)．
+设$x=x(y,z),y=y(x,z),z=z(x,y)$都是由方程$F(x,y,z)=0$所确定的具有连续偏导数的函数，证明$\frac{\partial x}{\partial y}\cdot\frac{\partial y}{\partial z}\cdot\frac{\partial z}{\partial x}=-1$．
 
 <!-- question: engineering-mathematical-analysis-2-015-Q2 -->
 
 五、**应用题**（本题10分）
 
-设有平面力场![formula-object](assets/engineering-mathematical-analysis-2-015/image-060.png)，求一质点沿曲线![formula-object](assets/engineering-mathematical-analysis-2-015/image-061.png)从点![formula-object](assets/engineering-mathematical-analysis-2-015/image-062.png)运动到点![formula-object](assets/engineering-mathematical-analysis-2-015/image-063.png)时变力![formula-object](assets/engineering-mathematical-analysis-2-015/image-064.png)所作的功．
+设有平面力场![formula-object](assets/engineering-mathematical-analysis-2-015/image-060.png)，求一质点沿曲线![formula-object](assets/engineering-mathematical-analysis-2-015/image-061.png)从点$O(0,0)$运动到点$A\left(\frac{\pi}{2},1\right)$时变力![formula-object](assets/engineering-mathematical-analysis-2-015/image-064.png)所作的功．

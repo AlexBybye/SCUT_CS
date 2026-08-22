@@ -92,3 +92,107 @@
   Python venv（mammoth / python-docx / python-pptx / pymupdf / pyyaml / olefile）。
 - 转换中间产物（`staging`、`.work/`、`.ai_jobs/`、`*_debug.html`）不进入 Git；`knowledge/`
   无插件调试产物。
+
+## 追加（2026-08-23）：全量课程注册 + 大二批次转化
+
+### 课程注册表扩展（10 → 55 门）
+
+- `packages/contracts/v1/courses.json` 新增 45 门，全部 `is_open=false, fixture_available=false`
+  （注册≠开放：检索仅吃 `passed` 行，新课程在人工审核通过前不进入语料）。
+- 覆盖：大二 15 门（数据结构/数字逻辑/计组/编译/算法/数据库/嵌入式/AI导论/智能算法/
+  大物III（二）/电工学/电工实验/信号与通信/Java/Python）、大三及以上（操作系统/软工/计网/
+  软测/计算方法/数学建模/图形学/移动开发/群体智能/信安数基/Web前端等）、思政通识
+  （思修/马原/毛概/习概/近代史/国史）、大物实验（一）（二）（仅注册；PLAN-0 的语料排除不变）。
+- 明确**不注册**（非课程）：优秀寒招资料模板、华工大一开学选拔考试资料、NUS人工智能研学资料、
+  高中物理化学高度总结笔记（家教用）、雅思、通选课、IT前沿技术、人工智能入门：千方百智。
+- 契约测试同步：`test_contract_assets.EXPECTED_COURSE_IDS` 扩展为 55 门有序清单；
+  `test_registry` / `test_harness_registry` 计数断言更新并诚实化测试名；
+  「信息安全数学基础」由“被排除名”改为正式课程（相应断言更新）。
+  Python 全量 **522 passed**。
+
+### 大二批次转化（14 门，全部 pending）
+
+- 数据结构 35 · 数字逻辑 8 · 计算机组成原理 73 · 编译原理 56 · 算法设计与分析 43（另去重跳过 1）·
+  数据库 6 · 嵌入式系统 21 · 人工智能导论 59 · 智能算法及应用 37 · 大学物理 III（二）20 ·
+  电工学 9 · 电工实验 8 · 信号处理与通信基础 25 · Java 程序设计 1 —— 共 **380 行新增**。
+- manifest 总量：**575 行 = 22 passed + 553 pending**；`corpus_validator` 全量 **0 错误**。
+- 批次修复：
+  - `soffice_convert` 惰性自解析（此前 main 的 `global SOFFICE` 只改了自身模块绑定，
+    doc/ppt 链路会假性失败）;
+  - image-only 分支 format 点号不一致导致空产出（`StopIteration` 被吞成空错误）;
+  - 无答案子集匹配对无 `sid` 的普通文件 dict 取键崩溃（嵌入式目录触发）。
+- 隐私：正文双扫描零学号命中；`database-001` class-label 命中经复核为 SQL 例题中的示例班级名，
+  决议记入 notes 保留原文。
+- 待办：553 条 pending 人工审核；`--emit-ai-jobs` 当前可导出 134 个 AI 归一化作业包
+  （公式图→LaTeX / OCR 页），按 SKILL 流程回填后仍保持 `pending`。
+
+## 追加（2026-08-23）：GLM-4V 公式视觉转写全量执行
+
+### 管线与可靠性闸门
+
+- 接入 `glm-4v-flash`（免费额度，凭证在 gitignored `.cache/glm4v.env`），新增
+  `vision_worker.py`（转写）+ `propagate_vision.py`（哈希传播）。
+- 三道闸：**三票多数决**（同图独立读三次，≥2 票一致才采纳）→ **确定性校验**
+  （括号配平/无中文散文/长度合理/粘连命令拆分如 `\partialz`）→ **mathtext 渲染闸**
+  （必须真实可渲染；矩阵类环境逐单元格校验）。任一不过 → 保留 PNG（SOP 4.2 回退态）。
+- 应用层重写为**逐引用保守替换**：只替换有 LaTeX 的引用；整行 `$$..$$` 仅当该行
+  只剩单一公式；无 LaTeX 的引用永不引入 `$`。应用前全库 tar 备份，可整体回滚。
+
+### 结果
+
+- 唯一公式图 **1327** 张：**接受 899（71.0%）**，弃权 368
+  （UNSURE 难图 / 图中本无数学表达式如真值表结构图 / 双读不一致 / 渲染不过）。
+- 哈希传播后实际填充 **1374 个公式位、44 个文件**；知识库剩余 PNG 公式引用 731 个。
+- 全库数学串现状：约 3000 处 `$...$`（含首批 OMML 原生转换）；顺序解析验证
+  **0 处图片被困进数学区**；`corpus_validator` 全量 **0 错误**；状态保持 `pending`。
+- 已知残留：compiler 课程源文本含字面 `$`（FOLLOW 集终结符），为既有内容非本次引入。
+
+### 待人工复核
+
+- 44 个已转写文件建议优先对照原件抽查 LaTeX 正确性（notes 已标注清单）；
+  弃权的 368 张保留 PNG，可后续换更强视觉模型重跑（队列 `_unique_images.json` 保留）。
+
+## 追加（2026-08-23）：管线沉淀 Windows 化 + passed 清零重跑
+
+### 工具沉淀（apps/tools/material_converter）
+
+- 视觉转写正式入包：`vision_worker.py`（三道闸转写）/ `propagate_vision.py`（哈希传播），
+  CLI 接线 `--vision-run [N]` / `--vision-workers N` / `--vision-propagate`，
+  与 `--emit-ai-jobs` / `--finalize` 构成完整 AI 阶段；SKILL.md 流程同步更新。
+- **Windows 适配**：`find_soffice()` 增加 ProgramFiles/LibreOffice/soffice.exe 与 Linux
+  路径探测；LibreOffice profile 改 `Path.as_uri()`（修复 Windows 下 file:// 非法）；
+  新增 `bootstrap.ps1`；`bootstrap.sh` 改为仓库根 `.venv` 并自动探测 soffice；
+  requirements.txt 补 matplotlib（渲染闸依赖）。README 全面重写（跨平台安装、
+  完整工作流、命令参考、去重规则、隐私红线、跨设备事项、FAQ、回滚）。
+
+### passed 清零重跑
+
+- 备份后删除全部 **22 条 passed**（manifest 行 + md + assets；快照
+  `.cache/knowledge_backup_pre_passed_purge_20260823_0320.tar.gz`），涉及 10 门课程。
+- 用现有管线重新生成：新增 **26 行**（含此前被 dedup 抑制的 3 个候选恢复入库；
+  cpp 两组同标题行经核为不同源文件 .doc/.ppt、签到1/签到2，非重复）。
+- 现状：**599 行全部 pending**（22 条旧 passed 出库）；`corpus_validator` **0 错误**。
+- AI 阶段：重生成件多为手写扫描/试卷页（OCR 属后续迭代）；公式槽位剩余
+  **523 个（唯一 387 张）**——即上一轮被闸门弃权的集合，同一模型+同闸门重试无增益，
+  队列 `_unique_images.json` 已重建保留，待更强视觉模型时一键补转。
+
+## 追加（2026-08-23 续）：概率论重生成回归修复 + 视觉补转
+
+重跑暴露三个批一时期"一次性脚本修复未进管线"的回归，本次全部管线化修复：
+
+1. **双重资产前缀**：docx2md 模板自带 `assets/`，main 再替换 `assets/<sid>` →
+   `assets/assets/<sid>/`。修复：占位符只替换 sid；另加双前缀净化器兜底。
+2. **flush_vector_png 静默跳过**：与 soffice_convert 同款的跨模块 SOFFICE 绑定问题 +
+   file:// profile URI。修复：惰性自解析 + as_uri()。
+3. **propagate/清扫的目录映射**：probability 是唯一 legacy 目录课程
+   （course_id=`probability_theory` ≠ 目录名`probability`），按 course_id 拼路径会静默
+   扑空；孤儿清扫曾因此误删 010-027，已从备份精确恢复。
+
+概率论 7 份往年卷最终干净重生成：956 个公式引用全部单前缀 PNG（WMF 转换 1170/1170）；
+视觉转写 607 张唯一图 **接受 450（74.1%）**，传播后填充 762 位、finalize 应用 9 文件。
+全库终态：**599 行全部 pending**；$数学$ 约 2880 处、公式 PNG 回退 964 处；
+顺序解析 0 坏行；`corpus_validator` **0 错误**。
+
+同源对比（旧 passed vs 新管线）：概率论2013A 旧 111 处未校验手打公式 vs 新 82 处
+过闸 LaTeX + 24 张难图回退；工数I 乱码PDF 旧 827 字符整页图 vs 新 6060 字符真文本；
+手写扫描类两者等价（内容在图中）。

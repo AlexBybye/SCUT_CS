@@ -45,26 +45,43 @@ def find_soffice() -> Path | None:
     env = os.environ.get("MMD_SOFFICE")
     cands = [
         Path(env) if env else None,
-        REPO / ".cache/LibreOffice.app/Contents/MacOS/soffice",
-        Path("/Applications/LibreOffice.app/Contents/MacOS/soffice"),
+        REPO / ".cache/LibreOffice.app/Contents/MacOS/soffice",          # macOS (本仓缓存)
+        Path("/Applications/LibreOffice.app/Contents/MacOS/soffice"),     # macOS 系统
         Path.home() / "Applications/LibreOffice.app/Contents/MacOS/soffice",
+        _win_pf() / "LibreOffice/program/soffice.exe",                    # Windows
+        _win_pf(86) / "LibreOffice/program/soffice.exe",
+        Path("C:/Program Files/LibreOffice/program/soffice.exe"),
+        Path("/usr/bin/soffice"),                                          # Linux
+        Path("/usr/local/bin/soffice"),
     ]
     for c in cands:
         if c and c.exists():
             return c
-    which = shutil.which("soffice")
-    return Path(which) if which else None
+    for name in ("soffice", "soffice.exe"):
+        w = shutil.which(name)
+        if w:
+            return Path(w)
+    return None
+
+
+def _win_pf(bit=None) -> Path:
+    key = "ProgramFiles(x86)" if bit == 86 else "ProgramFiles"
+    return Path(os.environ.get(key, f"C:\\Program Files{'' if bit is None else ' (x86)'}"))
 
 
 SOFFICE: Path | None = None
 
 
 def soffice_convert(src: Path, target_ext: str, outdir: Path) -> Path | None:
+    global SOFFICE
+    if SOFFICE is None:
+        SOFFICE = find_soffice()
     if SOFFICE is None:
         return None
     outdir.mkdir(parents=True, exist_ok=True)
+    profile = (CACHE / "lo_profile")
     cmd = [str(SOFFICE), "--headless",
-           f"-env:UserInstallation=file://{CACHE/'lo_profile'}",
+           f"-env:UserInstallation={profile.as_uri()}",
            "--convert-to", target_ext, "--outdir", str(outdir), str(src)]
     try:
         subprocess.run(cmd, capture_output=True, text=True, timeout=600)
@@ -354,7 +371,12 @@ def build_skip_set(files, existing_paths, manifest_rows=None):
         # build answer candidates from same-dir files PLUS converted manifest sources
         ans_cands = list(answers)
         base = noanswer_removed(na_f["path"].name)
-        seen = {(e["sid"], e["rel"]) for e in ans_cands}
+
+        def _cand_key(e):
+            # plain file dicts (from `files`) have no "sid"; manifest entries do
+            return (e.get("sid"), e["rel"])
+
+        seen = {_cand_key(e) for e in ans_cands}
         for e in manifest_basenames.get(base, []):
             if e["path"] and e["path"].exists() and e["path"].parent == na_f["path"].parent:
                 if (e["sid"], e["rel"]) not in seen:
@@ -530,7 +552,7 @@ def convert_file(f: dict, staging: Path):
         text = p.read_bytes().decode("utf-8", errors="replace").replace("\r\n", "\n")
         yield {"md": text, "images": [], "stats": {},
                "method": "markdown normalization"}
-    elif fmt in IMAGE_ONLY_EXTS:
+    elif fmt.lstrip(".") in ("png", "jpg", "jpeg"):
         name = "page-001." + fmt
         yield {"md": f"![{name}](assets/{{ASSETS_DIR}}/{name})",
                "images": [(name, p.read_bytes())], "locator": "none",
@@ -542,6 +564,9 @@ def flush_vector_png(vecs, workdir: Path):
     results = {}
     if not vecs:
         return results
+    global SOFFICE
+    if SOFFICE is None:
+        SOFFICE = find_soffice()
     if SOFFICE is None:
         print(f"  ! LibreOffice missing; keeping {len(vecs)} WMF/EMF assets as-is")
         return results
@@ -557,7 +582,7 @@ def flush_vector_png(vecs, workdir: Path):
     for c in range(0, len(jobs), CHUNK):
         chunk = jobs[c:c + CHUNK]
         cmd = [str(SOFFICE), "--headless",
-               f"-env:UserInstallation=file://{CACHE/'lo_profile'}",
+               f"-env:UserInstallation={(CACHE / 'lo_profile').as_uri()}",
                "--convert-to", "png", "--outdir", str(workdir)] + [str(s) for _, _, s in chunk]
         try:
             subprocess.run(cmd, capture_output=True, timeout=1800)

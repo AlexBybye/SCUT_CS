@@ -33,32 +33,32 @@ locator_type: none
 评阅教师请在试卷袋上评阅栏签名
 
 **一、填空题**（每小题3分，共15分）**.**
-1. 设函数![formula-object](assets/engineering-mathematical-analysis-2-032/image-002.png),  则![formula-object](assets/engineering-mathematical-analysis-2-032/image-003.png)                           ；
-1. 交换积分次序，则![formula-object](assets/engineering-mathematical-analysis-2-032/image-004.png)                              ；
-1. 设曲线![formula-object](assets/engineering-mathematical-analysis-2-032/image-005.png)，取顺时针方向，则![formula-object](assets/engineering-mathematical-analysis-2-032/image-006.png)           ；
-1. 若级数![formula-object](assets/engineering-mathematical-analysis-2-032/image-007.png)条件收敛，则常数![formula-object](assets/engineering-mathematical-analysis-2-032/image-008.png)的取值范围为                ；
-1. 设![formula-object](assets/engineering-mathematical-analysis-2-032/image-009.png)，设![formula-object](assets/engineering-mathematical-analysis-2-032/image-010.png)为![formula-object](assets/engineering-mathematical-analysis-2-032/image-011.png)的展成以![formula-object](assets/engineering-mathematical-analysis-2-032/image-012.png)为周期的傅里叶（Fourier）级数的和函数，则![formula-object](assets/engineering-mathematical-analysis-2-032/image-013.png)                 .
+1. 设函数$u(x,y,z)=\sqrt{x^{2}+y^{2}+z^{2}}$,  则$div(gradu)=$                           ；
+1. 交换积分次序，则$\int_0^2dy\int_{y^2}^4f(x,y)dx=$                              ；
+1. 设曲线$L:\frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}=1$，取顺时针方向，则$\int_L(x-y)dx+(x+y)dy=$           ；
+1. 若级数$\sum_{n=1}^\infty\frac{(-1)^n(n+2)}{n^p}$条件收敛，则常数$p$的取值范围为                ；
+1. 设$f(x)=\begin{cases}-1,&-1<x\leq0\\x^2+2,&0<x\leq1\end{cases}$，设![formula-object](assets/engineering-mathematical-analysis-2-032/image-010.png)为$f(x)$的展成以$2$为周期的傅里叶（Fourier）级数的和函数，则$S(0)=$                 .
 
 **二、计算题**（每小题9分，共36分）**.**
-1. 设![formula-object](assets/engineering-mathematical-analysis-2-032/image-014.png),  其中函数![formula-object](assets/engineering-mathematical-analysis-2-032/image-015.png)有二阶连续的偏导数, 求![formula-object](assets/engineering-mathematical-analysis-2-032/image-016.png).
+1. 设$u=f(x+y+z,x^2+y^2+z^2)$,  其中函数$f$有二阶连续的偏导数, 求$\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}+\frac{\partial^2u}{\partial z^2}$.
 
-2.    计算三重积分![formula-object](assets/engineering-mathematical-analysis-2-032/image-017.png)，其中![formula-object](assets/engineering-mathematical-analysis-2-032/image-018.png)是曲面![formula-object](assets/engineering-mathematical-analysis-2-032/image-019.png)所围成的区域.
+2.    计算三重积分$\iiint_{\Omega}\left(\frac{x}{2}-y-z\right)^2dxdydz$，其中![formula-object](assets/engineering-mathematical-analysis-2-032/image-018.png)是曲面$\frac{x^2}{4}+y^2+z^2=1$所围成的区域.
 
-3.    求抛物面![formula-object](assets/engineering-mathematical-analysis-2-032/image-020.png)的质量（![formula-object](assets/engineering-mathematical-analysis-2-032/image-021.png)的部分），其密度函数为![formula-object](assets/engineering-mathematical-analysis-2-032/image-022.png).
+3.    求抛物面$\sum:z=2-\left(x^2+y^2\right)$的质量（$z_0$的部分），其密度函数为$\rho(x,y,z)=x^{2}+y^{2}$.
 
-4.  求微分方程![formula-object](assets/engineering-mathematical-analysis-2-032/image-023.png)的通解.
+4.  求微分方程$x(2+y)dx+y(1-x)dy=0$的通解.
 
 **三、解答题**（每小题10分，共30分）**.**
 
-1.  设曲线积分![formula-object](assets/engineering-mathematical-analysis-2-032/image-024.png)与积分路径无关,  其中![formula-object](assets/engineering-mathematical-analysis-2-032/image-025.png)有一阶连续导数且![formula-object](assets/engineering-mathematical-analysis-2-032/image-026.png),  求![formula-object](assets/engineering-mathematical-analysis-2-032/image-027.png)，并计算曲线积分![formula-object](assets/engineering-mathematical-analysis-2-032/image-028.png).
+1.  设曲线积分![formula-object](assets/engineering-mathematical-analysis-2-032/image-024.png)与积分路径无关,  其中$\phi(x)$有一阶连续导数且$\varphi\left(\frac{\pi}{2}\right)=0$,  求$\phi(x)$，并计算曲线积分![formula-object](assets/engineering-mathematical-analysis-2-032/image-028.png).
 
 2.  计算![formula-object](assets/engineering-mathematical-analysis-2-032/image-029.png)，![formula-object](assets/engineering-mathematical-analysis-2-032/image-030.png)为有界单连通区域的闭边界曲面，取外侧.
 
-3.    求幂级数![formula-object](assets/engineering-mathematical-analysis-2-032/image-031.png)的收敛域及和函数.
+3.    求幂级数$\sum_{n=0}^{\infty}\frac{3n+1}{n!}x^{3n}$的收敛域及和函数.
 
 **四、证明题**（本题10分）**.**
 
-证明函数项级数![formula-object](assets/engineering-mathematical-analysis-2-032/image-032.png)在![formula-object](assets/engineering-mathematical-analysis-2-032/image-033.png)上一致收敛.
+证明函数项级数![formula-object](assets/engineering-mathematical-analysis-2-032/image-032.png)在$(-\infty,+\infty)$上一致收敛.
 
 **五、应用题**（本题9分）**.**
 

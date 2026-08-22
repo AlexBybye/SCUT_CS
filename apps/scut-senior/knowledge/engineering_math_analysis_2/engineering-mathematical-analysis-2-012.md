@@ -46,7 +46,7 @@ locator_type: none
 
 A.（0，0）；          B.（1，1）；            C.（1，2）；            D.$(2, 2\sqrt {2})$.
 
-2.  直线$L:\frac {x-2} {2}=\frac {y+1} {-2}=\frac {z=3} {1}$与平面![formula-object](assets/engineering-mathematical-analysis-2-012/image-001.png)的关系是(       )
+2.  直线$L:\frac {x-2} {2}=\frac {y+1} {-2}=\frac {z=3} {1}$与平面$\pi:x+2y-2z=6$的关系是(       )
 
 A.  平行；	      	      B.  垂直；                C.  相交但不垂直；                    D.  重合
 

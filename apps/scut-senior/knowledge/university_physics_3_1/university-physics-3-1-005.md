@@ -32,7 +32,7 @@ locator_type: none
 
 1．（本题3分）
 
-一物体质量为![formula-object](assets/university-physics-3-1-005/image-001.png)。受到方向不变的力![formula-object](assets/university-physics-3-1-005/image-002.png)的作用，在开始的2s内，此力的冲量大小等于［    ］![formula-object](assets/university-physics-3-1-005/image-003.png)
+一物体质量为$10kg$。受到方向不变的力$F=3+4t(SI)$的作用，在开始的2s内，此力的冲量大小等于［    ］![formula-object](assets/university-physics-3-1-005/image-003.png)
 
 A、12     B、13    C、14    D、15
 
@@ -110,7 +110,7 @@ C、${\eta }_{1}={\eta }_{2},{W}_{1}>{W}_{2}$      D、${\eta }_{1}={\eta }_{2},
 
 11．（本题3分）
 
-质点沿半径为$R$的圆周运动，运动学方程为 $\theta =3+2{t}^{2}$  (SI) ，则$t$时刻质点的切向加速度大小为![formula-object](assets/university-physics-3-1-005/image-008.png)=  ________；法向加速度大小为${a}_{n}$=  ________；角加速度$\beta$=  ________．
+质点沿半径为$R$的圆周运动，运动学方程为 $\theta =3+2{t}^{2}$  (SI) ，则$t$时刻质点的切向加速度大小为$a_\tau$=  ________；法向加速度大小为${a}_{n}$=  ________；角加速度$\beta$=  ________．
 
 12．（本题3分）
 
@@ -118,11 +118,11 @@ C、${\eta }_{1}={\eta }_{2},{W}_{1}>{W}_{2}$      D、${\eta }_{1}={\eta }_{2},
 
 13．（本题3分）
 
-一沿$x$轴正方向的力作用在一质量为0.5 kg的质点上，已知质点的运动学方程为![formula-object](assets/university-physics-3-1-005/image-009.png)，则力在最初2秒内做的功＝________焦耳．
+一沿$x$轴正方向的力作用在一质量为0.5 kg的质点上，已知质点的运动学方程为$x=t^3$，则力在最初2秒内做的功＝________焦耳．
 
 14．（本题3分）
 
-![formula-object](assets/university-physics-3-1-005/image-010.png)如图所示，一静止的均匀细棒，长为$L$、质量为![formula-object](assets/university-physics-3-1-005/image-011.png)，可绕通过棒的端点且垂直于棒长的光滑固定轴$O$在水平面内转动，转动惯量为![formula-object](assets/university-physics-3-1-005/image-012.png)．一质量为$m$、速率为$\upsilon$的子弹在水平面内沿与棒垂直的方向射出并穿出棒的自由端，设穿过棒后子弹的速率为$\frac {1} {2}v$，则此时棒的角速度＝________
+$\frac{1}{2}v$如图所示，一静止的均匀细棒，长为$L$、质量为$m$，可绕通过棒的端点且垂直于棒长的光滑固定轴$O$在水平面内转动，转动惯量为$\frac{1}{3}mL^{2}$．一质量为$m$、速率为$\upsilon$的子弹在水平面内沿与棒垂直的方向射出并穿出棒的自由端，设穿过棒后子弹的速率为$\frac {1} {2}v$，则此时棒的角速度＝________
 
 15．（本题3分）
 
@@ -134,7 +134,7 @@ C、${\eta }_{1}={\eta }_{2},{W}_{1}>{W}_{2}$      D、${\eta }_{1}={\eta }_{2},
 
 16．（本题3分）
 
-设入射波的表达式为  ![formula-object](assets/university-physics-3-1-005/image-015.png)．波在距原点![formula-object](assets/university-physics-3-1-005/image-016.png)处发生反射，反射点为固定端，则形成的反射波表达式为________．
+设入射波的表达式为  ![formula-object](assets/university-physics-3-1-005/image-015.png)．波在距原点$x_0=\frac{3\lambda}{8}$处发生反射，反射点为固定端，则形成的反射波表达式为________．
 
 17．（本题3分）
 
@@ -146,11 +146,11 @@ C、${\eta }_{1}={\eta }_{2},{W}_{1}>{W}_{2}$      D、${\eta }_{1}={\eta }_{2},
 
 19．（本题3分）
 
-![formula-object](assets/university-physics-3-1-005/image-017.png)的气体放在容积为![formula-object](assets/university-physics-3-1-005/image-018.png)的容器中，容器内气体的压强为![formula-object](assets/university-physics-3-1-005/image-019.png)。则气体分子的最概然速率等于________![formula-object](assets/university-physics-3-1-005/image-020.png)
+$3\times10^{-2}kg$的气体放在容积为$3\times10^{-2}m^{3}$的容器中，容器内气体的压强为$0.2\times10^{5}Pa$。则气体分子的最概然速率等于________$m\cdots^{-1}$
 
 20．（本题3分）
 
-有容积不同的A、B两个容器，A中装有氦气，B中装有氧气，若两种气体的压强相同，那么，这两种气体的单位体积的内能![formula-object](assets/university-physics-3-1-005/image-021.png)________![formula-object](assets/university-physics-3-1-005/image-022.png)（填![formula-object](assets/university-physics-3-1-005/image-023.png)）
+有容积不同的A、B两个容器，A中装有氦气，B中装有氧气，若两种气体的压强相同，那么，这两种气体的单位体积的内能$\left(\frac{U}{V}\right)_A$________$\left(\frac{U}{V}\right)_B$（填![formula-object](assets/university-physics-3-1-005/image-023.png)）
 
 <!-- question: university-physics-3-1-005-Q3 -->
 
@@ -158,11 +158,11 @@ C、${\eta }_{1}={\eta }_{2},{W}_{1}>{W}_{2}$      D、${\eta }_{1}={\eta }_{2},
 
 21．（本题10分）
 
-![formula-object](assets/university-physics-3-1-005/image-024.png)    两个大小不同、具有水平光滑轴的定滑轮，顶点在同一水平线上．小滑轮的质量为$m$，半径为$r$，对轴的转动惯量$J=\frac {1} {2}{mr}^{2}$．大滑轮的质量${m}^{'}=2m$，半径${r}^{'}=2r$，对轴的转动惯量${J}^{'}=\frac {1} {2}{m}^{'}{r}^{}$．一根不可伸长的轻质细绳跨过这两个定滑轮，绳的两端分别挂着物体A和B．A的质量为$m$，B的质量${m}^{'}=2m$．这一系统由静止开始转动．已知$m=6.0 kg$，$r=5.0 cm$    求两滑轮的角加速度和它们之间绳中的张力．
+$m,rm'mm'$    两个大小不同、具有水平光滑轴的定滑轮，顶点在同一水平线上．小滑轮的质量为$m$，半径为$r$，对轴的转动惯量$J=\frac {1} {2}{mr}^{2}$．大滑轮的质量${m}^{'}=2m$，半径${r}^{'}=2r$，对轴的转动惯量${J}^{'}=\frac {1} {2}{m}^{'}{r}^{}$．一根不可伸长的轻质细绳跨过这两个定滑轮，绳的两端分别挂着物体A和B．A的质量为$m$，B的质量${m}^{'}=2m$．这一系统由静止开始转动．已知$m=6.0 kg$，$r=5.0 cm$    求两滑轮的角加速度和它们之间绳中的张力．
 
 22．（本题10分）
 
-将压强![formula-object](assets/university-physics-3-1-005/image-025.png)，体积![formula-object](assets/university-physics-3-1-005/image-026.png)的氧气，自![formula-object](assets/university-physics-3-1-005/image-027.png)300K加热到![formula-object](assets/university-physics-3-1-005/image-028.png)400K，问：
+将压强$p_1=1.013\times10^5Pa$，体积$V_{1}=1\times10^{-3}m^{3}$的氧气，自$T_1=$300K加热到$T_2=$400K，问：
 
 （1）当压强不变时，需要多少热量?
 
@@ -170,7 +170,7 @@ C、${\eta }_{1}={\eta }_{2},{W}_{1}>{W}_{2}$      D、${\eta }_{1}={\eta }_{2},
 
 (3)  在等压和等体过程中各做多少功？
 
-(普适气体常量![formula-object](assets/university-physics-3-1-005/image-029.png)
+(普适气体常量$R=8.31J/(mol⋅K)$
 
 23．（本题10分）
 

@@ -32,7 +32,7 @@ locator_type: none
 
 1．（本题3分）
 
-一质点沿*x*方向运动，其加速度*a*  = 3+2  *t*  (SI) ，如果初始时质点的速度*v* 0为5 m/s，则当![formula-object](assets/university-physics-3-1-007/image-002.png)为3s时，质点的速度*v* 为
+一质点沿*x*方向运动，其加速度*a*  = 3+2  *t*  (SI) ，如果初始时质点的速度*v* 0为5 m/s，则当$t$为3s时，质点的速度*v* 为
 
 (A)  23  m/s          (B)  27m/s              (C)   32m/s          (D)   38  m/s          ［      ］
 
@@ -44,11 +44,11 @@ locator_type: none
 
 3．（本题3分）
 
-质量为*![formula-object](assets/university-physics-3-1-007/image-003.png)*的一艘宇宙飞船关闭发动机返回地球时，可认为该飞船只在地球的引力场中运动．已知地球质量为*![formula-object](assets/university-physics-3-1-007/image-004.png)*，万有引力恒量为*![formula-object](assets/university-physics-3-1-007/image-005.png)*，则当它从距地球中心*R*1处下降到*R*2处时，飞船增加的动能应等于
+质量为*$m$*的一艘宇宙飞船关闭发动机返回地球时，可认为该飞船只在地球的引力场中运动．已知地球质量为*![formula-object](assets/university-physics-3-1-007/image-004.png)*，万有引力恒量为*![formula-object](assets/university-physics-3-1-007/image-005.png)*，则当它从距地球中心*R*1处下降到*R*2处时，飞船增加的动能应等于
 
-(A)  $GMm\frac {{R}_{1}-{R}_{2}} {{R}_{1}^{2}{R}_{2}^{2}}$								(B)  ![formula-object](assets/university-physics-3-1-007/image-006.png)
+(A)  $GMm\frac {{R}_{1}-{R}_{2}} {{R}_{1}^{2}{R}_{2}^{2}}$								(B)  $GMm\frac{R_1+R_2}{R_1R_2}$
 
-(C)  $GMm\frac {{R}_{1}-{R}_{2}} {{R}_{1}{R}_{2}}$		        (D)  ![formula-object](assets/university-physics-3-1-007/image-007.png)   ［      ］
+(C)  $GMm\frac {{R}_{1}-{R}_{2}} {{R}_{1}{R}_{2}}$		        (D)  $GMm\frac{R_1^2-R_2^2}{R_1^2R_2^2}$   ［      ］
 
 4．（本题3分）
 
@@ -105,7 +105,7 @@ locator_type: none
 
 一束自然光垂直穿过两个偏振片，两个偏振片的偏振化方向间的夹角为45°．已知通过此两偏振片后的光强为*I*，则入射自然光的强度为
 
-(A)  ![formula-object](assets/university-physics-3-1-007/image-012.png)．     (B)  ![formula-object](assets/university-physics-3-1-007/image-013.png)．     (C)  ![formula-object](assets/university-physics-3-1-007/image-014.png)．     (D)  ![formula-object](assets/university-physics-3-1-007/image-015.png)．    ［      ］
+(A)  $21$．     (B)  $2\sqrt{21}$．     (C)  $\sqrt{21}$．     (D)  $41$．    ［      ］
 
 <!-- question: university-physics-3-1-007-Q2 -->
 
@@ -121,7 +121,7 @@ locator_type: none
 
 13．（本题3分）
 
-如图所示，滑块*A*、重物*B*和滑轮*C*的质量分别为2*m*、*m*和2*m*，滑轮的半径为*R*，滑轮对轴的转动惯量*J*＝$\frac {1} {2}$*m**C* *R*2（注：![formula-object](assets/university-physics-3-1-007/image-017.png)）**.**滑块*A*与桌面间、滑轮与轴承之间均无摩擦，绳的质量可不计，绳与滑轮之间无相对滑动．以![formula-object](assets/university-physics-3-1-007/image-018.png)表示重力加速度，则滑块*A*的加速度*a*＝______________．
+如图所示，滑块*A*、重物*B*和滑轮*C*的质量分别为2*m*、*m*和2*m*，滑轮的半径为*R*，滑轮对轴的转动惯量*J*＝$\frac {1} {2}$*m**C* *R*2（注：$m_C=2m$）**.**滑块*A*与桌面间、滑轮与轴承之间均无摩擦，绳的质量可不计，绳与滑轮之间无相对滑动．以$g$表示重力加速度，则滑块*A*的加速度*a*＝______________．
 
 14．（本题3分）
 
@@ -131,15 +131,15 @@ locator_type: none
 
 15．（本题3分）
 
-体积为![formula-object](assets/university-physics-3-1-007/image-020.png)、压强为![formula-object](assets/university-physics-3-1-007/image-021.png)的气体分子的平动动能的总和为_____________．
+体积为![formula-object](assets/university-physics-3-1-007/image-020.png)、压强为$p$的气体分子的平动动能的总和为_____________．
 
 16．（本题3分）
 
-一定量的理想气体，在![formula-object](assets/university-physics-3-1-007/image-022.png)图上经历一个如图所示的循环过程(![formula-object](assets/university-physics-3-1-007/image-023.png))，其中![formula-object](assets/university-physics-3-1-007/image-024.png)，![formula-object](assets/university-physics-3-1-007/image-025.png)两个过程是绝热过程，则该循环的效率![formula-object](assets/university-physics-3-1-007/image-026.png)=___________．
+一定量的理想气体，在$p-T$图上经历一个如图所示的循环过程(![formula-object](assets/university-physics-3-1-007/image-023.png))，其中![formula-object](assets/university-physics-3-1-007/image-024.png)，![formula-object](assets/university-physics-3-1-007/image-025.png)两个过程是绝热过程，则该循环的效率$n$=___________．
 
 17．（本题3分）
 
-一容器内盛有质量密度为*![formula-object](assets/university-physics-3-1-007/image-027.png)*的单原子理想气体，其压强为*p*，此气体分子的方均根速率为______________．
+一容器内盛有质量密度为*$a$*的单原子理想气体，其压强为*p*，此气体分子的方均根速率为______________．
 
 18．（本题3分）
 
@@ -159,7 +159,7 @@ locator_type: none
 
 21．（本题10分）
 
-光滑的水平桌面上，有一长为2*L*、质量为*m*的匀质细杆，可绕过其中点且垂直于杆的竖直光滑固定轴*O*自由转动，其转动惯量为![formula-object](assets/university-physics-3-1-007/image-028.png)，起初杆静止．桌面上有两个质量均为*m*的小球，各自在垂直于杆的方向上，正对着杆的一端，以相同速率*v*相向运动，如图所示．当两小球同时与杆的两个端点发生完全非弹性碰撞后，就与杆粘在一起转动，则
+光滑的水平桌面上，有一长为2*L*、质量为*m*的匀质细杆，可绕过其中点且垂直于杆的竖直光滑固定轴*O*自由转动，其转动惯量为$J=\frac{1}{3}mL^2$，起初杆静止．桌面上有两个质量均为*m*的小球，各自在垂直于杆的方向上，正对着杆的一端，以相同速率*v*相向运动，如图所示．当两小球同时与杆的两个端点发生完全非弹性碰撞后，就与杆粘在一起转动，则
 
 （1）这一系统碰撞后的初始转动角速度是多少？
 
@@ -191,10 +191,10 @@ locator_type: none
 
 24．（本题10分）
 
-波长**600nm的单色光垂直入射到一光栅上，相邻两条明纹的衍射角分别由公式![formula-object](assets/university-physics-3-1-007/image-030.png)与![formula-object](assets/university-physics-3-1-007/image-031.png)确定，已知第四级缺级．
+波长**600nm的单色光垂直入射到一光栅上，相邻两条明纹的衍射角分别由公式$sintheta=0.2$与$sintheta=0.3$确定，已知第四级缺级．
 
 (1)  光栅常数(*a*  +  *b*)等于多少nm？
 
 (2)  透光缝可能的最小宽度*a*等于多少nm？
 
-(3)  在选定了上述(*a*  +  *b*)和*a*之后，求在衍射角![formula-object](assets/university-physics-3-1-007/image-032.png)范围内可能观察到的全部主极大的级次．
+(3)  在选定了上述(*a*  +  *b*)和*a*之后，求在衍射角$-\frac{\pi}{2}<\theta<\frac{\pi}{2}$范围内可能观察到的全部主极大的级次．

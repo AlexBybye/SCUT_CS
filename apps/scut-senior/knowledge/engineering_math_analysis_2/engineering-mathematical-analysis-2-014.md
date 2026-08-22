@@ -33,58 +33,58 @@ locator_type: none
 
 1．下述函数中有可能成为二阶微分方程![formula-object](assets/engineering-mathematical-analysis-2-014/image-001.png)的通解的是（        ）
 
-A．![formula-object](assets/engineering-mathematical-analysis-2-014/image-002.png)；  				B．![formula-object](assets/engineering-mathematical-analysis-2-014/image-003.png)；
+A．$C_{1}x+C_{2}y=0$；  				B．$y-C_1^2=e^x+C_2$；
 
-C． ![formula-object](assets/engineering-mathematical-analysis-2-014/image-004.png)；  			    D．![formula-object](assets/engineering-mathematical-analysis-2-014/image-005.png)．
+C． $C_1y=C_2e^{C_3x}$；  			    D．$y=C_1lnx+C_2x+C_3$．
 
-2．设![formula-object](assets/engineering-mathematical-analysis-2-014/image-006.png)是可微函数，且![formula-object](assets/engineering-mathematical-analysis-2-014/image-007.png)，令![formula-object](assets/engineering-mathematical-analysis-2-014/image-008.png)，则![formula-object](assets/engineering-mathematical-analysis-2-014/image-009.png)（        ）
+2．设$f(x,y)$是可微函数，且$f(0,0)=0,\quadf_x(0,0)=a,\quadf_y(0,0)=b$，令$\varphi(t)=f(t,f(t,t))$，则$\varphi'(0)=$（        ）
 
-A．![formula-object](assets/engineering-mathematical-analysis-2-014/image-010.png)；  	   B．![formula-object](assets/engineering-mathematical-analysis-2-014/image-011.png)；	       C．![formula-object](assets/engineering-mathematical-analysis-2-014/image-012.png)；                  D．![formula-object](assets/engineering-mathematical-analysis-2-014/image-013.png)．
+A．$a$；  	   B．$a+b(a+b)$；	       C．$a+1$；                  D．$\frac{a}{1-b}$．
 
-3．![formula-object](assets/engineering-mathematical-analysis-2-014/image-014.png)交换积分顺序后，正确的结果是（         ）
+3．$\int_0^1\mathrm{d}y\int_{-y}^{\sqrt{2y-y^2}}f(x,y)\mathrm{d}x$交换积分顺序后，正确的结果是（         ）
 
-A．![formula-object](assets/engineering-mathematical-analysis-2-014/image-015.png)；    B．![formula-object](assets/engineering-mathematical-analysis-2-014/image-016.png)；
+A．$\int_{-1}^{0}\mathrm{d}x\int_{-x}^{1}f(x,y)\mathrm{d}y+\int_{0}^{1}\mathrm{d}x\int_{1-\sqrt{1-x^2}}^{1}f(x,y)\mathrm{d}y$；    B．$\int_0^1\mathrm{d}x\int_{1-\sqrt{1-x^2}}^{1}f(x,y)\mathrm{d}y$；
 
-C．![formula-object](assets/engineering-mathematical-analysis-2-014/image-017.png)；                                              D．![formula-object](assets/engineering-mathematical-analysis-2-014/image-018.png)．
+C．$\int_{-1}^{0}\mathrm{d}x\int_{-x}^{1}f(x,y)\mathrm{d}y$；                                              D．$\int_{-1}^{1}\mathrm{d}x\int_{1-\sqrt{1-x^2}}^{x}f(x,y)\mathrm{d}y$．
 
-4．设![formula-object](assets/engineering-mathematical-analysis-2-014/image-019.png)是右半圆周![formula-object](assets/engineering-mathematical-analysis-2-014/image-020.png)，则曲线积分![formula-object](assets/engineering-mathematical-analysis-2-014/image-021.png)（        ）
+4．设![formula-object](assets/engineering-mathematical-analysis-2-014/image-019.png)是右半圆周$x^2+y^2=a^2,x0,a>0$，则曲线积分$\int_C(x+y)ds=$（        ）
 
-A．![formula-object](assets/engineering-mathematical-analysis-2-014/image-022.png)；                B．![formula-object](assets/engineering-mathematical-analysis-2-014/image-023.png)；              C．![formula-object](assets/engineering-mathematical-analysis-2-014/image-024.png)；                  D．![formula-object](assets/engineering-mathematical-analysis-2-014/image-025.png)．
+A．$0$；                B．$2a^2$；              C．$a^2$；                  D．$4a$．
 
-5. 设![formula-object](assets/engineering-mathematical-analysis-2-014/image-026.png)，而![formula-object](assets/engineering-mathematical-analysis-2-014/image-027.png)，其中![formula-object](assets/engineering-mathematical-analysis-2-014/image-028.png)，则![formula-object](assets/engineering-mathematical-analysis-2-014/image-029.png)（          ）
+5. 设![formula-object](assets/engineering-mathematical-analysis-2-014/image-026.png)，而![formula-object](assets/engineering-mathematical-analysis-2-014/image-027.png)，其中![formula-object](assets/engineering-mathematical-analysis-2-014/image-028.png)，则$S\left(-\frac{1}{2}\right)\equiv$（          ）
 
-A．![formula-object](assets/engineering-mathematical-analysis-2-014/image-030.png)；              B．![formula-object](assets/engineering-mathematical-analysis-2-014/image-031.png)![formula-object](assets/engineering-mathematical-analysis-2-014/image-032.png)；              C．![formula-object](assets/engineering-mathematical-analysis-2-014/image-033.png)；              D．![formula-object](assets/engineering-mathematical-analysis-2-014/image-034.png)．
+A．$\frac{1}{2}$；              B．$\frac{1}{4}$![formula-object](assets/engineering-mathematical-analysis-2-014/image-032.png)；              C．$\frac{1}{4}$；              D．$\frac{1}{2}$．
 
 <!-- question: engineering-mathematical-analysis-2-014-Q1 -->
 
 二、**填空题**（每小题3分，共15分）
-  - 微分方程![formula-object](assets/engineering-mathematical-analysis-2-014/image-035.png)的通解为                                           ；
+  - 微分方程$yy''-y'^2=0$的通解为                                           ；
   - 设![formula-object](assets/engineering-mathematical-analysis-2-014/image-036.png)，则![formula-object](assets/engineering-mathematical-analysis-2-014/image-037.png)                                   ；
-  - 设区域![formula-object](assets/engineering-mathematical-analysis-2-014/image-038.png)，则二重积分![formula-object](assets/engineering-mathematical-analysis-2-014/image-039.png)             ；
-  - 已知曲线![formula-object](assets/engineering-mathematical-analysis-2-014/image-040.png)为![formula-object](assets/engineering-mathematical-analysis-2-014/image-041.png)，则曲线积分![formula-object](assets/engineering-mathematical-analysis-2-014/image-042.png)                     ；
-  - 幂级数![formula-object](assets/engineering-mathematical-analysis-2-014/image-043.png)的收敛域为                                              ．
+  - 设区域![formula-object](assets/engineering-mathematical-analysis-2-014/image-038.png)，则二重积分$\iint_{D}\sqrt{1-\sin^{2}x}dxdy=$             ；
+  - 已知曲线![formula-object](assets/engineering-mathematical-analysis-2-014/image-040.png)为$x^{2}+y^{2}=ax$，则曲线积分$\int_C\sqrt{x^2+y^2}ds=$                     ；
+  - 幂级数$\sum_{n=1}^{\infty}\frac{(x-2)^{n}}{n4^{n}}$的收敛域为                                              ．
 
 <!-- question: engineering-mathematical-analysis-2-014-Q2 -->
 
 三、**计算题**（每小题10分，共50分）
-- 计算三重积分![formula-object](assets/engineering-mathematical-analysis-2-014/image-044.png)，其中![formula-object](assets/engineering-mathematical-analysis-2-014/image-045.png)：![formula-object](assets/engineering-mathematical-analysis-2-014/image-046.png)．
+- 计算三重积分$I=\iiint_{\Omega}(x^2+y^2+z^2)dV$，其中![formula-object](assets/engineering-mathematical-analysis-2-014/image-045.png)：$x^{2}+y^{2}+z^{2}\leq2z$．
 
-2.设![formula-object](assets/engineering-mathematical-analysis-2-014/image-047.png)是锥面![formula-object](assets/engineering-mathematical-analysis-2-014/image-048.png)被平面![formula-object](assets/engineering-mathematical-analysis-2-014/image-049.png)及![formula-object](assets/engineering-mathematical-analysis-2-014/image-050.png)所截部分的外侧，计算第二类曲面积分![formula-object](assets/engineering-mathematical-analysis-2-014/image-051.png)．
+2.设![formula-object](assets/engineering-mathematical-analysis-2-014/image-047.png)是锥面$z=\sqrt{x^{2}+y^{2}}$被平面$Z=0$及$z=1$所截部分的外侧，计算第二类曲面积分$I=\iint_{\Sigma}xdydz+ydzdx+(z^2-2z)dxdy$．
 
-3.求幂级数![formula-object](assets/engineering-mathematical-analysis-2-014/image-052.png)的和函数，并据此求数项级数![formula-object](assets/engineering-mathematical-analysis-2-014/image-053.png)的值．
+3.求幂级数$\sum_{n=0}^{\infty}(2n+1)x^n$的和函数，并据此求数项级数$\sum_{n=0}^{\infty}\frac{2n+1}{2^n}$的值．
 
-4.  求![formula-object](assets/engineering-mathematical-analysis-2-014/image-054.png)的值，使得包含圆周![formula-object](assets/engineering-mathematical-analysis-2-014/image-055.png)在其内部的椭圆![formula-object](assets/engineering-mathematical-analysis-2-014/image-056.png)有最小的面积．
+4.  求$a,b$的值，使得包含圆周$(x-1)^2+y^2=1$在其内部的椭圆![formula-object](assets/engineering-mathematical-analysis-2-014/image-056.png)有最小的面积．
 
-5.  求微分方程![formula-object](assets/engineering-mathematical-analysis-2-014/image-057.png)的通解．
+5.  求微分方程$y''-y=2xe^x$的通解．
 
 <!-- question: engineering-mathematical-analysis-2-014-Q3 -->
 
 四、**证明题**（本题10分）
 
-证明数项级数![formula-object](assets/engineering-mathematical-analysis-2-014/image-058.png)条件收敛．
+证明数项级数$\sum_{n=1}^{\infty}\sin(\pi\sqrt{n^{2}+1})$条件收敛．
 
 <!-- question: engineering-mathematical-analysis-2-014-Q4 -->
 
 五、**应用题**（本题10分）
 
-设某山峰可由曲面![formula-object](assets/engineering-mathematical-analysis-2-014/image-059.png)表示。位于点![formula-object](assets/engineering-mathematical-analysis-2-014/image-060.png)处的登山者发现其供氧面具漏气，必须返回。他应该沿哪个方向才能最快到达山底？
+设某山峰可由曲面$z=5-x^{2}-2y^{2}$表示。位于点$\left(\frac{1}{2},-\frac{1}{2},\frac{17}{4}\right)$处的登山者发现其供氧面具漏气，必须返回。他应该沿哪个方向才能最快到达山底？

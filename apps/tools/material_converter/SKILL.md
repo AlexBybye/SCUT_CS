@@ -32,8 +32,20 @@
    cd apps/tools/material_converter
    .venv/bin/python -m material_converter.main --course <文件夹名> --validate
    ```
-4. **AI 归一化**：`--emit-ai-jobs` 导出作业包 → 逐个回填公式 LaTeX / OCR 结论 / notes →
-   `--finalize` 应用（保持 `pending`）。
+4. **AI 语义归一化**：
+   ```bash
+   # 4a. 导出作业包（公式图清单 + OCR 页清单）
+   .venv/bin/python -m material_converter.main --emit-ai-jobs
+   # 4b. GLM-4V 视觉转写公式图（三道闸：三票多数决 → 确定性校验 → mathtext 渲染闸；
+   #     凭证放仓库根 .cache/glm4v.env，见 README；未过闸的自动保留 PNG）
+   .venv/bin/python -m material_converter.main --vision-run --vision-workers 4
+   #    先试小样: --vision-run 20
+   # 4c. 按内容哈希传播转写结果到全部作业包（同一张图只转一次）
+   .venv/bin/python -m material_converter.main --vision-propagate
+   # 4d. 应用回知识库（替换为 $...$、清理已用资产、状态保持 pending）
+   .venv/bin/python -m material_converter.main --finalize
+   ```
+   无视觉模型时跳过 4b/4c，直接人工回填 formulas.json 后执行 4d。
 5. **人工审核**：逐文件对照原件，确认公式/题界/顺序/隐私，然后才把该行置 `passed`。
 
 ## 关键约定

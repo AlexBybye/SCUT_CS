@@ -4,3 +4,4 @@ python-pptx>=0.6.23
 pymupdf>=1.24
 pyyaml>=6
 olefile>=0.46
+matplotlib>=3.8

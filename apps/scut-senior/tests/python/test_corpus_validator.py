@@ -161,7 +161,8 @@ def test_course_resolution_is_normalized_exact_not_substring() -> None:
     assert registry.resolve("C++程序设计基础") == "cpp"
     assert registry.resolve("大物上实验合辑") is None
     assert registry.resolve("信息安全") == "information_security_intro"
-    assert registry.resolve("信息安全数学基础") is None
+    # 信息安全数学基础已注册为独立课程（2026-08-23 全量注册），不再视为被排除名。
+    assert registry.resolve("信息安全数学基础") == "information_security_mathematics"
     assert registry.resolve("线性代数课程") is None
     assert registry.resolve("请讲线性代数") is None
 

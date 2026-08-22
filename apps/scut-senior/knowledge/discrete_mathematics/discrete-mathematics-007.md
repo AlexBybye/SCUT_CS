@@ -18,7 +18,7 @@ locator_type: none
 
 **1.** $\forall$x$\exists$z (P(x)→Q(z,y))
 
-2.  ![formula-object](assets/discrete-mathematics-007/image-001.png)
+2.  $\phi$
 
 3. 1
 
@@ -36,7 +36,7 @@ locator_type: none
 
 10．图中无奇数度顶点
 
-11．{![formula-object](assets/discrete-mathematics-007/image-004.png)，{![formula-object](assets/discrete-mathematics-007/image-005.png)}，{{a}}，{![formula-object](assets/discrete-mathematics-007/image-006.png)，{a}}}，4
+11．{$\phi$，{$\phi$}，{{a}}，{$\phi$，{a}}}，4
 
 12．V’![formula-object](assets/discrete-mathematics-007/image-007.png)V ,  V’= V
 
@@ -52,7 +52,7 @@ locator_type: none
 
 2.
 
-3.  ![formula-object](assets/discrete-mathematics-007/image-009.png)
+3.  $\left(\begin{array}{ccccc}-1&1&0&0&0\\1&0&-1&1&-1\\0&0&0&0&1\\0&-1&1&-1&0\end{array}\right)$
 
 4.
 
@@ -62,20 +62,20 @@ locator_type: none
 
 1）R的关系图                                        R的关系矩阵
 
-![image](assets/discrete-mathematics-007/image-011.jpeg)![formula-object](assets/discrete-mathematics-007/image-012.png)
+![image](assets/discrete-mathematics-007/image-011.jpeg)$\left[\begin{array}{cccc}0&1&0&0\\0&0&1&1\\0&1&0&1\\0&0&1&1\\\end{array}\right]$
 
 r(R)的关系图                                          r(R)的关系矩阵
 
-![image](assets/discrete-mathematics-007/image-013.jpeg)![formula-object](assets/discrete-mathematics-007/image-014.png)
+![image](assets/discrete-mathematics-007/image-013.jpeg)$\left[\begin{array}{cccc}1&1&0&0\\0&1&1&1\\0&1&1&1\\0&0&1&1\\\end{array}\right]$
 
 s(R)的关系图                                        s(R)的关系矩阵
 
-![image](assets/discrete-mathematics-007/image-015.jpeg)![formula-object](assets/discrete-mathematics-007/image-016.png)
+![image](assets/discrete-mathematics-007/image-015.jpeg)$\left[\begin{array}{cccc}0&1&0&0\\1&0&1&1\\0&1&0&1\\0&0&1&0\\\end{array}\right]$
 
 **五．证明题(22分)**
 
 1.
-- ![formula-object](assets/discrete-mathematics-007/image-017.png)        前提引入
+- $t$        前提引入
 - ![formula-object](assets/discrete-mathematics-007/image-018.png)     前提引入
 - ![formula-object](assets/discrete-mathematics-007/image-019.png)       拒取式
 - ![formula-object](assets/discrete-mathematics-007/image-020.png)    前提引入
@@ -83,7 +83,7 @@ s(R)的关系图                                        s(R)的关系矩阵
 - ![formula-object](assets/discrete-mathematics-007/image-021.png)   前提引入
 - ![formula-object](assets/discrete-mathematics-007/image-022.png)      拒取式
 - ![formula-object](assets/discrete-mathematics-007/image-023.png)     前提引入
-- ![formula-object](assets/discrete-mathematics-007/image-024.png)         析取三段论
+- $q$         析取三段论
 
 2.
 
@@ -103,9 +103,9 @@ s(R)的关系图                                        s(R)的关系矩阵
 
 取![formula-object](assets/discrete-mathematics-007/image-030.png)  且  ![formula-object](assets/discrete-mathematics-007/image-031.png)
 
-![formula-object](assets/discrete-mathematics-007/image-032.png) ![formula-object](assets/discrete-mathematics-007/image-033.png)
+![formula-object](assets/discrete-mathematics-007/image-032.png) $u+y=x+v$
 
-![formula-object](assets/discrete-mathematics-007/image-034.png) ![formula-object](assets/discrete-mathematics-007/image-035.png)
+![formula-object](assets/discrete-mathematics-007/image-034.png) $x+v=u+y$
 
 ![formula-object](assets/discrete-mathematics-007/image-036.png) ![formula-object](assets/discrete-mathematics-007/image-037.png)
 
@@ -117,9 +117,9 @@ s(R)的关系图                                        s(R)的关系矩阵
 
 ![formula-object](assets/discrete-mathematics-007/image-040.png) ![formula-object](assets/discrete-mathematics-007/image-041.png)，![formula-object](assets/discrete-mathematics-007/image-042.png)
 
-![formula-object](assets/discrete-mathematics-007/image-043.png) ![formula-object](assets/discrete-mathematics-007/image-044.png)
+![formula-object](assets/discrete-mathematics-007/image-043.png) $u-v=x-y$
 
-![formula-object](assets/discrete-mathematics-007/image-045.png) ![formula-object](assets/discrete-mathematics-007/image-046.png)
+![formula-object](assets/discrete-mathematics-007/image-045.png) $u+y=x+v$
 
 ![formula-object](assets/discrete-mathematics-007/image-047.png) ![formula-object](assets/discrete-mathematics-007/image-048.png)
 

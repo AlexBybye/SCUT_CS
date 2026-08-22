@@ -42,9 +42,9 @@ locator_type: none
 
 光滑的水平桌面上有长为2*l*、质量为*m*的匀质细杆，可绕通过其中点*O*且垂直于桌面的竖直固定轴自由转动，转动惯量为$\frac {1} {3}{ml}^{2}$，起初杆静止．有一质量为*m*的小球在桌面上正对着杆的一端，在垂直于杆长的方向上，以速率![formula-object](assets/university-physics-3-1-009/image-002.png)运动，如图所示．当小球与杆端发生碰撞后，就与杆粘在一起随杆转动．则这一系统碰撞后的转动角速度是
 
-(A)  ![formula-object](assets/university-physics-3-1-009/image-003.png)．       (B) ![formula-object](assets/university-physics-3-1-009/image-004.png)．
+(A)  $\frac{v}{12l}$．       (B) $\frac{2v}{3l}$．
 
-(C)  ![formula-object](assets/university-physics-3-1-009/image-005.png)．       (D)  ![formula-object](assets/university-physics-3-1-009/image-006.png)．        ［      ］
+(C)  $\frac{3v}{4l}$．       (D)  $\frac{3v}{2l}$．        ［      ］
 
 3．（本题3分）
 
@@ -72,13 +72,13 @@ locator_type: none
 
 2  mol理想气体经过一等压过程，温度变为原来的4倍，设该气体的等压摩尔热容为*C**p*，则此过程中气体熵的增量为
 
-(A)    ![formula-object](assets/university-physics-3-1-009/image-009.png)．               (B)    ![formula-object](assets/university-physics-3-1-009/image-010.png)．
+(A)    $8C_p$．               (B)    $C_pln8$．
 
-(C)  ![formula-object](assets/university-physics-3-1-009/image-011.png)．           (D)    *C**p*  ln2．               ［      ］
+(C)  $2C_pln4$．           (D)    *C**p*  ln2．               ［      ］
 
 6．（本题3分）
 
-某时刻驻波波形曲线如图所示，![formula-object](assets/university-physics-3-1-009/image-012.png)处坐标为![formula-object](assets/university-physics-3-1-009/image-013.png)，![formula-object](assets/university-physics-3-1-009/image-014.png)处坐标为![formula-object](assets/university-physics-3-1-009/image-015.png)，则*a*、*b*两点振动的相位差是
+某时刻驻波波形曲线如图所示，$a$处坐标为$\frac{a}{2}$，$b$处坐标为$\frac{9a}{8}$，则*a*、*b*两点振动的相位差是
 
 (A)    0              (B)    $\frac {1} {2}\pi$
 
@@ -114,9 +114,9 @@ locator_type: none
 
 如图所示，一束自然光入射到折射率分别为*n*1和*n*2的两种介质的交界面上，发生反射和折射．已知反射光是完全偏振光，那么折射角*r*的值为
 
-(A)  ![formula-object](assets/university-physics-3-1-009/image-016.png)．            (B)  ![formula-object](assets/university-physics-3-1-009/image-017.png)．
+(A)  $arctg\frac{n_2}{n_1}$．            (B)  $\arcsin\frac{n_2}{n_1}$．
 
-(C)  ![formula-object](assets/university-physics-3-1-009/image-018.png)．            (D)  ![formula-object](assets/university-physics-3-1-009/image-019.png)．      ［      ］
+(C)  $\arcsin\frac{n_1}{n_2}$．            (D)  $arctg\frac{n_1}{n_2}$．      ［      ］
 
 <!-- question: university-physics-3-1-009-Q2 -->
 
@@ -126,11 +126,11 @@ locator_type: none
 
 在*xy*平面内有一运动质点，其运动学方程为：$r=10cos5 t i+10sin5 t j$（SI）
 
-则*t*时刻其切向加速度的大小![formula-object](assets/university-physics-3-1-009/image-020.png)= ______________．
+则*t*时刻其切向加速度的大小$a_\tau$= ______________．
 
 12．（本题3分）
 
-一吊车底板上放一质量为10 kg的物体，若吊车底板由静止开始加速上升，加速度大小为*a*＝3+5*t*  (SI)，![formula-object](assets/university-physics-3-1-009/image-021.png)，则前2秒内吊车底板给物体的冲量大小*I*＝___________![formula-object](assets/university-physics-3-1-009/image-022.png)．
+一吊车底板上放一质量为10 kg的物体，若吊车底板由静止开始加速上升，加速度大小为*a*＝3+5*t*  (SI)，$g=10m/s$，则前2秒内吊车底板给物体的冲量大小*I*＝___________![formula-object](assets/university-physics-3-1-009/image-022.png)．
 
 13．（本题3分）
 
@@ -138,7 +138,7 @@ locator_type: none
 
 14．（本题3分）
 
-若某种理想气体分子的方均根速率![formula-object](assets/university-physics-3-1-009/image-023.png) m / s，气体压强为*p*=8×104  Pa，则该气体的密度为**＝_______________ kg/m3．
+若某种理想气体分子的方均根速率$\left(\overline{v^2}\right)^{1/2}=400$ m / s，气体压强为*p*=8×104  Pa，则该气体的密度为**＝_______________ kg/m3．
 
 15．（本题3分）
 
@@ -152,7 +152,7 @@ locator_type: none
 
 17．（本题3分）
 
-如图所示的是两个简谐振动的振动曲线，它们合成的余弦振动的振动方程![formula-object](assets/university-physics-3-1-009/image-024.png)________________(SI)  （用余弦函数描述）
+如图所示的是两个简谐振动的振动曲线，它们合成的余弦振动的振动方程$x=$________________(SI)  （用余弦函数描述）
 
 18．（本题3分）
 
@@ -172,7 +172,7 @@ He－Ne激光器发出**=500  nm (1nm=10-9  m)的平行光束，垂直照射�
 
 21．（本题10分）
 
-![formula-object](assets/university-physics-3-1-009/image-025.png)质量为*M*1＝25  kg的圆轮，可绕水平光滑固定轴转动，一轻绳缠绕于轮上，另一端通过质量为*M*2＝5 kg的圆盘形定滑轮悬有*m*＝10 kg的物体，![formula-object](assets/university-physics-3-1-009/image-026.png)．求当重物由静止开始下降了*h*＝0.5 m时，
+![formula-object](assets/university-physics-3-1-009/image-025.png)质量为*M*1＝25  kg的圆轮，可绕水平光滑固定轴转动，一轻绳缠绕于轮上，另一端通过质量为*M*2＝5 kg的圆盘形定滑轮悬有*m*＝10 kg的物体，$g=10m/s$．求当重物由静止开始下降了*h*＝0.5 m时，
 
 (1)  物体的速度；
 
@@ -194,11 +194,11 @@ He－Ne激光器发出**=500  nm (1nm=10-9  m)的平行光束，垂直照射�
 
 （5）整个循环过程中系统吸收的总热量（吸热和放热之和）．
 
-(注：摩尔气体常量![formula-object](assets/university-physics-3-1-009/image-028.png)
+(注：摩尔气体常量$R=8.31J/(mol⋅K)$
 
 23．（本题10分）
 
-如图所示，一平面简谐横波沿*Ox*轴的正方向传播，已知振幅![formula-object](assets/university-physics-3-1-009/image-029.png)，![formula-object](assets/university-physics-3-1-009/image-030.png)，![formula-object](assets/university-physics-3-1-009/image-031.png)，![formula-object](assets/university-physics-3-1-009/image-032.png)。若![formula-object](assets/university-physics-3-1-009/image-033.png)时，*P*处介质质点刚好到达负的最大位移处。以![formula-object](assets/university-physics-3-1-009/image-034.png)轴表示振动方向，求
+如图所示，一平面简谐横波沿*Ox*轴的正方向传播，已知振幅$A=2m$，$T=2s$，$\lambda=2m$，$L=0.5m$。若$t=0$时，*P*处介质质点刚好到达负的最大位移处。以$y$轴表示振动方向，求
 
 (1)    *P*处质点的振动方程；
 
@@ -210,10 +210,10 @@ He－Ne激光器发出**=500  nm (1nm=10-9  m)的平行光束，垂直照射�
 
 24．（本题10分）
 
-波长**600nm的单色光垂直入射到一光栅上，相邻两条明纹的衍射角分别由公式![formula-object](assets/university-physics-3-1-009/image-035.png)与![formula-object](assets/university-physics-3-1-009/image-036.png)确定，已知第四级缺级．
+波长**600nm的单色光垂直入射到一光栅上，相邻两条明纹的衍射角分别由公式$sintheta=0.2$与$sintheta=0.3$确定，已知第四级缺级．
 
 (1)  光栅常数(*a*  +  *b*)等于多少nm？
 
 (2)  透光缝可能的最小宽度*a*等于多少nm？
 
-(3)  在选定了上述(*a*  +  *b*)和*a*之后，求在衍射角![formula-object](assets/university-physics-3-1-009/image-037.png)范围内可能观察到的全部主极大的级次．
+(3)  在选定了上述(*a*  +  *b*)和*a*之后，求在衍射角$-\frac{\pi}{2}<\theta<\frac{\pi}{2}$范围内可能观察到的全部主极大的级次．

@@ -1,0 +1,13 @@
+---
+source_id: compiler-principles-033
+course_id: compiler_principles
+title: "分析栈"
+original_file: "学科资料/编译原理/复习ppt和知识点/分析栈.png"
+document_role: note
+year: 
+locator_type: none
+---
+
+# 分析栈
+
+![page-001.png](assets/assets/compiler-principles-033/page-001.png)

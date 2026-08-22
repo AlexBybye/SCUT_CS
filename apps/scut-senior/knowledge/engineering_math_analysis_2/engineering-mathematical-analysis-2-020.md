@@ -29,34 +29,34 @@ locator_type: none
 | **得 分** |  |  |  |  |  |  |
 
 **一、填空题**（每小题4分，共20分）
-  - 微分方程![formula-object](assets/engineering-mathematical-analysis-2-020/image-001.png)的特解形式为                                    ；
-  - 设由方程![formula-object](assets/engineering-mathematical-analysis-2-020/image-002.png)确定了![formula-object](assets/engineering-mathematical-analysis-2-020/image-003.png)，其中![formula-object](assets/engineering-mathematical-analysis-2-020/image-004.png)有连续的偏导数，则
+  - 微分方程$y''-y=2xe^x$的特解形式为                                    ；
+  - 设由方程$f(x-y,y-z,z-x)=0$确定了$z=z(x,y)$，其中$f$有连续的偏导数，则
 
-![formula-object](assets/engineering-mathematical-analysis-2-020/image-005.png)                                     ；
-  - 交换积分的顺序，则![formula-object](assets/engineering-mathematical-analysis-2-020/image-006.png)                              ；
-  - 设![formula-object](assets/engineering-mathematical-analysis-2-020/image-007.png)是周期为![formula-object](assets/engineering-mathematical-analysis-2-020/image-008.png)的周期函数，它在区间![formula-object](assets/engineering-mathematical-analysis-2-020/image-009.png)上的表达式为![formula-object](assets/engineering-mathematical-analysis-2-020/image-010.png)，则![formula-object](assets/engineering-mathematical-analysis-2-020/image-011.png)的Fourier级数在![formula-object](assets/engineering-mathematical-analysis-2-020/image-012.png)处收敛于              ；
-  - 设![formula-object](assets/engineering-mathematical-analysis-2-020/image-013.png)取逆时针方向，则![formula-object](assets/engineering-mathematical-analysis-2-020/image-014.png)              ．
+$dz=$                                     ；
+  - 交换积分的顺序，则$\int_0^1dy\int_{y^2}^yf(x,y)dx=$                              ；
+  - 设$f(x)$是周期为$2$的周期函数，它在区间![formula-object](assets/engineering-mathematical-analysis-2-020/image-009.png)上的表达式为$f(x)=\begin{cases}3,&-1<x\leq0\\x^3,&0<x\leq1\end{cases}$，则$f(x)$的Fourier级数在$x=1$处收敛于              ；
+  - 设$L:|x|+|y|=1,$取逆时针方向，则![formula-object](assets/engineering-mathematical-analysis-2-020/image-014.png)              ．
 
 二、**计算题**（每小题10分，共40分）
 
-1.  设![formula-object](assets/engineering-mathematical-analysis-2-020/image-015.png)其中![formula-object](assets/engineering-mathematical-analysis-2-020/image-016.png)具有二阶连续的偏导数，求![formula-object](assets/engineering-mathematical-analysis-2-020/image-017.png)。
+1.  设$z=f\left(2x,\frac{y}{x}\right),$其中$f$具有二阶连续的偏导数，求$\frac{\partial^2z}{\partial x\partial y}$。
 
-2.    计算三重积分![formula-object](assets/engineering-mathematical-analysis-2-020/image-018.png)，其中![formula-object](assets/engineering-mathematical-analysis-2-020/image-019.png)是由球面![formula-object](assets/engineering-mathematical-analysis-2-020/image-020.png)与抛物面![formula-object](assets/engineering-mathematical-analysis-2-020/image-021.png)所围成的区域。
+2.    计算三重积分$I=\iiint_{\Omega}zdxdydz,$，其中![formula-object](assets/engineering-mathematical-analysis-2-020/image-019.png)是由球面$x^2+y^2+z^2=4$与抛物面$x^2+y^2=3z$所围成的区域。
 
-3.  计算曲线积分![formula-object](assets/engineering-mathematical-analysis-2-020/image-022.png)，其中![formula-object](assets/engineering-mathematical-analysis-2-020/image-023.png)是从![formula-object](assets/engineering-mathematical-analysis-2-020/image-024.png)沿曲线![formula-object](assets/engineering-mathematical-analysis-2-020/image-025.png)到![formula-object](assets/engineering-mathematical-analysis-2-020/image-026.png)的有向曲线弧段。
+3.  计算曲线积分$I=\int_L\frac{-ydx+xdy}{x^2+4y^2}$，其中$L$是从$A(-\pi,0)$沿曲线$y=\cos\frac{x}{2}$到$B(\pi,0)$的有向曲线弧段。
 
-4.    设![formula-object](assets/engineering-mathematical-analysis-2-020/image-027.png)是锥面![formula-object](assets/engineering-mathematical-analysis-2-020/image-028.png)被平面![formula-object](assets/engineering-mathematical-analysis-2-020/image-029.png)及![formula-object](assets/engineering-mathematical-analysis-2-020/image-030.png)所截部分的下侧，计算曲面积分![formula-object](assets/engineering-mathematical-analysis-2-020/image-031.png)。
+4.    设![formula-object](assets/engineering-mathematical-analysis-2-020/image-027.png)是锥面$z=\sqrt{x^{2}+y^{2}}$被平面$Z=0$及$z=1$所截部分的下侧，计算曲面积分$I=\iint_{\Sigma}2x\,dy\,dz+3y\,dz\,dx+(z^2-5z)\,dx\,dy$。
 
 三、**解答题**（每小题10分，共20分）
 
-1.    求幂级数![formula-object](assets/engineering-mathematical-analysis-2-020/image-032.png)的和函数。
+1.    求幂级数$\sum_{n=1}^\infty\frac{2n-1}{n!}x^{2n}$的和函数。
 
-2.  设![formula-object](assets/engineering-mathematical-analysis-2-020/image-033.png)，其中![formula-object](assets/engineering-mathematical-analysis-2-020/image-034.png)为连续函数，求![formula-object](assets/engineering-mathematical-analysis-2-020/image-035.png)。
+2.  设![formula-object](assets/engineering-mathematical-analysis-2-020/image-033.png)，其中$f(x)$为连续函数，求$f(x)$。
 
 四、**证明题**（本题10分）
 
-证明：级数![formula-object](assets/engineering-mathematical-analysis-2-020/image-036.png)在![formula-object](assets/engineering-mathematical-analysis-2-020/image-037.png)上一致收敛。
+证明：级数$\sum_{n=1}^{\infty}\frac{\sin(nx)}{n^{2}}$在$(-\infty,+\infty)$上一致收敛。
 
 五、**应用题**（本题10分）
 
-求椭球面![formula-object](assets/engineering-mathematical-analysis-2-020/image-038.png)在第一卦限的一点，使该点处的切平面在三个坐标轴上的截距平方和最小。
+求椭球面$x^{2}+y^{2}+\frac{z^{2}}{4}=1$在第一卦限的一点，使该点处的切平面在三个坐标轴上的截距平方和最小。

@@ -1,112 +1,217 @@
-# 学科资料 → Markdown 转换工具（material_converter）
+# material_converter · 学科资料 → 知识库 Markdown 管线
 
-依据 `apps/scut-senior/docs/MATERIAL_TO_MARKDOWN_SOP.md` v1.7 与 `PLAN-1.md` v1.11。
-把散落在各批次里的转换逻辑固化为一个可重复、增量、可测的工具包，供后续大一／大二／大三
-课程接入以及“各科新资料上传后增量入库”反复使用。
+把 `学科资料/` 下的 DOCX / DOC / PDF / PPTX / PPT / TXT / CPP / MD / 散图，
+按 `apps/scut-senior/docs/MATERIAL_TO_MARKDOWN_SOP.md` v1.7 转成带 frontmatter、
+图片资产、page/slide/heading 锚点、manifest 记录的知识库条目。
 
-> 一句话：**在 `学科资料/` 下新增或替换文件后，跑一次本工具，它就按 SOP 生成/跳过对应
-> Markdown + 图片资产 + manifest 记录（状态一律 `pending`），并自动过 validator。**
+**两段式架构**：
 
-## 前置依赖
+```
+确定性抽取（本工具，无 AI）          AI 语义归一化（GLM-4V 视觉转写）
+├─ 文本/标题层级/表格/图片    ──►   ├─ 公式预览图 → LaTeX（三道闸）
+├─ 原生 OMML 公式 → LaTeX           └─ 未过闸自动保留 PNG（SOP 4.2 回退）
+├─ WMF/EMF 矢量公式 → PNG
+├─ PDF 分页 / 扫描页整页渲染        人工审核（唯一 passed 入口，SOP §4）
+├─ 去重 / 准入判断 / 隐私预处理
+└─ manifest.csv 记录
+```
 
-- Python 3.11+（建议 3.13/3.14）
-- LibreOffice（处理旧 `.doc`//`.ppt` 与 WMF/EMF 公式预览图），可用以下任一：
-  - 已安装到 `/Applications/LibreOffice.app` 或 `~/Applications/LibreOffice.app`；
-  - 环境变量 `MMD_SOFFICE=/绝对路径/soffice`；
-  - 或已放在 `repo/.cache/LibreOffice.app`。
+> 红线：工具与 AI 都**不总结、不纠错、不猜写**；AI 输出永远 `pending`；
+> 只有对照过原件的人才能置 `passed`。
 
-### 首次准备
+---
+
+## 一、环境要求
+
+| 组件 | 必需性 | 说明 |
+|---|---|---|
+| Python **3.10+** | 必需 | 建议 3.11/3.12 |
+| LibreOffice 26.x | doc/ppt/矢量公式需要 | 纯 docx/pptx/pdf 课程可不装 |
+| GLM-4V API Key | 仅视觉转写需要 | 智谱开放平台 `glm-4v-flash` 有免费额度 |
+| Git Bash / PowerShell | 运行脚本 | Windows 推荐 PowerShell |
+
+依赖清单见 `requirements.txt`（mammoth、python-docx、python-pptx、pymupdf、
+pyyaml、olefile、matplotlib）。全部装进仓库根的 `.venv`，不污染系统。
+
+## 二、安装
+
+### macOS / Linux
+
+```bash
+cd 仓库根目录
+bash apps/tools/material_converter/bootstrap.sh      # 建 .venv + 装依赖
+# LibreOffice：brew install --cask libreoffice 或从官网 DMG 安装
+```
+
+### Windows（PowerShell）
+
+```powershell
+cd 仓库根目录
+powershell -ExecutionPolicy Bypass -File apps\tools\material_converter\bootstrap.ps1
+# LibreOffice：https://www.libreoffice.org 下载安装（默认路径可被自动识别）
+```
+
+脚本会自动探测 soffice 并写入用户环境变量 `MMD_SOFFICE`；重开终端生效。
+手动设置：`setx MMD_SOFFICE "C:\Program Files\LibreOffice\program\soffice.exe"`
+
+### 视觉转写凭证（可选）
+
+仓库根建 `.cache/glm4v.env`（已被 gitignore）：
+
+```
+GLM_BASE_URL=https://open.bigmodel.cn/api/paas/v4
+GLM_MODEL=glm-4v-flash
+GLM_API_KEY=<你的key>
+```
+
+> 注意：视觉转写会把试卷图片上传到智谱云。内容为课程资料且身份信息已脱敏。
+
+---
+
+## 三、快速开始
 
 ```bash
 cd apps/tools/material_converter
-python3 -m venv .venv && ./.venv/bin/pip install -r requirements.txt
-# 校验
-./.venv/bin/python -m material_converter.main --dry
+
+# macOS/Linux                                # Windows PowerShell
+$PY = ../../../.venv/bin/python               $PY = ..\..\..\.venv\Scripts\python.exe
+
+$PY -m material_converter.main --dry                    # 全量预演（不改任何文件）
+$PY -m material_converter.main --course 线性代数         # 只跑某课程
+$PY -m material_converter.main                          # 全量增量（幂等，已入库自动跳过）
+$PY -m material_converter.main --validate               # 结束后跑 corpus_validator
+$PY -m material_converter.main --file "学科资料/xx.pdf"  # 单文件调试
 ```
 
-## 常用命令
+Windows 下若提示找不到 soffice：先 `$env:MMD_SOFFICE="C:\Program Files\LibreOffice\program\soffice.exe"` 再运行。
+所有命令都在 `apps/tools/material_converter` 目录下执行（包内路径自定位，放哪都能跑，
+但**不要**把包挪出 `apps/tools/`，README/SKILL/CI 引用均以此为准）。
+
+---
+
+## 四、完整工作流（新学科入库）
+
+### 第 1 步 · 课程注册（先注册再转换）
+
+编辑 `apps/scut-senior/packages/contracts/v1/courses.json`，追加：
+
+```json
+{ "course_id": "data_structure", "display_name": "数据结构",
+  "aliases": ["数据结构与算法"], "repository_paths": ["学科资料/数据结构"],
+  "is_open": false, "fixture_available": false }
+```
+
+- `repository_paths` 指向 `学科资料/<文件夹>`（相对仓库根）
+- 同步更新冻结测试计数：`tests/python/test_registry.py`、`test_harness_registry.py`
+  的 `len==N`，以及 `test_contract_assets.py` 的 `EXPECTED_COURSE_IDS`
+- 跑一遍：`uv run --project api pytest tests/python -q` 应全绿
+
+### 第 2 步 · 隐私前置
+
+文件名含真实姓名/学号/班级 → 先 `git mv` 脱敏；docx/pptx/pdf 元数据工具会自动清洗；
+正文身份泄露由 `scan_privacy` 标记进 notes，人工决议后保留或删除。
+
+### 第 3 步 · 确定性抽取
 
 ```bash
-cd apps/tools/material_converter
-V=.venv/bin/python
-
-$V -m material_converter.main                      # 全量增量：把 学科资料/ 全部课程中未入库、且非重复的候选转成 pending
-$V -m material_converter.main --course 线性代数     # 只处理某门课（参数用 学科资料/ 文件夹名）
-$V -m material_converter.main --file 学科资料/概率论/往年卷/xxx.docx   # 单文件
-$V -m material_converter.main --dry                # 只报告，不写文件、不动 manifest
-$V -m material_converter.main --validate           # 转换后自动跑 corpus validator
+$PY -m material_converter.main --course 数据结构 --validate
 ```
 
-行为要点：
+输出行含义：`candidates=候选 already_in_manifest=已入库 dedup_skipped=去重
+converted=新增 skipped=复用 errors=失败`。**errors 必须为 0** 再继续。
 
-- **增量**：`original_path` 已在 `knowledge/manifest.csv` 的候选一律跳过（不重转、不覆盖）。
-- **去重**（SOP 步骤 1.7）：字节级重复、跨目录同名内容重复、以及「无答案版 ⊂ 答案版」的
-  子集件都会自动判去重并给出原因；已入库规范件优先。
-- **隐私前置**：文件名含身份信息需先在 `学科资料/` 里 `git mv` 脱敏后再跑；文档元数据
-  中匹配 `PRIVACY_IDENTITY_PATTERNS` 的 author/creator 会被就地清空；正文中的学号/班级
-  模式会写入 `notes` 警告，试卷密封线模板字段自动标注为非个人数据。
-- **状态**：所有 AI 生成结果一律 `pending`，`reviewer` 留空。人工对照原件审核后
-  手工改为 `passed` 并填 `reviewer`，再走 PR 流程。
-
-## 新增课程（大二／大三课程接入流程）
-
-1. 在 `apps/scut-senior/packages/contracts/v1/courses.json` 注册课程（`course_id`/`display_name`/
-   `aliases`/`repository_paths`），并确认 `is_open`/`fixture_available`；
-2. 把资料放入 `学科资料/<文件夹名>/`（目录名即 `repository_paths` 的 `学科资料/` 后缀）；
-3. 运行 `--course <文件夹名> --validate`。工具自动：读 courses.json、分配 source_id 前缀
-   （`course_id.replace('_','-')`，已有 10 门用 `LEGACY_SOURCE_PREFIX` 保留历史前缀）、
-   生成知识目录（既有目录优先，默认 `course_id`）、写入 manifest；
-4. 应用侧 corpus builder 需要 `courses.json` 里有该课程才能通过 validator —— 所以**先注册课程**。
-
-## 输入→产出映射
-
-| 原格式              | 处理                                                            | 定位         | method 记录                           |
-| ------------------- | --------------------------------------------------------------- | ------------ | ------------------------------------- |
-| DOCX                | 本地 OOXML 提取 + omml2latex；MathType/OLE 公式→PNG 预览图回退 | heading      | local OOXML extraction + omml2latex… |
-| 旧 DOC              | LibreOffice→docx 后同上                                        | heading      | libreoffice doc->docx…               |
-| PPTX                | python-pptx 逐页                                                | slide        | python-pptx slide extraction          |
-| 旧 PPT              | LibreOffice→pptx 后同上                                        | slide        | libreoffice ppt->pptx…               |
-| 原生文本 PDF        | PyMuPDF 分页文本                                                | page         | pymupdf text-layer…                  |
-| 无文本层 / 乱码 PDF | 整页渲染 JPEG 资产（无 OCR）                                    | page         | pymupdf page rendering…              |
-| TXT/CPP/MD/图片     | 规范化 / 单图资产                                               | heading/none | …normalization                       |
-
-## 常见问题
-
-- **`LibreOffice doc->docx failed`**：没找到 soffice。装 LibreOffice 或设 `MMD_SOFFICE`；
-  旧 `.doc`//`.ppt` 与 WMF/EMF 公式预览图都依赖它。
-- **结果全是 `pending`**：正确。AI 输出不能标记 `passed`（SOP §4），需人工审核。
-- **敏感文件**：加密 zip 不会破解，也不入链；如需处理请先解密并核对身份信息。
-- **占位符**：`md` 里的 `{ASSETS_DIR}` 在生成时替换为实际相对路径 `assets/<sid>`。
-
-## 与本工具相关的其它职责
-
-- 应用侧 chunk / 向量 / 检索 / 题目索引不在本工具职责内（SOP §5 步骤 10）。
-- `course` / `title` / `source_title` 事实源是 manifest；本工具不手工维护 chunk 字段。
-- 发布顺序：`pending → 人工审核 → passed → GitHub PR 人工合并 → 华为云构建 candidate → 验证 → active`。
-
-## 两段式：确定性抽取 + AI 归一化（重要）
-
-按 `MATERIAL_TO_MARKDOWN_SOP.md`，转换是**AI 深度参与的**。`material_converter` 本身只做
-**确定性结构抽取**（SOP 允许“工具可做”的部分：识别文字、恢复标题层级、转写原生 OMML 公式、
-保留图片/表格、加 page/slide 锚点），**不包含 AI 语义归一化**。AI 负责的工作不在工具里：
-
-- 扫描页/手写页 **OCR**（工具只整页渲染成 JPEG 图片，OCR 结论需人工决议）；
-- **公式图 → LaTeX 转写**（MathType/OLE 预览图，工具仅保留为 PNG 预览，不猜写）；
-- **阅读顺序/标题层级恢复**、**题目边界候选**（工具只给出简单正则候选）。
-
-### AI 阶段工作流
+### 第 4 步 · AI 视觉转写（可选，需 glm4v.env）
 
 ```bash
-cd apps/tools/material_converter
-# 1) 导出需要 AI 的作业包（每文件一个目录，含公式图清单/OCR页清单/原文）
-.venv/bin/python -m material_converter.main --emit-ai-jobs          # 或 --emit-ai-jobs <课程>
-# 2) AI（或人工）逐文件回填：
-#    .ai_jobs/<sid>/formulas.json  -> {image_name: "\\frac{...}{...}"}（能可靠识别的才填）
-#    .ai_jobs/<sid>/notes.md       -> 追加到 manifest notes
-#    （可选）OCR 结论写到 notes.md
-# 3) 应用结果（替换公式图→LaTeX、删无用公式资产、追加 notes、保持 pending）
-.venv/bin/python -m material_converter.main --finalize <课程或省略>
+$PY -m material_converter.main --emit-ai-jobs            # 导出作业包 .ai_jobs/<sid>/
+$PY -m material_converter.main --vision-run 20           # 先抽 20 张验质量
+$PY -m material_converter.main --vision-run              # 全量（约 2-3 次/张调用）
+$PY -m material_converter.main --vision-propagate        # 内容哈希去重传播
+$PY -m material_converter.main --finalize                # 应用：图片引用→ $LaTeX$
 ```
 
-**AI 阶段守则（SOP §4）**：只能转写/恢复/提议，绝不总结、缩写、解释、纠错、补写或凭常识猜公式。
-凡是不能与原件逐项对应的公式一律留下 PNG 预览并写 `notes`；状态保持 `pending`，由人工复核。
+- 三道闸：三票多数决 → 确定性校验（配平/禁散文/粘连拆分）→ mathtext 渲染闸
+  （矩阵类环境逐单元格校验）。任一不过 → 自动保留 PNG，绝不猜写
+- 断点续跑：进度落在 `.ai_jobs/_vision_results.jsonl`，中断后重跑只补缺
+- 无视觉模型时：跳过 vision 两步，人工直接填 `.ai_jobs/<sid>/formulas.json`
+  （格式 `{图片名: "latex"}`，没把握的留空串）后再 `--finalize`
+
+### 第 5 步 · 人工审核 → passed
+
+对照原件逐文件检查公式/题界/顺序/隐私，确认后把 manifest 该行 `status` 改
+`passed` 并填 `reviewer`。**这是唯一入库入口。**
+
+### 第 6 步 · 构建 candidate（应用侧）
+
+由 corpus builder 在洁净树上另行执行，不在本工具范围。
+
+---
+
+## 五、命令参考
+
+| 命令 | 作用 |
+|---|---|
+| `--course <文件夹名>` | 只处理指定课程 |
+| `--file <路径>` | 单文件转换调试 |
+| `--dry` | 预演统计，不写任何文件 |
+| `--validate` | 结束后运行 corpus validator |
+| `--emit-ai-jobs [课程]` | 导出 AI 作业包（pending 行；公式图/OCR页清单）|
+| `--finalize [课程]` | 应用 formulas.json/notes.md，状态保持 pending |
+| `--vision-run [N]` | GLM-4V 转写（N=张数限制；省略=全量）|
+| `--vision-workers N` | 转写并发数（默认 4）|
+| `--vision-propagate` | 转写结果按内容哈希传播 |
+
+`.ai_jobs/<sid>/` 结构：`source.md`（当前草稿）、`formulas.json`（待转公式）、
+`ocr_pages.json`（扫描页清单，OCR 属后续迭代）、`meta.json`。
+
+## 六、去重与准入规则（SOP 1.7）
+
+1. 已入库 `original_path` 直接跳过（增量幂等的基础）
+2. 字节级 md5 相同 → 复用
+3. 核心词基线相同（剥掉 无答案/答案/解答/题解/评分标准 后同名）→ 识别规范来源
+4. 「无答案」是「答案」版严格子集（容忍 ≤30% 差异）→ 只转答案版
+5. 跨课程误放（如概率论卷子放在工数 I 目录）→ 归属内容所在课程，只转一份
+6. 加密 zip 不破解不入库，等待密码
+
+## 七、隐私红线
+
+- 文件名/元数据/正文的真实姓名、班级、学号必须脱敏或记录决议
+- 试卷密封线的空白「姓名/学号」栏是原卷模板，保留
+- SQL 例题里的示例班级名等**非身份**命中，复核后记 notes 保留
+
+## 八、跨设备注意事项
+
+- 本工具路径自定位（向上扫描 `apps`+`学科资料`），克隆到任何位置都能跑；
+  但**保持包在 `apps/tools/material_converter/`**，文档与 CI 引用以该路径为准
+- Windows：LibreOffice 默认安装路径自动识别；绿色版请设 `MMD_SOFFICE`
+- `.cache/glm4v.env` 与 `.venv/`、`apps/tools/material_converter/.work|/.ai_jobs/`
+  均 gitignored——换设备需重建（glm4v.env 别提交）
+- 中断恢复：转换天然幂等（重跑跳过已入库）；视觉转写看 `_vision_results.jsonl` 行数
+
+## 九、故障排查
+
+| 症状 | 处理 |
+|---|---|
+| `LibreOffice doc->docx failed` | 设 `MMD_SOFFICE` 指向 soffice 可执行文件 |
+| `soffice=yes` 但 doc 仍失败 | 杀掉残留 soffice 进程；删 `.cache/lo_profile` 重试 |
+| PNG 大批 error 且 reason 为空 | 升级到含 image-only 分支修复的版本（fmt 点号问题）|
+| 视觉转写全 reject | 看 `_vision_results.jsonl` 的 `why` 字段；api-error 检查 key/网络 |
+| validator 报 title 不一致 | 数字型标题需引号（YAML 会把 `000` 解析成整数）|
+| matplotlib 缓存目录警告 | 设 `MPLCONFIGDIR`（CLI 已自动指到 `.cache/mpl`）|
+
+## 十、回滚
+
+任何批量操作前先备份：
+
+```bash
+tar czf .cache/knowledge_backup_$(date +%Y%m%d_%H%M).tar.gz apps/scut-senior/knowledge
+# 回滚：
+tar xzf .cache/knowledge_backup_<时间戳>.tar.gz
+```
+
+## 十一、相关文件
+
+- SOP：`apps/scut-senior/docs/MATERIAL_TO_MARKDOWN_SOP.md`
+- 技能卡：本目录 `SKILL.md`（已登记 `SCUT_SKILL及模版/Summary_Skill.md`）
+- 批次审核记录：`apps/scut-senior/docs/review_artifacts/2026-08-22-agent-batch-review.md`
+- 迭代记录：`apps/scut-senior/ITERATION_6_STATUS.md`

@@ -96,6 +96,46 @@ def _latex_block(latex, standalone):
     return f"\n$$\n{latex}\n$$\n" if standalone else f"${latex}$"
 
 
+_REF_RX = re.compile(r"!\[formula-object\]\((assets/[^)]+?)\)")
+
+
+def _apply_formulas(md: str, latex_by_ref: dict) -> tuple[str, list]:
+    """Per-reference conservative replacement.
+
+    - replace ONLY refs that have a verified latex string
+    - whole-line display ($$...$$) wrapping happens only when the line consists
+      of exactly one ref and nothing else
+    - refs without latex stay as images; no $ chars are ever added around them
+    """
+    changed = []
+
+    def repl(match):
+        ref = match.group(1)
+        name = ref.rsplit("/", 1)[-1]
+        latex = latex_by_ref.get(name)
+        if not latex:
+            return match.group(0)
+        changed.append(name)
+        return f"${latex}$"
+
+    out_lines = []
+    for line in md.split("\n"):
+        if "![formula-object]" in line:
+            new_line = _REF_RX.sub(repl, line)
+            stripped = new_line.strip()
+            # display block only for a single now-latex-only line
+            if ("$" in stripped and "![formula-object]" not in stripped
+                    and _REF_RX.search(line) is not None
+                    and len(_REF_RX.findall(line)) == 1
+                    and re.fullmatch(r"\$[^$]+\$", stripped)):
+                inner = stripped[1:-1]
+                new_line = f"$$\n{inner}\n$$"
+            out_lines.append(new_line)
+        else:
+            out_lines.append(line)
+    return "\n".join(out_lines), changed
+
+
 def finalize_ai(course=None) -> list:
     course = normalize_course_arg(course)
     rows = _load_rows()
@@ -119,45 +159,40 @@ def finalize_ai(course=None) -> list:
         md_path = KNOWLEDGE / r["output_md"]
         if not md_path.exists():
             continue
-        changed = []
         md = md_path.read_text(encoding="utf-8")
         assets_dir = KNOWLEDGE / r["course"] / "assets" / sid
+
+        latex_by_name = {}
         if formulas_json.exists():
             try:
-                formulas = json.loads(formulas_json.read_text(encoding="utf-8"))
+                raw = json.loads(formulas_json.read_text(encoding="utf-8"))
+                latex_by_name = {k: str(v or "").strip() for k, v in raw.items()
+                                 if str(v or "").strip()}
             except json.JSONDecodeError:
-                formulas = {}
-            for name, latex in formulas.items():
-                latex = str(latex or "").strip()
-                if not latex:
-                    continue
-                pattern = re.compile(r"!\[formula-object\]\(assets/" + re.escape(sid)
-                                     + "/" + re.escape(name) + r"\)")
-                matches = list(pattern.finditer(md))
-                standalone = False
-                if matches:
-                    line = md[matches[0].start():].split("\n", 1)[0]
-                    standalone = not line.replace("![", "").replace("]", "").strip()
-                    md = pattern.sub(lambda _: _latex_block(latex, standalone), md)
-                else:
-                    pattern2 = re.compile(r"!\[formula-object\]\([^)]*/" + re.escape(name) + r"\)")
-                    if pattern2.search(md):
-                        md = pattern2.sub(lambda _: _latex_block(latex, False), md)
-                apath = assets_dir / name
-                if apath.exists() and f"![formula-object](assets/{sid}/{name})" not in md:
-                    apath.unlink(missing_ok=True)
-                changed.append(name)
+                latex_by_name = {}
+
+        changed = []
+        if latex_by_name:
+            md, changed = _apply_formulas(md, latex_by_name)
+
         if notes_md.exists():
             extra = notes_md.read_text(encoding="utf-8").strip()
             if extra:
                 r["notes"] = (r["notes"] + "; " + extra)[:1400]
+
         if changed or notes_md.exists():
             if changed:
                 r["notes"] = (r["notes"] + "; " +
-                              f"AI-transcribed {len(changed)} formula images to LaTeX; "
-                              "needs human re-check per SOP 4.2")[:1400]
+                              f"AI-transcribed {len(changed)} formula images to LaTeX "
+                              "(GLM-4V majority-vote + render gate); pending human "
+                              "re-check per SOP 4.2")[:1400]
                 r["status"] = "pending"
+                for name in changed:
+                    apath = assets_dir / name
+                    if apath.exists() and f"/{name})" not in md:
+                        apath.unlink(missing_ok=True)
             md_path.write_text(md, encoding="utf-8")
             finalized.append((sid, changed))
+
     _save_rows(rows)
     return finalized
