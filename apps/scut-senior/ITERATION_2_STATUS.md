@@ -16,7 +16,7 @@
 - `information-security-intro-001` 和 `cpp-001` 已由 `Klosure` 人工审核，manifest 状态为 `passed`。
 - manifest 当前共 23 份资料：上述 2 份为 `passed`，其余 21 份保持 `pending`。
 - 8 份纯图片资料继续保持 `pending`：`linear-algebra-001`～`005`、`engineering-mathematical-analysis-1-001`、`engineering-mathematical-analysis-2-001`、`discrete-mathematics-001`。
-- `review_artifacts/` 只保留脱敏后的必要审核证据，不作为检索语料或 candidate 输入。
+- `docs/review_artifacts/` 只保留脱敏后的必要审核证据，不作为检索语料或 candidate 输入。
 
 ## 当前发布门
 
@@ -31,10 +31,10 @@
 → 才允许单独执行 active 激活
 ```
 
-- corpus CI 必须校验仓库真实的 `knowledge/manifest.csv`，只读取 `passed` Markdown 和必要 assets，在临时目录构建并再次验证 candidate。
+- corpus CI 必须校验仓库真实的 `apps/scut-senior/knowledge/manifest.csv`，只读取 `passed` Markdown 和必要 assets，在临时目录构建并再次验证 candidate。
 - CI 不上传、不提交 candidate 派生产物，并明确断言构建过程没有生成 `active.json`；`active.json` 也不得进入 Git。
 - 合成 Fixture 校验继续保留，不能用真实资料替代测试 Fixture，也不能把 Fixture 的 `passed` 当成人工审核结论。
-- `worker`、chunker、索引 schema、manifest／locator 契约或语料构建器变化必须同时经过 App CI 和 corpus CI。纯 `knowledge/**` 内容变化只构建、验证 candidate，不触发 Web/API 部署。
+- `worker`、chunker、索引 schema、manifest／locator 契约或语料构建器变化必须同时经过 App CI 和 corpus CI。纯 `apps/scut-senior/knowledge/**` 内容变化只构建、验证 candidate，不触发 Web/API 部署。
 - 默认运行继续使用 Fixture；没有配置并验证受信 active store 时必须故障安全关闭真实检索。
 
 ## 本地已实现与验证

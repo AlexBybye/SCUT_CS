@@ -149,12 +149,15 @@ def _verify_fixed_checkout(
     manifest_path: Path,
 ) -> None:
     root = repository_root.resolve()
-    expected_knowledge_root = root / "knowledge"
+    expected_knowledge_root = root / "apps/scut-senior" / "knowledge"
     if knowledge_root.resolve() != expected_knowledge_root:
-        raise CorpusBuildError("knowledge_root must be <repository-root>/knowledge")
+        raise CorpusBuildError(
+            "knowledge_root must be <repository-root>/apps/scut-senior/knowledge"
+        )
     if manifest_path.resolve() != expected_knowledge_root / "manifest.csv":
         raise CorpusBuildError(
-            "manifest must be <repository-root>/knowledge/manifest.csv"
+            "manifest must be "
+            "<repository-root>/apps/scut-senior/knowledge/manifest.csv"
         )
     try:
         head = subprocess.run(
@@ -172,7 +175,7 @@ def _verify_fixed_checkout(
                 "--porcelain",
                 "--untracked-files=all",
                 "--",
-                "knowledge",
+                "apps/scut-senior/knowledge",
                 "apps/scut-senior/worker",
                 "apps/scut-senior/packages/contracts/v1",
             ],

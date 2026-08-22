@@ -65,7 +65,13 @@ def _write_manifest(path: Path, rows: list[dict[str, str]]) -> None:
 
 
 def _commit(repo: Path, message: str) -> str:
-    _git(repo, "add", "knowledge", "apps/scut-senior/worker", "apps/scut-senior/packages/contracts/v1")
+    _git(
+        repo,
+        "add",
+        "apps/scut-senior/knowledge",
+        "apps/scut-senior/worker",
+        "apps/scut-senior/packages/contracts/v1",
+    )
     _git(repo, "commit", "-m", message)
     return _git(repo, "rev-parse", "HEAD")
 
@@ -73,7 +79,7 @@ def _commit(repo: Path, message: str) -> str:
 @pytest.fixture()
 def fixed_repo(tmp_path: Path) -> tuple[Path, Path, str]:
     repo = tmp_path / "repo"
-    knowledge = repo / "knowledge"
+    knowledge = repo / "apps" / "scut-senior" / "knowledge"
     document = knowledge / "linear_algebra" / "exam.md"
     asset = document.parent / "assets" / "exam" / "p1.png"
     asset.parent.mkdir(parents=True)
