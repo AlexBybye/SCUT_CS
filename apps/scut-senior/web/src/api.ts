@@ -2,6 +2,9 @@ import type {
   AuthUser,
   ByokCredentialStatus,
   ByokProviderId,
+  ContributionConfirmations,
+  ContributionPreview,
+  ContributionRecord,
   ConversationDetail,
   ConversationSummary,
   CourseCatalog,
@@ -9,6 +12,8 @@ import type {
   FeedbackType,
   ModelCatalog,
   PluginRegistry,
+  TemporaryMaterialDetail,
+  TemporaryMaterialRecord,
   WorkflowAttempt,
   WorkflowRunRequest,
   WorkflowRunResult,
@@ -248,4 +253,100 @@ export async function submitFeedback(
     method: "POST",
     body: JSON.stringify({ run_id: runId, feedback_type: feedbackType, note: note || null }),
   });
+}
+
+// ---------------------------------------------------------------------------
+// 迭代 7（SOP §12）：临时材料精读治理与贡献待处理队列。
+// ---------------------------------------------------------------------------
+
+export async function saveTemporaryMaterial(payload: {
+  conversation_id: string;
+  course_id: string;
+  title?: string | null;
+  content: string;
+}): Promise<TemporaryMaterialRecord> {
+  return apiRequest<TemporaryMaterialRecord>("/api/v1/temporary-materials", {
+    method: "POST",
+    body: JSON.stringify({
+      conversation_id: payload.conversation_id,
+      course_id: payload.course_id,
+      title: payload.title || null,
+      content: payload.content,
+    }),
+  });
+}
+
+export async function listTemporaryMaterials(): Promise<TemporaryMaterialRecord[]> {
+  return apiRequest<TemporaryMaterialRecord[]>("/api/v1/temporary-materials");
+}
+
+export async function getTemporaryMaterial(
+  materialId: string,
+): Promise<TemporaryMaterialDetail> {
+  return apiRequest<TemporaryMaterialDetail>(
+    `/api/v1/temporary-materials/${encodeURIComponent(materialId)}`,
+  );
+}
+
+export async function deleteTemporaryMaterial(materialId: string): Promise<void> {
+  await apiRequest<void>(
+    `/api/v1/temporary-materials/${encodeURIComponent(materialId)}`,
+    { method: "DELETE" },
+  );
+}
+
+export async function previewContribution(payload: {
+  course_id: string;
+  title?: string | null;
+  content: string;
+}): Promise<ContributionPreview> {
+  return apiRequest<ContributionPreview>("/api/v1/contributions/preview", {
+    method: "POST",
+    body: JSON.stringify({
+      course_id: payload.course_id,
+      title: payload.title || null,
+      content: payload.content,
+    }),
+  });
+}
+
+export async function submitContribution(payload: {
+  material_id: string;
+  course_id: string;
+  title?: string | null;
+  as_draft?: boolean;
+  confirmations: ContributionConfirmations;
+}): Promise<ContributionRecord> {
+  return apiRequest<ContributionRecord>("/api/v1/contributions", {
+    method: "POST",
+    body: JSON.stringify({
+      material_id: payload.material_id,
+      course_id: payload.course_id,
+      title: payload.title || null,
+      as_draft: payload.as_draft ?? false,
+      confirmations: payload.confirmations,
+    }),
+  });
+}
+
+export async function submitContributionDraft(
+  contributionId: string,
+  confirmations: ContributionConfirmations,
+): Promise<ContributionRecord> {
+  return apiRequest<ContributionRecord>(
+    `/api/v1/contributions/${encodeURIComponent(contributionId)}/submit`,
+    { method: "POST", body: JSON.stringify({ confirmations }) },
+  );
+}
+
+export async function listContributions(): Promise<ContributionRecord[]> {
+  return apiRequest<ContributionRecord[]>("/api/v1/contributions");
+}
+
+export async function getContribution(
+  contributionId: string,
+): Promise<ContributionRecord> {
+  return apiRequest<ContributionRecord>(
+    `/api/v1/contributions/${encodeURIComponent(contributionId)}`,
+  );
 }

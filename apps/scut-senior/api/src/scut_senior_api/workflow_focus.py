@@ -395,6 +395,12 @@ def build_workflow_focus(request: WorkflowRunRequest) -> WorkflowFocus:
             common
             + title_directive
             + "不得按 material_text 的全文词频、重复次数或噪声词选择检索词。"
+            # 迭代 7（SOP §12）：精读语义固定为“写了什么以材料原文优先，
+            # 说得对不对以仓库资料核验，冲突分别陈述”。
+            + "回答时区分两类问题：“材料写了什么”必须以材料原文优先复述，"
+            "不得用课程资料改写材料原意；“材料说得对不对”必须依据本次提供的"
+            "仓库资料候选核验并给出引用编号；材料与仓库资料冲突时分别陈述双方说法，"
+            "不得混写，也不得替材料补造页码。"
         )
         anchors = {
             "material_title": material_title,

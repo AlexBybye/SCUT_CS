@@ -85,7 +85,7 @@ function onKeydown(event: KeyboardEvent): void {
       <span class="chip chip-accent">{{ ariaValueText }}</span>
     </div>
     <p class="account-note">
-      默认 Auto 跟随系统明暗；拖到太阳恒定亮色，拖到月亮恒定暗色。
+      默认 Auto 跟随系统主题
     </p>
 
     <div class="theme-picker">

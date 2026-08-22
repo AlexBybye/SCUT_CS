@@ -61,14 +61,25 @@ from .auth import (
 from .config import Settings
 from .course_availability import derive_course_runtime_availability
 from .contracts import (
+    ContributionDraftSubmit,
+    ContributionPreview,
+    ContributionPreviewRequest,
+    ContributionRecord,
+    ContributionState,
+    ContributionSubmit,
     ConversationCreate,
     ConversationDetail,
     ConversationRename,
     ConversationSummary,
     FeedbackCreate,
     FeedbackRecord,
+    MaintainerContributionExport,
+    MaintainerContributionTransition,
     ModelCredentialStatus,
     ModelCredentialUpsert,
+    TemporaryMaterialCreate,
+    TemporaryMaterialDetail,
+    TemporaryMaterialRecord,
     WorkflowAttempt,
     WorkflowResult,
     WorkflowRunRequest,
@@ -80,6 +91,7 @@ from .harness_registry import (
     MAINTAINER_SKILLS,
     derive_course_plugin_states,
 )
+from .contributions import ContributionTransitionError
 from .model_catalog import (
     ModelCatalog,
     ModelCatalogResponse,
@@ -433,6 +445,12 @@ def create_app(
     async def contract_conflict_handler(_, exc: ContractConflict):
         return _error_response(409, "contract_conflict", str(exc))
 
+    @app.exception_handler(ContributionTransitionError)
+    async def contribution_transition_handler(_, exc: ContributionTransitionError):
+        return _error_response(
+            409, "contribution_transition_invalid", str(exc)
+        )
+
     @app.exception_handler(ResourceNotFound)
     async def resource_not_found_handler(_, exc: ResourceNotFound):
         return _error_response(404, "not_found", str(exc))
@@ -495,12 +513,12 @@ def create_app(
         active_corpus_configured = local_corpus_retrieval_available_course_count > 0
         return {
             "status": "ok",
-            "iteration": 5,
+            "iteration": 7,
             # 口径自声明：状态值内嵌迭代号，避免再次出现字段停在旧迭代的静默滞后。
             "iteration_status": (
-                "iteration5_runtime_with_active_corpus"
+                "iteration7_material_governance_with_active_corpus"
                 if active_corpus_configured
-                else "iteration5_fixture_runtime_active_corpus_required"
+                else "iteration7_fixture_runtime_active_corpus_required"
             ),
             "formal_exit_blocked": not active_corpus_configured,
             "runtime": (
@@ -547,6 +565,11 @@ def create_app(
                     and active_settings.model_mode == "mock"
                     and active_settings.storage_mode == "sqlite_mock"
                 ),
+                # 迭代 7：临时材料治理与贡献待处理队列；自动 PR 仍属
+                # GitHub App 决策门之后的未确认能力，保持 fail-closed。
+                "temporary_material_ttl_7d": True,
+                "contribution_maintainer_queue": True,
+                "github_app_auto_pr": False,
             },
         }
 
@@ -963,6 +986,140 @@ def create_app(
     ) -> list[FeedbackRecord]:
         return service.list_feedback(user)
 
+    # ------------------------------------------------------------------
+    # 迭代 7（SOP §12）：临时材料精读与贡献待处理队列。
+    # ------------------------------------------------------------------
+
+    @app.post(
+        "/api/v1/temporary-materials",
+        response_model=TemporaryMaterialRecord,
+        status_code=201,
+    )
+    def save_temporary_material(
+        payload: TemporaryMaterialCreate,
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> TemporaryMaterialRecord:
+        return service.save_temporary_material(user, payload)
+
+    @app.get(
+        "/api/v1/temporary-materials",
+        response_model=list[TemporaryMaterialRecord],
+    )
+    def list_temporary_materials(
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> list[TemporaryMaterialRecord]:
+        return service.list_temporary_materials(user)
+
+    @app.get(
+        "/api/v1/temporary-materials/{material_id}",
+        response_model=TemporaryMaterialDetail,
+    )
+    def get_temporary_material(
+        material_id: UUID,
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> TemporaryMaterialDetail:
+        return service.get_temporary_material(user, material_id)
+
+    @app.delete("/api/v1/temporary-materials/{material_id}", status_code=204)
+    def delete_temporary_material(
+        material_id: UUID,
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> Response:
+        service.delete_temporary_material(user, material_id)
+        return Response(status_code=204)
+
+    @app.post(
+        "/api/v1/contributions/preview",
+        response_model=ContributionPreview,
+    )
+    def preview_contribution(
+        payload: ContributionPreviewRequest,
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> ContributionPreview:
+        return service.build_contribution_preview(user, payload)
+
+    @app.post(
+        "/api/v1/contributions",
+        response_model=ContributionRecord,
+        status_code=201,
+    )
+    def submit_contribution(
+        payload: ContributionSubmit,
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> ContributionRecord:
+        return service.submit_contribution(user, payload)
+
+    @app.get(
+        "/api/v1/contributions",
+        response_model=list[ContributionRecord],
+    )
+    def list_contributions(
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> list[ContributionRecord]:
+        return service.list_contributions(user)
+
+    @app.get(
+        "/api/v1/contributions/{contribution_id}",
+        response_model=ContributionRecord,
+    )
+    def get_contribution(
+        contribution_id: UUID,
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> ContributionRecord:
+        return service.get_contribution(user, contribution_id)
+
+    @app.post(
+        "/api/v1/contributions/{contribution_id}/submit",
+        response_model=ContributionRecord,
+    )
+    def submit_contribution_draft(
+        contribution_id: UUID,
+        payload: ContributionDraftSubmit,
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> ContributionRecord:
+        return service.submit_contribution_draft(user, contribution_id, payload)
+
+    @app.get(
+        "/api/v1/maintainer/contributions",
+        response_model=list[ContributionRecord],
+    )
+    def maintainer_contribution_queue(
+        state: str | None = None,
+        user: AuthenticatedPrincipal = Depends(require_github_user),
+    ) -> list[ContributionRecord]:
+        parsed_state: ContributionState | None = None
+        if state is not None:
+            try:
+                parsed_state = ContributionState(state)
+            except ValueError:
+                raise HTTPException(
+                    status_code=422, detail="unknown contribution state"
+                ) from None
+        return service.list_maintainer_queue(parsed_state)
+
+    @app.get(
+        "/api/v1/maintainer/contributions/{contribution_id}/export",
+        response_model=MaintainerContributionExport,
+    )
+    def maintainer_export_contribution(
+        contribution_id: UUID,
+        user: AuthenticatedPrincipal = Depends(require_github_user),
+    ) -> MaintainerContributionExport:
+        return service.maintainer_export_contribution(contribution_id)
+
+    @app.post(
+        "/api/v1/maintainer/contributions/{contribution_id}/transition",
+        response_model=ContributionRecord,
+    )
+    def maintainer_transition_contribution(
+        contribution_id: UUID,
+        payload: MaintainerContributionTransition,
+        user: AuthenticatedPrincipal = Depends(require_github_user),
+    ) -> ContributionRecord:
+        return service.maintainer_transition_contribution(
+            contribution_id, payload
+        )
+
     static_root = APP_ROOT / "web" / "dist"
     if static_root.is_dir():
         app.mount("/", StaticFiles(directory=static_root, html=True), name="web")
@@ -998,6 +1155,9 @@ def _is_protected_api_path(path: str) -> bool:
         "/api/v1/model-credentials",
         "/api/v1/feedback",
         "/api/v1/plugin-registry",
+        "/api/v1/temporary-materials",
+        "/api/v1/contributions",
+        "/api/v1/maintainer",
     )
     return any(path == root or path.startswith(f"{root}/") for root in protected_roots)
 
