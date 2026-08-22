@@ -19,16 +19,6 @@ const store = useAppStore();
         </svg>
         新会话
       </button>
-      <button
-        type="button"
-        class="btn btn-quiet rail-collapse"
-        aria-label="折叠课程栏"
-        @click="store.railOpen = false"
-      >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="m11 17-5-5 5-5M18 17l-5-5 5-5" />
-        </svg>
-      </button>
     </header>
 
     <div class="rail-scroll">
@@ -193,15 +183,6 @@ const store = useAppStore();
   align-items: center;
   justify-content: center;
   gap: 6px;
-}
-
-.rail-collapse {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  padding: 0;
 }
 
 .rail-scroll {
