@@ -43,7 +43,7 @@ const store = useAppStore();
           :disabled="store.isRunning || store.isLoadingModels || !store.modelCatalogLoadSucceeded"
         >
           <option v-if="store.isLoadingModels" :value="store.selectedModelKey">正在读取模型目录</option>
-          <option v-else-if="!store.modelCatalogLoadSucceeded" value="">模型目录不可用</option>
+          <option v-else-if="!store.modelCatalogLoadSucceeded" value="">模型待选择</option>
           <template v-else>
             <option value="" disabled>请选择模型</option>
             <option
@@ -255,6 +255,12 @@ const store = useAppStore();
 @media (max-height: 640px) {
   .composer-inner {
     padding-block: 6px;
+  }
+
+  /* 输入框上限同步压低，保证发送按钮行始终留在可视范围内。 */
+  .composer-box textarea {
+    min-height: 48px;
+    max-height: 140px;
   }
 }
 </style>

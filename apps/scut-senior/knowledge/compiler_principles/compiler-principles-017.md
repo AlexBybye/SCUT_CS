@@ -1,0 +1,318 @@
+---
+source_id: compiler-principles-017
+course_id: compiler_principles
+title: "编译原理期末考试试卷答案"
+original_file: "学科资料/编译原理/往年试卷/编译原理期末考试试卷答案.doc"
+document_role: past_exam_answer
+year: 
+locator_type: none
+---
+
+# 编译原理期末考试试卷答案
+
+**诚信应考,考试作弊将带来严重后果！**
+
+**华南理工大学期末考试**
+
+**《 编译原理 》试卷** **A**
+
+**注意事项：1.** **考前请将密封线内各项信息填写清楚；**
+
+**2.** **所有答案请直接答在试卷上；**
+
+**3．考试形式：闭卷；**
+
+**4.** **本试卷共 八 大题，满分100分，**	**考试时间120分钟**。
+
+| **题 号** | **一** | **二** | **三** | **四** | **五** | **六** | **七** | **八** | **总分** |
+|---|---|---|---|---|---|---|---|---|---|
+| **得 分** |  |  |  |  |  |  |  |  |  |
+| **评卷人** |  |  |  |  |  |  |  |  |  |
+
+- **填空**    （20分，每题2分）
+
+<!-- question: compiler-principles-017-Q1 -->
+
+1．设G是一个文法，S是它的开始符号，如果 S   >  α，则称α是一个句型。仅由终结符号组成  的句型是一个句子。
+
+<!-- question: compiler-principles-017-Q2 -->
+
+2.  在编译器的设计中，通常采用 EBNF   作为描述程序设计语言语法的工具，从语法上描述程序设计语言。
+
+3.  词法分析器分析的单词通常可以分为：**关键词**、**标识符**、**运算符**  、**常数**和**界符**几种。
+
+4．在编译器设计中，在生成源代码之前，通常在内部采用一种不依赖目标机的结构的代码表示原代码，这种代码被称为      中间代码    。
+
+<!-- question: compiler-principles-017-Q3 -->
+
+5.  表达式a*b+(c+d/(e+f))的逆波兰式（后缀式）为 ab*cdef+/++ 。
+
+<!-- question: compiler-principles-017-Q4 -->
+
+6．对中间代码优化按涉及的范围分为局部优化，过程间优化    和全局优化。
+
+<!-- question: compiler-principles-017-Q5 -->
+
+7．  S={a, b}上的正规式a|b的正规集是   {a,b}      。
+
+(应该是正则表达式所表示的串的集合吧)
+
+<!-- question: compiler-principles-017-Q6 -->
+
+8．为了将非LL(1)变换为与之等价的LL(1)文法，通常采用消除左递归和
+
+提取左公共因子对文法进行等价变换。
+
+<!-- question: compiler-principles-017-Q7 -->
+
+9．局部优化主要包括合并已知量、利用公共子表达式和 删除无用赋值等内容。
+
+<!-- question: compiler-principles-017-Q8 -->
+
+10．运行编译程序的计算机称为  宿主机  ，运行编译程序所产生的目标代码的计算机称为  目标机  。
+
+**二、编译过程通常分为哪几个主要阶段？每个阶段的主要功能？**（10分）
+
+词法分析,语法分析,语义分析,中间代码生成,代码优化,目标代码生成.
+
+**三、设有文法G[S]** **为：**（25分）
+
+S**→**number | List
+
+List**→**  (Seq)
+
+Seq**→**  Seq, S | S
+
+number  **→** **4|5**
+
+其中number是终结符表示数字，其它字符均为非终结符
+
+<!-- question: compiler-principles-017-Q9 -->
+
+1．试给出句型(4, (5))的短语， 直接(简单)短语,句柄。(5分)
+
+短语：
+
+直接短语：
+
+句柄：4
+
+S->list->(Seq)->(Seq,S)->(Seq,list)->(Seq,(Seq))->(Seq,(S))->(Seq,(number))
+
+->(Seq,(5))->(S,(5))->(number,(5))->(4,(5))
+<!-- question: compiler-principles-017-Q10 -->
+
+1. 请通过消除左递归将该文法变换为等价的LL(1)文法G1。(10分)
+
+S**→**number | List
+
+List**→**  (Seq)
+
+Seq**→**  Seq, S | S
+
+number  **→** **4|5**
+
+**Seq->SSeq’**
+
+**Seq’->,SSeq’|空**
+
+<!-- question: compiler-principles-017-Q11 -->
+
+3．针对变换后的文法G1，构造其相应的LL(1)分析表。(10分)
+
+S**→**number | List
+
+List**→**  (Seq)
+
+**Seq->SSeq’**
+
+**Seq’->,SSeq’|空**
+
+number  **→** **4|5**
+
+对应每一条产生式，先求出其FOLLOW集之间的关系
+
+1，FOLLOW（List）包含FOLLOW(S)
+
+2，FOLLOW(Seq)包含)
+
+3，FOLLOW(Seq’)包含FOLLOW(Seq)，FOLLOW(S)包含FIRST(Seq’)去掉空的部分。而因为空在FIRST(Seq’)中，所以FOLLOW(S)包含FOLLOW(Seq)
+
+4，
+
+所以FOLLOW(S)={$，,，)}
+
+FOLLOW(LIST)={)，$,)}
+
+FOLLOW(Seq)={)}
+
+FOLLOW(Seq’)={)}
+
+<!-- question: compiler-principles-017-Q12 -->
+
+4．针对变换后的文法G1，构造其相应的LL(1)分析表。(10分)
+
+**（另）三、设有文法G[S]** **为：**（25分）
+
+*S -> (SEQ)*
+
+*SEQ -> SEQ, Letter| Letter*
+
+*Letter->***a***|***b**
+
+其中**a,** **b**是终结符，其它字符均为非终结符。
+
+<!-- question: compiler-principles-017-Q13 -->
+
+1．给出句型 (**b**,  **a**) 的最左推导。(5分)
+
+S->(SEQ)->(SEQ,LETTER)->(LETTER,LETTER)->(b,a)
+
+<!-- question: compiler-principles-017-Q14 -->
+
+2．试给出句型(**b**,  **a**)的短语， 直接(简单)短语,句柄。(5分)
+
+短语：
+
+直接短语：
+
+句柄：b
+<!-- question: compiler-principles-017-Q15 -->
+
+1. 请通过消除左递归将该文法变换为等价的LL(1)文法G1。(5分)
+
+*S -> (SEQ)*
+
+*SEQ -> SEQ, Letter| Letter*
+
+*Letter->***a***|***b**
+
+**S->(SEQ)**
+
+**SEQ->LETTER SEQ’**
+
+**SEQ’->,SEQ|空**
+
+**LETTER->a|b**
+
+<!-- question: compiler-principles-017-Q16 -->
+
+4．针对变换后的文法G1，构造其相应的LL(1)分析表。(10分)
+
+1，FOLLOW(SEQ)包含)
+
+2，FOLLOW(SEQ’)包含FOLLOW(SEQ)
+
+3，FOLLOW(SEQ)包含FOLLOW(SEQ’)
+
+FOLLOW(S)={$}
+
+FOLLOW(SEQ)=FOLLOW(SEQ’)={)，,}
+
+**五、文法G[S]：**
+
+**S*****→*****(N)*****|a*** 		**N*****→*****N,S** ***|*****S**
+
+**其中“(”、** **“)”、** **“*****a*****”和“,”** **是终结符。（25分）**
+
+<!-- question: compiler-principles-017-Q17 -->
+
+1．构建该文法的  LR(0)有穷确定自动机。[10分]
+
+<!-- question: compiler-principles-017-Q18 -->
+
+2．构建该文法的SLR(1)分析表.[  15分]
+
+<!-- question: compiler-principles-017-Q19 -->
+
+3．请给出对输入串(a, a)#的分析过程[  10分]
+
+**五、把下面的语句翻译成四元式序列。**        （10分）
+
+（只给出最后结果，设nextstat当前值为100）
+
+**while**  **B>D**  **do**  **if**  **B=1**  **then**  **D:=D+1**  **else**  **B:=B*****2**
+
+LABEL L0
+
+T0=B>D
+
+IF T0 GOTO L1
+
+IF_FALSE T0 GOTO L3
+
+LABEL L1
+
+T1=B==1
+
+IF_FALSE T1 GOTO L2
+
+T2=D+1
+
+D=T2
+
+LABEL L2
+
+T3=B*2
+
+B=T3
+
+T0=B>D
+
+IF T0 GOTO L0
+
+LABEL L3
+
+HALT
+
+(lab, L0, _ , _)
+
+(GTR,B,D,T0)
+
+(IF,T0,L1, _)
+
+(IF_FALSE,T0,L3,_)
+
+(LAB,L1,_, _)
+
+(EQU,B,1,T1)
+
+(IF_FALSE,T1,L2,_)
+
+(SUM,D,1,T2)
+
+(ASN,T2,D,_)
+
+(LAB,L2,_,_)
+
+(MUL,B,2,T3)
+
+(GTR,B,D,T0)
+
+(IF,T0,L0,_)
+
+(LAB,L3,_,_)
+
+(HALT,_,_,_)
+
+**六、NFA如下图所示**（10分）
+
+![formula-object](assets/compiler-principles-017/image-001.png)
+<!-- question: compiler-principles-017-Q20 -->
+
+1. 请给出与该NFA等价的正则表达式(3分)
+
+(a*ba*b*)*ba*
+
+<!-- question: compiler-principles-017-Q21 -->
+
+2.  请将该NFA确定化为DFA（7分）
+
+| I | Ia | Ib |
+|---|---|---|
+| {0,1,2,6} | {2} | {3} |
+| {2} | {2} | {3,4,5,6,1,2} |
+| {3,4,5,6,1,2} | {3,4,5,6,1,2} | {4,5,1,6,2} |
+| {1,2,4,5,6} | {2,5,6,1} | {1,2,3,4,5,6,7} |
+| {1,2,3,4,5,6,7} | {8,1,2,3,4,5,6,9} | {1,2,3,4,5,6,7,8,9} |
+| {} |  |  |

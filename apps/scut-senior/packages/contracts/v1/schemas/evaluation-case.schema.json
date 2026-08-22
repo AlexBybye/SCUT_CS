@@ -27,8 +27,22 @@
         "insufficient_evidence",
         "multi_turn_followup",
         "cross_course_scope",
-        "source_marking"
+        "source_marking",
+        "exam_review_with_syllabus",
+        "exam_review_without_syllabus"
       ]
+    },
+    "syllabus": {
+      "anyOf": [
+        {"type": "string", "minLength": 1},
+        {"type": "null"}
+      ]
+    },
+    "weak_topics": {
+      "type": "array",
+      "minItems": 0,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
     },
     "course_id": {
       "anyOf": [
@@ -104,6 +118,8 @@
           "uniqueItems": true,
           "items": {"enum": ["page", "slide", "question", "heading"]}
         },
+        "requires_exam_review_plan": {"type": "boolean"},
+        "review_path": {"enum": ["with_syllabus", "without_syllabus"]},
         "notes": {"type": "string"}
       }
     }

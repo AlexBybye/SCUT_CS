@@ -80,6 +80,65 @@ describe("WorkflowResult coverage gaps", () => {
     expect(html).toContain("通用知识补充");
     expect(html).not.toContain("课程资料回答");
   });
+
+  it("renders the iteration-5 exam review plan panel only for valid plans", async () => {
+    const withPlan = workflowResult([]);
+    withPlan.workflow_type = "exam_review";
+    withPlan.workflow_output = {
+      runtime_version: "workflow-runtime-v1",
+      payload_type: "exam_review",
+      exam_review: {
+        plan_version: "exam-review-plan-v1",
+        path: "without_syllabus",
+        priority_order: ["past_exam", "course_material"],
+        scope_statement: "未提供大纲：不是官方考试范围，也不构成考试重点预测。",
+        evidence_boundary: "统计只来自已审核语料。",
+        ai_sample_policy: "样题均为 AI 生成、非历年真题。",
+        knowledge_points: [
+          {
+            topic: "填空题",
+            layer: 2,
+            heading_path: ["一、填空题"],
+            material_locations: [
+              { source_id: "s1", source_title: "2023 期末 A 卷", locator_type: "page", locator_start: 1 },
+            ],
+            questions: [
+              { question_id: "Q1", source_id: "s1", source_title: "2023 期末 A 卷", year: 2023, locator_type: "page", locator_start: 1 },
+            ],
+            objective_count: 1,
+            weak_topic_matched: false,
+            order_reasons: [],
+          },
+        ],
+        past_exam_stats: {
+          question_count: 2,
+          source_count: 1,
+          year_count: 1,
+          sample_years: [2023],
+          year_coverage: [{ year: 2023, count: 2 }],
+          type_distribution: [{ key: "filling_blank", label: "填空题", count: 2 }],
+        },
+        review_suggestions: ["先从历年题题组开始。"],
+        uncovered_items: [],
+      },
+    };
+    const html = await renderResult(withPlan);
+    expect(html).toContain("备考复习计划（系统生成）");
+    expect(html).toContain("历年题优先");
+    expect(html).toContain("不构成考试重点预测");
+    expect(html).toContain("2023：2 题");
+
+    const withoutPlan = workflowResult([]);
+    withoutPlan.workflow_type = "knowledge_qa";
+    const plainHtml = await renderResult(withoutPlan);
+    expect(plainHtml).not.toContain("备考复习计划（系统生成）");
+
+    const brokenPlan = workflowResult([]);
+    brokenPlan.workflow_type = "exam_review";
+    brokenPlan.workflow_output = { exam_review: { path: "nonsense" } };
+    const brokenHtml = await renderResult(brokenPlan);
+    expect(brokenHtml).not.toContain("备考复习计划（系统生成）");
+  });
 });
 
 describe("history attempt selection", () => {

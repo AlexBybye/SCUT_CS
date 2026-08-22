@@ -42,11 +42,22 @@ async function apiRequest<T>(path: string, init?: RequestInit): Promise<T> {
   headers.set("Accept", "application/json");
   if (init?.body) headers.set("Content-Type", "application/json");
 
-  const response = await fetch(`${API_BASE}${path}`, {
-    ...init,
-    headers,
-    credentials: "include",
-  });
+  let response: Response;
+  try {
+    response = await fetch(`${API_BASE}${path}`, {
+      ...init,
+      headers,
+      credentials: "include",
+    });
+  } catch {
+    // 网络层失败（断网/隧道中断）：不把浏览器英文原文（Failed to fetch）
+    // 抛给上层，统一转成可行动的中文 ApiError。
+    throw new ApiError(
+      "网络连接失败，请检查网络后重试；已提交的运行若在服务端继续，稍后重新读取即可看到结果。",
+      0,
+      "network_error",
+    );
+  }
 
   if (!response.ok) {
     let detail = `请求失败 (${response.status})`;
@@ -218,6 +229,14 @@ export async function getWorkflowRun(workflowRunId: string): Promise<WorkflowRun
     `/api/v1/workflow-runs/${encodeURIComponent(workflowRunId)}`,
   );
   return validateWorkflowRunResult(result, { expectedRunId: workflowRunId });
+}
+
+/** 显式取消一次正在流式运行的 workflow（与网络断开相区分）。 */
+export async function cancelWorkflowRun(workflowRunId: string): Promise<void> {
+  await apiRequest<unknown>(
+    `/api/v1/workflow-runs/${encodeURIComponent(workflowRunId)}/cancel`,
+    { method: "POST" },
+  );
 }
 
 export async function submitFeedback(

@@ -247,7 +247,7 @@ def test_course_plugin_states_report_fixture_coverage_without_claiming_active() 
     states = derive_course_plugin_states(registry, gateway, retrieval_mode="fixture")
 
     by_id = {state.course_id: state for state in states}
-    assert len(by_id) == 10
+    assert len(by_id) == 55
     assert by_id["linear_algebra"].state.value == "fixture_only"
     assert by_id["linear_algebra"].enabled_workflows == ()
     assert by_id["cpp"].state.value == "registered"
@@ -393,7 +393,7 @@ def test_plugin_registry_endpoint_reports_honest_metadata(tmp_path: Path) -> Non
     assert body["maintainer_skills"] == []
 
     courses = {course["course_id"]: course for course in body["courses"]}
-    assert len(courses) == 10
+    assert len(courses) == 55
     assert courses["linear_algebra"]["state"] == "fixture_only"
     assert courses["linear_algebra"]["enabled_workflows"] == []
     assert courses["cpp"]["state"] == "registered"

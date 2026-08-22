@@ -24,6 +24,51 @@ EXPECTED_COURSE_IDS = [
     "computer_science_intro",
     "information_security_intro",
     "university_physics_3_1",
+    "data_structure",
+    "digital_logic",
+    "computer_organization",
+    "compiler_principles",
+    "algorithm_design_and_analysis",
+    "database",
+    "embedded_systems",
+    "artificial_intelligence_intro",
+    "intelligent_algorithms",
+    "university_physics_3_2",
+    "electrical_engineering",
+    "electrical_engineering_lab",
+    "signals_and_communication",
+    "java_programming",
+    "python_programming",
+    "operating_systems",
+    "software_engineering",
+    "computer_networks",
+    "software_testing",
+    "computing_methods",
+    "mathematical_modeling",
+    "computer_graphics",
+    "mobile_application_development",
+    "swarm_intelligence",
+    "information_security_mathematics",
+    "web_frontend_fundamentals",
+    "network_management",
+    "digital_system_creative_design",
+    "network_application_architecture",
+    "next_generation_network_architecture",
+    "circuit_and_electronics_lab",
+    "data_structure_course_project",
+    "os_course_project",
+    "multimedia_technology",
+    "machine_learning",
+    "open_source_technologies",
+    "ideology_morality_and_rule_of_law",
+    "marxist_basic_principles",
+    "mao_zedong_thought_overview",
+    "xi_thought_overview",
+    "modern_chinese_history_outline",
+    "national_history",
+    "internet_plus_data_security",
+    "university_physics_lab_1",
+    "university_physics_lab_2",
 ]
 EXPECTED_EVALUATION_CATEGORIES = {
     "course_knowledge",
@@ -33,6 +78,9 @@ EXPECTED_EVALUATION_CATEGORIES = {
     "multi_turn_followup",
     "cross_course_scope",
     "source_marking",
+    # Iteration 5: the two evidence-backed exam-review paths.
+    "exam_review_with_syllabus",
+    "exam_review_without_syllabus",
 }
 
 
@@ -135,7 +183,7 @@ def test_evaluation_schemas_validate_exactly_seven_fixture_categories() -> None:
     Draft202012Validator(runner_schema).validate(runner_payload)
 
     assert case_payload["fixture_only"] is True
-    assert len(case_payload["cases"]) == 10
+    assert len(case_payload["cases"]) == 12
     # The five Workflow types each have at least one fixture case.
     assert {case["workflow_type"] for case in case_payload["cases"]} == {
         "knowledge_qa",

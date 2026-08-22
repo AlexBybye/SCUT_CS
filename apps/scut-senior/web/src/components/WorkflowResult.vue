@@ -10,6 +10,12 @@ import type {
   WorkflowRunResult,
 } from "../contracts";
 import { submitFeedback } from "../api";
+import {
+  examReviewPathLabel,
+  locatorLabel as examLocatorLabel,
+  parseExamReviewPlan,
+  priorityStepLabel,
+} from "../examReviewPlan";
 import { renderAnswerMarkdown } from "../markdown";
 import { createBottomFollower } from "../scrollFollow";
 import type { WorkflowStreamState } from "../workflowStream";
@@ -63,6 +69,10 @@ const feedbackOptions = [
 const citations = computed(() => props.result?.citations ?? []);
 const externalResources = computed(() => props.result?.external_resources ?? []);
 const coverageGaps = computed(() => props.result?.coverage_gaps ?? []);
+// 迭代 5：备考复习计划（系统生成）。形状不符时为 null，面板整体隐藏。
+const examPlan = computed(() =>
+  parseExamReviewPlan(props.result?.workflow_output?.exam_review ?? null),
+);
 const trace = computed(() => props.result?.trace ?? props.streamState?.traceEvents ?? []);
 const streamError = computed(() => props.result ? null : props.streamState?.error ?? null);
 const streamPhase = computed(() => props.result?.run_status ?? props.streamState?.phase ?? "idle");
@@ -423,6 +433,87 @@ function citationLocator(citation: Citation): string {
           </div>
         </details>
 
+        <details v-if="result && examPlan" class="evidence-group">
+          <summary>
+            <span>备考复习计划（系统生成）</span>
+            <span class="chip">{{ examPlan.knowledge_points.length }}</span>
+          </summary>
+          <p class="evidence-group-note">{{ examPlan.scope_statement }}</p>
+          <div class="evidence-body exam-plan" aria-label="备考复习计划详情">
+            <p class="exam-plan-path">
+              <strong>{{ examReviewPathLabel(examPlan.path) }}</strong>
+              <span v-if="examPlan.priority_order.length" class="exam-plan-chain">
+                证据顺序：{{ examPlan.priority_order.map(priorityStepLabel).join(" → ") }}
+              </span>
+            </p>
+            <div v-if="examPlan.past_exam_stats.question_count" class="exam-plan-stats">
+              <p>
+                样本年份 {{ examPlan.past_exam_stats.sample_years.join("、") }}
+                （{{ examPlan.past_exam_stats.year_count }} 个年份、{{
+                  examPlan.past_exam_stats.question_count
+                }}
+                道题，客观出现次数）
+              </p>
+              <ul v-if="examPlan.past_exam_stats.year_coverage.length">
+                <li v-for="item in examPlan.past_exam_stats.year_coverage" :key="item.year">
+                  {{ item.year }}：{{ item.count }} 题
+                </li>
+              </ul>
+              <ul v-if="examPlan.past_exam_stats.type_distribution.length">
+                <li v-for="item in examPlan.past_exam_stats.type_distribution" :key="item.key">
+                  {{ item.label }}：{{ item.count }} 次
+                </li>
+              </ul>
+            </div>
+            <ol v-if="examPlan.knowledge_points.length" class="exam-plan-points">
+              <li v-for="(point, index) in examPlan.knowledge_points" :key="point.topic + index">
+                <strong>【第 {{ point.layer }} 层】{{ point.topic }}</strong>
+                <small v-if="point.order_reasons.length">
+                  （{{ point.order_reasons.join("、") }}）
+                </small>
+                <ul>
+                  <li v-for="(loc, locIndex) in point.material_locations.slice(0, 3)" :key="locIndex">
+                    《{{ loc.source_title }}》{{ examLocatorLabel(loc.locator_type, loc.locator_start) }}
+                  </li>
+                  <li v-for="question in point.questions.slice(0, 4)" :key="question.question_id">
+                    真题 {{ question.question_id }}<template v-if="question.year">（{{ question.year }}）</template>
+                  </li>
+                </ul>
+              </li>
+            </ol>
+            <div
+              v-else-if="examPlan.past_exam_stats.question_groups.length"
+              class="exam-plan-groups"
+            >
+              <p class="empty-line">
+                当前历年题语料没有可按知识点归组的标题；以下题组是仅有的客观结构，题型不是知识点。
+              </p>
+              <ul>
+                <li v-for="group in examPlan.past_exam_stats.question_groups" :key="group.source_id">
+                  《{{ group.source_title }}》
+                  <template v-if="group.year">（{{ group.year }}）</template>
+                  ：共 {{ group.question_count || group.questions.length }} 题
+                  <small v-if="group.questions.length">
+                    代表题号：{{ group.questions.map((q) => q.question_id).join("、") }}
+                  </small>
+                </li>
+              </ul>
+            </div>
+            <ul v-if="examPlan.review_suggestions.length" class="exam-plan-suggestions">
+              <li v-for="suggestion in examPlan.review_suggestions" :key="suggestion">
+                {{ suggestion }}
+              </li>
+            </ul>
+            <div v-if="examPlan.uncovered_items.length" class="note note-warn exam-plan-uncovered">
+              <h4>未覆盖内容</h4>
+              <ul>
+                <li v-for="item in examPlan.uncovered_items" :key="item">{{ item }}</li>
+              </ul>
+            </div>
+            <p class="exam-plan-boundary">{{ examPlan.ai_sample_policy }}</p>
+          </div>
+        </details>
+
         <details v-if="result" class="evidence-group">
           <summary>
             <span>B站延伸学习</span>
@@ -752,6 +843,63 @@ function citationLocator(citation: Citation): string {
 
 .evidence-body {
   padding-bottom: 10px;
+}
+
+/* 备考复习计划：系统生成的结构化统计，紧凑列表，不做落地页造型。 */
+.exam-plan {
+  display: grid;
+  gap: 9px;
+  font-size: var(--fs-xs);
+}
+
+.exam-plan-path {
+  display: grid;
+  gap: 2px;
+}
+
+.exam-plan-chain {
+  color: var(--text-muted);
+  font-size: var(--fs-2xs);
+}
+
+.exam-plan-stats ul,
+.exam-plan-points ul,
+.exam-plan-suggestions {
+  margin: 4px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 3px;
+  color: var(--text-soft);
+}
+
+.exam-plan-points > li + li,
+.exam-plan-suggestions li + li {
+  margin-top: 5px;
+}
+
+/* 题组：语料没有知识点标题时的客观回退结构。 */
+.exam-plan-groups ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 4px;
+  color: var(--text-soft);
+}
+
+.exam-plan-groups small {
+  color: var(--text-muted);
+}
+
+.exam-plan-uncovered h4 {
+  font-size: var(--fs-xs);
+  font-weight: 650;
+  margin-bottom: 4px;
+}
+
+.exam-plan-boundary {
+  color: var(--text-muted);
+  font-size: var(--fs-2xs);
+  line-height: 1.55;
 }
 
 /* 引用：两列网格，紧凑。 */

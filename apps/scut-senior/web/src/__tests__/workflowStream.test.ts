@@ -523,4 +523,23 @@ describe("startWorkflowStreamRequest", () => {
     expect(cancel).toHaveBeenCalledTimes(1);
     expect(handle.signal.aborted).toBe(true);
   });
+
+  it("maps a real network failure to a friendly message and keeps the run recoverable", async () => {
+    const fetchImpl = vi.fn().mockRejectedValue(new TypeError("Failed to fetch"));
+
+    const state = await startWorkflowStreamRequest(
+      "/api/v1/workflow-runs/stream",
+      { method: "POST" },
+      { fetchImpl },
+    ).done;
+
+    expect(fetchImpl).toHaveBeenCalledTimes(1);
+    expect(state).toMatchObject({
+      phase: "failed",
+      error: { code: "stream_request_failed" },
+    });
+    // 不再暴露原始 “Failed to fetch”，而是告诉学生运行会在服务端继续。
+    expect(state.error?.detail).toContain("网络连接中断");
+    expect(state.error?.detail).toContain("重新读取");
+  });
 });

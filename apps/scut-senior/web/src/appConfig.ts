@@ -149,6 +149,11 @@ export function splitList(value: string): string[] {
 
 export function toMessage(error: unknown): string {
   if (error instanceof ApiError && error.status === 429) return error.message;
+  if (error instanceof TypeError) {
+    // fetch 网络层失败（Failed to fetch / NetworkError）：给出可行动的提示，
+    // 不再把浏览器英文原文直接甩给学生。
+    return "网络连接失败，请检查网络后重试；已提交的运行若在服务端继续，稍后重新读取即可看到结果。";
+  }
   return error instanceof Error ? error.message : "请求失败，请检查 API 服务是否运行。";
 }
 

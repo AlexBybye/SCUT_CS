@@ -12,7 +12,7 @@ const store = useAppStore();
     <div class="account-menu-head">
       <span class="account-menu-title">个人中心</span>
       <span class="chip chip-mono">
-        {{ store.selectedModel?.display_name ?? (store.isLoadingModels ? "模型目录加载中" : "模型目录不可用") }}
+        {{ store.selectedModel?.display_name ?? (store.isLoadingModels ? "模型目录加载中" : "模型待选择") }}
       </span>
     </div>
     <div class="account-tabs" role="tablist">

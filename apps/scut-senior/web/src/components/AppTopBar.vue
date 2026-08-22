@@ -1,8 +1,36 @@
 <script setup lang="ts">
+import { onBeforeUnmount, ref, watch } from "vue";
 import AccountMenu from "./AccountMenu.vue";
 import { useAppStore } from "../composables/useAppStore";
 
 const store = useAppStore();
+
+// 个人中心浮层的根：开关按钮与浮层面板都在其中，点它们不算“外部”。
+const accountRoot = ref<HTMLElement | null>(null);
+
+// 点击个人中心（含其子组件）以外的任意位置时收回浮层。
+function onDocumentPointerDown(event: PointerEvent): void {
+  const root = accountRoot.value;
+  const target = event.target;
+  if (!root || !(target instanceof Node) || root.contains(target)) return;
+  store.accountMenuOpen = false;
+}
+
+// 浮层展开时才挂全局监听，收起即摘除；capture 保证先于其他 click 逻辑。
+watch(
+  () => store.accountMenuOpen,
+  (open) => {
+    if (open) {
+      document.addEventListener("pointerdown", onDocumentPointerDown, true);
+    } else {
+      document.removeEventListener("pointerdown", onDocumentPointerDown, true);
+    }
+  },
+);
+
+onBeforeUnmount(() => {
+  document.removeEventListener("pointerdown", onDocumentPointerDown, true);
+});
 </script>
 
 <template>
@@ -33,7 +61,7 @@ const store = useAppStore();
 
     <span class="topbar-spacer"></span>
 
-    <div class="account">
+    <div ref="accountRoot" class="account">
       <span v-if="store.isLoadingAuth" class="account-muted">正在确认登录状态</span>
       <template v-else-if="store.currentUser">
         <button

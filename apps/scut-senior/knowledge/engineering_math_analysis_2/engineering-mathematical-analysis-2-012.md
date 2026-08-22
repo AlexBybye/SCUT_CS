@@ -1,0 +1,101 @@
+---
+source_id: engineering-mathematical-analysis-2-012
+course_id: engineering_math_analysis_2
+title: "2009级计算机工科数学分析下 期末A"
+original_file: "学科资料/工科数学分析II/往年卷/2009级计算机工科数学分析下 期末A.doc"
+document_role: past_exam
+year: 2009
+locator_type: none
+---
+
+# 2009级计算机工科数学分析下 期末A
+
+**诚信应考,考试作弊将带来严重后果！**
+
+**华南理工大学2009～2010第二学期期末考试**
+
+**《工科数学分析》（下）试卷（A）**
+
+**注意事项：1.** **考前请将密封线内填写清楚；**
+
+**2.** **所有答案请直接答在试卷上；**
+
+**3．考试形式：闭卷；**
+
+**4.** **本试卷共 五 大题，满分100分，**	**考试时间120分钟**。
+
+| **题 号** | **一** | **二** | **三** | **四** | **五** | **总分** |
+|---|---|---|---|---|---|---|
+| **得 分** |  |  |  |  |  |  |
+| **评卷人** |  |  |  |  |  |  |
+
+- **填空题** **(共5小题,每小题4分,共20分)**
+
+<!-- question: engineering-mathematical-analysis-2-012-Q1 -->
+
+1. $(y'''{)}^{3}+(y'{)}^{4}+{x}^{2}+x+1=0$是        阶微分方程。
+
+2.已知$(a\times b)\cdot c=2$，则$[(a+b)\times (b+c)]\cdot (c+a)=$               .
+
+3．函数$z=arctan\frac {y} {x}+ln\sqrt {{x}^{2}+{y}^{2}}$在点（1，0）处的梯度$gradz{|}_{(1,0)}=$                  .
+
+<!-- question: engineering-mathematical-analysis-2-012-Q2 -->
+
+4.交换积分顺序，则  $\int dx\int f(x,y) d y=$                   .
+
+5.设$f(x)$是以$2\pi$为周期的函数，它在$[-\pi ,\pi ]$上的表达式是$f(x)=\left \{ {\begin {matrix} x+1, -\pi \le x<0, \\ {x}^{2}, 0\le x<\pi . \end {matrix}}\right$若它的傅里叶级数的和函数为$S(x)$，则$S(0)=$            .
+- **选择题(共5小题,每小题4分,共20分)**
+
+<!-- question: engineering-mathematical-analysis-2-012-Q3 -->
+
+1.  抛物线${y}^{2}=4x$上与直线$x-y+4=0$相距最近的点是(     )
+
+A.（0，0）；          B.（1，1）；            C.（1，2）；            D.$(2, 2\sqrt {2})$.
+
+2.  直线$L:\frac {x-2} {2}=\frac {y+1} {-2}=\frac {z=3} {1}$与平面$\pi:x+2y-2z=6$的关系是(       )
+
+A.  平行；	      	      B.  垂直；                C.  相交但不垂直；                    D.  重合
+
+<!-- question: engineering-mathematical-analysis-2-012-Q4 -->
+
+3.设$f(x, y)$在点$({x}_{0}, {y}_{0})$处的两个偏导数都存在，则  (       )
+
+A.$f(x, y)$在点$({x}_{0}, {y}_{0})$必连续；         		 		 B.  $f(x, y)$在点$({x}_{0}, {y}_{0})$必可微；                		C.    $\lim_ {x\to {x}_{0}} f(x, y)$与$\lim_ {y\to {y}_{0}} f(x, y)$都存在；        D.  $\lim_ {x\to {x}_{0}} _{y\to {y}_{0}}f(x, y)$存在
+
+4.  设区域$D:0\le y\le x, 0\le x\le \pi$，则二重积分$\iint _{D} \sqrt {1-{sin}^{2}x}dxdy=$（       ）
+
+A.0		          B.  $\frac {\pi } {2}$                                    C.2			 	D. $\pi$
+
+5.设$\alpha$为常数，则级数$\sum _{n=1} ^{\infty } [\frac {sin(n\alpha )} {{n}^{2}}-\frac {1} {n}]$（       ）
+
+A.    绝对收敛；                       B.  发散；
+
+C.    条件收敛；                       D.  收敛性与$\alpha$的取值有关
+
+**三.** **计算题(本大题分4小题,每小题8分,共32分)**
+
+<!-- question: engineering-mathematical-analysis-2-012-Q5 -->
+
+1.求微分方程$xy''=y'ln\frac {y'} {x}$的通解.
+
+2．计算三重积分$I=\iiint _{\Omega } ({x}^{2}+{y}^{2}+{z}^{2}) dV$，其中$\Omega :$${x}^{2}+{y}^{2}+{z}^{2}\le 2z$.
+
+3．计算曲线积分  $I=\int (x+y{)}^{2}dx-({x}^{2}+{y}^{2}siny)dy$，其中$L$是抛物线$y={x}^{2}$上从点$(-1, 1 )$到点$(1, 1 )$的那一段。
+
+<!-- question: engineering-mathematical-analysis-2-012-Q6 -->
+
+4．求幂级数$\sum _{n=0} ^{\infty } (2n+1){x}^{n}$的收敛域及和函数.
+
+**四、应用题（本大题分2小题,每小题7分,共14分）**
+
+<!-- question: engineering-mathematical-analysis-2-012-Q7 -->
+
+1.造一个容积为$V$的长方形无盖铝盒，怎样设计尺寸才能使它的表面积最小？
+
+2.求密度$\rho \equiv 1$的均匀球壳${x}^{2}+{y}^{2}+{z}^{2}={a}^{2}(z\ge 0)$对于$Oz$轴的转动惯量.
+
+**五、证明题（本大题分2小题,每小题7分,共14分）**
+
+1.设函数$f(x)$在区间$[a, b]$上连续，证明：$\int dx\int f(y)dy=\int f(y)(b-y)dx$.
+
+2.设正数序列$\left \{ {{x}_{n}}\right \}$单调上升且有界，证明级数$\sum _{n=1} ^{\infty } (1-\frac {{x}_{n}} {{x}_{n+1}})$收敛.

@@ -704,9 +704,11 @@ def test_disconnect_while_model_is_blocked_finishes_as_interrupted_after_return(
     assert restored.json()["run_status"] == "interrupted"
 
 
-def test_closing_the_stream_route_cancels_and_persists_the_same_run(
+def test_closing_the_stream_route_keeps_the_run_completing_in_background(
     tmp_path: Path,
 ) -> None:
+    # 静默断线（网络波动/关页）≠ 用户取消：运行继续到完成并持久化终态，
+    # 用户稍后重新读取会话即可拿到结果，而不是被打成 interrupted。
     model_entered = Event()
     release_model = Event()
 
@@ -717,7 +719,7 @@ def test_closing_the_stream_route_cancels_and_persists_the_same_run(
             if not release_model.wait(timeout=2):
                 raise TimeoutError("test model was not released")
             return GeneratedAnswer(
-                repository_answer="关闭路由后不得保存为完成。[S1]",
+                repository_answer="关闭路由后仍应在后台完成并保存。[S1]",
                 citation_ids=("S1",),
             )
 
@@ -752,16 +754,93 @@ def test_closing_the_stream_route_cancels_and_persists_the_same_run(
             restored = app.state.repository.get_run(
                 "mock-user-iteration-0", run_id
             )
-            if restored is not None and restored.run_status == RunStatus.INTERRUPTED:
+            if restored is not None and restored.run_status == RunStatus.COMPLETED:
                 assert restored.workflow_run_id == run_id
+                assert "[S1]" in restored.repository_answer
                 return
             await asyncio.sleep(0.01)
-        raise AssertionError("closed stream route did not persist interrupted")
+        raise AssertionError("closed stream route did not persist completed run")
 
     try:
         asyncio.run(close_route_and_wait_for_history())
     finally:
         release_model.set()
+
+
+def test_cancel_endpoint_interrupts_an_active_streamed_run(
+    tmp_path: Path,
+) -> None:
+    model_entered = Event()
+    release_model = Event()
+
+    class BlockingModel:
+        def generate(self, request, sources, history=()):
+            del request, sources, history
+            model_entered.set()
+            if not release_model.wait(timeout=2):
+                raise TimeoutError("test model was not released")
+            return GeneratedAnswer(
+                repository_answer="显式取消后不得保存为完成。[S1]",
+                citation_ids=("S1",),
+            )
+
+    app = create_app(
+        Settings(app_env="test", database_path=tmp_path / "explicit-cancel.db")
+    )
+    app.state.service.model = BlockingModel()
+    client = TestClient(app)
+    conversation = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    ).json()
+    request = WorkflowRunRequest.model_validate(
+        _request_dict(conversation["conversation_id"])
+    )
+    route = next(
+        route
+        for route in app.routes
+        if getattr(route, "path", None) == "/api/v1/workflow-runs/stream"
+    )
+
+    async def cancel_while_model_blocked() -> None:
+        response = await route.endpoint(payload=request, user=_mock_user())
+        iterator = response.body_iterator
+        first_chunk = await anext(iterator)
+        run_id = UUID(json.loads(first_chunk)["workflow_run_id"])
+        assert await asyncio.to_thread(model_entered.wait, 1)
+
+        cancel_response = await asyncio.to_thread(
+            client.post, f"/api/v1/workflow-runs/{run_id}/cancel"
+        )
+        assert cancel_response.status_code == 200
+        assert cancel_response.json() == {"cancel_requested": True}
+        release_model.set()
+
+        for _ in range(100):
+            restored = app.state.repository.get_run(
+                "mock-user-iteration-0", run_id
+            )
+            if restored is not None and restored.run_status == RunStatus.INTERRUPTED:
+                assert restored.answer_blocks == []
+                return
+            await asyncio.sleep(0.01)
+        raise AssertionError("explicit cancel did not persist interrupted")
+
+    try:
+        asyncio.run(cancel_while_model_blocked())
+    finally:
+        release_model.set()
+
+
+def test_cancel_endpoint_404_for_unknown_or_foreign_run(
+    tmp_path: Path,
+) -> None:
+    app = create_app(Settings(app_env="test", database_path=tmp_path / "cancel404.db"))
+    client = TestClient(app)
+
+    response = client.post(
+        "/api/v1/workflow-runs/00000000-0000-0000-0000-000000000000/cancel"
+    )
+    assert response.status_code == 404
 
 
 def test_cancellation_wins_when_blocked_retrieval_returns_an_error(
@@ -1124,10 +1203,12 @@ def test_all_five_workflows_share_the_same_runtime_pipeline(tmp_path: Path) -> N
         assert response.status_code == 201, response.text
         results[workflow_type] = response.json()
 
-    expected_nodes = [
+    shared_nodes = [
         "request_validation",
         "identity",
         "run_record",
+        # Iteration 5: exam_review inserts its deterministic plan node here;
+        # the other four workflows keep the exact pre-iteration-5 sequence.
         "fixture_retrieval",
         "source_authorization_guard",
         "cache_policy",
@@ -1141,6 +1222,15 @@ def test_all_five_workflows_share_the_same_runtime_pipeline(tmp_path: Path) -> N
     assert len({result["workflow_run_id"] for result in results.values()}) == 5
     for workflow_type, result in results.items():
         expected_focus = WORKFLOW_FOCUS_EXPECTATIONS[workflow_type]
+        expected_nodes = (
+            [
+                *shared_nodes[:3],
+                "exam_review_plan",
+                *shared_nodes[3:],
+            ]
+            if workflow_type == "exam_review"
+            else shared_nodes
+        )
         assert result["workflow_type"] == workflow_type
         assert result["workflow_output"]["runtime_version"] == "workflow-runtime-v1"
         assert result["workflow_output"]["payload_type"] == workflow_type

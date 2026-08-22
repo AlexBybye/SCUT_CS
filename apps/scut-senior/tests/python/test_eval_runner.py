@@ -16,9 +16,9 @@ def test_eval_runner_executes_all_cases_and_reports_per_course(tmp_path: Path) -
     assert report["runner_id"] == "scut-senior-eval-v1"
     assert report["contract_version"] == "v1"
     summary = report["summary"]
-    assert summary["total"] == 10
-    assert summary["passed"] + summary["failed"] + summary["skipped"] == 10
-    assert len(report["cases"]) == 10
+    assert summary["total"] == 12
+    assert summary["passed"] + summary["failed"] + summary["skipped"] == 12
+    assert len(report["cases"]) == 12
     assert {line["outcome"] for line in report["cases"]} <= {
         "passed",
         "failed",
@@ -30,7 +30,7 @@ def test_eval_runner_executes_all_cases_and_reports_per_course(tmp_path: Path) -
     )
     assert cross["outcome"] == "skipped"
     assert "cross_course" in report["by_course"]
-    assert report["by_course"]["linear_algebra"]["total"] == 9
+    assert report["by_course"]["linear_algebra"]["total"] == 11
     assert report_path.read_text(encoding="utf-8").strip()
 
     persisted = json.loads(report_path.read_text(encoding="utf-8"))
@@ -85,7 +85,7 @@ def test_eval_runner_cli_writes_report_and_exit_code_reflects_failures(
     assert report_path.exists()
 
     report = json.loads(report_path.read_text(encoding="utf-8"))
-    assert report["summary"]["total"] == 10
+    assert report["summary"]["total"] == 12
     assert report["summary"]["failed"] >= 1
 
 

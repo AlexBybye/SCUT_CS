@@ -73,6 +73,8 @@ const TRACE_RESULT_FIELDS = new Set<keyof TraceSafeResult>([
   "fixture_only",
   "normalized_topics",
   "unreviewed_search_returned",
+  "review_path",
+  "sample_years",
   "reason_code",
   "candidate_count",
   "accepted_count",
@@ -280,6 +282,7 @@ function assertTraceResult(value: unknown): asserts value is TraceSafeResult {
     "availability_status",
     "failure_code",
     "degradation_code",
+    "review_path",
     "reason_code",
   ];
   for (const field of codeFields) {
@@ -326,6 +329,18 @@ function assertTraceResult(value: unknown): asserts value is TraceSafeResult {
     const fieldValue = value[field];
     if (hasOwn(value, field) && fieldValue !== null) {
       assertNonNegativeInteger(fieldValue, `Trace ${field}`);
+    }
+  }
+
+  // Iteration 5: objective past-exam sample years (positive integers).
+  if (hasOwn(value, "sample_years") && value.sample_years !== null) {
+    const years = value.sample_years;
+    if (!Array.isArray(years)) {
+      throw new WorkflowStreamProtocolError("invalid Trace sample_years");
+    }
+    for (const year of years) {
+      assertNonNegativeInteger(year, "Trace sample_years");
+      if (year < 1) throw new WorkflowStreamProtocolError("invalid Trace sample_years");
     }
   }
 
@@ -674,7 +689,18 @@ export function validateConversationDetail(
     throw new WorkflowStreamProtocolError("invalid conversation history metadata");
   }
   const runIds = new Set<string>();
+  const runs: unknown[] = [];
   for (const rawAttempt of value.runs) {
+    // 历史详情可能瞬时包含非终态尝试（运行中/崩溃残留的 running/created）：
+    // 它们不是合格结果，跳过而不是让整个会话加载失败；终态出现后自会补齐。
+    if (
+      isRecord(rawAttempt) &&
+      isRecord(rawAttempt.result) &&
+      typeof rawAttempt.result.run_status === "string" &&
+      !TERMINAL_RUN_STATUSES.has(rawAttempt.result.run_status)
+    ) {
+      continue;
+    }
     const attempt = validateWorkflowAttempt(rawAttempt, {
       expectedConversationId: value.conversation_id as string,
     });
@@ -682,8 +708,9 @@ export function validateConversationDetail(
       throw new WorkflowStreamProtocolError("duplicate Workflow attempt in history");
     }
     runIds.add(attempt.workflow_run_id);
+    runs.push(attempt);
   }
-  return value as unknown as ConversationDetail;
+  return { ...value, runs } as unknown as ConversationDetail;
 }
 
 export function selectConversationAttempt(

@@ -19,6 +19,10 @@ const store = useAppStore();
       class="drawer-grid"
       aria-label="备考复习专属字段"
     >
+      <p class="drawer-hint drawer-span">
+        填了大纲：按“用户大纲 &gt; 课程资料 &gt; 历年题”组织；不填大纲：按“历年题
+        &gt; 课程资料”组织，并明确声明不是官方范围、不构成考试重点预测。
+      </p>
       <div class="field drawer-span">
         <label for="syllabus">考试大纲（可选）</label>
         <textarea
@@ -192,14 +196,27 @@ const store = useAppStore();
 </template>
 
 <style>
-/* 抽屉：Workflow 专属字段与输出偏好，默认收起。 */
+/* 抽屉：Workflow 专属字段与输出偏好，默认收起。
+   高度封顶并内部滚动：内容再长也只压缩自己，
+   不把下方输入框的发送区挤出可视范围。 */
 .drawer {
   display: grid;
+  align-content: start;
   gap: 12px;
   padding: 11px;
   border: 1px solid var(--line);
   border-radius: var(--r-md);
   background: var(--sunken);
+  max-height: min(46vh, 480px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* 低矮窗口：进一步压低抽屉上限，保住输入框可用高度。 */
+@media (max-height: 560px) {
+  .drawer {
+    max-height: 34vh;
+  }
 }
 
 .drawer-grid {
@@ -217,6 +234,12 @@ const store = useAppStore();
   font-size: var(--fs-2xs);
   font-weight: 650;
   letter-spacing: 0.02em;
+}
+
+.drawer-hint {
+  color: var(--text-muted);
+  font-size: var(--fs-2xs);
+  line-height: 1.55;
 }
 
 .check {

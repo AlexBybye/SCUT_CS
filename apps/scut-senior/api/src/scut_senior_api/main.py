@@ -5,7 +5,7 @@ import json
 from hmac import compare_digest
 from uuid import UUID
 
-from fastapi import Depends, FastAPI, Request
+from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
@@ -21,6 +21,10 @@ from .adapters.github import (
     FailClosedHttpTransport,
     GitHubOAuthAdapter,
     GitHubOAuthError,
+)
+from .adapters.exam_facts import (
+    FixtureExamFactsProvider,
+    LocalCorpusExamFactsProvider,
 )
 from .adapters.local_corpus import LocalCorpusRetrievalGateway
 from .adapters.mock import (
@@ -91,6 +95,10 @@ from .registry import CourseRegistry, UnknownCourseError
 from .runtime_guards import RuntimeGuardError
 from .service import ContractConflict, IterationZeroService, ResourceNotFound
 from .workflow_stream import WorkflowStreamSession
+
+# 活跃流式会话登记：run_id → (user_id, session)。
+# 静默断线不再取消运行（见 stream_workflow），显式取消端点靠这里定位会话。
+_ACTIVE_STREAMS: dict[str, tuple[str, WorkflowStreamSession]] = {}
 
 
 OAUTH_STATE_COOKIE_NAME = "__Host-scut_senior_oauth_state"
@@ -329,6 +337,11 @@ def create_app(
         credential_manager=credential_manager,
         byok_model=byok_model,
         humanizer=humanizer,
+        exam_facts=(
+            LocalCorpusExamFactsProvider(active_settings.corpus_store_path)
+            if active_settings.retrieval_mode == "local_corpus"
+            else FixtureExamFactsProvider()
+        ),
     )
 
     app = FastAPI(
@@ -482,11 +495,12 @@ def create_app(
         active_corpus_configured = local_corpus_retrieval_available_course_count > 0
         return {
             "status": "ok",
-            "iteration": 3,
+            "iteration": 5,
+            # 口径自声明：状态值内嵌迭代号，避免再次出现字段停在旧迭代的静默滞后。
             "iteration_status": (
-                "local_runtime_with_active_corpus"
+                "iteration5_runtime_with_active_corpus"
                 if active_corpus_configured
-                else "local_fixture_runtime_active_corpus_required"
+                else "iteration5_fixture_runtime_active_corpus_required"
             ),
             "formal_exit_blocked": not active_corpus_configured,
             "runtime": (
@@ -827,9 +841,13 @@ def create_app(
             try:
                 loop.call_soon_threadsafe(queue.put_nowait, event)
             except RuntimeError:
+                # 事件循环已关闭（进程退出）：流已无处可送，取消是唯一选择。
                 session.cancel()
 
         session = WorkflowStreamSession(enqueue_event)
+        run_key = str(session.workflow_run_id)
+        # 显式取消端点需要按 run_id 找到会话；静默断线不再等价于取消。
+        _ACTIVE_STREAMS[run_key] = (str(user.user_id), session)
 
         def execute() -> None:
             try:
@@ -872,10 +890,11 @@ def create_app(
                     ) + "\n"
                 await task
             except asyncio.CancelledError:
-                session.cancel()
+                # 客户端断开（网络波动/关页）≠ 用户取消：不打断正在执行的
+                # 运行，让它完成后持久化终态；用户稍后重新读取即可拿到结果。
                 raise
             finally:
-                session.cancel()
+                _ACTIVE_STREAMS.pop(run_key, None)
                 if task.done() and not task.cancelled():
                     task.exception()
 
@@ -887,6 +906,20 @@ def create_app(
                 "X-Accel-Buffering": "no",
             },
         )
+
+    @app.post("/api/v1/workflow-runs/{run_id}/cancel")
+    async def cancel_workflow(
+        run_id: UUID,
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> dict[str, bool]:
+        entry = _ACTIVE_STREAMS.get(str(run_id))
+        if entry is None or entry[0] != str(user.user_id):
+            raise HTTPException(
+                status_code=404,
+                detail="没有正在运行的该工作流（可能已完成、已取消或不属于当前用户）。",
+            )
+        entry[1].cancel()
+        return {"cancel_requested": True}
 
     @app.post(
         "/api/v1/workflow-runs/{run_id}/regenerate",
