@@ -72,7 +72,18 @@
 
 **适合谁**：`web开发前端技术基础` 的课设、大作业演示页、社团活动页等一系列需要网站等前端开发的项目demo，好处相比于taste-skill是更便宜，更省token的情况下得到较有品味的设计，因为不需要工业级别的接轨。
 
+### material-to-markdown（学科资料转 Markdown）
+
+[AlexBybye/SCUT_CS](https://github.com/AlexBybye/SCUT_CS) · 本仓库内置 · `apps/tools/material_converter/`（`SKILL.md` 在 `apps/tools/material_converter/SKILL.md`）
+
+把 `学科资料/` 下的 DOCX/DOC/PDF/PPTX/PPT/代码/笔记按 `apps/scut-senior/docs/MATERIAL_TO_MARKDOWN_SOP.md` 转成带 frontmatter、图片资产、page/slide/heading 锚点与 manifest 记录的 Markdown 知识库条目。两段式：**确定性抽取**（OOXML/PDF/PPT 文本、标题层级、表格、原生 OMML→LaTeX、去重、隐私预处理）＋ **AI 语义归一化**（`--emit-ai-jobs`/`--finalize`：OCR 校正、公式预览图→LaTeX、阅读顺序恢复、题目边界候选）。增量幂等：已入库 `original_path` 自动跳过，字节/内容/「无答案子集」自动去重。新增课程只需注册 `courses.json` 再跑 `--course <文件夹> --validate`。
+
+**不做什么**：不总结、缩写、解释、纠错或凭记忆补写；不猜写无法与原件逐项对应的公式（留 PNG 预览并写 `notes`）；不把工具/AI 输出直接标 `passed`（SOP §4：人工审核是唯一入门口）；不破解加密 zip，不上传第三方云解析，不执行宏。
+
+**适合谁**：需要给知识库/复习助手持续补全课程资料的同学。接大二大三新课、或各科上传新资料后增量入库，都靠它把「转换 + 去重 + 隐私 + manifest」固化成一次可重复的动作。
+
 ---
+
 
 ## 🌐 外部工具（SCUTCSer安利的skill放置于此）
 

@@ -62,3 +62,10 @@ apps/scut-senior/docs/*
 !apps/scut-senior/docs/PLAN-1.md
 !apps/scut-senior/docs/CODE_ITERATION_SOP.md
 !apps/scut-senior/docs/MATERIAL_TO_MARKDOWN_SOP.md
+
+# material converter scratch
+work/
+
+# material converter scratch (auxiliary)
+apps/tools/material_converter/.work/
+apps/tools/material_converter/.ai_jobs/
