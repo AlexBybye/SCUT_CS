@@ -26,12 +26,20 @@ from ..auth import (
     utc_now,
 )
 from ..contracts import (
+    ContributionRecord,
+    ContributionState,
     ConversationDetail,
     ConversationSummary,
     FeedbackRecord,
+    TemporaryMaterialDetail,
+    TemporaryMaterialRecord,
     WorkflowAttempt,
     WorkflowResult,
     WorkflowRunRequest,
+)
+from ..contributions import (
+    CONTRIBUTION_REVIEW_COPY_TTL_DAYS,
+    TEMPORARY_MATERIAL_TTL_DAYS,
 )
 from ..credentials import CREDENTIAL_ALGORITHM
 from ..paths import MIGRATION_ROOT
@@ -41,6 +49,14 @@ from ..ports import StoredModelCredential
 HISTORY_TTL = timedelta(days=30)
 PRIVATE_DIRECTORY_MODE = 0o700
 PRIVATE_FILE_MODE = 0o600
+
+
+@dataclass(frozen=True, slots=True)
+class MaterialCleanupCounts:
+    """迭代 7 清理结果：物理删除的材料数与载荷清空的贡献数。"""
+
+    materials: int
+    contributions_cleared: int
 
 
 def _ensure_private_parent_directory(parent: Path) -> None:
@@ -171,6 +187,7 @@ class SQLiteWorkflowRepository:
         self._migrate()
         self.cleanup_auth_records()
         self.cleanup_history_records()
+        self.cleanup_material_records()
         _protect_database_bundle(self.database_path)
 
     def connect(self) -> sqlite3.Connection:
@@ -430,6 +447,323 @@ class SQLiteWorkflowRepository:
                     (now,),
                 ).rowcount
         return HistoryCleanupCounts(runs, conversations, feedback)
+
+    # ------------------------------------------------------------------
+    # 迭代 7（SOP §12）：临时材料与贡献待处理队列。
+    # ------------------------------------------------------------------
+
+    def cleanup_material_records(self) -> MaterialCleanupCounts:
+        """迭代 7 清理：到期临时材料物理删除；到期贡献载荷实际清空。
+
+        - 临时材料 7 天 TTL：到期整行删除，不留内容。
+        - 贡献 30 天 TTL：到期后 content_snapshot 实际清空（不能只在 UI 隐藏）；
+          未决状态置为 expired，终态保留状态标记但同样清除载荷。
+        """
+
+        now = self._now().isoformat()
+        with self._connect() as connection:
+            tables = {
+                row["name"]
+                for row in connection.execute(
+                    "SELECT name FROM sqlite_master WHERE type = 'table'"
+                )
+            }
+            if "temporary_materials" not in tables:
+                return MaterialCleanupCounts(0, 0)
+            materials = connection.execute(
+                "DELETE FROM temporary_materials WHERE expires_at <= ?",
+                (now,),
+            ).rowcount
+            cleared = connection.execute(
+                """
+                UPDATE contributions
+                SET state = CASE
+                        WHEN state IN ('draft', 'submitted', 'pr_open') THEN 'expired'
+                        ELSE state
+                    END,
+                    content_snapshot = '',
+                    char_count = 0,
+                    updated_at = ?
+                WHERE expires_at <= ? AND content_snapshot != ''
+                """,
+                (now, now),
+            ).rowcount
+        return MaterialCleanupCounts(materials, cleared)
+
+    @staticmethod
+    def _temporary_material_record(
+        row: sqlite3.Row, *, include_content: bool
+    ) -> TemporaryMaterialDetail | TemporaryMaterialRecord:
+        base: dict[str, object] = {
+            "material_id": UUID(row["material_id"]),
+            "conversation_id": UUID(row["conversation_id"]),
+            "course_id": row["course_id"],
+            "title": row["title"],
+            "char_count": int(row["char_count"]),
+            "content_sha256": row["content_sha256"],
+            "created_at": datetime.fromisoformat(row["created_at"]),
+            "expires_at": datetime.fromisoformat(row["expires_at"]),
+        }
+        if include_content:
+            return TemporaryMaterialDetail(
+                **base, content=row["content"]  # type: ignore[arg-type]
+            )
+        return TemporaryMaterialRecord(**base)  # type: ignore[arg-type]
+
+    def save_temporary_material(
+        self,
+        *,
+        user_id: str,
+        conversation_id: UUID,
+        course_id: str,
+        title: str | None,
+        content: str,
+    ) -> TemporaryMaterialDetail:
+        """保存会话内临时材料；TTL 固定 7 天，到期由清理任务物理删除。"""
+
+        now = self._now()
+        material_id = uuid4()
+        created_at = now.isoformat()
+        expires_at = (now + timedelta(days=TEMPORARY_MATERIAL_TTL_DAYS)).isoformat()
+        with self._connect() as connection:
+            connection.execute(
+                """
+                INSERT INTO temporary_materials (
+                    material_id, user_id, conversation_id, course_id, title,
+                    content, content_sha256, char_count, created_at, expires_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    str(material_id),
+                    user_id,
+                    str(conversation_id),
+                    course_id,
+                    title,
+                    content,
+                    hashlib.sha256(content.encode("utf-8")).hexdigest(),
+                    len(content),
+                    created_at,
+                    expires_at,
+                ),
+            )
+        record = self.get_temporary_material(
+            user_id, material_id, include_content=True
+        )
+        assert record is not None  # 刚插入的行必然存在。
+        return record
+
+    def get_temporary_material(
+        self,
+        user_id: str,
+        material_id: UUID,
+        *,
+        include_content: bool = False,
+    ) -> TemporaryMaterialDetail | TemporaryMaterialRecord | None:
+        """所有权硬绑定：user_id 不匹配时等同于不存在。"""
+
+        now = self._now().isoformat()
+        with self._connect() as connection:
+            row = connection.execute(
+                """
+                SELECT * FROM temporary_materials
+                WHERE material_id = ? AND user_id = ? AND expires_at > ?
+                """,
+                (str(material_id), user_id, now),
+            ).fetchone()
+        if row is None:
+            return None
+        return self._temporary_material_record(
+            row, include_content=include_content
+        )
+
+    def list_temporary_materials(
+        self, user_id: str
+    ) -> list[TemporaryMaterialRecord]:
+        now = self._now().isoformat()
+        with self._connect() as connection:
+            rows = connection.execute(
+                """
+                SELECT * FROM temporary_materials
+                WHERE user_id = ? AND expires_at > ?
+                ORDER BY created_at DESC
+                """,
+                (user_id, now),
+            ).fetchall()
+        return [
+            self._temporary_material_record(row, include_content=False)
+            for row in rows
+        ]
+
+    def delete_temporary_material(self, user_id: str, material_id: UUID) -> bool:
+        with self._connect() as connection:
+            deleted = connection.execute(
+                """
+                DELETE FROM temporary_materials
+                WHERE material_id = ? AND user_id = ?
+                """,
+                (str(material_id), user_id),
+            ).rowcount
+        return deleted > 0
+
+    @staticmethod
+    def _contribution_record(row: sqlite3.Row) -> ContributionRecord:
+        pr_url = row["pr_url"]
+        return ContributionRecord(
+            contribution_id=UUID(row["contribution_id"]),
+            user_id=row["user_id"],
+            material_id=(
+                UUID(row["material_id"]) if row["material_id"] is not None else None
+            ),
+            course_id=row["course_id"],
+            proposed_source_id=row["proposed_source_id"],
+            title=row["title"],
+            state=ContributionState(row["state"]),
+            pr_url=pr_url,
+            maintainer_note=row["maintainer_note"],
+            char_count=int(row["char_count"]),
+            created_at=datetime.fromisoformat(row["created_at"]),
+            updated_at=datetime.fromisoformat(row["updated_at"]),
+            expires_at=datetime.fromisoformat(row["expires_at"]),
+        )
+
+    def create_contribution(
+        self,
+        *,
+        user_id: str,
+        material_id: UUID | None,
+        course_id: str,
+        proposed_source_id: str,
+        title: str,
+        content_snapshot: str,
+        state: ContributionState,
+    ) -> ContributionRecord:
+        """创建贡献记录。
+
+        draft 继承临时材料 7 天期限（随材料一起过期）；
+        submitted/pr_open 及终态使用“必要待审副本”30 天上限。
+        """
+
+        now = self._now()
+        contribution_id = uuid4()
+        ttl_days = (
+            TEMPORARY_MATERIAL_TTL_DAYS
+            if state == ContributionState.DRAFT
+            else CONTRIBUTION_REVIEW_COPY_TTL_DAYS
+        )
+        created_at = now.isoformat()
+        updated_at = created_at
+        expires_at = (now + timedelta(days=ttl_days)).isoformat()
+        with self._connect() as connection:
+            connection.execute(
+                """
+                INSERT INTO contributions (
+                    contribution_id, user_id, material_id, course_id,
+                    proposed_source_id, title, content_snapshot, state,
+                    pr_url, maintainer_note, char_count,
+                    created_at, updated_at, expires_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL, ?, ?, ?, ?)
+                """,
+                (
+                    str(contribution_id),
+                    user_id,
+                    str(material_id) if material_id is not None else None,
+                    course_id,
+                    proposed_source_id,
+                    title,
+                    content_snapshot,
+                    state.value,
+                    len(content_snapshot),
+                    created_at,
+                    updated_at,
+                    expires_at,
+                ),
+            )
+        record = self.get_contribution(user_id, contribution_id)
+        assert record is not None  # 刚插入的行必然存在。
+        return record
+
+    def get_contribution(
+        self, user_id: str, contribution_id: UUID
+    ) -> ContributionRecord | None:
+        """用户只能读取自己的贡献状态；他人记录等同不存在。"""
+
+        with self._connect() as connection:
+            row = connection.execute(
+                "SELECT * FROM contributions WHERE contribution_id = ? AND user_id = ?",
+                (str(contribution_id), user_id),
+            ).fetchone()
+        return None if row is None else self._contribution_record(row)
+
+    def list_contributions(self, user_id: str) -> list[ContributionRecord]:
+        with self._connect() as connection:
+            rows = connection.execute(
+                """
+                SELECT * FROM contributions WHERE user_id = ?
+                ORDER BY created_at DESC
+                """,
+                (user_id,),
+            ).fetchall()
+        return [self._contribution_record(row) for row in rows]
+
+    def list_maintainer_queue(
+        self, state: ContributionState | None = None
+    ) -> list[ContributionRecord]:
+        """维护者待处理队列：只返回元数据视图需要的记录行。"""
+
+        with self._connect() as connection:
+            if state is None:
+                rows = connection.execute(
+                    """
+                    SELECT * FROM contributions
+                    WHERE state IN ('submitted', 'pr_open')
+                    ORDER BY created_at ASC
+                    """
+                ).fetchall()
+            else:
+                rows = connection.execute(
+                    "SELECT * FROM contributions WHERE state = ? ORDER BY created_at ASC",
+                    (state.value,),
+                ).fetchall()
+        return [self._contribution_record(row) for row in rows]
+
+    def transition_contribution(
+        self,
+        contribution_id: UUID,
+        *,
+        from_states: frozenset[ContributionState],
+        target_state: ContributionState,
+        pr_url: str | None,
+        note: str | None,
+    ) -> ContributionRecord | None:
+        """原子状态迁移：仅当当前状态仍在允许集合内时生效。"""
+
+        now = self._now().isoformat()
+        from_states = sorted(from_states)
+        placeholders = ", ".join("?" for _ in from_states)
+        with self._connect() as connection:
+            updated = connection.execute(
+                f"""
+                UPDATE contributions
+                SET state = ?, pr_url = ?, maintainer_note = ?, updated_at = ?
+                WHERE contribution_id = ? AND state IN ({placeholders})
+                """,
+                (
+                    target_state.value,
+                    pr_url,
+                    note,
+                    now,
+                    str(contribution_id),
+                    *[state.value for state in from_states],
+                ),
+            ).rowcount
+            if updated == 0:
+                return None
+            row = connection.execute(
+                "SELECT * FROM contributions WHERE contribution_id = ?",
+                (str(contribution_id),),
+            ).fetchone()
+        assert row is not None
+        return self._contribution_record(row)
 
     def is_course_plugin_loaded(self, course_id: str) -> bool:
         """A course plugin is loaded unless an explicit unload row exists.

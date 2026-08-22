@@ -484,3 +484,74 @@ export interface ConversationSummary {
 export interface ConversationDetail extends ConversationSummary {
   runs: WorkflowAttempt[];
 }
+
+// ---------------------------------------------------------------------------
+// 迭代 7（SOP §12）：临时材料精读治理与贡献待处理队列。
+// ---------------------------------------------------------------------------
+
+export type ContributionState =
+  | "draft"
+  | "submitted"
+  | "pr_open"
+  | "merged"
+  | "rejected"
+  | "expired";
+
+export const CONTRIBUTION_STATES: readonly ContributionState[] = [
+  "draft",
+  "submitted",
+  "pr_open",
+  "merged",
+  "rejected",
+  "expired",
+] as const;
+
+export interface TemporaryMaterialRecord {
+  material_id: string;
+  conversation_id: string;
+  course_id: string;
+  title: string | null;
+  char_count: number;
+  content_sha256: string;
+  created_at: string;
+  expires_at: string;
+  mock_only: boolean;
+}
+
+export interface TemporaryMaterialDetail extends TemporaryMaterialRecord {
+  content: string;
+}
+
+export interface ContributionPreview {
+  course_id: string;
+  proposed_source_id: string;
+  normalized_content: string;
+  has_h1_title: boolean;
+  question_marker_count: number;
+  warnings: string[];
+}
+
+export interface ContributionRecord {
+  contribution_id: string;
+  user_id: string;
+  material_id: string | null;
+  course_id: string;
+  proposed_source_id: string;
+  title: string;
+  state: ContributionState;
+  pr_url: string | null;
+  maintainer_note: string | null;
+  char_count: number;
+  created_at: string;
+  updated_at: string;
+  expires_at: string;
+  mock_only: boolean;
+}
+
+export interface ContributionConfirmations {
+  course_confirmed: boolean;
+  source_confirmed: boolean;
+  public_share_rights_confirmed: boolean;
+  no_sensitive_info_confirmed: boolean;
+  public_pr_visibility_acknowledged: boolean;
+}

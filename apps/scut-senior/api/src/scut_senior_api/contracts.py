@@ -595,3 +595,162 @@ class FeedbackRecord(ContractModel):
     answer_status: AnswerStatus
     created_at: datetime
     expires_at: datetime
+
+
+# ---------------------------------------------------------------------------
+# 迭代 7（SOP §12）：临时材料精读治理与贡献待处理队列。
+#
+# 边界：临时材料只属于当前用户、只在会话内联合检索，默认不进入公共索引、
+# 课程包或跨用户缓存；普通临时材料 7 天 TTL；贡献待审副本最多保留 30 天。
+# GitHub App 决策门未确认，本迭代不实现自动 PR，只进入维护者待处理队列，
+# 不使用用户 OAuth token 冒充自动 PR 能力。
+# ---------------------------------------------------------------------------
+
+
+class TemporaryMaterialCreate(ContractModel):
+    conversation_id: UUID
+    course_id: Annotated[str, Field(min_length=1, max_length=100)]
+    title: Annotated[str | None, Field(max_length=200)] = None
+    content: Annotated[str, Field(min_length=1, max_length=100_000)]
+
+    @field_validator("title")
+    @classmethod
+    def strip_title(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        normalized = value.strip()
+        return normalized or None
+
+    @field_validator("content")
+    @classmethod
+    def reject_blank_content(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("temporary material content must not be blank")
+        return value
+
+
+class TemporaryMaterialRecord(ContractModel):
+    material_id: UUID
+    conversation_id: UUID
+    course_id: str
+    title: str | None
+    char_count: int
+    content_sha256: str
+    created_at: datetime
+    expires_at: datetime
+    mock_only: Literal[True] = True
+
+
+class TemporaryMaterialDetail(TemporaryMaterialRecord):
+    content: str
+
+
+class ContributionState(StrEnum):
+    DRAFT = "draft"
+    SUBMITTED = "submitted"
+    PR_OPEN = "pr_open"
+    MERGED = "merged"
+    REJECTED = "rejected"
+    EXPIRED = "expired"
+
+
+class ContributionConfirmations(ContractModel):
+    """提交前的显式确认；缺少任何一项都不能创建公共贡献提交。"""
+
+    course_confirmed: bool
+    source_confirmed: bool
+    public_share_rights_confirmed: bool
+    no_sensitive_info_confirmed: bool
+    public_pr_visibility_acknowledged: bool
+
+    @model_validator(mode="after")
+    def require_all_confirmations(self) -> "ContributionConfirmations":
+        if not all(
+            [
+                self.course_confirmed,
+                self.source_confirmed,
+                self.public_share_rights_confirmed,
+                self.no_sensitive_info_confirmed,
+                self.public_pr_visibility_acknowledged,
+            ]
+        ):
+            raise ValueError(
+                "contribution submission requires every explicit confirmation"
+            )
+        return self
+
+
+class ContributionPreviewRequest(ContractModel):
+    course_id: Annotated[str, Field(min_length=1, max_length=100)]
+    title: Annotated[str | None, Field(max_length=200)] = None
+    content: Annotated[str, Field(min_length=1, max_length=100_000)]
+
+
+class ContributionPreview(ContractModel):
+    """确定性转换预览：不调用模型、不写库、不改变原文件。"""
+
+    course_id: str
+    proposed_source_id: str
+    normalized_content: str
+    has_h1_title: bool
+    question_marker_count: int
+    warnings: list[str] = Field(default_factory=list)
+
+
+class ContributionSubmit(ContractModel):
+    material_id: UUID
+    course_id: Annotated[str, Field(min_length=1, max_length=100)]
+    title: Annotated[str | None, Field(max_length=200)] = None
+    as_draft: bool = False
+    confirmations: ContributionConfirmations
+
+    @field_validator("title")
+    @classmethod
+    def strip_title(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        normalized = value.strip()
+        return normalized or None
+
+
+class ContributionDraftSubmit(ContractModel):
+    confirmations: ContributionConfirmations
+
+
+class ContributionRecord(ContractModel):
+    contribution_id: UUID
+    user_id: str
+    material_id: UUID | None
+    course_id: str
+    proposed_source_id: str
+    title: str
+    state: ContributionState
+    pr_url: HttpUrl | None = None
+    maintainer_note: str | None = None
+    char_count: int
+    created_at: datetime
+    updated_at: datetime
+    expires_at: datetime
+    mock_only: Literal[True] = True
+
+    @model_validator(mode="after")
+    def enforce_terminal_payload_rules(self) -> "ContributionRecord":
+        if self.state == ContributionState.PR_OPEN and self.pr_url is None:
+            raise ValueError("pr_open contributions require a PR link")
+        if self.state != ContributionState.PR_OPEN and self.pr_url is not None:
+            raise ValueError("only pr_open contributions expose a PR link")
+        return self
+
+
+class MaintainerContributionTransition(ContractModel):
+    action: Literal["mark_pr_open", "merge", "reject"]
+    pr_url: HttpUrl | None = None
+    note: Annotated[str | None, Field(max_length=2_000)] = None
+
+    @field_validator("note")
+    @classmethod
+    def strip_note(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        normalized = value.strip()
+        return normalized or None
