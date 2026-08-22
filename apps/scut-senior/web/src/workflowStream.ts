@@ -329,12 +329,17 @@ export function startWorkflowStreamRequest(
         });
       }
       controller.abort();
+      const protocolError = error instanceof WorkflowStreamProtocolError;
       return {
         ...state,
         phase: "failed",
         error: {
-          code: error instanceof WorkflowStreamProtocolError ? "stream_protocol_error" : "stream_request_failed",
-          detail: error instanceof Error ? error.message : "流式运行失败。",
+          code: protocolError ? "stream_protocol_error" : "stream_request_failed",
+          detail: protocolError
+            ? error.message
+            : // 真实网络错误（Failed to fetch 等）：运行不再因断线被取消，
+              // 服务端仍会继续执行并保存终态，稍后重新读取即可取回结果。
+              "网络连接中断，请检查网络后重试；本次运行仍会在服务端继续，稍后可点击「重新读取」查看结果。",
         },
       };
     }

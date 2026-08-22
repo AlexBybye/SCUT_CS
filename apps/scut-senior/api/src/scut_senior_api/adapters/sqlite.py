@@ -861,6 +861,7 @@ class SQLiteWorkflowRepository:
                        created_at, updated_at, expires_at
                 FROM workflow_runs
                 WHERE conversation_id = ? AND user_id = ?
+                  AND run_status NOT IN ('created', 'running')
                 ORDER BY created_at ASC, workflow_run_id ASC
                 """,
                 (str(conversation_id), user_id),

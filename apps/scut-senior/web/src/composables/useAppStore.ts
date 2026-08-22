@@ -16,6 +16,7 @@ import {
   renameConversation,
   saveByokCredential,
   startWorkflowRunStream,
+  cancelWorkflowRun,
 } from "../api";
 import {
   isCurrentByokCatalogVersion,
@@ -446,8 +447,19 @@ function createAppStore() {
     historyMessageIsError.value = isError;
   }
 
+  // 尽力通知服务端打断运行。显式取消、切换会话、离开页面都走这里；
+  // 纯网络断开不会触发（运行在服务端继续完成，稍后重新读取可取回结果）。
+  function requestServerCancel(): void {
+    const runId = workflowStreamState.value?.workflowRunId;
+    if (!runId) return;
+    void cancelWorkflowRun(runId).catch(() => {
+      // 服务端取消失败（如网络又断了）不阻塞本地断开；运行可能后台完成。
+    });
+  }
+
   function abortActiveWorkflow(detail: string): void {
     if (activeWorkflowStream && !activeWorkflowStream.signal.aborted) {
+      requestServerCancel();
       activeWorkflowStream.abort(detail);
     }
     canCancelWorkflow.value = false;
@@ -455,6 +467,7 @@ function createAppStore() {
 
   function clearActiveConversation(): void {
     abortActiveWorkflow("当前会话已切换，运行已取消。");
+    stopNetworkRecovery();
     conversationId.value = "";
     conversationSnapshot.value = null;
     selectedAttemptId.value = "";
@@ -1041,6 +1054,38 @@ function createAppStore() {
     }
   }
 
+  // 断网/协议中断后的自动取回：流断了但服务端仍在跑，轮询会话直到拿到
+  // 终态或超时，避免学生必须手动刷新整个网页才能看到结果。
+  let networkRecoveryTimer: number | null = null;
+
+  function stopNetworkRecovery(): void {
+    if (networkRecoveryTimer !== null) {
+      window.clearInterval(networkRecoveryTimer);
+      networkRecoveryTimer = null;
+    }
+  }
+
+  function scheduleNetworkRecovery(targetConversationId: string): void {
+    stopNetworkRecovery();
+    let tries = 0;
+    networkRecoveryTimer = window.setInterval(() => {
+      tries += 1;
+      if (
+        tries > 12 ||
+        conversationId.value !== targetConversationId ||
+        isRunning.value
+      ) {
+        // 已超时（约 60 秒）、会话已切换或用户已发起新运行：停止轮询。
+        if (tries > 12 || conversationId.value !== targetConversationId) {
+          stopNetworkRecovery();
+        }
+        return;
+      }
+      void loadConversationFromHistory(targetConversationId, "", false).catch(() => {});
+    }, 5_000);
+    window.setTimeout(() => stopNetworkRecovery(), 70_000);
+  }
+
   async function submitWorkflow(): Promise<void> {
     // 发送即收起「更多选项」抽屉：无论校验是否通过都收起，不做任何条件判断。
     drawerOpen.value = false;
@@ -1108,6 +1153,14 @@ function createAppStore() {
           errorMessage.value = streamError.detail;
         } else if (streamError?.code === "client_interrupted") {
           noticeMessage.value = "已取消本次运行；后端会尽力保存 interrupted 状态，可稍后重新读取会话。";
+        } else if (
+          streamError?.code === "stream_request_failed" ||
+          streamError?.code === "stream_protocol_error"
+        ) {
+          // 网络/协议中断：断线不再取消运行，服务端会继续执行并保存终态。
+          // 自动轮询取回结果，学生无需手动刷新整个网页。
+          errorMessage.value = streamError?.detail ?? "流式连接中断，请检查网络后重试。";
+          scheduleNetworkRecovery(activeConversationId);
         } else {
           errorMessage.value = streamError?.detail ?? "流式运行未返回最终结果。";
         }
@@ -1142,7 +1195,8 @@ function createAppStore() {
   function cancelWorkflow(): void {
     if (!activeWorkflowStream || activeWorkflowStream.signal.aborted) return;
     noticeMessage.value = "正在取消本次运行。";
-    abortActiveWorkflow("用户取消了本次运行。");
+    // 显式取消：先通知服务端打断运行（断线已不再自动等于取消），再本地断开。
+    abortActiveWorkflow("已取消本次运行。");
   }
 
   async function reloadConversation(): Promise<void> {

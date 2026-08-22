@@ -331,6 +331,69 @@ describe("conversation history API", () => {
     await expect(getConversation(conversationId)).rejects.toThrow(/another run/i);
     await expect(getConversation(conversationId)).rejects.toThrow(/fixed anonymous search URL/i);
   });
+
+  it("skips in-flight attempts in history instead of failing the whole conversation", async () => {
+    const conversationId = "conversation/001";
+    const request = buildWorkflowRequest({
+      workflowType: "knowledge_qa",
+      courseId: "linear_algebra",
+      conversationId,
+      userInput: "请解释矩阵的秩",
+      answerMode: "detailed",
+      tone: "teaching_assistant",
+      knowledgeScope: "course_first",
+      includeBilibiliResources: true,
+      modelSource: "platform_default",
+      providerId: "mock",
+      modelId: "deterministic-fixture-v1",
+      workflowPayload: { question: "请解释矩阵的秩" },
+    });
+    const runningResult = completedResult("run/001", conversationId);
+    runningResult.run_status = "running";
+    runningResult.answer_status = "partial";
+    const detail = {
+      conversation_id: conversationId,
+      user_id: "user-001",
+      course_id: "linear_algebra",
+      title: "矩阵的秩",
+      created_at: "2026-08-16T08:00:00Z",
+      updated_at: "2026-08-16T08:01:01Z",
+      expires_at: "2026-09-15T08:00:00Z",
+      mock_only: true,
+      runs: [
+        {
+          workflow_run_id: "run/001",
+          attempt_group_id: "run/001",
+          regenerated_from_run_id: null,
+          request,
+          result: runningResult,
+          created_at: "2026-08-16T08:01:00Z",
+          updated_at: "2026-08-16T08:01:01Z",
+          expires_at: "2026-09-15T08:01:00Z",
+        },
+        {
+          workflow_run_id: "run/002",
+          attempt_group_id: "run/002",
+          regenerated_from_run_id: null,
+          request,
+          result: completedResult("run/002", conversationId),
+          created_at: "2026-08-16T08:02:00Z",
+          updated_at: "2026-08-16T08:02:01Z",
+          expires_at: "2026-09-15T08:02:00Z",
+        },
+      ],
+    };
+    const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify(detail), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    // 运行中（running）的尝试被跳过，会话仍能正常加载已完成的那条。
+    const conversation = await getConversation(conversationId);
+    expect(conversation.runs).toHaveLength(1);
+    expect(conversation.runs[0]?.workflow_run_id).toBe("run/002");
+  });
 });
 
 describe("plugin registry API", () => {

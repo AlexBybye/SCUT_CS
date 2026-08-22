@@ -689,7 +689,18 @@ export function validateConversationDetail(
     throw new WorkflowStreamProtocolError("invalid conversation history metadata");
   }
   const runIds = new Set<string>();
+  const runs: unknown[] = [];
   for (const rawAttempt of value.runs) {
+    // 历史详情可能瞬时包含非终态尝试（运行中/崩溃残留的 running/created）：
+    // 它们不是合格结果，跳过而不是让整个会话加载失败；终态出现后自会补齐。
+    if (
+      isRecord(rawAttempt) &&
+      isRecord(rawAttempt.result) &&
+      typeof rawAttempt.result.run_status === "string" &&
+      !TERMINAL_RUN_STATUSES.has(rawAttempt.result.run_status)
+    ) {
+      continue;
+    }
     const attempt = validateWorkflowAttempt(rawAttempt, {
       expectedConversationId: value.conversation_id as string,
     });
@@ -697,8 +708,9 @@ export function validateConversationDetail(
       throw new WorkflowStreamProtocolError("duplicate Workflow attempt in history");
     }
     runIds.add(attempt.workflow_run_id);
+    runs.push(attempt);
   }
-  return value as unknown as ConversationDetail;
+  return { ...value, runs } as unknown as ConversationDetail;
 }
 
 export function selectConversationAttempt(
