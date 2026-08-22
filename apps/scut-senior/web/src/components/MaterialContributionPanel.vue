@@ -23,8 +23,15 @@ const store = useAppStore();
 // 上线时把 CONTRIBUTION_SUBMIT_CLOSED 改回 false 即可整体恢复。
 const CONTRIBUTION_SUBMIT_CLOSED = true;
 const SUBMIT_CLOSED_TIP = "本功能正在开发中！敬请期待！";
-const DRAFT_OPEN_TIP = "保存为私有草稿，之后可在完整确认后提交";
-const SUBMIT_OPEN_TIP = "提交后进入维护者待处理队列，不会自动创建或合并 PR";
+
+// 封闭入口的点击反馈：toast 比原生 title 即时且在触屏上也可用。
+const toastMessage = ref("");
+let toastTimer: ReturnType<typeof setTimeout> | undefined;
+function showToast(message: string): void {
+  toastMessage.value = message;
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => (toastMessage.value = ""), 2200);
+}
 
 // 临时材料与贡献面板：只在临时材料精读 Workflow 下展示。
 // 材料正文取当前输入框内容；保存后 7 天自动过期（服务端物理删除）。
@@ -174,6 +181,7 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
 
 <template>
   <div class="material-panel" aria-label="临时材料保存与贡献">
+    <div v-if="toastMessage" class="panel-toast" role="status">{{ toastMessage }}</div>
     <p class="drawer-hint drawer-span">
       粘贴的材料只属于你，默认不进入公共索引或课程包；普通材料 7
       天后由服务端实际删除。贡献需人工审核通过后才会进入公共知识库。
@@ -203,7 +211,8 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
           </button>
           <span
             class="hover-tip"
-            :title="CONTRIBUTION_SUBMIT_CLOSED ? SUBMIT_CLOSED_TIP : DRAFT_OPEN_TIP"
+            :class="{ closed: CONTRIBUTION_SUBMIT_CLOSED }"
+            @click="CONTRIBUTION_SUBMIT_CLOSED && showToast(SUBMIT_CLOSED_TIP)"
           >
             <button
               type="button"
@@ -213,6 +222,9 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
             >
               存为贡献草稿
             </button>
+            <span v-if="CONTRIBUTION_SUBMIT_CLOSED" class="hover-bubble" aria-hidden="true">
+              {{ SUBMIT_CLOSED_TIP }}
+            </span>
           </span>
           <button type="button" class="btn btn-danger" :disabled="busy" @click="onDeleteMaterial(item.material_id)">
             删除
@@ -250,7 +262,8 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
       <div class="material-buttons">
         <span
           class="hover-tip"
-          :title="CONTRIBUTION_SUBMIT_CLOSED ? SUBMIT_CLOSED_TIP : SUBMIT_OPEN_TIP"
+          :class="{ closed: CONTRIBUTION_SUBMIT_CLOSED }"
+          @click="CONTRIBUTION_SUBMIT_CLOSED && showToast(SUBMIT_CLOSED_TIP)"
         >
           <button
             type="button"
@@ -262,6 +275,9 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
           >
             提交到待审队列
           </button>
+          <span v-if="CONTRIBUTION_SUBMIT_CLOSED" class="hover-bubble" aria-hidden="true">
+            {{ SUBMIT_CLOSED_TIP }}
+          </span>
         </span>
       </div>
     </section>
@@ -335,14 +351,59 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
   gap: 6px;
 }
 
-/* 封闭中的入口：悬浮提示“开发中”，光标明确不可点。 */
+/* 封闭中的入口：悬停立即显示气泡，点击弹 toast。
+   禁用按钮会吞掉指针事件，这里显式放行给外层 wrapper。 */
 .hover-tip {
+  position: relative;
   display: inline-flex;
 }
 
-.hover-tip .btn:disabled {
-  cursor: not-allowed;
+.hover-tip.closed {
+  cursor: help;
+}
+
+.hover-tip.closed .btn:disabled {
+  pointer-events: none;
   opacity: 0.6;
+}
+
+.hover-bubble {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  z-index: 60;
+  padding: 5px 9px;
+  border-radius: 6px;
+  background: rgba(24, 24, 30, 0.94);
+  color: #fff;
+  font-size: var(--fs-2xs);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(2px);
+  transition:
+    opacity 0.12s ease,
+    transform 0.12s ease;
+  pointer-events: none;
+}
+
+.hover-tip.closed:hover .hover-bubble,
+.hover-tip.closed:focus-within .hover-bubble {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.panel-toast {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  padding: 9px 16px;
+  border-radius: 8px;
+  background: rgba(24, 24, 30, 0.94);
+  color: #fff;
+  font-size: var(--fs-xs);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
 .btn-danger {
