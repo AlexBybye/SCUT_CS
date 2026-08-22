@@ -16,18 +16,38 @@ locator_type: page
 
 一
 选择题（共30 分）
+<!-- question: university-physics-3-2-012-Q1 -->
+
 1. C
+<!-- question: university-physics-3-2-012-Q2 -->
+
 2. C
+<!-- question: university-physics-3-2-012-Q3 -->
+
 3. B
+<!-- question: university-physics-3-2-012-Q4 -->
+
 4.B
+<!-- question: university-physics-3-2-012-Q5 -->
+
 5.C
+<!-- question: university-physics-3-2-012-Q6 -->
+
 6.A
+<!-- question: university-physics-3-2-012-Q7 -->
+
 7.D
+<!-- question: university-physics-3-2-012-Q8 -->
+
 8.D
+<!-- question: university-physics-3-2-012-Q9 -->
+
 9.D
+<!-- question: university-physics-3-2-012-Q10 -->
+
 10.D
 
-<!-- question: university-physics-3-2-012-Q1 -->
+<!-- question: university-physics-3-2-012-Q11 -->
 
 二、填空题（共30 分）
 
@@ -100,9 +120,11 @@ W
 1.33×10
 -23
 
-<!-- question: university-physics-3-2-012-Q2 -->
+<!-- question: university-physics-3-2-012-Q12 -->
 
 三、计算题
+
+<!-- question: university-physics-3-2-012-Q13 -->
 
 20. 解：(1) 球心处的电势为两个同心带电球面各自在球心处产生的电势的叠加，
 即
@@ -207,6 +229,8 @@ r
 
 2
 1
+
+<!-- question: university-physics-3-2-012-Q14 -->
 
 (2) 设外球面上放电后电荷面密度为，则应有
 
@@ -314,6 +338,8 @@ r
 
 ＝6.67×10
 
+<!-- question: university-physics-3-2-012-Q15 -->
+
 21. 解：设圆线圈磁矩为p1，方线圈磁矩为p2
 ∵
 )
@@ -411,6 +437,8 @@ a
 2
 
 0
+
+<!-- question: university-physics-3-2-012-Q16 -->
 
 22．解：取棒元dl，其两端的电动势为
 
@@ -522,6 +550,8 @@ dt
 
 方向由a 指向b.
 2 分
+
+<!-- question: university-physics-3-2-012-Q17 -->
 
 23. 解：
 )

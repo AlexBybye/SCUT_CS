@@ -24,8 +24,14 @@ locator_type: page
 2020-2021-2 学期《工科数学分析（二）》A 卷
 
 注意事项：1. 开考前请将密封线内各项信息填写清楚；
+<!-- question: engineering-mathematical-analysis-2-037-Q1 -->
+
           2. 所有答案请直接答在试卷上；
+<!-- question: engineering-mathematical-analysis-2-037-Q2 -->
+
           3．考试形式：闭卷
+
+<!-- question: engineering-mathematical-analysis-2-037-Q3 -->
 
           4. 本试卷共 四个  大题，满分100 分， 考试时间120 分钟。
 
@@ -41,7 +47,7 @@ locator_type: page
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-037-Q1 -->
+<!-- question: engineering-mathematical-analysis-2-037-Q4 -->
 
 一、计算题（共5 小题，每小题8 分，共40 分）
 
@@ -52,6 +58,8 @@ y
 
 
 2
+
+<!-- question: engineering-mathematical-analysis-2-037-Q5 -->
 
 １. 设
 (
@@ -83,6 +91,8 @@ f x
 
 ,
 2
+
+<!-- question: engineering-mathematical-analysis-2-037-Q6 -->
 
 ２. 设
 ( )
@@ -127,6 +137,8 @@ e dy
 
 .
 
+<!-- question: engineering-mathematical-analysis-2-037-Q7 -->
+
 ３. 计算二次积分
 
 0
@@ -163,10 +175,14 @@ b
 =
 ，取逆时针方向.
 
+<!-- question: engineering-mathematical-analysis-2-037-Q8 -->
+
 ４. 计算曲线积分
 2
 2
 L
+
+<!-- question: engineering-mathematical-analysis-2-037-Q9 -->
 
 ５. 计
 算
@@ -221,7 +237,7 @@ z
 
 <!-- page: 3 -->
 
-<!-- question: engineering-mathematical-analysis-2-037-Q2 -->
+<!-- question: engineering-mathematical-analysis-2-037-Q10 -->
 
 二、 解答下列各题（共5 小题，每小题8 分，共40 分）
 
@@ -407,7 +423,7 @@ n
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-037-Q3 -->
+<!-- question: engineering-mathematical-analysis-2-037-Q11 -->
 
 三、证明下列各题（共2 小题，每小题8 分，共16 分）
 
@@ -443,6 +459,8 @@ a x
 
 b x
 
+<!-- question: engineering-mathematical-analysis-2-037-Q12 -->
+
 1. 设幂级数
 
 0
@@ -474,6 +492,8 @@ x
 
 0
 
+<!-- question: engineering-mathematical-analysis-2-037-Q13 -->
+
 2. 证明函数项级数
 (
 )
@@ -500,7 +520,7 @@ n
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-037-Q4 -->
+<!-- question: engineering-mathematical-analysis-2-037-Q14 -->
 
 四、应用题（本题8 分）
 

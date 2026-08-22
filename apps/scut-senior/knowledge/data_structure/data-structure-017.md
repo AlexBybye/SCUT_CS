@@ -22,22 +22,36 @@ CCBCA
 
 **II. Fill in the blanks.  (10 points)**
 
+<!-- question: data-structure-017-Q1 -->
+
 (1) 2n-1
+
+<!-- question: data-structure-017-Q2 -->
 
 (2) n, 1
 
+<!-- question: data-structure-017-Q3 -->
+
 (3) v2, v4, v1, v3, v5
 
+<!-- question: data-structure-017-Q4 -->
+
 (4) 150000
+
+<!-- question: data-structure-017-Q5 -->
 
 (5) 3
 
 评分标准：每题2分，部分正确可以考虑给1分。
 
 **III  Application of Data Structure （60** **points, 10 points each）**
+<!-- question: data-structure-017-Q6 -->
+
 1. (a)  θ(n2)    (b)  θ(nlogn)   (c)  θ(n3)
 
 评分标准：(a)和(b)各3分，(c)4分。
+<!-- question: data-structure-017-Q7 -->
+
 1. (1)                     (2)EGHFBCDA         (3)
 
 评分标准：(1)4分; (2)3分；(3)3分。
@@ -49,6 +63,8 @@ CCBCA
 (1+1+2+1+1+2+5+6)/8=19/8=2.375
 
 评分标准：哈希过程8分，平均比较次数2分。
+<!-- question: data-structure-017-Q8 -->
+
 1. (1)
 
 |  | 1 | 2 | 3 | 4 | 5 | 6 |
@@ -61,11 +77,15 @@ CCBCA
 | Process 3 | 0 | 8 | 11 | 12 | 5 | 2 |
 | Process 4 | 0 | 8 | 11 | 12 | 5 | 2 |
 
+<!-- question: data-structure-017-Q9 -->
+
 1. 1->6, 6->5, 2->3, 2->4, 1->2
 
 或：1->6, 2->3, 6->5, 2->4, 1->2
 
 评分标准：(1)7分，(2)3分。
+<!-- question: data-structure-017-Q10 -->
+
 1. (1)                                 (2)
 
 评分标准：(1)8分，(2)2分。
@@ -75,6 +95,8 @@ CCBCA
 评分标准：每个数1分。
 
 **IV. Design of Algorithm.        (20** **points)**
+
+<!-- question: data-structure-017-Q11 -->
 
 1. template <class Elem, class Comp>
 

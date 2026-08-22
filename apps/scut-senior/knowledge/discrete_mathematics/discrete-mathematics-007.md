@@ -18,23 +18,41 @@ locator_type: none
 
 **1.** $\forall$x$\exists$z (P(x)→Q(z,y))
 
+<!-- question: discrete-mathematics-007-Q1 -->
+
 2.  $\phi$
+
+<!-- question: discrete-mathematics-007-Q2 -->
 
 3. 1
 
+<!-- question: discrete-mathematics-007-Q3 -->
+
 4. 9,  对称
+
+<!-- question: discrete-mathematics-007-Q4 -->
 
 5．Q(x,y)中的y与S(x)中的x，Q(x,y)中的x  与P(x)  中的x
 
 6． $\exists$x (C(x) ![formula-object](assets/discrete-mathematics-007/image-002.png)$\exists$y(T(y) ![formula-object](assets/discrete-mathematics-007/image-003.png)  (Q(x, y))
 
+<!-- question: discrete-mathematics-007-Q5 -->
+
 7. n-1
+
+<!-- question: discrete-mathematics-007-Q6 -->
 
 8. {<2,2>, <3,3>,<1,3>}, {<1,3>,<2,1>,<3,1>}
 
+<!-- question: discrete-mathematics-007-Q7 -->
+
 9.  原子命题，复合命题
 
+<!-- question: discrete-mathematics-007-Q8 -->
+
 10．图中无奇数度顶点
+
+<!-- question: discrete-mathematics-007-Q9 -->
 
 11．{$\phi$，{$\phi$}，{{a}}，{$\phi$，{a}}}，4
 

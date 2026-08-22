@@ -34,13 +34,19 @@ locator_type: heading
 
 (A) $\frac{1}{3}$      (B)$\frac{1}{9}$      (C)  $\frac{2}{9}$      (D)  $\frac{2}{3}$
 
+<!-- question: probability-theory-010-Q1 -->
+
 1.  B
 
 2. 设*T*服从自由度为*n*的*t*分布，若$P\{T>\lambda\}=\alpha$，则$P\{T<-\lambda\}=$（  ）.
 
 (A) $alpha$      (B)$\frac{\alpha}{3}$      (C)  $\frac{\alpha}{2}$      (D)  $\frac{\alpha}{4}$
 
+<!-- question: probability-theory-010-Q2 -->
+
 2.  C
+
+<!-- question: probability-theory-010-Q3 -->
 
 3. 从总体中抽取简单随机样本$X_1,X_2,...,X_n$，易证估计量
 
@@ -61,6 +67,8 @@ $$
 4.  设随机变量$X$和$Y$的数学期望分别为-2和2，方差分别为1和4，而相关系数为-0.5，则根据切比雪夫不等式$P\{X+Y\leq6\}$.
 
 (A)  $\frac{1}{4}$      (B)  $\frac{1}{10}$      (C)  $\frac{1}{12}$      (D)  $\frac{1}{8}$
+
+<!-- question: probability-theory-010-Q4 -->
 
 4. C
 
@@ -120,6 +128,8 @@ $$
 
 (A) $\frac{1}{2e}$      (B)$\frac{1}{3e}$      (C)  $\frac{e}{3}$      (D)  $\frac{e}{4}$
 
+<!-- question: probability-theory-010-Q5 -->
+
 7. A
 
 因为 $X$ 服从参数为  1  的泊松分布，所以其概率布为
@@ -138,6 +148,8 @@ $$
 
 (A) $np^2$      (B)$n(1-p)^2$      (C)  $np$      (D)  $n(1-p)$
 
+<!-- question: probability-theory-010-Q6 -->
+
 8. A
 
 $$
@@ -145,6 +157,8 @@ $$
 $$
 
 因为 $X\mathrm {\sim }B\left ( {n\mathrm {,}p}\right )$,  故 $E\left ( {X}\right )\mathrm {=}np\mathrm {,}D\left ( {X}\right )\mathrm {=}np\left ( {\mathrm {1-}p}\right )$ 因为 $E\left ( {\hat {X}}\right )\mathrm {=}E\left ( {X}\right )\mathrm {,}E\left ( {{S}^{\mathrm {2}}}\right )\mathrm {=}D\left ( {X}\right )$,  所以
+
+<!-- question: probability-theory-010-Q7 -->
 
 9. 设二维离散型随机变量X、Y的联合分布律如下，则联合分布函数值$F(0,3)=$**(  ).**
 
@@ -155,11 +169,15 @@ $$
 
 (A) $\frac{1}{3}$      (B)$\frac{5}{18}$     (C)  $\frac{2}{3}$     (D)  $\frac{4}{9}$
 
+<!-- question: probability-theory-010-Q8 -->
+
 9.  B
 
 10.设 ${F}_{\mathrm {1}}\mathrm {(}x\mathrm {),}{F}_{\mathrm {2}}\mathrm {(}x\mathrm {)}$ 为两个分布函数,  其相应的概率密度 ${f}_{\mathrm {1}}\mathrm {(}x\mathrm {)}$,  ${f}_{\mathrm {2}}\mathrm {(}x\mathrm {)}$ 是连续函数,  则必为概率密度的是(  $\left {\mathrm {}}\right )$
 
 (A)  ${f}_{\mathrm {1}}\mathrm {(}x\mathrm {)}{f}_{\mathrm {2}}\mathrm {(}x\mathrm {)}$      (B)  $\mathrm {2}{f}_{\mathrm {2}}\left ( {x}\right ){F}_{\mathrm {1}}\left ( {x}\right )$     (C)  ${f}_{\mathrm {1}}\mathrm {(}x\mathrm {)}{F}_{\mathrm {2}}\mathrm {(}x\mathrm {)}$     (D)  ${f}_{\mathrm {1}}\mathrm {(}x\mathrm {)}{F}_{\mathrm {2}}\mathrm {(}x\mathrm {)+}{f}_{\mathrm {2}}\mathrm {(}x\mathrm {)}{F}_{\mathrm {1}}\mathrm {(}x\mathrm {)}$
+
+<!-- question: probability-theory-010-Q9 -->
 
 10. D
 
@@ -195,6 +213,8 @@ $$
 
 12.  设随机变量 $X\mathrm {\sim }N\left ( {\mathrm {0,1}}\right )\mathrm {, }Y\mathrm {\sim }N\mathrm {(1,4)}$,  且相关系数${\rho }_{XY}\mathrm {=1}$,  则(   ).  (A)  $P\mathrm {\{}Y\mathrm {=-2}X\mathrm {-1\} =1}$          (B)  $P\mathrm {\{}Y\mathrm {=2}X\mathrm {-1\} =1}$  (C)  $P\mathrm {\{}Y\mathrm {=-2}X\mathrm {+1\} =1}$        (D)  $P\mathrm {\{}Y\mathrm {=2}X\mathrm {+1\} =1}$
 
+<!-- question: probability-theory-010-Q10 -->
+
 12.  D
 
 因为 $X$ 与 $Y$ 的相关系数 ${\rho }_{XY}\mathrm {=1}$,  所以 $Y$与 $X$ 正相关,  即存在常数 $a\mathrm {,}b$,  使得 $Y\mathrm {=}aX\mathrm {+}b\mathrm {(}a\mathrm {>0)}$,  且 $P\mathrm {\{}Y\mathrm {=}aX\mathrm {+}b\mathrm {\} =1}$,  排除(A)、(C)  $\mathrm {.}$ 因为
@@ -211,19 +231,27 @@ $$
 
 **二、（10分）**甲、乙两人轮流投篮，甲先投。一般来说，甲、乙两人独立投篮的命中率分别为0.7和0.6。但由于心理因素的影响，如果对方在前一次投篮中投中，紧跟在后面投篮的这一方的命中率就会有所下降，甲、乙的命中率分别变为0.4和0.5。求：
 
+<!-- question: probability-theory-010-Q11 -->
+
 (1) 乙在第一次投篮时投中的概率；  (2) 甲在第二次投篮时投中的概率。
 
 解：令$A_1$表示事件“乙在第一次投篮时投中”，
 
 令$B_i$表示事件“甲在第*i*次投篮时投中”，$i=1,2$
 
+<!-- question: probability-theory-010-Q12 -->
+
 （1）$P(A)=P(B)P(A|B)+P(\overline{B})P(A|\overline{B})$
 
 $=0.7\times0.5+0.3\times0.6=0.53$      (5分）
 
+<!-- question: probability-theory-010-Q13 -->
+
 （2）$P(A)=0.53,=>P(A^c)=0.47$
 
-![formula-object](assets/probability-theory-010/image-073.png)
+$$
+P(B_2)=P(A_)P(B_2|A_)+P(^(A_))P(B_2^(A_))
+$$
 
 $=0.53\times0.4+0.47\times0.7=0.541$      (5分)
 
@@ -247,7 +275,11 @@ $\sim1-\Phi\left(\frac{30-20}{10\times0.4}\right)=1-\Phi(2.5)=0.0062$     (4分)
 
 **四、(10分)** 设某机器生产的零件长度（单位：cm）$X\sim N\left ( {\mu ,{\sigma }^{2}}\right )$，今抽取容量为16的样本，测得样本均值$\hat {x}=10$，样本修正方差${s}^{*2}=0.16$.
 
+<!-- question: probability-theory-010-Q14 -->
+
 (1) 求$\mu$ 的置信度为0.95的置信区间；(保留四位小数)
+
+<!-- question: probability-theory-010-Q15 -->
 
 (2) 检验假设${H}_{0}: {\sigma }^{2}=0.1$（显著性水平为0.05）。
 
@@ -268,6 +300,8 @@ X=10,S=0.4,n=16,a=0.05,t_{0.975}(15)=2.1315
 $$
 
 所以$mu$的置信度为0.95的置信区间为（9.7869，10.2132）    (5分)
+
+<!-- question: probability-theory-010-Q16 -->
 
 (2)  ${H}_{0}: {\sigma }^{2}=0.1$
 
@@ -299,7 +333,9 @@ $$
 
 (2)
 
-![formula-object](assets/probability-theory-010/image-095.png)
+$$
+P\{X\leqslant1\}=P\{Y|X\leqslant1\}P\{X\leqslant1\}+P\{Y|1<X<2\}P\{1<X<2\}+P\{Y|X2\}P\{X2\}=P\{X\leqslant1\}+P\{1<X<2\}-P\{X<2\}=\int_{0}^{1}\frac{x^2}{9}dx=\frac{8}{27}
+$$
 
 **六、(10分)** 设总体*X*的概率分布为
 
@@ -378,6 +414,8 @@ $$
 <tr><td>0</td><td>0</td><td>\mathrm {1/3}</td><td>0</td></tr>
 <tr><td>1</td><td>\mathrm {1/3}</td><td>0</td><td>\mathrm {1/3}</td></tr>
 </table>
+
+<!-- question: probability-theory-010-Q17 -->
 
 (2) 因为  $Z\mathrm {=}XY$  的可能取值为  $\mathrm {-1, 0, 1}$.
 

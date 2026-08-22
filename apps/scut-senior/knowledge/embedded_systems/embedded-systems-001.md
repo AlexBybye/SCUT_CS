@@ -20,8 +20,8 @@ locator_type: slide
 
 <!-- slide: 2 -->
 
-![image](assets/assets/embedded-systems-001/image-001.jpg)
-![image](assets/assets/embedded-systems-001/image-002.png)
+![image](assets/embedded-systems-001/image-001.jpg)
+![image](assets/embedded-systems-001/image-002.png)
 
 <!-- slide: 3 -->
 
@@ -52,41 +52,41 @@ locator_type: slide
 
 <!-- slide: 6 -->
 
-![image](assets/assets/embedded-systems-001/image-003.png)
+![image](assets/embedded-systems-001/image-003.png)
 - DMA1控制器结构，有7个通道
 
 <!-- slide: 7 -->
 
-![image](assets/assets/embedded-systems-001/image-004.png)
+![image](assets/embedded-systems-001/image-004.png)
 - DMA2控制器结构，有5个通道
 
 <!-- slide: 8 -->
 
 - 10.1.2 STM32的DMA主要寄存器
 - DMA主要寄存器功能
-![image](assets/assets/embedded-systems-001/image-005.png)
+![image](assets/embedded-systems-001/image-005.png)
 
 <!-- slide: 9 -->
 
 - 10.2 DMA应用实例
 - 10.2.1 ADC数据采集DMA方式
 - 【例10.1】 以DMA方式对ADC的数据进行采集，利用DMA把数据从外设转移到内存。使用STM32CubeMX初始化ADC数据采集DMA模式。
-![image](assets/assets/embedded-systems-001/image-006.png)
+![image](assets/embedded-systems-001/image-006.png)
 - 配置内容：ADC采集连接DMA1的通道1；DMA方向是外设到内存；优先级高；DMA模式是Circular，DMA在配置为Circular模式时循环进入中断；外设和内存的数据宽度为半字(Half Word)。相对于Circular方式，有Normal模式表示单次模式。
 
 <!-- slide: 10 -->
 
 - 生成的代码如下：
 - 主程序相关DMA的主要内容如下：
-![image](assets/assets/embedded-systems-001/image-007.png)
-![image](assets/assets/embedded-systems-001/image-008.png)
+![image](assets/embedded-systems-001/image-007.png)
+![image](assets/embedded-systems-001/image-008.png)
 
 <!-- slide: 11 -->
 
 - 10.2.2 串口发送DMA方式
 - 【例10.2】 通过实例对STM32的DMA进行讲解，以DMA方式使用串口发送数据，串口发送电路和前面的串行通信实例一样。此过程利用DMA把数据从内存转移到外设，这个过程是不需要内核干预的，所以在串口发送数据时，内核同时还可以进行其他操作。
 - 使用STM32CubeMX初始化串行通信DMA模式：
-![image](assets/assets/embedded-systems-001/image-009.png)
+![image](assets/embedded-systems-001/image-009.png)
 - 配置内容：串口发送USART1_TX连接DMA1的通道4；DMA方向是内存到外设；优先级低；DMA模式是Normal，DMA在配置为Normal模式时只能进入一次中断；外设和内存的数据宽度为1字节。相对于Normal方式，有Circular模式表示循环模式。
 
 <!-- slide: 12 -->
@@ -94,9 +94,9 @@ locator_type: slide
 - 生成的代码如下：
 - 在stm32f1xx_it.c程序中产生出相应DAM函数，如下：
 - 主程序相关DMA的主要内容如下
-![image](assets/assets/embedded-systems-001/image-010.png)
-![image](assets/assets/embedded-systems-001/image-011.png)
-![image](assets/assets/embedded-systems-001/image-012.png)
+![image](assets/embedded-systems-001/image-010.png)
+![image](assets/embedded-systems-001/image-011.png)
+![image](assets/embedded-systems-001/image-012.png)
 
 <!-- slide: 13 -->
 

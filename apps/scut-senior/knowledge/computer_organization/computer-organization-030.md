@@ -118,15 +118,15 @@ locator_type: slide
 
 <!-- slide: 7 -->
 
-![image](assets/assets/computer-organization-030/image-001.png)
+![image](assets/computer-organization-030/image-001.png)
 
 <!-- slide: 8 -->
 
-![image](assets/assets/computer-organization-030/image-002.png)
+![image](assets/computer-organization-030/image-002.png)
 
 <!-- slide: 9 -->
 
-![image](assets/assets/computer-organization-030/image-003.png)
+![image](assets/computer-organization-030/image-003.png)
 - 6.5.4 总线周期操作
 
 <!-- slide: 10 -->

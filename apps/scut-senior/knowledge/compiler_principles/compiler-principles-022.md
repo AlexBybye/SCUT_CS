@@ -10,4 +10,4 @@ locator_type: none
 
 # LL(1)分析法的动作文法
 
-![page-001.png](assets/assets/compiler-principles-022/page-001.png)
+![page-001.png](assets/compiler-principles-022/page-001.png)

@@ -21,6 +21,7 @@ locator_type: page
 一、选择题(每题3 分)
 
 C，B，D，C，A；B，C，A，D，B
+
 <!-- question: university-physics-3-2-020-Q2 -->
 
 二、填空题(每题3 分)
@@ -333,6 +334,8 @@ R
 
 <!-- page: 2 -->
 
+<!-- question: university-physics-3-2-020-Q4 -->
+
 22．解：(1) 在内圆环上取半径为r 宽度为dr 的细圆环，其电荷为
 
 r
@@ -393,6 +396,8 @@ d
 
 其方向垂直纸面向外．
 
+<!-- question: university-physics-3-2-020-Q5 -->
+
 (2) 整个内圆环在O 点产生的磁感强度为
 
 R
@@ -434,6 +439,8 @@ d
 R
 
 其方向垂直纸面向外．
+<!-- question: university-physics-3-2-020-Q6 -->
+
 (3) 同理得外圆环在O 点产生的磁感强度
 
 )
@@ -454,6 +461,8 @@ B
 
 其方向垂直纸面向里．
 2 分
+
+<!-- question: university-physics-3-2-020-Q7 -->
 
 (4) 为使O 点的磁感应强度为零，B1 和B2 的量值必须相等，
 即
@@ -509,6 +518,8 @@ R
 1
 2
 
+<!-- question: university-physics-3-2-020-Q8 -->
+
 23．解：(1)
 2
 2
@@ -549,6 +560,8 @@ m c
 
 -13 J
 1 分
+<!-- question: university-physics-3-2-020-Q9 -->
+
 24．(1) 载流为I 的无限长直导线在与其相距为r 处产生的磁感强度为：
 )
 2
@@ -679,8 +692,12 @@ t
 
 2 分
 
+<!-- question: university-physics-3-2-020-Q10 -->
+
 （2）线圈中的感应电流是顺时针方向．
 2 分
+
+<!-- question: university-physics-3-2-020-Q11 -->
 
 25. 解：(1) 康普顿散射光子波长改变：
 
@@ -711,6 +728,8 @@ e
 1.024×10
 -10 m
 1 分
+
+<!-- question: university-physics-3-2-020-Q12 -->
 
 (2)根据能量守恒：
 2

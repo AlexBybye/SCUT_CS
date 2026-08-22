@@ -24,8 +24,14 @@ locator_type: page
 《工科数学分析（一）》2024—2025 学年第一学期期末考试试卷（A）卷
 
 注意事项：1. 开考前请将密封线内各项信息填写清楚；
+<!-- question: engineering-mathematical-analysis-1-018-Q1 -->
+
           2. 所有答案请直接答在答题卡上；
+<!-- question: engineering-mathematical-analysis-1-018-Q2 -->
+
           3．考试形式：闭卷
+
+<!-- question: engineering-mathematical-analysis-1-018-Q3 -->
 
           4. 本试卷共四个大题，满分100 分， 考试时间120 分钟。
 
@@ -40,7 +46,7 @@ locator_type: page
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-018-Q1 -->
+<!-- question: engineering-mathematical-analysis-1-018-Q4 -->
 
 一、填空题（共7 小题，每小题4 分，共28 分）
 
@@ -49,6 +55,8 @@ locator_type: page
 _____________ ________
 
 𝑥−arctan 𝑥
+
+<!-- question: engineering-mathematical-analysis-1-018-Q5 -->
 
 １. 求极限  lim
 
@@ -63,21 +71,33 @@ _____________ ________
 
 sin 𝑡
 
+<!-- question: engineering-mathematical-analysis-1-018-Q6 -->
+
 ２. 设 𝑓(𝑥) = {∫
 
  在 𝑥= 0 处可导，则 (𝐴, 𝐵) =             ;
 
 𝐴𝑥+ 𝐵,   𝑥< 0,
 
+<!-- question: engineering-mathematical-analysis-1-018-Q7 -->
+
 ３. 设 𝑎, 𝑏> 0, 两条曲线 𝑥2 −𝑦2 = 𝑎2 与 𝑥𝑦= 𝑏 在交点处的切线夹角是    ;
+
+<!-- question: engineering-mathematical-analysis-1-018-Q8 -->
 
 ４. 曲线  { 𝑥= e𝑡cos 𝑡,
 
 𝑦= e𝑡sin 𝑡      的弧长微分是                                  ;
 
+<!-- question: engineering-mathematical-analysis-1-018-Q9 -->
+
 ５. 函数 𝑓(𝑥) = esin 𝑥 在 𝑥= 0 处带Peano型余项的二阶Taylor展开式是     ；
 
+<!-- question: engineering-mathematical-analysis-1-018-Q10 -->
+
 ６. 曲线 𝑦= sin 𝑥 (0 ≤𝑥≤𝜋) 绕 𝑥 轴旋转一周所得旋转体的体积是        ;
+
+<!-- question: engineering-mathematical-analysis-1-018-Q11 -->
 
 ７. 设 𝑃𝑛(𝑥) 是 𝑛 次多项式, 积分 ∫
 𝑃𝑛(𝑥)e𝑎𝑥 d𝑥
@@ -85,7 +105,7 @@ sin 𝑡
 0
  收敛，则 𝑎 的范围是      .
 
-<!-- question: engineering-mathematical-analysis-1-018-Q2 -->
+<!-- question: engineering-mathematical-analysis-1-018-Q12 -->
 
 二、计算题（共3 小题，每小题8 分，共24 分）
 
@@ -94,9 +114,13 @@ sin 𝑡
 2
  (tan 𝑥)2𝑥−𝜋.
 
+<!-- question: engineering-mathematical-analysis-1-018-Q13 -->
+
    8. 求极限  lim
 
 𝑥→𝜋
+
+<!-- question: engineering-mathematical-analysis-1-018-Q14 -->
 
  9．设  { 𝑥= 𝑡2 + 2𝑡;
 
@@ -114,6 +138,8 @@ d𝑥2 .
 
 <!-- page: 2 -->
 
+<!-- question: engineering-mathematical-analysis-1-018-Q15 -->
+
 10. 求积分
 
 𝜋
@@ -124,11 +150,13 @@ d𝑥2 .
 
 0
 
-<!-- question: engineering-mathematical-analysis-1-018-Q3 -->
+<!-- question: engineering-mathematical-analysis-1-018-Q16 -->
 
 三、综合题（共2 小题，每小题12 分，共24 分）
 
 得分
+
+<!-- question: engineering-mathematical-analysis-1-018-Q17 -->
 
 11. 设
 
@@ -148,21 +176,27 @@ d𝑥2 .
 
 𝑛→∞𝑥𝑛,    lim
 
+<!-- question: engineering-mathematical-analysis-1-018-Q18 -->
+
 12. 在半径为 𝑅 的半球中嵌入一个长方体，其底为正方形。求该长方体的最大
 
 体积和相应各边边长.
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-018-Q4 -->
+<!-- question: engineering-mathematical-analysis-1-018-Q19 -->
 
 四、证明题（共 2 小题，每小题 12 分，共24 分）
+
+<!-- question: engineering-mathematical-analysis-1-018-Q20 -->
 
 13. 设 𝑓(𝑥) 在闭区间 [0,1] 上连续，在开区间 (0,1) 内可导，
 
 𝑓(0) = 0, 且 |𝑓′(𝑥)| ≤|𝑓(𝑥)|，∀ 𝑥∈[0,1].  试证明：
 
  𝑓(𝑥) ≡0, ∀ 𝑥∈[0,1].
+
+<!-- question: engineering-mathematical-analysis-1-018-Q21 -->
 
  14. 设 𝑓∈𝐶[𝑎, 𝑏] 是凸函数，试证明
 

@@ -71,7 +71,7 @@ the more general 𝑛-queen problem:
 placing 𝑛 non-attacking queens on
 an 𝑛× 𝑛 chessboard.
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-001.png)
+![image](assets/algorithm-design-and-analysis-008/image-001.png)
 
 <!-- page: 5 -->
 
@@ -88,7 +88,7 @@ If solutions that differ only by the symmetry operations of
 rotation and reflection of the board are counted as one, the
 puzzle has 12 solutions, called as fundamental solutions.
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-002.png)
+![image](assets/algorithm-design-and-analysis-008/image-002.png)
 
 <!-- page: 6 -->
 
@@ -119,7 +119,7 @@ Demo of Quadtree for 4-Queen Puzzle
 the 𝑖-th level, the branching choice is less than 𝑛−𝑖 leaves
 correspond to solutions.
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-003.png)
+![image](assets/algorithm-design-and-analysis-008/image-003.png)
 
 <!-- page: 8 -->
 
@@ -153,7 +153,7 @@ solution.
 Search space. In all levels, the branching choice is
 always 2 (perfect binary tree with 2𝑛leaves).
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-004.png)
+![image](assets/algorithm-design-and-analysis-008/image-004.png)
 
 <!-- page: 10 -->
 
@@ -161,11 +161,11 @@ Demo
 
 • Ex.
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-005.png)
+![image](assets/algorithm-design-and-analysis-008/image-005.png)
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-006.png)
+![image](assets/algorithm-design-and-analysis-008/image-006.png)
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-007.png)
+![image](assets/algorithm-design-and-analysis-008/image-007.png)
 
 <!-- page: 11 -->
 
@@ -186,7 +186,7 @@ min ෍
 
 Ex.
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-008.png)
+![image](assets/algorithm-design-and-analysis-008/image-008.png)
 
 <!-- page: 12 -->
 
@@ -200,7 +200,7 @@ undirected graph.
 possible permutations over {1,2, … , 𝑛} .
 • Solution is (1,2,4,3), length of cycle is 5+2+7+9=23.
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-009.png)
+![image](assets/algorithm-design-and-analysis-008/image-009.png)
 
 <!-- page: 13 -->
 
@@ -224,7 +224,7 @@ Leaves: candidate solution
 Nodes: partial solution
 • How to search. Systematically traversal the tree: DFS, BFS, …
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-010.png)
+![image](assets/algorithm-design-and-analysis-008/image-010.png)
 
 <!-- page: 15 -->
 
@@ -242,7 +242,7 @@ Black: finishing the traversal of this subtree
 Gray: visiting its subtree
 White: unexplored
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-011.png)
+![image](assets/algorithm-design-and-analysis-008/image-011.png)
 
 <!-- page: 16 -->
 
@@ -422,7 +422,7 @@ Ex.
 
 𝑤7 = 10, 𝑊1 = 152, 𝑊2 = 130
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-012.png)
+![image](assets/algorithm-design-and-analysis-008/image-012.png)
 
 <!-- page: 25 -->
 
@@ -434,7 +434,7 @@ Ex.
 
 𝑤7 = 10, 𝑊1 = 152, 𝑊2 = 130
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-013.png)
+![image](assets/algorithm-design-and-analysis-008/image-013.png)
 
 <!-- page: 26 -->
 
@@ -447,7 +447,7 @@ color.
 • Goal. Output all possible coloring schemes. Output “no” if there
 is none.
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-014.png)
+![image](assets/algorithm-design-and-analysis-008/image-014.png)
 
 <!-- page: 27 -->
 
@@ -469,7 +469,7 @@ Search strategy: DFS
 
 Demo
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-015.png)
+![image](assets/algorithm-design-and-analysis-008/image-015.png)
 
 <!-- page: 29 -->
 
@@ -579,25 +579,25 @@ Algorithm 6: Estimate(𝑛)
 
 Real Case: 4-Queen Puzzle
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-016.png)
+![image](assets/algorithm-design-and-analysis-008/image-016.png)
 
 <!-- page: 36 -->
 
 Random Selected Path 1
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-017.png)
+![image](assets/algorithm-design-and-analysis-008/image-017.png)
 
 <!-- page: 37 -->
 
 Random Selected Path 2
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-018.png)
+![image](assets/algorithm-design-and-analysis-008/image-018.png)
 
 <!-- page: 38 -->
 
 Random Selected Path 3
 
-![image](assets/assets/algorithm-design-and-analysis-008/image-019.png)
+![image](assets/algorithm-design-and-analysis-008/image-019.png)
 
 <!-- page: 39 -->
 

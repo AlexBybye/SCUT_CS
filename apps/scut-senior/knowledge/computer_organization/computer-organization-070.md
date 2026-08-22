@@ -105,7 +105,7 @@ PC + 1，为取下条指令做好准备
 
 计数器定时查询方式逻辑结构图如下：
 
-![formula-object](assets/assets/computer-organization-070/image-001.png)                     **图** **6**
+![formula-object](assets/computer-organization-070/image-001.png)                     **图** **6**
 
 **八．**解：（1）因为   刷新所需带宽  =  分辨率  × 每个像素点颜色深度  ×  刷新速度
 
@@ -119,7 +119,7 @@ PC + 1，为取下条指令做好准备
 
 **九．**解：1)
 
-![formula-object](assets/assets/computer-organization-070/image-002.png)
+![formula-object](assets/computer-organization-070/image-002.png)
 
 2)  一个n输入的Omega网络需要（${log}_{2}n$）级2×2开头
 

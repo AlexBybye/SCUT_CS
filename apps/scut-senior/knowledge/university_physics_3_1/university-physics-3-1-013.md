@@ -22,15 +22,19 @@ ACBAC  CBBDD
 
 二、填空题
 
+<!-- question: university-physics-3-1-013-Q3 -->
+
 11.  0      12.  360    或  356      13.  33      14.    1.5
 
-15.    ![formula-object](assets/assets/university-physics-3-1-013/image-001.wmf)或![formula-object](assets/assets/university-physics-3-1-013/image-002.wmf)     16.    8310
+15.    ![formula-object](assets/university-physics-3-1-013/image-001.png)或$1-\int_{0}^{v_f}f(v)dv$     16.    8310
 
-17.    ![formula-object](assets/assets/university-physics-3-1-013/image-003.wmf)或![formula-object](assets/assets/university-physics-3-1-013/image-004.wmf)或![formula-object](assets/assets/university-physics-3-1-013/image-005.wmf)
+17.    $\frac{A}{2}\cos(\frac{\pi}{2}t-\frac{\pi}{2})$或$x=\frac{A}{2}\cos(\frac{\pi}{2}t-\frac{\pi}{2})$或$\frac{A}{2}\cos(\frac{\pi}{2}t+\frac{3\pi}{2})$
 
-18.    2A      19.  ![formula-object](assets/assets/university-physics-3-1-013/image-006.wmf)或![formula-object](assets/assets/university-physics-3-1-013/image-007.wmf)   ![formula-object](assets/assets/university-physics-3-1-013/image-008.wmf)
+18.    2A      19.  $2(n-1)e+\frac{\lambda}{2}$或$2(n-1)e^{-\frac{\lambda}{2}}$   $(2n-2)e+\frac{\lambda}{2}$
 
-20.    60000      或![formula-object](assets/assets/university-physics-3-1-013/image-009.wmf)
+<!-- question: university-physics-3-1-013-Q4 -->
+
+20.    60000      或$6\times10^{4}$
 
 **三、计算题**
 
@@ -40,31 +44,31 @@ ACBAC  CBBDD
 
 由转动定律、牛顿第二定律及运动学方程，可列出以下联立方程：
 
-*T*1*R*＝*J*1**1＝![formula-object](assets/assets/university-physics-3-1-013/image-010.wmf)        2分
+*T*1*R*＝*J*1**1＝$\frac{1}{2}M_1R^2\beta_1$        2分
 
-*T*2*r*－*T*1*r*＝*J*2**2＝![formula-object](assets/assets/university-physics-3-1-013/image-011.wmf)        2分
+*T*2*r*－*T*1*r*＝*J*2**2＝$\frac{1}{2}M_1r^2\beta_2$        2分
 
 *mg*－*T*2＝*ma*  ,                  1分
 
 *a*＝*R***1＝*r***2  ,            1分
 
-*v*2＝2*ah*或![formula-object](assets/assets/university-physics-3-1-013/image-012.wmf)1分
+*v*2＝2*ah*或$v=\sqrt{2ah}$1分
 
-![formula-object](assets/assets/university-physics-3-1-013/image-013.wmf)
+![formula-object](assets/university-physics-3-1-013/image-013.png)
 
 求解联立方程，得
 
-![formula-object](assets/assets/university-physics-3-1-013/image-014.wmf)  m/s2
+![formula-object](assets/university-physics-3-1-013/image-014.png)  m/s2
 
-![formula-object](assets/assets/university-physics-3-1-013/image-015.wmf)=2 m/s                              1分
+$v=\sqrt{2ah}$=2 m/s                              1分
 
 *T*2＝*m*(*g*－*a*)＝60  N             1分
 
-*T*1＝![formula-object](assets/assets/university-physics-3-1-013/image-016.wmf)＝50  N              1分
+*T*1＝$\frac{1}{2}M_1a$＝50  N              1分
 
 **22题**
 
-解：(1)  *A*→*B*：![formula-object](assets/assets/university-physics-3-1-013/image-017.wmf)=200 J．2分
+解：(1)  *A*→*B*：$W_1=\frac{1}{2}(p_B+p_A)(V_E-V_A)$=200 J．2分
 
 （2）*B*→*C*等体过程：*Q*2  =Δ*E*2=***C**V* (*T**C**－**T**B*)=3(  *p**C**V**C**－**p**B**V**B*) /2
 
@@ -72,52 +76,64 @@ ACBAC  CBBDD
 
 （3）*C*→*A*等压过程：*W*3  =  *p**A*  (*V**A**－**V**C*)=－100 J．          2分
 
-（4）*C*→*A*等压过程：![formula-object](assets/assets/university-physics-3-1-013/image-018.wmf)  J．    2分
+（4）*C*→*A*等压过程：![formula-object](assets/university-physics-3-1-013/image-018.png)  J．    2分
 
 (5)            *Q*= *W*= *W*1+*W*3=100 J．                  2分
 
 **23题**
 
-解：(1)    ![formula-object](assets/assets/university-physics-3-1-013/image-019.wmf)s，则![formula-object](assets/assets/university-physics-3-1-013/image-020.wmf)        2分
+解：(1)    $T=2$s，则$\omega=\frac{2\pi}{T}=\pi$        2分
 
-根据旋转矢量法知P点的初相位为![formula-object](assets/assets/university-physics-3-1-013/image-021.wmf)
+根据旋转矢量法知P点的初相位为$\pi$
 
-P处振动方程为![formula-object](assets/assets/university-physics-3-1-013/image-022.wmf)    (SI)              2分
+P处振动方程为![formula-object](assets/university-physics-3-1-013/image-022.png)    (SI)              2分
 
-或![formula-object](assets/assets/university-physics-3-1-013/image-023.wmf)
+或![formula-object](assets/university-physics-3-1-013/image-023.png)
 
-（2）OP相位差![formula-object](assets/assets/university-physics-3-1-013/image-024.wmf)
+（2）OP相位差![formula-object](assets/university-physics-3-1-013/image-024.png)
 
 O处质点的振动方程为
 
-![formula-object](assets/assets/university-physics-3-1-013/image-025.wmf)  (SI)         2分
+![formula-object](assets/university-physics-3-1-013/image-025.png)  (SI)         2分
 
-或![formula-object](assets/assets/university-physics-3-1-013/image-026.wmf)
+或![formula-object](assets/university-physics-3-1-013/image-026.png)
+
+<!-- question: university-physics-3-1-013-Q5 -->
 
 （3）选O点为参考点，则波动方程为
 
-![formula-object](assets/assets/university-physics-3-1-013/image-027.wmf)      4分
+![formula-object](assets/university-physics-3-1-013/image-027.png)      4分
 
-或![formula-object](assets/assets/university-physics-3-1-013/image-028.wmf)
+或![formula-object](assets/university-physics-3-1-013/image-028.png)
 
 24题
 
-解：(1)  由光栅衍射主极大公式![formula-object](assets/assets/university-physics-3-1-013/image-029.wmf)
+解：(1)  由光栅衍射主极大公式$(a+b)\sin\theta=k\lambda$
 
-![formula-object](assets/assets/university-physics-3-1-013/image-030.wmf)
+$$
+(a+b)\cdot0.2=k\lambda
+$$
 
-![formula-object](assets/assets/university-physics-3-1-013/image-031.wmf)
+$$
+(a+b)\cdot0.3=(k+1)\lambda
+$$
 
-得：![formula-object](assets/assets/university-physics-3-1-013/image-032.wmf)                  2分
+得：$(a+b)=6000nm$                  2分
 
-(2)  由缺级公式![formula-object](assets/assets/university-physics-3-1-013/image-033.wmf)
+<!-- question: university-physics-3-1-013-Q6 -->
 
-得，在第四级缺级下，![formula-object](assets/assets/university-physics-3-1-013/image-034.wmf)取1，![formula-object](assets/assets/university-physics-3-1-013/image-035.wmf)取最小值
+(2)  由缺级公式$k=\frac{a+b}{a}k'$
 
-![formula-object](assets/assets/university-physics-3-1-013/image-036.wmf)
+得，在第四级缺级下，$k'$取1，$a$取最小值
 
-(3)  ![formula-object](assets/assets/university-physics-3-1-013/image-037.wmf)，故![formula-object](assets/assets/university-physics-3-1-013/image-038.wmf)
+$$
+a_{\min}=\frac{a+b}{4}=1500nm
+$$
+
+<!-- question: university-physics-3-1-013-Q7 -->
+
+(3)  $sintheta<1$，故$k<\frac{a+b}{\lambda}=10$
 
 又因为第四、八级缺级,
 
-所以实际呈现![formula-object](assets/assets/university-physics-3-1-013/image-039.wmf)0，±1，±2，±3，±5，±6，±7，±9级明纹．    
+所以实际呈现$k=$0，±1，±2，±3，±5，±6，±7，±9级明纹．    

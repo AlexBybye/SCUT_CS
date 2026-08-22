@@ -10,4 +10,4 @@ locator_type: none
 
 # 嵌入式回忆
 
-![page-001.jpg](assets/assets/embedded-systems-016/page-001.jpg)
+![page-001.jpg](assets/embedded-systems-016/page-001.jpg)

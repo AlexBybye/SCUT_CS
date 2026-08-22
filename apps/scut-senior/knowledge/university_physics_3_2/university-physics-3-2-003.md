@@ -60,15 +60,17 @@ $F=\frac {{q}_{0}\lambda l} {4{\pi \varepsilon }_{0}d\left ( {d+l}\right )}$    
 
 解法2：选杆的右端为坐标原点，*x*轴沿杆的方向指向左。在*x*处取一电荷元**d*x*，它在点电荷所在处产生场强为：
 
-![formula-object](assets/assets/university-physics-3-2-003/image-005.png)         4分
+![formula-object](assets/university-physics-3-2-003/image-005.png)         4分
 
 整个杆上电荷在该点的场强为：
 
-![formula-object](assets/assets/university-physics-3-2-003/image-006.png)           4分
+![formula-object](assets/university-physics-3-2-003/image-006.png)           4分
 
 点电荷*q*0所受的电场力为：
 
 $F=\frac {{q}_{0}\lambda l} {4{\pi \varepsilon }_{0}d\left ( {d+l}\right )}$                    2分
+
+<!-- question: university-physics-3-2-003-Q4 -->
 
 22．解：解：带电圆盘转动时，可看作无数的电流圆环的磁场在*O*点的叠加．
 
@@ -84,6 +86,8 @@ $F=\frac {{q}_{0}\lambda l} {4{\pi \varepsilon }_{0}d\left ( {d+l}\right )}$    
 
 今  ${B}_{+}={B}_{-}$          ∴     $R=2r$                                 2分
 
+<!-- question: university-physics-3-2-003-Q5 -->
+
 23．解：根据功能原理，要作的功     *A*=  *E*                     1分
 
 根据相对论能量公式             *E*  =  *m*2*c*2- *m*1*c*2                          1分
@@ -94,19 +98,21 @@ $F=\frac {{q}_{0}\lambda l} {4{\pi \varepsilon }_{0}d\left ( {d+l}\right )}$    
 
 ∴          $A=m_0c^2(\frac{1}{\sqrt{1-\frac{v_2^2}{c^2}}}-\frac{1}{\sqrt{1-\frac{v_1^2}{c^2}}})$＝4.72×10-14  J＝2.95×105  eV       2分
 
-24．解：(1)   ![formula-object](assets/assets/university-physics-3-2-003/image-008.png)              3分
+24．解：(1)   ![formula-object](assets/university-physics-3-2-003/image-008.png)              3分
 
 $=\frac {{\mu }_{0}I l} {2\pi }\int _{a+{v}_{}t} ^{b+{v}_{}t} \frac {dr} {r}$$=\frac {{\mu }_{0}I l} {2\pi }ln\frac {b+vt} {a+vt}$            3分
 
 (2) $\varepsilon_i=-\left.\frac{\mathrm{d}\phi}{\mathrm{d}t}\right|_{t=0}$           2分
 
-$=\frac{\mu_0Ilv}{2\pi}(\frac{1}{a}-\frac{1}{b})$![formula-object](assets/assets/university-physics-3-2-003/image-011.png)      2分
+$=\frac{\mu_0Ilv}{2\pi}(\frac{1}{a}-\frac{1}{b})$![formula-object](assets/university-physics-3-2-003/image-011.png)      2分
 
-解法2：（2）$t=0$时，左竖边动生电动势为![formula-object](assets/assets/university-physics-3-2-003/image-013.png)    1分
+解法2：（2）$t=0$时，左竖边动生电动势为![formula-object](assets/university-physics-3-2-003/image-013.png)    1分
 
-右竖边动生电动势为![formula-object](assets/assets/university-physics-3-2-003/image-014.png)        1分
+右竖边动生电动势为![formula-object](assets/university-physics-3-2-003/image-014.png)        1分
 
-故动生电动势为![formula-object](assets/assets/university-physics-3-2-003/image-015.png)       2分
+故动生电动势为![formula-object](assets/university-physics-3-2-003/image-015.png)       2分
+
+<!-- question: university-physics-3-2-003-Q6 -->
 
 25.解：解：先求粒子的位置概率密度
 

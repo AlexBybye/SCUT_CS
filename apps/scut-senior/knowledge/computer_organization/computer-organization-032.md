@@ -90,7 +90,7 @@ locator_type: slide
 
 <!-- slide: 7 -->
 
-![image](assets/assets/computer-organization-032/image-001.png)
+![image](assets/computer-organization-032/image-001.png)
 - 2）字存储容量扩展
 
 <!-- slide: 8 -->
@@ -257,19 +257,19 @@ locator_type: slide
 
 <!-- slide: 18 -->
 
-![image](assets/assets/computer-organization-032/image-002.png)
+![image](assets/computer-organization-032/image-002.png)
 
 <!-- slide: 19 -->
 
-![image](assets/assets/computer-organization-032/image-003.png)
+![image](assets/computer-organization-032/image-003.png)
 
 <!-- slide: 20 -->
 
-![image](assets/assets/computer-organization-032/image-004.png)
+![image](assets/computer-organization-032/image-004.png)
 
 <!-- slide: 21 -->
 
-![image](assets/assets/computer-organization-032/image-005.png)
+![image](assets/computer-organization-032/image-005.png)
 
 <!-- slide: 22 -->
 
@@ -327,46 +327,46 @@ locator_type: slide
 
 <!-- slide: 28 -->
 
-![image](assets/assets/computer-organization-032/image-006.png)
+![image](assets/computer-organization-032/image-006.png)
 
 <!-- slide: 29 -->
 
-![image](assets/assets/computer-organization-032/image-007.png)
+![image](assets/computer-organization-032/image-007.png)
 
 <!-- slide: 30 -->
 
-![image](assets/assets/computer-organization-032/image-008.png)
+![image](assets/computer-organization-032/image-008.png)
 
 <!-- slide: 31 -->
 
-![image](assets/assets/computer-organization-032/image-009.jpg)
+![image](assets/computer-organization-032/image-009.jpg)
 
 <!-- slide: 32 -->
 
-![image](assets/assets/computer-organization-032/image-010.png)
+![image](assets/computer-organization-032/image-010.png)
 
 <!-- slide: 33 -->
 
 - 虚实地址的变换过程（段式）
-![image](assets/assets/computer-organization-032/image-011.png)
+![image](assets/computer-organization-032/image-011.png)
 
 <!-- slide: 34 -->
 
 - 虚实地址的变换过程（页式）
-![image](assets/assets/computer-organization-032/image-012.png)
+![image](assets/computer-organization-032/image-012.png)
 
 <!-- slide: 35 -->
 
 - 虚实地址的变换过程（段页式）
-![image](assets/assets/computer-organization-032/image-013.png)
+![image](assets/computer-organization-032/image-013.png)
 
 <!-- slide: 36 -->
 
-![image](assets/assets/computer-organization-032/image-014.png)
+![image](assets/computer-organization-032/image-014.png)
 
 <!-- slide: 37 -->
 
-![image](assets/assets/computer-organization-032/image-015.png)
+![image](assets/computer-organization-032/image-015.png)
 
 <!-- slide: 38 -->
 
@@ -378,23 +378,23 @@ locator_type: slide
 
 ## 转换后援缓冲器(TLB)/快表
 
-![image](assets/assets/computer-organization-032/image-016.jpg)
+![image](assets/computer-organization-032/image-016.jpg)
 
 <!-- slide: 40 -->
 
-![image](assets/assets/computer-organization-032/image-017.png)
+![image](assets/computer-organization-032/image-017.png)
 
 <!-- slide: 41 -->
 
-![image](assets/assets/computer-organization-032/image-018.png)
+![image](assets/computer-organization-032/image-018.png)
 
 <!-- slide: 42 -->
 
-![image](assets/assets/computer-organization-032/image-019.png)
+![image](assets/computer-organization-032/image-019.png)
 
 <!-- slide: 43 -->
 
-![image](assets/assets/computer-organization-032/image-020.png)
+![image](assets/computer-organization-032/image-020.png)
 
 <!-- slide: 44 -->
 
@@ -554,7 +554,7 @@ locator_type: slide
 - 式中：T——存储周期
 - 称为交叉存取度
 - 交叉存储器要求模块数必须大于或等于m,确保再次启动某模块时,前次操作已完成.
-![image](assets/assets/computer-organization-032/image-021.png)
+![image](assets/computer-organization-032/image-021.png)
 
 <!-- slide: 50 -->
 

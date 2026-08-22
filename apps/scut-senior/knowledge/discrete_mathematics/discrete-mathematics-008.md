@@ -12,12 +12,12 @@ locator_type: page
 
 <!-- page: 1 -->
 
-![page-001.jpg](assets/assets/discrete-mathematics-008/page-001.jpg)
+![page-001.jpg](assets/discrete-mathematics-008/page-001.jpg)
 
 <!-- page: 2 -->
 
-![page-002.jpg](assets/assets/discrete-mathematics-008/page-002.jpg)
+![page-002.jpg](assets/discrete-mathematics-008/page-002.jpg)
 
 <!-- page: 3 -->
 
-![page-003.jpg](assets/assets/discrete-mathematics-008/page-003.jpg)
+![page-003.jpg](assets/discrete-mathematics-008/page-003.jpg)

@@ -18,6 +18,8 @@ locator_type: page
 
 一、填空题（共5 小题，每小题3 分，共15 分）
 
+<!-- question: engineering-mathematical-analysis-1-024-Q2 -->
+
 １. 函数极限
 ( )
 lim
@@ -32,6 +34,8 @@ A
 
                                                              ；
 
+<!-- question: engineering-mathematical-analysis-1-024-Q3 -->
+
 ２. 叙述函数
 ( )
 f x 在[
@@ -39,6 +43,8 @@ f x 在[
 ,a b 上的Lagrange 中值定理：
 
                                                         ；
+
+<!-- question: engineering-mathematical-analysis-1-024-Q4 -->
 
 ３. 设
 2 cos
@@ -75,6 +81,8 @@ x
 ( )
 f x =                              ；
 
+<!-- question: engineering-mathematical-analysis-1-024-Q5 -->
+
 ４. 设
 ( )
 ( )
@@ -94,15 +102,19 @@ x e dx
 ∫
                      .
 
+<!-- question: engineering-mathematical-analysis-1-024-Q6 -->
+
 ５. 设n 为自然数，则反常积分
 
 0
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-024-Q2 -->
+<!-- question: engineering-mathematical-analysis-1-024-Q7 -->
 
 二、计算下列各题（共3 小题，每小题8 分，共24 分）
+
+<!-- question: engineering-mathematical-analysis-1-024-Q8 -->
 
 1. 求极限
 (
@@ -141,6 +153,8 @@ x
 
 <!-- page: 2 -->
 
+<!-- question: engineering-mathematical-analysis-1-024-Q9 -->
+
 2.  求不定积分
 (
 )
@@ -149,6 +163,8 @@ sin ln x dx
  .
 
 dx
+
+<!-- question: engineering-mathematical-analysis-1-024-Q10 -->
 
 3.  计算定积分
 2
@@ -165,9 +181,11 @@ x
 
 <!-- page: 3 -->
 
-<!-- question: engineering-mathematical-analysis-1-024-Q3 -->
+<!-- question: engineering-mathematical-analysis-1-024-Q11 -->
 
 三、解答下列各题（共4 小题，每小题8 分，共32 分）
+
+<!-- question: engineering-mathematical-analysis-1-024-Q12 -->
 
 1. 设
 1
@@ -235,6 +253,8 @@ t = 处的切线方程，并求
 
 .
 
+<!-- question: engineering-mathematical-analysis-1-024-Q13 -->
+
 2. 设曲线方程为
 
 dx
@@ -260,10 +280,14 @@ e
 =
 的单调区间，极值以及凹凸区间和拐点（要求列表）.
 
+<!-- question: engineering-mathematical-analysis-1-024-Q14 -->
+
 3. 求函数
 ( )
 (
 )
+
+<!-- question: engineering-mathematical-analysis-1-024-Q15 -->
 
 4.  求由
 (
@@ -283,9 +307,11 @@ x
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-024-Q4 -->
+<!-- question: engineering-mathematical-analysis-1-024-Q16 -->
 
 四、证明题（共2 小题，每小题10 分，共20 分）
+
+<!-- question: engineering-mathematical-analysis-1-024-Q17 -->
 
      1.  设
 ( )
@@ -300,6 +326,8 @@ f
 x
 ′
 的零点.
+
+<!-- question: engineering-mathematical-analysis-1-024-Q18 -->
 
 2.  证明：函数
 ( )
@@ -319,7 +347,7 @@ x
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-024-Q5 -->
+<!-- question: engineering-mathematical-analysis-1-024-Q19 -->
 
 五、应用题（本题9 分）
 

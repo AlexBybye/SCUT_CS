@@ -16,7 +16,7 @@ locator_type: slide
 
 - 有三个传教士和三个野人需要过河，目前只有一条能装下两个人的船，在河的任何一边，如果野人的数目大于传教士的数目，那么传教士就会被野人攻击，怎么找出一种安全的渡河方案呢？
 - <number>
-![image](assets/assets/artificial-intelligence-intro-015/image-001.png)
+![image](assets/artificial-intelligence-intro-015/image-001.png)
 
 <!-- slide: 2 -->
 
@@ -62,7 +62,7 @@ locator_type: slide
 
 - <number>
 - 例：皇后问题
-![image](assets/assets/artificial-intelligence-intro-015/image-002.png)
+![image](assets/artificial-intelligence-intro-015/image-002.png)
 
 <!-- slide: 7 -->
 

@@ -30,6 +30,8 @@ locator_type: none
 
 **一、选择题（共6题，每题3分，共18分）**
 
+<!-- question: probability-theory-035-Q1 -->
+
 1.若*P*(*AB*)=0，则下述命题中正确的是（ B ）。
 
 A．*A*与*B*互不相容；                B. ![formula-object](assets/probability-theory-035/image-001.png) ；
@@ -60,6 +62,8 @@ A．$t_{\frac{1-\alpha}{2}}(n)$ ;       B. $t_{1-\frac{\alpha}{2}}(n)$ ;        
 
 **二、填空题（共6题，每题3分，共18分）。**
 
+<!-- question: probability-theory-035-Q2 -->
+
 1. 设随机变量*X*和*Y*的期望分别为$-1$和1，方差分别为1和2，且
 
 *X*和*Y*相互独立，用切比雪夫不等式估计$P(X+Y|3)\leq$       。$\frac{1}{3}$
@@ -76,6 +80,8 @@ A．$t_{\frac{1-\alpha}{2}}(n)$ ;       B. $t_{1-\frac{\alpha}{2}}(n)$ ;        
 
 **三、（10分）** 在房间里有10个人，分别佩戴从1号到10号的纪念章，任选3人记录其纪念章的号码。试求：(1)  最大号码为5的概率；
 
+<!-- question: probability-theory-035-Q3 -->
+
 (2)  如果已知记录的最大号码为5，求记录的三个号码中有3的概率？
 
 **解：(1)*****A*****={记录的最大号码为5}，**
@@ -89,6 +95,8 @@ A．$t_{\frac{1-\alpha}{2}}(n)$ ;       B. $t_{1-\frac{\alpha}{2}}(n)$ ;        
 **四、(** **10分)**
 
 设某面粉厂采用自动流水线灌装面粉，装袋重量![formula-object](assets/probability-theory-035/image-054.png).从中随机地抽取36袋，经计算得平均重量为$x$24.92kg，修正标准差$s_n^*=1.974$kg.
+
+<!-- question: probability-theory-035-Q4 -->
 
 (1)  在置信度为0.95时，求出面粉重量平均值$mu$的置信区间。
 
@@ -185,6 +193,8 @@ $$
 
 ![formula-object](assets/probability-theory-035/image-095.png)
 
+<!-- question: probability-theory-035-Q5 -->
+
 （1）求*A*的值；  （2）判断*X*，*Y*是否独立； （3）期望*E*[2*XY*].
 
 **解：（1）$\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(x,y)dxdy=\int_{0}^{\infty}\left(\int_{0}^{\infty}Ae^{-(x+2y)}dy\right)dx=\frac{A}{2}\int_{0}^{\infty}e^{-x}dx=\frac{A}{2}(1-e^{-1})=1,$**
@@ -222,6 +232,8 @@ $$
 | *P* | $\theta^2$ | $2\theta(1-\theta)$ | $(1-\theta)^{2}$ |
 
 其中$\theta(0<\theta<1)$为未知参数.
+<!-- question: probability-theory-035-Q6 -->
+
 1. 求$\theta$的矩估计量$\hat{\theta}_M$,并讨论$\hat{\theta}_M$的无偏性；
 1. 当样本观察值为$x_1=1,x_2=2,x_3=1,x_4=1,x_5=3$时，求$\theta$的极大似然估计值.
 

@@ -83,9 +83,9 @@ Rivest, C. Stein, MIT Press.
 
 5
 
-![image](assets/assets/algorithm-design-and-analysis-004/image-001.jpeg)
+![image](assets/algorithm-design-and-analysis-004/image-001.jpeg)
 
-![image](assets/assets/algorithm-design-and-analysis-004/image-002.jpeg)
+![image](assets/algorithm-design-and-analysis-004/image-002.jpeg)
 
 <!-- page: 6 -->
 
@@ -132,9 +132,9 @@ Lecture
 
 8
 
-![image](assets/assets/algorithm-design-and-analysis-004/image-003.jpeg)
+![image](assets/algorithm-design-and-analysis-004/image-003.jpeg)
 
-![image](assets/assets/algorithm-design-and-analysis-004/image-004.png)
+![image](assets/algorithm-design-and-analysis-004/image-004.png)
 
 <!-- page: 9 -->
 
@@ -261,9 +261,9 @@ Factors of Programming
 
 17
 
-![image](assets/assets/algorithm-design-and-analysis-004/image-005.png)
+![image](assets/algorithm-design-and-analysis-004/image-005.png)
 
-![image](assets/assets/algorithm-design-and-analysis-004/image-006.jpeg)
+![image](assets/algorithm-design-and-analysis-004/image-006.jpeg)
 
 <!-- page: 18 -->
 
@@ -327,19 +327,19 @@ Importance of Algorithms
 
 23
 
-![image](assets/assets/algorithm-design-and-analysis-004/image-007.png)
+![image](assets/algorithm-design-and-analysis-004/image-007.png)
 
 <!-- page: 21 -->
 
 21
 
-![image](assets/assets/algorithm-design-and-analysis-004/image-008.jpeg)
+![image](assets/algorithm-design-and-analysis-004/image-008.jpeg)
 
 <!-- page: 22 -->
 
 22
 
-![image](assets/assets/algorithm-design-and-analysis-004/image-009.jpeg)
+![image](assets/algorithm-design-and-analysis-004/image-009.jpeg)
 
 <!-- page: 23 -->
 
@@ -347,7 +347,7 @@ Data!! Data!!Data!!
 
 23
 
-![image](assets/assets/algorithm-design-and-analysis-004/image-010.jpeg)
+![image](assets/algorithm-design-and-analysis-004/image-010.jpeg)
 
 <!-- page: 24 -->
 

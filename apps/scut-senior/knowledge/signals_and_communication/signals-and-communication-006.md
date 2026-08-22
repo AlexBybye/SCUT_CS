@@ -55,9 +55,9 @@ u 率失真理论*
 
 讨论：通信的理论
 
-![image](assets/assets/signals-and-communication-006/image-001.jpeg)
+![image](assets/signals-and-communication-006/image-001.jpeg)
 
-![image](assets/assets/signals-and-communication-006/image-002.jpeg)
+![image](assets/signals-and-communication-006/image-002.jpeg)
 
 <!-- page: 5 -->
 
@@ -71,9 +71,9 @@ u 信息论及数字通信时代的奠基人
 
 5
 
-![image](assets/assets/signals-and-communication-006/image-003.jpeg)
+![image](assets/signals-and-communication-006/image-003.jpeg)
 
-![image](assets/assets/signals-and-communication-006/image-004.jpeg)
+![image](assets/signals-and-communication-006/image-004.jpeg)
 
 <!-- page: 6 -->
 
@@ -695,7 +695,7 @@ u 何种类型的信源输出的信息量最大？
 
 19
 
-![image](assets/assets/signals-and-communication-006/image-005.jpeg)
+![image](assets/signals-and-communication-006/image-005.jpeg)
 
 <!-- page: 20 -->
 
@@ -748,7 +748,7 @@ u 熵较大的信源，输出同样个数
 
 20
 
-![image](assets/assets/signals-and-communication-006/image-006.jpeg)
+![image](assets/signals-and-communication-006/image-006.jpeg)
 
 <!-- page: 21 -->
 
@@ -1187,7 +1187,7 @@ u 若函数为型凸函数(上凸函数)，则一定存在最大值
 
 27
 
-![image](assets/assets/signals-and-communication-006/image-007.jpeg)
+![image](assets/signals-and-communication-006/image-007.jpeg)
 
 <!-- page: 28 -->
 
@@ -1362,7 +1362,7 @@ i
 
 30
 
-![image](assets/assets/signals-and-communication-006/image-008.jpeg)
+![image](assets/signals-and-communication-006/image-008.jpeg)
 
 <!-- page: 31 -->
 
@@ -2063,7 +2063,7 @@ N
 
 39
 
-![image](assets/assets/signals-and-communication-006/image-009.jpeg)
+![image](assets/signals-and-communication-006/image-009.jpeg)
 
 <!-- page: 40 -->
 
@@ -2364,7 +2364,7 @@ p
 
 43
 
-![image](assets/assets/signals-and-communication-006/image-010.jpeg)
+![image](assets/signals-and-communication-006/image-010.jpeg)
 
 <!-- page: 44 -->
 
@@ -2755,7 +2755,7 @@ I
 
 47
 
-![image](assets/assets/signals-and-communication-006/image-011.jpeg)
+![image](assets/signals-and-communication-006/image-011.jpeg)
 
 <!-- page: 48 -->
 
@@ -2913,7 +2913,7 @@ I
 
 50
 
-![image](assets/assets/signals-and-communication-006/image-012.jpeg)
+![image](assets/signals-and-communication-006/image-012.jpeg)
 
 <!-- page: 51 -->
 
@@ -5650,7 +5650,7 @@ a
 
 75
 
-![image](assets/assets/signals-and-communication-006/image-013.jpeg)
+![image](assets/signals-and-communication-006/image-013.jpeg)
 
 <!-- page: 76 -->
 
@@ -6819,11 +6819,11 @@ a
 
 85
 
-![image](assets/assets/signals-and-communication-006/image-014.jpeg)
+![image](assets/signals-and-communication-006/image-014.jpeg)
 
-![image](assets/assets/signals-and-communication-006/image-015.jpeg)
+![image](assets/signals-and-communication-006/image-015.jpeg)
 
-![image](assets/assets/signals-and-communication-006/image-016.jpeg)
+![image](assets/signals-and-communication-006/image-016.jpeg)
 
 <!-- page: 86 -->
 
@@ -6907,11 +6907,11 @@ max
 
 86
 
-![image](assets/assets/signals-and-communication-006/image-017.jpeg)
+![image](assets/signals-and-communication-006/image-017.jpeg)
 
-![image](assets/assets/signals-and-communication-006/image-018.jpeg)
+![image](assets/signals-and-communication-006/image-018.jpeg)
 
-![image](assets/assets/signals-and-communication-006/image-019.jpeg)
+![image](assets/signals-and-communication-006/image-019.jpeg)
 
 <!-- page: 87 -->
 
@@ -6988,9 +6988,9 @@ max
 
 87
 
-![image](assets/assets/signals-and-communication-006/image-020.jpeg)
+![image](assets/signals-and-communication-006/image-020.jpeg)
 
-![image](assets/assets/signals-and-communication-006/image-021.jpeg)
+![image](assets/signals-and-communication-006/image-021.jpeg)
 
 <!-- page: 88 -->
 
@@ -7066,11 +7066,11 @@ max
 
 88
 
-![image](assets/assets/signals-and-communication-006/image-022.jpeg)
+![image](assets/signals-and-communication-006/image-022.jpeg)
 
-![image](assets/assets/signals-and-communication-006/image-023.jpeg)
+![image](assets/signals-and-communication-006/image-023.jpeg)
 
-![image](assets/assets/signals-and-communication-006/image-024.jpeg)
+![image](assets/signals-and-communication-006/image-024.jpeg)
 
 <!-- page: 89 -->
 
@@ -7259,9 +7259,9 @@ max
 
 92
 
-![image](assets/assets/signals-and-communication-006/image-025.jpeg)
+![image](assets/signals-and-communication-006/image-025.jpeg)
 
-![image](assets/assets/signals-and-communication-006/image-026.jpeg)
+![image](assets/signals-and-communication-006/image-026.jpeg)
 
 <!-- page: 93 -->
 
@@ -7401,7 +7401,7 @@ y
 
 93
 
-![image](assets/assets/signals-and-communication-006/image-027.jpeg)
+![image](assets/signals-and-communication-006/image-027.jpeg)
 
 <!-- page: 94 -->
 
@@ -8192,7 +8192,7 @@ N
 
 101
 
-![image](assets/assets/signals-and-communication-006/image-028.jpeg)
+![image](assets/signals-and-communication-006/image-028.jpeg)
 
 <!-- page: 102 -->
 
@@ -8232,7 +8232,7 @@ N
 
 102
 
-![image](assets/assets/signals-and-communication-006/image-029.jpeg)
+![image](assets/signals-and-communication-006/image-029.jpeg)
 
 <!-- page: 103 -->
 
@@ -8278,7 +8278,7 @@ C
 
 103
 
-![image](assets/assets/signals-and-communication-006/image-030.jpeg)
+![image](assets/signals-and-communication-006/image-030.jpeg)
 
 <!-- page: 104 -->
 
@@ -8420,7 +8420,7 @@ u 有记忆的信源，经过处理后，有可能变为一种无记忆的信源
 
 109
 
-![image](assets/assets/signals-and-communication-006/image-031.jpeg)
+![image](assets/signals-and-communication-006/image-031.jpeg)
 
 <!-- page: 110 -->
 
@@ -8641,7 +8641,7 @@ X
 
 111
 
-![image](assets/assets/signals-and-communication-006/image-032.jpeg)
+![image](assets/signals-and-communication-006/image-032.jpeg)
 
 <!-- page: 112 -->
 
@@ -8896,7 +8896,7 @@ n 异字头不等长编码
 
 118
 
-![image](assets/assets/signals-and-communication-006/image-033.jpeg)
+![image](assets/signals-and-communication-006/image-033.jpeg)
 
 <!-- page: 119 -->
 
@@ -9944,7 +9944,7 @@ n 
 
 133
 
-![image](assets/assets/signals-and-communication-006/image-034.jpeg)
+![image](assets/signals-and-communication-006/image-034.jpeg)
 
 <!-- page: 134 -->
 
@@ -10573,7 +10573,7 @@ M
 
 142
 
-![image](assets/assets/signals-and-communication-006/image-035.jpeg)
+![image](assets/signals-and-communication-006/image-035.jpeg)
 
 <!-- page: 143 -->
 
@@ -15384,7 +15384,7 @@ R D
 
 183
 
-![image](assets/assets/signals-and-communication-006/image-036.jpeg)
+![image](assets/signals-and-communication-006/image-036.jpeg)
 
 <!-- page: 184 -->
 

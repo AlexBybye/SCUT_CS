@@ -119,7 +119,7 @@ A  100兆位  /  秒        B  200兆位  /  秒        C  400兆位  /  秒    
 
 **五.**图1所示为存贮器的地址空间分布图和存贮器的地址译码电路，后者可在A组跨接端和B组跨接端之间分别进行接线。74LS139是  2  ：4译码器，使能端G接地表示译码器处于正常译码状态。
 
-![formula-object](assets/assets/computer-organization-049/image-001.png)                                       **图1**
+![formula-object](assets/computer-organization-049/image-001.png)                                       **图1**
 
 要求：完成A组跨接端与B组跨接端内部的正确连接，以便使地址译码电路按图的要求正确寻址。
 - 运算器结构如图2所示，R1  ，R2，R3 是三个寄存器，A和B是两个三选一的多路开关，通路的选择由AS0  ,AS1  和BS0 ，BS1端控制，例如BS0BS1  = 11时，选择R3  ，BS0BS1  = 01时，选择R1……，ALU是算术  /  逻辑单元。S1S2为它的两个操作控制端。其功能如下：
@@ -132,7 +132,7 @@ S1S2  = 10时，ALU输出  = A  –  B
 
 S1S2  = 11时，ALU输出  = A⊕B
 
-![image](assets/assets/computer-organization-049/image-002.png)请设计控制运算器通路的微指令格式。
+![image](assets/computer-organization-049/image-002.png)请设计控制运算器通路的微指令格式。
 
 图2
 

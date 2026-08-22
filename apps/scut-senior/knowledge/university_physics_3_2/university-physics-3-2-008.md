@@ -307,6 +307,8 @@ p c
 
 <!-- page: 3 -->
 
+<!-- question: university-physics-3-2-008-Q1 -->
+
 8．（2011级，洛仑兹变换,同时的相对性）
 
 A
@@ -385,6 +387,8 @@ c
 
 c
 
+<!-- question: university-physics-3-2-008-Q2 -->
+
 18．(2012级，时间膨胀)
 
 
@@ -401,11 +405,13 @@ c
 
 3
 
-![image](assets/assets/university-physics-3-2-008/image-001.png)
+![image](assets/university-physics-3-2-008/image-001.png)
 
-![image](assets/assets/university-physics-3-2-008/image-002.png)
+![image](assets/university-physics-3-2-008/image-002.png)
 
 <!-- page: 4 -->
+
+<!-- question: university-physics-3-2-008-Q3 -->
 
 8．(2012级，尺度收缩)
 
@@ -449,6 +455,8 @@ a
 
 =
 
+<!-- question: university-physics-3-2-008-Q4 -->
+
 7．（2011级，相对论动力学问题）
 
 2
@@ -462,7 +470,7 @@ m c
 
 4
 
-![image](assets/assets/university-physics-3-2-008/image-003.png)
+![image](assets/university-physics-3-2-008/image-003.png)
 
 <!-- page: 5 -->
 
@@ -808,9 +816,9 @@ m
 
 8
 
-![image](assets/assets/university-physics-3-2-008/image-004.png)
+![image](assets/university-physics-3-2-008/image-004.png)
 
-![image](assets/assets/university-physics-3-2-008/image-005.png)
+![image](assets/university-physics-3-2-008/image-005.png)
 
 <!-- page: 9 -->
 
@@ -897,9 +905,9 @@ m c
 
 9
 
-![image](assets/assets/university-physics-3-2-008/image-006.png)
+![image](assets/university-physics-3-2-008/image-006.png)
 
-![image](assets/assets/university-physics-3-2-008/image-007.png)
+![image](assets/university-physics-3-2-008/image-007.png)
 
 <!-- page: 10 -->
 
@@ -1176,7 +1184,7 @@ E/eV
 
 13
 
-![image](assets/assets/university-physics-3-2-008/image-008.png)
+![image](assets/university-physics-3-2-008/image-008.png)
 
 <!-- page: 14 -->
 
@@ -1219,7 +1227,7 @@ n =
 
 15
 
-![image](assets/assets/university-physics-3-2-008/image-009.png)
+![image](assets/university-physics-3-2-008/image-009.png)
 
 <!-- page: 16 -->
 
@@ -1409,9 +1417,9 @@ a
 
 18
 
-![image](assets/assets/university-physics-3-2-008/image-010.png)
+![image](assets/university-physics-3-2-008/image-010.png)
 
-![image](assets/assets/university-physics-3-2-008/image-011.png)
+![image](assets/university-physics-3-2-008/image-011.png)
 
 <!-- page: 19 -->
 
@@ -1458,7 +1466,7 @@ R
 
 19
 
-![image](assets/assets/university-physics-3-2-008/image-012.png)
+![image](assets/university-physics-3-2-008/image-012.png)
 
 <!-- page: 20 -->
 
@@ -1745,7 +1753,7 @@ W
 =
 22
 
-![image](assets/assets/university-physics-3-2-008/image-013.png)
+![image](assets/university-physics-3-2-008/image-013.png)
 
 <!-- page: 23 -->
 
@@ -1842,6 +1850,6 @@ S
 
 23
 
-![image](assets/assets/university-physics-3-2-008/image-014.png)
+![image](assets/university-physics-3-2-008/image-014.png)
 
-![image](assets/assets/university-physics-3-2-008/image-015.png)
+![image](assets/university-physics-3-2-008/image-015.png)

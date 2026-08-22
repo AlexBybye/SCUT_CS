@@ -100,23 +100,23 @@ UAV问题集建模[1]
 
 **3.1目标函数:**目标是最小化以下加权目标函数：
 
-![image](assets/assets/intelligent-algorithms-031/image-001.png)**3.2硬约束**：
+![image](assets/intelligent-algorithms-031/image-001.png)**3.2硬约束**：
 
 3.2.1路径成本${F}_{1}$：
 
-![image](assets/assets/intelligent-algorithms-031/image-002.png)
+![image](assets/intelligent-algorithms-031/image-002.png)
 
 3.2.2避障成本${F}_{2}$：
 
-![image](assets/assets/intelligent-algorithms-031/image-003.png)3.2.3海拔成本${F}_{3}$：
+![image](assets/intelligent-algorithms-031/image-003.png)3.2.3海拔成本${F}_{3}$：
 
-![image](assets/assets/intelligent-algorithms-031/image-004.png)
+![image](assets/intelligent-algorithms-031/image-004.png)
 
 3.24平滑度成本${F}_{4}$：
 
-![image](assets/assets/intelligent-algorithms-031/image-005.png)3.25地形成本${F}_{5}$：
+![image](assets/intelligent-algorithms-031/image-005.png)3.25地形成本${F}_{5}$：
 
-![image](assets/assets/intelligent-algorithms-031/image-006.png)四、算法设计优化与实验结果
+![image](assets/intelligent-algorithms-031/image-006.png)四、算法设计优化与实验结果
 
 4.1  算法说明
 
@@ -126,11 +126,11 @@ LYBBO是一种混合优化算法，其融合生物地理学优化(BBO)及差分�
 
 初始化阶段代码如图4.1-1：
 
-![image](assets/assets/intelligent-algorithms-031/image-007.png)在此部分，我们进行了①：UAV优化适配：在30D空间中随机生成路径节点，确保覆盖整个搜索空间。②：精英初始化：保存前8个最优解 (elite_size = 8) 作为优质解的种子
+![image](assets/intelligent-algorithms-031/image-007.png)在此部分，我们进行了①：UAV优化适配：在30D空间中随机生成路径节点，确保覆盖整个搜索空间。②：精英初始化：保存前8个最优解 (elite_size = 8) 作为优质解的种子
 
 图4.1-  1
 
-![image](assets/assets/intelligent-algorithms-031/image-008.png)
+![image](assets/intelligent-algorithms-031/image-008.png)
 
 图4.1-  2
 
@@ -140,17 +140,17 @@ LYBBO是一种混合优化算法，其融合生物地理学优化(BBO)及差分�
 
 信息素系统代码如图4.1-3：
 
-![image](assets/assets/intelligent-algorithms-031/image-009.png)在这部分，①精英导向的应用使适应度高的解沉积更多信息素。②动态调节参数Q控制历史信息的保留程度
+![image](assets/intelligent-algorithms-031/image-009.png)在这部分，①精英导向的应用使适应度高的解沉积更多信息素。②动态调节参数Q控制历史信息的保留程度
 
 图4.1-  3                                    图4.1-  4
 
-![image](assets/assets/intelligent-algorithms-031/image-010.png)变异操作代码如图4.1-4：
+![image](assets/intelligent-algorithms-031/image-010.png)变异操作代码如图4.1-4：
 
 在这里，我采用①变异步长为搜索空间的5%，平衡探索与开发②使用np.clip确保
 
 路径节点在可行域内
 
-![image](assets/assets/intelligent-algorithms-031/image-011.png)精英保留部分代码如图4.1-5                                                                          图4.1-  5
+![image](assets/intelligent-algorithms-031/image-011.png)精英保留部分代码如图4.1-5                                                                          图4.1-  5
 
 本段采用①记忆机制：保留历史最优解防止优质路径丢失②精英引导：精英解参与每次迁移，加速收敛来进行保留
 
@@ -158,7 +158,7 @@ LYBBO是一种混合优化算法，其融合生物地理学优化(BBO)及差分�
 
 图4.1-  6
 
-![image](assets/assets/intelligent-algorithms-031/image-012.png)![image](assets/assets/intelligent-algorithms-031/image-013.png)           图4.1-  7
+![image](assets/intelligent-algorithms-031/image-012.png)![image](assets/intelligent-algorithms-031/image-013.png)           图4.1-  7
 
 利用以上的创新机制，LYBBO算法在UAV路径规划这种高维、多约束、非线性问题中表现出良好的综合性能，特别是信息素机制和精英保留策略对避免碰撞和保持路径可行性至关重要。
 
@@ -361,13 +361,13 @@ End
 
 见下表Table_3
 
-![image](assets/assets/intelligent-algorithms-031/image-014.png)	将实验数据整理为曲线图如（图4.5-1，2，3）所示：
+![image](assets/intelligent-algorithms-031/image-014.png)	将实验数据整理为曲线图如（图4.5-1，2，3）所示：
 
-![image](assets/assets/intelligent-algorithms-031/image-015.png)![image](assets/assets/intelligent-algorithms-031/image-016.png)
+![image](assets/intelligent-algorithms-031/image-015.png)![image](assets/intelligent-algorithms-031/image-016.png)
 
 图4.5-  1                                                            图4.5-  2
 
-![image](assets/assets/intelligent-algorithms-031/image-017.png)
+![image](assets/intelligent-algorithms-031/image-017.png)
 
 图4.5-  3
 

@@ -18,10 +18,10 @@ locator_type: slide
 - Webpage: http://www.scholat.com/weijia
 - 人工智能导论
 - A Guide to Artificial Intelligence
-![image](assets/assets/artificial-intelligence-intro-009/image-001.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-002.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-003.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-004.png)
+![image](assets/artificial-intelligence-intro-009/image-001.png)
+![image](assets/artificial-intelligence-intro-009/image-002.png)
+![image](assets/artificial-intelligence-intro-009/image-003.png)
+![image](assets/artificial-intelligence-intro-009/image-004.png)
 
 <!-- slide: 2 -->
 
@@ -31,7 +31,7 @@ locator_type: slide
 - 出版年：2020
 - 书号：ISBN978-7-111-66052-1
 - 教材
-![image](assets/assets/artificial-intelligence-intro-009/image-005.png)
+![image](assets/artificial-intelligence-intro-009/image-005.png)
 
 <!-- slide: 3 -->
 
@@ -55,16 +55,16 @@ locator_type: slide
 
 <!-- slide: 5 -->
 
-![image](assets/assets/artificial-intelligence-intro-009/image-006.jpg)
+![image](assets/artificial-intelligence-intro-009/image-006.jpg)
 - 1.1 什么是人工智能
 - 1.2 人工智能发展简史
 - 1.3 人工智能研究方法
 - 1.4 人工智能研究及应用领域
 - 第一章 绪论
-![image](assets/assets/artificial-intelligence-intro-009/image-007.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-008.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-009.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-010.png)
+![image](assets/artificial-intelligence-intro-009/image-007.png)
+![image](assets/artificial-intelligence-intro-009/image-008.png)
+![image](assets/artificial-intelligence-intro-009/image-009.png)
+![image](assets/artificial-intelligence-intro-009/image-010.png)
 
 <!-- slide: 6 -->
 
@@ -76,8 +76,8 @@ locator_type: slide
     - 以逻辑的方式学习、理解、思考事物的能力
     - The ability to learn understand and think in a logical way about things.
 - 1.1.1 关于智能
-![image](assets/assets/artificial-intelligence-intro-009/image-011.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-012.png)
+![image](assets/artificial-intelligence-intro-009/image-011.png)
+![image](assets/artificial-intelligence-intro-009/image-012.png)
 
 <!-- slide: 7 -->
 
@@ -85,9 +85,9 @@ locator_type: slide
 - 强调知识对于智能的重要意义和作用，认为智能行为取决于知识的数量及其一般化的程度。
 - 智能就是在巨大搜索空间中迅速找到一个满意解的能力。
 - 例如下棋。在人工智能的发展史中有重要影响。发展出了知识工程、专家系统等等。
-![image](assets/assets/artificial-intelligence-intro-009/image-013.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-014.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-015.png)
+![image](assets/artificial-intelligence-intro-009/image-013.png)
+![image](assets/artificial-intelligence-intro-009/image-014.png)
+![image](assets/artificial-intelligence-intro-009/image-015.png)
 
 <!-- slide: 8 -->
 
@@ -95,9 +95,9 @@ locator_type: slide
 - 来自认知科学（Cognitive Science）。
 - 认为智能的核心是思维。
 - 人的一切智慧或者智能都来自于大脑的思维活动，人类的一切知识都是人们思维的产物。因而通过对思维规律与方法的研究有望揭示智能的本质。
-![image](assets/assets/artificial-intelligence-intro-009/image-016.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-017.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-018.png)
+![image](assets/artificial-intelligence-intro-009/image-016.png)
+![image](assets/artificial-intelligence-intro-009/image-017.png)
+![image](assets/artificial-intelligence-intro-009/image-018.png)
 
 <!-- slide: 9 -->
 
@@ -105,8 +105,8 @@ locator_type: slide
 - MIT的Brooks教授提出。
 - 人的本质能力是在动态环境中的行走能力，对外界事务的感知能力，维持生命和繁衍生息的能力。因此智能是某种复杂系统所浮现的性质。
 - 该理论的核心是用控制取代表示，从而取消概念、模型及显式表示的知识。否定抽象对于智能及智能模拟的必要性，强调分层结构对于智能进化的可能性与必要性。
-![image](assets/assets/artificial-intelligence-intro-009/image-019.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-020.png)
+![image](assets/artificial-intelligence-intro-009/image-019.png)
+![image](assets/artificial-intelligence-intro-009/image-020.png)
 
 <!-- slide: 10 -->
 
@@ -134,8 +134,8 @@ locator_type: slide
 - 弱人工智能
   - 机器只不过看起来像是智能的，不会有自主意识。
 - 1.1.2 人工智能的研究目标
-![image](assets/assets/artificial-intelligence-intro-009/image-021.gif)
-![image](assets/assets/artificial-intelligence-intro-009/image-022.gif)
+![image](assets/artificial-intelligence-intro-009/image-021.gif)
+![image](assets/artificial-intelligence-intro-009/image-022.gif)
 
 <!-- slide: 13 -->
 
@@ -143,21 +143,21 @@ locator_type: slide
 - 英国数学家Alan M.Turing在1950年发表的“计算机与智能(Computing Machinery and Intelligence)”论文中提出了“图灵测试”。
 - 他被誉为“人工智能之父”。
 - Turing测试第一次给出了检验计算机是否具有智能的哲学说法。
-![image](assets/assets/artificial-intelligence-intro-009/image-023.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-024.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-025.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-026.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-027.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-028.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-029.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-030.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-031.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-032.png)
+![image](assets/artificial-intelligence-intro-009/image-023.png)
+![image](assets/artificial-intelligence-intro-009/image-024.png)
+![image](assets/artificial-intelligence-intro-009/image-025.png)
+![image](assets/artificial-intelligence-intro-009/image-026.png)
+![image](assets/artificial-intelligence-intro-009/image-027.png)
+![image](assets/artificial-intelligence-intro-009/image-028.png)
+![image](assets/artificial-intelligence-intro-009/image-029.png)
+![image](assets/artificial-intelligence-intro-009/image-030.png)
+![image](assets/artificial-intelligence-intro-009/image-031.png)
+![image](assets/artificial-intelligence-intro-009/image-032.png)
 - 哪一个是人，哪一个是机器？
-![image](assets/assets/artificial-intelligence-intro-009/image-033.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-034.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-035.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-036.png)
+![image](assets/artificial-intelligence-intro-009/image-033.png)
+![image](assets/artificial-intelligence-intro-009/image-034.png)
+![image](assets/artificial-intelligence-intro-009/image-035.png)
+![image](assets/artificial-intelligence-intro-009/image-036.png)
 
 <!-- slide: 14 -->
 
@@ -180,16 +180,16 @@ locator_type: slide
 - 不计查手册的时间代价。
 - 给A一个使用汉语提出的问题，A通过汉语符号的比对使用手册，给出回答。
 - Searle问，如果A通过查手册做出的回答与懂汉语的人一样，A懂汉语吗？
-![image](assets/assets/artificial-intelligence-intro-009/image-037.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-038.png)
+![image](assets/artificial-intelligence-intro-009/image-037.png)
+![image](assets/artificial-intelligence-intro-009/image-038.png)
 
 <!-- slide: 16 -->
 
-![image](assets/assets/artificial-intelligence-intro-009/image-039.jpg)
+![image](assets/artificial-intelligence-intro-009/image-039.jpg)
 
 <!-- slide: 17 -->
 
-![image](assets/assets/artificial-intelligence-intro-009/image-040.jpg)
+![image](assets/artificial-intelligence-intro-009/image-040.jpg)
 
 <!-- slide: 18 -->
 
@@ -212,8 +212,8 @@ locator_type: slide
 - DeepMind（谷歌）公司的AlphaGo
 - 2016年3月人工智能系统AlphaGo以4比1的总比分战胜人类围棋世界冠军李世石九段。
 - 2017年5月在中国乌镇围棋峰会上， AlphaGo以3比0的总比分战胜世界排名第一围棋世界冠军柯洁九段。
-![image](assets/assets/artificial-intelligence-intro-009/image-041.jpg)
-![image](assets/assets/artificial-intelligence-intro-009/image-042.jpg)
+![image](assets/artificial-intelligence-intro-009/image-041.jpg)
+![image](assets/artificial-intelligence-intro-009/image-042.jpg)
 
 <!-- slide: 20 -->
 
@@ -223,15 +223,15 @@ locator_type: slide
 - 科学家
   - “部分具有”
   - 与人的全面智能相比还有较大差距
-![image](assets/assets/artificial-intelligence-intro-009/image-043.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-044.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-045.png)
+![image](assets/artificial-intelligence-intro-009/image-043.png)
+![image](assets/artificial-intelligence-intro-009/image-044.png)
+![image](assets/artificial-intelligence-intro-009/image-045.png)
 
 <!-- slide: 21 -->
 
 - 人工智能的近期目标
 - 使现有的计算机系统更聪明、更有用，使它不仅能做一般的数值计算及非数值信息处理，而且能运用知识处理问题，能模拟人类的部分智能行为，成为人类的智能化辅助工具。
-![image](assets/assets/artificial-intelligence-intro-009/image-046.png)
+![image](assets/artificial-intelligence-intro-009/image-046.png)
 
 <!-- slide: 22 -->
 
@@ -301,12 +301,12 @@ locator_type: slide
 - 在50年代，计算局限在数值处理，例如，计算弹道等。
 - 1950年，Shannon完成了第一个下棋程序，开创了非数值计算的先河。
 - Newell, Simon, MaCarthy and Minsky等均提出以符号为基础的计算。
-![image](assets/assets/artificial-intelligence-intro-009/image-047.png)
+![image](assets/artificial-intelligence-intro-009/image-047.png)
 - Shannon
 
 <!-- slide: 26 -->
 
-![image](assets/assets/artificial-intelligence-intro-009/image-048.png)
+![image](assets/artificial-intelligence-intro-009/image-048.png)
 - 形成（1956—1969）
 - 1956夏: 麦卡锡(McCarthy)等10人正式提出了“人工智能” 这一术语。
 - 1956：赛缪尔(Samuel)研制出了具有自学习能力的跳棋程序。1959年，Samuel的跳棋程序打败他本人。1962年，打败Connecticut洲的跳棋冠军。
@@ -325,7 +325,7 @@ locator_type: slide
   - 1976年美国数学家Kenneth Appel等人在三台大型机上完成了四色定理证明。1977年我国数学家吴文俊提出了一种几何定理机械化证明方法
   - 十年内，计算机将能谱写优美的乐曲
   - 十年内，计算机将能实现大多数的心理学理论
-![image](assets/assets/artificial-intelligence-intro-009/image-049.png)
+![image](assets/artificial-intelligence-intro-009/image-049.png)
 
 <!-- slide: 28 -->
 
@@ -341,17 +341,17 @@ locator_type: slide
   - 2）烈性酒、酒精
 - 结论：
 - 必须理解才能翻译，而理解需要知识
-![image](assets/assets/artificial-intelligence-intro-009/image-050.jpg)
+![image](assets/artificial-intelligence-intro-009/image-050.jpg)
 
 <!-- slide: 29 -->
 
-![image](assets/assets/artificial-intelligence-intro-009/image-051.png)
+![image](assets/artificial-intelligence-intro-009/image-051.png)
 - 发展（1970—2005）——打击
 - 1966: ALPAC的负面报告造成美国政府取消对机器翻译的资助。
 - 1969: Minsky 和 Papert的感知机报告造成美国政府取消对神经网络研究的资助。
 - 1973: James Lighthill爵士的负面报告使得英国政府取消对AI研究的资助。
   - “人工智能研究是不成功的，不值得政府资助。”
-![image](assets/assets/artificial-intelligence-intro-009/image-052.png)
+![image](assets/artificial-intelligence-intro-009/image-052.png)
 
 <!-- slide: 30 -->
 
@@ -362,7 +362,7 @@ locator_type: slide
 - 在以后的二十年，感知机的研究方向被忽视。
 - 基于符号的知识表示成为主流。
 - 基于逻辑的推理成为主要研究方向。
-![image](assets/assets/artificial-intelligence-intro-009/image-053.png)
+![image](assets/artificial-intelligence-intro-009/image-053.png)
 - Minsky
 
 <!-- slide: 31 -->
@@ -375,9 +375,9 @@ locator_type: slide
   - 在1977年IJCAI会议上
 - 1980: John McDermott的XCON专家系统
   - 用于配置 VAX 机器系统
-![image](assets/assets/artificial-intelligence-intro-009/image-054.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-055.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-056.png)
+![image](assets/artificial-intelligence-intro-009/image-054.png)
+![image](assets/artificial-intelligence-intro-009/image-055.png)
+![image](assets/artificial-intelligence-intro-009/image-056.png)
 
 <!-- slide: 32 -->
 
@@ -388,22 +388,22 @@ locator_type: slide
     - 理论依据
     - 解决大规模问题的能力
   - 1995: Vapnik提出SVM
-![image](assets/assets/artificial-intelligence-intro-009/image-057.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-058.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-059.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-060.png)
+![image](assets/artificial-intelligence-intro-009/image-057.png)
+![image](assets/artificial-intelligence-intro-009/image-058.png)
+![image](assets/artificial-intelligence-intro-009/image-059.png)
+![image](assets/artificial-intelligence-intro-009/image-060.png)
 
 <!-- slide: 33 -->
 
-![image](assets/assets/artificial-intelligence-intro-009/image-061.png)
+![image](assets/artificial-intelligence-intro-009/image-061.png)
 - 深化（2006年至今）——广泛深入
 - 2006:辛顿（Geoffrey E. Hinton）提出了深度学习（Deep Learning）概念，突破了人工神经网络解决模式识别问题的瓶颈。
 - 2012:Alex Krizhevsky提出AlexNet网络。
 - 2016:AlphaGo战胜人类围棋世界冠军李世石九段。
 - 2022：ChatGPT
 - 。。。
-![image](assets/assets/artificial-intelligence-intro-009/image-062.jpg)
-![image](assets/assets/artificial-intelligence-intro-009/image-063.jpg)
+![image](assets/artificial-intelligence-intro-009/image-062.jpg)
+![image](assets/artificial-intelligence-intro-009/image-063.jpg)
 
 <!-- slide: 34 -->
 
@@ -413,11 +413,11 @@ locator_type: slide
   - 大数据中的数据挖掘与知识发现
     - 大模型，多模态，联邦学习
   - AI的可解释性与实用化
-![image](assets/assets/artificial-intelligence-intro-009/image-064.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-065.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-066.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-067.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-068.png)
+![image](assets/artificial-intelligence-intro-009/image-064.png)
+![image](assets/artificial-intelligence-intro-009/image-065.png)
+![image](assets/artificial-intelligence-intro-009/image-066.png)
+![image](assets/artificial-intelligence-intro-009/image-067.png)
+![image](assets/artificial-intelligence-intro-009/image-068.png)
 
 <!-- slide: 35 -->
 
@@ -438,14 +438,14 @@ locator_type: slide
   - 基于神经元及神经元之间的网络联结机制来模拟和实现人工智能。
 - 行为主义（Actionism）
   - 基于控制论和“感知——动作”型控制系统的人工智能学派。
-![image](assets/assets/artificial-intelligence-intro-009/image-069.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-070.png)
+![image](assets/artificial-intelligence-intro-009/image-069.png)
+![image](assets/artificial-intelligence-intro-009/image-070.png)
 - 1.3.2 人工智能的研究途径
 
 <!-- slide: 37 -->
 
-![image](assets/assets/artificial-intelligence-intro-009/image-071.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-072.png)
+![image](assets/artificial-intelligence-intro-009/image-071.png)
+![image](assets/artificial-intelligence-intro-009/image-072.png)
 - 物理符号系统假设（ Newell和Simon，1976）
   - 物理符号系统具有必要且足够的方法来实现普通的智能行为。
   - 把智能问题都归结为符号系统的计算问题，把一切精神活动都归结为计算。
@@ -456,7 +456,7 @@ locator_type: slide
 
 <!-- slide: 38 -->
 
-![image](assets/assets/artificial-intelligence-intro-009/image-073.png)
+![image](assets/artificial-intelligence-intro-009/image-073.png)
 - 一个物理符号系统的符号操作功能主要有：
   - 输入、输出、储存、复制符号；建立符号结构，即确定符号间的关系，在符号系统中形成符号结构；条件性迁移，依赖已经掌握的符号继续完成行为。
   - 任何一个系统，如果能够表现出智能的话，一定能执行上述六种功能；反过来，如果任何系统具有以上六种功能，它就能表现出智能。
@@ -479,8 +479,8 @@ locator_type: slide
   - 在图像处理、模式识别、机器学习等方面具有相当优势。
   - 不适合于模拟人类的逻辑思维过程，其基础理论研究也有很多难点。
 - 目前最主流的途径，即深度学习
-![image](assets/assets/artificial-intelligence-intro-009/image-074.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-075.png)
+![image](assets/artificial-intelligence-intro-009/image-074.png)
+![image](assets/artificial-intelligence-intro-009/image-075.png)
 
 <!-- slide: 40 -->
 
@@ -551,20 +551,20 @@ locator_type: slide
 - 自然语言处理（Natural Language Processing）
   - 研究如何使计算机能够理解、生成、检索自然语言（包括语音和文本），从而实现人与计算机之间用自然语言进行有效交流。
 - 1.4 人工智能研究及应用领域
-![image](assets/assets/artificial-intelligence-intro-009/image-076.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-077.png)
+![image](assets/artificial-intelligence-intro-009/image-076.png)
+![image](assets/artificial-intelligence-intro-009/image-077.png)
 
 <!-- slide: 44 -->
 
-![image](assets/assets/artificial-intelligence-intro-009/image-078.png)
+![image](assets/artificial-intelligence-intro-009/image-078.png)
 - 机器学习（Machine Learning）与数据挖掘
   - 研究如何使计算机能够模拟或实现人类的学习功能，从大量的数据中发现规律，提取知识，并在实践中不断地完善、增强自我。
 - 人工神经网络（Artificial Neural Network）与深度学习（Deep Learning）
   - 以联结主义研究人工智能的方法，以对人脑和自然神经网络的生理研究成果为基础，抽象和模拟人脑的某些机理、机制，实现某方面的功能。
 - 1.4 人工智能研究及应用领域
-![image](assets/assets/artificial-intelligence-intro-009/image-079.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-080.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-081.png)
+![image](assets/artificial-intelligence-intro-009/image-079.png)
+![image](assets/artificial-intelligence-intro-009/image-080.png)
+![image](assets/artificial-intelligence-intro-009/image-081.png)
 
 <!-- slide: 45 -->
 
@@ -575,8 +575,8 @@ locator_type: slide
   - 源于分布式人工智能研究。
   - 研究在逻辑或物理上分散的智能系统之间如何相互协调各自的智能行为，实现问题的并行求解。
 - 1.4 人工智能研究及应用领域
-![image](assets/assets/artificial-intelligence-intro-009/image-082.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-083.png)
+![image](assets/artificial-intelligence-intro-009/image-082.png)
+![image](assets/artificial-intelligence-intro-009/image-083.png)
 
 <!-- slide: 46 -->
 
@@ -585,10 +585,10 @@ locator_type: slide
 - 计算机视觉（Computer Vision）
   - 研究如何用计算机实现或模拟人类视觉功能。
 - 1.4 人工智能研究及应用领域
-![image](assets/assets/artificial-intelligence-intro-009/image-084.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-085.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-086.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-087.png)
+![image](assets/artificial-intelligence-intro-009/image-084.png)
+![image](assets/artificial-intelligence-intro-009/image-085.png)
+![image](assets/artificial-intelligence-intro-009/image-086.png)
+![image](assets/artificial-intelligence-intro-009/image-087.png)
 
 <!-- slide: 47 -->
 
@@ -597,8 +597,8 @@ locator_type: slide
 - 智能控制（Intelligent Control）
   - 人工智能和自动控制相结合的产物，是自动控制的最新发展阶段，主要研究适用于复杂系统的控制理论和技术。
 - 1.4 人工智能研究及应用领域
-![image](assets/assets/artificial-intelligence-intro-009/image-088.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-089.png)
+![image](assets/artificial-intelligence-intro-009/image-088.png)
+![image](assets/artificial-intelligence-intro-009/image-089.png)
 
 <!-- slide: 48 -->
 
@@ -607,10 +607,10 @@ locator_type: slide
 - 人工生命（Artificial Life）
   - 用计算机等人造系统演示、模拟、仿真具有自然生命系统特征的行为。
 - 1.4 人工智能研究及应用领域
-![image](assets/assets/artificial-intelligence-intro-009/image-090.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-091.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-092.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-093.png)
+![image](assets/artificial-intelligence-intro-009/image-090.png)
+![image](assets/artificial-intelligence-intro-009/image-091.png)
+![image](assets/artificial-intelligence-intro-009/image-092.png)
+![image](assets/artificial-intelligence-intro-009/image-093.png)
 
 <!-- slide: 49 -->
 
@@ -625,13 +625,13 @@ locator_type: slide
 - 融汇工学、数学、医学、认知学等很多学科的一个交叉学科
 - 当前几个火热的术语
 - 人工智能
-![image](assets/assets/artificial-intelligence-intro-009/image-094.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-095.png)
+![image](assets/artificial-intelligence-intro-009/image-094.png)
+![image](assets/artificial-intelligence-intro-009/image-095.png)
 - 机器学习
-![image](assets/assets/artificial-intelligence-intro-009/image-096.jpg)
+![image](assets/artificial-intelligence-intro-009/image-096.jpg)
 - 深度学习
-![image](assets/assets/artificial-intelligence-intro-009/image-097.png)
-![image](assets/assets/artificial-intelligence-intro-009/image-098.png)
+![image](assets/artificial-intelligence-intro-009/image-097.png)
+![image](assets/artificial-intelligence-intro-009/image-098.png)
 
 <!-- slide: 50 -->
 

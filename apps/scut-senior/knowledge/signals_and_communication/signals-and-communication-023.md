@@ -26,7 +26,7 @@ CDMA（码分多址）技术： 这是3G的基石。与2G的TDMA不同，CDMA�
 更高的数据速率： 理论峰值速率可达2-14 Mbps（后期演进版如HSPA+），是2G的数十倍。
 全IP网络过渡： 开始从传统的电路交换向全分组交换（IP）网络演进，为数据业务奠定了基础。
 
-![image](assets/assets/signals-and-communication-023/image-001.png)
+![image](assets/signals-and-communication-023/image-001.png)
 
 <!-- slide: 3 -->
 
@@ -38,13 +38,13 @@ CDMA（码分多址）技术： 这是3G的基石。与2G的TDMA不同，CDMA�
 更高的数据速率： 理论峰值速率可达2-14 Mbps（后期演进版如HSPA+），是2G的数十倍。
 全IP网络过渡： 开始从传统的电路交换向全分组交换（IP）网络演进，为数据业务奠定了基础。
 
-![image](assets/assets/signals-and-communication-023/image-002.png)
+![image](assets/signals-and-communication-023/image-002.png)
 
 <!-- slide: 4 -->
 
 ## CDMA（码分多址）技术：
 
-![image](assets/assets/signals-and-communication-023/image-003.png)
+![image](assets/signals-and-communication-023/image-003.png)
 
 <!-- slide: 5 -->
 
@@ -54,7 +54,7 @@ CDMA（码分多址）技术： 这是3G的基石。与2G的TDMA不同，CDMA�
 移动多媒体： 在线音乐、视频流媒体（如手机电视）。
 智能手机应用生态萌芽： iPhone初代和Android的兴起。
 
-![image](assets/assets/signals-and-communication-023/image-004.png)
+![image](assets/signals-and-communication-023/image-004.png)
 
 <!-- slide: 6 -->
 
@@ -75,22 +75,22 @@ OFDM是FDM的一种高效的、数字化的演进版本的频分复用。它们�
 传统频分复用：就像一条宽阔的马路被划分成几条互不接触、中间有隔离带的车道。
 正交频分复用：马路是精密设计的车道。只有目标车道上的信号被识别，相邻车道的信号互不干扰, 不需要隔离带。
 
-![image](assets/assets/signals-and-communication-023/image-005.png)
-![image](assets/assets/signals-and-communication-023/image-006.png)
+![image](assets/signals-and-communication-023/image-005.png)
+![image](assets/signals-and-communication-023/image-006.png)
 
 <!-- slide: 8 -->
 
 ## OFDMA（正交频分多址）
 OFDM是FDM的一种高效的、数字化的演进版本的频分复用。它们的核心区别在于“正交性”。
 
-![image](assets/assets/signals-and-communication-023/image-007.png)
+![image](assets/signals-and-communication-023/image-007.png)
 - 无码间串扰第一准则？
 
 <!-- slide: 9 -->
 
 ## 扁平化的全IP网络架构：网络结构极大简化，降低了延迟，提高了数据传输效率。
 
-![image](assets/assets/signals-and-communication-023/image-008.png)
+![image](assets/signals-and-communication-023/image-008.png)
 - 扁平化
 - 全IP
 - 全IP
@@ -110,7 +110,7 @@ OFDM是FDM的一种高效的、数字化的演进版本的频分复用。它们�
 共享经济： 网约车（滴滴/Uber）、共享单车实时定位。
 云计算服务移动化： 文档、照片的实时云同步。
 
-![image](assets/assets/signals-and-communication-023/image-009.png)
+![image](assets/signals-and-communication-023/image-009.png)
 
 <!-- slide: 11 -->
 
@@ -120,7 +120,7 @@ OFDM是FDM的一种高效的、数字化的演进版本的频分复用。它们�
 - a. 大连接 ：海量机器类通信
 - b. 高可靠 ：超高可靠低时延通信
 - c. 高带宽 ：增强移动宽带
-![image](assets/assets/signals-and-communication-023/image-010.png)
+![image](assets/signals-and-communication-023/image-010.png)
 
 <!-- slide: 12 -->
 
@@ -134,8 +134,8 @@ OFDM是FDM的一种高效的、数字化的演进版本的频分复用。它们�
 - 3. 分布式边缘计算
 - -- 边缘计算平台：将计算、存储和网络能力
 - 从遥远的云下沉到网络边缘（如基站侧）。
-![image](assets/assets/signals-and-communication-023/image-011.png)
-![image](assets/assets/signals-and-communication-023/image-012.png)
+![image](assets/signals-and-communication-023/image-011.png)
+![image](assets/signals-and-communication-023/image-012.png)
 
 <!-- slide: 13 -->
 
@@ -145,7 +145,7 @@ OFDM是FDM的一种高效的、数字化的演进版本的频分复用。它们�
     -- 云游戏：游戏在远程服务器运行，你的手机或平板就像一台显示器，直接接收高清游戏画面，无需下载和高端显卡。
 
 - 5G的主要应用
-![image](assets/assets/signals-and-communication-023/image-013.png)
+![image](assets/signals-and-communication-023/image-013.png)
 
 <!-- slide: 14 -->
 
@@ -156,7 +156,7 @@ OFDM是FDM的一种高效的、数字化的演进版本的频分复用。它们�
     -- 智能电网：电网故障检测和隔离需要在百分之一秒内完成。
 
 - 5G的主要应用
-![image](assets/assets/signals-and-communication-023/image-014.png)
+![image](assets/signals-and-communication-023/image-014.png)
 
 <!-- slide: 15 -->
 
@@ -166,4 +166,4 @@ OFDM是FDM的一种高效的、数字化的演进版本的频分复用。它们�
     -- 资产追踪：跟踪集装箱、牛羊、共享单车的位置和状态。
 
 - 5G的主要应用
-![image](assets/assets/signals-and-communication-023/image-015.png)
+![image](assets/signals-and-communication-023/image-015.png)

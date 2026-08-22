@@ -519,7 +519,7 @@ locator_type: slide
 
 ## 归结原理
 
-![image](assets/assets/artificial-intelligence-intro-012/image-001.png)
+![image](assets/artificial-intelligence-intro-012/image-001.png)
 - <number>
 
 <!-- slide: 42 -->
@@ -589,7 +589,7 @@ locator_type: slide
 
 <!-- slide: 46 -->
 
-![image](assets/assets/artificial-intelligence-intro-012/image-002.png)
+![image](assets/artificial-intelligence-intro-012/image-002.png)
 - <number>
 - 应用归结原理求解问题
 
@@ -597,14 +597,14 @@ locator_type: slide
 
 ## 应用归结原理求解问题的例子(1)
 
-![image](assets/assets/artificial-intelligence-intro-012/image-003.png)
+![image](assets/artificial-intelligence-intro-012/image-003.png)
 - <number>
 
 <!-- slide: 48 -->
 
 ## 应用归结原理求解问题的例子(2)
 
-![image](assets/assets/artificial-intelligence-intro-012/image-004.png)
+![image](assets/artificial-intelligence-intro-012/image-004.png)
 - <number>
 
 <!-- slide: 49 -->

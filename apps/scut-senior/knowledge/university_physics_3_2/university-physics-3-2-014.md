@@ -76,6 +76,8 @@ C
 <!-- question: university-physics-3-2-014-Q3 -->
 
 三、计算题
+<!-- question: university-physics-3-2-014-Q4 -->
+
 21．解：解：沿棒方向取坐标Ox，原点O 在棒中心处．求P 点场强：
 
 2
@@ -219,6 +221,8 @@ a
 1
 
 <!-- page: 2 -->
+
+<!-- question: university-physics-3-2-014-Q5 -->
 
 22．解：(1) 利用安培环路定理可求得1 导线在P 点产生的磁感强度的大小为：
 
@@ -423,6 +427,8 @@ x
 B
 时，B(x)最大．
 
+<!-- question: university-physics-3-2-014-Q6 -->
+
 (2) 当
 0
 d
@@ -431,6 +437,8 @@ d
 
 由此可得：x = 0 处，B 有最大值．
 3 分
+
+<!-- question: university-physics-3-2-014-Q7 -->
 
 23．解:长直带电线运动相当于电流
 
@@ -553,6 +561,8 @@ t
 v
 2 分
 
+<!-- question: university-physics-3-2-014-Q8 -->
+
 24．解：(1) 观测站测得飞船船身的长度为
 
 
@@ -576,12 +586,16 @@ v
 则
 t1 = L/v =2.25×10
 
+<!-- question: university-physics-3-2-014-Q9 -->
+
 (2) 宇航员测得飞船船身的长度为L0，则
 
 -7 s
 2 分
 
 t2 = L0/v =3.75×10
+
+<!-- question: university-physics-3-2-014-Q10 -->
 
 25. 解：先求粒子的位置概率密度
 

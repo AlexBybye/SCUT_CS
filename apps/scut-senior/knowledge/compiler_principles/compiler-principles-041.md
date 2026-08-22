@@ -10,4 +10,4 @@ locator_type: none
 
 # 改进的SLR
 
-![page-001.png](assets/assets/compiler-principles-041/page-001.png)
+![page-001.png](assets/compiler-principles-041/page-001.png)

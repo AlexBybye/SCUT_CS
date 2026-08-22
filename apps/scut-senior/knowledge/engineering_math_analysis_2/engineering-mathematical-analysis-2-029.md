@@ -67,13 +67,19 @@ locator_type: page
 
 一、填空题: 共5 题, 每题2 分, 共10 分.
 
+<!-- question: engineering-mathematical-analysis-2-029-Q6 -->
+
 1. 微分方程y′′ + 2y′ −3y = 2 −3x 的通解为
 y = C1e−3x + C2ex + x, 其中C1, C2 为任意常数
 ;
 
+<!-- question: engineering-mathematical-analysis-2-029-Q7 -->
+
 2. 向量场2xy⃗i + ez sin y⃗j + (x2 + y2 + z2)⃗k 的旋度为
 (2y −ez sin y)⃗i −2x⃗k −2x⃗k
 ;
+
+<!-- question: engineering-mathematical-analysis-2-029-Q8 -->
 
 3. 设Γ 是平面上的下半圆周y = −
 √
@@ -86,6 +92,8 @@ x2+y2ds =
 ;
 
 Γ
+
+<!-- question: engineering-mathematical-analysis-2-029-Q9 -->
 
 4. 幂级数
 ∞
@@ -109,9 +117,11 @@ n=0
 
 <!-- page: 2 -->
 
-<!-- question: engineering-mathematical-analysis-2-029-Q6 -->
+<!-- question: engineering-mathematical-analysis-2-029-Q10 -->
 
 二、单选题: 共5 题, 每题2 分, 共10 分.
+
+<!-- question: engineering-mathematical-analysis-2-029-Q11 -->
 
 1. 下列微分方程中, 属于二阶线性常微分方程的是(
 B
@@ -124,6 +134,8 @@ B. xy′′ + (sin x)y′ + (ln x)y = tan x;
 C. (y′′)2 + y = 2;
 
 D. y′′ + ln y = 2.
+
+<!-- question: engineering-mathematical-analysis-2-029-Q12 -->
 
 2. 二元函数f(x, y) 在点(a, b) 的两个偏导数∂f
 ∂x(a, b) 和∂f
@@ -139,6 +151,8 @@ B. 必要而非充分条件;
 C. 充分必要条件;
 
 D. 既非充分也非必要条件.
+
+<!-- question: engineering-mathematical-analysis-2-029-Q13 -->
 
 3. 曲面3x2 + y2 + z2 = 12 上点M(−1, 0, 3) 处的切平面与平面z = 0 的夹角是(
 B
@@ -162,6 +176,8 @@ D. π
 
 ´
 
+<!-- question: engineering-mathematical-analysis-2-029-Q14 -->
+
 4. 设Γ 是平面曲线x2
 a2 + y2
 
@@ -180,6 +196,8 @@ B. 2πab;
 C. 0;
 
 D. −2πab.
+
+<!-- question: engineering-mathematical-analysis-2-029-Q15 -->
 
 5. 下列级数发散的是(
 B
@@ -236,9 +254,11 @@ n=1
 
 <!-- page: 3 -->
 
-<!-- question: engineering-mathematical-analysis-2-029-Q7 -->
+<!-- question: engineering-mathematical-analysis-2-029-Q16 -->
 
 三、计算题: 共3 题, 每题10 分, 共30 分.
+
+<!-- question: engineering-mathematical-analysis-2-029-Q17 -->
 
 1. 设z = xf
 ( y
@@ -296,6 +316,8 @@ x
 1
 2 dx
 ´ √x
+
+<!-- question: engineering-mathematical-analysis-2-029-Q18 -->
 
 2. 计算累次积分
 ´ 1
@@ -453,6 +475,8 @@ y sin(πy)dy
 
 <!-- page: 4 -->
 
+<!-- question: engineering-mathematical-analysis-2-029-Q19 -->
+
 3. 计算曲面z =
 √
 
@@ -552,7 +576,7 @@ x⩽x2+y2⩽2x
 
 <!-- page: 5 -->
 
-<!-- question: engineering-mathematical-analysis-2-029-Q8 -->
+<!-- question: engineering-mathematical-analysis-2-029-Q20 -->
 
 四、解答题: 共3 题, 每题10 分, 共30 分.
 
@@ -560,6 +584,8 @@ x⩽x2+y2⩽2x
 
 
 z = √y −1,
+
+<!-- question: engineering-mathematical-analysis-2-029-Q21 -->
 
 1. 设Σ 是曲线
 
@@ -657,6 +683,8 @@ x2+z2⩽2
 
 Σ
 
+<!-- question: engineering-mathematical-analysis-2-029-Q22 -->
+
 2. 设曲线积分
 ´
 
@@ -685,6 +713,8 @@ x2+z2⩽2
 
 2, Q = −1
 2f(x) cos y
+<!-- question: engineering-mathematical-analysis-2-029-Q23 -->
+
 2. 由于曲线积分与路径无关, 因此
 
 ∂P
@@ -755,6 +785,8 @@ Pdx + Qdy = −1
 = −1
 
 2(e −e−1) sin 1
+<!-- question: engineering-mathematical-analysis-2-029-Q24 -->
+
 2. · · · · · · · · · (4 分)
 
 Pdx + Qdy =
@@ -762,6 +794,8 @@ Pdx + Qdy =
 (0,0)
 
 (0,0)
+
+<!-- question: engineering-mathematical-analysis-2-029-Q25 -->
 
 3. 将函数f(x) = cos2 x 展开成x 的幂级数.
 
@@ -821,7 +855,7 @@ n=0
 
 <!-- page: 7 -->
 
-<!-- question: engineering-mathematical-analysis-2-029-Q9 -->
+<!-- question: engineering-mathematical-analysis-2-029-Q26 -->
 
 五、证明题: 共1 题, 每题10 分, 共10 分.
 
@@ -915,7 +949,7 @@ n=0
 
 <!-- page: 8 -->
 
-<!-- question: engineering-mathematical-analysis-2-029-Q10 -->
+<!-- question: engineering-mathematical-analysis-2-029-Q27 -->
 
 六、应用题: 共1 题, 每题10 分, 共10 分.
 

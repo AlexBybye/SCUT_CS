@@ -36,13 +36,13 @@ locator_type: none
 
 （1）逻辑门电路
 
-![image](assets/assets/digital-logic-008/image-001.png)
+![image](assets/digital-logic-008/image-001.png)
 
-![image](assets/assets/digital-logic-008/image-002.png)
+![image](assets/digital-logic-008/image-002.png)
 
-![image](assets/assets/digital-logic-008/image-003.png)    ![image](assets/assets/digital-logic-008/image-004.png)
+![image](assets/digital-logic-008/image-003.png)    ![image](assets/digital-logic-008/image-004.png)
 
-同或      ![formula-object](assets/assets/digital-logic-008/image-005.png)    ![image](assets/assets/digital-logic-008/image-006.png)
+同或      ![formula-object](assets/digital-logic-008/image-005.png)    ![image](assets/digital-logic-008/image-006.png)
 
 （2）逻辑函数实现（与非，或非，与或非形式）
 
@@ -145,9 +145,9 @@ b. **对偶规则**
 
 卡诺图法是基于合并相邻最小项的原理进行化简的，特点是简单、直观，不易出错，有一定的步骤和方法可循。
 
-![image](assets/assets/digital-logic-008/image-008.png)
+![image](assets/digital-logic-008/image-008.png)
 
-![image](assets/assets/digital-logic-008/image-009.png)
+![image](assets/digital-logic-008/image-009.png)
 
 2．练习题：
 
@@ -159,47 +159,47 @@ $A\overline {B}+B\overline {C}+C\overline {A}=\overline {A}B+\overline {B}C+\ove
 
 **（2）化简逻辑函数：**
 
-![image](assets/assets/digital-logic-008/image-010.png)
+![image](assets/digital-logic-008/image-010.png)
 
 **(3)** **用卡诺图化简逻辑函数：**
 
-![image](assets/assets/digital-logic-008/image-011.png)
+![image](assets/digital-logic-008/image-011.png)
 
 （4）**具有无关项的逻辑函数的化简：**
 
 例:某逻辑函数输入是8421BCD码，其逻辑表达式为：   L（A,B,C,D）=∑m（1,4,5,6,7,9）+∑d（10,11,12,13,14,15）   用卡诺图法化简该逻辑函数。
 
-![image](assets/assets/digital-logic-008/image-012.png)
+![image](assets/digital-logic-008/image-012.png)
 
 三．**组合逻辑电路的分析和设计**
 
 1．组合逻辑电路的分析：
 
-![formula-object](assets/assets/digital-logic-008/image-013.png)
+![formula-object](assets/digital-logic-008/image-013.png)
 
 **例：组合电路如图所示，分析该电路的逻辑功能。**
 
-![formula-object](assets/assets/digital-logic-008/image-014.png)
+![formula-object](assets/digital-logic-008/image-014.png)
 
-![image](assets/assets/digital-logic-008/image-015.png)
+![image](assets/digital-logic-008/image-015.png)
 
 2．组合逻辑电路的设计：
 
-**![formula-object](assets/assets/digital-logic-008/image-016.png)**
+**![formula-object](assets/digital-logic-008/image-016.png)**
 
-**![image](assets/assets/digital-logic-008/image-017.png)**
+**![image](assets/digital-logic-008/image-017.png)**
 
-**![image](assets/assets/digital-logic-008/image-018.png)**
+**![image](assets/digital-logic-008/image-018.png)**
 
 **画出逻辑电路图：**
 
-![formula-object](assets/assets/digital-logic-008/image-019.png)
+![formula-object](assets/digital-logic-008/image-019.png)
 
 **四．组合逻辑模块及其应用**
 
 **1.译码器**
 
-![image](assets/assets/digital-logic-008/image-020.png)
+![image](assets/digital-logic-008/image-020.png)
 
 **2.多路选择器**
 
@@ -207,19 +207,19 @@ $A\overline {B}+B\overline {C}+C\overline {A}=\overline {A}B+\overline {B}C+\ove
 
 **（2）8选1多路选择器。**
 
-![image](assets/assets/digital-logic-008/image-021.png)
+![image](assets/digital-logic-008/image-021.png)
 
-![image](assets/assets/digital-logic-008/image-022.png)
+![image](assets/digital-logic-008/image-022.png)
 
 **练习题：**
 
 1．
 
-![image](assets/assets/digital-logic-008/image-023.png)
+![image](assets/digital-logic-008/image-023.png)
 
 2．
 
-![image](assets/assets/digital-logic-008/image-024.png)
+![image](assets/digital-logic-008/image-024.png)
 
 **五.时序逻辑电路的分析与设计**
 
@@ -231,13 +231,13 @@ $A\overline {B}+B\overline {C}+C\overline {A}=\overline {A}B+\overline {B}C+\ove
 
 例题：这道题也告诉如何画出Mealy型逻辑的状态表和状态图。
 
-![image](assets/assets/digital-logic-008/image-025.png)
+![image](assets/digital-logic-008/image-025.png)
 
-![image](assets/assets/digital-logic-008/image-026.png)
+![image](assets/digital-logic-008/image-026.png)
 
 3．会设计D触发器时序电路，在设计时序电路过程中要有状态机思路。
 
-![image](assets/assets/digital-logic-008/image-027.png)
+![image](assets/digital-logic-008/image-027.png)
 
 例题：这道题也告诉如何画出Moore型逻辑的状态图和状态表。
 
@@ -245,17 +245,17 @@ $A\overline {B}+B\overline {C}+C\overline {A}=\overline {A}B+\overline {B}C+\ove
 
 画出状态图：
 
-![formula-object](assets/assets/digital-logic-008/image-028.png)
+![formula-object](assets/digital-logic-008/image-028.png)
 
 列出状态表：
 
-![formula-object](assets/assets/digital-logic-008/image-029.png)
+![formula-object](assets/digital-logic-008/image-029.png)
 
 利用D触发器来实现：
 
 分别用0，1来表示S0,S1状态，画出次态和输出的卡诺图。
 
-![formula-object](assets/assets/digital-logic-008/image-030.png)
+![formula-object](assets/digital-logic-008/image-030.png)
 
 得出：
 
@@ -275,31 +275,31 @@ $$
 
 注：本题所实现的状态为Moore状态机，这种状态机的输出电位只与目前所处的状态有关，而与输入信号无立即的关系。
 
-![image](assets/assets/digital-logic-008/image-031.png)
+![image](assets/digital-logic-008/image-031.png)
 
-![image](assets/assets/digital-logic-008/image-032.png)
+![image](assets/digital-logic-008/image-032.png)
 
-![image](assets/assets/digital-logic-008/image-033.png)
+![image](assets/digital-logic-008/image-033.png)
 
-![image](assets/assets/digital-logic-008/image-034.png)
+![image](assets/digital-logic-008/image-034.png)
 
-![image](assets/assets/digital-logic-008/image-035.png)
+![image](assets/digital-logic-008/image-035.png)
 
-![image](assets/assets/digital-logic-008/image-036.png)
+![image](assets/digital-logic-008/image-036.png)
 
 注：本题所实现的状态为Mealy状态机，这种状态机的输出电位不仅与目前所处的状态有关，而且与输入信号也有关联。
 
 **用Moore逻辑来实现**
 
-![image](assets/assets/digital-logic-008/image-037.png)
+![image](assets/digital-logic-008/image-037.png)
 
-![image](assets/assets/digital-logic-008/image-038.png)
+![image](assets/digital-logic-008/image-038.png)
 
-![image](assets/assets/digital-logic-008/image-039.png)
+![image](assets/digital-logic-008/image-039.png)
 
-![image](assets/assets/digital-logic-008/image-040.png)         ![image](assets/assets/digital-logic-008/image-041.png)
+![image](assets/digital-logic-008/image-040.png)         ![image](assets/digital-logic-008/image-041.png)
 
-![image](assets/assets/digital-logic-008/image-042.png)
+![image](assets/digital-logic-008/image-042.png)
 
 **六.时序逻辑电路-计数器**
 
@@ -329,10 +329,10 @@ $$
 
 **只读存储器：**
 
-![image](assets/assets/digital-logic-008/image-043.png)
+![image](assets/digital-logic-008/image-043.png)
 
 可编程逻辑阵列PLA、可编程阵列逻辑(PAL)、通用阵列逻辑（GAL）和高密度可编程逻辑器件（CPLD  和  FPGA）。
 
 了解：
 
-![image](assets/assets/digital-logic-008/image-044.png)
+![image](assets/digital-logic-008/image-044.png)

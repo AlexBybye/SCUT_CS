@@ -20,8 +20,8 @@ locator_type: slide
 
 <!-- slide: 2 -->
 
-![image](assets/assets/embedded-systems-002/image-001.jpg)
-![image](assets/assets/embedded-systems-002/image-002.png)
+![image](assets/embedded-systems-002/image-001.jpg)
+![image](assets/embedded-systems-002/image-002.png)
 
 <!-- slide: 3 -->
 
@@ -34,7 +34,7 @@ locator_type: slide
 
 - 11.1 I2C总线
 - I2C总线是由Philips公司开发的一种简单、双向二线制同步串行总线SDA（串行数据线）和SCL（串行时钟线）。它只需要两根线即可在连接于总线上的器件之间传送信息。SDA（串行数据线）和SCL（串行时钟线）都是双向I/O线，接口电路为开漏输出．需通过上拉电阻接电源VCC。当总线空闲时．两根线都是高电平，连接总线的外同器件都是CMOS器件，输出级也是开漏电路．在总线上消耗的电流很小，因此，总线上扩展的器件数量主要由电容负载来决定，因为每个器件的总线接口都有一定的等效电容．而线路中电容会影响总线传输速度．当电容过大时，有可能造成传输错误．所以，其负载能力为400pF，因此可以估算出总线允许长度和所接器件数量。
-![image](assets/assets/embedded-systems-002/image-003.png)
+![image](assets/embedded-systems-002/image-003.png)
 - 11.1.1 I2C总线介绍
 
 <!-- slide: 5 -->
@@ -63,7 +63,7 @@ locator_type: slide
 
 - 11.1.2 STM32芯片I2C总线
 - STM32芯片至少有一个I2C接口，提供多主机功能，可以实现所有I2C总线的时序、协议、仲裁和定时功能，支持标准和快速传输两种模式，同时与SMBus 2.0兼容。其中，STM32F103R6芯片有2路I2C总线。
-![image](assets/assets/embedded-systems-002/image-004.png)
+![image](assets/embedded-systems-002/image-004.png)
 - I2C接口引脚
 - 此接口可以下述4种模式中的一种运行：从发送器模式、从接收器模式、主发送器模式和主接收器模式；STM32芯片I2C默认工作于从模式。接口在生成起始条件后自动地从从模式切换到主模式；当仲裁丢失或产生停止信号时，则从主模式切换到从模式；允许多主机功能。
 
@@ -72,13 +72,13 @@ locator_type: slide
 - 主模式时，I2C接口启动数据传输并产生时钟信号。串行数据传输总是以起始条件开始并以停止条件结束下，起始条件和停止条件都是在主模式下由软件控制产生。
 - 从模式时，I2C接口能识别它自己的地址（7位或10位）和广播呼叫地址，软件能够控制开启或禁止广播呼叫地址的识别。
 - 数据和地址按8位/字节进行传输，高位在前。跟在起始条件后的1或2个字节是地址（7位模式为1个字节，10位模式为2个字节）。地址只在主模式发送，在1个字节传输的8个时钟后的第9个时钟期间，接收器必须回送1个应答位（ACK）给发送器。
-![image](assets/assets/embedded-systems-002/image-005.png)
+![image](assets/embedded-systems-002/image-005.png)
 - 软件可以开启或禁止应答(ACK)，并可以设置I2C接口的地址（7位、10位地址或广播呼叫地址）。
 
 <!-- slide: 9 -->
 
 - I2C接口的功能框图如图
-![image](assets/assets/embedded-systems-002/image-006.png)
+![image](assets/embedded-systems-002/image-006.png)
 
 <!-- slide: 10 -->
 
@@ -123,9 +123,9 @@ locator_type: slide
 
 <!-- slide: 15 -->
 
-![image](assets/assets/embedded-systems-002/image-007.png)
-![image](assets/assets/embedded-systems-002/image-008.png)
-![image](assets/assets/embedded-systems-002/image-009.png)
+![image](assets/embedded-systems-002/image-007.png)
+![image](assets/embedded-systems-002/image-008.png)
+![image](assets/embedded-systems-002/image-009.png)
 
 <!-- slide: 16 -->
 
@@ -141,7 +141,7 @@ locator_type: slide
 - 远程帧：目的节点可以通过发送一个远程帧向源节点请求数据，该远程帧带有一个匹配所请求的数据帧标识的标识符。
 - 错误帧：任何节点一旦检测到总线错误便会产生一个错误帧。
 - 超载帧：超载帧在前面的和后继的数据帧或远程帧之间提供一个额外的延时。
-![image](assets/assets/embedded-systems-002/image-010.png)
+![image](assets/embedded-systems-002/image-010.png)
 
 <!-- slide: 18 -->
 
@@ -165,7 +165,7 @@ locator_type: slide
 - 管理：中断可屏蔽，邮箱占用单独一块地址空间，便于提高软件效率。
 - STM32芯片CAN工作模式：（1）初始化模式；（2）正常模式；（3）睡眠模式(低功耗)；（4）测试模式。
 - STM32F103R6芯片的CAN接口引脚
-![image](assets/assets/embedded-systems-002/image-011.png)
+![image](assets/embedded-systems-002/image-011.png)
 
 <!-- slide: 21 -->
 
@@ -174,7 +174,7 @@ locator_type: slide
 - USB，是英文Universal Serial Bus（通用串行总线）的缩写，是一个外部总线标准，用于规范电脑与外部设备的连接和通信。是应用在PC领域的接口技术。USB接口支持设备的即插即用和热插拔功能。最新一代是USB 3.1，传输速度为10Gbps，三段式电压5V/12V/20V，最大供电100W，新型Type C插型不再分正反。
 - USB接口的4根线一般是下面这样分配的，需要注意的是千万不要把正负极弄反了，否则会烧掉USB设备或者电脑的南桥芯片：黑线：gnd红线：vcc绿线：data+白线：data-。
 - USB设备分为HOST（主设备）和SLAVE（从设备），只有当一台HOST与一台SLAVE连接时才能实现数据的传输。
-![image](assets/assets/embedded-systems-002/image-012.png)
+![image](assets/embedded-systems-002/image-012.png)
 
 <!-- slide: 22 -->
 
@@ -192,7 +192,7 @@ locator_type: slide
 
 - 两用设备使用新型mini-AB插座，从而使mini-A插头、mini-B插头和mini-AB插座增添了第五个引脚（ID），以用于识别不同的电缆端点。mini-A插头中的ID引脚接地，mini-B插头中的ID引脚浮空。当OTG设备检测到接地的ID引脚时，表示默认的是A设备（主机），而检测到ID引脚浮空的设备则认为是B设备（外设）。
 - USB2.0是向下兼容USB1.X的，即USB2.0支持高速，全速，低速的USB设备（HIGH-SPEED、FULL-SPEED、LOW-SPEED），而USB1.X不支持高速设备。因此如果高速设备接在USB1.X的Hub上，也只能工作在全速状态。USB 3.0是一种USB规范，该规范由英特尔等公司发起。现已被USB IF更新至USB 3.1。USB2.0的最大传输带宽为480Mbps（60MB/s），而USB3.0的最大传输带宽高达5.0Gbps（640MB/s）。
-![image](assets/assets/embedded-systems-002/image-013.png)
+![image](assets/embedded-systems-002/image-013.png)
 
 <!-- slide: 24 -->
 
@@ -207,7 +207,7 @@ locator_type: slide
 <!-- slide: 25 -->
 
 - STM32F103R6芯片USB接口引脚说明
-![image](assets/assets/embedded-systems-002/image-014.png)
+![image](assets/embedded-systems-002/image-014.png)
 - STM32F103的速度为全速12Mbit，换算成字节为1.5MB，除去USB协议的开销（令牌、打包等），大概能达到1MB/s速度。
 - STM32F103芯片USB有如下特点：支持USB2.0全速；支持双缓冲，最大程度的利用USB的带宽；支持USB挂起和恢复操作，其实还支持设备远程唤醒操作，即由设备发起唤醒请求（比如鼠标移动后唤醒设备）；USB和CAN共用512字节的缓存，也就是说同一时刻只能有一个外设可以工作，可以通过软件在不同时刻使用不同的外设。
 - USB中有三类寄存器：端点寄存器、通用寄存器、缓冲区描述表，再加上和描述表对应的缓冲区（数据收发缓存区，USB所有的数据传输都首先要经过这里）。地址0x40005C00开始为端点寄存器，因为有8个（双向）端点，所以有8个寄存器管理。之后的寄存器为通用寄存器，用于管理整个USB模块的，具体可查看参考手册。

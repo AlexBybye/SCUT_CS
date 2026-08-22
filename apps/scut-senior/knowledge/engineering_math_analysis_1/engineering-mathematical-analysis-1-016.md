@@ -36,8 +36,14 @@ locator_type: page
 
 注意事项：1. 开考前请将密封线内各项信息填写清楚；
 
+<!-- question: engineering-mathematical-analysis-1-016-Q1 -->
+
 2. 所有答案请直接答在试卷上；
+<!-- question: engineering-mathematical-analysis-1-016-Q2 -->
+
 3．考试形式：闭卷
+
+<!-- question: engineering-mathematical-analysis-1-016-Q3 -->
 
 4. 本试卷共5 个
 大题，满分100 分，
@@ -55,7 +61,7 @@ locator_type: page
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-016-Q1 -->
+<!-- question: engineering-mathematical-analysis-1-016-Q4 -->
 
 一、填空题（共5 小题，每小题3 分，共15 分）
 
@@ -83,6 +89,8 @@ locator_type: page
 1
 lim
 
+<!-- question: engineering-mathematical-analysis-1-016-Q5 -->
+
 １. 极限
 
 4
@@ -96,6 +104,8 @@ n
 n
 n
 
+
+<!-- question: engineering-mathematical-analysis-1-016-Q6 -->
 
 ２. 设
 
@@ -127,6 +137,8 @@ _____________ ________
 
 为
 ；
+
+<!-- question: engineering-mathematical-analysis-1-016-Q7 -->
 
 ３. 设
 2
@@ -179,13 +191,15 @@ xe dx
 
 .
 
+<!-- question: engineering-mathematical-analysis-1-016-Q8 -->
+
 ５. 反常积分
 
 0
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-016-Q2 -->
+<!-- question: engineering-mathematical-analysis-1-016-Q9 -->
 
 二、计算下列各题（共3 小题，每小题8 分，共24 分）
 
@@ -207,6 +221,8 @@ x
 
 
 
+
+<!-- question: engineering-mathematical-analysis-1-016-Q10 -->
 
 1. 求极限
 
@@ -268,7 +284,7 @@ x dx
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-016-Q3 -->
+<!-- question: engineering-mathematical-analysis-1-016-Q11 -->
 
 三、解答下列各题（共4 小题，每小题8 分，共32 分）
 
@@ -296,6 +312,8 @@ a
 
 
 ,
+
+<!-- question: engineering-mathematical-analysis-1-016-Q12 -->
 
 1. 设
 
@@ -334,6 +352,8 @@ a
 
 t
 u
+
+<!-- question: engineering-mathematical-analysis-1-016-Q13 -->
 
 2. 设曲线方程为
 
@@ -380,6 +400,8 @@ f x
 x
 
 
+<!-- question: engineering-mathematical-analysis-1-016-Q14 -->
+
 3. 求函数
 
 
@@ -405,7 +427,7 @@ x x
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-016-Q4 -->
+<!-- question: engineering-mathematical-analysis-1-016-Q15 -->
 
 四、证明题（共2 小题，每小题10 分，共20 分）
 
@@ -479,7 +501,7 @@ c
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-016-Q5 -->
+<!-- question: engineering-mathematical-analysis-1-016-Q16 -->
 
 五、应用题（本题9 分）
 

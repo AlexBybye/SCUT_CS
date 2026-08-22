@@ -38,11 +38,19 @@ locator_type: page
 
 注意事项：
 
+<!-- question: engineering-mathematical-analysis-1-011-Q1 -->
+
 1. 开考前请将密封线内各项信息填写清楚;
+
+<!-- question: engineering-mathematical-analysis-1-011-Q2 -->
 
 2. 所有答案请直接答在试卷上;
 
+<!-- question: engineering-mathematical-analysis-1-011-Q3 -->
+
 3. 考试形式：闭卷;
+
+<!-- question: engineering-mathematical-analysis-1-011-Q4 -->
 
 4. 本试卷共5 个大题, 满分100 分, 考试时间120 分钟。
 
@@ -61,7 +69,7 @@ locator_type: page
 
 （密封线内不答题）
 
-<!-- question: engineering-mathematical-analysis-1-011-Q1 -->
+<!-- question: engineering-mathematical-analysis-1-011-Q5 -->
 
 一、填空题（5 小题，每小题3 分，共15 分）
 
@@ -80,6 +88,8 @@ n2+2 + · · · +
 1
 √
 
+<!-- question: engineering-mathematical-analysis-1-011-Q6 -->
+
 1. 极限lim
 n→∞
 
@@ -94,6 +104,8 @@ n2+n
 是
 f ′(0) < f(1) −f(0) < f ′(1)
 ；
+
+<!-- question: engineering-mathematical-analysis-1-011-Q7 -->
 
 3. 设y = xex，则d(n)y =
 (x + n)exdxn
@@ -117,6 +129,8 @@ dx =
 
 −2
 
+<!-- question: engineering-mathematical-analysis-1-011-Q8 -->
+
 5. 反常积分
 ´ +∞
 
@@ -126,7 +140,7 @@ ex dx =
 1
 。
 
-<!-- question: engineering-mathematical-analysis-1-011-Q2 -->
+<!-- question: engineering-mathematical-analysis-1-011-Q9 -->
 
 二、计算下列各题（3 小题，每小题8 分，共24 分）
 
@@ -134,6 +148,8 @@ e−x2 ´ x
 
 0 t2et2dt
 x
+
+<!-- question: engineering-mathematical-analysis-1-011-Q10 -->
 
 1. 求极限
 lim
@@ -181,6 +197,8 @@ x→+∞
 第1 页共6 页
 
 <!-- page: 4 -->
+
+<!-- question: engineering-mathematical-analysis-1-011-Q11 -->
 
 2. 求不定积分
 ´ 1+sin x
@@ -234,6 +252,8 @@ d
 = tan x
 
 2 ex + C.
+
+<!-- question: engineering-mathematical-analysis-1-011-Q12 -->
 
 3. 计算定积分
 ´ 2a
@@ -324,9 +344,11 @@ a2
 
 <!-- page: 5 -->
 
-<!-- question: engineering-mathematical-analysis-1-011-Q3 -->
+<!-- question: engineering-mathematical-analysis-1-011-Q13 -->
 
 三、解答题（4 小题，每题8 分，共32 分）
+
+<!-- question: engineering-mathematical-analysis-1-011-Q14 -->
 
 1. 设a > 0, 0 < x1 < 1
 a, xn+1 = xn(2 −axn), (n = 1, 2, . . .)，证明{xn} 收敛，并求其极限。
@@ -381,6 +403,8 @@ a。
 由于数列{xn} 单调递增，故x ⩾x1 > 0，因此x = 1
 
 a.
+
+<!-- question: engineering-mathematical-analysis-1-011-Q15 -->
 
 2. 求函数f(x) = (x −1)
 3√
@@ -512,6 +536,8 @@ x = a(t −sin t)
 
 (0 ⩽t ⩽2π) 上斜率为1 的切线⽅程，并求d2y
 
+<!-- question: engineering-mathematical-analysis-1-011-Q16 -->
+
 3. 求旋轮线
 
 dx2 。
@@ -612,6 +638,8 @@ dx
 
 dt
 
+<!-- question: engineering-mathematical-analysis-1-011-Q17 -->
+
 4. 求曲线y = (x −1)(x −2) 和x 轴所围成的平⾯图形绕y 轴旋转⽽成的⽴体的体积。
 解：所求旋转体的体积为
 
@@ -667,7 +695,7 @@ y = (x −1)(x −2)
 
 <!-- page: 7 -->
 
-<!-- question: engineering-mathematical-analysis-1-011-Q4 -->
+<!-- question: engineering-mathematical-analysis-1-011-Q18 -->
 
 四、证明题（2 小题，每小题10 分，共20 分）
 
@@ -740,7 +768,7 @@ f ′′′(ξ) = f ′′′(ξ1) + f ′′′(ξ2)
 
 <!-- page: 8 -->
 
-<!-- question: engineering-mathematical-analysis-1-011-Q5 -->
+<!-- question: engineering-mathematical-analysis-1-011-Q19 -->
 
 五、应用题（本题9 分）
 

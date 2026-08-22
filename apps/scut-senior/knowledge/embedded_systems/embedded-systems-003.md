@@ -20,8 +20,8 @@ locator_type: slide
 
 <!-- slide: 2 -->
 
-![image](assets/assets/embedded-systems-003/image-001.jpg)
-![image](assets/assets/embedded-systems-003/image-002.png)
+![image](assets/embedded-systems-003/image-001.jpg)
+![image](assets/embedded-systems-003/image-002.png)
 
 <!-- slide: 3 -->
 
@@ -50,7 +50,7 @@ locator_type: slide
 
 - 12.1.1 传统小型嵌入式操作系统
 - 基于嵌入式操作系统主要是μC/OS和FreeRTOS等，内容包括任务管理、实时调度、时间管理、中断管理、内存管理、消息队列、信号量、互斥锁、事件标志等模块，因此只要掌握一种嵌入式操作系统使用的思路，其他都类似。
-![image](assets/assets/embedded-systems-003/image-003.png)
+![image](assets/embedded-systems-003/image-003.png)
 
 <!-- slide: 6 -->
 
@@ -69,7 +69,7 @@ locator_type: slide
 
 <!-- slide: 7 -->
 
-![image](assets/assets/embedded-systems-003/image-004.png)
+![image](assets/embedded-systems-003/image-004.png)
 - RT-Thread架构图
 
 <!-- slide: 8 -->
@@ -84,8 +84,8 @@ locator_type: slide
 <!-- slide: 9 -->
 
 - 12.2 uC/OS-II嵌入式操作系统
-![image](assets/assets/embedded-systems-003/image-005.png)
-![image](assets/assets/embedded-systems-003/image-006.png)
+![image](assets/embedded-systems-003/image-005.png)
+![image](assets/embedded-systems-003/image-006.png)
 
 <!-- slide: 10 -->
 
@@ -150,7 +150,7 @@ locator_type: slide
 <!-- slide: 15 -->
 
 - 从整个μC/OS-II程序架构中，和CPU有关的程序是OS_CPU.H、OS_CPU_C.C、OS_CPU.H程序。所以移植也主要和这几个程序有关。
-![image](assets/assets/embedded-systems-003/image-007.png)
+![image](assets/embedded-systems-003/image-007.png)
 
 <!-- slide: 16 -->
 
@@ -172,7 +172,7 @@ locator_type: slide
 - 12.3.1移植规划
 - 移植μC/OS-II需要在OS_CPU.H包含几个类型的定义和几个常数的定义；在OS_CPU_C.C和OS_CPU_A.ASM中包含几个函数的定义和时钟节拍中断服务程序的代码。实际上，还有一个includes.h文件需要关注，因为每一个应用都包含独特的includes.h 文件。
 - 移植文件说明
-![image](assets/assets/embedded-systems-003/image-008.png)
+![image](assets/embedded-systems-003/image-008.png)
 
 <!-- slide: 19 -->
 
@@ -203,7 +203,7 @@ locator_type: slide
 - 2. 编写os_cpu_c.c
 - （1）OSTaskStkInit()
 - 在编写此函数之前，必须先确定任务的堆栈结构。而任务的堆栈结构是与CPU的体系结构、编译器有密切的关联。本移植的堆栈结构如图所示。
-![image](assets/assets/embedded-systems-003/image-009.png)
+![image](assets/embedded-systems-003/image-009.png)
 - （2）…Hook()函数
 - μC/OS-II有很多由用户编写的…Hook()函数，它在本移植中全为空函数，用户可以按照μC/OS-II的要求修改它。
 
@@ -229,7 +229,7 @@ locator_type: slide
 - μC/OS-II的各种服务都是以任务的形式出现的。在μC/OS-II中，每个任务都有一个唯一的优先级。它是基于优先级可剥夺型内核，适合应用于对实时性要求较高的地方。
 - 12.4.1 μC/OS-II的任务状态
 - μC/OS-II的每个任务都是一个无限的循环。每个任务都处在休眠态、就绪态、运行态、挂起态和被中断态中的某种状态。
-![image](assets/assets/embedded-systems-003/image-010.png)
+![image](assets/embedded-systems-003/image-010.png)
 
 <!-- slide: 25 -->
 
@@ -248,14 +248,14 @@ locator_type: slide
 
 - 12.4.2 任务控制块OS_TCB
 - 内核对任务的管理通过任务控制块OS_TCB(Task Control Block)进行。任务控制块是一个数据结构，在任务创建时内核会申请一个空白TCB，然后进行初始化，将创建的任务信息填入该TCB的各个字段。
-![image](assets/assets/embedded-systems-003/image-011.png)
+![image](assets/embedded-systems-003/image-011.png)
 
 <!-- slide: 27 -->
 
 - 12.4.3 μC/OS-II的任务调度
 - 1.μC/OS-II的就绪表
 - μC/OS-II的就任务记录在就绪表(ready task table)中。就绪表由变量OSRdyGrp和OSRdyTbl[ ]构成。OSRdyGrp是一个单字节整数变量，OSRdyTbl[OS_LOWEST_PRIO/8+1]是单字节整数数组，其元素个数定义为最低优先级除以8加1，最多可有8个元素（字节）。实质OSRdyTbl[ ]是就绪表的位图映像矩阵，每一位代表一个优先级任务的就绪状态，称为就绪位。
-![image](assets/assets/embedded-systems-003/image-012.png)
+![image](assets/embedded-systems-003/image-012.png)
 
 <!-- slide: 28 -->
 
@@ -281,7 +281,7 @@ locator_type: slide
 
 - 12.4.4 μC/OS-II的任务切换
 - 任务切换(task switch)也称为上下文切换(context switch)。它实质是指任务的CPU寄存器内容的切换。当μC/OS-II内核决定运行另一个任务时，它保存正在运行任务的上下文（也称为工作现场，这就是全部CPU控制寄存器中的内容，有时还包括通用寄存器中的内容）。这些内容保存在任务的自用堆栈中。上下文入栈工作完成后，把下一个将要运行的任务的上下文从该任务自用堆栈中装入CPU的寄存器，然后开始运行该任务。
-![image](assets/assets/embedded-systems-003/image-013.png)
+![image](assets/embedded-systems-003/image-013.png)
 
 <!-- slide: 30 -->
 
@@ -293,7 +293,7 @@ locator_type: slide
 
 - 12.5 μC/OS-II任务、时间及事件控制块
 - 12.5.1 任务管理
-![image](assets/assets/embedded-systems-003/image-014.png)
+![image](assets/embedded-systems-003/image-014.png)
 - 其中，OSTaskCreate (void (*task)(void *pd), void *pdata, OS_STK *ptos, INT8U prio)，OSTaskCreate()需要4个参数：task是任务代码的指针，pdata是当任务开始执行时传递给任务的参数的指针，ptos是分配给任务的堆栈的栈顶指针prio是分配给任务的优先级。
 
 <!-- slide: 32 -->
@@ -330,19 +330,19 @@ locator_type: slide
 <!-- slide: 34 -->
 
 - 实例：控制一个LED以一个2个时钟节拍的时间闪烁。
-![image](assets/assets/embedded-systems-003/image-015.png)
+![image](assets/embedded-systems-003/image-015.png)
 
 <!-- slide: 35 -->
 
 - 12.5.3 事件控制块
 - 一个任务或者中断服务子程序可以通过事件控制块ECB（Event Control Blocks）来向另外的任务发信号。
-![image](assets/assets/embedded-systems-003/image-016.png)
+![image](assets/embedded-systems-003/image-016.png)
 - 事件控制块是信号量管理、互斥型信号量管理、消息邮箱管理和消息队列管理的基本数据结构。
 - OSEventPtr指针，只有在所定义的事件是邮箱或者消息队列时才使用。当所定义的事件是邮箱时，它指向一个消息，而当所定义的事件是消息队列时，它指向一个数据结构。
 - OSEventTbl[]和OSEventGrp包含的是等待某事件的任务。
 - OSEventCnt 当事件是一个信号量时，OSEventCnt是用于信号量的计数器。
 - OSEventType定义了事件的具体类型。它可以是信号量、邮箱或消息队列中的一种。
-![image](assets/assets/embedded-systems-003/image-017.png)
+![image](assets/embedded-systems-003/image-017.png)
 
 <!-- slide: 36 -->
 
@@ -350,7 +350,7 @@ locator_type: slide
 - 12.6.1 互斥信号量mutex介绍
 - 在嵌入式应用中互斥信号量mutex的作用主要是：
 - 1. 实现对资源的独占式访问（二值信号量）。
-![image](assets/assets/embedded-systems-003/image-018.png)
+![image](assets/embedded-systems-003/image-018.png)
 
 <!-- slide: 37 -->
 
@@ -373,8 +373,8 @@ locator_type: slide
 - 假设任务1和任务3共享一个资源，使用互斥信号量进行资源同步，任务2为优先级介于任务1和任务3之间的一个与该共享资源无关任务，通过互斥信号量解决优先级反转问题。
 - 此时，任务2无法在任务1之前得到运行，不发生优先级反转
 - 2. 解决优先级反转问题。
-![image](assets/assets/embedded-systems-003/image-019.png)
-![image](assets/assets/embedded-systems-003/image-020.png)
+![image](assets/embedded-systems-003/image-019.png)
+![image](assets/embedded-systems-003/image-020.png)
 - 任务1获得CPU，且优先级升到互斥信号量优先级
 - 任务2优先级不够高无法获得CPU
 
@@ -384,31 +384,31 @@ locator_type: slide
 - （1）在嵌入式，经常使用互斥信号量访问共享资源实现资源的同步。通过OSMutex()函数实现互斥信号量的创建。
 - （2）OSMutexPost()发送互斥信号量函数与OSMutexPend()等待互斥信号量函数必须成对出现在同一个任务调用的函数中。
 - （3）信号量最好在系统初始化时创建，不要在系统运行的过程动态低创建和删除。在确保成功创建信号量之后，才可对信号量进行接收和发送操作。
-![image](assets/assets/embedded-systems-003/image-021.png)
+![image](assets/embedded-systems-003/image-021.png)
 - 其中在互斥信号量(mutex)操作中，涉及如下函数：互斥信号量创建函数OSMutexCreate()；互斥信号量删除函数OSMutexDel()；发送互斥信号量OSMutexPost()；等待互斥信号量OSMutexPend()；查看互斥信号量OSMutexAccept(；取得互斥信号量的状态OSMutexQuery()。
 
 <!-- slide: 40 -->
 
 - 12.6.2 互斥信号量mutex实例
 - 【例12.1】 有两个任务Task1和Task2，它们都调用SendBuf()函数--向串口发送出”hello/r/n”（注/r/n表示换行符）。
-![image](assets/assets/embedded-systems-003/image-022.png)
+![image](assets/embedded-systems-003/image-022.png)
 
 <!-- slide: 41 -->
 
 - 具体程序：
-![image](assets/assets/embedded-systems-003/image-023.png)
-![image](assets/assets/embedded-systems-003/image-024.png)
-![image](assets/assets/embedded-systems-003/image-025.png)
-![image](assets/assets/embedded-systems-003/image-026.png)
-![image](assets/assets/embedded-systems-003/image-027.png)
+![image](assets/embedded-systems-003/image-023.png)
+![image](assets/embedded-systems-003/image-024.png)
+![image](assets/embedded-systems-003/image-025.png)
+![image](assets/embedded-systems-003/image-026.png)
+![image](assets/embedded-systems-003/image-027.png)
 
 <!-- slide: 42 -->
 
 - 在程序中没有用到互斥信号量和用了互斥量的两种结果分别如:
-![image](assets/assets/embedded-systems-003/image-028.png)
+![image](assets/embedded-systems-003/image-028.png)
 - 没用互斥量的结果
 - 用互斥量的结果
-![image](assets/assets/embedded-systems-003/image-029.png)
+![image](assets/embedded-systems-003/image-029.png)
 
 <!-- slide: 43 -->
 
@@ -416,7 +416,7 @@ locator_type: slide
 - 12.7 信号量
 - 12.7.1 概述
 - μC/OS-II提供了5个对信号量进行操作的函数。它们是：建立一个信号量OSSemCreate()，等待一个信号量OSSemPend()，发送一个信号量OSSemPost()，无等待地请求一个信号量OSSemAccept()和查询一个信号量的当前状态OSSemQuery()函数。
-![image](assets/assets/embedded-systems-003/image-030.png)
+![image](assets/embedded-systems-003/image-030.png)
 - 计数信号量与互斥信号量做对比
 
 <!-- slide: 44 -->
@@ -427,8 +427,8 @@ locator_type: slide
 - 当信号量值大于0，任务调用OSSemPend()函数接收信号量时:
 - 在使用一个信号量之前，首先要建立该信号量，也即调用OSSemCreate()函  数。当任务调用OSSemPost()函数发送信号时，信号量加1。
 - 如果任务调用OSSemPend()函数接收信息时信号量大于0，即信号量有效，则信号量的值减1，等待信号量的任务执行。如果OSSemPend()函数接收信息时信号量等于0，则等待信号量的任务处于等待的状态。
-![image](assets/assets/embedded-systems-003/image-031.png)
-![image](assets/assets/embedded-systems-003/image-032.png)
+![image](assets/embedded-systems-003/image-031.png)
+![image](assets/embedded-systems-003/image-032.png)
 
 <!-- slide: 45 -->
 
@@ -436,8 +436,8 @@ locator_type: slide
 - 信号量到来，正常返回
 - 延时到，无信号量，返回超时错误
 - 当信号量值等于0，任务调用OSSemPend()函数接收信号量时。
-![image](assets/assets/embedded-systems-003/image-033.png)
-![image](assets/assets/embedded-systems-003/image-034.png)
+![image](assets/embedded-systems-003/image-033.png)
+![image](assets/embedded-systems-003/image-034.png)
 
 <!-- slide: 46 -->
 
@@ -446,21 +446,21 @@ locator_type: slide
 - 一对一同步
 - 多对一同步
 - 12.7.2信号量任务同步实例
-![image](assets/assets/embedded-systems-003/image-035.png)
-![image](assets/assets/embedded-systems-003/image-036.png)
+![image](assets/embedded-systems-003/image-035.png)
+![image](assets/embedded-systems-003/image-036.png)
 
 <!-- slide: 47 -->
 
 - 【例12.2】  创建2个任务，1个任务向串口分别发送“A”和”B”，另一个任务向串口发送”C”和“D”。这两个任务分别不用信号量同步和使用信号量同步。
-![image](assets/assets/embedded-systems-003/image-037.png)
-![image](assets/assets/embedded-systems-003/image-038.png)
-![image](assets/assets/embedded-systems-003/image-039.png)
+![image](assets/embedded-systems-003/image-037.png)
+![image](assets/embedded-systems-003/image-038.png)
+![image](assets/embedded-systems-003/image-039.png)
 
 <!-- slide: 48 -->
 
-![image](assets/assets/embedded-systems-003/image-040.png)
-![image](assets/assets/embedded-systems-003/image-041.png)
-![image](assets/assets/embedded-systems-003/image-042.png)
+![image](assets/embedded-systems-003/image-040.png)
+![image](assets/embedded-systems-003/image-041.png)
+![image](assets/embedded-systems-003/image-042.png)
 - 没有使用信号量实现同步
 - 用信号量实现同步
 
@@ -469,20 +469,20 @@ locator_type: slide
 - 12.7.3信号量资源共享实例
 - 在嵌入式系统中，经常使用信号量访问共享资源来实现资源同步。在使用时，注意发送信号量函数OSSemPost()与等待信号量函数OSSemPend()必须成对出现在同一个任务调用的函数中，才能实现资源同步。
 - 在嵌入式系统中，经常使用信号量来实现多个任务之间的同步。而用来实现任务间同步的信号量在创建时初始值可以为0或者1，这是由OSSemCreate()函数来实现的。
-![image](assets/assets/embedded-systems-003/image-043.png)
+![image](assets/embedded-systems-003/image-043.png)
 
 <!-- slide: 50 -->
 
 - 【例12.3】  有两个任务Task1和Task2，它们都调用SendBuf()函数向串口发送出”hello/r/n”（注/r/n表示换行符）。在这个过程中需要用到信号量。
-![image](assets/assets/embedded-systems-003/image-044.png)
-![image](assets/assets/embedded-systems-003/image-045.png)
-![image](assets/assets/embedded-systems-003/image-046.png)
+![image](assets/embedded-systems-003/image-044.png)
+![image](assets/embedded-systems-003/image-045.png)
+![image](assets/embedded-systems-003/image-046.png)
 
 <!-- slide: 51 -->
 
-![image](assets/assets/embedded-systems-003/image-047.png)
-![image](assets/assets/embedded-systems-003/image-048.png)
-![image](assets/assets/embedded-systems-003/image-049.png)
+![image](assets/embedded-systems-003/image-047.png)
+![image](assets/embedded-systems-003/image-048.png)
+![image](assets/embedded-systems-003/image-049.png)
 - 使用信号量
 - 不使用信号量
 
@@ -490,31 +490,31 @@ locator_type: slide
 
 - 12.7.4 ISR与任务同步
 - 【例12.4】 按钮接到STM32芯片引脚PD2。如图12.13所示，当按钮按下产生外部中断，在外部中断中写数据到Buf，本例中是把从0开始每次按下按钮累加1的数据写到Buf（当数据大于或等于256时，又从0开始累加）；同时创建一个任务Task1，不停地通过串口发送Buf的数据。
-![image](assets/assets/embedded-systems-003/image-050.png)
+![image](assets/embedded-systems-003/image-050.png)
 - 在程序中没有用到信号量和用了信号量的两种结果分别如下：
-![image](assets/assets/embedded-systems-003/image-051.png)
-![image](assets/assets/embedded-systems-003/image-052.png)
+![image](assets/embedded-systems-003/image-051.png)
+![image](assets/embedded-systems-003/image-052.png)
 - 没有用到信号量的结果
 - 在中断服务程序发送信号量
 
 <!-- slide: 53 -->
 
 - 主要程序清单
-![image](assets/assets/embedded-systems-003/image-053.png)
-![image](assets/assets/embedded-systems-003/image-054.png)
-![image](assets/assets/embedded-systems-003/image-055.png)
-![image](assets/assets/embedded-systems-003/image-056.png)
+![image](assets/embedded-systems-003/image-053.png)
+![image](assets/embedded-systems-003/image-054.png)
+![image](assets/embedded-systems-003/image-055.png)
+![image](assets/embedded-systems-003/image-056.png)
 
 <!-- slide: 54 -->
 
 - 12.8 事件标志组
 - 当任务要与多个事件同步时，就要使用事件标志组。一个事件标志就是一个二值信号，事件标志组是若干二值信号的组合。使用事件标志组同步任务分为独立性同步和关联性同步。假设一个任务与3个事件标志有关。
-![image](assets/assets/embedded-systems-003/image-057.png)
+![image](assets/embedded-systems-003/image-057.png)
 
 <!-- slide: 55 -->
 
 - 可以用多个事件的组合发信号给多个任务，典型的有8个、16个或32个事件可以组合在一起。每个事件占1位(bit)，以32位的情况较多。任务或中断服务可以给某一位置位或复位，当任务所需的事件都发生了，该任务继续执行，至于哪个任务该继续执行了，是在一组新的事件发生时判定的，也就是在事件位进行置位时做判断。事件标志组与任务、中断关系图如下：
-![image](assets/assets/embedded-systems-003/image-058.png)
+![image](assets/embedded-systems-003/image-058.png)
 - 事件标志组相关函数有：建立并初始化一个事件标志组OSFlagCreate()，设置事件标志位OSFlagPost()，用于取得事件标志组的状态OSFlagQuery()函数，等待事件标志组的指定事件标志OSFlagPend()，删除事件标志组OSFlagDel()函数和无等待地获取标志组中的指定事件标志OSFlagAccept()。
 
 <!-- slide: 56 -->
@@ -522,7 +522,7 @@ locator_type: slide
 - 12.8.2事件标志组操作
 - 1.标志“与”操作
 - 以下例来说明如何使用标志事件组实现任务与若干个事件都发生同步。注意在用事件标志组操作时，要在OS_CFG.H文件中#define  OS_FLAG_EN  1。
-![image](assets/assets/embedded-systems-003/image-059.png)
+![image](assets/embedded-systems-003/image-059.png)
 
 <!-- slide: 57 -->
 
@@ -539,18 +539,18 @@ locator_type: slide
 - 消息是任务之间的一种通信手段，当同步过程需要传输具体内容时就不能使用信号量，此时可以选择消息邮箱，即通过内核服务可以给任务发送带具体内容的消息。
 - 一个邮箱只能存放一个消息指针
 - 用来传递消息缓冲区指针的数据结构就是消息邮箱。
-![image](assets/assets/embedded-systems-003/image-060.png)
+![image](assets/embedded-systems-003/image-060.png)
 
 <!-- slide: 59 -->
 
 - （1）向消息邮箱发送消息
 - 1.邮箱服务 和 2.邮箱状态
-![image](assets/assets/embedded-systems-003/image-061.png)
+![image](assets/embedded-systems-003/image-061.png)
 
 <!-- slide: 60 -->
 
 - （2）从消息邮箱接收消息
-![image](assets/assets/embedded-systems-003/image-062.png)
+![image](assets/embedded-systems-003/image-062.png)
 
 <!-- slide: 61 -->
 
@@ -559,37 +559,37 @@ locator_type: slide
 - （2）多对一
 - 这种工作方式最简单，也是最常用的
 - 这种工作方式也经常使用
-![image](assets/assets/embedded-systems-003/image-063.png)
-![image](assets/assets/embedded-systems-003/image-064.png)
+![image](assets/embedded-systems-003/image-063.png)
+![image](assets/embedded-systems-003/image-064.png)
 
 <!-- slide: 62 -->
 
 - （3）一对多
 - 这种工作方式虽然不常见，但还是有极少场合使用，比如智能仪器仪表常常采用声、光与短信报警信号输出功能就是典型的一对多工作方式的应用
 - 消息邮箱函数有：建立并初始化一个消息邮箱OSMboxCreate()、任务等待消息OSMboxPend()、取得消息邮箱的信息OSMboxQuery()，通过消息邮箱向任务发送消息OSMboxPost()，查看指定的消息邮箱是否有需要的消息OSMboxAccept()，删除消息邮箱OSMboxDel()和OSMboxPost()的扩展OSMboxPostOpt()。
-![image](assets/assets/embedded-systems-003/image-065.png)
+![image](assets/embedded-systems-003/image-065.png)
 
 <!-- slide: 63 -->
 
 - 12.9.2 消息邮箱操作
 - 用一个一对多的消息邮箱通信实例来描述消息邮箱操作的过程。
 - 【例12.5】 通过一个按钮（引脚连接PB2）控制LED，当按钮按下时，点亮LED，并向串口发送0x55；当按钮弹开时，熄灭LED，并向串口发送0x88。
-![image](assets/assets/embedded-systems-003/image-066.gif)
+![image](assets/embedded-systems-003/image-066.gif)
 
 <!-- slide: 64 -->
 
-![image](assets/assets/embedded-systems-003/image-067.png)
-![image](assets/assets/embedded-systems-003/image-068.png)
-![image](assets/assets/embedded-systems-003/image-069.png)
-![image](assets/assets/embedded-systems-003/image-070.png)
-![image](assets/assets/embedded-systems-003/image-071.png)
+![image](assets/embedded-systems-003/image-067.png)
+![image](assets/embedded-systems-003/image-068.png)
+![image](assets/embedded-systems-003/image-069.png)
+![image](assets/embedded-systems-003/image-070.png)
+![image](assets/embedded-systems-003/image-071.png)
 
 <!-- slide: 65 -->
 
 - 消息队列的使用方法类似于邮箱，其遵循先进先出(FIFO)的原则，μC/OS-II也容许使用后进先出方式(LIFO)，即提高该消息在队列中的优先级实现LIFO算法。
 - 通过消息队列实现任务与任务之间及ISR发送和接收消息，实现数据的通信和同步。消息队列具有一定的容量，可以容纳多条消息，因此可以看成是多个邮箱的组合。
-![image](assets/assets/embedded-systems-003/image-072.png)
-![image](assets/assets/embedded-systems-003/image-073.png)
+![image](assets/embedded-systems-003/image-072.png)
+![image](assets/embedded-systems-003/image-073.png)
 - 12.10 消息队列
 - 12.10.1 概述
 
@@ -600,10 +600,10 @@ locator_type: slide
 - （2）将消息放入队列中去(POST)。
 - （3）等待消息的到来(PEND)，允许用户定义一个最长的等待时间Timeout作为它的参数，这样可以避免该任务无休止地等待下去。
 - PEND
-![image](assets/assets/embedded-systems-003/image-074.png)
+![image](assets/embedded-systems-003/image-074.png)
 - POST
-![image](assets/assets/embedded-systems-003/image-075.png)
-![image](assets/assets/embedded-systems-003/image-076.png)
+![image](assets/embedded-systems-003/image-075.png)
+![image](assets/embedded-systems-003/image-076.png)
 
 <!-- slide: 67 -->
 
@@ -611,32 +611,32 @@ locator_type: slide
 - （1）空状态。消息队列中没有任何消息。
 - （2）满状态。消息队列中的每个存储单元都存放了消息。
 - （3）正常状态。消息队列中有消息但又没有到满的状态。
-![image](assets/assets/embedded-systems-003/image-077.png)
+![image](assets/embedded-systems-003/image-077.png)
 
 <!-- slide: 68 -->
 
 - 3.消息队列工作方式
 - （1）一对一工作方式。即发送一个任务发送消息到消息队列，而另一个任务从消息队列中读取消息。
 - （2）多对一工作方式。即多个任务发送消息到同一个消息队列，而另外有一个任务从这个队列中读取消息。
-![image](assets/assets/embedded-systems-003/image-078.png)
-![image](assets/assets/embedded-systems-003/image-079.png)
+![image](assets/embedded-systems-003/image-078.png)
+![image](assets/embedded-systems-003/image-079.png)
 - （3）一对多的工作方式。即只有一个任务发送消息到消息队列，而另外有多个任务从这个消息队列中读取消息。
-![image](assets/assets/embedded-systems-003/image-080.png)
+![image](assets/embedded-systems-003/image-080.png)
 
 <!-- slide: 69 -->
 
 - 消息队列的主要函数有：建立一个消息队列OSQCreate()，任务等待消息OSQPend()，通过消息队列向任务发送消息OSQPost()，通过消息队列以LIFO方式向任务发送消息OSQPostFront()，检查消息队列中是否已经有需要的消息OSQAccept()，清空消息队列OSQFlush()，取得消息队列的信息OSQQuery()函数和删除消息队列OSQDel()。
-![image](assets/assets/embedded-systems-003/image-081.png)
+![image](assets/embedded-systems-003/image-081.png)
 - 消息队列和任务、中断之间关系图
 
 <!-- slide: 70 -->
 
 - 12.10.2 消息队列操作
 - 【例12.6】 利用按钮控制串口的输出，当按钮（PD2）按下时，串口发送AA BB两个字节；当按钮打开时，串口发送11 22两个字节。
-![image](assets/assets/embedded-systems-003/image-082.png)
-![image](assets/assets/embedded-systems-003/image-083.png)
-![image](assets/assets/embedded-systems-003/image-084.png)
-![image](assets/assets/embedded-systems-003/image-085.png)
+![image](assets/embedded-systems-003/image-082.png)
+![image](assets/embedded-systems-003/image-083.png)
+![image](assets/embedded-systems-003/image-084.png)
+![image](assets/embedded-systems-003/image-085.png)
 
 <!-- slide: 71 -->
 
@@ -652,9 +652,9 @@ locator_type: slide
 - 【例12.7】 使用动态内存管理来实现数据通信。
 - 1.初始化
 - 2.申请内存
-![image](assets/assets/embedded-systems-003/image-086.png)
-![image](assets/assets/embedded-systems-003/image-087.png)
-![image](assets/assets/embedded-systems-003/image-088.png)
+![image](assets/embedded-systems-003/image-086.png)
+![image](assets/embedded-systems-003/image-087.png)
+![image](assets/embedded-systems-003/image-088.png)
 - 3.释放内存
 
 <!-- slide: 73 -->

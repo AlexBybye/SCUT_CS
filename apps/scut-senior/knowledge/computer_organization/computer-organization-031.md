@@ -23,23 +23,23 @@ locator_type: slide
 
 <!-- slide: 3 -->
 
-![image](assets/assets/computer-organization-031/image-001.png)
+![image](assets/computer-organization-031/image-001.png)
 
 <!-- slide: 4 -->
 
-![image](assets/assets/computer-organization-031/image-002.png)
+![image](assets/computer-organization-031/image-002.png)
 
 <!-- slide: 5 -->
 
-![image](assets/assets/computer-organization-031/image-003.png)
+![image](assets/computer-organization-031/image-003.png)
 
 <!-- slide: 6 -->
 
-![image](assets/assets/computer-organization-031/image-004.png)
+![image](assets/computer-organization-031/image-004.png)
 
 <!-- slide: 7 -->
 
-![image](assets/assets/computer-organization-031/image-005.png)
+![image](assets/computer-organization-031/image-005.png)
 - 【题11】课本  图8.9
 
 <!-- slide: 8 -->

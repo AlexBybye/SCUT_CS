@@ -88,6 +88,8 @@ locator_type: none
 
 (C) A B F D G E C H                      (D)  E G F A C B D H
 
+<!-- question: data-structure-010-Q1 -->
+
 2. Fill the blank with correct C++ codes:      (16 scores)
 
 (1)      Given an array storing integers ordered by distinct value  without duplicate, modify the binary search routines to return the position of the integer with the  greatest value  less  than K when K itself does not appear in the array. Return ERROR if the  lest  value in the array is  greater  than K: (10 scores)
@@ -134,6 +136,8 @@ preorder  enumeration:  ABECDFGHIJ
 
 4. Determine Θ for the following code fragments in the average case. Assume that all variables are of type int.                            (6 scores)
 
+<!-- question: data-structure-010-Q2 -->
+
 (1) sum=0;
 
 for (i=0; i<5; i++)
@@ -142,6 +146,8 @@ for (j=0; j<n; j++)
 
 sum++;                solution : Θ___(n)_______
 
+<!-- question: data-structure-010-Q3 -->
+
 (2)  sum = 0;
 
 for(i=1;i<=n;i++)
@@ -149,6 +155,8 @@ for(i=1;i<=n;i++)
 for(j=n;j>=i;j--)
 
 sum++;                              solution : Θ__(n2)________
+
+<!-- question: data-structure-010-Q4 -->
 
 (3) sum=0;
 
@@ -227,5 +235,7 @@ Solution：
 1,C to A: 4 (C,A);  CF: 5(C,F);  CD: 6(C,A,D);  CB: 12(C,A,D,B);
 
 CG:11 (C,F,G);  CE: 13(C,A,D,B,E)
+
+<!-- question: data-structure-010-Q5 -->
 
 2.  Draw the MST:  It is a  Hamilton  path.

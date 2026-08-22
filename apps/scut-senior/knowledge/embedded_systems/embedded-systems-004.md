@@ -20,8 +20,8 @@ locator_type: slide
 
 <!-- slide: 2 -->
 
-![image](assets/assets/embedded-systems-004/image-001.jpg)
-![image](assets/assets/embedded-systems-004/image-002.png)
+![image](assets/embedded-systems-004/image-001.jpg)
+![image](assets/embedded-systems-004/image-002.png)
 
 <!-- slide: 3 -->
 
@@ -77,44 +77,44 @@ locator_type: slide
 
 - 13.2.1 小车实例及整体设计
 - 整个小车以STM32F103R6为主控芯片，主要由如下几部分构成：（1）STM32F103R6主芯片模块；（2）电位器调速模块；（3）车内温度测量模块；（4）小车轮速测量模块；（5）轮速驱动模块；（6）超声波测距模块；（7）蜂鸣器发声模块；（8）OLED液晶屏显示模块；（9）串行通信模块。
-![image](assets/assets/embedded-systems-004/image-003.png)
+![image](assets/embedded-systems-004/image-003.png)
 
 <!-- slide: 10 -->
 
 - 13.2.2 硬件设计说明
 - 1. STM32F103R6主芯片电路
-![image](assets/assets/embedded-systems-004/image-004.png)
+![image](assets/embedded-systems-004/image-004.png)
 - 主控芯片STM32F103R6电路为芯片正常运行提供了基本电路，其中包括：电源、时钟电路和Reset电路；同时引出相应的接口和整个项目的各模块电路进行通信。
 
 <!-- slide: 11 -->
 
 - 2. 电位器调速电路
 - 电位器调速模块主要是通过调节滑动变阻器改变电压，此信号连接在STM32F103R6芯片上的ADC接口，从而可以根据采集到电压的大小控制轮速。具体电路如图13.3所示，滑动变阻器输出连接STM32F103R6芯片的PA4引脚。
-![image](assets/assets/embedded-systems-004/image-005.png)
+![image](assets/embedded-systems-004/image-005.png)
 
 <!-- slide: 12 -->
 
 - 3. 车内温度测量电路
 - 车内温度测量主要通过温度传感器芯片DS18B20来实现。
-![image](assets/assets/embedded-systems-004/image-006.png)
+![image](assets/embedded-systems-004/image-006.png)
 - DS18B20芯片的DQ引脚连接STM32F103R6芯片的PA11引脚。其中DS18B20是常用的数字温度传感器，其输出的是数字信号，采用单总线的接口方式与微控制器连接时仅需要一条口线即可实现微处理器与DS18B20的双向通信。DS18B20的测量范围为-55~+125℃；在-10~+85℃范围内，精度为± 0.5℃。
 
 <!-- slide: 13 -->
 
 - 4. 小车轮速测量电路
 - 小车轮速测量是通过对电机的码盘信号进行获取
-![image](assets/assets/embedded-systems-004/image-007.png)
-![image](assets/assets/embedded-systems-004/image-008.png)
+![image](assets/embedded-systems-004/image-007.png)
+![image](assets/embedded-systems-004/image-008.png)
 - 小车轮子驱动电机的码盘输出CAR_PLUSE引脚通过一个光电隔离芯片（U27）输出CAR_SPEED引脚并最终与PA12（TIM1_ETR）引脚相连接，电机在转动时候会产生出一系列脉冲，通过对脉冲进行计数从而可以获得电机的转动速度。
 
 <!-- slide: 14 -->
 
 - 5. 轮速驱动模块
 - 通过对小车前后2组轮子进行驱动控制小车向前运动
-![image](assets/assets/embedded-systems-004/image-009.png)
+![image](assets/embedded-systems-004/image-009.png)
 - 为了便于在Proteus中仿真演示，图中“前轮”表示小车前面两个轮子，“后轮”表示小车后面两个轮子，此小车只具有前进和后退功能，并且前轮和后轮控制同时被控制转动。轮子的驱动电路采用L293D驱动芯片实现，它是一款双桥驱动芯片，可同时驱动两路直流电机或一路步进电机，输出电流可达600mA，峰值输出电流可达1.2A，内部自带ESD保护。L293D芯片的293_OUT1和293_OUT2引脚驱动后轮电机转动，293_OUT3和293_OUT4引脚驱动前轮电机转动。
 - L293D芯片驱动表
-![image](assets/assets/embedded-systems-004/image-010.png)
+![image](assets/embedded-systems-004/image-010.png)
 
 <!-- slide: 15 -->
 
@@ -124,26 +124,26 @@ locator_type: slide
 - D=C×T/2
 - 式中，D为计算出的障碍物和传感器之间的距离；C为声音的传播速度；T为从发出超声波信号到检测到超声波信号返回的时间间隔。
 - Proteus仿真提供了超声波仿真模组，TR连接STM32F103R6芯片的PA5引脚，ECH连接STM32F103R6芯片的PA6引脚（TIM3_CH1捕获口）。
-![image](assets/assets/embedded-systems-004/image-011.png)
+![image](assets/embedded-systems-004/image-011.png)
 
 <!-- slide: 16 -->
 
 - 7.蜂鸣器发声电路
 - 蜂鸣器电路主要是控制蜂鸣器发出声音。
-![image](assets/assets/embedded-systems-004/image-012.png)
+![image](assets/embedded-systems-004/image-012.png)
 - 蜂鸣器电路输入引脚Beep连接STM32F103R6芯片的PB2引脚，通过控制PB2引脚高电平，蜂鸣器会发声。
 
 <!-- slide: 17 -->
 
 - 8.OLED液晶屏电路
 - OLED液晶屏采用HDG12864F-1，该液晶屏是Hantronix的产品，液晶屏控制器采用爱普生SED1565系列芯片，是一种点阵式液晶屏，数据采用串行通信方式，其中液晶屏SI引脚表示接收数据引脚；SCL引脚为串行通信时钟线；A0引脚确定接收到的数据是数据还是控制指令。电路图中OLED液晶屏的SI引脚连接STM32F103R6芯片的PB7引脚，SCI引脚连接STM32F103R6芯片的PB6引脚，A0引脚连接STM32F103R6芯片的PB8引脚。
-![image](assets/assets/embedded-systems-004/image-013.png)
+![image](assets/embedded-systems-004/image-013.png)
 
 <!-- slide: 18 -->
 
 - 9. 串行通信电路
 - STM32F103R6芯片的串口1（UART1）的PA9(TXD)和PA10(RXD)引脚连接到串行虚拟终端上，用于调试信息输出及数据输出。
-![image](assets/assets/embedded-systems-004/image-014.png)
+![image](assets/embedded-systems-004/image-014.png)
 
 <!-- slide: 19 -->
 
@@ -168,7 +168,7 @@ locator_type: slide
 - 3. 超声波传感器测距程序
 - Proteus仿真环境模拟HCSR04超声波传感器模块，通过STM32F103R6芯片的PA5引脚向超声波传感器TR引脚发送高电平，脉宽不小于10μs的信号，此时超声波传感器内部会循环发出8个40kHz的脉冲；当前方有障碍物时候，此时超声波传感器ECH引脚会接收到一个如下图那样的回响信号传送给STM32F103R6芯片的PA6引脚（TIM3_CH1捕获口）。其中，高电平持续的时间就是超声波从发射到返回的时间。
 - 测试距离=(高电平时间*声速(340M/S))/2
-![image](assets/assets/embedded-systems-004/image-015.png)
+![image](assets/embedded-systems-004/image-015.png)
 - 程序思路：PA5设置为输出，产生出高电平信号开始进行测距；同时利用捕获模式对回响信号的脉冲宽度进行测量，从而可计算出障碍物距离。注意：在一定的延迟时间内，若检测不到回响信号，则认为前方没有障碍物时，跳出超声波测距程序。
 
 <!-- slide: 23 -->
@@ -188,7 +188,7 @@ locator_type: slide
 <!-- slide: 25 -->
 
 - 本实例为小车左右轮设计的PID控制算法主要由控制器和被控对象组成，被控对象是小车车轮，被控量是车轮转速，通过码盘测量被控量的值。由于微控制器是数字系统，同时为了减少计算复杂度和中间过程的存储空间，采用增量式PID控制法，只需要记住相邻前两次的输入偏差，就可以得到当前控制量的增量，因此只需要保存上一个控制量的值，通过计算控制量增量便可得到当前控制量的值，计算过程为:
-![image](assets/assets/embedded-systems-004/image-016.png)
+![image](assets/embedded-systems-004/image-016.png)
 - 其中，T是采样的时间间隔，可用本书前面提到的TIM2定时更新中断实现，PID控制器的输出u(t)是由微控制器输出的PWM信号。Kp、Ki和Kd分别是PID控制器的比例、积分和微分控制系统，这三个参数的调整十分关键，有关对PID控制参数调节的经验如下：
 - 1）比例调节的输出与偏差成比例关系，可以直接快速进行调节。
 - 2）积分调节的输出是偏差的积分，可以消除比例调节产生的稳态误差。
@@ -204,7 +204,7 @@ locator_type: slide
 - 7.OLED液晶屏程序
 - OLED液晶屏HDG12864F-1的SI引脚连接STM32F103R6芯片的PB7引脚，SCL引脚连接STM32F103R6芯片的PB6引脚，A0引脚连接STM32F103R6芯片的PB8引脚。当A0=”H”时，表示是显示的点阵数据，当A0=”L”时，表示是液晶屏的控制数据；/WR为写有效线；/RD为读有效线；/RES引脚当为”L”时初始化液晶屏；/CS1引脚为选通信号，当为”L”时选通此液晶屏。微控制器可以通过向液晶屏SI引脚并配合一定的SCL时钟依次发送串行D7-D0 8位数据，实现对液晶屏数据和控制指令的传送。传送数据就是直接向液晶屏传送显示的数据，而控制指令主要实现对液晶屏的开关、刷新、显示位置控制等内容。
 - 例如控制液晶屏显示开或者关的控制指令如下：
-![image](assets/assets/embedded-systems-004/image-017.png)
+![image](assets/embedded-systems-004/image-017.png)
 - 其他有关的控制指令操作，可参见HDG12864F-1驱动芯片SED1565系列芯片手册。
 - 具体编写程序思路是针对STM32F103R6芯片的PB7（连接SI引脚）、PB6引脚（连接SCL引脚）和PB8引脚（连接A0引脚），控制这些引脚产生出驱动芯片SED1565的读写脉冲波形，并根据手册中的指令数据说明实现对控制指令和显示数据的写入。
 

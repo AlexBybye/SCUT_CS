@@ -124,7 +124,7 @@ n 电磁波信号频率划分及应用
 
 5
 
-![image](assets/assets/signals-and-communication-007/image-001.jpeg)
+![image](assets/signals-and-communication-007/image-001.jpeg)
 
 <!-- page: 6 -->
 
@@ -141,7 +141,7 @@ n 信道编码：为了提高数字通信的可靠性而采取的编码，
 
 6
 
-![image](assets/assets/signals-and-communication-007/image-002.jpeg)
+![image](assets/signals-and-communication-007/image-002.jpeg)
 
 <!-- page: 7 -->
 
@@ -2113,7 +2113,7 @@ X X 
 
 41
 
-![image](assets/assets/signals-and-communication-007/image-003.jpeg)
+![image](assets/signals-and-communication-007/image-003.jpeg)
 
 <!-- page: 42 -->
 
@@ -2295,7 +2295,7 @@ n
 
 43
 
-![image](assets/assets/signals-and-communication-007/image-004.jpeg)
+![image](assets/signals-and-communication-007/image-004.jpeg)
 
 <!-- page: 44 -->
 
@@ -3567,7 +3567,7 @@ c
 
 55
 
-![image](assets/assets/signals-and-communication-007/image-005.jpeg)
+![image](assets/signals-and-communication-007/image-005.jpeg)
 
 <!-- page: 56 -->
 
@@ -3977,7 +3977,7 @@ d
 
 62
 
-![image](assets/assets/signals-and-communication-007/image-006.jpeg)
+![image](assets/signals-and-communication-007/image-006.jpeg)
 
 <!-- page: 63 -->
 
@@ -4019,9 +4019,9 @@ t
 
 63
 
-![image](assets/assets/signals-and-communication-007/image-007.jpeg)
+![image](assets/signals-and-communication-007/image-007.jpeg)
 
-![image](assets/assets/signals-and-communication-007/image-008.jpeg)
+![image](assets/signals-and-communication-007/image-008.jpeg)
 
 <!-- page: 64 -->
 
@@ -6531,7 +6531,7 @@ HE
 
 91
 
-![image](assets/assets/signals-and-communication-007/image-009.jpeg)
+![image](assets/signals-and-communication-007/image-009.jpeg)
 
 <!-- page: 92 -->
 
@@ -7500,7 +7500,7 @@ HE
 
 100
 
-![image](assets/assets/signals-and-communication-007/image-010.jpeg)
+![image](assets/signals-and-communication-007/image-010.jpeg)
 
 <!-- page: 101 -->
 
@@ -8230,7 +8230,7 @@ a0错
 
 108
 
-![image](assets/assets/signals-and-communication-007/image-011.jpeg)
+![image](assets/signals-and-communication-007/image-011.jpeg)
 
 <!-- page: 109 -->
 
@@ -8317,7 +8317,7 @@ a0＝a6+a4+a3
 
 109
 
-![image](assets/assets/signals-and-communication-007/image-012.jpeg)
+![image](assets/signals-and-communication-007/image-012.jpeg)
 
 <!-- page: 110 -->
 
@@ -9477,7 +9477,7 @@ n 线性分组码的基本性质(续)
 
 119
 
-![image](assets/assets/signals-and-communication-007/image-013.jpeg)
+![image](assets/signals-and-communication-007/image-013.jpeg)
 
 <!-- page: 120 -->
 
@@ -12554,7 +12554,7 @@ r
 
 143
 
-![image](assets/assets/signals-and-communication-007/image-014.jpeg)
+![image](assets/signals-and-communication-007/image-014.jpeg)
 
 <!-- page: 144 -->
 
@@ -12688,7 +12688,7 @@ X
 
 145
 
-![image](assets/assets/signals-and-communication-007/image-015.jpeg)
+![image](assets/signals-and-communication-007/image-015.jpeg)
 
 <!-- page: 146 -->
 
@@ -12893,7 +12893,7 @@ n   循环码(续)
 
 147
 
-![image](assets/assets/signals-and-communication-007/image-016.jpeg)
+![image](assets/signals-and-communication-007/image-016.jpeg)
 
 <!-- page: 148 -->
 
@@ -12939,7 +12939,7 @@ A X
 
 148
 
-![image](assets/assets/signals-and-communication-007/image-017.jpeg)
+![image](assets/signals-and-communication-007/image-017.jpeg)
 
 <!-- page: 149 -->
 
@@ -13238,7 +13238,7 @@ g
 
 151
 
-![image](assets/assets/signals-and-communication-007/image-018.jpeg)
+![image](assets/signals-and-communication-007/image-018.jpeg)
 
 <!-- page: 152 -->
 
@@ -13255,7 +13255,7 @@ n   循环码(续)
 
 152
 
-![image](assets/assets/signals-and-communication-007/image-019.jpeg)
+![image](assets/signals-and-communication-007/image-019.jpeg)
 
 <!-- page: 153 -->
 
@@ -13398,7 +13398,7 @@ n   循环冗余校验码（续）
 
 154
 
-![image](assets/assets/signals-and-communication-007/image-020.jpeg)
+![image](assets/signals-and-communication-007/image-020.jpeg)
 
 <!-- page: 155 -->
 
@@ -13509,7 +13509,7 @@ n   循环码(续)
 
 157
 
-![image](assets/assets/signals-and-communication-007/image-021.jpeg)
+![image](assets/signals-and-communication-007/image-021.jpeg)
 
 <!-- page: 158 -->
 
@@ -14382,7 +14382,7 @@ n
 
   卷积码编码效率：
 
-![image](assets/assets/signals-and-communication-007/image-022.jpeg)
+![image](assets/signals-and-communication-007/image-022.jpeg)
 
 <!-- page: 165 -->
 
@@ -14472,7 +14472,7 @@ k n 
 
    卷积码           编码效率：
 
-![image](assets/assets/signals-and-communication-007/image-023.jpeg)
+![image](assets/signals-and-communication-007/image-023.jpeg)
 
 <!-- page: 166 -->
 
@@ -14523,7 +14523,7 @@ c c c
 
 166
 
-![image](assets/assets/signals-and-communication-007/image-024.jpeg)
+![image](assets/signals-and-communication-007/image-024.jpeg)
 
 <!-- page: 167 -->
 

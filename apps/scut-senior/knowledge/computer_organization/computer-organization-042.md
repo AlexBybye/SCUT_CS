@@ -99,7 +99,7 @@ A.N/（Nx+y）          B.N/（x+y）N        C.min[1/x，1/y]        D.max[1/x�
 
 试问：在此环境下，此系统在什么情况下达到中断饱和？即在确保请求服务的三个设备都不会丢失信息的条件下，允许出现中断的极限频率有多高？注意，“中断允许”机构在确认一个新中断之前，先要让即将被中断的程序的一条指令执行完毕。
 
-![image](assets/assets/computer-organization-042/image-001.png)
+![image](assets/computer-organization-042/image-001.png)
 
 **图2**
 

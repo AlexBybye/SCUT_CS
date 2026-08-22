@@ -30,7 +30,7 @@ TA: 1684350406@qq.com
 
 2
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-001.jpeg)
+![image](assets/algorithm-design-and-analysis-005/image-001.jpeg)
 
 <!-- page: 3 -->
 
@@ -61,81 +61,81 @@ Insertion Sort
 
 4
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-002.jpeg)
+![image](assets/algorithm-design-and-analysis-005/image-002.jpeg)
 
 <!-- page: 5 -->
 
 5
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-003.png)
+![image](assets/algorithm-design-and-analysis-005/image-003.png)
 
 <!-- page: 6 -->
 
 6
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-004.png)
+![image](assets/algorithm-design-and-analysis-005/image-004.png)
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-005.png)
+![image](assets/algorithm-design-and-analysis-005/image-005.png)
 
 <!-- page: 7 -->
 
 7
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-006.png)
+![image](assets/algorithm-design-and-analysis-005/image-006.png)
 
 <!-- page: 8 -->
 
 8
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-007.png)
+![image](assets/algorithm-design-and-analysis-005/image-007.png)
 
 <!-- page: 9 -->
 
 9
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-008.jpeg)
+![image](assets/algorithm-design-and-analysis-005/image-008.jpeg)
 
 <!-- page: 10 -->
 
 10
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-009.jpeg)
+![image](assets/algorithm-design-and-analysis-005/image-009.jpeg)
 
 <!-- page: 11 -->
 
 11
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-010.jpeg)
+![image](assets/algorithm-design-and-analysis-005/image-010.jpeg)
 
 <!-- page: 12 -->
 
 12
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-011.jpeg)
+![image](assets/algorithm-design-and-analysis-005/image-011.jpeg)
 
 <!-- page: 13 -->
 
 13
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-012.jpeg)
+![image](assets/algorithm-design-and-analysis-005/image-012.jpeg)
 
 <!-- page: 14 -->
 
 14
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-013.jpeg)
+![image](assets/algorithm-design-and-analysis-005/image-013.jpeg)
 
 <!-- page: 15 -->
 
 15
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-014.jpeg)
+![image](assets/algorithm-design-and-analysis-005/image-014.jpeg)
 
 <!-- page: 16 -->
 
 16
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-015.jpeg)
+![image](assets/algorithm-design-and-analysis-005/image-015.jpeg)
 
 <!-- page: 17 -->
 
@@ -258,7 +258,7 @@ j=6
 
 17
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-016.png)
+![image](assets/algorithm-design-and-analysis-005/image-016.png)
 
 <!-- page: 18 -->
 
@@ -283,13 +283,13 @@ time,  because everybody likes a guarantee.
 
 19
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-017.png)
+![image](assets/algorithm-design-and-analysis-005/image-017.png)
 
 <!-- page: 20 -->
 
 20
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-018.png)
+![image](assets/algorithm-design-and-analysis-005/image-018.png)
 
 <!-- page: 21 -->
 
@@ -1377,88 +1377,88 @@ Merge (A, p, q,r)
 
 41
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-019.png)
+![image](assets/algorithm-design-and-analysis-005/image-019.png)
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-020.png)
+![image](assets/algorithm-design-and-analysis-005/image-020.png)
 
 <!-- page: 42 -->
 
 42
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-021.png)
+![image](assets/algorithm-design-and-analysis-005/image-021.png)
 
 <!-- page: 43 -->
 
 43
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-022.png)
+![image](assets/algorithm-design-and-analysis-005/image-022.png)
 
 <!-- page: 44 -->
 
 44
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-023.png)
+![image](assets/algorithm-design-and-analysis-005/image-023.png)
 
 <!-- page: 45 -->
 
 45
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-024.png)
+![image](assets/algorithm-design-and-analysis-005/image-024.png)
 
 <!-- page: 46 -->
 
 46
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-025.png)
+![image](assets/algorithm-design-and-analysis-005/image-025.png)
 
 <!-- page: 47 -->
 
 47
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-026.png)
+![image](assets/algorithm-design-and-analysis-005/image-026.png)
 
 <!-- page: 48 -->
 
 48
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-027.png)
+![image](assets/algorithm-design-and-analysis-005/image-027.png)
 
 <!-- page: 49 -->
 
 49
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-028.png)
+![image](assets/algorithm-design-and-analysis-005/image-028.png)
 
 <!-- page: 50 -->
 
 50
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-029.png)
+![image](assets/algorithm-design-and-analysis-005/image-029.png)
 
 <!-- page: 51 -->
 
 51
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-030.png)
+![image](assets/algorithm-design-and-analysis-005/image-030.png)
 
 <!-- page: 52 -->
 
 52
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-031.png)
+![image](assets/algorithm-design-and-analysis-005/image-031.png)
 
 <!-- page: 53 -->
 
 53
 Time?
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-032.png)
+![image](assets/algorithm-design-and-analysis-005/image-032.png)
 
 <!-- page: 54 -->
 
 54
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-033.png)
+![image](assets/algorithm-design-and-analysis-005/image-033.png)
 
 <!-- page: 55 -->
 
@@ -1542,73 +1542,73 @@ Analyzing Merge-Sort
 
 56
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-034.png)
+![image](assets/algorithm-design-and-analysis-005/image-034.png)
 
 <!-- page: 57 -->
 
 57
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-035.png)
+![image](assets/algorithm-design-and-analysis-005/image-035.png)
 
 <!-- page: 58 -->
 
 58
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-036.png)
+![image](assets/algorithm-design-and-analysis-005/image-036.png)
 
 <!-- page: 59 -->
 
 59
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-037.png)
+![image](assets/algorithm-design-and-analysis-005/image-037.png)
 
 <!-- page: 60 -->
 
 60
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-038.png)
+![image](assets/algorithm-design-and-analysis-005/image-038.png)
 
 <!-- page: 61 -->
 
 61
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-039.png)
+![image](assets/algorithm-design-and-analysis-005/image-039.png)
 
 <!-- page: 62 -->
 
 62
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-040.png)
+![image](assets/algorithm-design-and-analysis-005/image-040.png)
 
 <!-- page: 63 -->
 
 63
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-041.png)
+![image](assets/algorithm-design-and-analysis-005/image-041.png)
 
 <!-- page: 64 -->
 
 64
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-042.png)
+![image](assets/algorithm-design-and-analysis-005/image-042.png)
 
 <!-- page: 65 -->
 
 65
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-043.png)
+![image](assets/algorithm-design-and-analysis-005/image-043.png)
 
 <!-- page: 66 -->
 
 66
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-044.png)
+![image](assets/algorithm-design-and-analysis-005/image-044.png)
 
 <!-- page: 67 -->
 
 67
 
-![image](assets/assets/algorithm-design-and-analysis-005/image-045.png)
+![image](assets/algorithm-design-and-analysis-005/image-045.png)
 
 <!-- page: 68 -->
 

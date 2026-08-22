@@ -386,4 +386,4 @@ A  U  G  A  U  G  G  C  C  A   U
 10
 11
 
-![image](assets/assets/algorithm-design-and-analysis-024/image-001.png)
+![image](assets/algorithm-design-and-analysis-024/image-001.png)

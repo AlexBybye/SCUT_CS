@@ -20,8 +20,8 @@ locator_type: slide
 
 <!-- slide: 3 -->
 
-![image](assets/assets/computer-organization-027/image-001.png)
-![image](assets/assets/computer-organization-027/image-002.png)
+![image](assets/computer-organization-027/image-001.png)
+![image](assets/computer-organization-027/image-002.png)
 - 重点！
 
 <!-- slide: 4 -->
@@ -98,7 +98,6 @@ locator_type: slide
 
 ## 三地址指令
 
-
 | OP | A1 | A2 | A3 |
 |---|---|---|---|
 
@@ -112,7 +111,6 @@ locator_type: slide
 <!-- slide: 11 -->
 
 ## 二地址指令
-
 
 | op | A1 | A2 |
 |---|---|---|
@@ -139,7 +137,6 @@ locator_type: slide
 <!-- slide: 13 -->
 
 ## 一地址指令
-
 
 | OP | A |
 |---|---|
@@ -218,7 +215,7 @@ locator_type: slide
 <!-- slide: 19 -->
 
 - <number>
-![image](assets/assets/computer-organization-027/image-003.jpg)
+![image](assets/computer-organization-027/image-003.jpg)
 - 一、指令寻址
 - 1、  顺序寻址方式
 - 2、跳跃寻址方式
@@ -244,7 +241,7 @@ locator_type: slide
 ## 1、隐含寻址
 
 - <number>
-![image](assets/assets/computer-organization-027/image-004.jpg)
+![image](assets/computer-organization-027/image-004.jpg)
 - 例如：一地址指令
 
 | OP | A |
@@ -272,7 +269,7 @@ locator_type: slide
     - MOV  AL, 5
     - MOV  AX, 3064H
     - MOV  AL, ‘A’
-![image](assets/assets/computer-organization-027/image-005.png)
+![image](assets/computer-organization-027/image-005.png)
 - 优点：操作数直观，速度快。
 - 缺点：不便于更改，降低了程序的通用性和灵活性。
 
@@ -284,7 +281,7 @@ locator_type: slide
 - 操作数位于存储器中，操作数所在的存储器单元的地址存放在指令的地址字段A中，即：
   - DATA＝（EA）
   - EA=A
-![image](assets/assets/computer-organization-027/image-006.png)
+![image](assets/computer-organization-027/image-006.png)
 - 有效地址E＝D
 - 操作数S＝(E)＝(D)
 
@@ -297,7 +294,7 @@ locator_type: slide
   - DATA＝（EA）
   - EA=（A）
 - 即：A为操作数地址的地址
-![image](assets/assets/computer-organization-027/image-007.png)
+![image](assets/computer-organization-027/image-007.png)
 - 一次间址：E=(D)，S=(E)=((D))
 - 二次间址：E=((D))，S=(E)=(((D)))
 - 优点：扩大寻址范围，方便编程。
@@ -330,7 +327,7 @@ locator_type: slide
   - DATA＝（Ri）
   - MOV  AX, BX
   - MOV  AL, BH
-![image](assets/assets/computer-organization-027/image-008.png)
+![image](assets/computer-organization-027/image-008.png)
 
 <!-- slide: 27 -->
 
@@ -340,7 +337,7 @@ locator_type: slide
 - 操作数位于存储器中，操作数所在的存储器地址存放在寄存器中，而该寄存器编号存放在指令的地址字段A中，即：
   - DATA＝（EA）
   - EA＝（Ri ）
-![image](assets/assets/computer-organization-027/image-009.png)
+![image](assets/computer-organization-027/image-009.png)
 
 <!-- slide: 28 -->
 
@@ -378,7 +375,7 @@ locator_type: slide
 - 操作数位于存储器中，操作数所在的存储器地址EA由变址寄存器RI和指令的地址字段A指出：
   - DATA＝（EA）
   - EA＝（RI ）＋A
-![image](assets/assets/computer-organization-027/image-010.png)
+![image](assets/computer-organization-027/image-010.png)
 
 <!-- slide: 31 -->
 
@@ -388,7 +385,7 @@ locator_type: slide
 - 操作数位于存储器中，操作数所在的存储器地址EA由基址寄存器Rb和指令的地址字段A指出：
   - DATA＝（EA）
   - EA＝（Rb ）＋A
-![image](assets/assets/computer-organization-027/image-011.png)
+![image](assets/computer-organization-027/image-011.png)
 - 基值寻址与变址寻址的不同之处：
 - 变址寻址在于实现程序块的规律变化。
 - 基址寻址可以扩大寻址范围（整个主存范围）。
@@ -502,10 +499,8 @@ locator_type: slide
 
 ## 例：
 
-
 | OP | A1 | A2 | A3 |
 |---|---|---|---|
-
 
 | 0000<br>0001<br>:<br>1110 | A1<br>A1<br>:<br>A1 | A2<br>A2<br>:<br>A2 | A3<br>A3<br>:<br>A3 |
 |---|---|---|---|
@@ -530,23 +525,21 @@ locator_type: slide
 
 <!-- slide: 41 -->
 
-![image](assets/assets/computer-organization-027/image-012.png)
+![image](assets/computer-organization-027/image-012.png)
 - 第4章   典型习题与解答
 
 <!-- slide: 42 -->
 
 - 第4章   典型例题
-![image](assets/assets/computer-organization-027/image-013.png)
+![image](assets/computer-organization-027/image-013.png)
 
 <!-- slide: 43 -->
 
 ## 【题4-5】指令格式结构如下所示，试分析指令格式及 
          寻址方式的特点。
 
-
 | OP | 寻址方式 | 寄存器 | 寻址方式 | 寄存器 |
 |---|---|---|---|---|
-
 
 | 15              12 | 11              9 | 8               6 | 5             3 | 2                0 |
 |---|---|---|---|---|
@@ -573,7 +566,6 @@ locator_type: slide
 | OP | 寻址方式 | 寄存器 | 位移量D |
 |---|---|---|---|
 
-
 | 31              26 | 25        24 | 23              19 | 18                      0 |
 |---|---|---|---|
 
@@ -581,7 +573,6 @@ locator_type: slide
 
 | OP | 寻址方式 | 源寄存器 | 目的寄存器 | 位移量D |
 |---|---|---|---|---|
-
 
 | 31              26 | 25        24 | 23          19 | 18            14 | 13              0 |
 |---|---|---|---|---|
@@ -605,7 +596,7 @@ locator_type: slide
 - 寄存器间接寻址方式：
 - 操作数
 - 存储器
-![image](assets/assets/computer-organization-027/image-014.png)
+![image](assets/computer-organization-027/image-014.png)
 - 第4章   习题讲解
 
 <!-- slide: 47 -->
@@ -626,11 +617,10 @@ locator_type: slide
 | OP | 源寄存器 | 目的寄存器 | 位移量D |
 |---|---|---|---|
 
-
 | 31              26 | 25        22 | 21              18 | 17                      0 |
 |---|---|---|---|
 
-![image](assets/assets/computer-organization-027/image-015.png)
+![image](assets/computer-organization-027/image-015.png)
 - ② 位移量D字长18位，可以寻址空间218B；
 
 <!-- slide: 49 -->
@@ -708,16 +698,16 @@ locator_type: slide
 - 通常指令周期的长短与指令的复杂程度有关。
 - （2） CPU周期（机器周期）—内存中读取一个指令字的最短时间，指令周期常用若干个CPU周期数来表示
 - （3） 时钟周期（节拍脉冲）—处理操作的最基本单位（由硬件的时钟频率决定） ， CPU 周期包括若干个时钟周期。
-![image](assets/assets/computer-organization-027/image-016.png)
+![image](assets/computer-organization-027/image-016.png)
 
 <!-- slide: 56 -->
 
 ## 指令周期、机器周期、时钟周期的关系
 
 - <number>
-![image](assets/assets/computer-organization-027/image-017.png)
-![image](assets/assets/computer-organization-027/image-018.png)
-![image](assets/assets/computer-organization-027/image-019.jpg)
+![image](assets/computer-organization-027/image-017.png)
+![image](assets/computer-organization-027/image-018.png)
+![image](assets/computer-organization-027/image-019.jpg)
 - 重点！
 
 <!-- slide: 57 -->
@@ -727,12 +717,12 @@ locator_type: slide
 - 方框 代表一个CPU周期，方框中的内容表示数据通路的操作或某种控制操作。
 - 菱形 通常用来表示某种判别或测试，不过时间上它依附于紧接它的前面一个方框的CPU周期，而不单独占用一个CPU周期。
 - 我们把前面的五条典型指令加以归纳，用方框图语言表示的指令周期。
-![image](assets/assets/computer-organization-027/image-020.png)
-![image](assets/assets/computer-organization-027/image-021.png)
+![image](assets/computer-organization-027/image-020.png)
+![image](assets/computer-organization-027/image-021.png)
 
 <!-- slide: 58 -->
 
-![image](assets/assets/computer-organization-027/image-022.png)
+![image](assets/computer-organization-027/image-022.png)
 - 重点！
 
 <!-- slide: 59 -->
@@ -790,7 +780,7 @@ locator_type: slide
 - CPU周期 = 执行微指令的时间+取出下一条微指令的时间
 - 微指令周期：指从控存中取出并执行一条微指令所需要的时间，一般与一个CPU周期相当。
 - （指令周期、CPU周期、节拍周期的关系？）
-![image](assets/assets/computer-organization-027/image-023.jpg)
+![image](assets/computer-organization-027/image-023.jpg)
 - 重点！
 
 <!-- slide: 62 -->
@@ -802,7 +792,7 @@ locator_type: slide
 - （1）水平型微指令
   - 微指令字采用长格式，也就是控制字段采用直接控制法和字段直接编码法，使一条微指令能控制数据通路中多个功能部件并行操作。
   - 水平型微指令的优点是：一条微指令可同时发送多个微命令，微指令执行效率高，速度快，较灵活，并行操作能力强；水平型微指令构成的微程序较短。它的主要缺点是：微指令字长较长，明显地增加了控制存储器的横向容量。
-![image](assets/assets/computer-organization-027/image-024.png)
+![image](assets/computer-organization-027/image-024.png)
 
 <!-- slide: 63 -->
 
@@ -813,7 +803,7 @@ locator_type: slide
   - 控制字段采用完全编码的方法，将一套微命令代码化构成微指令。就像计算机机器指令一样，它由微操作码、源地址和目标地址以及其他附带信息构成
   - 垂直型微指令和机器指令一样分成多种类型的微指令，所有微指令构成一个微指令系统。
   - 主要特点：微指令字采用短格式，每条微指令只能控制一二个微操作，并行控制能力差。但由于微指令和机器指令格式相类似，对于用户来说，垂直型微指令比较直观，容易掌握和便于使用。微指令字短，减少了横向控制存储器的容量；但微程序长，影响了执行的速度。
-![image](assets/assets/computer-organization-027/image-025.jpg)
+![image](assets/computer-organization-027/image-025.jpg)
 - 重点！
 
 <!-- slide: 64 -->
@@ -830,7 +820,7 @@ locator_type: slide
 
 <!-- slide: 65 -->
 
-![image](assets/assets/computer-organization-027/image-026.png)
+![image](assets/computer-organization-027/image-026.png)
 
 <!-- slide: 66 -->
 
@@ -1013,8 +1003,8 @@ locator_type: slide
 <!-- slide: 85 -->
 
 - (1)“ADD R2，R0”指令是一条加法指令，参与运算的两个数放在寄存器R2和R0中，“ADD R2，R0”指令的详细指令周期流程图如图(a)所示，图的右边部分标注了每一个机器周期中用到的微操作控制信号序列。
-![image](assets/assets/computer-organization-027/image-031.png)
-![image](assets/assets/computer-organization-027/image-032.png)
+![image](assets/computer-organization-027/image-031.png)
+![image](assets/computer-organization-027/image-032.png)
 
 <!-- slide: 86 -->
 
@@ -1056,7 +1046,7 @@ locator_type: slide
 - 执行指令：
   - M4（取操作数－送地址）：PCAR, PC+1
   - M5（取操作数－读）：RAM PC
-![image](assets/assets/computer-organization-027/image-033.png)
+![image](assets/computer-organization-027/image-033.png)
 
 <!-- slide: 89 -->
 
@@ -1138,11 +1128,11 @@ locator_type: slide
 - 总线上的所有模块都在总线公共时钟信号的协调下工作。
 - 所有事件都出现在时针信号的前沿，大多数事件只占据单一
 - 时钟周期。
-![image](assets/assets/computer-organization-027/image-034.png)
+![image](assets/computer-organization-027/image-034.png)
 
 <!-- slide: 96 -->
 
-![image](assets/assets/computer-organization-027/image-035.png)
+![image](assets/computer-organization-027/image-035.png)
 
 <!-- slide: 97 -->
 
@@ -1150,12 +1140,12 @@ locator_type: slide
 
 - 后一事件出现在总线上的时刻取决于前一事件的出现，即建立在应-答式或互锁机制的基础上。
 - 特点：无公共时钟信号，可变长度的总线周期。
-![image](assets/assets/computer-organization-027/image-036.png)
+![image](assets/computer-organization-027/image-036.png)
 - 重点！
 
 <!-- slide: 98 -->
 
-![image](assets/assets/computer-organization-027/image-037.png)
+![image](assets/computer-organization-027/image-037.png)
 
 <!-- slide: 99 -->
 
@@ -1169,11 +1159,11 @@ locator_type: slide
 
 ## UART总线时序
 
-![image](assets/assets/computer-organization-027/image-040.png)
-![image](assets/assets/computer-organization-027/image-041.png)
+![image](assets/computer-organization-027/image-040.png)
+![image](assets/computer-organization-027/image-041.png)
 - 起始位：先发出一个逻辑”0”信号，表示传输字符的开始 数据位：可以是5~8位逻辑”0”或”1”；如ASCII码（7位），扩展BCD码（8位）；小端传输，即LSB先发，MSB后发校验位：加上这一位后，数据中“1”的位数为偶数(偶校验)或奇数(奇校验)停止位：它是一个字符数据的结束标志。可以是1位、1.5位、2位的高电平（用于双方同步，停止位时间间隔越长，容错能力越强）
 - 空闲位：处于逻辑“1”状态，表示当前线路上没有数据传送
-![image](assets/assets/computer-organization-027/image-042.jpg)
+![image](assets/computer-organization-027/image-042.jpg)
 - 异步串行接口
 - 重点！
 
@@ -1187,7 +1177,6 @@ locator_type: slide
 
 <!-- slide: 103 -->
 
-
 | 外部设备的组成与分类（P207-208） |  |
 |---|---|
 |  | 外部设备组成： <br>存储介质、驱动装置和控制电路<br><br>外部设备分类： <br>输入设备、输出设备、外存设备、数据通信设备、过程控制设备。 |
@@ -1197,37 +1186,37 @@ locator_type: slide
 ## 外围设备的分类
 
 - <number>
-![image](assets/assets/computer-organization-027/image-043.jpg)
+![image](assets/computer-organization-027/image-043.jpg)
 - 重点！
 
 <!-- slide: 105 -->
 
 <!-- slide: 106 -->
 
-![image](assets/assets/computer-organization-027/image-045.png)
+![image](assets/computer-organization-027/image-045.png)
 - 重点！
 
 <!-- slide: 107 -->
 
 <!-- slide: 108 -->
 
-![image](assets/assets/computer-organization-027/image-047.png)
+![image](assets/computer-organization-027/image-047.png)
 
 <!-- slide: 109 -->
 
-![image](assets/assets/computer-organization-027/image-048.png)
+![image](assets/computer-organization-027/image-048.png)
 - 重点！
 
 <!-- slide: 110 -->
 
-![image](assets/assets/computer-organization-027/image-049.png)
+![image](assets/computer-organization-027/image-049.png)
 
 <!-- slide: 111 -->
 
 ## 1、硬磁盘存储器
 
 - <number>
-![image](assets/assets/computer-organization-027/image-050.png)
+![image](assets/computer-organization-027/image-050.png)
 - 柱面由一组盘片的同一磁道在纵向上所形成的同心圆构成。
 - 每一个记录面上均有一个磁头，所有记录面上的磁头均固定在步进电机上。
 - 重点！
@@ -1298,7 +1287,7 @@ locator_type: slide
 <!-- slide: 117 -->
 
 - 2．DMA数据传送过程
-![image](assets/assets/computer-organization-027/image-051.png)
+![image](assets/computer-organization-027/image-051.png)
 
 <!-- slide: 118 -->
 
@@ -1351,13 +1340,13 @@ locator_type: slide
 <!-- slide: 123 -->
 
 - •••
-![image](assets/assets/computer-organization-027/image-053.png)
+![image](assets/computer-organization-027/image-053.png)
 - SIMD: 向量处理器
 
 <!-- slide: 124 -->
 
 - •••
-![image](assets/assets/computer-organization-027/image-054.png)
+![image](assets/computer-organization-027/image-054.png)
 - SIMD: 向量处理器
 
 <!-- slide: 125 -->
@@ -1411,13 +1400,13 @@ locator_type: slide
 <!-- slide: 127 -->
 
 - 对称多处理机(SMP)
-![image](assets/assets/computer-organization-027/image-055.png)
+![image](assets/computer-organization-027/image-055.png)
 - 重点！
 
 <!-- slide: 128 -->
 
-![image](assets/assets/computer-organization-027/image-056.jpg)
-![image](assets/assets/computer-organization-027/image-057.jpg)
+![image](assets/computer-organization-027/image-056.jpg)
+![image](assets/computer-organization-027/image-057.jpg)
 
 <!-- slide: 129 -->
 
@@ -1544,7 +1533,6 @@ locator_type: slide
 
 <!-- slide: 132 -->
 
-
 | 属性 | SIMD | PVP | SMP | MPP | DSM | COW |
 |---|---|---|---|---|---|---|
 | 同构性 | SIMD | MIMD | MIMD | MIMD | MIMD | MIMD |
@@ -1561,7 +1549,7 @@ locator_type: slide
 
 <!-- slide: 133 -->
 
-![image](assets/assets/computer-organization-027/image-058.png)
-![image](assets/assets/computer-organization-027/image-059.jpg)
-![image](assets/assets/computer-organization-027/image-060.png)
+![image](assets/computer-organization-027/image-058.png)
+![image](assets/computer-organization-027/image-059.jpg)
+![image](assets/computer-organization-027/image-060.png)
 - 谢谢！

@@ -101,7 +101,7 @@ C.______处理。
 - CPU结构如图1所示，其中有一个累加寄存器AC，一个状态条件寄存器，各部分之间的连线表示数据通路，箭头表示信息传送方向。
 1. 标明图中四个寄存器的名称。
 1. 简述指令从主存取到控制器的数据通路。
-1. ![image](assets/assets/computer-organization-053/image-001.png)![formula-object](assets/assets/computer-organization-053/image-002.png)简述数据在运算器和主存之间进行存  /  取访问的数据通路。
+1. ![image](assets/computer-organization-053/image-001.png)![formula-object](assets/computer-organization-053/image-002.png)简述数据在运算器和主存之间进行存  /  取访问的数据通路。
 
 **图1**
 - 试推导磁盘存贮器读写一块信息所需总时间的公式。
@@ -109,7 +109,7 @@ C.______处理。
 
 试问：在此环境下，此系统在什么情况下达到中断饱和？即在确保请求服务的三个设备都不会丢失信息的条件下，允许出现中断的极限频率有多高？注意，“中断允许”机构在确认一个新中断之前，先要让即将被中断的程序的一条指令指令执行完毕。
 
-![image](assets/assets/computer-organization-053/image-003.png)
+![image](assets/computer-organization-053/image-003.png)
 
 图2
 

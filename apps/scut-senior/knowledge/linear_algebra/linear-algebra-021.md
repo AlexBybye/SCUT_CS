@@ -20,33 +20,43 @@ locator_type: page
 
 1.
  B
+<!-- question: linear-algebra-021-Q2 -->
+
 2. D
 3.
  B
 4.
 D
+<!-- question: linear-algebra-021-Q3 -->
+
 5.    B
 
-<!-- question: linear-algebra-021-Q2 -->
+<!-- question: linear-algebra-021-Q4 -->
 
 二、填空题（共6 题，每题3 分，共18 分）
 
 9 (𝐴2 −2𝐴+ 4𝐸)
 3.
+<!-- question: linear-algebra-021-Q5 -->
+
 4. ( 2
 3
 −1
 −2)
 5.
+<!-- question: linear-algebra-021-Q6 -->
+
 6. −√2 < 𝑡< √2
 3
 8
+
+<!-- question: linear-algebra-021-Q7 -->
 
 1. 8
 2.
 1
 
-<!-- question: linear-algebra-021-Q3 -->
+<!-- question: linear-algebra-021-Q8 -->
 
 三、（8 分）
 
@@ -134,7 +144,7 @@ D
 −𝐦)𝒎𝒏−𝟏
 2’
 
-<!-- question: linear-algebra-021-Q4 -->
+<!-- question: linear-algebra-021-Q9 -->
 
 四、( 8 分)
 
@@ -219,7 +229,7 @@ A*XA=B ⇒(|𝐀|𝑨−𝟏)𝐗𝐀=-2𝑨−𝟏𝐗𝐀= 𝐁⇒𝐗= −
 
 <!-- page: 2 -->
 
-<!-- question: linear-algebra-021-Q5 -->
+<!-- question: linear-algebra-021-Q10 -->
 
 五、（15 分）
 
@@ -369,7 +379,7 @@ A*XA=B ⇒(|𝐀|𝑨−𝟏)𝐗𝐀=-2𝑨−𝟏𝐗𝐀= 𝐁⇒𝐗= −
 
 从而方程组的通解为𝜸+ 𝒌𝜶,其中k 为任意常数。                           1’
 
-<!-- question: linear-algebra-021-Q6 -->
+<!-- question: linear-algebra-021-Q11 -->
 
 六、（15 分）
 
@@ -397,6 +407,8 @@ A*XA=B ⇒(|𝐀|𝑨−𝟏)𝐗𝐀=-2𝑨−𝟏𝐗𝐀= 𝐁⇒𝐗= −
 从而平面𝛑的一般方程为𝒙−𝒚−𝒛+ 𝟏= 𝟎(不化出一般方程亦可)
               3’
 
+<!-- question: linear-algebra-021-Q12 -->
+
 (2) 直线𝒍𝟐的方向向量为𝜶⃗⃗ = (𝟏, 𝟐, −𝟏),则
 
 𝐬𝐢𝐧𝜽＝|𝜶⃗⃗ ∙𝒏⃗⃗ |
@@ -411,11 +423,13 @@ A*XA=B ⇒(|𝐀|𝑨−𝟏)𝐗𝐀=-2𝑨−𝟏𝐗𝐀= 𝐁⇒𝐗= −
 
 |𝟏−𝟐−√𝟑+𝟏|
 
+<!-- question: linear-algebra-021-Q13 -->
+
 (3) 𝒅(𝑩, 𝝅)=
 
 <!-- page: 3 -->
 
-<!-- question: linear-algebra-021-Q7 -->
+<!-- question: linear-algebra-021-Q14 -->
 
 七、（15 分）
 
@@ -630,7 +644,7 @@ A*XA=B ⇒(|𝐀|𝑨−𝟏)𝐗𝐀=-2𝑨−𝟏𝐗𝐀= 𝐁⇒𝐗= −
 
                           𝐟(𝐗) = 𝟐𝒚𝟏
 
-<!-- question: linear-algebra-021-Q8 -->
+<!-- question: linear-algebra-021-Q15 -->
 
 八、(6 分)
 证明：设𝑨为𝒏阶反对称实矩阵，则𝑨′ = −𝑨且𝑨̅ = 𝑨,

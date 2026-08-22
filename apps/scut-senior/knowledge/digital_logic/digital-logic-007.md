@@ -12,16 +12,16 @@ locator_type: page
 
 <!-- page: 1 -->
 
-![page-001.jpg](assets/assets/digital-logic-007/page-001.jpg)
+![page-001.jpg](assets/digital-logic-007/page-001.jpg)
 
 <!-- page: 2 -->
 
-![page-002.jpg](assets/assets/digital-logic-007/page-002.jpg)
+![page-002.jpg](assets/digital-logic-007/page-002.jpg)
 
 <!-- page: 3 -->
 
-![page-003.jpg](assets/assets/digital-logic-007/page-003.jpg)
+![page-003.jpg](assets/digital-logic-007/page-003.jpg)
 
 <!-- page: 4 -->
 
-![page-004.jpg](assets/assets/digital-logic-007/page-004.jpg)
+![page-004.jpg](assets/digital-logic-007/page-004.jpg)

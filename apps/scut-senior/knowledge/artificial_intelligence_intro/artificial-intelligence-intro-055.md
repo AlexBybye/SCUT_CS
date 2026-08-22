@@ -16,8 +16,8 @@ locator_type: slide
 
 - 课件采用鲍军鹏 博士的课件版本：2.0
 - 2010年1月
-![image](assets/assets/artificial-intelligence-intro-055/image-001.png)
-![image](assets/assets/artificial-intelligence-intro-055/image-002.png)
+![image](assets/artificial-intelligence-intro-055/image-001.png)
+![image](assets/artificial-intelligence-intro-055/image-002.png)
 - 主讲：文贵华
 - crghwen@scut.edu.cn
 
@@ -99,7 +99,7 @@ locator_type: slide
 - 执行部分根据知识库完成任务，同时把获得的信息反馈给学习部分。
 - 在具体的应用中，环境，知识库和执行部分决定了具体的工作内容，学习部分所需要解决的问题完全由上述3部分确定。
 - 学习系统的基本结构
-![image](assets/assets/artificial-intelligence-intro-055/image-003.png)
+![image](assets/artificial-intelligence-intro-055/image-003.png)
 
 <!-- slide: 9 -->
 

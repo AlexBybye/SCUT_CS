@@ -18,6 +18,8 @@ locator_type: page
 
 一、填空题（共5 小题，每小题3 分，共15 分）
 
+<!-- question: engineering-mathematical-analysis-1-021-Q2 -->
+
 １. 函数极限
 
 
@@ -58,6 +60,8 @@ f x
 G
 
 ；
+
+<!-- question: engineering-mathematical-analysis-1-021-Q3 -->
 
 ２. 设
 0
@@ -112,6 +116,8 @@ b
 
 
 ；
+
+<!-- question: engineering-mathematical-analysis-1-021-Q4 -->
 
 ３. 设
 2
@@ -171,6 +177,8 @@ x
 x
 
 
+<!-- question: engineering-mathematical-analysis-1-021-Q5 -->
+
 ４. 设
 
 
@@ -228,6 +236,8 @@ ln 2
 
 .
 
+<!-- question: engineering-mathematical-analysis-1-021-Q6 -->
+
 ５. 反常积分
 
 
@@ -238,7 +248,7 @@ ln 2
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-021-Q2 -->
+<!-- question: engineering-mathematical-analysis-1-021-Q7 -->
 
 二、计算下列各题（共3 小题，每小题8 分，共24 分）
 
@@ -778,9 +788,11 @@ a
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-021-Q3 -->
+<!-- question: engineering-mathematical-analysis-1-021-Q8 -->
 
 三、解答下列各题（共4 小题，每小题8 分，共32 分）
+
+<!-- question: engineering-mathematical-analysis-1-021-Q9 -->
 
 1. 设
 1
@@ -970,6 +982,8 @@ nx
 nx
 收敛。
 
+<!-- question: engineering-mathematical-analysis-1-021-Q10 -->
+
 （3）设lim
 =
 n
@@ -1027,6 +1041,8 @@ x
 
 2
 d y
+
+<!-- question: engineering-mathematical-analysis-1-021-Q11 -->
 
 2. 设曲线
 
@@ -1162,6 +1178,8 @@ xe
 
 
 
+<!-- question: engineering-mathematical-analysis-1-021-Q12 -->
+
 3. 求函数
 
 2
@@ -1278,6 +1296,8 @@ x
 0
 x 
 ……2 分
+
+<!-- question: engineering-mathematical-analysis-1-021-Q13 -->
 
 （3）列表如下
 x
@@ -1487,7 +1507,7 @@ a
 
 ……8 分
 
-<!-- question: engineering-mathematical-analysis-1-021-Q4 -->
+<!-- question: engineering-mathematical-analysis-1-021-Q14 -->
 
 四、证明题（共2 小题，每小题10 分，共20 分）
 
@@ -1789,6 +1809,8 @@ x x
 
 
 
+<!-- question: engineering-mathematical-analysis-1-021-Q15 -->
+
 （2）利用Lagrange 中值定理，有
 
 
@@ -1866,6 +1888,8 @@ x
 
 ……6 分
 
+<!-- question: engineering-mathematical-analysis-1-021-Q16 -->
+
 （3）取=
 0
 
@@ -1940,7 +1964,7 @@ x
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-021-Q5 -->
+<!-- question: engineering-mathematical-analysis-1-021-Q17 -->
 
 五、应用题（本题9 分）
 
@@ -2045,6 +2069,8 @@ x
 
 
 
+
+<!-- question: engineering-mathematical-analysis-1-021-Q18 -->
 
 （2）记
 

@@ -98,9 +98,9 @@ September 24, 2019
 
 Lecture 7 - 4
 
-![image](assets/assets/artificial-intelligence-intro-022/image-001.png)
+![image](assets/artificial-intelligence-intro-022/image-001.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-002.png)
+![image](assets/artificial-intelligence-intro-022/image-002.png)
 
 <!-- page: 5 -->
 
@@ -151,11 +151,11 @@ Justin Johnson
 September 24, 2019
 Lecture 7 - 5
 
-![image](assets/assets/artificial-intelligence-intro-022/image-003.png)
+![image](assets/artificial-intelligence-intro-022/image-003.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-004.png)
+![image](assets/artificial-intelligence-intro-022/image-004.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-005.png)
+![image](assets/artificial-intelligence-intro-022/image-005.png)
 
 <!-- page: 6 -->
 
@@ -210,11 +210,11 @@ Justin Johnson
 September 24, 2019
 Lecture 7 - 6
 
-![image](assets/assets/artificial-intelligence-intro-022/image-006.png)
+![image](assets/artificial-intelligence-intro-022/image-006.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-007.png)
+![image](assets/artificial-intelligence-intro-022/image-007.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-008.png)
+![image](assets/artificial-intelligence-intro-022/image-008.png)
 
 <!-- page: 7 -->
 
@@ -232,7 +232,7 @@ September 24, 2019
 
 Lecture 7 - 7
 
-![image](assets/assets/artificial-intelligence-intro-022/image-009.png)
+![image](assets/artificial-intelligence-intro-022/image-009.png)
 
 <!-- page: 8 -->
 
@@ -255,11 +255,11 @@ September 24, 2019
 
 Lecture 7 - 8
 
-![image](assets/assets/artificial-intelligence-intro-022/image-010.png)
+![image](assets/artificial-intelligence-intro-022/image-010.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-011.png)
+![image](assets/artificial-intelligence-intro-022/image-011.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-012.png)
+![image](assets/artificial-intelligence-intro-022/image-012.png)
 
 <!-- page: 9 -->
 
@@ -282,11 +282,11 @@ September 24, 2019
 
 Lecture 7 - 9
 
-![image](assets/assets/artificial-intelligence-intro-022/image-013.png)
+![image](assets/artificial-intelligence-intro-022/image-013.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-014.png)
+![image](assets/artificial-intelligence-intro-022/image-014.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-015.png)
+![image](assets/artificial-intelligence-intro-022/image-015.png)
 
 <!-- page: 10 -->
 
@@ -446,7 +446,7 @@ September 24, 2019
 
 Lecture 7 - 15
 
-![image](assets/assets/artificial-intelligence-intro-022/image-016.png)
+![image](assets/artificial-intelligence-intro-022/image-016.png)
 
 <!-- page: 16 -->
 
@@ -922,9 +922,9 @@ Justin Johnson
 September 24, 2019
 Lecture 7 - 27
 
-![image](assets/assets/artificial-intelligence-intro-022/image-017.png)
+![image](assets/artificial-intelligence-intro-022/image-017.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-018.png)
+![image](assets/artificial-intelligence-intro-022/image-018.png)
 
 <!-- page: 28 -->
 
@@ -960,7 +960,7 @@ Justin Johnson
 September 24, 2019
 Lecture 7 - 28
 
-![image](assets/assets/artificial-intelligence-intro-022/image-019.png)
+![image](assets/artificial-intelligence-intro-022/image-019.png)
 
 <!-- page: 29 -->
 
@@ -999,7 +999,7 @@ Justin Johnson
 September 24, 2019
 Lecture 7 - 29
 
-![image](assets/assets/artificial-intelligence-intro-022/image-020.png)
+![image](assets/artificial-intelligence-intro-022/image-020.png)
 
 <!-- page: 30 -->
 
@@ -1701,7 +1701,7 @@ Justin Johnson
 September 24, 2019
 Lecture 7 - 60
 
-![image](assets/assets/artificial-intelligence-intro-022/image-021.png)
+![image](assets/artificial-intelligence-intro-022/image-021.png)
 
 <!-- page: 61 -->
 
@@ -1711,11 +1711,11 @@ Justin Johnson
 September 24, 2019
 Lecture 7 - 61
 
-![image](assets/assets/artificial-intelligence-intro-022/image-022.png)
+![image](assets/artificial-intelligence-intro-022/image-022.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-023.png)
+![image](assets/artificial-intelligence-intro-022/image-023.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-024.png)
+![image](assets/artificial-intelligence-intro-022/image-024.png)
 
 <!-- page: 62 -->
 
@@ -1738,11 +1738,11 @@ September 24, 2019
 
 Lecture 7 - 62
 
-![image](assets/assets/artificial-intelligence-intro-022/image-025.png)
+![image](assets/artificial-intelligence-intro-022/image-025.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-026.png)
+![image](assets/artificial-intelligence-intro-022/image-026.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-027.png)
+![image](assets/artificial-intelligence-intro-022/image-027.png)
 
 <!-- page: 63 -->
 
@@ -1758,7 +1758,7 @@ September 24, 2019
 
 Lecture 7 - 63
 
-![image](assets/assets/artificial-intelligence-intro-022/image-028.png)
+![image](assets/artificial-intelligence-intro-022/image-028.png)
 
 <!-- page: 64 -->
 
@@ -1807,7 +1807,7 @@ September 24, 2019
 
 Lecture 7 - 64
 
-![image](assets/assets/artificial-intelligence-intro-022/image-029.png)
+![image](assets/artificial-intelligence-intro-022/image-029.png)
 
 <!-- page: 65 -->
 
@@ -1858,11 +1858,11 @@ September 24, 2019
 
 Lecture 7 - 66
 
-![image](assets/assets/artificial-intelligence-intro-022/image-030.png)
+![image](assets/artificial-intelligence-intro-022/image-030.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-031.png)
+![image](assets/artificial-intelligence-intro-022/image-031.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-032.png)
+![image](assets/artificial-intelligence-intro-022/image-032.png)
 
 <!-- page: 67 -->
 
@@ -1879,7 +1879,7 @@ September 24, 2019
 
 Lecture 7 - 67
 
-![image](assets/assets/artificial-intelligence-intro-022/image-033.png)
+![image](assets/artificial-intelligence-intro-022/image-033.png)
 
 <!-- page: 68 -->
 
@@ -1933,7 +1933,7 @@ September 24, 2019
 
 Lecture 7 - 68
 
-![image](assets/assets/artificial-intelligence-intro-022/image-034.png)
+![image](assets/artificial-intelligence-intro-022/image-034.png)
 
 <!-- page: 69 -->
 
@@ -1987,7 +1987,7 @@ September 24, 2019
 
 Lecture 7 - 69
 
-![image](assets/assets/artificial-intelligence-intro-022/image-035.png)
+![image](assets/artificial-intelligence-intro-022/image-035.png)
 
 <!-- page: 70 -->
 
@@ -2041,7 +2041,7 @@ September 24, 2019
 
 Lecture 7 - 70
 
-![image](assets/assets/artificial-intelligence-intro-022/image-036.png)
+![image](assets/artificial-intelligence-intro-022/image-036.png)
 
 <!-- page: 71 -->
 
@@ -2095,7 +2095,7 @@ September 24, 2019
 
 Lecture 7 - 71
 
-![image](assets/assets/artificial-intelligence-intro-022/image-037.png)
+![image](assets/artificial-intelligence-intro-022/image-037.png)
 
 <!-- page: 72 -->
 
@@ -2149,7 +2149,7 @@ September 24, 2019
 
 Lecture 7 - 72
 
-![image](assets/assets/artificial-intelligence-intro-022/image-038.png)
+![image](assets/artificial-intelligence-intro-022/image-038.png)
 
 <!-- page: 73 -->
 
@@ -2203,7 +2203,7 @@ September 24, 2019
 
 Lecture 7 - 73
 
-![image](assets/assets/artificial-intelligence-intro-022/image-039.png)
+![image](assets/artificial-intelligence-intro-022/image-039.png)
 
 <!-- page: 74 -->
 
@@ -2257,7 +2257,7 @@ September 24, 2019
 
 Lecture 7 - 74
 
-![image](assets/assets/artificial-intelligence-intro-022/image-040.png)
+![image](assets/artificial-intelligence-intro-022/image-040.png)
 
 <!-- page: 75 -->
 
@@ -2311,7 +2311,7 @@ September 24, 2019
 
 Lecture 7 - 75
 
-![image](assets/assets/artificial-intelligence-intro-022/image-041.png)
+![image](assets/artificial-intelligence-intro-022/image-041.png)
 
 <!-- page: 76 -->
 
@@ -2373,7 +2373,7 @@ September 24, 2019
 
 Lecture 7 - 76
 
-![image](assets/assets/artificial-intelligence-intro-022/image-042.png)
+![image](assets/artificial-intelligence-intro-022/image-042.png)
 
 <!-- page: 77 -->
 
@@ -2405,11 +2405,11 @@ September 24, 2019
 
 Lecture 7 - 78
 
-![image](assets/assets/artificial-intelligence-intro-022/image-043.png)
+![image](assets/artificial-intelligence-intro-022/image-043.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-044.png)
+![image](assets/artificial-intelligence-intro-022/image-044.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-045.png)
+![image](assets/artificial-intelligence-intro-022/image-045.png)
 
 <!-- page: 79 -->
 
@@ -2433,7 +2433,7 @@ September 24, 2019
 
 Lecture 7 - 79
 
-![image](assets/assets/artificial-intelligence-intro-022/image-046.png)
+![image](assets/artificial-intelligence-intro-022/image-046.png)
 
 <!-- page: 80 -->
 
@@ -2461,7 +2461,7 @@ September 24, 2019
 
 Lecture 7 - 80
 
-![image](assets/assets/artificial-intelligence-intro-022/image-047.png)
+![image](assets/artificial-intelligence-intro-022/image-047.png)
 
 <!-- page: 81 -->
 
@@ -2491,7 +2491,7 @@ September 24, 2019
 
 Lecture 7 - 81
 
-![image](assets/assets/artificial-intelligence-intro-022/image-048.png)
+![image](assets/artificial-intelligence-intro-022/image-048.png)
 
 <!-- page: 82 -->
 
@@ -2523,7 +2523,7 @@ September 24, 2019
 
 Lecture 7 - 82
 
-![image](assets/assets/artificial-intelligence-intro-022/image-049.png)
+![image](assets/artificial-intelligence-intro-022/image-049.png)
 
 <!-- page: 83 -->
 
@@ -2558,7 +2558,7 @@ September 24, 2019
 
 Lecture 7 - 83
 
-![image](assets/assets/artificial-intelligence-intro-022/image-050.png)
+![image](assets/artificial-intelligence-intro-022/image-050.png)
 
 <!-- page: 84 -->
 
@@ -2598,7 +2598,7 @@ September 24, 2019
 
 Lecture 7 - 84
 
-![image](assets/assets/artificial-intelligence-intro-022/image-051.png)
+![image](assets/artificial-intelligence-intro-022/image-051.png)
 
 <!-- page: 85 -->
 
@@ -2638,7 +2638,7 @@ September 24, 2019
 
 Lecture 7 - 85
 
-![image](assets/assets/artificial-intelligence-intro-022/image-052.png)
+![image](assets/artificial-intelligence-intro-022/image-052.png)
 
 <!-- page: 86 -->
 
@@ -2699,7 +2699,7 @@ September 24, 2019
 
 Lecture 7 - 87
 
-![image](assets/assets/artificial-intelligence-intro-022/image-053.png)
+![image](assets/artificial-intelligence-intro-022/image-053.png)
 
 <!-- page: 88 -->
 
@@ -2741,7 +2741,7 @@ September 24, 2019
 
 Lecture 7 - 88
 
-![image](assets/assets/artificial-intelligence-intro-022/image-054.png)
+![image](assets/artificial-intelligence-intro-022/image-054.png)
 
 <!-- page: 89 -->
 
@@ -2859,7 +2859,7 @@ September 24, 2019
 
 Lecture 7 - 92
 
-![image](assets/assets/artificial-intelligence-intro-022/image-055.png)
+![image](assets/artificial-intelligence-intro-022/image-055.png)
 
 <!-- page: 93 -->
 
@@ -2872,7 +2872,7 @@ September 24, 2019
 
 Lecture 7 - 93
 
-![image](assets/assets/artificial-intelligence-intro-022/image-056.png)
+![image](assets/artificial-intelligence-intro-022/image-056.png)
 
 <!-- page: 94 -->
 
@@ -2895,11 +2895,11 @@ September 24, 2019
 
 Lecture 7 - 94
 
-![image](assets/assets/artificial-intelligence-intro-022/image-057.png)
+![image](assets/artificial-intelligence-intro-022/image-057.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-058.png)
+![image](assets/artificial-intelligence-intro-022/image-058.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-059.png)
+![image](assets/artificial-intelligence-intro-022/image-059.png)
 
 <!-- page: 95 -->
 
@@ -2927,11 +2927,11 @@ September 24, 2019
 
 Lecture 7 - 95
 
-![image](assets/assets/artificial-intelligence-intro-022/image-060.png)
+![image](assets/artificial-intelligence-intro-022/image-060.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-061.png)
+![image](assets/artificial-intelligence-intro-022/image-061.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-062.png)
+![image](assets/artificial-intelligence-intro-022/image-062.png)
 
 <!-- page: 96 -->
 
@@ -2953,11 +2953,11 @@ Justin Johnson
 September 24, 2019
 Lecture 7 - 96
 
-![image](assets/assets/artificial-intelligence-intro-022/image-063.png)
+![image](assets/artificial-intelligence-intro-022/image-063.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-064.png)
+![image](assets/artificial-intelligence-intro-022/image-064.png)
 
-![image](assets/assets/artificial-intelligence-intro-022/image-065.png)
+![image](assets/artificial-intelligence-intro-022/image-065.png)
 
 <!-- page: 97 -->
 
@@ -2969,7 +2969,7 @@ Justin Johnson
 September 24, 2019
 Lecture 7 - 97
 
-![image](assets/assets/artificial-intelligence-intro-022/image-066.png)
+![image](assets/artificial-intelligence-intro-022/image-066.png)
 
 <!-- page: 98 -->
 

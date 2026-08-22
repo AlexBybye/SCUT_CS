@@ -10,4 +10,4 @@ locator_type: none
 
 # 正则表达式
 
-![page-001.png](assets/assets/compiler-principles-043/page-001.png)
+![page-001.png](assets/compiler-principles-043/page-001.png)

@@ -20,8 +20,8 @@ locator_type: slide
 
 <!-- slide: 2 -->
 
-![image](assets/assets/embedded-systems-010/image-001.jpg)
-![image](assets/assets/embedded-systems-010/image-002.png)
+![image](assets/embedded-systems-010/image-001.jpg)
+![image](assets/embedded-systems-010/image-002.png)
 
 <!-- slide: 3 -->
 
@@ -40,8 +40,8 @@ locator_type: slide
 <!-- slide: 5 -->
 
 - 中断向量表
-![image](assets/assets/embedded-systems-010/image-003.png)
-![image](assets/assets/embedded-systems-010/image-004.png)
+![image](assets/embedded-systems-010/image-003.png)
+![image](assets/embedded-systems-010/image-004.png)
 
 > 备注：有三个异常：复位、NMI、硬件失效（fault）的优先级是负的，是最高的，是软件不能编程的，比其他任何异常都高。
 再来看其他的异常及中断，随着编号的增大而优先级降低，但它们的优先级都是可以编程的，软件优先级数字越大优先级越低。
@@ -51,19 +51,19 @@ locator_type: slide
 - 6.2嵌套向量中断控制器
 - STM32中有一个强大而方便的嵌套向量中断控制器(Nested Vectored Interrupt Controller，NVIC)，它是属于Cortex-M3内核的器件，内核异常和外部中断都由它来处理。
 - 6.2.1 NVIC寄存器
-![image](assets/assets/embedded-systems-010/image-005.png)
+![image](assets/embedded-systems-010/image-005.png)
 - 其中NVIC寄存器表如下：
 
 <!-- slide: 7 -->
 
 - 6.2.2系统控制寄存器（SCB）
 - 系统控制寄存器组（SCB）也是和Cortex-M3内核相关的寄存器，并且在中断配置时用到。
-![image](assets/assets/embedded-systems-010/image-006.png)
+![image](assets/embedded-systems-010/image-006.png)
 
 <!-- slide: 8 -->
 
 - 6.2.3中断和异常处理
-![image](assets/assets/embedded-systems-010/image-007.png)
+![image](assets/embedded-systems-010/image-007.png)
 - TM32芯片的中断和异常是分别处理的，其内部处理结构也是分开的
 
 > 备注：中断挂起设置寄存器（ISPR），作用是挂起暂停正在进行的中断，即ISPR寄存器相应位设置为1，而执行更高级别的中断；随后可以通过中断清除挂起寄存器（ICPR）来解除被挂起的中断，即ICPR寄存器相应位设置为1。中断使能设置寄存器（ISER），对相应的中断进行使能使其可以中断响应，即ISER寄存器相应位设置为1；如果不让相应的中断进行响应，则通过中断清除使能寄存器（ICER，类似“屏蔽寄存器”）对相应的中断进行屏蔽使其不能中断响应，即ICER寄存器相应位设置为1。中断优先级寄存器（IPR）用来设置中断的优先级，具体设置在后面内容会详细讲解。中断激活状态位寄存器（IABR）类似中断标志寄存器，若IABR寄存器某位为1，则表示该位所对应的中断正在被执行，这是一个只读寄存器，通过此寄存器可知道当前正在执行的中断，在中断执行完成后，该位由硬件自动清零。
@@ -81,7 +81,7 @@ locator_type: slide
 <!-- slide: 10 -->
 
 - STM32 目前支持的中断共为16级，用4位表示：
-![image](assets/assets/embedded-systems-010/image-008.png)
+![image](assets/embedded-systems-010/image-008.png)
 - 可以通过调用STM32的固件库中的函数NVIC_PriorityGroupConfig()选择使用哪种优先级分组方式，这个函数的参数有下列5种：
 - NVIC_PriorityGroup_0 => 选择第0组     NVIC_PriorityGroup_1 => 选择第1组     NVIC_PriorityGroup_2 => 选择第2组     NVIC_PriorityGroup_3 => 选择第3组     NVIC_PriorityGroup_4 => 选择第4组
 - 可以由void NVIC_PriorityGroupConfig(u32 NVIC_PriorityGroup)库函数进行中断分组设置。
@@ -94,10 +94,10 @@ locator_type: slide
 <!-- slide: 12 -->
 
 - 在STM32F103XX处理器中，外部中断/事件控制器由用于产生事件/中断请求的19个边沿检测器组成，其中16个中断通道EXTI0-EXTI15对应GPIOx_Pin0-GPIOx_Pin15，另外3个是EXTI16连接PVD（Programmable Votage Detector 可编程电压监测器，作用是监视供电电压）输出，EXTI17连接到RTC（Real Time Clock，实时时钟）和EXTI18连接到USB唤醒事件。
-![image](assets/assets/embedded-systems-010/image-009.png)
-![image](assets/assets/embedded-systems-010/image-010.png)
-![image](assets/assets/embedded-systems-010/image-011.png)
-![image](assets/assets/embedded-systems-010/image-012.png)
+![image](assets/embedded-systems-010/image-009.png)
+![image](assets/embedded-systems-010/image-010.png)
+![image](assets/embedded-systems-010/image-011.png)
+![image](assets/embedded-systems-010/image-012.png)
 - 6.3 EXTI外部中断
 - 6.3.1 EXTI硬件结构
 
@@ -109,14 +109,14 @@ locator_type: slide
 
 <!-- slide: 13 -->
 
-![image](assets/assets/embedded-systems-010/image-013.png)
+![image](assets/embedded-systems-010/image-013.png)
 - EXTI硬件结构如图所示，给出了STM32处理器中某一条外部中断线或外部事件线的信号结构图，图中虚线标出了外部中断信号的传输路径。外部中断/事件信号从芯片引脚1输入，经过边沿检测电路2后，通过或门3进入中断“挂起请求寄存器”，最后经过与门4将外部信号输出到NVIC中断控制器。
 
 <!-- slide: 14 -->
 
 - 6.3.2 EXTI中断操作
 - STM32外围接口直接通过中断请求通道（IRQ Channel）与NVIC接口关联，而GPIO外部中断（EXTI）则要通过控制器EXTI与NVIC接口。GPIO与EXTI之间的接口称为EXTI line；而EXTI与NVIC之间则为中断请求通道。
-![image](assets/assets/embedded-systems-010/image-014.png)
+![image](assets/embedded-systems-010/image-014.png)
 
 <!-- slide: 15 -->
 
@@ -133,26 +133,26 @@ locator_type: slide
 
 - 6.4 EXTI中断应用实例
 - 利用外部中断对按钮进行检测，在检测到按钮按下时，控制LED信号反转一次。
-![image](assets/assets/embedded-systems-010/image-015.gif)
+![image](assets/embedded-systems-010/image-015.gif)
 
 <!-- slide: 17 -->
 
 - 首先在STM32CubeMX软件中设置PA0口为外部中断输入，PB0为输出，时钟配置和前面的例子一样，并在NVIC中使能EXTI line0，4位抢占型优先级，优先级为1；0位响应性优先级，优先级为0。
-![image](assets/assets/embedded-systems-010/image-016.png)
+![image](assets/embedded-systems-010/image-016.png)
 
 <!-- slide: 18 -->
 
-![image](assets/assets/embedded-systems-010/image-017.gif)
+![image](assets/embedded-systems-010/image-017.gif)
 
 <!-- slide: 19 -->
 
 - 基于HAL库生成实现对外部中断引脚的初始化程序如下：
-![image](assets/assets/embedded-systems-010/image-018.png)
+![image](assets/embedded-systems-010/image-018.png)
 
 <!-- slide: 20 -->
 
 - 并在生成的main.c程序中添加中断处理函数如下：
-![image](assets/assets/embedded-systems-010/image-019.png)
+![image](assets/embedded-systems-010/image-019.png)
 
 <!-- slide: 21 -->
 

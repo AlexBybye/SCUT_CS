@@ -96,7 +96,7 @@ R
 
 Created with Scanner Mini
 
-![image](assets/assets/electrical-engineering-003/image-001.jpeg)
+![image](assets/electrical-engineering-003/image-001.jpeg)
 
 <!-- page: 2 -->
 
@@ -195,7 +195,7 @@ E3A
 
 Created with Scanner Mini
 
-![image](assets/assets/electrical-engineering-003/image-002.jpeg)
+![image](assets/electrical-engineering-003/image-002.jpeg)
 
 <!-- page: 3 -->
 
@@ -264,7 +264,7 @@ R
 
 Created with Scanner Mini
 
-![image](assets/assets/electrical-engineering-003/image-003.jpeg)
+![image](assets/electrical-engineering-003/image-003.jpeg)
 
 <!-- page: 4 -->
 
@@ -318,7 +318,7 @@ TR)
 
 Created with Scanner Mini
 
-![image](assets/assets/electrical-engineering-003/image-004.jpeg)
+![image](assets/electrical-engineering-003/image-004.jpeg)
 
 <!-- page: 5 -->
 
@@ -419,4 +419,4 @@ R)A#5
 
 Created with Scanner Mini
 
-![image](assets/assets/electrical-engineering-003/image-005.jpeg)
+![image](assets/electrical-engineering-003/image-005.jpeg)

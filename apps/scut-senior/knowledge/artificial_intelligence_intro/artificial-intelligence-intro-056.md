@@ -16,8 +16,8 @@ locator_type: slide
 
 - 课件采用鲍军鹏 博士的课件版本：2.0
 - 2010年1月
-![image](assets/assets/artificial-intelligence-intro-056/image-001.png)
-![image](assets/assets/artificial-intelligence-intro-056/image-002.png)
+![image](assets/artificial-intelligence-intro-056/image-001.png)
+![image](assets/artificial-intelligence-intro-056/image-002.png)
 - 主讲：文贵华
 - crghwen@scut.edu.cn
 
@@ -223,7 +223,7 @@ locator_type: slide
 <!-- slide: 28 -->
 
 - 假设一个实例有10个属性，每个属性有3个可能取值，而目标集合中有5个候选目标。那么P(a1,a2,…,an|hi)项就有     个。
-![image](assets/assets/artificial-intelligence-intro-056/image-003.png)
+![image](assets/artificial-intelligence-intro-056/image-003.png)
 - 不适合于高维数据！
 
 <!-- slide: 29 -->
@@ -244,13 +244,13 @@ locator_type: slide
 
 - 将上页的式子带入上面求    的公式中，就得到朴素贝叶斯分类器所用的方法：
 - 其中  表示朴素贝叶斯分类器输出的目标值。
-![image](assets/assets/artificial-intelligence-intro-056/image-004.png)
+![image](assets/artificial-intelligence-intro-056/image-004.png)
 
 <!-- slide: 32 -->
 
 - 仍假设一个实例有10个属性，每个属性有3个可能取值，而目标集合中有5个候选目标。朴素贝叶斯分类器中需要从训练数据中估计的P(aj|hi)项的数量是        。
 - 5×3×10 <<     ！
-![image](assets/assets/artificial-intelligence-intro-056/image-005.png)
+![image](assets/artificial-intelligence-intro-056/image-005.png)
 - 5×3×10
 
 <!-- slide: 33 -->

@@ -14,16 +14,26 @@ locator_type: heading
 
 ### 简答题
 
+<!-- question: artificial-intelligence-intro-045-Q1 -->
+
 1. 请描述人工智能，机器学习，神经网络的区别与联系。
+<!-- question: artificial-intelligence-intro-045-Q2 -->
+
 2. 符号主义与连接主义的主要区别？
+<!-- question: artificial-intelligence-intro-045-Q3 -->
+
 3. 简述物理符号系统和人工神经网络系统的差别。
 
 ### 选择题
+
+<!-- question: artificial-intelligence-intro-045-Q4 -->
 
 1. 下列哪个不是人工智能的研究领域（ ）  
     A. 机器证明 B. 模式识别 C. 人工生命 D. 编译原理
 2. 要想让机器具有智能，必须让机器具有知识。因此，在人工智能中有一个研究领域，主要研究计算机如何自动获取知识和技能，实现自我完善，这门研究分支学科叫（ ）。  
     A. 专家系统 B. 机器学习 C. 神经网络 D. 模式识别
+<!-- question: artificial-intelligence-intro-045-Q5 -->
+
 3. 下面对人类智能和机器智能的描述哪一句是不正确的（ ）  
     A. 人类智能能够自我学习，机器智能大多是依靠数据和规则驱动  
     B. 人类智能具有自适应特点，机器智能则大多是 “依葫芦画瓢”  
@@ -34,25 +44,45 @@ locator_type: heading
 
 ### 简答题
 
+<!-- question: artificial-intelligence-intro-045-Q6 -->
+
 1. 知识的表示方法有哪些？各自具有怎样的表示形式？
+<!-- question: artificial-intelligence-intro-045-Q7 -->
+
 2. 请简述逻辑表示法的优缺点。
+<!-- question: artificial-intelligence-intro-045-Q8 -->
+
 3. 产生式系统中，推理机的推理方式有哪几种？请分别解释说明。
 
 ### 选择题
 
+<!-- question: artificial-intelligence-intro-045-Q9 -->
+
 1. 命题是可以判断真假的（ ）  
     A. 祈使句 B. 疑问句 C. 感叹句 D. 陈述句
+<!-- question: artificial-intelligence-intro-045-Q10 -->
+
 2. A (AB) A 称为（ ）  
     A. 结合律 B. 分配律 C. 吸收律 D. 摩根律
+<!-- question: artificial-intelligence-intro-045-Q11 -->
+
 3. 以下哪个是命题？（ ）  
     A. 请勤洗手！ B. 小明从健身房回来很可能肌肉酸痛。  
     C. 你记得去过哪些地方了吗？ D. 洗牙会造成牙齿损伤。
+<!-- question: artificial-intelligence-intro-045-Q12 -->
+
 4. ～ (p∨q) <=> ～ p Λ ～ q 称为（ ）  
     A. 结合律 B. 分配律 C. 吸收律 D. 摩根律
+<!-- question: artificial-intelligence-intro-045-Q13 -->
+
 5. 下列那一项不是知识表示方法 ( )  
     A. 谓词逻辑 B. 状态空间法 C. 框架表示法 D. 关系式表示法
+<!-- question: artificial-intelligence-intro-045-Q14 -->
+
 6. （ ）以结构化的形式描述客观世界中概念、实体及其之间的关系，已经成为互联网知识驱动的智能应用的基础设施。  
     A. 神经网络 B. 知识图谱 C. 一阶谓词逻辑 D. 产生式表示
+<!-- question: artificial-intelligence-intro-045-Q15 -->
+
 7. 语义网络表达知识时，有向弧 AKO 链、ISA 链是用来表达节点的知识 ( )  
     A. 无悖性 B. 可扩充性 C. 继承性 D. 聚集关系
 
@@ -60,9 +90,13 @@ locator_type: heading
 
 ### 简答题
 
+<!-- question: artificial-intelligence-intro-045-Q16 -->
+
 1. 简述反演法求取某个问题答案的过程。
 
 ### 分析计算题
+
+<!-- question: artificial-intelligence-intro-045-Q17 -->
 
 1. 设已知：所有的自然数都是整数，某些自然数是偶数。请用归结原理证明：某些整数是偶数。
 2. 假设任何通过计算机考试并获奖的人都是快乐的，任何肯学习或幸运的人都可以通过所有考试，小张不肯学习但他是幸运的，任何幸运的人都能获奖。请用谓词逻辑归结推理证明：小张是快乐的。
@@ -70,21 +104,35 @@ locator_type: heading
 
 ### 选择题
 
+<!-- question: artificial-intelligence-intro-045-Q18 -->
+
 1. 下列中哪个不能被合一（ ）  
     A. P(a, b), P(x, y) B. P(f(x), b), P(y, z)  
     C. P(f(x), y), P(y, f(b)) D. P(f(y), y, x), P(x, f(a), f(b))
+<!-- question: artificial-intelligence-intro-045-Q19 -->
+
 2. 子句 PQ 、 QR 、P，经过归结后，得到（ ）  
     A. Q B. R C. P∨R D. P∨Q∨R
+<!-- question: artificial-intelligence-intro-045-Q20 -->
+
 3. 下列推理方法，哪些是谓词逻辑的推理方法？（ ）
+<!-- question: artificial-intelligence-intro-045-Q21 -->
+
     1. 自然演绎推理 2）归结演绎推理 3）概率推理 4) 贝叶斯网络推理  
         A. 1) 2) B. 1) 3) C. 2) 4) D. 3) 4)
+<!-- question: artificial-intelligence-intro-045-Q22 -->
+
 4. 下列描述不正确的是（ ）  
     A. 谓词逻辑的任意公式都可以化为与之等价的前束范式  
     B. 谓词逻辑公式的前束范式不唯一  
     C. 谓词公式 G 的 Skolem 标准型同 G 等值  
     D. 任意一个谓词公式 G，均可通过 Skolem 标准型建立起一个与之对应的子句集
+<!-- question: artificial-intelligence-intro-045-Q23 -->
+
 5. 设有代换：q={f (y)/x,z/y},p={a/x,b/y,y/z}， 则 q○p=（ ）  
     A. {f(b)/x,y/z} B. {f(b)/x,z/y} C. {f(y)/x, y/z} D. {f(b)/x,z/b}
+<!-- question: artificial-intelligence-intro-045-Q24 -->
+
 6. 下列描述中，错误的描述是（ ）  
     A. 归结原理是基于演绎法 B. 基于数据驱动的机器学习方法是归纳学习  
     C. 随机性引起知识的不确定性 D. 模糊性引起知识的不确定性
@@ -93,8 +141,14 @@ locator_type: heading
 
 ### 简答题
 
+<!-- question: artificial-intelligence-intro-045-Q25 -->
+
 1. 不确定性推理的 “不确定性” 主要表现在哪些方面？
+<!-- question: artificial-intelligence-intro-045-Q26 -->
+
 2. 什么是不确定性推理？不确定性推理中需要解决的基本问题有哪些？
+<!-- question: artificial-intelligence-intro-045-Q27 -->
+
 3. 什么是贝叶斯定理？它解决了什么问题？它刻画的是因果关系还是相关关系？
 
 ### 分析计算题
@@ -104,18 +158,28 @@ locator_type: heading
 
 ### 选择题
 
+<!-- question: artificial-intelligence-intro-045-Q28 -->
+
 1. 东北人是高个子，这个描述是 ( )  
     A. 模糊的 B. 不完全的 C. 概率的 D. 必然的
+<!-- question: artificial-intelligence-intro-045-Q29 -->
+
 2. 在不确定性推理中，对于初始证据，其值由用户给出，对于推理所得的证据，其值由（ ）得到。  
     A. 不确定性的匹配算法计算得到 B. 不确定性的阈值选择算法得到  
     C. 不确定性的传递算法计算得到 D. 不确定性的合成算法计算得到
+<!-- question: artificial-intelligence-intro-045-Q30 -->
+
 3. 下列数字哪个最模糊 ( )  
     A. 0.8 B. 0.5 C. 0 D. 1
+<!-- question: artificial-intelligence-intro-045-Q31 -->
+
 4. 下列描述（ ）是正确的  
     A. 知识具有一定的随机性，可以用模糊数学来刻画。  
     B. 高个子适合于打篮球体现了知识的不完全性。  
     C. 莲花清瘟对新冠病毒有一定的功效，体现了知识的模糊性。  
     D. 知识具有一定的随机性，可以用概率论来刻画。
+<!-- question: artificial-intelligence-intro-045-Q32 -->
+
 5. 假定 E 代表咳嗽，H 代表支气管炎，则下列论述中 ( ) 是正确的。  
     A. 通过统计直接计算 P (H|E)  
     B. 通过统计直接 P (E|H)，然后通过贝叶斯定理计算 P (H|E)  
@@ -123,6 +187,8 @@ locator_type: heading
     D. 通过统计直接 P (H|E)，然后通过贝叶斯定理计算 P (E|H)
 6. 设论域 U=V={a,b,c}，论域 W={x,y}。R1 是 U×V 上的模糊关系，R2 是 V×W 上的模糊关系，则 R1 与 R2 的合成是（ ）（模糊矩阵合成：取 max-min）  
     A. （选项略） B. （选项略） C. （选项略） D. （选项略）
+<!-- question: artificial-intelligence-intro-045-Q33 -->
+
 7. 下列对充分性度量 LS 和必要性度量 LN 取值的设置正确的是（ ）  
     A. LS=20 LN=1 B. LS=300 LN=0.001 C. LS=1 LN=20 D. LS=10 LN=300
 8. 假如 E 代表咳嗽，H 代表支气管炎，则 P (H|E) 表示在咳嗽的人群中患支气管炎的概率，下列描述中（ ）是正确的。  
@@ -130,6 +196,8 @@ locator_type: heading
     B. P (H|E) 比 P (E|H) 更容易通过统计获得  
     C. 在应用中，一般根据 Bayes 定理，从 P (E|H) 计算 P (H|E)  
     D. 在应用中，一般根据 Bayes 定理，从 P (H|E) 计算 P (E|H)
+<!-- question: artificial-intelligence-intro-045-Q34 -->
+
 9. 主观 Bayes 方法的特点包括（ ）  
     A. 计算是主观的，不依赖概率论 B. 证据是结论的充分条件但不是必要条件  
     C. 证据是结论的充分且必要条件 D. 不必满足 Bayes 定理的事件间独立性要求
@@ -140,10 +208,16 @@ locator_type: heading
 
 ### 简答题
 
+<!-- question: artificial-intelligence-intro-045-Q35 -->
+
 1. 回溯搜索策略和图搜索策略的区别是什么？
+<!-- question: artificial-intelligence-intro-045-Q36 -->
+
 2. 简述人工智能中的搜索与数据库中的检索差异。
 
 ### 分析计算题
+
+<!-- question: artificial-intelligence-intro-045-Q37 -->
 
 1. 对下图所示的博弈树，以优先生成左边结点的顺序来进行 α-β 剪支搜索，请在博弈树上给出何处发生剪支的标记。
 2. 已知图结构（节点旁括号内的数值为 h，有向边旁的数值为 g），请用 A 算法求解 s 到 G 最优路径的过程中，给出 OPEN 表中的节点及其 f 值的变化情况。
@@ -153,24 +227,36 @@ locator_type: heading
 
 ### 选择题
 
+<!-- question: artificial-intelligence-intro-045-Q38 -->
+
 1. 如果问题存在最优解，在单位耗散情况下，（ ）必然可以得到该最优解。  
     A. 广度优先搜索 B. 深度优先搜索 C. 有界深度优先搜索 D. 启发式搜索
+<!-- question: artificial-intelligence-intro-045-Q39 -->
+
 2. 在启发式搜索（有信息搜索）中，启发函数的作用是（ ）  
     A. 计算从当前节点到目标节点之间的最小代价值 B. 判断搜索算法的时间复杂度  
     C. 从当前节点出发来选择后续节点 D. 判断搜索算法的空间复杂度
+<!-- question: artificial-intelligence-intro-045-Q40 -->
+
 3. 下列陈述不正确的是（ ）  
     A. A_结束前，OPEN 表中必存在 f (n)≤f_(s) 的结点  
     B. OPEN 表上任一具有 f (n)≤f*(s) 的节点 n，最终都将被 A_选作扩展的节点  
     C. A_选作扩展的任一节点 n，有 f (n)≤f*(s)  
     D. 设对同一个问题定义了两个 A * 算法 A1 和 A2，若 A2 比 A1 有较多的启发信息，即对所有非目标节点有 h2 (n) > h1 (n)，则 A1 扩展的节点数≥A2 扩展的节点数
+<!-- question: artificial-intelligence-intro-045-Q41 -->
+
 4. 在与或图中，只要解决某个子问题就可解决其父辈问题的节点集合是指 ( )  
     A. 终叶节点 B. 或节点 C. 与节点 D. 后继节点
+<!-- question: artificial-intelligence-intro-045-Q42 -->
+
 5. 下列关于搜索的说法中错误的个数有（ ）个：  
     a) 状态空间图有三个要素：状态、连接、转移路线  
     b) 状态空间图中不是所有的状态都合理  
     c) 启发式搜索每一步都尽量选择最优的路线，在无穷次尝试中 “碰” 到答案  
     d) 启发式搜索将人解决问题的 “知识” 告诉机器  
     A. 0 B. 1 C. 2 D. 3
+<!-- question: artificial-intelligence-intro-045-Q43 -->
+
 6. 给定与或树，下列结论（ ）是正确的  
     A. 若 P2，P11，P31 是可解节点，则 P 是可解的  
     B. 若 P11，P31，P32 是可解节点，则 P 是可解的  
@@ -181,16 +267,32 @@ locator_type: heading
 
 ### 简答题
 
+<!-- question: artificial-intelligence-intro-045-Q44 -->
+
 1. 机器学习中的 “泛化” 能力是指什么？
+<!-- question: artificial-intelligence-intro-045-Q45 -->
+
 2. 请说出分类、聚类、回归的区别。
+<!-- question: artificial-intelligence-intro-045-Q46 -->
+
 3. 简述聚类跟分类的差异，给出 K-means 聚类的基本步骤。
+<!-- question: artificial-intelligence-intro-045-Q47 -->
+
 4. 简述梯度下降算法的步骤。
+<!-- question: artificial-intelligence-intro-045-Q48 -->
+
 5. 简述机器学习系统构成，机器学习的结果是可预测的吗？以此讨论人工智能带来的风险。
+<!-- question: artificial-intelligence-intro-045-Q49 -->
+
 6. 描述 DBSCAN 密度聚类的基本思想，并写出聚类过程。尝试分析其可能存在的缺点。
+<!-- question: artificial-intelligence-intro-045-Q50 -->
+
 7. 什么是交叉验证法？这个方法有什么用处？
 8. 请画出机器学习系统的基本构成，并说明系统中各环节的作用。基于数据驱动的机器学习是记住数据还是从中归纳出规律？简述理由。
 
 ### 分析计算
+
+<!-- question: artificial-intelligence-intro-045-Q51 -->
 
 1. 已知损失函数 L 对向量 y 的梯度为 [4,-1,5,9]，则 L 对向量 x 的梯度是多少？请写出计算过程。
 2. 训练数据集如下表，请用决策树算法或朴素贝叶斯算法预测样本 X=(Outlook=Rain, Temperature=cool, Humidity=high, Wind=weak) 的类标记，写出解答过程和结果。
@@ -198,44 +300,70 @@ locator_type: heading
 
 ### 选择题
 
+<!-- question: artificial-intelligence-intro-045-Q52 -->
+
 1. 假设有 N 个样本，最近邻分类器的训练复杂度是（ ）  
     A. O(1) B. O(N) C. O(logN) D. O(N²)
+<!-- question: artificial-intelligence-intro-045-Q53 -->
+
 2. 机器学习的本质是哪种学习方法 ( )  
     A. 解释学习 B. 归纳学习 C. 类比学习 D. 机械学习
+<!-- question: artificial-intelligence-intro-045-Q54 -->
+
 3. 在决策树中，数据最重要的属性是（ ）  
     A. 根结点上的属性 B. 叶结点上的属性 C. 树中间结点上的属性 D. 都不是
+<!-- question: artificial-intelligence-intro-045-Q55 -->
+
 4. 下面对回归和分类的描述不正确的是（ ）  
     A. 在回归分析中，学习得到一个函数将输入变量映射到连续输出空间  
     B. 回归是一种无监督学习、分类是一种有监督学习  
     C. 在分类模型中，学习得到一个函数将输入变量映射到离散输出空间  
     D. 两者均是学习输入变量和输出变量之间潜在关系模型
+<!-- question: artificial-intelligence-intro-045-Q56 -->
+
 5. 在构建一个决策树模型时，对某个属性分割节点，下列哪个属性对应的信息增益最大？（ ）  
     A. outlook B. humidity C. windy D. temperature
+<!-- question: artificial-intelligence-intro-045-Q57 -->
+
 6. 下面哪个算法不是分类算法？（ ）  
     A. 决策树 B. 卷积神经网络 C. K-means D. 朴素贝叶斯
+<!-- question: artificial-intelligence-intro-045-Q58 -->
+
 7. 简单地将数据对象集划分成不重叠的子集，使得每个数据对象恰在一个子集中，这种聚类类型称作（ ）  
     A. 层次聚类 B. 划分聚类 C. 非互斥聚类 D. 模糊聚类
+<!-- question: artificial-intelligence-intro-045-Q59 -->
+
 8. 以下哪项关于决策树的说法是错误的 ( )  
     A. 冗余属性不会对决策树的准确率造成不利的影响  
     B. 子树可能在决策树中重复多次  
     C. 决策树算法对于噪声的干扰非常敏感  
     D. 寻找最佳决策树是 NP 完全问题
+<!-- question: artificial-intelligence-intro-045-Q60 -->
+
 9. 下面哪个叙述是不正确的？（ ）  
     A. k-means 聚类算法的初始值对聚类结果有很大影响  
     B. DBSCAN 算法不需要输入聚类簇数 k  
     C. k-means 算法可以发现任意形状的聚类簇  
     D. DBSCAN 算法可以发现任意形状的聚类簇
+<!-- question: artificial-intelligence-intro-045-Q61 -->
+
 10. 简单地将数据对象集划分成不重叠的子集，使得每个数据对象恰在一个子集中，这种聚类类型称作（ ）  
     A. 层次聚类 B. 划分聚类 C. 非互斥聚类 D. 模糊聚类
+<!-- question: artificial-intelligence-intro-045-Q62 -->
+
 11. 以下哪项关于决策树的说法是错误的 ( )  
     A. 冗余属性不会对决策树的准确率造成不利的影响  
     B. 子树可能在决策树中重复多次  
     C. 决策树算法对于噪声的干扰非常敏感  
     D. 寻找最佳决策树是 NP 完全问题
+<!-- question: artificial-intelligence-intro-045-Q63 -->
+
 12. 关于 K 均值和 DBSCAN 的比较，以下说法错误的是 ( )  
     A. K 均值丢弃被它识别为噪声的对象，而 DBSCAN 一般聚类所有对象  
     B. K 均值使用簇的基于原型的概念，DBSCAN 使用基于密度的概念  
     C. K 均值很难处理非球形的簇和不同大小的簇，DBSCAN 可以处理不同大小和不同形状的簇
+<!-- question: artificial-intelligence-intro-045-Q64 -->
+
 13. 机器学习效果的评价指标中，指标（ ）是正确定义的（图中 a：真阳性，b：假阳性，c：真阴性，d：假阴性）  
     A. 精度（Precision）=|c|/|a+b| B. 召回率（Recall）=|a|/|a+d|  
     C. 召回率（Recall）=|b|/|a+d| D. 精度（Precision）=|a|/|b+d|
@@ -244,6 +372,8 @@ locator_type: heading
 
 ### 简答题
 
+<!-- question: artificial-intelligence-intro-045-Q65 -->
+
 1. BP 算法适用于什么神经网络结构？描述 BP 算法的学习过程。
 
 ### 分析计算题
@@ -251,6 +381,8 @@ locator_type: heading
 1. 假设在一个神经元上实现 AND 函数，已知输入 X1、X2 和输出 X1 AND X2 的真值表，激活函数给定，求神经元的权重 w1, w2 和偏差 b 的值，写出计算过程。
 
 ### 选择题
+
+<!-- question: artificial-intelligence-intro-045-Q66 -->
 
 1. 下列函数中哪个是 ReLU 激活函数（ ）（选项为函数表达式，略）
 2. 下图所示的加法操作，A 处的输入为 3，B 处的输入为 4，C 处的输出为 7，如果 C 处的梯度为 2，则 A 处和 B 处的梯度分别是（ ）  
@@ -262,6 +394,8 @@ locator_type: heading
     C. 同一层神经元之间的连接权重 D. 相邻层神经元之间的连接权重
 5. 假设我们需要训练一个神经网络，来完成 500 种概念的数据分类。该神经网络最后一层是分类层，则最后一层输出向量的维数大小可能是（ ）  
     A. 100 B. 2 C. 1 D. 500
+<!-- question: artificial-intelligence-intro-045-Q67 -->
+
 6. 神经网络的输出限定在 [0,1] 之间。下列哪个函数起到这样的作用？（ ）  
     A. Sigmoid 函数 B. tanh 函数 C. ReLU 函数 D. Leaky ReLU 函数
 7. 在一个神经网络里，知道每一个神经元的权重和偏差是最重要的一步。如果以某种方法知道了神经元准确的权重和偏差，就可以近似任何函数。实现这个的最佳办法是（ ）  

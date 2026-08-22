@@ -60,17 +60,17 @@ locator_type: none
 
 **算法部分：**
 
-![image](assets/assets/data-structure-001/image-001.png)
+![image](assets/data-structure-001/image-001.png)
 
 **生成大规模数据集部分：**
 
-![image](assets/assets/data-structure-001/image-002.png)
+![image](assets/data-structure-001/image-002.png)
 
 **阈值的选取：**
 
 我对阈值进行了循环测试最佳阈值，其中二分数组—冒泡排序结果如下：
 
-![image](assets/assets/data-structure-001/image-003.png)
+![image](assets/data-structure-001/image-003.png)
 
 分析：测试多次取平均值绘制这个表格，发现阈值选大概46左右就可以，之所以呈现震荡我觉得是因为测试次数不够，测试次数足够多我觉得这个阈值改变应该在第一象限会呈现逼近类似双钩函数第一象限的图案，快速下降在46左右到达谷点，之后随着增加逐渐上升，直到逼近冒泡排序的耗时线。
 

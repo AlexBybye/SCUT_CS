@@ -27,21 +27,31 @@ D
 D
 4.
 D
+<!-- question: linear-algebra-019-Q2 -->
+
 5.   C
 
-<!-- question: linear-algebra-019-Q2 -->
+<!-- question: linear-algebra-019-Q3 -->
 
 二、填空题(共6 题，每题3 分，共18 分)
 
 𝟓
+<!-- question: linear-algebra-019-Q4 -->
+
 4. (−2
 −1
 3
 2 )
+<!-- question: linear-algebra-019-Q5 -->
+
 5.-90
+<!-- question: linear-algebra-019-Q6 -->
+
 6. 0 < t < 1/4
 
 𝟑𝟔
+
+<!-- question: linear-algebra-019-Q7 -->
 
 1. 384
 2.
@@ -49,7 +59,7 @@ D
 
 𝟐(𝐀𝟐−𝐀+ 𝐄) 3. -
 
-<!-- question: linear-algebra-019-Q3 -->
+<!-- question: linear-algebra-019-Q8 -->
 
 三、(8 分) 计算𝑛阶行列式𝐷𝑛:
 解：
@@ -181,7 +191,7 @@ D
 
 𝟏≤𝒋<𝒊≤𝒏
 
-<!-- question: linear-algebra-019-Q4 -->
+<!-- question: linear-algebra-019-Q9 -->
 
 四、(8 分)
 
@@ -270,7 +280,7 @@ AXA*=B⇒𝐀𝐗(|𝐀|𝑨−𝟏)=-2 𝐀𝐗𝑨−𝟏= 𝐁⇒𝐗= −
 
 <!-- page: 2 -->
 
-<!-- question: linear-algebra-019-Q5 -->
+<!-- question: linear-algebra-019-Q10 -->
 
 五、(15 分)
 
@@ -403,7 +413,7 @@ AXA*=B⇒𝐀𝐗(|𝐀|𝑨−𝟏)=-2 𝐀𝐗𝑨−𝟏= 𝐁⇒𝐗= −
 
 方程组的通解为：𝜸𝟎+ 𝒌𝛂，其中𝒌为任意常数。                           1′
 
-<!-- question: linear-algebra-019-Q6 -->
+<!-- question: linear-algebra-019-Q11 -->
 
 六、(15 分)
 
@@ -430,9 +440,13 @@ AXA*=B⇒𝐀𝐗(|𝐀|𝑨−𝟏)=-2 𝐀𝐗𝑨−𝟏= 𝐁⇒𝐗= −
 
 |𝟏−𝟐+𝟏−𝟏|
 
+<!-- question: linear-algebra-019-Q12 -->
+
 (2) 𝒅(𝑩, 𝝅) =
 
 𝟑                                     2′
+
+<!-- question: linear-algebra-019-Q13 -->
 
 (3) 直线𝒍𝟐的方向向量为𝒏𝟐⃗⃗⃗⃗ =(2,-1,2), 平面𝛑的法向量𝒏⃗⃗ =(1,-1,1),
 
@@ -455,7 +469,7 @@ AXA*=B⇒𝐀𝐗(|𝐀|𝑨−𝟏)=-2 𝐀𝐗𝑨−𝟏= 𝐁⇒𝐗= −
 
 <!-- page: 3 -->
 
-<!-- question: linear-algebra-019-Q7 -->
+<!-- question: linear-algebra-019-Q14 -->
 
 七、（15 分）
 
@@ -664,7 +678,7 @@ AXA*=B⇒𝐀𝐗(|𝐀|𝑨−𝟏)=-2 𝐀𝐗𝑨−𝟏= 𝐁⇒𝐗= −
 
                           𝒇(𝑿) = 𝟗𝒚𝟑
 
-<!-- question: linear-algebra-019-Q8 -->
+<!-- question: linear-algebra-019-Q15 -->
 
 八、(6 分)
 证明：设𝑨为𝒏阶正交矩阵，则𝑨’𝑨= 𝑬且𝑨为实矩阵，故𝑨̅ = 𝑨。

@@ -89,13 +89,13 @@ C4  =  G4 + P4  G3  + P4 P3  G2  + P4P3  P2  G1  + P4  P3  P2  P1  C0
 
 **七．**解 ：有三种方式：链式查询方式、计数器定时查询方式、独立请求方式。
 
-![image](assets/assets/computer-organization-069/image-001.png)独立请求方式结构图如图2：
+![image](assets/computer-organization-069/image-001.png)独立请求方式结构图如图2：
 
 **图2**
 
 **八．**解：令中断向量001010为A设备，001011为B设备，001000为C设备，三个设备的判优识别，逻辑图如图3：
 
-![image](assets/assets/computer-organization-069/image-002.png)
+![image](assets/computer-organization-069/image-002.png)
 
 **图3**
 

@@ -28,8 +28,14 @@ locator_type: page
 
 注意事项：1. 开考前请将密封线内各项信息填写清楚；
 
+<!-- question: engineering-mathematical-analysis-1-012-Q1 -->
+
 2. 所有答案请直接答在试卷上；
+<!-- question: engineering-mathematical-analysis-1-012-Q2 -->
+
 3．考试形式：闭卷
+
+<!-- question: engineering-mathematical-analysis-1-012-Q3 -->
 
 4. 本试卷共五个大题，满分100 分，考试时间120 分钟。
 
@@ -46,6 +52,8 @@ locator_type: page
 
 一．填空题（共5 小题，每小题3 分，共15 分）
 
+<!-- question: engineering-mathematical-analysis-1-012-Q4 -->
+
 １. 极限lim
 2
 3
@@ -61,6 +69,8 @@ n
 ( 密封线内不答题)
 
 _____________ ________
+
+<!-- question: engineering-mathematical-analysis-1-012-Q5 -->
 
 ２. 设曲线
 3
@@ -87,6 +97,8 @@ a 
 ，b 
 ，c 
 ；
+
+<!-- question: engineering-mathematical-analysis-1-012-Q6 -->
 
 ３. 设
 
@@ -138,11 +150,13 @@ e
 
 0
 
+<!-- question: engineering-mathematical-analysis-1-012-Q7 -->
+
 ５. 反常积分
 
 1
 
-<!-- question: engineering-mathematical-analysis-1-012-Q1 -->
+<!-- question: engineering-mathematical-analysis-1-012-Q8 -->
 
 二、计算下列各题（共3 小题，每小题8 分，共24 分）
 
@@ -165,6 +179,8 @@ x
 
 
 
+
+<!-- question: engineering-mathematical-analysis-1-012-Q9 -->
 
 1. 求极限
 
@@ -210,9 +226,11 @@ x
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-012-Q2 -->
+<!-- question: engineering-mathematical-analysis-1-012-Q10 -->
 
 三、解答下列各题（共4 小题，每小题8 分，共32 分）
+
+<!-- question: engineering-mathematical-analysis-1-012-Q11 -->
 
 1. 证明数列
 3, 3 3, 3 3 3 ,收敛，并求其极限。
@@ -251,6 +269,8 @@ g
 
 。
 
+<!-- question: engineering-mathematical-analysis-1-012-Q12 -->
+
 2. 设
 
 
@@ -262,6 +282,8 @@ g
 0
 
 x
+
+<!-- question: engineering-mathematical-analysis-1-012-Q13 -->
 
 （1）求
 
@@ -317,6 +339,8 @@ t
 2
 d y
 
+<!-- question: engineering-mathematical-analysis-1-012-Q14 -->
+
 3. 求曲线
 
 。
@@ -357,7 +381,7 @@ x
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-012-Q3 -->
+<!-- question: engineering-mathematical-analysis-1-012-Q15 -->
 
 四、证明题（共2 小题，每小题10 分，共20 分）
 
@@ -375,6 +399,8 @@ f b都存在，证明：
 f x 在
 
 ,a b 上一致连续。
+
+<!-- question: engineering-mathematical-analysis-1-012-Q16 -->
 
 2.证明：当
 0
@@ -401,7 +427,7 @@ x
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-012-Q4 -->
+<!-- question: engineering-mathematical-analysis-1-012-Q17 -->
 
 五、应用题（本题9 分）
 

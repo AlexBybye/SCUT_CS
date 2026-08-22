@@ -152,7 +152,7 @@ A    超长指令字        B    显式并行指令计算        C    推断执�
 
 逻辑表达式：${S}_{i}={A}_{i}\oplus {B}_{i}\oplus {C}_{i}$
 
-![image](assets/assets/computer-organization-013/image-001.png)			${C}_{i}=\overline {\overline {{A}_{i}}\overline {{B}_{i}}+\overline {{A}_{i}}\overline {{C}_{i}}+\overline {{B}_{i}}\overline {{C}_{i}}}$
+![image](assets/computer-organization-013/image-001.png)			${C}_{i}=\overline {\overline {{A}_{i}}\overline {{B}_{i}}+\overline {{A}_{i}}\overline {{C}_{i}}+\overline {{B}_{i}}\overline {{C}_{i}}}$
 
 | **A****i** | **B****i** | **C****i** | **S****i** | **C****i+1** |
 |---|---|---|---|---|

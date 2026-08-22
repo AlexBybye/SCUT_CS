@@ -165,7 +165,7 @@ Ex: 𝑚machines, 𝑚(𝑚−1) jobs length 1, one job of length 𝑚.
 
 9
 
-![image](assets/assets/algorithm-design-and-analysis-006/image-001.png)
+![image](assets/algorithm-design-and-analysis-006/image-001.png)
 
 <!-- page: 10 -->
 
@@ -270,7 +270,7 @@ minimized.
 
 15
 
-![image](assets/assets/algorithm-design-and-analysis-006/image-002.png)
+![image](assets/algorithm-design-and-analysis-006/image-002.png)
 
 <!-- page: 16 -->
 
@@ -309,7 +309,7 @@ Remark: search can be infinite!
 
 17
 
-![image](assets/assets/algorithm-design-and-analysis-006/image-003.png)
+![image](assets/algorithm-design-and-analysis-006/image-003.png)
 
 <!-- page: 18 -->
 
@@ -369,7 +369,7 @@ Pf. [by contradiction] Assume 𝑟(𝐶∗) ≤
 
 20
 
-![image](assets/assets/algorithm-design-and-analysis-006/image-004.png)
+![image](assets/algorithm-design-and-analysis-006/image-004.png)
 
 <!-- page: 21 -->
 
@@ -398,7 +398,7 @@ a vertex cover of minimum weight.
 
 22
 
-![image](assets/assets/algorithm-design-and-analysis-006/image-005.png)
+![image](assets/algorithm-design-and-analysis-006/image-005.png)
 
 <!-- page: 23 -->
 
@@ -466,7 +466,7 @@ Increase 𝑝𝑒as much as possible until 𝑖or 𝑗tight.
 Return 𝑆.
 25
 
-![image](assets/assets/algorithm-design-and-analysis-006/image-006.png)
+![image](assets/algorithm-design-and-analysis-006/image-006.png)
 
 <!-- page: 26 -->
 
@@ -476,7 +476,7 @@ Ex.
 
 26
 
-![image](assets/assets/algorithm-design-and-analysis-006/image-007.png)
+![image](assets/algorithm-design-and-analysis-006/image-007.png)
 
 <!-- page: 27 -->
 

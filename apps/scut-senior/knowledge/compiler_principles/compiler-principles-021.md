@@ -10,4 +10,4 @@ locator_type: none
 
 # FIRST集
 
-![page-001.png](assets/assets/compiler-principles-021/page-001.png)
+![page-001.png](assets/compiler-principles-021/page-001.png)

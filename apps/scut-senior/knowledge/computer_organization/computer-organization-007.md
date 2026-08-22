@@ -196,11 +196,11 @@ x×y=-1×2^8+1×2^5+1×2^4+1×2^3+1×2^2+1×2^0=(-195)10
 
 答：（1）
 
-![image](assets/assets/computer-organization-007/image-001.png)![image](assets/assets/computer-organization-007/image-002.jpeg)
+![image](assets/computer-organization-007/image-001.png)![image](assets/computer-organization-007/image-002.jpeg)
 
 (2)
 
-![image](assets/assets/computer-organization-007/image-003.jpeg)
+![image](assets/computer-organization-007/image-003.jpeg)
 
 七、分析计算题（12分）
 
@@ -218,4 +218,4 @@ x×y=-1×2^8+1×2^5+1×2^4+1×2^3+1×2^2+1×2^0=(-195)10
 
 T流=(2+1000)*100ns=100.2ms
 
-![image](assets/assets/computer-organization-007/image-004.jpeg)![image](assets/assets/computer-organization-007/image-005.jpeg)(3)答：同样执行1000条指令，流水执行时间大约是顺序执行的1/3，即流水执行大概提高了两倍速度。
+![image](assets/computer-organization-007/image-004.jpeg)![image](assets/computer-organization-007/image-005.jpeg)(3)答：同样执行1000条指令，流水执行时间大约是顺序执行的1/3，即流水执行大概提高了两倍速度。

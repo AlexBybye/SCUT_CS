@@ -24,7 +24,7 @@ locator_type: slide
 <!-- slide: 2 -->
 
 - 4.5 模糊推理
-![image](assets/assets/artificial-intelligence-intro-014/image-001.png)
+![image](assets/artificial-intelligence-intro-014/image-001.png)
 
 <!-- slide: 3 -->
 
@@ -529,7 +529,6 @@ locator_type: slide
 
 ## 各种模糊关系符合推理原则情况一览表
 
-
 | 原则 | A’ | B’ | Rm Ra Rc Rs Rg Rsg Rgg Rgs Rss Rb R△ R▲ R* R# R□ |
 |---|---|---|---|
 | 1<br>2<br><br>3<br><br>4<br> | A<br>Very A<br>Very A<br>More or less A<br>More or less A<br>Not A<br>Not A | B<br>Very B<br>B<br>More or less B<br>B<br>Unknown<br>Not B | ×  ×  v   v   v   v    v     v    v   ×  ×  ×  ×  ×  ×<br>×  ×  ×  v  ×  v   ×    ×   v   ×  ×  ×  ×  ×  ×<br>×  ×  v   ×  v  ×  v      v    × ×  ×  ×  ×  ×  ×<br>×  ×  ×  v   v   v   v      v    v  ×  ×  ×  ×  ×  ×<br>×  ×  v   × × ×  ×    ×   × ×  ×  ×  ×  ×  ×<br>v    v   ×  v   v  ×  ×    ×   ×  v   v    v   v    v   v<br>×  ×  × × ×  v    v      v    v  ×  ×  ×  ×  ×  × |
@@ -730,7 +729,7 @@ locator_type: slide
 <!-- slide: 68 -->
 
 - 4.6 证据理论
-![image](assets/assets/artificial-intelligence-intro-014/image-002.png)
+![image](assets/artificial-intelligence-intro-014/image-002.png)
 
 <!-- slide: 69 -->
 
@@ -742,7 +741,7 @@ locator_type: slide
 <!-- slide: 70 -->
 
 - 4.7 粗糙集理论
-![image](assets/assets/artificial-intelligence-intro-014/image-003.png)
+![image](assets/artificial-intelligence-intro-014/image-003.png)
 
 <!-- slide: 71 -->
 

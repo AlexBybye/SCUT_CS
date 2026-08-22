@@ -16,6 +16,8 @@ locator_type: page
 
 一、选择题（共10 题，每题4 分，共40 分）
 
+<!-- question: probability-theory-027-Q2 -->
+
 1. 设A,B 为两个随机事件，且
 
 
@@ -68,6 +70,8 @@ P(C) = P(A̅ B) + P(̅ A B) = 1
 
 3
 
+<!-- question: probability-theory-027-Q3 -->
+
 2. 某人向同一目标独立重复射击, 每次射击命中目标的概率为p(0 < p < 1), 则此人第4 次射击
 
 恰好是第2 次命中目标的概率为(
@@ -99,6 +103,8 @@ P(C) = P(A̅ B) + P(̅ A B) = 1
 2
 
 P(AB) = P(A)P(B) = C
+
+<!-- question: probability-theory-027-Q4 -->
 
 3. 设二维随机变量(X,Y) 的概率密度为
 
@@ -149,6 +155,8 @@ P{X > 2Y} = ∬x>2yf(x,y)dx dy = ∫
 24
 
 = ∫
+
+<!-- question: probability-theory-027-Q5 -->
 
 4. 设随机变量X 与Y 相互独立且同分布，且
 
@@ -245,6 +253,8 @@ Y
 
 
 
+<!-- question: probability-theory-027-Q6 -->
+
 5. 设随机变量X 与Y 相互独立，且X ∼B(1,p),
 Y ∼B(2,p),
 0 < p < 1, 则X + Y 与X - Y 的相
@@ -286,6 +296,8 @@ D(X+Y)=DX+DY=3p(1-p),D(X-Y)=DX+DY=3p(1-p)
 D(X+Y)D(X-Y) =-1
 
 3
+
+<!-- question: probability-theory-027-Q7 -->
 
 6. 设随机变量序列X1,X2,⋯,Xn 独立同分布，且X1的概率密度为
 
@@ -378,6 +390,8 @@ EX
 x
 
 -1
+
+<!-- question: probability-theory-027-Q8 -->
 
 7. 设
 1
@@ -627,6 +641,8 @@ i
 2
 , 所以θ = 2
 
+<!-- question: probability-theory-027-Q9 -->
+
 9. 设X1, X2 为来自总体N(0,σ
 2) 的简单随机样本, 其中σ(σ > 0) 是未知参数。若ˆσ = a|X1+X2|
 
@@ -700,6 +716,8 @@ ye
 E(a|X1+X2|)=aE(|Y|)=a2σ
 
 π.
+
+<!-- question: probability-theory-027-Q10 -->
 
 10. 随机变量X 的分布律为
 
@@ -804,7 +822,11 @@ BDBAC
 
 选b 盒, 若出现5, 6 点则选c 盒。在选出的盒中任取一球.
 
+<!-- question: probability-theory-027-Q11 -->
+
 (1) 求取出白球的概率;
+
+<!-- question: probability-theory-027-Q12 -->
 
 (2) 若取出的是白球，那么此球来自c 盒的概率。
 
@@ -836,6 +858,8 @@ P(A∣B3) = 1
 
 2,
 
+<!-- question: probability-theory-027-Q13 -->
+
 (1) P(A) = P(B1)P(A∣B1) + P(B2)P(A∣B2) + P(B3)P(A∣B3) = 1
 
 3 + 1
@@ -844,12 +868,16 @@ P(A∣B3) = 1
 18
 ;
 
+<!-- question: probability-theory-027-Q14 -->
+
 (2) P(B3∣A) = P(B3)P(A∣B3)
 
 P(A)
 = 3
 
 11.
+
+<!-- question: probability-theory-027-Q15 -->
 
 三、(10 分) 设供电站供应某地区1200 户居民用电，各户用电情况相互独立。已知每户每天用电
 
@@ -952,7 +980,7 @@ L
 2), 其中μ,σ
 2 均未知。现从中随意
 
-<!-- question: probability-theory-027-Q2 -->
+<!-- question: probability-theory-027-Q16 -->
 
 四、(10 分) 某次考试学生的考试成绩X 服从正态分布N(μ,σ
 
@@ -966,7 +994,11 @@ S
 
 2的置信度为0.90 的置信区间; （注：(1)小题结果就用分位数表示）
 
+<!-- question: probability-theory-027-Q17 -->
+
 (1) 求总体方差σ
+
+<!-- question: probability-theory-027-Q18 -->
 
 (2) 在显著性水平=0.05 下，检验是否可以认为这次考试的平均成绩为70 分.
 
@@ -1127,7 +1159,7 @@ S
 
 接受原假设.
 
-<!-- question: probability-theory-027-Q3 -->
+<!-- question: probability-theory-027-Q19 -->
 
 五、（10 分）
 
@@ -1167,10 +1199,14 @@ f
 
 L
 ；
+<!-- question: probability-theory-027-Q20 -->
+
 (2) 证明ˆ
 
 L
 是的相合估计。
+
+<!-- question: probability-theory-027-Q21 -->
 
 (1) 求的最大似然估计ˆ
 
@@ -1556,7 +1592,7 @@ L
 
 所以ˆ
 
-<!-- question: probability-theory-027-Q4 -->
+<!-- question: probability-theory-027-Q22 -->
 
 六、(10 分) 已知随机变量X,Y 相互独立, 且X 的概率分布为:
 
@@ -1566,10 +1602,16 @@ P(X = 1) = P(X = -1) = 1
 
 Y 服从参数为λ 的泊松分布（λ > 0）, Z = XY.
 
+<!-- question: probability-theory-027-Q23 -->
+
 (1)求Cov (X,Z);
+<!-- question: probability-theory-027-Q24 -->
+
 (2)求Z 的分布律.
 
 解:
+
+<!-- question: probability-theory-027-Q25 -->
 
 (1) Cov (X,Z) = Cov (X,XY)
 
@@ -1600,6 +1642,8 @@ Y 服从参数为λ 的泊松分布（λ > 0）, Z = XY.
 6-2023-2024-2《概率论与数理统计》A 卷
 
 <!-- page: 7 -->
+
+<!-- question: probability-theory-027-Q26 -->
 
 (2) 根据已知条件可知, Z 的可能取值为整数: 0, ± 1, ± 2, ± 3,⋯
 
@@ -1673,11 +1717,17 @@ e
 2⋅|k|!e
 -λ, k≠0,k∈Z
 
+<!-- question: probability-theory-027-Q27 -->
+
 七、(10 分) 设随机变量X 和Y 相互独立，X 服从参数为1 的指数分布，Y 服从参数为2 的指数
 
 分布, V = min(X,2Y),U = max(X,2Y). 求
 
+<!-- question: probability-theory-027-Q28 -->
+
 (1) 随机变量V 的概率密度;
+<!-- question: probability-theory-027-Q29 -->
+
 (2) Cov(U,V).
 
 解(1)
@@ -1725,6 +1775,8 @@ v>0,
 
 0,
 其它.
+
+<!-- question: probability-theory-027-Q30 -->
 
 (2) FU(u) = P(X<u, 2Y<u) = P(X<u)∙P(2Y < u) = (1-e
 

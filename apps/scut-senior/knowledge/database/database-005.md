@@ -21,7 +21,7 @@ locator_type: slide
 
 <!-- slide: 2 -->
 
-![image](assets/assets/database-005/image-001.png)
+![image](assets/database-005/image-001.png)
 
 <!-- slide: 3 -->
 
@@ -562,7 +562,7 @@ locator_type: slide
     - 【真题】设一服务行业的数据库中有三个实体集。一是“商品”实体集，属性有商品号、商品名、 规格、单价等；二是“商店”实体集，属性有商店号、商店名、地址等；三是“供应商”实 体集，属性有供应商编号、供应商名、地址等。 供应商和商品之间存在“供应”关系，每个供应商可供应多种商品，每种商品最多只能 向5个供应商订购；供应商供应商品给每个商店有月供应量；商店和商品间存在“销售”联 系，每个商店销售的商品应在100-1000种之间，每种商品最多只能放在8个商店销售，商店 销售商品有月计划数。
     - （1）试画出E-R图，并在图上指明属性和联系。
 - 第七章 关系数据库设计
-![image](assets/assets/database-005/image-002.jpg)
+![image](assets/database-005/image-002.jpg)
 
 <!-- slide: 38 -->
 
@@ -587,7 +587,7 @@ locator_type: slide
 - 知识点梳理
 - 全表扫描、索引扫描，嵌套循环、排序-合并、索引连接、 Hash Join
 - 查询分析、查询检查、查询优化、查询执行
-![image](assets/assets/database-005/image-003.png)
+![image](assets/database-005/image-003.png)
 
 <!-- slide: 40 -->
 
@@ -804,4 +804,4 @@ locator_type: slide
 
 <!-- slide: 55 -->
 
-![image](assets/assets/database-005/image-004.png)
+![image](assets/database-005/image-004.png)

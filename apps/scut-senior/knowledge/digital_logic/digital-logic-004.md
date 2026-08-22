@@ -12,36 +12,36 @@ locator_type: page
 
 <!-- page: 1 -->
 
-![page-001.jpg](assets/assets/digital-logic-004/page-001.jpg)
+![page-001.jpg](assets/digital-logic-004/page-001.jpg)
 
 <!-- page: 2 -->
 
-![page-002.jpg](assets/assets/digital-logic-004/page-002.jpg)
+![page-002.jpg](assets/digital-logic-004/page-002.jpg)
 
 <!-- page: 3 -->
 
-![page-003.jpg](assets/assets/digital-logic-004/page-003.jpg)
+![page-003.jpg](assets/digital-logic-004/page-003.jpg)
 
 <!-- page: 4 -->
 
-![page-004.jpg](assets/assets/digital-logic-004/page-004.jpg)
+![page-004.jpg](assets/digital-logic-004/page-004.jpg)
 
 <!-- page: 5 -->
 
-![page-005.jpg](assets/assets/digital-logic-004/page-005.jpg)
+![page-005.jpg](assets/digital-logic-004/page-005.jpg)
 
 <!-- page: 6 -->
 
-![page-006.jpg](assets/assets/digital-logic-004/page-006.jpg)
+![page-006.jpg](assets/digital-logic-004/page-006.jpg)
 
 <!-- page: 7 -->
 
-![page-007.jpg](assets/assets/digital-logic-004/page-007.jpg)
+![page-007.jpg](assets/digital-logic-004/page-007.jpg)
 
 <!-- page: 8 -->
 
-![page-008.jpg](assets/assets/digital-logic-004/page-008.jpg)
+![page-008.jpg](assets/digital-logic-004/page-008.jpg)
 
 <!-- page: 9 -->
 
-![page-009.jpg](assets/assets/digital-logic-004/page-009.jpg)
+![page-009.jpg](assets/digital-logic-004/page-009.jpg)

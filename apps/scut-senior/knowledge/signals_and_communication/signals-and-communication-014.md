@@ -12,7 +12,7 @@ locator_type: slide
 
 <!-- slide: 1 -->
 
-![image](assets/assets/signals-and-communication-014/image-001.png)
+![image](assets/signals-and-communication-014/image-001.png)
 - 第3章 离散傅里叶变换
 - 数字信号处理
 
@@ -42,12 +42,12 @@ locator_type: slide
 逆变换：                                            (3-2)
 右图为矩形脉冲及其频谱
 
-![image](assets/assets/signals-and-communication-014/image-002.png)
+![image](assets/signals-and-communication-014/image-002.png)
 - 3.1 引言
 - 从图可以看出：
 - (1)时域连续函数造成频域是非周期的谱；
 - (2)时域的非周期造成频域是连续的谱。
-![image](assets/assets/signals-and-communication-014/image-003.png)
+![image](assets/signals-and-communication-014/image-003.png)
 
 <!-- slide: 5 -->
 
@@ -59,12 +59,12 @@ locator_type: slide
 - 右图为周期矩形脉冲及其频谱
 - (1)时域的连续函数造成频域是非周期的频谱函数；
 - (2)频域的离散频谱与时域的周期时间函数对应(频域采样，时域周期延拓)。
-![image](assets/assets/signals-and-communication-014/image-004.png)
-![image](assets/assets/signals-and-communication-014/image-005.png)
+![image](assets/signals-and-communication-014/image-004.png)
+![image](assets/signals-and-communication-014/image-005.png)
 
 <!-- slide: 6 -->
 
-![image](assets/assets/signals-and-communication-014/image-006.png)
+![image](assets/signals-and-communication-014/image-006.png)
 - 3.1 引言
 - 3．非周期离散信号的傅里叶变换
 - 非周期离散的时间信号得到周期性连续的频率函数。
@@ -103,7 +103,7 @@ locator_type: slide
 - 其中，       为周期序列傅里叶级数的系数，其大小为
 - (3-7)
 - (3-8)
-![image](assets/assets/signals-and-communication-014/image-007.png)
+![image](assets/signals-and-communication-014/image-007.png)
 - 离散,周期
 - 离散,周期
 
@@ -142,7 +142,7 @@ locator_type: slide
 通常称x(n)为的主值区序列，则x(n)的Z变换为
 
 - 3.2.1离散傅里叶级数(DFS)定义
-![image](assets/assets/signals-and-communication-014/image-008.png)
+![image](assets/signals-and-communication-014/image-008.png)
 - (3-12)
 - (3-11)
 - (3-10)
@@ -169,7 +169,7 @@ locator_type: slide
 <!-- slide: 16 -->
 
 - 3.2.1离散傅里叶级数(DFS)定义
-![image](assets/assets/signals-and-communication-014/image-009.png)
+![image](assets/signals-and-communication-014/image-009.png)
 - 图3-9 序列傅里叶变换与离散傅里叶级数关系
 - 由于频域N点取样使得频域离散从而形成时域序列的周期化。采样频点间隔：
 - (3-16)
@@ -191,9 +191,6 @@ locator_type: slide
 <!-- slide: 18 -->
 
 ## 图3-10 周期序列
-
-
-
 
                                            
       
@@ -262,13 +259,13 @@ locator_type: slide
 - 2
 - 3
 - 4
-![image](assets/assets/signals-and-communication-014/image-010.png)
-![image](assets/assets/signals-and-communication-014/image-011.png)
-![image](assets/assets/signals-and-communication-014/image-012.png)
-![image](assets/assets/signals-and-communication-014/image-013.png)
-![image](assets/assets/signals-and-communication-014/image-014.png)
-![image](assets/assets/signals-and-communication-014/image-015.png)
-![image](assets/assets/signals-and-communication-014/image-016.png)
+![image](assets/signals-and-communication-014/image-010.png)
+![image](assets/signals-and-communication-014/image-011.png)
+![image](assets/signals-and-communication-014/image-012.png)
+![image](assets/signals-and-communication-014/image-013.png)
+![image](assets/signals-and-communication-014/image-014.png)
+![image](assets/signals-and-communication-014/image-015.png)
+![image](assets/signals-and-communication-014/image-016.png)
 - 3.2.2离散傅里叶级数(DFS)的性质
 
 <!-- slide: 23 -->
@@ -284,13 +281,10 @@ locator_type: slide
 ## 图3-14 周期序列、主值区间、主值序列之间关系
 DFS与IDFS变换前后都是周期、无限长，但每个周期信息相同，故可以得到有限长序列的离散傅里叶变换的定义:  
 
-
-
-
 注意，所处理的有限长序列都是作为周期序列的一个周期来表示的。 换句话说，离散傅里叶变换隐含着周期性。
 
-![image](assets/assets/signals-and-communication-014/image-017.png)
-![image](assets/assets/signals-and-communication-014/image-018.png)
+![image](assets/signals-and-communication-014/image-017.png)
+![image](assets/signals-and-communication-014/image-018.png)
 - 3.3.1离散傅里叶变换(DFT)定义
 - 与DFS和IDFS的区别
 
@@ -298,8 +292,8 @@ DFS与IDFS变换前后都是周期、无限长，但每个周期信息相同，�
 
 ## 问题：有限长序列x(n)本身有傅里叶变换（频谱），为什么不直接进行傅里叶变换？为什么要把它看成周期为N的周期序列     的一个周期来处理？
 
-![image](assets/assets/signals-and-communication-014/image-019.png)
-![image](assets/assets/signals-and-communication-014/image-020.png)
+![image](assets/signals-and-communication-014/image-019.png)
+![image](assets/signals-and-communication-014/image-020.png)
 - 3.3.1离散傅里叶变换(DFT)定义
 
 <!-- slide: 26 -->
@@ -377,7 +371,7 @@ DFS与IDFS变换前后都是周期、无限长，但每个周期信息相同，�
 
 - 3.4 离散傅里叶变换(DFT)的性质
 - 首先，将图(a)以N为周期进行周期延拓得到周期序列                  如图(b)所示；再将        加以移位                                    如图(c)所示，然后，再对移位的周期序列                取主值区间(n=0到N-1)上的序列值，即x((n+m))NRN(n)。所以，一个有限长序列        的圆周移位序列        仍然是一个长度为N的有限长序列。
-![image](assets/assets/signals-and-communication-014/image-021.png)
+![image](assets/signals-and-communication-014/image-021.png)
 - 图3-19 圆周移位过程
 
 <!-- slide: 35 -->
@@ -595,7 +589,7 @@ DFS与IDFS变换前后都是周期、无限长，但每个周期信息相同，�
 - hold on;XE = fft(x,512);
 - plot(L/512,abs(XE))
 - xlabel('归一化频率');ylabel('幅度');
-![image](assets/assets/signals-and-communication-014/image-022.png)
+![image](assets/signals-and-communication-014/image-022.png)
 - 图3-28 x[k]的512点DFT
 - X为信号，N为变换点数。Y = fft(X) 是对信号X进行快速傅里叶变换；Y = fft(X,n)就是对信号X的前n个点进行快速傅里叶变换，如果序列X的长度大于n的点数，则直接取前n个点，若小于n，则X先进行补零扩展为n点序列再求FFT。一般情况下，n要取最接近X长度的2的整数幂，这样可以实现更快的FFT,提高计算效率。
 

@@ -44,14 +44,20 @@ locator_type: none
 1. 已知曲面$z=4-x^{2}-y^{2}$上点$P$处的切平面平行于平面$2x+2y+z=1$，则$P$点的坐标是（     ）;
 
 A.  $(1,-1,2)$						B.  $(-1,1,2)$						C.  $(1,1,2)$						D.  $(-1,-1,2)$
+<!-- question: engineering-mathematical-analysis-2-025-Q1 -->
+
 1. 一个均匀物体由曲面$z=x^2+y^2$及$z=1$围成，则该物体的质心坐标为（     ）;
 
 A.  $\left(\frac{2}{3},\frac{2}{3},\frac{2}{3}\right)$			B.  ![formula-object](assets/engineering-mathematical-analysis-2-025/image-040.png)			C.  $(0,0,1)$			D. ![formula-object](assets/engineering-mathematical-analysis-2-025/image-042.png)
+<!-- question: engineering-mathematical-analysis-2-025-Q2 -->
+
 1. 关于未知函数$y$的微分方程$(y-lnx)dx+xdy=0$是（     ）;
 
 | A.  可分离变量方程 | B.  一阶非齐次线性方程 |
 |---|---|
 | C.  一阶齐次线性方程 | D.  非线性方程 |
+
+<!-- question: engineering-mathematical-analysis-2-025-Q3 -->
 
 1. 下列级数条件收敛的是（     ）.
 
@@ -67,9 +73,11 @@ A.  $\sum_{n=1}^{\infty}\frac{(-1)^n}{n^2}$			B.  $\sum_{n=1}^\infty\left(1-\cos
 1. 设![formula-object](assets/engineering-mathematical-analysis-2-025/image-070.png)是锥面$z=\sqrt{x^{2}+y^{2}}$被平面$Z=0$及$z=1$截下的部分的下侧，计算第二类曲面积分![formula-object](assets/engineering-mathematical-analysis-2-025/image-074.png).
 1. 求幂级数![formula-object](assets/engineering-mathematical-analysis-2-025/image-075.png)的收敛域，并在收敛域上求其和函数.
 
-<!-- question: engineering-mathematical-analysis-2-025-Q1 -->
+<!-- question: engineering-mathematical-analysis-2-025-Q4 -->
 
 四、**证明题：共2题，每题6分，共12分.**
+<!-- question: engineering-mathematical-analysis-2-025-Q5 -->
+
 1. 证明：曲面$z=xe^{\frac{y}{x}}$上所有点处的切平面都过一定点.
 1. 证明：函数项级数![formula-object](assets/engineering-mathematical-analysis-2-025/image-077.png)在区间$(0,1)$上点态收敛，但不一致收敛.
 

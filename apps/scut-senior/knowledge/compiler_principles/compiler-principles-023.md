@@ -10,4 +10,4 @@ locator_type: none
 
 # LL(1)文法的判别
 
-![page-001.png](assets/assets/compiler-principles-023/page-001.png)
+![page-001.png](assets/compiler-principles-023/page-001.png)

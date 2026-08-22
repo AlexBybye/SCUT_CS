@@ -90,7 +90,11 @@ $(C)$$P\{Y=-2X+1\}=1$.			$(D)$$P\{Y=2X+1\}=1$.
 
 已知各包重量服从正态分布N（$\mu,\sigma^2$）
 
+<!-- question: probability-theory-032-Q1 -->
+
 （1）是否可以认为每包平均重量为100斤（取$\alpha=0.05$）？
+
+<!-- question: probability-theory-032-Q2 -->
 
 （2）求参数$\sigma^2$的90%置信区间。
 

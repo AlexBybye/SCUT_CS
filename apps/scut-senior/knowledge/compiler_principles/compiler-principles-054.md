@@ -10,4 +10,4 @@ locator_type: none
 
 # 项目的CLOSURE和GO
 
-![page-001.png](assets/assets/compiler-principles-054/page-001.png)
+![page-001.png](assets/compiler-principles-054/page-001.png)

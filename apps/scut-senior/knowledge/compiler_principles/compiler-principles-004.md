@@ -49,7 +49,7 @@ S： 一个开始符号
   - 直接归约、归约、短语、直接短语、最左直接短语（句柄）、规范归约（最左归约）
   - 可归前缀、活前缀、LR（0）项目集规范族
 
-![image](assets/assets/compiler-principles-004/image-001.png)
+![image](assets/compiler-principles-004/image-001.png)
 - 基本方法（要求熟练做题）
   - 写递归下降子程序
   - 构造LL（1）分析表（涉及FIRST、FOLLOW、SELECT集）

@@ -261,7 +261,7 @@ f
 
 1
 
-![image](assets/assets/signals-and-communication-009/image-001.jpeg)
+![image](assets/signals-and-communication-009/image-001.jpeg)
 
 <!-- page: 7 -->
 
@@ -325,7 +325,7 @@ p 结合H(f)评价数字基带传输系统的性能；
 
 8
 
-![image](assets/assets/signals-and-communication-009/image-002.jpeg)
+![image](assets/signals-and-communication-009/image-002.jpeg)
 
 <!-- page: 9 -->
 
@@ -641,7 +641,7 @@ f
 
 15
 
-![image](assets/assets/signals-and-communication-009/image-003.jpeg)
+![image](assets/signals-and-communication-009/image-003.jpeg)
 
 <!-- page: 16 -->
 
@@ -765,7 +765,7 @@ t
 
 20
 
-![image](assets/assets/signals-and-communication-009/image-004.jpeg)
+![image](assets/signals-and-communication-009/image-004.jpeg)
 
 <!-- page: 21 -->
 
@@ -1025,7 +1025,7 @@ n
 
 
 
-![image](assets/assets/signals-and-communication-009/image-005.jpeg)
+![image](assets/signals-and-communication-009/image-005.jpeg)
 
 <!-- page: 25 -->
 
@@ -1191,9 +1191,9 @@ k
 
 26
 
-![image](assets/assets/signals-and-communication-009/image-006.jpeg)
+![image](assets/signals-and-communication-009/image-006.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-007.jpeg)
+![image](assets/signals-and-communication-009/image-007.jpeg)
 
 <!-- page: 27 -->
 
@@ -1233,7 +1233,7 @@ t
 
 27
 
-![image](assets/assets/signals-and-communication-009/image-008.jpeg)
+![image](assets/signals-and-communication-009/image-008.jpeg)
 
 <!-- page: 28 -->
 
@@ -1282,7 +1282,7 @@ t
 
 28
 
-![image](assets/assets/signals-and-communication-009/image-009.jpeg)
+![image](assets/signals-and-communication-009/image-009.jpeg)
 
 <!-- page: 29 -->
 
@@ -1432,7 +1432,7 @@ m
 
 30
 
-![image](assets/assets/signals-and-communication-009/image-010.jpeg)
+![image](assets/signals-and-communication-009/image-010.jpeg)
 
 <!-- page: 31 -->
 
@@ -1720,7 +1720,7 @@ t<0时就已经存在，它要求系统在输入信号到来之前就必须有�
 
 36
 
-![image](assets/assets/signals-and-communication-009/image-011.jpeg)
+![image](assets/signals-and-communication-009/image-011.jpeg)
 
 <!-- page: 37 -->
 
@@ -1740,11 +1740,11 @@ t<0时就已经存在，它要求系统在输入信号到来之前就必须有�
 
 37
 
-![image](assets/assets/signals-and-communication-009/image-012.jpeg)
+![image](assets/signals-and-communication-009/image-012.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-013.jpeg)
+![image](assets/signals-and-communication-009/image-013.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-014.jpeg)
+![image](assets/signals-and-communication-009/image-014.jpeg)
 
 <!-- page: 38 -->
 
@@ -1762,17 +1762,17 @@ n 方法：放宽对无码间串扰的要求以提高有效
 
 38
 
-![image](assets/assets/signals-and-communication-009/image-015.jpeg)
+![image](assets/signals-and-communication-009/image-015.jpeg)
 
 <!-- page: 39 -->
 
 39
 
-![image](assets/assets/signals-and-communication-009/image-016.jpeg)
+![image](assets/signals-and-communication-009/image-016.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-017.jpeg)
+![image](assets/signals-and-communication-009/image-017.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-018.jpeg)
+![image](assets/signals-and-communication-009/image-018.jpeg)
 
 <!-- page: 40 -->
 
@@ -1792,9 +1792,9 @@ n 思路：利用这样的波形
 
 40
 
-![image](assets/assets/signals-and-communication-009/image-019.jpeg)
+![image](assets/signals-and-communication-009/image-019.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-020.jpeg)
+![image](assets/signals-and-communication-009/image-020.jpeg)
 
 <!-- page: 41 -->
 
@@ -1866,11 +1866,11 @@ g (t )波形的拖尾幅度与t 2成反比，而sinx/x波形幅度与t成反比�
 
 41
 
-![image](assets/assets/signals-and-communication-009/image-021.jpeg)
+![image](assets/signals-and-communication-009/image-021.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-022.jpeg)
+![image](assets/signals-and-communication-009/image-022.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-023.jpeg)
+![image](assets/signals-and-communication-009/image-023.jpeg)
 
 <!-- page: 42 -->
 
@@ -1941,9 +1941,9 @@ n 频带利用率为=RB/B=2波特／赫，达到基带系统在
 
 42
 
-![image](assets/assets/signals-and-communication-009/image-024.jpeg)
+![image](assets/signals-and-communication-009/image-024.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-025.jpeg)
+![image](assets/signals-and-communication-009/image-025.jpeg)
 
 <!-- page: 43 -->
 
@@ -1968,9 +1968,9 @@ n 结论：串扰可控，仍可
 
 43
 
-![image](assets/assets/signals-and-communication-009/image-026.jpeg)
+![image](assets/signals-and-communication-009/image-026.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-027.jpeg)
+![image](assets/signals-and-communication-009/image-027.jpeg)
 
 <!-- page: 44 -->
 
@@ -2011,7 +2011,7 @@ ak-1发生差错，则不但造成ak值错误，而且还会影响
 
 44
 
-![image](assets/assets/signals-and-communication-009/image-028.jpeg)
+![image](assets/signals-and-communication-009/image-028.jpeg)
 
 <!-- page: 45 -->
 
@@ -2111,7 +2111,7 @@ n 结论：对接收到的Ck作模2处理后便直接得到发
 
 46
 
-![image](assets/assets/signals-and-communication-009/image-029.jpeg)
+![image](assets/signals-and-communication-009/image-029.jpeg)
 
 <!-- page: 47 -->
 
@@ -2293,7 +2293,7 @@ k
 
 47
 
-![image](assets/assets/signals-and-communication-009/image-030.jpeg)
+![image](assets/signals-and-communication-009/image-030.jpeg)
 
 <!-- page: 48 -->
 
@@ -2479,9 +2479,9 @@ k
 
 48
 
-![image](assets/assets/signals-and-communication-009/image-031.jpeg)
+![image](assets/signals-and-communication-009/image-031.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-032.jpeg)
+![image](assets/signals-and-communication-009/image-032.jpeg)
 
 <!-- page: 49 -->
 
@@ -2545,11 +2545,11 @@ k
 
 49
 
-![image](assets/assets/signals-and-communication-009/image-033.jpeg)
+![image](assets/signals-and-communication-009/image-033.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-034.jpeg)
+![image](assets/signals-and-communication-009/image-034.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-035.jpeg)
+![image](assets/signals-and-communication-009/image-035.jpeg)
 
 <!-- page: 50 -->
 
@@ -2711,9 +2711,9 @@ mod
 
 51
 
-![image](assets/assets/signals-and-communication-009/image-036.jpeg)
+![image](assets/signals-and-communication-009/image-036.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-037.jpeg)
+![image](assets/signals-and-communication-009/image-037.jpeg)
 
 <!-- page: 52 -->
 
@@ -2879,7 +2879,7 @@ n t
 
 57
 
-![image](assets/assets/signals-and-communication-009/image-038.jpeg)
+![image](assets/signals-and-communication-009/image-038.jpeg)
 
 <!-- page: 58 -->
 
@@ -2928,7 +2928,7 @@ H(f)
 
 58
 
-![image](assets/assets/signals-and-communication-009/image-039.jpeg)
+![image](assets/signals-and-communication-009/image-039.jpeg)
 
 <!-- page: 59 -->
 
@@ -3005,7 +3005,7 @@ n 问题：求线性滤波器是否在某时刻t0上，信号瞬时功率
 
 60
 
-![image](assets/assets/signals-and-communication-009/image-040.jpeg)
+![image](assets/signals-and-communication-009/image-040.jpeg)
 
 <!-- page: 61 -->
 
@@ -3426,9 +3426,9 @@ omax
 
 63
 
-![image](assets/assets/signals-and-communication-009/image-041.jpeg)
+![image](assets/signals-and-communication-009/image-041.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-042.jpeg)
+![image](assets/signals-and-communication-009/image-042.jpeg)
 
 <!-- page: 64 -->
 
@@ -3686,9 +3686,9 @@ t
 
 67
 
-![image](assets/assets/signals-and-communication-009/image-043.jpeg)
+![image](assets/signals-and-communication-009/image-043.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-044.jpeg)
+![image](assets/signals-and-communication-009/image-044.jpeg)
 
 <!-- page: 68 -->
 
@@ -3795,9 +3795,9 @@ KE
 
 68
 
-![image](assets/assets/signals-and-communication-009/image-045.jpeg)
+![image](assets/signals-and-communication-009/image-045.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-046.jpeg)
+![image](assets/signals-and-communication-009/image-046.jpeg)
 
 <!-- page: 69 -->
 
@@ -3877,11 +3877,11 @@ s t n t dt
 
 69
 
-![image](assets/assets/signals-and-communication-009/image-047.jpeg)
+![image](assets/signals-and-communication-009/image-047.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-048.jpeg)
+![image](assets/signals-and-communication-009/image-048.jpeg)
 
-![image](assets/assets/signals-and-communication-009/image-049.jpeg)
+![image](assets/signals-and-communication-009/image-049.jpeg)
 
 <!-- page: 70 -->
 
@@ -3896,7 +3896,7 @@ s t n t dt
 
 70
 
-![image](assets/assets/signals-and-communication-009/image-050.jpeg)
+![image](assets/signals-and-communication-009/image-050.jpeg)
 
 <!-- page: 71 -->
 
@@ -3909,7 +3909,7 @@ s t n t dt
 
 71
 
-![image](assets/assets/signals-and-communication-009/image-051.jpeg)
+![image](assets/signals-and-communication-009/image-051.jpeg)
 
 <!-- page: 72 -->
 
@@ -4066,7 +4066,7 @@ d
 
 73
 
-![image](assets/assets/signals-and-communication-009/image-052.jpeg)
+![image](assets/signals-and-communication-009/image-052.jpeg)
 
 <!-- page: 74 -->
 
@@ -4121,7 +4121,7 @@ n  基带传输系统特性的眼图观测方法
 
 非理想信道下眼图
 
-![image](assets/assets/signals-and-communication-009/image-053.jpeg)
+![image](assets/signals-and-communication-009/image-053.jpeg)
 
 <!-- page: 77 -->
 
@@ -4137,7 +4137,7 @@ n  基带传输系统特性的眼图观测方法(续)
 
 大且模糊。
 
-![image](assets/assets/signals-and-communication-009/image-054.jpeg)
+![image](assets/signals-and-communication-009/image-054.jpeg)
 
 <!-- page: 78 -->
 
@@ -4147,7 +4147,7 @@ n  基带传输系统特性的眼图观测方法(续)
 
   示波器上实际观测到的“眼图”效果
 
-![image](assets/assets/signals-and-communication-009/image-055.jpeg)
+![image](assets/signals-and-communication-009/image-055.jpeg)
 
 <!-- page: 79 -->
 

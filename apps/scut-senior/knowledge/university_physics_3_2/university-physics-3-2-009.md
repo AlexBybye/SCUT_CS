@@ -379,9 +379,9 @@ ln
 
 3
 
-![image](assets/assets/university-physics-3-2-009/image-001.jpeg)
+![image](assets/university-physics-3-2-009/image-001.jpeg)
 
-![image](assets/assets/university-physics-3-2-009/image-002.png)
+![image](assets/university-physics-3-2-009/image-002.png)
 
 <!-- page: 4 -->
 
@@ -474,7 +474,7 @@ m
 
 4
 
-![image](assets/assets/university-physics-3-2-009/image-003.png)
+![image](assets/university-physics-3-2-009/image-003.png)
 
 <!-- page: 5 -->
 
@@ -594,9 +594,9 @@ bc
 
 6
 
-![image](assets/assets/university-physics-3-2-009/image-004.png)
+![image](assets/university-physics-3-2-009/image-004.png)
 
-![image](assets/assets/university-physics-3-2-009/image-005.png)
+![image](assets/university-physics-3-2-009/image-005.png)
 
 <!-- page: 7 -->
 
@@ -608,9 +608,9 @@ bc
 
 7
 
-![image](assets/assets/university-physics-3-2-009/image-006.png)
+![image](assets/university-physics-3-2-009/image-006.png)
 
-![image](assets/assets/university-physics-3-2-009/image-007.jpeg)
+![image](assets/university-physics-3-2-009/image-007.jpeg)
 
 <!-- page: 8 -->
 
@@ -781,7 +781,7 @@ v
 
 10
 
-![image](assets/assets/university-physics-3-2-009/image-008.png)
+![image](assets/university-physics-3-2-009/image-008.png)
 
 <!-- page: 11 -->
 
@@ -851,9 +851,9 @@ B
 
 11
 
-![image](assets/assets/university-physics-3-2-009/image-009.jpeg)
+![image](assets/university-physics-3-2-009/image-009.jpeg)
 
-![image](assets/assets/university-physics-3-2-009/image-010.png)
+![image](assets/university-physics-3-2-009/image-010.png)
 
 <!-- page: 12 -->
 
@@ -923,9 +923,9 @@ R
 
 12
 
-![image](assets/assets/university-physics-3-2-009/image-011.png)
+![image](assets/university-physics-3-2-009/image-011.png)
 
-![image](assets/assets/university-physics-3-2-009/image-012.png)
+![image](assets/university-physics-3-2-009/image-012.png)
 
 <!-- page: 13 -->
 
@@ -1065,7 +1065,7 @@ R
 
 14
 
-![image](assets/assets/university-physics-3-2-009/image-013.png)
+![image](assets/university-physics-3-2-009/image-013.png)
 
 <!-- page: 15 -->
 
@@ -1121,7 +1121,7 @@ n V
 
 15
 
-![image](assets/assets/university-physics-3-2-009/image-014.png)
+![image](assets/university-physics-3-2-009/image-014.png)
 
 <!-- page: 16 -->
 
@@ -1131,4 +1131,4 @@ n V
 
 16
 
-![image](assets/assets/university-physics-3-2-009/image-015.jpeg)
+![image](assets/university-physics-3-2-009/image-015.jpeg)

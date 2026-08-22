@@ -16,6 +16,8 @@ locator_type: page
 
 一. 选择题(单选，每题3 分，共18 分)
 
+<!-- question: linear-algebra-014-Q1 -->
+
 1.  A、B 都是对称矩阵，若AB 亦是对称矩阵，则下列说法不正确的是（
   ）。
 
@@ -24,6 +26,8 @@ locator_type: page
 
 （C）AT，B 可交换
 （D）AT，BT 可交换
+<!-- question: linear-algebra-014-Q2 -->
+
 2． A 是n 阶正交矩阵的充分必要条件为（
   ）。
 
@@ -31,6 +35,8 @@ locator_type: page
 （B）A 可相似于对角矩阵；
 
 （C）A 的列向量组是n 维线性空间的标准正交基； （D）|A|=±1；
+
+<!-- question: linear-algebra-014-Q3 -->
 
 3. 3
 i
@@ -123,6 +129,8 @@ r 
 5 7 1 3
 7 1 3 5
 
+<!-- question: linear-algebra-014-Q4 -->
+
 4.  行列式
 
 的值为（
@@ -157,6 +165,8 @@ b
 
 
 
+
+<!-- question: linear-algebra-014-Q5 -->
 
 5.  矩阵
 1
@@ -204,6 +214,8 @@ b
 =
 为任意常数
 
+<!-- question: linear-algebra-014-Q6 -->
+
 6.  A 是数域上的n 阶矩阵，则下列说法正确的是（
   ）。
 
@@ -218,6 +230,8 @@ b
 <!-- page: 2 -->
 
 二. 填空题(每空3 分，共15 分)
+
+<!-- question: linear-algebra-014-Q7 -->
 
 1． 过点(1,1,1)且与平面x+2y+z+1=0 平行的平面方程为（
  ）。
@@ -260,6 +274,8 @@ x
 2
 3
 
+<!-- question: linear-algebra-014-Q8 -->
+
 2． 线性方程组
 的解为（
   ）。
@@ -283,6 +299,8 @@ x
 3 27 1
 9
 4 64 1 16
+
+<!-- question: linear-algebra-014-Q9 -->
 
 3．行列式
 
@@ -333,6 +351,8 @@ x
 1 ,
 1
 
+
+<!-- question: linear-algebra-014-Q10 -->
 
 4． R3中向量α 在一组基
 1
@@ -404,13 +424,13 @@ x
 
 
 
-<!-- question: linear-algebra-014-Q1 -->
+<!-- question: linear-algebra-014-Q11 -->
 
 三、 (7 分)
 
 xy=1 是xoy 平面的曲线，求将此曲线绕x 轴旋转一周所得旋转面的方程。
 
-<!-- question: linear-algebra-014-Q2 -->
+<!-- question: linear-algebra-014-Q12 -->
 
 四、 (12 分)
 
@@ -457,7 +477,7 @@ B A B
 
 求: C−2E3 的特征值与特征向量(E3 为3 阶单位阵)。
 
-<!-- question: linear-algebra-014-Q3 -->
+<!-- question: linear-algebra-014-Q13 -->
 
 五、 (15 分)
 
@@ -534,7 +554,7 @@ t
 
 <!-- page: 3 -->
 
-<!-- question: linear-algebra-014-Q4 -->
+<!-- question: linear-algebra-014-Q14 -->
 
 六、 (15 分)
 
@@ -641,7 +661,7 @@ x
 =
 是R3t 中一个什么图形。
 
-<!-- question: linear-algebra-014-Q5 -->
+<!-- question: linear-algebra-014-Q15 -->
 
 七、 (12 分)
 
@@ -701,7 +721,7 @@ d l ；
 ,
 两平面交线的平面方程。
 
-<!-- question: linear-algebra-014-Q6 -->
+<!-- question: linear-algebra-014-Q16 -->
 
 八、(6
 

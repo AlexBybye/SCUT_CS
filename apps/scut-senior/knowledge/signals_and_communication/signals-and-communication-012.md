@@ -12,7 +12,7 @@ locator_type: slide
 
 <!-- slide: 1 -->
 
-![image](assets/assets/signals-and-communication-012/image-001.png)
+![image](assets/signals-and-communication-012/image-001.png)
 - 第0章 绪论
 - 数字信号处理
 
@@ -20,8 +20,8 @@ locator_type: slide
 
 ## 教材与参考书目
 
-![image](assets/assets/signals-and-communication-012/image-002.jpg)
-![image](assets/assets/signals-and-communication-012/image-003.png)
+![image](assets/signals-and-communication-012/image-002.jpg)
+![image](assets/signals-and-communication-012/image-003.png)
 
 <!-- slide: 3 -->
 
@@ -78,9 +78,9 @@ locator_type: slide
 - 图像（二维）
 - 声音（一维）
 - 脑电波（多维）
-![image](assets/assets/signals-and-communication-012/image-004.png)
-![image](assets/assets/signals-and-communication-012/image-005.png)
-![image](assets/assets/signals-and-communication-012/image-006.png)
+![image](assets/signals-and-communication-012/image-004.png)
+![image](assets/signals-and-communication-012/image-005.png)
+![image](assets/signals-and-communication-012/image-006.png)
 
 <!-- slide: 8 -->
 
@@ -102,7 +102,7 @@ locator_type: slide
 <!-- slide: 10 -->
 
 - 图1-1数字信号处理理论结构
-![image](assets/assets/signals-and-communication-012/image-007.png)
+![image](assets/signals-and-communication-012/image-007.png)
 
 <!-- slide: 11 -->
 
@@ -139,7 +139,7 @@ locator_type: slide
 
 - 3. 数字信号处理系统构成
 - 前置取样滤波器也称为抗混叠滤波器，将输入信号     中某一频率的分量加以滤除。A/D变换器由模拟信号产生数字信号。数字信号处理器(DSP)按照预定要求，对信号      按一定的要求加工处理（滤波、运算等），得到输出信号    。D/A变换器由一个二进制流产生一个阶梯波形，是形成模拟信号的第一步。后置的模拟滤波器把阶梯波形平滑成预期的模拟信号，以滤除掉不需要的高频分量，生成所需的模拟信号    。
-![image](assets/assets/signals-and-communication-012/image-008.png)
+![image](assets/signals-and-communication-012/image-008.png)
 
 <!-- slide: 16 -->
 

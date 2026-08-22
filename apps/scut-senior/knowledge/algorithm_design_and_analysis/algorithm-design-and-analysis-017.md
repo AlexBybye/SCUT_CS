@@ -16,9 +16,9 @@ locator_type: page
 53,59,61,67,71,73,79,83,89,97], 一共有25个素数,按
 照二分搜索算法寻找元素67，并分析算法复杂度。
 
-![image](assets/assets/algorithm-design-and-analysis-017/image-001.png)
+![image](assets/algorithm-design-and-analysis-017/image-001.png)
 
-![image](assets/assets/algorithm-design-and-analysis-017/image-002.png)
+![image](assets/algorithm-design-and-analysis-017/image-002.png)
 
 <!-- page: 2 -->
 
@@ -34,11 +34,11 @@ locator_type: page
 
 因此元素67所在的数组位置是19, 一共执行3次比较。
 
-![image](assets/assets/algorithm-design-and-analysis-017/image-003.png)
+![image](assets/algorithm-design-and-analysis-017/image-003.png)
 
-![image](assets/assets/algorithm-design-and-analysis-017/image-004.png)
+![image](assets/algorithm-design-and-analysis-017/image-004.png)
 
-![image](assets/assets/algorithm-design-and-analysis-017/image-005.png)
+![image](assets/algorithm-design-and-analysis-017/image-005.png)
 
 <!-- page: 3 -->
 
@@ -80,7 +80,7 @@ n/4
 2. 设有数组A=[44,75,23,43,55,12]，按照划分算法确定
 划分元素A[low]的新位置。
 
-![image](assets/assets/algorithm-design-and-analysis-017/image-006.png)
+![image](assets/algorithm-design-and-analysis-017/image-006.png)
 
 <!-- page: 5 -->
 
@@ -181,9 +181,9 @@ j
 3. 给定数组A=[44,75,23,43,55,12,64,77,33]，按照快
 速排序算法进行排序，并分析最坏情况下的时间复杂度。
 
-![image](assets/assets/algorithm-design-and-analysis-017/image-007.png)
+![image](assets/algorithm-design-and-analysis-017/image-007.png)
 
-![image](assets/assets/algorithm-design-and-analysis-017/image-008.png)
+![image](assets/algorithm-design-and-analysis-017/image-008.png)
 
 <!-- page: 7 -->
 

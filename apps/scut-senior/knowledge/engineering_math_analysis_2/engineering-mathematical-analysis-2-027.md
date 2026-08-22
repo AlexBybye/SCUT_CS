@@ -69,14 +69,20 @@ A 卷
 
 一、填空题: 共5 题, 每题2 分, 共10 分.
 
+<!-- question: engineering-mathematical-analysis-2-027-Q6 -->
+
 1. 微分方程y′′ + y′ −2y = 1 −2x 的通解为
 y = C1e−2x + C2ex + x
 ;
+
+<!-- question: engineering-mathematical-analysis-2-027-Q7 -->
 
 2. 设函数u = ln(x2 + y2 + z2), 求div(gradu) =
 2
 x2+y2+z2
 ;
+
+<!-- question: engineering-mathematical-analysis-2-027-Q8 -->
 
 3. 设Γ 是球面x2 + y2 + z2 = R2 与平面x + y + z = 0 的交线, 则第一类曲线积分
 ¸
@@ -103,6 +109,8 @@ x+1
 
 −1 = z
 
+<!-- question: engineering-mathematical-analysis-2-027-Q9 -->
+
 4. 参数曲线
 
 1
@@ -122,6 +130,8 @@ z = t,
 −1,
 −π < x ⩽0,
 
+<!-- question: engineering-mathematical-analysis-2-027-Q10 -->
+
 5. 设周期为2π 的函数f(x) =
 
 1,
@@ -139,9 +149,11 @@ x = π 处收敛于
 
 <!-- page: 2 -->
 
-<!-- question: engineering-mathematical-analysis-2-027-Q6 -->
+<!-- question: engineering-mathematical-analysis-2-027-Q11 -->
 
 二、单选题: 共5 题, 每题2 分, 共10 分.
+
+<!-- question: engineering-mathematical-analysis-2-027-Q12 -->
 
 1. 关于未知函数y 的微分方程(y −sin x)dx + ln xdy = 0 是(
 B
@@ -161,6 +173,8 @@ x sin 1
 y,
 xy̸ = 0,
 
+<!-- question: engineering-mathematical-analysis-2-027-Q13 -->
+
 2. 二元函数f(x, y) =
 
 , 则
@@ -179,6 +193,8 @@ B. 等于1;
 
 C. 等于0;
 D. 等于2.
+
+<!-- question: engineering-mathematical-analysis-2-027-Q14 -->
 
 3. 设函数z = f(x, y) 在(a, b) 的某个邻域内有直到二阶的连续偏导数, 且∂z
 ∂x(a, b) = 0,
@@ -205,6 +221,8 @@ B. A < 0, AC > B2;
 
 C. A > 0, AC < B2;
 D. A < 0, AC < B2.
+
+<!-- question: engineering-mathematical-analysis-2-027-Q15 -->
 
 4. 函数ln(1 −x) 在x = 0 处的泰勒(Taylor) 展开式正确的是(
 A
@@ -254,6 +272,8 @@ D. ln(1 −x) =
 
 n=1
 
+<!-- question: engineering-mathematical-analysis-2-027-Q16 -->
+
 5. 使得级数
 ∞
 ∑
@@ -278,7 +298,7 @@ D. p > 1.
 
 <!-- page: 3 -->
 
-<!-- question: engineering-mathematical-analysis-2-027-Q7 -->
+<!-- question: engineering-mathematical-analysis-2-027-Q17 -->
 
 三、计算题: 共3 题, 每题10 分, 共30 分.
 
@@ -367,6 +387,8 @@ z4 + 1 −f ′
 =f ′′
 
 (z4 + 1)3.
+
+<!-- question: engineering-mathematical-analysis-2-027-Q18 -->
 
 2. 计算累次积分
 ´ 1
@@ -498,6 +520,8 @@ ey −yeydy
 1
 2.
 
+<!-- question: engineering-mathematical-analysis-2-027-Q19 -->
+
 3. 计算球面x2 + y2 + z2 = 4z 含在抛物面z = x2 + y2 内的部分的面积.
 
 √
@@ -613,9 +637,11 @@ dθ
 
 <!-- page: 5 -->
 
-<!-- question: engineering-mathematical-analysis-2-027-Q8 -->
+<!-- question: engineering-mathematical-analysis-2-027-Q20 -->
 
 四、解答题: 共3 题, 每题10 分, 共30 分.
+
+<!-- question: engineering-mathematical-analysis-2-027-Q21 -->
 
 1. 设Σ 是锥面z =
 √
@@ -698,6 +724,8 @@ xyezdydz + yz2dzdx −yezdxdy =
 x2+y2≤1
 
 Σ
+
+<!-- question: engineering-mathematical-analysis-2-027-Q22 -->
 
 2. 设曲线积分
 ´
@@ -794,6 +822,8 @@ x
 Pdx + Qdy = 0.
 
 (1,0)
+
+<!-- question: engineering-mathematical-analysis-2-027-Q23 -->
 
 3. 求幂级数
 ∞
@@ -939,7 +969,7 @@ n=0
 
 <!-- page: 7 -->
 
-<!-- question: engineering-mathematical-analysis-2-027-Q9 -->
+<!-- question: engineering-mathematical-analysis-2-027-Q24 -->
 
 五、证明题: 共1 题, 每题10 分, 共10 分.
 
@@ -1066,7 +1096,7 @@ n=0
 
 <!-- page: 8 -->
 
-<!-- question: engineering-mathematical-analysis-2-027-Q10 -->
+<!-- question: engineering-mathematical-analysis-2-027-Q25 -->
 
 六、应用题: 共1 题, 每题10 分, 共10 分.
 

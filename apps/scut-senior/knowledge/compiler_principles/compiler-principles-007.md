@@ -20,9 +20,13 @@ locator_type: page
 
 一、 填空
 
+<!-- question: compiler-principles-007-Q2 -->
+
  1．文法G 包括四个组成部分：一组终结符号，一组非终结符号，一组产生
 
 式，以及一个开始符号。
+
+<!-- question: compiler-principles-007-Q3 -->
 
  2．文法按产生式的形式分为四种类型，它们是：0 型文法，又称短语文法；
 
@@ -30,7 +34,11 @@ locator_type: page
 
 文法，又称正规文法。
 
+<!-- question: compiler-principles-007-Q4 -->
+
  3．最右推导称为规范推导，由规范推导产生的句型称为规范句型。
+
+<!-- question: compiler-principles-007-Q5 -->
 
  4．设G 是一个文法，S 是它的开始符号，如果 S=*>α，则称α是一个句型。
 
@@ -40,15 +48,25 @@ locator_type: page
 
 那么该文法就称为是二义的。
 
+<!-- question: compiler-principles-007-Q6 -->
+
  6．通常程序设计语言的单词符号分为五种：基本字、标识符、常数、算符、
 
 界限符。
 
+<!-- question: compiler-principles-007-Q7 -->
+
 7．在自底向上分析法中，LR 分析法把“可归约串”定义为    句柄        。
+
+<!-- question: compiler-principles-007-Q8 -->
 
  8．编译中常用的中间代码形式有逆波兰式、三元式、树代码和四元式等。
 
+<!-- question: compiler-principles-007-Q9 -->
+
  9．对中间代码优化按涉及的范围分为局部优化，循环优化和全局优化。
+
+<!-- question: compiler-principles-007-Q10 -->
 
 10．局部优化主要包括合并已知量、利用公共子表达式和删除无用赋值等内
 
@@ -56,7 +74,7 @@ locator_type: page
 
 <!-- page: 2 -->
 
-<!-- question: compiler-principles-007-Q2 -->
+<!-- question: compiler-principles-007-Q11 -->
 
 二、编译过程通常分为哪几个主要阶段？每个阶段的主要功能？（15 分）
 
@@ -90,7 +108,11 @@ locator_type: page
 
 重定位的指令代码或汇编指令代码。
 
+<!-- question: compiler-principles-007-Q12 -->
+
 三、设有文法G1                            G1：S→SaQ ∣ Q
+
+<!-- question: compiler-principles-007-Q13 -->
 
 1．证明句型 QbRae 是规范句型                       Q→QbR ∣ R
 
@@ -102,6 +124,8 @@ S =R> SaQ =R> SaR =R> Sae =R> Qae =R> QbRae
 
 所以句型 QbRae 是规范句型。
 
+<!-- question: compiler-principles-007-Q14 -->
+
  2．给出句型 QbRae 的短语，直接短语和句柄：
 
 短语：QbR   e   QbRae
@@ -112,7 +136,7 @@ S =R> SaQ =R> SaR =R> Sae =R> Qae =R> QbRae
 
 <!-- page: 3 -->
 
-<!-- question: compiler-principles-007-Q3 -->
+<!-- question: compiler-principles-007-Q15 -->
 
 四、对于文法G2，填写各产生式的选择集合和G2 的预测分析表。
 
@@ -162,7 +186,7 @@ F
 F→(E)
 F→ i
 
-<!-- question: compiler-principles-007-Q4 -->
+<!-- question: compiler-principles-007-Q16 -->
 
 五、把下面的语句翻译成四元式序列。
 
@@ -220,7 +244,7 @@ S.CHAIN=101
 
 <!-- page: 4 -->
 
-<!-- question: compiler-principles-007-Q5 -->
+<!-- question: compiler-principles-007-Q17 -->
 
 六、用基本块代码生成算法生成目标代码。
 

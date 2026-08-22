@@ -24,7 +24,7 @@ M1:5×10, M2:10×5, M3:5×25, M4:25×8, M5:8×8
 
 M1:5×10, M2:10×5, M3:5×25, M4:25×8, M5:8×8
 
-![image](assets/assets/algorithm-design-and-analysis-029/image-001.png)
+![image](assets/algorithm-design-and-analysis-029/image-001.png)
 
 <!-- page: 3 -->
 

@@ -15,23 +15,39 @@ locator_type: none
 班级             学号            姓名               评分
 - **填空**
 
+<!-- question: compiler-principles-006-Q1 -->
+
 1．文法G包括四个组成部分：一组终结符号，一组非终结符号，一组产生式，以及一个开始符号。
 
 2．文法按产生式的形式分为四种类型，它们是：0型文法，又称短语文法；1型文法，又称上下文有关文法；2型文法，又称上下文无关文法；3型文法，又称正规文法。
 
+<!-- question: compiler-principles-006-Q2 -->
+
 3．最右推导称为规范推导，由规范推导产生的句型称为规范句型。
+
+<!-- question: compiler-principles-006-Q3 -->
 
 4．设G是一个文法，S是它的开始符号，如果 S=*>α，则称α是一个句型。仅由终结符号组成的句型是一个句子。
 
 5  对于一个文法G而言，如果L(G)中存在某个句子对应两棵不同的语法树，那么该文法就称为是二义的。
 
+<!-- question: compiler-principles-006-Q4 -->
+
 6．通常程序设计语言的单词符号分为五种：基本字、标识符、常数、算符、界限符。
+
+<!-- question: compiler-principles-006-Q5 -->
 
 7．在自底向上分析法中，LR分析法把“可归约串”定义为      句柄            。
 
+<!-- question: compiler-principles-006-Q6 -->
+
 8．编译中常用的中间代码形式有逆波兰式、三元式、树代码和四元式等。
 
+<!-- question: compiler-principles-006-Q7 -->
+
 9．对中间代码优化按涉及的范围分为局部优化，循环优化和全局优化。
+
+<!-- question: compiler-principles-006-Q8 -->
 
 10．局部优化主要包括合并已知量、利用公共子表达式和删除无用赋值等内容。
 
@@ -62,6 +78,8 @@ R→cSd ∣ e
 S =R> SaQ =R> SaR =R> Sae =R> Qae =R> QbRae
 
 所以句型  **QbRae** 是规范句型。
+
+<!-- question: compiler-principles-006-Q9 -->
 
 2．给出句型  **QbRae** 的短语，直接短语和句柄：
 

@@ -113,7 +113,7 @@ Closest Pair of Points: Second Attempt
 Divide. Subdivide region into 4 quadrants.
 Obstacle. Impossible to ensure n/4 points in each piece.
 
-![image](assets/assets/algorithm-design-and-analysis-015/image-001.png)
+![image](assets/algorithm-design-and-analysis-015/image-001.png)
 
 <!-- page: 10 -->
 
@@ -129,7 +129,7 @@ Combine: find closet pair with one point in each side.
 •
 Return best of 3 solutions.
 
-![image](assets/assets/algorithm-design-and-analysis-015/image-002.png)
+![image](assets/algorithm-design-and-analysis-015/image-002.png)
 
 <!-- page: 11 -->
 
@@ -141,7 +141,7 @@ distance < 𝛿.
 •
 Observation: only need to consider points within 𝛿of line L.
 
-![image](assets/assets/algorithm-design-and-analysis-015/image-003.png)
+![image](assets/algorithm-design-and-analysis-015/image-003.png)
 
 <!-- page: 12 -->
 
@@ -157,7 +157,7 @@ Sort points in 2𝛿-strip by their y-coordinate.
 •
 Only check distances of those within 15 positions in sorted list.
 
-![image](assets/assets/algorithm-design-and-analysis-015/image-004.png)
+![image](assets/algorithm-design-and-analysis-015/image-004.png)
 
 <!-- page: 13 -->
 
@@ -188,7 +188,7 @@ have distance ≥3(1
 Note. The value of 15 can be reduced. The
 important thing is that it is an absolute constant.
 
-![image](assets/assets/algorithm-design-and-analysis-015/image-005.png)
+![image](assets/algorithm-design-and-analysis-015/image-005.png)
 
 <!-- page: 14 -->
 
@@ -609,7 +609,7 @@ Choosing the Pivot Element
 
 • Divide 𝑛elements into 𝑛/5 groups of 5 elements each.
 
-![image](assets/assets/algorithm-design-and-analysis-015/image-006.png)
+![image](assets/algorithm-design-and-analysis-015/image-006.png)
 
 <!-- page: 40 -->
 
@@ -618,7 +618,7 @@ Choosing the Pivot Element
 • Divide 𝑛elements into 𝑛/5 groups of 5 elements each.
 • Find median of each group.
 
-![image](assets/assets/algorithm-design-and-analysis-015/image-007.png)
+![image](assets/algorithm-design-and-analysis-015/image-007.png)
 
 <!-- page: 41 -->
 
@@ -629,7 +629,7 @@ Choosing the Pivot Element
 • Find median of 𝑛/5 medians recursively.
 • Use median-of-medians as pivot element.
 
-![image](assets/assets/algorithm-design-and-analysis-015/image-008.png)
+![image](assets/algorithm-design-and-analysis-015/image-008.png)
 
 <!-- page: 42 -->
 
@@ -660,7 +660,7 @@ Analysis of Median-of-Medians
 Selection Algorithm
 • At least half of 5-element medians ≤𝑝.
 
-![image](assets/assets/algorithm-design-and-analysis-015/image-009.png)
+![image](assets/algorithm-design-and-analysis-015/image-009.png)
 
 <!-- page: 44 -->
 
@@ -669,7 +669,7 @@ Selection Algorithm
 • At least half of 5-element medians ≤𝑝.
 At least 𝑛/5 /2 = 𝑛/10 medians ≤𝑝.
 
-![image](assets/assets/algorithm-design-and-analysis-015/image-010.png)
+![image](assets/algorithm-design-and-analysis-015/image-010.png)
 
 <!-- page: 45 -->
 
@@ -679,7 +679,7 @@ Selection Algorithm
 At least 𝑛/5 /2 = 𝑛/10 medians ≤𝑝.
 At least 3 𝑛/10 elements ≤𝑝.
 
-![image](assets/assets/algorithm-design-and-analysis-015/image-011.png)
+![image](assets/algorithm-design-and-analysis-015/image-011.png)
 
 <!-- page: 46 -->
 
@@ -687,7 +687,7 @@ Analysis of Median-of-Medians
 Selection Algorithm
 • At least half of 5-element medians ≥𝑝.
 
-![image](assets/assets/algorithm-design-and-analysis-015/image-012.png)
+![image](assets/algorithm-design-and-analysis-015/image-012.png)
 
 <!-- page: 47 -->
 
@@ -696,7 +696,7 @@ Selection Algorithm
 • At least half of 5-element medians ≥𝑝.
 Symmetrically, at least 𝑛/10 medians ≥𝑝.
 
-![image](assets/assets/algorithm-design-and-analysis-015/image-013.png)
+![image](assets/algorithm-design-and-analysis-015/image-013.png)
 
 <!-- page: 48 -->
 
@@ -706,7 +706,7 @@ Selection Algorithm
 Symmetrically, at least 𝑛/10 medians ≥𝑝.
 At least 3 𝑛/10 elements ≥𝑝.
 
-![image](assets/assets/algorithm-design-and-analysis-015/image-014.png)
+![image](assets/algorithm-design-and-analysis-015/image-014.png)
 
 <!-- page: 49 -->
 

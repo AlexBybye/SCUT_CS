@@ -38,7 +38,11 @@ locator_type: page
 <!-- page: 2 -->
 
 三) (10 分)完成下面两题：
+<!-- question: engineering-mathematical-analysis-1-022-Q1 -->
+
     (1). 令 𝒇(𝒙) = 𝒙𝟐𝐞𝟓𝒙, 求 𝒇(𝒏)(𝒙), 𝒏≥𝟑.
+
+<!-- question: engineering-mathematical-analysis-1-022-Q2 -->
 
 (2). 计算积分 ∫√𝟏+ 𝒙𝟐𝐝𝒙.
 
@@ -46,10 +50,14 @@ locator_type: page
 
 四）(10 分)计算以下两题：
 
+<!-- question: engineering-mathematical-analysis-1-022-Q3 -->
+
 (1). ∫
 𝐞0𝒙𝐬𝐢𝐧𝒙𝐝𝒙;
 #\$
 𝟎
+
+<!-- question: engineering-mathematical-analysis-1-022-Q4 -->
 
 (2). 设旋轮线的参数方程为
 
@@ -81,7 +89,11 @@ locator_type: page
 
 𝒃𝟐= 𝟏, 𝒂, 𝒃> 𝟎.
 
+<!-- question: engineering-mathematical-analysis-1-022-Q5 -->
+
      (1). 求椭圆上斜率为 𝟏 的切线；
+<!-- question: engineering-mathematical-analysis-1-022-Q6 -->
+
      (2). 求椭圆的面积。
 
 <!-- page: 6 -->
@@ -110,11 +122,15 @@ locator_type: page
 
 𝒒= 𝟏, 𝒂, 𝒃> 𝟎. 证明：
 
+<!-- question: engineering-mathematical-analysis-1-022-Q7 -->
+
 (1). 𝒇(𝒙) = −𝐥𝐧𝒙 在 𝒙> 𝟎 时是凸函数；
 
 𝒂𝒑
 
 𝒃𝒒
+
+<!-- question: engineering-mathematical-analysis-1-022-Q8 -->
 
 (2). 𝒂𝒃≤
 

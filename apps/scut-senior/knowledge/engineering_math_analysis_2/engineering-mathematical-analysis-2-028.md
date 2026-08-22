@@ -33,6 +33,8 @@ locator_type: none
 评阅教师请在试卷袋上评阅栏签名
 
 **一、填空题：共5题，每题2分，共10分。**
+<!-- question: engineering-mathematical-analysis-2-028-Q1 -->
+
 1. 微分方程$y''+2y'-3y=2-3x$的通解为                          ;
 1. 向量场![formula-object](assets/engineering-mathematical-analysis-2-028/image-003.png)的旋度为                          ;
 1. 设$\Gamma$是平面上的下半圆周$y=-\sqrt{1-x^{2}}$,  ![formula-object](assets/engineering-mathematical-analysis-2-028/image-006.png),  则第一类曲线积分![formula-object](assets/engineering-mathematical-analysis-2-028/image-007.png)                   ;
@@ -40,6 +42,8 @@ locator_type: none
 1. 设周期为$2\pi$的函数$f(x)=|x|,-π<x?π$,则$f(x)$的傅里叶(Fourier)级数在$x=\pi$处收敛于                 .
 
 **二、选择题：共5题，每题2分，共10分。**
+<!-- question: engineering-mathematical-analysis-2-028-Q2 -->
+
 1. 下列微分方程中,  属于二阶线性常微分方程的是(     )
 
 A.  $(x+y^2)dy+e^xdx=0$;				B.  ![formula-object](assets/engineering-mathematical-analysis-2-028/image-014.png);
@@ -60,6 +64,8 @@ C.  $\frac{\pi}{3}$;									D.  $\frac{\pi}{2}$.
 A.  ![formula-object](assets/engineering-mathematical-analysis-2-028/image-032.png);								B.  ![formula-object](assets/engineering-mathematical-analysis-2-028/image-033.png);
 
 C. $0$;									D.  ![formula-object](assets/engineering-mathematical-analysis-2-028/image-035.png).
+<!-- question: engineering-mathematical-analysis-2-028-Q3 -->
+
 1. 下列级数发散的是(     )
 
 A.  $\sum_{n=1}^\infty2^n\sin\frac{\pi}{3^n}$;							B.  ![formula-object](assets/engineering-mathematical-analysis-2-028/image-037.png);
@@ -86,7 +92,7 @@ $g(u,v)$具有连续的二阶偏导数,  计算二阶偏导数$\frac{\partial^2z
 
 但在$(0,1)$不一致收敛.
 
-<!-- question: engineering-mathematical-analysis-2-028-Q1 -->
+<!-- question: engineering-mathematical-analysis-2-028-Q4 -->
 
 六、**应用题：共1题，每题10分，共10分。**
 

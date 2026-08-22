@@ -20,8 +20,8 @@ locator_type: slide
 
 <!-- slide: 2 -->
 
-![image](assets/assets/embedded-systems-013/image-001.jpg)
-![image](assets/assets/embedded-systems-013/image-002.png)
+![image](assets/embedded-systems-013/image-001.jpg)
+![image](assets/embedded-systems-013/image-002.png)
 
 <!-- slide: 3 -->
 
@@ -46,9 +46,9 @@ locator_type: slide
 - 9.1.2 STM32芯片ADC结构
 - STM32芯片A/D转换可以由外部事件触发(例如定时器捕获，EXTI线)。如果设置了EXTTRIG控制位，则外部事件就能够触发转换。EXTSEL[2:0]和JEXTSEL2:0]控制位允许应用程序选择8个可能的事件中的某一个，可以触发规则和注入组的采样。当外部触发信号被选为ADC规则或注入转换时，只有它的上升沿可以启动转换。
 - ADC1和ADC2用于规则通道的外部触发
-![image](assets/assets/embedded-systems-013/image-003.png)
+![image](assets/embedded-systems-013/image-003.png)
 - ADC1和ADC2用于注入通道的外部触发
-![image](assets/assets/embedded-systems-013/image-004.png)
+![image](assets/embedded-systems-013/image-004.png)
 
 <!-- slide: 7 -->
 
@@ -61,13 +61,13 @@ locator_type: slide
 
 - （4）中断电路。有3种情况可以产生中断，即转换结束、注入转换结束和模拟看门狗事件。ADC1和ADC2的中断映射在同一个中断向量上。
 - ADC中断
-![image](assets/assets/embedded-systems-013/image-005.png)
+![image](assets/embedded-systems-013/image-005.png)
 
 <!-- slide: 9 -->
 
 - 9.1.3 ADC芯片引脚
 - VDD和VSSA应该分别连接到VDD和VSS，传感器信号通过任意一路通道进入ADC并被转换成数字量，该数字量会被存入一个16位的数据寄存器中，在DMA使能的情况下，STM32的存储器可以直接读取转换后的数据。ADC必须在时钟ADCCLK的控制下才能进行A/D转换，ADCCLK的值是由时钟控制器控制，与高级外设总线APB2同步。时钟控制器为ADC时钟提供了一个专用的可编程预分频器，默认的分频值为2。
-![image](assets/assets/embedded-systems-013/image-006.png)
+![image](assets/embedded-systems-013/image-006.png)
 
 <!-- slide: 10 -->
 
@@ -80,25 +80,25 @@ locator_type: slide
 - 1.单次转换模式
 - 单次转换模式下，ADC只执行一次转换。该模式既可通过设置ADC_CR2寄存器的ADON位(只适用于规则通道)启动也可通过外部触发启动(适用于规则通道或注入通道)，这时CONT位为0。然后ADC停止。
 - 一旦选择通道的转换完成： 如果一个规则通道被转换，转换数据被储存在16位ADC_DR寄存器中，EOC(转换结束)标志被设置，如果设置了EOCIE，则产生中断。如果一个注入通道被转换，转换数据被储存在16位的ADC_DRJ1寄存器中，JEOC(注入转换结束)标志被设置，如果设置了JEOCIE位，则产生中断。然后ADC停止。
-![image](assets/assets/embedded-systems-013/image-007.png)
+![image](assets/embedded-systems-013/image-007.png)
 
 <!-- slide: 12 -->
 
 - 2.连续转换模式
 - 在连续转换模式中，当前面ADC转换一结束马上就启动另一次转换。此模式可通过外部触发启动或通过设置ADC_CR2寄存器上的ADON位启动，此时CONT位是1。每个转换后：如果一个规则通道被转换，转换数据被储存在16位的ADC_DR寄存器中，EOC(转换结束)标志被设置，如果设置了EOCIE，则产生中断。如果一个注入通道被转换，转换数据被储存在16位的ADC_DRJ1寄存器中，JEOC(注入转换结束)标志被设置，如果设置了JEOCIE位，则产生中断。
-![image](assets/assets/embedded-systems-013/image-008.png)
+![image](assets/embedded-systems-013/image-008.png)
 
 <!-- slide: 13 -->
 
 - 3.扫描模式
 - 此模式用来扫描一组模拟通道。 扫描模式可通过设置ADC_CR1寄存器的SCAN位来选择。一旦这个位被设置，ADC扫描所有被ADC_SQRX寄存器(对规则通道)或ADC_JSQR(对注入通道)选中的所有通道。在每个组的每个通道上执行单次转换。在每个转换结束时，同一组的下一个通道被自动转换。如果设置了CONT位，转换不会在选择组的最后一个通道上停止，而是再次从选择组的第一个通道继续转换。 如果设置了DMA位，在每次EOC后，DMA控制器把规则组通道的转换数据传输到SRAM中。而注入通道转换的数据总是存储在ADC_JDRx寄存器中。
-![image](assets/assets/embedded-systems-013/image-009.png)
+![image](assets/embedded-systems-013/image-009.png)
 
 <!-- slide: 14 -->
 
 - 4.间断模式
 - STM32有16个多路通道。可以把转换组织成两组：规则组和注入组。在任意多个通道上以任意顺序进行的一系列转换构成成组转换。规则通道组：相当正常运行的程序，最多16个通道；注入通道组：相当于中断，最多4个通道。因为规则通道相当于程序正常运行，而注入通道相当于中断。也就是说，注入通道的转换可以打断规则通道的转换，当注入通道执行完以后继续执行规则通道。当只有规则通道时顺序执行（自行设置顺序），当加入注入通道以后就相当于触发中断，执行完注入通道以后再执行规则通道。
-![image](assets/assets/embedded-systems-013/image-010.png)
+![image](assets/embedded-systems-013/image-010.png)
 
 <!-- slide: 15 -->
 
@@ -114,7 +114,7 @@ locator_type: slide
 
 <!-- slide: 17 -->
 
-![image](assets/assets/embedded-systems-013/image-011.png)
+![image](assets/embedded-systems-013/image-011.png)
 
 <!-- slide: 18 -->
 
@@ -125,10 +125,10 @@ locator_type: slide
 
 - 6.数据对齐
 - ADC_CR2寄存器中的ALIGN位选择转换后数据储存的对齐方式。数据可以左对齐或右对齐，如图9.5 和图9.6所示。注入组通道转换的数据值已经减去了在ADC_JOFRx寄存器中定义的偏移量，因此结果可以是一个负值。SEXT位是扩展的符号值。 对于规则组通道，不需减去偏移值，因此只有12个位有效。
-![image](assets/assets/embedded-systems-013/image-012.png)
+![image](assets/embedded-systems-013/image-012.png)
 - 数据右对齐
 - 数据左对齐
-![image](assets/assets/embedded-systems-013/image-013.png)
+![image](assets/embedded-systems-013/image-013.png)
 
 <!-- slide: 20 -->
 
@@ -151,13 +151,13 @@ locator_type: slide
 
 - 9.1.5 STM32的ADC主要寄存器
 - ADC主要寄存器功能
-![image](assets/assets/embedded-systems-013/image-014.png)
+![image](assets/embedded-systems-013/image-014.png)
 
 <!-- slide: 24 -->
 
 - 9.2 ADC应用实例
 - 利用滑动变阻器产生一定的电压，并通过STM32芯片的PC0/ADC10引脚采集这个电压，并把这个电压值通过数码管显示出来。
-![image](assets/assets/embedded-systems-013/image-015.gif)
+![image](assets/embedded-systems-013/image-015.gif)
 
 <!-- slide: 25 -->
 
@@ -177,28 +177,28 @@ locator_type: slide
 - 9.2.2 ADC查询和中断实例
 - 【例9.1】ADC查询方式实例。
 - 使用STM32CubeMX初始化ADC查询模式
-![image](assets/assets/embedded-systems-013/image-016.png)
+![image](assets/embedded-systems-013/image-016.png)
 - ADC查询模式配置：采用独立工作模式、右对齐、连续模式、使能规则转换、1路转换、通道10、采集时间55.5周期。
 
 <!-- slide: 27 -->
 
 - （1）初始化配置，产生的代码如下：
-![image](assets/assets/embedded-systems-013/image-017.png)
+![image](assets/embedded-systems-013/image-017.png)
 - （2）通过查询方式读取ADC采集结果，主要代码如下：
 - （3）主程序main函数相关ADC采集的主要代码如下：
-![image](assets/assets/embedded-systems-013/image-018.png)
-![image](assets/assets/embedded-systems-013/image-019.png)
+![image](assets/embedded-systems-013/image-018.png)
+![image](assets/embedded-systems-013/image-019.png)
 
 <!-- slide: 28 -->
 
 - 【例9.2】ADC中断方式实例。
 - 有关ADC初始化配置和查询一样，只是针对中断方式需要开启中断。
-![image](assets/assets/embedded-systems-013/image-020.png)
+![image](assets/embedded-systems-013/image-020.png)
 - void MX_ADC1_Init(void)和查询方式一样。
 - A/D转换结束回调函数：
 - 主程序main函数相关ADC采集的主要代码如下：
-![image](assets/assets/embedded-systems-013/image-021.png)
-![image](assets/assets/embedded-systems-013/image-022.png)
+![image](assets/embedded-systems-013/image-021.png)
+![image](assets/embedded-systems-013/image-022.png)
 
 <!-- slide: 29 -->
 

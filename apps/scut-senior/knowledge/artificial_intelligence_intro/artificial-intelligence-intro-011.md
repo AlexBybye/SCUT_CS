@@ -26,7 +26,7 @@ locator_type: page
 
 46
 
-![image](assets/assets/artificial-intelligence-intro-011/image-001.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-001.jpeg)
 
 <!-- page: 2 -->
 
@@ -38,7 +38,7 @@ locator_type: page
 
 47
 
-![image](assets/assets/artificial-intelligence-intro-011/image-002.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-002.jpeg)
 
 <!-- page: 3 -->
 
@@ -50,7 +50,7 @@ locator_type: page
 
 48
 
-![image](assets/assets/artificial-intelligence-intro-011/image-003.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-003.jpeg)
 
 <!-- page: 4 -->
 
@@ -65,7 +65,7 @@ h(n)：启发函数
 
 49
 
-![image](assets/assets/artificial-intelligence-intro-011/image-004.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-004.jpeg)
 
 <!-- page: 5 -->
 
@@ -81,7 +81,7 @@ h(n)：启发函数
 
 50
 
-![image](assets/assets/artificial-intelligence-intro-011/image-005.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-005.jpeg)
 
 <!-- page: 6 -->
 
@@ -97,7 +97,7 @@ A算法
 
 51
 
-![image](assets/assets/artificial-intelligence-intro-011/image-006.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-006.jpeg)
 
 <!-- page: 7 -->
 
@@ -113,7 +113,7 @@ IF f(n, ml)<f(ml) THEN f(ml):=f(n, ml),
 
 52
 
-![image](assets/assets/artificial-intelligence-intro-011/image-007.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-007.jpeg)
 
 <!-- page: 8 -->
 
@@ -135,7 +135,7 @@ h(n)为当前节点“不在位”的将牌数
 
 53
 
-![image](assets/assets/artificial-intelligence-intro-011/image-008.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-008.jpeg)
 
 <!-- page: 9 -->
 
@@ -158,7 +158,7 @@ h(n) =4
 
 54
 
-![image](assets/assets/artificial-intelligence-intro-011/image-009.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-009.jpeg)
 
 <!-- page: 10 -->
 
@@ -253,7 +253,7 @@ M(7)
 
 55
 
-![image](assets/assets/artificial-intelligence-intro-011/image-010.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-010.jpeg)
 
 <!-- page: 11 -->
 
@@ -265,7 +265,7 @@ h(n)≤h*(n)
 
 56
 
-![image](assets/assets/artificial-intelligence-intro-011/image-011.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-011.jpeg)
 
 <!-- page: 12 -->
 
@@ -295,7 +295,7 @@ A*条件举例
 
 57
 
-![image](assets/assets/artificial-intelligence-intro-011/image-012.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-012.jpeg)
 
 <!-- page: 13 -->
 
@@ -314,7 +314,7 @@ t的最佳路径上的节点。
 
 58
 
-![image](assets/assets/artificial-intelligence-intro-011/image-013.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-013.jpeg)
 
 <!-- page: 14 -->
 
@@ -327,7 +327,7 @@ A*算法的性质（续1）
 
 59
 
-![image](assets/assets/artificial-intelligence-intro-011/image-014.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-014.jpeg)
 
 <!-- page: 15 -->
 
@@ -342,7 +342,7 @@ A*算法的性质（续2）
 
 60
 
-![image](assets/assets/artificial-intelligence-intro-011/image-015.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-015.jpeg)
 
 <!-- page: 16 -->
 
@@ -362,7 +362,7 @@ f(n) = g(n) + h(n)
 
 61
 
-![image](assets/assets/artificial-intelligence-intro-011/image-016.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-016.jpeg)
 
 <!-- page: 17 -->
 
@@ -383,7 +383,7 @@ f(n) ≤ f*(s)
 
 62
 
-![image](assets/assets/artificial-intelligence-intro-011/image-017.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-017.jpeg)
 
 <!-- page: 18 -->
 
@@ -403,7 +403,7 @@ OPEN表上任一具有f(n)<f*(s)的节点n，
 
 63
 
-![image](assets/assets/artificial-intelligence-intro-011/image-018.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-018.jpeg)
 
 <!-- page: 19 -->
 
@@ -416,7 +416,7 @@ A*算法的性质（续5）
 
 64
 
-![image](assets/assets/artificial-intelligence-intro-011/image-019.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-019.jpeg)
 
 <!-- page: 20 -->
 
@@ -434,7 +434,7 @@ n，所以
 
 65
 
-![image](assets/assets/artificial-intelligence-intro-011/image-020.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-020.jpeg)
 
 <!-- page: 21 -->
 
@@ -458,7 +458,7 @@ l 如果n≠ n’，由于A*选择n扩展，而不是n’，
 
 66
 
-![image](assets/assets/artificial-intelligence-intro-011/image-021.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-021.jpeg)
 
 <!-- page: 22 -->
 
@@ -478,7 +478,7 @@ A*算法的性质（续7）
 
 67
 
-![image](assets/assets/artificial-intelligence-intro-011/image-022.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-022.jpeg)
 
 <!-- page: 23 -->
 
@@ -492,7 +492,7 @@ A*算法的性质（续7）
 
 68
 
-![image](assets/assets/artificial-intelligence-intro-011/image-023.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-023.jpeg)
 
 <!-- page: 24 -->
 
@@ -510,7 +510,7 @@ A*算法的性质（续7）
 
 69
 
-![image](assets/assets/artificial-intelligence-intro-011/image-024.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-024.jpeg)
 
 <!-- page: 25 -->
 
@@ -529,7 +529,7 @@ A*算法的性质（续7）
 
 70
 
-![image](assets/assets/artificial-intelligence-intro-011/image-025.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-025.jpeg)
 
 <!-- page: 26 -->
 
@@ -542,7 +542,7 @@ A*算法的改进
 
 71
 
-![image](assets/assets/artificial-intelligence-intro-011/image-026.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-026.jpeg)
 
 <!-- page: 27 -->
 
@@ -594,7 +594,7 @@ G(11)
 
 72
 
-![image](assets/assets/artificial-intelligence-intro-011/image-027.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-027.jpeg)
 
 <!-- page: 28 -->
 
@@ -626,7 +626,7 @@ G 目标
 
 73
 
-![image](assets/assets/artificial-intelligence-intro-011/image-028.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-028.jpeg)
 
 <!-- page: 29 -->
 
@@ -644,7 +644,7 @@ G 目标
 
 74
 
-![image](assets/assets/artificial-intelligence-intro-011/image-029.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-029.jpeg)
 
 <!-- page: 30 -->
 
@@ -656,7 +656,7 @@ G 目标
 
 75
 
-![image](assets/assets/artificial-intelligence-intro-011/image-030.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-030.jpeg)
 
 <!-- page: 31 -->
 
@@ -685,7 +685,7 @@ h(nj)
 
 76
 
-![image](assets/assets/artificial-intelligence-intro-011/image-031.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-031.jpeg)
 
 <!-- page: 32 -->
 
@@ -698,7 +698,7 @@ h单调的性质
 
 77
 
-![image](assets/assets/artificial-intelligence-intro-011/image-032.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-032.jpeg)
 
 <!-- page: 33 -->
 
@@ -714,7 +714,7 @@ nj+1在OPEN中。
 
 78
 
-![image](assets/assets/artificial-intelligence-intro-011/image-033.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-033.jpeg)
 
 <!-- page: 34 -->
 
@@ -735,7 +735,7 @@ nj+1在OPEN中。
 
 79
 
-![image](assets/assets/artificial-intelligence-intro-011/image-034.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-034.jpeg)
 
 <!-- page: 35 -->
 
@@ -751,7 +751,7 @@ nj+1在OPEN中。
 
 80
 
-![image](assets/assets/artificial-intelligence-intro-011/image-035.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-035.jpeg)
 
 <!-- page: 36 -->
 
@@ -763,7 +763,7 @@ h单调的性质（续）
 
 81
 
-![image](assets/assets/artificial-intelligence-intro-011/image-036.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-036.jpeg)
 
 <!-- page: 37 -->
 
@@ -784,7 +784,7 @@ h单调的性质（续）
 
 82
 
-![image](assets/assets/artificial-intelligence-intro-011/image-037.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-037.jpeg)
 
 <!-- page: 38 -->
 
@@ -804,7 +804,7 @@ c(ni, nj) = 1
 
 83
 
-![image](assets/assets/artificial-intelligence-intro-011/image-038.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-038.jpeg)
 
 <!-- page: 39 -->
 
@@ -820,7 +820,7 @@ c(ni, nj) = 1
 
 84
 
-![image](assets/assets/artificial-intelligence-intro-011/image-039.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-039.jpeg)
 
 <!-- page: 40 -->
 
@@ -838,7 +838,7 @@ fm：到目前为止已扩展节点的最大f值，用fm代替f*(s)
 
 85
 
-![image](assets/assets/artificial-intelligence-intro-011/image-040.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-040.jpeg)
 
 <!-- page: 41 -->
 
@@ -853,7 +853,7 @@ ELSE n:=FIRST(OPEN), fm:=f(n);
 
 86
 
-![image](assets/assets/artificial-intelligence-intro-011/image-041.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-041.jpeg)
 
 <!-- page: 42 -->
 
@@ -902,4 +902,4 @@ G 目标
 
 87
 
-![image](assets/assets/artificial-intelligence-intro-011/image-042.jpeg)
+![image](assets/artificial-intelligence-intro-011/image-042.jpeg)

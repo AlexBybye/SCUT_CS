@@ -21,7 +21,7 @@ locator_type: slide
 <!-- slide: 2 -->
 
 - 2.1 概述
-![image](assets/assets/artificial-intelligence-intro-010/image-001.png)
+![image](assets/artificial-intelligence-intro-010/image-001.png)
 
 <!-- slide: 3 -->
 
@@ -96,7 +96,7 @@ locator_type: slide
 <!-- slide: 10 -->
 
 - 2.2 知识表示方法
-![image](assets/assets/artificial-intelligence-intro-010/image-002.png)
+![image](assets/artificial-intelligence-intro-010/image-002.png)
 
 <!-- slide: 11 -->
 
@@ -404,7 +404,7 @@ locator_type: slide
 <!-- slide: 41 -->
 
 - 2.3 知识获取与管理
-![image](assets/assets/artificial-intelligence-intro-010/image-003.png)
+![image](assets/artificial-intelligence-intro-010/image-003.png)
 
 <!-- slide: 42 -->
 
@@ -529,8 +529,8 @@ locator_type: slide
 - R是知识库中的关系集合，
 - SE×R×E代表知识库中的三元组集合。
 - 一个例子
-![image](assets/assets/artificial-intelligence-intro-010/image-004.png)
-![image](assets/assets/artificial-intelligence-intro-010/image-005.png)
+![image](assets/artificial-intelligence-intro-010/image-004.png)
+![image](assets/artificial-intelligence-intro-010/image-005.png)
 
 <!-- slide: 54 -->
 
@@ -625,7 +625,7 @@ locator_type: slide
 <!-- slide: 61 -->
 
 - 2.4 基于知识的系统
-![image](assets/assets/artificial-intelligence-intro-010/image-006.png)
+![image](assets/artificial-intelligence-intro-010/image-006.png)
 
 <!-- slide: 62 -->
 
@@ -702,13 +702,13 @@ locator_type: slide
 <!-- slide: 69 -->
 
 - 2.4.4 知识系统举例
-![image](assets/assets/artificial-intelligence-intro-010/image-007.png)
+![image](assets/artificial-intelligence-intro-010/image-007.png)
 - 江西省图书馆内两个机器人吵架？！
 - 你如何看待？
-![image](assets/assets/artificial-intelligence-intro-010/image-008.png)
+![image](assets/artificial-intelligence-intro-010/image-008.png)
   - 视频地址
   - https://www.bilibili.com/video/BV14V41187sj/?spm_id_from=autoNext
-![image](assets/assets/artificial-intelligence-intro-010/image-009.png)
+![image](assets/artificial-intelligence-intro-010/image-009.png)
 
 <!-- slide: 70 -->
 

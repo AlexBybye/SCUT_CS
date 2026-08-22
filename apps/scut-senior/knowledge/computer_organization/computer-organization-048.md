@@ -110,7 +110,7 @@ C.作业或程序级并行                                    D.任务级或过�
 
 **六**．某计算机有8条微指令I1—I8，每条微指令所包含的微命令控制信号见下表所示，a—j  分别对应10种不同性质的微命令信号。假设一条微指令的控制字段仅限8位，请安排微指令的控制字段格式。
 
-![image](assets/assets/computer-organization-048/image-001.png)
+![image](assets/computer-organization-048/image-001.png)
 
 **七**．参见图，这是一个二维中断系统，请问：
 1. 在中断情况下，CPU和设备的优先级如何考虑？请按降序排列各设备的中断优先级。
@@ -118,11 +118,11 @@ C.作业或程序级并行                                    D.任务级或过�
 1. 每一级的IM能否对某个优先级的个别设备单独进行屏蔽？如果不能，采取什么方法可达到目的？
 1. 若设备C一提出中断请求，CPU立即进行响应，如何调整才能满足此要求？
 
-![image](assets/assets/computer-organization-048/image-002.png)**八**． 磁盘、磁带、打印机三个设备同时工作。磁盘以20μs的间隔发DMA请求，磁带以30μs的间隔发DMA请求，打印机以120μs的间隔发DMA请求，假设DMA控制器每完成一次DMA传输所需时间为2μs，画出多路DMA控制器工作时空图。
+![image](assets/computer-organization-048/image-002.png)**八**． 磁盘、磁带、打印机三个设备同时工作。磁盘以20μs的间隔发DMA请求，磁带以30μs的间隔发DMA请求，打印机以120μs的间隔发DMA请求，假设DMA控制器每完成一次DMA传输所需时间为2μs，画出多路DMA控制器工作时空图。
 
 **九**．请用块结构语言语言Cobegin-Coend写出图中所示嵌套并行算法优先关系图的程序。
 
-![formula-object](assets/assets/computer-organization-048/image-003.png)
+![formula-object](assets/computer-organization-048/image-003.png)
 
 嵌套并行算法优先关系图
 

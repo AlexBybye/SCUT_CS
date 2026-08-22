@@ -82,9 +82,9 @@ $\therefore$	X+Y=+0.01010
 
 由此可画出微地址转移逻辑。如图B16.2所示。
 
-![image](assets/assets/computer-organization-061/image-001.png)                                                         **图B16.3**
+![image](assets/computer-organization-061/image-001.png)                                                         **图B16.3**
 
-![image](assets/assets/computer-organization-061/image-002.png)**七．**答：分五个阶段：请求总线，总线仲裁，寻址（目的地址），信息传送，状态返回（或错误报告）。
+![image](assets/computer-organization-061/image-002.png)**七．**答：分五个阶段：请求总线，总线仲裁，寻址（目的地址），信息传送，状态返回（或错误报告）。
 
 **图B16。4**
 
@@ -98,4 +98,4 @@ CPU发出读命令信号和存储器地址信号，经一段时延，待信号�
 
 **九．**解：源结点到每个目标结点的距离最短的选播路径如图所示，其中通道数为22，距离为8。
 
-![formula-object](assets/assets/computer-organization-061/image-003.png)
+![formula-object](assets/computer-organization-061/image-003.png)

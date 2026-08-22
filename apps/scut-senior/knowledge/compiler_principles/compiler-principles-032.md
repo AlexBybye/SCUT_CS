@@ -10,4 +10,4 @@ locator_type: none
 
 # 分享对话-豆包
 
-![page-001.png](assets/assets/compiler-principles-032/page-001.png)
+![page-001.png](assets/compiler-principles-032/page-001.png)

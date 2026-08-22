@@ -152,7 +152,7 @@ D    与存数指令有关的控制相关
 
 2  画出分布式仲裁器的逻辑示意图。
 
-![image](assets/assets/computer-organization-009/image-001.jpeg)四、计算题（10分）
+![image](assets/computer-organization-009/image-001.jpeg)四、计算题（10分）
 
 已知x=-0.01111，y=+0.11001,求：
 
@@ -186,7 +186,7 @@ x-y结果的两个符号出现“１０”，所以溢出。
 
 ④    若设备C一提出中断请求，CPU立即进行响应，如何调整才能满足此要求？
 
-![image](assets/assets/computer-organization-009/image-002.png)
+![image](assets/computer-organization-009/image-002.png)
 
 解：
 - 在中断情况下，ＣＰＵ的优先级最低。各设备的优先次序是：Ａ－＞Ｂ－＞Ｃ－＞Ｄ－＞Ｅ－＞Ｆ－＞Ｇ－＞Ｈ－＞Ｉ－＞ＣＰＵ。
@@ -202,9 +202,9 @@ x-y结果的两个符号出现“１０”，所以溢出。
 
 ②    若将（取指周期）缩短为一个CPU周期，请先画出修改数据通路，然后画出指令周期流程图。
 
-![image](assets/assets/computer-organization-009/image-003.png)(2)改变数据通路，将PC直接传送至AR，DR直接送至IR，R0和R2通过多路开关直接送至ALU的输入端， 此时SUB指令的执行**周期为**2个**CPU周期**，执行速度是情况（1）的3倍
+![image](assets/computer-organization-009/image-003.png)(2)改变数据通路，将PC直接传送至AR，DR直接送至IR，R0和R2通过多路开关直接送至ALU的输入端， 此时SUB指令的执行**周期为**2个**CPU周期**，执行速度是情况（1）的3倍
 
-![image](assets/assets/computer-organization-009/image-004.png)
+![image](assets/computer-organization-009/image-004.png)
 
 七、分析题（12分）
 
@@ -216,4 +216,4 @@ x-y结果的两个符号出现“１０”，所以溢出。
 
 ③推导流水线的加速比公式S，它定义为顺序执行几条指令所用的时间与流水执行几条指令所用的时间之比。
 
-![image](assets/assets/computer-organization-009/image-005.jpeg)![image](assets/assets/computer-organization-009/image-006.jpeg)
+![image](assets/computer-organization-009/image-005.jpeg)![image](assets/computer-organization-009/image-006.jpeg)

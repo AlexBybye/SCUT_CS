@@ -33,9 +33,15 @@ locator_type: page
 
 注意事项：1. 开考前请将密封线内各项信息填写清楚；
 
+<!-- question: algorithm-design-and-analysis-001-Q1 -->
+
 2. 所有答案请直接答在试卷上；
 
+<!-- question: algorithm-design-and-analysis-001-Q2 -->
+
 3. 考试形式：闭卷；
+
+<!-- question: algorithm-design-and-analysis-001-Q3 -->
 
 4. 本试卷共7 大题，满分100 分，考试时间120 分钟；
 
@@ -53,19 +59,29 @@ locator_type: page
 
 评阅教师请在试卷袋上评阅栏签名
 
-<!-- question: algorithm-design-and-analysis-001-Q1 -->
+<!-- question: algorithm-design-and-analysis-001-Q4 -->
 
 一、 共5 题，每题3 分，共15 分.
 
+<!-- question: algorithm-design-and-analysis-001-Q5 -->
+
 1.𝑓(𝑛) = 22𝑛, 𝑔(𝑛) = 2𝑛
+
+<!-- question: algorithm-design-and-analysis-001-Q6 -->
 
 2.𝑓(𝑛) = 𝑛log 𝑐, 𝑔(𝑛) = 𝑐log 𝑛
 
 得分
 
+<!-- question: algorithm-design-and-analysis-001-Q7 -->
+
 3.𝑓(𝑛) = 8 log(𝑛𝑛), 𝑔(𝑛) = 100 log(𝑛!)
 
+<!-- question: algorithm-design-and-analysis-001-Q8 -->
+
 4.𝑓(𝑛) = 𝑛, 𝑔(𝑛) = log2 𝑛
+
+<!-- question: algorithm-design-and-analysis-001-Q9 -->
 
 5.𝑓(𝑛) = 𝑛log 𝑛+ 𝑛, 𝑔(𝑛) = log 𝑛+ 𝑛
 
@@ -73,12 +89,14 @@ locator_type: page
 
 <!-- page: 2 -->
 
+<!-- question: algorithm-design-and-analysis-001-Q10 -->
+
 二、求解递推关系：当𝑛≥2时，𝑓(𝑛) = 5𝑓(𝑛−1) −6𝑓(𝑛−2)；𝑓(0) =
 1；𝑓(1) = 0（10 分）
 
 得分
 
-<!-- question: algorithm-design-and-analysis-001-Q2 -->
+<!-- question: algorithm-design-and-analysis-001-Q11 -->
 
 三、用Prim 方法求下图的最小耗费生成树。（10 分）
 
@@ -117,7 +135,7 @@ locator_type: page
 
 <!-- page: 3 -->
 
-<!-- question: algorithm-design-and-analysis-001-Q3 -->
+<!-- question: algorithm-design-and-analysis-001-Q12 -->
 
 四、用Dijkstra 算法求解下图的单源最短路径问题，设原点为1。（15
 分）
@@ -153,7 +171,7 @@ locator_type: page
 
 5
 
-<!-- question: algorithm-design-and-analysis-001-Q4 -->
+<!-- question: algorithm-design-and-analysis-001-Q13 -->
 
 五、用动态规划法，求解0-1 背包问题，已知背包容量为22，5 件物
 品的体积分别为3,5,7,8,9，价值分别为4,6,7,9,10。求该背包的最
@@ -165,16 +183,22 @@ locator_type: page
 
 <!-- page: 4 -->
 
+<!-- question: algorithm-design-and-analysis-001-Q14 -->
+
 六、求对下列5 个矩阵连乘：𝑀1(4 × 5); 𝑀2(5 × 4); 𝑀3(4 × 6);
 𝑀4(6 × 4); 𝑀5(4 × 5)
+
+<!-- question: algorithm-design-and-analysis-001-Q15 -->
 
 1. (本题10 分)写出解决上述问题的动态规划实现算法(文字描述或伪代码);
 
 得分
 
+<!-- question: algorithm-design-and-analysis-001-Q16 -->
+
 2. (本题10 分)写出通过此算法解决上述问题的过程及结果。
 
-<!-- question: algorithm-design-and-analysis-001-Q5 -->
+<!-- question: algorithm-design-and-analysis-001-Q17 -->
 
 七、设A 是n 个数的序列，如果A 中的元素x 满足以下条件：小于x
 的数的个数≥𝑛

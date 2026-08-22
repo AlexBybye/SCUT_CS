@@ -30,11 +30,11 @@ JLHu@scut.edu.cn
 
 2
 
-![image](assets/assets/signals-and-communication-005/image-001.jpeg)
+![image](assets/signals-and-communication-005/image-001.jpeg)
 
-![image](assets/assets/signals-and-communication-005/image-002.jpeg)
+![image](assets/signals-and-communication-005/image-002.jpeg)
 
-![image](assets/assets/signals-and-communication-005/image-003.jpeg)
+![image](assets/signals-and-communication-005/image-003.jpeg)
 
 <!-- page: 3 -->
 
@@ -52,11 +52,11 @@ JLHu@scut.edu.cn
 
 传统通信的形式（2）
 
-![image](assets/assets/signals-and-communication-005/image-004.jpeg)
+![image](assets/signals-and-communication-005/image-004.jpeg)
 
-![image](assets/assets/signals-and-communication-005/image-005.jpeg)
+![image](assets/signals-and-communication-005/image-005.jpeg)
 
-![image](assets/assets/signals-and-communication-005/image-006.jpeg)
+![image](assets/signals-and-communication-005/image-006.jpeg)
 
 <!-- page: 4 -->
 
@@ -70,13 +70,13 @@ JLHu@scut.edu.cn
 
 现代通信的形式
 
-![image](assets/assets/signals-and-communication-005/image-007.jpeg)
+![image](assets/signals-and-communication-005/image-007.jpeg)
 
-![image](assets/assets/signals-and-communication-005/image-008.jpeg)
+![image](assets/signals-and-communication-005/image-008.jpeg)
 
-![image](assets/assets/signals-and-communication-005/image-009.jpeg)
+![image](assets/signals-and-communication-005/image-009.jpeg)
 
-![image](assets/assets/signals-and-communication-005/image-010.jpeg)
+![image](assets/signals-and-communication-005/image-010.jpeg)
 
 <!-- page: 5 -->
 
@@ -100,7 +100,7 @@ JLHu@scut.edu.cn
 
 数字通信系统的基本概念、原理和方法
 
-![image](assets/assets/signals-and-communication-005/image-011.jpeg)
+![image](assets/signals-and-communication-005/image-011.jpeg)
 
 <!-- page: 7 -->
 
@@ -167,9 +167,9 @@ JLHu@scut.edu.cn
 
 10
 
-![image](assets/assets/signals-and-communication-005/image-012.jpeg)
+![image](assets/signals-and-communication-005/image-012.jpeg)
 
-![image](assets/assets/signals-and-communication-005/image-013.jpeg)
+![image](assets/signals-and-communication-005/image-013.jpeg)
 
 <!-- page: 11 -->
 
@@ -184,11 +184,11 @@ http://open.163.com/special/Khan/theory.html
 
 11
 
-![image](assets/assets/signals-and-communication-005/image-014.jpeg)
+![image](assets/signals-and-communication-005/image-014.jpeg)
 
-![image](assets/assets/signals-and-communication-005/image-015.jpeg)
+![image](assets/signals-and-communication-005/image-015.jpeg)
 
-![image](assets/assets/signals-and-communication-005/image-016.jpeg)
+![image](assets/signals-and-communication-005/image-016.jpeg)
 
 <!-- page: 12 -->
 
@@ -255,11 +255,11 @@ p 信息：信息是消息的内涵，消息是信息的
 
 14
 
-![image](assets/assets/signals-and-communication-005/image-017.jpeg)
+![image](assets/signals-and-communication-005/image-017.jpeg)
 
-![image](assets/assets/signals-and-communication-005/image-018.jpeg)
+![image](assets/signals-and-communication-005/image-018.jpeg)
 
-![image](assets/assets/signals-and-communication-005/image-019.jpeg)
+![image](assets/signals-and-communication-005/image-019.jpeg)
 
 <!-- page: 15 -->
 
@@ -279,7 +279,7 @@ p 信息：信息是消息的内涵，消息是信息的
 
 15
 
-![image](assets/assets/signals-and-communication-005/image-020.jpeg)
+![image](assets/signals-and-communication-005/image-020.jpeg)
 
 <!-- page: 16 -->
 
@@ -291,7 +291,7 @@ p 信息：信息是消息的内涵，消息是信息的
 
 16
 
-![image](assets/assets/signals-and-communication-005/image-021.jpeg)
+![image](assets/signals-and-communication-005/image-021.jpeg)
 
 <!-- page: 17 -->
 
@@ -305,7 +305,7 @@ p 信息：信息是消息的内涵，消息是信息的
 
 17
 
-![image](assets/assets/signals-and-communication-005/image-022.jpeg)
+![image](assets/signals-and-communication-005/image-022.jpeg)
 
 <!-- page: 18 -->
 
@@ -360,7 +360,7 @@ p 信息：信息是消息的内涵，消息是信息的
 
 一语。
 
-![image](assets/assets/signals-and-communication-005/image-023.jpeg)
+![image](assets/signals-and-communication-005/image-023.jpeg)
 
 <!-- page: 21 -->
 
@@ -395,9 +395,9 @@ Graham)发明了电话。至今美国波士
 
 —电话的专利。
 
-![image](assets/assets/signals-and-communication-005/image-024.jpeg)
+![image](assets/signals-and-communication-005/image-024.jpeg)
 
-![image](assets/assets/signals-and-communication-005/image-025.jpeg)
+![image](assets/signals-and-communication-005/image-025.jpeg)
 
 <!-- page: 22 -->
 
@@ -424,7 +424,7 @@ Graham)发明了电话。至今美国波士
 
 反射镜。
 
-![image](assets/assets/signals-and-communication-005/image-026.jpeg)
+![image](assets/signals-and-communication-005/image-026.jpeg)
 
 <!-- page: 23 -->
 
@@ -451,7 +451,7 @@ Graham)发明了电话。至今美国波士
 
 波发生器，铃声立即中止。
 
-![image](assets/assets/signals-and-communication-005/image-027.jpeg)
+![image](assets/signals-and-communication-005/image-027.jpeg)
 
 <!-- page: 24 -->
 
@@ -463,7 +463,7 @@ Graham)发明了电话。至今美国波士
 
 电通信取得成功，通信距离为14公里。
 
-![image](assets/assets/signals-and-communication-005/image-028.jpeg)
+![image](assets/signals-and-communication-005/image-028.jpeg)
 
 <!-- page: 25 -->
 
@@ -483,9 +483,9 @@ Graham)发明了电话。至今美国波士
 •
 1906年,福雷斯特发明了真空三极管放大器。
 
-![image](assets/assets/signals-and-communication-005/image-029.jpeg)
+![image](assets/signals-and-communication-005/image-029.jpeg)
 
-![image](assets/assets/signals-and-communication-005/image-030.jpeg)
+![image](assets/signals-and-communication-005/image-030.jpeg)
 
 <!-- page: 26 -->
 
@@ -497,7 +497,7 @@ Graham)发明了电话。至今美国波士
 •
 上第一台有实用价值的电视机。
 
-![image](assets/assets/signals-and-communication-005/image-031.jpeg)
+![image](assets/signals-and-communication-005/image-031.jpeg)
 
 <!-- page: 27 -->
 
@@ -506,7 +506,7 @@ Graham)发明了电话。至今美国波士
 •
 1935年，英国的沃森.瓦特研制成功了世界上第一部雷达。
 
-![image](assets/assets/signals-and-communication-005/image-032.jpeg)
+![image](assets/signals-and-communication-005/image-032.jpeg)
 
 <!-- page: 28 -->
 
@@ -639,7 +639,7 @@ Graham)发明了电话。至今美国波士
 
 35
 
-![image](assets/assets/signals-and-communication-005/image-033.jpeg)
+![image](assets/signals-and-communication-005/image-033.jpeg)
 
 <!-- page: 36 -->
 
@@ -650,7 +650,7 @@ Graham)发明了电话。至今美国波士
 
 36
 
-![image](assets/assets/signals-and-communication-005/image-034.jpeg)
+![image](assets/signals-and-communication-005/image-034.jpeg)
 
 <!-- page: 37 -->
 
@@ -712,7 +712,7 @@ Graham)发明了电话。至今美国波士
 
 40
 
-![image](assets/assets/signals-and-communication-005/image-035.jpeg)
+![image](assets/signals-and-communication-005/image-035.jpeg)
 
 <!-- page: 41 -->
 
@@ -724,7 +724,7 @@ Graham)发明了电话。至今美国波士
 
 41
 
-![image](assets/assets/signals-and-communication-005/image-036.jpeg)
+![image](assets/signals-and-communication-005/image-036.jpeg)
 
 <!-- page: 42 -->
 
@@ -737,7 +737,7 @@ Graham)发明了电话。至今美国波士
 
 42
 
-![image](assets/assets/signals-and-communication-005/image-037.jpeg)
+![image](assets/signals-and-communication-005/image-037.jpeg)
 
 <!-- page: 43 -->
 
@@ -753,7 +753,7 @@ Graham)发明了电话。至今美国波士
 
 43
 
-![image](assets/assets/signals-and-communication-005/image-038.jpeg)
+![image](assets/signals-and-communication-005/image-038.jpeg)
 
 <!-- page: 44 -->
 

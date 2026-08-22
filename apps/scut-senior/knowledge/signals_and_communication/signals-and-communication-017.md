@@ -12,7 +12,7 @@ locator_type: slide
 
 <!-- slide: 1 -->
 
-![image](assets/assets/signals-and-communication-017/image-001.png)
+![image](assets/signals-and-communication-017/image-001.png)
 - 第7章 有限脉冲响应数字滤波器
 - 数字信号处理
 
@@ -60,27 +60,27 @@ locator_type: slide
 <!-- slide: 7 -->
 
 - 图7-1 群延迟不是常数时的输入输出信号关系
-![image](assets/assets/signals-and-communication-017/image-002.png)
+![image](assets/signals-and-communication-017/image-002.png)
 - 7.1 线性相位FIR数字滤波器的性质
 
 <!-- slide: 8 -->
 
 - 7.1.2  线性相位FIR滤波器特性
-![image](assets/assets/signals-and-communication-017/image-003.png)
-![image](assets/assets/signals-and-communication-017/image-004.png)
+![image](assets/signals-and-communication-017/image-003.png)
+![image](assets/signals-and-communication-017/image-004.png)
 - (c)                                        (d)
 - (a)                                       (b)
 - 单位脉冲响应的对称性或反对称性
 
 <!-- slide: 9 -->
 
-![image](assets/assets/signals-and-communication-017/image-005.png)
+![image](assets/signals-and-communication-017/image-005.png)
 - 表7-1四种线性相位滤波器特性
 - 7.1.3 线性相位FIR数字滤波器的幅度特点
 
 <!-- slide: 10 -->
 
-![image](assets/assets/signals-and-communication-017/image-006.png)
+![image](assets/signals-and-communication-017/image-006.png)
 - 7.1.3 线性相位FIR数字滤波器的幅度特点
 
 <!-- slide: 11 -->
@@ -94,25 +94,25 @@ locator_type: slide
 
 - 7.1.4线性相位FIR数字滤波器零点分布特点
 - (1) zi既不在实轴上，也不在单位圆上，则零点是互为倒数的两组共轭对，如图7-5(a)所示
-![image](assets/assets/signals-and-communication-017/image-007.png)
+![image](assets/signals-and-communication-017/image-007.png)
 
 <!-- slide: 13 -->
 
 - 7.1.4线性相位FIR数字滤波器零点分布特点
 - (2) zi不在实轴上，但是在单位圆上，则共轭对的倒数是它们本身，故此时零点是一组共轭对，如图7-5(b)所示。
-![image](assets/assets/signals-and-communication-017/image-008.png)
+![image](assets/signals-and-communication-017/image-008.png)
 
 <!-- slide: 14 -->
 
 - 7.1.4线性相位FIR数字滤波器零点分布特点
 - (3) zi在实轴上但不在单位圆上，只有倒数部分，无复共轭部分。故零点对如图7-5(c)所示。
-![image](assets/assets/signals-and-communication-017/image-009.png)
+![image](assets/signals-and-communication-017/image-009.png)
 
 <!-- slide: 15 -->
 
 - 7.1.4线性相位FIR数字滤波器零点分布特点
 - (4) zi既在实轴上又在单位圆上，此时只有一个零点，有两种可能， 或位于z=1， 或位于z=-1，如图7-5(d)、 (e)所示。
-![image](assets/assets/signals-and-communication-017/image-010.png)
+![image](assets/signals-and-communication-017/image-010.png)
 
 <!-- slide: 16 -->
 
@@ -190,14 +190,14 @@ locator_type: slide
 <!-- slide: 26 -->
 
 - 图7-8 矩形窗对理想低通幅度特性的影响
-![image](assets/assets/signals-and-communication-017/image-011.png)
+![image](assets/signals-and-communication-017/image-011.png)
 - 7.2用窗函数法设计FIR滤波器
 - 卷积
 
 <!-- slide: 27 -->
 
 - 7.2用窗函数法设计FIR滤波器
-![image](assets/assets/signals-and-communication-017/image-012.png)
+![image](assets/signals-and-communication-017/image-012.png)
 
 <!-- slide: 28 -->
 
@@ -255,7 +255,7 @@ locator_type: slide
 <!-- slide: 35 -->
 
 - 图7-11 典型窗函数的时域形状
-![image](assets/assets/signals-and-communication-017/image-013.png)
+![image](assets/signals-and-communication-017/image-013.png)
 - 7.2.4  用窗函数法设计FIR滤波器方法
 
 <!-- slide: 36 -->
@@ -286,7 +286,7 @@ locator_type: slide
 
 <!-- slide: 39 -->
 
-![image](assets/assets/signals-and-communication-017/image-014.png)
+![image](assets/signals-and-communication-017/image-014.png)
 - 图7-10 频率频率采样的响应
 - 改进措施：(1)适当增加N的值，则误差减小，但会增加成本；
 - (2)在间断点附近增加采样点，可以适当提高阻带衰减，但会加宽过渡带。

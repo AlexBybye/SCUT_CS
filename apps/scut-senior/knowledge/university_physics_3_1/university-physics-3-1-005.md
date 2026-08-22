@@ -30,11 +30,15 @@ locator_type: none
 
 一、选择题（共30分）
 
+<!-- question: university-physics-3-1-005-Q2 -->
+
 1．（本题3分）
 
 一物体质量为$10kg$。受到方向不变的力$F=3+4t(SI)$的作用，在开始的2s内，此力的冲量大小等于［    ］![formula-object](assets/university-physics-3-1-005/image-003.png)
 
 A、12     B、13    C、14    D、15
+
+<!-- question: university-physics-3-1-005-Q3 -->
 
 2．（本题3分）
 
@@ -43,6 +47,8 @@ A、12     B、13    C、14    D、15
 ![formula-object](assets/university-physics-3-1-005/image-004.png)
 
 A、$\sqrt {Rg}$     B、$2\sqrt {Rg}$    C、$\sqrt {2Rg}$    D、$\frac {1} {2}\sqrt {Rg}$   E、$\frac {1} {2}\sqrt {2Rg}$
+
+<!-- question: university-physics-3-1-005-Q4 -->
 
 3．（本题3分）
 
@@ -54,11 +60,15 @@ A、$x=2cos(\frac {2} {3}\pi t+\frac {2} {3}\pi )$      B、$x=2cos(\frac {2} {3
 
 C、$x=2cos(\frac {4} {3}\pi t+\frac {2} {3}\pi )$      D、$x=2cos(\frac {4} {3}\pi t-\frac {2} {3}\pi )$
 
+<!-- question: university-physics-3-1-005-Q5 -->
+
 4．（本题3分）
 
 一辆汽车以25 m/s的速度远离一辆静止的正在鸣笛的机车．机车汽笛的频率为600 Hz，汽车中的乘客听到机车鸣笛声音的频率是（已知空气中的声速为330 m/s）［    ］
 
 A、545Hz     B、555Hz      C、550Hz     D、645 Hz
+
+<!-- question: university-physics-3-1-005-Q6 -->
 
 5．（本题3分）
 
@@ -67,6 +77,8 @@ A、545Hz     B、555Hz      C、550Hz     D、645 Hz
 A、仍为明条纹            B、变为暗条纹
 
 C、既非明纹也非暗纹              D、无法确定是明纹，还是暗纹
+
+<!-- question: university-physics-3-1-005-Q7 -->
 
 6．（本题3分）
 
@@ -78,17 +90,23 @@ A、凸起，且高度为$\lambda /4$      B、凸起，且高度为$\lambda /2$
 
 C、凹陷，且深度为$\lambda /2$      D、凹陷，且深度为$\lambda /4$
 
+<!-- question: university-physics-3-1-005-Q8 -->
+
 7．（本题3分）
 
 在单缝夫琅禾费衍射实验中波长为$\lambda$的单色光垂直入射到单缝上．对应于衍射角为$30^{\circ}$的方向上，若单缝处波面可分成 3个半波带，则缝宽度$b$等于［    ］
 
 A、$\lambda$    B、$1.5\lambda$    C、$2\lambda$    D、$3\lambda$
 
+<!-- question: university-physics-3-1-005-Q9 -->
+
 8．（本题3分）
 
 1mol单原子分子理想气体，在恒定压强下经一准静态过程从300K加热到400K，则气体的熵变为［    ］．   （普适气体常量 *R*  = 8.31 J·mol1·K1）
 
 A、5.98  J·K1      B、6.15  J·K1          C、6.47  J·K1        D、7.26  J·K1
+
+<!-- question: university-physics-3-1-005-Q10 -->
 
 9．（本题3分）
 
@@ -104,25 +122,35 @@ A、${\eta }_{1}={\eta }_{2},{W}_{1}={W}_{2}$      B、${\eta }_{1}>{\eta }_{2},
 
 C、${\eta }_{1}={\eta }_{2},{W}_{1}>{W}_{2}$      D、${\eta }_{1}={\eta }_{2},{W}_{1}<{W}_{2}$
 
-<!-- question: university-physics-3-1-005-Q2 -->
+<!-- question: university-physics-3-1-005-Q11 -->
 
 二、填空题（**共**30分）
+
+<!-- question: university-physics-3-1-005-Q12 -->
 
 11．（本题3分）
 
 质点沿半径为$R$的圆周运动，运动学方程为 $\theta =3+2{t}^{2}$  (SI) ，则$t$时刻质点的切向加速度大小为$a_\tau$=  ________；法向加速度大小为${a}_{n}$=  ________；角加速度$\beta$=  ________．
 
+<!-- question: university-physics-3-1-005-Q13 -->
+
 12．（本题3分）
 
 质量为0.25 kg的质点，受力$F=ti$ (SI)的作用，式中$t$为时间．$t=0$时该质点以$v=2j$ (SI)的速度通过坐标原点，则该质点任意时刻的位置矢量是________．
+
+<!-- question: university-physics-3-1-005-Q14 -->
 
 13．（本题3分）
 
 一沿$x$轴正方向的力作用在一质量为0.5 kg的质点上，已知质点的运动学方程为$x=t^3$，则力在最初2秒内做的功＝________焦耳．
 
+<!-- question: university-physics-3-1-005-Q15 -->
+
 14．（本题3分）
 
 $\frac{1}{2}v$如图所示，一静止的均匀细棒，长为$L$、质量为$m$，可绕通过棒的端点且垂直于棒长的光滑固定轴$O$在水平面内转动，转动惯量为$\frac{1}{3}mL^{2}$．一质量为$m$、速率为$\upsilon$的子弹在水平面内沿与棒垂直的方向射出并穿出棒的自由端，设穿过棒后子弹的速率为$\frac {1} {2}v$，则此时棒的角速度＝________
+
+<!-- question: university-physics-3-1-005-Q16 -->
 
 15．（本题3分）
 
@@ -132,55 +160,85 @@ $\frac{1}{2}v$如图所示，一静止的均匀细棒，长为$L$、质量为$m$
 
 它们的合振幅是________  (SI)．
 
+<!-- question: university-physics-3-1-005-Q17 -->
+
 16．（本题3分）
 
 设入射波的表达式为  ![formula-object](assets/university-physics-3-1-005/image-015.png)．波在距原点$x_0=\frac{3\lambda}{8}$处发生反射，反射点为固定端，则形成的反射波表达式为________．
+
+<!-- question: university-physics-3-1-005-Q18 -->
 
 17．（本题3分）
 
 一束波长为$\lambda =600nm$$(1nm={10}^{-9}m)$的平行单色光垂直入射到折射率为$n=1.33$的透明薄膜上，该薄膜是放在空气中的．要使反射光得到最大限度的加强，薄膜最小厚度应为________nm．
 
+<!-- question: university-physics-3-1-005-Q19 -->
+
 18．（本题3分）
 
 一束自然光从空气投射到玻璃表面上(空气折射率为1)，当折射角为$30^{\circ}$时，反射光是完全偏振光，则此玻璃板的折射率等于________．
+
+<!-- question: university-physics-3-1-005-Q20 -->
 
 19．（本题3分）
 
 $3\times10^{-2}kg$的气体放在容积为$3\times10^{-2}m^{3}$的容器中，容器内气体的压强为$0.2\times10^{5}Pa$。则气体分子的最概然速率等于________$m\cdots^{-1}$
 
+<!-- question: university-physics-3-1-005-Q21 -->
+
 20．（本题3分）
 
 有容积不同的A、B两个容器，A中装有氦气，B中装有氧气，若两种气体的压强相同，那么，这两种气体的单位体积的内能$\left(\frac{U}{V}\right)_A$________$\left(\frac{U}{V}\right)_B$（填![formula-object](assets/university-physics-3-1-005/image-023.png)）
 
-<!-- question: university-physics-3-1-005-Q3 -->
+<!-- question: university-physics-3-1-005-Q22 -->
 
 三、计算题（共40分）
+
+<!-- question: university-physics-3-1-005-Q23 -->
 
 21．（本题10分）
 
 $m,rm'mm'$    两个大小不同、具有水平光滑轴的定滑轮，顶点在同一水平线上．小滑轮的质量为$m$，半径为$r$，对轴的转动惯量$J=\frac {1} {2}{mr}^{2}$．大滑轮的质量${m}^{'}=2m$，半径${r}^{'}=2r$，对轴的转动惯量${J}^{'}=\frac {1} {2}{m}^{'}{r}^{}$．一根不可伸长的轻质细绳跨过这两个定滑轮，绳的两端分别挂着物体A和B．A的质量为$m$，B的质量${m}^{'}=2m$．这一系统由静止开始转动．已知$m=6.0 kg$，$r=5.0 cm$    求两滑轮的角加速度和它们之间绳中的张力．
 
+<!-- question: university-physics-3-1-005-Q24 -->
+
 22．（本题10分）
 
 将压强$p_1=1.013\times10^5Pa$，体积$V_{1}=1\times10^{-3}m^{3}$的氧气，自$T_1=$300K加热到$T_2=$400K，问：
 
+<!-- question: university-physics-3-1-005-Q25 -->
+
 （1）当压强不变时，需要多少热量?
 
+<!-- question: university-physics-3-1-005-Q26 -->
+
 (2)		当体积不变时，需要多少热量?
+
+<!-- question: university-physics-3-1-005-Q27 -->
 
 (3)  在等压和等体过程中各做多少功？
 
 (普适气体常量$R=8.31J/(mol⋅K)$
 
+<!-- question: university-physics-3-1-005-Q28 -->
+
 23．（本题10分）
 
 沿*x*轴负方向传播的平面简谐波在*t*  = 2 s时刻的波形曲线如图所示，设波速*u*  =  0.5 m/s． 求：
 
+<!-- question: university-physics-3-1-005-Q29 -->
+
 （1）波的角频率；
+
+<!-- question: university-physics-3-1-005-Q30 -->
 
 （2）原点*O*的振动方程；
 
+<!-- question: university-physics-3-1-005-Q31 -->
+
 （3）该波的波动方程。
+
+<!-- question: university-physics-3-1-005-Q32 -->
 
 24．（本题10分）
 

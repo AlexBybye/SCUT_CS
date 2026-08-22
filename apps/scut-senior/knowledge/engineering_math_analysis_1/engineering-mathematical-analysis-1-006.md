@@ -24,8 +24,14 @@ locator_type: page
 《工科数学分析（一）》2023—2024 学年第一学期期末考试试卷（A）卷
 
 注意事项：1. 开考前请将密封线内各项信息填写清楚；
+<!-- question: engineering-mathematical-analysis-1-006-Q1 -->
+
           2. 所有答案请直接答在试卷上；
+<!-- question: engineering-mathematical-analysis-1-006-Q2 -->
+
           3．考试形式：闭卷
+
+<!-- question: engineering-mathematical-analysis-1-006-Q3 -->
 
           4. 本试卷共 5 个  大题，满分100 分， 考试时间120 分钟。
 
@@ -42,15 +48,19 @@ locator_type: page
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-006-Q1 -->
+<!-- question: engineering-mathematical-analysis-1-006-Q4 -->
 
 一、填空题（共5 小题，每小题3 分，共15 分）
 
 !→# 𝑓(𝑥) = 𝐴 的 𝜀−𝛿 定义是
 
+<!-- question: engineering-mathematical-analysis-1-006-Q5 -->
+
 １. lim
 
                                                              ；
+<!-- question: engineering-mathematical-analysis-1-006-Q6 -->
+
 ２. 设 𝑦= cos\$ 𝑥，则 d(\$&\$')𝑦=
 
 ( 密 封 线 内 不 答 题 )
@@ -61,11 +71,15 @@ _____________ ________
 
 )
 
+<!-- question: engineering-mathematical-analysis-1-006-Q7 -->
+
 ３. 求曲线 𝑟= 2(1 + cos 𝜃) 在 𝜃=
 
 * 处的切线方程
 
                                                                ；
+
+<!-- question: engineering-mathematical-analysis-1-006-Q8 -->
 
 ４. 已知 𝑓(𝑥) = ∫𝑡! ln 𝑡d𝑡,   𝑥> 0,
 
@@ -75,17 +89,21 @@ _____________ ________
 
 )
 
+<!-- question: engineering-mathematical-analysis-1-006-Q9 -->
+
 ５. 函数 𝑦= 𝑥+ 2 sin 𝑥 在 >
 
 \$ , 𝜋@上的最大值为              .
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-006-Q2 -->
+<!-- question: engineering-mathematical-analysis-1-006-Q10 -->
 
 二、计算下列各题（共3 小题，每小题8 分，共24 分）
 
 ,-(+.!.!!).,-(+/!.!!)
+
+<!-- question: engineering-mathematical-analysis-1-006-Q11 -->
 
 1. 求极限 lim
 !→&
@@ -97,10 +115,14 @@ _____________ ________
 
 <!-- page: 2 -->
 
+<!-- question: engineering-mathematical-analysis-1-006-Q12 -->
+
 2.  求不定积分 ∫A
 !/+
 
 \$/! d𝑥, 1 < 𝑥< 2.
+
+<!-- question: engineering-mathematical-analysis-1-006-Q13 -->
 
 3.  已知 𝑓(𝑥) = ∫
 !!/4!
@@ -120,12 +142,14 @@ d𝑥.
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-006-Q3 -->
+<!-- question: engineering-mathematical-analysis-1-006-Q14 -->
 
 三、解答下列各题（共4 小题，每小题8 分，共32 分）
 
 1. 设 𝑥+ = 10, 𝑥5.+ = C6 + 𝑥5 (𝑛= 1,2, ⋯), 请问数列 {𝑥5} 的极限是否存在？若存在请计算
 这个极限。
+
+<!-- question: engineering-mathematical-analysis-1-006-Q15 -->
 
 2. 设 𝑓(𝑥) 在点 𝑥= 0 的邻域内二阶可导，且
 
@@ -144,6 +168,8 @@ d𝑥.
 
 <!-- page: 4 -->
 
+<!-- question: engineering-mathematical-analysis-1-006-Q16 -->
+
 3. 试说明摆线 I𝑥= 𝑎(𝑡−sin 𝑡);
 𝑦= 𝑎(1 −cos 𝑡), 𝑡∈[0,2𝜋] 所确定的函数 𝑦= 𝑦(𝑥) 是凹函数。
 
@@ -151,6 +177,8 @@ d𝑥.
 #
 &
  的全长，其中 𝑥∈[0, 𝑛𝜋], 𝑛 为正整数。
+
+<!-- question: engineering-mathematical-analysis-1-006-Q17 -->
 
 4.  求曲线 𝑦= ∫𝑛√sin 𝑡d𝑡
 
@@ -160,9 +188,11 @@ d𝑥.
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-006-Q4 -->
+<!-- question: engineering-mathematical-analysis-1-006-Q18 -->
 
 四、证明题（共2 小题，每小题10 分，共20 分）
+
+<!-- question: engineering-mathematical-analysis-1-006-Q19 -->
 
 5.+ < ln P1 +
 +
@@ -174,6 +204,8 @@ d𝑥.
 
 5 , 𝑛∈ℕ..
 
+<!-- question: engineering-mathematical-analysis-1-006-Q20 -->
+
       1.  证明不等式
 
 (
@@ -182,6 +214,8 @@ d𝑥.
 -¥
 ¥
 ，
+
+<!-- question: engineering-mathematical-analysis-1-006-Q21 -->
 
 2.  证明：函数 𝑓(𝑥) = e/!! 在
 上一致连续.
@@ -192,7 +226,7 @@ d𝑥.
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-006-Q5 -->
+<!-- question: engineering-mathematical-analysis-1-006-Q22 -->
 
 五、应用题（本题9 分）
 

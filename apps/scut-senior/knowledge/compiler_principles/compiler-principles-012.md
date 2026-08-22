@@ -24,8 +24,14 @@ locator_type: page
 《 编译原理 》试卷 A 答案
 
 注意事项：1. 考前请将密封线内各项信息填写清楚；
+<!-- question: compiler-principles-012-Q1 -->
+
           2. 所有答案请直接答在试卷上；
+<!-- question: compiler-principles-012-Q2 -->
+
           3．考试形式：闭卷；
+
+<!-- question: compiler-principles-012-Q3 -->
 
           4. 本试卷共 八 大题，满分100 分， 考试时间120 分钟。
 
@@ -43,16 +49,20 @@ locator_type: page
 
 人
 
-<!-- question: compiler-principles-012-Q1 -->
+<!-- question: compiler-principles-012-Q4 -->
 
 一、
 填空  （20 分，每空1 分）
+
+<!-- question: compiler-principles-012-Q5 -->
 
  1．   最右     推导称为规范推导，由  规范推导   产生的句型称为规范句
 
 型。
 
 _____________ ________
+
+<!-- question: compiler-principles-012-Q6 -->
 
  2．文法按产生式的形式分为四种类型，它们是：0 型文法，又称短语文法；1
 
@@ -62,13 +72,19 @@ _____________ ________
 
 又称正规文法。
 
+<!-- question: compiler-principles-012-Q7 -->
+
  3．对于一个文法G 而言，如果L(G)中存在某个句子对应两棵不同的语法树，，
 
 那么该文法就称为是二义的。
 
+<!-- question: compiler-principles-012-Q8 -->
+
  4．设G 是一个文法，S 是它的开始符号，如果 S=*>α，则称α是一个句型。
 
 仅由终结符号组成的句型是一个句子。
+
+<!-- question: compiler-principles-012-Q9 -->
 
  5．语法分析最常用的两类方法是自底向上的语法分析_和_自顶向下的语法分析
 
@@ -76,13 +92,23 @@ _____________ ________
 
 分析法
 
+<!-- question: compiler-principles-012-Q10 -->
+
  6．编译中常用的中间代码形式有逆波兰式、三元式、树代码和  四元式  等。
+
+<!-- question: compiler-principles-012-Q11 -->
 
  7．在自底向上分析法中，LR 分析法把“可归约串”定义为  句柄。
 
+<!-- question: compiler-principles-012-Q12 -->
+
  8．对中间代码优化按涉及的范围分为局部优化，循环优化和全局优化。
 
+<!-- question: compiler-principles-012-Q13 -->
+
  9．局部优化主要包括合并已知量、利用公共子表达式和删除无用赋值等内容。
+
+<!-- question: compiler-principles-012-Q14 -->
 
 10. 为了构造不带回溯的递归下降分析程序，我们通常要消除 公共子表达式
 
@@ -92,7 +118,7 @@ _____________ ________
 
 <!-- page: 2 -->
 
-<!-- question: compiler-principles-012-Q2 -->
+<!-- question: compiler-principles-012-Q15 -->
 
 二、编译过程通常分为哪几个主要阶段？每个阶段的主要功能？（15 分）
 
@@ -119,18 +145,22 @@ _____________ ________
 目标代码生成：把中间代码变换成特定机器上的绝对指令代码或可重定
 位的指令代码或汇编指令代码。
 
-<!-- question: compiler-principles-012-Q3 -->
+<!-- question: compiler-principles-012-Q16 -->
 
 三、设有文法G[S] 为：（10 分）
 
 S→SdT | T
 T→T<G | G
 G→(S) | a
+<!-- question: compiler-principles-012-Q17 -->
+
 1．证明句型 (SdG)<a 是规范句型
 证：因为句型 (SdG)<a 可由文法开始符S 经过规范推导产生，推导过程如下：
 
 S =R>T =R> T<G =R> T<a =R> G<a =R> (S)<a=R>(SdT)<a =R>(SdG)<a
 所以句型(SdG)<a 是规范句型。
+<!-- question: compiler-principles-012-Q18 -->
+
 2．试给出句型(SdG)<a 的语法树及该句型的句柄。
 
 S
@@ -154,7 +184,7 @@ G
 
 <!-- page: 3 -->
 
-<!-- question: compiler-principles-012-Q4 -->
+<!-- question: compiler-principles-012-Q19 -->
 
 四、设有文法G[A]为：（15 分）
 
@@ -162,12 +192,24 @@ G[A] ：
 
 A→aABe|a
 B→Bb|d
+<!-- question: compiler-principles-012-Q20 -->
+
 （1） 试给出与G[A]等价的LL（1）文法G'[A]
+<!-- question: compiler-principles-012-Q21 -->
+
 （2） 构造G'[A]的预测分析表给出输入串aade#的分析过程。
 改造后的文法：
+<!-- question: compiler-principles-012-Q22 -->
+
 (1) A->aA’
+<!-- question: compiler-principles-012-Q23 -->
+
 (2) A’->ABe |ε
+<!-- question: compiler-principles-012-Q24 -->
+
 (3) B->dB’
+<!-- question: compiler-principles-012-Q25 -->
+
 (4) B’ ->bB’ |ε
 
 根据LL(1)文法的定义判断:
@@ -274,11 +316,19 @@ E 匹配
 #
 识别成功
 
+<!-- question: compiler-principles-012-Q26 -->
+
 五、文法G[S]及其LR 分析表如下，请给出对输入串baab#的分析过程。（15 分）
 G[S]:
 
+<!-- question: compiler-principles-012-Q27 -->
+
 （0） S′→S    （1） S→AB      （2） A →aBa
+<!-- question: compiler-principles-012-Q28 -->
+
 （3） A →ε     （4） B→bAb     （5） B →ε
+<!-- question: compiler-principles-012-Q29 -->
+
 （1）为这个文法构造LR(0)项目的DFA。（6 分）
 
 B
@@ -339,6 +389,8 @@ B→·
 《   编译原理   》试卷A 第 4 页 共 8 页
 
 <!-- page: 5 -->
+
+<!-- question: compiler-principles-012-Q30 -->
 
 （2）按照下面的SLR 分析表给出对输入串baab#的分析过程：（9 分）
 
@@ -468,7 +520,7 @@ r1
 #
 acc
 
-<!-- question: compiler-principles-012-Q5 -->
+<!-- question: compiler-principles-012-Q31 -->
 
 六、把下面的语句翻译成四元式序列。    （10 分）
 
@@ -529,9 +581,11 @@ S.CHAIN=114
 
 * b 的最小化有穷自动机。  （15 分）
 解：
+<!-- question: compiler-principles-012-Q32 -->
+
 ( 1 ) 构造正规表达式( a | b )
 
-<!-- question: compiler-principles-012-Q6 -->
+<!-- question: compiler-principles-012-Q33 -->
 
 七、构造正规表达式( a | b )
 
@@ -552,6 +606,8 @@ X
 
 b
 
+<!-- question: compiler-principles-012-Q34 -->
+
 (2) 用子集法确定化如下表：
 
 I
@@ -566,6 +622,8 @@ Ib
 {1,2,Y}T2
 {1,2}T1
 {1,2,Y}T2
+<!-- question: compiler-principles-012-Q35 -->
+
 (3) 确定化后如下图：
 
 《   编译原理   》试卷A 第 7 页 共 8 页
@@ -588,6 +646,8 @@ T1
 a
 
 a
+
+<!-- question: compiler-principles-012-Q36 -->
 
  (4) 用分割法最小化DFA：
 {T0,T1}{T2}

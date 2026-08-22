@@ -23,9 +23,9 @@ locator_type: page
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-001.png)
+![image](assets/intelligent-algorithms-008/image-001.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-002.png)
+![image](assets/intelligent-algorithms-008/image-002.png)
 
 <!-- page: 3 -->
 
@@ -33,9 +33,9 @@ locator_type: page
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-003.png)
+![image](assets/intelligent-algorithms-008/image-003.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-004.png)
+![image](assets/intelligent-algorithms-008/image-004.png)
 
 <!-- page: 4 -->
 
@@ -49,7 +49,7 @@ locator_type: page
 
 2. 在Model-Free方法中状态转移函数不可知！
 
-![image](assets/assets/intelligent-algorithms-008/image-005.png)
+![image](assets/intelligent-algorithms-008/image-005.png)
 
 <!-- page: 5 -->
 
@@ -58,11 +58,11 @@ locator_type: page
 1.
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-006.png)
+![image](assets/intelligent-algorithms-008/image-006.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-007.png)
+![image](assets/intelligent-algorithms-008/image-007.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-008.png)
+![image](assets/intelligent-algorithms-008/image-008.png)
 
 <!-- page: 6 -->
 
@@ -74,11 +74,11 @@ locator_type: page
 
 2.
 
-![image](assets/assets/intelligent-algorithms-008/image-009.png)
+![image](assets/intelligent-algorithms-008/image-009.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-010.png)
+![image](assets/intelligent-algorithms-008/image-010.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-011.png)
+![image](assets/intelligent-algorithms-008/image-011.png)
 
 <!-- page: 7 -->
 
@@ -88,7 +88,7 @@ locator_type: page
 
 代入2.
 
-![image](assets/assets/intelligent-algorithms-008/image-012.png)
+![image](assets/intelligent-algorithms-008/image-012.png)
 
 <!-- page: 8 -->
 
@@ -100,9 +100,9 @@ locator_type: page
 
 4.
 
-![image](assets/assets/intelligent-algorithms-008/image-013.png)
+![image](assets/intelligent-algorithms-008/image-013.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-014.png)
+![image](assets/intelligent-algorithms-008/image-014.png)
 
 <!-- page: 9 -->
 
@@ -116,7 +116,7 @@ REINFORCE算法
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-015.jpeg)
+![image](assets/intelligent-algorithms-008/image-015.jpeg)
 
 <!-- page: 11 -->
 
@@ -124,9 +124,9 @@ REINFORCE算法
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-016.png)
+![image](assets/intelligent-algorithms-008/image-016.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-017.png)
+![image](assets/intelligent-algorithms-008/image-017.png)
 
 <!-- page: 12 -->
 
@@ -134,11 +134,11 @@ REINFORCE算法
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-018.png)
+![image](assets/intelligent-algorithms-008/image-018.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-019.png)
+![image](assets/intelligent-algorithms-008/image-019.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-020.png)
+![image](assets/intelligent-algorithms-008/image-020.png)
 
 <!-- page: 13 -->
 
@@ -150,9 +150,9 @@ REINFORCE算法
 想法是采样到的累积奖励减去一个基线值，
 作为“Advantage”
 
-![image](assets/assets/intelligent-algorithms-008/image-021.png)
+![image](assets/intelligent-algorithms-008/image-021.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-022.png)
+![image](assets/intelligent-algorithms-008/image-022.png)
 
 <!-- page: 14 -->
 
@@ -160,9 +160,9 @@ REINFORCE算法
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-023.png)
+![image](assets/intelligent-algorithms-008/image-023.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-024.png)
+![image](assets/intelligent-algorithms-008/image-024.png)
 
 <!-- page: 15 -->
 
@@ -170,9 +170,9 @@ REINFORCE算法
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-025.png)
+![image](assets/intelligent-algorithms-008/image-025.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-026.png)
+![image](assets/intelligent-algorithms-008/image-026.png)
 
 <!-- page: 16 -->
 
@@ -182,11 +182,11 @@ Actor-Critic
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-027.png)
+![image](assets/intelligent-algorithms-008/image-027.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-028.png)
+![image](assets/intelligent-algorithms-008/image-028.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-029.png)
+![image](assets/intelligent-algorithms-008/image-029.png)
 
 <!-- page: 17 -->
 
@@ -194,9 +194,9 @@ Actor-Critic
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-030.png)
+![image](assets/intelligent-algorithms-008/image-030.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-031.png)
+![image](assets/intelligent-algorithms-008/image-031.png)
 
 <!-- page: 18 -->
 
@@ -204,7 +204,7 @@ Actor-Critic
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-032.jpeg)
+![image](assets/intelligent-algorithms-008/image-032.jpeg)
 
 <!-- page: 19 -->
 
@@ -212,7 +212,7 @@ Actor-Critic
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-033.png)
+![image](assets/intelligent-algorithms-008/image-033.png)
 
 <!-- page: 20 -->
 
@@ -220,7 +220,7 @@ Actor-Critic
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-034.png)
+![image](assets/intelligent-algorithms-008/image-034.png)
 
 <!-- page: 21 -->
 
@@ -228,7 +228,7 @@ Actor-Critic
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-035.png)
+![image](assets/intelligent-algorithms-008/image-035.png)
 
 <!-- page: 22 -->
 
@@ -236,9 +236,9 @@ Actor-Critic
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-036.png)
+![image](assets/intelligent-algorithms-008/image-036.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-037.png)
+![image](assets/intelligent-algorithms-008/image-037.png)
 
 <!-- page: 23 -->
 
@@ -246,11 +246,11 @@ Actor-Critic
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-038.png)
+![image](assets/intelligent-algorithms-008/image-038.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-039.png)
+![image](assets/intelligent-algorithms-008/image-039.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-040.png)
+![image](assets/intelligent-algorithms-008/image-040.png)
 
 <!-- page: 24 -->
 
@@ -258,6 +258,6 @@ Actor-Critic
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-008/image-041.png)
+![image](assets/intelligent-algorithms-008/image-041.png)
 
-![image](assets/assets/intelligent-algorithms-008/image-042.png)
+![image](assets/intelligent-algorithms-008/image-042.png)

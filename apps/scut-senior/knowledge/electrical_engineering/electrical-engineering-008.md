@@ -183,8 +183,8 @@ locator_type: page
 
 <!-- page: 4 -->
 
-![image](assets/assets/electrical-engineering-008/image-001.png)
+![image](assets/electrical-engineering-008/image-001.png)
 
 <!-- page: 5 -->
 
-![image](assets/assets/electrical-engineering-008/image-002.jpeg)
+![image](assets/electrical-engineering-008/image-002.jpeg)

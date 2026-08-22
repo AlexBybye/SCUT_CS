@@ -10,4 +10,4 @@ locator_type: none
 
 # 基本块代码生成算法生成目标代码
 
-![page-001.png](assets/assets/compiler-principles-036/page-001.png)
+![page-001.png](assets/compiler-principles-036/page-001.png)

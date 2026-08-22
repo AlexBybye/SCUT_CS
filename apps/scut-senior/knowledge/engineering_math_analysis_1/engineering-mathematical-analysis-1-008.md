@@ -40,11 +40,17 @@ locator_type: page
 
 楚；
 
+<!-- question: engineering-mathematical-analysis-1-008-Q1 -->
+
 2. 所有答案请直接答在试卷上(或答题
 
 纸上)；
 
+<!-- question: engineering-mathematical-analysis-1-008-Q2 -->
+
 3．考试形式：闭卷；
+
+<!-- question: engineering-mathematical-analysis-1-008-Q3 -->
 
 4. 本试卷共5 个
 大题，满分100 分，
@@ -70,7 +76,7 @@ _____________ ________
 
 分
 
-<!-- question: engineering-mathematical-analysis-1-008-Q1 -->
+<!-- question: engineering-mathematical-analysis-1-008-Q4 -->
 
 一、填空题（每小题3 分，共15 分）
 
@@ -201,7 +207,7 @@ x
 
 <!-- page: 5 -->
 
-<!-- question: engineering-mathematical-analysis-1-008-Q2 -->
+<!-- question: engineering-mathematical-analysis-1-008-Q5 -->
 
 二、计算下列各题（每小题8 分，共16 分）
 
@@ -218,6 +224,8 @@ x
 。
 
 x
+
+<!-- question: engineering-mathematical-analysis-1-008-Q6 -->
 
 1. 求极限
 
@@ -243,9 +251,11 @@ x
 
 <!-- page: 6 -->
 
-<!-- question: engineering-mathematical-analysis-1-008-Q3 -->
+<!-- question: engineering-mathematical-analysis-1-008-Q7 -->
 
 三、解答下列各题（每小题10 分，共40 分）
+
+<!-- question: engineering-mathematical-analysis-1-008-Q8 -->
 
 1. 设数列
 
@@ -300,6 +310,8 @@ t
 
 
 
+<!-- question: engineering-mathematical-analysis-1-008-Q9 -->
+
 2. 设
 
 y
@@ -347,6 +359,8 @@ x
 
 <!-- page: 8 -->
 
+<!-- question: engineering-mathematical-analysis-1-008-Q10 -->
+
 4. 求曲线
 
 
@@ -372,7 +386,7 @@ y 
 
 <!-- page: 9 -->
 
-<!-- question: engineering-mathematical-analysis-1-008-Q4 -->
+<!-- question: engineering-mathematical-analysis-1-008-Q11 -->
 
 四、证明题（每小题10 分，共20 分）
 
@@ -457,7 +471,7 @@ f
 
 <!-- page: 11 -->
 
-<!-- question: engineering-mathematical-analysis-1-008-Q5 -->
+<!-- question: engineering-mathematical-analysis-1-008-Q12 -->
 
 五、应用题（本题9 分）
 

@@ -78,13 +78,13 @@ A.    指令内部  B. 指令    C.  任务或过程    D.作业或程序
 
 请按数据通路图画出“ADD（R1），（R2）+”指令的指令周期流程图。该指令的含义是两个数进行求和操作。其中源操作地址在寄存器R1中，目的操作数寻址方式为自增型寄存器间接寻址（先取地址后加1）。
 
-![image](assets/assets/computer-organization-045/image-001.jpeg)
+![image](assets/computer-organization-045/image-001.jpeg)
 
 **图1**
 
 **七、**某机器的中断系统采用一级链路排队，优先级别由设备距CPU的物理位置决定（近高远低），如图2所示。DVC0是扫描仪，DVC1是打印机，。如在某一时刻，扫描仪和打印机均产生一个事件，试问IRQ线上的请求是由谁发出的？为什么？这个结论总是成立吗？
 
-![image](assets/assets/computer-organization-045/image-002.png)
+![image](assets/computer-organization-045/image-002.png)
 
 **图2**
 
@@ -92,7 +92,7 @@ A.    指令内部  B. 指令    C.  任务或过程    D.作业或程序
 
 **九、**如图3所示，8个处理机访问8个存储器，通过三级立方体互连网络连接，采用级控方式。其中所有交换开关均为二功能（级控仪号为“0”时直通，为“1”时交换）。若级控信号为：①K0  K1  K2＝100  ②K0  K1  K2＝011，请列表说明两种情况下，对应8个处理机而实际连通的8个存储器的排列次序。
 
-![formula-object](assets/assets/computer-organization-045/image-003.png)
+![formula-object](assets/computer-organization-045/image-003.png)
 
 三级立方体互连网络
 

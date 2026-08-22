@@ -40,8 +40,14 @@ locator_type: page
 《离散数学》试卷A
 
 注意事项：1. 考前请将密封线内填写清楚；
+<!-- question: discrete-mathematics-003-Q1 -->
+
           2. 所有答案请直接答在试卷上；
+<!-- question: discrete-mathematics-003-Q2 -->
+
           3．考试形式：闭卷；
+
+<!-- question: discrete-mathematics-003-Q3 -->
 
           4. 本试卷共  五  大题，满分100 分，
 考试时间120 分钟。
@@ -55,17 +61,23 @@ locator_type: page
 得 分
 评卷人
 
-<!-- question: discrete-mathematics-003-Q1 -->
+<!-- question: discrete-mathematics-003-Q4 -->
 
 一、填空题(本大题共12 小题，每小题2 分，共24 分)
 
+<!-- question: discrete-mathematics-003-Q5 -->
+
 1．求合式公式xP(x)→xQ(x,y)的前束范式________________。
+
+<!-- question: discrete-mathematics-003-Q6 -->
 
 2．设集合A={a, b, {a,b}, }, B = {{a,b}, }，求B-A=_____________．
 
 _____________ ________
 
 ( 密 封 线 内 不 答 题 )
+
+<!-- question: discrete-mathematics-003-Q7 -->
 
 3．设p 与q 的真值为0, ,r s 的真值为1 则命题
 (
@@ -89,6 +101,8 @@ p
 的
 
 真值是__________.
+
+<!-- question: discrete-mathematics-003-Q8 -->
 
 4．设R 是在正整数集合Z 上如下定义的二元关系
 
@@ -118,19 +132,29 @@ y
 
 性和反对称性各性质中的                   性质。
 
+<!-- question: discrete-mathematics-003-Q9 -->
+
 5．公式x(P(x)→Q(x,y))→S(x)中的自由变元为________________，约束变元为
 
 ________________。
+
+<!-- question: discrete-mathematics-003-Q10 -->
 
 6．设有命题T(x): x 是火车，C(x): x 是汽车，Q(x, y): x 跑得比y 快，那么命题
 
 “有的汽车比一些火车跑得快”的逻辑表达式是______________________.
 
+<!-- question: discrete-mathematics-003-Q11 -->
+
 7．设G 是n 阶m 条边的无向图，若G 连通且m=__________则G 是无向树.
+
+<!-- question: discrete-mathematics-003-Q12 -->
 
 8．设X={1，2，3}，f：X→X，g：X→X，f={<1, 2>,<2,3>,<3,1>},
 
 g={<1,2>,<2,3>,<3,3>}，则f-1 g=________________，gf=________________。
+
+<!-- question: discrete-mathematics-003-Q13 -->
 
 9. 不能再分解的命题称为________________，至少包含一个联结词的命题称为
 
@@ -140,20 +164,29 @@ g={<1,2>,<2,3>,<3,3>}，则f-1 g=________________，gf=________________。
 
 ________________．
 
+<!-- question: discrete-mathematics-003-Q14 -->
+
 10. 连通无向图G 含有欧拉回路的充分必要条件是                      .
 11．设集合A={,{a}}，则A 的幂集P(A)=                                      ，
      |P(A)|=_____________________________。
 
+<!-- question: discrete-mathematics-003-Q15 -->
+
 12. 设G = <V, E>, G’ = <V’, E’>为两个图(同为无向图或有向图), 若E’ Í E 且
 _______________, 则称G’是G 的子图, 若E’ Í E 且_______________, 则称G’
 是G 的生成子图。
-<!-- question: discrete-mathematics-003-Q2 -->
+
+<!-- question: discrete-mathematics-003-Q16 -->
 
 二、单选题 (本大题共12 小题，每小题2 分，共26 分)
+
+<!-- question: discrete-mathematics-003-Q17 -->
 
 1．下列命题公式为重言式的是（  b ）
 
 A. (p∨┐p)→q．  B．p→ (p∨q)  C．q∧┐q   D．( p→p)→q
+
+<!-- question: discrete-mathematics-003-Q18 -->
 
 2．下列语句中为命题的是( d)
 
@@ -174,6 +207,8 @@ B．单向连通图
 
 C．弱连通图
 D．不连通图
+
+<!-- question: discrete-mathematics-003-Q19 -->
 
 4．集合A＝{a，b，c}上的下列关系矩阵中符合偏序关系条件的是( d  )
 
@@ -271,6 +306,8 @@ A．
 
   D．
 
+<!-- question: discrete-mathematics-003-Q20 -->
+
 5．设A={1，2，3}，A 上二元关系S={<1，1>，<1，2>，<3，2>，<3，3>}，则S 是
 
 （  b   ）
@@ -291,21 +328,29 @@ D．{{a, b}, {c,d}}
 
 <!-- page: 5 -->
 
+<!-- question: discrete-mathematics-003-Q21 -->
+
 7. 以下非负整数列可简单图化为一个欧拉图的是( d )
 
 A. {2, 2, 2, 2, 0}               B. {4, 2, 6, 2, 2}
 
 C. {2, 2, 3, 4, 1}               D. {4, 2, 2, 4, 2}
 
+<!-- question: discrete-mathematics-003-Q22 -->
+
 8. 设论域D＝{a，b }，与公式xA(x)等价的命题公式是(c )
 
   A．A(a)∧A(b)  B．A(a)→A(b)  C．A(a)∨A(b)  D．A(b)→A(a)
+
+<!-- question: discrete-mathematics-003-Q23 -->
 
 9. 一棵树有3 个4 度顶点，4 个2 度顶点其余都是树叶，求这棵树有多少个树叶
 
 顶点( b  )
 
 A. 12     B. 8     C. 10       D. 13
+
+<!-- question: discrete-mathematics-003-Q24 -->
 
 10. 有ABC 三个人猜测甲乙丙三个球队中的冠军.各人的猜测如下:
 
@@ -317,7 +362,11 @@ A. 12     B. 8     C. 10       D. 13
 
 A．甲        B. 乙   C. 丙       D. 不确定
 
+<!-- question: discrete-mathematics-003-Q25 -->
+
 11．如第11 题图所示各图，其中存在哈密顿回路的图是 ( c   )
+<!-- question: discrete-mathematics-003-Q26 -->
+
 12．设C(x): x 是国家级运动员，G(x): x 是健壮的，则命题“没有一个国家级运动员不是健
 壮的”可符号化为 (  d  )
 ))
@@ -389,9 +438,13 @@ x
 
                                                     
                                           
+<!-- question: discrete-mathematics-003-Q27 -->
+
                      第11 题图
 
 三．计算题(30 分)
+
+<!-- question: discrete-mathematics-003-Q28 -->
 
 1．用等值演算法求取求下列公式：(PQ)(P∨Q)的合取范式（5 分）
 
@@ -399,7 +452,11 @@ x
 
 <!-- page: 6 -->
 
+<!-- question: discrete-mathematics-003-Q29 -->
+
 2．图G 如下图所示，求图G 的最小生成树.（5 分）
+<!-- question: discrete-mathematics-003-Q30 -->
+
 3．有向图D 如图所示，求D 的关联矩阵M(D) （5 分）
 
 3
@@ -419,6 +476,8 @@ x
 5
 
 7
+
+<!-- question: discrete-mathematics-003-Q31 -->
 
 4.化简表达式
 )
@@ -455,10 +514,14 @@ A
 
 <!-- page: 7 -->
 
+<!-- question: discrete-mathematics-003-Q32 -->
+
 5．设R={<2，1>，<2，5>，<2，4>，<3，4>，<4，4>，<5，2>}，求r(R)和s(R)，
 并作出它们及R 的关系图(8 分)
 
 五．证明题(22 分)
+<!-- question: discrete-mathematics-003-Q33 -->
+
 1．构造下面推理的证明(5 分)
 
 前提：p
@@ -476,6 +539,8 @@ t
 
 
 结论：q
+
+<!-- question: discrete-mathematics-003-Q34 -->
 
 2．设A={1, 2, 3, 4}, 在A A
 
@@ -505,7 +570,11 @@ u y x v
 
 <!-- page: 8 -->
 
+<!-- question: discrete-mathematics-003-Q35 -->
+
 3．已知A、B、C 是三个集合，证明A-(B∪C)=(A-B)∩(A-C) （6 分）
+
+<!-- question: discrete-mathematics-003-Q36 -->
 
 4． 无向图G = <V,E>，且|V|=n, |E|=m, 试证明以下两个命题是等价命题
 1）G 中每对顶点间具有唯一的通路，

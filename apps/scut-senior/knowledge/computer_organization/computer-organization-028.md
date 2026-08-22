@@ -17,7 +17,7 @@ locator_type: slide
 
 <!-- slide: 2 -->
 
-![image](assets/assets/computer-organization-028/image-001.png)
+![image](assets/computer-organization-028/image-001.png)
 
 <!-- slide: 3 -->
 
@@ -185,16 +185,14 @@ RISC体系结构的三个要素：
 <!-- slide: 14 -->
 
 - 2、按照操作码分类
-![image](assets/assets/computer-organization-028/image-002.png)
+![image](assets/computer-organization-028/image-002.png)
 
 <!-- slide: 15 -->
 
 ## 例：
 
-
 | OP | A1 | A2 | A3 |
 |---|---|---|---|
-
 
 | 0000<br>0001<br>:<br>1110 | A1<br>A1<br>:<br>A1 | A2<br>A2<br>:<br>A2 | A3<br>A3<br>:<br>A3 |
 |---|---|---|---|
@@ -219,18 +217,17 @@ RISC体系结构的三个要素：
 
 <!-- slide: 16 -->
 
-![image](assets/assets/computer-organization-028/image-003.png)
+![image](assets/computer-organization-028/image-003.png)
 - 第4章   典型习题与解答
 
 <!-- slide: 17 -->
 
 - 第4章   典型例题
-![image](assets/assets/computer-organization-028/image-004.png)
+![image](assets/computer-organization-028/image-004.png)
 
 <!-- slide: 18 -->
 
 ## 三地址指令
-
 
 | OP | A1 | A2 | A3 |
 |---|---|---|---|
@@ -244,7 +241,6 @@ RISC体系结构的三个要素：
 <!-- slide: 19 -->
 
 ## 二地址指令
-
 
 | op | A1 | A2 |
 |---|---|---|
@@ -271,7 +267,6 @@ RISC体系结构的三个要素：
 <!-- slide: 21 -->
 
 ## 一地址指令
-
 
 | OP | A |
 |---|---|
@@ -307,10 +302,8 @@ RISC体系结构的三个要素：
 ## 【题4-5】指令格式结构如下所示，试分析指令格式及 
          寻址方式的特点。
 
-
 | OP | 寻址方式 | 寄存器 | 寻址方式 | 寄存器 |
 |---|---|---|---|---|
-
 
 | 15              12 | 11              9 | 8               6 | 5             3 | 2                0 |
 |---|---|---|---|---|
@@ -349,7 +342,7 @@ RISC体系结构的三个要素：
 <!-- slide: 26 -->
 
 - <number>
-![image](assets/assets/computer-organization-028/image-005.jpg)
+![image](assets/computer-organization-028/image-005.jpg)
 - 一、指令寻址
 - 1、  顺序寻址方式
 - 2、跳跃寻址方式
@@ -430,7 +423,6 @@ RISC体系结构的三个要素：
 | OP | 寻址方式 | 寄存器 | 位移量D |
 |---|---|---|---|
 
-
 | 31              26 | 25        24 | 23              20 | 19                      0 |
 |---|---|---|---|
 
@@ -438,7 +430,6 @@ RISC体系结构的三个要素：
 
 | OP | 寻址方式 | 源寄存器 | 目的寄存器 | 位移量D |
 |---|---|---|---|---|
-
 
 | 31              26 | 25        24 | 23          20 | 19            16 | 15              0 |
 |---|---|---|---|---|
@@ -461,7 +452,7 @@ RISC体系结构的三个要素：
 - 寄存器间接寻址方式：
 - 操作数
 - 存储器
-![image](assets/assets/computer-organization-028/image-006.png)
+![image](assets/computer-organization-028/image-006.png)
 - 第4章   习题讲解
 
 <!-- slide: 32 -->
@@ -482,7 +473,6 @@ RISC体系结构的三个要素：
 | OP | 源寄存器 | 目的寄存器 | 位移量D |
 |---|---|---|---|
 
-
 | 31              26 | 25        22 | 21              18 | 17                      0 |
 |---|---|---|---|
 
@@ -499,11 +489,9 @@ RISC体系结构的三个要素：
 |---|---|---|
 | DATA |  |  |
 
-
 | 0001 | Rs | ** |
 |---|---|---|
 | Addr |  |  |
-
 
 | 0100 | ** | Rd |
 |---|---|---|

@@ -10,4 +10,4 @@ locator_type: none
 
 # 化成正规式
 
-![page-001.png](assets/assets/compiler-principles-034/page-001.png)
+![page-001.png](assets/compiler-principles-034/page-001.png)

@@ -150,7 +150,7 @@ C  SUB  r3=r1,r4    D  add  r5=r3,r7
 
 已知cache存储周期40ns，主存存储周期200ns，cache/主存系统平均访问时间为50ns，求cache的命中率是多少？
 
-![image](assets/assets/computer-organization-016/image-001.png)
+![image](assets/computer-organization-016/image-001.png)
 
 六、分析题（12分）
 
@@ -174,6 +174,6 @@ C  SUB  r3=r1,r4    D  add  r5=r3,r7
 
 ⑤    画出微程序控制器结构图。
 
-![image](assets/assets/computer-organization-016/image-002.png)
+![image](assets/computer-organization-016/image-002.png)
 
 解：参考解题指南第78—79页第10题

@@ -74,7 +74,7 @@ N1×N2=(+0.01100011)2=(+0.1100)2×2(-01)2
 
 μA1=P1·T4·IR7,
 
-![image](assets/assets/computer-organization-059/image-001.png)μA2=P2·T4·Cj。由此可画出微地址转移逻辑。如图3所示。
+![image](assets/computer-organization-059/image-001.png)μA2=P2·T4·Cj。由此可画出微地址转移逻辑。如图3所示。
 
 **图3**
 

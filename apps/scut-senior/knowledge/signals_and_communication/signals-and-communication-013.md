@@ -12,7 +12,7 @@ locator_type: slide
 
 <!-- slide: 1 -->
 
-![image](assets/assets/signals-and-communication-013/image-001.png)
+![image](assets/signals-and-communication-013/image-001.png)
 - 第2章 Z变换与序列傅里叶变换
 - 数字信号处理
 
@@ -52,7 +52,7 @@ locator_type: slide
 
 - 2.0 回顾
 - 傅里叶变换的物理意义
-![image](assets/assets/signals-and-communication-013/image-002.png)
+![image](assets/signals-and-communication-013/image-002.png)
 
 <!-- slide: 6 -->
 
@@ -65,7 +65,7 @@ locator_type: slide
 - 取值，使
 - 绝对可积，从而得到
 - 的傅里叶变换。
-![image](assets/assets/signals-and-communication-013/image-003.png)
+![image](assets/signals-and-communication-013/image-003.png)
 
 <!-- slide: 7 -->
 
@@ -110,14 +110,14 @@ locator_type: slide
 - 拉普拉斯变换VS傅里叶变换
 - 傅氏变换：二维。
 - 拉氏变换：三维。
-![image](assets/assets/signals-and-communication-013/image-004.png)
-![image](assets/assets/signals-and-communication-013/image-005.png)
+![image](assets/signals-and-communication-013/image-004.png)
+![image](assets/signals-and-communication-013/image-005.png)
 
 <!-- slide: 11 -->
 
 - 2.0 回顾
 - 拉普拉斯变换的复频域
-![image](assets/assets/signals-and-communication-013/image-006.png)
+![image](assets/signals-and-communication-013/image-006.png)
 - 实部 σ ：衰减速率
 - 虚部 ω ：振荡频率
 
@@ -201,7 +201,7 @@ locator_type: slide
 - 上式的左项要求              |，右项要求 |z|>0, 故该序列Z变换
 - 的收敛域为
 - 如果             ，则式(2-11)右端不存在第二项，故收敛域应包括              ，即               。
-![image](assets/assets/signals-and-communication-013/image-007.png)
+![image](assets/signals-and-communication-013/image-007.png)
 
 <!-- slide: 22 -->
 
@@ -399,7 +399,7 @@ locator_type: slide
 - (2-37)
 - 同样，通过Z反变换的公式(2-15)，并将积分围线取在单位圆上，得到序列的傅里叶反变换
 - (2-38)
-![image](assets/assets/signals-and-communication-013/image-008.png)
+![image](assets/signals-and-communication-013/image-008.png)
 
 <!-- slide: 40 -->
 
@@ -557,7 +557,7 @@ locator_type: slide
 - （1）σ=0 （S平面的虚轴），r =1（Z平面单位圆上）。
 - （2）σ<0 （S的左半平面），r <1（Z平面单位圆内部）。
 - （3）σ>0 （S的右半平面），r >1（Z平面单位圆外部）。
-![image](assets/assets/signals-and-communication-013/image-009.png)
+![image](assets/signals-and-communication-013/image-009.png)
 
 <!-- slide: 54 -->
 
@@ -615,14 +615,14 @@ locator_type: slide
 - 2.4离散时间系统的频域分析
 - 2. 线性时不变系统的因果、稳定条件
 - 系统函数 H(z) 是冲激响应 h[n] 的Z变换：
-![image](assets/assets/signals-and-communication-013/image-010.png)
+![image](assets/signals-and-communication-013/image-010.png)
 - 由于因果系统 h[n]=0 对于n<0，所以求和从 n=0 开始，即
-![image](assets/assets/signals-and-communication-013/image-011.png)
+![image](assets/signals-and-communication-013/image-011.png)
 - 当 ∣z∣→∞ 时，            对于所有 n>0。
-![image](assets/assets/signals-and-communication-013/image-012.png)
+![image](assets/signals-and-communication-013/image-012.png)
 - 双边
 - 单边
-![image](assets/assets/signals-and-communication-013/image-013.png)
+![image](assets/signals-and-communication-013/image-013.png)
 
 <!-- slide: 61 -->
 
@@ -632,13 +632,13 @@ locator_type: slide
 - 2. 线性时不变系统的因果、稳定条件
 - (2-71)
 - 系统函数 H(z) 是冲激响应 h[n] 的Z变换：
-![image](assets/assets/signals-and-communication-013/image-014.png)
+![image](assets/signals-and-communication-013/image-014.png)
 - 在单位圆上，         ，         ，此时Z变换变为：
-![image](assets/assets/signals-and-communication-013/image-015.png)
-![image](assets/assets/signals-and-communication-013/image-016.png)
-![image](assets/assets/signals-and-communication-013/image-017.png)
-![image](assets/assets/signals-and-communication-013/image-018.png)
-![image](assets/assets/signals-and-communication-013/image-019.png)
+![image](assets/signals-and-communication-013/image-015.png)
+![image](assets/signals-and-communication-013/image-016.png)
+![image](assets/signals-and-communication-013/image-017.png)
+![image](assets/signals-and-communication-013/image-018.png)
+![image](assets/signals-and-communication-013/image-019.png)
 
 <!-- slide: 62 -->
 
@@ -647,7 +647,7 @@ locator_type: slide
 - (2-72)
 - 因果稳定系统是最普遍、最重要的一种系统，它的系统函数    必须在从单位圆到   的整个z域内收敛，即
 - 也就是说，系统函数的全部极点必须在单位圆内。
-![image](assets/assets/signals-and-communication-013/image-020.png)
+![image](assets/signals-and-communication-013/image-020.png)
 
 <!-- slide: 63 -->
 
@@ -709,7 +709,7 @@ locator_type: slide
 <!-- slide: 68 -->
 
 - 2.5 MATLAB应用实例
-![image](assets/assets/signals-and-communication-013/image-021.png)
+![image](assets/signals-and-communication-013/image-021.png)
 
 <!-- slide: 69 -->
 
@@ -759,7 +759,7 @@ locator_type: slide
 - [H, w]=freqz(b, a);        %计算系统的频率响应
 - subplot(1,3,2);
 - 2.5 MATLAB应用实例
-![image](assets/assets/signals-and-communication-013/image-022.jpg)
+![image](assets/signals-and-communication-013/image-022.jpg)
 - B=[B(1)　B(2)　B(3) ... B(M+1)];
 - A=[A(1)　A(2)　A(3) ... A(N+1)];
 
@@ -779,7 +779,7 @@ locator_type: slide
 <!-- slide: 74 -->
 
 - 2.5 MATLAB应用实例
-![image](assets/assets/signals-and-communication-013/image-023.png)
+![image](assets/signals-and-communication-013/image-023.png)
 - 图2-21离散系统的零极点图、幅频响应曲线和相频响应曲线
 
 <!-- slide: 75 -->

@@ -81,7 +81,7 @@ W2  = q /  t1  = 93  ×107 （位/ S）
 
 **六、**解：“ADD  （R1），（R2）+”指令是SS型指令，两个操作数均在主存中。其中源操作数地址在R1中，所以是R1间接寻址。目的操作数地址在R2中，由R2间接寻址，但R2的内容在取出操作数以后要加1进行修改。指令周期流程图如下：
 
-![formula-object](assets/assets/computer-organization-065/image-001.png)
+![formula-object](assets/computer-organization-065/image-001.png)
 
 **图4**
 

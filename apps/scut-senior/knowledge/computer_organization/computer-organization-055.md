@@ -60,7 +60,7 @@ tm =  tc×r  =510  ×4 = 204ns (主存存取周期)
 
 五、解：“ADD  （R1），（R2）+”指令是SS型指令，两个操作数均在主存中。其中源操作数地址在R1中，所以是R1间接寻址。目的操作数地址在R2中，由R2间接寻址，但R2的内容在取出操作数以后要加1进行修改。指令周期流程图如图B10.4
 
-![image](assets/assets/computer-organization-055/image-001.png)
+![image](assets/computer-organization-055/image-001.png)
 
 图B10.4
 
@@ -68,13 +68,13 @@ tm =  tc×r  =510  ×4 = 204ns (主存存取周期)
 
 T1  = C1×C2    ，T2  = C2   ，T3  = C1
 
-![image](assets/assets/computer-organization-055/image-002.png)
+![image](assets/computer-organization-055/image-002.png)
 
 图  B 10.5
 
 七、解：I / O系统组成如图**B10.6**所示：
 
-![image](assets/assets/computer-organization-055/image-003.png)
+![image](assets/computer-organization-055/image-003.png)
 
 图  **B 10.6**
 
@@ -97,7 +97,7 @@ T1  = C1×C2    ，T2  = C2   ，T3  = C1
 
 九解：1）n条指令进入流水线的时空图如下：
 
-![formula-object](assets/assets/computer-organization-055/image-004.png)
+![formula-object](assets/computer-organization-055/image-004.png)
 
 2）顺序方式执行n条指令的总时间T0为
 

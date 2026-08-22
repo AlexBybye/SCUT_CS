@@ -10,4 +10,4 @@ locator_type: none
 
 # Obj_C
 
-![page-001.png](assets/assets/intelligent-algorithms-036/page-001.png)
+![page-001.png](assets/intelligent-algorithms-036/page-001.png)

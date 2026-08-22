@@ -10,4 +10,4 @@ locator_type: none
 
 # 最左归约得到可归前缀的过程
 
-![page-001.png](assets/assets/compiler-principles-042/page-001.png)
+![page-001.png](assets/compiler-principles-042/page-001.png)

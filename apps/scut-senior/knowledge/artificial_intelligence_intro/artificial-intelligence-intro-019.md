@@ -24,7 +24,7 @@ locator_type: slide
 <!-- slide: 2 -->
 
 - 6.5 聚类
-![image](assets/assets/artificial-intelligence-intro-019/image-001.png)
+![image](assets/artificial-intelligence-intro-019/image-001.png)
 
 <!-- slide: 3 -->
 
@@ -186,8 +186,8 @@ locator_type: slide
 - 3
 - 4
 - 5
-![image](assets/assets/artificial-intelligence-intro-019/image-002.png)
-![image](assets/assets/artificial-intelligence-intro-019/image-003.jpg)
+![image](assets/artificial-intelligence-intro-019/image-002.png)
+![image](assets/artificial-intelligence-intro-019/image-003.jpg)
 - Dist({3,6},{2,5}) = min(dist(3,2), dist(6,2), dist(3,5), dist(6,5))
 - = min(0.15,0.25,0.28,0.39)
 - = 0.15
@@ -376,8 +376,8 @@ locator_type: slide
 
 ## K-means的局限性: 簇大小悬殊时
 
-![image](assets/assets/artificial-intelligence-intro-019/image-004.png)
-![image](assets/assets/artificial-intelligence-intro-019/image-005.png)
+![image](assets/artificial-intelligence-intro-019/image-004.png)
+![image](assets/artificial-intelligence-intro-019/image-005.png)
 - 原始数据点
 - K-means3个簇
 
@@ -385,8 +385,8 @@ locator_type: slide
 
 ## K-means的局限性: 簇密度悬殊时
 
-![image](assets/assets/artificial-intelligence-intro-019/image-006.png)
-![image](assets/assets/artificial-intelligence-intro-019/image-007.png)
+![image](assets/artificial-intelligence-intro-019/image-006.png)
+![image](assets/artificial-intelligence-intro-019/image-007.png)
 - 原始数据点
 - K-means3个簇
 
@@ -394,8 +394,8 @@ locator_type: slide
 
 ## K-means的局限性: 非球形簇
 
-![image](assets/assets/artificial-intelligence-intro-019/image-008.png)
-![image](assets/assets/artificial-intelligence-intro-019/image-009.png)
+![image](assets/artificial-intelligence-intro-019/image-008.png)
+![image](assets/artificial-intelligence-intro-019/image-009.png)
 - 原始数据点
 - K-means2个簇
 
@@ -458,7 +458,7 @@ locator_type: slide
 
 ## DBSCAN算法
 
-![image](assets/assets/artificial-intelligence-intro-019/image-010.png)
+![image](assets/artificial-intelligence-intro-019/image-010.png)
 - 核心点
   - 核心点的Eps邻域中的数
   - 据点数目大于MinPts
@@ -499,8 +499,8 @@ locator_type: slide
 
 ## DBSCAN算法的优点
 
-![image](assets/assets/artificial-intelligence-intro-019/image-011.png)
-![image](assets/assets/artificial-intelligence-intro-019/image-012.png)
+![image](assets/artificial-intelligence-intro-019/image-011.png)
+![image](assets/artificial-intelligence-intro-019/image-012.png)
 - 抗噪
 - 可以处理不同形状和大小的簇
 - 原始数据点
@@ -511,7 +511,7 @@ locator_type: slide
 ## DBSCAN算法的局限性
 
 - 原始数据点
-![image](assets/assets/artificial-intelligence-intro-019/image-013.png)
+![image](assets/artificial-intelligence-intro-019/image-013.png)
 - (MinPts=4, Eps=9.75).
 - (MinPts=4, Eps=9.92)
 - 簇的密度不同

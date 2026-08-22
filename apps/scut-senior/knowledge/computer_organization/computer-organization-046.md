@@ -90,7 +90,7 @@ A. 1024     B. 4096        C. 8192       D.16384
 
 为写数指令，LDA为读数指令如图B20.1
 
-![formula-object](assets/assets/computer-organization-046/image-001.png)
+![formula-object](assets/computer-organization-046/image-001.png)
 
 要求：（1）分析三种指令的指令格式与寻址方式特点。
 
@@ -114,7 +114,7 @@ A. 1024     B. 4096        C. 8192       D.16384
 
 请拟定该接口中有哪些主要部件（不要求画出完整的连线），并概略说明在两种方式下的工作原理。
 
-![image](assets/assets/computer-organization-046/image-002.png)
+![image](assets/computer-organization-046/image-002.png)
 
 **图2**
 

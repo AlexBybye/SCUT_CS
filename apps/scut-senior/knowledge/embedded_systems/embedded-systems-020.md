@@ -17,43 +17,43 @@ locator_type: slide
 
 <!-- slide: 2 -->
 
-![image](assets/assets/embedded-systems-020/image-001.png)
+![image](assets/embedded-systems-020/image-001.png)
 
 <!-- slide: 3 -->
 
-![image](assets/assets/embedded-systems-020/image-002.png)
+![image](assets/embedded-systems-020/image-002.png)
 
 <!-- slide: 4 -->
 
-![image](assets/assets/embedded-systems-020/image-003.png)
+![image](assets/embedded-systems-020/image-003.png)
 
 <!-- slide: 5 -->
 
-![image](assets/assets/embedded-systems-020/image-004.png)
+![image](assets/embedded-systems-020/image-004.png)
 
 <!-- slide: 6 -->
 
-![image](assets/assets/embedded-systems-020/image-005.png)
+![image](assets/embedded-systems-020/image-005.png)
 
 <!-- slide: 7 -->
 
-![image](assets/assets/embedded-systems-020/image-006.png)
+![image](assets/embedded-systems-020/image-006.png)
 
 <!-- slide: 8 -->
 
-![image](assets/assets/embedded-systems-020/image-007.png)
+![image](assets/embedded-systems-020/image-007.png)
 
 <!-- slide: 9 -->
 
-![image](assets/assets/embedded-systems-020/image-008.png)
+![image](assets/embedded-systems-020/image-008.png)
 
 <!-- slide: 10 -->
 
-![image](assets/assets/embedded-systems-020/image-009.png)
+![image](assets/embedded-systems-020/image-009.png)
 
 <!-- slide: 11 -->
 
-![image](assets/assets/embedded-systems-020/image-010.png)
+![image](assets/embedded-systems-020/image-010.png)
 
 <!-- slide: 12 -->
 
@@ -66,4 +66,4 @@ locator_type: slide
 
 <!-- slide: 13 -->
 
-![image](assets/assets/embedded-systems-020/image-011.png)
+![image](assets/embedded-systems-020/image-011.png)

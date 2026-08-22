@@ -24,7 +24,7 @@ locator_type: slide
 <!-- slide: 2 -->
 
 - 4.1 概述
-![image](assets/assets/artificial-intelligence-intro-013/image-001.png)
+![image](assets/artificial-intelligence-intro-013/image-001.png)
 
 <!-- slide: 3 -->
 
@@ -101,7 +101,7 @@ locator_type: slide
 <!-- slide: 10 -->
 
 - 4.2 基本概率方法
-![image](assets/assets/artificial-intelligence-intro-013/image-002.png)
+![image](assets/artificial-intelligence-intro-013/image-002.png)
 
 <!-- slide: 11 -->
 
@@ -234,7 +234,7 @@ locator_type: slide
 <!-- slide: 24 -->
 
 - 贝叶斯网络
-![image](assets/assets/artificial-intelligence-intro-013/image-003.png)
+![image](assets/artificial-intelligence-intro-013/image-003.png)
 
 <!-- slide: 25 -->
 
@@ -551,7 +551,7 @@ locator_type: slide
 <!-- slide: 49 -->
 
 - 4.3 主观贝叶斯方法
-![image](assets/assets/artificial-intelligence-intro-013/image-004.png)
+![image](assets/artificial-intelligence-intro-013/image-004.png)
 
 <!-- slide: 50 -->
 
@@ -711,7 +711,7 @@ locator_type: slide
 <!-- slide: 64 -->
 
 - 4.4 可信度方法
-![image](assets/assets/artificial-intelligence-intro-013/image-005.png)
+![image](assets/artificial-intelligence-intro-013/image-005.png)
 
 <!-- slide: 65 -->
 

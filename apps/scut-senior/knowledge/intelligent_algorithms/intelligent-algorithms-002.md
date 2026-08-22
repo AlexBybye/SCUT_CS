@@ -39,7 +39,7 @@ CVRP（Capacitated Vehicle Routing Problem）是经典车辆路
 
 参数与符号说明：
 
-![image](assets/assets/intelligent-algorithms-002/image-001.png)
+![image](assets/intelligent-algorithms-002/image-001.png)
 
 <!-- page: 4 -->
 
@@ -55,9 +55,9 @@ CVRP（Capacitated Vehicle Routing Problem）是经典车辆路
 
 约束条件：
 
-![image](assets/assets/intelligent-algorithms-002/image-002.png)
+![image](assets/intelligent-algorithms-002/image-002.png)
 
-![image](assets/assets/intelligent-algorithms-002/image-003.png)
+![image](assets/intelligent-algorithms-002/image-003.png)
 
 <!-- page: 6 -->
 
@@ -66,9 +66,9 @@ CVRPLIB
 CVRPLIB - All Instances
 测试Set A (Augerat, 1995)，共27个实例，问题规模32~80
 
-![image](assets/assets/intelligent-algorithms-002/image-004.png)
+![image](assets/intelligent-algorithms-002/image-004.png)
 
-![image](assets/assets/intelligent-algorithms-002/image-005.png)
+![image](assets/intelligent-algorithms-002/image-005.png)
 
 <!-- page: 7 -->
 

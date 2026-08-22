@@ -88,7 +88,7 @@ A6  = P2·C0·T4
 
 其中T4为节拍脉冲信号。在P1条件下，当IR6  = 1时，T4脉冲到来时微地址寄存器的第8位A8将置“1”，从而将该位由“0”修改为“1”。如果IR6  = 0，则A8的“0”状态保持不变，A7，A6 的修改也类似。
 
-![formula-object](assets/assets/computer-organization-072/image-001.png)      根据转移逻辑表达式，很容易画出转移逻辑电路图，可用触发器强制端实现。
+![formula-object](assets/computer-organization-072/image-001.png)      根据转移逻辑表达式，很容易画出转移逻辑电路图，可用触发器强制端实现。
 
 **图3**
 - 解：
@@ -144,7 +144,7 @@ C =  r  ·  N  = 50 × 12288 = 614400字节  /  秒
 
 信号，使RS标志为“1”。
 
-![formula-object](assets/assets/computer-organization-072/image-002.png)工作触发器（BS）：设备“忙”的标志。BS=1，表示启动设备工作。
+![formula-object](assets/computer-organization-072/image-002.png)工作触发器（BS）：设备“忙”的标志。BS=1，表示启动设备工作。
 
 **图3**
 

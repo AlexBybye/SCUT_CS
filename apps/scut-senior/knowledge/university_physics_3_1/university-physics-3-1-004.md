@@ -42,9 +42,13 @@ locator_type: none
 
 三、计算题(每题10分)
 
+<!-- question: university-physics-3-1-004-Q4 -->
+
 21．解：(1)  角动量守恒：
 
 $m'vl=\left(\frac{1}{3}ml^{2}+m'l^{2}\right)\omega_{0}$                      2分                    ![formula-object](assets/university-physics-3-1-004/image-008.png)＝80  rad·s-1                                      2分
+
+<!-- question: university-physics-3-1-004-Q5 -->
 
 (2)解法一： 由转动定律得：
 
@@ -90,6 +94,8 @@ $=(\frac{3}{4}-\ln4)p_1V_1=-0.636p_1V_1$           1分
 
 （2）波动表达式为       ![formula-object](assets/university-physics-3-1-004/image-037.png)  (SI)                    2分
 
+<!-- question: university-physics-3-1-004-Q6 -->
+
 (3)    $p$处质点的振动方程为
 
 $y_{P}=0.04\cos(\frac{2\pi}{5}t-5\pi\times0.2-\frac{\pi}{2})$$=0.04\cos(\frac{2\pi}{5}t-\frac{3\pi}{2})$ (SI)         2分
@@ -98,11 +104,15 @@ $y_{P}=0.04\cos(\frac{2\pi}{5}t-5\pi\times0.2-\frac{\pi}{2})$$=0.04\cos(\frac{2\
 
 得：$(a+b)=\frac{2\lambda}{\sin30^{0}}=2400nm$         2分
 
+<!-- question: university-physics-3-1-004-Q7 -->
+
 (2)  由缺级公式    $k=\frac{a+b}{a}k'$     1分
 
 得，在第三级缺级下，$k'$取1，$a$取最小值
 
 $a_{\min}=\frac{a+b}{3}=800\text{nm}$       2分
+
+<!-- question: university-physics-3-1-004-Q8 -->
 
 (3)  $sintheta<1$，故$k<\frac{a+b}{\lambda}=4$     1分
 

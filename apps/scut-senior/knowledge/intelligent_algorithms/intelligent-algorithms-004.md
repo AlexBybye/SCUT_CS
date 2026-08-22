@@ -92,7 +92,7 @@ locator_type: page
 规则​
 ​。每次迭代结束后，首先对所有边执行信息素挥发操作：
 
-![image](assets/assets/intelligent-algorithms-004/image-001.jpeg)
+![image](assets/intelligent-algorithms-004/image-001.jpeg)
 
 <!-- page: 2 -->
 

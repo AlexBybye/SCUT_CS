@@ -32,7 +32,7 @@ locator_type: none
 
 路径构建过程中采用​**​动态概率选择机制​**​，候选节点集仅包含满足容量约束的未访问节点。对于当前节点*vi*​，选择下一节点*vj*​的概率由下式计算：
 
-*![image](assets/assets/intelligent-algorithms-003/image-001.png)*
+*![image](assets/intelligent-algorithms-003/image-001.png)*
 
 其中*τij*​为边(*i*,*j*)上的信息素浓度，*ηij*​=1/*dij*​表示距离启发因子，*α*和*β*分别控制信息素与启发信息的影响力权重。当候选节点集为空时，蚂蚁返回仓库并启用新车继续服务。
 
@@ -40,11 +40,11 @@ locator_type: none
 
 信息素系统是蚁群算法实现群体智能的关键，本算法采用​**​精英策略导向的双重更新规则​**​。每次迭代结束后，首先对所有边执行信息素挥发操作：
 
-![image](assets/assets/intelligent-algorithms-003/image-002.png)
+![image](assets/intelligent-algorithms-003/image-002.png)
 
 其中挥发系数*ρ*∈(0,1)控制信息素的衰减速度，防止陈旧信息干扰搜索过程。随后对本次迭代最优路径进行信息素增强：
 
-![image](assets/assets/intelligent-algorithms-003/image-003.png)
+![image](assets/intelligent-algorithms-003/image-003.png)
 
 其中*Q*为信息素强度常数，Lbest​为当前最优路径长度。这种设计使得优质路径能够获得更多信息素沉积，引导后续蚂蚁向优化方向搜索，同时避免陷入局部最优。
 

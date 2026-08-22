@@ -10,4 +10,4 @@ locator_type: none
 
 # 语义分析的例子
 
-![page-001.png](assets/assets/compiler-principles-049/page-001.png)
+![page-001.png](assets/compiler-principles-049/page-001.png)

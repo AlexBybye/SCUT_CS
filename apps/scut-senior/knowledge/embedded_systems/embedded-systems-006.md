@@ -20,8 +20,8 @@ locator_type: slide
 
 <!-- slide: 2 -->
 
-![image](assets/assets/embedded-systems-006/image-001.jpg)
-![image](assets/assets/embedded-systems-006/image-002.png)
+![image](assets/embedded-systems-006/image-001.jpg)
+![image](assets/embedded-systems-006/image-002.png)
 
 <!-- slide: 3 -->
 
@@ -36,18 +36,18 @@ locator_type: slide
 
 - 2.1芯片内核体系架构
 - 嵌入式微控制器系统的集成度远远高于计算机系统，CPU、存储器、总线及外部输入/输出接口等模块都可集成在微控制器一个芯片里，所以微控制器也俗称单片机。
-![image](assets/assets/embedded-systems-006/image-003.png)
+![image](assets/embedded-systems-006/image-003.png)
 
 <!-- slide: 5 -->
 
 - 2.1.1 Cortex-M3总体架构
 - Cortex-M3是一个32位处理器内核。内部的数据路径是32位的，寄存器是32位的，存储器接口也是32位；采用哈佛结构；三级流水线；有内存保护单元MPU；内部集成了调试组件。
 - AMBA总线规范是ARM公司提出的总线规范，包括：AHB、ASB和APB三种。AHB用于高性能、高时钟频率的系统结构。APB用于连接外部设备，对性能要求不高，而考虑低功耗问题。ASB是AHB的一种替代方案。
-![image](assets/assets/embedded-systems-006/image-004.png)
+![image](assets/embedded-systems-006/image-004.png)
 
 <!-- slide: 6 -->
 
-![image](assets/assets/embedded-systems-006/image-005.png)
+![image](assets/embedded-systems-006/image-005.png)
 - Cortex-M3 内核架构：包括Cortex-M3处理器核心、可嵌套中断向量控制器NVIC、总线阵列、存储保护单元MPU、闪存地址重载及断点单元FPB、数据监测点与跟踪DWT、仪表跟踪宏单元ITM、嵌入跟踪宏单元ETM、跟踪端口接口单元TPIU、AHB访问端口和JTAG调试口等。
 
 <!-- slide: 7 -->
@@ -77,7 +77,7 @@ locator_type: slide
 <!-- slide: 9 -->
 
 - （5）特殊功能寄存器
-![image](assets/assets/embedded-systems-006/image-006.png)
+![image](assets/embedded-systems-006/image-006.png)
 - 2）PRIMASK，1位寄存器。当置位时，它允许NMI和硬件默认异常，所有其他的中断和异常将被屏蔽。
 - 3）FAULTMASK，1位寄存器。当置位时，它只允许NMI，所有中断和默认异常处理被忽略。
 - 4）BASEPRI，9位寄存器。它定义了屏蔽优先级。当它置位时，所有同级的或低级的中断被忽略。
@@ -86,7 +86,7 @@ locator_type: slide
 <!-- slide: 10 -->
 
 - 1）xPSR：所有处理器模式下都可访问当前程序状态寄存器CPSR。在每种异常模式下都有一个对用的程序状态寄存器SPSR。当异常出现时，SPSR用于保存CPSR的状态，以便异常返回后恢复异常发生时的工作状态。
-![image](assets/assets/embedded-systems-006/image-007.png)
+![image](assets/embedded-systems-006/image-007.png)
 
 <!-- slide: 11 -->
 
@@ -166,7 +166,7 @@ locator_type: slide
 
 - 2.1.5 Cortex-M3存储器映射
 - 总体来说，Cortex-M3支持4GB存储空间。
-![image](assets/assets/embedded-systems-006/image-008.png)
+![image](assets/embedded-systems-006/image-008.png)
 
 <!-- slide: 17 -->
 
@@ -338,7 +338,7 @@ locator_type: slide
 - 可以把关键数据区设置为只读，从根本上消除了被破坏的可能。
 - 检测意外的存储访问，如，堆栈溢出，数组越界。
 - 还可以通过MPU设置存储器regions的其它访问属性，比如，是否缓区，是否缓冲等。
-![image](assets/assets/embedded-systems-006/image-009.png)
+![image](assets/embedded-systems-006/image-009.png)
 
 <!-- slide: 26 -->
 
@@ -790,7 +790,6 @@ ARM微处理器的指令集可以分为六大类 :
 
 <!-- slide: 52 -->
 
-
 | 操作码 | 条件助记符 | 标志 | 含义 |
 |---|---|---|---|
 | 0000 | EQ | Z=1 | 相等 |
@@ -899,7 +898,6 @@ ARM微处理器的指令集可以分为六大类 :
 
 <!-- slide: 61 -->
 
-
 | 助记符 | 说明 | 操作 | 条件码位置 |
 |---|---|---|---|
 | LDR    Rd,addressing | 加载字数据 | Rd←[addressing]，<br>addressing索引 | LDR{cond} |
@@ -913,7 +911,6 @@ ARM微处理器的指令集可以分为六大类 :
 - ARM存储器访问指令——装载指令
 
 <!-- slide: 62 -->
-
 
 | 助记符 | 说明 | 操作 | 条件码位置 |
 |---|---|---|---|
@@ -1831,7 +1828,6 @@ ARM微处理器的指令集可以分为六大类 :
 
 ## ARM指令集——乘法指令
 
-
 | 助记符 | 说明 | 操作 | 条件码位置 |
 |---|---|---|---|
 | MUL  Rd,Rm,Rs | 32位乘法指令 | RdRm*Rs    (Rd≠Rm) | MUL{cond}{S} |
@@ -1945,7 +1941,7 @@ ARM微处理器的指令集可以分为六大类 :
 
 <!-- slide: 116 -->
 
-![image](assets/assets/embedded-systems-006/image-010.png)
+![image](assets/embedded-systems-006/image-010.png)
 - 指令执行的条件码
 - 24位常数，跳转目标地址
 - （基于PC的偏移量）
@@ -2041,7 +2037,6 @@ ARM微处理器的指令集可以分为六大类 :
 - …
 
 <!-- slide: 123 -->
-
 
 | 助记符 | 说明 | 操作 | 条件码位置 |
 |---|---|---|---|
@@ -2611,7 +2606,7 @@ ARM微处理器的指令集可以分为六大类 :
 
 - 位段操作
 - Cortex-M3也可以实现位的操作，但并不是所有的存储区域都可以实现位操作，只有两个位操作区，也称为位域。
-![image](assets/assets/embedded-systems-006/image-011.png)
+![image](assets/embedded-systems-006/image-011.png)
 
 <!-- slide: 159 -->
 
@@ -2676,11 +2671,11 @@ ARM微处理器的指令集可以分为六大类 :
 
 - 2.4 Thumb指令集
 - Cortex-M3芯片，采用Thumb-2指令。
-![image](assets/assets/embedded-systems-006/image-012.png)
+![image](assets/embedded-systems-006/image-012.png)
 - Thumb指令集没有协处理器指令，信号量指令以及访问CPSR或SPSR的指令，没有乘加指令及64位乘法指令等，且指令的第二操作数受到限制；
 - 除跳转指令B有条件执行功能外，其他指令均为无条件执行；
 - 大多数Thumb数据处理指令采用2地址格式。
-![image](assets/assets/embedded-systems-006/image-013.png)
+![image](assets/embedded-systems-006/image-013.png)
 
 <!-- slide: 166 -->
 

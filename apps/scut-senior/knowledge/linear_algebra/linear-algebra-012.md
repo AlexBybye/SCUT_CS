@@ -85,7 +85,11 @@ A A
 3
 A
 
+<!-- question: linear-algebra-012-Q2 -->
+
 2. 设
+
+<!-- question: linear-algebra-012-Q3 -->
 
 3. 已知向量组
 
@@ -115,6 +119,8 @@ A
 
 向量组的秩是___ ____.
 
+<!-- question: linear-algebra-012-Q4 -->
+
 4. 在空间直角坐标系中，yoz 面上的曲线
 2
 4
@@ -124,6 +130,8 @@ z
 绕z 坐标轴旋转形成的旋转面的
 
    方程是
+
+<!-- question: linear-algebra-012-Q5 -->
 
 5. 二次型
 
@@ -161,6 +169,8 @@ x x
 
    依次是
 
+<!-- question: linear-algebra-012-Q6 -->
+
 6. 设4 阶方阵A 满足条件 5
 0
 E
@@ -184,9 +194,11 @@ A 
 A 的一个特征值是
    .
 
-<!-- question: linear-algebra-012-Q2 -->
+<!-- question: linear-algebra-012-Q7 -->
 
 二、选择题：共6 题，每题3 分，共18 分。
+<!-- question: linear-algebra-012-Q8 -->
+
 1. 设A，B 都是n 阶对称矩阵，则下面结论中不正确的是(       ).
 
    A. A+B 也是对称矩阵            B.
@@ -223,6 +235,8 @@ D
 2
 4
 8
+
+<!-- question: linear-algebra-012-Q9 -->
 
 2. 行列式
 
@@ -299,6 +313,8 @@ AB
 当
 时，必有行列式
 
+<!-- question: linear-algebra-012-Q10 -->
+
 4. n
 A
 阶矩阵
@@ -338,6 +354,8 @@ t
  ,
  ,
  线性表示。
+
+<!-- question: linear-algebra-012-Q11 -->
 
 5. 设
 
@@ -406,7 +424,7 @@ A
 与
 有相同的特征值
 
-<!-- question: linear-algebra-012-Q3 -->
+<!-- question: linear-algebra-012-Q12 -->
 
 三、（8 分）计算n 阶行列式D.
 
@@ -467,9 +485,11 @@ n
 
 <!-- page: 3 -->
 
-<!-- question: linear-algebra-012-Q4 -->
+<!-- question: linear-algebra-012-Q13 -->
 
 四、（共2 小题，每小题5 分，共10 分）
+
+<!-- question: linear-algebra-012-Q14 -->
 
 (1) 已知直线1l 经过点P(1,2,3)且与直线2l ： 3
 2
@@ -497,6 +517,8 @@ z
 
     平行. 求直线1l 的对称式方程。
 
+<!-- question: linear-algebra-012-Q15 -->
+
 (2) 求平行于平面2
 2
 3
@@ -508,7 +530,7 @@ z
 
 且与其距离为3 的平面方程。
 
-<!-- question: linear-algebra-012-Q5 -->
+<!-- question: linear-algebra-012-Q16 -->
 
 五、（15 分）a，b 为何值时，线性方程组
 
@@ -600,7 +622,7 @@ bx
 
 有解？何时无解？有解时求出解。
 
-<!-- question: linear-algebra-012-Q6 -->
+<!-- question: linear-algebra-012-Q17 -->
 
 六、（10 分）设
 
@@ -676,6 +698,8 @@ R
 
 求第二组基
 
+<!-- question: linear-algebra-012-Q18 -->
+
 (2)  若向量在第二组基下的坐标是(-1,-1,1),求在第一组基下的坐标.
 
 
@@ -705,7 +729,7 @@ A
 1
 2
 
-<!-- question: linear-algebra-012-Q7 -->
+<!-- question: linear-algebra-012-Q19 -->
 
 七、（15 分）已知矩阵
 
@@ -715,7 +739,11 @@ A
 2
 1
 
+<!-- question: linear-algebra-012-Q20 -->
+
 (1) 求出A 的所有特征值。
+
+<!-- question: linear-algebra-012-Q21 -->
 
 (2) 求正交矩阵T，使得
 1
@@ -724,7 +752,7 @@ AT
 
 为对角矩阵，并写出该对角矩阵。
 
-<!-- question: linear-algebra-012-Q8 -->
+<!-- question: linear-algebra-012-Q22 -->
 
 八、（6 分）设n 阶实对称矩阵A 满足
 3

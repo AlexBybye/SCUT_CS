@@ -92,7 +92,7 @@ are sorted.
 • If 𝑎𝑖> 𝑏𝑗, then 𝑏𝑗is inverted with every element left in A.
 • Append smaller element to sorted list C.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-001.png)
+![image](assets/algorithm-design-and-analysis-016/image-001.png)
 
 <!-- page: 8 -->
 
@@ -100,7 +100,7 @@ Counting Inversions: Merge-and-Count
 
 How about the running time?
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-002.png)
+![image](assets/algorithm-design-and-analysis-016/image-002.png)
 
 <!-- page: 9 -->
 
@@ -158,7 +158,7 @@ Given two sorted lists A and B,
 • Count number of inversions (a, b) with 𝑎∈𝐴and 𝑏∈𝐵.
 • Merge A and B into sorted list C.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-003.png)
+![image](assets/algorithm-design-and-analysis-016/image-003.png)
 
 <!-- page: 13 -->
 
@@ -168,7 +168,7 @@ Given two sorted lists A and B,
 • Count number of inversions (a, b) with 𝑎∈𝐴and 𝑏∈𝐵.
 • Merge A and B into sorted list C.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-004.png)
+![image](assets/algorithm-design-and-analysis-016/image-004.png)
 
 <!-- page: 14 -->
 
@@ -178,7 +178,7 @@ Given two sorted lists A and B,
 • Count number of inversions (a, b) with 𝑎∈𝐴and 𝑏∈𝐵.
 • Merge A and B into sorted list C.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-005.png)
+![image](assets/algorithm-design-and-analysis-016/image-005.png)
 
 <!-- page: 15 -->
 
@@ -188,7 +188,7 @@ Given two sorted lists A and B,
 • Count number of inversions (a, b) with 𝑎∈𝐴and 𝑏∈𝐵.
 • Merge A and B into sorted list C.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-006.png)
+![image](assets/algorithm-design-and-analysis-016/image-006.png)
 
 <!-- page: 16 -->
 
@@ -198,7 +198,7 @@ Given two sorted lists A and B,
 • Count number of inversions (a, b) with 𝑎∈𝐴and 𝑏∈𝐵.
 • Merge A and B into sorted list C.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-007.png)
+![image](assets/algorithm-design-and-analysis-016/image-007.png)
 
 <!-- page: 17 -->
 
@@ -208,7 +208,7 @@ Given two sorted lists A and B,
 • Count number of inversions (a, b) with 𝑎∈𝐴and 𝑏∈𝐵.
 • Merge A and B into sorted list C.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-008.png)
+![image](assets/algorithm-design-and-analysis-016/image-008.png)
 
 <!-- page: 18 -->
 
@@ -218,7 +218,7 @@ Given two sorted lists A and B,
 • Count number of inversions (a, b) with 𝑎∈𝐴and 𝑏∈𝐵.
 • Merge A and B into sorted list C.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-009.png)
+![image](assets/algorithm-design-and-analysis-016/image-009.png)
 
 <!-- page: 19 -->
 
@@ -228,7 +228,7 @@ Given two sorted lists A and B,
 • Count number of inversions (a, b) with 𝑎∈𝐴and 𝑏∈𝐵.
 • Merge A and B into sorted list C.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-010.png)
+![image](assets/algorithm-design-and-analysis-016/image-010.png)
 
 <!-- page: 20 -->
 
@@ -238,7 +238,7 @@ Given two sorted lists A and B,
 • Count number of inversions (a, b) with 𝑎∈𝐴and 𝑏∈𝐵.
 • Merge A and B into sorted list C.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-011.png)
+![image](assets/algorithm-design-and-analysis-016/image-011.png)
 
 <!-- page: 21 -->
 
@@ -248,7 +248,7 @@ Given two sorted lists A and B,
 • Count number of inversions (a, b) with 𝑎∈𝐴and 𝑏∈𝐵.
 • Merge A and B into sorted list C.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-012.png)
+![image](assets/algorithm-design-and-analysis-016/image-012.png)
 
 <!-- page: 22 -->
 
@@ -258,7 +258,7 @@ Given two sorted lists A and B,
 • Count number of inversions (a, b) with 𝑎∈𝐴and 𝑏∈𝐵.
 • Merge A and B into sorted list C.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-013.png)
+![image](assets/algorithm-design-and-analysis-016/image-013.png)
 
 <!-- page: 23 -->
 
@@ -268,7 +268,7 @@ Given two sorted lists A and B,
 • Count number of inversions (a, b) with 𝑎∈𝐴and 𝑏∈𝐵.
 • Merge A and B into sorted list C.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-014.png)
+![image](assets/algorithm-design-and-analysis-016/image-014.png)
 
 <!-- page: 24 -->
 
@@ -289,7 +289,7 @@ compute 𝐶= 𝐴𝐵.
 
 Block Matrix Multiplication
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-015.png)
+![image](assets/algorithm-design-and-analysis-016/image-015.png)
 
 <!-- page: 26 -->
 
@@ -325,7 +325,7 @@ additions.
 4 matrix additions
 Running time. 𝑇𝑛= ？
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-016.png)
+![image](assets/algorithm-design-and-analysis-016/image-016.png)
 
 <!-- page: 27 -->
 
@@ -367,7 +367,7 @@ Running time. 𝑇𝑛= 8𝑇
 ⇒
 𝑇𝑛=?
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-017.png)
+![image](assets/algorithm-design-and-analysis-016/image-017.png)
 
 <!-- page: 28 -->
 
@@ -409,7 +409,7 @@ Running time. Apply Case 1 of the master theorem.
 ⇒
 𝑇𝑛= Θ 𝑛3
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-018.png)
+![image](assets/algorithm-design-and-analysis-016/image-018.png)
 
 <!-- page: 29 -->
 
@@ -418,7 +418,7 @@ Strassen’s Trick
 Key idea. Can multiply two 2-by-2 matrices via 7 scalar
 matrix multiplications (plus 11 additions and 7 subtractions).
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-019.png)
+![image](assets/algorithm-design-and-analysis-016/image-019.png)
 
 <!-- page: 30 -->
 
@@ -434,7 +434,7 @@ Key idea. Can multiply two n-by-n matrices via 7
 2
 multiplications (plus 11 additions and 7 subtractions).
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-020.png)
+![image](assets/algorithm-design-and-analysis-016/image-020.png)
 
 <!-- page: 31 -->
 
@@ -535,7 +535,7 @@ Sort an array of n distinct elements is 𝑂(𝑛𝑙𝑜𝑔𝑛).
 
 Pf. Consider BST representation of partitioning elements.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-021.png)
+![image](assets/algorithm-design-and-analysis-016/image-021.png)
 
 <!-- page: 36 -->
 
@@ -548,7 +548,7 @@ Pf. Consider BST representation of partitioning elements.
 • An element is compared with only its ancestors and
 descendants.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-022.png)
+![image](assets/algorithm-design-and-analysis-016/image-022.png)
 
 <!-- page: 37 -->
 
@@ -561,7 +561,7 @@ Pf. Consider BST representation of partitioning elements.
 • An element is compared with only its ancestors and
 descendants.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-023.png)
+![image](assets/algorithm-design-and-analysis-016/image-023.png)
 
 <!-- page: 38 -->
 
@@ -575,7 +575,7 @@ Pf. Consider BST representation of partitioning elements.
 descendants.
 • Pr[𝑎𝑖and 𝑎𝑗are compared] = 2/(j-i+1), where i<j.
 
-![image](assets/assets/algorithm-design-and-analysis-016/image-024.png)
+![image](assets/algorithm-design-and-analysis-016/image-024.png)
 
 <!-- page: 39 -->
 

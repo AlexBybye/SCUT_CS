@@ -33,6 +33,8 @@ locator_type: none
 评阅教师请在试卷袋上评阅栏签名
 
 **一、填空题：共5题，每题2分，共10分。**
+<!-- question: engineering-mathematical-analysis-2-026-Q1 -->
+
 1. 微分方程$y''+y'-2y=1-2x$的通解为                          ;
 1. 设函数$u=\ln(x^2+y^2+z^2)$,  求$div(gradu)=$                              ;
 1. 设$\Gamma$是球面$x^2+y^2+z^2=R^2$与平面$x+y+z=0$的交线,  则第一类曲线积分![formula-object](assets/engineering-mathematical-analysis-2-026/image-008.png)                   ;
@@ -40,6 +42,8 @@ locator_type: none
 1. 设周期为$2\pi$的函数$f(x)=\begin{cases}-1,&-\pi<x<0,\\1,&0<x<\pi,\end{cases}$ 则$f(x)$的傅里叶(Fourier)级数在$x=\pi$处收敛于                 .
 
 **二、选择题：共5题，每题2分，共10分。**
+<!-- question: engineering-mathematical-analysis-2-026-Q2 -->
+
 1. 下列微分方程为二阶微分方程的是(     )
 
 A.  $(y'')^2+x^2y'+x^2=0$;				B.  $(y')^2+3xy=y^2$;
@@ -55,6 +59,8 @@ C.  等于0; 						D.  等于2.
 A.  $A>0,AC>B^2$;					B.  $A<0,AC>B^2$;
 
 C.  $A>0,AC<B^2$;					D.  $A<0,AC<B^2$.
+<!-- question: engineering-mathematical-analysis-2-026-Q3 -->
+
 1. 曲面$z=F(x,y,z)$在点$(x,y,z)$处的一个法向量为(     )
 
 A.  $(F_x,F_y,F_z-1)$;					B.  $-F_x,-F_y,1$;
@@ -79,6 +85,8 @@ C.  $0<p?1$;						D.  $p>1$.
 
 **五、简答题：共4题，每题10分，共40分。**
 
+<!-- question: engineering-mathematical-analysis-2-026-Q4 -->
+
 1.  求曲面$x^{2}+y^{2}+z^{2}=4z$在抛物面$z=x^2+y^2$内的部分的面积.
 
 2.设![formula-object](assets/engineering-mathematical-analysis-2-026/image-058.png)是锥面$z=\sqrt{x^{2}+y^{2}}$被平面$Z=0$及$z=1$截下的部分的下侧,计算第二类曲面积分![formula-object](assets/engineering-mathematical-analysis-2-026/image-062.png).
@@ -87,7 +95,7 @@ C.  $0<p?1$;						D.  $p>1$.
 
 4.  求幂级数$\sum_{n=0}^{\infty}\frac{1}{2n+1}x^{2n+1}$的收敛域及和函数.
 
-<!-- question: engineering-mathematical-analysis-2-026-Q1 -->
+<!-- question: engineering-mathematical-analysis-2-026-Q5 -->
 
 六、**应用题：共1题，每题8分，共8分。**
 

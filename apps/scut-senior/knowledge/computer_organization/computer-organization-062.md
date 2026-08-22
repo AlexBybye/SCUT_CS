@@ -78,7 +78,7 @@ tC  = 2TM  + TDC  + TS  + TC  + TR
 
 达到中断饱和的时间为：  T =  tA +  tB +  tC      中断极限频率为：f  = 1 / T
 
-![image](assets/assets/computer-organization-062/image-001.png)
+![image](assets/computer-organization-062/image-001.png)
 
 图3
 

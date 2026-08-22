@@ -10,4 +10,4 @@ locator_type: none
 
 # 运行时的存储空间结构
 
-![page-001.png](assets/assets/compiler-principles-052/page-001.png)
+![page-001.png](assets/compiler-principles-052/page-001.png)

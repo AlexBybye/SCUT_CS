@@ -16,6 +16,8 @@ locator_type: page
 
 一. 选择题(单选，每题3 分，共18 分)
 
+<!-- question: linear-algebra-016-Q1 -->
+
 1.  A 是n 阶方阵，X≠0 为n 维列向量。若AX=0，则下列说法正确的是（
  ）。
 
@@ -24,6 +26,8 @@ locator_type: page
 
 （C）A 的所有特征值都等于0
 （D）A 至少有一个特征值不等于0
+<!-- question: linear-algebra-016-Q2 -->
+
 2． A 是n 阶正交矩阵的充分必要条件为（
  ）。
 
@@ -34,6 +38,8 @@ locator_type: page
 （C）A 的行向量组与列向量组都是标准正交向量组；
 
 （D）A 的正惯性指数等于n；
+<!-- question: linear-algebra-016-Q3 -->
+
 3.  A 是n 阶正定矩阵，则下列说法正确的是（
  ）。
 
@@ -44,6 +50,8 @@ locator_type: page
 （C）A 必有n 个互不相同特征值；
 
 （D）|A|≥0；
+<!-- question: linear-algebra-016-Q4 -->
+
 4.  若A、B 两个矩阵的迹相同，则下列说法正确的是（
  ）。
 
@@ -54,6 +62,8 @@ locator_type: page
 （C）A、B 的特征值必相同；
 
 （D）A、B 的特征值的和必相同；
+<!-- question: linear-algebra-016-Q5 -->
+
 5.  A 是数域上的n 阶矩阵，则下列说法正确的是（
  ）。
 
@@ -70,6 +80,8 @@ locator_type: page
 3 4 1 2
 4 1 2 3
 
+<!-- question: linear-algebra-016-Q6 -->
+
 6. 行列式
 
 的值为（
@@ -85,8 +97,12 @@ locator_type: page
 
 二. 填空题(每空3 分，共15 分)
 
+<!-- question: linear-algebra-016-Q7 -->
+
 1． 过点(1,0,1)且与z 轴平行的直线的参数方程为（
   ）。
+
+<!-- question: linear-algebra-016-Q8 -->
 
 2． 已知空间中
 1(1,2,3),
@@ -144,6 +160,8 @@ t
 2
 3
 4
+
+<!-- question: linear-algebra-016-Q9 -->
 
 3． t =（  ）时，线性方程组
 是相容方程组，此时对应的齐次
@@ -279,6 +297,8 @@ t
 0
 = 1
 
+<!-- question: linear-algebra-016-Q10 -->
+
 4． 5 个向量构成的向量组5 :
 i
 
@@ -312,13 +332,13 @@ i
 r 
 =（  ）。
 
-<!-- question: linear-algebra-016-Q1 -->
+<!-- question: linear-algebra-016-Q11 -->
 
 三、 (7 分)
 
 x2−y2=1 是xoy 平面的曲线，求将此曲线绕y 轴旋转一周所得旋转面的方程。
 
-<!-- question: linear-algebra-016-Q2 -->
+<!-- question: linear-algebra-016-Q12 -->
 
 四、 (12 分)
 
@@ -365,7 +385,7 @@ B A B
 
 求: C−E3 的特征值与特征向量(E3 为3 阶单位阵)。
 
-<!-- question: linear-algebra-016-Q3 -->
+<!-- question: linear-algebra-016-Q13 -->
 
 五、 (15 分)
 
@@ -443,7 +463,7 @@ t
 
 当方程组有解时，求出对应齐次方程组的基础解系及非齐次方程组的通解。
 
-<!-- question: linear-algebra-016-Q4 -->
+<!-- question: linear-algebra-016-Q14 -->
 
 六、 (15 分)
 
@@ -547,7 +567,7 @@ f x x x
 
 <!-- page: 3 -->
 
-<!-- question: linear-algebra-016-Q5 -->
+<!-- question: linear-algebra-016-Q15 -->
 
 七、 (12 分)
 
@@ -612,7 +632,7 @@ d l ；
 ,
 两平面交线的平面方程。
 
-<!-- question: linear-algebra-016-Q6 -->
+<!-- question: linear-algebra-016-Q16 -->
 
 八、 (6 分)
 

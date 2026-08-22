@@ -10,4 +10,4 @@ locator_type: none
 
 # 识别活前缀的NFA
 
-![page-001.png](assets/assets/compiler-principles-048/page-001.png)
+![page-001.png](assets/compiler-principles-048/page-001.png)

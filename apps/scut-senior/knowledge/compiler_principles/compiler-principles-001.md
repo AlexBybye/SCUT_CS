@@ -600,7 +600,7 @@ locator_type: slide
   - T→*FT | 
   - F→(E) | i
 - 输入串为i1*i2+i3，利用分析表进行预测分析
-![image](assets/assets/compiler-principles-001/image-001.png)
+![image](assets/compiler-principles-001/image-001.png)
 
 <!-- slide: 38 -->
 
@@ -610,7 +610,7 @@ locator_type: slide
 - 1			#ET		i1*i2+i3#   E→TE
 - 2			#ETF	i1*i2+i3#   T→FT
 - 3			#ETi	i1*i2+i3# 	 F→i
-![image](assets/assets/compiler-principles-001/image-002.png)
+![image](assets/compiler-principles-001/image-002.png)
 
 <!-- slide: 39 -->
 
@@ -621,7 +621,7 @@ locator_type: slide
 - 5			#ETF*	*i2+i3#	   T→*FT
 - 6			#ETF       i2+i3#　　匹配*
 - 7			#ETi	i2+i3#         F→i
-![image](assets/assets/compiler-principles-001/image-003.png)
+![image](assets/compiler-principles-001/image-003.png)
 
 <!-- slide: 40 -->
 
@@ -632,7 +632,7 @@ locator_type: slide
 - 9			#E		+i3#		   T→
 - 10			#ET+	+i3#		   E→+TE
 - 11			#ET		i3#.            匹配+
-![image](assets/assets/compiler-principles-001/image-004.png)
+![image](assets/compiler-principles-001/image-004.png)
 
 <!-- slide: 41 -->
 
@@ -644,7 +644,7 @@ locator_type: slide
 - 14			#ET	#.             匹配i3
 - 15			#E		#          	 T→
 - 16			#		#          	 E→
-![image](assets/assets/compiler-principles-001/image-005.png)
+![image](assets/compiler-principles-001/image-005.png)
 
 <!-- slide: 42 -->
 
@@ -780,7 +780,7 @@ locator_type: slide
 ## 确定化
 
 - *
-![image](assets/assets/compiler-principles-001/image-006.png)
+![image](assets/compiler-principles-001/image-006.png)
 
 <!-- slide: 52 -->
 
@@ -964,7 +964,7 @@ locator_type: slide
 
 ## if A<D or A>C then A:=A+1                                else  A :=1;
 
-![image](assets/assets/compiler-principles-001/image-007.jpg)
+![image](assets/compiler-principles-001/image-007.jpg)
 
 <!-- slide: 68 -->
 
@@ -981,7 +981,7 @@ locator_type: slide
 
 <!-- slide: 70 -->
 
-![image](assets/assets/compiler-principles-001/image-008.jpg)
+![image](assets/compiler-principles-001/image-008.jpg)
 - 直接确定
 - 直接确定
 - 直接确定

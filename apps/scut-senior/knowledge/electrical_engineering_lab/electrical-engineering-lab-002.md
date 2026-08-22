@@ -10,4 +10,4 @@ locator_type: none
 
 # 微信图片_20250301151417
 
-![page-001.png](assets/assets/electrical-engineering-lab-002/page-001.png)
+![page-001.png](assets/electrical-engineering-lab-002/page-001.png)

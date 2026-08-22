@@ -10,4 +10,4 @@ locator_type: none
 
 # 微信图片_202504141123152
 
-![page-001.png](assets/assets/computer-organization-023/page-001.png)
+![page-001.png](assets/computer-organization-023/page-001.png)

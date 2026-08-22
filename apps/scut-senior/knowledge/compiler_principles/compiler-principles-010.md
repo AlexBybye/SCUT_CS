@@ -24,8 +24,14 @@ locator_type: page
 《 编译原理 》试卷 A 答案
 
 注意事项：1. 考前请将密封线内各项信息填写清楚；
+<!-- question: compiler-principles-010-Q1 -->
+
           2. 所有答案请直接答在试卷上；
+<!-- question: compiler-principles-010-Q2 -->
+
           3．考试形式：闭卷；
+
+<!-- question: compiler-principles-010-Q3 -->
 
           4. 本试卷共 八 大题，满分100 分， 考试时间120 分钟。
 
@@ -43,10 +49,12 @@ locator_type: page
 
 人
 
-<!-- question: compiler-principles-010-Q1 -->
+<!-- question: compiler-principles-010-Q4 -->
 
 一、
 填空  （20 分，每空1 分）
+
+<!-- question: compiler-principles-010-Q5 -->
 
  5．语法分析最常用的两类方法是 _和_   分析法。确定的自顶而下的语法
 
@@ -54,31 +62,37 @@ locator_type: page
 
 _____________ ________
 
+<!-- question: compiler-principles-010-Q6 -->
+
 10. 为了构造不带回溯的递归下降分析程序，我们通常要消除              和
 
 ( 密 封 线 内 不 答 题 )
 
 提取      。
 
-<!-- question: compiler-principles-010-Q2 -->
+<!-- question: compiler-principles-010-Q7 -->
 
 二、编译过程通常分为哪几个主要阶段？每个阶段的主要功能？（15 分）
 
-<!-- question: compiler-principles-010-Q3 -->
+<!-- question: compiler-principles-010-Q8 -->
 
 三、设有文法G[S] 为：（10 分）
 
 S→SdT | T
 T→T<G | G
 G→(S) | a
+<!-- question: compiler-principles-010-Q9 -->
+
 1．证明句型 (SdG)<a 是规范句型
+<!-- question: compiler-principles-010-Q10 -->
+
 2．试给出句型(SdG)<a 的语法树及该句型的句柄。
 
 《   编译原理   》试卷A 第 1 页 共 4 页
 
 <!-- page: 2 -->
 
-<!-- question: compiler-principles-010-Q4 -->
+<!-- question: compiler-principles-010-Q11 -->
 
 四、设有文法G[A]为：（15 分）
 
@@ -86,15 +100,29 @@ G[A] ：
 
 A→aABe|a
 B→Bb|d
+<!-- question: compiler-principles-010-Q12 -->
+
 （1） 试给出与G[A]等价的LL（1）文法G'[A]
+<!-- question: compiler-principles-010-Q13 -->
+
 （2） 构造G'[A]的预测分析表给出输入串aade#的分析过程。
+
+<!-- question: compiler-principles-010-Q14 -->
 
 五、文法G[S]及其LR 分析表如下，请给出对输入串baab#的分析过程。（15 分）
 G[S]:
 
+<!-- question: compiler-principles-010-Q15 -->
+
 （0） S′→S    （1） S→AB      （2） A →aBa
+<!-- question: compiler-principles-010-Q16 -->
+
 （3） A →ε     （4） B→bAb     （5） B →ε
+<!-- question: compiler-principles-010-Q17 -->
+
 （1）为这个文法构造LR(0)项目的DFA。（6 分）
+<!-- question: compiler-principles-010-Q18 -->
+
 （2）按照下面的SLR 分析表给出对输入串baab#的分析过程：（9 分）
 
 《   编译原理   》试卷A 第 2 页 共 4 页
@@ -157,7 +185,7 @@ r2
 r4
 r4
 
-<!-- question: compiler-principles-010-Q5 -->
+<!-- question: compiler-principles-010-Q19 -->
 
 六、把下面的语句翻译成四元式序列。    （10 分）
 
@@ -175,7 +203,7 @@ if  X > 1  then  C:=C+1  else  A:=A*2;
 
 <!-- page: 4 -->
 
-<!-- question: compiler-principles-010-Q6 -->
+<!-- question: compiler-principles-010-Q20 -->
 
 七、构造正规表达式( a | b )
 

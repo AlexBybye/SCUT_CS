@@ -10,4 +10,4 @@ locator_type: none
 
 # LL分析的错误恢复
 
-![page-001.png](assets/assets/compiler-principles-024/page-001.png)
+![page-001.png](assets/compiler-principles-024/page-001.png)

@@ -172,7 +172,7 @@ When filling D, we only look if the two letters in the strings are
 equal and if they are we add one to the element to the left and
 up.
 
-![image](assets/assets/algorithm-design-and-analysis-009/image-001.png)
+![image](assets/algorithm-design-and-analysis-009/image-001.png)
 
 <!-- page: 10 -->
 
@@ -185,7 +185,7 @@ which has n rows and m columns.
 
 10
 
-![image](assets/assets/algorithm-design-and-analysis-009/image-002.png)
+![image](assets/algorithm-design-and-analysis-009/image-002.png)
 
 <!-- page: 11 -->
 
@@ -200,7 +200,7 @@ the total procedure takes Θ(pqr) time.
 
 11
 
-![image](assets/assets/algorithm-design-and-analysis-009/image-003.png)
+![image](assets/algorithm-design-and-analysis-009/image-003.png)
 
 <!-- page: 12 -->
 
@@ -339,7 +339,7 @@ S0: Initialization
 
 19
 
-![image](assets/assets/algorithm-design-and-analysis-009/image-004.jpeg)
+![image](assets/algorithm-design-and-analysis-009/image-004.jpeg)
 
 <!-- page: 20 -->
 
@@ -357,7 +357,7 @@ min
 
 20
 
-![image](assets/assets/algorithm-design-and-analysis-009/image-005.jpeg)
+![image](assets/algorithm-design-and-analysis-009/image-005.jpeg)
 
 <!-- page: 21 -->
 
@@ -375,7 +375,7 @@ min
 
 21
 
-![image](assets/assets/algorithm-design-and-analysis-009/image-006.jpeg)
+![image](assets/algorithm-design-and-analysis-009/image-006.jpeg)
 
 <!-- page: 22 -->
 
@@ -393,7 +393,7 @@ min
 
 22
 
-![image](assets/assets/algorithm-design-and-analysis-009/image-007.jpeg)
+![image](assets/algorithm-design-and-analysis-009/image-007.jpeg)
 
 <!-- page: 23 -->
 
@@ -416,7 +416,7 @@ min 𝑚[1,1] + 𝑚[2,3] + 𝑝0𝑝1𝑝3
 
 23
 
-![image](assets/assets/algorithm-design-and-analysis-009/image-008.jpeg)
+![image](assets/algorithm-design-and-analysis-009/image-008.jpeg)
 
 <!-- page: 24 -->
 
@@ -438,7 +438,7 @@ min 𝑚[2,2] + 𝑚[3,4] + 𝑝1𝑝2𝑝4
 
 24
 
-![image](assets/assets/algorithm-design-and-analysis-009/image-009.jpeg)
+![image](assets/algorithm-design-and-analysis-009/image-009.jpeg)
 
 <!-- page: 25 -->
 
@@ -463,7 +463,7 @@ min
 
 25
 
-![image](assets/assets/algorithm-design-and-analysis-009/image-010.jpeg)
+![image](assets/algorithm-design-and-analysis-009/image-010.jpeg)
 
 <!-- page: 26 -->
 
@@ -473,4 +473,4 @@ Matrix-Chain(p, n): // l is length of sub-chain
 
 26
 
-![image](assets/assets/algorithm-design-and-analysis-009/image-011.png)
+![image](assets/algorithm-design-and-analysis-009/image-011.png)

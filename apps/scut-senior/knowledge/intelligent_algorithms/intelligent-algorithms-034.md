@@ -10,4 +10,4 @@ locator_type: none
 
 # Gap_C
 
-![page-001.png](assets/assets/intelligent-algorithms-034/page-001.png)
+![page-001.png](assets/intelligent-algorithms-034/page-001.png)

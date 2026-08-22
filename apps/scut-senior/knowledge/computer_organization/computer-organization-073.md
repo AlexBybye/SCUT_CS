@@ -51,7 +51,7 @@ locator_type: none
 
 假设16K ×1位的RAM芯片由128 × 128矩阵存储元构成，刷新时只对128行进行异步方式刷新，则刷新间隔为2m /  128 = 15.6μs，可取刷新信号周期15μs。
 
-![image](assets/assets/computer-organization-073/image-001.png)                                  **图** **3**
+![image](assets/computer-organization-073/image-001.png)                                  **图** **3**
 
 **五.** 解：（1）双字长二地址指令，用于访问存储器。
 
@@ -89,13 +89,13 @@ tB  = 2TM  +  2TDC  + TS  + TB  + TR
 
 tC  = 2TM  + TDC  + TS  + TC  + TR
 
-![image](assets/assets/computer-organization-073/image-002.png)达到中断饱和的时间为：  T =  tA +  tB +  tC      中断极限频率为：f  = 1 / T
+![image](assets/computer-organization-073/image-002.png)达到中断饱和的时间为：  T =  tA +  tB +  tC      中断极限频率为：f  = 1 / T
 
 **图** **4**
 
 **九.** 解：1）n条指令进入流水线的时空图如下：
 
-![formula-object](assets/assets/computer-organization-073/image-003.png)
+![formula-object](assets/computer-organization-073/image-003.png)
 
 2）从流程图可以看出，用k个时钟周期完成第1条指令，其余n-1完成个时钟周期完成n-1条指令，n条指令所需的总时间Tk为：
 

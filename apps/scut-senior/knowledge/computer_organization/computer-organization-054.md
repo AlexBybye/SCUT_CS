@@ -69,11 +69,11 @@ locator_type: none
 1. 用  MREQ  作为2  ：4译码器使能控制端，该信号低电平（有效）时，译码器工作。
 1. CPU的R / W  信 号与SRAM的WE端连接，当R / W = 1时存储器执行读操作， 当R / W = 0时，存储器执行写操作。如图3
 
-![image](assets/assets/computer-organization-054/image-001.png)
+![image](assets/computer-organization-054/image-001.png)
 
 **图2**
 
-![image](assets/assets/computer-organization-054/image-002.png)
+![image](assets/computer-organization-054/image-002.png)
 
 **图3**
 
@@ -95,7 +95,7 @@ Ck  =T1/T2＝n×k/[k+(n-1)]                     ⑶
 
 **六、解：**PCI总线结构框图如图4示：
 
-![image](assets/assets/computer-organization-054/image-003.png)
+![image](assets/computer-organization-054/image-003.png)
 
 **图4**
 
@@ -116,7 +116,7 @@ tC  = 2TM  + TDC  + TS  + TC  + TR
 
 达到中断饱和的时间为：  T =  tA +  tB +  tC      中断极限频率为：f  = 1 / T
 
-![image](assets/assets/computer-organization-054/image-004.png)
+![image](assets/computer-organization-054/image-004.png)
 
 **图5**
 

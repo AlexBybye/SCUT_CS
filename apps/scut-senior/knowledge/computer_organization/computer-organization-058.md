@@ -118,7 +118,7 @@ CLR－清暂存器SB为零的信号。
 
 R—  通用寄存器读命令                              W—通用寄存器写命令
 
-![image](assets/assets/computer-organization-058/image-001.jpeg)
+![image](assets/computer-organization-058/image-001.jpeg)
 
 图2
 
@@ -134,7 +134,7 @@ R—  通用寄存器读命令                              W—通用寄存器�
 
 （4）当上述三个条件具备时，CPU在现行指令结束的最后一个机器周期响应中断。
 
-![image](assets/assets/computer-organization-058/image-002.png)流程图如下：
+![image](assets/computer-organization-058/image-002.png)流程图如下：
 
 **图3**
 

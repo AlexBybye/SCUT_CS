@@ -22,7 +22,7 @@ locator_type: slide
 核心思想：在一条物理信道上，同时传输多路相互独立的信号，从而共享信道资源，降低人均成本。
 简单类比：一条高速公路（物理信道）通过划设多条车道（复用技术）让多辆车（用户信号）同时行驶。
 
-![image](assets/assets/signals-and-communication-022/image-001.png)
+![image](assets/signals-and-communication-022/image-001.png)
 
 <!-- slide: 3 -->
 
@@ -31,7 +31,7 @@ locator_type: slide
 关键：各路信号在频率上并行，但在时间上重叠。
 类比：无线电广播，不同电台使用不同的频率（如88.7MHz，103.9MHz），互不干扰。
 
-![image](assets/assets/signals-and-communication-022/image-002.png)
+![image](assets/signals-and-communication-022/image-002.png)
 - …
 - 频谱
 - 频率(kHz)
@@ -53,7 +53,7 @@ locator_type: slide
 缺点：需要保护频带防止干扰，频谱利用率不是最高；存在非线性失真引发的交调干扰。
 典型应用：传统有线电视、广播、ADSL、LTE中的OFDMA（正交频分多址）是其演进形态。
 
-![image](assets/assets/signals-and-communication-022/image-003.png)
+![image](assets/signals-and-communication-022/image-003.png)
 - …
 - 频谱
 - 频率(kHz)
@@ -75,7 +75,7 @@ locator_type: slide
 关键：各路信号在时间上串行，但在频率上重叠（占用相同频带）。
 类比：CPU分时间片处理多个任务，或一个演讲者轮流回答多个人的问题。
 
-![image](assets/assets/signals-and-communication-022/image-004.png)
+![image](assets/signals-and-communication-022/image-004.png)
 
 <!-- slide: 6 -->
 
@@ -86,7 +86,7 @@ locator_type: slide
 缺点：需要严格的同步系统，对时钟相位抖动敏感。
 典型应用：传统的PCM数字电话系统（E1/T1）、SDH、数字蜂窝网络（如GSM）。
 
-![image](assets/assets/signals-and-communication-022/image-005.png)
+![image](assets/signals-and-communication-022/image-005.png)
 
 <!-- slide: 7 -->
 
@@ -97,7 +97,7 @@ locator_type: slide
 发送端：用分配给用户的唯一码序列对原始信号进行扩频。
 接收端：用相同的码序列进行相关解调，恢复出目标信号。其他用户的信号因码型不匹配，在相关处理后表现为噪声。
 
-![image](assets/assets/signals-and-communication-022/image-006.png)
+![image](assets/signals-and-communication-022/image-006.png)
 
 <!-- slide: 8 -->
 
@@ -110,7 +110,7 @@ locator_type: slide
 - 用户B的钥匙：齿形是 “方-圆-方-圆”
 - 用户C的钥匙：齿形是 “方-方-圆-圆”
 - 这些钥匙的齿形是正交的：如果你把两把钥匙的齿形逐位对比，只有当两个齿形完全一致时才算匹配，否则不匹配。正交性意味着没有两把钥匙是相似的。
-![image](assets/assets/signals-and-communication-022/image-007.png)
+![image](assets/signals-and-communication-022/image-007.png)
 
 <!-- slide: 9 -->
 
@@ -124,7 +124,7 @@ locator_type: slide
 - --用户C的钥匙（方-方-圆-圆）部分匹配（前两个“方”匹配，后两个“圆”不匹配），所以它是干扰信号。
 - --因此，检测器A感受到的最终匹配度 只由用户A的钥匙决定。它输出一个高匹配值，对应“开门”（+1）。
 - 检测器B和C也同时工作，检验用户B和C是开门还是关门。
-![image](assets/assets/signals-and-communication-022/image-008.png)
+![image](assets/signals-and-communication-022/image-008.png)
 
 <!-- slide: 10 -->
 
@@ -133,8 +133,8 @@ locator_type: slide
 缺点：存在“远近效应”，需要严格的功率控制；系统容量受限于码间干扰。
 典型应用：CDMA移动通信系统、3G、GPS、Wi-Fi中的DSSS。
 
-![image](assets/assets/signals-and-communication-022/image-009.png)
-![image](assets/assets/signals-and-communication-022/image-010.png)
+![image](assets/signals-and-communication-022/image-009.png)
+![image](assets/signals-and-communication-022/image-010.png)
 
 <!-- slide: 11 -->
 
@@ -145,7 +145,7 @@ locator_type: slide
 优点：极大地提升了光纤的传输容量，是骨干网的核心技术。
 典型应用：所有现代光纤骨干网络、数据中心互联。
 
-![image](assets/assets/signals-and-communication-022/image-011.png)
+![image](assets/signals-and-communication-022/image-011.png)
 
 <!-- slide: 12 -->
 
@@ -157,8 +157,8 @@ locator_type: slide
 优点：直接提升系统容量和频谱效率，抗干扰性能好。
 典型应用：4G/5G MIMO、Wi-Fi 6/7、新一代光纤通信。
 
-![image](assets/assets/signals-and-communication-022/image-012.png)
-![image](assets/assets/signals-and-communication-022/image-013.png)
+![image](assets/signals-and-communication-022/image-012.png)
+![image](assets/signals-and-communication-022/image-013.png)
 
 <!-- slide: 13 -->
 
@@ -169,10 +169,9 @@ locator_type: slide
 缺点：需要更复杂的控制机制（如分组头包含地址信息。
 典型应用：IP网络（互联网），以太网、互联网。
 
-![image](assets/assets/signals-and-communication-022/image-014.png)
+![image](assets/signals-and-communication-022/image-014.png)
 
 <!-- slide: 14 -->
-
 
 | 技术 | 划分维度 | 核心资源 | 优点 | 缺点 | 典型场景 |
 |---|---|---|---|---|---|

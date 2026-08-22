@@ -190,7 +190,7 @@ C    转移执行单元        D    定点执行单元
 
 某机的指令格式如下所示
 
-![image](assets/assets/computer-organization-010/image-001.png)
+![image](assets/computer-organization-010/image-001.png)
 
 X为寻址特征位：X=00：直接寻址；X=01：用变址寄存器RX1寻址；X=10：用变址寄存器RX2寻址；X=11：相对寻址
 

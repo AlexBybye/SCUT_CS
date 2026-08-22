@@ -103,17 +103,17 @@ Tools to describe:
 
 Types  of gate:
 
-![image](assets/assets/computer-science-intro-012/image-001.png)
+![image](assets/computer-science-intro-012/image-001.png)
 
-![image](assets/assets/computer-science-intro-012/image-002.png)
+![image](assets/computer-science-intro-012/image-002.png)
 
 Transistor(晶体管):  半导体材料制成、可做导线可做电阻、相当于开关
 
-![image](assets/assets/computer-science-intro-012/image-003.png)
+![image](assets/computer-science-intro-012/image-003.png)
 
 Combinational Circuits(组合电路):  即类似于分配律等将电路布尔表达式和真值表写出
 
-**![image](assets/assets/computer-science-intro-012/image-004.png)**![image](assets/assets/computer-science-intro-012/image-005.png)
+**![image](assets/computer-science-intro-012/image-004.png)**![image](assets/computer-science-intro-012/image-005.png)
 
 注：AND门的乘号可省略
 
@@ -125,7 +125,7 @@ Circuits as memory(存储器电路)-Sequential circuits(时序电路)-输出也�
 
 S-R latch(S-R锁存器)
 
-![image](assets/assets/computer-science-intro-012/image-006.png)
+![image](assets/computer-science-intro-012/image-006.png)
 
 工作原理:X和Y始终相互补充，X被认作电路状态值，X为1电路存储1，为0存储0
 
@@ -143,7 +143,7 @@ CPU：最重要的集成电路
 
 The von Neumann architecture(冯诺依曼结构)
 
-![image](assets/assets/computer-science-intro-012/image-007.png)
+![image](assets/computer-science-intro-012/image-007.png)
 
 Memory  unit(内存单元):存放数据指令
 

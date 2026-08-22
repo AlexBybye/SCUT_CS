@@ -162,23 +162,23 @@ A  R-R-S型        B  R-R-R型        C  R-S-S型        D  S-S-S型
 
 设[N]补=anan-1…a1a0，其中an是符号位。
 
-![image](assets/assets/computer-organization-008/image-001.png)
+![image](assets/computer-organization-008/image-001.png)
 
 证明：
 
 当N≥0，an=0,    真值N=[N]补=  an-1…a1a0=
 
-![image](assets/assets/computer-organization-008/image-002.png)
+![image](assets/computer-organization-008/image-002.png)
 
 ②当N＜0，an  =1，[N]补=1  an-1…a1a0   依补码的定义,
 
 真值  N=  [N]补－2^(n+1)=  anan-1…a1a0—2^(n+1)=
 
-![image](assets/assets/computer-organization-008/image-003.png)
+![image](assets/computer-organization-008/image-003.png)
 
 综合以上结果有
 
-![image](assets/assets/computer-organization-008/image-004.png)
+![image](assets/computer-organization-008/image-004.png)
 
 五、分析题（12分）
 
@@ -210,7 +210,7 @@ I6 MUL R6,R7      ;(R6)×(R7)→R6
 
 启停控制逻辑电路。要求T1前沿开启、T4后沿关闭节拍脉冲产生器。
 
-![image](assets/assets/computer-organization-008/image-005.jpeg)
+![image](assets/computer-organization-008/image-005.jpeg)
 
 七、简答题（12分）
 

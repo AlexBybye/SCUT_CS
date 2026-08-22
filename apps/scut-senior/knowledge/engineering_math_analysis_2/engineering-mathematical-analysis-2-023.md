@@ -66,6 +66,8 @@ locator_type: page
 
 一、填空题：共5 题，每题2 分，共10 分。
 
+<!-- question: engineering-mathematical-analysis-2-023-Q6 -->
+
 1. 由⽅程xyz+
 √
 
@@ -84,6 +86,8 @@ dx −
 4 = 1 取逆时针⽅向，则第⼆类曲线积分
 ¸
 
+<!-- question: engineering-mathematical-analysis-2-023-Q7 -->
+
 2. 设Γ 为椭圆x2
 9 + y2
 
@@ -92,6 +96,8 @@ xdy−ydx =
 ；
 
 Γ
+
+<!-- question: engineering-mathematical-analysis-2-023-Q8 -->
 
 3. 向量场x2yzi + xy2zj + xyz2k 在点(1, 1, 1) 的散度为
 6
@@ -113,11 +119,15 @@ x2 −
 x3
 ；
 
+<!-- question: engineering-mathematical-analysis-2-023-Q9 -->
+
 4. 初值问题
 
 
 
 y|x=1 = 1
+
+<!-- question: engineering-mathematical-analysis-2-023-Q10 -->
 
 5. 设f(x) = πx + x2, −π < x < π 的傅⾥叶(Fourier) 级数为a0
 2 +
@@ -137,9 +147,11 @@ n=1
 
 <!-- page: 2 -->
 
-<!-- question: engineering-mathematical-analysis-2-023-Q6 -->
+<!-- question: engineering-mathematical-analysis-2-023-Q11 -->
 
 二、单选题：共5 题，每题2 分，只有一个正确选项，共10 分
+
+<!-- question: engineering-mathematical-analysis-2-023-Q12 -->
 
 1. ⼆元函数f(x, y) 在点(a, b) 处的两个偏导数∂f
 ∂x(a, b) 和∂f
@@ -160,6 +172,8 @@ lim
 
 C. lim
 
+<!-- question: engineering-mathematical-analysis-2-023-Q13 -->
+
 2. 已知曲⾯z = 4 −x2 −y2 上点P 处的切平⾯平⾏于平⾯2x + 2y + z = 1，则P 点的坐标是
 
 （
@@ -170,6 +184,8 @@ A. (1, −1, 2)
 B. (−1, 1, 2)
 C. (1, 1, 2)
 D. (−1, −1, 2)
+
+<!-- question: engineering-mathematical-analysis-2-023-Q14 -->
 
 3. ⼀个均匀物体由曲⾯z = x2 + y2 及z = 1 围成，则该物体的质⼼坐标为（
 B
@@ -202,6 +218,8 @@ D.
 
 .
 
+<!-- question: engineering-mathematical-analysis-2-023-Q15 -->
+
 4. 微分⽅程(y −ln x)dx + xdy = 0 是（
 B
 ）
@@ -211,6 +229,8 @@ B. ⼀阶⾮齐次线性⽅程
 
 C. ⼀阶齐次线性⽅程
 D. ⾮线性⽅程
+
+<!-- question: engineering-mathematical-analysis-2-023-Q16 -->
 
 5. 下列级数条件收敛的是（
 D
@@ -265,9 +285,11 @@ n=1
 
 <!-- page: 3 -->
 
-<!-- question: engineering-mathematical-analysis-2-023-Q7 -->
+<!-- question: engineering-mathematical-analysis-2-023-Q17 -->
 
 三、计算题：共4 题，每题7 分，共28 分
+
+<!-- question: engineering-mathematical-analysis-2-023-Q18 -->
 
 1. 设函数u(x, y) = yf
 (
@@ -417,6 +439,8 @@ y
 
 x
 
+<!-- question: engineering-mathematical-analysis-2-023-Q19 -->
+
 2. 计算⼆重积分
 ˜
 
@@ -493,6 +517,8 @@ ln 2 −1
 
 <!-- page: 4 -->
 
+<!-- question: engineering-mathematical-analysis-2-023-Q20 -->
+
 3. 计算三重积分
 ˝
 
@@ -545,6 +571,8 @@ x⩾0,y⩾0
 = 1
 
 60.
+
+<!-- question: engineering-mathematical-analysis-2-023-Q21 -->
 
 4. 计算第⼀类曲⾯积分
 ˜
@@ -640,7 +668,7 @@ dθ
 
 <!-- page: 5 -->
 
-<!-- question: engineering-mathematical-analysis-2-023-Q8 -->
+<!-- question: engineering-mathematical-analysis-2-023-Q22 -->
 
 四、解答题：共4 题，每题8 分，共32 分。
 
@@ -684,6 +712,8 @@ y = −3
 
 2e−3x + 7
 2e−x.
+
+<!-- question: engineering-mathematical-analysis-2-023-Q23 -->
 
 2. 求圆柱⾯x2 + y2 = 4, x ⩾0, y ⩾0 介于xOy 平⾯和曲⾯z = xy 之间的部分的⾯积。
 
@@ -739,6 +769,8 @@ xyds
 第5 页共8 页
 
 <!-- page: 6 -->
+
+<!-- question: engineering-mathematical-analysis-2-023-Q24 -->
 
 3. 设Σ 是锥⾯z =
 √
@@ -825,6 +857,8 @@ xdydz + ydzdx + (z2 −2z)dxdy = 3
 2π.
 
 Σ
+
+<!-- question: engineering-mathematical-analysis-2-023-Q25 -->
 
 4. 求幂级数
 ∞
@@ -969,9 +1003,11 @@ x ∈[−1, 1).
 
 <!-- page: 7 -->
 
-<!-- question: engineering-mathematical-analysis-2-023-Q9 -->
+<!-- question: engineering-mathematical-analysis-2-023-Q26 -->
 
 五、证明题：共2 题，每题6 分，共12 分。
+
+<!-- question: engineering-mathematical-analysis-2-023-Q27 -->
 
 1. 证明：曲⾯z = xe
 y
@@ -1089,6 +1125,8 @@ x0e
 
 即，点(0, 0, 0) 总落在曲⾯过(x0, y0, z0) 的切平⾯上。
 
+<!-- question: engineering-mathematical-analysis-2-023-Q28 -->
+
 2. 证明：函数项级数
 ∞
 ∑
@@ -1188,7 +1226,7 @@ n=0
 
 <!-- page: 8 -->
 
-<!-- question: engineering-mathematical-analysis-2-023-Q10 -->
+<!-- question: engineering-mathematical-analysis-2-023-Q29 -->
 
 六、应用题：共1 题，共8 分。
 

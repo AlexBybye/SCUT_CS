@@ -67,10 +67,10 @@ W2  = q /  t1  = 73  ×107 （位/ S）
 
 （2）对应上述微指令格式的微程序控制器逻辑框图如B1.2如下：其中微地址寄存器对应下地址字段，P字段即为判别测试字段，控制字段即为微命令子段，后两部分组成微指令寄存器。地址转移逻辑的输入是指令寄存器OP码，各状态条件以及判别测试字段所给的判别标志（某一位为1），转移逻辑输出修改微地址寄存器的适当位数，从而实现微程序的分支转移。
 
-![formula-object](assets/assets/computer-organization-063/image-001.png)
+![formula-object](assets/computer-organization-063/image-001.png)
 
 图2
-- ![formula-object](assets/assets/computer-organization-063/image-002.png)解：PCI总线结构框图如图3所示：
+- ![formula-object](assets/computer-organization-063/image-002.png)解：PCI总线结构框图如图3所示：
 
 图3
 
@@ -86,7 +86,7 @@ PCI总线有三种桥，即HOST / PCI桥（简称HOST桥），PCI / PCI桥，PCI
 主机定期以输出指令DOA、设备码；（或传送指令）送出控制字到A寄存器，其中用四位分别指定选中的缓冲寄存器（四个B寄存器分别与四个采集器相应）。然后，主机以输入指令DIA、设备码；（或传送指令）取走数据。
 1. 中断方式
 
-![formula-object](assets/assets/computer-organization-063/image-003.png)      比较结果形成状态字A' ，共8位，每二位表示一个采集器状态：00  正常 ，01  过低 ，10  过高。有任一处不正常（A' 中有一位以上为“1”）都将通过中断请求逻辑（内含请求触发器、屏蔽触发器）发出中断请求。中断响应后，服务程序以DIA、设备码；或传送指令）取走状态字。可判明有几处采集数据越限、是过高或过低，从而转入相应处理。
+![formula-object](assets/computer-organization-063/image-003.png)      比较结果形成状态字A' ，共8位，每二位表示一个采集器状态：00  正常 ，01  过低 ，10  过高。有任一处不正常（A' 中有一位以上为“1”）都将通过中断请求逻辑（内含请求触发器、屏蔽触发器）发出中断请求。中断响应后，服务程序以DIA、设备码；或传送指令）取走状态字。可判明有几处采集数据越限、是过高或过低，从而转入相应处理。
 
 图4
 

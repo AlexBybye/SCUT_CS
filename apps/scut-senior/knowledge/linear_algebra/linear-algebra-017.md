@@ -16,6 +16,8 @@ locator_type: page
 
 一. 选择题(单选，每题3 分，共18 分)
 
+<!-- question: linear-algebra-017-Q1 -->
+
 3.  A
 4.
 
@@ -26,7 +28,11 @@ A
 D
 5.
 
+<!-- question: linear-algebra-017-Q2 -->
+
 1.  B
+
+<!-- question: linear-algebra-017-Q3 -->
 
 2．C
 
@@ -57,7 +63,7 @@ t
 = +
 
 
-<!-- question: linear-algebra-017-Q1 -->
+<!-- question: linear-algebra-017-Q4 -->
 
 三、 (7 分)
 
@@ -88,7 +94,7 @@ y
 
 所求旋转面方程为：
 
-<!-- question: linear-algebra-017-Q2 -->
+<!-- question: linear-algebra-017-Q5 -->
 
 四、 (12 分)
 
@@ -284,7 +290,7 @@ E
 2
 3
 
-<!-- question: linear-algebra-017-Q3 -->
+<!-- question: linear-algebra-017-Q6 -->
 
 五、 (15 分)
 
@@ -587,7 +593,7 @@ k
 1
 2
 
-<!-- question: linear-algebra-017-Q4 -->
+<!-- question: linear-algebra-017-Q7 -->
 
 六、(15 分)
 
@@ -1113,7 +1119,7 @@ y
 4
 2
 
-<!-- question: linear-algebra-017-Q5 -->
+<!-- question: linear-algebra-017-Q8 -->
 
 七、 (12 分)
 
@@ -1242,7 +1248,7 @@ z
 +
 + =
 
-<!-- question: linear-algebra-017-Q6 -->
+<!-- question: linear-algebra-017-Q9 -->
 
 八、 (6 分)
 

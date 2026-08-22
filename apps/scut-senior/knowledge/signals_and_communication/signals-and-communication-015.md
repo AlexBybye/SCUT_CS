@@ -12,7 +12,7 @@ locator_type: slide
 
 <!-- slide: 1 -->
 
-![image](assets/assets/signals-and-communication-015/image-001.png)
+![image](assets/signals-and-communication-015/image-001.png)
 - 第5章 数字滤波器
 - 数字信号处理
 
@@ -85,7 +85,7 @@ locator_type: slide
 - 网络结构分成两类（根据h(n)划分）：：
 - a.有限长单位脉冲响应网络，FIR (Finite Impulse Response)网络。
 - b.无限长单位脉冲响应网络，IIR (Infinite Impulse Response)网络。
-![image](assets/assets/signals-and-communication-015/image-002.png)
+![image](assets/signals-and-communication-015/image-002.png)
 
 <!-- slide: 10 -->
 
@@ -112,7 +112,7 @@ locator_type: slide
 - 5.2  用信号流图表示网络结构
 - 既有分子
 - 又有分母
-![image](assets/assets/signals-and-communication-015/image-003.png)
+![image](assets/signals-and-communication-015/image-003.png)
 
 <!-- slide: 13 -->
 
@@ -133,8 +133,8 @@ locator_type: slide
 <!-- slide: 15 -->
 
 - 5.3 FIR与IIR的识别
-![image](assets/assets/signals-and-communication-015/image-004.png)
-![image](assets/assets/signals-and-communication-015/image-005.png)
+![image](assets/signals-and-communication-015/image-004.png)
+![image](assets/signals-and-communication-015/image-005.png)
 
 <!-- slide: 16 -->
 
@@ -371,7 +371,7 @@ locator_type: slide
 - 5.4.3频率采样型
 - 由频域采样定理可知，对有限长序列h(n)的Z变换H(z)在单位圆上做N点的等间隔采样，N 个频率采样值的离散傅里叶反变换所对应的时域信号hN(n)是原序列h(n)以采样点数N为周期进行周期延拓的结果，当N大于等于原序列h(n)长度M时hN(n)=h(n)，不会发生信号失真，此时H(z)可以用频域采样序列H(k)内插得到，各个过程间关系如图5-15所示，H(k)、H(z)关系用内插公式5-13表示：
 - 5.4有限长单位冲激响应(FIR)滤波器的基本结构
-![image](assets/assets/signals-and-communication-015/image-006.png)
+![image](assets/signals-and-communication-015/image-006.png)
 
 <!-- slide: 47 -->
 
@@ -448,7 +448,7 @@ locator_type: slide
 
 <!-- slide: 56 -->
 
-![image](assets/assets/signals-and-communication-015/image-007.png)
+![image](assets/signals-and-communication-015/image-007.png)
 - 将单位圆上的零极点向单位圆内收缩一点，收缩到半径r<1且r1，这样，以z/r代替式(5-13)H(z)表示式中z。
 - (5-19)
 - 图5-19 修正后的Z平面采样点图
@@ -474,7 +474,7 @@ locator_type: slide
 
 <!-- slide: 60 -->
 
-![image](assets/assets/signals-and-communication-015/image-008.png)
+![image](assets/signals-and-communication-015/image-008.png)
 - 图5-21频率采样修正结构(N为偶数)
 - 5.4有限长单位冲激响应(FIR)滤波器的基本结构
 
@@ -486,7 +486,7 @@ locator_type: slide
 
 <!-- slide: 62 -->
 
-![image](assets/assets/signals-and-communication-015/image-009.png)
+![image](assets/signals-and-communication-015/image-009.png)
 - 图5-22频率采样修正结构(N为奇数)
 - 5.4有限长单位冲激响应(FIR)滤波器的基本结构
 
@@ -694,7 +694,7 @@ locator_type: slide
 <!-- slide: 87 -->
 
 - 系统零极点如图5-30。
-![image](assets/assets/signals-and-communication-015/image-010.png)
+![image](assets/signals-and-communication-015/image-010.png)
 - 图5-30 系统函数的零极点图
 - 5.6 MATLAB应用实例
 
@@ -711,6 +711,6 @@ locator_type: slide
 
 <!-- slide: 89 -->
 
-![image](assets/assets/signals-and-communication-015/image-011.png)
+![image](assets/signals-and-communication-015/image-011.png)
 - 图5-31 6点周期序列    图5-32序列发生器输出波形
 - 5.6 MATLAB应用实例

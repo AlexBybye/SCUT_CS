@@ -10,7 +10,7 @@ locator_type: none
 
 # 2016数据结构试卷B及答案
 
-**![image](assets/assets/data-structure-015/image-001.png)诚信应考,考试作弊将带来严重后果！**
+**![image](assets/data-structure-015/image-001.png)诚信应考,考试作弊将带来严重后果！**
 
 **华南理工大学期末考试**
 
@@ -45,7 +45,7 @@ for (j=0; A[j]!=i; j++)
 
 sum++;
 
-(A) $Theta(n)$              (B)  $\Theta(n^2)$                  (C)  ![formula-object](assets/assets/data-structure-015/image-004.png)                  (D)  ![formula-object](assets/assets/data-structure-015/image-005.png)
+(A) $Theta(n)$              (B)  $\Theta(n^2)$                  (C)  ![formula-object](assets/data-structure-015/image-004.png)                  (D)  ![formula-object](assets/data-structure-015/image-005.png)
 
 (3)   Which statement is  **not**  correct among the following four:    (  D   )
 - In a BST, the left child of any node is less than the right child, but in a heap, the left child of any node could be less than or greater than the right child.
@@ -122,7 +122,7 @@ sum++;
 
 (15)  For the following graph, one of results of Depth-first traversal is: (  C   )
 
-![image](assets/assets/data-structure-015/image-006.png)
+![image](assets/data-structure-015/image-006.png)
 
 A. acbdieghf   B. abighfcde   C. abdeigchf   D. abcdefghi
 
@@ -172,17 +172,17 @@ Initial：  [265 301 751 129 937 863 742 694 076 438]
 
 2)  then  delete  42  from  the  result heap of 1)；
 
-![formula-object](assets/assets/data-structure-015/image-007.png)
+![formula-object](assets/data-structure-015/image-007.png)
 
 Answer:
 
 1）
 
-![formula-object](assets/assets/data-structure-015/image-008.png)
+![formula-object](assets/data-structure-015/image-008.png)
 
 2）
 
-![formula-object](assets/assets/data-structure-015/image-009.png)
+![formula-object](assets/data-structure-015/image-009.png)
 
 6.  Please give the  Huffman  codes for the letters of the following table, draw pictures to show how to  obtain  the  Huffman  tree step by step, and compute the expected bit-length per letter.  What’s  the advantage of  Huffman  code scheme.    (8  scores)
 
@@ -198,13 +198,13 @@ $$
 
 2）expected bit-length
 
-![image](assets/assets/data-structure-015/image-011.png)
+![image](assets/data-structure-015/image-011.png)
 
 3）advantage
 
 Huffman  code scheme saves text length in most cases.
 
-7.  Given a hash table of size 11, assume that ![image](assets/assets/data-structure-015/image-012.png)![image](assets/assets/data-structure-015/image-013.png) and  ![image](assets/assets/data-structure-015/image-014.png)![image](assets/assets/data-structure-015/image-015.png)![image](assets/assets/data-structure-015/image-016.png) are  two hash functions, where  $H_1$ is  used to get home position  and  $H_2$ is  used to  resolve  collision  for method double hashing. Please  insert keys  9,  17,  63,  55,  22,  27,  88,  41  into the hash table  in order.      (10  scores)
+7.  Given a hash table of size 11, assume that ![image](assets/data-structure-015/image-012.png)![image](assets/data-structure-015/image-013.png) and  ![image](assets/data-structure-015/image-014.png)![image](assets/data-structure-015/image-015.png)![image](assets/data-structure-015/image-016.png) are  two hash functions, where  $H_1$ is  used to get home position  and  $H_2$ is  used to  resolve  collision  for method double hashing. Please  insert keys  9,  17,  63,  55,  22,  27,  88,  41  into the hash table  in order.      (10  scores)
 
 Answer:
 
@@ -224,21 +224,21 @@ H1(41)=6, H2(41)=4      (6+1*4)%11= 10    so  41  enters 10(pass by  6)
 
 8.  Please insert  18，58，8  into  the  following  2-3 tree. Inserting a key,  draw  a  picture for the  resulted 2-3 tree. Thus  you should draw 3 pictures. (10  scores)
 
-![formula-object](assets/assets/data-structure-015/image-019.png)
+![formula-object](assets/data-structure-015/image-019.png)
 
 Answer:
 
 1）
 
-![formula-object](assets/assets/data-structure-015/image-020.png)
+![formula-object](assets/data-structure-015/image-020.png)
 
 2）
 
-![formula-object](assets/assets/data-structure-015/image-021.png)
+![formula-object](assets/data-structure-015/image-021.png)
 
 3）
 
-![formula-object](assets/assets/data-structure-015/image-022.png)
+![formula-object](assets/data-structure-015/image-022.png)
 
 9.  Complete the insert, remove functions of the Link-based List class.  (6  scores)
 

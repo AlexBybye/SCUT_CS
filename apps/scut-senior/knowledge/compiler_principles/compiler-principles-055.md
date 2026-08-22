@@ -10,4 +10,4 @@ locator_type: none
 
 # 预测分析法
 
-![page-001.png](assets/assets/compiler-principles-055/page-001.png)
+![page-001.png](assets/compiler-principles-055/page-001.png)

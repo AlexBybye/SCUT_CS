@@ -30,21 +30,31 @@ locator_type: none
 
 **注意：** **![formula-object](assets/probability-theory-011/image-001.png)**
 
-![formula-object](assets/probability-theory-011/image-002.png)
+$$
+t_{0.975}(7)=2.3646t_{0.95}(7)=1.8946t_{0.975}(8)=2.3060t_{0.95}(8)=1.8595
+$$
 
 ![formula-object](assets/probability-theory-011/image-003.png)
 
 **一、（12分）**某城市的电话号码是8位数，首位可以是0~9,  如果从电话号码本中任指一个电话号码，求：
 
+<!-- question: probability-theory-011-Q1 -->
+
 (1)头两位数码都是8的概率；
 
+<!-- question: probability-theory-011-Q2 -->
+
 (2)头两位数码至少有一个不超过8的概率；
+
+<!-- question: probability-theory-011-Q3 -->
 
 (3)头两位数码不相同的概率．
 
 **二、(10分)**某工厂由甲、乙、丙三个车间生产同一种产品,每个车间的产量分别占全厂的25%,35%,40%,  各车间产品的次品率分别为5%,4%,2%,
 
 求：(1)全厂产品的次品率
+
+<!-- question: probability-theory-011-Q4 -->
 
 (2)  若任取一件产品发现是次品,此次品是甲车间生产的概率是多少？
 
@@ -63,6 +73,8 @@ locator_type: none
 **四、**(10分)设$P\left \{ {Y>X}\right \}$，且相互独立$P\left \{ {Y>X}\right \}$，
 
 求:（1）分别求U,V的概率密度函数；
+<!-- question: probability-theory-011-Q5 -->
+
 1. U,V的相关系数$P\left \{ {Y>X}\right \}$；
 
 **五、（13）**从学校乘汽车到火车站的途中有3个交通岗，假设在各个交通岗遇到红灯的事件是相互独立的，并且概率都是2/5.  设![image](assets/probability-theory-011/image-013.png)为途中遇到红灯的次数，求![image](assets/probability-theory-011/image-014.png)的分布列、分布函数、数学期望和方差.
@@ -71,12 +83,12 @@ locator_type: none
 
 **七、（10分）**
 
-(1)  已知某厂生产的滚珠直径![formula-object](assets/probability-theory-011/image-015.png)，从某天生产的滚珠中随机抽取6个，测得滚珠直径的平均值为![formula-object](assets/probability-theory-011/image-016.png)（单位：mm），求![formula-object](assets/probability-theory-011/image-017.png)的置信度为0.95的置信区间。
+(1)  已知某厂生产的滚珠直径![formula-object](assets/probability-theory-011/image-015.png)，从某天生产的滚珠中随机抽取6个，测得滚珠直径的平均值为$x=14.95$（单位：mm），求$mu$的置信度为0.95的置信区间。
 
-（2）某涤纶厂的生产的维尼纶的纤度（纤维的粗细程度）在正常生产的条件下，服从正态分布![formula-object](assets/probability-theory-011/image-018.png)，某日随机地抽取5根纤维，测得纤度为
+（2）某涤纶厂的生产的维尼纶的纤度（纤维的粗细程度）在正常生产的条件下，服从正态分布$N(\mu,0.048^{2})$，某日随机地抽取5根纤维，测得纤度为
 
 1.32  ，1.55  ，1.36  ，1.40  ，1.44
 
 问一天涤纶纤度总体X的均方差是否正常（α=0.05）**?**
 
-**八、（20分）**  设总体![formula-object](assets/probability-theory-011/image-019.png)服从![formula-object](assets/probability-theory-011/image-020.png)上的均匀分布, ![formula-object](assets/probability-theory-011/image-021.png)是来自![formula-object](assets/probability-theory-011/image-022.png)的样本.(1)求![formula-object](assets/probability-theory-011/image-023.png)的矩估计量![formula-object](assets/probability-theory-011/image-024.png);(2)求![formula-object](assets/probability-theory-011/image-025.png)的极大似然估计![formula-object](assets/probability-theory-011/image-026.png);(3)证明![formula-object](assets/probability-theory-011/image-027.png),![formula-object](assets/probability-theory-011/image-028.png)和![formula-object](assets/probability-theory-011/image-029.png)![formula-object](assets/probability-theory-011/image-030.png)均是![formula-object](assets/probability-theory-011/image-031.png)的无偏估计量;(4)证明![formula-object](assets/probability-theory-011/image-032.png)较![formula-object](assets/probability-theory-011/image-033.png)和![formula-object](assets/probability-theory-011/image-034.png)有效.
+**八、（20分）**  设总体$X$服从![formula-object](assets/probability-theory-011/image-020.png)上的均匀分布, $X_1,X_2,\cdots,X_n$是来自$X$的样本.(1)求$\theta$的矩估计量$\hat{\theta}_1$;(2)求$\theta$的极大似然估计$\hat{\theta}_2$;(3)证明$\hat{\theta}_1$,$T_{1}=\frac{n+1}{n}\hat{\theta}_{2}$和$T_2=$![formula-object](assets/probability-theory-011/image-030.png)均是$\theta$的无偏估计量;(4)证明$T_1$较$\hat{\theta}_1$和$T_2$有效.

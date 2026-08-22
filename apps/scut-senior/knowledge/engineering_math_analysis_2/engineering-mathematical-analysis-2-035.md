@@ -24,8 +24,14 @@ locator_type: page
 2019-2020-2 学期《工科数学分析》A 卷
 
 注意事项：1. 开考前请将密封线内各项信息填写清楚；
+<!-- question: engineering-mathematical-analysis-2-035-Q1 -->
+
           2. 所有答案请直接答在试卷上；
+<!-- question: engineering-mathematical-analysis-2-035-Q2 -->
+
           3．考试形式：闭卷；
+
+<!-- question: engineering-mathematical-analysis-2-035-Q3 -->
 
           4. 本试卷共 （五）大题，满分100 分， 考试时间120 分钟。
 

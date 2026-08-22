@@ -30,7 +30,7 @@ locator_type: none
 
 （1）嵌入式系统硬件组成：
 
-![image](assets/assets/embedded-systems-021/image-001.png)
+![image](assets/embedded-systems-021/image-001.png)
 
 1）基本电路：电源、重启电路和时钟电路
 
@@ -72,7 +72,7 @@ locator_type: none
 
 1）Cortex-M3内核特点，采用什么体系架构，大致了解。
 
-![image](assets/assets/embedded-systems-021/image-002.png)
+![image](assets/embedded-systems-021/image-002.png)
 
 Cortex-M3有哪四种总线：I-Code总线，D-Code总线，系统总线和外部私有外设总线，它们的各自主要功能是什么？
 
@@ -80,11 +80,11 @@ Cortex-M3有哪四种总线：I-Code总线，D-Code总线，系统总线和外�
 
 特殊功能寄存器CPSR。CPSR中包含条件码标志、中断禁止位、当前处理器模式以及其他状态和控制信息。知道当一些运算操作时，会影响条件码标志位（N,Z,C,V）怎么改变。
 
-![image](assets/assets/embedded-systems-021/image-003.png)
+![image](assets/embedded-systems-021/image-003.png)
 
 2）Cortex-M3处理器支持两种处理器的操作模式，还支持两级特权操作。两种操作模式分别为：处理者模式(handler mode)和线程模式（thread mode）。
 
-![image](assets/assets/embedded-systems-021/image-004.png)
+![image](assets/embedded-systems-021/image-004.png)
 
 了解处理模式，线程模式，特权访问以及用户访问，说明ARM 体系结构采用这些模式的目的。
 
@@ -134,13 +134,13 @@ xPSR：所有处理器模式下都可访问当前程序状态寄存器CPSR。在
 
 (2)了解系统结构
 
-![image](assets/assets/embedded-systems-021/image-005.png)
+![image](assets/embedded-systems-021/image-005.png)
 
 （3）STM32启动设置
 
 STM32有哪三种启动方式？
 
-![image](assets/assets/embedded-systems-021/image-006.png)
+![image](assets/embedded-systems-021/image-006.png)
 
 （4）STM32芯片下载模式。
 
@@ -150,7 +150,7 @@ STM32有哪三种启动方式？
 
 电源、Reset和时钟电路。认识电源电路，Reset电路，时钟电路，了解STM32 芯片的时钟源种类。
 
-**![image](assets/assets/embedded-systems-021/image-007.png)**
+**![image](assets/embedded-systems-021/image-007.png)**
 
 （6）低功耗模式
 

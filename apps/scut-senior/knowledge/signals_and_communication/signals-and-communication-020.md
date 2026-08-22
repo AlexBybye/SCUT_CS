@@ -23,8 +23,8 @@ locator_type: slide
 广义调制 － 分为基带调制和带通调制（也称载波调制）。 
 狭义调制 － 仅指带通调制。在无线通信和其他大多数场合，调制一词均指载波调制。
 
-![image](assets/assets/signals-and-communication-020/image-001.png)
-![image](assets/assets/signals-and-communication-020/image-002.png)
+![image](assets/signals-and-communication-020/image-001.png)
+![image](assets/signals-and-communication-020/image-002.png)
 
 <!-- slide: 3 -->
 
@@ -35,9 +35,9 @@ locator_type: slide
 已调信号 － 载波受调制后称为已调信号。
 解调（检波） － 调制的逆过程，其作用是将已调信号中的调制信号恢复出来。
 
-![image](assets/assets/signals-and-communication-020/image-003.png)
-![image](assets/assets/signals-and-communication-020/image-004.png)
-![image](assets/assets/signals-and-communication-020/image-005.png)
+![image](assets/signals-and-communication-020/image-003.png)
+![image](assets/signals-and-communication-020/image-004.png)
+![image](assets/signals-and-communication-020/image-005.png)
 
 <!-- slide: 4 -->
 
@@ -83,7 +83,6 @@ locator_type: slide
 		 A0 － 常数，表示叠加的直流分量。
 频谱：若m(t)为确知信号，则AM信号的频谱为
 
-
 	若m(t)为随机信号，则已调信号的频域表示式必须用功率谱描述。
 调制器模型
 
@@ -103,7 +102,7 @@ locator_type: slide
 
 ## 调幅的程度及“过调幅”：
 
-![image](assets/assets/signals-and-communication-020/image-006.png)
+![image](assets/signals-and-communication-020/image-006.png)
 
 <!-- slide: 10 -->
 
@@ -131,7 +130,6 @@ locator_type: slide
 功率：
 		当m(t)为确知信号时，
 
-
 		若
 		则
 
@@ -142,7 +140,6 @@ locator_type: slide
 
 ## 调制效率
 	       由上述可见，AM信号的总功率包括载波功率和边带功率两部分。只有边带功率才与调制信号有关，载波分量并不携带信息。有用功率（用于传输有用信息的边带功率）占信号总功率的比例称为调制效率：
-
 
 	当m(t) = Am cos mt时，
 	代入上式，得到
@@ -175,9 +172,6 @@ locator_type: slide
 ## 滤波法及SSB信号的频域表示
 滤波法的原理方框图 － 用边带滤波器，滤除不要的边带: 
 
-
-
-
 	图中，H()为单边带滤波器的传输函数，若它具有如下理想高通特性：
 
 	则可滤除下边带。
@@ -187,7 +181,6 @@ locator_type: slide
 <!-- slide: 16 -->
 
 ## SSB信号的频谱
-
 
 上边带频谱图:
 
@@ -207,10 +200,6 @@ locator_type: slide
 <!-- slide: 19 -->
 
 ## 调制方法：用滤波法实现残留边带调制的原理框图与滤波法SBB调制器相同。
-
-
-
-
 
 	     不过，这时图中滤波器的特性应按残留边带调制的要求来进行设计，而不再要求十分陡峭的截止特性，因而它比单边带滤波器容易制作。
 

@@ -55,6 +55,8 @@ z
 
 20
 2.
+<!-- question: linear-algebra-013-Q2 -->
+
 3. 2
 4.
 
@@ -68,10 +70,14 @@ z
 6
 2
 
-<!-- question: linear-algebra-013-Q2 -->
+<!-- question: linear-algebra-013-Q3 -->
 
 二、选择题：共6 题，每题3 分，共18 分。
+<!-- question: linear-algebra-013-Q4 -->
+
 1. D
+
+<!-- question: linear-algebra-013-Q5 -->
 
 2. B
 
@@ -80,9 +86,11 @@ z
 5.
     A
 
+<!-- question: linear-algebra-013-Q6 -->
+
 6. C.
 
-<!-- question: linear-algebra-013-Q3 -->
+<!-- question: linear-algebra-013-Q7 -->
 
 三、（8 分）
 
@@ -319,7 +327,7 @@ n
 
 +4
 
-<!-- question: linear-algebra-013-Q4 -->
+<!-- question: linear-algebra-013-Q8 -->
 
 四、（共2 小题，每小题5 分，共10 分）
 
@@ -533,7 +541,7 @@ z
 
 <!-- page: 2 -->
 
-<!-- question: linear-algebra-013-Q5 -->
+<!-- question: linear-algebra-013-Q9 -->
 
 五、（15 分）
 
@@ -1343,7 +1351,7 @@ k k
 
 <!-- page: 3 -->
 
-<!-- question: linear-algebra-013-Q6 -->
+<!-- question: linear-algebra-013-Q10 -->
 
 六、（10 分）
 
@@ -1574,7 +1582,7 @@ x
 
 3
 
-<!-- question: linear-algebra-013-Q7 -->
+<!-- question: linear-algebra-013-Q11 -->
 
 七、（15 分）
 
@@ -2090,7 +2098,7 @@ T
 T
 AT
 
-<!-- question: linear-algebra-013-Q8 -->
+<!-- question: linear-algebra-013-Q12 -->
 
 八、（6 分）
 

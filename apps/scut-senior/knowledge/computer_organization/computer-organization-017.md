@@ -18,13 +18,13 @@ locator_type: none
 
 请按数据通路图画出“ADD（R1），（R2）+”指令的指令周期流程图。该指令的含义是两个数进行求和操作。其中源操作地址在寄存器R1中，目的操作数寻址方式为自增型寄存器间接寻址（先取地址后加1）。
 
-![image](assets/assets/computer-organization-017/image-001.jpeg)
+![image](assets/computer-organization-017/image-001.jpeg)
 
 （第二套）
 
 **九、**如图3所示，8个处理机访问8个存储器，通过三级立方体互连网络连接，采用级控方式。其中所有交换开关均为二功能（级控仪号为“0”时直通，为“1”时交换）。若级控信号为：①K0  K1  K2＝100  ②K0  K1  K2＝011，请列表说明两种情况下，对应8个处理机而实际连通的8个存储器的排列次序。
 
-![formula-object](assets/assets/computer-organization-017/image-002.png)（第二套）
+![formula-object](assets/computer-organization-017/image-002.png)（第二套）
 
 **四.**假设机器字长16位，主存容量为128K字节，指令字长度为16位或32位，共有128条指令，设计计算机指令格式，要求有直接、立即数、相对、基值、间接、变址六种寻址方式。
 

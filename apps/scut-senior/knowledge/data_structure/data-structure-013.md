@@ -35,6 +35,8 @@ locator_type: none
 
 (A)  O(1)        (B)O(logn)                 (C)  O(n)         (D)  O(n2)
 
+<!-- question: data-structure-013-Q1 -->
+
 (2) Linear  indexing is good for all EXCEPT  (     )?
 
 (A) Range queries										(B) Exact match queries
@@ -75,15 +77,15 @@ locator_type: none
 
 *sum1++;*
 
-(A) $O(n)$                (B)  $O(n^2)$                (C)  $O(nlogn)$                (D)  ![formula-object](assets/assets/data-structure-013/image-004.png)
+(A) $O(n)$                (B)  $O(n^2)$                (C)  $O(nlogn)$                (D)  ![formula-object](assets/data-structure-013/image-004.png)
 
 (9) In the following four Binary Trees, is not a complete Binary Tree.  (     )
 
-![image](assets/assets/data-structure-013/image-005.png)
+![image](assets/data-structure-013/image-005.png)
 
 (10) For the following graph, one of results of breadth-first traversal is: (   )
 
-![image](assets/assets/data-structure-013/image-006.png)
+![image](assets/data-structure-013/image-006.png)
 
 (A)  acbdieghf      (B)  abcideghf      (C)  abcdefghi        (D)  abcidgehf
 1. A certain binary tree has the preorder enumeration as  ABCEDFGHIJ  and the inorder enumeration as  CEBFDAHGJI. Try to draw the binary tree and give the postorder enumeration. (The process of your solution is required!!!)  (7  scores)
@@ -99,13 +101,17 @@ Draw the Huffman coding tree and give the Huffman code for each letters. What is
 4.  Show the max-heap that results from running buildHeap with values stored in an array:
 
 10    4   7    13   9    16    8    20   11   25 .   (8  scores)
+<!-- question: data-structure-013-Q2 -->
+
 1. Inserting the values into the heap one by one.
+<!-- question: data-structure-013-Q3 -->
+
 1. Values are available at the same time.
-1. Given a hash table of size 11, assume that![formula-object](assets/assets/data-structure-013/image-007.png)and ![formula-object](assets/assets/data-structure-013/image-008.png)are  two hash functions, where  $H_1$ is  used to get home position and  $H_2$ is  used to  resolve  collision for method double hashing.  Please insert keys 20,  31,  43,  26, 30, 13, 12,  67, 1  into the hash table in order.         (10  scores)
+1. Given a hash table of size 11, assume that![formula-object](assets/data-structure-013/image-007.png)and ![formula-object](assets/data-structure-013/image-008.png)are  two hash functions, where  $H_1$ is  used to get home position and  $H_2$ is  used to  resolve  collision for method double hashing.  Please insert keys 20,  31,  43,  26, 30, 13, 12,  67, 1  into the hash table in order.         (10  scores)
 
 6. Please insert  8，55，17 into  the  following  2-3 tree. Inserting a key, draw a picture for the resulted 2-3 tree.  Thus  you should draw 3 pictures.  (10 scores)
 
-![formula-object](assets/assets/data-structure-013/image-011.png)
+![formula-object](assets/data-structure-013/image-011.png)
 
 7.  List the detail processes in which the edges of the graph are visited when running Kruskal’s MST algorithm.  (5  scores)
 
@@ -163,4 +169,4 @@ Count = NULL;
 
 10.  Write a program to visit all of the nodes of a Binary Tree in breadth-first search (BFS) order. E.g. the follow Tree, the traversal result is ABCDEFG.  (8  scores)
 
-![formula-object](assets/assets/data-structure-013/image-012.png)
+![formula-object](assets/data-structure-013/image-012.png)

@@ -120,7 +120,7 @@ o.11) 40.4]
 
 Created with Scanner Mini
 
-![image](assets/assets/electrical-engineering-005/image-001.jpeg)
+![image](assets/electrical-engineering-005/image-001.jpeg)
 
 <!-- page: 2 -->
 
@@ -224,7 +224,7 @@ D.Bit2
 
 Created with Scanner Mini
 
-![image](assets/assets/electrical-engineering-005/image-002.jpeg)
+![image](assets/electrical-engineering-005/image-002.jpeg)
 
 <!-- page: 3 -->
 
@@ -302,7 +302,7 @@ Rs
 
 Created with Scanner Mini
 
-![image](assets/assets/electrical-engineering-005/image-003.jpeg)
+![image](assets/electrical-engineering-005/image-003.jpeg)
 
 <!-- page: 4 -->
 
@@ -429,7 +429,7 @@ D
 
 Created with Scanner Mini
 
-![image](assets/assets/electrical-engineering-005/image-004.jpeg)
+![image](assets/electrical-engineering-005/image-004.jpeg)
 
 <!-- page: 5 -->
 
@@ -557,4 +557,4 @@ X
 
 Created with Scanner Mini
 
-![image](assets/assets/electrical-engineering-005/image-005.jpeg)
+![image](assets/electrical-engineering-005/image-005.jpeg)

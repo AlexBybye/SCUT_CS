@@ -82,7 +82,7 @@ The design and Analysis of Computer Algorithms Final Exam
 
 Page 1 of 18
 
-![image](assets/assets/algorithm-design-and-analysis-003/image-001.jpeg)
+![image](assets/algorithm-design-and-analysis-003/image-001.jpeg)
 
 <!-- page: 2 -->
 
@@ -206,7 +206,7 @@ The design and Analysis of Computer Algorithms Final Exam
 
 Page 3 of 18
 
-![image](assets/assets/algorithm-design-and-analysis-003/image-002.jpeg)
+![image](assets/algorithm-design-and-analysis-003/image-002.jpeg)
 
 <!-- page: 4 -->
 
@@ -310,11 +310,11 @@ The design and Analysis of Computer Algorithms Final Exam
 
 Page 5 of 18
 
-![image](assets/assets/algorithm-design-and-analysis-003/image-003.jpeg)
+![image](assets/algorithm-design-and-analysis-003/image-003.jpeg)
 
-![image](assets/assets/algorithm-design-and-analysis-003/image-004.jpeg)
+![image](assets/algorithm-design-and-analysis-003/image-004.jpeg)
 
-![image](assets/assets/algorithm-design-and-analysis-003/image-005.jpeg)
+![image](assets/algorithm-design-and-analysis-003/image-005.jpeg)
 
 <!-- page: 6 -->
 
@@ -372,7 +372,7 @@ The design and Analysis of Computer Algorithms Final Exam
 
 Page 6 of 18
 
-![image](assets/assets/algorithm-design-and-analysis-003/image-006.jpeg)
+![image](assets/algorithm-design-and-analysis-003/image-006.jpeg)
 
 <!-- page: 7 -->
 
@@ -480,9 +480,9 @@ The design and Analysis of Computer Algorithms Final Exam
 
 Page 9 of 18
 
-![image](assets/assets/algorithm-design-and-analysis-003/image-007.jpeg)
+![image](assets/algorithm-design-and-analysis-003/image-007.jpeg)
 
-![image](assets/assets/algorithm-design-and-analysis-003/image-008.jpeg)
+![image](assets/algorithm-design-and-analysis-003/image-008.jpeg)
 
 <!-- page: 10 -->
 
@@ -948,9 +948,9 @@ The design and Analysis of Computer Algorithms Final Exam
 
 Page 17 of 18
 
-![image](assets/assets/algorithm-design-and-analysis-003/image-009.jpeg)
+![image](assets/algorithm-design-and-analysis-003/image-009.jpeg)
 
-![image](assets/assets/algorithm-design-and-analysis-003/image-010.jpeg)
+![image](assets/algorithm-design-and-analysis-003/image-010.jpeg)
 
 <!-- page: 18 -->
 

@@ -18,7 +18,11 @@ locator_type: page
 
 3.
 
+<!-- question: linear-algebra-015-Q1 -->
+
 6.  D
+
+<!-- question: linear-algebra-015-Q2 -->
 
 1. B
 
@@ -27,7 +31,11 @@ locator_type: page
 
  C
 
+<!-- question: linear-algebra-015-Q3 -->
+
 4.   B
+
+<!-- question: linear-algebra-015-Q4 -->
 
 5. C
 
@@ -88,9 +96,11 @@ z
 + −
 =
 
+<!-- question: linear-algebra-015-Q5 -->
+
 3．−12
 
-<!-- question: linear-algebra-015-Q1 -->
+<!-- question: linear-algebra-015-Q6 -->
 
 三、 (7 分)
 
@@ -111,7 +121,7 @@ x
 
 所求旋转面方程为：
 
-<!-- question: linear-algebra-015-Q2 -->
+<!-- question: linear-algebra-015-Q7 -->
 
 四、 (12 分)
 方法一
@@ -665,7 +675,7 @@ B
 
 
 
-<!-- question: linear-algebra-015-Q3 -->
+<!-- question: linear-algebra-015-Q8 -->
 
 五、 (15 分)
 
@@ -973,7 +983,7 @@ k
 1
 2
 
-<!-- question: linear-algebra-015-Q4 -->
+<!-- question: linear-algebra-015-Q9 -->
 
 六、 (15 分)
 
@@ -1504,7 +1514,7 @@ y
 
 <!-- page: 4 -->
 
-<!-- question: linear-algebra-015-Q5 -->
+<!-- question: linear-algebra-015-Q10 -->
 
 七、 (12 分)
 
@@ -1643,7 +1653,7 @@ z
 +
 −=
 
-<!-- question: linear-algebra-015-Q6 -->
+<!-- question: linear-algebra-015-Q11 -->
 
 八、 (6 分)
 

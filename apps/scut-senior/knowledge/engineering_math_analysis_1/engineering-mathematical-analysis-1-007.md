@@ -24,8 +24,14 @@ locator_type: page
 《工科数学分析（一）》2023—2024 学年第一学期期末考试试卷（B）卷
 
 注意事项：1. 开考前请将密封线内各项信息填写清楚；
+<!-- question: engineering-mathematical-analysis-1-007-Q1 -->
+
           2. 所有答案请直接答在试卷上；
+<!-- question: engineering-mathematical-analysis-1-007-Q2 -->
+
           3．考试形式：闭卷
+
+<!-- question: engineering-mathematical-analysis-1-007-Q3 -->
 
           4. 本试卷共 5 个  大题，满分100 分， 考试时间120 分钟。
 
@@ -42,7 +48,7 @@ locator_type: page
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-007-Q1 -->
+<!-- question: engineering-mathematical-analysis-1-007-Q4 -->
 
 一、填空题（共5 小题，每小题3 分，共15 分）
 
@@ -73,6 +79,8 @@ d
 y =
 
 _____________ ________
+
+<!-- question: engineering-mathematical-analysis-1-007-Q5 -->
 
 ２. 设
 ，则
@@ -118,6 +126,8 @@ x
 -
 ò
 
+<!-- question: engineering-mathematical-analysis-1-007-Q6 -->
+
 ４. 无穷积分
             ；
 
@@ -136,13 +146,15 @@ p
 ë
 û
 
+<!-- question: engineering-mathematical-analysis-1-007-Q7 -->
+
 ５. 函数
 在
 上的最大值为              .
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-007-Q2 -->
+<!-- question: engineering-mathematical-analysis-1-007-Q8 -->
 
 二、计算下列各题（共3 小题，每小题8 分，共24 分）
 
@@ -158,6 +170,8 @@ x
 x
 +
 ®
+
+<!-- question: engineering-mathematical-analysis-1-007-Q9 -->
 
 1. 求极限
 .
@@ -180,6 +194,8 @@ xdx
 -
 ò
 
+<!-- question: engineering-mathematical-analysis-1-007-Q10 -->
+
 2.  求不定积分
  .
 
@@ -193,6 +209,8 @@ dx
 +
 ò
 
+<!-- question: engineering-mathematical-analysis-1-007-Q11 -->
+
 3.  计算定积分
 .
 
@@ -204,7 +222,7 @@ dx
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-007-Q3 -->
+<!-- question: engineering-mathematical-analysis-1-007-Q12 -->
 
 三、解答下列各题（共4 小题，每小题8 分，共32 分）
 
@@ -233,6 +251,8 @@ n
 n
 x
 ®¥
+
+<!-- question: engineering-mathematical-analysis-1-007-Q13 -->
 
 1. 设
 . 问数列
@@ -268,6 +288,8 @@ f u ¹
 
 2
 d y
+
+<!-- question: engineering-mathematical-analysis-1-007-Q14 -->
 
 2. 设
 其中
@@ -308,6 +330,8 @@ y
 ( )
 y x
 
+<!-- question: engineering-mathematical-analysis-1-007-Q15 -->
+
 3. 已知函数
 由方程
 确定，求
@@ -331,6 +355,8 @@ a
 >
 >
 
+<!-- question: engineering-mathematical-analysis-1-007-Q16 -->
+
 4.  求圆盘
 绕
 旋转所成旋转体的体积.
@@ -341,7 +367,7 @@ a
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-007-Q4 -->
+<!-- question: engineering-mathematical-analysis-1-007-Q17 -->
 
 四、证明题（共2 小题，每小题10 分，共20 分）
 
@@ -360,6 +386,8 @@ x
 -
 >
 
+<!-- question: engineering-mathematical-analysis-1-007-Q18 -->
+
    1.  证明不等式
 
 ( )
@@ -374,6 +402,8 @@ x
 ¥
 ，
 
+<!-- question: engineering-mathematical-analysis-1-007-Q19 -->
+
 2.  证明：函数
 在
 上一致连续.
@@ -384,7 +414,7 @@ x
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-007-Q5 -->
+<!-- question: engineering-mathematical-analysis-1-007-Q20 -->
 
 五、应用题（本题9 分）
 

@@ -20,8 +20,8 @@ locator_type: slide
 
 <!-- slide: 2 -->
 
-![image](assets/assets/embedded-systems-012/image-001.jpg)
-![image](assets/assets/embedded-systems-012/image-002.png)
+![image](assets/embedded-systems-012/image-001.jpg)
+![image](assets/embedded-systems-012/image-002.png)
 
 <!-- slide: 3 -->
 
@@ -37,7 +37,7 @@ locator_type: slide
 - 8.1定时器概述
 - 微控制器的工作运行过程中都有定时或外部时钟信号计数的功能，因此常常会被应用于时间控制、程序延时、对外部脉冲计数和检测等方面，例如汽车轮速计算过程就是定时一段时间内对轮子转动产生的脉冲进行计数。
 - （1）STM32F103R6芯片具有1个高级定时器TIM1和2个通用定时器TIM2、TIM3。
-![image](assets/assets/embedded-systems-012/image-003.png)
+![image](assets/embedded-systems-012/image-003.png)
 - 每个定时器有多达4个用于输入捕获/输出比较/PWM或脉冲计数的通道和增量编码器输入；1个高级16位定时器，带死区控制和紧急刹车，用于电机控制的PWM高级控制定时器
 
 <!-- slide: 5 -->
@@ -64,7 +64,7 @@ locator_type: slide
 
 <!-- slide: 7 -->
 
-![image](assets/assets/embedded-systems-012/image-004.png)
+![image](assets/embedded-systems-012/image-004.png)
 
 <!-- slide: 8 -->
 
@@ -78,7 +78,7 @@ locator_type: slide
 
 <!-- slide: 9 -->
 
-![image](assets/assets/embedded-systems-012/image-005.png)
+![image](assets/embedded-systems-012/image-005.png)
 
 <!-- slide: 10 -->
 
@@ -95,16 +95,16 @@ locator_type: slide
 
 - 8.1.4 定时器引脚和寄存器
 - TIMx_ETR, TIMx_CH1, TIMx_CH2, TIMx_CH3, TIMx_CH4, TIMx_BKIN复用功能口对应的I/O口说明。
-![image](assets/assets/embedded-systems-012/image-006.png)
+![image](assets/embedded-systems-012/image-006.png)
 - TIM2_CH1_ETR表示TIM2_CH1和TIM2_ETR共用一个引脚，但是不能同时使用，因此标记为TIM2_CH1_ETR。TIM2_CH2重映射引脚中的PB3是和下载有关的JTDO口，TIM3_CH1重映射引脚中的PB4也是和下载有关的NJTRST口，因此在使用这两个引脚时需要配置下载功能失效，才能正常使用。
 
 <!-- slide: 12 -->
 
 - CHx和ETR接口在设置过程中，其中CHx针对不同Channel进行配置，ETR从时钟源进行配置：
-![image](assets/assets/embedded-systems-012/image-007.png)
-![image](assets/assets/embedded-systems-012/image-008.png)
+![image](assets/embedded-systems-012/image-007.png)
+![image](assets/embedded-systems-012/image-008.png)
 - 定时器TIMx主要寄存器功能
-![image](assets/assets/embedded-systems-012/image-009.png)
+![image](assets/embedded-systems-012/image-009.png)
 
 <!-- slide: 13 -->
 
@@ -129,9 +129,9 @@ locator_type: slide
 - 在向下模式中，计数器从自动装入的值（TIMx_ARR计数器的值）开始向下计数到0，然后从自动装入的值重新开始并且产生一个计数器向下溢出事件。
 - 3.中央对齐模式（向上/向下计数）。
 - 在中央对齐模式，计数器从0开始计数到自动加载的值（TIMx_ARR寄存器）−1，产生一个计数器溢出事件，然后向下计数到1并且产生一个计数器下溢事件；然后从0开始重新计数。
-![image](assets/assets/embedded-systems-012/image-010.jpg)
-![image](assets/assets/embedded-systems-012/image-011.jpg)
-![image](assets/assets/embedded-systems-012/image-012.jpg)
+![image](assets/embedded-systems-012/image-010.jpg)
+![image](assets/embedded-systems-012/image-011.jpg)
+![image](assets/embedded-systems-012/image-012.jpg)
 
 <!-- slide: 15 -->
 
@@ -139,13 +139,13 @@ locator_type: slide
 - 8.2.1定时功能及实例
 - 定时器具有定时的功能，即对内部的时钟脉冲进行计数，当达到设定数值时触发定时器更新事件，在更新事件处理程序中停止计数或者继续计数，根据更新事件的次数以及设定数值从而可获得定时的时间。
 - 【例8.1】 利用TIM1定时器实现定时0.1s延时，通过PB0引脚控制LED闪烁，即0.1s亮0.1s灭依次交替。
-![image](assets/assets/embedded-systems-012/image-013.gif)
+![image](assets/embedded-systems-012/image-013.gif)
 
 <!-- slide: 16 -->
 
 - 定时器输入的时钟为72MHz，为实现定时0.1s需要进行分频操作，并设置合适的周期值（计数更新值）。例如7200分频后结果为72000000/7200=10000Hz，因此当周期值为1000时，可实现0.1s的定时。
 - 利用STM32CubeMX工具实现对TIM1的配置：
-![image](assets/assets/embedded-systems-012/image-014.png)
+![image](assets/embedded-systems-012/image-014.png)
 - Prescaler是设置时钟分频值，根据计算设置为7200；
 - Counter Mode是设置计数模式，设置为向上计数模式；
 - Counter Period为定时器周期即更新值，即计数到此数值时定时器产生更新事件，本实例根据计算设置为10000；
@@ -156,64 +156,64 @@ locator_type: slide
 <!-- slide: 17 -->
 
 - 在tim.c中产生出TIM1初始化的代码如下：
-![image](assets/assets/embedded-systems-012/image-015.png)
+![image](assets/embedded-systems-012/image-015.png)
 - 在响应定时时间是否到达定时周期过程中，可以采用查询和中断两种方式来完成，查询方式通过__HAL_TIM_GET_FLAG(&htim2,TIM_FLAG_UPDATE)函数判断TIM_FLAG_UPDATE是否变为1，从而确定定时周期是否达到。
-![image](assets/assets/embedded-systems-012/image-016.png)
+![image](assets/embedded-systems-012/image-016.png)
 
 <!-- slide: 18 -->
 
 - 中断方式通过开启定时器更新中断，当达到定时周期时会触发定时器更新中断，在中断方式时，利用STM32CubeMX工具实现对TIM1的更新中断配置：
-![image](assets/assets/embedded-systems-012/image-017.png)
+![image](assets/embedded-systems-012/image-017.png)
 
 <!-- slide: 19 -->
 
 - 开启TIM1更新中断，当达到1s的计数值时触发更新中断，在中断中控制LED状态翻转，并重新开始装载计数；配置抢占优先级为1，相应优先级为0。在tim.c程序中产生出开启中断的代码，如下：
 - TIM1更新中断通过调用中断处理函数，本实例在main.c中重写此函数：
 - __weak void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-![image](assets/assets/embedded-systems-012/image-018.png)
-![image](assets/assets/embedded-systems-012/image-019.png)
+![image](assets/embedded-systems-012/image-018.png)
+![image](assets/embedded-systems-012/image-019.png)
 
 <!-- slide: 20 -->
 
 - 8.2.2 计数功能及实例
 - STM32的定时器具有计数功能，在实际应用中可以用来对引脚上的外部输入信号进行计数，其输入信号作为计数时钟，输入引脚可以为TIMx_ETR引脚。
 - 【例8.2】 通过外部计数功能对按键引脚（TIM1_ETR(PA12)）的按下次数进行计数，并通过串口发送出来。
-![image](assets/assets/embedded-systems-012/image-020.gif)
+![image](assets/embedded-systems-012/image-020.gif)
 
 <!-- slide: 21 -->
 
 - 采用TIM1_ETR(PA12)引脚作为输入计数源，计数模式采用向上计数，并根据电路采用上升沿触发，输入源不进行分频和滤波处理，所以在STM32CubeMX的配置如图：
-![image](assets/assets/embedded-systems-012/image-021.png)
-![image](assets/assets/embedded-systems-012/image-022.png)
+![image](assets/embedded-systems-012/image-021.png)
+![image](assets/embedded-systems-012/image-022.png)
 
 <!-- slide: 22 -->
 
 - 主要有关计数的程序如下：
-![image](assets/assets/embedded-systems-012/image-023.png)
-![image](assets/assets/embedded-systems-012/image-024.png)
+![image](assets/embedded-systems-012/image-023.png)
+![image](assets/embedded-systems-012/image-024.png)
 
 <!-- slide: 23 -->
 
 - 8.2.3 捕获功能及实例
 - 定时器可作为输入捕获使用，输入捕获模式可以用来测量脉冲宽度或者测量频率。STM32的输入捕获，简单来说，就是通过检测TIMx_CHx上的边沿信号，在边沿信号发生跳变（如上升沿/下降沿）时，将当前定时器的值（TIMx_CNT）存放到对应的通道的捕获/比较寄存器（TIMx_CCRx）里面，完成一次捕获。
 - 【例8.3】 通过外部捕获功能对按键引脚（TIM3_CH1(PA6)）的按下脉宽宽度进行计数，并通过串口发送出来。
-![image](assets/assets/embedded-systems-012/image-025.gif)
+![image](assets/embedded-systems-012/image-025.gif)
 
 <!-- slide: 24 -->
 
 - 采用TIM3_CH1(PA6)引脚作为输入捕获源，计数模式采用向上计数，并根据电路采用上升沿触发，输入源进行72分频，不进行滤波处理，所以在STM32CubeMX的配置如图：
-![image](assets/assets/embedded-systems-012/image-026.png)
-![image](assets/assets/embedded-systems-012/image-027.png)
-![image](assets/assets/embedded-systems-012/image-028.png)
+![image](assets/embedded-systems-012/image-026.png)
+![image](assets/embedded-systems-012/image-027.png)
+![image](assets/embedded-systems-012/image-028.png)
 
 <!-- slide: 25 -->
 
 - （1）TIM3初始化
-![image](assets/assets/embedded-systems-012/image-029.png)
+![image](assets/embedded-systems-012/image-029.png)
 - （2）定时器中断的回调函数
 - （3）主程序
-![image](assets/assets/embedded-systems-012/image-030.png)
-![image](assets/assets/embedded-systems-012/image-031.png)
+![image](assets/embedded-systems-012/image-030.png)
+![image](assets/embedded-systems-012/image-031.png)
 
 <!-- slide: 26 -->
 
@@ -229,20 +229,20 @@ locator_type: slide
 <!-- slide: 28 -->
 
 - 【例8.4】 利用PWM脉冲宽度功能通过TIM3_CH2 (PA7)引脚控制电机的速度。
-![image](assets/assets/embedded-systems-012/image-032.gif)
+![image](assets/embedded-systems-012/image-032.gif)
 
 <!-- slide: 29 -->
 
 - 采用TIM3_CH2(PA7)引脚控制电机的速度，计数模式采用向上计数，输入源进行36分频，周期为1000，输出PWM1模式，输出为正极性，所以在STM32CubeMX的配置：
-![image](assets/assets/embedded-systems-012/image-033.png)
-![image](assets/assets/embedded-systems-012/image-034.png)
+![image](assets/embedded-systems-012/image-033.png)
+![image](assets/embedded-systems-012/image-034.png)
 
 <!-- slide: 30 -->
 
 - （1）TIM3初始化
-![image](assets/assets/embedded-systems-012/image-035.png)
+![image](assets/embedded-systems-012/image-035.png)
 - （2）主程序
-![image](assets/assets/embedded-systems-012/image-036.png)
+![image](assets/embedded-systems-012/image-036.png)
 
 <!-- slide: 31 -->
 
@@ -256,12 +256,12 @@ locator_type: slide
 
 - 3.编码器接口模式
 - 编码器的示意图如下，中间是一个带光栅的码盘，光通过光栅，接收管接收到高电平，没通过，接收到低电平。电机旋转一圈，码盘上有多少光栅，接收管就会接收多少个高电平。例如，371电机中的码盘就是这样的，它是334线码盘，具有较高的测速精度，也就是电机转一圈输出334个脉冲，芯片上已集成了脉冲整形触发电路，输出的是矩形波，直接接微控制芯片I/O口就行。
-![image](assets/assets/embedded-systems-012/image-037.png)
+![image](assets/embedded-systems-012/image-037.png)
 
 <!-- slide: 33 -->
 
 - A、B两点对应两个光敏接收管，A、B两点间距为S2，码盘的光栅间距分别为S0和S1。S0+S1的距离是S2的4倍，这样保证了A、B波形相位相差90度。旋转的反向不同，锯齿波A、B先到达高电平的顺序就会不同，如图左侧所示，顺序的不同，就可以得到旋转的方向。
-![image](assets/assets/embedded-systems-012/image-038.png)
+![image](assets/embedded-systems-012/image-038.png)
 - 增量式旋转编码器通过内部两个光敏接收管转化其角度码盘的时序和相位关系，得到其角度码盘角度位移量增加（正方向）或减少（负方向）。
 - STM32芯片定时器的两个输入TI1和TI2被用来作为增量编码器的接口，假定计数器已经启动(TIMx_CR1寄存器中的CEN=1)，则计数器由每次在TI1FP1或TI2FP2上的有效跳变驱动。TI1FP1和TI2FP2是TI1和TI2在通过输入滤波器和极性控制后的信号；如果没有滤波和变相，则TI1FP1=TI1，TI2FP2=TI2。根据两个输入信号的跳变顺序，产生了计数脉冲和方向信号。然后通过读取所用的计数器信息，可以得到电机的速度；并通过读取控制寄存器CR1的DIR位来判断旋转方向。
 
@@ -292,22 +292,22 @@ locator_type: slide
 
 - 8.3.2 SysTick功能实现
 - 利用STM32CubeMX进行实现，使能SysTick
-![image](assets/assets/embedded-systems-012/image-039.png)
+![image](assets/embedded-systems-012/image-039.png)
 - 在STM32CubeMX产生的函数中会有SystemClock_Config()函数，对SysTick进行初始化：
-![image](assets/assets/embedded-systems-012/image-040.png)
+![image](assets/embedded-systems-012/image-040.png)
 - 当使能SysTick功能后，STM32CubeMX工具会自动产生的代码，因此可以直接调用例如HAL_Delay(1000)，可产生出1000ms的延时。
 
 <!-- slide: 38 -->
 
 - 初始化时，STM32CubeMX默认设置SysTick中断优先级为最高优先级，中断周期由函数HAL_SYSTICK_Config(SystemCoreClock/(1000U/uwTickFreq)确定，默认值为1ms，STM32CubeMX产生的代码如下：
-![image](assets/assets/embedded-systems-012/image-041.png)
+![image](assets/embedded-systems-012/image-041.png)
 
 <!-- slide: 39 -->
 
 - 中断频率可以通过修改HAL_TICK_FREQ_DEFAULT参数修改，stm32f1xx_hal中给出10Hz、100Hz、1kHz三种选项，如下：
 - 根据以上配置，从而可以产生出HAL_Delay()函数的时基为1ms，HAL_Delay()函数由STM32CubeMX产生如下代码：
-![image](assets/assets/embedded-systems-012/image-042.png)
-![image](assets/assets/embedded-systems-012/image-043.png)
+![image](assets/embedded-systems-012/image-042.png)
+![image](assets/embedded-systems-012/image-043.png)
 
 <!-- slide: 40 -->
 
@@ -331,24 +331,24 @@ locator_type: slide
 <!-- slide: 43 -->
 
 - 通过STM32CubeMX可以使能独立看门狗，如图
-![image](assets/assets/embedded-systems-012/image-044.png)
+![image](assets/embedded-systems-012/image-044.png)
 - 其中，IWDG时钟预分频系数4分频，计数器重装载值（IWDG_RLR）为4095，产生出代码HAL_IWDG_Init(IWDG_HandleTypeDef *hiwdg)。
 - 产生出代码HAL_IWDG_Refresh(IWDG_HandleTypeDef *hiwdg)函数，利用此函数可实现看门狗操作。
-![image](assets/assets/embedded-systems-012/image-045.png)
+![image](assets/embedded-systems-012/image-045.png)
 
 <!-- slide: 44 -->
 
 - 8.4.2 窗口看门狗
 - 窗口看门狗跟独立看门狗一样，也是一个递减计数器，不断往下递减计数，当减到一个固定值0x3F时还不喂狗，产生复位，这个值叫窗口的下限，是固定的值，不能改变。窗口看门狗之所以称为窗口，就是因为其喂狗时间是在一个有上下限的范围内（计数器减到某个值~计数器减到0x3F），在这个范围内才可以喂狗，可以通过设定相关寄存器，设定其上限时间（但是下限是固定的0x3F）。
-![image](assets/assets/embedded-systems-012/image-046.png)
+![image](assets/embedded-systems-012/image-046.png)
 - 1计数器的初始值，是我们设置的上窗口（W[6:0]）值，3是下窗口值(0x3F)；窗口看门狗计数器的值只有在2和3之间(上窗口和下窗口之间)才可以喂狗，窗口看门狗还可以使能中断，如果使能了提前唤醒中断，系统出现问题，喂狗函数没有生效，那么在计数器由减到0x40 (0x3f+1)时，便会先进入中断，之后才会复位，也可以在中断里面喂狗。
 
 <!-- slide: 45 -->
 
 - 通过STM32CubeMX可以使能窗口看门狗
-![image](assets/assets/embedded-systems-012/image-047.png)
+![image](assets/embedded-systems-012/image-047.png)
 - WWDG时钟预分频系数为1，WWDG上窗口值为64，WWDG计数器值为64，使能窗口看门狗中断。产生的代码看门狗初始化HAL_WWDG_Init(WWDG_HandleTypeDef *hwwdg)
-![image](assets/assets/embedded-systems-012/image-048.png)
+![image](assets/embedded-systems-012/image-048.png)
 - 产生代码喂狗操作HAL_WWDG_Refresh(WWDG_HandleTypeDef *hwwdg)，利用此函数可实现看门狗操作；看门狗中断处理函数HAL_WWDG_IRQHandler(WWDG_HandleTypeDef *hwwdg)，判断中断是否正常，并进入中断回调函数；看门狗中断回调函数__weak HAL_WWDG_EarlyWakeupCallback(hwwdg)，在HAL库中，每进行完一个中断，并不会立刻退出，而是会进入到中断回调函数中。
 
 <!-- slide: 46 -->
@@ -371,7 +371,7 @@ locator_type: slide
 
 - 8.5 实时时钟（RTC）
 - RTC（Real-Time Clock)实时时钟为操作系统提供了一个可靠的时间，并且在断电的情况下，RTC实时时钟也可以通过电池供电，一直运行下去。RTC模块之所以具有实时时钟功能，是因为它内部维持了一个独立的定时器，通过配置，可以让它准确地每秒中断一次。简单描述STM32芯片RTC时钟工作原理：一个32位的计数器，从0向上计数，假设每加一就是1s，那么一个32位的计数器跑到溢出需要100多年已经很长了，这里时钟自带一个秒中断，当每加一时就会触发一次秒中断，通过往秒中断中写更新时间的函数来达到时间同步的效果。
-![image](assets/assets/embedded-systems-012/image-049.png)
+![image](assets/embedded-systems-012/image-049.png)
 
 <!-- slide: 48 -->
 
@@ -390,12 +390,12 @@ locator_type: slide
 
 - （1）RTC初始化，设置当前的时间
 - 有关RTC初始化的STM32CubeMX设置如图:
-![image](assets/assets/embedded-systems-012/image-050.png)
+![image](assets/embedded-systems-012/image-050.png)
 - 使能RTC时钟以及日历功能，并初始化当前的年月日及时间如上图所示。
 
 <!-- slide: 51 -->
 
-![image](assets/assets/embedded-systems-012/image-051.png)
+![image](assets/embedded-systems-012/image-051.png)
 - 产生代码如下：
 - HAL_RTC_Init()函数初始化RTC；HAL_RTC_SetTime()设置具体时间；HAL_RTC_SetDate()设置具体日期。
 
@@ -417,13 +417,13 @@ locator_type: slide
 
 - （4）RTC闹钟功能使用
 - 使用STM32CubeMX生成RTC工程如下图
-![image](assets/assets/embedded-systems-012/image-052.png)
+![image](assets/embedded-systems-012/image-052.png)
 - RTC闹钟功能使用时，使能RTC外部输出从而产生闹钟信号，并且在配置中可设置闹钟的时间。
 
 <!-- slide: 54 -->
 
 - （5）RTC中断有计时秒中断，溢出中断和闹钟中断，若使能这些中断，配置如下：
-![image](assets/assets/embedded-systems-012/image-053.png)
+![image](assets/embedded-systems-012/image-053.png)
 - 使用HAL_RTCEx_SetSecond_IT(&hrtc)函数针对hrtc对应的RTC时钟进行设置，通过秒中断处理函数
 - HAL_RTCEx_RTCEventCallback(RTC_HandleTypeDef *hrtc)实现秒中断处理过程；闹钟中断处理函数HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)实现闹钟处理过程。
 

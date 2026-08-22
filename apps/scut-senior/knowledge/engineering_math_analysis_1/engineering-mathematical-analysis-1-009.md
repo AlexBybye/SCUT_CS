@@ -247,6 +247,8 @@ y
 t
 t
 
+<!-- question: engineering-mathematical-analysis-1-009-Q4 -->
+
 2. 设
 
 y
@@ -282,6 +284,8 @@ x
 
 <!-- page: 8 -->
 
+<!-- question: engineering-mathematical-analysis-1-009-Q5 -->
+
 4. 求曲线
 
 
@@ -301,7 +305,7 @@ x
 
 <!-- page: 9 -->
 
-<!-- question: engineering-mathematical-analysis-1-009-Q4 -->
+<!-- question: engineering-mathematical-analysis-1-009-Q6 -->
 
 四、证明题（每小题10 分，共20 分）
 
@@ -363,7 +367,7 @@ f
 
 。
 
-<!-- question: engineering-mathematical-analysis-1-009-Q5 -->
+<!-- question: engineering-mathematical-analysis-1-009-Q7 -->
 
 五、应用题（本题9 分）
 

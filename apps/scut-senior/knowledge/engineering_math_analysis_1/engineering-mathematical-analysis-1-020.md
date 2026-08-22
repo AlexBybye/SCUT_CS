@@ -24,8 +24,14 @@ locator_type: page
 2021-2022 第一学期《工科数学分析》A 卷
 
 注意事项：1. 开考前请将密封线内各项信息填写清楚；
+<!-- question: engineering-mathematical-analysis-1-020-Q1 -->
+
           2. 所有答案请直接答在试卷相应空白处；
+<!-- question: engineering-mathematical-analysis-1-020-Q2 -->
+
           3．考试形式: 闭卷；
+
+<!-- question: engineering-mathematical-analysis-1-020-Q3 -->
 
           4. 本试卷共十大题,满分100 分,考试时间120 分钟。
 
@@ -65,6 +71,8 @@ locator_type: page
 <!-- page: 2 -->
 
 三) (10 分)完成下面两题：
+<!-- question: engineering-mathematical-analysis-1-020-Q4 -->
+
     (1). 令 3(5) = 789:715, 求 3(,.,+)(<).
 
 得分
@@ -74,6 +82,8 @@ locator_type: page
 .
 
 01
+
+<!-- question: engineering-mathematical-analysis-1-020-Q5 -->
 
 (2). 计算积分 ∫
 
@@ -87,10 +97,14 @@ locator_type: page
 
 得分
 
+<!-- question: engineering-mathematical-analysis-1-020-Q6 -->
+
 (1). ∫
 >+155?5;
 6/,
 .
+
+<!-- question: engineering-mathematical-analysis-1-020-Q7 -->
 
 (2). 设旋轮线的参数方程为
 
@@ -131,7 +145,11 @@ L −B
 
 1 为极坐标。
 
+<!-- question: engineering-mathematical-analysis-1-020-Q8 -->
+
      (1). 求心脏线上斜率为 2 的切线；
+<!-- question: engineering-mathematical-analysis-1-020-Q9 -->
+
      (2). 求心脏线的全长。
 
 《工科数学分析》试卷（A）第 5 页 共 8 页
@@ -163,7 +181,11 @@ L −B
 
 得分
 
+<!-- question: engineering-mathematical-analysis-1-020-Q10 -->
+
 (1). 3(5) = 5= 在 5 > < 时是凹函数；
+<!-- question: engineering-mathematical-analysis-1-020-Q11 -->
+
 (2). I=)+(B= + L=) ≤(B + L)= ≤B= + L=.
 
 《工科数学分析》试卷（A）第 7 页 共 8 页

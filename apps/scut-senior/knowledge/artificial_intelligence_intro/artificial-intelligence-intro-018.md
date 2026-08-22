@@ -24,7 +24,7 @@ locator_type: slide
 <!-- slide: 2 -->
 
 - 6.3 贝叶斯学习
-![image](assets/assets/artificial-intelligence-intro-018/image-001.png)
+![image](assets/artificial-intelligence-intro-018/image-001.png)
 
 <!-- slide: 3 -->
 
@@ -239,13 +239,13 @@ locator_type: slide
 
 <!-- slide: 27 -->
 
-![image](assets/assets/artificial-intelligence-intro-018/image-002.png)
+![image](assets/artificial-intelligence-intro-018/image-002.png)
 - 估计每个P(hi)很容易，只要计算每个目标值hi出现在训练数据中的频率就可以。
 - 如果要如此估计所有的P(a1,a2,…,an|hi)项，则必须计算a1,a2,…,an的所有可能取值组合，再乘以可能的目标值数量。
 - 假设一个实例有10个属性，每个属性有3个可能取值，而目标集合中有5个候选目标。那么P(a1,a2,…,an|hi)项就有        个。
 - 27
 - 这是多大啊？！
-![image](assets/assets/artificial-intelligence-intro-018/image-003.png)
+![image](assets/artificial-intelligence-intro-018/image-003.png)
 - 不适合于高维数据！
 
 <!-- slide: 28 -->
@@ -263,16 +263,16 @@ locator_type: slide
   - 将上式子带入上面求      的公式中，就得到朴素贝叶斯分类器所用的方法：
   - 其中      表示朴素贝叶斯分类器输出的目标值。
 - 29
-![image](assets/assets/artificial-intelligence-intro-018/image-004.png)
+![image](assets/artificial-intelligence-intro-018/image-004.png)
 
 <!-- slide: 30 -->
 
 - 仍假设一个实例有10个属性，每个属性有3个可能取值，而目标集合中有5个候选目标。朴素贝叶斯分类器中需要从训练数据中估计的P(aj|hi)项的数量是          。
 - 30
 - 5×3×10 <<     ！
-![image](assets/assets/artificial-intelligence-intro-018/image-005.png)
+![image](assets/artificial-intelligence-intro-018/image-005.png)
 - 5×3×10
-![image](assets/assets/artificial-intelligence-intro-018/image-006.png)
+![image](assets/artificial-intelligence-intro-018/image-006.png)
 - 这个还差不多。
 
 <!-- slide: 31 -->

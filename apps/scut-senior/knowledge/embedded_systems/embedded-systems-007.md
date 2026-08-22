@@ -20,8 +20,8 @@ locator_type: slide
 
 <!-- slide: 2 -->
 
-![image](assets/assets/embedded-systems-007/image-001.jpg)
-![image](assets/assets/embedded-systems-007/image-002.png)
+![image](assets/embedded-systems-007/image-001.jpg)
+![image](assets/embedded-systems-007/image-002.png)
 
 <!-- slide: 3 -->
 
@@ -35,7 +35,7 @@ locator_type: slide
 - 3.1微控制器概述
 - 3.1.1 STM32F103内部结构
 - 1.STM32F103总线
-![image](assets/assets/embedded-systems-007/image-003.png)
+![image](assets/embedded-systems-007/image-003.png)
 - STM32的Cortex-M3内核通过指令总线与Flash存储器连接；数据总线、系统总线和先进高速总线AHB相连。STM32的内部SRAM和DMA单元直接与AHB总线相连，外部设备使用两条先进设备总线APB连接，而每一条APB总线又都与AHB总线矩阵相连。
 
 <!-- slide: 5 -->
@@ -62,7 +62,6 @@ locator_type: slide
 
 <!-- slide: 8 -->
 
-
 | STM32 | STM32代表ARM Cortex-M内核的32位微控制器 |
 |---|---|
 | F | F代表芯片子系列。 |
@@ -77,14 +76,14 @@ locator_type: slide
 
 <!-- slide: 9 -->
 
-![image](assets/assets/embedded-systems-007/image-004.png)
+![image](assets/embedded-systems-007/image-004.png)
 - STM32F103系列微控制器内部资源
 
 > 备注：STM32F103微控制器有一系列的产品，包括有不同的型号，主要有大小不同的SRAM和闪存（Flash），以及接口的数量不一样，封装方面也有区别。本书主要以STM32F103R6为主，此芯片程序Flash是32KB；数据RAM是10KB；工作频率72MHz；3个16位定时器，有12个输入捕捉接口（IC），12个输出比较接口（OC）和14个脉宽宽度调制输出接口（PWM）；1个SPI接口；1个I2C接口；2个USART接口；1个USB接口，1个CAN接口；总计有51个I/O口，电压范围2到3.6V；封装为LQFP64。
 
 <!-- slide: 10 -->
 
-![image](assets/assets/embedded-systems-007/image-005.png)
+![image](assets/embedded-systems-007/image-005.png)
 
 > 备注：其中，PAx、PBx、PCx是芯片通用输入/输出接口(GPIO)，也可以复用为专用功能接口，例如PA2既可以作为通用输入/输出接口又可以复用为串口2的发送口（USART2_TX）；VDDx是数字电源，STM32F103系列芯片采用3.3V电压，从抗干扰以及功率均衡方面考虑，芯片常常有多路电源接口，VSSx是数字地；VDDA和VSSA是模拟电源和模拟地，也采用3.3V电压，为了避免数字信号对模拟部分的干扰，所以模拟电源单独提供；VBAT当使用电池或其他电源连接到VBAT脚上时，当VDD断电时，可以保存备份寄存器的内容和维持RTC的功能。如果应用中没有使用外部电池，VBAT引脚应接到VDD引脚上；PD0-OSC_IN和PD1-OSC_OUT是芯片高频时钟输入/输出接口；PC14-OSC32_IN和PC15-OSC32_OUT是芯片低频时钟输入/输出接口；PA0-WKUP是芯片唤醒接口，用于把芯片从低功耗状态唤醒；PC13-TAMPER-RTC是侵入事件检测，当TAMPER引脚上的信号从0变成1或者从1变成0(取决于备份控制寄存器BKP_CR的TPAL位)，会产生一个侵入检测事件，侵入检测事件将所有数据备份寄存器内容清除。
 
@@ -101,12 +100,12 @@ locator_type: slide
 - 3.2微控制器基本电路
 - 3.2.1 电源电路
 - STM32F103系列微控制器采用的电源工作范围是2.0~3.6V，常规设计一般选用3.3V电源。
-![image](assets/assets/embedded-systems-007/image-006.png)
+![image](assets/embedded-systems-007/image-006.png)
 - (1) 主电源VDD和VSS
 - (2) 备用电源VBAT
 - (3)模拟电压VDDA
-![image](assets/assets/embedded-systems-007/image-007.png)
-![image](assets/assets/embedded-systems-007/image-008.png)
+![image](assets/embedded-systems-007/image-007.png)
+![image](assets/embedded-systems-007/image-008.png)
 
 <!-- slide: 13 -->
 
@@ -124,7 +123,7 @@ locator_type: slide
 - 2.电源复位
 - 电源复位能复位除备份域寄存器外的所有寄存器。当以下事件发生时，将产生电源复位。
 - 利用上电瞬时通过电容短路的特点以及常态断路的特点，产生一个脉冲信号，并连接到芯片NRST引脚从而产生RESET。
-![image](assets/assets/embedded-systems-007/image-009.png)
+![image](assets/embedded-systems-007/image-009.png)
 
 <!-- slide: 15 -->
 
@@ -140,7 +139,7 @@ locator_type: slide
 - (2) 低速外部时钟（LSE）
 - (3) 高速内部时钟（HSI）
 - (4) 低速内部时钟（LSI）
-![image](assets/assets/embedded-systems-007/image-010.png)
+![image](assets/embedded-systems-007/image-010.png)
 - 外部时钟
 - 内部时钟
 - (5) 锁相环倍频输出( PLL)
@@ -159,15 +158,15 @@ PLL为锁相环倍频输出，其时钟输入源可选择为HSI/2、HSE或者HSE
 <!-- slide: 17 -->
 
 - 3.2.4 STM32时钟管理
-![image](assets/assets/embedded-systems-007/image-011.png)
+![image](assets/embedded-systems-007/image-011.png)
 - 其中，40kHz的LSI供独立看门狗IWDG使用，另外它还可以被选择为实时时钟RTC的时钟源。另外，实时时钟RTC的时钟源还可以选择LSE，或者是HSE的128分频。
 
 <!-- slide: 18 -->
 
 - STM32中有一个全速功能的USB模块，当需使用到USB模块时，PLL必须使能，并且时钟配置为48MHz或72MHz。
-![image](assets/assets/embedded-systems-007/image-012.png)
+![image](assets/embedded-systems-007/image-012.png)
 - STM32还可以选择一个时钟信号输出到MCO脚(PA.8)上，可以选择为PLL输出的2分频、HSI、HSE或者系统时钟。
-![image](assets/assets/embedded-systems-007/image-013.png)
+![image](assets/embedded-systems-007/image-013.png)
 
 <!-- slide: 19 -->
 
@@ -177,7 +176,7 @@ PLL为锁相环倍频输出，其时钟输入源可选择为HSI/2、HSE或者HSE
 - （3）直接送给Cortex的空闲运行时钟FCLK；
 - （4）送给APB1分频器。
 - （5）送给APB2分频器。
-![image](assets/assets/embedded-systems-007/image-014.png)
+![image](assets/embedded-systems-007/image-014.png)
 
 > 备注：APB1和APB2连接的模块：
 （1）连接在APB1(低速外设)上的设备有：电源接口、备份接口、CAN、USB、I2C1、I2C2、UART2、UART3、SPI2、窗口看门狗、Timer2、Timer3、Timer4。注意USB模块虽然需要一个单独的48MHz的时钟信号，但是它应该不是供USB模块工作的时钟，而只是提供给串口引擎(SIE)使用的时钟。USB模块的工作时钟应该是由APB1提供的。
@@ -186,7 +185,7 @@ PLL为锁相环倍频输出，其时钟输入源可选择为HSI/2、HSE或者HSE
 <!-- slide: 20 -->
 
 - STM32F103系列微控制器的下载调试系统支持两种接口标准：5针的JTAG端口和2针的SWD串口，这两种接口需要牺牲通用I/O口来供给调试器仿真器使用。
-![image](assets/assets/embedded-systems-007/image-015.png)
+![image](assets/embedded-systems-007/image-015.png)
 - 3.2.5 下载电路
 
 > 备注：JTAG IEEE标准建议在JTDI、JTMS和JNTRST引脚上添加上拉电阻，但是对JTCK没有特别建议，针对STM32单片机JTCK一般接下拉电阻。
@@ -196,8 +195,8 @@ SWD调试方式主要有SWDCLK、SWDIO两根信号线，SWDCLK为主机到STM32�
 <!-- slide: 21 -->
 
 - 3.2.6 启动配置电路
-![image](assets/assets/embedded-systems-007/image-016.png)
-![image](assets/assets/embedded-systems-007/image-017.png)
+![image](assets/embedded-systems-007/image-016.png)
+![image](assets/embedded-systems-007/image-017.png)
 
 > 备注：（1）从Flash存储器启动，Flash存储器被映射到启动空间（0x00000000），同时仍能在原有的地址（0x08000000）访问它，即从芯片内置的Flash启动。
 （2）从系统存储器启动，系统存储器被映射到启动空间（0x00000000），同时仍然能在原有的地址（0x1FFFF000）访问它，芯片内部一块特定的区域，芯片出厂时在这个区域预置了一段Bootloader。这个区域的内容在芯片出厂后没有人能够修改或擦除，即它是一个ROM区。
@@ -206,7 +205,7 @@ SWD调试方式主要有SWDCLK、SWDIO两根信号线，SWDCLK为主机到STM32�
 <!-- slide: 22 -->
 
 - 3.3微控制器低功耗模式
-![image](assets/assets/embedded-systems-007/image-018.png)
+![image](assets/embedded-systems-007/image-018.png)
 - STM32F103系列芯片支持3种低功耗模式，即睡眠模式（Sleep mode）、停止模式（Stop mode）和待机模式（Standby mode）。
 
 > 备注：睡眠模式：电压调节器工作正常，Cortex-M3处理器停止运行，但Cortex-M3的内部外设仍然正常运行，PLL、HSE、HSI也正常运行；所有的SRAM和寄存器的内容被保留；所有的I/O引脚都保持它们在运行模式时的状态；功耗相对于正常模式得到降低。
@@ -216,7 +215,7 @@ SWD调试方式主要有SWDCLK、SWDIO两根信号线，SWDCLK为主机到STM32�
 <!-- slide: 23 -->
 
 - STM32芯片最小化系统
-![image](assets/assets/embedded-systems-007/image-019.png)
+![image](assets/embedded-systems-007/image-019.png)
 
 <!-- slide: 24 -->
 

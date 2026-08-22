@@ -41,7 +41,7 @@ locator_type: none
 
 所以：-[  y ]补 = [  -y ]补
 
-![formula-object](assets/assets/computer-organization-057/image-001.png)**四、**逻辑图如图2：
+![formula-object](assets/computer-organization-057/image-001.png)**四、**逻辑图如图2：
 
 **图2**
 
@@ -95,7 +95,7 @@ R / W = 0 (写)
 
 **图3**
 
-![formula-object](assets/assets/computer-organization-057/image-002.png)**七、**解：根据传输速率，磁盘优先权最高，磁带次之，打印机最低。如下图：
+![formula-object](assets/computer-organization-057/image-002.png)**七、**解：根据传输速率，磁盘优先权最高，磁带次之，打印机最低。如下图：
 
 **图4**
 

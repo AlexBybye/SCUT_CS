@@ -19,6 +19,8 @@ locator_type: none
 
 2．文法按产生式的形式分为四种类型，它们是：0型文法，又称短语文法；1型文法，又称上下文有关文法；2型文法，又称               文法； 3型文法，又称              文法。
 
+<!-- question: compiler-principles-005-Q1 -->
+
 3．             推导称为规范推导，由                 产生的句型称为规范句型。
 
 4．设G是一个文法，S是它的开始符号，如果 S        α，则称α是一个句型。                   的句型是一个句子。
@@ -27,11 +29,19 @@ locator_type: none
 
 6．通常程序设计语言的单词符号分为五种：基本字、                、常数、              、界限符。
 
+<!-- question: compiler-principles-005-Q2 -->
+
 7．在自底向上分析法中，LR分析法把“可归约串”定义为              。
+
+<!-- question: compiler-principles-005-Q3 -->
 
 8．编译中常用的中间代码形式有逆波兰式、            、           和四元式等。
 
+<!-- question: compiler-principles-005-Q4 -->
+
 9．对中间代码优化按涉及的范围分为局部优化，           和           。
+
+<!-- question: compiler-principles-005-Q5 -->
 
 10．局部优化主要包括合并已知量、            和             等内容。
 
@@ -42,6 +52,8 @@ locator_type: none
 1．证明句型  **QbRae** 是规范句型                                              Q→QbR  ∣ R
 
 R→cSd ∣ e
+
+<!-- question: compiler-principles-005-Q6 -->
 
 2．给出句型  **QbRae** 的短语，直接短语和句柄：
 

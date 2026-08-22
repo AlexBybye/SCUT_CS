@@ -97,7 +97,7 @@ ______总线，又进一步发展到64位的PCI总线。
 **五.**某机字长32位，常规设计的存储空间≤32M  ，若将存储空间扩至256M，请提出一种可能方案。
 - 图1所示的处理机逻辑框图中，有两条独立的总线和两个独立的存贮器。已知指令存贮器IM最大容量为16384字（字长18位），数据存贮器DM最大容量是65536字（字长16位）。各寄存器均有“打入”（Rin）和“送出”（Rout）控制命令，但图中未标出。
 
-![image](assets/assets/computer-organization-047/image-001.png)
+![image](assets/computer-organization-047/image-001.png)
 
 图1
 
@@ -118,7 +118,7 @@ ______总线，又进一步发展到64位的PCI总线。
 
 中断？并分析图2的中断过程。
 
-![image](assets/assets/computer-organization-047/image-002.png)
+![image](assets/computer-organization-047/image-002.png)
 
 图2
 

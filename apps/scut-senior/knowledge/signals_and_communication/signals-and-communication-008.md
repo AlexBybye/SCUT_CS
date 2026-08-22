@@ -113,7 +113,7 @@ n 基带传输系统的基本模型
 
   抽样判决器：抽样判决器主要完成信号比较与判决的功能。
 
-![image](assets/assets/signals-and-communication-008/image-001.jpeg)
+![image](assets/signals-and-communication-008/image-001.jpeg)
 
 <!-- page: 8 -->
 
@@ -187,7 +187,7 @@ n 基带信号的基本波形
 
  通常采用二进制的基带信号。
 
-![image](assets/assets/signals-and-communication-008/image-002.jpeg)
+![image](assets/signals-and-communication-008/image-002.jpeg)
 
 <!-- page: 12 -->
 
@@ -195,7 +195,7 @@ n 基带信号的基本波形
 
 n 常用的二进制码型
 
-![image](assets/assets/signals-and-communication-008/image-003.jpeg)
+![image](assets/signals-and-communication-008/image-003.jpeg)
 
 <!-- page: 13 -->
 
@@ -365,7 +365,7 @@ n
    差分码可用于解决调制信号的相位模糊问题。在通信系统中
 有重要的应用。
 
-![image](assets/assets/signals-and-communication-008/image-004.jpeg)
+![image](assets/signals-and-communication-008/image-004.jpeg)
 
 <!-- page: 18 -->
 
@@ -405,7 +405,7 @@ u 一般在传输前需对信息序列进行“随机化”（伪随机化）处
 
     AMI码是PCM系统北美系列基群信号（T1）采用的码型。
 
-![image](assets/assets/signals-and-communication-008/image-005.jpeg)
+![image](assets/signals-and-communication-008/image-005.jpeg)
 
 <!-- page: 20 -->
 
@@ -469,7 +469,7 @@ n 常用的线路码型(续)
     HDB3码是PCM系统欧洲、中国等国家和地区电信系统基群
 （E1）、二、三次群信号采用的码型。
 
-![image](assets/assets/signals-and-communication-008/image-006.jpeg)
+![image](assets/signals-and-communication-008/image-006.jpeg)
 
 <!-- page: 23 -->
 
@@ -485,7 +485,7 @@ n 常用的线路码型(续)
 例5.3.2
 P.184
 
-![image](assets/assets/signals-and-communication-008/image-007.jpeg)
+![image](assets/signals-and-communication-008/image-007.jpeg)
 
 <!-- page: 24 -->
 
@@ -496,7 +496,7 @@ n 常用的线路码型(续)
   曼彻斯特码的特点：码元中间出现跳变，易于提取时钟信号。
     曼彻斯特码的编码方法：
 
-![image](assets/assets/signals-and-communication-008/image-008.jpeg)
+![image](assets/signals-and-communication-008/image-008.jpeg)
 
 <!-- page: 25 -->
 
@@ -508,7 +508,7 @@ n 常用的线路码型(续)
 
     差分曼彻斯特码是计算机局域网基带信号传输码型。
 
-![image](assets/assets/signals-and-communication-008/image-009.jpeg)
+![image](assets/signals-and-communication-008/image-009.jpeg)
 
 <!-- page: 26 -->
 
@@ -590,7 +590,7 @@ t
 
         脉冲信号。
 
-![image](assets/assets/signals-and-communication-008/image-010.jpeg)
+![image](assets/signals-and-communication-008/image-010.jpeg)
 
 <!-- page: 29 -->
 
@@ -2625,7 +2625,7 @@ T
 
 
 
-![image](assets/assets/signals-and-communication-008/image-011.jpeg)
+![image](assets/signals-and-communication-008/image-011.jpeg)
 
 <!-- page: 41 -->
 
@@ -2635,7 +2635,7 @@ n 二进制纯随机序列基带信号的功率谱(续)
 
 示例(续)：
 
-![image](assets/assets/signals-and-communication-008/image-012.jpeg)
+![image](assets/signals-and-communication-008/image-012.jpeg)
 
 <!-- page: 42 -->
 
@@ -2898,7 +2898,7 @@ A
 
        可得
 
-![image](assets/assets/signals-and-communication-008/image-013.jpeg)
+![image](assets/signals-and-communication-008/image-013.jpeg)
 
 <!-- page: 45 -->
 
@@ -3218,9 +3218,9 @@ n 二进制平稳序列基带信号的功率谱(续)
 
 示例(续): AMI码型基带信号的功率密度谱
 
-![image](assets/assets/signals-and-communication-008/image-014.jpeg)
+![image](assets/signals-and-communication-008/image-014.jpeg)
 
-![image](assets/assets/signals-and-communication-008/image-015.jpeg)
+![image](assets/signals-and-communication-008/image-015.jpeg)
 
 <!-- page: 48 -->
 

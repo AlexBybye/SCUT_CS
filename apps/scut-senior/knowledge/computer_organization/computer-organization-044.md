@@ -118,7 +118,7 @@ A. 1    B. 4       C. 8      D.16
 - 画出单机系统中采用的三种总线结构。
 - 试推导磁盘存贮器读写一块信息所需总时间的公式。
 
-![formula-object](assets/assets/computer-organization-044/image-001.png)图2
+![formula-object](assets/computer-organization-044/image-001.png)图2
 
 **九**假设使用50台多处理机系统获得加速比40，求原计算程序中串行部分所占的比例是多少？
 

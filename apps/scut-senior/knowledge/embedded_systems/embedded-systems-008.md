@@ -20,8 +20,8 @@ locator_type: slide
 
 <!-- slide: 2 -->
 
-![image](assets/assets/embedded-systems-008/image-001.jpg)
-![image](assets/assets/embedded-systems-008/image-002.png)
+![image](assets/embedded-systems-008/image-001.jpg)
+![image](assets/embedded-systems-008/image-002.png)
 
 <!-- slide: 3 -->
 
@@ -129,8 +129,8 @@ locator_type: slide
 <!-- slide: 12 -->
 
 - (3) 结构体则是将具有共通特征的变量组成的集合，通过自定义数据类型，函数指针，仍然能够实现很多类似于类的操作，对于大部分嵌入式项目来说，结构化处理数据对于优化整体架构以及后期维护大有便利。
-![image](assets/assets/embedded-systems-008/image-003.png)
-![image](assets/assets/embedded-systems-008/image-004.png)
+![image](assets/embedded-systems-008/image-003.png)
+![image](assets/embedded-systems-008/image-004.png)
 - 程序运行结果：
 - Sum:5
 - Sum:5
@@ -140,11 +140,11 @@ locator_type: slide
 - 8. 预处理机制
 - C语言提供了丰富的预处理机制；#include包含文件命令；#define宏定义；#if..#elif...#else...#endif，#ifdef..#endif，#ifndef...#endif条件选择判断，条件选择主要用于切换代码块；#undef取消定义的参数，避免重定义问题；#error，#warning用于用户自定义的告警信息，配合#if，#ifdef使用，可以限制错误的预定义配置；#pragma带参数的预定义处理，常见的#pragma pack(1)，使用后会导致后续的整个文件都以设置的字节对齐。
 - 例如在STM32芯片库文件.h常用到预处理，如下：
-![image](assets/assets/embedded-systems-008/image-005.png)
+![image](assets/embedded-systems-008/image-005.png)
 
 <!-- slide: 14 -->
 
-![image](assets/assets/embedded-systems-008/image-006.png)
+![image](assets/embedded-systems-008/image-006.png)
 - ST公司针对STM32提供函数接口，即API(Application Program Interface)，开发者可通过调用这些函数接口来配置STM32的寄存器，使得开发人员可以脱离最底层的寄存器操作，有开发快速、易于阅读和维护成本低等优点。
 - 4.2 微控制器开发库函数
 - 4.2.1 STM32开发库函数介绍
@@ -159,7 +159,7 @@ locator_type: slide
 <!-- slide: 16 -->
 
 - ST公司推出了标准库（STD库)、HAL库和LL库三种不同版本库函数：
-![image](assets/assets/embedded-systems-008/image-007.png)
+![image](assets/embedded-systems-008/image-007.png)
 
 > 备注：根据时间顺序ST公司最早推出的是标准库，因此现在很多延续早期STM32芯片代码版本的方案往往还是采用标准库函数的方式。近年来ST公司逐步淘汰标准库函数，生产出新型号芯片已不支持标准库，转而主要支持HAL库和LL库，这两种库是ST公司同步推出的，并可以配合STM32CubeMX软件，让开发者进行傻瓜式开发，很方便。LL库和HAL库两者相互独立，只不过LL库更底层，部分HAL库会调用LL库（如USB驱动），同样LL库也会调用HAL库。
 
@@ -167,20 +167,20 @@ locator_type: slide
 
 - 4.2.2 STM32标准库（STD）
 - 标准外设库仍然接近于寄存器操作，主要就是将一些基本的寄存器操作封装成了C函数。开发者需要关注所使用的外设是在哪个总线之上，具体寄存器的配置等底层信息。标准外设库的文件基本架构并不复杂。
-![image](assets/assets/embedded-systems-008/image-008.png)
+![image](assets/embedded-systems-008/image-008.png)
 - stm32f10x_ppp程序是在项目中使用的各个外设代码，例如针对GPIO外设有stm32fl0x_gpio.c和stm32f10x_gpio.h
 
 <!-- slide: 18 -->
 
 - 4.2.3 STM32HAL库和LL库
 - ST公司专门为开发了配套的桌面软件STM32CubeMX，开发者可以直接使用该软件进行可视化配置，大大节省开发时间，这其中就包含HAL库和最近新增的LL库。
-![image](assets/assets/embedded-systems-008/image-009.png)
+![image](assets/embedded-systems-008/image-009.png)
 
 <!-- slide: 19 -->
 
 - 1. HAL库
 - HAL库是ST公司目前主力推的开发方式，全称就是Hardware Abstraction Layer（硬件抽象层）。HAL库是ST为STM32最新推出的抽象层嵌入式软件，可以更好地确保跨STM32产品的最大可移植性。该库提供了一整套一致的中间件组件，如RTOS、USB、TCP/IP和图形等。
-![image](assets/assets/embedded-systems-008/image-010.png)
+![image](assets/embedded-systems-008/image-010.png)
 
 > 备注：stm32xxxx.h主要包含STM32同系列芯片的不同具体型号的定义、是否使用HAL库等的定义，接着，其会根据定义的芯片信号包含具体的芯片型号的头文件。
 stm32xxxx_hal.h：主要实现HAL库的初始化、系统滴答定时器相关函数及CPU的调试模式配置。
@@ -197,7 +197,7 @@ I/O操作函数：HAL_PPP_Read(), HAL_PPP_Write(),HAL_PPP_Transmit(), HAL_PPP_Re
 
 - 2. LL库
 - ST在推行HAL库时，逐渐停止了对于标准库的更新（新出的芯片已经不再提供标准库了），但也意识到了HAL库效率较低的问题，因此同时也推出了LL（Low-layer）库，针对一些低性能（M0）或者低功耗(L系列)的芯片编程，相对于HAL库的低效率，寄存器操作的复杂，标准库的逐渐淘汰问题，LL库就成为替代HAL库一个比较好的选择了。
-![image](assets/assets/embedded-systems-008/image-011.png)
+![image](assets/embedded-systems-008/image-011.png)
 
 > 备注：stm32yynnnxx.h和stm32yyxx.h主要包含STM32同系列芯片的不同具体型号的定义，会根据定义的芯片信号包含具体的芯片型号的头文件。stm32yyxx_ll_ppp.c和stm32yyxx_ll_ppp.h程序是在项目中使用的各个外设代码，例如针对GPIO外设有stm32fl0x_gpio.c和stm32f10x_gpio.h。
 LL库更接近硬件层，对需要复杂上层协议栈的外设不适用，直接操作寄存器。其支持所有外设。使用方法：独立使用，该库完全独立实现，可以完全抛开HAL库，只用LL库编程完成；混合使用，和HAL库结合使用。
@@ -211,11 +211,11 @@ LL库更接近硬件层，对需要复杂上层协议栈的外设不适用，直
 
 - 4.3.1 MDK开发环境
 - MDK即RealView MDK（Microcontroller Development Kit），是ARM公司目前最新推出的针对各种嵌入式处理器的软件开发工具。
-![image](assets/assets/embedded-systems-008/image-012.png)
+![image](assets/embedded-systems-008/image-012.png)
 
 <!-- slide: 23 -->
 
-![image](assets/assets/embedded-systems-008/image-013.png)
+![image](assets/embedded-systems-008/image-013.png)
 
 <!-- slide: 24 -->
 
@@ -224,24 +224,24 @@ LL库更接近硬件层，对需要复杂上层协议栈的外设不适用，直
 - （1）直观的选择STM32微控制器；
 - （2）微控制器图形化配置：自动处理引脚冲突，动态设置确定的时钟树，可以动态确定参数设置的外围和中间件模式和初始化和功耗预测；
 - （3）C代码工程生成器覆盖了STM32微控制器初始化编译软件，如IAR、KEIL、GCC。
-![image](assets/assets/embedded-systems-008/image-014.png)
+![image](assets/embedded-systems-008/image-014.png)
 
 <!-- slide: 25 -->
 
 - STM32CubeMX平台包括STM32Cube HAL和LL库。再加上兼容的一套中间件（RTOS、USB、TCP/IP和图形），所有内嵌软件组件附带了例程。
-![image](assets/assets/embedded-systems-008/image-015.png)
+![image](assets/embedded-systems-008/image-015.png)
 
 <!-- slide: 26 -->
 
 - 4.4微控制器虚拟仿真环境
 - Proteus是由Lab Center Electronics公司推出的电子设计自动化（EDA）软件，并且能仿真微控制器及其外围器件。
-![image](assets/assets/embedded-systems-008/image-016.png)
+![image](assets/embedded-systems-008/image-016.png)
 
 <!-- slide: 27 -->
 
 - 4.5微控制器程序调试和下载
 - 有关程序的调试和下载可以通过J-Link、ST-Link、DAPLink和U-Link工具来实现，同时ST公司提供的Bootloader串口下载工具也可以实现程序的下载。
-![image](assets/assets/embedded-systems-008/image-017.png)
+![image](assets/embedded-systems-008/image-017.png)
 
 <!-- slide: 28 -->
 

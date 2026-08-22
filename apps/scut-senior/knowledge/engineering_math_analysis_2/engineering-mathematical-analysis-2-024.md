@@ -66,10 +66,12 @@ A.  $p?0$			B.  $0<p<1$			C.  $0<p?1$		D.  $p>1$
 - **解答题：共4题，每题8分，共32分**
 1. 设二阶常系数线性微分方程![formula-object](assets/engineering-mathematical-analysis-2-024/image-052.png)的一个特解为$y=(1+x)e^x$，试确定常数$\alpha,\beta,$并求该方程的通解.
 1. 已知螺旋形弹簧一圈的方程为：![formula-object](assets/engineering-mathematical-analysis-2-024/image-055.png)其中$a,b$为大于零的常数，且弹簧上各点处的线密度等于该点到![formula-object](assets/engineering-mathematical-analysis-2-024/image-057.png)平面的距离，求此弹簧的质心坐标.
+<!-- question: engineering-mathematical-analysis-2-024-Q1 -->
+
 1. 求上半球面$x^2+y^2+z^2=a^2,z>0$被柱面$x^{2}+y^{2}=ax$截下的部分的面积.
 1. 将函数![formula-object](assets/engineering-mathematical-analysis-2-024/image-060.png)展开为$x$的幂级数.
 
-<!-- question: engineering-mathematical-analysis-2-024-Q1 -->
+<!-- question: engineering-mathematical-analysis-2-024-Q2 -->
 
 四、**证明题：共2题，每题6分，共12分.**
 1. 设函数$f(\xi,\eta)$具有连续的二阶偏导数，且满足$\frac{\partial^2f}{\partial\xi^2}+\frac{\partial^2f}{\partial\eta^2}=0$.

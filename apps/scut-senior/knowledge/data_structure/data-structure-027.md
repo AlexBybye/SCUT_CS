@@ -10,4 +10,4 @@ locator_type: none
 
 # 测试结果3（200000）
 
-![page-001.png](assets/assets/data-structure-027/page-001.png)
+![page-001.png](assets/data-structure-027/page-001.png)

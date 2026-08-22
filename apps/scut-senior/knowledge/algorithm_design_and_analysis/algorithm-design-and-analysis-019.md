@@ -90,7 +90,7 @@ How can brewer maximize profit?
 
 5
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-001.png)
+![image](assets/algorithm-design-and-analysis-019/image-001.png)
 
 <!-- page: 6 -->
 
@@ -98,9 +98,9 @@ Brewery Problem
 
 6
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-002.png)
+![image](assets/algorithm-design-and-analysis-019/image-002.png)
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-003.png)
+![image](assets/algorithm-design-and-analysis-019/image-003.png)
 
 <!-- page: 7 -->
 
@@ -142,7 +142,7 @@ Standard form？
 
 8
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-004.png)
+![image](assets/algorithm-design-and-analysis-019/image-004.png)
 
 <!-- page: 9 -->
 
@@ -242,7 +242,7 @@ Brewery Problem: Feasible Region
 
 12
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-005.png)
+![image](assets/algorithm-design-and-analysis-019/image-005.png)
 
 <!-- page: 13 -->
 
@@ -253,7 +253,7 @@ coefficients, an optimal solution occurs at a vertex.
 
 13
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-006.png)
+![image](assets/algorithm-design-and-analysis-019/image-006.png)
 
 <!-- page: 14 -->
 
@@ -261,7 +261,7 @@ Brewery Problem: Objective Function
 
 14
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-007.png)
+![image](assets/algorithm-design-and-analysis-019/image-007.png)
 
 <!-- page: 15 -->
 
@@ -278,7 +278,7 @@ Observation. LP feasible region is a convex set.
 
 15
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-008.png)
+![image](assets/algorithm-design-and-analysis-019/image-008.png)
 
 <!-- page: 16 -->
 
@@ -289,7 +289,7 @@ independent equations.
 
 16
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-009.png)
+![image](assets/algorithm-design-and-analysis-019/image-009.png)
 
 <!-- page: 17 -->
 
@@ -371,7 +371,7 @@ Basic feasible solutions.
 
 21
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-010.png)
+![image](assets/algorithm-design-and-analysis-019/image-010.png)
 
 <!-- page: 22 -->
 
@@ -385,7 +385,7 @@ Greedy property. BFS optimal iff no adjacent BFS is better.
 
 22
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-011.png)
+![image](assets/algorithm-design-and-analysis-019/image-011.png)
 
 <!-- page: 23 -->
 
@@ -393,7 +393,7 @@ Simplex Algorithm: Initialization
 
 23
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-012.png)
+![image](assets/algorithm-design-and-analysis-019/image-012.png)
 
 <!-- page: 24 -->
 
@@ -401,7 +401,7 @@ Simplex Algorithm: Pivot 1
 
 24
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-013.png)
+![image](assets/algorithm-design-and-analysis-019/image-013.png)
 
 <!-- page: 25 -->
 
@@ -416,7 +416,7 @@ A. Preserves feasibility by ensuring RHS (Right Hand Side) ≥0.
 
 25
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-014.png)
+![image](assets/algorithm-design-and-analysis-019/image-014.png)
 
 <!-- page: 26 -->
 
@@ -424,7 +424,7 @@ Simplex Algorithm: Pivot 2
 
 26
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-015.png)
+![image](assets/algorithm-design-and-analysis-019/image-015.png)
 
 <!-- page: 27 -->
 
@@ -441,7 +441,7 @@ A. Any feasible solution satisfies systems of equations in tableau.
 
 27
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-016.png)
+![image](assets/algorithm-design-and-analysis-019/image-016.png)
 
 <!-- page: 28 -->
 
@@ -492,7 +492,7 @@ Variant Tableau
 
 29
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-017.png)
+![image](assets/algorithm-design-and-analysis-019/image-017.png)
 
 <!-- page: 30 -->
 
@@ -529,7 +529,7 @@ Variant Tableau: An Example
 
 31
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-018.png)
+![image](assets/algorithm-design-and-analysis-019/image-018.png)
 
 <!-- page: 32 -->
 
@@ -554,7 +554,7 @@ Pivot row
 
 32
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-019.png)
+![image](assets/algorithm-design-and-analysis-019/image-019.png)
 
 <!-- page: 33 -->
 
@@ -569,7 +569,7 @@ corresponding entry in the column of constants. The ratio 5/2 is less
 then the ratio 4/1, so row 2 is the pivot row.
 33
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-020.png)
+![image](assets/algorithm-design-and-analysis-019/image-020.png)
 
 <!-- page: 34 -->
 
@@ -584,7 +584,7 @@ corresponding entry in the column of constants. The ratio 3/2 is less
 then the ratio 5/2, so row 1 is the pivot row.
 34
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-021.png)
+![image](assets/algorithm-design-and-analysis-019/image-021.png)
 
 <!-- page: 35 -->
 
@@ -596,7 +596,7 @@ optimal solution has been reached.
 
 35
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-022.png)
+![image](assets/algorithm-design-and-analysis-019/image-022.png)
 
 <!-- page: 36 -->
 
@@ -604,7 +604,7 @@ Matrix Form
 
 36
 
-![image](assets/assets/algorithm-design-and-analysis-019/image-023.png)
+![image](assets/algorithm-design-and-analysis-019/image-023.png)
 
 <!-- page: 37 -->
 

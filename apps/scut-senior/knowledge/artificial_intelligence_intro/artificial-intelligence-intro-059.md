@@ -16,8 +16,8 @@ locator_type: slide
 
 - 课件采用鲍军鹏 博士的课件版本：2.0
 - 2010年1月
-![image](assets/assets/artificial-intelligence-intro-059/image-001.png)
-![image](assets/assets/artificial-intelligence-intro-059/image-002.png)
+![image](assets/artificial-intelligence-intro-059/image-001.png)
+![image](assets/artificial-intelligence-intro-059/image-002.png)
 - 主讲：文贵华
 - crghwen@scut.edu.cn
 
@@ -56,7 +56,7 @@ locator_type: slide
 
 - 神经细胞是构成神经系统的基本单元，称之为生物神经元，或者简称为神经元。神经元主要由三个部分组成：细胞体、轴突、树突。
 - 神经元解剖结构
-![image](assets/assets/artificial-intelligence-intro-059/image-003.png)
+![image](assets/artificial-intelligence-intro-059/image-003.png)
 
 <!-- slide: 6 -->
 
@@ -76,14 +76,14 @@ locator_type: slide
 ## 生物神经元兴奋脉冲
 
 - 神经元的兴奋过程电位变化
-![image](assets/assets/artificial-intelligence-intro-059/image-004.jpg)
+![image](assets/artificial-intelligence-intro-059/image-004.jpg)
 
 <!-- slide: 8 -->
 
 ## 生物神经元突触结构
 
 - 突触结构
-![image](assets/assets/artificial-intelligence-intro-059/image-005.jpg)
+![image](assets/artificial-intelligence-intro-059/image-005.jpg)
 
 <!-- slide: 9 -->
 
@@ -203,7 +203,6 @@ locator_type: slide
 
 ## 物理符号系统和人工神经网络系统的差别
 
-
 | 项目 | 物理符号系统 | 人工神经网络 |
 |---|---|---|
 | 处理方式 | 逻辑运算 | 模拟运算 |
@@ -230,7 +229,7 @@ locator_type: slide
 - ui——代表神经元i的活跃值，即神经元状态；
 - yj——代表神经元j的输出。对于多层网络而言，也是另外一个神经元的一个输入；
 - θi——代表神经元i的阈值。
-![image](assets/assets/artificial-intelligence-intro-059/image-006.png)
+![image](assets/artificial-intelligence-intro-059/image-006.png)
 
 <!-- slide: 22 -->
 
@@ -246,7 +245,7 @@ locator_type: slide
 
 - 为用连续型的函数表达神经元的非线性变换能力，常采用s型函数:
 - MP模型在发表时并没有给出一个学习算法来调整神经元之间的连接权。但是，我们可以根据需要，采用一些常见的算法来调整神经元连接权，以达到学习目的。
-![image](assets/assets/artificial-intelligence-intro-059/image-007.png)
+![image](assets/artificial-intelligence-intro-059/image-007.png)
 
 <!-- slide: 24 -->
 
@@ -268,13 +267,13 @@ locator_type: slide
 
 - 前向网络
 - 神经元分层排列，分别组成输入层、中间层（隐层）和输出层。每一层神经元只接收来自前一层神经元的输出。
-![image](assets/assets/artificial-intelligence-intro-059/image-008.png)
+![image](assets/artificial-intelligence-intro-059/image-008.png)
 
 <!-- slide: 26 -->
 
 ## 从输出层到输入层有反馈的网络
 
-![image](assets/assets/artificial-intelligence-intro-059/image-009.png)
+![image](assets/artificial-intelligence-intro-059/image-009.png)
 
 <!-- slide: 27 -->
 
@@ -362,7 +361,7 @@ locator_type: slide
 - 其结构如下图所示
   - 感知器处理单元对n个输入进行加权和操作y即：
   - 其中，wi为第i个输入到处理单元的连接权值,θ为阈值, f取阶跃函数
-![image](assets/assets/artificial-intelligence-intro-059/image-010.png)
+![image](assets/artificial-intelligence-intro-059/image-010.png)
 
 <!-- slide: 37 -->
 
@@ -376,7 +375,7 @@ locator_type: slide
 - 当取wl＝w2＝1， θ ＝0.5时，上式完成逻辑“或”的运算。
 - (3)“非”运算，
 - 当取wl=-1，w2＝0， θ ＝-1时,完成逻辑“非”的运算。
-![image](assets/assets/artificial-intelligence-intro-059/image-011.png)
+![image](assets/artificial-intelligence-intro-059/image-011.png)
 
 <!-- slide: 38 -->
 
@@ -386,7 +385,7 @@ locator_type: slide
   - 对于一个两输入的简单感知器，每个输入取值为0和1，如上面结出的逻辑运算，所有输入样本有四个，记为(x1，x2)：(0，0)，(0，1)，(1，0)，(1，1)，构成了样本输入空间。
   - 例如，在二维平面上，对于“或”运算，各个样本的分布如下图所示。
   - 直线 1*x1+1*x2-0.5＝0 将二维平面分为两部分，上部为激发区(y=1，用★表示)，下部为抑制区(y＝0，用☆表示)。
-![image](assets/assets/artificial-intelligence-intro-059/image-012.png)
+![image](assets/artificial-intelligence-intro-059/image-012.png)
 
 <!-- slide: 39 -->
 
@@ -434,7 +433,7 @@ locator_type: slide
 ## 用多层感知器解决异或问题
 
 - 对于上面述及的异或问题，用一个简单的二层感知器就可得到解决
-![image](assets/assets/artificial-intelligence-intro-059/image-013.png)
+![image](assets/artificial-intelligence-intro-059/image-013.png)
 
 <!-- slide: 45 -->
 
@@ -495,8 +494,8 @@ locator_type: slide
 
 ## BP算法中的激活函数
 
-![image](assets/assets/artificial-intelligence-intro-059/image-014.png)
-![image](assets/assets/artificial-intelligence-intro-059/image-015.png)
+![image](assets/artificial-intelligence-intro-059/image-014.png)
+![image](assets/artificial-intelligence-intro-059/image-015.png)
 - 可以用其它的函数作为激活函数，只要该函数是处处可导的。
 
 <!-- slide: 51 -->
@@ -521,7 +520,7 @@ locator_type: slide
 - （2）按极小化误差的方式调整权矩阵。
 - （3）累计网络关于整个样本集的误差。
 - 4、如果网络误差足够小，则停止训练。否则重复第2、3步。
-![image](assets/assets/artificial-intelligence-intro-059/image-016.png)
+![image](assets/artificial-intelligence-intro-059/image-016.png)
 
 <!-- slide: 53 -->
 
@@ -577,9 +576,9 @@ locator_type: slide
 ## 最速下降法
 
 - 最速下降法，要求E的极小点
-![image](assets/assets/artificial-intelligence-intro-059/image-017.png)
-![image](assets/assets/artificial-intelligence-intro-059/image-018.png)
-![image](assets/assets/artificial-intelligence-intro-059/image-019.png)
+![image](assets/artificial-intelligence-intro-059/image-017.png)
+![image](assets/artificial-intelligence-intro-059/image-018.png)
+![image](assets/artificial-intelligence-intro-059/image-019.png)
 
 <!-- slide: 58 -->
 

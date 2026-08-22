@@ -26,12 +26,12 @@ locator_type: slide
 - “How are you”
 - “5-5”
 - “Hello”
-![image](assets/assets/artificial-intelligence-intro-016/image-001.jpg)
+![image](assets/artificial-intelligence-intro-016/image-001.jpg)
 - “Hi”
-![image](assets/assets/artificial-intelligence-intro-016/image-002.jpg)
+![image](assets/artificial-intelligence-intro-016/image-002.jpg)
 - (what the user said)
 - (system response)
-![image](assets/assets/artificial-intelligence-intro-016/image-003.jpg)
+![image](assets/artificial-intelligence-intro-016/image-003.jpg)
 - (next move)
 
 <!-- slide: 3 -->
@@ -39,17 +39,17 @@ locator_type: slide
 ## Framework
 
 - A set of function
-![image](assets/assets/artificial-intelligence-intro-016/image-004.png)
+![image](assets/artificial-intelligence-intro-016/image-004.png)
 - “cat”
 - “dog”
-![image](assets/assets/artificial-intelligence-intro-016/image-005.png)
-![image](assets/assets/artificial-intelligence-intro-016/image-006.png)
+![image](assets/artificial-intelligence-intro-016/image-005.png)
+![image](assets/artificial-intelligence-intro-016/image-006.png)
 - “monkey”
 - “snake”
-![image](assets/assets/artificial-intelligence-intro-016/image-007.png)
+![image](assets/artificial-intelligence-intro-016/image-007.png)
 - Model
 - “cat”
-![image](assets/assets/artificial-intelligence-intro-016/image-008.jpg)
+![image](assets/artificial-intelligence-intro-016/image-008.jpg)
 - Image Recognition:
 
 > 备注：Repeat again
@@ -58,10 +58,10 @@ locator_type: slide
 
 ## Framework
 
-![image](assets/assets/artificial-intelligence-intro-016/image-009.png)
+![image](assets/artificial-intelligence-intro-016/image-009.png)
 - A set of function
 - “cat”
-![image](assets/assets/artificial-intelligence-intro-016/image-010.jpg)
+![image](assets/artificial-intelligence-intro-016/image-010.jpg)
 - Image Recognition:
 - Model
 - Training
@@ -69,11 +69,11 @@ locator_type: slide
 - Goodness of function f
 - Better!
 - “monkey”
-![image](assets/assets/artificial-intelligence-intro-016/image-011.png)
-![image](assets/assets/artificial-intelligence-intro-016/image-012.png)
+![image](assets/artificial-intelligence-intro-016/image-011.png)
+![image](assets/artificial-intelligence-intro-016/image-012.png)
 - “cat”
 - “dog”
-![image](assets/assets/artificial-intelligence-intro-016/image-013.png)
+![image](assets/artificial-intelligence-intro-016/image-013.png)
 - function input:
 - function output:
 - Supervised Learning
@@ -86,21 +86,21 @@ locator_type: slide
 
 - A set of function
 - “cat”
-![image](assets/assets/artificial-intelligence-intro-016/image-014.jpg)
+![image](assets/artificial-intelligence-intro-016/image-014.jpg)
 - Image Recognition:
 - Model
 - Training
 - Data
 - Goodness of function f
 - “monkey”
-![image](assets/assets/artificial-intelligence-intro-016/image-015.png)
-![image](assets/assets/artificial-intelligence-intro-016/image-016.png)
+![image](assets/artificial-intelligence-intro-016/image-015.png)
+![image](assets/artificial-intelligence-intro-016/image-016.png)
 - “cat”
 - “dog”
-![image](assets/assets/artificial-intelligence-intro-016/image-017.png)
+![image](assets/artificial-intelligence-intro-016/image-017.png)
 - Pick the “Best” Function
 - Using
-![image](assets/assets/artificial-intelligence-intro-016/image-018.jpg)
+![image](assets/artificial-intelligence-intro-016/image-018.jpg)
 - “cat”
 - Training
 - Testing
@@ -114,5 +114,5 @@ locator_type: slide
 
 ## Machine Learning is so simple ……
 
-![image](assets/assets/artificial-intelligence-intro-016/image-019.jpg)
+![image](assets/artificial-intelligence-intro-016/image-019.jpg)
 - 就好像把大象放進冰箱 ……

@@ -309,7 +309,7 @@ If 𝑇(𝑛) satisfies the following recurrence, then
 
 12
 
-![image](assets/assets/algorithm-design-and-analysis-013/image-001.png)
+![image](assets/algorithm-design-and-analysis-013/image-001.png)
 
 <!-- page: 13 -->
 
@@ -329,7 +329,7 @@ power of 2
 
 13
 
-![image](assets/assets/algorithm-design-and-analysis-013/image-002.png)
+![image](assets/algorithm-design-and-analysis-013/image-002.png)
 
 <!-- page: 14 -->
 
@@ -541,7 +541,7 @@ Geometric Series
 
 23
 
-![image](assets/assets/algorithm-design-and-analysis-013/image-003.png)
+![image](assets/algorithm-design-and-analysis-013/image-003.png)
 
 <!-- page: 24 -->
 

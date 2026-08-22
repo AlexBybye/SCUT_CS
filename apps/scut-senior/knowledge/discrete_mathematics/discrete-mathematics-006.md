@@ -16,10 +16,18 @@ locator_type: page
 
 考生须知
 
+<!-- question: discrete-mathematics-006-Q1 -->
+
 1.本次考试形式采用闭卷方式
+<!-- question: discrete-mathematics-006-Q2 -->
+
 2.请各位同学抓紧时间考试
 
+<!-- question: discrete-mathematics-006-Q3 -->
+
 3.请自觉遵守考场纪律
+<!-- question: discrete-mathematics-006-Q4 -->
+
 4.填空题，只要填写最终的作答结果，不用填写解答过程，多个填空位请在答题区标明答案对应的序号
 
 本试卷共3大题，满分100分，考试时间60分钟。
@@ -617,6 +625,8 @@ D
 22.
 
 在下图中，（    ）是欧拉图。
+
+<!-- question: discrete-mathematics-006-Q5 -->
 
 （1）                  （2）              （3）             （4）
 

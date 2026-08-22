@@ -31,7 +31,7 @@ Q-Learning
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-001.png)
+![image](assets/intelligent-algorithms-007/image-001.png)
 
 <!-- page: 4 -->
 
@@ -39,11 +39,11 @@ Q-Learning
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-002.png)
+![image](assets/intelligent-algorithms-007/image-002.png)
 
-![image](assets/assets/intelligent-algorithms-007/image-003.png)
+![image](assets/intelligent-algorithms-007/image-003.png)
 
-![image](assets/assets/intelligent-algorithms-007/image-004.png)
+![image](assets/intelligent-algorithms-007/image-004.png)
 
 <!-- page: 5 -->
 
@@ -51,7 +51,7 @@ Q-Learning
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-005.png)
+![image](assets/intelligent-algorithms-007/image-005.png)
 
 <!-- page: 6 -->
 
@@ -62,7 +62,7 @@ Q-Learning
 这里注意到：动作集合有多少个动作，网络就需要多少个输出节点，
 隐含了我们的动作是有限个的离散动作。
 
-![image](assets/assets/intelligent-algorithms-007/image-006.png)
+![image](assets/intelligent-algorithms-007/image-006.png)
 
 <!-- page: 7 -->
 
@@ -70,7 +70,7 @@ Q-Learning
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-007.png)
+![image](assets/intelligent-algorithms-007/image-007.png)
 
 <!-- page: 8 -->
 
@@ -78,7 +78,7 @@ Q-Learning
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-008.png)
+![image](assets/intelligent-algorithms-007/image-008.png)
 
 <!-- page: 9 -->
 
@@ -86,7 +86,7 @@ Q-Learning
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-009.png)
+![image](assets/intelligent-algorithms-007/image-009.png)
 
 <!-- page: 10 -->
 
@@ -94,9 +94,9 @@ Q-Learning
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-010.png)
+![image](assets/intelligent-algorithms-007/image-010.png)
 
-![image](assets/assets/intelligent-algorithms-007/image-011.png)
+![image](assets/intelligent-algorithms-007/image-011.png)
 
 <!-- page: 11 -->
 
@@ -104,7 +104,7 @@ Q-Learning
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-012.png)
+![image](assets/intelligent-algorithms-007/image-012.png)
 
 <!-- page: 12 -->
 
@@ -112,7 +112,7 @@ Q-Learning
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-013.jpeg)
+![image](assets/intelligent-algorithms-007/image-013.jpeg)
 
 <!-- page: 13 -->
 
@@ -120,7 +120,7 @@ Q-Learning
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-014.png)
+![image](assets/intelligent-algorithms-007/image-014.png)
 
 <!-- page: 14 -->
 
@@ -128,7 +128,7 @@ Q-Learning
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-015.jpeg)
+![image](assets/intelligent-algorithms-007/image-015.jpeg)
 
 <!-- page: 15 -->
 
@@ -136,7 +136,7 @@ Q-Learning
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-016.jpeg)
+![image](assets/intelligent-algorithms-007/image-016.jpeg)
 
 <!-- page: 16 -->
 
@@ -144,9 +144,9 @@ Q-Learning
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-017.png)
+![image](assets/intelligent-algorithms-007/image-017.png)
 
-![image](assets/assets/intelligent-algorithms-007/image-018.jpeg)
+![image](assets/intelligent-algorithms-007/image-018.jpeg)
 
 <!-- page: 17 -->
 
@@ -206,7 +206,7 @@ Rainbow
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-019.png)
+![image](assets/intelligent-algorithms-007/image-019.png)
 
 <!-- page: 19 -->
 
@@ -214,7 +214,7 @@ Rainbow
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-020.png)
+![image](assets/intelligent-algorithms-007/image-020.png)
 
 <!-- page: 20 -->
 
@@ -222,9 +222,9 @@ Rainbow
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-021.png)
+![image](assets/intelligent-algorithms-007/image-021.png)
 
-![image](assets/assets/intelligent-algorithms-007/image-022.png)
+![image](assets/intelligent-algorithms-007/image-022.png)
 
 <!-- page: 21 -->
 
@@ -232,7 +232,7 @@ Rainbow
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-023.png)
+![image](assets/intelligent-algorithms-007/image-023.png)
 
 <!-- page: 22 -->
 
@@ -244,7 +244,7 @@ Rainbow
 但在实际情况下高估量并不是均匀的（考虑对经验回放数组的采样），
 这会增加网络预测的偏差。
 
-![image](assets/assets/intelligent-algorithms-007/image-024.png)
+![image](assets/intelligent-algorithms-007/image-024.png)
 
 <!-- page: 23 -->
 
@@ -252,7 +252,7 @@ Rainbow
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-025.png)
+![image](assets/intelligent-algorithms-007/image-025.png)
 
 <!-- page: 24 -->
 
@@ -260,7 +260,7 @@ Rainbow
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-026.png)
+![image](assets/intelligent-algorithms-007/image-026.png)
 
 <!-- page: 25 -->
 
@@ -268,7 +268,7 @@ Rainbow
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-027.png)
+![image](assets/intelligent-algorithms-007/image-027.png)
 
 <!-- page: 26 -->
 
@@ -276,7 +276,7 @@ Rainbow
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-028.png)
+![image](assets/intelligent-algorithms-007/image-028.png)
 
 <!-- page: 27 -->
 
@@ -284,9 +284,9 @@ Rainbow
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-029.png)
+![image](assets/intelligent-algorithms-007/image-029.png)
 
-![image](assets/assets/intelligent-algorithms-007/image-030.jpeg)
+![image](assets/intelligent-algorithms-007/image-030.jpeg)
 
 <!-- page: 28 -->
 
@@ -294,9 +294,9 @@ Rainbow
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-031.png)
+![image](assets/intelligent-algorithms-007/image-031.png)
 
-![image](assets/assets/intelligent-algorithms-007/image-032.png)
+![image](assets/intelligent-algorithms-007/image-032.png)
 
 <!-- page: 29 -->
 
@@ -304,7 +304,7 @@ Rainbow
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-033.jpeg)
+![image](assets/intelligent-algorithms-007/image-033.jpeg)
 
 <!-- page: 30 -->
 
@@ -355,9 +355,9 @@ Episode开始时重置噪声，episode
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-034.png)
+![image](assets/intelligent-algorithms-007/image-034.png)
 
-![image](assets/assets/intelligent-algorithms-007/image-035.png)
+![image](assets/intelligent-algorithms-007/image-035.png)
 
 <!-- page: 32 -->
 
@@ -365,9 +365,9 @@ Episode开始时重置噪声，episode
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-036.jpeg)
+![image](assets/intelligent-algorithms-007/image-036.jpeg)
 
-![image](assets/assets/intelligent-algorithms-007/image-037.png)
+![image](assets/intelligent-algorithms-007/image-037.png)
 
 <!-- page: 33 -->
 
@@ -375,6 +375,6 @@ Rainbow
 
 智能算法及应用@华南理工大学2025
 
-![image](assets/assets/intelligent-algorithms-007/image-038.jpeg)
+![image](assets/intelligent-algorithms-007/image-038.jpeg)
 
-![image](assets/assets/intelligent-algorithms-007/image-039.png)
+![image](assets/intelligent-algorithms-007/image-039.png)

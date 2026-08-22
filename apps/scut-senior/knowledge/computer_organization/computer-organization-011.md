@@ -218,11 +218,11 @@ W1=q/t1=512b/(4.5x10^-7)s=1137.8Mb/s
 
 一种二进制RS型32位的指令结构如下：
 
-![image](assets/assets/computer-organization-011/image-001.png)
+![image](assets/computer-organization-011/image-001.png)
 
 其中OP为操作码字段，X为寻址模式字段，D为偏移量字段，其寻址模式定义为有效地址E算法及说明列表如下：
 
-![image](assets/assets/computer-organization-011/image-002.png)
+![image](assets/computer-organization-011/image-002.png)
 
 请写出6种寻址方式的名称。
 
@@ -244,6 +244,6 @@ CPU的数据通路如图1所示。运算器中R0～R3为通用寄存器，DR为�
 
 机器指令“LDA(R3),R0”实现的功能是：以（R3）的内容为数存单元地址，读出数存该单元中数据至通用寄存器R0中。请画出该取数指令周期流程图，并在CPU周期框外写出所需的微操作控制信号。（一个CPU周期有T1～T4四个时钟信号，寄存器打入信号必须注明时钟序号）
 
-![image](assets/assets/computer-organization-011/image-003.png)
+![image](assets/computer-organization-011/image-003.png)
 
-![image](assets/assets/computer-organization-011/image-004.jpeg)
+![image](assets/computer-organization-011/image-004.jpeg)

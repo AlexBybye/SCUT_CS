@@ -41,7 +41,7 @@ Problem. Given a digraph 𝐺= 𝑉, 𝐸, edge lengths 𝑙𝑒≥0,
 source 𝑠∈𝑉, and destination 𝑡∈𝑉, find a shortest directed path
 from 𝑠 to 𝑡.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-001.png)
+![image](assets/algorithm-design-and-analysis-018/image-001.png)
 
 <!-- page: 4 -->
 
@@ -50,7 +50,7 @@ Single-Source Shortest Path Problem
 Problem. Given a digraph 𝐺= 𝑉, 𝐸, edge lengths 𝑙𝑒≥0,
 source 𝑠∈𝑉, find a shortest directed path from 𝑠 to every node.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-002.png)
+![image](assets/algorithm-design-and-analysis-018/image-002.png)
 
 <!-- page: 5 -->
 
@@ -58,7 +58,7 @@ Car Navigation
 
 Single-destination shortest paths problem.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-003.jpeg)
+![image](assets/algorithm-design-and-analysis-018/image-003.jpeg)
 
 <!-- page: 6 -->
 
@@ -78,7 +78,7 @@ The length of a shortest path from 𝒔
 to some node 𝒖 in explored part 𝑺,
 followed by a single edge 𝒆= 𝒖, 𝒗.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-004.png)
+![image](assets/algorithm-design-and-analysis-018/image-004.png)
 
 <!-- page: 7 -->
 
@@ -99,7 +99,7 @@ followed by a single edge 𝒆= 𝒖, 𝒗.
 
 • To recover path, set 𝑝𝑟𝑒𝑑𝑣←𝑒 that achieves min.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-005.png)
+![image](assets/algorithm-design-and-analysis-018/image-005.png)
 
 <!-- page: 8 -->
 
@@ -137,7 +137,7 @@ hypothesis
 Definition of
 𝜋𝑦
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-006.png)
+![image](assets/algorithm-design-and-analysis-018/image-006.png)
 
 <!-- page: 9 -->
 
@@ -155,7 +155,7 @@ from 𝑠to some node u in
 explored part 𝑆, followed by
 a single edge 𝑒= 𝑢, 𝑣.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-007.png)
+![image](assets/algorithm-design-and-analysis-018/image-007.png)
 
 <!-- page: 10 -->
 
@@ -173,7 +173,7 @@ from 𝑠to some node u in
 explored part 𝑆, followed by
 a single edge 𝑒= 𝑢, 𝑣.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-008.png)
+![image](assets/algorithm-design-and-analysis-018/image-008.png)
 
 <!-- page: 11 -->
 
@@ -191,7 +191,7 @@ from 𝑠to some node u in
 explored part 𝑆, followed by
 a single edge 𝑒= 𝑢, 𝑣.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-009.png)
+![image](assets/algorithm-design-and-analysis-018/image-009.png)
 
 <!-- page: 12 -->
 
@@ -209,7 +209,7 @@ from 𝑠to some node u in
 explored part 𝑆, followed by
 a single edge 𝑒= 𝑢, 𝑣.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-010.png)
+![image](assets/algorithm-design-and-analysis-018/image-010.png)
 
 <!-- page: 13 -->
 
@@ -227,7 +227,7 @@ from 𝑠to some node u in
 explored part 𝑆, followed by
 a single edge 𝑒= 𝑢, 𝑣.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-011.png)
+![image](assets/algorithm-design-and-analysis-018/image-011.png)
 
 <!-- page: 14 -->
 
@@ -245,7 +245,7 @@ from 𝑠to some node u in
 explored part 𝑆, followed by
 a single edge 𝑒= 𝑢, 𝑣.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-012.png)
+![image](assets/algorithm-design-and-analysis-018/image-012.png)
 
 <!-- page: 15 -->
 
@@ -263,7 +263,7 @@ from 𝑠to some node u in
 explored part 𝑆, followed by
 a single edge 𝑒= 𝑢, 𝑣.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-013.png)
+![image](assets/algorithm-design-and-analysis-018/image-013.png)
 
 <!-- page: 16 -->
 
@@ -324,7 +324,7 @@ Initialization.
 • For all 𝑣≠𝑠: 𝑝𝑟𝑒𝑑[𝑣] ←𝑛𝑢𝑙𝑙.
 • S ←∅ and 𝜋[𝑠] ←0.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-014.png)
+![image](assets/algorithm-design-and-analysis-018/image-014.png)
 
 <!-- page: 19 -->
 
@@ -337,7 +337,7 @@ Basic step. Choose unexplored node 𝑢≠𝑠with minimum 𝜋[𝑢].
 - 𝜋[𝑣] ←𝜋𝑢+ 𝑙𝑒.
 - 𝑝𝑟𝑒𝑑[𝑣] ←𝑒.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-015.png)
+![image](assets/algorithm-design-and-analysis-018/image-015.png)
 
 <!-- page: 20 -->
 
@@ -350,7 +350,7 @@ Basic step. Choose unexplored node 𝑢≠𝑠with minimum 𝜋[𝑢].
 - 𝜋[𝑣] ←𝜋𝑢+ 𝑙𝑒.
 - 𝑝𝑟𝑒𝑑[𝑣] ←𝑒.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-016.png)
+![image](assets/algorithm-design-and-analysis-018/image-016.png)
 
 <!-- page: 21 -->
 
@@ -361,7 +361,7 @@ nodes.
 Def. A cycle is a path with no repeated nodes or edges other than
 the starting and ending nodes.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-017.png)
+![image](assets/algorithm-design-and-analysis-018/image-017.png)
 
 <!-- page: 22 -->
 
@@ -372,7 +372,7 @@ and 𝑉−𝑆.
 Def. The cutset determined by a cut is the set of edges that have
 one endpoint in each subset of the partition.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-018.png)
+![image](assets/algorithm-design-and-analysis-018/image-018.png)
 
 <!-- page: 23 -->
 
@@ -381,7 +381,7 @@ Cycle-Cut Intersection
 Proposition. A cycle and a cutset intersect in an even number of
 edges.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-019.png)
+![image](assets/algorithm-design-and-analysis-018/image-019.png)
 
 <!-- page: 24 -->
 
@@ -391,7 +391,7 @@ Def. Let 𝐻= (𝑉, 𝑇) be a subgraph of an undirected graph 𝐺=
 (𝑉, 𝐸). 𝐻 is a spanning tree of 𝐺 if 𝐻 is both acyclic and
 connected.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-020.png)
+![image](assets/algorithm-design-and-analysis-018/image-020.png)
 
 <!-- page: 25 -->
 
@@ -412,7 +412,7 @@ Proposition. Let 𝐻= (𝑉, 𝑇) be a subgraph of an undirected graph 𝐺=
 •
 𝐻is maximally acyclic: addition of any edge creates a cycle.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-021.png)
+![image](assets/algorithm-design-and-analysis-018/image-021.png)
 
 <!-- page: 26 -->
 
@@ -422,7 +422,7 @@ Def. Given a connected, undirected graph 𝐺= (𝑉, 𝐸) with edge
 costs 𝑐𝑒, a minimum spanning tree (𝑉, 𝑇) is a spanning tree of 𝐺
 such that the sum of the edge costs in 𝑇 is minimized.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-022.png)
+![image](assets/algorithm-design-and-analysis-018/image-022.png)
 
 <!-- page: 27 -->
 
@@ -435,7 +435,7 @@ Repeat 𝑛−1 times:
 
 Theorem. Prim’s algorithm computes an MST.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-023.png)
+![image](assets/algorithm-design-and-analysis-018/image-023.png)
 
 <!-- page: 28 -->
 
@@ -474,7 +474,7 @@ Add to T a min-weight edge with one endpoint in S.
 •
 Add new node to S.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-024.png)
+![image](assets/algorithm-design-and-analysis-018/image-024.png)
 
 <!-- page: 30 -->
 
@@ -509,7 +509,7 @@ Add to T a min-weight edge with one endpoint in S.
 •
 Add new node to S.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-025.png)
+![image](assets/algorithm-design-and-analysis-018/image-025.png)
 
 <!-- page: 33 -->
 
@@ -522,7 +522,7 @@ Add to T a min-weight edge with one endpoint in S.
 •
 Add new node to S.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-026.png)
+![image](assets/algorithm-design-and-analysis-018/image-026.png)
 
 <!-- page: 34 -->
 
@@ -535,7 +535,7 @@ Add to T a min-weight edge with one endpoint in S.
 •
 Add new node to S.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-027.png)
+![image](assets/algorithm-design-and-analysis-018/image-027.png)
 
 <!-- page: 35 -->
 
@@ -548,7 +548,7 @@ Add to T a min-weight edge with one endpoint in S.
 •
 Add new node to S.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-028.png)
+![image](assets/algorithm-design-and-analysis-018/image-028.png)
 
 <!-- page: 36 -->
 
@@ -561,7 +561,7 @@ Add to T a min-weight edge with one endpoint in S.
 •
 Add new node to S.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-029.png)
+![image](assets/algorithm-design-and-analysis-018/image-029.png)
 
 <!-- page: 37 -->
 
@@ -574,7 +574,7 @@ Add to T a min-weight edge with one endpoint in S.
 •
 Add new node to S.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-030.png)
+![image](assets/algorithm-design-and-analysis-018/image-030.png)
 
 <!-- page: 38 -->
 
@@ -587,7 +587,7 @@ Add to T a min-weight edge with one endpoint in S.
 •
 Add new node to S.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-031.png)
+![image](assets/algorithm-design-and-analysis-018/image-031.png)
 
 <!-- page: 39 -->
 
@@ -600,7 +600,7 @@ Add to T a min-weight edge with one endpoint in S.
 •
 Add new node to S.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-032.png)
+![image](assets/algorithm-design-and-analysis-018/image-032.png)
 
 <!-- page: 40 -->
 
@@ -613,7 +613,7 @@ Add to T a min-weight edge with one endpoint in S.
 •
 Add new node to S.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-033.png)
+![image](assets/algorithm-design-and-analysis-018/image-033.png)
 
 <!-- page: 41 -->
 
@@ -626,7 +626,7 @@ Add to T a min-weight edge with one endpoint in S.
 •
 Add new node to S.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-034.png)
+![image](assets/algorithm-design-and-analysis-018/image-034.png)
 
 <!-- page: 42 -->
 
@@ -639,7 +639,7 @@ Add to T a min-weight edge with one endpoint in S.
 •
 Add new node to S.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-035.png)
+![image](assets/algorithm-design-and-analysis-018/image-035.png)
 
 <!-- page: 43 -->
 
@@ -652,7 +652,7 @@ Add to T a min-weight edge with one endpoint in S.
 •
 Add new node to S.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-036.png)
+![image](assets/algorithm-design-and-analysis-018/image-036.png)
 
 <!-- page: 44 -->
 
@@ -665,7 +665,7 @@ Add to T a min-weight edge with one endpoint in S.
 •
 Add new node to S.
 
-![image](assets/assets/algorithm-design-and-analysis-018/image-037.png)
+![image](assets/algorithm-design-and-analysis-018/image-037.png)
 
 <!-- page: 45 -->
 

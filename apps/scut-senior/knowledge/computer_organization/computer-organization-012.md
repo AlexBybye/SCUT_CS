@@ -158,7 +158,7 @@ A  R-R-S型        B  R-R-R型        C  R-S-S型        D  S-S-S型
 
 1  画图说明现代计算机系统的层次结构。
 
-![image](assets/assets/computer-organization-012/image-001.jpeg)
+![image](assets/computer-organization-012/image-001.jpeg)
 
 2  简述水平型微指令和垂直型微指令的特点。
 
@@ -180,7 +180,7 @@ e =tc/ta = 88.65%
 
 某机器单字长指令为32位，共有40条指令，通用寄存器有128个，主存最大寻址空间为64M。寻址方式有立即寻址、直接寻址、寄存器寻址、寄存器间接寻址、基值寻址、相对寻址六种。请设计指令格式，并做必要说明。
 
-![image](assets/assets/computer-organization-012/image-002.jpeg)
+![image](assets/computer-organization-012/image-002.jpeg)
 
 X=000  立即寻址 ，D字段为操作数
 
@@ -202,7 +202,7 @@ X=110  相对寻址 ，EA=（PC）+D
 
 请画出三种方式的时空图，证明流水计算机比非流水计算机具有更高的吞吐率。
 
-![image](assets/assets/computer-organization-012/image-003.jpeg)
+![image](assets/computer-organization-012/image-003.jpeg)
 
 8个单位时间内，非流水线计算机完成2条指令，标量流水线计算机完成5条，超标量流水线计算机完成10条。可见，流水计算机比非流水计算机具有更高的吞吐率。
 
@@ -212,8 +212,8 @@ CPU的数据通路如图1所示。运算器中R0～R3为通用寄存器，DR为�
 
 机器指令“STO R1,(R2)”实现的功能是：将寄存器R1中的数据写入到以（R2）为地址的数存单元中。请画出该存数指令周期流程图，并在CPU周期框外写出所需的微操作控制信号。（一个CPU周期含T1～T4四个时钟信号，寄存器打入信号必须注明时钟序号）
 
-![image](assets/assets/computer-organization-012/image-004.png)
+![image](assets/computer-organization-012/image-004.png)
 
 指令周期流程图
 
-![image](assets/assets/computer-organization-012/image-005.jpeg)
+![image](assets/computer-organization-012/image-005.jpeg)

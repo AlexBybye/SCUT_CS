@@ -36,7 +36,7 @@ locator_type: none
 
 **18.  5         19.  4**
 
-**20.**  **![formula-object](assets/assets/university-physics-3-2-007/image-002.png)**
+**20.**  **![formula-object](assets/university-physics-3-2-007/image-002.png)**
 
 <!-- question: university-physics-3-2-007-Q3 -->
 
@@ -90,13 +90,13 @@ ${B}_{y}=\int _{0} ^{\pi } \frac {{\mu }_{0}I} {2{\pi }^{2}R}cos\theta d\theta$$
 
 为计算简单，可引入一条辅助线*MN*，构成闭合回路*MeNM*,  闭合回路总电动势
 
-![formula-object](assets/assets/university-physics-3-2-007/image-006.png)
+![formula-object](assets/university-physics-3-2-007/image-006.png)
 
 $\varepsilon_{MeN}=-\varepsilon_{NM}=\varepsilon_{MN}$	    	 2分
 
-![formula-object](assets/assets/university-physics-3-2-007/image-008.png)      2分
+![formula-object](assets/university-physics-3-2-007/image-008.png)      2分
 
-![formula-object](assets/assets/university-physics-3-2-007/image-009.png)$=-\frac {{\mu }_{0}Iv} {2\pi }ln\frac {a+b} {a-b}$      2分
+![formula-object](assets/university-physics-3-2-007/image-009.png)$=-\frac {{\mu }_{0}Iv} {2\pi }ln\frac {a+b} {a-b}$      2分
 
 负号表示${E}_{MN}$的方向与*x*轴相反．
 
@@ -108,13 +108,13 @@ $U_M-U_N=\frac{\mu_0Iv}{2\pi}\ln\frac{a+b}{a-b}$                         2分
 
 解1：令S＇系与S系的相对速度为*v*，有
 
-![formula-object](assets/assets/university-physics-3-2-007/image-012.png)，    2分
+![formula-object](assets/university-physics-3-2-007/image-012.png)，    2分
 
-则          ![formula-object](assets/assets/university-physics-3-2-007/image-013.png)   ( = 2.24×108  m·s-1  )
+则          ![formula-object](assets/university-physics-3-2-007/image-013.png)   ( = 2.24×108  m·s-1  )
 
 那么，在S＇系中测得两事件之间距离为：
 
-                                    ![formula-object](assets/assets/university-physics-3-2-007/image-014.png)      1分
+                                    ![formula-object](assets/university-physics-3-2-007/image-014.png)      1分
 
 = 6.71×108  m                            2分   或$\sqrt{5c}$  $3\sqrt{5}\times10^{8}m$
 

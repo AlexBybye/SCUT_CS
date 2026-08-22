@@ -10,4 +10,4 @@ locator_type: none
 
 # 递归下降方法的错误处理
 
-![page-001.png](assets/assets/compiler-principles-053/page-001.png)
+![page-001.png](assets/compiler-principles-053/page-001.png)

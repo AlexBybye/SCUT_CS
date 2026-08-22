@@ -15,16 +15,16 @@ locator_type: slide
 ## 课件采用鲍军鹏 博士的课件版本：2.0
 2010年1月
 
-![image](assets/assets/artificial-intelligence-intro-049/image-001.png)
-![image](assets/assets/artificial-intelligence-intro-049/image-002.png)
-![image](assets/assets/artificial-intelligence-intro-049/image-003.png)
+![image](assets/artificial-intelligence-intro-049/image-001.png)
+![image](assets/artificial-intelligence-intro-049/image-002.png)
+![image](assets/artificial-intelligence-intro-049/image-003.png)
 - 主讲：文贵华
 - crghwen@scut.edu.cn
 
 <!-- slide: 2 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-004.png)
-![image](assets/assets/artificial-intelligence-intro-049/image-005.jpg)
+![image](assets/artificial-intelligence-intro-049/image-004.png)
+![image](assets/artificial-intelligence-intro-049/image-005.jpg)
 - 作者：鲍军鹏、张选平
 - 书名：人工智能导论
 - 出版社：机械工业出版社
@@ -34,7 +34,7 @@ locator_type: slide
 
 <!-- slide: 3 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-006.png)
+![image](assets/artificial-intelligence-intro-049/image-006.png)
 - 陆汝钤，人工智能，北京：科学出版社，1996
 - 王永庆，人工智能原理与方法，西安：西安交通大学出版社，1998
 - 蔡自兴，人工智能基础，北京：高教出版社， 2005
@@ -45,39 +45,39 @@ locator_type: slide
 
 <!-- slide: 4 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-007.png)
+![image](assets/artificial-intelligence-intro-049/image-007.png)
 - 课堂讨论。
   - 主题：机器的反叛——机器的智能会超越人类吗？
 - 听课情况
 
 <!-- slide: 5 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-008.png)
+![image](assets/artificial-intelligence-intro-049/image-008.png)
 - 笔试。
 
 <!-- slide: 6 -->
 
 - <number>
-![image](assets/assets/artificial-intelligence-intro-049/image-009.png)
+![image](assets/artificial-intelligence-intro-049/image-009.png)
 - 问题1  喜欢什么智力活动? 下象棋、围棋？
 
 <!-- slide: 7 -->
 
 - <number>
-![image](assets/assets/artificial-intelligence-intro-049/image-010.png)
+![image](assets/artificial-intelligence-intro-049/image-010.png)
 - 问题2  你们认为人类的那些活动是智力活动? 智商如何判断？
 
 <!-- slide: 8 -->
 
 - <number>
-![image](assets/assets/artificial-intelligence-intro-049/image-011.png)
+![image](assets/artificial-intelligence-intro-049/image-011.png)
 - 问题3
 - 喜欢电脑游戏吗?
 - 与电脑玩游戏输过没有？
 
 <!-- slide: 9 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-012.png)
+![image](assets/artificial-intelligence-intro-049/image-012.png)
 - 1.1 什么是人工智能
 - 1.2 人工智能发展简史
 - 1.3 人工智能研究方法
@@ -85,7 +85,7 @@ locator_type: slide
 
 <!-- slide: 10 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-013.png)
+![image](assets/artificial-intelligence-intro-049/image-013.png)
 - 什么是智能？
   - 现代汉语词典：
     - 智慧和才能；或者具有人的某些智慧和才能。
@@ -95,28 +95,28 @@ locator_type: slide
 
 <!-- slide: 11 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-014.png)
+![image](assets/artificial-intelligence-intro-049/image-014.png)
 - 来自认知科学（Cognitive Science）。
 - 认为智能的核心是思维。
 - 人的一切智慧或者智能都来自于大脑的思维活动，人类的一切知识都是人们思维的产物。因而通过对思维规律与方法的研究可望揭示智能的本质。
 
 <!-- slide: 12 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-015.png)
+![image](assets/artificial-intelligence-intro-049/image-015.png)
 - 强调知识对于智能的重要意义和作用，认为智能行为取决于知识的数量及其一般化的程度。
 - 智能就是在巨大搜索空间中迅速找到一个满意解的能力。
 - 例如下棋。在人工智能的发展史中有重要影响。发展出了知识工程、专家系统等等。
 
 <!-- slide: 13 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-016.png)
+![image](assets/artificial-intelligence-intro-049/image-016.png)
 - MIT的Brooks教授提出。
 - 人的本质能力是在动态环境中的行走能力，对外界事务的感知能力，维持生命和繁衍生息的能力。因此智能是某种复杂系统所浮现的性质。
 - 该理论的核心是用控制取代表示，从而取消概念、模型及显式表示的知识。否定抽象对于智能及智能模拟的必要性，强调分层结构对于智能进化的可能性与必要性。
 
 <!-- slide: 14 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-017.png)
+![image](assets/artificial-intelligence-intro-049/image-017.png)
 - 麦卡锡（John McCarthy）：
   - 人工智能就是要让机器的行为看起来就象是人所表现出的智能行为一样。
 - 尼尔逊（Nilsson）：
@@ -126,7 +126,7 @@ locator_type: slide
 
 <!-- slide: 15 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-018.png)
+![image](assets/artificial-intelligence-intro-049/image-018.png)
 - 人工智能就是研究如何使一个计算机系统具有像人一样的智能特征，使其能模拟、延伸、扩展人类智能。
 - 通俗地讲，
   - 人工智能就是研究如何使得计算机会听、说、读、写、学习、推理，能够适应环境变化，能够模拟出人脑思维活动。
@@ -134,7 +134,7 @@ locator_type: slide
 
 <!-- slide: 16 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-019.png)
+![image](assets/artificial-intelligence-intro-049/image-019.png)
 - 最终目标
   - 造出一个像人一样具有智能，会思维和行动的计算机系统。
 - 强人工智能
@@ -144,15 +144,15 @@ locator_type: slide
 
 <!-- slide: 17 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-020.png)
+![image](assets/artificial-intelligence-intro-049/image-020.png)
 - 英国数学家Alan M.Turing在1950年发表的“计算机与智能(Computing Machinery and Intelligence)”论文中提出了“图灵测试”。
 - 他被誉为“人工智能之父”。
 - Turing测试第一次给出了检验计算机是否具有智能的哲学说法。
-![image](assets/assets/artificial-intelligence-intro-049/image-021.png)
+![image](assets/artificial-intelligence-intro-049/image-021.png)
 
 <!-- slide: 18 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-022.png)
+![image](assets/artificial-intelligence-intro-049/image-022.png)
 - Q:你的14行诗的首行为“你如同夏日”，你不觉得“春日”更好吗?
 - A:它不合韵。
 - Q: “冬日”如何？它可是完全合韵的。
@@ -164,7 +164,7 @@ locator_type: slide
 
 <!-- slide: 19 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-023.png)
+![image](assets/artificial-intelligence-intro-049/image-023.png)
 - ——JOHN R. SEARLE
 - Mills Prof. Of the Philosophy of Mind and Language at University of California，Berkeley
 - 一个不懂汉语的人A，一个充分详细的汉语问答手册。
@@ -174,12 +174,12 @@ locator_type: slide
 
 <!-- slide: 20 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-024.png)
+![image](assets/artificial-intelligence-intro-049/image-024.png)
 - 北京时间1997年5月12日凌晨4点50分，美国纽约公平大厦，当IBM公司的“深蓝”超级电脑将棋盘上的一个兵走到C4的位置上时，国际象棋世界冠军卡斯帕罗夫(Kasparov)对“深蓝”的人机大战落下帷幕，“深蓝”以3.5：2.5的总比分战胜卡斯帕罗夫。
 
 <!-- slide: 21 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-025.png)
+![image](assets/artificial-intelligence-intro-049/image-025.png)
 - 96年2月第一次比赛结果：
 - “深蓝”：胜、负、平、平、负、负
 - 2：4（负）
@@ -189,7 +189,7 @@ locator_type: slide
 
 <!-- slide: 22 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-026.png)
+![image](assets/artificial-intelligence-intro-049/image-026.png)
 - “深蓝”的技术指标：
   - 32个CPU
   - 每个CPU有16个协处理器
@@ -198,7 +198,7 @@ locator_type: slide
 
 <!-- slide: 23 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-027.png)
+![image](assets/artificial-intelligence-intro-049/image-027.png)
 - “深蓝”有智能吗？
 - 媒体与大众
   - “可以有”
@@ -207,12 +207,12 @@ locator_type: slide
 
 <!-- slide: 24 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-028.png)
+![image](assets/artificial-intelligence-intro-049/image-028.png)
 - 使现有的计算机系统更聪明、更有用，使它不仅能做一般的数值计算及非数值信息处理，而且能运用知识处理问题，能模拟人类的部分智能行为，成为人类的智能化辅助工具。
 
 <!-- slide: 25 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-029.png)
+![image](assets/artificial-intelligence-intro-049/image-029.png)
 - 人工智能的发展到目前为止经历的三个阶段
 - 第一阶段：孕育（1956年之前）
 - 第二阶段：形成（1956～1969）
@@ -220,7 +220,7 @@ locator_type: slide
 
 <!-- slide: 26 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-030.png)
+![image](assets/artificial-intelligence-intro-049/image-030.png)
 - Aristotle (公元前384—322) 在《工具论》的著作中提出形式逻辑。
 - Bacon (1561—1626)在《新工具》中提出归纳法。
 - Leibnitz (1646—1716) 研制了四则计算器，提出了“通用符号”和“推理计算”的概念，使形式逻辑符号化，可以说是“机器思维”研究的萌芽。
@@ -229,7 +229,7 @@ locator_type: slide
 
 <!-- slide: 27 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-031.png)
+![image](assets/artificial-intelligence-intro-049/image-031.png)
 - 1936: 图灵提出了“图灵机”概念——一种理想计算机的数学模型。
 - 1943：美国神经生理学家W.McCulloch and W.Pitts提出了M-P模型，奠定了人工神经网络发展的基础。
 - 1946: ENIAC
@@ -238,7 +238,7 @@ locator_type: slide
 
 <!-- slide: 28 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-032.png)
+![image](assets/artificial-intelligence-intro-049/image-032.png)
 - x1
 - x2
 - xn
@@ -251,14 +251,14 @@ locator_type: slide
 
 <!-- slide: 29 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-033.png)
+![image](assets/artificial-intelligence-intro-049/image-033.png)
 - 在50年代，计算局限在数值处理，例如，计算弹道等。
 - 1950年，Shannon完成了第一个下棋程序。开创了非数值计算的先河。
 - Newell, Simon, MaCarthy and Minsky等均提出以符号为基础的计算。
 
 <!-- slide: 30 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-034.png)
+![image](assets/artificial-intelligence-intro-049/image-034.png)
 - 1956夏: 麦卡锡(McCarthy)等10人正式提出了“人工智能” 这一术语。
 - 1956：赛缪尔(Samuel)研制出了跳棋程序。
 - 1957: Newell, Shaw和Simon提出通用问题求解系统 GPS
@@ -271,7 +271,7 @@ locator_type: slide
 
 <!-- slide: 31 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-035.png)
+![image](assets/artificial-intelligence-intro-049/image-035.png)
 - 1958: Newell和Simon的四个预测
   - 十年内，计算机将成为世界象棋冠军
   - 1997年“深蓝”才第一次击败国际象棋世界冠军
@@ -282,7 +282,7 @@ locator_type: slide
 
 <!-- slide: 32 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-036.png)
+![image](assets/artificial-intelligence-intro-049/image-036.png)
 - 一个笑话（英俄翻译）：
 - The spirit is willing but the flesh is week.
 - （心有余而力不足）
@@ -291,7 +291,7 @@ locator_type: slide
 
 <!-- slide: 33 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-037.png)
+![image](assets/artificial-intelligence-intro-049/image-037.png)
 - 出现这样的错误的原因：
 - Spirit：
   - 1）精神
@@ -301,7 +301,7 @@ locator_type: slide
 
 <!-- slide: 34 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-038.png)
+![image](assets/artificial-intelligence-intro-049/image-038.png)
 - 1966: ALPAC的负面报告造成 美国政府取消对机器翻译的资助
 - 1969: Minsky 和 Papert的感知机报告造成美国政府取消对神经网络研究的资助。
 - 1973: James Lighthill爵士的负面报告使得英国政府取消对AI研究的资助
@@ -310,7 +310,7 @@ locator_type: slide
 
 <!-- slide: 35 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-039.png)
+![image](assets/artificial-intelligence-intro-049/image-039.png)
 - 1969年，Minsky出版Perceptron一书。
 - 一方面，他批评感知机无法解决非线性问题，例如， XOR问题。复杂性信息处理应该以解决非线性问题为主。
 - 另一方面，几何方法应该代替分析方法作为主要数学手段。
@@ -321,7 +321,7 @@ locator_type: slide
 
 <!-- slide: 36 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-040.png)
+![image](assets/artificial-intelligence-intro-049/image-040.png)
 - 1977: SRI启动 PROSPECTOR 工程
   - 帮助地质专家探测和解释矿物
   - 1978年发现钼矿脉(molybdenum vein)
@@ -332,7 +332,7 @@ locator_type: slide
 
 <!-- slide: 37 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-041.png)
+![image](assets/artificial-intelligence-intro-049/image-041.png)
 - 知识工程时代
   - 专家系统
   - 知识工程
@@ -340,7 +340,7 @@ locator_type: slide
 
 <!-- slide: 38 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-042.png)
+![image](assets/artificial-intelligence-intro-049/image-042.png)
 - 1981: 日本政府宣布日本五代机（first-generation computer）计划（即智能计算机）
 - 1982: John Hopfield 掀起神经网络的研究
 - 1986: Thinking Machines Inc 研制联结机器 (Connection Machine)
@@ -349,7 +349,7 @@ locator_type: slide
 
 <!-- slide: 39 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-043.png)
+![image](assets/artificial-intelligence-intro-049/image-043.png)
   - 1982年，J．Hopfield提出了可用作联想存储器的互连网络，这个网络称为Hopfield网络模型。Hopfield网络比较成功求解了货郎担问题
   - 1986年，Rumelhart发现了BP算法，导致感知机之类的研究重新兴起。 BP网（算法），解决了多层网的学习问题
   - 存在问题：
@@ -359,7 +359,7 @@ locator_type: slide
 
 <!-- slide: 40 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-044.png)
+![image](assets/artificial-intelligence-intro-049/image-044.png)
 - 1992: 日本政府宣布五代机计划失败。随后启动RWC计划（Real World Computing Project）
 - 1993: Shoham提出AOP,Agent-Oriented Programming
 - 1995: Vapnik提出SVM
@@ -371,14 +371,14 @@ locator_type: slide
 
 <!-- slide: 41 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-045.png)
+![image](assets/artificial-intelligence-intro-049/image-045.png)
   - 网络给AI带来无限的机会
   - 知识发现与数据挖掘
   - AI走向实用化
 
 <!-- slide: 42 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-046.png)
+![image](assets/artificial-intelligence-intro-049/image-046.png)
 - 1.3.1 人工智能研究的特点
 - 交叉学科
   - 综合性、理论性、实践性、应用性都很强
@@ -389,7 +389,7 @@ locator_type: slide
 
 <!-- slide: 43 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-047.png)
+![image](assets/artificial-intelligence-intro-049/image-047.png)
 - 符号主义（Symbolicism）
   - 基于物理符号系统假设和有限合理性原理的人工智能学派。
 - 联结主义（Connectionism）
@@ -399,7 +399,7 @@ locator_type: slide
 
 <!-- slide: 44 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-048.png)
+![image](assets/artificial-intelligence-intro-049/image-048.png)
 - 物理符号系统假设（ Newell和Simon，1976）
   - 物理符号系统具有必要且足够的方法来实现普通的智能行为。把智能问题都归结为符号系统的计算问题，把一切精神活动都归结为计算。所以人类的认识过程就是一种符号处理过程，思维就是符号的计算。
 - 有限合理性原理（Simon）
@@ -407,7 +407,7 @@ locator_type: slide
 
 <!-- slide: 45 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-049.png)
+![image](assets/artificial-intelligence-intro-049/image-049.png)
 - 一个物理符号系统的符号操作功能主要有：
   - 输入、输出、储存、复制符号；建立符号结构，即确定符号间的关系，在符号系统中形成符号结构；条件性迁移，依赖已经掌握的符号继续完成行为。
   - 任何一个系统，如果能够表现出智能的话，一定能执行上述六种功能；反过来，如果任何系统具有以上六种功能，它就能表现出智能。
@@ -420,7 +420,7 @@ locator_type: slide
 
 <!-- slide: 46 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-050.png)
+![image](assets/artificial-intelligence-intro-049/image-050.png)
 - 人类智能的物质基础是神经系统，其基本单元是神经元。
   - 搞清楚人脑的结构及其信息处理机理和过程，就可望揭示人类智能的奥秘。从而真正实现人类智能在机器上的模拟。
 - 神经网络具有独特优势
@@ -432,7 +432,7 @@ locator_type: slide
 
 <!-- slide: 47 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-051.png)
+![image](assets/artificial-intelligence-intro-049/image-051.png)
 - 1991年麻省理工学院的Brooks提出了无需知识表示的智能和无需推理的智能。
   - 他认为智能只是在与环境交互作用中才表现出来，不应采用集中式的模式，而是需要具有不同的行为模式与环境交互，以此来产生复杂行为。
   - 智能取决于感知和行为，取决于对外界复杂环境的适应，而不是表示和推理。
@@ -448,7 +448,7 @@ locator_type: slide
 
 <!-- slide: 48 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-052.png)
+![image](assets/artificial-intelligence-intro-049/image-052.png)
 - Artificial Intelligence
 - Artificial Intelligence Review
 - Journal of AI Research
@@ -464,7 +464,7 @@ locator_type: slide
 
 <!-- slide: 49 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-053.png)
+![image](assets/artificial-intelligence-intro-049/image-053.png)
 - 问题求解（Problem Solving）与博弈（Game Playing）
   - 通过搜索的方法寻找目标解的一个合适操作序列，并满足问题的各种约束。
 - 专家系统（Expert System）
@@ -476,7 +476,7 @@ locator_type: slide
 
 <!-- slide: 50 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-054.png)
+![image](assets/artificial-intelligence-intro-049/image-054.png)
 - 人工神经网络（Artificial Neural Network）
   - 以联结主义研究人工智能的方法，以对人脑和自然神经网络的生理研究成果为基础，抽象和模拟人脑的某些机理、机制，实现某方面的功能。
 - 模式识别（Pattern Recognition）
@@ -487,7 +487,7 @@ locator_type: slide
 
 <!-- slide: 51 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-055.png)
+![image](assets/artificial-intelligence-intro-049/image-055.png)
 - 自然语言处理（Natural Language Processing）
   - 研究如何使计算机能够理解、生成、检索自然语言（包括语音和文本），从而实现人与计算机之间用自然语言进行有效交流。
 - 智能体（Agent）
@@ -501,6 +501,6 @@ locator_type: slide
 
 <!-- slide: 52 -->
 
-![image](assets/assets/artificial-intelligence-intro-049/image-056.png)
+![image](assets/artificial-intelligence-intro-049/image-056.png)
 - 作业：看电影《我，机器人》，谈谈你对人工智能未来的看法
 - https://www.bilibili.com/video/av88681418/

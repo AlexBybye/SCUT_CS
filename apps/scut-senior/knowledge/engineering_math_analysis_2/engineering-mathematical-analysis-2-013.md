@@ -31,6 +31,8 @@ locator_type: none
 
 - **填空题** **(共5小题,每小题4分,共20分)**
 
+<!-- question: engineering-mathematical-analysis-2-013-Q1 -->
+
 1. 方程$y''+5y'+4=0$的通解为　　　　　　　　　　　　　　　　　.
 
 2.原点到平面$x+\frac {y} {-4}+\frac {z} {3}=1$的距离为                    .
@@ -42,6 +44,8 @@ locator_type: none
 5.设$f(x)$是以$2\pi$为周期的函数，它在$[-\pi ,\pi ]$上的表达式是$f(x)=\left \{ {\begin {matrix} x+1, -\pi \le x<0, \\ {x}^{2}, 0\le x<\pi . \end {matrix}}\right$若它的傅里叶级数的和函数为$S(x)$，则$S(0)=$            .
 - **选择题(共5小题,每小题4分,共20分)**
 
+<!-- question: engineering-mathematical-analysis-2-013-Q2 -->
+
 1.  在${R}^{3}$中，方程${x}^{2}=4y$的图形是(        　 )
 
 A.抛物线；          B.抛物柱面；            C.椭圆抛物面；            D.旋转抛物面
@@ -49,6 +53,8 @@ A.抛物线；          B.抛物柱面；            C.椭圆抛物面；       
 2.  曲面$3{x}^{2}+{y}^{2}+{z}^{2}=12$上点$M(-1, 0, 3)$处的切平面与平面$z=0$的夹角是(       )
 
 A.  $\frac {\pi } {6}$；	      	      B.  $\frac {\pi } {4}$；                C.  $\frac {\pi } {3}$；                    D.  $\frac {\pi } {2}$
+
+<!-- question: engineering-mathematical-analysis-2-013-Q3 -->
 
 3.设$f(x, y)$在点$({x}_{0}, {y}_{0})$处的两个偏导数都存在，则  (       )
 
@@ -63,6 +69,8 @@ A.0		          B.  －１                                    C.2			 	D. $\pi$
 A.（－１，１）；   　B.［－１，１］；　　　　C.（－１，１）；  　D.［－１，１］
 
 **三.** **计算题(本大题分4小题,每小题8分,共32分)**
+
+<!-- question: engineering-mathematical-analysis-2-013-Q4 -->
 
 1.求微分方程$y''+y'+2y=0$的通解.
 
@@ -79,6 +87,8 @@ A.（－１，１）；   　B.［－１，１］；　　　　C.（－１，�
 2.设$F(x,y)={xy}^{2}i+yf(x)j$为保守场，其中$f(x)$具有连续导数，且$f(0)=0$.求曲线积分$I=\int F\cdot d s$.
 
 **五、证明题（本大题分2小题,每小题7分,共14分）**
+
+<!-- question: engineering-mathematical-analysis-2-013-Q5 -->
 
 1.证明：圆柱螺线$x=acost,y=asint,z=bt$的切线与$z$轴的夹角为常数.
 

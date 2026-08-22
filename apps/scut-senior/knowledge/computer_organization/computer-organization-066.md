@@ -75,7 +75,7 @@ W1=1/（mtc）。
 
 **七、**解：PCI总线结构框图如图B20.3所示：
 
-![image](assets/assets/computer-organization-066/image-001.png)
+![image](assets/computer-organization-066/image-001.png)
 
 **图B20.3**
 1. HOST总线：该总线又称CPU总线、系统总线、主存总线等，它不仅连接主存，还可以连接多个CPU
@@ -84,7 +84,7 @@ W1=1/（mtc）。
 
 **八、**解：数据采集接口方案如图B20.4所示。
 
-![image](assets/assets/computer-organization-066/image-002.jpeg)
+![image](assets/computer-organization-066/image-002.jpeg)
 
 **图B20.4**
 

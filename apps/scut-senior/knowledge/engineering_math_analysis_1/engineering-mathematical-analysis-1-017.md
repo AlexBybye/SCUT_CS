@@ -28,8 +28,14 @@ locator_type: page
 
 注意事项：1. 开考前请将密封线内各项信息填写清楚；
 
+<!-- question: engineering-mathematical-analysis-1-017-Q1 -->
+
 2. 所有答案请直接答在试卷上；
+<!-- question: engineering-mathematical-analysis-1-017-Q2 -->
+
 3．考试形式：闭卷
+
+<!-- question: engineering-mathematical-analysis-1-017-Q3 -->
 
 4. 本试卷共5 个
 大题，满分100 分，
@@ -47,7 +53,7 @@ locator_type: page
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-017-Q1 -->
+<!-- question: engineering-mathematical-analysis-1-017-Q4 -->
 
 一、填空题（共5 小题，每小题3 分，共15 分）
 
@@ -84,12 +90,16 @@ x
 x 
 连续，则a 0 ；
 
+<!-- question: engineering-mathematical-analysis-1-017-Q5 -->
+
 １. 设
 
 
 ( 密封线内不答题)
 
 _____________ ________
+
+<!-- question: engineering-mathematical-analysis-1-017-Q6 -->
 
 ２. 设
 
@@ -117,6 +127,8 @@ b
 1
 f 
 ab ；
+
+<!-- question: engineering-mathematical-analysis-1-017-Q7 -->
 
 ３. 设
 2
@@ -229,6 +241,8 @@ x
 
 1.
 
+<!-- question: engineering-mathematical-analysis-1-017-Q8 -->
+
 ５. 反常积分
 2
 ln
@@ -236,9 +250,11 @@ e
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-017-Q2 -->
+<!-- question: engineering-mathematical-analysis-1-017-Q9 -->
 
 二、计算下列各题（共3 小题，每小题8 分，共24 分）
+
+<!-- question: engineering-mathematical-analysis-1-017-Q10 -->
 
 1. 求极限
 
@@ -653,7 +669,7 @@ t
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-017-Q3 -->
+<!-- question: engineering-mathematical-analysis-1-017-Q11 -->
 
 三、解答下列各题（共4 小题，每小题8 分，共32 分）
 
@@ -770,6 +786,8 @@ nx
 nx
 收敛.
 
+<!-- question: engineering-mathematical-analysis-1-017-Q12 -->
+
 (3)设lim
 n
 n
@@ -841,6 +859,8 @@ d y
 
 .
 
+<!-- question: engineering-mathematical-analysis-1-017-Q13 -->
+
 2. 设曲线方程为
 
 ，求
@@ -897,6 +917,8 @@ t
 工科数学分析（一））》试卷第3 页共6 页
 
 <!-- page: 4 -->
+
+<!-- question: engineering-mathematical-analysis-1-017-Q14 -->
 
 3. 求函数
 
@@ -1010,6 +1032,8 @@ e 
 
 令
 
+
+<!-- question: engineering-mathematical-analysis-1-017-Q15 -->
 
 (3)列表
 
@@ -1303,6 +1327,8 @@ dx
 3
 2
 
+<!-- question: engineering-mathematical-analysis-1-017-Q16 -->
+
 (2) 绕y 轴旋转一周而成的立体的体积
 
 
@@ -1388,6 +1414,8 @@ y
 dy
 
 
+<!-- question: engineering-mathematical-analysis-1-017-Q17 -->
+
 （2）另解：
 
 1
@@ -1401,7 +1429,7 @@ dy
 
 ……8 分
 
-<!-- question: engineering-mathematical-analysis-1-017-Q4 -->
+<!-- question: engineering-mathematical-analysis-1-017-Q18 -->
 
 四、证明题（共2 小题，每小题10 分，共20 分）
 
@@ -1588,6 +1616,8 @@ e
 
 ……4 分
 
+<!-- question: engineering-mathematical-analysis-1-017-Q19 -->
+
 （2）因为
 0
 x 
@@ -1627,6 +1657,8 @@ f
 
 
 。……8 分
+
+<!-- question: engineering-mathematical-analysis-1-017-Q20 -->
 
 （3）同理，由于
 
@@ -1998,7 +2030,7 @@ x
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-017-Q5 -->
+<!-- question: engineering-mathematical-analysis-1-017-Q21 -->
 
 五、应用题（本题9 分）
 
@@ -2053,6 +2085,8 @@ b
 d
 
 （唯一）……8 分
+
+<!-- question: engineering-mathematical-analysis-1-017-Q22 -->
 
 （2）令
 

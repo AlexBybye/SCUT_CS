@@ -218,7 +218,7 @@ def run(limit: int | None = None, workers: int = 4) -> None:
                 pass
     todo = []
     for h, paths in uniq.items():
-        p = paths[0]
+        p = paths[0] if isinstance(paths, list) else paths
         if p not in done:
             todo.append(Path(p))
     if limit:

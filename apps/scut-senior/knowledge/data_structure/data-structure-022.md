@@ -10,7 +10,7 @@ locator_type: none
 
 # 2025-A（辅修班卷子）
 
-![image](assets/assets/data-structure-022/image-001.png)**诚信应考，考试作弊将带来严重后果！**
+![image](assets/data-structure-022/image-001.png)**诚信应考，考试作弊将带来严重后果！**
 
 **华南理工大学本科生期末考试**
 
@@ -113,7 +113,7 @@ else return m2+1;
 }
 
 }
-1. ![image](assets/assets/data-structure-022/image-002.png)如果输入subroot指向如图2-1所示的二叉树根结点的指针，该函数的返回值是？
+1. ![image](assets/data-structure-022/image-002.png)如果输入subroot指向如图2-1所示的二叉树根结点的指针，该函数的返回值是？
 1. 如果subroot所指向的二叉树有n个结点，则其平均复杂度为？
 1. 该函数的功能是？
 1. 一颗二叉树如图2-2所示，请回答以下问题（10分）
@@ -136,14 +136,14 @@ else return m2+1;
 1. 请写出用希尔排序对序列{38, 23, 13, 26, 19, 42,7,8,21}进行排序的每一趟的结果，假设初始步长为4，后续每一趟的步长为前一趟的二分之一。
 1. 已知有三棵树构成的森林如图所示，请将其转换为左儿子右兄弟的二叉树，并画出该二叉树。
 
-![image](assets/assets/data-structure-022/image-003.png)
+![image](assets/data-structure-022/image-003.png)
 1. 已知无向图G如图2-3所示：
 
 （1）求从顶点1出发的广度优先搜索序列；
 
 （2）根据Kruskal算法求图G的最小生成树，要求表示出其每一步生成过程。
 
-![image](assets/assets/data-structure-022/image-004.png)
+![image](assets/data-structure-022/image-004.png)
 
 三、算法设计与实现（20分）
 

@@ -169,6 +169,8 @@ $$
 (Ⅰ)求$Y$的概率密度$f_Y(y)$;(Ⅱ)$Cov(X,Y)$；(Ⅲ)　　$F\left(-\frac{1}{2},4\right)$.
 
 解（I） 设$Y$的分布函数为$F_Y(y)$，即![formula-object](assets/probability-theory-033/image-172.png)，则
+<!-- question: probability-theory-033-Q1 -->
+
 1. 当$y<0$时，$F_y(y)=0$；
 1. 当![formula-object](assets/probability-theory-033/image-175.png)时，  $F_{Y}(y)=P(X^{2}<y)=P(-\sqrt{y}<X<\sqrt{y})$
 
@@ -176,6 +178,8 @@ $$
 1. 当![formula-object](assets/probability-theory-033/image-178.png)时，$F_{Y}(y)=P(X^{2}<y)=P(-\sqrt{y}<X<\sqrt{y})$
 
 $=\int_{-1/2}^{0}\frac{1}{2}\mathrm{d}x+\int_{0}^{\sqrt{y}}\frac{1}{4}\mathrm{d}x=\frac{1}{4}\sqrt{y}+\frac{1}{2}$.
+<!-- question: probability-theory-033-Q2 -->
+
 1. 当$y4$，$F_{Y}(y)=1$.  所以
 
 ![formula-object](assets/probability-theory-033/image-183.png).
@@ -215,6 +219,8 @@ $\Phi\left(\frac{\sqrt{n}}{5}\right)$=0.975  n=96.04            至少调查97�
 **解**    (1)                   $EX=\int_{0}^{\theta}xdx=\frac{\theta}{2}$
 
 令$\frac{\theta}{2}=\bar{X}$,得$\theta$的矩估计量为$\hat{\theta}_1=2\bar{X}$.
+
+<!-- question: probability-theory-033-Q3 -->
 
 (2)似然函数为
 
@@ -258,7 +264,11 @@ $$
 
 已知各包重量服从正态分布N（$\mu,\sigma^2$）
 
+<!-- question: probability-theory-033-Q4 -->
+
 （1）是否可以认为每包平均重量为100斤（取$\alpha=0.05$）？
+
+<!-- question: probability-theory-033-Q5 -->
 
 （2）求参数$\sigma^2$的90%置信区间。
 

@@ -26,8 +26,14 @@ locator_type: page
 2022-2023 学年第二学期
 
 注意事项：1. 开考前请将密封线内各项信息填写清楚；
+<!-- question: engineering-mathematical-analysis-2-040-Q1 -->
+
           2. 所有答案请直接答在试卷上；
+<!-- question: engineering-mathematical-analysis-2-040-Q2 -->
+
           3．考试形式：闭卷；
+
+<!-- question: engineering-mathematical-analysis-2-040-Q3 -->
 
           4. 本试卷共6 大题，满分100 分，考试时间120 分钟。
 
@@ -48,9 +54,11 @@ locator_type: page
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-040-Q1 -->
+<!-- question: engineering-mathematical-analysis-2-040-Q4 -->
 
 一、填空题：共5 题，每题2 分，共10 分.
+
+<!-- question: engineering-mathematical-analysis-2-040-Q5 -->
 
 1. 微分方程y'' 2y'
 6y
@@ -59,6 +67,8 @@ locator_type: page
 +
 =
 的通解为                          ;
+
+<!-- question: engineering-mathematical-analysis-2-040-Q6 -->
 
 2. 设函数
 2
@@ -76,6 +86,8 @@ u
 =
 
                    ;
+
+<!-- question: engineering-mathematical-analysis-2-040-Q7 -->
 
 3. 设为
 2
@@ -105,11 +117,15 @@ cos
 =
 对应的点处的切线方程为                      ;
 
+<!-- question: engineering-mathematical-analysis-2-040-Q8 -->
+
 4. 参数曲线y
 sin t,
 z
 
 2t,
+
+<!-- question: engineering-mathematical-analysis-2-040-Q9 -->
 
 5. 设周期为2的函数
 1,
@@ -150,9 +166,11 @@ f
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-040-Q2 -->
+<!-- question: engineering-mathematical-analysis-2-040-Q10 -->
 
 二、选择题：共5 题，每题2 分，共10 分.
+
+<!-- question: engineering-mathematical-analysis-2-040-Q11 -->
 
 1. 关于未知函数y 的微分方程
 2
@@ -190,6 +208,8 @@ y
 
 f
 f
+
+<!-- question: engineering-mathematical-analysis-2-040-Q12 -->
 
 2. 若二元函数
 (x, y)
@@ -236,6 +256,8 @@ D.
 (0,0)
 df
 不存在.
+
+<!-- question: engineering-mathematical-analysis-2-040-Q13 -->
 
 3. 设函数
 (x, y)
@@ -334,6 +356,8 @@ f
 若
 则
 .
+
+<!-- question: engineering-mathematical-analysis-2-040-Q14 -->
 
 4. 函数ln(1
 x)
@@ -448,6 +472,8 @@ n
 
 ( 1
 
+<!-- question: engineering-mathematical-analysis-2-040-Q15 -->
+
 5. 使得级数
 
 p
@@ -483,9 +509,11 @@ D. p
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-040-Q3 -->
+<!-- question: engineering-mathematical-analysis-2-040-Q16 -->
 
 三、计算题：共3 题，每题10 分，共30 分.
+
+<!-- question: engineering-mathematical-analysis-2-040-Q17 -->
 
 1. 设
 1
@@ -559,6 +587,8 @@ dy.
 
 
 
+<!-- question: engineering-mathematical-analysis-2-040-Q18 -->
+
 2. 计算累次积分
 
 2
@@ -566,6 +596,8 @@ dy.
 《工科数学分析（二）》试卷第 3 页 共 8 页
 
 <!-- page: 4 -->
+
+<!-- question: engineering-mathematical-analysis-2-040-Q19 -->
 
 3. 计算锥面
 2
@@ -592,7 +624,7 @@ x
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-040-Q4 -->
+<!-- question: engineering-mathematical-analysis-2-040-Q20 -->
 
 四、综合题: 共3 题, 每题10 分, 共30 分.
 
@@ -618,6 +650,8 @@ c
 
 的上侧，且
 都是正实数。
+
+<!-- question: engineering-mathematical-analysis-2-040-Q21 -->
 
 1. 设是
 
@@ -658,6 +692,8 @@ xdy
 
 ，其中曲线是从点A(-1,0)到点B(1,0)的一条不经过
 
+<!-- question: engineering-mathematical-analysis-2-040-Q22 -->
+
 2. 计算曲线积分
 2
 2
@@ -689,6 +725,8 @@ f
 
 +
 
+<!-- question: engineering-mathematical-analysis-2-040-Q23 -->
+
 3. 求幂级数
 2n 1
 
@@ -705,7 +743,7 @@ n 0
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-040-Q5 -->
+<!-- question: engineering-mathematical-analysis-2-040-Q24 -->
 
 五、证明题: 共1 题,每题10 分，共10 分.
 
@@ -739,7 +777,7 @@ n 1
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-040-Q6 -->
+<!-- question: engineering-mathematical-analysis-2-040-Q25 -->
 
 六、应用题: 共1 题, 每题10 分, 共10 分.
 

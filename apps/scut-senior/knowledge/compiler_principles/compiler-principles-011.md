@@ -31,21 +31,35 @@ locator_type: none
 
 - **填空**  **（20分，每空1分）**
 
+<!-- question: compiler-principles-011-Q1 -->
+
 1．      最右          推导称为规范推导，由  规范推导    产生的句型称为规范句型。
 
 2．文法按产生式的形式分为四种类型，它们是：0型文法，又称短语文法；1型文法，又称上下文有关文法；2型文法，又称上下文无关文法； 3型文法，又称正规文法。
 
+<!-- question: compiler-principles-011-Q2 -->
+
 3．对于一个文法G而言，如果L(G)中存在某个句子对应两棵不同的语法树，，那么该文法就称为是二义的。
+
+<!-- question: compiler-principles-011-Q3 -->
 
 4．设G是一个文法，S是它的开始符号，如果 S=*>α，则称α是一个句型。仅由终结符号组成的句型是一个句子。
 
 5．语法分析最常用的两类方法是自底向上的语法分析_和_自顶向下的语法分析  分析法。确定的自顶而下的语法分析方法通常分为  递归子程序法和   预测分析法
 
+<!-- question: compiler-principles-011-Q4 -->
+
 6．编译中常用的中间代码形式有逆波兰式、三元式、树代码和    四元式    等。
+
+<!-- question: compiler-principles-011-Q5 -->
 
 7．在自底向上分析法中，LR分析法把“可归约串”定义为   句柄。
 
+<!-- question: compiler-principles-011-Q6 -->
+
 8．对中间代码优化按涉及的范围分为局部优化，循环优化和全局优化。
+
+<!-- question: compiler-principles-011-Q7 -->
 
 9．局部优化主要包括合并已知量、利用公共子表达式和删除无用赋值等内容。
 
@@ -71,6 +85,8 @@ locator_type: none
 
 **S→SdT | T T→T<G | G G→(S) | a**
 
+<!-- question: compiler-principles-011-Q8 -->
+
 1．证明句型 **(SdG)<a**是规范句型
 
 证：因为句型  **(SdG)<a** 可由文法开始符S经过规范推导产生，推导过程如下：
@@ -78,6 +94,8 @@ locator_type: none
 S =R>T  =R> T<G  =R>  T<a  =R> G<a  =R> (S)<a=R>(SdT)<a  =R>(SdG)<a
 
 所以句型**(SdG)<a**是规范句型。
+
+<!-- question: compiler-principles-011-Q9 -->
 
 2．试给出句型**(SdG)<a**的语法树及该句型的句柄。
 
@@ -90,16 +108,28 @@ S =R>T  =R> T<G  =R>  T<a  =R> G<a  =R> (S)<a=R>(SdT)<a  =R>(SdG)<a
 **G[A]** **：**
 
 **A→aABe|a  B→Bb|d**
+<!-- question: compiler-principles-011-Q10 -->
+
 1. 试给出与G[A]等价的LL（1）文法G'[A]
+<!-- question: compiler-principles-011-Q11 -->
+
 1. 构造G'[A]的预测分析表给出输入串aade#的分析过程。
 
 改造后的文法：
 
+<!-- question: compiler-principles-011-Q12 -->
+
 (1)  A->aA’
+
+<!-- question: compiler-principles-011-Q13 -->
 
 (2)  A’->ABe  |**ε**
 
+<!-- question: compiler-principles-011-Q14 -->
+
 (3) **B->dB’**
+
+<!-- question: compiler-principles-011-Q15 -->
 
 (4) **B’** **->bB’**  |**ε**
 

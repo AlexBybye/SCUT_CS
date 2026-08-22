@@ -31,7 +31,11 @@ locator_type: none
 
 - **填空**    （20分，每题2分）
 
+<!-- question: compiler-principles-017-Q1 -->
+
 1．设G是一个文法，S是它的开始符号，如果 S   >  α，则称α是一个句型。仅由终结符号组成  的句型是一个句子。
+
+<!-- question: compiler-principles-017-Q2 -->
 
 2.  在编译器的设计中，通常采用 EBNF   作为描述程序设计语言语法的工具，从语法上描述程序设计语言。
 
@@ -39,19 +43,31 @@ locator_type: none
 
 4．在编译器设计中，在生成源代码之前，通常在内部采用一种不依赖目标机的结构的代码表示原代码，这种代码被称为      中间代码    。
 
+<!-- question: compiler-principles-017-Q3 -->
+
 5.  表达式a*b+(c+d/(e+f))的逆波兰式（后缀式）为 ab*cdef+/++ 。
 
+<!-- question: compiler-principles-017-Q4 -->
+
 6．对中间代码优化按涉及的范围分为局部优化，过程间优化    和全局优化。
+
+<!-- question: compiler-principles-017-Q5 -->
 
 7．  S={a, b}上的正规式a|b的正规集是   {a,b}      。
 
 (应该是正则表达式所表示的串的集合吧)
 
+<!-- question: compiler-principles-017-Q6 -->
+
 8．为了将非LL(1)变换为与之等价的LL(1)文法，通常采用消除左递归和
 
 提取左公共因子对文法进行等价变换。
 
+<!-- question: compiler-principles-017-Q7 -->
+
 9．局部优化主要包括合并已知量、利用公共子表达式和 删除无用赋值等内容。
+
+<!-- question: compiler-principles-017-Q8 -->
 
 10．运行编译程序的计算机称为  宿主机  ，运行编译程序所产生的目标代码的计算机称为  目标机  。
 
@@ -71,6 +87,8 @@ number  **→** **4|5**
 
 其中number是终结符表示数字，其它字符均为非终结符
 
+<!-- question: compiler-principles-017-Q9 -->
+
 1．试给出句型(4, (5))的短语， 直接(简单)短语,句柄。(5分)
 
 短语：
@@ -82,6 +100,8 @@ number  **→** **4|5**
 S->list->(Seq)->(Seq,S)->(Seq,list)->(Seq,(Seq))->(Seq,(S))->(Seq,(number))
 
 ->(Seq,(5))->(S,(5))->(number,(5))->(4,(5))
+<!-- question: compiler-principles-017-Q10 -->
+
 1. 请通过消除左递归将该文法变换为等价的LL(1)文法G1。(10分)
 
 S**→**number | List
@@ -95,6 +115,8 @@ number  **→** **4|5**
 **Seq->SSeq’**
 
 **Seq’->,SSeq’|空**
+
+<!-- question: compiler-principles-017-Q11 -->
 
 3．针对变换后的文法G1，构造其相应的LL(1)分析表。(10分)
 
@@ -126,6 +148,8 @@ FOLLOW(Seq)={)}
 
 FOLLOW(Seq’)={)}
 
+<!-- question: compiler-principles-017-Q12 -->
+
 4．针对变换后的文法G1，构造其相应的LL(1)分析表。(10分)
 
 **（另）三、设有文法G[S]** **为：**（25分）
@@ -138,9 +162,13 @@ FOLLOW(Seq’)={)}
 
 其中**a,** **b**是终结符，其它字符均为非终结符。
 
+<!-- question: compiler-principles-017-Q13 -->
+
 1．给出句型 (**b**,  **a**) 的最左推导。(5分)
 
 S->(SEQ)->(SEQ,LETTER)->(LETTER,LETTER)->(b,a)
+
+<!-- question: compiler-principles-017-Q14 -->
 
 2．试给出句型(**b**,  **a**)的短语， 直接(简单)短语,句柄。(5分)
 
@@ -149,6 +177,8 @@ S->(SEQ)->(SEQ,LETTER)->(LETTER,LETTER)->(b,a)
 直接短语：
 
 句柄：b
+<!-- question: compiler-principles-017-Q15 -->
+
 1. 请通过消除左递归将该文法变换为等价的LL(1)文法G1。(5分)
 
 *S -> (SEQ)*
@@ -164,6 +194,8 @@ S->(SEQ)->(SEQ,LETTER)->(LETTER,LETTER)->(b,a)
 **SEQ’->,SEQ|空**
 
 **LETTER->a|b**
+
+<!-- question: compiler-principles-017-Q16 -->
 
 4．针对变换后的文法G1，构造其相应的LL(1)分析表。(10分)
 
@@ -183,9 +215,15 @@ FOLLOW(SEQ)=FOLLOW(SEQ’)={)，,}
 
 **其中“(”、** **“)”、** **“*****a*****”和“,”** **是终结符。（25分）**
 
+<!-- question: compiler-principles-017-Q17 -->
+
 1．构建该文法的  LR(0)有穷确定自动机。[10分]
 
+<!-- question: compiler-principles-017-Q18 -->
+
 2．构建该文法的SLR(1)分析表.[  15分]
+
+<!-- question: compiler-principles-017-Q19 -->
 
 3．请给出对输入串(a, a)#的分析过程[  10分]
 
@@ -259,10 +297,14 @@ HALT
 
 **六、NFA如下图所示**（10分）
 
-![formula-object](assets/assets/compiler-principles-017/image-001.png)
+![formula-object](assets/compiler-principles-017/image-001.png)
+<!-- question: compiler-principles-017-Q20 -->
+
 1. 请给出与该NFA等价的正则表达式(3分)
 
 (a*ba*b*)*ba*
+
+<!-- question: compiler-principles-017-Q21 -->
 
 2.  请将该NFA确定化为DFA（7分）
 

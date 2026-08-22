@@ -108,11 +108,11 @@ CLR－暂存器SB清零信号。
 
 ~ ——  一段微程序结束，转入取机器指令的控制信号。
 
-![formula-object](assets/assets/computer-organization-064/image-001.png)（2）ADD、SUB两条指令的微程序流程图见图B2.3所示。
+![formula-object](assets/computer-organization-064/image-001.png)（2）ADD、SUB两条指令的微程序流程图见图B2.3所示。
 
 七．三种系统总线结构如图B2.4所示，从上到下为单总线，双总线，三总线：
 
-![formula-object](assets/assets/computer-organization-064/image-002.png)
+![formula-object](assets/computer-organization-064/image-002.png)
 
 **图B2.4**
 

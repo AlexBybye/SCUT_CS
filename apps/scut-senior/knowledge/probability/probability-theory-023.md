@@ -16,6 +16,8 @@ locator_type: page
 
 一、选择题（共12 题，每题3 分，共36 分）
 
+<!-- question: probability-theory-023-Q2 -->
+
 1. 将C,C,E,E,I,N,S 等7 个字母随机的排成一行，那么恰好排成英文单词SCIENCE 的概率为( ).
 
 
@@ -59,6 +61,8 @@ n
 1
 
 n
+
+<!-- question: probability-theory-023-Q3 -->
 
 2. 设
 1
@@ -237,6 +241,8 @@ n
 
 n
 
+<!-- question: probability-theory-023-Q4 -->
+
 3. 设随机变量X 概率分布为P{X=k} = C
 k!
 (k = 0,1,2,…), 则EX
@@ -287,6 +293,8 @@ k=0
 
 EX
 
+<!-- question: probability-theory-023-Q5 -->
+
 4. 设随机变量X ∼t(n),
 Y ∼F(1,n), 给定a(0<a<0.5), 常数c 满足P{X > c} = a, 则
 
@@ -310,6 +318,8 @@ P{Y>c
 2 ∼F(1,n). 由题设条件与t 分布的对称性可得
 
 解. 因为X ∼t(n), 所以X
+
+<!-- question: probability-theory-023-Q6 -->
 
 5. 设
 1
@@ -436,6 +446,8 @@ E Y
 
 1 0
 
+<!-- question: probability-theory-023-Q7 -->
+
 6. 设随机变量X 的分布函数
 
 F(x) = {
@@ -468,6 +480,8 @@ x≥1
 选(B)
 
 由已知条件可得
+
+<!-- question: probability-theory-023-Q8 -->
 
 7. 设A,B 为两随机事件，且B
 A
@@ -525,6 +539,8 @@ A
 
 
 选(A)
+
+<!-- question: probability-theory-023-Q9 -->
 
 8. 假设随机变量X 的分布函数为F(x)，密度函数为f(x)。若X 与-X 有相同的分布函数，则下列各
 
@@ -699,6 +715,8 @@ n
 
 
 \$
+
+<!-- question: probability-theory-023-Q10 -->
 
 10. 设
 1
@@ -937,6 +955,8 @@ n
 
 <!-- page: 4 -->
 
+<!-- question: probability-theory-023-Q11 -->
+
 11. 设随机变量X 和Y 都服从标准正态分布，则(
 ).
 
@@ -978,6 +998,8 @@ Y
 服从F 分布
 
 选(A)
+
+<!-- question: probability-theory-023-Q12 -->
 
 12. 设随机变量X 服从正态分布
 
@@ -1039,7 +1061,7 @@ u
 
 选(C)
 
-<!-- question: probability-theory-023-Q2 -->
+<!-- question: probability-theory-023-Q13 -->
 
 二、（10 分）
 
@@ -1087,6 +1109,8 @@ P B A
 
 
 
+<!-- question: probability-theory-023-Q14 -->
+
 （1）由全概率公式有
 
 1
@@ -1123,6 +1147,8 @@ P B A
 
 
 
+<!-- question: probability-theory-023-Q15 -->
+
 （2）由贝叶斯公式有
 
 
@@ -1158,7 +1184,7 @@ P B
 0.022
 22
 
-<!-- question: probability-theory-023-Q3 -->
+<!-- question: probability-theory-023-Q16 -->
 
 三、(10 分)
 
@@ -1257,7 +1283,7 @@ k=1
 
 =1-Φ(2)=1-0.9773=0.0227
 
-<!-- question: probability-theory-023-Q4 -->
+<!-- question: probability-theory-023-Q17 -->
 
 四、(10 分)
 
@@ -1278,6 +1304,8 @@ S
 N 
 。
 
+<!-- question: probability-theory-023-Q18 -->
+
 (1) 是否可以认为每包平均重量为100 斤（取显著性水平
 05
 .
@@ -1288,6 +1316,8 @@ N 
 
 2
 的90%置信区间。（注：(2)小题结果就用分位数表示）
+
+<!-- question: probability-theory-023-Q19 -->
 
 (2) 求参数
 
@@ -1486,7 +1516,7 @@ n
 2
 2
 
-<!-- question: probability-theory-023-Q5 -->
+<!-- question: probability-theory-023-Q20 -->
 
 五、（10 分）
 
@@ -1664,6 +1694,8 @@ E Y
 
 
 
+<!-- question: probability-theory-023-Q21 -->
+
 (2) F(
 
 1
@@ -1679,7 +1711,7 @@ E Y
 2} = 1
 4
 
-<!-- question: probability-theory-023-Q6 -->
+<!-- question: probability-theory-023-Q22 -->
 
 六、(12 分)
 
@@ -1695,11 +1727,15 @@ E Y
 2
 ;
 
+<!-- question: probability-theory-023-Q23 -->
+
 (1) 设z1,z2,⋯zn 为来自总体Z 的简单随机样本，求σ
 
 6
 
 <!-- page: 7 -->
+
+<!-- question: probability-theory-023-Q24 -->
 
 (2) 证明ˆσ
 
@@ -1777,6 +1813,8 @@ i ,
 
 i=1z
 
+<!-- question: probability-theory-023-Q25 -->
+
 (2) E(ˆσ
 
 2
@@ -1830,7 +1868,7 @@ i=13σ
 
 2 的无偏估计量。
 
-<!-- question: probability-theory-023-Q7 -->
+<!-- question: probability-theory-023-Q26 -->
 
 七、(12 分)
 
@@ -1838,10 +1876,16 @@ i=13σ
 
 取出的红球个数，Y 为取出的白球个数.
 
+<!-- question: probability-theory-023-Q27 -->
+
 (1) 求随机变量(X,Y) 的概率分布;
+<!-- question: probability-theory-023-Q28 -->
+
 (2) 求协方差Cov[X,Y]和相关系数r[X,Y].
 
 解.
+<!-- question: probability-theory-023-Q29 -->
+
 (1) 由题意可知: 二维离散型随机变量(X,Y) 的可能取值为
 
 (0,0),(0,1),(0,2),(1,0),(1,1)

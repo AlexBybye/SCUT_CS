@@ -33,6 +33,8 @@ locator_type: none
 评阅教师请在试卷袋上评阅栏签名
 
 **一、填空题**（每小题3分，共15分）**.**
+<!-- question: engineering-mathematical-analysis-2-031-Q1 -->
+
 1. 微分方程$y''-y=2xe^x$的特解形式为$y^*=$$x(ax+b)e^x$   ；
 1. 设函数$u(x,y,z)=e^{x^2+y^2+z^2}$,  则$div(gradu)=$$6+4(x^{2}+y^{2}+z^{2})e^{x^{2}+y^{2}+z^{2}}$ ；
 1. 设$L$是任意一条光滑的闭曲线，取逆时针方向，则![formula-object](assets/engineering-mathematical-analysis-2-031/image-009.png)$0$；
@@ -61,6 +63,8 @@ locator_type: none
 $8\pi=\frac{5}{5}$                  ……8分
 
 3.    求密度均匀的曲面![formula-object](assets/engineering-mathematical-analysis-2-031/image-034.png)的质心坐标.
+
+<!-- question: engineering-mathematical-analysis-2-031-Q2 -->
 
 4.  求微分方程$y'cotx=ylny$的通解.
 

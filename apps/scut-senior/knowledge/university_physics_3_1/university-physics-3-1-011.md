@@ -37,6 +37,8 @@ locator_type: page
 
 <!-- page: 3 -->
 
+<!-- question: university-physics-3-1-011-Q1 -->
+
 1．计算题可(yi)能(ding)覆盖范围
 a. 刚体力学；b. 机械振动与机械波；c. 光
 栅衍射；d. 热力学第一定律
@@ -48,13 +50,21 @@ a. 刚体力学；b. 机械振动与机械波；c. 光
 
 注意：
 
+<!-- question: university-physics-3-1-011-Q2 -->
+
 1. 解题格式(适当的文字说明，步骤尽可能详细，
 可参考试题答案格式)
 
+<!-- question: university-physics-3-1-011-Q3 -->
+
 2. 写出根据的物理定律，列出基本的物理定律
+<!-- question: university-physics-3-1-011-Q4 -->
+
 3. 注意题目物理量的单位
 
 <!-- page: 4 -->
+
+<!-- question: university-physics-3-1-011-Q5 -->
 
 2．大学物理(上)重要知识点(选择&填空)
 
@@ -439,6 +449,8 @@ V
 
 循环净功的计算：1. 各过程做功之和
 
+<!-- question: university-physics-3-1-011-Q6 -->
+
 2. 循环闭合曲线的面积
 
 17
@@ -475,6 +487,8 @@ d
 / d t
 a
 =
+<!-- question: university-physics-3-1-011-Q7 -->
+
 （1）v
 d r / dt
 v
@@ -490,6 +504,8 @@ d
 / dt
 a
 =
+<!-- question: university-physics-3-1-011-Q8 -->
+
 （4）v
 
 19

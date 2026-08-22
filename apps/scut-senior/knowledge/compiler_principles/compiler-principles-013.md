@@ -31,6 +31,8 @@ locator_type: none
 
 - **填空**  **（20分，每空1分）**
 
+<!-- question: compiler-principles-013-Q1 -->
+
 1．           推导称为规范推导，由                 产生的句型称为规范句型。
 
 2．文法按产生式的形式分为四种类型，它们是：0型文法，又称短语文法；1型文法，又称上下文有关文法；2型文法，又称               文法； 3型文法，又称正规文法。
@@ -43,11 +45,19 @@ locator_type: none
 
 两大类。
 
+<!-- question: compiler-principles-013-Q2 -->
+
 6．编译中常用的中间代码形式有逆波兰式、       、树代码和         等。
+
+<!-- question: compiler-principles-013-Q3 -->
 
 7．在自底向上分析法中，LR分析法把“可归约串”定义为              。
 
+<!-- question: compiler-principles-013-Q4 -->
+
 8．对中间代码优化按涉及的范围分为局部优化，           和            。
+
+<!-- question: compiler-principles-013-Q5 -->
 
 9．局部优化主要包括合并已知量、            和             等内容。
 
@@ -59,8 +69,14 @@ locator_type: none
 
 **S→SdT | T T→T<G | G G→(S) | a**
 
+<!-- question: compiler-principles-013-Q6 -->
+
 1．证明句型 **(SdG)<a**是规范句型
+<!-- question: compiler-principles-013-Q7 -->
+
 1. 试给出句型**(SdG)<a**的语法树。
+<!-- question: compiler-principles-013-Q8 -->
+
 1. 试给出句型**(SdG)<a**的句柄。
 
 **四、设有描述简单说明语句的文法G[D]为：（15分）**
@@ -72,7 +88,11 @@ D→TV  T→**int**|**float**
 V→**id** , V  | **id**
 
 **（注：文法中int, float表示终结符；id表示经过词法分析后某一合法标识符,如题中将自动匹配x或y）**
+<!-- question: compiler-principles-013-Q9 -->
+
 1. 试给出与G[D]等价的LL（1）文法G'[D]。
+<!-- question: compiler-principles-013-Q10 -->
+
 1. 构造G'[D]的预测分析表给出输入串int x,y#的分析过程。
 
 **预测分析表**
@@ -105,6 +125,8 @@ V→**id** , V  | **id**
 **（0）** **S′→S**    **（1）** **S→AB**      **（2）** **A** **→aBa**
 
 **（3）** **A** **→ε**     **（4）** **B→bAb**     **（5）** **B** **→ε**
+<!-- question: compiler-principles-013-Q11 -->
+
 1. **为这个文法构造LR(0)项目的DFA。（6分）**
 
 **（2）按照下面的SLR分析表给出对输入串baab#的分析过程：（9分）**

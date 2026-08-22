@@ -78,6 +78,8 @@ $=\iint_{D_{xy}}(x^{2}+y^{2})\sqrt{1+4x^{2}+4y^{2}}dxdy$  ……5分
 
 $\frac{149\pi}{30}$                           ……9分
 
+<!-- question: engineering-mathematical-analysis-2-033-Q1 -->
+
 4.  求微分方程$x(2+y)dx+y(1-x)dy=0$的通解.
 
 解：原方程化为：    $\frac{ydy}{2+y}=\frac{xdx}{x-1}$      ……4分
@@ -125,6 +127,8 @@ $=\frac{1}{\varepsilon^{3}}\iiint_{\Omega_{\varepsilon}}3dxdydz=4\pi$         �
 解：（1）记$a_n=\frac{3n+1}{n!}$，因为$\lim_{n\to\infty}\frac{a_{n+1}}{a_n}=\lim_{n\to\infty}\frac{3(n+1)+1}{(n+1)!}\cdot\frac{n!}{3n+1}=0$     ……2分
 
 所以，原幂级数的收敛半径为$R=+\infty$，收敛域为$(-\infty,+\infty)$。    ……4分
+
+<!-- question: engineering-mathematical-analysis-2-033-Q2 -->
 
 （2）利用$e^x=\sum_{n=0}^\infty\frac{x^n}{n!}$，
 

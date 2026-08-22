@@ -49,6 +49,8 @@ locator_type: none
 - The  worst  case for my algorithm is  n  becoming larger and larger  because that is the  slowest.
 - A cluster is the smallest unit of allocation for a file, so all files occupy a multiple of the  cluster  size.
 
+<!-- question: data-structure-012-Q1 -->
+
 (5)  Which of the following is a true statement:  (      )
 
 (A)  A general tree can be  transferred  to a binary tree with the root having both left child and right child.
@@ -133,7 +135,11 @@ else A[curr] =  ____⑥___;
 4.  Show the max-heap that results from running buildHeap with values stored in an array:
 
 10    4   7    13   9    16    8    20   11   25 .   (8  scores)
+<!-- question: data-structure-012-Q2 -->
+
 1. Inserting the values into the heap one by one.
+<!-- question: data-structure-012-Q3 -->
+
 1. Values are available at the same time.
 
 5.  Build the Huffman coding tree and determine the codes for the following set of letters and weights:
@@ -144,18 +150,18 @@ else A[curr] =  ____⑥___;
 
 Draw the Huffman coding tree and give the Huffman code for each letters. What is the expected length in bits of a message containing n characters for this frequency distribution?  (The process of your solution is required!!!)   (10  scores)
 
-6. Given a hash table of size 11, assume that![formula-object](assets/assets/data-structure-012/image-001.png)and ![formula-object](assets/assets/data-structure-012/image-002.png)are  two hash functions, where  $H_1$ is  used to get home position and  $H_2$ is  used to  resolve  collision for method double hashing.  Please insert keys 20,  31,  43,  26, 30, 13, 12,  67, 1  into the hash table in order.              (10  scores)
+6. Given a hash table of size 11, assume that![formula-object](assets/data-structure-012/image-001.png)and ![formula-object](assets/data-structure-012/image-002.png)are  two hash functions, where  $H_1$ is  used to get home position and  $H_2$ is  used to  resolve  collision for method double hashing.  Please insert keys 20,  31,  43,  26, 30, 13, 12,  67, 1  into the hash table in order.              (10  scores)
 
 7. Please insert  8，55，17 into  the  following  2-3 tree. Inserting a key, draw a picture for the resulted 2-3 tree.  Thus  you should draw 3 pictures.  (10 scores)
 
-![formula-object](assets/assets/data-structure-012/image-005.png)
+![formula-object](assets/data-structure-012/image-005.png)
 
 8.  List the order in which the edges of the  following  graph are visited when running Prim's minimum-cost spanning tree algorithm starting at vertex a. Show the final MST. (5  scores).
 
-![image](assets/assets/data-structure-012/image-006.jpeg)
+![image](assets/data-structure-012/image-006.jpeg)
 
 9.  Assume a disk drive is configured as follows. The total storage is approximately 1.5G divided among 15 surfaces. Each surface has 512 tracks; there are 256 sectors/track, 1024 byte/sector, and 32 sectors/cluster. The disk turns at  5400rmp (11.1 ms/r). The track-to-track seek time is 20 ms, and the average seek time is  50 ms. Now how  long  does it take to read all of the data in a 640 KB file on the disk? Assume that the file’s clusters are spread randomly across the disk. A seek must be performed each time the I/O reader moves to a new track. Show your calculations. (The process of your solution is required!!!)    (10  scores)
 
 10.  Write a program to visit all of the nodes of a Binary Tree in breadth-first search (BFS) order. E.g. the follow Tree, the traversal result is ABCDEFG.  (8  scores)
 
-![formula-object](assets/assets/data-structure-012/image-007.png)
+![formula-object](assets/data-structure-012/image-007.png)

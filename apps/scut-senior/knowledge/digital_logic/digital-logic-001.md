@@ -12,9 +12,9 @@ locator_type: none
 
 1.
 
-![image](assets/assets/digital-logic-001/image-001.png)
+![image](assets/digital-logic-001/image-001.png)
 
-![image](assets/assets/digital-logic-001/image-002.png)
+![image](assets/digital-logic-001/image-002.png)
 
 2.函数f(A,B,C,D)=AB+AB否 可以简化为f(A,B)=A,因为无论B的值如何,只要A为1,函
 
@@ -67,7 +67,7 @@ D7 = 1 （当S0S1S2 = 111时，输出为1）
 
 4.
 
-![formula-object](assets/assets/digital-logic-001/image-003.png)
+![formula-object](assets/digital-logic-001/image-003.png)
 
 5. 设计一个奇偶校验器
 

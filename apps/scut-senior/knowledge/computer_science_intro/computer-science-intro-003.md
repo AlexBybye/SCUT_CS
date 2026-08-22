@@ -26,7 +26,11 @@ Foundations of Computer Science Exam Paper A (2021-2022-1)
 
 Notice:     1. Make sure that you have filled the form on the left side of seal line.
 
+<!-- question: computer-science-intro-003-Q1 -->
+
 2. Write your answers on the answer sheet.
+<!-- question: computer-science-intro-003-Q2 -->
+
 3. This is a close-book exam.
 4. The exam with full score of 100 points lasts 120 minutes.
 
@@ -37,6 +41,8 @@ III
 IV
 Sum
 Score
+
+<!-- question: computer-science-intro-003-Q3 -->
 
 1. Fill in the blanks （5 blanks×2’）
 
@@ -50,6 +56,8 @@ provide the instructions that a computer carries out.
 
 number, or zero.
 
+<!-- question: computer-science-intro-003-Q4 -->
+
 (3) A TrueColor RGB representation of one pixel takes up
 
 _______________ bytes.
@@ -61,6 +69,8 @@ input combinations.
 (5) The _______________ is a set of wires through which data travels
 
 between the main components of a computer.
+
+<!-- question: computer-science-intro-003-Q5 -->
 
 2. Single selection questions（20×2’）
 
@@ -78,6 +88,8 @@ Foundations of Computer Science Exam Paper A Page 1 of 5
 C)  exposing distance
 D)  hiding details
 
+<!-- question: computer-science-intro-003-Q6 -->
+
 (2) What is a single binary digit called?
 
 A)  byte
@@ -85,12 +97,16 @@ B)  nibble
 C)  bit
 D)  word
 
+<!-- question: computer-science-intro-003-Q7 -->
+
 (3) How many digits are there in the octal number system?
 
 A)  10
 B)  2
 C)  7
 D)  8
+
+<!-- question: computer-science-intro-003-Q8 -->
 
 (4) How many things can be represented using four bits?
 
@@ -116,6 +132,8 @@ B)  character set encoding
 
 C)  keyword encoding
 D)  Huffman encoding
+
+<!-- question: computer-science-intro-003-Q9 -->
 
 (7) A transistor is made up of what kind of material?
 
@@ -184,10 +202,14 @@ of the code by covering it with a theoretical “black box.”
  A) True
 B) False
 
+<!-- question: computer-science-intro-003-Q10 -->
+
 (15) RAM is non-volatile and ROM is volatile.
 
 A) True
 B) False
+
+<!-- question: computer-science-intro-003-Q11 -->
 
 (16) A touch screen is both an input and output device.
 
@@ -205,6 +227,8 @@ space.
 A) True
 B) False
 
+<!-- question: computer-science-intro-003-Q12 -->
+
 (18) An AND gate and an OR gate produce opposite output.
 
 A) True
@@ -220,7 +244,11 @@ B) False
 A) True
 B) False
 
+<!-- question: computer-science-intro-003-Q13 -->
+
 3. Calculations  ( 5×6’ )
+
+<!-- question: computer-science-intro-003-Q14 -->
 
 (1) Convert the binary number 11011011 to the target base .
 
@@ -266,11 +294,17 @@ C
 
 What is the compression ratio?
 
+<!-- question: computer-science-intro-003-Q15 -->
+
 4.  Essay questions (4×5’)
 
 (1) Why do computers have difficulty with analog information?
 
+<!-- question: computer-science-intro-003-Q16 -->
+
 (2) Name the components of a von Neumann machine.
+
+<!-- question: computer-science-intro-003-Q17 -->
 
 (3) How can gates be combined into circuits?
 

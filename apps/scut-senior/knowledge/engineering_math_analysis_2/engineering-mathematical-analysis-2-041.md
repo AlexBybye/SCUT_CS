@@ -26,8 +26,14 @@ locator_type: page
 2022-2023 学年第二学期
 
 注意事项：1. 开考前请将密封线内各项信息填写清楚；
+<!-- question: engineering-mathematical-analysis-2-041-Q1 -->
+
           2. 所有答案请直接答在试卷上；
+<!-- question: engineering-mathematical-analysis-2-041-Q2 -->
+
           3．考试形式：闭卷；
+
+<!-- question: engineering-mathematical-analysis-2-041-Q3 -->
 
           4. 本试卷共6 大题，满分100 分，考试时间120 分钟。
 
@@ -48,9 +54,11 @@ locator_type: page
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-041-Q1 -->
+<!-- question: engineering-mathematical-analysis-2-041-Q4 -->
 
 一、填空题：共5 题，每题2 分，共10 分.
+
+<!-- question: engineering-mathematical-analysis-2-041-Q5 -->
 
 1. 微分方程y'' 3y' 2y
 0
@@ -58,6 +66,8 @@ locator_type: page
 +
 =
 的通解为                          ;
+
+<!-- question: engineering-mathematical-analysis-2-041-Q6 -->
 
 2. 函数
 2
@@ -69,6 +79,8 @@ z
 在点(2, 1, 1)
 −−
 处方向导数的最大值为                   ;
+
+<!-- question: engineering-mathematical-analysis-2-041-Q7 -->
 
 3. 设是圆周
 2
@@ -99,8 +111,12 @@ y)
 
 2n
 3
+<!-- question: engineering-mathematical-analysis-2-041-Q8 -->
+
 ( 1) (2n
 1)!
+
+<!-- question: engineering-mathematical-analysis-2-041-Q9 -->
 
 4. 级数
 n
@@ -138,6 +154,8 @@ f
 
 = −
 
+<!-- question: engineering-mathematical-analysis-2-041-Q10 -->
+
 5. 设周期为2的函数
 
 
@@ -150,9 +168,11 @@ f
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-041-Q2 -->
+<!-- question: engineering-mathematical-analysis-2-041-Q11 -->
 
 二、选择题：共5 题，每题2 分，共10 分.
+
+<!-- question: engineering-mathematical-analysis-2-041-Q12 -->
 
 1. 下列微分方程中, 属于二阶线性常微分方程的是(     )
 
@@ -190,6 +210,8 @@ D. y'' 2ln y
 +
 =
 .
+
+<!-- question: engineering-mathematical-analysis-2-041-Q13 -->
 
 2. 已知函数f(x) 具有二阶连续导函数，且
 '
@@ -242,6 +264,8 @@ f(0)
 
 .
 
+<!-- question: engineering-mathematical-analysis-2-041-Q14 -->
+
 3. 函数
 (x, y)
 1
@@ -270,6 +294,8 @@ D. 1
 2
 +
 .
+
+<!-- question: engineering-mathematical-analysis-2-041-Q15 -->
 
 4. 设是以(1,1),( 1,1),( 1, 1),( 1,1)
 −
@@ -309,6 +335,8 @@ a
 
 (     )
 
+<!-- question: engineering-mathematical-analysis-2-041-Q16 -->
+
 5. 设a 为常数，则级数
 2
 n 1
@@ -327,9 +355,11 @@ C. 条件收敛;
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-041-Q3 -->
+<!-- question: engineering-mathematical-analysis-2-041-Q17 -->
 
 三、计算题：共3 题，每题10 分，共30 分.
+
+<!-- question: engineering-mathematical-analysis-2-041-Q18 -->
 
 1. 设
 2
@@ -405,6 +435,8 @@ d
 
 
 
+<!-- question: engineering-mathematical-analysis-2-041-Q19 -->
+
 2. 计算累次积分
 1
 x
@@ -429,6 +461,8 @@ x
 =
 所围成的闭区域.
 
+<!-- question: engineering-mathematical-analysis-2-041-Q20 -->
+
 3. 计算二重积分
 2
 2
@@ -442,11 +476,13 @@ D
 
 <!-- page: 5 -->
 
-<!-- question: engineering-mathematical-analysis-2-041-Q4 -->
+<!-- question: engineering-mathematical-analysis-2-041-Q21 -->
 
 四、综合题：共3 题，每题10 分，共30 分.
 
 得分
+
+<!-- question: engineering-mathematical-analysis-2-041-Q22 -->
 
 1. 设是曲面
 2
@@ -501,6 +537,8 @@ d
 
 , 其中L 是曲线
 
+<!-- question: engineering-mathematical-analysis-2-041-Q23 -->
+
 2. 计算曲线积分
 yz x
 3zx y
@@ -515,6 +553,8 @@ z 轴负向看去为逆时针方向.
 《工科数学分析（二）》试卷第 5 页 共 8 页
 
 <!-- page: 6 -->
+
+<!-- question: engineering-mathematical-analysis-2-041-Q24 -->
 
 3. 将函数
 2
@@ -537,7 +577,7 @@ f
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-041-Q5 -->
+<!-- question: engineering-mathematical-analysis-2-041-Q25 -->
 
 五、证明题：共1 题，每题10 分，共10 分.
 
@@ -567,7 +607,7 @@ n 1
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-041-Q6 -->
+<!-- question: engineering-mathematical-analysis-2-041-Q26 -->
 
 六、解答题：共1 题，每题10 分，共10 分.
 

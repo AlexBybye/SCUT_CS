@@ -31,6 +31,8 @@ locator_type: none
 
 - **填空**    （20分，每空1分）
 
+<!-- question: compiler-principles-009-Q1 -->
+
 1．           推导称为规范推导，由                 产生的句型称为规范句型。
 
 2．文法按产生式的形式分为四种类型，它们是：0型文法，又称短语文法；1型文法，又称上下文有关文法；2型文法，又称               文法； 3型文法，又称              文法。
@@ -39,19 +41,29 @@ locator_type: none
 
 4．设G是一个文法，S是它的开始符号，如果 S        α，则称α是一个句型。                   的句型是一个句子。
 
+<!-- question: compiler-principles-009-Q2 -->
+
 5．对于文法G3：E→E+T ∣T，T→T*F  ∣F，F→（E）∣i，FIRSTVT(E)=
 
 ，LASTVT(E)=                     。
+
+<!-- question: compiler-principles-009-Q3 -->
 
 6．编译中常用的中间代码形式有逆波兰式、三元式、树代码和         等。
 
 7．在自底向上分析法中，LR分析法把“可归约串”定义为              ，算符优先分析法把“可归约串”定义为                    。
 
+<!-- question: compiler-principles-009-Q4 -->
+
 8．对中间代码优化按涉及的范围分为局部优化，           和           。
 
 语法分析有两种方法：         和
 
+<!-- question: compiler-principles-009-Q5 -->
+
 9．局部优化主要包括合并已知量、            和             等内容。
+
+<!-- question: compiler-principles-009-Q6 -->
 
 10．确定的自顶而下的语法分析方法通常分为               和
 
@@ -63,7 +75,11 @@ locator_type: none
 
 **S→SdT | T T→T<G | G G→(S) | a**
 
+<!-- question: compiler-principles-009-Q7 -->
+
 1．证明句型 **(SdG)<a**是规范句型
+
+<!-- question: compiler-principles-009-Q8 -->
 
 2．试给出句型**(SdG)<a**的短语， 直接(简单)短语,句柄和最左素短语。
 

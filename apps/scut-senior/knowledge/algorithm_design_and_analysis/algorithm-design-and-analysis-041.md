@@ -12,4 +12,4 @@ locator_type: page
 
 <!-- page: 1 -->
 
-![page-001.jpg](assets/assets/algorithm-design-and-analysis-041/page-001.jpg)
+![page-001.jpg](assets/algorithm-design-and-analysis-041/page-001.jpg)

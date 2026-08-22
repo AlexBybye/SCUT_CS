@@ -84,13 +84,13 @@ D. O(N2)
 
 8. 下列函数中哪个是ReLU激活函数（     ）
 
-A.  ![image](assets/assets/artificial-intelligence-intro-046/image-001.png)		B.  ![image](assets/assets/artificial-intelligence-intro-046/image-002.png)
+A.  ![image](assets/artificial-intelligence-intro-046/image-001.png)		B.  ![image](assets/artificial-intelligence-intro-046/image-002.png)
 
-C.  ![image](assets/assets/artificial-intelligence-intro-046/image-003.png)	D.  ![image](assets/assets/artificial-intelligence-intro-046/image-004.png)
+C.  ![image](assets/artificial-intelligence-intro-046/image-003.png)	D.  ![image](assets/artificial-intelligence-intro-046/image-004.png)
 
 9. 下图所示的加法操作，A处的输入为3，B处的输入为4，C处的输出为7，如果C处的梯度为2，则A处和B处的梯度分别是（      ）
 
-![image](assets/assets/artificial-intelligence-intro-046/image-005.png)
+![image](assets/artificial-intelligence-intro-046/image-005.png)
 
 A.  1, 1
 
@@ -102,7 +102,7 @@ D.  4, 3
 
 10. 下图所示7*7的输入，如果卷积核为3*3，步幅为1，则卷积操作的输出为（      ）
 
-![image](assets/assets/artificial-intelligence-intro-046/image-006.png)
+![image](assets/artificial-intelligence-intro-046/image-006.png)
 
 A. 1*1
 
@@ -188,7 +188,7 @@ D. 两者均是学习输入变量和输出变量之间潜在关系模型
 
 20、在构建一个决策树模型时，我们对某个属性分割节点，下面四张图中，哪个属性对应的信息增益最大？（    ）
 
-**![image](assets/assets/artificial-intelligence-intro-046/image-007.png)**
+**![image](assets/artificial-intelligence-intro-046/image-007.png)**
 
 A、outlook    B、humidity    C、windy    D、temperature
 
@@ -356,7 +356,7 @@ A. 冗余属性不会对决策树的准确率造成不利的影响 B. 子树可�
 
 45. 机器学习效果的评价指标中，指标（ ）是正确定义的
 
-![image](assets/assets/artificial-intelligence-intro-046/image-008.png)
+![image](assets/artificial-intelligence-intro-046/image-008.png)
 
 图中a：判定属于类且判定正确；b：判定属于类且判定错误； c：判定不属于类且判定正确； d：
 
@@ -375,7 +375,7 @@ $$
 R_{1}=\begin{bmatrix}0.8&0.2&0.5\\0.2&0.4&0.9\\1&0&0.7\end{bmatrix}R_{2}=\begin{bmatrix}0.1&0.9\\0.7&0.8\\0&1\end{bmatrix}
 $$
 
-A. $\begin{bmatrix}0.2&0.8\\0.4&0.9\\0.1&0.9\end{bmatrix}$![image](assets/assets/artificial-intelligence-intro-046/image-011.png) B.  $\left[\begin{array}{ccc}0.8&0.2&0.5\\0.2&0.4&0.9\\1&0&0.7\end{array}\right]$![image](assets/assets/artificial-intelligence-intro-046/image-013.png) C. $\left[\begin{array}{cc}0.1&0.9\\0.7&0.8\\0&1\\\end{array}\right]$![image](assets/assets/artificial-intelligence-intro-046/image-015.png) D. $\begin{bmatrix}0.8&0.2\\0.9&0.4\\0.9&0.1\end{bmatrix}$
+A. $\begin{bmatrix}0.2&0.8\\0.4&0.9\\0.1&0.9\end{bmatrix}$![image](assets/artificial-intelligence-intro-046/image-011.png) B.  $\left[\begin{array}{ccc}0.8&0.2&0.5\\0.2&0.4&0.9\\1&0&0.7\end{array}\right]$![image](assets/artificial-intelligence-intro-046/image-013.png) C. $\left[\begin{array}{cc}0.1&0.9\\0.7&0.8\\0&1\\\end{array}\right]$![image](assets/artificial-intelligence-intro-046/image-015.png) D. $\begin{bmatrix}0.8&0.2\\0.9&0.4\\0.9&0.1\end{bmatrix}$
 
 **二、简答题**
 
@@ -421,13 +421,13 @@ A. $\begin{bmatrix}0.2&0.8\\0.4&0.9\\0.1&0.9\end{bmatrix}$![image](assets/assets
 
 1.  对下图所示的博弈树，以优先生成左边结点的顺序来进行α-β剪支搜索，请在博弈树上给出何处发生剪支的标记。
 
-![image](assets/assets/artificial-intelligence-intro-046/image-017.png)
+![image](assets/artificial-intelligence-intro-046/image-017.png)
 
-![image](assets/assets/artificial-intelligence-intro-046/image-018.png)
+![image](assets/artificial-intelligence-intro-046/image-018.png)
 
 2.  已知贝叶斯网络：
 
-![image](assets/assets/artificial-intelligence-intro-046/image-019.jpeg)
+![image](assets/artificial-intelligence-intro-046/image-019.jpeg)
 
 其相应的CPT表为：
 
@@ -447,7 +447,7 @@ P(E|~S, ~C) = 0.1
 
 3.  设训练集如下表所示，在用ID3算法进行决策树学习的过程中，应该首先选择哪个属性进行分裂？请写出计算过程。
 
-![image](assets/assets/artificial-intelligence-intro-046/image-020.png)
+![image](assets/artificial-intelligence-intro-046/image-020.png)
 
 第一步：计算Ent(D)，即-类别为1的数量/总数*log(类别为1)-类别为2的数量/总数*log(类别为2)-类别为3的数量/总数*log(类别为3)
 
@@ -455,13 +455,13 @@ P(E|~S, ~C) = 0.1
 
 4.  下图所示的函数，如果损失函数L对向量y的梯度为[4,-1,5,9]，则L对向量x的梯度是多少？请写出计算过程。
 
-![image](assets/assets/artificial-intelligence-intro-046/image-021.png)
+![image](assets/artificial-intelligence-intro-046/image-021.png)
 
-![image](assets/assets/artificial-intelligence-intro-046/image-022.jpeg)
+![image](assets/artificial-intelligence-intro-046/image-022.jpeg)
 
 5.  假设在一个如图所示的神经元上实现和（AND）函数，
 
-![image](assets/assets/artificial-intelligence-intro-046/image-023.png)
+![image](assets/artificial-intelligence-intro-046/image-023.png)
 
 下表是和函数的表述
 
@@ -472,13 +472,13 @@ P(E|~S, ~C) = 0.1
 | 1 | 0 | 0 |
 | 1 | 1 | 1 |
 
-激活函数为：![image](assets/assets/artificial-intelligence-intro-046/image-024.png)，求神经元的权重w1, w2,和偏差b的值.请写出计算过程。
+激活函数为：![image](assets/artificial-intelligence-intro-046/image-024.png)，求神经元的权重w1, w2,和偏差b的值.请写出计算过程。
 
 w1 = 0.7 w2 = 0.7 b = 0
 
 6.  对于八数码问题按如下定义评价函数ｆ（ｘ）＝ｄ（ｘ）＋ｈ（ｘ），其中ｄ（ｘ）为结点ｘ的深度，ｈ（ｘ）为每一个将牌与其目标位置之间距离（不考虑夹在其间的将牌）的总和，设初始状态和目标状态如下：
 
-![image](assets/assets/artificial-intelligence-intro-046/image-025.png)　　![image](assets/assets/artificial-intelligence-intro-046/image-026.png)
+![image](assets/artificial-intelligence-intro-046/image-025.png)　　![image](assets/artificial-intelligence-intro-046/image-026.png)
 
 初始状态     　目标状态
 1. 请用Ａ＊算法搜索目标，列出前三步搜索中的Open和Closed表的内容和当前扩展结点的ｆ值
@@ -541,7 +541,7 @@ h(x):x是偶数
 
 9.  小明同学想利用决策树实现一个挑瓜程序，设训练集如下表所示，在用ID3算法进行决策树学习的过程中，应该首先选择哪个属性进行分裂？请写出计算过程。
 
-![image](assets/assets/artificial-intelligence-intro-046/image-027.png)
+![image](assets/artificial-intelligence-intro-046/image-027.png)
 
 10.  假设任何通过计算机考试并获奖的人都是快乐的，任何肯学习或幸运的人都可以通过所有考试，小张不肯学习但他是幸运的，任何幸运的人都能获奖。请用谓词逻辑归结推理证明：小张是快乐的。
 1. 设对于数据d 有假设h1，h2，h3。它们的先验概率分别是P(h1)=0.3，P(h2)=0.3，P(h3)=0.4。并且已知P(d|h1)=0.5，P(d|h2)=0.3，P(d|h3)=0.2。又已知在分类集合V={＋，－}上数据d 被h1 分类为正，被h2 和h3 分类为负。请贝叶斯最优分类器对数据d 进行分类。

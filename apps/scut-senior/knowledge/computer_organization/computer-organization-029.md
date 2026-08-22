@@ -55,7 +55,7 @@ locator_type: slide
 
 <!-- slide: 5 -->
 
-![image](assets/assets/computer-organization-029/image-001.png)
+![image](assets/computer-organization-029/image-001.png)
 
 <!-- slide: 6 -->
 
@@ -132,13 +132,13 @@ locator_type: slide
 
 - <number>
 - 节拍周期
-![image](assets/assets/computer-organization-029/image-002.jpg)
-![image](assets/assets/computer-organization-029/image-003.jpg)
+![image](assets/computer-organization-029/image-002.jpg)
+![image](assets/computer-organization-029/image-003.jpg)
 
 <!-- slide: 13 -->
 
-![image](assets/assets/computer-organization-029/image-004.png)
-![image](assets/assets/computer-organization-029/image-005.png)
+![image](assets/computer-organization-029/image-004.png)
+![image](assets/computer-organization-029/image-005.png)
 - 在定长CPU周期中，每个CPU周期含有相同的节拍周期数。
 - 在不定长CPU周期中，CPU周期含有不同的节拍周期数。
 
@@ -167,7 +167,7 @@ locator_type: slide
 - CPU周期 = 执行微指令的时间+取出下一条微指令的时间
 - 微指令周期：指从控存中取出并执行一条微指令所需要的时间，一般与一个CPU周期相当。
 - （指令周期、CPU周期、节拍周期的关系？）
-![image](assets/assets/computer-organization-029/image-006.jpg)
+![image](assets/computer-organization-029/image-006.jpg)
 
 <!-- slide: 16 -->
 
@@ -551,7 +551,7 @@ locator_type: slide
 - ② 标量流水线从满载起，每经1个周期做完一条指令；
 - ③ 超标量流水线，提高了吞吐量，但需二套（或二
 - 套以上）流水线的硬件及其他电路。（见附图）
-![image](assets/assets/computer-organization-029/image-007.png)
+![image](assets/computer-organization-029/image-007.png)
 
 <!-- slide: 26 -->
 
@@ -650,17 +650,17 @@ locator_type: slide
 <!-- slide: 33 -->
 
 - (1)“ADD R2，R0”指令是一条加法指令，参与运算的两个数放在寄存器R2和R0中，“ADD R2，R0”指令的详细指令周期流程图如图(a)所示，图的右边部分标注了每一个机器周期中用到的微操作控制信号序列。
-![image](assets/assets/computer-organization-029/image-008.png)
-![image](assets/assets/computer-organization-029/image-009.png)
+![image](assets/computer-organization-029/image-008.png)
+![image](assets/computer-organization-029/image-009.png)
 
 <!-- slide: 34 -->
 
-![image](assets/assets/computer-organization-029/image-010.png)
+![image](assets/computer-organization-029/image-010.png)
 - 题8:
 
 <!-- slide: 35 -->
 
-![image](assets/assets/computer-organization-029/image-011.png)
+![image](assets/computer-organization-029/image-011.png)
 - 题8:
 
 <!-- slide: 36 -->
@@ -712,4 +712,4 @@ locator_type: slide
 <!-- slide: 38 -->
 
 - 题13 解:
-![image](assets/assets/computer-organization-029/image-012.png)
+![image](assets/computer-organization-029/image-012.png)

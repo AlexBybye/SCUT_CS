@@ -136,7 +136,7 @@ xlabel('时间 (s)'); ylabel('幅度');
 
 仿真框图：
 
-![image](assets/assets/signals-and-communication-001/image-001.png)
+![image](assets/signals-and-communication-001/image-001.png)
 
 图1 PCM编码解码仿真框图
 1. **仿真框图中各部分的简介**
@@ -178,17 +178,17 @@ A律解压：
 将产生的信号波形显示出来。本实验中将原信号波形和回复后的波形同时显示在同一滤波器中，这样可以直观的比较信号的恢复程度。
 1. **主要参数设置**
 
-![image](assets/assets/signals-and-communication-001/image-002.png)
+![image](assets/signals-and-communication-001/image-002.png)
 
 图2 Chrip信号模块参数
 
-![image](assets/assets/signals-and-communication-001/image-003.png)
+![image](assets/signals-and-communication-001/image-003.png)
 
 图3 矩形脉冲序列模块参数
 
 **3.用示波器观察输入的Chrip信号和编码器输出的信号**
 
-![image](assets/assets/signals-and-communication-001/image-004.png)
+![image](assets/signals-and-communication-001/image-004.png)
 
 图4 PCM编码示波器输出信号
 
@@ -196,7 +196,7 @@ A律解压：
 
 **4.用示波器观察输入的Chrip信号和解码器输出的信号**
 
-![image](assets/assets/signals-and-communication-001/image-005.png)
+![image](assets/signals-and-communication-001/image-005.png)
 
 图5 PCM解码示波器输出信号
 
@@ -359,45 +359,45 @@ title('\delta[n+2] 的波形（k=-2，左移）');
 - **实验内容和步骤**
 1. **线性分组码的差错控制系统仿真模型**
 
-![image](assets/assets/signals-and-communication-001/image-006.png)
+![image](assets/signals-and-communication-001/image-006.png)
 
 图1. (7,4)线性分组码进行差错控制仿真系统
 
-![image](assets/assets/signals-and-communication-001/image-007.png)
+![image](assets/signals-and-communication-001/image-007.png)
 
 图2. 无线性分组码的差错控制仿真系统
 
 图1所示是线性分组码的差错控制仿真系统。信号源是Bernoulli Binary Generator(伯努利二进制信号产生器)产生采样时间为0.01的二进制信号经过Binary Linear Encoder(二进制线性编码器)进行线性分组码编码；编码后的序列经过Binary Symmetric Channel（二元对称信道）传输，该信道具有误码概率；在接收端进行译码，译码后的序列和新原序列输入Error Rate Calculation(误码率统计)模块，统计接收端误码率。为了对比(7,4)线性分组码差错控制的效率，同时设计了没有经过线性分组码校验的系统仿真框图，如图2所示。
 1. **主要功能模块及参数**
 
-![image](assets/assets/signals-and-communication-001/image-008.png)
+![image](assets/signals-and-communication-001/image-008.png)
 
 图3 伯努利信号产生器参数
 
-![image](assets/assets/signals-and-communication-001/image-009.png)
+![image](assets/signals-and-communication-001/image-009.png)
 
 图4 二进制线性编码器参数
 
-![image](assets/assets/signals-and-communication-001/image-010.png)
+![image](assets/signals-and-communication-001/image-010.png)
 
 图5 二元对称信道参数
 
-![image](assets/assets/signals-and-communication-001/image-011.png)
+![image](assets/signals-and-communication-001/image-011.png)
 
 图6 二进制线性解码器参数
 
-![image](assets/assets/signals-and-communication-001/image-012.png)
+![image](assets/signals-and-communication-001/image-012.png)
 
 图7 误差率计算模块参数
 
-![image](assets/assets/signals-and-communication-001/image-013.png)
+![image](assets/signals-and-communication-001/image-013.png)
 
 图8 Simulink输出模块参数
 1. **线性分组码的误码率和差错率的关系**
 
 设置仿真参数之后就可以启动仿真运行。在仿真运行完毕之后为了得到直观的误码率曲线图，在接下来同样需要编写一个M文件对上面的循环码仿真模型进行命令执行，同时将二进制均衡信道的差错率参数由0.05改成变量errB。
 
-![image](assets/assets/signals-and-communication-001/image-014.png)
+![image](assets/signals-and-communication-001/image-014.png)
 
 图9 二元对称信道参数
 
@@ -405,23 +405,23 @@ title('\delta[n+2] 的波形（k=-2，左移）');
 
 程序1：
 
-![image](assets/assets/signals-and-communication-001/image-015.png)
+![image](assets/signals-and-communication-001/image-015.png)
 
 图10 线性差错控制M文件代码
 
 性能曲线如图：
 
-![image](assets/assets/signals-and-communication-001/image-016.png)
+![image](assets/signals-and-communication-001/image-016.png)
 
 图11 线性差错控制误码率曲线
 
 同时编写M文件对
 
-![image](assets/assets/signals-and-communication-001/image-017.png)
+![image](assets/signals-and-communication-001/image-017.png)
 
 图12 无差错控制M文件代码
 
-![image](assets/assets/signals-and-communication-001/image-018.png)
+![image](assets/signals-and-communication-001/image-018.png)
 
 图13 无差错控制误码率曲线
 
@@ -435,20 +435,20 @@ Simulink使用请参考相关操作指南或使用说明，本示例给出一个
 
 打开MATLAB， 选择simulink模块
 
-![image](assets/assets/signals-and-communication-001/image-019.png)
+![image](assets/signals-and-communication-001/image-019.png)
 
 创建simulink模型，从如下图红框所示选择组件
 
-![image](assets/assets/signals-and-communication-001/image-020.png)
+![image](assets/signals-and-communication-001/image-020.png)
 
 如下图所示，通过搜索框可以快速地找到所需要的组件，右键点击将组建添加到模型当中。
 
-![image](assets/assets/signals-and-communication-001/image-021.png)
+![image](assets/signals-and-communication-001/image-021.png)
 
 通过双击模型当中的组件来设置组件的参数，如下图所示。
 
-![image](assets/assets/signals-and-communication-001/image-022.png)
+![image](assets/signals-and-communication-001/image-022.png)
 
 模型构建完成后，保存模型为.slx文件如下图所示。若为需要编写代码的实验（实验四），则需要创建一个.m文件，该文件名不能与.slx文件重名。在当前文件夹下的空白地方右键，创建新的文件。
 
-![image](assets/assets/signals-and-communication-001/image-023.png)
+![image](assets/signals-and-communication-001/image-023.png)

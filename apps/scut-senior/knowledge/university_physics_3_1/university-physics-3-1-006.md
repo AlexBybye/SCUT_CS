@@ -68,17 +68,23 @@ ${\beta }^{'}=0.5\beta =21.8 {rad/s}^{2}$                   1分
 
 $T=(4/3)mg=78.4 N$                   1分
 
+<!-- question: university-physics-3-1-006-Q4 -->
+
 22．解：（1）当压强不变时，系统所吸热为
 
 $Q_p=\frac{m_0}{M}(\frac{i+2}{2})R(T_2-T_1)$       1分
 
 $=(\frac{i+2}{2})\frac{p_1V_1}{T_1}(T_2-T_1)$$=1.18\times10^{2}(J)$      2分
 
+<!-- question: university-physics-3-1-006-Q5 -->
+
 （2）体积不变时，系统所吸热为
 
 $Q_p=\frac{m_0}{M}\frac{i}{2}R(T_2-T_1)$       1分
 
 $=\frac{i}{2}\frac{p_1V_1}{T_1}(T_2-T_1)$$=0.84\times10^{2}(J)$       2分
+
+<!-- question: university-physics-3-1-006-Q6 -->
 
 （3）在等压过程中所做功为
 
@@ -87,6 +93,8 @@ $A_p=\frac{m_0}{M}R(T_2-T_1)$          1分
 $=\frac{p_1V_1}{T_1}(T_2-T_1)$$=0.34\times10^{2}(J)$    2分
 
 在等体过程中，气体体积不变，故所做的功为零。      1分
+
+<!-- question: university-physics-3-1-006-Q7 -->
 
 23．解：（1）由图，** = 2 m，  又  ∵*u*  = 0.5 m/s，
 
@@ -99,6 +107,8 @@ $=\frac{p_1V_1}{T_1}(T_2-T_1)$$=0.34\times10^{2}(J)$    2分
 ∴     $y=0.5cos(\frac {1} {2}\pi t+\frac {1} {2}\pi )$  (SI)                  2分
 
 （3）![formula-object](assets/university-physics-3-1-006/image-026.png)     2分
+
+<!-- question: university-physics-3-1-006-Q8 -->
 
 24．解：光栅方程       $d\sin\varphi=k\lambda$      2分
 

@@ -33,6 +33,8 @@ locator_type: none
 
 1．文法按产生式的形式分为四种类型，它们是：0型文法，又称短语文法；1型文法，又称上下文有关文法；2型文法，又称               文法； 3型文法，又称正规文法。
 
+<!-- question: compiler-principles-014-Q1 -->
+
 2．           推导称为规范推导，由                 产生的句型称为规范句型。
 
 3．对于一个文法G而言，如果L(G)中                   对应                  ，那么该文法就称为是二义的。
@@ -45,11 +47,19 @@ locator_type: none
 
 6．为了构造不带回溯的递归下降分析程序，我们通常要消除             和提取                  。
 
+<!-- question: compiler-principles-014-Q2 -->
+
 7．在自底向上分析法中，LR分析法把“可归约串”定义为              。
+
+<!-- question: compiler-principles-014-Q3 -->
 
 8．编译中常用的中间代码形式有逆波兰式、       、树代码和         等。
 
+<!-- question: compiler-principles-014-Q4 -->
+
 9．对中间代码优化按涉及的范围分为局部优化，           和            。
+
+<!-- question: compiler-principles-014-Q5 -->
 
 10.  局部优化主要包括合并已知量、            和             等内容。
 
@@ -59,7 +69,11 @@ locator_type: none
 
 **S→V**  　 　**V→T | ViT**  　　 **T→F** **| T+F** 　　 **F→aVe** **|** **b**
 
+<!-- question: compiler-principles-014-Q6 -->
+
 1．证明句型 **ViFib**是规范句型
+
+<!-- question: compiler-principles-014-Q7 -->
 
 2．试给出句型**ViFib**的语法树及该句型的句柄。
 
@@ -88,6 +102,8 @@ locator_type: none
 **（0）** **S′→S**    **（1）** **S→AB**      **（2）** **A** **→aBa**
 
 **（3）** **A** **→ε**     **（4）** **B→bAb**     **（5）** **B** **→ε**
+<!-- question: compiler-principles-014-Q8 -->
+
 1. **为这个文法构造LR(0)项目的DFA。（6分）**
 
 **（2）按照下面的SLR分析表给出对输入串baab#的分析过程：（9分）**
@@ -131,7 +147,11 @@ locator_type: none
 **G[A]** **：**
 
 **A→aABe|a  B→Bb|d**
+<!-- question: compiler-principles-014-Q9 -->
+
 1. 试给出与G[A]等价的LL（1）文法G'[A]
+<!-- question: compiler-principles-014-Q10 -->
+
 1. 构造G'[A]的预测分析表给出输入串aade#的分析过程。
 
 解：改造后的文法；(并判断其是否为LL(1)文法)

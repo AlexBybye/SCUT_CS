@@ -470,20 +470,61 @@ def merge_emphasis(md: str) -> str:
     return "\n".join(out)
 
 
+# 题号锚点：强信号（中文序号/第X题）与弱信号（阿拉伯数字编号）
+QUESTION_RX_STRICT = re.compile(
+    r"^(?:[一二三四五六七八九十]{1,3}\s*、|第\s*\d{1,3}\s*题|\d{1,2}\s*、)")
+# 弱信号排除小数（3.5 不是题号）：点号后不能紧跟数字
+QUESTION_RX_LOOSE = re.compile(
+    r"^(?:\d{1,2}[、.．](?!\d)|[（(]\s*\d{1,2}\s*[)）])\s*\S")
+
+
 def add_question_markers(md: str, sid: str, role: str):
-    if role not in {"past_exam", "past_exam_answer", "practice_exam"}:
+    """Insert tool-proposed question anchors (need human confirmation, SOP 8)."""
+    if role in {"past_exam", "past_exam_answer", "practice_exam"}:
+        rx = re.compile(
+            f"(?:{QUESTION_RX_STRICT.pattern}|{QUESTION_RX_LOOSE.pattern})")
+    elif role in {"exercise", "exercise_solution"}:
+        rx = QUESTION_RX_STRICT          # 解答/练习只用强信号，避免列表误标
+    else:
         return md, 0
     lines = md.split("\n")
     out, qn, fence = [], 0, False
     for ln in lines:
         if re.match(r"^\s*(```|~~~)", ln):
             fence = not fence
-        if not fence and QUESTION_RX.match(ln.strip()) and len(ln.strip()) < 40:
+        if not fence and rx.match(ln.strip()) and len(ln.strip()) < 60:
             qn += 1
             out.append(f"<!-- question: {sid}-Q{qn} -->")
             out.append("")
         out.append(ln)
     return "\n".join(out), qn
+
+
+def scan_asset_integrity() -> list[str]:
+    """Report knowledge md files whose asset links point to missing files."""
+    problems = []
+    link_rx = re.compile(r"\]\((assets/[^)#]+?)\)")
+    for row in _load_manifest_rows():
+        md_path = KNOWLEDGE / row["output_md"]
+        if not md_path.exists():
+            continue
+        cdir = knowledge_dir(row["course"])
+        text = md_path.read_text(encoding="utf-8", errors="ignore")
+        base = md_path.parent
+        for m in link_rx.finditer(text):
+            ref = m.group(1)
+            target = (base / ref).resolve()
+            if not target.exists():
+                problems.append(f"{row['source_id']}: 缺资产 {ref}")
+                if len(problems) >= 50:
+                    return problems
+    return problems
+
+
+def _load_manifest_rows():
+    import csv as _csv
+    with open(MANIFEST, encoding="utf-8-sig") as fp:
+        return list(_csv.DictReader(fp))
 
 
 # ------------------------------------------------------------------ convert

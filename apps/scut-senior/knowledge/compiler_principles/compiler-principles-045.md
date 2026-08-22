@@ -10,4 +10,4 @@ locator_type: none
 
 # 编译过程的阶段和功能
 
-![page-001.png](assets/assets/compiler-principles-045/page-001.png)
+![page-001.png](assets/compiler-principles-045/page-001.png)

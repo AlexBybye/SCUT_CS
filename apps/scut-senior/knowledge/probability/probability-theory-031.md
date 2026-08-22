@@ -44,7 +44,11 @@ $$
 
 **二、（10分）** 甲、乙、丙三车间加工同一产品，加工量分别占总量的25%、35%、40%，次品率分别为0.03、0.02、0.01。现从所有的产品中抽取一个产品，试求
 
+<!-- question: probability-theory-031-Q1 -->
+
 （1）该产品是次品的概率；
+
+<!-- question: probability-theory-031-Q2 -->
 
 （2）若检查结果显示该产品是次品，则该产品是乙车间生产的概率是多少？
 
@@ -65,6 +69,8 @@ $$
 ![formula-object](assets/probability-theory-031/image-015.png)
 
 **四、(15分)**  设随机变量![image](assets/probability-theory-031/image-016.png)和![image](assets/probability-theory-031/image-017.png)的联合分布在以点![image](assets/probability-theory-031/image-018.png)为顶点的三角形区域上服从均匀分布,试求 (1)    关于X的边缘密度
+
+<!-- question: probability-theory-031-Q3 -->
 
 (2)  X和Y的协方差
 
@@ -94,7 +100,11 @@ $$
 
 **五、（12）**向一目标射击，目标中心为坐标原点，已知命中点的横坐标![image](assets/probability-theory-031/image-039.png)和纵坐标![image](assets/probability-theory-031/image-040.png)相互独立，且均服从$N(0,2^{2})$分布.  求
 
+<!-- question: probability-theory-031-Q4 -->
+
 （1）命中环形区域$D=\{(x,y)|sx^2+y^2s2\}$的概率；
+
+<!-- question: probability-theory-031-Q5 -->
 
 （2）命中点到目标中心距离$Z=\sqrt{X^{2}+Y^{2}}$的数学期望.
 
@@ -103,6 +113,8 @@ $$
 ![image](assets/probability-theory-031/image-045.png)
 
 ![image](assets/probability-theory-031/image-046.png)
+
+<!-- question: probability-theory-031-Q6 -->
 
 （2）![image](assets/probability-theory-031/image-047.png)
 
@@ -175,6 +187,8 @@ $$
 $$
 
 ![formula-object](assets/probability-theory-031/image-095.png)
+
+<!-- question: probability-theory-031-Q7 -->
 
 (3)  $\hat{\theta}$的概率密度为
 

@@ -48,7 +48,7 @@ locator_type: slide
 散射
 吸收
 
-![image](assets/assets/signals-and-communication-019/image-001.png)
+![image](assets/signals-and-communication-019/image-001.png)
 - 频率(GHz)
 - (a) 氧气和水蒸气（浓度7.5 g/m3）的衰减
 - 频率(GHz)
@@ -75,11 +75,11 @@ locator_type: slide
 一次反射距离：< 4000 km
 寂静区：
 
-![image](assets/assets/signals-and-communication-019/image-002.png)
+![image](assets/signals-and-communication-019/image-002.png)
 - 传播路径
 - 地  面
 - 地波传播
-![image](assets/assets/signals-and-communication-019/image-003.png)
+![image](assets/signals-and-communication-019/image-003.png)
 - 地 面
 - 信号传播路径
 - 天波传播
@@ -93,7 +93,6 @@ locator_type: slide
 				(4.1-3)
   式中，D – 收发天线间距离(km)。
 [例] 若要求D = 50 km，则由式(4.1-3)
-
 
 增大视线传播距离的其他途径
 中继通信：
@@ -111,7 +110,7 @@ locator_type: slide
 - r
 - r
 - 视线传播
-![image](assets/assets/signals-and-communication-019/image-004.png)
+![image](assets/signals-and-communication-019/image-004.png)
 - 无线电中继
 - m
 
@@ -127,7 +126,7 @@ locator_type: slide
 	频率 － 100 ~ 4000 MHz
 	最大距离 < 600 km
 
-![image](assets/assets/signals-and-communication-019/image-005.png)
+![image](assets/signals-and-communication-019/image-005.png)
 - 对流层散射通信
 - 地球
 - 有效散射区域
@@ -137,9 +136,6 @@ locator_type: slide
 ## 流星余迹散射
 	
 
-
-
-
 	流星余迹特点 － 高度80 ~ 120 km，长度15 ~ 40 km
 	存留时间  - 小于1秒至几分钟
 	频率 － 30 ~ 100 MHz
@@ -147,7 +143,7 @@ locator_type: slide
 	特点 － 低速存储、高速突发、断续传输
 
 - 流星余迹散射通信
-![image](assets/assets/signals-and-communication-019/image-006.jpg)
+![image](assets/signals-and-communication-019/image-006.jpg)
 - 流星余迹
 
 <!-- slide: 9 -->
@@ -155,24 +151,21 @@ locator_type: slide
 ## 有线信道
 明线
 
-![image](assets/assets/signals-and-communication-019/image-007.jpg)
+![image](assets/signals-and-communication-019/image-007.jpg)
 
 <!-- slide: 10 -->
 
 ## 对称电缆：由许多对双绞线组成
 
-
-
-
 同轴电缆
 
 - 双绞线
-![image](assets/assets/signals-and-communication-019/image-008.jpg)
-![image](assets/assets/signals-and-communication-019/image-009.jpg)
-![image](assets/assets/signals-and-communication-019/image-010.jpg)
+![image](assets/signals-and-communication-019/image-008.jpg)
+![image](assets/signals-and-communication-019/image-009.jpg)
+![image](assets/signals-and-communication-019/image-010.jpg)
 - 导体
 - 绝缘层
-![image](assets/assets/signals-and-communication-019/image-011.jpg)
+![image](assets/signals-and-communication-019/image-011.jpg)
 - 导体
 - 金属编织网
 - 保护层
@@ -192,14 +185,14 @@ locator_type: slide
 多模光纤
 单模光纤
 
-![image](assets/assets/signals-and-communication-019/image-012.jpg)
+![image](assets/signals-and-communication-019/image-012.jpg)
 - 折射率
 - n1
 - n2
 - 折射率
 - n1
 - n2
-![image](assets/assets/signals-and-communication-019/image-013.jpg)
+![image](assets/signals-and-communication-019/image-013.jpg)
 - 7～10
 - 125
 - 折射率

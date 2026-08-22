@@ -10,4 +10,4 @@ locator_type: none
 
 # 解决冲突的SLR(0)方法
 
-![page-001.png](assets/assets/compiler-principles-047/page-001.png)
+![page-001.png](assets/compiler-principles-047/page-001.png)

@@ -48,7 +48,7 @@ understanding behavior of molecule.
 
 3
 
-![image](assets/assets/algorithm-design-and-analysis-022/image-001.png)
+![image](assets/algorithm-design-and-analysis-022/image-001.png)
 
 <!-- page: 4 -->
 
@@ -78,7 +78,7 @@ Examples.
 
 5
 
-![image](assets/assets/algorithm-design-and-analysis-022/image-002.png)
+![image](assets/algorithm-design-and-analysis-022/image-002.png)
 
 <!-- page: 6 -->
 
@@ -179,7 +179,7 @@ Return 𝑀[1, 𝑛].
 
 10
 
-![image](assets/assets/algorithm-design-and-analysis-022/image-003.png)
+![image](assets/algorithm-design-and-analysis-022/image-003.png)
 
 <!-- page: 11 -->
 
@@ -191,7 +191,7 @@ RNA sequence. A  C  C G  G U  A  G  U
 
 11
 
-![image](assets/assets/algorithm-design-and-analysis-022/image-004.png)
+![image](assets/algorithm-design-and-analysis-022/image-004.png)
 
 <!-- page: 12 -->
 
@@ -203,7 +203,7 @@ edge weights or cost 𝑐𝑣𝑤, find cheapest path from node 𝑠to node
 
 12
 
-![image](assets/assets/algorithm-design-and-analysis-022/image-005.png)
+![image](assets/algorithm-design-and-analysis-022/image-005.png)
 
 <!-- page: 13 -->
 
@@ -226,7 +226,7 @@ weight is negative.
 
 14
 
-![image](assets/assets/algorithm-design-and-analysis-022/image-006.png)
+![image](assets/algorithm-design-and-analysis-022/image-006.png)
 
 <!-- page: 15 -->
 
@@ -279,7 +279,7 @@ weights 𝑐𝑣𝑤, find a negative cycle (if one exists).
 
 18
 
-![image](assets/assets/algorithm-design-and-analysis-022/image-007.png)
+![image](assets/algorithm-design-and-analysis-022/image-007.png)
 
 <!-- page: 19 -->
 
@@ -354,7 +354,7 @@ For each edge (𝑣, 𝑤) ∈𝐸
 𝑀𝑖, 𝑣←min{𝑀𝑖, 𝑣, 𝑀𝑖−1, 𝑤+ 𝑐𝑣𝑤}.
 21
 
-![image](assets/assets/algorithm-design-and-analysis-022/image-008.png)
+![image](assets/algorithm-design-and-analysis-022/image-008.png)
 
 <!-- page: 22 -->
 
@@ -368,9 +368,9 @@ from a node to 𝑡, as we allow the path to
 use an increasing number of edges
 22
 
-![image](assets/assets/algorithm-design-and-analysis-022/image-009.png)
+![image](assets/algorithm-design-and-analysis-022/image-009.png)
 
-![image](assets/assets/algorithm-design-and-analysis-022/image-010.png)
+![image](assets/algorithm-design-and-analysis-022/image-010.png)
 
 <!-- page: 23 -->
 
@@ -382,7 +382,7 @@ one exists).
 
 23
 
-![image](assets/assets/algorithm-design-and-analysis-022/image-011.png)
+![image](assets/algorithm-design-and-analysis-022/image-011.png)
 
 <!-- page: 24 -->
 
@@ -395,7 +395,7 @@ Remark. Fastest algorithm very valuable!
 
 24
 
-![image](assets/assets/algorithm-design-and-analysis-022/image-012.jpeg)
+![image](assets/algorithm-design-and-analysis-022/image-012.jpeg)
 
 <!-- page: 25 -->
 
@@ -444,7 +444,7 @@ Ex. ocurrance & occurrence.
 
 27
 
-![image](assets/assets/algorithm-design-and-analysis-022/image-013.png)
+![image](assets/algorithm-design-and-analysis-022/image-013.png)
 
 <!-- page: 28 -->
 
@@ -473,7 +473,7 @@ each item occurs in at most one pair and no crossings (𝑥𝑖−𝑦𝑗and
 
 29
 
-![image](assets/assets/algorithm-design-and-analysis-022/image-014.png)
+![image](assets/algorithm-design-and-analysis-022/image-014.png)
 
 <!-- page: 30 -->
 
@@ -639,7 +639,7 @@ construct the alignment.
 
 35
 
-![image](assets/assets/algorithm-design-and-analysis-022/image-015.png)
+![image](assets/algorithm-design-and-analysis-022/image-015.png)
 
 <!-- page: 36 -->
 

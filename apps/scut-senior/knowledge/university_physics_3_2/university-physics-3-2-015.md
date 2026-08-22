@@ -18,6 +18,7 @@ locator_type: page
 
 一、选择题（共30 分）
 C, B, D, E, D; D, B, C, B, A
+
 <!-- question: university-physics-3-2-015-Q2 -->
 
 二、填空题（共30 分）
@@ -92,6 +93,8 @@ d
 x 轴正方向
 1 分；x 轴负方向
 2 分
+<!-- question: university-physics-3-2-015-Q3 -->
+
 17．x/v
 1 分
 
@@ -181,9 +184,11 @@ y
 
 ，可得以上答案．
 
-<!-- question: university-physics-3-2-015-Q3 -->
+<!-- question: university-physics-3-2-015-Q4 -->
 
 三、计算题（共40 分）
+<!-- question: university-physics-3-2-015-Q5 -->
+
 21.解：把所有电荷都当作正电荷处理. 在处取微小电荷
 dq = dl = 2Qd/ 分
 它在O 处产生场强
@@ -414,6 +419,8 @@ x
 
 
 
+<!-- question: university-physics-3-2-015-Q6 -->
+
 22. 解：由安培环路定理：
 
 
@@ -493,6 +500,8 @@ r
 r >R3 区域：
 H = 0，B = 0
 1 分
+
+<!-- question: university-physics-3-2-015-Q7 -->
 
 23. 解：Ob 间的动生电动势：
 
@@ -654,6 +663,8 @@ BL
 
 2 分
 
+<!-- question: university-physics-3-2-015-Q8 -->
+
 24. 解：据相对论动能公式
 2
 0
@@ -749,6 +760,8 @@ s
 
 c
 v
+
+<!-- question: university-physics-3-2-015-Q9 -->
 
 25. 解：远离核的光电子动能为
 

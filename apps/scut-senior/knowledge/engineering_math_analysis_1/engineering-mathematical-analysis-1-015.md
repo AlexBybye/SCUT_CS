@@ -28,8 +28,14 @@ locator_type: page
 
 注意事项：1. 开考前请将密封线内各项信息填写清楚；
 
+<!-- question: engineering-mathematical-analysis-1-015-Q1 -->
+
 2. 所有答案请直接答在试卷上；
+<!-- question: engineering-mathematical-analysis-1-015-Q2 -->
+
 3．考试形式：闭卷
+
+<!-- question: engineering-mathematical-analysis-1-015-Q3 -->
 
 4. 本试卷共五个大题，满分100 分，考试时间120 分钟。
 
@@ -46,11 +52,13 @@ locator_type: page
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-015-Q1 -->
+<!-- question: engineering-mathematical-analysis-1-015-Q4 -->
 
 一、填空题（共5 小题，每小题3 分，共15 分）
 
 2
+
+<!-- question: engineering-mathematical-analysis-1-015-Q5 -->
 
 １. 极限
 
@@ -66,6 +74,8 @@ x
 
 2
 e；
+
+<!-- question: engineering-mathematical-analysis-1-015-Q6 -->
 
 ２. 设在区间
 
@@ -130,6 +140,8 @@ a
 
 ；
 
+<!-- question: engineering-mathematical-analysis-1-015-Q7 -->
+
 ３. 设
 ln
 y
@@ -152,6 +164,8 @@ dx
 
 ；
 
+<!-- question: engineering-mathematical-analysis-1-015-Q8 -->
+
 ４. 由
 ,
 0,
@@ -165,6 +179,8 @@ x
 
 
 及x 轴所围成的图形绕y 轴旋转一周而成的立体的体积为2；
+
+<!-- question: engineering-mathematical-analysis-1-015-Q9 -->
 
 ５. 反常积分
 2
@@ -186,7 +202,7 @@ e
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-015-Q2 -->
+<!-- question: engineering-mathematical-analysis-1-015-Q10 -->
 
 二、计算下列各题（共3 小题，每小题8 分，共24 分）
 
@@ -199,6 +215,8 @@ lim
 ln 1
 
 x
+
+<!-- question: engineering-mathematical-analysis-1-015-Q11 -->
 
 1. 求极限
 
@@ -638,9 +656,11 @@ a
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-015-Q3 -->
+<!-- question: engineering-mathematical-analysis-1-015-Q12 -->
 
 三、解答下列各题（共4 小题，每小题8 分，共32 分）
+
+<!-- question: engineering-mathematical-analysis-1-015-Q13 -->
 
 1. 设数列
 6
@@ -739,6 +759,8 @@ x
 
 ………….8 分
 
+<!-- question: engineering-mathematical-analysis-1-015-Q14 -->
+
 2. 求函数
 
 
@@ -749,6 +771,8 @@ xe
 的单调区间，极值以及拐点（要求列表）。
 
 解:
+<!-- question: engineering-mathematical-analysis-1-015-Q15 -->
+
 (1) 函数
 
 
@@ -818,6 +842,8 @@ x
 2
 x 
 …………3 分
+
+<!-- question: engineering-mathematical-analysis-1-015-Q16 -->
 
 (3)列表如下
 …………6 分
@@ -896,6 +922,8 @@ e
 工科数学分析（一））》试卷第3 页共5 页
 
 <!-- page: 4 -->
+
+<!-- question: engineering-mathematical-analysis-1-015-Q17 -->
 
 3. 设曲线的方程为
 
@@ -1134,7 +1162,7 @@ a
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-015-Q4 -->
+<!-- question: engineering-mathematical-analysis-1-015-Q18 -->
 
 四、证明题（共2 小题，每小题10 分，共20 分）
 
@@ -1207,6 +1235,8 @@ x
 
 
 ，故
+
+<!-- question: engineering-mathematical-analysis-1-015-Q19 -->
 
 2.证明：函数
 
@@ -1293,7 +1323,7 @@ f x 在
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-015-Q5 -->
+<!-- question: engineering-mathematical-analysis-1-015-Q20 -->
 
 五、应用题（本题9 分）
 
@@ -1361,6 +1391,8 @@ a
 x
 a
 a
+
+<!-- question: engineering-mathematical-analysis-1-015-Q21 -->
 
 （2）令
 

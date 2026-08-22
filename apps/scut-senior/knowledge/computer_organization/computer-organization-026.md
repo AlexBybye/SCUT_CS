@@ -99,7 +99,7 @@ locator_type: slide
 ## 计算机硬件系统
 
 - 以程序和指令存储器分离的哈佛体系结构
-![image](assets/assets/computer-organization-026/image-001.png)
+![image](assets/computer-organization-026/image-001.png)
 
 <!-- slide: 9 -->
 
@@ -109,17 +109,17 @@ locator_type: slide
 - 平均时钟周期数。
 - MIPS：每秒百万条指令数。即单位时间内执行的指令数
 - MFLOPS：每秒百万次浮点操作次数。
-![image](assets/assets/computer-organization-026/image-002.jpg)
-![image](assets/assets/computer-organization-026/image-003.jpg)
-![image](assets/assets/computer-organization-026/image-004.jpg)
-![image](assets/assets/computer-organization-026/image-005.jpg)
+![image](assets/computer-organization-026/image-002.jpg)
+![image](assets/computer-organization-026/image-003.jpg)
+![image](assets/computer-organization-026/image-004.jpg)
+![image](assets/computer-organization-026/image-005.jpg)
 - 二、计算机硬件系统（性能指标）
 
 <!-- slide: 10 -->
 
 - •••
 - 2012年研究生入学统考试题
-![image](assets/assets/computer-organization-026/image-006.jpg)
+![image](assets/computer-organization-026/image-006.jpg)
 - 二、计算机硬件系统（性能指标）
 - 重点！
 
@@ -165,12 +165,12 @@ locator_type: slide
 
 <!-- slide: 14 -->
 
-![image](assets/assets/computer-organization-026/image-007.png)
+![image](assets/computer-organization-026/image-007.png)
 - 重点！
 
 <!-- slide: 15 -->
 
-![image](assets/assets/computer-organization-026/image-008.png)
+![image](assets/computer-organization-026/image-008.png)
 
 <!-- slide: 16 -->
 
@@ -243,8 +243,8 @@ locator_type: slide
 
 <!-- slide: 23 -->
 
-![image](assets/assets/computer-organization-026/image-009.jpg)
-![image](assets/assets/computer-organization-026/image-010.jpg)
+![image](assets/computer-organization-026/image-009.jpg)
+![image](assets/computer-organization-026/image-010.jpg)
 - 数值的机器码表示
 - 机器数的形式：原码，补码，移码，反码 。
 - 机器数： 计算机内部编码表示的数，称为机 器数(机器码)；
@@ -252,7 +252,7 @@ locator_type: slide
 
 <!-- slide: 24 -->
 
-![image](assets/assets/computer-organization-026/image-011.png)
+![image](assets/computer-organization-026/image-011.png)
 - 【例1 】以定点整数为例,用数轴形式说明原码、补码、反码表示范围和可能的数码组合
 - 2.1.1  数值的机器码表示
 
@@ -268,7 +268,7 @@ locator_type: slide
 
 <!-- slide: 26 -->
 
-![image](assets/assets/computer-organization-026/image-014.png)
+![image](assets/computer-organization-026/image-014.png)
 - 补码的几何描述
 - 重点！
 
@@ -293,8 +293,8 @@ locator_type: slide
 - 算术左移：符号位不变，高位移出，低位补0。
   - 为保证补码算术左移时不发生溢出，移位的数据最高有效位必须与符号位相同。
   - 在不发生溢出的前提下，用硬件实现补码的算术左移时，直接将数据最高有效位移入符号位，不会改变机器数的符号。
-![image](assets/assets/computer-organization-026/image-015.png)
-![image](assets/assets/computer-organization-026/image-016.png)
+![image](assets/computer-organization-026/image-015.png)
+![image](assets/computer-organization-026/image-016.png)
 - 算术右移：符号位不变，低位移出，高位正数补0，负数补1，即高位补符号位。
 - 重点！
 
@@ -369,7 +369,7 @@ locator_type: slide
 - <number>
 - 字符串
   - 由字符的ASCII码或者文字的Unicode编码组成，按顺序存放在内存或寄存器中。每个ASCII码字符占1个字节，每个Unicode编码占用2个字节
-![image](assets/assets/computer-organization-026/image-017.png)
+![image](assets/computer-organization-026/image-017.png)
 - 重点！
 
 <!-- slide: 35 -->
@@ -387,7 +387,7 @@ locator_type: slide
 - 将所有汉字的字模点阵代码
 - 按内码顺序集中起来，构成
 - 了汉字库。
-![image](assets/assets/computer-organization-026/image-018.jpg)
+![image](assets/computer-organization-026/image-018.jpg)
 - 重点！
 
 <!-- slide: 36 -->
@@ -467,7 +467,7 @@ locator_type: slide
   - 编码
     - 奇校验位的取值应该使整个奇校验码中“1”的个数为奇数，偶校验位的取值应该使整个偶校验码中“1”的个数为偶数。
     - 假设在发送端，要发送七位ASCII码（B6 B5 B4 B3 B2 B1 B0），在ASCII码前面添加一位奇校验位P奇或偶校验位P偶变为一个字节的奇偶校验码，则它们的生成表达式为
-![image](assets/assets/computer-organization-026/image-019.png)
+![image](assets/computer-organization-026/image-019.png)
 - 重点！
 
 <!-- slide: 40 -->
@@ -477,7 +477,7 @@ locator_type: slide
 - <number>
   - 译码
     - 在接收端，必须检验接收到的校验码信息的奇偶性，对于奇校验码，校验码中“1”的个数应该为奇数，否则出错；对于偶校验码，校验码中“1”的个数应该为偶数，否则出错。设E奇为奇校验码出错信号，E偶为偶校验码出错信号，为1出错，为0正确，
-![image](assets/assets/computer-organization-026/image-020.png)
+![image](assets/computer-organization-026/image-020.png)
 - 奇偶校验的编码电路
 - 例如：
 - 字符“A”的ASCII码为41H，奇校验码为C1H，偶校验码为41H。
@@ -487,8 +487,8 @@ locator_type: slide
 ## 奇偶校验码
 
 - <number>
-![image](assets/assets/computer-organization-026/image-021.png)
-![image](assets/assets/computer-organization-026/image-022.png)
+![image](assets/computer-organization-026/image-021.png)
+![image](assets/computer-organization-026/image-022.png)
 - 奇偶校验码的表达式：
 - 奇偶校验的译码电路
 
@@ -646,7 +646,7 @@ locator_type: slide
 ## 一、随机读写存储器RAM
 
 - <number>
-![image](assets/assets/computer-organization-026/image-027.png)
+![image](assets/computer-organization-026/image-027.png)
 
 <!-- slide: 52 -->
 
@@ -684,7 +684,7 @@ locator_type: slide
 - <number>
 - “1” 状态：T1截止，T2导通
 - “0”状态： T2截止，T1导通
-![image](assets/assets/computer-organization-026/image-028.png)
+![image](assets/computer-organization-026/image-028.png)
 - 六管MOS静态存储器结构
 
 <!-- slide: 55 -->
@@ -708,7 +708,7 @@ locator_type: slide
 - “0”状态：电容C上无电荷
 - 再生：读出后信息可能被破坏，需要重写。
 - 刷新：经过一段时间后，信息可能丢失，需要重写。
-![image](assets/assets/computer-organization-026/image-029.png)
+![image](assets/computer-organization-026/image-029.png)
 - 单管MOS动态存储器结构
 
 <!-- slide: 57 -->
@@ -766,14 +766,14 @@ locator_type: slide
 
 <!-- slide: 61 -->
 
-![image](assets/assets/computer-organization-026/image-030.png)
+![image](assets/computer-organization-026/image-030.png)
 
 <!-- slide: 62 -->
 
 ## 比较：DRAM的读/写过程
 
 - <number>
-![image](assets/assets/computer-organization-026/image-031.png)
+![image](assets/computer-organization-026/image-031.png)
 
 <!-- slide: 63 -->
 
@@ -784,7 +784,7 @@ locator_type: slide
 
 <!-- slide: 64 -->
 
-![image](assets/assets/computer-organization-026/image-032.png)
+![image](assets/computer-organization-026/image-032.png)
 
 <!-- slide: 65 -->
 
@@ -841,7 +841,7 @@ locator_type: slide
 ## 顺序编址
 
 - <number>
-![image](assets/assets/computer-organization-026/image-033.png)
+![image](assets/computer-organization-026/image-033.png)
 
 <!-- slide: 70 -->
 
@@ -850,7 +850,7 @@ locator_type: slide
 - A15A14 经译码产生选板信号。
 - 特点：只需要一套电路         （AR，DR和读/写控制）
 - 带宽仅为       ，T－存储周期
-![image](assets/assets/computer-organization-026/image-034.png)
+![image](assets/computer-organization-026/image-034.png)
 - 0
 - 1
 - 2
@@ -890,7 +890,7 @@ locator_type: slide
 ## 交叉编址
 
 - <number>
-![image](assets/assets/computer-organization-026/image-035.png)
+![image](assets/computer-organization-026/image-035.png)
 
 <!-- slide: 72 -->
 
@@ -953,7 +953,7 @@ locator_type: slide
 <!-- slide: 73 -->
 
 - <number>
-![image](assets/assets/computer-organization-026/image-036.png)
+![image](assets/computer-organization-026/image-036.png)
 - ①由“存控”部件将CPU或IOP送来的访内地址送到相应模块的地址寄存器MARj 。
 - ②启动存储器模块进行读/写。
 - 工作过程：
@@ -969,7 +969,7 @@ locator_type: slide
 <!-- slide: 75 -->
 
 - <number>
-![image](assets/assets/computer-organization-026/image-037.png)
+![image](assets/computer-organization-026/image-037.png)
 
 <!-- slide: 76 -->
 
@@ -1001,13 +1001,13 @@ locator_type: slide
 
 ## Cache的原理图
 
-![image](assets/assets/computer-organization-026/image-038.png)
+![image](assets/computer-organization-026/image-038.png)
 - 相联存储器：
 - cache控制逻辑依据地址判断此字当前是否在 cache中：按内容指定方式 进行寻址。
 
 <!-- slide: 79 -->
 
-![image](assets/assets/computer-organization-026/image-039.png)
+![image](assets/computer-organization-026/image-039.png)
 - Cache、主存与CPU的关系
 - 一个块由若干定长字组成的。
 - 当CPU读取主存中一个字时，便发出此字的内存地址到cache和主存。此时cache控制逻辑依据地址判断此字当前是否在 cache中：若是，此字立即传送给CPU；若非，则用主存读周期把此字从主存读出送到CPU，与此同时，把含有这个字的整个数据块从主存读出送到cache中。由始终管理cache使用情况的硬件逻辑电路来实现替换算法。
@@ -1015,25 +1015,25 @@ locator_type: slide
 
 <!-- slide: 80 -->
 
-![image](assets/assets/computer-organization-026/image-040.png)
+![image](assets/computer-organization-026/image-040.png)
 
 <!-- slide: 81 -->
 
-![image](assets/assets/computer-organization-026/image-041.png)
+![image](assets/computer-organization-026/image-041.png)
 
 <!-- slide: 82 -->
 
-![image](assets/assets/computer-organization-026/image-042.png)
+![image](assets/computer-organization-026/image-042.png)
 - 重点！
 
 <!-- slide: 83 -->
 
-![image](assets/assets/computer-organization-026/image-043.png)
+![image](assets/computer-organization-026/image-043.png)
 - 重点！
 
 <!-- slide: 84 -->
 
-![image](assets/assets/computer-organization-026/image-044.png)
+![image](assets/computer-organization-026/image-044.png)
 
 <!-- slide: 85 -->
 
@@ -1050,7 +1050,7 @@ locator_type: slide
 
 <!-- slide: 86 -->
 
-![image](assets/assets/computer-organization-026/image-045.png)
+![image](assets/computer-organization-026/image-045.png)
 - 1.全相联映射方式
 - 主存中一个块的地址与块的内容一起存于cache的行中，其中块地址存于cache行的标记部分中。
 
@@ -1082,16 +1082,16 @@ locator_type: slide
 <!-- slide: 89 -->
 
 - <number>
-![image](assets/assets/computer-organization-026/image-046.png)
+![image](assets/computer-organization-026/image-046.png)
 
 <!-- slide: 90 -->
 
-![image](assets/assets/computer-organization-026/image-047.png)
+![image](assets/computer-organization-026/image-047.png)
 - 非常重点！
 
 <!-- slide: 91 -->
 
-![image](assets/assets/computer-organization-026/image-048.png)
+![image](assets/computer-organization-026/image-048.png)
 - 主存块号8位     cache行号3位
 - 00010111         111
 
@@ -1108,9 +1108,9 @@ locator_type: slide
 
 <!-- slide: 93 -->
 
-![image](assets/assets/computer-organization-026/image-051.png)
+![image](assets/computer-organization-026/image-051.png)
 - 直接映射( Direct  Mapping )
-![image](assets/assets/computer-organization-026/image-052.jpg)
+![image](assets/computer-organization-026/image-052.jpg)
 
 <!-- slide: 94 -->
 
@@ -1129,7 +1129,7 @@ locator_type: slide
 
 <!-- slide: 95 -->
 
-![image](assets/assets/computer-organization-026/image-053.png)
+![image](assets/computer-organization-026/image-053.png)
 - 非常重点！
 
 <!-- slide: 96 -->
@@ -1247,11 +1247,11 @@ locator_type: slide
 
 <!-- slide: 100 -->
 
-![image](assets/assets/computer-organization-026/image-055.jpg)
+![image](assets/computer-organization-026/image-055.jpg)
 
 <!-- slide: 101 -->
 
-![image](assets/assets/computer-organization-026/image-056.png)
+![image](assets/computer-organization-026/image-056.png)
 - 非常重点！
 
 <!-- slide: 102 -->
@@ -1278,7 +1278,7 @@ locator_type: slide
 
 <!-- slide: 104 -->
 
-![image](assets/assets/computer-organization-026/image-057.png)
+![image](assets/computer-organization-026/image-057.png)
 - 2、字存储容量扩展
 
 <!-- slide: 105 -->
@@ -1307,11 +1307,11 @@ locator_type: slide
 
 <!-- slide: 106 -->
 
-![image](assets/assets/computer-organization-026/image-058.png)
+![image](assets/computer-organization-026/image-058.png)
 
 <!-- slide: 107 -->
 
-![image](assets/assets/computer-organization-026/image-059.png)
+![image](assets/computer-organization-026/image-059.png)
 - 重点！
 
 <!-- slide: 108 -->
@@ -1330,7 +1330,7 @@ locator_type: slide
 
 <!-- slide: 109 -->
 
-![image](assets/assets/computer-organization-026/image-060.png)
+![image](assets/computer-organization-026/image-060.png)
 
 <!-- slide: 110 -->
 
@@ -1345,18 +1345,18 @@ locator_type: slide
 
 - 设                表示主存慢于cache的倍率,  e表示访问效率，
 - ta 表示平均访问周期,    则有:
-![image](assets/assets/computer-organization-026/image-063.png)
+![image](assets/computer-organization-026/image-063.png)
 - 式中                     ( r=5~10为宜)
-![image](assets/assets/computer-organization-026/image-064.png)
+![image](assets/computer-organization-026/image-064.png)
 - 为提高访问效率，命中率h越接近1越好，r值以5—10为宜，不宜太大。命中率h与程序的行为、cache的容量、组织方式、块的大小有关。
-![image](assets/assets/computer-organization-026/image-065.png)
+![image](assets/computer-organization-026/image-065.png)
 - Cache/主存系统的访问效率e:
 
 <!-- slide: 112 -->
 
 - 【例5】CPU执行一段程序时，cache完成存取的次数为1900次，主存完成存取的次数为100次，已知cache存取周期为50ns，主存存取周期为250ns，求cache/主存系统的效率和平均访问时间。
 - 【解】
-![image](assets/assets/computer-organization-026/image-066.png)
+![image](assets/computer-organization-026/image-066.png)
 - 平均周期ta
 - 访问效率e
 - 命中率h
@@ -1366,15 +1366,15 @@ locator_type: slide
 <!-- slide: 113 -->
 
 - 虚实地址的变换过程（页式）
-![image](assets/assets/computer-organization-026/image-070.png)
+![image](assets/computer-organization-026/image-070.png)
 
 <!-- slide: 114 -->
 
-![image](assets/assets/computer-organization-026/image-071.png)
+![image](assets/computer-organization-026/image-071.png)
 
 <!-- slide: 115 -->
 
-![image](assets/assets/computer-organization-026/image-072.png)
+![image](assets/computer-organization-026/image-072.png)
 
 <!-- slide: 116 -->
 
@@ -1386,11 +1386,11 @@ locator_type: slide
 
 ## 转换后援缓冲器(TLB)/快表
 
-![image](assets/assets/computer-organization-026/image-073.jpg)
+![image](assets/computer-organization-026/image-073.jpg)
 
 <!-- slide: 118 -->
 
-![image](assets/assets/computer-organization-026/image-074.png)
+![image](assets/computer-organization-026/image-074.png)
 - 重点！
 
 <!-- slide: 119 -->

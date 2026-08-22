@@ -32,7 +32,7 @@ locator_type: slide
 
 ## 已知：
 
-![image](assets/assets/artificial-intelligence-intro-017/image-001.png)
+![image](assets/artificial-intelligence-intro-017/image-001.png)
 
 <!-- slide: 5 -->
 
@@ -67,7 +67,7 @@ locator_type: slide
 
 ## 基本流程
 
-![image](assets/assets/artificial-intelligence-intro-017/image-002.png)
+![image](assets/artificial-intelligence-intro-017/image-002.png)
 - （1）当前结点包含的样本全部属于同一类别
 - （2）当前属性集为空，或所有样本在所有属性上取值相同
 - （3）当前结点包含的样本集合为空
@@ -118,7 +118,7 @@ locator_type: slide
 - …
 - 该数据集包含   个训练样本，         ，其中正例占          ，
 - 反例占         ，计算得到根结点的信息熵为
-![image](assets/assets/artificial-intelligence-intro-017/image-003.png)
+![image](assets/artificial-intelligence-intro-017/image-003.png)
 
 <!-- slide: 13 -->
 
@@ -322,7 +322,7 @@ locator_type: slide
 - 结点1：若划分，根据结点    ，
 - ，   的训练样例，将这  个结点分别标记为“好瓜”、“好瓜”、“坏瓜”。此时，验证集中编号为
 - 的样例被划分正确，验证集精度为
-![image](assets/assets/artificial-intelligence-intro-017/image-004.png)
+![image](assets/artificial-intelligence-intro-017/image-004.png)
 - 验证集
 
 <!-- slide: 26 -->
@@ -356,7 +356,7 @@ locator_type: slide
 - 划分后: 71.4%
 - 预剪枝决策: 禁止划分
 - 对结点   ，  ，  分别进行剪枝判断，结点    ，  都禁止划分，结点    本身为叶子结点。最终得到仅有一层划分的决策树，称为“决策树桩”
-![image](assets/assets/artificial-intelligence-intro-017/image-005.png)
+![image](assets/artificial-intelligence-intro-017/image-005.png)
 - 验证集
 
 <!-- slide: 27 -->
@@ -757,7 +757,7 @@ locator_type: slide
 
 - 学习开始时，根结点包含样本集  中全部  个样例，各样例的权值均为
 - 以属性“色泽”为例，该属性上无缺失值的样例子集   包含  个样例， 的信息熵为
-![image](assets/assets/artificial-intelligence-intro-017/image-006.png)
+![image](assets/artificial-intelligence-intro-017/image-006.png)
 - 缺失值处理实例
 
 <!-- slide: 45 -->
@@ -773,7 +773,7 @@ locator_type: slide
 ## 连续与缺失值 – 缺失值处理
 
 - 类似地可计算出所有属性在数据集上的信息增益
-![image](assets/assets/artificial-intelligence-intro-017/image-007.png)
+![image](assets/artificial-intelligence-intro-017/image-007.png)
 - 进入“纹理=清晰”分支
 - 进入“纹理=稍糊”分支
 - 进入“纹理=模糊”分支

@@ -127,7 +127,7 @@ H (k)=(k+3)%10
 
 (2) List the order in which the edges are visited when running Kruskal’s MST algorithm. Each time an edge is added to the MST.
 
-![image](assets/assets/data-structure-018/image-001.png)
+![image](assets/data-structure-018/image-001.png)
 
 5. (1) Run the BuildHeap function to Build a min-heap on the following values stored in an array. Show the Min-heap.
 

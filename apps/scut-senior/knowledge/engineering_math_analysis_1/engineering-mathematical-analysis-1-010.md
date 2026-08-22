@@ -36,8 +36,14 @@ locator_type: page
 
 注意事项：1. 开考前请将密封线内各项信息填写清楚；
 
+<!-- question: engineering-mathematical-analysis-1-010-Q1 -->
+
 2. 所有答案请直接答在试卷上；
+<!-- question: engineering-mathematical-analysis-1-010-Q2 -->
+
 3．考试形式：闭卷
+
+<!-- question: engineering-mathematical-analysis-1-010-Q3 -->
 
 4. 本试卷共5 个
 大题，满分100 分，
@@ -79,6 +85,8 @@ locator_type: page
 1
 lim
 
+<!-- question: engineering-mathematical-analysis-1-010-Q4 -->
+
 １. 极限
 
 1
@@ -89,6 +97,8 @@ n
 n
 n
 
+
+<!-- question: engineering-mathematical-analysis-1-010-Q5 -->
 
 ２. 设在区间
 
@@ -123,6 +133,8 @@ _____________ ________
 
 是
 ；
+
+<!-- question: engineering-mathematical-analysis-1-010-Q6 -->
 
 ３. 设
 x
@@ -178,9 +190,11 @@ e
 
 。
 
+<!-- question: engineering-mathematical-analysis-1-010-Q7 -->
+
 ５. 反常积分
 
-<!-- question: engineering-mathematical-analysis-1-010-Q1 -->
+<!-- question: engineering-mathematical-analysis-1-010-Q8 -->
 
 二、计算下列各题（共3 小题，每小题8 分，共24 分）
 
@@ -203,6 +217,8 @@ t e dt
 
 0
 lim
+
+<!-- question: engineering-mathematical-analysis-1-010-Q9 -->
 
 1. 求极限
 
@@ -256,9 +272,11 @@ a
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-010-Q2 -->
+<!-- question: engineering-mathematical-analysis-1-010-Q10 -->
 
 三、解答下列各题（共4 小题，每小题8 分，共32 分）
+
+<!-- question: engineering-mathematical-analysis-1-010-Q11 -->
 
 1. 设
 
@@ -294,6 +312,8 @@ a
 nx
 收敛，并求其极限。
 
+<!-- question: engineering-mathematical-analysis-1-010-Q12 -->
+
 2. 求函数
 
 
@@ -313,6 +333,8 @@ x
 工科数学分析（一））》试卷第3 页共6 页
 
 <!-- page: 6 -->
+
+<!-- question: engineering-mathematical-analysis-1-010-Q13 -->
 
 3. 求旋轮线
 
@@ -378,7 +400,7 @@ x
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-010-Q3 -->
+<!-- question: engineering-mathematical-analysis-1-010-Q14 -->
 
 四、证明题（共2 小题，每小题10 分，共20 分）
 
@@ -464,7 +486,7 @@ f
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-010-Q4 -->
+<!-- question: engineering-mathematical-analysis-1-010-Q15 -->
 
 五、应用题（本题9 分）
 

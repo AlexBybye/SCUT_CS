@@ -10,4 +10,4 @@ locator_type: none
 
 # 4中语法分析方法比较
 
-![page-001.png](assets/assets/compiler-principles-018/page-001.png)
+![page-001.png](assets/compiler-principles-018/page-001.png)

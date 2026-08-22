@@ -87,13 +87,13 @@ locator_type: page
 9.
 下列器件中，具有串行—并行数据转换功能的是（D）。
 
-![image](assets/assets/digital-logic-005/image-001.jpeg)
+![image](assets/digital-logic-005/image-001.jpeg)
 
-![image](assets/assets/digital-logic-005/image-002.png)
+![image](assets/digital-logic-005/image-002.png)
 
-![image](assets/assets/digital-logic-005/image-003.png)
+![image](assets/digital-logic-005/image-003.png)
 
-![image](assets/assets/digital-logic-005/image-004.jpeg)
+![image](assets/digital-logic-005/image-004.jpeg)
 
 <!-- page: 2 -->
 
@@ -101,7 +101,7 @@ locator_type: page
 
 请扫码获取
 
-![image](assets/assets/digital-logic-005/image-005.jpeg)
+![image](assets/digital-logic-005/image-005.jpeg)
 
 <!-- page: 3 -->
 
@@ -151,13 +151,13 @@ ACDCB CBBDA
 
 1．（5 分）用卡诺图化简表达式F(A,B,C,D) = m(0,4,5,7,10,13) + d(2,8,9,11,14,15)
 
-![image](assets/assets/digital-logic-005/image-006.jpeg)
+![image](assets/digital-logic-005/image-006.jpeg)
 
-![image](assets/assets/digital-logic-005/image-007.png)
+![image](assets/digital-logic-005/image-007.png)
 
-![image](assets/assets/digital-logic-005/image-008.png)
+![image](assets/digital-logic-005/image-008.png)
 
-![image](assets/assets/digital-logic-005/image-009.jpeg)
+![image](assets/digital-logic-005/image-009.jpeg)
 
 <!-- page: 4 -->
 
@@ -229,13 +229,13 @@ f0
 
 功能描述：ABC 与f2f1f0互为补数（以2 为基）。(1 分)
 
-![image](assets/assets/digital-logic-005/image-010.jpeg)
+![image](assets/digital-logic-005/image-010.jpeg)
 
-![image](assets/assets/digital-logic-005/image-011.png)
+![image](assets/digital-logic-005/image-011.png)
 
-![image](assets/assets/digital-logic-005/image-012.png)
+![image](assets/digital-logic-005/image-012.png)
 
-![image](assets/assets/digital-logic-005/image-013.jpeg)
+![image](assets/digital-logic-005/image-013.jpeg)
 
 <!-- page: 5 -->
 
@@ -318,13 +318,13 @@ Q T
 
 四、分析题（本大题共3 小题，共35 分）。
 
-![image](assets/assets/digital-logic-005/image-014.jpeg)
+![image](assets/digital-logic-005/image-014.jpeg)
 
-![image](assets/assets/digital-logic-005/image-015.png)
+![image](assets/digital-logic-005/image-015.png)
 
-![image](assets/assets/digital-logic-005/image-016.png)
+![image](assets/digital-logic-005/image-016.png)
 
-![image](assets/assets/digital-logic-005/image-017.jpeg)
+![image](assets/digital-logic-005/image-017.jpeg)
 
 <!-- page: 6 -->
 
@@ -456,13 +456,13 @@ F=∑m(10,11,12)+∑d(0,1,2,13,14,15) （2 分）
 
 （2 分）
 
-![image](assets/assets/digital-logic-005/image-018.jpeg)
+![image](assets/digital-logic-005/image-018.jpeg)
 
-![image](assets/assets/digital-logic-005/image-019.png)
+![image](assets/digital-logic-005/image-019.png)
 
-![image](assets/assets/digital-logic-005/image-020.png)
+![image](assets/digital-logic-005/image-020.png)
 
-![image](assets/assets/digital-logic-005/image-021.jpeg)
+![image](assets/digital-logic-005/image-021.jpeg)
 
 <!-- page: 7 -->
 
@@ -483,13 +483,13 @@ F=AB+AC=A B∙AC=（2 分）
 
 （图2 分）
 
-![image](assets/assets/digital-logic-005/image-022.jpeg)
+![image](assets/digital-logic-005/image-022.jpeg)
 
-![image](assets/assets/digital-logic-005/image-023.png)
+![image](assets/digital-logic-005/image-023.png)
 
-![image](assets/assets/digital-logic-005/image-024.png)
+![image](assets/digital-logic-005/image-024.png)
 
-![image](assets/assets/digital-logic-005/image-025.jpeg)
+![image](assets/digital-logic-005/image-025.jpeg)
 
 <!-- page: 8 -->
 
@@ -637,13 +637,13 @@ CP
  1   1   1
  1    1    0      1
 
-![image](assets/assets/digital-logic-005/image-026.jpeg)
+![image](assets/digital-logic-005/image-026.jpeg)
 
-![image](assets/assets/digital-logic-005/image-027.png)
+![image](assets/digital-logic-005/image-027.png)
 
-![image](assets/assets/digital-logic-005/image-028.png)
+![image](assets/digital-logic-005/image-028.png)
 
-![image](assets/assets/digital-logic-005/image-029.jpeg)
+![image](assets/digital-logic-005/image-029.jpeg)
 
 <!-- page: 9 -->
 
@@ -675,10 +675,10 @@ Q3 Q2 Q1/Y
 
 微信公众号：五山情报站
 
-![image](assets/assets/digital-logic-005/image-030.jpeg)
+![image](assets/digital-logic-005/image-030.jpeg)
 
-![image](assets/assets/digital-logic-005/image-031.png)
+![image](assets/digital-logic-005/image-031.png)
 
-![image](assets/assets/digital-logic-005/image-032.png)
+![image](assets/digital-logic-005/image-032.png)
 
-![image](assets/assets/digital-logic-005/image-033.jpeg)
+![image](assets/digital-logic-005/image-033.jpeg)

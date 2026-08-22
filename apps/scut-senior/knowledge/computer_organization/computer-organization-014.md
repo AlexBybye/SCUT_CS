@@ -150,7 +150,7 @@ D    与存数指令有关的控制相关
 
 2  画出DMA传送数据流程图。
 
-![image](assets/assets/computer-organization-014/image-001.png)
+![image](assets/computer-organization-014/image-001.png)
 
 四、分析题（12分）
 
@@ -160,7 +160,7 @@ D    与存数指令有关的控制相关
 
 ②    并行进位方式
 
-![image](assets/assets/computer-organization-014/image-002.jpeg)五、计算题（10分）
+![image](assets/computer-organization-014/image-002.jpeg)五、计算题（10分）
 
 某计算机系统的内存储器又cache和主存构成，cache的存储周期为30ns，主存的存取周期为150ns。已知在一段给定的时间内，CPU共访问内存5000次，其中400次访问主存。问：
 
@@ -214,4 +214,4 @@ DR0,G,IRi
 
 ③    执行同一个ADD指令，第②种情况下机器速度提高多少倍？  (6-5)/6=1/6
 
-![image](assets/assets/computer-organization-014/image-003.png)
+![image](assets/computer-organization-014/image-003.png)

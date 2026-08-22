@@ -16,6 +16,8 @@ locator_type: page
 
 一、选择题（共12 题，每题3 分，共36 分）
 
+<!-- question: probability-theory-022-Q2 -->
+
 1. 袋中有50 个乒乓球，其中20 个黄的，30 个白的，现在两个人不放回地依次从袋中随机各取一
 
 球。则第二人取到黄球的概率是(
@@ -43,6 +45,8 @@ D
 5
 
 答案(B)
+
+<!-- question: probability-theory-022-Q3 -->
 
 2. 设A，B 是两个随机事件，
 
@@ -207,6 +211,8 @@ X
 的联合分布为(
 ).
 
+<!-- question: probability-theory-022-Q4 -->
+
 3. 若X ～N
 2
 
@@ -222,6 +228,8 @@ X
 (D) 以上都不对
 
 答案(C)
+
+<!-- question: probability-theory-022-Q5 -->
 
 4. 设随机变量
 1
@@ -313,6 +321,8 @@ D X
 
 
 
+<!-- question: probability-theory-022-Q6 -->
+
 5. 对正态总体的数学期望进行假设检验，如果在显著水平0.05 下接受
 0
 0
@@ -345,6 +355,8 @@ H
 H
 
 答案(A)
+
+<!-- question: probability-theory-022-Q7 -->
 
 6. 设
 1
@@ -517,6 +529,8 @@ S
 5
 9
 
+<!-- question: probability-theory-022-Q8 -->
+
 7. 设f1(x) 为标准正态分布的概率密度, f2(x) 为[ - 1, 3]上均匀分布的概率密度，若
 
 f(x) = {
@@ -558,6 +572,8 @@ f2(x)dx = 1
 
 即2a + 3b = 4.
 
+<!-- question: probability-theory-022-Q9 -->
+
 8. 设随机变量X 和Y 的相关系数为0.9, 若
 0.4
 Z
@@ -586,6 +602,8 @@ D
 
 答案(D)
 
+<!-- question: probability-theory-022-Q10 -->
+
 9. 设随机变量X,Y 独立同分布，且X 的分布函数为F(x), 则Z = max{X,Y}的分布函数为(
 ).
 
@@ -605,6 +623,8 @@ D
 答案(A)
 
 解. 由分布函数的定义及随机变量X,Y 独立同分布，可得
+
+<!-- question: probability-theory-022-Q11 -->
 
 10. 设X1,X2,⋯,Xm 为来自二项分布总体B(n,p) 的简单随机样本,̅ X 和S
 *2 分别为样本均值和修
@@ -639,6 +659,8 @@ D
 *2) = D(X), 于是
 
 由此可得k = -1.
+
+<!-- question: probability-theory-022-Q12 -->
 
 11. 设
 1
@@ -770,6 +792,8 @@ X
 D X
 E X
 
+<!-- question: probability-theory-022-Q13 -->
+
 12. 设随机变量X 与Y 相互独立，且X 服从标准正态分布N(0,1)，Y 的概率分布为
 
 P{Y = 0} = P{Y = 1} = 1
@@ -819,13 +843,15 @@ z≥0
 
 所以z = 0 为Fz(z) 的唯一间断点.
 
-<!-- question: probability-theory-022-Q2 -->
+<!-- question: probability-theory-022-Q14 -->
 
 二、（10 分）
 
 设甲、乙、丙三个地区爆发了某种流行病，三个地区的总人数比为2:5:3，而三个地区感染此病的
 
 比例分别为6%，4%，3%。现从这三个地区任意抽取一个人，问（1）此人感染此病的概率是多少？
+
+<!-- question: probability-theory-022-Q15 -->
 
 （2）如果此人感染此病，此人选自乙地区的概率是多少？
 
@@ -882,6 +908,8 @@ P B A
 0.03
 P B A
 
+
+<!-- question: probability-theory-022-Q16 -->
 
 （1）由全概率公式有
 
@@ -940,6 +968,8 @@ P B A
 
 
 
+<!-- question: probability-theory-022-Q17 -->
+
 （2）由贝叶斯公式有
 
 
@@ -975,7 +1005,7 @@ P B
 0.041
 41
 
-<!-- question: probability-theory-022-Q3 -->
+<!-- question: probability-theory-022-Q18 -->
 
 三、(10 分)
 
@@ -1120,7 +1150,7 @@ P
 X
 P
 
-<!-- question: probability-theory-022-Q4 -->
+<!-- question: probability-theory-022-Q19 -->
 
 四、(10 分)
 
@@ -1145,6 +1175,8 @@ x
 
 * 2
 
+<!-- question: probability-theory-022-Q20 -->
+
 (1)能否同意该厂的看法？（显著性水平
 05
 .
@@ -1160,6 +1192,8 @@ x
 2
 
 的置信度为95%的置信区间。（注：(2)小题结果就用分位数表示）
+
+<!-- question: probability-theory-022-Q21 -->
 
 (2)求方差
 
@@ -1304,7 +1338,7 @@ x
 0.975
 0.025
 
-<!-- question: probability-theory-022-Q5 -->
+<!-- question: probability-theory-022-Q22 -->
 
 五、（12 分）
 
@@ -1316,7 +1350,11 @@ P{X = 1} = P{X = 2} = 1
 
 在给定X = i 的条件下，随机变量Y 服从均匀分布U(0,i) (i = 1,2).
 
+<!-- question: probability-theory-022-Q23 -->
+
 (1) 求X 的分布函数FX(x).
+
+<!-- question: probability-theory-022-Q24 -->
 
 (2) 求Y 的分布函数FY(y).
 
@@ -1495,7 +1533,7 @@ y<0
 1,
 y≥2
 
-<!-- question: probability-theory-022-Q6 -->
+<!-- question: probability-theory-022-Q25 -->
 
 六、(10 分)
 
@@ -1549,6 +1587,8 @@ L
 法估计和最大似然估计法求的估计量.
 
 解
+<!-- question: probability-theory-022-Q26 -->
+
 (1) 矩法估计
 
 1
@@ -1610,6 +1650,8 @@ M
 X
 
 1
+
+<!-- question: probability-theory-022-Q27 -->
 
 (2) 最大似然估计
 
@@ -1791,7 +1833,7 @@ i
 
 1
 
-<!-- question: probability-theory-022-Q7 -->
+<!-- question: probability-theory-022-Q28 -->
 
 七、(12 分)
 
@@ -1812,11 +1854,17 @@ r
 
 且X 与Y 的相关系数
 
+<!-- question: probability-theory-022-Q29 -->
+
 (1) 求(X,Y) 的概率分布;
+
+<!-- question: probability-theory-022-Q30 -->
 
 (2) 求P{X + Y ≤1}.
 
 解.
+<!-- question: probability-theory-022-Q31 -->
+
 (1) 由已知条件可得E(X) = E(Y) = 2
 
 3,D(X) = D(Y) = 1
@@ -1910,6 +1958,8 @@ p2+5
 解方程组得p1 = 2
 
 9,p2 = p3 = 1
+<!-- question: probability-theory-022-Q32 -->
+
 9. 于是, (X,Y) 的概率分布为
 
 X

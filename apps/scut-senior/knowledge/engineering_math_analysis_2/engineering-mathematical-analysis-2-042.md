@@ -20,11 +20,15 @@ locator_type: page
 
 డ௭
 
+<!-- question: engineering-mathematical-analysis-2-042-Q1 -->
+
    2．设 𝑧ൌarctanሺ𝑥൅𝑦ሻ, 𝑥ൌ2𝑢െ𝑣ଶ, 𝑦ൌ𝑢ଶ𝑣, 求
 
 డ௨,
 
 డ௩.
+
+<!-- question: engineering-mathematical-analysis-2-042-Q2 -->
 
 3. 设 𝐷  是以 ሺ0, 0ሻ, ሺ𝜋, െ𝜋ሻ, ሺ𝜋, 𝜋ሻ 为顶点的三角形区域，求 ∬
 cosሺ𝑥െ𝑦ሻsinሺ𝑥൅
@@ -35,6 +39,8 @@ cosሺ𝑥െ𝑦ሻsinሺ𝑥൅
 《  工科数学分析（二） 》试卷 第 2 页 共 6 页
 
 <!-- page: 3 -->
+
+<!-- question: engineering-mathematical-analysis-2-042-Q3 -->
 
 4. 设 Ω ⊂ℝଷ 是由曲面 𝑧ൌ5 െ𝑥ଶെ𝑦ଶ 和 𝑧൅1 ൌඥ𝑥ଶ൅𝑦ଶ 所围成的空间立体，且 Ω 内
 
@@ -47,9 +53,11 @@ cosሺ𝑥െ𝑦ሻsinሺ𝑥൅
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-042-Q1 -->
+<!-- question: engineering-mathematical-analysis-2-042-Q4 -->
 
 三、解答题（共3 小题，每小题9 分，共27 分）
+
+<!-- question: engineering-mathematical-analysis-2-042-Q5 -->
 
 １. 求级数 ∑
 ଶ௡ିଵ
@@ -63,6 +71,8 @@ cosሺ𝑥െ𝑦ሻsinሺ𝑥൅
 
 <!-- page: 4 -->
 
+<!-- question: engineering-mathematical-analysis-2-042-Q6 -->
+
 ２. 求曲线积分 ∮
 𝑦d𝑥൅𝑧d𝑦൅𝑥d𝑧,
 ௅
@@ -71,6 +81,8 @@ cosሺ𝑥െ𝑦ሻsinሺ𝑥൅
 𝑥൅𝑦൅𝑧ൌ0,                        且从 𝑥 轴正
 
 向看去，这个圆周取逆时针方向。
+
+<!-- question: engineering-mathematical-analysis-2-042-Q7 -->
 
 3．给定 d𝑢ൌ
 ሺ௫ାଶ௬ሻୢ௫ା௬ୢ௬
@@ -86,7 +98,7 @@ cosሺ𝑥െ𝑦ሻsinሺ𝑥൅
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-042-Q2 -->
+<!-- question: engineering-mathematical-analysis-2-042-Q8 -->
 
 四、应用题（9 分）
 
@@ -106,9 +118,11 @@ cosሺ𝑥െ𝑦ሻsinሺ𝑥൅
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-042-Q3 -->
+<!-- question: engineering-mathematical-analysis-2-042-Q9 -->
 
 五、证明题（共 2 小题，每小题 9 分，共18 分）
+
+<!-- question: engineering-mathematical-analysis-2-042-Q10 -->
 
 1. 证明曲线 ൜𝑥ଶ൅𝑦ଶ൅𝑧ଶൌ6,
 𝑥൅𝑦൅𝑧ൌ0        在点 ሺ1, െ2,1ሻ 处的法平面
@@ -121,6 +135,8 @@ cosሺ𝑥െ𝑦ሻsinሺ𝑥൅
 ஶ
 ௡ୀଷ
  在 ሾെ2,2ሿ 内一致收敛。
+
+<!-- question: engineering-mathematical-analysis-2-042-Q11 -->
 
 ２. 证明级数 ∑
 ln ቀ1 ൅

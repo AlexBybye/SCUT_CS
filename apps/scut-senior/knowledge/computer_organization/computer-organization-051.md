@@ -88,7 +88,7 @@ C.______信号的逻辑函数.
 
 **五．**指令格式如下所示，OP为操作码字段，试分析指令格式的特点。
 
-![image](assets/assets/computer-organization-051/image-001.png)**六．**某机运算器框图如图1所示，其中ALU由通用函数发生器组成，M1—M3为多路开关，采用微程序控制，若用微指令对该运算器要求的所有控制信号进行微指令编码的格式设计，列出各控制字段的编码表。
+![image](assets/computer-organization-051/image-001.png)**六．**某机运算器框图如图1所示，其中ALU由通用函数发生器组成，M1—M3为多路开关，采用微程序控制，若用微指令对该运算器要求的所有控制信号进行微指令编码的格式设计，列出各控制字段的编码表。
 
 图1
 
@@ -96,7 +96,7 @@ C.______信号的逻辑函数.
 
 **八．**试分析图2所示写电流波形属于何种记录方式。
 
-![formula-object](assets/assets/computer-organization-051/image-002.png)
+![formula-object](assets/computer-organization-051/image-002.png)
 
 图2
 

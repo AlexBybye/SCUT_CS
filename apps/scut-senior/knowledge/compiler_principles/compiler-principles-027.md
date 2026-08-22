@@ -10,4 +10,4 @@ locator_type: none
 
 # LR分析表
 
-![page-001.png](assets/assets/compiler-principles-027/page-001.png)
+![page-001.png](assets/compiler-principles-027/page-001.png)

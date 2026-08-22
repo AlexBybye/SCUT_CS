@@ -189,7 +189,7 @@ Qf=Xf⊕Yf=0
 
 ①
 
-![image](assets/assets/computer-organization-015/image-001.jpeg)
+![image](assets/computer-organization-015/image-001.jpeg)
 
 ②$H=\frac {n} {(K+n-1)\tau }=\frac {12} {(4+12-1)∗100∗{10}^{-9}}=8∗{10}^{6}条/s$
 
@@ -201,11 +201,11 @@ CPU的数据通路如图1所示。运算器中R0～R3为通用寄存器，DR为�
 
 机器指令“JMP  （R3）”实现的功能是：将寄存器（R3）的内容2008送到程序计数器PC，下一条指令将从指存2008号单元读出执行。JMP是无条件转移指令。画出JMP指令周期流程图，并在CPU周期外标出所需的微操作控制信号。（一个CPU周期含T1～T4四个时钟信号，打入寄存器信号必须注明时钟序号）
 
-![image](assets/assets/computer-organization-015/image-002.png)
+![image](assets/computer-organization-015/image-002.png)
 
 与《解题指南》P72第2题类似
 
-![image](assets/assets/computer-organization-015/image-003.png)
+![image](assets/computer-organization-015/image-003.png)
 
 七、分析题（12分）
 

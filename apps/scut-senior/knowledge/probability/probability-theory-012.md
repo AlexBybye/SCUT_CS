@@ -30,23 +30,35 @@ locator_type: none
 
 **注意：** **![formula-object](assets/probability-theory-012/image-001.png)**
 
-![formula-object](assets/probability-theory-012/image-002.png)
+$$
+t_{0.975}(7)=2.3646t_{0.95}(7)=1.8946t_{0.975}(8)=2.3060t_{0.95}(8)=1.8595
+$$
 
 ![formula-object](assets/probability-theory-012/image-003.png)
 
 **一、（12分）**某城市的电话号码是8位数，首位可以是0~9,  如果从电话号码本中任指一个电话号码，求：
 
+<!-- question: probability-theory-012-Q1 -->
+
 (1)头两位数码都是8的概率；
 
+<!-- question: probability-theory-012-Q2 -->
+
 (2)头两位数码至少有一个不超过8的概率；
+
+<!-- question: probability-theory-012-Q3 -->
 
 (3)头两位数码不相同的概率．
 
 解 （1）$\frac {{10}^{6}} {{10}^{8}}=\frac {1} {100}$**；**
 
+<!-- question: probability-theory-012-Q4 -->
+
 （2）反面是头两位数码都是9，所以$1-\frac {1} {100}=\frac {99} {100}$**；**
 
-（3）头两位数码相同的概率是![formula-object](assets/probability-theory-012/image-004.png)，
+<!-- question: probability-theory-012-Q5 -->
+
+（3）头两位数码相同的概率是$\frac{10^{7}}{10^{8}}=\frac{1}{10}$，
 
 头两位数码不相同的概率是$1-\frac {1} {10}=\frac {9} {10}$
 
@@ -54,14 +66,20 @@ locator_type: none
 
 求：(1)全厂产品的次品率
 
+<!-- question: probability-theory-012-Q6 -->
+
 (2)  若任取一件产品发现是次品,此次品是甲车间生产的概率是多少？
 
 解：A为事件“生产的产品是次品”，B1为事件“产品是甲厂生产的”，B2为事件“产品是乙厂生产的”，B3为事件“产品是丙厂生产的”
+<!-- question: probability-theory-012-Q7 -->
+
 1. 由全概率公式，
 
 $$
 P\left \{ {Y>X}\right \}
 $$
+
+<!-- question: probability-theory-012-Q8 -->
 
 1. 由Bayes公式有：
 
@@ -128,6 +146,8 @@ $$
 **四、**(10分)设$P\left \{ {Y>X}\right \}$，且相互独立$P\left \{ {Y>X}\right \}$，
 
 求:（1）分别求U,V的概率密度函数；
+<!-- question: probability-theory-012-Q9 -->
+
 1. U,V的相关系数$P\left \{ {Y>X}\right \}$；
 
 解：（1）因为$P\left \{ {Y>X}\right \}$，且相互独立，所以$P\left \{ {Y>X}\right \}$都服从正态分布，
@@ -143,6 +163,8 @@ $P\left \{ {Y>X}\right \}$
 $P\left \{ {Y>X}\right \}$
 
 所以  $P\left \{ {Y>X}\right \}$，所以  $P\left \{ {Y>X}\right \}$
+
+<!-- question: probability-theory-012-Q10 -->
 
 （2）$P\left \{ {Y>X}\right \}$
 
@@ -170,7 +192,7 @@ $P\left \{ {Y>X}\right \}$
 
 **六、（10分）**某校有1000名学生,每人以80%的概率去图书馆自习,问图书馆至少应设多少个座位,才能以99%的概率保证去上自习的同学都有座位坐?
 
-解.设![formula-object](assets/probability-theory-012/image-050.png)表示同时去图书馆上自习的人数,并设图书馆至少有![formula-object](assets/probability-theory-012/image-051.png)个座位,才能以99%的概率保证去上自习的同学都有座位,即![formula-object](assets/probability-theory-012/image-052.png)满足![formula-object](assets/probability-theory-012/image-053.png).
+解.设$X$表示同时去图书馆上自习的人数,并设图书馆至少有$n$个座位,才能以99%的概率保证去上自习的同学都有座位,即$n$满足![formula-object](assets/probability-theory-012/image-053.png).
 
 因为![formula-object](assets/probability-theory-012/image-054.png),所以
 
@@ -178,15 +200,17 @@ $$
 P\left \{ {X\le n}\right \}\approx \Phi \left ( {\frac {n- 1000\times 0.8} {1000\times 0.8\times 0.2}}\right )-\Phi \left ( {\frac {0- 1000\times 0.8} {1000\times 0.8\times 0.2}}\right )
 $$
 
-![formula-object](assets/probability-theory-012/image-055.png)
+$$
+=\Phi\left(\frac{n-800}{12.65}\right)0.99
+$$
 
-查表得![formula-object](assets/probability-theory-012/image-056.png),故![formula-object](assets/probability-theory-012/image-057.png).因此图书馆至少应有830个座位.
+查表得$\frac{n-800}{12.65}2.33$,故$n829.5$.因此图书馆至少应有830个座位.
 
 **七、（10分）**
 
-(1)  已知某厂生产的滚珠直径![formula-object](assets/probability-theory-012/image-058.png)，从某天生产的滚珠中随机抽取6个，测得滚珠直径的平均值为![formula-object](assets/probability-theory-012/image-059.png)（单位：mm），求![formula-object](assets/probability-theory-012/image-060.png)的置信度为0.95的置信区间。
+(1)  已知某厂生产的滚珠直径![formula-object](assets/probability-theory-012/image-058.png)，从某天生产的滚珠中随机抽取6个，测得滚珠直径的平均值为$x=14.95$（单位：mm），求$mu$的置信度为0.95的置信区间。
 
-（2）某涤纶厂的生产的维尼纶的纤度（纤维的粗细程度）在正常生产的条件下，服从正态分布![formula-object](assets/probability-theory-012/image-061.png)，某日随机地抽取5根纤维，测得纤度为
+（2）某涤纶厂的生产的维尼纶的纤度（纤维的粗细程度）在正常生产的条件下，服从正态分布$N(\mu,0.048^{2})$，某日随机地抽取5根纤维，测得纤度为
 
 1.32  ，1.55  ，1.36  ，1.40  ，1.44
 
@@ -200,11 +224,13 @@ $$
 
 **![formula-object](assets/probability-theory-012/image-063.png)**
 
-**八、（20分）**  设总体![formula-object](assets/probability-theory-012/image-064.png)服从![formula-object](assets/probability-theory-012/image-065.png)上的均匀分布, ![formula-object](assets/probability-theory-012/image-066.png)是来自![formula-object](assets/probability-theory-012/image-067.png)的样本.(1)求![formula-object](assets/probability-theory-012/image-068.png)的矩估计量![formula-object](assets/probability-theory-012/image-069.png);(2)求![formula-object](assets/probability-theory-012/image-070.png)的极大似然估计![formula-object](assets/probability-theory-012/image-071.png);(3)证明![formula-object](assets/probability-theory-012/image-072.png),![formula-object](assets/probability-theory-012/image-073.png)和![formula-object](assets/probability-theory-012/image-074.png)![formula-object](assets/probability-theory-012/image-075.png)均是![formula-object](assets/probability-theory-012/image-076.png)的无偏估计量;(4)证明![formula-object](assets/probability-theory-012/image-077.png)较![formula-object](assets/probability-theory-012/image-078.png)和![formula-object](assets/probability-theory-012/image-079.png)有效.
+**八、（20分）**  设总体$X$服从![formula-object](assets/probability-theory-012/image-065.png)上的均匀分布, $X_1,X_2,\cdots,X_n$是来自$X$的样本.(1)求$\theta$的矩估计量$\hat{\theta}_1$;(2)求$\theta$的极大似然估计$\hat{\theta}_2$;(3)证明$\hat{\theta}_1$,$T_{1}=\frac{n+1}{n}\hat{\theta}_{2}$和$T_2=$![formula-object](assets/probability-theory-012/image-075.png)均是$\theta$的无偏估计量;(4)证明$T_1$较$\hat{\theta}_1$和$T_2$有效.
 
-**解**  (1)                   ![formula-object](assets/probability-theory-012/image-080.png)
+**解**  (1)                   $EX=\int_{0}^{\theta}xdx=\frac{\theta}{2}$
 
-令![formula-object](assets/probability-theory-012/image-081.png),得![formula-object](assets/probability-theory-012/image-082.png)的矩估计量为![formula-object](assets/probability-theory-012/image-083.png).
+令$\theta_{\overline{2}}=\overline{X}$,得$\theta$的矩估计量为$\hat{\theta_1}=2\bar{X}$.
+
+<!-- question: probability-theory-012-Q11 -->
 
 (2)似然函数为
 
@@ -212,37 +238,43 @@ $$
 
 ![formula-object](assets/probability-theory-012/image-085.png)
 
-又因为![formula-object](assets/probability-theory-012/image-086.png),所以![formula-object](assets/probability-theory-012/image-087.png)关于![formula-object](assets/probability-theory-012/image-088.png)单调减,故当![formula-object](assets/probability-theory-012/image-089.png)时, ![formula-object](assets/probability-theory-012/image-090.png)取得极大值,因此,![formula-object](assets/probability-theory-012/image-091.png)的极大似然估计量是
+又因为![formula-object](assets/probability-theory-012/image-086.png),所以$L(x_1,x_2,...,x_n;\theta)$关于$\theta$单调减,故当$\theta=X_n$时, $L(x_1,x_2,...,x_n;\theta)$取得极大值,因此,$\theta$的极大似然估计量是
 
 ![formula-object](assets/probability-theory-012/image-092.png)
 
-(3)     ![formula-object](assets/probability-theory-012/image-093.png)
+(3)     $E\hat{\theta_1}=E(2\bar{X})=2EX=2\times\frac{\theta}{2}=\theta$
 
-所以![formula-object](assets/probability-theory-012/image-094.png)是![formula-object](assets/probability-theory-012/image-095.png)的无偏估计量.
+所以$\hat{\theta}_1$是$\theta$的无偏估计量.
 
-![formula-object](assets/probability-theory-012/image-096.png)的密度函数为
+$X_n$的密度函数为
 
 ![formula-object](assets/probability-theory-012/image-097.png)
 
-故                    ![formula-object](assets/probability-theory-012/image-098.png)
+故                    $ET_{1}=\frac{n+1}{n}E(X_{(n)})=\frac{n+1}{n}\int_{0}^{\theta}n\frac{x^{n}}{\theta^{n}}dx=\theta$
 
-所以![formula-object](assets/probability-theory-012/image-099.png)是![formula-object](assets/probability-theory-012/image-100.png)的无偏估计量.
+所以$T_1$是$\theta$的无偏估计量.
 
 ![formula-object](assets/probability-theory-012/image-101.png)的密度函数为
 
-![formula-object](assets/probability-theory-012/image-102.png)
+$$
+f_{X_{(1)}}(x)=n[1-F(x;\theta)]^{n-1}f(x;\theta)
+$$
 
 ![formula-object](assets/probability-theory-012/image-103.png)
 
 故                        ![formula-object](assets/probability-theory-012/image-104.png)
 
-所以![formula-object](assets/probability-theory-012/image-105.png)也是![formula-object](assets/probability-theory-012/image-106.png)的无偏估计量.
+所以$T_2$也是$\theta$的无偏估计量.
 
-(4)                   ![formula-object](assets/probability-theory-012/image-107.png)
+(4)                   $EX^2=\int_{0}^{\theta}\frac{x^{2}}{\theta}dx=\frac{\theta^{3}}{3}$
 
-![formula-object](assets/probability-theory-012/image-108.png)
+$$
+DX=EX^2-(EX)^2=\frac{\theta^2}{3}-\frac{\theta^2}{4}=\frac{\theta^2}{12}
+$$
 
-![formula-object](assets/probability-theory-012/image-109.png)
+$$
+D\hat{\theta_1}=D(2\bar{X})=4\frac{DX}{n}=\frac{\theta^2}{3n}
+$$
 
 ![formula-object](assets/probability-theory-012/image-110.png)
 
@@ -250,8 +282,10 @@ $$
 
 ![formula-object](assets/probability-theory-012/image-112.png)
 
-![formula-object](assets/probability-theory-012/image-113.png)
+$$
+DT_{2}=\frac{2(n+1)}{n+2}\theta^{2}-\theta^{2}=\frac{n}{n+2}\theta^{2}
+$$
 
-综上,显然有          ![formula-object](assets/probability-theory-012/image-114.png)
+综上,显然有          $\frac{\theta^{2}}{n(n+2)}<\frac{\theta^{2}}{3n}<\frac{n}{n+2}\theta^{2}\quad(n>1)$
 
-所以![formula-object](assets/probability-theory-012/image-115.png)较![formula-object](assets/probability-theory-012/image-116.png)和![formula-object](assets/probability-theory-012/image-117.png)有效.
+所以$T_1$较$\hat{\theta}_1$和$T_2$有效.

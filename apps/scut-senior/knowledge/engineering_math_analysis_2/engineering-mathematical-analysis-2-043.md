@@ -20,11 +20,15 @@ locator_type: page
 
 ௫
 
+<!-- question: engineering-mathematical-analysis-2-043-Q1 -->
+
    2．设 𝑧ൌsin ቀ𝑥𝑦൅
 
 ௬ቁ, 求
 
 డ௫డ௬.
+
+<!-- question: engineering-mathematical-analysis-2-043-Q2 -->
 
 3. 设 𝐷 是由 𝑥ଶ൅𝑦ଶൌ9, 𝑥ଶ൅𝑦ଶൌ16 以及 𝑦ଶെ𝑥ଶൌ1, 𝑦ଶെ𝑥ଶൌ9 围成的位于第一象
 
@@ -36,6 +40,8 @@ locator_type: page
 《  工科数学分析（二） 》试卷 第 2 页 共 6 页
 
 <!-- page: 3 -->
+
+<!-- question: engineering-mathematical-analysis-2-043-Q3 -->
 
 4. 设 Ω ⊂ℝଷ 以原点为内点，且边界曲面 𝜕Ω 光滑，又设边界曲面单位外法向为 𝑛ሬ⃗, 向量场
 
@@ -49,9 +55,11 @@ locator_type: page
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-043-Q1 -->
+<!-- question: engineering-mathematical-analysis-2-043-Q4 -->
 
 三、解答题（共3 小题，每小题9 分，共27 分）
+
+<!-- question: engineering-mathematical-analysis-2-043-Q5 -->
 
 １. 求级数 ∑
 ଵ
@@ -65,6 +73,8 @@ locator_type: page
 
 <!-- page: 4 -->
 
+<!-- question: engineering-mathematical-analysis-2-043-Q6 -->
+
 ２. 如图，设有向曲面
 
  Σ ൌሼሺ𝑥, 𝑦, 𝑧ሻ: 𝑥൅𝑦൅𝑧ൌ1, 𝑥൒0, 𝑦൒0, 𝑧൒0ሽ,
@@ -75,6 +85,8 @@ locator_type: page
 ஻
 ஺
 ൅𝜙ሺ𝑥ሻd𝑦 与路径无
+
+<!-- question: engineering-mathematical-analysis-2-043-Q7 -->
 
 3．已知 𝜙ሺ𝜋ሻൌ1, 试确定 𝜙ሺ𝑥ሻ, 使得曲线积分 𝐼ൌ׬ ሾsin 𝑥െ𝜙ሺ𝑥ሻሿ
 ௬
@@ -89,7 +101,7 @@ locator_type: page
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-043-Q2 -->
+<!-- question: engineering-mathematical-analysis-2-043-Q8 -->
 
 四、应用题（9 分）
 
@@ -117,9 +129,11 @@ locator_type: page
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-043-Q3 -->
+<!-- question: engineering-mathematical-analysis-2-043-Q9 -->
 
 五、证明题（共 2 小题，每小题 9 分，共18 分）
+
+<!-- question: engineering-mathematical-analysis-2-043-Q10 -->
 
 1. 证明曲线 ൜𝑥ଶ൅𝑦ଶ൅𝑧ଶെ3𝑥ൌ0,
 2𝑥െ3𝑦൅5𝑧െ4 ൌ0    在点 ሺ1,1,1ሻ 处的法平面
@@ -132,6 +146,8 @@ locator_type: page
 ஶ
 ௡ୀଵ
  在 ሺെ∞, ൅∞ሻ 内一致收敛。
+
+<!-- question: engineering-mathematical-analysis-2-043-Q11 -->
 
 ２. 证明级数 ∑
 sin

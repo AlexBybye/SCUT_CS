@@ -63,7 +63,7 @@ September 11, 2019
 
 Lecture 3 - 3
 
-![image](assets/assets/artificial-intelligence-intro-020/image-001.png)
+![image](assets/artificial-intelligence-intro-020/image-001.png)
 
 <!-- page: 4 -->
 
@@ -96,17 +96,17 @@ September 11, 2019
 
 Lecture 3 - 4
 
-![image](assets/assets/artificial-intelligence-intro-020/image-002.png)
+![image](assets/artificial-intelligence-intro-020/image-002.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-003.png)
+![image](assets/artificial-intelligence-intro-020/image-003.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-004.png)
+![image](assets/artificial-intelligence-intro-020/image-004.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-005.png)
+![image](assets/artificial-intelligence-intro-020/image-005.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-006.png)
+![image](assets/artificial-intelligence-intro-020/image-006.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-007.png)
+![image](assets/artificial-intelligence-intro-020/image-007.png)
 
 <!-- page: 5 -->
 
@@ -127,13 +127,13 @@ September 11, 2019
 
 Lecture 3 - 5
 
-![image](assets/assets/artificial-intelligence-intro-020/image-008.png)
+![image](assets/artificial-intelligence-intro-020/image-008.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-009.png)
+![image](assets/artificial-intelligence-intro-020/image-009.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-010.png)
+![image](assets/artificial-intelligence-intro-020/image-010.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-011.png)
+![image](assets/artificial-intelligence-intro-020/image-011.png)
 
 <!-- page: 6 -->
 
@@ -157,7 +157,7 @@ Justin Johnson
 September 11, 2019
 Lecture 3 - 7
 
-![image](assets/assets/artificial-intelligence-intro-020/image-012.png)
+![image](assets/artificial-intelligence-intro-020/image-012.png)
 
 <!-- page: 8 -->
 
@@ -173,7 +173,7 @@ September 11, 2019
 
 Lecture 3 - 8
 
-![image](assets/assets/artificial-intelligence-intro-020/image-013.png)
+![image](assets/artificial-intelligence-intro-020/image-013.png)
 
 <!-- page: 9 -->
 
@@ -199,7 +199,7 @@ September 11, 2019
 
 Lecture 3 - 9
 
-![image](assets/assets/artificial-intelligence-intro-020/image-014.png)
+![image](assets/artificial-intelligence-intro-020/image-014.png)
 
 <!-- page: 10 -->
 
@@ -227,7 +227,7 @@ September 11, 2019
 
 Lecture 3 - 10
 
-![image](assets/assets/artificial-intelligence-intro-020/image-015.png)
+![image](assets/artificial-intelligence-intro-020/image-015.png)
 
 <!-- page: 11 -->
 
@@ -260,7 +260,7 @@ September 11, 2019
 
 Lecture 3 - 11
 
-![image](assets/assets/artificial-intelligence-intro-020/image-016.png)
+![image](assets/artificial-intelligence-intro-020/image-016.png)
 
 <!-- page: 12 -->
 
@@ -295,7 +295,7 @@ September 11, 2019
 
 Lecture 3 - 12
 
-![image](assets/assets/artificial-intelligence-intro-020/image-017.png)
+![image](assets/artificial-intelligence-intro-020/image-017.png)
 
 <!-- page: 13 -->
 
@@ -330,7 +330,7 @@ September 11, 2019
 
 Lecture 3 - 13
 
-![image](assets/assets/artificial-intelligence-intro-020/image-018.png)
+![image](assets/artificial-intelligence-intro-020/image-018.png)
 
 <!-- page: 14 -->
 
@@ -401,7 +401,7 @@ September 11, 2019
 
 Lecture 3 - 14
 
-![image](assets/assets/artificial-intelligence-intro-020/image-019.png)
+![image](assets/artificial-intelligence-intro-020/image-019.png)
 
 <!-- page: 15 -->
 
@@ -472,7 +472,7 @@ September 11, 2019
 
 Lecture 3 - 15
 
-![image](assets/assets/artificial-intelligence-intro-020/image-020.png)
+![image](assets/artificial-intelligence-intro-020/image-020.png)
 
 <!-- page: 16 -->
 
@@ -542,7 +542,7 @@ September 11, 2019
 
 Lecture 3 - 16
 
-![image](assets/assets/artificial-intelligence-intro-020/image-021.png)
+![image](assets/artificial-intelligence-intro-020/image-021.png)
 
 <!-- page: 17 -->
 
@@ -590,9 +590,9 @@ September 11, 2019
 
 Lecture 3 - 18
 
-![image](assets/assets/artificial-intelligence-intro-020/image-022.png)
+![image](assets/artificial-intelligence-intro-020/image-022.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-023.png)
+![image](assets/artificial-intelligence-intro-020/image-023.png)
 
 <!-- page: 19 -->
 
@@ -664,7 +664,7 @@ Justin Johnson
 September 11, 2019
 Lecture 3 - 19
 
-![image](assets/assets/artificial-intelligence-intro-020/image-024.png)
+![image](assets/artificial-intelligence-intro-020/image-024.png)
 
 <!-- page: 20 -->
 
@@ -766,9 +766,9 @@ Justin Johnson
 September 11, 2019
 Lecture 3 - 20
 
-![image](assets/assets/artificial-intelligence-intro-020/image-025.png)
+![image](assets/artificial-intelligence-intro-020/image-025.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-026.png)
+![image](assets/artificial-intelligence-intro-020/image-026.png)
 
 <!-- page: 21 -->
 
@@ -808,9 +808,9 @@ Justin Johnson
 September 11, 2019
 Lecture 3 - 21
 
-![image](assets/assets/artificial-intelligence-intro-020/image-027.png)
+![image](assets/artificial-intelligence-intro-020/image-027.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-028.png)
+![image](assets/artificial-intelligence-intro-020/image-028.png)
 
 <!-- page: 22 -->
 
@@ -850,11 +850,11 @@ Justin Johnson
 September 11, 2019
 Lecture 3 - 22
 
-![image](assets/assets/artificial-intelligence-intro-020/image-029.png)
+![image](assets/artificial-intelligence-intro-020/image-029.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-030.png)
+![image](assets/artificial-intelligence-intro-020/image-030.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-031.png)
+![image](assets/artificial-intelligence-intro-020/image-031.png)
 
 <!-- page: 23 -->
 
@@ -897,9 +897,9 @@ Justin Johnson
 September 11, 2019
 Lecture 3 - 23
 
-![image](assets/assets/artificial-intelligence-intro-020/image-032.png)
+![image](assets/artificial-intelligence-intro-020/image-032.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-033.png)
+![image](assets/artificial-intelligence-intro-020/image-033.png)
 
 <!-- page: 24 -->
 
@@ -947,9 +947,9 @@ Justin Johnson
 September 11, 2019
 Lecture 3 - 24
 
-![image](assets/assets/artificial-intelligence-intro-020/image-034.png)
+![image](assets/artificial-intelligence-intro-020/image-034.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-035.png)
+![image](assets/artificial-intelligence-intro-020/image-035.png)
 
 <!-- page: 25 -->
 
@@ -977,7 +977,7 @@ September 11, 2019
 
 Lecture 3 - 25
 
-![image](assets/assets/artificial-intelligence-intro-020/image-036.png)
+![image](assets/artificial-intelligence-intro-020/image-036.png)
 
 <!-- page: 26 -->
 
@@ -1006,7 +1006,7 @@ September 11, 2019
 
 Lecture 3 - 26
 
-![image](assets/assets/artificial-intelligence-intro-020/image-037.png)
+![image](assets/artificial-intelligence-intro-020/image-037.png)
 
 <!-- page: 27 -->
 
@@ -1038,9 +1038,9 @@ September 11, 2019
 
 Lecture 3 - 27
 
-![image](assets/assets/artificial-intelligence-intro-020/image-038.png)
+![image](assets/artificial-intelligence-intro-020/image-038.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-039.png)
+![image](assets/artificial-intelligence-intro-020/image-039.png)
 
 <!-- page: 28 -->
 
@@ -1078,13 +1078,13 @@ September 11, 2019
 
 Lecture 3 - 28
 
-![image](assets/assets/artificial-intelligence-intro-020/image-040.png)
+![image](assets/artificial-intelligence-intro-020/image-040.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-041.png)
+![image](assets/artificial-intelligence-intro-020/image-041.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-042.png)
+![image](assets/artificial-intelligence-intro-020/image-042.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-043.png)
+![image](assets/artificial-intelligence-intro-020/image-043.png)
 
 <!-- page: 29 -->
 
@@ -1122,13 +1122,13 @@ September 11, 2019
 
 Lecture 3 - 29
 
-![image](assets/assets/artificial-intelligence-intro-020/image-044.png)
+![image](assets/artificial-intelligence-intro-020/image-044.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-045.png)
+![image](assets/artificial-intelligence-intro-020/image-045.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-046.png)
+![image](assets/artificial-intelligence-intro-020/image-046.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-047.png)
+![image](assets/artificial-intelligence-intro-020/image-047.png)
 
 <!-- page: 30 -->
 
@@ -1189,7 +1189,7 @@ September 11, 2019
 
 Lecture 3 - 31
 
-![image](assets/assets/artificial-intelligence-intro-020/image-048.png)
+![image](assets/artificial-intelligence-intro-020/image-048.png)
 
 <!-- page: 32 -->
 
@@ -1213,13 +1213,13 @@ September 11, 2019
 
 Lecture 3 - 32
 
-![image](assets/assets/artificial-intelligence-intro-020/image-049.png)
+![image](assets/artificial-intelligence-intro-020/image-049.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-050.png)
+![image](assets/artificial-intelligence-intro-020/image-050.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-051.png)
+![image](assets/artificial-intelligence-intro-020/image-051.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-052.png)
+![image](assets/artificial-intelligence-intro-020/image-052.png)
 
 <!-- page: 33 -->
 
@@ -1280,13 +1280,13 @@ September 11, 2019
 
 Lecture 3 - 33
 
-![image](assets/assets/artificial-intelligence-intro-020/image-053.png)
+![image](assets/artificial-intelligence-intro-020/image-053.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-054.png)
+![image](assets/artificial-intelligence-intro-020/image-054.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-055.png)
+![image](assets/artificial-intelligence-intro-020/image-055.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-056.png)
+![image](assets/artificial-intelligence-intro-020/image-056.png)
 
 <!-- page: 34 -->
 
@@ -1347,13 +1347,13 @@ September 11, 2019
 
 Lecture 3 - 34
 
-![image](assets/assets/artificial-intelligence-intro-020/image-057.png)
+![image](assets/artificial-intelligence-intro-020/image-057.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-058.png)
+![image](assets/artificial-intelligence-intro-020/image-058.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-059.png)
+![image](assets/artificial-intelligence-intro-020/image-059.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-060.png)
+![image](assets/artificial-intelligence-intro-020/image-060.png)
 
 <!-- page: 35 -->
 
@@ -1425,7 +1425,7 @@ September 11, 2019
 
 Lecture 3 - 37
 
-![image](assets/assets/artificial-intelligence-intro-020/image-061.png)
+![image](assets/artificial-intelligence-intro-020/image-061.png)
 
 <!-- page: 38 -->
 
@@ -1458,9 +1458,9 @@ September 11, 2019
 
 Lecture 3 - 38
 
-![image](assets/assets/artificial-intelligence-intro-020/image-062.png)
+![image](assets/artificial-intelligence-intro-020/image-062.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-063.png)
+![image](assets/artificial-intelligence-intro-020/image-063.png)
 
 <!-- page: 39 -->
 
@@ -1496,11 +1496,11 @@ September 11, 2019
 
 Lecture 3 - 39
 
-![image](assets/assets/artificial-intelligence-intro-020/image-064.png)
+![image](assets/artificial-intelligence-intro-020/image-064.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-065.png)
+![image](assets/artificial-intelligence-intro-020/image-065.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-066.png)
+![image](assets/artificial-intelligence-intro-020/image-066.png)
 
 <!-- page: 40 -->
 
@@ -1594,11 +1594,11 @@ September 11, 2019
 
 Lecture 3 - 43
 
-![image](assets/assets/artificial-intelligence-intro-020/image-067.png)
+![image](assets/artificial-intelligence-intro-020/image-067.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-068.png)
+![image](assets/artificial-intelligence-intro-020/image-068.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-069.png)
+![image](assets/artificial-intelligence-intro-020/image-069.png)
 
 <!-- page: 44 -->
 
@@ -1640,17 +1640,17 @@ September 11, 2019
 
 Lecture 3 - 44
 
-![image](assets/assets/artificial-intelligence-intro-020/image-070.png)
+![image](assets/artificial-intelligence-intro-020/image-070.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-071.png)
+![image](assets/artificial-intelligence-intro-020/image-071.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-072.png)
+![image](assets/artificial-intelligence-intro-020/image-072.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-073.png)
+![image](assets/artificial-intelligence-intro-020/image-073.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-074.png)
+![image](assets/artificial-intelligence-intro-020/image-074.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-075.png)
+![image](assets/artificial-intelligence-intro-020/image-075.png)
 
 <!-- page: 45 -->
 
@@ -1701,17 +1701,17 @@ September 11, 2019
 
 Lecture 3 - 45
 
-![image](assets/assets/artificial-intelligence-intro-020/image-076.png)
+![image](assets/artificial-intelligence-intro-020/image-076.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-077.png)
+![image](assets/artificial-intelligence-intro-020/image-077.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-078.png)
+![image](assets/artificial-intelligence-intro-020/image-078.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-079.png)
+![image](assets/artificial-intelligence-intro-020/image-079.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-080.png)
+![image](assets/artificial-intelligence-intro-020/image-080.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-081.png)
+![image](assets/artificial-intelligence-intro-020/image-081.png)
 
 <!-- page: 46 -->
 
@@ -1764,17 +1764,17 @@ September 11, 2019
 
 Lecture 3 - 46
 
-![image](assets/assets/artificial-intelligence-intro-020/image-082.png)
+![image](assets/artificial-intelligence-intro-020/image-082.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-083.png)
+![image](assets/artificial-intelligence-intro-020/image-083.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-084.png)
+![image](assets/artificial-intelligence-intro-020/image-084.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-085.png)
+![image](assets/artificial-intelligence-intro-020/image-085.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-086.png)
+![image](assets/artificial-intelligence-intro-020/image-086.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-087.png)
+![image](assets/artificial-intelligence-intro-020/image-087.png)
 
 <!-- page: 47 -->
 
@@ -1828,17 +1828,17 @@ September 11, 2019
 
 Lecture 3 - 47
 
-![image](assets/assets/artificial-intelligence-intro-020/image-088.png)
+![image](assets/artificial-intelligence-intro-020/image-088.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-089.png)
+![image](assets/artificial-intelligence-intro-020/image-089.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-090.png)
+![image](assets/artificial-intelligence-intro-020/image-090.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-091.png)
+![image](assets/artificial-intelligence-intro-020/image-091.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-092.png)
+![image](assets/artificial-intelligence-intro-020/image-092.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-093.png)
+![image](assets/artificial-intelligence-intro-020/image-093.png)
 
 <!-- page: 48 -->
 
@@ -1891,17 +1891,17 @@ September 11, 2019
 
 Lecture 3 - 48
 
-![image](assets/assets/artificial-intelligence-intro-020/image-094.png)
+![image](assets/artificial-intelligence-intro-020/image-094.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-095.png)
+![image](assets/artificial-intelligence-intro-020/image-095.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-096.png)
+![image](assets/artificial-intelligence-intro-020/image-096.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-097.png)
+![image](assets/artificial-intelligence-intro-020/image-097.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-098.png)
+![image](assets/artificial-intelligence-intro-020/image-098.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-099.png)
+![image](assets/artificial-intelligence-intro-020/image-099.png)
 
 <!-- page: 49 -->
 
@@ -1952,17 +1952,17 @@ September 11, 2019
 
 Lecture 3 - 49
 
-![image](assets/assets/artificial-intelligence-intro-020/image-100.png)
+![image](assets/artificial-intelligence-intro-020/image-100.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-101.png)
+![image](assets/artificial-intelligence-intro-020/image-101.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-102.png)
+![image](assets/artificial-intelligence-intro-020/image-102.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-103.png)
+![image](assets/artificial-intelligence-intro-020/image-103.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-104.png)
+![image](assets/artificial-intelligence-intro-020/image-104.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-105.png)
+![image](assets/artificial-intelligence-intro-020/image-105.png)
 
 <!-- page: 50 -->
 
@@ -2012,17 +2012,17 @@ September 11, 2019
 
 Lecture 3 - 50
 
-![image](assets/assets/artificial-intelligence-intro-020/image-106.png)
+![image](assets/artificial-intelligence-intro-020/image-106.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-107.png)
+![image](assets/artificial-intelligence-intro-020/image-107.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-108.png)
+![image](assets/artificial-intelligence-intro-020/image-108.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-109.png)
+![image](assets/artificial-intelligence-intro-020/image-109.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-110.png)
+![image](assets/artificial-intelligence-intro-020/image-110.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-111.png)
+![image](assets/artificial-intelligence-intro-020/image-111.png)
 
 <!-- page: 51 -->
 
@@ -2073,17 +2073,17 @@ September 11, 2019
 
 Lecture 3 - 51
 
-![image](assets/assets/artificial-intelligence-intro-020/image-112.png)
+![image](assets/artificial-intelligence-intro-020/image-112.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-113.png)
+![image](assets/artificial-intelligence-intro-020/image-113.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-114.png)
+![image](assets/artificial-intelligence-intro-020/image-114.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-115.png)
+![image](assets/artificial-intelligence-intro-020/image-115.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-116.png)
+![image](assets/artificial-intelligence-intro-020/image-116.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-117.png)
+![image](assets/artificial-intelligence-intro-020/image-117.png)
 
 <!-- page: 52 -->
 
@@ -2134,17 +2134,17 @@ September 11, 2019
 
 Lecture 3 - 52
 
-![image](assets/assets/artificial-intelligence-intro-020/image-118.png)
+![image](assets/artificial-intelligence-intro-020/image-118.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-119.png)
+![image](assets/artificial-intelligence-intro-020/image-119.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-120.png)
+![image](assets/artificial-intelligence-intro-020/image-120.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-121.png)
+![image](assets/artificial-intelligence-intro-020/image-121.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-122.png)
+![image](assets/artificial-intelligence-intro-020/image-122.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-123.png)
+![image](assets/artificial-intelligence-intro-020/image-123.png)
 
 <!-- page: 53 -->
 
@@ -2194,17 +2194,17 @@ September 11, 2019
 
 Lecture 3 - 53
 
-![image](assets/assets/artificial-intelligence-intro-020/image-124.png)
+![image](assets/artificial-intelligence-intro-020/image-124.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-125.png)
+![image](assets/artificial-intelligence-intro-020/image-125.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-126.png)
+![image](assets/artificial-intelligence-intro-020/image-126.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-127.png)
+![image](assets/artificial-intelligence-intro-020/image-127.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-128.png)
+![image](assets/artificial-intelligence-intro-020/image-128.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-129.png)
+![image](assets/artificial-intelligence-intro-020/image-129.png)
 
 <!-- page: 54 -->
 
@@ -2254,19 +2254,19 @@ September 11, 2019
 
 Lecture 3 - 54
 
-![image](assets/assets/artificial-intelligence-intro-020/image-130.png)
+![image](assets/artificial-intelligence-intro-020/image-130.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-131.png)
+![image](assets/artificial-intelligence-intro-020/image-131.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-132.png)
+![image](assets/artificial-intelligence-intro-020/image-132.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-133.png)
+![image](assets/artificial-intelligence-intro-020/image-133.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-134.png)
+![image](assets/artificial-intelligence-intro-020/image-134.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-135.png)
+![image](assets/artificial-intelligence-intro-020/image-135.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-136.png)
+![image](assets/artificial-intelligence-intro-020/image-136.png)
 
 <!-- page: 55 -->
 
@@ -2279,9 +2279,9 @@ September 11, 2019
 
 Lecture 3 - 55
 
-![image](assets/assets/artificial-intelligence-intro-020/image-137.png)
+![image](assets/artificial-intelligence-intro-020/image-137.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-138.png)
+![image](assets/artificial-intelligence-intro-020/image-138.png)
 
 <!-- page: 56 -->
 
@@ -2296,9 +2296,9 @@ September 11, 2019
 
 Lecture 3 - 56
 
-![image](assets/assets/artificial-intelligence-intro-020/image-139.png)
+![image](assets/artificial-intelligence-intro-020/image-139.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-140.png)
+![image](assets/artificial-intelligence-intro-020/image-140.png)
 
 <!-- page: 57 -->
 
@@ -2353,15 +2353,15 @@ September 11, 2019
 
 Lecture 3 - 57
 
-![image](assets/assets/artificial-intelligence-intro-020/image-141.png)
+![image](assets/artificial-intelligence-intro-020/image-141.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-142.png)
+![image](assets/artificial-intelligence-intro-020/image-142.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-143.png)
+![image](assets/artificial-intelligence-intro-020/image-143.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-144.png)
+![image](assets/artificial-intelligence-intro-020/image-144.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-145.png)
+![image](assets/artificial-intelligence-intro-020/image-145.png)
 
 <!-- page: 58 -->
 
@@ -2404,15 +2404,15 @@ September 11, 2019
 
 Lecture 3 - 58
 
-![image](assets/assets/artificial-intelligence-intro-020/image-146.png)
+![image](assets/artificial-intelligence-intro-020/image-146.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-147.png)
+![image](assets/artificial-intelligence-intro-020/image-147.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-148.png)
+![image](assets/artificial-intelligence-intro-020/image-148.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-149.png)
+![image](assets/artificial-intelligence-intro-020/image-149.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-150.png)
+![image](assets/artificial-intelligence-intro-020/image-150.png)
 
 <!-- page: 59 -->
 
@@ -2426,7 +2426,7 @@ September 11, 2019
 
 Lecture 3 - 59
 
-![image](assets/assets/artificial-intelligence-intro-020/image-151.png)
+![image](assets/artificial-intelligence-intro-020/image-151.png)
 
 <!-- page: 60 -->
 
@@ -2443,7 +2443,7 @@ September 11, 2019
 
 Lecture 3 - 60
 
-![image](assets/assets/artificial-intelligence-intro-020/image-152.png)
+![image](assets/artificial-intelligence-intro-020/image-152.png)
 
 <!-- page: 61 -->
 
@@ -2463,7 +2463,7 @@ September 11, 2019
 
 Lecture 3 - 61
 
-![image](assets/assets/artificial-intelligence-intro-020/image-153.png)
+![image](assets/artificial-intelligence-intro-020/image-153.png)
 
 <!-- page: 62 -->
 
@@ -2493,13 +2493,13 @@ September 11, 2019
 
 Lecture 3 - 62
 
-![image](assets/assets/artificial-intelligence-intro-020/image-154.png)
+![image](assets/artificial-intelligence-intro-020/image-154.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-155.png)
+![image](assets/artificial-intelligence-intro-020/image-155.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-156.png)
+![image](assets/artificial-intelligence-intro-020/image-156.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-157.png)
+![image](assets/artificial-intelligence-intro-020/image-157.png)
 
 <!-- page: 63 -->
 
@@ -2527,7 +2527,7 @@ September 11, 2019
 
 Lecture 3 - 63
 
-![image](assets/assets/artificial-intelligence-intro-020/image-158.png)
+![image](assets/artificial-intelligence-intro-020/image-158.png)
 
 <!-- page: 64 -->
 
@@ -2540,15 +2540,15 @@ September 11, 2019
 
 Lecture 3 - 64
 
-![image](assets/assets/artificial-intelligence-intro-020/image-159.png)
+![image](assets/artificial-intelligence-intro-020/image-159.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-160.png)
+![image](assets/artificial-intelligence-intro-020/image-160.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-161.png)
+![image](assets/artificial-intelligence-intro-020/image-161.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-162.png)
+![image](assets/artificial-intelligence-intro-020/image-162.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-163.png)
+![image](assets/artificial-intelligence-intro-020/image-163.png)
 
 <!-- page: 65 -->
 
@@ -2564,15 +2564,15 @@ September 11, 2019
 
 Lecture 3 - 65
 
-![image](assets/assets/artificial-intelligence-intro-020/image-164.png)
+![image](assets/artificial-intelligence-intro-020/image-164.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-165.png)
+![image](assets/artificial-intelligence-intro-020/image-165.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-166.png)
+![image](assets/artificial-intelligence-intro-020/image-166.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-167.png)
+![image](assets/artificial-intelligence-intro-020/image-167.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-168.png)
+![image](assets/artificial-intelligence-intro-020/image-168.png)
 
 <!-- page: 66 -->
 
@@ -2675,7 +2675,7 @@ September 11, 2019
 
 Lecture 3 - 70
 
-![image](assets/assets/artificial-intelligence-intro-020/image-169.png)
+![image](assets/artificial-intelligence-intro-020/image-169.png)
 
 <!-- page: 71 -->
 
@@ -2702,11 +2702,11 @@ September 11, 2019
 
 Lecture 3 - 71
 
-![image](assets/assets/artificial-intelligence-intro-020/image-170.png)
+![image](assets/artificial-intelligence-intro-020/image-170.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-171.png)
+![image](assets/artificial-intelligence-intro-020/image-171.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-172.png)
+![image](assets/artificial-intelligence-intro-020/image-172.png)
 
 <!-- page: 72 -->
 
@@ -2736,11 +2736,11 @@ September 11, 2019
 
 Lecture 3 - 72
 
-![image](assets/assets/artificial-intelligence-intro-020/image-173.png)
+![image](assets/artificial-intelligence-intro-020/image-173.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-174.png)
+![image](assets/artificial-intelligence-intro-020/image-174.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-175.png)
+![image](assets/artificial-intelligence-intro-020/image-175.png)
 
 <!-- page: 73 -->
 
@@ -2784,11 +2784,11 @@ September 11, 2019
 
 Lecture 3 - 73
 
-![image](assets/assets/artificial-intelligence-intro-020/image-176.png)
+![image](assets/artificial-intelligence-intro-020/image-176.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-177.png)
+![image](assets/artificial-intelligence-intro-020/image-177.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-178.png)
+![image](assets/artificial-intelligence-intro-020/image-178.png)
 
 <!-- page: 74 -->
 
@@ -2843,11 +2843,11 @@ September 11, 2019
 
 Lecture 3 - 74
 
-![image](assets/assets/artificial-intelligence-intro-020/image-179.png)
+![image](assets/artificial-intelligence-intro-020/image-179.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-180.png)
+![image](assets/artificial-intelligence-intro-020/image-180.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-181.png)
+![image](assets/artificial-intelligence-intro-020/image-181.png)
 
 <!-- page: 75 -->
 
@@ -2906,13 +2906,13 @@ September 11, 2019
 
 Lecture 3 - 75
 
-![image](assets/assets/artificial-intelligence-intro-020/image-182.png)
+![image](assets/artificial-intelligence-intro-020/image-182.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-183.png)
+![image](assets/artificial-intelligence-intro-020/image-183.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-184.png)
+![image](assets/artificial-intelligence-intro-020/image-184.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-185.png)
+![image](assets/artificial-intelligence-intro-020/image-185.png)
 
 <!-- page: 76 -->
 
@@ -2975,13 +2975,13 @@ September 11, 2019
 
 Lecture 3 - 76
 
-![image](assets/assets/artificial-intelligence-intro-020/image-186.png)
+![image](assets/artificial-intelligence-intro-020/image-186.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-187.png)
+![image](assets/artificial-intelligence-intro-020/image-187.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-188.png)
+![image](assets/artificial-intelligence-intro-020/image-188.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-189.png)
+![image](assets/artificial-intelligence-intro-020/image-189.png)
 
 <!-- page: 77 -->
 
@@ -3047,13 +3047,13 @@ September 11, 2019
 
 Lecture 3 - 77
 
-![image](assets/assets/artificial-intelligence-intro-020/image-190.png)
+![image](assets/artificial-intelligence-intro-020/image-190.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-191.png)
+![image](assets/artificial-intelligence-intro-020/image-191.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-192.png)
+![image](assets/artificial-intelligence-intro-020/image-192.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-193.png)
+![image](assets/artificial-intelligence-intro-020/image-193.png)
 
 <!-- page: 78 -->
 
@@ -3123,17 +3123,17 @@ September 11, 2019
 
 Lecture 3 - 78
 
-![image](assets/assets/artificial-intelligence-intro-020/image-194.png)
+![image](assets/artificial-intelligence-intro-020/image-194.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-195.png)
+![image](assets/artificial-intelligence-intro-020/image-195.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-196.png)
+![image](assets/artificial-intelligence-intro-020/image-196.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-197.png)
+![image](assets/artificial-intelligence-intro-020/image-197.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-198.png)
+![image](assets/artificial-intelligence-intro-020/image-198.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-199.png)
+![image](assets/artificial-intelligence-intro-020/image-199.png)
 
 <!-- page: 79 -->
 
@@ -3201,17 +3201,17 @@ September 11, 2019
 
 Lecture 3 - 79
 
-![image](assets/assets/artificial-intelligence-intro-020/image-200.png)
+![image](assets/artificial-intelligence-intro-020/image-200.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-201.png)
+![image](assets/artificial-intelligence-intro-020/image-201.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-202.png)
+![image](assets/artificial-intelligence-intro-020/image-202.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-203.png)
+![image](assets/artificial-intelligence-intro-020/image-203.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-204.png)
+![image](assets/artificial-intelligence-intro-020/image-204.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-205.png)
+![image](assets/artificial-intelligence-intro-020/image-205.png)
 
 <!-- page: 80 -->
 
@@ -3241,15 +3241,15 @@ September 11, 2019
 
 Lecture 3 - 80
 
-![image](assets/assets/artificial-intelligence-intro-020/image-206.png)
+![image](assets/artificial-intelligence-intro-020/image-206.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-207.png)
+![image](assets/artificial-intelligence-intro-020/image-207.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-208.png)
+![image](assets/artificial-intelligence-intro-020/image-208.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-209.png)
+![image](assets/artificial-intelligence-intro-020/image-209.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-210.png)
+![image](assets/artificial-intelligence-intro-020/image-210.png)
 
 <!-- page: 81 -->
 
@@ -3282,15 +3282,15 @@ September 11, 2019
 
 Lecture 3 - 81
 
-![image](assets/assets/artificial-intelligence-intro-020/image-211.png)
+![image](assets/artificial-intelligence-intro-020/image-211.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-212.png)
+![image](assets/artificial-intelligence-intro-020/image-212.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-213.png)
+![image](assets/artificial-intelligence-intro-020/image-213.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-214.png)
+![image](assets/artificial-intelligence-intro-020/image-214.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-215.png)
+![image](assets/artificial-intelligence-intro-020/image-215.png)
 
 <!-- page: 82 -->
 
@@ -3324,15 +3324,15 @@ September 11, 2019
 
 Lecture 3 - 82
 
-![image](assets/assets/artificial-intelligence-intro-020/image-216.png)
+![image](assets/artificial-intelligence-intro-020/image-216.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-217.png)
+![image](assets/artificial-intelligence-intro-020/image-217.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-218.png)
+![image](assets/artificial-intelligence-intro-020/image-218.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-219.png)
+![image](assets/artificial-intelligence-intro-020/image-219.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-220.png)
+![image](assets/artificial-intelligence-intro-020/image-220.png)
 
 <!-- page: 83 -->
 
@@ -3366,15 +3366,15 @@ September 11, 2019
 
 Lecture 3 - 83
 
-![image](assets/assets/artificial-intelligence-intro-020/image-221.png)
+![image](assets/artificial-intelligence-intro-020/image-221.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-222.png)
+![image](assets/artificial-intelligence-intro-020/image-222.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-223.png)
+![image](assets/artificial-intelligence-intro-020/image-223.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-224.png)
+![image](assets/artificial-intelligence-intro-020/image-224.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-225.png)
+![image](assets/artificial-intelligence-intro-020/image-225.png)
 
 <!-- page: 84 -->
 
@@ -3412,15 +3412,15 @@ September 11, 2019
 
 Lecture 3 - 84
 
-![image](assets/assets/artificial-intelligence-intro-020/image-226.png)
+![image](assets/artificial-intelligence-intro-020/image-226.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-227.png)
+![image](assets/artificial-intelligence-intro-020/image-227.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-228.png)
+![image](assets/artificial-intelligence-intro-020/image-228.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-229.png)
+![image](assets/artificial-intelligence-intro-020/image-229.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-230.png)
+![image](assets/artificial-intelligence-intro-020/image-230.png)
 
 <!-- page: 85 -->
 
@@ -3445,9 +3445,9 @@ September 11, 2019
 
 Lecture 3 - 85
 
-![image](assets/assets/artificial-intelligence-intro-020/image-231.png)
+![image](assets/artificial-intelligence-intro-020/image-231.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-232.png)
+![image](assets/artificial-intelligence-intro-020/image-232.png)
 
 <!-- page: 86 -->
 
@@ -3472,9 +3472,9 @@ September 11, 2019
 
 Lecture 3 - 86
 
-![image](assets/assets/artificial-intelligence-intro-020/image-233.png)
+![image](assets/artificial-intelligence-intro-020/image-233.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-234.png)
+![image](assets/artificial-intelligence-intro-020/image-234.png)
 
 <!-- page: 87 -->
 
@@ -3499,9 +3499,9 @@ September 11, 2019
 
 Lecture 3 - 87
 
-![image](assets/assets/artificial-intelligence-intro-020/image-235.png)
+![image](assets/artificial-intelligence-intro-020/image-235.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-236.png)
+![image](assets/artificial-intelligence-intro-020/image-236.png)
 
 <!-- page: 88 -->
 
@@ -3526,9 +3526,9 @@ September 11, 2019
 
 Lecture 3 - 88
 
-![image](assets/assets/artificial-intelligence-intro-020/image-237.png)
+![image](assets/artificial-intelligence-intro-020/image-237.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-238.png)
+![image](assets/artificial-intelligence-intro-020/image-238.png)
 
 <!-- page: 89 -->
 
@@ -3553,9 +3553,9 @@ September 11, 2019
 
 Lecture 3 - 89
 
-![image](assets/assets/artificial-intelligence-intro-020/image-239.png)
+![image](assets/artificial-intelligence-intro-020/image-239.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-240.png)
+![image](assets/artificial-intelligence-intro-020/image-240.png)
 
 <!-- page: 90 -->
 
@@ -3580,9 +3580,9 @@ September 11, 2019
 
 Lecture 3 - 90
 
-![image](assets/assets/artificial-intelligence-intro-020/image-241.png)
+![image](assets/artificial-intelligence-intro-020/image-241.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-242.png)
+![image](assets/artificial-intelligence-intro-020/image-242.png)
 
 <!-- page: 91 -->
 
@@ -3606,13 +3606,13 @@ September 11, 2019
 
 Lecture 3 - 91
 
-![image](assets/assets/artificial-intelligence-intro-020/image-243.png)
+![image](assets/artificial-intelligence-intro-020/image-243.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-244.png)
+![image](assets/artificial-intelligence-intro-020/image-244.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-245.png)
+![image](assets/artificial-intelligence-intro-020/image-245.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-246.png)
+![image](assets/artificial-intelligence-intro-020/image-246.png)
 
 <!-- page: 92 -->
 
@@ -3640,15 +3640,15 @@ September 11, 2019
 
 Lecture 3 - 92
 
-![image](assets/assets/artificial-intelligence-intro-020/image-247.png)
+![image](assets/artificial-intelligence-intro-020/image-247.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-248.png)
+![image](assets/artificial-intelligence-intro-020/image-248.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-249.png)
+![image](assets/artificial-intelligence-intro-020/image-249.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-250.png)
+![image](assets/artificial-intelligence-intro-020/image-250.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-251.png)
+![image](assets/artificial-intelligence-intro-020/image-251.png)
 
 <!-- page: 93 -->
 
@@ -3678,15 +3678,15 @@ September 11, 2019
 
 Lecture 3 - 93
 
-![image](assets/assets/artificial-intelligence-intro-020/image-252.png)
+![image](assets/artificial-intelligence-intro-020/image-252.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-253.png)
+![image](assets/artificial-intelligence-intro-020/image-253.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-254.png)
+![image](assets/artificial-intelligence-intro-020/image-254.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-255.png)
+![image](assets/artificial-intelligence-intro-020/image-255.png)
 
-![image](assets/assets/artificial-intelligence-intro-020/image-256.png)
+![image](assets/artificial-intelligence-intro-020/image-256.png)
 
 <!-- page: 94 -->
 

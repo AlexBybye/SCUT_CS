@@ -18,6 +18,8 @@ locator_type: page
 
 一、选择题（共6 题，每题3 分，共18 分）
 
+<!-- question: probability-theory-018-Q2 -->
+
 1.若P(AB)=0，则下述命题中正确的是（B ）。
 
 A．A 与B 互不相容；
@@ -56,6 +58,8 @@ P
 
 B
 P
+
+<!-- question: probability-theory-018-Q3 -->
 
 2.设
 )
@@ -135,6 +139,8 @@ Y 
 C
 )。
 
+<!-- question: probability-theory-018-Q4 -->
+
 3.设总体
 )
 1,
@@ -161,6 +167,8 @@ D. F 分布.
 
 A.正态分布；
 B.
+
+<!-- question: probability-theory-018-Q5 -->
 
 4.设
 3
@@ -249,6 +257,8 @@ Y
 的密度函数为（B
 ）。
 
+<!-- question: probability-theory-018-Q6 -->
+
 5.设随机变量X 的密度函数为
 4
 
@@ -330,6 +340,8 @@ e
 2
 2
 
+<!-- question: probability-theory-018-Q7 -->
+
 6. 设随机变量X 服从t 分布t(n)，对给定的
 )
 1
@@ -408,11 +420,13 @@ t
 
 2
 
-<!-- question: probability-theory-018-Q2 -->
+<!-- question: probability-theory-018-Q8 -->
 
 二、填空题（共6 题，每题3 分，共18 分）。
 
 得分
+
+<!-- question: probability-theory-018-Q9 -->
 
 1. 设随机变量X 和Y 的期望分别为
 1
@@ -471,6 +485,8 @@ P
 
 
 
+<!-- question: probability-theory-018-Q10 -->
+
 2. 设随机变量X 的分布函数为
 
 
@@ -492,6 +508,8 @@ x
 ,1
 
 x
+
+<!-- question: probability-theory-018-Q11 -->
 
 3. 若二维随机向量(X,Y)~N(1,2,4,9,0)，则
 
@@ -526,6 +544,8 @@ X
 
 2
 的无偏估计，
+
+<!-- question: probability-theory-018-Q12 -->
 
 4. 设
 n
@@ -570,6 +590,8 @@ Y
 ，则E[Y]＝
 
 1
+
+<!-- question: probability-theory-018-Q13 -->
 
 5. 设
 4
@@ -620,6 +642,8 @@ X
 r
 设随
 
+<!-- question: probability-theory-018-Q14 -->
+
 6. 已知X,Y 满足
 ,
 16
@@ -666,9 +690,13 @@ Z
 2
 3
 
+<!-- question: probability-theory-018-Q15 -->
+
 三、（10 分）在房间里有10 个人，分别佩戴从1 号到10 号的纪念章，任选3 人记录
 
 其纪念章的号码。试求：(1) 最大号码为5 的概率；
+
+<!-- question: probability-theory-018-Q16 -->
 
 (2) 如果已知记录的最大号码为5，求记录的三个号码中有3 的概率？
 
@@ -697,6 +725,8 @@ P
 C
 
 10
+
+<!-- question: probability-theory-018-Q17 -->
 
 （2）B={记录的号码中有3}，
 
@@ -743,7 +773,7 @@ P
 A
 P
 
-<!-- question: probability-theory-018-Q3 -->
+<!-- question: probability-theory-018-Q18 -->
 
 四、( 10 分)
 
@@ -772,7 +802,11 @@ n
 s
 kg.
 
+<!-- question: probability-theory-018-Q19 -->
+
 (1) 在置信度为0.95 时，求出面粉重量平均值的置信区间。
+
+<!-- question: probability-theory-018-Q20 -->
 
 (2) 在显著性水平=0.05 下，检验是否可以认为该流水线面粉的平均重量为每袋
 
@@ -937,6 +971,8 @@ n
 
 得置信区间为[24.252,25.588].
 
+<!-- question: probability-theory-018-Q21 -->
+
 (2) 1. 提出假设
 .
 :
@@ -972,6 +1008,8 @@ T
 t
 X
 
+<!-- question: probability-theory-018-Q22 -->
+
 2. 构造统计量
 ).
 35
@@ -990,6 +1028,8 @@ X
 S
 
 n
+
+<!-- question: probability-theory-018-Q23 -->
 
 3. 求分位点
 
@@ -1038,6 +1078,8 @@ T
 .
 0
 
+<!-- question: probability-theory-018-Q24 -->
+
 4. 求观测值
 .
 2432
@@ -1051,6 +1093,8 @@ T
 974
 .
 1
+
+<!-- question: probability-theory-018-Q25 -->
 
 5. 作判断
 
@@ -1074,7 +1118,7 @@ t
 0
 H ，即认为平均重量为每袋25kg。
 
-<!-- question: probability-theory-018-Q4 -->
+<!-- question: probability-theory-018-Q26 -->
 
 五、（10 分）
 
@@ -1402,7 +1446,7 @@ k
 
 （10 分）
 
-<!-- question: probability-theory-018-Q5 -->
+<!-- question: probability-theory-018-Q27 -->
 
 六、（10 分）
 
@@ -1483,7 +1527,11 @@ X
 
 U
 P
+<!-- question: probability-theory-018-Q28 -->
+
 (2) U，V 的联合分布;
+<!-- question: probability-theory-018-Q29 -->
+
 (3)W=UV 的分布列.
 
 解：（因为（
@@ -1705,7 +1753,7 @@ P
 
 2
 
-<!-- question: probability-theory-018-Q6 -->
+<!-- question: probability-theory-018-Q30 -->
 
 七、（12 分）
 
@@ -1752,7 +1800,11 @@ f
 
 其它
 
+<!-- question: probability-theory-018-Q31 -->
+
 （1）求A 的值；
+<!-- question: probability-theory-018-Q32 -->
+
 （2）判断X，Y 是否独立；（3）期望E[2XY].
 
 -
@@ -1877,6 +1929,8 @@ f
 
 
 
+
+<!-- question: probability-theory-018-Q33 -->
 
 （2）X 的边缘密度
 )
@@ -2239,7 +2293,7 @@ e
 
 （若没有注意到X,Y 的独立性，也可以直接计算）
 
-<!-- question: probability-theory-018-Q7 -->
+<!-- question: probability-theory-018-Q34 -->
 
 八、(12 分)
 
@@ -2257,6 +2311,8 @@ e
 
 为未知参数.
 
+<!-- question: probability-theory-018-Q35 -->
+
 （1）求的矩估计量
 M
 ˆ
@@ -2264,6 +2320,8 @@ M
 M
 ˆ
 的无偏性；
+
+<!-- question: probability-theory-018-Q36 -->
 
 （2）当样本观察值为
 3
@@ -2401,6 +2459,8 @@ M
 M
 ˆ
 是的无偏估计.
+
+<!-- question: probability-theory-018-Q37 -->
 
 (2) 似然函数：
 )

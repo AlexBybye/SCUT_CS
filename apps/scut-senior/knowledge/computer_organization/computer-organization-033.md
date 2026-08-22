@@ -49,8 +49,8 @@ locator_type: slide
 
 <!-- slide: 4 -->
 
-![image](assets/assets/computer-organization-033/image-001.jpg)
-![image](assets/assets/computer-organization-033/image-002.jpg)
+![image](assets/computer-organization-033/image-001.jpg)
+![image](assets/computer-organization-033/image-002.jpg)
 - 数值的机器码表示
 - 机器数的形式：原码，补码，移码，反码 。
 - 机器数： 计算机内部编码表示的数，称为机 器数(机器码)；
@@ -58,8 +58,8 @@ locator_type: slide
 
 <!-- slide: 5 -->
 
-![image](assets/assets/computer-organization-033/image-003.png)
-![image](assets/assets/computer-organization-033/image-004.png)
+![image](assets/computer-organization-033/image-003.png)
+![image](assets/computer-organization-033/image-004.png)
 
 <!-- slide: 6 -->
 
@@ -124,7 +124,7 @@ locator_type: slide
 
 <!-- slide: 10 -->
 
-![image](assets/assets/computer-organization-033/image-005.png)
+![image](assets/computer-organization-033/image-005.png)
 - [BN]补
 - | BN |
 - |AN×BN|
@@ -302,7 +302,7 @@ locator_type: slide
 - （2）一位全加器的逻辑图和符号表示
 - Ci+1=Ai·Bi+ (Ai⊕Bi)·Ci
 - Fi = Ai⊕ Bi⊕Ci
-![image](assets/assets/computer-organization-033/image-007.png)
+![image](assets/computer-organization-033/image-007.png)
 
 <!-- slide: 20 -->
 
@@ -366,17 +366,17 @@ locator_type: slide
 
 ## 串行加法器
 
-![image](assets/assets/computer-organization-033/image-008.png)
-![image](assets/assets/computer-organization-033/image-009.png)
-![image](assets/assets/computer-organization-033/image-010.png)
+![image](assets/computer-organization-033/image-008.png)
+![image](assets/computer-organization-033/image-009.png)
+![image](assets/computer-organization-033/image-010.png)
 
 <!-- slide: 23 -->
 
 ## 并行加法器
 
-![image](assets/assets/computer-organization-033/image-011.png)
-![image](assets/assets/computer-organization-033/image-012.png)
-![image](assets/assets/computer-organization-033/image-013.png)
+![image](assets/computer-organization-033/image-011.png)
+![image](assets/computer-organization-033/image-012.png)
+![image](assets/computer-organization-033/image-013.png)
 
 <!-- slide: 24 -->
 
@@ -423,7 +423,7 @@ locator_type: slide
 
 <!-- slide: 27 -->
 
-![image](assets/assets/computer-organization-033/image-014.jpg)
+![image](assets/computer-organization-033/image-014.jpg)
 
 <!-- slide: 28 -->
 

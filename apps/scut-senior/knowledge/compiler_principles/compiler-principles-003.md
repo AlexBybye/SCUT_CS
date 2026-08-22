@@ -51,7 +51,7 @@ LR(0)分析，SLR(1)分析
   - 直接归约、归约、句柄、规范归约（最左归约）
   - 可归前缀、LR（0）项目集规范族
 
-![image](assets/assets/compiler-principles-003/image-001.png)
+![image](assets/compiler-principles-003/image-001.png)
 - 基本方法（要求熟练做题）
   - 写递归下降子程序
   - 构造LL（1）分析表（涉及FIRST、FOLLOW），利用分析表进行LL(1)分析

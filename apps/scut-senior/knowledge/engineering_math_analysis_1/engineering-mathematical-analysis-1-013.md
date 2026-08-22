@@ -30,11 +30,19 @@ locator_type: page
 
 注意事项：
 
+<!-- question: engineering-mathematical-analysis-1-013-Q1 -->
+
 1. 开考前请将密封线内各项信息填写清楚;
+
+<!-- question: engineering-mathematical-analysis-1-013-Q2 -->
 
 2. 所有答案请直接答在试卷上;
 
+<!-- question: engineering-mathematical-analysis-1-013-Q3 -->
+
 3. 考试形式：闭卷;
+
+<!-- question: engineering-mathematical-analysis-1-013-Q4 -->
 
 4. 本试卷共5 个大题, 满分100 分, 考试时间120 分钟。
 
@@ -51,7 +59,7 @@ locator_type: page
 分
 评卷人
 
-<!-- question: engineering-mathematical-analysis-1-013-Q1 -->
+<!-- question: engineering-mathematical-analysis-1-013-Q5 -->
 
 一、填空题（5 小题，每小题3 分，共15 分）
 
@@ -61,8 +69,12 @@ n√2n + 3n =
 3
 ；
 
+<!-- question: engineering-mathematical-analysis-1-013-Q6 -->
+
 1. 极限lim
 n→∞
+
+<!-- question: engineering-mathematical-analysis-1-013-Q7 -->
 
 2. 设曲线y = x3 + ax2 + bx + c 有拐点(1, −1)，且在x = 0 处有极⼤值，则
 
@@ -73,6 +85,8 @@ a =
 ，c =
 1
 ；
+
+<!-- question: engineering-mathematical-analysis-1-013-Q8 -->
 
 3. 设y = sin(2x)，则d(n)y =
 2n sin
@@ -100,6 +114,8 @@ dx =
 
 −1
 
+<!-- question: engineering-mathematical-analysis-1-013-Q9 -->
+
 5. 反常积分
 ´ 0
 
@@ -110,11 +126,13 @@ ln 2
 
 −∞
 
-<!-- question: engineering-mathematical-analysis-1-013-Q2 -->
+<!-- question: engineering-mathematical-analysis-1-013-Q10 -->
 
 二、计算下列各题（3 小题，每小题8 分，共24 分）
 
 ex2+2 cos x−3
+
+<!-- question: engineering-mathematical-analysis-1-013-Q11 -->
 
 1. 求极限lim
 x→0
@@ -166,6 +184,8 @@ x→0
 第1 页共6 页
 
 <!-- page: 2 -->
+
+<!-- question: engineering-mathematical-analysis-1-013-Q12 -->
 
 2. 求不定积分
 ´
@@ -223,6 +243,8 @@ cos tetdt = 1
 cos(ln x)dx = 1
 
 2x(sin(ln x) + cos(ln x)) + C.
+
+<!-- question: engineering-mathematical-analysis-1-013-Q13 -->
 
 3. 计算定积分
 ´
@@ -292,7 +314,7 @@ a2 .
 
 <!-- page: 3 -->
 
-<!-- question: engineering-mathematical-analysis-1-013-Q3 -->
+<!-- question: engineering-mathematical-analysis-1-013-Q14 -->
 
 三、解答题（4 小题，每题8 分，共32 分）
 
@@ -304,6 +326,8 @@ a2 .
 
 3
 √
+
+<!-- question: engineering-mathematical-analysis-1-013-Q15 -->
 
 1. 证明数列
 √
@@ -377,12 +401,16 @@ x̸ = 0
 
 其中g′′(x) 连续，且g(0) = 1, g′(0) = −1。
 
+<!-- question: engineering-mathematical-analysis-1-013-Q16 -->
+
 2. 设f(x) =
 
 
 
 0,
 x = 0
+
+<!-- question: engineering-mathematical-analysis-1-013-Q17 -->
 
 (1) 求f ′(x)；(2) 讨论f ′(x) 在(−∞, +∞) 上的连续性。
 
@@ -502,6 +530,8 @@ dx2 。
 
 上对应t = π
 
+<!-- question: engineering-mathematical-analysis-1-013-Q18 -->
+
 3. 求曲线
 
 y = sin3 t
@@ -583,6 +613,8 @@ dx2 =
 
 dt
 
+<!-- question: engineering-mathematical-analysis-1-013-Q19 -->
+
 4. 求曲线y = ln x 与直线y = 0 及y = e + 1 −x 所围成的平⾯图形的⾯积。
 
 解：曲线y = ln x 与直线y = 0 交于(1, 0) 点，与直线y = e + 1 −x 交于(e, 1) 点。如图，
@@ -635,7 +667,7 @@ e
 
 <!-- page: 5 -->
 
-<!-- question: engineering-mathematical-analysis-1-013-Q4 -->
+<!-- question: engineering-mathematical-analysis-1-013-Q20 -->
 
 四、证明题（2 小题，每小题10 分，共20 分）
 
@@ -676,6 +708,8 @@ x→b−˜f(x) = lim
 x→b−f(x) = f(b−) = ˜f(b).
 
 因此，˜f(x) 在[a, b] 连续。所以，˜f(x) 在[a, b] ⼀致连续，f(x) 在(a, b) ⼀致连续。
+
+<!-- question: engineering-mathematical-analysis-1-013-Q21 -->
 
 2. 证明：当x > 0 时，ln(1 + x) > arctan x
 1+x 。
@@ -719,7 +753,7 @@ ln(1 + x) > arctan x
 
 <!-- page: 6 -->
 
-<!-- question: engineering-mathematical-analysis-1-013-Q5 -->
+<!-- question: engineering-mathematical-analysis-1-013-Q22 -->
 
 五、应用题（本题9 分）
 

@@ -24,8 +24,14 @@ locator_type: page
 《工科数学分析（二）》2021—2022 学年第二学期期末考试试卷（A）卷
 
 注意事项：1. 开考前请将密封线内各项信息填写清楚；
+<!-- question: engineering-mathematical-analysis-2-039-Q1 -->
+
           2. 所有答案请直接答在试卷上；
+<!-- question: engineering-mathematical-analysis-2-039-Q2 -->
+
           3．考试形式：闭卷
+
+<!-- question: engineering-mathematical-analysis-2-039-Q3 -->
 
           4. 本试卷共五个大题，满分100 分， 考试时间120 分钟。
 
@@ -40,20 +46,30 @@ locator_type: page
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-039-Q1 -->
+<!-- question: engineering-mathematical-analysis-2-039-Q4 -->
 
 一、叙述定义（共5 小题，每小题2 分，共10 分）
 
+<!-- question: engineering-mathematical-analysis-2-039-Q5 -->
+
 １. 二元函数的偏导数.
+<!-- question: engineering-mathematical-analysis-2-039-Q6 -->
+
 ２. 高斯公式.
 
 ( 密 封 线 内 不 答 题 )
 
 _____________ ________
 
+<!-- question: engineering-mathematical-analysis-2-039-Q7 -->
+
 ３. 条件收敛级数.
 
+<!-- question: engineering-mathematical-analysis-2-039-Q8 -->
+
 ４. 函数列的一致收敛.
+
+<!-- question: engineering-mathematical-analysis-2-039-Q9 -->
 
 ５. 二阶线性齐次常微分方程[ ]
 0
@@ -67,9 +83,11 @@ L y
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-039-Q2 -->
+<!-- question: engineering-mathematical-analysis-2-039-Q10 -->
 
 二、计算题（共4 小题，每小题10 分，共40 分）
+
+<!-- question: engineering-mathematical-analysis-2-039-Q11 -->
 
     1. 设
 2
@@ -142,6 +160,8 @@ sin
 
 
 
+<!-- question: engineering-mathematical-analysis-2-039-Q12 -->
+
    2.  计算
 
 xdydz ,其中为
@@ -163,6 +183,8 @@ x
 =
 z
 所围立体的表面，取外侧.
+
+<!-- question: engineering-mathematical-analysis-2-039-Q13 -->
 
 3. 计算
 
@@ -196,15 +218,19 @@ x 与x 轴在第一象限
 x
 y
 
+<!-- question: engineering-mathematical-analysis-2-039-Q14 -->
+
 4. 计算
 
 内所围成的扇形的整个边界.
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-039-Q3 -->
+<!-- question: engineering-mathematical-analysis-2-039-Q15 -->
 
 三、解答题（共3 小题，每小题10 分，共30 分）
+
+<!-- question: engineering-mathematical-analysis-2-039-Q16 -->
 
 １. 设曲线积分
 2
@@ -256,11 +282,15 @@ n n
 1)
 2
 
+<!-- question: engineering-mathematical-analysis-2-039-Q17 -->
+
 2.  求级数
 
 =
 
 1
+
+<!-- question: engineering-mathematical-analysis-2-039-Q18 -->
 
 3．求方程
 '' 4 ' 4
@@ -279,7 +309,7 @@ x 的通解.
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-039-Q4 -->
+<!-- question: engineering-mathematical-analysis-2-039-Q19 -->
 
 四、应用题（10 分）
 
@@ -292,7 +322,7 @@ x 的通解.
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-039-Q5 -->
+<!-- question: engineering-mathematical-analysis-2-039-Q20 -->
 
 五、证明题（10 分）
 

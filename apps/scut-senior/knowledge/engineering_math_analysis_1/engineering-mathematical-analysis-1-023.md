@@ -18,6 +18,8 @@ locator_type: page
 
 一、填空题（共5 小题，每小题3 分，共15 分）
 
+<!-- question: engineering-mathematical-analysis-1-023-Q2 -->
+
 １. 函数极限
 ( )
 
@@ -33,6 +35,8 @@ x
 x f x
 
                                                              ；
+
+<!-- question: engineering-mathematical-analysis-1-023-Q3 -->
 
 ２. 设
 0
@@ -66,6 +70,8 @@ b
 
 是                                                          ；
 
+<!-- question: engineering-mathematical-analysis-1-023-Q4 -->
+
 ３. 设
 2
 2x
@@ -79,6 +85,8 @@ d
 y =                                               ；
 
 π
+
+<!-- question: engineering-mathematical-analysis-1-023-Q5 -->
 
 ４. 设
 ( )
@@ -126,6 +134,8 @@ e
 ∫
                   .
 
+<!-- question: engineering-mathematical-analysis-1-023-Q6 -->
+
 ５. 反常积分
 
 (
@@ -136,9 +146,11 @@ e
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-023-Q2 -->
+<!-- question: engineering-mathematical-analysis-1-023-Q7 -->
 
 二、计算下列各题（共3 小题，每小题8 分，共24 分）
+
+<!-- question: engineering-mathematical-analysis-1-023-Q8 -->
 
 1. 求极限
 (
@@ -185,6 +197,8 @@ f ′
 
 <!-- page: 2 -->
 
+<!-- question: engineering-mathematical-analysis-1-023-Q9 -->
+
 2.  求不定积分
 2
 1
@@ -209,6 +223,8 @@ a
 
 −
 
+<!-- question: engineering-mathematical-analysis-1-023-Q10 -->
+
 3.  计算定积分
 
 4
@@ -220,9 +236,11 @@ a
 
 <!-- page: 3 -->
 
-<!-- question: engineering-mathematical-analysis-1-023-Q3 -->
+<!-- question: engineering-mathematical-analysis-1-023-Q11 -->
 
 三、解答下列各题（共4 小题，每小题8 分，共32 分）
+
+<!-- question: engineering-mathematical-analysis-1-023-Q12 -->
 
 1. 设
 1
@@ -264,6 +282,8 @@ n
 2
 d y
 
+<!-- question: engineering-mathematical-analysis-1-023-Q13 -->
+
 2. 设曲线
 ( )
 y
@@ -285,6 +305,8 @@ dx
 
 <!-- page: 4 -->
 
+<!-- question: engineering-mathematical-analysis-1-023-Q14 -->
+
 3. 求函数
 ( )
 2
@@ -298,6 +320,8 @@ x
 −
 
 的单调区间，极值以及凹凸区间和拐点（要求列表）.
+
+<!-- question: engineering-mathematical-analysis-1-023-Q15 -->
 
 4.  求双纽线
 (
@@ -314,9 +338,11 @@ a
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-023-Q4 -->
+<!-- question: engineering-mathematical-analysis-1-023-Q16 -->
 
 四、证明题（共2 小题，每小题10 分，共20 分）
+
+<!-- question: engineering-mathematical-analysis-1-023-Q17 -->
 
      1.  设函数
 ( )
@@ -360,6 +386,8 @@ x
 ∀∈
 .
 
+<!-- question: engineering-mathematical-analysis-1-023-Q18 -->
+
 2.  证明：函数
 ( )
 (
@@ -379,7 +407,7 @@ x
 
 得分
 
-<!-- question: engineering-mathematical-analysis-1-023-Q5 -->
+<!-- question: engineering-mathematical-analysis-1-023-Q19 -->
 
 五、应用题（本题9 分）
 

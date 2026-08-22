@@ -21,6 +21,7 @@ locator_type: page
 一、选择题(每题3 分)
 
 A，D，B，C，C；C，B，D，A，B
+
 <!-- question: university-physics-3-2-018-Q2 -->
 
 二、填空题(每题3 分)
@@ -102,6 +103,8 @@ E e
 <!-- question: university-physics-3-2-018-Q3 -->
 
 三、计算题(每题10 分)
+<!-- question: university-physics-3-2-018-Q4 -->
+
 21．解：(1) 在球内取半径为r、厚为dr 的薄球壳，该壳内所包含的电荷为
 dq = dV = qr 4r2dr/(R4) = 4qr3dr/R4
 
@@ -292,6 +295,8 @@ r
 
 <!-- page: 2 -->
 
+<!-- question: university-physics-3-2-018-Q5 -->
+
 22．解：利用无限长载流直导线的公式求解．
 取离P 点为x 宽度为dx 的无限长载流细条，
 它的电流
@@ -391,6 +396,8 @@ l
 
 
 
+
+<!-- question: university-physics-3-2-018-Q6 -->
 
 23．解：动生电动势
 
@@ -512,6 +519,8 @@ b
 
 2 分
 
+<!-- question: university-physics-3-2-018-Q7 -->
+
 24．解：（1）
 2
 E
@@ -580,6 +589,8 @@ E
 
 1 分
 
+<!-- question: university-physics-3-2-018-Q8 -->
+
 25.解：（1）
 13.6 12.75
 0.85eV
@@ -591,6 +602,8 @@ E 
 4
 n 
 1 分
+
+<!-- question: university-physics-3-2-018-Q9 -->
 
 （2）最多6 条谱线。
 2 分

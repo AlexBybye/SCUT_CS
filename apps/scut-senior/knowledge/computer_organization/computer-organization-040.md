@@ -96,13 +96,13 @@ X·Y=？并用十进制数乘法验证。
 
 31    26            22         18  17         16  15            0
 
-![formula-object](assets/assets/computer-organization-040/image-001.png)**五、**如图1（A）是某SRAM的写入时序图，其中R/$\overline {W}$是读写命令控制线，R/$\overline {W}$线为低电平时，存贮器按给定地址把数据线上的数据写入存贮器。请指出图中写入时
+![formula-object](assets/computer-organization-040/image-001.png)**五、**如图1（A）是某SRAM的写入时序图，其中R/$\overline {W}$是读写命令控制线，R/$\overline {W}$线为低电平时，存贮器按给定地址把数据线上的数据写入存贮器。请指出图中写入时
 
 **图1**
 
 序的错误，并画出正确的写入时序图。
 
-![image](assets/assets/computer-organization-040/image-002.png)**六、**如图2是从实时角度观察到的中断嵌套。试问，这个中断系统可以实
+![image](assets/computer-organization-040/image-002.png)**六、**如图2是从实时角度观察到的中断嵌套。试问，这个中断系统可以实
 
 **图2**
 
@@ -114,7 +114,7 @@ X·Y=？并用十进制数乘法验证。
 
 **九、**如图所示，8个处理机访问8个存储器，通过三级立方体互连网络连接，采用级控方式。其中所有交换开关均为二功能（级控仪号为“0”时直通，为“1”时交换）。若级控信号为：①K0  K1  K2＝101  ②K0  K1  K2＝110，请列表说明两种情况下，对应8个处理机而实际连通的8个存储器的排列次序。
 
-![formula-object](assets/assets/computer-organization-040/image-003.png)
+![formula-object](assets/computer-organization-040/image-003.png)
 
 三级立方体互连网络
 

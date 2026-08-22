@@ -42,11 +42,15 @@ locator_type: none
 
 三、计算题(每题10分)
 
+<!-- question: university-physics-3-1-008-Q4 -->
+
 21． 解：(1)  角动量守恒： 以垂直纸面向内为正方向
 
 $2mvL=\left(\frac{1}{3}mL^{2}+2mL^{2}\right)\omega_{0}$                      3分
 
 $\omega_0=\frac{6v}{7L}$                  2分
+
+<!-- question: university-physics-3-1-008-Q5 -->
 
 (2)  解法一： 由转动定律
 
@@ -72,6 +76,8 @@ $M=\frac{dL}{dt}$        $\int_{0}^{t}-Mdt=\int_{L_0}^{0}dL$        $Mt=L_0$
 
 $t=\frac{2mvL}{M}$             2分
 
+<!-- question: university-physics-3-1-008-Q6 -->
+
 22．解：（1）单原子分子的自由度*i*=3．从图可知，*ab*是等压过程，
 
 *V**a*/*T**a*=  *V**b* /*T**b**，**T**a*=*T**c*=600 K
@@ -87,6 +93,8 @@ ${Q}_{bc}={C}_{V}({T}_{c}-{T}_{b})=\frac {i} {2}R({T}_{c}-{T}_{b})$ =3.74×103  
 (3)     **![formula-object](assets/university-physics-3-1-008/image-018.png)**          1分
 
 =13.4%    （或13.5%）                      1分
+
+<!-- question: university-physics-3-1-008-Q7 -->
 
 23．解：(1)    $omega=2pif=500pi$        2分
 
@@ -105,6 +113,8 @@ ${Q}_{bc}={C}_{V}({T}_{c}-{T}_{b})=\frac {i} {2}R({T}_{c}-{T}_{b})$ =3.74×103  
 解得      $k=2$
 
 $a+b=6\times10^{-6}m=6000nm$     2分
+
+<!-- question: university-physics-3-1-008-Q8 -->
 
 (2)  由缺级公式    $k=\frac{a+b}{a}k'$                 2分
 

@@ -10,4 +10,4 @@ locator_type: none
 
 # 基本块的DAG表示
 
-![page-001.png](assets/assets/compiler-principles-037/page-001.png)
+![page-001.png](assets/compiler-principles-037/page-001.png)

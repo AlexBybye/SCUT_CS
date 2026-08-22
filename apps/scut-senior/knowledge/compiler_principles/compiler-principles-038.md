@@ -10,4 +10,4 @@ locator_type: none
 
 # 存储空间分配大致示意图
 
-![page-001.png](assets/assets/compiler-principles-038/page-001.png)
+![page-001.png](assets/compiler-principles-038/page-001.png)

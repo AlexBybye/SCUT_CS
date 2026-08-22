@@ -87,7 +87,7 @@ a   c   d   g      11　  h          11　j
 
 **八．**解：答案如图1
 
-![image](assets/assets/computer-organization-068/image-001.jpeg)
+![image](assets/computer-organization-068/image-001.jpeg)
 
 **图1**
 

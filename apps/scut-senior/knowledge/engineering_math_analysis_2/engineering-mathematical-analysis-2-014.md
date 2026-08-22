@@ -75,15 +75,17 @@ A．$\frac{1}{2}$；              B．$\frac{1}{4}$![formula-object](assets/engi
 
 4.  求$a,b$的值，使得包含圆周$(x-1)^2+y^2=1$在其内部的椭圆![formula-object](assets/engineering-mathematical-analysis-2-014/image-056.png)有最小的面积．
 
+<!-- question: engineering-mathematical-analysis-2-014-Q3 -->
+
 5.  求微分方程$y''-y=2xe^x$的通解．
 
-<!-- question: engineering-mathematical-analysis-2-014-Q3 -->
+<!-- question: engineering-mathematical-analysis-2-014-Q4 -->
 
 四、**证明题**（本题10分）
 
 证明数项级数$\sum_{n=1}^{\infty}\sin(\pi\sqrt{n^{2}+1})$条件收敛．
 
-<!-- question: engineering-mathematical-analysis-2-014-Q4 -->
+<!-- question: engineering-mathematical-analysis-2-014-Q5 -->
 
 五、**应用题**（本题10分）
 

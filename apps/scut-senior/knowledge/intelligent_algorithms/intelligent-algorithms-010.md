@@ -16,125 +16,125 @@ locator_type: page
 
 13. 基于学习的优化
 
-![image](assets/assets/intelligent-algorithms-010/image-001.jpeg)
+![image](assets/intelligent-algorithms-010/image-001.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-002.png)
+![image](assets/intelligent-algorithms-010/image-002.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-003.png)
+![image](assets/intelligent-algorithms-010/image-003.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-004.png)
+![image](assets/intelligent-algorithms-010/image-004.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-005.png)
+![image](assets/intelligent-algorithms-010/image-005.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-006.png)
+![image](assets/intelligent-algorithms-010/image-006.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-007.png)
+![image](assets/intelligent-algorithms-010/image-007.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-008.png)
+![image](assets/intelligent-algorithms-010/image-008.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-009.png)
+![image](assets/intelligent-algorithms-010/image-009.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-010.png)
+![image](assets/intelligent-algorithms-010/image-010.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-011.png)
+![image](assets/intelligent-algorithms-010/image-011.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-012.png)
+![image](assets/intelligent-algorithms-010/image-012.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-013.png)
+![image](assets/intelligent-algorithms-010/image-013.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-014.png)
+![image](assets/intelligent-algorithms-010/image-014.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-015.jpeg)
+![image](assets/intelligent-algorithms-010/image-015.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-016.png)
+![image](assets/intelligent-algorithms-010/image-016.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-017.png)
+![image](assets/intelligent-algorithms-010/image-017.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-018.png)
+![image](assets/intelligent-algorithms-010/image-018.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-019.png)
+![image](assets/intelligent-algorithms-010/image-019.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-020.png)
+![image](assets/intelligent-algorithms-010/image-020.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-021.jpeg)
+![image](assets/intelligent-algorithms-010/image-021.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-022.png)
+![image](assets/intelligent-algorithms-010/image-022.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-023.jpeg)
+![image](assets/intelligent-algorithms-010/image-023.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-024.png)
+![image](assets/intelligent-algorithms-010/image-024.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-025.png)
+![image](assets/intelligent-algorithms-010/image-025.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-026.png)
+![image](assets/intelligent-algorithms-010/image-026.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-027.png)
+![image](assets/intelligent-algorithms-010/image-027.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-028.png)
+![image](assets/intelligent-algorithms-010/image-028.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-029.png)
+![image](assets/intelligent-algorithms-010/image-029.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-030.png)
+![image](assets/intelligent-algorithms-010/image-030.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-031.png)
+![image](assets/intelligent-algorithms-010/image-031.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-032.png)
+![image](assets/intelligent-algorithms-010/image-032.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-033.png)
+![image](assets/intelligent-algorithms-010/image-033.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-034.png)
+![image](assets/intelligent-algorithms-010/image-034.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-035.png)
+![image](assets/intelligent-algorithms-010/image-035.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-036.png)
+![image](assets/intelligent-algorithms-010/image-036.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-037.png)
+![image](assets/intelligent-algorithms-010/image-037.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-038.png)
+![image](assets/intelligent-algorithms-010/image-038.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-039.png)
+![image](assets/intelligent-algorithms-010/image-039.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-040.png)
+![image](assets/intelligent-algorithms-010/image-040.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-041.png)
+![image](assets/intelligent-algorithms-010/image-041.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-042.png)
+![image](assets/intelligent-algorithms-010/image-042.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-043.png)
+![image](assets/intelligent-algorithms-010/image-043.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-044.png)
+![image](assets/intelligent-algorithms-010/image-044.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-045.png)
+![image](assets/intelligent-algorithms-010/image-045.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-046.png)
+![image](assets/intelligent-algorithms-010/image-046.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-047.png)
+![image](assets/intelligent-algorithms-010/image-047.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-048.png)
+![image](assets/intelligent-algorithms-010/image-048.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-049.jpeg)
+![image](assets/intelligent-algorithms-010/image-049.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-050.png)
+![image](assets/intelligent-algorithms-010/image-050.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-051.png)
+![image](assets/intelligent-algorithms-010/image-051.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-052.png)
+![image](assets/intelligent-algorithms-010/image-052.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-053.png)
+![image](assets/intelligent-algorithms-010/image-053.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-054.png)
+![image](assets/intelligent-algorithms-010/image-054.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-055.png)
+![image](assets/intelligent-algorithms-010/image-055.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-056.png)
+![image](assets/intelligent-algorithms-010/image-056.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-057.png)
+![image](assets/intelligent-algorithms-010/image-057.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-058.png)
+![image](assets/intelligent-algorithms-010/image-058.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-059.png)
+![image](assets/intelligent-algorithms-010/image-059.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-060.png)
+![image](assets/intelligent-algorithms-010/image-060.png)
 
 <!-- page: 2 -->
 
@@ -148,23 +148,23 @@ locator_type: page
 
 2.
 
-![image](assets/assets/intelligent-algorithms-010/image-061.jpeg)
+![image](assets/intelligent-algorithms-010/image-061.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-062.jpeg)
+![image](assets/intelligent-algorithms-010/image-062.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-063.jpeg)
+![image](assets/intelligent-algorithms-010/image-063.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-064.jpeg)
+![image](assets/intelligent-algorithms-010/image-064.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-065.jpeg)
+![image](assets/intelligent-algorithms-010/image-065.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-066.jpeg)
+![image](assets/intelligent-algorithms-010/image-066.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-067.jpeg)
+![image](assets/intelligent-algorithms-010/image-067.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-068.jpeg)
+![image](assets/intelligent-algorithms-010/image-068.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-069.png)
+![image](assets/intelligent-algorithms-010/image-069.png)
 
 <!-- page: 3 -->
 
@@ -185,9 +185,9 @@ locator_type: page
 
 3
 
-![image](assets/assets/intelligent-algorithms-010/image-070.png)
+![image](assets/intelligent-algorithms-010/image-070.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-071.png)
+![image](assets/intelligent-algorithms-010/image-071.png)
 
 <!-- page: 4 -->
 
@@ -214,7 +214,7 @@ Meta-learning
 
 4
 
-![image](assets/assets/intelligent-algorithms-010/image-072.png)
+![image](assets/intelligent-algorithms-010/image-072.png)
 
 <!-- page: 5 -->
 
@@ -227,9 +227,9 @@ Neural Combinatorial Optimization
 
 5
 
-![image](assets/assets/intelligent-algorithms-010/image-073.jpeg)
+![image](assets/intelligent-algorithms-010/image-073.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-074.jpeg)
+![image](assets/intelligent-algorithms-010/image-074.jpeg)
 
 <!-- page: 6 -->
 
@@ -247,9 +247,9 @@ Y. Chen et al. Learning to Learn without Gradient Descent by Gradient Descent, I
 
 6
 
-![image](assets/assets/intelligent-algorithms-010/image-075.jpeg)
+![image](assets/intelligent-algorithms-010/image-075.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-076.jpeg)
+![image](assets/intelligent-algorithms-010/image-076.jpeg)
 
 <!-- page: 7 -->
 
@@ -262,9 +262,9 @@ Large language models as optimizers, arXiv preprint arXiv:2309.03409, 2023.
 
 7
 
-![image](assets/assets/intelligent-algorithms-010/image-077.jpeg)
+![image](assets/intelligent-algorithms-010/image-077.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-078.png)
+![image](assets/intelligent-algorithms-010/image-078.png)
 
 <!-- page: 8 -->
 
@@ -277,9 +277,9 @@ optimizers, arXiv preprint arXiv:2310.19046, 2023.
 
 8
 
-![image](assets/assets/intelligent-algorithms-010/image-079.jpeg)
+![image](assets/intelligent-algorithms-010/image-079.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-080.jpeg)
+![image](assets/intelligent-algorithms-010/image-080.jpeg)
 
 <!-- page: 9 -->
 
@@ -296,9 +296,9 @@ Mathematically:
 
 9
 
-![image](assets/assets/intelligent-algorithms-010/image-081.jpeg)
+![image](assets/intelligent-algorithms-010/image-081.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-082.jpeg)
+![image](assets/intelligent-algorithms-010/image-082.jpeg)
 
 <!-- page: 10 -->
 
@@ -322,9 +322,9 @@ Mathematically:
 
 10
 
-![image](assets/assets/intelligent-algorithms-010/image-083.jpeg)
+![image](assets/intelligent-algorithms-010/image-083.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-084.jpeg)
+![image](assets/intelligent-algorithms-010/image-084.jpeg)
 
 <!-- page: 11 -->
 
@@ -348,9 +348,9 @@ Mathematically:
 
 11
 
-![image](assets/assets/intelligent-algorithms-010/image-085.jpeg)
+![image](assets/intelligent-algorithms-010/image-085.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-086.jpeg)
+![image](assets/intelligent-algorithms-010/image-086.jpeg)
 
 <!-- page: 12 -->
 
@@ -363,9 +363,9 @@ Dynamic Algorithm Selection: A Proof-of-Principle Study on Differential Evolutio
 
 12
 
-![image](assets/assets/intelligent-algorithms-010/image-087.jpeg)
+![image](assets/intelligent-algorithms-010/image-087.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-088.jpeg)
+![image](assets/intelligent-algorithms-010/image-088.jpeg)
 
 <!-- page: 13 -->
 
@@ -373,9 +373,9 @@ Dynamic Algorithm Selection: A Proof-of-Principle Study on Differential Evolutio
 
 13
 
-![image](assets/assets/intelligent-algorithms-010/image-089.png)
+![image](assets/intelligent-algorithms-010/image-089.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-090.png)
+![image](assets/intelligent-algorithms-010/image-090.png)
 
 <!-- page: 14 -->
 
@@ -415,7 +415,7 @@ Evolutionary Computation via Deep Reinforcement Learning,” GECCO 2024.
 
 14
 
-![image](assets/assets/intelligent-algorithms-010/image-091.jpeg)
+![image](assets/intelligent-algorithms-010/image-091.jpeg)
 
 <!-- page: 15 -->
 
@@ -423,11 +423,11 @@ Evolutionary Computation via Deep Reinforcement Learning,” GECCO 2024.
 
 15
 
-![image](assets/assets/intelligent-algorithms-010/image-092.jpeg)
+![image](assets/intelligent-algorithms-010/image-092.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-093.jpeg)
+![image](assets/intelligent-algorithms-010/image-093.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-094.jpeg)
+![image](assets/intelligent-algorithms-010/image-094.jpeg)
 
 <!-- page: 16 -->
 
@@ -440,11 +440,11 @@ Learning. arXiv preprint arXiv:2405.03419, 2024.
 
 16
 
-![image](assets/assets/intelligent-algorithms-010/image-095.png)
+![image](assets/intelligent-algorithms-010/image-095.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-096.jpeg)
+![image](assets/intelligent-algorithms-010/image-096.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-097.jpeg)
+![image](assets/intelligent-algorithms-010/image-097.jpeg)
 
 <!-- page: 17 -->
 
@@ -452,11 +452,11 @@ Learning. arXiv preprint arXiv:2405.03419, 2024.
 
 17
 
-![image](assets/assets/intelligent-algorithms-010/image-098.png)
+![image](assets/intelligent-algorithms-010/image-098.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-099.png)
+![image](assets/intelligent-algorithms-010/image-099.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-100.png)
+![image](assets/intelligent-algorithms-010/image-100.png)
 
 <!-- page: 18 -->
 
@@ -546,7 +546,7 @@ Equation Learning, ICLR 2024.
 
 18
 
-![image](assets/assets/intelligent-algorithms-010/image-101.jpeg)
+![image](assets/intelligent-algorithms-010/image-101.jpeg)
 
 <!-- page: 19 -->
 
@@ -554,35 +554,35 @@ Equation Learning, ICLR 2024.
 
 19
 
-![image](assets/assets/intelligent-algorithms-010/image-102.png)
+![image](assets/intelligent-algorithms-010/image-102.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-103.png)
+![image](assets/intelligent-algorithms-010/image-103.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-104.png)
+![image](assets/intelligent-algorithms-010/image-104.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-105.png)
+![image](assets/intelligent-algorithms-010/image-105.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-106.jpeg)
+![image](assets/intelligent-algorithms-010/image-106.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-107.png)
+![image](assets/intelligent-algorithms-010/image-107.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-108.png)
+![image](assets/intelligent-algorithms-010/image-108.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-109.png)
+![image](assets/intelligent-algorithms-010/image-109.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-110.png)
+![image](assets/intelligent-algorithms-010/image-110.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-111.png)
+![image](assets/intelligent-algorithms-010/image-111.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-112.png)
+![image](assets/intelligent-algorithms-010/image-112.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-113.jpeg)
+![image](assets/intelligent-algorithms-010/image-113.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-114.png)
+![image](assets/intelligent-algorithms-010/image-114.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-115.png)
+![image](assets/intelligent-algorithms-010/image-115.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-116.png)
+![image](assets/intelligent-algorithms-010/image-116.png)
 
 <!-- page: 20 -->
 
@@ -592,11 +592,11 @@ Fitness Landscape Analysis
 
 20
 
-![image](assets/assets/intelligent-algorithms-010/image-117.png)
+![image](assets/intelligent-algorithms-010/image-117.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-118.png)
+![image](assets/intelligent-algorithms-010/image-118.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-119.png)
+![image](assets/intelligent-algorithms-010/image-119.png)
 
 <!-- page: 21 -->
 
@@ -630,11 +630,11 @@ PSO:
 
 21
 
-![image](assets/assets/intelligent-algorithms-010/image-120.png)
+![image](assets/intelligent-algorithms-010/image-120.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-121.jpeg)
+![image](assets/intelligent-algorithms-010/image-121.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-122.jpeg)
+![image](assets/intelligent-algorithms-010/image-122.jpeg)
 
 <!-- page: 22 -->
 
@@ -689,7 +689,7 @@ mantissaexponent
 
 22
 
-![image](assets/assets/intelligent-algorithms-010/image-123.jpeg)
+![image](assets/intelligent-algorithms-010/image-123.jpeg)
 
 <!-- page: 23 -->
 
@@ -697,33 +697,33 @@ mantissaexponent
 
 23
 
-![image](assets/assets/intelligent-algorithms-010/image-124.png)
+![image](assets/intelligent-algorithms-010/image-124.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-125.png)
+![image](assets/intelligent-algorithms-010/image-125.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-126.png)
+![image](assets/intelligent-algorithms-010/image-126.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-127.png)
+![image](assets/intelligent-algorithms-010/image-127.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-128.jpeg)
+![image](assets/intelligent-algorithms-010/image-128.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-129.png)
+![image](assets/intelligent-algorithms-010/image-129.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-130.png)
+![image](assets/intelligent-algorithms-010/image-130.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-131.png)
+![image](assets/intelligent-algorithms-010/image-131.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-132.png)
+![image](assets/intelligent-algorithms-010/image-132.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-133.png)
+![image](assets/intelligent-algorithms-010/image-133.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-134.png)
+![image](assets/intelligent-algorithms-010/image-134.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-135.png)
+![image](assets/intelligent-algorithms-010/image-135.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-136.png)
+![image](assets/intelligent-algorithms-010/image-136.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-137.jpeg)
+![image](assets/intelligent-algorithms-010/image-137.jpeg)
 
 <!-- page: 24 -->
 
@@ -731,9 +731,9 @@ mantissaexponent
 
 24
 
-![image](assets/assets/intelligent-algorithms-010/image-138.png)
+![image](assets/intelligent-algorithms-010/image-138.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-139.png)
+![image](assets/intelligent-algorithms-010/image-139.png)
 
 <!-- page: 25 -->
 
@@ -741,17 +741,17 @@ mantissaexponent
 
 25
 
-![image](assets/assets/intelligent-algorithms-010/image-140.png)
+![image](assets/intelligent-algorithms-010/image-140.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-141.png)
+![image](assets/intelligent-algorithms-010/image-141.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-142.png)
+![image](assets/intelligent-algorithms-010/image-142.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-143.jpeg)
+![image](assets/intelligent-algorithms-010/image-143.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-144.png)
+![image](assets/intelligent-algorithms-010/image-144.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-145.png)
+![image](assets/intelligent-algorithms-010/image-145.png)
 
 <!-- page: 26 -->
 
@@ -759,9 +759,9 @@ mantissaexponent
 
 26
 
-![image](assets/assets/intelligent-algorithms-010/image-146.jpeg)
+![image](assets/intelligent-algorithms-010/image-146.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-147.jpeg)
+![image](assets/intelligent-algorithms-010/image-147.jpeg)
 
 <!-- page: 27 -->
 
@@ -793,7 +793,7 @@ Environment (lower level)
 Z. Ma (学生), J. Chen, H. Guo, Y.-J. Gong, "Neural Exploratory Landscape Analysis for Meta-Black-
 Box-Optimization," ICLR 2025.
 
-![image](assets/assets/intelligent-algorithms-010/image-148.jpeg)
+![image](assets/intelligent-algorithms-010/image-148.jpeg)
 
 <!-- page: 28 -->
 
@@ -803,11 +803,11 @@ NeurELA: Neural Exploratory Landscape Analysis
 
 We adopt Fast-CMA-ES to evolve a population of NeurELA networks.
 
-![image](assets/assets/intelligent-algorithms-010/image-149.jpeg)
+![image](assets/intelligent-algorithms-010/image-149.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-150.jpeg)
+![image](assets/intelligent-algorithms-010/image-150.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-151.jpeg)
+![image](assets/intelligent-algorithms-010/image-151.jpeg)
 
 <!-- page: 29 -->
 
@@ -815,37 +815,37 @@ We adopt Fast-CMA-ES to evolve a population of NeurELA networks.
 
 NeurELA: Neural Exploratory Landscape Analysis
 
-![image](assets/assets/intelligent-algorithms-010/image-152.jpeg)
+![image](assets/intelligent-algorithms-010/image-152.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-153.png)
+![image](assets/intelligent-algorithms-010/image-153.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-154.png)
+![image](assets/intelligent-algorithms-010/image-154.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-155.png)
+![image](assets/intelligent-algorithms-010/image-155.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-156.png)
+![image](assets/intelligent-algorithms-010/image-156.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-157.png)
+![image](assets/intelligent-algorithms-010/image-157.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-158.png)
+![image](assets/intelligent-algorithms-010/image-158.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-159.png)
+![image](assets/intelligent-algorithms-010/image-159.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-160.png)
+![image](assets/intelligent-algorithms-010/image-160.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-161.png)
+![image](assets/intelligent-algorithms-010/image-161.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-162.png)
+![image](assets/intelligent-algorithms-010/image-162.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-163.png)
+![image](assets/intelligent-algorithms-010/image-163.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-164.png)
+![image](assets/intelligent-algorithms-010/image-164.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-165.png)
+![image](assets/intelligent-algorithms-010/image-165.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-166.png)
+![image](assets/intelligent-algorithms-010/image-166.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-167.png)
+![image](assets/intelligent-algorithms-010/image-167.png)
 
 <!-- page: 30 -->
 
@@ -853,13 +853,13 @@ NeurELA: Neural Exploratory Landscape Analysis
 
 NeurELA: Neural Exploratory Landscape Analysis
 
-![image](assets/assets/intelligent-algorithms-010/image-168.jpeg)
+![image](assets/intelligent-algorithms-010/image-168.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-169.jpeg)
+![image](assets/intelligent-algorithms-010/image-169.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-170.jpeg)
+![image](assets/intelligent-algorithms-010/image-170.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-171.jpeg)
+![image](assets/intelligent-algorithms-010/image-171.jpeg)
 
 <!-- page: 31 -->
 
@@ -881,11 +881,11 @@ Generation, arXiv preprint arXiv:2403.01131, 2024.
 
 31
 
-![image](assets/assets/intelligent-algorithms-010/image-172.jpeg)
+![image](assets/intelligent-algorithms-010/image-172.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-173.jpeg)
+![image](assets/intelligent-algorithms-010/image-173.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-174.jpeg)
+![image](assets/intelligent-algorithms-010/image-174.jpeg)
 
 <!-- page: 32 -->
 
@@ -893,9 +893,9 @@ Generation, arXiv preprint arXiv:2403.01131, 2024.
 
 32
 
-![image](assets/assets/intelligent-algorithms-010/image-175.jpeg)
+![image](assets/intelligent-algorithms-010/image-175.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-176.jpeg)
+![image](assets/intelligent-algorithms-010/image-176.jpeg)
 
 <!-- page: 33 -->
 
@@ -903,9 +903,9 @@ Generation, arXiv preprint arXiv:2403.01131, 2024.
 
 33
 
-![image](assets/assets/intelligent-algorithms-010/image-177.png)
+![image](assets/intelligent-algorithms-010/image-177.png)
 
-![image](assets/assets/intelligent-algorithms-010/image-178.png)
+![image](assets/intelligent-algorithms-010/image-178.png)
 
 <!-- page: 34 -->
 
@@ -916,11 +916,11 @@ Optimization with Reinforcement Learning,  NeurIPS 2023.
 
 34
 
-![image](assets/assets/intelligent-algorithms-010/image-179.jpeg)
+![image](assets/intelligent-algorithms-010/image-179.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-180.jpeg)
+![image](assets/intelligent-algorithms-010/image-180.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-181.jpeg)
+![image](assets/intelligent-algorithms-010/image-181.jpeg)
 
 <!-- page: 35 -->
 
@@ -935,13 +935,13 @@ QQ交流群：952185139
 
 35
 
-![image](assets/assets/intelligent-algorithms-010/image-182.jpeg)
+![image](assets/intelligent-algorithms-010/image-182.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-183.jpeg)
+![image](assets/intelligent-algorithms-010/image-183.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-184.jpeg)
+![image](assets/intelligent-algorithms-010/image-184.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-185.jpeg)
+![image](assets/intelligent-algorithms-010/image-185.jpeg)
 
 <!-- page: 36 -->
 
@@ -952,9 +952,9 @@ Meta-Black-Box-Optimization," https://arxiv.org/abs/2411.00625
 
 36
 
-![image](assets/assets/intelligent-algorithms-010/image-186.jpeg)
+![image](assets/intelligent-algorithms-010/image-186.jpeg)
 
-![image](assets/assets/intelligent-algorithms-010/image-187.jpeg)
+![image](assets/intelligent-algorithms-010/image-187.jpeg)
 
 <!-- page: 37 -->
 
@@ -976,4 +976,4 @@ https://github.com/LabGong/psc4ddea
 
 37
 
-![image](assets/assets/intelligent-algorithms-010/image-188.png)
+![image](assets/intelligent-algorithms-010/image-188.png)

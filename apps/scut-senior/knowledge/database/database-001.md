@@ -54,9 +54,13 @@ locator_type: none
 **《数据库系统概论》A试卷**
 
 **一、单项选择题（共30分，每题1分）**
+<!-- question: database-001-Q1 -->
+
 1. 进行自然联接运算的两个关系必须具有（       ）
 
 A．公共属性      B.相同关系名    C．相同属性个数		D.相同关键字
+<!-- question: database-001-Q2 -->
+
 1. 在数据库系统中死锁属于（       ）
 
 A．系统故障    B.程序故障    C．事务故障    		D.介质故障
@@ -69,15 +73,21 @@ B．查找平均成绩在85分以上的学生
 C．查找XS_KC表中各科成绩在85分以上的学生
 
 D．查找XS_KC表中各科成绩在85分以上的学生的学号和平均成绩
+<!-- question: database-001-Q3 -->
+
 1. E-R图有三个要素，其中不包括（       ）
 
 A．实体      B．属性      C．实体之间的联系              D．实体标识符
+<!-- question: database-001-Q4 -->
+
 1. 一般视图在数据库中只存放（       ）
 
 A．操作        B．对应的数据        C．定义        D．限制
 1. 设有一个关系：DEPT(DNO，DNAME)，如果要找出倒数第三个字母为W，其他为任意字母的DNAME，则查询条件子句应写成  WHERE DNAME LIKE  （       ）
 
 A.'_ _W _%'    B.'%W _ %'    C.'%W _ _'    D.' _ %W _ _'
+<!-- question: database-001-Q5 -->
+
 1. 关系模型中，候选码（         ）
 
 A．可由多个任意属性组成              B．至多由一个属性组成
@@ -85,23 +95,33 @@ A．可由多个任意属性组成              B．至多由一个属性组成
 C．可由一个或多个其值能惟一标识该关系模式中任何元组的属性组成
 
 D．以上都不是
+<!-- question: database-001-Q6 -->
+
 1. 在关系数据库设计中，设计关系模式是（       ）的任务。
 
 A．需求分析阶段  B．概念设计阶段  C．逻辑设计阶段  D．物理设计阶段
+<!-- question: database-001-Q7 -->
+
 1. 设有两个事务T1、T2，其并发操作如下所示，下列评价正确的是（       ）。
 
 A．该操作不存在问题              B．该操作丢失修改
 
 C．该操作不能重复读              D．该操作读“脏”数据
-1. ![image](assets/assets/database-001/image-001.png)由于某种原因，造成系统停止运行，致使事务在执行过程中以非控制方式终止，这时内存中的信息丢失，而存储在外存上的数据未受影响，这种情况称为（       ）。
+1. ![image](assets/database-001/image-001.png)由于某种原因，造成系统停止运行，致使事务在执行过程中以非控制方式终止，这时内存中的信息丢失，而存储在外存上的数据未受影响，这种情况称为（       ）。
 
 A．事务故障    B．系统故障    C．介质故障    D．运行故障
+<!-- question: database-001-Q8 -->
+
 1. 恢复和并发控制的基本单位是（       ）。
 
 A．事务        B．数据冗余    C．日志文件    D．数据转储
+<!-- question: database-001-Q9 -->
+
 1. 一个事务的执行不能被其他事务干扰，叫做事务的（       ）。
 
 A．原子性      B．一致性        C．持续性      D．隔离性
+<!-- question: database-001-Q10 -->
+
 1. 若事务T对数据对象A加上S锁，则（       ）。
 
 A．事务T可以读A和修改A，其它事务只能再对A加S锁，而不能加X  锁。
@@ -111,6 +131,8 @@ B．事务T可以读A但不能修改A，其它事务能对A加S锁和X锁。
 C．事务T可以读A但不能修改A，其它事务只能再对A加S锁，而不能加X  锁。
 
 D．事务T可以读A和修改A，其它事务能对A加S锁和X锁。
+<!-- question: database-001-Q11 -->
+
 1. 以下（       ）封锁违反两段锁协议。
 
 A. Slock A … Slock B … Xlock C ………… Unlock A … Unlock B … Unlock C
@@ -120,55 +142,79 @@ B. Slock A … Slock B … Xlock C ………… Unlock C … Unlock B … Unlock
 C. Slock A … Slock B … Xlock C ………… Unlock B … Unlock C … Unlock A
 
 D. Slock A …Unlock A ……Slock B … Xlock C …………… Unlock B … Unlock C
+<!-- question: database-001-Q12 -->
+
 1. 下列  SQL语句中，修改表结构的是（       ）。
 
 A．CREATE  B．ALTER   C．UPDATE   D．INSERT
+<!-- question: database-001-Q13 -->
+
 1. 关系代数表达式的优化策略中，首先要做的是（       ）
 
 A.  对文件进行预处理                                    B.  尽早执行选择运算
 
 C.  执行笛卡儿积运算                                    D.  投影运算
+<!-- question: database-001-Q14 -->
+
 1. SQL中，下列涉及空值的操作，不正确的是 （       ）
 
 A. AGE IS NULL               B. AGE IS NOT NULL
 
 C. AGE = NULL                 D. NOT (AGE IS NULL)
+<!-- question: database-001-Q15 -->
+
 1. 数据库管理系统中（       ）故障的恢复需要DBA的介入
 
 A.介质故障              B.事务故障              C.系统故障    		D.死锁
+<!-- question: database-001-Q16 -->
+
 1. 关于查询优化正确的说法有（       ）
 
 A.  选择运算应尽可能后做            B.  在执行投影操作前对关系适当进行预处理
 
 C.  将投影运算与其前面或后面的双目运算结合    D.  投影运算应尽可能先做
+<!-- question: database-001-Q17 -->
+
 1. 在规范化的关系中，下列说法正确的是（      ）。
 
 A．行列顺序有关                                                    B．属性名允许重名
 
 C．任意两个元组不允许重复                                D．列是非同质的
+<!-- question: database-001-Q18 -->
+
 1. 在SQL语言中，建立索引用（       ）。
 
 A.CREATE SCHMA命令                                      B.CREATE TABLE命令
 
 C.CREATE VIEW命令                                        D.CREATE INDEX命令
+<!-- question: database-001-Q19 -->
+
 1. 下列SQL语句中，能够实现实体完整性控制的子句是（       ）。
 
 A. FOREIGN KEY                         B. PRIMARY KEY
 
 C. REFERENCES                          D. FOREIGN KEY  和  REFERENCES
+<!-- question: database-001-Q20 -->
+
 1. 一般不适合建立索引的属性有（        ）。
 
 A．主键码和外键码                                    B．可以从索引直接得到查询结果的属性
 
 C．对于范围查询中使用的属性                D．经常更新的属性
+<!-- question: database-001-Q21 -->
+
 1. SQL  的 SELECT  语句中，“ HAVING  条件表达式”用来筛选满足条件的（       ）。
 
 A .列    B .行    C .关系          D .分组
+<!-- question: database-001-Q22 -->
+
 1. 任何一个满足2NF但不满足3NF的关系模式都不存在（     ）
 
 A.主属性对候选键的部分依赖						B.非主属性对候选键的部分依赖
 
 C.主属性对候选键的传递依赖						D.非主属性对候选键的传递依赖
+<!-- question: database-001-Q23 -->
+
 1. 学校数据库中有学生和宿舍两个关系：
 
 学生（学号，姓名）  和  宿舍（楼名，房间号，床位号，学号）
@@ -189,6 +235,8 @@ B．从职工表中删除行(‘004’,’王二’，’04’，782)
 C．将行(‘005’,’乔庄’，’05’，1736)插入到职工表中
 
 D．将部门号为’01’的主任改为’江晴’
+<!-- question: database-001-Q24 -->
+
 1. 有学生关系：学生(学号，姓名，年龄，系号)，对学生关系的查询语句如下：
 
 SELECT  系号，AVG(年龄) FROM  学生  GROUP BY  系号
@@ -196,27 +244,53 @@ SELECT  系号，AVG(年龄) FROM  学生  GROUP BY  系号
 如果要提高查询效率，应该建索引的属性是（       ）。
 
 A.学号                B.姓名          C.年龄				D.系号
+<!-- question: database-001-Q25 -->
+
 1. 下列聚合函数中不忽略空值 (null)  的是（       ）。
 
 A. SUM (列名)   B. MAX (列名)  C. COUNT ( * )  		D. AVG (列名)
+<!-- question: database-001-Q26 -->
+
 1. （		 ）用来记录对数据库中数据进行的每一次更新操作
 
 A.后援副本    B.日志文件      C.数据库				D.缓冲区
 
 **二、判断题（10分，每题1分，正确打√，错误打╳，请将答案填在答题纸上）**
+<!-- question: database-001-Q27 -->
+
 1. 当局部E-R图合并成全局E-R图时可能出现的合并冲突中包含了命名冲突。
+<!-- question: database-001-Q28 -->
+
 1. 数据库恢复的基本原理是利用存储在后备副本、日志文件和数据库镜像中的冗余数据来重建数据库。
 1. 产生死锁的原因是两个或多个事务都已封锁了一些数据对象，然后又都请求对已为其他事务封锁的数据对象加锁，从而出现死等待。
+<!-- question: database-001-Q29 -->
+
 1. 将所有事务串行起来的调度策略一定是正确的调度策略。
+<!-- question: database-001-Q30 -->
+
 1. 数据库完整性约束包括实体完整性、参照完整性和用户自定义完整性。
+<!-- question: database-001-Q31 -->
+
 1. бF1  (бF2(E))等价бF1∧ F2(E)，其中E为关系表，F1、F2为条件。
+<!-- question: database-001-Q32 -->
+
 1. 并发操作带来的数据不一致性有丢失修改、不可重复读和读脏数据。
+<!-- question: database-001-Q33 -->
+
 1. 数据库必须先写数据库文件再写日志文件。
+<!-- question: database-001-Q34 -->
+
 1. 将一个2NF关系分解为多个3NF的关系后，并不能完全消除关系模式中的各种异常情况和数据冗余。
+<!-- question: database-001-Q35 -->
+
 1. 事务遵守两段锁协议是可串行化调度的必要条件，而不是充分条件。
 
 **三、简答题（共10分，请将答案填在答题纸上）**
+<!-- question: database-001-Q36 -->
+
 1. 简述数据库系统中可能发生的三种故障及相应的恢复策略。
+<!-- question: database-001-Q37 -->
+
 1. 简述并发操作带来的三类数据不一致及三级封锁协议
 
 **四、SQL语言应用（共35分，每题5分，请将答案填在答题纸上）**
@@ -227,12 +301,24 @@ A.后援副本    B.日志文件      C.数据库				D.缓冲区
 - Student表（学生表）：StuNo (学号)、ClassNo (班级号)、StuName (姓名)、StuSex (性别)，birth(出生日期)，Stuflag(学籍管理)。StuNo为主键，ClassNo为外键
 - Course表（课程表）：CourseNo (课程号)、CourseName（课程名称）、Kind (课程分类)、Credit(学分)、Teacher(教师)，DepartName (系部名称)，CourseNo为主键
 - Score(成绩表)：StuNo (学号)、grade (成绩)、CourseNo (课程号)  ，StuNo、CourseNo为外键
+<!-- question: database-001-Q38 -->
+
 1. 写出创建班级表（假设系部表存在）的SQL语句（含主键外键）。
+<!-- question: database-001-Q39 -->
+
 1. 编写一条INSERT语句，向系部表添加如下数据：  3001    计算机科学与技术
+<!-- question: database-001-Q40 -->
+
 1. 将班级号等于“101102”的班级名称改为“计算机科学与技术1班”。
+<!-- question: database-001-Q41 -->
+
 1. 查询考试成绩有不及格的学生学号，姓名，课程名称、成绩。
 1. 在学生表中查询出生年月在“1982-01-01”至“1986-01-01”之间的女生情况，并按出生年月日升序排列。
+<!-- question: database-001-Q42 -->
+
 1. 创建“计算机科学与技术”系的学生信息视图。
+<!-- question: database-001-Q43 -->
+
 1. 输出平均成绩超过60分的学生学号及平均成绩。
 
 **五、综合题（本题15分，请将答案填在答题纸上）**
@@ -245,5 +331,9 @@ A.后援副本    B.日志文件      C.数据库				D.缓冲区
 - 工程的属性有工程编号和工程名称。
 
 根据上述业务规则：
+<!-- question: database-001-Q44 -->
+
 1. 画出E－R图，要求在图中标注实体的属性及联系的类型；
+<!-- question: database-001-Q45 -->
+
 1. 将E-R图转换成关系模型，并符合第三范式，并指出每个关系模式的主键和外键。

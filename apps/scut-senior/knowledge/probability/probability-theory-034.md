@@ -86,7 +86,11 @@ $$
 
 **三、（10分）** 某保险公司把被保险人分为三类：谨慎的、一般的、冒失的，统计资料表明，上述三种人在一年内发生事故的概率依次为0.05，0.15和0.30。如果谨慎的占总的被保人数的20%，一般的占50%，冒失的占30%。
 
+<!-- question: probability-theory-034-Q1 -->
+
 (1)求某被保人在一年内发生事故的概率；
+
+<!-- question: probability-theory-034-Q2 -->
 
 (2)若此人在一年内发生事故，则他是谨慎的客户的概率是多少。
 
@@ -102,7 +106,11 @@ $P(A_1|B)=\frac{p(B|A_1)p(A_1)}{p(B|A_1)p(A_1)+p(B|A_2)p(A_2)+p(B|A_3)p(A_3)}$  
 
 **四、（10分）**设某次概率统计考试考生的成绩![formula-object](assets/probability-theory-034/image-075.png)，从中随机地抽取  36  位考生的成绩，算得平均成绩为$x$66.5分，修正标准差为![formula-object](assets/probability-theory-034/image-077.png)15分。
 
+<!-- question: probability-theory-034-Q3 -->
+
 (1) 在置信度为0.95时，求考生成绩数学期望$mu$的置信区间。
+
+<!-- question: probability-theory-034-Q4 -->
 
 (2) 在显著性水平$alpha$=0.05下，检验是否可以认为这次考试的平均成绩为70分。
 
@@ -113,6 +121,8 @@ $$
 解：（1）![formula-object](assets/probability-theory-034/image-081.png)，$\delta(\bar{x})=\frac{S^*}{\sqrt{n}}t_{0.975}(35)=\frac{15}{6}\times2.0301=5.07525$    (4分)
 
 学生成绩数学期望$mu$的置信区间：（61.42,71.58）(5分)
+
+<!-- question: probability-theory-034-Q5 -->
 
 （2）$H_{0}:\mu=70,H_{1}:\mu\neq70,$
 
@@ -161,6 +171,8 @@ $$
 **八、（12分）**设随机变量$X,Y$相互独立，且$X$的概率分布为![formula-object](assets/probability-theory-034/image-115.png)，$Y$的概率密度为![formula-object](assets/probability-theory-034/image-117.png)
 
 （1）求![formula-object](assets/probability-theory-034/image-118.png)；
+
+<!-- question: probability-theory-034-Q6 -->
 
 （2）求$Z=X+Y$的概率密度。
 

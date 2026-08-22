@@ -10,4 +10,4 @@ locator_type: none
 
 # 微信图片_20260709125548_41
 
-![page-001.png](assets/assets/artificial-intelligence-intro-035/page-001.png)
+![page-001.png](assets/artificial-intelligence-intro-035/page-001.png)

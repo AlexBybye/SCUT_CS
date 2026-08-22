@@ -30,6 +30,8 @@ locator_type: none
 
 **一、单项选择题**（每小题3分，共15分）
 
+<!-- question: engineering-mathematical-analysis-2-017-Q1 -->
+
 1．若$Y_1,Y_2$是非齐次线性方程$y''+ay'+by=f(x)$的两个特解，则下面结论中正确的是（  D）
 
 | A | $y_1+y_2$是非齐次线性方程的解 | B | $y_1-y_2$是非齐次线性方程的解 |
@@ -56,7 +58,7 @@ locator_type: none
 | A | $\frac{1}{2}$ | B | $\frac{1}{4}$ | C | $\frac{1}{4}$ | D | $\frac{1}{2}$ |
 |---|---|---|---|---|---|---|---|
 
-<!-- question: engineering-mathematical-analysis-2-017-Q1 -->
+<!-- question: engineering-mathematical-analysis-2-017-Q2 -->
 
 二、**填空题**（每小题3分，共15分）
   - 微分方程$y^{(4)}-y=0$的通解为  :![formula-object](assets/engineering-mathematical-analysis-2-017/image-036.png)；
@@ -65,7 +67,7 @@ locator_type: none
   - 设$\sum:x^2+y^2+z^2=a^2,$，则$\iint_{\Sigma}(x+y+z)^2dS=$![formula-object](assets/engineering-mathematical-analysis-2-017/image-043.png)；
   - 设幂级数$\sum_{n=1}^{\infty}a_nx^n$的收敛半径为$3$，则幂级数![formula-object](assets/engineering-mathematical-analysis-2-017/image-046.png)的收敛区间为$(-2,4)$．
 
-<!-- question: engineering-mathematical-analysis-2-017-Q2 -->
+<!-- question: engineering-mathematical-analysis-2-017-Q3 -->
 
 三、**计算题**（每小题10分，共50分）
 
@@ -133,6 +135,8 @@ $$
 
 ![formula-object](assets/engineering-mathematical-analysis-2-017/image-086.png)
 
+<!-- question: engineering-mathematical-analysis-2-017-Q4 -->
+
 5.    求幂级数$\sum_{n=1}^{\infty}\frac{2n+1}{n!}x^{2n}$的和函数。
 
 解：
@@ -151,7 +155,7 @@ $$
 
 ![formula-object](assets/engineering-mathematical-analysis-2-017/image-091.png)
 
-<!-- question: engineering-mathematical-analysis-2-017-Q3 -->
+<!-- question: engineering-mathematical-analysis-2-017-Q5 -->
 
 四、**证明题**（本题10分）
 
@@ -163,7 +167,7 @@ $$
 
 级数![formula-object](assets/engineering-mathematical-analysis-2-017/image-094.png)上一致收敛。      10分
 
-<!-- question: engineering-mathematical-analysis-2-017-Q4 -->
+<!-- question: engineering-mathematical-analysis-2-017-Q6 -->
 
 五、**应用题**（本题10分）
 

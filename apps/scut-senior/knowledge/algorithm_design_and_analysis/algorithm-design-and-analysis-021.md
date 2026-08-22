@@ -68,7 +68,7 @@ Etymology.
 
 4
 
-![image](assets/assets/algorithm-design-and-analysis-021/image-001.jpeg)
+![image](assets/algorithm-design-and-analysis-021/image-001.jpeg)
 
 <!-- page: 5 -->
 
@@ -103,7 +103,7 @@ jobs.
 
 6
 
-![image](assets/assets/algorithm-design-and-analysis-021/image-002.png)
+![image](assets/algorithm-design-and-analysis-021/image-002.png)
 
 <!-- page: 7 -->
 
@@ -121,7 +121,7 @@ Observation. Greedy algorithm fails spectacularly for weighted version.
 
 7
 
-![image](assets/assets/algorithm-design-and-analysis-021/image-003.png)
+![image](assets/algorithm-design-and-analysis-021/image-003.png)
 
 <!-- page: 8 -->
 
@@ -135,7 +135,7 @@ Ex. 𝑝1 , 𝑝2 , 𝑝3 , 𝑝4 , 𝑝5 , 𝑝6 , 𝑝7 , 𝑝8 .
 
 8
 
-![image](assets/assets/algorithm-design-and-analysis-021/image-004.png)
+![image](assets/algorithm-design-and-analysis-021/image-004.png)
 
 <!-- page: 9 -->
 
@@ -157,7 +157,7 @@ Ex.
 
 9
 
-![image](assets/assets/algorithm-design-and-analysis-021/image-005.png)
+![image](assets/algorithm-design-and-analysis-021/image-005.png)
 
 <!-- page: 10 -->
 
@@ -349,7 +349,7 @@ Weighted Interval Scheduling: Demo
 
 19
 
-![image](assets/assets/algorithm-design-and-analysis-021/image-006.png)
+![image](assets/algorithm-design-and-analysis-021/image-006.png)
 
 <!-- page: 20 -->
 
@@ -357,7 +357,7 @@ Weighted Interval Scheduling: Demo
 
 20
 
-![image](assets/assets/algorithm-design-and-analysis-021/image-007.png)
+![image](assets/algorithm-design-and-analysis-021/image-007.png)
 
 <!-- page: 21 -->
 
@@ -365,7 +365,7 @@ Weighted Interval Scheduling: Demo
 
 21
 
-![image](assets/assets/algorithm-design-and-analysis-021/image-008.png)
+![image](assets/algorithm-design-and-analysis-021/image-008.png)
 
 <!-- page: 22 -->
 
@@ -373,7 +373,7 @@ Weighted Interval Scheduling: Demo
 
 22
 
-![image](assets/assets/algorithm-design-and-analysis-021/image-009.png)
+![image](assets/algorithm-design-and-analysis-021/image-009.png)
 
 <!-- page: 23 -->
 
@@ -381,7 +381,7 @@ Weighted Interval Scheduling: Demo
 
 23
 
-![image](assets/assets/algorithm-design-and-analysis-021/image-010.png)
+![image](assets/algorithm-design-and-analysis-021/image-010.png)
 
 <!-- page: 24 -->
 
@@ -389,7 +389,7 @@ Weighted Interval Scheduling: Demo
 
 24
 
-![image](assets/assets/algorithm-design-and-analysis-021/image-011.png)
+![image](assets/algorithm-design-and-analysis-021/image-011.png)
 
 <!-- page: 25 -->
 
@@ -397,7 +397,7 @@ Weighted Interval Scheduling: Demo
 
 25
 
-![image](assets/assets/algorithm-design-and-analysis-021/image-012.png)
+![image](assets/algorithm-design-and-analysis-021/image-012.png)
 
 <!-- page: 26 -->
 
@@ -678,7 +678,7 @@ max 𝑂𝑃𝑇𝑖−1, 𝑤, 𝑣𝑖+ 𝑂𝑃𝑇𝑖−1, 𝑤−𝑤𝑖
 
 39
 
-![image](assets/assets/algorithm-design-and-analysis-021/image-013.png)
+![image](assets/algorithm-design-and-analysis-021/image-013.png)
 
 <!-- page: 40 -->
 
@@ -696,4 +696,4 @@ max 𝑂𝑃𝑇𝑖−1, 𝑤, 𝑣𝑖+ 𝑂𝑃𝑇𝑖−1, 𝑤−𝑤𝑖
 
 40
 
-![image](assets/assets/algorithm-design-and-analysis-021/image-014.png)
+![image](assets/algorithm-design-and-analysis-021/image-014.png)

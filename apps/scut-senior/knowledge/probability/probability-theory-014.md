@@ -92,6 +92,8 @@ t
 
 一、 填空题（每小题3 分，共18 分）
 
+<!-- question: probability-theory-014-Q2 -->
+
 1、若
 5.0
 )
@@ -122,6 +124,8 @@ B =
 
            .
 
+<!-- question: probability-theory-014-Q3 -->
+
 2、设随机变量X 服从二项分布
 (
 )
@@ -131,6 +135,8 @@ p ，若X 的方差是5
 
 2 ，则p =
 .
+
+<!-- question: probability-theory-014-Q4 -->
 
 3、设随机变量X、Y 均服从正态分布
 (
@@ -149,6 +155,8 @@ Y
 +
 的概率密度函数为
 .
+
+<!-- question: probability-theory-014-Q5 -->
 
 4、设总体
 )
@@ -205,6 +213,8 @@ Y
 2
 11
 
+<!-- question: probability-theory-014-Q6 -->
+
 5、设随机变量X 的概率密度为
 
 
@@ -255,6 +265,8 @@ i
 10
 
 15
+
+<!-- question: probability-theory-014-Q7 -->
 
 6、设总体X 和Y 相互独立，
 (
@@ -314,9 +326,11 @@ Y
 
 学期望为________ .  .
 
-<!-- question: probability-theory-014-Q2 -->
+<!-- question: probability-theory-014-Q8 -->
 
 二、单项选择题（每小题3 分，共18 分）
+
+<!-- question: probability-theory-014-Q9 -->
 
 1、设
 三个事件两两独立,则
@@ -356,6 +370,8 @@ C
 独立
 
 <!-- page: 2 -->
+
+<!-- question: probability-theory-014-Q10 -->
 
 2、设A，B 是两个随机事件，
 ( )
@@ -403,6 +419,8 @@ D P A B
 =
 =
 =
+
+<!-- question: probability-theory-014-Q11 -->
 
 3、设X，Y 为相互独立的两个随机变量，则下列不正确的结论是（  ）
 
@@ -453,6 +471,8 @@ D X D Y
 +
 =
 
+<!-- question: probability-theory-014-Q12 -->
+
 4．袋中有4 个白球2 个黑球，今从中任取3 个球，则至少一个黑球的概率为(  ).
 
 5
@@ -466,6 +486,8 @@ D X D Y
 1
 
    (C)
+
+<!-- question: probability-theory-014-Q13 -->
 
 5． 设随机变量X 服从正态分布(
 )
@@ -527,6 +549,8 @@ P Y
 µ
 µ
 >
+
+<!-- question: probability-theory-014-Q14 -->
 
 6、
 1
@@ -678,7 +702,7 @@ i
 =
 =
 
-<!-- question: probability-theory-014-Q3 -->
+<!-- question: probability-theory-014-Q15 -->
 
 三、(10 分）甲、乙两人轮流投篮，甲先投。一般来说，甲、乙两人独立投篮的命中
 
@@ -688,13 +712,17 @@ i
 
 面投篮的这一方的命中率就会有所下降，甲、乙的命中率分别变为0.4 和0.5。求：
 
+<!-- question: probability-theory-014-Q16 -->
+
 （1）乙在第一次投篮中投中的概率；
+
+<!-- question: probability-theory-014-Q17 -->
 
 （2）甲在第二次投篮中投中的概率。
 
 <!-- page: 3 -->
 
-<!-- question: probability-theory-014-Q4 -->
+<!-- question: probability-theory-014-Q18 -->
 
 四、（14 分）设(
 , )
@@ -719,6 +747,8 @@ x
 
 上服从均匀分布，
 
+<!-- question: probability-theory-014-Q19 -->
+
    （1）求边缘密度
 ( )
 Xf
@@ -726,6 +756,8 @@ x 和
 ( )
 Yf
 y ，并说明X 与Y 是否独立.
+
+<!-- question: probability-theory-014-Q20 -->
 
    （2）求
 (
@@ -788,7 +820,7 @@ Cov U V .
 
 每只雏鸡发育成种鸡的概率为0.90，试计算这批鸡蛋得到种鸡不少于7500 只的概率。
 
-<!-- question: probability-theory-014-Q5 -->
+<!-- question: probability-theory-014-Q21 -->
 
 七、(10 分)
 
@@ -860,6 +892,8 @@ X
 
 八．（10 分）
 
+<!-- question: probability-theory-014-Q22 -->
+
 (1). 已知多名实习生相互独立地测量同一块土地的面积，设每名实习生得到的测量数
 
 据X 平方米服从正态分布
@@ -870,6 +904,8 @@ N µ σ
 ，从这些测量数据中随机抽取7 个，经计算，其平
 
 均面积为125 平方米，标准差为2.71 平方米。求µ 的置信度为90%的置信区间。
+
+<!-- question: probability-theory-014-Q23 -->
 
 (2). 甲乙两厂生产的灯泡，其寿命X 和Y 分别服从
 2

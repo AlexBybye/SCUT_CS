@@ -25,7 +25,8 @@ def main() -> None:
     for line in (JOBS / "_vision_results.jsonl").read_text(encoding="utf-8").splitlines():
         r = json.loads(line)
         if r.get("latex"):
-            latex_by_hash[r["path"]] = r["latex"]
+            if r.get("latex") or not latex_by_hash.get(r["path"]):
+                latex_by_hash[r["path"]] = r["latex"]
     # representative-path -> hash lookup
     hash_of: dict[str, str] = {}
     for h, paths in uniq.items():

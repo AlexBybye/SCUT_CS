@@ -31,16 +31,22 @@ locator_type: none
 
 - **填空题** **(共5小题,每小题4分,共20分)**
 
+<!-- question: engineering-mathematical-analysis-2-012-Q1 -->
+
 1. $(y'''{)}^{3}+(y'{)}^{4}+{x}^{2}+x+1=0$是        阶微分方程。
 
 2.已知$(a\times b)\cdot c=2$，则$[(a+b)\times (b+c)]\cdot (c+a)=$               .
 
 3．函数$z=arctan\frac {y} {x}+ln\sqrt {{x}^{2}+{y}^{2}}$在点（1，0）处的梯度$gradz{|}_{(1,0)}=$                  .
 
+<!-- question: engineering-mathematical-analysis-2-012-Q2 -->
+
 4.交换积分顺序，则  $\int dx\int f(x,y) d y=$                   .
 
 5.设$f(x)$是以$2\pi$为周期的函数，它在$[-\pi ,\pi ]$上的表达式是$f(x)=\left \{ {\begin {matrix} x+1, -\pi \le x<0, \\ {x}^{2}, 0\le x<\pi . \end {matrix}}\right$若它的傅里叶级数的和函数为$S(x)$，则$S(0)=$            .
 - **选择题(共5小题,每小题4分,共20分)**
+
+<!-- question: engineering-mathematical-analysis-2-012-Q3 -->
 
 1.  抛物线${y}^{2}=4x$上与直线$x-y+4=0$相距最近的点是(     )
 
@@ -49,6 +55,8 @@ A.（0，0）；          B.（1，1）；            C.（1，2）；          
 2.  直线$L:\frac {x-2} {2}=\frac {y+1} {-2}=\frac {z=3} {1}$与平面$\pi:x+2y-2z=6$的关系是(       )
 
 A.  平行；	      	      B.  垂直；                C.  相交但不垂直；                    D.  重合
+
+<!-- question: engineering-mathematical-analysis-2-012-Q4 -->
 
 3.设$f(x, y)$在点$({x}_{0}, {y}_{0})$处的两个偏导数都存在，则  (       )
 
@@ -66,15 +74,21 @@ C.    条件收敛；                       D.  收敛性与$\alpha$的取值有
 
 **三.** **计算题(本大题分4小题,每小题8分,共32分)**
 
+<!-- question: engineering-mathematical-analysis-2-012-Q5 -->
+
 1.求微分方程$xy''=y'ln\frac {y'} {x}$的通解.
 
 2．计算三重积分$I=\iiint _{\Omega } ({x}^{2}+{y}^{2}+{z}^{2}) dV$，其中$\Omega :$${x}^{2}+{y}^{2}+{z}^{2}\le 2z$.
 
 3．计算曲线积分  $I=\int (x+y{)}^{2}dx-({x}^{2}+{y}^{2}siny)dy$，其中$L$是抛物线$y={x}^{2}$上从点$(-1, 1 )$到点$(1, 1 )$的那一段。
 
+<!-- question: engineering-mathematical-analysis-2-012-Q6 -->
+
 4．求幂级数$\sum _{n=0} ^{\infty } (2n+1){x}^{n}$的收敛域及和函数.
 
 **四、应用题（本大题分2小题,每小题7分,共14分）**
+
+<!-- question: engineering-mathematical-analysis-2-012-Q7 -->
 
 1.造一个容积为$V$的长方形无盖铝盒，怎样设计尺寸才能使它的表面积最小？
 

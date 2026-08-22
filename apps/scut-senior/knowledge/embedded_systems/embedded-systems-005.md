@@ -20,8 +20,8 @@ locator_type: slide
 
 <!-- slide: 2 -->
 
-![image](assets/assets/embedded-systems-005/image-001.jpg)
-![image](assets/assets/embedded-systems-005/image-002.png)
+![image](assets/embedded-systems-005/image-001.jpg)
+![image](assets/embedded-systems-005/image-002.png)
 
 <!-- slide: 3 -->
 
@@ -44,22 +44,22 @@ locator_type: slide
 
 - 1.1.2 嵌入式系统的特点
 - 嵌入式系统有如下特点：嵌入式系统功耗低，体积小，专用性强。
-![image](assets/assets/embedded-systems-005/image-003.png)
+![image](assets/embedded-systems-005/image-003.png)
 
 <!-- slide: 6 -->
 
 - 1.1.3 嵌入式系统的主要组成
 - 1.基本电路—电源
 - 电源电路为嵌入式系统提供工作电源，目前嵌入式系统芯片常用的电源为5V和3.3V两种电压，一般常用稳压芯片例如78XX或LM1113-XX等系列稳压芯片产生供电电压。
-![image](assets/assets/embedded-systems-005/image-004.png)
+![image](assets/embedded-systems-005/image-004.png)
 - 产生5V电压：
 
 <!-- slide: 7 -->
 
 - 2.基本电路—重启电路
 - 重启电路主要包括上电重启电路和按钮重启电路：
-![image](assets/assets/embedded-systems-005/image-005.png)
-![image](assets/assets/embedded-systems-005/image-006.png)
+![image](assets/embedded-systems-005/image-005.png)
+![image](assets/embedded-systems-005/image-006.png)
 - 上电复位
 - 按钮复位
 
@@ -67,13 +67,13 @@ locator_type: slide
 
 - 3.基本电路—时钟电路
 - 常用外部有源时钟源或无源晶振振荡电路连接嵌入式芯片的时钟输入接口，从而提供工作时钟，根据芯片的特点时钟源一般从几KB到几百MB。
-![image](assets/assets/embedded-systems-005/image-007.png)
-![image](assets/assets/embedded-systems-005/image-008.png)
+![image](assets/embedded-systems-005/image-007.png)
+![image](assets/embedded-systems-005/image-008.png)
 - 外接外部有源时钟
 - 无源晶振电路
-![image](assets/assets/embedded-systems-005/image-009.png)
-![image](assets/assets/embedded-systems-005/image-010.png)
-![image](assets/assets/embedded-systems-005/image-011.png)
+![image](assets/embedded-systems-005/image-009.png)
+![image](assets/embedded-systems-005/image-010.png)
+![image](assets/embedded-systems-005/image-011.png)
 
 <!-- slide: 9 -->
 
@@ -84,9 +84,9 @@ locator_type: slide
 
 - 随机存储器RAM
 - 随机存储器（RAM）的任意存储单元都可以以任意次序进行读/写操作。主要有静态RAM (SRAM)和动态RAM(DRAM)两种类型。
-![image](assets/assets/embedded-systems-005/image-012.png)
+![image](assets/embedded-systems-005/image-012.png)
 - 静态RAM连接示例图
-![image](assets/assets/embedded-systems-005/image-013.png)
+![image](assets/embedded-systems-005/image-013.png)
 - 动态RAM内部结构
 
 <!-- slide: 11 -->
@@ -96,19 +96,19 @@ locator_type: slide
 - PROM：PROM属于一次性编程的只读存储器。它出厂时处于未被编程的状态，里面的内容全是1。
 - EPROM：EPROM是可以被擦除并且反复被编程的，EPROM的擦除需要使用紫外线。
 - EEPROM：EEPROM是电可擦除可编程的。
-![image](assets/assets/embedded-systems-005/image-014.png)
-![image](assets/assets/embedded-systems-005/image-015.png)
-![image](assets/assets/embedded-systems-005/image-016.png)
-![image](assets/assets/embedded-systems-005/image-017.png)
-![image](assets/assets/embedded-systems-005/image-018.png)
+![image](assets/embedded-systems-005/image-014.png)
+![image](assets/embedded-systems-005/image-015.png)
+![image](assets/embedded-systems-005/image-016.png)
+![image](assets/embedded-systems-005/image-017.png)
+![image](assets/embedded-systems-005/image-018.png)
 
 <!-- slide: 12 -->
 
 - Flash存储器：快闪存储器（Flash）技术是存储器技术的最新发展，使用标准电压擦写和编程。主要有两类：NAND Flash和NOR Flash。
 - NAND Flash主要有两种用途：一种是用作存储卡；另一种用途是用作嵌入式系统的程序存储器；NAND Flash使用复杂的I/O口来串行地存取数据，各个产品或厂商的方法可能各不相同。
 - NOR Flash有两种形式，一种是嵌入式处理器上集成了Flash，另一种是片外扩展Flash，操作包括写入和读出。
-![image](assets/assets/embedded-systems-005/image-019.png)
-![image](assets/assets/embedded-systems-005/image-020.png)
+![image](assets/embedded-systems-005/image-019.png)
+![image](assets/embedded-systems-005/image-020.png)
 
 <!-- slide: 13 -->
 
@@ -116,17 +116,17 @@ locator_type: slide
 - 通用输入/输出接口(GPIO)：GPIO是I/O的最基本形式，它是一组输入引脚或输出引脚。
 - 按键接口：按键输入使用。
 - 显示接口：8段数码管LED显示和LCD显示。
-![image](assets/assets/embedded-systems-005/image-021.png)
-![image](assets/assets/embedded-systems-005/image-022.png)
-![image](assets/assets/embedded-systems-005/image-023.png)
-![image](assets/assets/embedded-systems-005/image-024.png)
+![image](assets/embedded-systems-005/image-021.png)
+![image](assets/embedded-systems-005/image-022.png)
+![image](assets/embedded-systems-005/image-023.png)
+![image](assets/embedded-systems-005/image-024.png)
 
 <!-- slide: 14 -->
 
 - 串口：串行通信是指使数据一位一位地进行传输而实现的通信。与并行通信相比，串行通信具有传输线少、成本低等优点，特别适合远距离传送；缺点是速度慢。目前常见的通信模式有UART（异步串行通信）和SPI（同步串行通信）。
-![image](assets/assets/embedded-systems-005/image-025.png)
-![image](assets/assets/embedded-systems-005/image-026.png)
-![image](assets/assets/embedded-systems-005/image-027.png)
+![image](assets/embedded-systems-005/image-025.png)
+![image](assets/embedded-systems-005/image-026.png)
+![image](assets/embedded-systems-005/image-027.png)
 - UART
 - UART to RS232
 - SPI
@@ -134,11 +134,11 @@ locator_type: slide
 <!-- slide: 15 -->
 
 - 总线接口：I2C总线(双向二线制半双工同步串行总线)，CAN总线(控制器局域网总线)，RS-485总线（半双工工作方式，支持多点异步串行数据通信）。
-![image](assets/assets/embedded-systems-005/image-028.png)
-![image](assets/assets/embedded-systems-005/image-029.png)
+![image](assets/embedded-systems-005/image-028.png)
+![image](assets/embedded-systems-005/image-029.png)
 - I2C总线
 - RS-485总线
-![image](assets/assets/embedded-systems-005/image-030.png)
+![image](assets/embedded-systems-005/image-030.png)
 - CAN总线
 
 <!-- slide: 16 -->
@@ -146,10 +146,10 @@ locator_type: slide
 ## 1.1.4 嵌入式系统类型
 
 - 嵌入式系统芯片可以分成4类：嵌入式微控制器(Microcontroller Unit，MCU）、嵌入式微处理器(MPU，Microprocessor Unit)、嵌入式数字信号处理器（DSP，Digital Signal Processing）和嵌入式片上系统(System On Chip，SOC)。
-![image](assets/assets/embedded-systems-005/image-031.png)
-![image](assets/assets/embedded-systems-005/image-032.png)
-![image](assets/assets/embedded-systems-005/image-033.png)
-![image](assets/assets/embedded-systems-005/image-034.png)
+![image](assets/embedded-systems-005/image-031.png)
+![image](assets/embedded-systems-005/image-032.png)
+![image](assets/embedded-systems-005/image-033.png)
+![image](assets/embedded-systems-005/image-034.png)
 - MCU
 - MPU
 - DSP
@@ -158,12 +158,12 @@ locator_type: slide
 <!-- slide: 17 -->
 
 - 嵌入式微控制器:有很好的集成性，把RAM、Flash和各种外设都集成在一个芯片中，因此芯片最大程度地单片化，集成度高；
-![image](assets/assets/embedded-systems-005/image-035.png)
+![image](assets/embedded-systems-005/image-035.png)
 
 <!-- slide: 18 -->
 
 - 嵌入式微处理器芯片:采用外部的DDR SDRAM内存存储数据，外部的NAND Flash存储器来存储程序，并且嵌入式微处理器芯片内部集成了内存管理单元(MMU)，所以嵌入式微处理器芯片可以运行Linux系统、Android系统、苹果系统等大型嵌入式操作系统。
-![image](assets/assets/embedded-systems-005/image-036.png)
+![image](assets/embedded-systems-005/image-036.png)
 
 <!-- slide: 19 -->
 
@@ -176,14 +176,14 @@ locator_type: slide
 - （6）快速的指令周期。
 - （7）低功耗。
 - （8）高的运算精度。
-![image](assets/assets/embedded-systems-005/image-037.png)
+![image](assets/embedded-systems-005/image-037.png)
 - XAB1和XAB2两条数据总线
 - DSP56F805 DSP芯片存储结构
 
 <!-- slide: 20 -->
 
 - 嵌入式片上系统（SOC）:例如FPGA芯片，可以通过硬件逻辑语言VHDL或Verilog直接实现硬件功能，因此可编程芯片在做开发过程中有很大的灵活性，可以开发自己专有内核，即IP核。同时由于随着并行技术的发展，可编程逻辑芯片程序可以由任意多个进程控制模块组成，因此十分适合开发并行计算。
-![image](assets/assets/embedded-systems-005/image-038.png)
+![image](assets/embedded-systems-005/image-038.png)
 - 可编程门阵列 (FPGA) 是由通过可编程互连连接的可配置逻辑块 (CLB) 矩阵构成的可编程半导体器件。
 
 <!-- slide: 21 -->
@@ -207,23 +207,23 @@ locator_type: slide
 ## AVR系列单片机(www.atmel.com)
 
 - 1997年,由ATMEL公司挪威设计中心的A先生与V先生利用ATMEL公司的Flash新技术, 共同研发出RISC精简指令集的高速8位单片机，简称AVR。相对于出现较早也较为成熟的51系列单片机，AVR系列单片机片内资源更为丰富，接口也更为强大，同时由于其价格低等优势，在很多场合可以替代51系列单片机。
-![image](assets/assets/embedded-systems-005/image-039.png)
+![image](assets/embedded-systems-005/image-039.png)
 
 <!-- slide: 24 -->
 
 ## PIC系列单片机
 
 - 由美国微芯科技公司，美国微芯半导体　　Microchip公司设计生产（www.microchip.com)。
-![image](assets/assets/embedded-systems-005/image-040.png)
-![image](assets/assets/embedded-systems-005/image-041.png)
+![image](assets/embedded-systems-005/image-040.png)
+![image](assets/embedded-systems-005/image-041.png)
 
 <!-- slide: 25 -->
 
 ## 飞思卡尔（freescale）系列单片机
 
 - 由美国飞思卡尔公司(原Motorola公司) 生产http://www.freescale.com.cn
-![image](assets/assets/embedded-systems-005/image-042.png)
-![image](assets/assets/embedded-systems-005/image-043.png)
+![image](assets/embedded-systems-005/image-042.png)
+![image](assets/embedded-systems-005/image-043.png)
 
 <!-- slide: 26 -->
 
@@ -248,37 +248,37 @@ locator_type: slide
 
 - 近年来ARM公司开始设计针对单片机的ARM内核，并设计出了cortex-M 系列单片机内核。
 - Cortex-M 系列针对成本和功耗敏感的 MCU 和终端应用（如智能测量、人机接口设备、汽车和工业控制系统、大型家用电器、消费性产品和医疗器械）的混合信号设备进行过优化。
-![image](assets/assets/embedded-systems-005/image-044.png)
-![image](assets/assets/embedded-systems-005/image-045.png)
+![image](assets/embedded-systems-005/image-044.png)
+![image](assets/embedded-systems-005/image-045.png)
 
 <!-- slide: 30 -->
 
 ## 常用的Cortex-M系列芯片内核
 
 - （1）ST（意法半导体）的STM32单片机采用Cortex-M3内核，如STM32F103，STM32F105, STM32F107等系列单片机。
-![image](assets/assets/embedded-systems-005/image-046.png)
-![image](assets/assets/embedded-systems-005/image-047.png)
+![image](assets/embedded-systems-005/image-046.png)
+![image](assets/embedded-systems-005/image-047.png)
 
 <!-- slide: 31 -->
 
 ## （2）NXP公司的ARM核芯片
 
-![image](assets/assets/embedded-systems-005/image-048.png)
-![image](assets/assets/embedded-systems-005/image-049.png)
-![image](assets/assets/embedded-systems-005/image-050.png)
+![image](assets/embedded-systems-005/image-048.png)
+![image](assets/embedded-systems-005/image-049.png)
+![image](assets/embedded-systems-005/image-050.png)
 
 <!-- slide: 32 -->
 
 ## （3）Ti（德州仪器公司）的Stellaris MCU 系列，采用了Cortex内核。
 
-![image](assets/assets/embedded-systems-005/image-051.png)
-![image](assets/assets/embedded-systems-005/image-052.png)
+![image](assets/embedded-systems-005/image-051.png)
+![image](assets/embedded-systems-005/image-052.png)
 
 <!-- slide: 33 -->
 
 - ARM 开芯计划
 - http://www.freecpu-china.com/
-![image](assets/assets/embedded-systems-005/image-053.png)
+![image](assets/embedded-systems-005/image-053.png)
 
 <!-- slide: 34 -->
 
@@ -295,9 +295,9 @@ locator_type: slide
 <!-- slide: 35 -->
 
 - 嘉楠勘智K210芯片
-![image](assets/assets/embedded-systems-005/image-054.png)
-![image](assets/assets/embedded-systems-005/image-055.png)
-![image](assets/assets/embedded-systems-005/image-056.png)
+![image](assets/embedded-systems-005/image-054.png)
+![image](assets/embedded-systems-005/image-055.png)
+![image](assets/embedded-systems-005/image-056.png)
 
 <!-- slide: 36 -->
 
@@ -312,18 +312,18 @@ locator_type: slide
 - C910 Linux Buildroot: Buildroot包，内置依赖的软件包免下载，make编译后按readme可在qemu上运行linux
 - C910 Linux image: 编译好的image包，按照readme可直接在qemu上运行https://occ.t-head.cn/community/download_detail?id=575996958993285120
 - 玄铁910仿真平台：含使用视频，指导手册，支持Synopsys的VCS和Cadence的IRUN。https://occ.t-head.cn/community/download_detail?id=643604837828657152
-![image](assets/assets/embedded-systems-005/image-057.png)
+![image](assets/embedded-systems-005/image-057.png)
 - 玄铁902: https://github.com/T-head-Semi/wujian100_open
 
 <!-- slide: 37 -->
 
 - 芯来科技芯片
-![image](assets/assets/embedded-systems-005/image-058.png)
+![image](assets/embedded-systems-005/image-058.png)
 
 <!-- slide: 38 -->
 
 - NXP织女星开发板
-![image](assets/assets/embedded-systems-005/image-059.png)
+![image](assets/embedded-systems-005/image-059.png)
 - 主控芯片：恩智浦的RV32M1， 四核异构：两个ARM核，两个RISC-V核，自带无线功能。
 - 板载调试器：基于LPC4322的FreeLink调试器，默认为CMSIS固件，升级为Jlink固件后可调试ARM核和RISC-V内核。
 - 调试接口：两个ARM核共用一个JTAG调试口，两个RISC-V核共用一个JTAG调试口，可能是由于PCB空间大小的限制，这两个2*5P的接口并不是通用的2.54mm间距的排针，而是比较少用的1.25的排针，对于手头没有这种接口排线的朋友，可能不是很方便的使用，不过我们有万能的淘宝。
@@ -341,24 +341,24 @@ locator_type: slide
 <!-- slide: 39 -->
 
 - 1.2.3 ARM嵌入式微控制器介绍
-![image](assets/assets/embedded-systems-005/image-060.png)
+![image](assets/embedded-systems-005/image-060.png)
 - Cortex-M0处理器是市场上现有的最小、能耗最低、最节能的ARM处理器。Cortex-M0是基于ARMv6M架构，该处理器能耗非常低、门数量少、代码占用空间小，使得MCU开发人员能够以8位处理器的价位，获得32位处理器的性能。超低门数还使其能够用于模拟信号设备和混合信号设备及MCU应用中，可望明显节约系统成本。
 
 <!-- slide: 40 -->
 
 - Cortex-M3处理器具有较高的性能和较低的动态功耗，因而能够提供领先的能效。Cortex-M3是基于ARMv7M架构，将集成的睡眠模式与可选的状态保留功能相结合。该处理器执行包括硬件除法、单周期乘法和位字段操作在内的Thumb®-2指令集以获取最佳性能和代码大小。Cortex-M3 NVIC在设计时是高度可配置的，最多可提供240个具有单独优先级、动态重设优先级功能和集成系统时钟的系统中断。
-![image](assets/assets/embedded-systems-005/image-061.png)
+![image](assets/embedded-systems-005/image-061.png)
 
 <!-- slide: 41 -->
 
-![image](assets/assets/embedded-systems-005/image-062.png)
+![image](assets/embedded-systems-005/image-062.png)
 - Cortex-M4处理器是由ARM专门开发的最新嵌入式处理器，用以满足需要有效且易于使用的控制和信号处理功能混合的数字信号控制市场，针对Cortex-M3添加了快速数字信号处理模块。具有高性能的数字信号控制，它采用扩展的单周期乘法累加(MAC)指令、优化的SIMD运算、饱和运算指令和一个可选的单精度浮点单元(FPU)、具备最佳的数字信号控制操作所需的所有功能，还结合了深受市场认可的Cortex-M系列处理器的低功耗特点。
 
 <!-- slide: 42 -->
 
 - 1.2.4 STM32 32位ARM Cortex-M微控制器
 - STM32系列微控制器专为要求高性能、低成本、低功耗的嵌入式应用设计的ARM Cortex-M0，M0+，M3，M4和M7内核。按内核架构分为不同产品：主流产品（STM32F0、STM32 G0、STM32F1、STM32F3和STM32G4），超低功耗产品（STM32L0、STM32L1、STM32L4、STM32L4+和STM32L5），高性能产品（STM32F2、STM32F4、STM32F7和STM32H7（含ARM Cortex-M7和Cortex-M4双核产品）和无线系列产品（STM32 WB（Cortex-M0+无线协处理器））。
-![image](assets/assets/embedded-systems-005/image-063.png)
+![image](assets/embedded-systems-005/image-063.png)
 
 <!-- slide: 43 -->
 
@@ -431,21 +431,21 @@ locator_type: slide
 
 - 2.嵌入式操作系统软件系统
 - 利用操作系统，应用程序的开发不是直接面对嵌入式硬件设备，而是在操作系统的基础上编写，易于实现功能复杂、系统庞大的应用。
-![image](assets/assets/embedded-systems-005/image-064.png)
+![image](assets/embedded-systems-005/image-064.png)
 
 <!-- slide: 51 -->
 
 - 3.嵌入式系统软件设计模型
 - （1）状态机模型
 - 有限状态机（Finite-State Machine，FSM）是一个基本的状态机模型，可以用一组可能的状态来描述系统的行为，系统在任何时刻只能处于其中一个状态，也可以描述由输入确定的状态转移，最后可以描述在某个状态下或状态转移期间可能发生的操作，状态机模型特别适合描述以控制为主的系统。
-![image](assets/assets/embedded-systems-005/image-065.jpg)
+![image](assets/embedded-systems-005/image-065.jpg)
 
 <!-- slide: 52 -->
 
 - （2）数据流模型
 - 数据流模型是并发多任务模型派生出的一种模型，该模型将系统的行为描述为一组节点和边，其中节点表示变换，边表示从一个节点到另一个节点的数据流向。每个节点使用来自其输入边的数据，执行变换并在其输出边上产生数据，数据流模型可以很好地描述数据处理和转换问题。
 - 例如左图所示是计算 z=(a-c)×(b+d)的数据流模型。
-![image](assets/assets/embedded-systems-005/image-066.png)
+![image](assets/embedded-systems-005/image-066.png)
 
 <!-- slide: 53 -->
 
@@ -456,14 +456,14 @@ locator_type: slide
 
 - 1.3.4 嵌入式芯片代码编译
 - 嵌入式软件的生成主要是在宿主机上进行，利用各种工具完成对应用程序的编辑、交叉编译和链接工作，生成可供调试或固化的目标程序。主要包括三个过程，主要包括：源代码程序的编写；编译成各个目标模块；链接成可供下载调试或固化的目标程序。
-![image](assets/assets/embedded-systems-005/image-067.png)
+![image](assets/embedded-systems-005/image-067.png)
 
 <!-- slide: 55 -->
 
 - 1.3.5 嵌入式芯片代码下载及调试
 - 嵌入式系统开发中常用到的硬件调试器是：ROM Monitor、ROM Emulator、In-Circuit Emulator和On Chip Debugging。
 - ARM Cortex-M3内核的STM32F103系列芯片主要采用On Chip Debugging （OCD）调试结构的方式。
-![image](assets/assets/embedded-systems-005/image-068.png)
+![image](assets/embedded-systems-005/image-068.png)
 
 <!-- slide: 56 -->
 

@@ -105,9 +105,9 @@ swap(A[j],A[j+1])
 使用Merge-Sort算法进行由小到大的
 排序，画出过程。
 
-![image](assets/assets/algorithm-design-and-analysis-010/image-001.png)
+![image](assets/algorithm-design-and-analysis-010/image-001.png)
 
-![image](assets/assets/algorithm-design-and-analysis-010/image-002.png)
+![image](assets/algorithm-design-and-analysis-010/image-002.png)
 
 <!-- page: 8 -->
 
@@ -116,12 +116,12 @@ swap(A[j],A[j+1])
 使用Merge-Sort算法进行由小到大的
 排序，画出过程。
 
-![image](assets/assets/algorithm-design-and-analysis-010/image-003.png)
+![image](assets/algorithm-design-and-analysis-010/image-003.png)
 
-![image](assets/assets/algorithm-design-and-analysis-010/image-004.png)
+![image](assets/algorithm-design-and-analysis-010/image-004.png)
 
-![image](assets/assets/algorithm-design-and-analysis-010/image-005.png)
+![image](assets/algorithm-design-and-analysis-010/image-005.png)
 
-![image](assets/assets/algorithm-design-and-analysis-010/image-006.png)
+![image](assets/algorithm-design-and-analysis-010/image-006.png)
 
-![image](assets/assets/algorithm-design-and-analysis-010/image-007.png)
+![image](assets/algorithm-design-and-analysis-010/image-007.png)

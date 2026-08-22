@@ -10,4 +10,4 @@ locator_type: none
 
 # LR分析错误处理的应急式
 
-![page-001.png](assets/assets/compiler-principles-028/page-001.png)
+![page-001.png](assets/compiler-principles-028/page-001.png)

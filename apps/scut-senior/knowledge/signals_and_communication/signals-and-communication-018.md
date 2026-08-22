@@ -38,7 +38,7 @@ locator_type: slide
 需要较大的传输带宽
 对同步要求高
 
-![image](assets/assets/signals-and-communication-018/image-001.png)
+![image](assets/signals-and-communication-018/image-001.png)
 - 123456789
 - 123456789
 - 模拟

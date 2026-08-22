@@ -10,8 +10,8 @@ locator_type: none
 
 # 习题
 
-![image](assets/assets/linear-algebra-025/image-001.jpeg)![image](assets/assets/linear-algebra-025/image-002.jpeg)![image](assets/assets/linear-algebra-025/image-003.jpeg)![image](assets/assets/linear-algebra-025/image-004.jpeg)
+![image](assets/linear-algebra-025/image-001.jpeg)![image](assets/linear-algebra-025/image-002.jpeg)![image](assets/linear-algebra-025/image-003.jpeg)![image](assets/linear-algebra-025/image-004.jpeg)
 
-![image](assets/assets/linear-algebra-025/image-005.jpeg)
+![image](assets/linear-algebra-025/image-005.jpeg)
 
-![image](assets/assets/linear-algebra-025/image-006.jpeg)
+![image](assets/linear-algebra-025/image-006.jpeg)

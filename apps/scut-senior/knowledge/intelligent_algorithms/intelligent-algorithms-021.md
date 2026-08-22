@@ -10,4 +10,4 @@ locator_type: none
 
 # Pasted image 20250331190918
 
-![page-001.png](assets/assets/intelligent-algorithms-021/page-001.png)
+![page-001.png](assets/intelligent-algorithms-021/page-001.png)

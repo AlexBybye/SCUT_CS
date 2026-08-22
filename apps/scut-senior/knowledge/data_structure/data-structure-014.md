@@ -53,6 +53,8 @@ locator_type: none
 
 (A) Improve the basic  I/O  operations.    (B) Minimize the number of disk accesses.  (C) Eliminate the recursive calls.         (D) Reduce main memory use.
 
+<!-- question: data-structure-014-Q1 -->
+
 (6)  In the hash function, collision refers to (   B     ).
 
 (A) Two elements have the same  key value.
@@ -85,6 +87,8 @@ locator_type: none
 - A F C D H G E B                      (B)  A B F D G E C H
 
 (C) A B F G D C E H                      (D)  A H F D G E C B
+
+<!-- question: data-structure-014-Q2 -->
 
 2. Fill the blank with correct C++ codes:    (16 scores)
 1. Given an array storing integers ordered by value, modify the binary search routines to return the position of the first integer with the least value greater than K when K itself does not appear in the array. Return ERROR if the greatest value in the array is less than K:  (10 scores)

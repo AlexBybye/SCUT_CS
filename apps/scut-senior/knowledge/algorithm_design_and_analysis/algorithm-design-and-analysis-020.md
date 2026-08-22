@@ -210,22 +210,22 @@ max 𝑧= 50𝑥1 + 40𝑥2
 
 3. 采用单纯形法求解以下线性规划问题
 
-![image](assets/assets/algorithm-design-and-analysis-020/image-001.png)
+![image](assets/algorithm-design-and-analysis-020/image-001.png)
 
 <!-- page: 9 -->
 
 3. 采用单纯形法求解以下线性规划问题
 
-![image](assets/assets/algorithm-design-and-analysis-020/image-002.png)
+![image](assets/algorithm-design-and-analysis-020/image-002.png)
 
 <!-- page: 10 -->
 
 3. 采用单纯形法求解以下线性规划问题
 
-![image](assets/assets/algorithm-design-and-analysis-020/image-003.png)
+![image](assets/algorithm-design-and-analysis-020/image-003.png)
 
 <!-- page: 11 -->
 
 3. 采用单纯形法求解以下线性规划问题
 
-![image](assets/assets/algorithm-design-and-analysis-020/image-004.png)
+![image](assets/algorithm-design-and-analysis-020/image-004.png)

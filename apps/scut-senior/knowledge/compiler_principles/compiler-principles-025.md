@@ -10,4 +10,4 @@ locator_type: none
 
 # LR(1)分析的思想
 
-![page-001.png](assets/assets/compiler-principles-025/page-001.png)
+![page-001.png](assets/compiler-principles-025/page-001.png)

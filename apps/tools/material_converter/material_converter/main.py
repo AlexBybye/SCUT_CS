@@ -16,7 +16,8 @@ from .convert import (CACHE, FIELDS, KNOWLEDGE, MANIFEST, REPO,
                       convert_file, find_soffice, flush_vector_png,
                       frontmatter_block, guess_role, guess_year,
                       looks_like_template, merge_emphasis, md5,
-                      scrub_office_metadata, scrub_pdf_metadata, scan_privacy)
+                      scan_asset_integrity, scrub_office_metadata,
+                      scrub_pdf_metadata, scan_privacy)
 
 
 def collect_files(only_folder=None):
@@ -242,6 +243,12 @@ def run(args):
         fail = len(vec_queue) - ok
         print(f"vector->png ok={ok} kept-as-vector={fail}")
 
+    # 资产完整性扫描（教训：坏引用曾静默入库）
+    broken = scan_asset_integrity()
+    if broken:
+        print(f"asset-broken={len(broken)}")
+        for b in broken[:10]:
+            print("  !", b)
     if not args.dry and new_rows:
         with open(MANIFEST, "a", newline="", encoding="utf-8") as fp:
             w = csv.DictWriter(fp, fieldnames=list(FIELDS))

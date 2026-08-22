@@ -91,7 +91,7 @@ X
 1. 是“见1就翻制”（NRZ1）。
 - 解：1)
 
-![formula-object](assets/assets/computer-organization-071/image-001.png)
+![formula-object](assets/computer-organization-071/image-001.png)
 
 2）输入4号处理机与输出2号处理机相连
 

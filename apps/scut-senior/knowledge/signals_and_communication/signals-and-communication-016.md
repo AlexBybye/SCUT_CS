@@ -12,7 +12,7 @@ locator_type: slide
 
 <!-- slide: 1 -->
 
-![image](assets/assets/signals-and-communication-016/image-001.png)
+![image](assets/signals-and-communication-016/image-001.png)
 - 第6章 无限脉冲响应数字滤波器
 - 数字信号处理
 
@@ -37,7 +37,7 @@ locator_type: slide
 
 - 1.滤波器分类
 - 滤波器的分类方法有很多。按信号处理方式分类，有模拟滤波器和数字滤波器；按元件分类，无源滤波器和有源滤波器；按滤波功能分类可分为低通滤波器、高通滤波器、带通滤波器、带阻滤波器及全通滤波器等。图6-1给出了按滤波功能分类的四种滤波器。
-![image](assets/assets/signals-and-communication-016/image-002.png)
+![image](assets/signals-and-communication-016/image-002.png)
 - 图6-1 按滤波功能分类的四种滤波器
 - 6.1 滤波器基本概念
 
@@ -56,7 +56,7 @@ locator_type: slide
 - 6.1 滤波器基本概念
 - 图6-2 实际低通滤波器技术指标
 - 其中：       ：通带截止频率，通带频率范围：                   ；     ：阻带截止频率，阻带频率范围：                   ；     ：3dB截止频率；       ：通带最大衰减；      ：阻带最小衰减；      ：通带的容限；      ：阻带的容限。       就是通带和阻带波动大小。
-![image](assets/assets/signals-and-communication-016/image-003.png)
+![image](assets/signals-and-communication-016/image-003.png)
 
 <!-- slide: 7 -->
 
@@ -96,8 +96,8 @@ locator_type: slide
 
 <!-- slide: 11 -->
 
-![image](assets/assets/signals-and-communication-016/image-004.png)
-![image](assets/assets/signals-and-communication-016/image-005.png)
+![image](assets/signals-and-communication-016/image-004.png)
+![image](assets/signals-and-communication-016/image-005.png)
 - 图6-3 幅度特性与      和N 的关系
 - 图6-4           极点分布图(N=3)
 - 2. 系统函数与极点
@@ -109,7 +109,7 @@ locator_type: slide
 
 - 从图6-4可以看出，无论N为奇数还是偶数，这些极点都均匀等间隔地分布在平面中以    为半径、以原点为中心的圆周上，极点间的角度间隔为π/N rad，而且都是以原点为对称中心成对出现的，即对任一极点              ，必有另一极点                 。
 - 6.2 模拟滤波器设计
-![image](assets/assets/signals-and-communication-016/image-006.png)
+![image](assets/signals-and-communication-016/image-006.png)
 
 <!-- slide: 13 -->
 
@@ -136,7 +136,7 @@ locator_type: slide
 - 水平横带右半部分映射到Z平面的单位圆外；
 - j Ω虚轴上每2π/T段都对应着单位圆一周。
 - 6.3 脉冲响应不变法设计IIR数字滤波器
-![image](assets/assets/signals-and-communication-016/image-007.png)
+![image](assets/signals-and-communication-016/image-007.png)
 - y = e x
 
 <!-- slide: 16 -->
@@ -152,8 +152,8 @@ locator_type: slide
 
 - 一个实际的模拟滤波器频率响应都不是严格限带的，产生频率响应的混叠失真，当模拟滤波器的频率响应在折叠频率以上处衰减越大、越快时，变换后频率响应混叠失真就越小。这时，采用脉冲响应不变法设计的数字滤波器才能得到良好的效果。
 - 6.3 脉冲响应不变法设计IIR数字滤波器
-![image](assets/assets/signals-and-communication-016/image-008.png)
-![image](assets/assets/signals-and-communication-016/image-009.png)
+![image](assets/signals-and-communication-016/image-008.png)
+![image](assets/signals-and-communication-016/image-009.png)
 - 图6-13模拟滤波器频率响应与数字滤波器的频率响应图形
 
 <!-- slide: 18 -->
@@ -164,7 +164,7 @@ locator_type: slide
 - 计算h(k)的z变换得到H(z)。
 - 图6-14脉冲响应不变法过程示意图
 - 6.3 脉冲响应不变法设计IIR数字滤波器
-![image](assets/assets/signals-and-communication-016/image-010.png)
+![image](assets/signals-and-communication-016/image-010.png)
 
 <!-- slide: 19 -->
 

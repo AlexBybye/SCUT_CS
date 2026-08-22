@@ -10,4 +10,4 @@ locator_type: none
 
 # 语义栈
 
-![page-001.png](assets/assets/compiler-principles-050/page-001.png)
+![page-001.png](assets/compiler-principles-050/page-001.png)

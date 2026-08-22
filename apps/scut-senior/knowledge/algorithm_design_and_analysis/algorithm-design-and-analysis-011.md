@@ -51,7 +51,7 @@ size n.
 
 3
 
-![image](assets/assets/algorithm-design-and-analysis-011/image-001.jpeg)
+![image](assets/algorithm-design-and-analysis-011/image-001.jpeg)
 
 <!-- page: 4 -->
 
@@ -101,9 +101,9 @@ After each compare, the length of output list increases by 1.
 
 6
 
-![image](assets/assets/algorithm-design-and-analysis-011/image-002.png)
+![image](assets/algorithm-design-and-analysis-011/image-002.png)
 
-![image](assets/assets/algorithm-design-and-analysis-011/image-003.png)
+![image](assets/algorithm-design-and-analysis-011/image-003.png)
 
 <!-- page: 7 -->
 
@@ -111,7 +111,7 @@ Why It Matters
 
 7
 
-![image](assets/assets/algorithm-design-and-analysis-011/image-004.png)
+![image](assets/algorithm-design-and-analysis-011/image-004.png)
 
 <!-- page: 8 -->
 
@@ -143,7 +143,7 @@ be rare.
 K-means clustering algorithm
 9
 
-![image](assets/assets/algorithm-design-and-analysis-011/image-005.jpeg)
+![image](assets/algorithm-design-and-analysis-011/image-005.jpeg)
 
 <!-- page: 10 -->
 
@@ -197,7 +197,7 @@ compares to sort n elements.
 
 12
 
-![image](assets/assets/algorithm-design-and-analysis-011/image-006.png)
+![image](assets/algorithm-design-and-analysis-011/image-006.png)
 
 <!-- page: 13 -->
 
@@ -275,7 +275,7 @@ compares in the worst case.
 
 16
 
-![image](assets/assets/algorithm-design-and-analysis-011/image-007.png)
+![image](assets/algorithm-design-and-analysis-011/image-007.png)
 
 <!-- page: 17 -->
 
@@ -330,7 +330,7 @@ Typical usage. Merge-Sort makes
 
 19
 
-![image](assets/assets/algorithm-design-and-analysis-011/image-008.png)
+![image](assets/algorithm-design-and-analysis-011/image-008.png)
 
 <!-- page: 20 -->
 

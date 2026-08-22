@@ -26,7 +26,7 @@ locator_type: slide
     -- 多用户共享：不同用户采用正交跳频图案（如蓝牙的79个信道），避免冲突，提升频谱利用率。
     -- 低功率密度：信号能量分散在宽频带内，符合法规（如FCC Part 15），降低对其他设备的干扰。
 
-![image](assets/assets/signals-and-communication-024/image-001.png)
+![image](assets/signals-and-communication-024/image-001.png)
 
 <!-- slide: 3 -->
 
@@ -35,7 +35,7 @@ locator_type: slide
      -- 军事通信：如美军JTIDS系统，通过加密跳频图案抵御电子战干扰。
      -- 早期Wi-Fi（802.11）：已逐步被DSSS（直接序列扩频）和OFDM取代，但仍在特定场景使用。
 
-![image](assets/assets/signals-and-communication-024/image-002.png)
+![image](assets/signals-and-communication-024/image-002.png)
 
 <!-- slide: 4 -->
 

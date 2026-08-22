@@ -16,8 +16,8 @@ locator_type: slide
 
 - 课件采用鲍军鹏 博士的课件版本：2.0
 - 2010年1月
-![image](assets/assets/artificial-intelligence-intro-054/image-001.png)
-![image](assets/assets/artificial-intelligence-intro-054/image-002.png)
+![image](assets/artificial-intelligence-intro-054/image-001.png)
+![image](assets/artificial-intelligence-intro-054/image-002.png)
 - 主讲：文贵华
 - crghwen@scut.edu.cn
 
@@ -162,7 +162,6 @@ locator_type: slide
 |---|---|
 |  |  |
 |  |  |
-
 
 | 编号 | 状态节点 | 父节点 |
 |---|---|---|

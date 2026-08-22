@@ -114,7 +114,7 @@ Now, we evaluate the limit:
 
 1 of 8
 
-![image](assets/assets/algorithm-design-and-analysis-028/image-001.png)
+![image](assets/algorithm-design-and-analysis-028/image-001.png)
 
 <!-- page: 2 -->
 
@@ -307,7 +307,7 @@ Therefore, 𝑓(𝑛) = Ω(𝑔(𝑛)).
 
 2 of 8
 
-![image](assets/assets/algorithm-design-and-analysis-028/image-002.png)
+![image](assets/algorithm-design-and-analysis-028/image-002.png)
 
 <!-- page: 3 -->
 
@@ -412,7 +412,7 @@ Model A
 
 3 of 8
 
-![image](assets/assets/algorithm-design-and-analysis-028/image-003.png)
+![image](assets/algorithm-design-and-analysis-028/image-003.png)
 
 <!-- page: 4 -->
 
@@ -555,7 +555,7 @@ Final MST:
 
 4 of 8
 
-![image](assets/assets/algorithm-design-and-analysis-028/image-004.png)
+![image](assets/algorithm-design-and-analysis-028/image-004.png)
 
 <!-- page: 5 -->
 
@@ -672,7 +672,7 @@ Model A
 
 5 of 8
 
-![image](assets/assets/algorithm-design-and-analysis-028/image-005.png)
+![image](assets/algorithm-design-and-analysis-028/image-005.png)
 
 <!-- page: 6 -->
 
@@ -913,7 +913,7 @@ Model A
 
 6 of 8
 
-![image](assets/assets/algorithm-design-and-analysis-028/image-006.png)
+![image](assets/algorithm-design-and-analysis-028/image-006.png)
 
 <!-- page: 7 -->
 
@@ -1029,7 +1029,7 @@ void QSort(Elem A[], int p, int q) {
 
 7 of 8
 
-![image](assets/assets/algorithm-design-and-analysis-028/image-007.png)
+![image](assets/algorithm-design-and-analysis-028/image-007.png)
 
 <!-- page: 8 -->
 
@@ -1065,4 +1065,4 @@ Model A
 
 8 of 8
 
-![image](assets/assets/algorithm-design-and-analysis-028/image-008.png)
+![image](assets/algorithm-design-and-analysis-028/image-008.png)

@@ -24,8 +24,14 @@ locator_type: page
 2020-2021-2 学期《工科数学分析（二）》B 卷
 
 注意事项：1. 开考前请将密封线内各项信息填写清楚；
+<!-- question: engineering-mathematical-analysis-2-038-Q1 -->
+
           2. 所有答案请直接答在试卷上；
+<!-- question: engineering-mathematical-analysis-2-038-Q2 -->
+
           3．考试形式：闭卷
+
+<!-- question: engineering-mathematical-analysis-2-038-Q3 -->
 
           4. 本试卷共 四个  大题，满分100 分， 考试时间120 分钟。
 
@@ -41,7 +47,7 @@ locator_type: page
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-038-Q1 -->
+<!-- question: engineering-mathematical-analysis-2-038-Q4 -->
 
 一、计算题（共5 小题，每小题8 分，共40 分）
 
@@ -49,6 +55,8 @@ locator_type: page
 x y
 
 
+
+<!-- question: engineering-mathematical-analysis-2-038-Q5 -->
 
 １. 设
 (
@@ -78,6 +86,8 @@ _____________ ________
 
 
 = 
+
+<!-- question: engineering-mathematical-analysis-2-038-Q6 -->
 
 ２. 设
 ( )
@@ -111,6 +121,8 @@ S x 在
 
 −
 上的表达式.
+
+<!-- question: engineering-mathematical-analysis-2-038-Q7 -->
 
 ３. 计算二次积分
 (
@@ -164,6 +176,8 @@ y
 =
 ，取逆时针方向.
 
+<!-- question: engineering-mathematical-analysis-2-038-Q8 -->
+
 ４. 计算曲线积分
 2
 2
@@ -203,6 +217,8 @@ y
 −
 ,取下侧.
 
+<!-- question: engineering-mathematical-analysis-2-038-Q9 -->
+
 ５. 计算曲面积分
 
 x
@@ -214,7 +230,7 @@ z
 
 <!-- page: 3 -->
 
-<!-- question: engineering-mathematical-analysis-2-038-Q2 -->
+<!-- question: engineering-mathematical-analysis-2-038-Q10 -->
 
 二、 解答下列各题（共5 小题，每小题8 分，共40 分）
 
@@ -245,6 +261,8 @@ z
 −
 处的单位切向量t ，并求
 
+<!-- question: engineering-mathematical-analysis-2-038-Q11 -->
+
 1. 求曲线
 
 x
@@ -273,6 +291,8 @@ z
 −
 处沿该单位切向量t 的方向导数.
 
+<!-- question: engineering-mathematical-analysis-2-038-Q12 -->
+
 2. 求密度
 1
 =
@@ -290,6 +310,8 @@ y
 −
 对z 轴的转动惯量.
 
+<!-- question: engineering-mathematical-analysis-2-038-Q13 -->
+
 3. 求微分方程
 tan
 cos
@@ -304,6 +326,8 @@ x
 《  工科数学分析（二） 》试卷 第 3 页 共 6 页
 
 <!-- page: 4 -->
+
+<!-- question: engineering-mathematical-analysis-2-038-Q14 -->
 
 4. 求微分方程
 0
@@ -342,6 +366,8 @@ n
 n
 n
 
+<!-- question: engineering-mathematical-analysis-2-038-Q15 -->
+
 5. 求幂级数
 
 =
@@ -354,7 +380,7 @@ n
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-038-Q3 -->
+<!-- question: engineering-mathematical-analysis-2-038-Q16 -->
 
 三、证明下列各题（共2 小题，每小题8 分，共16 分）
 
@@ -373,6 +399,8 @@ a
 n
 
 a
+
+<!-- question: engineering-mathematical-analysis-2-038-Q17 -->
 
 1. 设正项级数
 
@@ -410,6 +438,8 @@ a x
 
 a
 
+<!-- question: engineering-mathematical-analysis-2-038-Q18 -->
+
 2. 设正项级数
 
 0
@@ -424,7 +454,7 @@ n
 
 得分
 
-<!-- question: engineering-mathematical-analysis-2-038-Q4 -->
+<!-- question: engineering-mathematical-analysis-2-038-Q19 -->
 
 四、应用题（本题8 分）
 

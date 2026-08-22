@@ -51,9 +51,9 @@ Semantic segmentation
 
 3
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-001.jpeg)
+![image](assets/algorithm-design-and-analysis-026/image-001.jpeg)
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-002.jpeg)
+![image](assets/algorithm-design-and-analysis-026/image-002.jpeg)
 
 <!-- page: 4 -->
 
@@ -124,7 +124,7 @@ undirected edge.
 
 7
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-003.png)
+![image](assets/algorithm-design-and-analysis-026/image-003.png)
 
 <!-- page: 8 -->
 
@@ -152,7 +152,7 @@ Consider min cut (𝐴, 𝐵) in 𝐺′.
 
 8
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-004.png)
+![image](assets/algorithm-design-and-analysis-026/image-004.png)
 
 <!-- page: 9 -->
 
@@ -160,7 +160,7 @@ Image Segmentation
 
 9
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-005.jpeg)
+![image](assets/algorithm-design-and-analysis-026/image-005.jpeg)
 
 <!-- page: 10 -->
 
@@ -175,7 +175,7 @@ max-cardinality matching.
 
 10
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-006.png)
+![image](assets/algorithm-design-and-analysis-026/image-006.png)
 
 <!-- page: 11 -->
 
@@ -192,7 +192,7 @@ matching problem.
 
 11
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-007.png)
+![image](assets/algorithm-design-and-analysis-026/image-007.png)
 
 <!-- page: 12 -->
 
@@ -206,7 +206,7 @@ capacity.
 
 12
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-008.png)
+![image](assets/algorithm-design-and-analysis-026/image-008.png)
 
 <!-- page: 13 -->
 
@@ -220,7 +220,7 @@ Pf. ≤
 
 13
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-009.png)
+![image](assets/algorithm-design-and-analysis-026/image-009.png)
 
 <!-- page: 14 -->
 
@@ -241,7 +241,7 @@ Each node in 𝐿and 𝑅participates in at most one edge in 𝑀
 
 14
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-010.png)
+![image](assets/algorithm-design-and-analysis-026/image-010.png)
 
 <!-- page: 15 -->
 
@@ -277,7 +277,7 @@ matching.
 
 16
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-011.png)
+![image](assets/algorithm-design-and-analysis-026/image-011.png)
 
 <!-- page: 17 -->
 
@@ -290,7 +290,7 @@ Disjoint path problem. Given a digraph 𝐺= (𝑉, 𝐸) and two nodes
 
 17
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-012.png)
+![image](assets/algorithm-design-and-analysis-026/image-012.png)
 
 <!-- page: 18 -->
 
@@ -303,7 +303,7 @@ Disjoint path problem. Given a digraph 𝐺= (𝑉, 𝐸) and two nodes
 
 18
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-013.png)
+![image](assets/algorithm-design-and-analysis-026/image-013.png)
 
 <!-- page: 19 -->
 
@@ -322,7 +322,7 @@ Since paths are edge-disjoint, 𝑓is a flow of value 𝑘.
 
 19
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-014.png)
+![image](assets/algorithm-design-and-analysis-026/image-014.png)
 
 <!-- page: 20 -->
 
@@ -345,7 +345,7 @@ Produces 𝑘edge-disjoint paths.
 
 20
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-015.png)
+![image](assets/algorithm-design-and-analysis-026/image-015.png)
 
 <!-- page: 21 -->
 
@@ -360,7 +360,7 @@ from 𝑠.
 
 21
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-016.png)
+![image](assets/algorithm-design-and-analysis-026/image-016.png)
 
 <!-- page: 22 -->
 
@@ -376,7 +376,7 @@ Pr. ≤
 
 22
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-017.png)
+![image](assets/algorithm-design-and-analysis-026/image-017.png)
 
 <!-- page: 23 -->
 
@@ -395,4 +395,4 @@ Pr. ≥
 
 23
 
-![image](assets/assets/algorithm-design-and-analysis-026/image-018.png)
+![image](assets/algorithm-design-and-analysis-026/image-018.png)

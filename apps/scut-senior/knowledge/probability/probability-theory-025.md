@@ -18,6 +18,8 @@ locator_type: page
 
 一、选择题（共12 题，每题3 分，共36 分）
 
+<!-- question: probability-theory-025-Q2 -->
+
 1. 设0, 1, 0, 1, 1 为来自总体为二项分布
 
 
@@ -48,6 +50,8 @@ p 的样本观测值，则p 的矩估计为(
 5
 
 答案(A)
+
+<!-- question: probability-theory-025-Q3 -->
 
 2. 设随机变量X 与Y 相互独立, 且分别服从参数为1 与参数为4 的指数分布, 则P{X<Y} = ( )。
 
@@ -93,6 +97,8 @@ y
 5,
 
 故选(A)
+
+<!-- question: probability-theory-025-Q4 -->
 
 3. 设随机变量X 服从参数为1 的泊松分布, 则E(|X - EX|) = (
 )。
@@ -145,6 +151,8 @@ e=2
 e,
 
 故选(C).
+
+<!-- question: probability-theory-025-Q5 -->
 
 4. 下列各函数中是随机变量分布函数的为（
 ）。
@@ -232,6 +240,8 @@ x
 
 答案(B)
 
+<!-- question: probability-theory-025-Q6 -->
+
 5. 已知随机变量
 4
 9
@@ -314,6 +324,8 @@ D Y
 2
 N
 的一个样本，X 为样本均值，则下列结论中正确的是
+
+<!-- question: probability-theory-025-Q7 -->
 
 6. 设
 1
@@ -429,6 +441,8 @@ i
 
 答案(D)
 
+<!-- question: probability-theory-025-Q8 -->
+
 7. 若随机事件A 与B 相互独立，则
 )
 (
@@ -490,6 +504,8 @@ P
 
 答案(B)
 
+<!-- question: probability-theory-025-Q9 -->
+
 8. 将长度为1 m 的木棒随机地截成两段，则两段长度的相关系数为（
 ）。
 
@@ -507,6 +523,8 @@ P
 解析: 设两段长度分别为X,Y, 显然X + Y = 1, 即Y = -X + 1 ，故两者是线性关系，且是负相
 
 关，所以相关系数为-1，故选(B)
+
+<!-- question: probability-theory-025-Q10 -->
 
 9. 设随机变量X 的密度函数为f(x)，则Y = 5 -2X 的密度函数为（
 ）。
@@ -610,6 +628,8 @@ x
 x
 f
 x
+
+<!-- question: probability-theory-025-Q11 -->
 
 10. 设随机变量X 的概率密度为
 
@@ -719,6 +739,8 @@ x
 
 2
 3
+
+<!-- question: probability-theory-025-Q12 -->
 
 11. 向区间[-1,1]均匀地投掷一随机点，以ξ表示随机点的落点坐标，则关于t 的二次方程
 
@@ -862,6 +884,8 @@ dx
 2
 3
 
+<!-- question: probability-theory-025-Q13 -->
+
 12. 设随机变量X1,X2,⋯,Xn独立同分布，且X1的4 阶矩存在. 设μk = E(X
 k
 1)(k = 1,2,3,4)，则由切比
@@ -978,7 +1002,7 @@ AACBD
 DBBCC
 AD
 
-<!-- question: probability-theory-025-Q2 -->
+<!-- question: probability-theory-025-Q14 -->
 
 二、（10 分）
 
@@ -986,7 +1010,11 @@ AD
 
 客从剩余8 个中任选一台, 求
 
+<!-- question: probability-theory-025-Q15 -->
+
 (1)求该顾客购买到合格品的概率。
+
+<!-- question: probability-theory-025-Q16 -->
 
 (2)已知该顾客购到的是合格品, 求已出售的两个中一个为次品一个为合格品的概率.
 
@@ -1046,7 +1074,7 @@ P(A)
 =0.5.
 （10分）
 
-<!-- question: probability-theory-025-Q3 -->
+<!-- question: probability-theory-025-Q17 -->
 
 三、(10 分)
 
@@ -1118,7 +1146,7 @@ i=1
 380-200×2
 200×2 )=1-Φ(-1)=Φ(1)=0.8413.
 
-<!-- question: probability-theory-025-Q4 -->
+<!-- question: probability-theory-025-Q18 -->
 
 四、(10 分)
 
@@ -1139,7 +1167,11 @@ S
 
 2的置信度为0.90 的置信区间; （注：(1)小题结果就用分位数表示）
 
+<!-- question: probability-theory-025-Q19 -->
+
 (1) 求总体方差σ
+
+<!-- question: probability-theory-025-Q20 -->
 
 (2) 在显著性水平为0.05 下检验假设H0:μ = 9.7,H1:μ ≠9.7.
 
@@ -1263,6 +1295,8 @@ n
 
 2 未知的条件下对总体均值进行检验.
 
+<!-- question: probability-theory-025-Q21 -->
+
 (2) 在方差σ
 
 H0:μ = 9.7, H1:μ ≠9.7.
@@ -1295,7 +1329,7 @@ n
 
 拒绝H0。（10 分）
 
-<!-- question: probability-theory-025-Q5 -->
+<!-- question: probability-theory-025-Q22 -->
 
 五、（10 分）
 
@@ -1486,7 +1520,7 @@ i
 
 1
 
-<!-- question: probability-theory-025-Q6 -->
+<!-- question: probability-theory-025-Q23 -->
 
 六、(12 分)
 
@@ -1806,7 +1840,7 @@ z
 
 z
 
-<!-- question: probability-theory-025-Q7 -->
+<!-- question: probability-theory-025-Q24 -->
 
 七、(12 分)
 
@@ -1830,8 +1864,14 @@ a
 
 若事件{max(X,Y) = 2} 与事件{min(X,Y) = 1} 相互独立。Z = XY。
 
+<!-- question: probability-theory-025-Q25 -->
+
 (1) 求a,b 的值.
+<!-- question: probability-theory-025-Q26 -->
+
 (2)求Z 的分布.
+<!-- question: probability-theory-025-Q27 -->
+
 (3)X 与Y 的相关系数.
 
 解：由题设可得

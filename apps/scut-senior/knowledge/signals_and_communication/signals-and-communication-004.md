@@ -22,13 +22,13 @@ locator_type: slide
 - 第4章习题：4.1，4.2，4.11，4.17，4.29
 - 主观题
 - 100分
-![image](assets/assets/signals-and-communication-004/image-001.png)
+![image](assets/signals-and-communication-004/image-001.png)
 
 <!-- slide: 3 -->
 
-![image](assets/assets/signals-and-communication-004/image-002.png)
-![image](assets/assets/signals-and-communication-004/image-003.png)
-![image](assets/assets/signals-and-communication-004/image-004.png)
-![image](assets/assets/signals-and-communication-004/image-005.png)
-![image](assets/assets/signals-and-communication-004/image-006.png)
-![image](assets/assets/signals-and-communication-004/image-007.png)
+![image](assets/signals-and-communication-004/image-002.png)
+![image](assets/signals-and-communication-004/image-003.png)
+![image](assets/signals-and-communication-004/image-004.png)
+![image](assets/signals-and-communication-004/image-005.png)
+![image](assets/signals-and-communication-004/image-006.png)
+![image](assets/signals-and-communication-004/image-007.png)

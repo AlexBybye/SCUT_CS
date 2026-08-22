@@ -52,7 +52,7 @@ material originates at source and is sent to sink.
 
 3
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-001.png)
+![image](assets/algorithm-design-and-analysis-025/image-001.png)
 
 <!-- page: 4 -->
 
@@ -72,7 +72,7 @@ to B.
 
 4
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-002.png)
+![image](assets/algorithm-design-and-analysis-025/image-002.png)
 
 <!-- page: 5 -->
 
@@ -92,7 +92,7 @@ to B.
 
 5
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-003.png)
+![image](assets/algorithm-design-and-analysis-025/image-003.png)
 
 <!-- page: 6 -->
 
@@ -116,7 +116,7 @@ minimum capacity.
 
 6
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-004.png)
+![image](assets/algorithm-design-and-analysis-025/image-004.png)
 
 <!-- page: 7 -->
 
@@ -128,7 +128,7 @@ What is the capacity of the given st-cut?
 
 7
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-005.png)
+![image](assets/algorithm-design-and-analysis-025/image-005.png)
 
 <!-- page: 8 -->
 
@@ -141,7 +141,7 @@ conservation]
 
 8
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-006.png)
+![image](assets/algorithm-design-and-analysis-025/image-006.png)
 
 <!-- page: 9 -->
 
@@ -155,7 +155,7 @@ Def. The value of a flow 𝑓is: 𝑣𝑎𝑙𝑓= σ𝑒𝑜𝑢𝑡𝑜𝑓�
 
 9
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-007.png)
+![image](assets/algorithm-design-and-analysis-025/image-007.png)
 
 <!-- page: 10 -->
 
@@ -170,7 +170,7 @@ Max-flow problem. Find a flow of maximum value？
 
 10
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-008.png)
+![image](assets/algorithm-design-and-analysis-025/image-008.png)
 
 <!-- page: 11 -->
 
@@ -184,7 +184,7 @@ Greedy algorithm.
 
 11
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-009.png)
+![image](assets/algorithm-design-and-analysis-025/image-009.png)
 
 <!-- page: 12 -->
 
@@ -198,7 +198,7 @@ Greedy algorithm.
 
 12
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-010.png)
+![image](assets/algorithm-design-and-analysis-025/image-010.png)
 
 <!-- page: 13 -->
 
@@ -212,7 +212,7 @@ Greedy algorithm.
 
 13
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-011.png)
+![image](assets/algorithm-design-and-analysis-025/image-011.png)
 
 <!-- page: 14 -->
 
@@ -226,7 +226,7 @@ Greedy algorithm.
 
 14
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-012.png)
+![image](assets/algorithm-design-and-analysis-025/image-012.png)
 
 <!-- page: 15 -->
 
@@ -240,7 +240,7 @@ Greedy algorithm.
 
 15
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-013.png)
+![image](assets/algorithm-design-and-analysis-025/image-013.png)
 
 <!-- page: 16 -->
 
@@ -257,7 +257,7 @@ greedy algorithm fail?
 
 16
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-014.png)
+![image](assets/algorithm-design-and-analysis-025/image-014.png)
 
 <!-- page: 17 -->
 
@@ -302,7 +302,7 @@ Residual network. 𝐺𝑓= (𝑉, 𝐸𝑓, 𝑠, 𝑡, 𝑐𝑓).
 
 18
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-015.png)
+![image](assets/algorithm-design-and-analysis-025/image-015.png)
 
 <!-- page: 19 -->
 
@@ -314,7 +314,7 @@ The residual network 𝐺𝑓(𝑉, 𝐸𝑓):
 
 19
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-016.jpeg)
+![image](assets/algorithm-design-and-analysis-025/image-016.jpeg)
 
 <!-- page: 20 -->
 
@@ -326,9 +326,9 @@ The residual network 𝐺𝑓(𝑉, 𝐸𝑓):
 
 20
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-017.jpeg)
+![image](assets/algorithm-design-and-analysis-025/image-017.jpeg)
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-018.png)
+![image](assets/algorithm-design-and-analysis-025/image-018.png)
 
 <!-- page: 21 -->
 
@@ -380,7 +380,7 @@ C. A →F →B →G →C →D →H
 
 23
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-019.png)
+![image](assets/algorithm-design-and-analysis-025/image-019.png)
 
 <!-- page: 24 -->
 
@@ -393,7 +393,7 @@ C. A →F →B →G →C →D →H (4)
 
 24
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-020.png)
+![image](assets/algorithm-design-and-analysis-025/image-020.png)
 
 <!-- page: 25 -->
 
@@ -440,7 +440,7 @@ flow across the cut (𝐴, 𝐵).
 
 26
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-021.png)
+![image](assets/algorithm-design-and-analysis-025/image-021.png)
 
 <!-- page: 27 -->
 
@@ -464,7 +464,7 @@ flow across the cut (𝐴, 𝐵).
 
 27
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-022.png)
+![image](assets/algorithm-design-and-analysis-025/image-022.png)
 
 <!-- page: 28 -->
 
@@ -488,7 +488,7 @@ flow across the cut (𝐴, 𝐵).
 
 28
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-023.png)
+![image](assets/algorithm-design-and-analysis-025/image-023.png)
 
 <!-- page: 29 -->
 
@@ -500,7 +500,7 @@ What is the net flow across the given st-cut?
 
 29
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-024.png)
+![image](assets/algorithm-design-and-analysis-025/image-024.png)
 
 <!-- page: 30 -->
 
@@ -546,7 +546,7 @@ Pf.        𝑣𝑎𝑙𝑓= σ𝑒𝑜𝑢𝑡𝑜𝑓𝐴𝑓(𝑒) −σ𝑒�
 
 31
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-025.png)
+![image](assets/algorithm-design-and-analysis-025/image-025.png)
 
 <!-- page: 32 -->
 
@@ -561,7 +561,7 @@ Pf.
 
 32
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-026.png)
+![image](assets/algorithm-design-and-analysis-025/image-026.png)
 
 <!-- page: 33 -->
 
@@ -585,7 +585,7 @@ Capacity of 𝑨, 𝑩= value of flow 𝒇
 
 34
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-027.png)
+![image](assets/algorithm-design-and-analysis-025/image-027.png)
 
 <!-- page: 35 -->
 
@@ -661,7 +661,7 @@ Max-Flow Min-Cut Theorem
 
 37
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-028.png)
+![image](assets/algorithm-design-and-analysis-025/image-028.png)
 
 <!-- page: 38 -->
 
@@ -671,7 +671,7 @@ If max capacity is 𝐶, then algorithm can take ≥𝐶iterations.
 
 38
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-029.png)
+![image](assets/algorithm-design-and-analysis-025/image-029.png)
 
 <!-- page: 39 -->
 
@@ -715,7 +715,7 @@ those arcs with capacity ≥Δ.
 
 40
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-030.png)
+![image](assets/algorithm-design-and-analysis-025/image-030.png)
 
 <!-- page: 41 -->
 
@@ -796,7 +796,7 @@ edge (𝑣, 𝑤) ∈𝐸with 𝑙𝑤= 𝑙𝑣+ 1.
 
 44
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-031.png)
+![image](assets/algorithm-design-and-analysis-025/image-031.png)
 
 <!-- page: 45 -->
 
@@ -813,7 +813,7 @@ path in 𝐿𝐺.
 
 45
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-032.png)
+![image](assets/algorithm-design-and-analysis-025/image-032.png)
 
 <!-- page: 46 -->
 
@@ -830,7 +830,7 @@ Only back edges added to 𝐺𝑓′.
 
 46
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-033.png)
+![image](assets/algorithm-design-and-analysis-025/image-033.png)
 
 <!-- page: 47 -->
 
@@ -866,7 +866,7 @@ stuck.
 
 48
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-034.png)
+![image](assets/algorithm-design-and-analysis-025/image-034.png)
 
 <!-- page: 49 -->
 
@@ -885,7 +885,7 @@ stuck.
 
 49
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-035.png)
+![image](assets/algorithm-design-and-analysis-025/image-035.png)
 
 <!-- page: 50 -->
 
@@ -904,7 +904,7 @@ stuck.
 
 50
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-036.png)
+![image](assets/algorithm-design-and-analysis-025/image-036.png)
 
 <!-- page: 51 -->
 
@@ -923,7 +923,7 @@ stuck.
 
 51
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-037.png)
+![image](assets/algorithm-design-and-analysis-025/image-037.png)
 
 <!-- page: 52 -->
 
@@ -942,7 +942,7 @@ stuck.
 
 52
 
-![image](assets/assets/algorithm-design-and-analysis-025/image-038.png)
+![image](assets/algorithm-design-and-analysis-025/image-038.png)
 
 <!-- page: 53 -->
 

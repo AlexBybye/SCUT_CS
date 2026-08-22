@@ -10,28 +10,28 @@ locator_type: none
 
 # 习题
 
-![image](assets/assets/linear-algebra-024/image-001.jpeg)
+![image](assets/linear-algebra-024/image-001.jpeg)
 
-![image](assets/assets/linear-algebra-024/image-002.jpeg)
+![image](assets/linear-algebra-024/image-002.jpeg)
 
-![image](assets/assets/linear-algebra-024/image-003.jpeg)
+![image](assets/linear-algebra-024/image-003.jpeg)
 
-![image](assets/assets/linear-algebra-024/image-004.jpeg)
+![image](assets/linear-algebra-024/image-004.jpeg)
 
-![image](assets/assets/linear-algebra-024/image-005.jpeg)
+![image](assets/linear-algebra-024/image-005.jpeg)
 
-![image](assets/assets/linear-algebra-024/image-006.jpeg)
+![image](assets/linear-algebra-024/image-006.jpeg)
 
-![image](assets/assets/linear-algebra-024/image-007.jpeg)
+![image](assets/linear-algebra-024/image-007.jpeg)
 
-![image](assets/assets/linear-algebra-024/image-008.jpeg)
+![image](assets/linear-algebra-024/image-008.jpeg)
 
-![image](assets/assets/linear-algebra-024/image-009.jpeg)
+![image](assets/linear-algebra-024/image-009.jpeg)
 
-![image](assets/assets/linear-algebra-024/image-010.jpeg)
+![image](assets/linear-algebra-024/image-010.jpeg)
 
-![image](assets/assets/linear-algebra-024/image-011.jpeg)
+![image](assets/linear-algebra-024/image-011.jpeg)
 
-![image](assets/assets/linear-algebra-024/image-012.jpeg)
+![image](assets/linear-algebra-024/image-012.jpeg)
 
-![image](assets/assets/linear-algebra-024/image-013.jpeg)
+![image](assets/linear-algebra-024/image-013.jpeg)

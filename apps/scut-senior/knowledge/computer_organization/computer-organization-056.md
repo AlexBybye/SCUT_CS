@@ -60,7 +60,7 @@ X+Y=2（10）2×（SX+SY）=2（10）2（0.1100）2=（11.00）2
 
 **六、**解：PCI总线结构框图如下所示：
 
-![image](assets/assets/computer-organization-056/image-001.png)              **图3**
+![image](assets/computer-organization-056/image-001.png)              **图3**
 
 PCI总线有三种桥，即HOST / PCI桥（简称HOST桥），PCI / PCI桥，PCI / LAGACY桥。在PCI总线体系结构中，桥起着重要作用：
 1. 它连接两条总线，使总线间相互通信。
@@ -81,17 +81,17 @@ PCI总线有三种桥，即HOST / PCI桥（简称HOST桥），PCI / PCI桥，PCI
 
 ⑥各个设备之间是对等的关系，而不是从属。
 
-2） 配置图如下![formula-object](assets/assets/computer-organization-056/image-002.png)：
+2） 配置图如下![formula-object](assets/computer-organization-056/image-002.png)：
 
 **八、**解：（1）假设判别测试字段中每一位为一个判别标志，那么由于有4个转移条件，         故该字段为4位，（如采用字段译码只需3位），下地址字段为9位，因为控制容量为512单元，微命令字段是（  48  –  4  -  9  ）= 35  位。
 
 （2）对应上述微指令格式的微程序控制器逻辑框图B11.5所示：其中微地址寄存器对应下地址字段，P字段即为判别测试字段，控制字段即为微命令子段，后两部分组成微指令寄存器。地址转移逻辑的输入是指令寄存器OP码，各状态条件以及判别测试字段所给的判别标志（某一位为1），其输出修改微地址寄存器的适当位数，从而实现微程序的分支转移。
 
-![image](assets/assets/computer-organization-056/image-003.png)                   图5
+![image](assets/computer-organization-056/image-003.png)                   图5
 
 **九．**解：1)
 
-![formula-object](assets/assets/computer-organization-056/image-004.png)
+![formula-object](assets/computer-organization-056/image-004.png)
 
 2）一个n输入的Omega网络需要（${log}_{2}n$.）级2×2开头。n=16时，需要${log}_{2}16$=4级。
 

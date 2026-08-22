@@ -114,7 +114,7 @@ j2=(+10)2      S2=(+0.1011)2
 
 扫描仪和打印机均产生一个事件，试问IRQ上的请求是谁发的？为什么？这一结论总是成立吗?
 
-![formula-object](assets/assets/computer-organization-039/image-001.png)                           **图2**
+![formula-object](assets/computer-organization-039/image-001.png)                           **图2**
 
 **八、**已知某磁盘存储器转速为2400转/分，每个记录面道数为200道，平均查找时间为60ms，每道存储容量为96Kbit，求磁盘的存取时间与数据传播率。
 
