@@ -233,3 +233,30 @@
   （清行重跑修复，重跑 errors=0）。
 - 未入册说明：加密 zip（等密码）、数据集 xml/jpg（非知识材料）、html 讲义
   （转换器暂不支持）、大物实验合辑（PLAN-1 排除）——均属预期外范围。
+
+## 追加（2026-08-23 终²）：锚点重打与激活前置条件
+
+- 题目锚点按扩展规则全库重打（剥旧→重打）：**1185 → 3840 个**，179 文件更新，
+  validator 通过。旧库锚点少的原因：旧正则只认中文序号`一、`且练习类角色完全不打。
+- 语料库重建尝试暴露并修复 9 文件非本地图片引用：datauri 内嵌图提取、25 张外链图
+  （飞书/gitee）下载转本地资产、12 处死链注记替换；`scan_asset_integrity` 升级为
+  全量图片引用检查（不再只查 assets/ 前缀）。
+- 构建器已验证全部 1705 行资产合格，但**索引仅收录 status=passed 的行**——当前
+  全库 pending（旧 22 条 passed 已按指令清除），故激活暂缓。这是设计行为：
+  检索只服务人工复核过的内容。
+- 人工审核出首批 passed 后，一键重建激活：
+  `PYTHONPATH=worker/src python -m scut_senior_worker.corpus_builder build \
+    --manifest knowledge/manifest.csv --knowledge-root knowledge \
+    --store-root .local/corpus-store --source-commit <HEAD> \
+    --repository-root <repo根>` 然后 `activate --store-root ... --corpus-version <build输出>`。
+
+## 追加（2026-08-23 终³）：语料库激活
+
+- iteration-7 审核分支并入 master（零冲突自动合并：knowledge 取 master 的图片修复，
+  manifest 取审核状态，web 并入）。终态 **1701 passed + 4 pending**。
+- 构建器口径精判零 chunk 文件仅 4 个（电工学×2/Java/移动开发，纯图无文本层，
+  已退回 pending 待 OCR）——此前自造的"<40字符"代理规则误杀 905 个，已回滚；
+  教训：判定标准必须复用构建器自己的函数，禁止代理启发式直接改状态。
+- 新语料库已构建并激活：`corpus-8e7b56f3…`，**24237 chunks**，其中 **4544 个携带
+  question_id**——题目级定位正式进入检索索引；43 门课程全部开启。
+- 回滚方式：`rollback --store-root .local/corpus-store --repository-root <repo根>`。
