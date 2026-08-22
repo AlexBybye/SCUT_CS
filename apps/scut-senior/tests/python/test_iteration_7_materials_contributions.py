@@ -654,3 +654,96 @@ def test_private_material_never_enters_retrieval_sources(tmp_path: Path) -> None
     assert all(source["chunk_id"] for source in sources)
     # 检索候选全部来自课程语料，不含用户私有材料文本。
     assert all(unique_marker not in str(source) for source in sources)
+
+
+# ---------------------------------------------------------------------------
+# add file 语义：学科资料落点推导与维护者导出包
+# ---------------------------------------------------------------------------
+
+
+def test_proposed_repo_path_uses_course_registry_mapping(tmp_path: Path) -> None:
+    client = mock_app(tmp_path, "repopath.db")
+    conversation = create_conversation(client)
+    material = save_material(client, conversation["conversation_id"])
+
+    preview = client.post(
+        "/api/v1/contributions/preview",
+        json={
+            "course_id": "linear_algebra",
+            "title": "特征值复习提纲",
+            "content": "# 特征值复习提纲\n" + "内容。\n" * 10,
+        },
+    ).json()
+
+    assert preview["proposed_repo_path"] == (
+        "学科资料/线性代数/特征值复习提纲.md"
+    )
+
+    submitted = client.post(
+        "/api/v1/contributions",
+        json={
+            "material_id": material["material_id"],
+            "course_id": "linear_algebra",
+            "confirmations": FULL_CONFIRMATIONS,
+        },
+    ).json()
+    assert submitted["proposed_repo_path"].startswith("学科资料/线性代数/")
+    assert "/" in submitted["proposed_repo_path"]
+
+
+def test_contribution_filename_is_sanitized_and_extension_sniffed() -> None:
+    from scut_senior_api.contributions import (
+        derive_contribution_filename,
+        derive_proposed_repo_path,
+    )
+
+    messy = derive_contribution_filename('A/B:*c?"<>|', "# 标题\n正文")
+    assert messy.endswith(".md")
+    assert "/" not in messy and ":" not in messy and '"' not in messy
+    # 纯文本无 Markdown 痕迹 → .txt
+    plain = derive_contribution_filename("课堂笔记", "第一节 概念介绍，没有任何标记")
+    assert plain.endswith(".txt")
+    # 未登记 repository_paths 的课程退到 _待归类
+    path = derive_proposed_repo_path(
+        (), course_id="some_course", title="笔记", content="x" * 80
+    )
+    assert path == "学科资料/_待归类/some_course/笔记.txt"
+
+
+def test_maintainer_export_package_returns_path_content_and_commands(
+    tmp_path: Path,
+) -> None:
+    app = create_app(oauth_settings(tmp_path / "export.db"))
+    maintainer = authenticated_client(app, 4001, "maintainer")
+    author = authenticated_client(app, 4002, "author")
+
+    conversation = create_conversation(author)
+    material = save_material(author, conversation["conversation_id"])
+    contribution = author.post(
+        "/api/v1/contributions",
+        json={
+            "material_id": material["material_id"],
+            "course_id": "linear_algebra",
+            "confirmations": FULL_CONFIRMATIONS,
+        },
+    ).json()
+    contribution_id = contribution["contribution_id"]
+
+    exported = maintainer.get(
+        f"/api/v1/maintainer/contributions/{contribution_id}/export"
+    )
+    assert exported.status_code == 200
+    body = exported.json()
+    assert body["repo_path"] == contribution["proposed_repo_path"]
+    assert "矩阵对角化要点" in body["content_snapshot"]
+    assert any("git add" in command for command in body["suggested_commands"])
+    assert body["suggested_branch"].startswith("contribution-")
+
+    # 匿名/mock 不可导出；普通成员也不应看到他人贡献内容（作者端点无全文）。
+    anonymous = TestClient(app, base_url="https://testserver")
+    assert (
+        anonymous.get(
+            f"/api/v1/maintainer/contributions/{contribution_id}/export"
+        ).status_code
+        == 401
+    )

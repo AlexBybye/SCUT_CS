@@ -525,6 +525,7 @@ export interface TemporaryMaterialDetail extends TemporaryMaterialRecord {
 export interface ContributionPreview {
   course_id: string;
   proposed_source_id: string;
+  proposed_repo_path?: string | null;
   normalized_content: string;
   has_h1_title: boolean;
   question_marker_count: number;
@@ -537,6 +538,7 @@ export interface ContributionRecord {
   material_id: string | null;
   course_id: string;
   proposed_source_id: string;
+  proposed_repo_path?: string;
   title: string;
   state: ContributionState;
   pr_url: string | null;

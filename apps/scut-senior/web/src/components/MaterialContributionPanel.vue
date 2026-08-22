@@ -216,7 +216,8 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
     >
       <h4>转换结果预览（确定性规范化，不改写语义）</h4>
       <p class="field-hint">
-        提议来源编号：<code>{{ preview.proposed_source_id }}</code>
+        提交落点：<code>{{ preview.proposed_repo_path || "（由维护者导出时确定）" }}</code>
+        · 提议来源编号：<code>{{ preview.proposed_source_id }}</code>
         （最终编号以人工审核为准）
         · 题目标记 {{ preview.question_marker_count }} 处
       </p>
@@ -255,6 +256,7 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
             <strong>{{ item.title }}</strong>
             <small>
               {{ stateLabels[item.state] }}
+              <template v-if="item.proposed_repo_path"> · 目标 <code>{{ item.proposed_repo_path }}</code></template>
               <template v-if="item.pr_url"> ·
                 <a :href="item.pr_url" target="_blank" rel="noreferrer">查看 PR</a>
               </template>

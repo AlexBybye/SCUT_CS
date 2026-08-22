@@ -135,3 +135,22 @@ npm --prefix web run build                   # 成功
 
 - Python 3.14.6（仓库 `.venv`）；FastAPI/TestClient；Vue 3 + vitest。
 - 本期未触碰：worker、knowledge/**、corpus builder、BYOK、OAuth、Bilibili 链路。
+
+## 追加（同日）：add file 落点语义与维护者导出包
+
+按使用者反馈把贡献目标明确为「学科资料源文件新增」而非直接写知识库：
+
+- 课程 → 学科资料目录映射复用 `courses.json` 既有 `repository_paths`；
+  未登记路径的课程退到 `学科资料/_待归类/<course_id>/`，不误入错误学科。
+- 提交/预览即返回确定性 `proposed_repo_path`
+  （`derive_proposed_repo_path`：注册表路径 + 标题派生安全文件名，
+  Markdown 痕迹嗅探 `.md`/`.txt` 扩展名，非法字符清洗）。
+- 迁移 `0009_contributions_repo_path.sql`：`contributions.proposed_repo_path` 列。
+- 新端点 `GET /api/v1/maintainer/contributions/{id}/export`
+  （`MaintainerContributionExport`）：返回 repo_path、内容快照、建议分支名与
+  分步 git 命令；**应用不自动写工作树、不执行 git、不推送**——"add file"
+  的最后一步永远由维护者人工完成，符合 SOP 的 candidate/人工审核前置门。
+- 前端预览与“我的贡献”展示提交落点。
+
+测试增量：落点映射、文件名清洗与扩展名嗅探、导出包内容/命令/鉴权
+（Python 全量 542 通过；web vitest 94 + typecheck 通过）。

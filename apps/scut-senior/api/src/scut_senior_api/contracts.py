@@ -691,6 +691,8 @@ class ContributionPreview(ContractModel):
 
     course_id: str
     proposed_source_id: str
+    # add file 语义：若被采纳，文件将加入学科资料下该路径（仅提议）。
+    proposed_repo_path: str | None = None
     normalized_content: str
     has_h1_title: bool
     question_marker_count: int
@@ -723,6 +725,8 @@ class ContributionRecord(ContractModel):
     material_id: UUID | None
     course_id: str
     proposed_source_id: str
+    # add file 语义的仓库落点提议（学科资料/<学科>/<文件名>）。
+    proposed_repo_path: str = ""
     title: str
     state: ContributionState
     pr_url: HttpUrl | None = None
@@ -754,3 +758,21 @@ class MaintainerContributionTransition(ContractModel):
             return None
         normalized = value.strip()
         return normalized or None
+
+
+class MaintainerContributionExport(ContractModel):
+    """维护者导出包：把待审贡献变成一次人工的 add file 操作所需的一切。
+
+    应用只生成提议路径与内容快照，绝不自动写入仓库工作树或执行 git。
+    """
+
+    contribution_id: UUID
+    state: ContributionState
+    course_id: str
+    title: str
+    repo_path: str
+    filename: str
+    content_snapshot: str
+    char_count: int
+    suggested_branch: str
+    suggested_commands: list[str] = Field(default_factory=list)

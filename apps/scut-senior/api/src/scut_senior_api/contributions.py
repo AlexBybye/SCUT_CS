@@ -134,6 +134,49 @@ def derive_proposed_source_id(course_id: str, normalized_content: str) -> str:
     return f"{course_id}-contribution-{digest}"
 
 
+_FILENAME_FORBIDDEN_RE = re.compile(r'[/\\:*?\"<>|\x00-\x1f]')
+_MARKDOWN_HINT_RE = re.compile(
+    r"(^#{1,6}\s+\S)|(^[-*]\s+\S)|(```)|(\[[^\]]+\]\([^)]+\))",
+    re.MULTILINE,
+)
+
+
+def derive_contribution_filename(title: str | None, content: str) -> str:
+    """从标题推导安全的仓库文件名；正文只用于嗅探扩展名。"""
+
+    import unicodedata
+
+    normalized_title = unicodedata.normalize("NFKC", (title or "").strip())
+    cleaned = _FILENAME_FORBIDDEN_RE.sub("-", normalized_title)
+    cleaned = re.sub(r"\s+", "-", cleaned)
+    cleaned = re.sub(r"-{2,}", "-", cleaned).strip("-.")
+    if not cleaned:
+        cleaned = "contribution"
+    stem = cleaned[:80].rstrip("-.")
+    extension = ".md" if _MARKDOWN_HINT_RE.search(content) else ".txt"
+    return f"{stem}{extension}"
+
+
+def derive_proposed_repo_path(
+    repository_paths: tuple[str, ...],
+    *,
+    course_id: str,
+    title: str | None,
+    content: str,
+) -> str:
+    """贡献落点：当前会话课程在学科资料下对应的目录（add file 语义）。
+
+    优先使用课程注册表 repository_paths 的第一项；未登记路径的课程退到
+    “学科资料/_待归类/<course_id>/”，避免把文件误放进错误学科。
+    """
+
+    base = (
+        repository_paths[0] if repository_paths else f"学科资料/_待归类/{course_id}"
+    )
+    base = base.rstrip("/")
+    return f"{base}/{derive_contribution_filename(title, content)}"
+
+
 def build_contribution_preview(
     *,
     course_id: str,

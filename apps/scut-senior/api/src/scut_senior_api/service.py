@@ -34,6 +34,7 @@ from .contracts import (
     FeedbackCreate,
     FeedbackRecord,
     KnowledgeScope,
+    MaintainerContributionExport,
     MaintainerContributionTransition,
     ModelMetadata,
     ModelSource,
@@ -51,6 +52,7 @@ from .contracts import (
 )
 from .contributions import (
     build_contribution_preview,
+    derive_proposed_repo_path,
     derive_proposed_source_id,
     normalize_contribution_markdown,
     resolve_transition_target,
@@ -346,26 +348,35 @@ class IterationZeroService:
     ) -> ContributionPreview:
         """确定性转换预览：不落库、不调用模型、不改变原始内容。"""
 
-        self._resolve_material_course(payload.course_id)
+        course = self._resolve_material_course(payload.course_id)
         preview = build_contribution_preview(
             course_id=payload.course_id,
             title=payload.title,
             content=payload.content,
         )
-        return preview
+        return preview.model_copy(
+            update={
+                "proposed_repo_path": derive_proposed_repo_path(
+                    course.repository_paths,
+                    course_id=course.course_id,
+                    title=payload.title,
+                    content=payload.content,
+                )
+            }
+        )
 
     def submit_contribution(
         self,
         user: RequestIdentity,
         payload: ContributionSubmit,
     ) -> ContributionRecord:
-        """从已保存的临时材料创建贡献。
+        """从已保存的临时材料创建贡献（add file 语义，落点为学科资料）。
 
         GitHub App 未确认：`as_draft=False` 直接进入维护者待处理队列
         （submitted），绝不创建 PR，也不使用用户 OAuth token 冒充自动 PR。
         """
 
-        self._resolve_material_course(payload.course_id)
+        course = self._resolve_material_course(payload.course_id)
         repository = self._require_contribution_capable_repository()
         material = repository.get_temporary_material(
             str(user.user_id), payload.material_id, include_content=True
@@ -379,7 +390,13 @@ class IterationZeroService:
         title = (
             payload.title
             or material.title
-            or (build_contribution_preview(course_id=payload.course_id, title=None, content=material.content).normalized_content.split("\n", 1)[0].lstrip("# ").strip() or f"{payload.course_id} 贡献")
+            or (
+                normalize_contribution_markdown(material.content)
+                .split("\n", 1)[0]
+                .lstrip("#")
+                .strip()
+                or f"{course.display_name} 贡献"
+            )
         )
         state = (
             ContributionState.DRAFT if payload.as_draft else ContributionState.SUBMITTED
@@ -391,6 +408,12 @@ class IterationZeroService:
             proposed_source_id=derive_proposed_source_id(
                 material.course_id,
                 normalize_contribution_markdown(material.content),
+            ),
+            proposed_repo_path=derive_proposed_repo_path(
+                course.repository_paths,
+                course_id=course.course_id,
+                title=title,
+                content=material.content,
             ),
             title=title[:200],
             content_snapshot=material.content,
@@ -468,6 +491,54 @@ class IterationZeroService:
     ) -> list[ContributionRecord]:
         self._require_contribution_capable_repository()
         return list(self.repository.list_maintainer_queue(state))
+
+    def maintainer_export_contribution(
+        self, contribution_id: UUID
+    ) -> MaintainerContributionExport:
+        """维护者导出包：一次人工 add file 操作所需的路径、内容与命令。
+
+        应用不写工作树、不执行 git；推送与 PR 永远由维护者人工完成。
+        """
+
+        repository = self._require_contribution_capable_repository()
+        fetched = repository.get_contribution_with_payload(contribution_id)
+        if fetched is None:
+            raise ResourceNotFound("contribution not found")
+        record, content = fetched
+        if not content:
+            raise ContractConflict(
+                "该贡献的待审副本已到期清理，无法导出。"
+            )
+        repo_path = record.proposed_repo_path or derive_proposed_repo_path(
+            self.registry.get(record.course_id).repository_paths,
+            course_id=record.course_id,
+            title=record.title,
+            content=content,
+        )
+        filename = repo_path.rsplit("/", 1)[-1]
+        branch = f"contribution-{record.contribution_id.hex[:8]}"
+        directory = repo_path.rsplit("/", 1)[0]
+        suggested_commands = [
+            f"git checkout -b {branch}",
+            f"mkdir -p '{directory}'",
+            f"# 将导出的内容写入：{repo_path}",
+            f"git add '{repo_path}'",
+            f"git commit -m '资料贡献：{record.title}（{record.course_id}）'",
+            f"git push -u origin {branch}",
+            "# 在 GitHub 上发起 PR 后，回队列执行 mark_pr_open 并填入 PR 链接",
+        ]
+        return MaintainerContributionExport(
+            contribution_id=record.contribution_id,
+            state=record.state,
+            course_id=record.course_id,
+            title=record.title,
+            repo_path=repo_path,
+            filename=filename,
+            content_snapshot=content,
+            char_count=len(content),
+            suggested_branch=branch,
+            suggested_commands=suggested_commands,
+        )
 
     def run(self, user: RequestIdentity, request: WorkflowRunRequest) -> WorkflowResult:
         return self._run(user, request)

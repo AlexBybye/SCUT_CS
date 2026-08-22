@@ -73,6 +73,7 @@ from .contracts import (
     ConversationSummary,
     FeedbackCreate,
     FeedbackRecord,
+    MaintainerContributionExport,
     MaintainerContributionTransition,
     ModelCredentialStatus,
     ModelCredentialUpsert,
@@ -1095,6 +1096,16 @@ def create_app(
                     status_code=422, detail="unknown contribution state"
                 ) from None
         return service.list_maintainer_queue(parsed_state)
+
+    @app.get(
+        "/api/v1/maintainer/contributions/{contribution_id}/export",
+        response_model=MaintainerContributionExport,
+    )
+    def maintainer_export_contribution(
+        contribution_id: UUID,
+        user: AuthenticatedPrincipal = Depends(require_github_user),
+    ) -> MaintainerContributionExport:
+        return service.maintainer_export_contribution(contribution_id)
 
     @app.post(
         "/api/v1/maintainer/contributions/{contribution_id}/transition",

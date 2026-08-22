@@ -608,6 +608,10 @@ class SQLiteWorkflowRepository:
     @staticmethod
     def _contribution_record(row: sqlite3.Row) -> ContributionRecord:
         pr_url = row["pr_url"]
+        keys = row.keys()
+        proposed_repo_path = (
+            row["proposed_repo_path"] if "proposed_repo_path" in keys else ""
+        )
         return ContributionRecord(
             contribution_id=UUID(row["contribution_id"]),
             user_id=row["user_id"],
@@ -616,6 +620,7 @@ class SQLiteWorkflowRepository:
             ),
             course_id=row["course_id"],
             proposed_source_id=row["proposed_source_id"],
+            proposed_repo_path=proposed_repo_path,
             title=row["title"],
             state=ContributionState(row["state"]),
             pr_url=pr_url,
@@ -636,6 +641,7 @@ class SQLiteWorkflowRepository:
         title: str,
         content_snapshot: str,
         state: ContributionState,
+        proposed_repo_path: str = "",
     ) -> ContributionRecord:
         """创建贡献记录。
 
@@ -658,10 +664,11 @@ class SQLiteWorkflowRepository:
                 """
                 INSERT INTO contributions (
                     contribution_id, user_id, material_id, course_id,
-                    proposed_source_id, title, content_snapshot, state,
+                    proposed_source_id, proposed_repo_path, title,
+                    content_snapshot, state,
                     pr_url, maintainer_note, char_count,
                     created_at, updated_at, expires_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL, ?, ?, ?, ?)
                 """,
                 (
                     str(contribution_id),
@@ -669,6 +676,7 @@ class SQLiteWorkflowRepository:
                     str(material_id) if material_id is not None else None,
                     course_id,
                     proposed_source_id,
+                    proposed_repo_path,
                     title,
                     content_snapshot,
                     state.value,
@@ -704,6 +712,20 @@ class SQLiteWorkflowRepository:
                 (user_id,),
             ).fetchall()
         return [self._contribution_record(row) for row in rows]
+
+    def get_contribution_with_payload(
+        self, contribution_id: UUID
+    ) -> tuple[ContributionRecord, str] | None:
+        """维护者导出专用：按 ID 取记录与待审副本全文（不做用户过滤）。"""
+
+        with self._connect() as connection:
+            row = connection.execute(
+                "SELECT * FROM contributions WHERE contribution_id = ?",
+                (str(contribution_id),),
+            ).fetchone()
+        if row is None:
+            return None
+        return self._contribution_record(row), row["content_snapshot"]
 
     def list_maintainer_queue(
         self, state: ContributionState | None = None
