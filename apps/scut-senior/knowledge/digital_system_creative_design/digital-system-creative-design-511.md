@@ -100,7 +100,7 @@ locator_type: heading
       然后在windows下的浏览器中打开URL即可。      
 2. 等待Presenter Agent传输数据给服务端，单击“Refresh“刷新，当有数据时相应的Channel 的Status变成绿色。     
 3. 单击右侧对应的View Name链接，查看结果。      
-![输入图片说明](https://images.gitee.com/uploads/images/2021/1029/162650_0e2aca00_8083019.png "微信图片_20211029162628.png")
+<!-- 外链图片已失效: https://images.gitee.com/uploads/images/2021/1029/162650_0e2aca00_8083019.png "微信图片_202110 -->
 
 ### 常见错误
 请参考[常见问题定位](https://gitee.com/ascend/samples/wikis/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D/%E4%BB%8B%E7%BB%8D)对遇到的错误进行排查。如果wiki中不包含，请在samples仓提issue反馈。

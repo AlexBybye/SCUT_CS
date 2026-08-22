@@ -415,11 +415,11 @@ Microsoft STRIDE 是常用的威胁分类方法。
 
 ## Briefly describe JUnit framework through drawing its structure graph? （**6** **points**）
 
-![img](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/clip_image002.jpg)
+![img](assets/software-testing-060/remote-23.png)
 
 ## Briefly describe the bug management process？
 
-![img](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/clip_image001.gif)
+![img](assets/software-testing-060/remote-24.png)
 
 ## Please describe how to finish Unit Testing? 
 

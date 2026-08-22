@@ -70,11 +70,11 @@ locator_type: heading
 
 ### 为什么我们需要自动化测试？
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=Zjg4NDkxZmU1NjlkODZmNDVlMjFhODEyYzBhZjBlMTJfMjI2MWUzOTUzMGFkZTRjNjE1MzM0ZTFkZmQyNTc0ZDhfSUQ6NzQ5Njg4MzQzMjIyODg0NzYxOF8xNzc5NzY2Nzk0OjE3Nzk4NTMxOTRfVjM)
+<!-- 外链图片已失效: https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=Z -->
 
 ### 🌟 主要的软件维护活动有哪些？
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NzM2NDhmYjhkN2ZlYThhNzgyMWM2MmE2NTcyNDY0MjZfMzJlMGYyMjU3Y2YyNmEzMmMyYTc1NmZhM2JmZDkyMWZfSUQ6NzQ5Njg4Nzg2MDY5MDE1NzU3MF8xNzc5NzY2Nzk0OjE3Nzk4NTMxOTRfVjM)
+<!-- 外链图片已失效: https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=N -->
 
 ## 三、黑白盒测试
 
@@ -101,7 +101,7 @@ void MyFunction (int& x, int& y, int& z) {
 
 1. 画控制流图
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=Yzg4ZTlhZWE1NDU0NzU0YWRlMGY1NjUxNWU1NWU3MjZfMzU4MjJkOTE2NjkwOThmOTI3MDljMjg5NzAxODhmYjRfSUQ6NzQ5Njg5MjYwODA2MTU4NzQ1OF8xNzc5NzY2Nzk0OjE3Nzk4NTMxOTRfVjM)
+<!-- 外链图片已失效: https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=Y -->
 
 2. 设计测试用例（全流程）
 
@@ -523,7 +523,7 @@ void Sort(int iRecordNum,int iType)
 
 4. 设计测试用例，满足 Basis Path Testing
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MTMyMzdlMWY5MWU1NjUyYzE5ZTBkM2MwNDk5MWJhYjFfYmViMThmMjk2ODViMjVhMWJiNDI4ZmVlZmQyMThkNDVfSUQ6NzQ5NzQ5NDA5ODU5NDEzNjA2N18xNzc5NzY2Nzk0OjE3Nzk4NTMxOTRfVjM)
+<!-- 外链图片已失效: https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=M -->
 
 ## 四、黑盒测试
 
@@ -890,7 +890,7 @@ prefix 为 199
 
 ## ⚠️ 题目问你测试策略怎么答？（搭队伍 — 定时间 — V 模型四大测试跑一遍）
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NGJjOTU5NzcxNjEwMTMxMTVkZDcyNGZmZmYwYzdlNDRfMmNhZTc1NDU1NjdjNzYyNDNjMTc4ZjM3N2U0ZmI4OTJfSUQ6NzQ5NzEzOTExMzA2NjQ0Njg1Ml8xNzc5NzY2Nzk0OjE3Nzk4NTMxOTRfVjM)
+<!-- 外链图片已失效: https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=N -->
 
 # 样板卷 B
 

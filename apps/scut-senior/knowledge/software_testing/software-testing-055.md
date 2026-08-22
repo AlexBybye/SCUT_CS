@@ -212,7 +212,7 @@ TDD 即测试驱动开发，基本思想是：
 Main → 上层模块 → 中层模块 → 底层模块
 ```
 
-![image-20260517094233314](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260517094233314.png)
+![image-20260517094233314](assets/software-testing-055/remote-18.png)
 
 特点：
 
@@ -226,7 +226,7 @@ Main → 上层模块 → 中层模块 → 底层模块
 
 ### 4.3 Bottom-up Integration
 
-![image-20260517094950569](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260517094950569.png)
+![image-20260517094950569](assets/software-testing-055/remote-19.png)
 
 从底层模块开始，逐步向上集成。
 
@@ -321,7 +321,7 @@ Main → 上层模块 → 中层模块 → 底层模块
 
 # 五、功能测试 Functional Testing
 
-![image-20260517101501200](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260517101501200.png)
+<!-- 外链图片已失效: https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260517101501200.png -->
 
 ## 1. 定义
 
@@ -368,13 +368,13 @@ Main → 上层模块 → 中层模块 → 底层模块
 | Maintainability | 可维护性 |
 | Compatibility   | 兼容性   |
 
-![image-20260517103253410](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260517103253410.png)
+<!-- 外链图片已失效: https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260517103253410.png -->
 
-![image-20260517103308343](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260517103308343.png)
+<!-- 外链图片已失效: https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260517103308343.png -->
 
-![image-20260517103327001](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260517103327001.png)
+![image-20260517103327001](assets/software-testing-055/remote-20.png)
 
-![image-20260517103338401](C:\Users\APP\AppData\Roaming\Typora\typora-user-images\image-20260517103338401.png)
+<!-- 引用的相对路径图片不存在: C:\Users\APP\AppData\Roaming\Typora\typora-user-images\image-20260517103338401.p -->
 
 ------
 
@@ -522,7 +522,7 @@ Main → 上层模块 → 中层模块 → 底层模块
 
 验收测试通常包括：
 
-![image-20260517111759441](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260517111759441.png)
+![image-20260517111759441](assets/software-testing-055/remote-21.png)
 
 ### 3.1 Software Configuration Review
 
@@ -542,7 +542,7 @@ Main → 上层模块 → 中层模块 → 底层模块
 
 软件有效性测试，检查软件是否真正满足用户业务需求。
 
-![image-20260517111655848](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260517111655848.png)
+![image-20260517111655848](assets/software-testing-055/remote-22.png)
 
 ------
 

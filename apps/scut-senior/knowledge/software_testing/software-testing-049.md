@@ -136,7 +136,7 @@ public static float example(float A, float B, float X) {
 
 ==这一句很绕口，实际上通过画图我们就可以理解，不难发现我们虽然执行了每一行代码，但是实际上画成分支图，我们只是经历了其中一种情况==
 
-![image-20260520105144406](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260520105144406.png)
+![image-20260520105144406](assets/software-testing-049/remote-14.png)
 
 ---
 
@@ -170,7 +170,7 @@ public static float example(float A, float B, float X) {
 
 ==这个不难发现，其中的每个条件判定，可能是true或者false的情况，都经历过了一次==
 
-![image-20260520105318962](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260520105318962.png)
+![image-20260520105318962](assets/software-testing-049/remote-15.png)
 
 ---
 
@@ -209,7 +209,7 @@ if (A == 2 || X > 1)
 - `A == 2` 取 True 和 False；
 - `X > 1` 取 True 和 False。
 
-![image-20260520105950055](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260520105950055.png)
+![image-20260520105950055](assets/software-testing-049/remote-16.png)
 
 **我们只需要保证设计的测试用例能涵盖真值表的所有 T 和 F 即可**
 
@@ -575,7 +575,7 @@ CFG 正则表达式：
 1.2.(3.(4+5).6.2)*.7
 ```
 
-![image-20260520111427935](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260520111427935.png)
+![image-20260520111427935](assets/software-testing-049/remote-17.png)
 
 若将循环化简为“0 次或 1 类 n 次”，可写为：
 

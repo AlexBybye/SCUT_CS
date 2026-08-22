@@ -132,13 +132,13 @@ locator_type: heading
 2. 质量可以通过客观和主观指标的混合来衡量。
 3. 适用于所有软件产品和计算机系统。
 
-![image-20260516152209243](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260516152209243.png)
+![image-20260516152209243](assets/software-testing-047/remote-1.png)
 
 ## 3. 什么是 Bug？
 
 **Bug** 是非正式统称，通常用来泛指软件中的问题。严格分析时，应使用 Fault、Error、Failure 等术语。
 
-![image-20260508145957810](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260508145957810.png)
+![image-20260508145957810](assets/software-testing-047/remote-2.png)
 
 ---
 
@@ -381,7 +381,7 @@ public static double computeMean (int[] arr) {
 
 # 六、软件测试公理
 
-![image-20260508153340410](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260508153340410.png)
+![image-20260508153340410](assets/software-testing-047/remote-3.png)
 
 核心思想：**穷尽测试通常不现实。**
 
@@ -398,7 +398,7 @@ public static double computeMean (int[] arr) {
 - 尽早发现重要缺陷；
 - 让缺陷尽快被修复。
 
-![image-20260508153207459](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260508153207459.png)
+![image-20260508153207459](assets/software-testing-047/remote-4.png)
 
 重要观点：
 
@@ -428,7 +428,7 @@ public static double computeMean (int[] arr) {
 
 ## 1. Waterfall Model：瀑布模型
 
-![image-20260508153450419](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260508153450419.png)
+![image-20260508153450419](assets/software-testing-047/remote-5.png)
 
 特点：
 
@@ -454,7 +454,7 @@ public static double computeMean (int[] arr) {
 
 ## 2. Spiral Model：螺旋模型
 
-![image-20260508153902923](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260508153902923.png)
+![image-20260508153902923](assets/software-testing-047/remote-6.png)
 
 特点：
 
@@ -479,9 +479,9 @@ public static double computeMean (int[] arr) {
 
 ## 3. V Model：V 模型
 
-![image-20260508153952444](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260508153952444.png)
+![image-20260508153952444](assets/software-testing-047/remote-7.png)
 
-![image-20260516162521016](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260516162521016.png)
+![image-20260516162521016](assets/software-testing-047/remote-8.png)
 
 特点：
 
@@ -505,9 +505,9 @@ public static double computeMean (int[] arr) {
 
 ## 4. W Model：W 模型
 
-![image-20260508154032097](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260508154032097.png)
+![image-20260508154032097](assets/software-testing-047/remote-9.png)
 
-![image-20260516190400982](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260516190400982.png)
+![image-20260516190400982](assets/software-testing-047/remote-10.png)
 
 特点：
 
@@ -530,7 +530,7 @@ public static double computeMean (int[] arr) {
 - 优点：产品以更小的部分编写和测试，降低风险并方便纳入变更。客户或用户从一开始就参与其中，这意味着系统更有可能满足他们的需求，他们自己也更投入系统。
 - 缺点：由于文档不足，与其他模型相比，管理起来可能比较困难。软件不断变化，随着体积增长，维护起来变得困难。
 
-![image-20260508154528397](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260508154528397.png)
+![image-20260508154528397](assets/software-testing-047/remote-11.png)
 
 XP 的核心理念：
 
@@ -572,7 +572,7 @@ XP 的测试思想：
 7. 重构代码；
 8. 重复以上过程。
 
-![image-20260508155236045](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260508155236045.png)
+![image-20260508155236045](assets/software-testing-047/remote-12.png)
 
 ## 2. 实践原则
 
@@ -590,7 +590,7 @@ XP 的测试思想：
 - 增强开发者重构代码的信心；
 - 有助于提高代码可维护性。
 
-![image-20260516193902789](https://cdn.jsdelivr.net/gh/BomLook/blog-pic@main/img/image-20260516193902789.png)
+![image-20260516193902789](assets/software-testing-047/remote-13.png)
 
 ---
 

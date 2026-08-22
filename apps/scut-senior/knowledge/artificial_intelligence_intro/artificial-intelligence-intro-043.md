@@ -178,7 +178,7 @@ locator_type: heading
 
 ### **三、分析计算题答案**  
 #### 1. α-β剪枝  
-![](https://i.imgur.com/8W7X9Kp.png)  
+![](assets/artificial-intelligence-intro-043/remote-25.png)  
 - **剪枝位置**：节点B的右侧子节点（值≤3 < α=5）。  
 
 #### 2. 贝叶斯网络计算 P(¬C | ¬E)  

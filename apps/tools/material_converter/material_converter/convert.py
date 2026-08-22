@@ -504,6 +504,7 @@ def scan_asset_integrity() -> list[str]:
     """Report knowledge md files whose asset links point to missing files."""
     problems = []
     link_rx = re.compile(r"\]\((assets/[^)#]+?)\)")
+    img_rx = re.compile(r"!\[[^\]]*\]\(([^)]+)\)")
     for row in _load_manifest_rows():
         md_path = KNOWLEDGE / row["output_md"]
         if not md_path.exists():
@@ -511,8 +512,14 @@ def scan_asset_integrity() -> list[str]:
         cdir = knowledge_dir(row["course"])
         text = md_path.read_text(encoding="utf-8", errors="ignore")
         base = md_path.parent
-        for m in link_rx.finditer(text):
+        for m in img_rx.finditer(text):
             ref = m.group(1)
+            if not ref.startswith("assets/"):
+                problems.append(
+                    f"{row['source_id']}: 非本地资产图片引用 {ref[:60]}")
+                if len(problems) >= 50:
+                    return problems
+                continue
             target = (base / ref).resolve()
             if not target.exists():
                 problems.append(f"{row['source_id']}: 缺资产 {ref}")
