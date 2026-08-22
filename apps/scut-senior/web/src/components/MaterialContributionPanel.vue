@@ -19,6 +19,13 @@ import { useAppStore } from "../composables/useAppStore";
 
 const store = useAppStore();
 
+// 贡献提交通道暂时对 UI 封闭（后端契约、队列与 TTL 保持原样）：
+// 上线时把 CONTRIBUTION_SUBMIT_CLOSED 改回 false 即可整体恢复。
+const CONTRIBUTION_SUBMIT_CLOSED = true;
+const SUBMIT_CLOSED_TIP = "本功能正在开发中！敬请期待！";
+const DRAFT_OPEN_TIP = "保存为私有草稿，之后可在完整确认后提交";
+const SUBMIT_OPEN_TIP = "提交后进入维护者待处理队列，不会自动创建或合并 PR";
+
 // 临时材料与贡献面板：只在临时材料精读 Workflow 下展示。
 // 材料正文取当前输入框内容；保存后 7 天自动过期（服务端物理删除）。
 const materials = ref<TemporaryMaterialRecord[]>([]);
@@ -194,14 +201,19 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
           <button type="button" class="btn btn-ghost" :disabled="busy" @click="onPreview(item.material_id)">
             预览转换结果
           </button>
-          <button
-            type="button"
-            class="btn btn-ghost"
-            :disabled="busy"
-            @click="onSubmit(item.material_id, true)"
+          <span
+            class="hover-tip"
+            :title="CONTRIBUTION_SUBMIT_CLOSED ? SUBMIT_CLOSED_TIP : DRAFT_OPEN_TIP"
           >
-            存为贡献草稿
-          </button>
+            <button
+              type="button"
+              class="btn btn-ghost"
+              :disabled="CONTRIBUTION_SUBMIT_CLOSED || busy"
+              @click="onSubmit(item.material_id, true)"
+            >
+              存为贡献草稿
+            </button>
+          </span>
           <button type="button" class="btn btn-danger" :disabled="busy" @click="onDeleteMaterial(item.material_id)">
             删除
           </button>
@@ -236,15 +248,21 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
       </fieldset>
 
       <div class="material-buttons">
-        <button
-          type="button"
-          class="btn"
-          :disabled="busy || !allConfirmed || !previewMaterialId"
-          title="提交后进入维护者待处理队列，不会自动创建或合并 PR"
-          @click="previewMaterialId && onSubmit(previewMaterialId, false)"
+        <span
+          class="hover-tip"
+          :title="CONTRIBUTION_SUBMIT_CLOSED ? SUBMIT_CLOSED_TIP : SUBMIT_OPEN_TIP"
         >
-          提交到待审队列
-        </button>
+          <button
+            type="button"
+            class="btn"
+            :disabled="
+              CONTRIBUTION_SUBMIT_CLOSED || busy || !allConfirmed || !previewMaterialId
+            "
+            @click="previewMaterialId && onSubmit(previewMaterialId, false)"
+          >
+            提交到待审队列
+          </button>
+        </span>
       </div>
     </section>
 
@@ -315,6 +333,16 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+}
+
+/* 封闭中的入口：悬浮提示“开发中”，光标明确不可点。 */
+.hover-tip {
+  display: inline-flex;
+}
+
+.hover-tip .btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .btn-danger {

@@ -154,3 +154,11 @@ npm --prefix web run build                   # 成功
 
 测试增量：落点映射、文件名清洗与扩展名嗅探、导出包内容/命令/鉴权
 （Python 全量 542 通过；web vitest 94 + typecheck 通过）。
+
+## 追加（同日）：贡献提交入口暂时对 UI 封闭
+
+- `MaterialContributionPanel.vue` 中「提交到待审队列」「存为贡献草稿」两按钮
+  置灰并悬浮提示「本功能正在开发中！敬请期待！」；由
+  `CONTRIBUTION_SUBMIT_CLOSED` 常量控制，改回 `false` 即整体恢复。
+- 仅封 UI：后端契约、待处理队列、TTL 与维护者接口保持可用（API 层不关闭），
+  便于内部联调与后续服务器端一键化（隔离分支 + 人工 push）的决策。
