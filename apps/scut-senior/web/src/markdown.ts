@@ -1,5 +1,8 @@
 import DOMPurify from "dompurify";
 import katex from "katex";
+// 样式与 JS 同块：本模块只经异步加载的 WorkflowResult 到达，KaTeX CSS 因此
+// 随数学渲染块按需注入，不再从应用入口全局加载（迭代 7.5 路由级拆包）。
+import "katex/dist/katex.min.css";
 import { marked } from "marked";
 
 type MathFragment = {

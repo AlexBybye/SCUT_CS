@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, ref, watch } from "vue";
-import WorkflowResult from "./WorkflowResult.vue";
+import { computed, defineAsyncComponent, onBeforeUnmount, ref, watch } from "vue";
 import {
   courseAvailabilitySummary,
   courseRuntimeDescription,
@@ -8,6 +7,11 @@ import {
 import type { AnswerMode, Tone, WorkflowRunResult } from "../contracts";
 import { createBottomFollower } from "../scrollFollow";
 import { useAppStore } from "../composables/useAppStore";
+
+// 路由级按需加载：WorkflowResult 是唯一消费 KaTeX 渲染管线（markdown.ts）的
+// 视图。用 defineAsyncComponent 动态引入后，KaTeX JS+CSS 只随该视图的异步块
+// 在首条回答真正要渲染时下载；空态首屏（无历史、未运行）完全不加载它。
+const WorkflowResult = defineAsyncComponent(() => import("./WorkflowResult.vue"));
 
 const store = useAppStore();
 
