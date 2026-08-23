@@ -17,14 +17,17 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import tempfile
+import time
 from collections import Counter
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Iterable
 
 from .adapters.mock import MockIdentityProvider
+from .adapters.openrouter import UrllibJsonHttpClient
 from .config import Settings
 from .contracts import WorkflowRunRequest, WorkflowType
 from .main import create_app
@@ -74,7 +77,12 @@ def _payload_for(
 
 
 def _request_for_case(
-    conversation_id: str, case: dict[str, object], content: str
+    conversation_id: str,
+    case: dict[str, object],
+    content: str,
+    *,
+    provider_id: str = "mock",
+    model_id: str = "deterministic-fixture-v1",
 ) -> dict[str, object]:
     workflow_type = str(case["workflow_type"])
     if workflow_type not in _WORKFLOW_NAMES:
@@ -86,8 +94,8 @@ def _request_for_case(
         "allowed_course_ids": list(case.get("allowed_course_ids") or []),
         "conversation_id": conversation_id,
         "model_source": "platform_default",
-        "provider_id": "mock",
-        "model_id": "deterministic-fixture-v1",
+        "provider_id": provider_id,
+        "model_id": model_id,
         "user_input": content,
         "answer_mode": "detailed",
         "tone": "teaching_assistant",
@@ -144,7 +152,11 @@ def _check_expected(
 
 
 def _run_case(
-    app: Any, case: dict[str, object]
+    app: Any,
+    case: dict[str, object],
+    *,
+    provider_id: str = "mock",
+    model_id: str = "deterministic-fixture-v1",
 ) -> tuple[str, list[str]]:
     if case["course_scope"] == "cross":
         return "skipped", ["cross_course_disabled_by_feature_flag"]
@@ -157,7 +169,13 @@ def _run_case(
             continue
         content = str(turn.get("content") or "")
         request = WorkflowRunRequest.model_validate(
-            _request_for_case(conversation.conversation_id, case, content)
+            _request_for_case(
+                conversation.conversation_id,
+                case,
+                content,
+                provider_id=provider_id,
+                model_id=model_id,
+            )
         )
         last_run = app.state.service.run(_MOCK_USER, request)
     if last_run is None:
@@ -181,6 +199,12 @@ def run_evaluation(
     cases_path: Path,
     runner_path: Path | None,
     report_path: Path,
+    *,
+    provider_id: str = "mock",
+    model_id: str = "deterministic-fixture-v1",
+    local_corpus: bool = False,
+    pace_seconds: float = 0.0,
+    case_retries: int = 0,
 ) -> dict[str, object]:
     cases = json.loads(cases_path.read_text(encoding="utf-8"))
     runner = (
@@ -198,14 +222,58 @@ def run_evaluation(
         if missing:
             raise ValueError(f"runner 引用了缺失的 case: {missing}")
 
+    real_model = provider_id != "mock"
     with tempfile.TemporaryDirectory(prefix="scut-senior-eval-") as tmp:
+        settings = Settings(
+            app_env="test",
+            database_path=Path(tmp) / "eval.db",
+            model_mode=(
+                "openrouter_platform" if real_model else "mock"
+            ),
+            retrieval_mode=(
+                "local_corpus" if (local_corpus or real_model) else "fixture"
+            ),
+            openrouter_api_key=os.getenv("SCUT_SENIOR_OPENROUTER_API_KEY"),
+            zhipu_api_key=os.getenv("SCUT_SENIOR_ZHIPU_API_KEY"),
+        )
         app = create_app(
-            Settings(app_env="test", database_path=Path(tmp) / "eval.db")
+            settings,
+            # create_app installs FailClosedJsonHttpClient for platform HTTP
+            # when app_env="test"; a real-model evaluation must override with
+            # the genuine transport or every upstream call fails closed.
+            **(
+                {
+                    "zhipu_http_client": UrllibJsonHttpClient(),
+                    "model_http_client": UrllibJsonHttpClient(),
+                }
+                if real_model
+                else {}
+            ),
         )
         lines: list[dict[str, object]] = []
-        for case in cases["cases"]:
+        for index, case in enumerate(cases["cases"]):
+            if index and pace_seconds > 0:
+                # free-tier platform channels throttle per-account bursts;
+                # pacing keeps a real-model sweep under the RPM ceiling
+                time.sleep(pace_seconds)
             try:
-                outcome, reasons = _run_case(app, case)
+                outcome, reasons = _run_case(
+                    app, case, provider_id=provider_id, model_id=model_id
+                )
+                attempt = 0
+                # free-tier upstreams fail with transient throttling (429 /
+                # zhipu 1305); retry only those failures, never real verdicts
+                while (
+                    case_retries > 0
+                    and attempt < case_retries
+                    and outcome == "failed"
+                    and any("GatewayError" in str(r) for r in reasons)
+                ):
+                    attempt += 1
+                    time.sleep(max(pace_seconds, 20.0))
+                    outcome, reasons = _run_case(
+                        app, case, provider_id=provider_id, model_id=model_id
+                    )
             except Exception as exc:  # noqa: BLE001 - report any pipeline failure
                 outcome, reasons = "failed", [f"{type(exc).__name__}: {exc}"]
             lines.append(_report_line(case, outcome, reasons))
@@ -216,10 +284,14 @@ def run_evaluation(
         by_course.setdefault(key, Counter())["total"] += 1
         by_course[key][str(line["outcome"])] += 1
     summary = Counter(line["outcome"] for line in lines)
+    fixture_only = not real_model and not local_corpus
     report: dict[str, object] = {
         "runner_id": RUNNER_ID,
         "contract_version": CONTRACT_VERSION,
-        "fixture_only": True,
+        "fixture_only": fixture_only,
+        "provider_id": provider_id if not fixture_only else "mock",
+        "model_id": model_id if not fixture_only else "deterministic-fixture-v1",
+        "retrieval_mode": "local_corpus" if (local_corpus or real_model) else "fixture",
         "executed_at": datetime.now(UTC).isoformat(),
         "summary": {
             "total": len(lines),
@@ -260,12 +332,55 @@ def _parser() -> argparse.ArgumentParser:
         required=True,
         help="output report.json path",
     )
+    parser.add_argument(
+        "--provider",
+        default="mock",
+        help="platform provider id for real-model runs (e.g. zhipu); "
+        "default mock keeps the deterministic fixture model",
+    )
+    parser.add_argument(
+        "--model",
+        default="deterministic-fixture-v1",
+        help="platform model id for real-model runs (e.g. glm-4.7-flash)",
+    )
+    parser.add_argument(
+        "--fixture-corpus",
+        action="store_true",
+        help="force fixture retrieval even when a real model is selected; "
+        "real-model runs default to the local active corpus store",
+    )
+    parser.add_argument(
+        "--pace-seconds",
+        type=float,
+        default=0.0,
+        help="sleep between cases (real-model sweeps on free-tier channels "
+        "should use 10-20s to stay under per-account RPM limits)",
+    )
     return parser
 
 
 def main(argv: Iterable[str] | None = None) -> int:
     args = _parser().parse_args(argv)
-    report = run_evaluation(args.cases, args.runner, args.report)
+    if args.provider != "mock" and not (
+        os.getenv("SCUT_SENIOR_ZHIPU_API_KEY")
+        or os.getenv("SCUT_SENIOR_OPENROUTER_API_KEY")
+    ):
+        print(
+            "真实模型评测需要 SCUT_SENIOR_ZHIPU_API_KEY 或 "
+            "SCUT_SENIOR_OPENROUTER_API_KEY 环境变量。",
+            file=sys.stderr,
+        )
+        return 2
+    report = run_evaluation(
+        args.cases,
+        args.runner,
+        args.report,
+        provider_id=args.provider,
+        model_id=args.model,
+        local_corpus=not args.fixture_corpus if args.provider != "mock" else False,
+        pace_seconds=args.pace_seconds,
+        case_retries=2 if args.provider != "mock" else 0,
+    )
     summary = report["summary"]
     print(
         f"evaluation: {summary['total']} cases, "

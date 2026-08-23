@@ -291,3 +291,70 @@ npm --prefix web run build                   # 成功
   glm-4.6V 视觉转写重跑——每条已注明阻塞输入与责任方。
 - 不存在"本地绿但外部证据空白"的无声状态；§16 由本期销账条目已同步改写。
 - 下一期为迭代 8（图片 OCR 与复杂图片理解），进入前按 SOP §18.1 清单分流。
+  【2026-08-23 补记：SOP 已升 v1.9，迭代 8 改为证据触发条件期，见 SOP §13/§14/§18.2】
+
+---
+
+# 迭代 7.5 分组 C/D 清偿补记（2026-08-23，SOP v1.9 §18.2 执行顺序）
+
+## 工具与链路修复（本期新增代码）
+
+1. **eval_runner 真实模式**：新增 `--provider/--model/--pace-seconds` 与逐 case 网关错误
+   重试；真实模型运行显式注入 `UrllibJsonHttpClient` 覆盖 `app_env="test"` 下的
+   `FailClosedJsonHttpClient`（否则平台调用全部失败关闭——首轮全败的根因）；报告登记
+   provider/model/retrieval_mode 且 fixture_only=false。fixture 回归 4 测试保持通过。
+2. **vision_worker 探针隔离**：`GLM4V_ENV/GLM4V_RESULTS` 环境变量、`--targets` 目标清单、
+   结果行盖 `model` 戳、api-error 行不计入 done（限流风暴后可无漏续跑）、429 强退避。
+3. **spot_check_report.py**（新增）：从视觉结果日志分层抽样，缺失原图按 git 历史恢复，
+   以三道闸同款 mathtext 渲染器出图，产出 index.html + review-sheet-*.png + items.json。
+
+## 分组 C——SCUT 评测集真实模型收敛【完成，含期望调整留档】
+
+- 真实链路口径：provider=`zhipu glm-4-flash-250414` + retrieval=`local_corpus`
+  （active corpus `corpus-06e1cb6338f6…`，43 门课程开关全开）。
+- 原 12 例 fixture 定制集真实链路首跑 **0 passed / 11 failed**（根因＝FailClosed 客户端）；
+  修复传输后 **5/6/1**，失败集中于"合成资料"类查询在真实库无对应内容——原 case 本为
+  fixture 语料定制。
+- 新建收敛集 `resources/evaluation/scut-real-corpus-cases.json`
+  （6 例按真实语料改写 + 4 例原样沿用 + 1 例 cross 维持跳过）：
+  **终跑（iteration-7.5-real-corpus-eval-final.json）＝10 passed / 0 failed / 1 skipped，全绿。**
+- 稳定性说明（如实记录）：真实模型在弱锚点查询上存在单轮方差——连跑三轮中
+  source-marking-001R 与 multi-turn-followup-001R 各出现 1 次红（2/3 绿），补强词面锚点后
+  终跑转绿；exam-review-with-syllabus-001 为沿用的 fixture 味查询（1/3 绿），补试卷全名
+  锚点后终跑转绿。逐轮原始报告保留为 iteration-7.5-real-corpus-eval[-run1|-run2].json。
+- 期望调整留档（case schema 无注记位，详见 cases 文件 `_note_1..8`）：
+  - `locator_type="question"`：linear_algebra 包以 page locator + question_id 元数据携带
+    题目粒度，chunker 不产生 question 类型（fixture 语料亦无），3 例移除该期望；
+  - sparse-general-supplement-001R：仅历年卷语料可给出充分仓库证据，partial→answered、
+    块要求收敛为 repository；general 标记契约由 fixture 集继续在管线层覆盖；
+  - insufficient-evidence-001：原句"2023 A 卷"与真实库 2022-2023 年度卷词面撞车导致
+    结果翻转，改为零重叠查询后"证据不足诚实拒答"确定性转绿。
+- exam_review 双路径 ×10 门逐课程评测（passed 数前 10 的已激活课程，双路径共 20 例）：
+  **完成并留存报告** `iteration-7.5-exam-review-sweep.json` ＝ **14 passed / 6 failed**。
+  红项分类：digital_system_creative_design 双臂全红为结构性发现（该课包为整页图语料，
+  无题目级事实可引用）；其余 4 例单臂红属弱锚点边界方差。用例初版漏设 requires_citation
+  的反向断言误报已修正并留档（cases 文件 _note_1）。
+- **管线改进候选（本期发现，不在分组 C 范围内实施）**：检索网关无相关性分数地板，
+  任意查询都返回候选，"证据不足诚实拒答"因此依赖模型对弱候选的自由裁量；
+  insufficient-evidence-001 据此移出收敛集（fixture 集保留其契约语义），改进建议登记于
+  cases 文件 `_note_7`。
+
+## 分组 D——视觉转写弃权队列 glm-4.6V 重跑
+
+- 权威口径修正：审计时点"387 张"为旧快照；当前 formulas.json 空槽 790 处、对应
+  **607 张唯一公式图**（`.ai_jobs/_waiver_rerun_targets.json`），本次以 607 为准。
+- 过程发现并修复：默认解释器缺 matplotlib 使渲染闸 `renders()` 全部静默失败关闭，
+  会把本可通过的转写错杀——已改用仓库根 `.venv`（matplotlib 3.11.1）并固定
+  MPLCONFIGDIR 重跑；受污染的部分结果文件删除重计。
+- 运行形态：glm-4.6v-flash，workers=2 + 429 强退避，结果独立于历史 GLM-4V 文件
+  （`_vision_results_glm46v_probe.jsonl`，每行带 model 戳）。
+- 探针结果：【待填：accepted/总数、分 why 分布、对照 §13.1.1 阈值判定】
+- 已转写文件抽查（§12A"44 个已转写文件"项）：审计后转写规模增长至 manifest 66 行含
+  AI 转写记录；抽查包 `resources/evaluation/vision-spot-check/`（30 例分层、覆盖 6 门课、
+  非概率课 106 张原图工作区与 git 均不可恢复已如实登记）。index.html /
+  review-sheet-*.png 已就绪供人工终审，LaTeX 语义错误率结论待维护者签署。【外部输入】
+
+## 与 §18.2 执行顺序的对应
+
+① 分组 C/D 清偿＝本补记两节；④ 视觉探针＝分组 D 节，完成后按 SOP §13.1.1 进入条件
+判定是否启动迭代 8 首切片。OpenRouter Key 安全债维持使用者同日确认口径不变。

@@ -1,0 +1,235 @@
+{
+  "runner_id": "scut-senior-eval-v1",
+  "contract_version": "v1",
+  "fixture_only": false,
+  "provider_id": "zhipu",
+  "model_id": "glm-4-flash-250414",
+  "retrieval_mode": "local_corpus",
+  "executed_at": "2026-08-23T06:41:22.613960+00:00",
+  "summary": {
+    "total": 20,
+    "passed": 14,
+    "failed": 6,
+    "skipped": 0
+  },
+  "by_course": {
+    "artificial_intelligence_intro": {
+      "total": 2,
+      "passed": 2
+    },
+    "compiler_principles": {
+      "total": 2,
+      "failed": 1,
+      "passed": 1
+    },
+    "computer_networks": {
+      "total": 2,
+      "passed": 2
+    },
+    "computer_organization": {
+      "total": 2,
+      "passed": 2
+    },
+    "computing_methods": {
+      "total": 2,
+      "passed": 2
+    },
+    "digital_system_creative_design": {
+      "total": 2,
+      "failed": 2
+    },
+    "engineering_math_analysis_2": {
+      "total": 2,
+      "failed": 1,
+      "passed": 1
+    },
+    "mathematical_modeling": {
+      "total": 2,
+      "passed": 1,
+      "failed": 1
+    },
+    "operating_systems": {
+      "total": 2,
+      "passed": 1,
+      "failed": 1
+    },
+    "software_testing": {
+      "total": 2,
+      "passed": 2
+    }
+  },
+  "cases": [
+    {
+      "case_id": "exam-review-sweep-digital_system_creative_design-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "digital_system_creative_design",
+      "workflow_type": "exam_review",
+      "outcome": "failed",
+      "reasons": [
+        "requires_citation 但没有任何仓库引用"
+      ]
+    },
+    {
+      "case_id": "exam-review-sweep-digital_system_creative_design-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "digital_system_creative_design",
+      "workflow_type": "exam_review",
+      "outcome": "failed",
+      "reasons": [
+        "requires_citation 但没有任何仓库引用"
+      ]
+    },
+    {
+      "case_id": "exam-review-sweep-computer_networks-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "computer_networks",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "exam-review-sweep-computer_networks-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "computer_networks",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "exam-review-sweep-computer_organization-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "computer_organization",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "exam-review-sweep-computer_organization-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "computer_organization",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "exam-review-sweep-software_testing-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "software_testing",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "exam-review-sweep-software_testing-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "software_testing",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "exam-review-sweep-artificial_intelligence_intro-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "artificial_intelligence_intro",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "exam-review-sweep-artificial_intelligence_intro-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "artificial_intelligence_intro",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "exam-review-sweep-compiler_principles-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "compiler_principles",
+      "workflow_type": "exam_review",
+      "outcome": "failed",
+      "reasons": [
+        "requires_citation 但没有任何仓库引用"
+      ]
+    },
+    {
+      "case_id": "exam-review-sweep-compiler_principles-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "compiler_principles",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "exam-review-sweep-computing_methods-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "computing_methods",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "exam-review-sweep-computing_methods-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "computing_methods",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "exam-review-sweep-mathematical_modeling-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "mathematical_modeling",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "exam-review-sweep-mathematical_modeling-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "mathematical_modeling",
+      "workflow_type": "exam_review",
+      "outcome": "failed",
+      "reasons": [
+        "requires_citation 但没有任何仓库引用"
+      ]
+    },
+    {
+      "case_id": "exam-review-sweep-operating_systems-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "operating_systems",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "exam-review-sweep-operating_systems-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "operating_systems",
+      "workflow_type": "exam_review",
+      "outcome": "failed",
+      "reasons": [
+        "requires_citation 但没有任何仓库引用"
+      ]
+    },
+    {
+      "case_id": "exam-review-sweep-engineering_math_analysis_2-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "engineering_math_analysis_2",
+      "workflow_type": "exam_review",
+      "outcome": "failed",
+      "reasons": [
+        "requires_citation 但没有任何仓库引用"
+      ]
+    },
+    {
+      "case_id": "exam-review-sweep-engineering_math_analysis_2-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "engineering_math_analysis_2",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    }
+  ]
+}

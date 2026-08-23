@@ -1,0 +1,466 @@
+{
+  "contract_version": "v1",
+  "cases": [
+    {
+      "case_id": "exam-review-sweep-digital_system_creative_design-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "digital_system_creative_design",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+      "weak_topics": [
+        "核心概念"
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-digital_system_creative_design-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "digital_system_creative_design",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": null,
+      "weak_topics": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "without_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-computer_networks-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "computer_networks",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+      "weak_topics": [
+        "核心概念"
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-computer_networks-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "computer_networks",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": null,
+      "weak_topics": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "without_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-computer_organization-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "computer_organization",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+      "weak_topics": [
+        "核心概念"
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-computer_organization-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "computer_organization",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": null,
+      "weak_topics": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "without_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-software_testing-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "software_testing",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+      "weak_topics": [
+        "核心概念"
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-software_testing-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "software_testing",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": null,
+      "weak_topics": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "without_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-artificial_intelligence_intro-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "artificial_intelligence_intro",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+      "weak_topics": [
+        "核心概念"
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-artificial_intelligence_intro-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "artificial_intelligence_intro",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": null,
+      "weak_topics": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "without_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-compiler_principles-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "compiler_principles",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+      "weak_topics": [
+        "核心概念"
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-compiler_principles-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "compiler_principles",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": null,
+      "weak_topics": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "without_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-computing_methods-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "computing_methods",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+      "weak_topics": [
+        "核心概念"
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-computing_methods-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "computing_methods",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": null,
+      "weak_topics": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "without_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-mathematical_modeling-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "mathematical_modeling",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+      "weak_topics": [
+        "核心概念"
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-mathematical_modeling-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "mathematical_modeling",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": null,
+      "weak_topics": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "without_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-operating_systems-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "operating_systems",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+      "weak_topics": [
+        "核心概念"
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-operating_systems-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "operating_systems",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": null,
+      "weak_topics": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "without_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-engineering_math_analysis_2-with_syllabus",
+      "category": "exam_review_with_syllabus",
+      "course_id": "engineering_math_analysis_2",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+      "weak_topics": [
+        "核心概念"
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus",
+        "requires_citation": true
+      }
+    },
+    {
+      "case_id": "exam-review-sweep-engineering_math_analysis_2-without_syllabus",
+      "category": "exam_review_without_syllabus",
+      "course_id": "engineering_math_analysis_2",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": null,
+      "weak_topics": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请帮我备考这门课的期末考试。"
+        }
+      ],
+      "expected": {
+        "requires_exam_review_plan": true,
+        "review_path": "without_syllabus",
+        "requires_citation": true
+      }
+    }
+  ],
+  "_note_1": "2026-08-23：初版漏设 requires_citation，_check_expected 默认 False 反向断言'不得有引用'导致全数误报；备考复习本就应引用仓库资料，补上 true。"
+}

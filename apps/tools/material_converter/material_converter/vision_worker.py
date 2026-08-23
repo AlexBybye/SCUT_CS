@@ -24,9 +24,12 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[4]
-ENV_FILE = REPO / ".cache/glm4v.env"
+# GLM4V_ENV / GLM4V_RESULTS let side experiments (e.g. the glm-4.6V probe rerun
+# of the PNG-fallback waiver queue) run fully isolated from the historical
+# glm-4v-flash configuration and results file.
+ENV_FILE = Path(os.environ.get("GLM4V_ENV") or (REPO / ".cache/glm4v.env"))
 JOBS = Path(__file__).resolve().parent.parent / ".ai_jobs"
-RESULTS = JOBS / "_vision_results.jsonl"
+RESULTS = Path(os.environ.get("GLM4V_RESULTS") or (JOBS / "_vision_results.jsonl"))
 
 PROMPT = (
     "你是数学公式OCR引擎。识别图片中的数学表达式，只输出它的 LaTeX 代码："
@@ -76,7 +79,7 @@ def _call_glm(image_path: Path, timeout: int = 60) -> str:
                  "Content-Type": "application/json"},
     )
     last_err = None
-    for attempt in range(4):
+    for attempt in range(6):
         try:
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 data = json.loads(resp.read().decode())
@@ -84,7 +87,9 @@ def _call_glm(image_path: Path, timeout: int = 60) -> str:
         except urllib.error.HTTPError as e:
             last_err = f"HTTP {e.code}"
             if e.code in (429, 500, 502, 503, 504):
-                time.sleep(3 * (attempt + 1))
+                # free-tier vision endpoints rate-limit aggressively; back off
+                # hard on 429 so a full waiver-queue rerun can grind through
+                time.sleep(min(90, (8 if e.code == 429 else 3) * (attempt + 1)))
                 continue
             raise
         except Exception as e:  # noqa: BLE001
@@ -207,29 +212,44 @@ def transcribe_one(image_path: Path) -> dict:
     return {"path": str(image_path), "latex": "", "why": "implausible-or-render"}
 
 
-def run(limit: int | None = None, workers: int = 4) -> None:
+def run(limit: int | None = None, workers: int = 4,
+        targets_file: str | None = None) -> None:
     uniq = json.loads((JOBS / "_unique_images.json").read_text(encoding="utf-8"))
     done = set()
     if RESULTS.exists():
         for line in RESULTS.read_text(encoding="utf-8").splitlines():
             try:
-                done.add(json.loads(line)["path"])
+                rec = json.loads(line)
+                # transient transport failures (e.g. HTTP 429) must not mark
+                # an image as done, or a resumed run would silently skip it
+                if str(rec.get("why", "")).startswith("api-error"):
+                    continue
+                done.add(rec["path"])
             except Exception:
                 pass
-    todo = []
-    for h, paths in uniq.items():
-        p = paths[0] if isinstance(paths, list) else paths
-        if p not in done:
-            todo.append(Path(p))
+    if targets_file:
+        # explicit rerun list (e.g. the PNG-fallback waiver queue); accepts a
+        # hash->path dict, hash->[paths] dict or a plain path list
+        raw = json.loads(Path(targets_file).read_text(encoding="utf-8"))
+        vals = raw.values() if isinstance(raw, dict) else raw
+        wanted = [Path(v[0] if isinstance(v, list) else v) for v in vals]
+    else:
+        wanted = [
+            Path(paths[0] if isinstance(paths, list) else paths)
+            for paths in uniq.values()
+        ]
+    todo = [p for p in wanted if str(p) not in done]
     if limit:
         todo = todo[:limit]
     print(f"todo={len(todo)} done={len(done)} workers={workers}", flush=True)
     ok = bad = 0
+    _model_tag = load_cfg().get("GLM_MODEL", "")
     with RESULTS.open("a", encoding="utf-8") as out, \
             ThreadPoolExecutor(max_workers=workers) as pool:
         futs = {pool.submit(transcribe_one, p): p for p in todo}
         for i, fut in enumerate(as_completed(futs), 1):
             r = fut.result()
+            r["model"] = _model_tag
             out.write(json.dumps(r, ensure_ascii=False) + "\n")
             out.flush()
             if r["latex"]:
@@ -245,9 +265,12 @@ def run(limit: int | None = None, workers: int = 4) -> None:
 if __name__ == "__main__":
     lim = None
     wk = 4
+    tf = None
     args = sys.argv[1:]
     if "--sample" in args:
         lim = int(args[args.index("--sample") + 1])
     if "--workers" in args:
         wk = int(args[args.index("--workers") + 1])
-    run(limit=lim, workers=wk)
+    if "--targets" in args:
+        tf = args[args.index("--targets") + 1]
+    run(limit=lim, workers=wk, targets_file=tf)

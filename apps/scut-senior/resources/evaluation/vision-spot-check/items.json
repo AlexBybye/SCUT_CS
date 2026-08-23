@@ -1,0 +1,315 @@
+{
+  "sample_target": 30,
+  "seed": 20260823,
+  "courses": {
+    "probability": 553,
+    "computing_methods": 75,
+    "information_security_mathematics": 2,
+    "university_physics_3_1": 26,
+    "mathematical_modeling": 2,
+    "software_testing": 1
+  },
+  "unrecoverable_others_pool_surplus": 106,
+  "items": [
+    {
+      "id": 1,
+      "source_id": "probability-theory-035",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-035/image-100.png",
+      "latex": "f_{Y}(y)=\\int_{-\\infty}^{+\\infty}f(x,y)dx=\\int_0^12\\frac{1}{1-e^{-1}}e^{-(x+2)^2}dx=2e^{-2^2},(y>0)",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/01-original.png",
+      "rendered_file": "vision-spot-check/01-rendered.png"
+    },
+    {
+      "id": 2,
+      "source_id": "probability-theory-033",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-033/image-248.png",
+      "latex": "x=99.975,s^2=1.102,t=\\frac{\\overline{x}-\\mu_0}{s/\\sqrt{n-1}}=-0.063",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/02-original.png",
+      "rendered_file": "vision-spot-check/02-rendered.png"
+    },
+    {
+      "id": 3,
+      "source_id": "probability-theory-012",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-012/image-113.png",
+      "latex": "DT_{2}=\\frac{2(n+1)}{n+2}\\theta^{2}-\\theta^{2}=\\frac{n}{n+2}\\theta^{2}",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/03-original.png",
+      "rendered_file": "vision-spot-check/03-rendered.png"
+    },
+    {
+      "id": 4,
+      "source_id": "probability-theory-031",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-031/image-006.png",
+      "latex": "A_1",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/04-original.png",
+      "rendered_file": "vision-spot-check/04-rendered.png"
+    },
+    {
+      "id": 5,
+      "source_id": "probability-theory-012",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-012/image-077.png",
+      "latex": "T_1",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/05-original.png",
+      "rendered_file": "vision-spot-check/05-rendered.png"
+    },
+    {
+      "id": 6,
+      "source_id": "probability-theory-031",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-031/image-086.png",
+      "latex": "\\hat{\\theta}",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/06-original.png",
+      "rendered_file": "vision-spot-check/06-rendered.png"
+    },
+    {
+      "id": 7,
+      "source_id": "probability-theory-035",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-035/image-058.png",
+      "latex": "alpha",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/07-original.png",
+      "rendered_file": "vision-spot-check/07-rendered.png"
+    },
+    {
+      "id": 8,
+      "source_id": "probability-theory-036",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-036/image-012.png",
+      "latex": "X_{1},X_{2},X_{3}",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/08-original.png",
+      "rendered_file": "vision-spot-check/08-rendered.png"
+    },
+    {
+      "id": 9,
+      "source_id": "probability-theory-032",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-032/image-096.png",
+      "latex": "\\hat{\\theta}_{2}",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/09-original.png",
+      "rendered_file": "vision-spot-check/09-rendered.png"
+    },
+    {
+      "id": 10,
+      "source_id": "probability-theory-033",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-033/image-236.png",
+      "latex": "T_2",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/10-original.png",
+      "rendered_file": "vision-spot-check/10-rendered.png"
+    },
+    {
+      "id": 11,
+      "source_id": "probability-theory-012",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-012/image-073.png",
+      "latex": "T_{1}=\\frac{n+1}{n}\\hat{\\theta}_{2}",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/11-original.png",
+      "rendered_file": "vision-spot-check/11-rendered.png"
+    },
+    {
+      "id": 12,
+      "source_id": "probability-theory-035",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-035/image-025.png",
+      "latex": "\\frac{1}{2\\sqrt{\\pi}}e^{-y^{2}/8}",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/12-original.png",
+      "rendered_file": "vision-spot-check/12-rendered.png"
+    },
+    {
+      "id": 13,
+      "source_id": "probability-theory-028",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-028/image-146.png",
+      "latex": "-\\frac{n}{\\hat{\\theta}}+\\frac{1}{\\hat{\\theta}^{2}}\\sum_{i=1}^{n}|x_i|=0",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/13-original.png",
+      "rendered_file": "vision-spot-check/13-rendered.png"
+    },
+    {
+      "id": 14,
+      "source_id": "probability-theory-033",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-033/image-244.png",
+      "latex": "H_1:\\mu_0=100",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/14-original.png",
+      "rendered_file": "vision-spot-check/14-rendered.png"
+    },
+    {
+      "id": 15,
+      "source_id": "probability-theory-029",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-029/image-004.png",
+      "latex": "E[(X-1)(X-2)]=1",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/15-original.png",
+      "rendered_file": "vision-spot-check/15-rendered.png"
+    },
+    {
+      "id": 16,
+      "source_id": "probability-theory-029",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-029/image-040.png",
+      "latex": "Y=X^{2}",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/16-original.png",
+      "rendered_file": "vision-spot-check/16-rendered.png"
+    },
+    {
+      "id": 17,
+      "source_id": "probability-theory-015",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-015/image-033.png",
+      "latex": "(C)p",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/17-original.png",
+      "rendered_file": "vision-spot-check/17-rendered.png"
+    },
+    {
+      "id": 18,
+      "source_id": "probability-theory-015",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-015/image-004.png",
+      "latex": "X",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/18-original.png",
+      "rendered_file": "vision-spot-check/18-rendered.png"
+    },
+    {
+      "id": 19,
+      "source_id": "probability-theory-032",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-032/image-073.png",
+      "latex": "6p(1-p)^2",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/19-original.png",
+      "rendered_file": "vision-spot-check/19-rendered.png"
+    },
+    {
+      "id": 20,
+      "source_id": "probability-theory-036",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-036/image-138.png",
+      "latex": "\\int_{36C}^{36C}\\frac{1}{\\sqrt{2\\pi}}e^{-\\frac{x^2}{2}}dx=",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/20-original.png",
+      "rendered_file": "vision-spot-check/20-rendered.png"
+    },
+    {
+      "id": 21,
+      "source_id": "probability-theory-033",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-033/image-121.png",
+      "latex": "EX=0,EY=1,",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/21-original.png",
+      "rendered_file": "vision-spot-check/21-rendered.png"
+    },
+    {
+      "id": 22,
+      "source_id": "probability-theory-032",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-032/image-086.png",
+      "latex": "Cov(X,Y)",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/22-original.png",
+      "rendered_file": "vision-spot-check/22-rendered.png"
+    },
+    {
+      "id": 23,
+      "source_id": "probability-theory-028",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-028/image-123.png",
+      "latex": "\\left[\\frac{nS_n^2}{\\chi_{1-\\frac{\\alpha}{2}}^2(n-1)},\\frac{nS_n^2}{\\chi_{\\frac{\\alpha}{2}}^2(n-1)}\\right]=[0.548,3.559]",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/23-original.png",
+      "rendered_file": "vision-spot-check/23-rendered.png"
+    },
+    {
+      "id": 24,
+      "source_id": "probability-theory-035",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-035/image-017.png",
+      "latex": "1-(1-F(1))^3;",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/24-original.png",
+      "rendered_file": "vision-spot-check/24-rendered.png"
+    },
+    {
+      "id": 25,
+      "source_id": "probability-theory-035",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-035/image-003.png",
+      "latex": "P(B)=0.",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/25-original.png",
+      "rendered_file": "vision-spot-check/25-rendered.png"
+    },
+    {
+      "id": 26,
+      "source_id": "probability-theory-036",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-036/image-034.png",
+      "latex": "A",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/26-original.png",
+      "rendered_file": "vision-spot-check/26-rendered.png"
+    },
+    {
+      "id": 27,
+      "source_id": "probability-theory-031",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-031/image-008.png",
+      "latex": "A_3",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/27-original.png",
+      "rendered_file": "vision-spot-check/27-rendered.png"
+    },
+    {
+      "id": 28,
+      "source_id": "probability-theory-036",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-036/image-082.png",
+      "latex": "Y",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/28-original.png",
+      "rendered_file": "vision-spot-check/28-rendered.png"
+    },
+    {
+      "id": 29,
+      "source_id": "probability-theory-033",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-033/image-068.png",
+      "latex": "\\frac{\\bar{X}}{S/\\sqrt{n-1}}\\sim\\frac{\\bar{X}}{S}",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/29-original.png",
+      "rendered_file": "vision-spot-check/29-rendered.png"
+    },
+    {
+      "id": 30,
+      "source_id": "probability-theory-012",
+      "image_repo_path": "apps/scut-senior/knowledge/probability/assets/probability-theory-012/image-087.png",
+      "latex": "L(x_1,x_2,...,x_n;\\theta)",
+      "rendered_ok": true,
+      "original_recovered_from_git": false,
+      "original_file": "vision-spot-check/30-original.png",
+      "rendered_file": "vision-spot-check/30-rendered.png"
+    }
+  ]
+}

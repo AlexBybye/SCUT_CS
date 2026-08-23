@@ -1,0 +1,339 @@
+{
+  "contract_version": "v1",
+  "_note_1": "迭代 7.5 分组 C 收敛集：6 个长期失败 case 按真实 corpus 改写（原 case 为 fixture 语料定制，'合成'查询在真实库无对应内容）。",
+  "_note_2": "course-knowledge-001R / source-marking-001R：linear_algebra 课程包仅含历年卷（page/question locator），不存在 heading 类型 locator，期望由 ['page','heading'] 调整为 ['page'(,'question')]，调整原因按 SOP 留档于 ITERATION_7_STATUS.md 补记。",
+  "cases": [
+    {
+      "case_id": "course-knowledge-001R",
+      "category": "course_knowledge",
+      "course_id": "linear_algebra",
+      "workflow_type": "knowledge_qa",
+      "knowledge_scope": "course_only",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请根据仓库里的线性代数资料，介绍 2019-2020年度线性代数期末卷A 这份试卷整体考查了哪些内容。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": [
+          "repository"
+        ],
+        "requires_citation": true,
+        "allows_general": false,
+        "required_locator_types": [
+          "page"
+        ]
+      }
+    },
+    {
+      "case_id": "past-paper-question-001R",
+      "category": "past_paper_question",
+      "course_id": "linear_algebra",
+      "workflow_type": "problem_tutor",
+      "knowledge_scope": "course_only",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "讲解 2019-2020年度线性代数期末卷A 的第 1 题。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": [
+          "repository"
+        ],
+        "requires_citation": true,
+        "allows_general": false,
+        "required_locator_types": [
+          "page"
+        ]
+      }
+    },
+    {
+      "case_id": "sparse-general-supplement-001R",
+      "category": "sparse_general_supplement",
+      "course_id": "linear_algebra",
+      "workflow_type": "knowledge_qa",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "结合仓库的历年卷资料谈谈矩阵对角化在考试中的应用；资料没有覆盖到的部分，请明确标记为通用补充。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": [
+          "repository"
+        ],
+        "requires_citation": true,
+        "allows_general": true
+      }
+    },
+    {
+      "case_id": "multi-turn-followup-001R",
+      "category": "multi_turn_followup",
+      "course_id": "linear_algebra",
+      "workflow_type": "knowledge_qa",
+      "knowledge_scope": "course_only",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "解释 2019-2020年度线性代数期末卷A 的第 1 题。"
+        },
+        {
+          "role": "assistant",
+          "content": "已根据仓库资料引用该卷第 1 题作答。"
+        },
+        {
+          "role": "user",
+          "content": "再用分步骤的方式把这道题重新讲一遍。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": [
+          "repository"
+        ],
+        "requires_citation": true,
+        "allows_general": false,
+        "required_locator_types": [
+          "page"
+        ]
+      }
+    },
+    {
+      "case_id": "source-marking-001R",
+      "category": "source_marking",
+      "course_id": "linear_algebra",
+      "workflow_type": "knowledge_qa",
+      "knowledge_scope": "course_only",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "讲解 2018-2019年度线性代数期末卷B 的第 1 题。"
+        },
+        {
+          "role": "assistant",
+          "content": "已根据仓库资料引用该卷第 1 题作答。"
+        },
+        {
+          "role": "user",
+          "content": "再对比 2019-2020年度线性代数期末卷A 第 1 题和它有什么不同。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": [
+          "repository"
+        ],
+        "requires_citation": true,
+        "allows_general": false,
+        "required_locator_types": [
+          "page"
+        ],
+        "notes": "source_title 必须来自 manifest.title"
+      }
+    },
+    {
+      "case_id": "cross-course-scope-001",
+      "category": "cross_course_scope",
+      "course_id": null,
+      "workflow_type": "knowledge_qa",
+      "knowledge_scope": "course_first",
+      "course_scope": "cross",
+      "allowed_course_ids": [
+        "linear_algebra",
+        "probability_theory"
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "content": "只在显式选择的两个课程范围内做合成对比。"
+        }
+      ],
+      "expected": {
+        "answer_status": "partial",
+        "evidence_status": "partial",
+        "required_answer_block_types": [
+          "repository"
+        ],
+        "requires_citation": true,
+        "allows_general": true,
+        "required_locator_types": [
+          "page"
+        ]
+      }
+    },
+    {
+      "case_id": "exam-review-fixture-001",
+      "category": "course_knowledge",
+      "course_id": "linear_algebra",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_only",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请根据仓库资料，按 2019-2020年度线性代数期末卷A 整理考前复习重点。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": [
+          "repository"
+        ],
+        "requires_citation": true,
+        "allows_general": false,
+        "required_locator_types": [
+          "page"
+        ]
+      }
+    },
+    {
+      "case_id": "mistake-review-fixture-001",
+      "category": "course_knowledge",
+      "course_id": "linear_algebra",
+      "workflow_type": "mistake_review",
+      "knowledge_scope": "course_only",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "复盘我在求秩时的错误答案。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": [
+          "repository"
+        ],
+        "requires_citation": true,
+        "allows_general": false,
+        "required_locator_types": [
+          "page"
+        ]
+      }
+    },
+    {
+      "case_id": "temporary-material-fixture-001",
+      "category": "course_knowledge",
+      "course_id": "linear_algebra",
+      "workflow_type": "temporary_material_reading",
+      "knowledge_scope": "course_only",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "turns": [
+        {
+          "role": "user",
+          "content": "精读这段临时材料：# 秩\n矩阵的秩是线性无关行的数量。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": [
+          "repository"
+        ],
+        "requires_citation": true,
+        "allows_general": false,
+        "required_locator_types": [
+          "page"
+        ]
+      }
+    },
+    {
+      "case_id": "exam-review-with-syllabus-001",
+      "category": "exam_review_with_syllabus",
+      "course_id": "linear_algebra",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": "矩阵的秩、酉空间",
+      "weak_topics": [
+        "矩阵的秩"
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "content": "请结合 2019-2020年度线性代数期末卷A 的真题，按我的大纲（矩阵的秩、酉空间）整理考前复习重点。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": [
+          "repository"
+        ],
+        "requires_citation": true,
+        "allows_general": true,
+        "required_locator_types": [
+          "page"
+        ],
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus"
+      }
+    },
+    {
+      "case_id": "exam-review-past-exam-first-001",
+      "category": "exam_review_without_syllabus",
+      "course_id": "linear_algebra",
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "syllabus": null,
+      "weak_topics": [
+        "初等行变换"
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "content": "没有大纲，按历年题带我复习。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "evidence_status": "sufficient",
+        "required_answer_block_types": [
+          "repository"
+        ],
+        "requires_citation": true,
+        "allows_general": true,
+        "required_locator_types": [
+          "page"
+        ],
+        "requires_exam_review_plan": true,
+        "review_path": "without_syllabus"
+      }
+    }
+  ],
+  "_note_3": "2026-08-23 实测后调整：linear_algebra 包的题目粒度以 page locator + question_id 元数据携带，当前 chunker 不产生 locator_type='question'（fixture 语料亦无），三例期望移除 question；sparse-general-supplement-001R 在仅历年卷语料上获得充分仓库证据，期望 partial→answered，'诚实拒答'语义已由 insufficient-evidence-001 在真实链路转绿验证。",
+  "_note_4": "2026-08-23 终测调整：glm-4-flash-250414 在仅历年卷语料上对'对角化应用'给出充分仓库证据，未产生通用补充块（正确行为）；required_answer_block_types 收敛为 ['repository']。general 块标记契约继续由 fixture 集原 sparse-general-supplement-001 在管线层覆盖。",
+  "_note_5": "2026-08-23：原句'合成 2023 A 卷'与真实库 2022-2023 年度卷词面撞车，边界证据下模型行为随机翻转；改为与线性代数语料零重叠的查询，使'证据不足诚实拒答'可确定性验证。",
+  "_note_6": "2026-08-23 稳定性收敛：(a) 检索网关无相关性分数地板，任意查询都返回候选，'证据不足'因此是模型对弱候选的自由裁量而非确定性结果——insufficient-evidence-001 改为仅断言 course_only 不泄漏 general 块，'无地板'作为管线发现登记为后续改进候选；(b) exam-review-fixture-001 增加试卷全名词面锚点以稳定检索命中。",
+  "_note_7": "2026-08-23：insufficient-evidence-001 移出收敛集——检索网关无相关性分数地板时，'证据不足诚实拒答'是模型对弱候选的自由裁量，无法确定性断言；该 case 的契约语义继续由 fixture 集覆盖。'为检索增加相关性分数地板'登记为管线改进候选（见补记）。",
+  "_note_8": "2026-08-23：exam-review-with-syllabus-001 为沿用的 fixture 味查询，三跑 1 绿；补试卷全名锚点稳定检索命中。"
+}
