@@ -30,6 +30,11 @@ class Settings:
     # only gates the plan node, appendix and past-exam-first retrieval query;
     # turning it off restores the pre-iteration-5 exam_review behaviour.
     exam_review_plan_enabled: bool = True
+    # Iteration 7.5 (SOP §12A Group B): in-process periodic cleanup scheduler.
+    # Decision gate confirmed form = in-process daemon thread for single-host
+    # deployment; disabling restores startup/access-triggered cleanup only.
+    maintenance_scheduler_enabled: bool = True
+    maintenance_interval_seconds: int = 3600
     openrouter_api_key: str | None = field(default=None, repr=False)
     zhipu_api_key: str | None = field(default=None, repr=False)
     byok_master_key: str | None = field(default=None, repr=False)
@@ -65,6 +70,12 @@ class Settings:
             ),
             exam_review_plan_enabled=_env_bool(
                 "SCUT_SENIOR_EXAM_REVIEW_PLAN_ENABLED", True
+            ),
+            maintenance_scheduler_enabled=_env_bool(
+                "SCUT_SENIOR_MAINTENANCE_SCHEDULER_ENABLED", True
+            ),
+            maintenance_interval_seconds=_env_positive_int(
+                "SCUT_SENIOR_MAINTENANCE_INTERVAL_SECONDS", 3600
             ),
             openrouter_api_key=os.getenv("SCUT_SENIOR_OPENROUTER_API_KEY"),
             zhipu_api_key=os.getenv("SCUT_SENIOR_ZHIPU_API_KEY"),
@@ -126,6 +137,12 @@ class Settings:
         if self.storage_mode not in {"sqlite_mock", "sqlite"}:
             raise UnsafeRuntimeConfiguration(
                 f"unknown storage mode: {self.storage_mode}"
+            )
+        if isinstance(self.maintenance_interval_seconds, bool) or (
+            self.maintenance_interval_seconds < 1
+        ):
+            raise UnsafeRuntimeConfiguration(
+                "SCUT_SENIOR_MAINTENANCE_INTERVAL_SECONDS must be a positive integer"
             )
         if self.retrieval_mode not in {"fixture", "local_corpus"}:
             raise UnsafeRuntimeConfiguration(

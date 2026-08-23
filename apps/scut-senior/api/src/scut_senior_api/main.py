@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+from contextlib import asynccontextmanager
 from hmac import compare_digest
 from uuid import UUID
 
@@ -92,6 +93,7 @@ from .harness_registry import (
     derive_course_plugin_states,
 )
 from .contributions import ContributionTransitionError
+from .maintenance import MaintenanceScheduler
 from .model_catalog import (
     ModelCatalog,
     ModelCatalogResponse,
@@ -356,10 +358,31 @@ def create_app(
         ),
     )
 
+    maintenance_scheduler: MaintenanceScheduler | None = None
+    if isinstance(repository, SQLiteWorkflowRepository):
+        maintenance_scheduler = MaintenanceScheduler(
+            repository,
+            interval_seconds=float(active_settings.maintenance_interval_seconds),
+            clock=clock,
+        )
+
+    @asynccontextmanager
+    async def _maintenance_lifespan(_: FastAPI):
+        # 迭代 7.5：启动补扫一次后按固定间隔周期清理；停机等待当前轮结束。
+        scheduler = app.state.maintenance_scheduler
+        if scheduler is not None and active_settings.maintenance_scheduler_enabled:
+            scheduler.start()
+        try:
+            yield
+        finally:
+            if scheduler is not None:
+                scheduler.stop(timeout=5.0)
+
     app = FastAPI(
         title="SCUT Senior API",
         version="0.1.0",
         description="SCUT Senior backend contract and guarded model-routing slice.",
+        lifespan=_maintenance_lifespan,
     )
     app.add_middleware(
         _RequestBodyLimitMiddleware,
@@ -377,6 +400,7 @@ def create_app(
     app.state.registry = registry
     app.state.service = service
     app.state.repository = repository
+    app.state.maintenance_scheduler = maintenance_scheduler
     app.state.github_oauth_adapter = oauth_adapter
     app.state.model_catalog = model_catalog
     app.state.byok_catalog = model_catalog.byok_catalog
@@ -570,6 +594,11 @@ def create_app(
                 "temporary_material_ttl_7d": True,
                 "contribution_maintainer_queue": True,
                 "github_app_auto_pr": False,
+                # 迭代 7.5：进程内周期清理调度器（决策门确认形态）。
+                "periodic_cleanup_scheduler": (
+                    maintenance_scheduler is not None
+                    and active_settings.maintenance_scheduler_enabled
+                ),
             },
         }
 
