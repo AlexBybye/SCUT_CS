@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from collections.abc import Callable
 from pathlib import Path
 
 from scut_senior_worker.corpus_validator import parse_markdown, validate_corpus
@@ -116,6 +117,8 @@ class MockModelGateway:
         request: WorkflowRunRequest,
         sources: list[RetrievedSource],
         history: tuple[ConversationTurn, ...] = (),
+        *,
+        cancel_check: Callable[[], bool] | None = None,
     ) -> GeneratedAnswer:
         workflow_focus = build_workflow_focus(request)
         control_note = (

@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import asyncio
 import json
+import logging
+from contextlib import asynccontextmanager
 from hmac import compare_digest
 from uuid import UUID
 
@@ -59,8 +61,11 @@ from .auth import (
     utc_now,
 )
 from .config import Settings
+
+LOGGER = logging.getLogger("scut_senior.api")
 from .course_availability import derive_course_runtime_availability
 from .contracts import (
+    AccountDeletionSummary,
     ContributionDraftSubmit,
     ContributionPreview,
     ContributionPreviewRequest,
@@ -92,6 +97,8 @@ from .harness_registry import (
     derive_course_plugin_states,
 )
 from .contributions import ContributionTransitionError
+from .maintenance import MaintenanceScheduler
+from .quota import SqlitePlatformQuotaStore
 from .model_catalog import (
     ModelCatalog,
     ModelCatalogResponse,
@@ -275,6 +282,13 @@ def create_app(
         zhipu_health_checker=zhipu_health_checker,
         clock=clock,
     )
+    resources = BilibiliLinkDiscoveryAdapter()
+    repository = SQLiteWorkflowRepository(
+        active_settings.database_path,
+        clock=clock,
+        state_token_factory=oauth_state_token_factory,
+        session_token_factory=session_token_factory,
+    )
     if platform_credential_configured and openrouter_configured:
         if active_settings.app_env == "test" and model_http_client is None:
             model_http_client = FailClosedJsonHttpClient()
@@ -287,6 +301,8 @@ def create_app(
             ],
             http_client=model_http_client,
             clock=clock,
+            # 迭代 7.5：RPM／每日额度锁存迁移到多 worker 共享存储。
+            quota_store=SqlitePlatformQuotaStore(repository),
         )
     else:
         model = MockModelGateway()
@@ -303,13 +319,6 @@ def create_app(
             ],
             http_client=zhipu_http_client,
         )
-    resources = BilibiliLinkDiscoveryAdapter()
-    repository = SQLiteWorkflowRepository(
-        active_settings.database_path,
-        clock=clock,
-        state_token_factory=oauth_state_token_factory,
-        session_token_factory=session_token_factory,
-    )
     credential_manager = ModelCredentialManager(
         repository=repository,
         catalog=model_catalog.byok_catalog,
@@ -356,10 +365,31 @@ def create_app(
         ),
     )
 
+    maintenance_scheduler: MaintenanceScheduler | None = None
+    if isinstance(repository, SQLiteWorkflowRepository):
+        maintenance_scheduler = MaintenanceScheduler(
+            repository,
+            interval_seconds=float(active_settings.maintenance_interval_seconds),
+            clock=clock,
+        )
+
+    @asynccontextmanager
+    async def _maintenance_lifespan(_: FastAPI):
+        # 迭代 7.5：启动补扫一次后按固定间隔周期清理；停机等待当前轮结束。
+        scheduler = app.state.maintenance_scheduler
+        if scheduler is not None and active_settings.maintenance_scheduler_enabled:
+            scheduler.start()
+        try:
+            yield
+        finally:
+            if scheduler is not None:
+                scheduler.stop(timeout=5.0)
+
     app = FastAPI(
         title="SCUT Senior API",
         version="0.1.0",
         description="SCUT Senior backend contract and guarded model-routing slice.",
+        lifespan=_maintenance_lifespan,
     )
     app.add_middleware(
         _RequestBodyLimitMiddleware,
@@ -377,6 +407,7 @@ def create_app(
     app.state.registry = registry
     app.state.service = service
     app.state.repository = repository
+    app.state.maintenance_scheduler = maintenance_scheduler
     app.state.github_oauth_adapter = oauth_adapter
     app.state.model_catalog = model_catalog
     app.state.byok_catalog = model_catalog.byok_catalog
@@ -570,6 +601,11 @@ def create_app(
                 "temporary_material_ttl_7d": True,
                 "contribution_maintainer_queue": True,
                 "github_app_auto_pr": False,
+                # 迭代 7.5：进程内周期清理调度器（决策门确认形态）。
+                "periodic_cleanup_scheduler": (
+                    maintenance_scheduler is not None
+                    and active_settings.maintenance_scheduler_enabled
+                ),
             },
         }
 
@@ -630,6 +666,12 @@ def create_app(
             raise OAuthStateInvalid()
 
         identity = oauth_adapter.authenticate(code)
+        # 迭代 7.5：注销封锁名单——注销后的 GitHub 身份无法再次登录。
+        if repository.account_is_deleted(identity.github_id):
+            raise GitHubOAuthError(
+                code="account_deleted",
+                detail="该账号已注销，无法再次登录。",
+            )
         user_id = repository.upsert_github_user(
             GitHubUserProfile(
                 github_user_id=identity.github_id,
@@ -665,6 +707,40 @@ def create_app(
         response = JSONResponse({"logged_out": not user.is_mock})
         _clear_session_cookie(response)
         response.headers["Cache-Control"] = "no-store"
+        return response
+
+    @app.get("/api/v1/account/export")
+    def export_account_data(
+        user: AuthenticatedPrincipal = Depends(require_github_user),
+    ) -> Response:
+        """导出本人数据：不含他人资源，不含任何模型凭据（密文或明文）。"""
+
+        payload = service.export_account(user)
+        body = json.dumps(payload.model_dump(mode="json"), ensure_ascii=False)
+        return Response(
+            content=body,
+            media_type="application/json",
+            headers={
+                "Content-Disposition": (
+                    f'attachment; filename="scut-senior-account-export-'
+                    f'{user.user_id}.json"'
+                ),
+                "Cache-Control": "private, no-store",
+            },
+        )
+
+    @app.delete("/api/v1/account", response_model=AccountDeletionSummary)
+    def delete_account(
+        request: Request,
+        user: AuthenticatedPrincipal = Depends(require_github_user),
+    ) -> Response:
+        """注销：物理删除本人全部私有数据并封锁再次登录。"""
+
+        summary = service.delete_account(user)
+        repository.revoke_session(request.cookies.get(SESSION_COOKIE_NAME, ""))
+        response = JSONResponse(summary.model_dump(mode="json"))
+        _clear_session_cookie(response)
+        response.headers["Cache-Control"] = "private, no-store"
         return response
 
     @app.get("/api/v1/me")
@@ -912,9 +988,19 @@ def create_app(
                         separators=(",", ":"),
                     ) + "\n"
                 await task
-            except asyncio.CancelledError:
-                # 客户端断开（网络波动/关页）≠ 用户取消：不打断正在执行的
-                # 运行，让它完成后持久化终态；用户稍后重新读取即可拿到结果。
+            except (asyncio.CancelledError, GeneratorExit):
+                # 迭代 7.5（SOP §12A 分组 B）：取代迭代 5"客户端断开后后台跑
+                # 完落库"的过渡语义——页面断开（aclose 触发 GeneratorExit，
+                # 任务取消触发 CancelledError）即请求尽力取消上游调用：
+                # cancel_check 置位后可取消 transport 放弃等待，运行在下一个
+                # 节点边界收敛为 interrupted 并留 trace／日志证据。供应商侧
+                # 是否因此停止计费只如实描述，不冒充已完成取消。
+                session.cancel()
+                LOGGER.warning(
+                    "stream disconnected; best-effort upstream cancellation "
+                    "requested for workflow run %s",
+                    run_key,
+                )
                 raise
             finally:
                 _ACTIVE_STREAMS.pop(run_key, None)

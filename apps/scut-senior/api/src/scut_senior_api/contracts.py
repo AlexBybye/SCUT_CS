@@ -776,3 +776,86 @@ class MaintainerContributionExport(ContractModel):
     char_count: int
     suggested_branch: str
     suggested_commands: list[str] = Field(default_factory=list)
+
+
+# ---------------------------------------------------------------------------
+# 迭代 7.5（SOP §12A 分组 B / §16 待确认项 3）：账号注销与数据导出。
+# ---------------------------------------------------------------------------
+
+
+class AccountDeletionSummary(ContractModel):
+    """注销结果：各表物理删除的行数（审计口径，不含封锁名单本身）。"""
+
+    conversations: int
+    workflow_runs: int
+    feedback: int
+    temporary_materials: int
+    contributions: int
+    model_credentials: int
+    auth_sessions: int
+    login_blocked: bool = True
+    deleted_at: datetime
+
+
+class AccountExportContribution(ContractModel):
+    contribution_id: UUID
+    course_id: str
+    proposed_source_id: str
+    title: str
+    state: ContributionState
+    pr_url: str | None
+    char_count: int
+    content_snapshot: str
+    created_at: datetime
+    expires_at: datetime
+
+
+class AccountExportMaterial(ContractModel):
+    """临时材料只导出元数据；7 天 TTL 的短命数据不鼓励长期留存。"""
+
+    material_id: UUID
+    conversation_id: UUID
+    course_id: str
+    title: str | None
+    char_count: int
+    created_at: datetime
+    expires_at: datetime
+
+
+class AccountExportRun(ContractModel):
+    workflow_run_id: UUID
+    conversation_id: UUID
+    workflow_type: str
+    run_status: str
+    answer_status: str
+    request: dict[str, Any]
+    result: dict[str, Any]
+    created_at: datetime
+    expires_at: datetime
+
+
+class AccountExportConversation(ContractModel):
+    conversation_id: UUID
+    course_id: str
+    title: str
+    created_at: datetime
+    updated_at: datetime
+    expires_at: datetime
+
+
+class AccountExport(ContractModel):
+    """本人数据导出包。
+
+    只包含导出发起者自己的历史、贡献与临时材料元数据；不含他人资源，
+    不含任何模型凭据（既无密文也无明文，凭据数据不进入导出路径）。
+    """
+
+    schema_version: Literal["scut-senior-account-export-v1"]
+    github_login: str
+    display_name: str
+    account_created_at: datetime
+    exported_at: datetime
+    conversations: list[AccountExportConversation]
+    runs: list[AccountExportRun]
+    contributions: list[AccountExportContribution]
+    temporary_materials: list[AccountExportMaterial]

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import timedelta
+from datetime import datetime, timedelta
 from time import perf_counter
 from uuid import UUID, uuid4
 
@@ -15,6 +15,12 @@ from .byok_catalog import (
 )
 from .config import Settings
 from .contracts import (
+    AccountDeletionSummary,
+    AccountExport,
+    AccountExportConversation,
+    AccountExportContribution,
+    AccountExportMaterial,
+    AccountExportRun,
     AnswerBlock,
     AnswerBlockType,
     AnswerStatus,
@@ -98,6 +104,13 @@ from .workflow_focus import build_workflow_focus, enforce_tone_visible_callout
 
 class ResourceNotFound(LookupError):
     pass
+
+
+def _parse_iso(value: str) -> datetime:
+    parsed = datetime.fromisoformat(value)
+    if parsed.tzinfo is None:
+        raise ValueError("stored timestamps must be timezone-aware")
+    return parsed
 
 
 class ContractConflict(ValueError):
@@ -539,6 +552,118 @@ class IterationZeroService:
             suggested_branch=branch,
             suggested_commands=suggested_commands,
         )
+
+    def delete_account(self, user: AuthenticatedPrincipal) -> AccountDeletionSummary:
+        """注销：物理删除本人全部私有数据并封锁再次登录（§16 待确认项 3）。"""
+
+        repository = self._require_account_lifecycle_repository()
+        try:
+            counts = repository.delete_account(str(user.user_id))
+        except LookupError as exc:
+            raise ResourceNotFound("account not found") from exc
+        return AccountDeletionSummary(
+            conversations=counts["conversations"],
+            workflow_runs=counts["workflow_runs"],
+            feedback=counts["feedback"],
+            temporary_materials=counts["temporary_materials"],
+            contributions=counts["contributions"],
+            model_credentials=counts["model_credentials"],
+            auth_sessions=counts["auth_sessions"],
+            login_blocked=True,
+            deleted_at=self.repository_clock(),
+        )
+
+    def export_account(self, user: AuthenticatedPrincipal) -> AccountExport:
+        """导出本人数据；不含他人资源与任何模型凭据（密文或明文）。"""
+
+        repository = self._require_account_lifecycle_repository()
+        try:
+            payload = repository.export_account_data(str(user.user_id))
+        except LookupError as exc:
+            raise ResourceNotFound("account not found") from exc
+        conversations = [
+            AccountExportConversation(
+                conversation_id=UUID(item["conversation_id"]),
+                course_id=item["course_id"],
+                title=item["title"],
+                created_at=_parse_iso(item["created_at"]),
+                updated_at=_parse_iso(item["updated_at"]),
+                expires_at=_parse_iso(item["expires_at"]),
+            )
+            for item in payload["conversations"]
+        ]
+        runs = [
+            AccountExportRun(
+                workflow_run_id=UUID(item["workflow_run_id"]),
+                conversation_id=UUID(item["conversation_id"]),
+                workflow_type=item["workflow_type"],
+                run_status=item["run_status"],
+                answer_status=item["answer_status"],
+                request=item["request"],
+                result=item["result"],
+                created_at=_parse_iso(item["created_at"]),
+                expires_at=_parse_iso(item["expires_at"]),
+            )
+            for item in payload["runs"]
+        ]
+        contributions = [
+            AccountExportContribution(
+                contribution_id=UUID(item["contribution_id"]),
+                course_id=item["course_id"],
+                proposed_source_id=item["proposed_source_id"],
+                title=item["title"],
+                state=ContributionState(item["state"]),
+                pr_url=item["pr_url"] or None,
+                char_count=item["char_count"],
+                content_snapshot=item["content_snapshot"],
+                created_at=_parse_iso(item["created_at"]),
+                expires_at=_parse_iso(item["expires_at"]),
+            )
+            for item in payload["contributions"]
+        ]
+        materials = [
+            AccountExportMaterial(
+                material_id=UUID(item["material_id"]),
+                conversation_id=UUID(item["conversation_id"]),
+                course_id=item["course_id"],
+                title=item["title"],
+                char_count=item["char_count"],
+                created_at=_parse_iso(item["created_at"]),
+                expires_at=_parse_iso(item["expires_at"]),
+            )
+            for item in payload["temporary_materials"]
+        ]
+        return AccountExport(
+            schema_version="scut-senior-account-export-v1",
+            github_login=payload["github_login"],
+            display_name=payload["display_name"],
+            account_created_at=_parse_iso(payload["account_created_at"]),
+            exported_at=self.repository_clock(),
+            conversations=conversations,
+            runs=runs,
+            contributions=contributions,
+            temporary_materials=materials,
+        )
+
+    def _require_account_lifecycle_repository(self):
+        repository = self.repository
+        if not callable(getattr(repository, "delete_account", None)) or not callable(
+            getattr(repository, "export_account_data", None)
+        ):
+            raise CapabilityUnavailable(
+                "account_lifecycle",
+                "the configured storage adapter does not support iteration-7.5 "
+                "account deletion and export yet",
+            )
+        return repository
+
+    def repository_clock(self) -> datetime:
+        """仓储当前时间（与 TTL 计算同一时钟口径）。"""
+
+        clock = getattr(self.repository, "_clock", None)
+        if callable(clock):
+            return clock()
+        return utc_now()
 
     def run(self, user: RequestIdentity, request: WorkflowRunRequest) -> WorkflowResult:
         return self._run(user, request)
@@ -987,11 +1112,19 @@ class IterationZeroService:
                 try:
                     if use_user_key:
                         assert api_key is not None
+                        # 迭代 7.5：断开/取消时尽力中止上游等待（cancel_check
+                        # 由可取消 transport 周期检查；结果被弃置不落库）。
+                        cancel_check = (
+                            stream_session.cancelled
+                            if stream_session is not None
+                            else None
+                        )
                         generated = self.byok_model.generate(
                             api_key=api_key,
                             request=request,
                             sources=sources,
                             history=history,
+                            cancel_check=cancel_check,
                         )
                     else:
                         platform_model = (
@@ -1001,7 +1134,14 @@ class IterationZeroService:
                             else self.model
                         )
                         generated = platform_model.generate(
-                            request, sources, history=history
+                            request,
+                            sources,
+                            history=history,
+                            cancel_check=(
+                                stream_session.cancelled
+                                if stream_session is not None
+                                else None
+                            ),
                         )
                 except Exception as model_error:
                     interrupted = finish_interrupted()

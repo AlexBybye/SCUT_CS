@@ -104,3 +104,11 @@
 - README「明确关闭或待确认」仍写“迭代 4 切片（进行中）”，与 status-4 完成描述不一致（历史遗留，未在本轮改写）。
 - KaTeX 使 gzip 体积翻约三倍，status-4 性能审计结论需更新（见上）。
 - **未进入迭代 5（备考复习）**：`exam_review` 仍是共用 Runtime 的 payload（`syllabus`/`weak_topics`/…），SOP §10 的大纲/无大纲双路径、年份覆盖/题型统计与 AI 样题标记均未实现。
+
+## 追加（迭代 7.5，2026-08-23）：KaTeX 按需加载审计结论已执行
+
+上文“应重新评估 KaTeX 按需加载”与“status-4 性能审计结论需更新”两项已在迭代 7.5 销账：
+决策门确认为路由级粒度，`WorkflowResult.vue` 经 `defineAsyncComponent(() => import(...))`
+异步加载，katex.min.css 与其唯一 JS 消费者同 chunk。入口 JS gzip 164.76 → 57.85 kB
+（−64.9%），渲染输出字节级不变，流式路径保持同步渲染无公式闪烁。
+详见 ITERATION_7_STATUS.md 迭代 7.5 节与 `web/src/__tests__/lazyKatex.test.ts`。

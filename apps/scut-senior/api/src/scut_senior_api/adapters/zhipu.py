@@ -1,7 +1,8 @@
 from __future__ import annotations
 
+import inspect
 import json
-from collections.abc import Collection
+from collections.abc import Callable, Collection
 
 from ..contracts import WorkflowRunRequest
 from ..ports import ConversationTurn, GeneratedAnswer, RetrievedSource
@@ -62,12 +63,19 @@ class ZhipuPlatformModelGateway:
         self._allowed_model_ids = frozenset(allowed_model_ids)
         self._http_client = http_client or UrllibJsonHttpClient()
         self._timeout_seconds = timeout_seconds
+        # 迭代 7.5：可取消 transport——仅当客户端声明支持 cancel_check 时传递。
+        self._transport_accepts_cancel_check = (
+            "cancel_check"
+            in inspect.signature(self._http_client.post_json).parameters
+        )
 
     def generate(
         self,
         request: WorkflowRunRequest,
         sources: list[RetrievedSource],
         history: tuple[ConversationTurn, ...] = (),
+        *,
+        cancel_check: Callable[[], bool] | None = None,
     ) -> GeneratedAnswer:
         if (
             request.provider_id != self.provider_id
@@ -80,17 +88,27 @@ class ZhipuPlatformModelGateway:
             )
 
         payload = _build_structured_request(request, sources, history)
+        headers = {
+            "Authorization": f"Bearer {self._api_key}",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        }
         try:
-            response = self._http_client.post_json(
-                ZHIPU_CHAT_COMPLETIONS_URL,
-                headers={
-                    "Authorization": f"Bearer {self._api_key}",
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                },
-                payload=payload,
-                timeout_seconds=self._timeout_seconds,
-            )
+            if cancel_check is not None and self._transport_accepts_cancel_check:
+                response = self._http_client.post_json(
+                    ZHIPU_CHAT_COMPLETIONS_URL,
+                    headers=headers,
+                    payload=payload,
+                    timeout_seconds=self._timeout_seconds,
+                    cancel_check=cancel_check,
+                )
+            else:
+                response = self._http_client.post_json(
+                    ZHIPU_CHAT_COMPLETIONS_URL,
+                    headers=headers,
+                    payload=payload,
+                    timeout_seconds=self._timeout_seconds,
+                )
         except OSError as exc:
             if is_timeout_transport_error(exc):
                 raise ZhipuPlatformGatewayError(

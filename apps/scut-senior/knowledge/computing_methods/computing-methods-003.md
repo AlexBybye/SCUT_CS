@@ -32,17 +32,17 @@ locator_type: none
 
 虽然挺好算的，但是可以注意一下Lagrange形式。
 
-![image](assets/computing-methods-003/image-001.tmp)
+![image](assets/computing-methods-003/image-001.png)
 
 一阶差商与Newton形式（点斜式）
 
-![image](assets/computing-methods-003/image-002.tmp)
+![image](assets/computing-methods-003/image-002.png)
 
-![image](assets/computing-methods-003/image-003.tmp)
+![image](assets/computing-methods-003/image-003.png)
 
 线性插值误差
 
-![image](assets/computing-methods-003/image-004.tmp)
+![image](assets/computing-methods-003/image-004.png)
 
 罗尔定理（Rolle’s Theorem）：若f(x)在[a,b]连续且f(a) = f(b)，那么在(a,b)肯定至少存在一点使得f’(x) = 0.
 
@@ -50,9 +50,9 @@ locator_type: none
 
 例题：
 
-![image](assets/computing-methods-003/image-005.tmp)
+![image](assets/computing-methods-003/image-005.png)
 
-![image](assets/computing-methods-003/image-006.tmp)
+![image](assets/computing-methods-003/image-006.png)
 
 **（2）二次插值**
 
@@ -60,29 +60,29 @@ locator_type: none
 
 这样会列出三元二次方程组，以及它的系数行列式：
 
-![image](assets/computing-methods-003/image-007.tmp)![image](assets/computing-methods-003/image-008.tmp)
+![image](assets/computing-methods-003/image-007.png)![image](assets/computing-methods-003/image-008.png)
 
 最终得到的：Lagrange形式
 
-![image](assets/computing-methods-003/image-009.tmp)
+![image](assets/computing-methods-003/image-009.png)
 
-![image](assets/computing-methods-003/image-010.tmp)
+![image](assets/computing-methods-003/image-010.png)
 
-![image](assets/computing-methods-003/image-011.tmp)
+![image](assets/computing-methods-003/image-011.png)
 
 二阶差商与Newton形式
 
-![image](assets/computing-methods-003/image-012.tmp)
+![image](assets/computing-methods-003/image-012.png)
 
-误差：![image](assets/computing-methods-003/image-013.tmp)
+误差：![image](assets/computing-methods-003/image-013.png)
 
 2.  更一般的情况—n次插值
 
-![image](assets/computing-methods-003/image-014.tmp)
+![image](assets/computing-methods-003/image-014.png)
 
-![image](assets/computing-methods-003/image-015.tmp)
+![image](assets/computing-methods-003/image-015.png)
 
-![image](assets/computing-methods-003/image-016.tmp)
+![image](assets/computing-methods-003/image-016.png)
 
 3.分段线性插值
 
@@ -94,11 +94,11 @@ locator_type: none
 
 假设f(xi) = yi，将定义域分为[x0,x1] , (x1,x2)  ,  …  , (xn-1,xn]，对每个区间做一次线性插值，得到分段目标函数p(x)：
 
-![image](assets/computing-methods-003/image-017.tmp)
+![image](assets/computing-methods-003/image-017.png)
 
 **（3）分段线性插值误差：**
 
-![image](assets/computing-methods-003/image-018.tmp)
+![image](assets/computing-methods-003/image-018.png)
 
 4.  Hermite插值
 
@@ -108,13 +108,13 @@ locator_type: none
 
 **（1）三次Hermite插值**
 
-![image](assets/computing-methods-003/image-019.tmp)
+![image](assets/computing-methods-003/image-019.png)
 
-![image](assets/computing-methods-003/image-020.tmp)
+![image](assets/computing-methods-003/image-020.png)
 
 **（2）Hermite插值误差**
 
-![image](assets/computing-methods-003/image-021.tmp)
+![image](assets/computing-methods-003/image-021.png)
 
 5. 分段三次Hermite插值
 

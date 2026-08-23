@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Mapping
 
@@ -87,6 +88,7 @@ class FixedByokModelGateway:
         request: WorkflowRunRequest,
         sources: list[RetrievedSource],
         history: tuple[ConversationTurn, ...] = (),
+        cancel_check: Callable[[], bool] | None = None,
     ) -> GeneratedAnswer:
         route = FIXED_BYOK_ROUTES.get(request.provider_id)
         if route is None or request.model_id != route.model_id:

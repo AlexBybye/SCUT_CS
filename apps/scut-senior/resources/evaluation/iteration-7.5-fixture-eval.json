@@ -1,0 +1,140 @@
+{
+  "runner_id": "scut-senior-eval-v1",
+  "contract_version": "v1",
+  "fixture_only": true,
+  "executed_at": "2026-08-23T01:55:50.127200+00:00",
+  "summary": {
+    "total": 12,
+    "passed": 5,
+    "failed": 6,
+    "skipped": 1
+  },
+  "by_course": {
+    "cross_course": {
+      "total": 1,
+      "skipped": 1
+    },
+    "linear_algebra": {
+      "total": 11,
+      "failed": 6,
+      "passed": 5
+    }
+  },
+  "cases": [
+    {
+      "case_id": "course-knowledge-001",
+      "category": "course_knowledge",
+      "course_id": "linear_algebra",
+      "workflow_type": "knowledge_qa",
+      "outcome": "failed",
+      "reasons": [
+        "引用缺少 locator_type=heading"
+      ]
+    },
+    {
+      "case_id": "past-paper-question-001",
+      "category": "past_paper_question",
+      "course_id": "linear_algebra",
+      "workflow_type": "problem_tutor",
+      "outcome": "failed",
+      "reasons": [
+        "引用缺少 locator_type=question"
+      ]
+    },
+    {
+      "case_id": "sparse-general-supplement-001",
+      "category": "sparse_general_supplement",
+      "course_id": "linear_algebra",
+      "workflow_type": "knowledge_qa",
+      "outcome": "failed",
+      "reasons": [
+        "answer_status=answered != partial",
+        "evidence_status=sufficient != partial",
+        "缺少回答块 general"
+      ]
+    },
+    {
+      "case_id": "insufficient-evidence-001",
+      "category": "insufficient_evidence",
+      "course_id": "linear_algebra",
+      "workflow_type": "knowledge_qa",
+      "outcome": "failed",
+      "reasons": [
+        "answer_status=answered != insufficient_evidence",
+        "evidence_status=sufficient != insufficient",
+        "不应有仓库引用但返回了引用"
+      ]
+    },
+    {
+      "case_id": "multi-turn-followup-001",
+      "category": "multi_turn_followup",
+      "course_id": "linear_algebra",
+      "workflow_type": "knowledge_qa",
+      "outcome": "failed",
+      "reasons": [
+        "引用缺少 locator_type=question"
+      ]
+    },
+    {
+      "case_id": "cross-course-scope-001",
+      "category": "cross_course_scope",
+      "course_id": null,
+      "workflow_type": "knowledge_qa",
+      "outcome": "skipped",
+      "reasons": [
+        "cross_course_disabled_by_feature_flag"
+      ]
+    },
+    {
+      "case_id": "source-marking-001",
+      "category": "source_marking",
+      "course_id": "linear_algebra",
+      "workflow_type": "knowledge_qa",
+      "outcome": "failed",
+      "reasons": [
+        "引用缺少 locator_type=question",
+        "引用缺少 locator_type=heading"
+      ]
+    },
+    {
+      "case_id": "exam-review-fixture-001",
+      "category": "course_knowledge",
+      "course_id": "linear_algebra",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "mistake-review-fixture-001",
+      "category": "course_knowledge",
+      "course_id": "linear_algebra",
+      "workflow_type": "mistake_review",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "temporary-material-fixture-001",
+      "category": "course_knowledge",
+      "course_id": "linear_algebra",
+      "workflow_type": "temporary_material_reading",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "exam-review-with-syllabus-001",
+      "category": "exam_review_with_syllabus",
+      "course_id": "linear_algebra",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    },
+    {
+      "case_id": "exam-review-past-exam-first-001",
+      "category": "exam_review_without_syllabus",
+      "course_id": "linear_algebra",
+      "workflow_type": "exam_review",
+      "outcome": "passed",
+      "reasons": []
+    }
+  ]
+}

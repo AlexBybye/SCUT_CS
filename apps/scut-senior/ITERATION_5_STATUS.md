@@ -40,6 +40,7 @@
 - `web/src/examReviewPlan.ts` 防御式解析（形状不符整体隐藏面板）；`WorkflowResult.vue` 新增可折叠"备考复习计划（系统生成）"面板：路径徽标、证据顺序链、年份/题型客观计数、知识点分层（资料位置＋代表性真题）、复习建议、未覆盖内容警示与 AI 样题边界。
 - `WorkflowDrawer.vue` 备考复习字段区新增双路径提示；`contracts.ts`／`workflowResultValidation.ts` 同步 Trace 白名单与新字段类型校验。
 - Bundle 影响：JS gzip 154.84 → 161.64 kB（KaTeX 占大头，按需加载仍列为后续优化项）。
+  【迭代 7.5 更新】路由级按需加载已落地：入口 JS gzip 164.76 → 57.85 kB（−64.9%），KaTeX JS+CSS 移入仅在实际渲染转写时加载的异步 chunk；渲染输出不变。详见 ITERATION_7_STATUS.md 迭代 7.5 节。
 
 ### 6. Feature flag 与配置
 
@@ -95,3 +96,9 @@
 - 流式断线语义分离：客户端连接中断不再取消运行（后台继续执行并持久化终态）；显式取消走新增 `POST /api/v1/workflow-runs/{run_id}/cancel`。
 - 会话详情排除非终态尝试（后端过滤 + 前端防御跳过），修复运行中刷新触发 "invalid Workflow result run_status"。
 - 全部 fetch 路径网络错误中文化，流式中断后自动轮询取回结果。
+
+## 追加（迭代 7.5，2026-08-23）：历史体积数据已被路由级拆包取代
+
+本文件记录的 build 体积（JS gzip 161.64 kB 等）是当时的历史实测，保留不改写；
+KaTeX 按需加载已在迭代 7.5 以路由级异步 chunk 落地，入口 JS gzip 降至 57.85 kB，
+`>500 kB` 构建告警消除。逐课程真实模型评测仍未执行，继续挂在迭代 7.5 分组 C 挂起清单。
