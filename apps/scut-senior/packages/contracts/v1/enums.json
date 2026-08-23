@@ -7,12 +7,36 @@
     "mistake_review",
     "temporary_material_reading"
   ],
-  "answer_mode": ["concise", "detailed", "example", "step_by_step"],
-  "tone": ["teaching_assistant", "study_partner", "senior_student"],
-  "knowledge_scope": ["course_only", "course_first"],
-  "course_scope": ["single", "cross"],
-  "model_source": ["platform_default", "user_key"],
-  "run_status": ["created", "running", "completed", "interrupted", "failed"],
+  "answer_mode": [
+    "concise",
+    "detailed",
+    "example",
+    "step_by_step"
+  ],
+  "tone": [
+    "teaching_assistant",
+    "study_partner",
+    "senior_student"
+  ],
+  "knowledge_scope": [
+    "course_only",
+    "course_first"
+  ],
+  "course_scope": [
+    "single",
+    "cross"
+  ],
+  "model_source": [
+    "platform_default",
+    "user_key"
+  ],
+  "run_status": [
+    "created",
+    "running",
+    "completed",
+    "interrupted",
+    "failed"
+  ],
   "answer_status": [
     "answered",
     "partial",
@@ -21,14 +45,24 @@
     "refused",
     "error"
   ],
-  "evidence_status": ["sufficient", "partial", "insufficient", "not_evaluated"],
+  "evidence_status": [
+    "sufficient",
+    "partial",
+    "insufficient",
+    "not_evaluated"
+  ],
   "answer_block_type": [
     "repository",
     "user_material",
     "general",
     "personalized_analysis"
   ],
-  "trace_event_status": ["started", "completed", "failed", "skipped"],
+  "trace_event_status": [
+    "started",
+    "completed",
+    "failed",
+    "skipped"
+  ],
   "help_level": [
     "concept",
     "approach",
@@ -36,7 +70,20 @@
     "full_explanation",
     "answer_analysis"
   ],
-  "manifest_status": ["pending", "passed", "needs_fix", "rejected"],
-  "locator_type": ["page", "slide", "heading", "none"],
-  "bilibili_review_status": ["unreviewed_live_search"]
+  "manifest_status": [
+    "pending",
+    "passed",
+    "needs_fix",
+    "rejected",
+    "image_only"
+  ],
+  "locator_type": [
+    "page",
+    "slide",
+    "heading",
+    "none"
+  ],
+  "bilibili_review_status": [
+    "unreviewed_live_search"
+  ]
 }

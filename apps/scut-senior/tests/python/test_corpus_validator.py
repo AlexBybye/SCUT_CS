@@ -345,6 +345,62 @@ def test_pending_and_passed_allow_blank_notes(tmp_path: Path, status: str) -> No
     assert len(report.searchable_sources) == (1 if status == "passed" else 0)
 
 
+def test_image_only_status_is_valid_but_never_searchable(tmp_path: Path) -> None:
+    """image_only 是技术性排除态：合法，但绝不进入可检索集合。"""
+    row = {
+        "source_id": "synthetic-linear-algebra-exam",
+        "course": "linear_algebra",
+        "title": "合成线性代数页码题目",
+        "original_path": "sources/linear-algebra-exam.txt",
+        "format": "txt",
+        "document_role": "past_exam",
+        "year": "2023",
+        "output_md": "linear_algebra/synthetic-linear-algebra-exam.md",
+        "locator_type": "page",
+        "method": "synthetic",
+        "ocr_used": "false",
+        "ocr_confidence": "",
+        "ocr_warning": "",
+        "status": "image_only",
+        "reviewer": "",
+        "notes": "纯图片扫描件无可提取文本层（零chunk）",
+    }
+    manifest = _write_manifest(tmp_path, row)
+
+    report = validate_corpus(manifest, knowledge_root=CORPUS_ROOT)
+
+    assert report.errors == []
+    assert report.searchable_sources == []
+    assert [document["status"] for document in report.documents] == ["image_only"]
+    assert all(document["valid"] for document in report.documents)
+
+
+def test_image_only_requires_notes(tmp_path: Path) -> None:
+    row = {
+        "source_id": "synthetic-linear-algebra-exam",
+        "course": "linear_algebra",
+        "title": "合成线性代数页码题目",
+        "original_path": "sources/linear-algebra-exam.txt",
+        "format": "txt",
+        "document_role": "past_exam",
+        "year": "2023",
+        "output_md": "linear_algebra/synthetic-linear-algebra-exam.md",
+        "locator_type": "page",
+        "method": "synthetic",
+        "ocr_used": "false",
+        "ocr_confidence": "",
+        "ocr_warning": "",
+        "status": "image_only",
+        "reviewer": "",
+        "notes": "",
+    }
+    manifest = _write_manifest(tmp_path, row)
+
+    report = validate_corpus(manifest, knowledge_root=CORPUS_ROOT)
+
+    assert any("image_only source requires notes" in error for error in report.errors)
+
+
 @pytest.mark.parametrize("status", ["needs_fix", "rejected"])
 def test_needs_fix_and_rejected_require_notes(tmp_path: Path, status: str) -> None:
     row = _row_for_invalid_fixture("locator-non-increasing.md")
