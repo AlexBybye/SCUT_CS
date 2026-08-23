@@ -5,7 +5,7 @@
   "provider_id": "zhipu",
   "model_id": "glm-4-flash-250414",
   "retrieval_mode": "local_corpus",
-  "executed_at": "2026-08-23T09:42:01.510024+00:00",
+  "executed_at": "2026-08-23T10:13:52.534566+00:00",
   "summary": {
     "total": 12,
     "passed": 9,
