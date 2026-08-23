@@ -223,6 +223,72 @@ def test_local_gateway_rejects_a_tampered_course_pack_version(
         gateway.search([COURSE_ID], "密码学")
 
 
+def _count_validations(
+    monkeypatch: pytest.MonkeyPatch,
+) -> dict[str, int]:
+    import scut_senior_api.adapters.local_corpus as local_corpus_module
+
+    calls = {"count": 0}
+    real_validate = local_corpus_module.validate_candidate
+
+    def counting_validate(candidate_path):
+        calls["count"] += 1
+        return real_validate(candidate_path)
+
+    monkeypatch.setattr(local_corpus_module, "validate_candidate", counting_validate)
+    return calls
+
+
+def test_availability_amortizes_candidate_validation_per_pointer(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """One activated candidate is validated once, not once per request.
+
+    The active corpus candidate is immutable by contract; re-running the whole
+    1.2 GB validate_candidate pass on every availability check made each
+    /api/v1/courses and /api/v1/plugin-registry request take minutes and
+    starved the API threadpool (BYOK saves appeared to do nothing).
+    """
+    store, _, _ = _build_store(tmp_path)
+    calls = _count_validations(monkeypatch)
+    gateway = LocalCorpusRetrievalGateway(store)
+
+    assert gateway.is_course_available(COURSE_ID) is True
+    assert gateway.is_course_available(COURSE_ID) is True
+    assert len(gateway.search([COURSE_ID], "对称加密的密钥如何管理").sources) >= 1
+    assert calls["count"] == 1
+
+
+def test_pointer_change_forces_exactly_one_fresh_validation(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Validation runs once per unseen active-pointer value, never per request."""
+    store, _, _ = _build_store(tmp_path, enabled=False)
+    calls = _count_validations(monkeypatch)
+    gateway = LocalCorpusRetrievalGateway(store)
+
+    # A disabled course short-circuits before validation.
+    assert gateway.is_course_available(COURSE_ID) is False
+    assert calls["count"] == 0
+
+    set_course_enabled(store, COURSE_ID, enabled=True)
+    assert gateway.is_course_available(COURSE_ID) is True
+    assert gateway.is_course_available(COURSE_ID) is True
+    assert gateway.is_course_available(COURSE_ID) is True
+    assert calls["count"] == 1
+
+    # Disabling never validates; re-enabling restores the exact previous
+    # pointer value over the immutable candidate, so its existing validation
+    # is still valid and the value-keyed memoization legitimately hits.
+    set_course_enabled(store, COURSE_ID, enabled=False)
+    assert gateway.is_course_available(COURSE_ID) is False
+    set_course_enabled(store, COURSE_ID, enabled=True)
+    assert gateway.is_course_available(COURSE_ID) is True
+    assert calls["count"] == 1
+
+
 def test_explicit_local_mode_uses_only_active_validated_payload_for_s1(
     tmp_path: Path,
 ) -> None:

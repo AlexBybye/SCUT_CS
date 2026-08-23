@@ -1,12 +1,22 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import re
+import threading
 import unicodedata
 from pathlib import Path
 from typing import Any
 
-from scut_senior_worker.corpus_builder import CorpusBuildError, load_active_course
+from scut_senior_worker.corpus_builder import (
+    CorpusBuildError,
+    _candidate_directory,
+    _load_active,
+    _read_json,
+    _require_active_candidate_binding,
+    _require_version,
+    validate_candidate,
+)
 
 from ..ports import CapabilityUnavailable, RetrievalBatch, RetrievedSource
 
@@ -42,10 +52,58 @@ class LocalCorpusRetrievalGateway:
         self.store_root = store_root.resolve()
         self.limit = limit
         self.min_score = min_score
+        # Full-candidate validation is memoized per active-pointer value (see
+        # _load_active_course); these slots are guarded for the FastAPI
+        # threadpool, where availability checks run concurrently.
+        self._cache_lock = threading.Lock()
+        self._validated_pointer_key: bytes | None = None
+        self._validated_candidate: Path | None = None
+
+    def _load_active_course(self, course_id: str) -> dict[str, Any]:
+        """``load_active_course`` semantics, amortizing full validation.
+
+        The activated candidate directory is immutable by contract (activation
+        and rollback always write a new candidate and a fresh ``active.json``),
+        so the expensive whole-candidate ``validate_candidate`` pass only needs
+        to run once per active-pointer value. Re-running it on every call made
+        each availability check pay O(candidate) cost — with the current
+        activated corpus that is seconds per course, which turned every course
+        listing into minutes and starved the API threadpool. The memoization
+        key is a digest of the parsed pointer itself, so activation, rollback,
+        or a course-switch flip forces exactly one fresh validation; malformed
+        or missing pointer state keeps failing closed on every call.
+        """
+        course = _require_version(course_id, "course_id")
+        pointer = _load_active(self.store_root)
+        if pointer["course_switches"].get(course) is not True:
+            raise CorpusBuildError(f"course is disabled or unavailable: {course}")
+        candidate = _candidate_directory(
+            self.store_root.resolve(), pointer["active_corpus_version"]
+        )
+        pointer_key = hashlib.sha256(
+            json.dumps(pointer, sort_keys=True, ensure_ascii=False).encode("utf-8")
+        ).digest()
+        with self._cache_lock:
+            validated = (
+                self._validated_candidate
+                if pointer_key == self._validated_pointer_key
+                else None
+            )
+        if validated is None:
+            validate_candidate(candidate)
+            with self._cache_lock:
+                self._validated_pointer_key = pointer_key
+                self._validated_candidate = candidate
+        # The per-call tail (metadata binding + course index read) stays fresh:
+        # both are cheap local reads, and the binding check keeps failing closed
+        # if metadata and the active pointer ever disagree.
+        metadata = _read_json(candidate / "metadata.json")
+        _require_active_candidate_binding(pointer, metadata)
+        return _read_json(candidate / "courses" / f"{course}.json")
 
     def is_course_available(self, course_id: str) -> bool:
         try:
-            load_active_course(self.store_root, course_id)
+            self._load_active_course(course_id)
         except CorpusBuildError as exc:
             if str(exc).startswith(_DISABLED_PREFIX):
                 return False
@@ -62,7 +120,7 @@ class LocalCorpusRetrievalGateway:
             )
         course_id = course_ids[0]
         try:
-            index = load_active_course(self.store_root, course_id)
+            index = self._load_active_course(course_id)
             corpus_version = index["corpus_version"]
             raw_chunks = index["chunks"]
             if not isinstance(corpus_version, str) or not corpus_version:
