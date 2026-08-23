@@ -235,7 +235,10 @@ def create_app(
     registry = CourseRegistry.load()
     mock_identity = MockIdentityProvider().current_user()
     retrieval = (
-        LocalCorpusRetrievalGateway(active_settings.corpus_store_path)
+        LocalCorpusRetrievalGateway(
+            active_settings.corpus_store_path,
+            min_score=active_settings.retrieval_min_score,
+        )
         if active_settings.retrieval_mode == "local_corpus"
         else FixtureRetrievalGateway(registry)
     )

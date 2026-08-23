@@ -310,6 +310,10 @@ def compose_retrieval_query(
     parts.extend(cleaned_weak)
     if plan is not None and plan.path == ExamReviewPath.WITHOUT_SYLLABUS:
         parts.extend(_plan_topic_terms(plan, limit=5 if not cleaned_weak else 3))
+        # “历年题优先”路径的检索目标就是历年卷本身；把计划引用的试卷标题
+        # 作为词面锚点补进查询，使标题驱动的课程包可以确定性命中
+        # （迭代 7.5 检索地板落地后暴露：泛化复习提问与卷名零重叠）。
+        parts.extend(_plan_paper_anchors(plan, limit=3))
     query = "\n".join(part for part in parts if part)
     return query[:4_500].strip()
 
@@ -683,6 +687,32 @@ def _plan_topic_terms(plan: ExamReviewPlan, *, limit: int) -> list[str]:
         if len(terms) >= limit:
             break
     return terms
+
+
+def _plan_paper_anchors(plan: ExamReviewPlan, *, limit: int) -> list[str]:
+    """Past-exam paper titles covered by the plan, as retrieval anchors.
+
+    Titles are the strongest lexical signal in a title-driven course pack
+    (weighted 4x by the retrieval scorer), so the without-syllabus path can
+    deterministically reach the very past exams the plan prioritizes. Anchors
+    come from the objective question list because heading-less packs (paper
+    titles as headings) intentionally produce no knowledge-point groups.
+    """
+
+    titles: list[str] = []
+    seen: set[str] = set()
+    for question in plan.past_exam_stats.get("questions", ()):
+        if not isinstance(question, dict):
+            continue
+        title = _clean_text(str(question.get("source_title", "")), 120)
+        key = title.casefold()
+        if not title or key in seen:
+            continue
+        seen.add(key)
+        titles.append(title)
+        if len(titles) >= limit:
+            break
+    return titles
 
 
 def _question_type_of(question: ExamQuestionFact) -> str:

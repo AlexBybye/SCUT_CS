@@ -14,17 +14,34 @@ from ..ports import CapabilityUnavailable, RetrievalBatch, RetrievedSource
 _WORD_RE = re.compile(r"[a-z0-9_]+(?:[+#][a-z0-9_+#]*)?|[\u3400-\u4dbf\u4e00-\u9fff]+")
 _DISABLED_PREFIX = "course is disabled or unavailable:"
 _MAX_QUERY_TERMS = 256
+# Weighted-overlap relevance floor: drops incidental n-gram collisions
+# (a single shared Chinese bigram scores only 2) so weak-noise candidates
+# never reach the citation guard; empty result -> honest insufficient_evidence.
+_DEFAULT_MIN_SCORE = 6
 _MAX_DOCUMENT_TERMS = 4096
 
 
 class LocalCorpusRetrievalGateway:
     """Deterministic lexical retrieval over one validated active course index."""
 
-    def __init__(self, store_root: Path, *, limit: int = 5):
+    def __init__(
+        self,
+        store_root: Path,
+        *,
+        limit: int = 5,
+        min_score: int = _DEFAULT_MIN_SCORE,
+    ):
         if isinstance(limit, bool) or not 1 <= limit <= 20:
             raise ValueError("local corpus retrieval limit must be between 1 and 20")
+        if isinstance(min_score, bool) or not isinstance(min_score, int):
+            raise ValueError("local corpus retrieval min score must be an integer")
+        if not 1 <= min_score <= 100:
+            raise ValueError(
+                "local corpus retrieval min score must be between 1 and 100"
+            )
         self.store_root = store_root.resolve()
         self.limit = limit
+        self.min_score = min_score
 
     def is_course_available(self, course_id: str) -> bool:
         try:
@@ -65,7 +82,7 @@ class LocalCorpusRetrievalGateway:
         ranked: list[tuple[int, str, RetrievedSource]] = []
         for source in sources:
             score = _score(query, query_terms, source)
-            if score > 0:
+            if score >= self.min_score:
                 ranked.append((-score, source.chunk_id, source))
         ranked.sort(key=lambda item: (item[0], item[1]))
         return RetrievalBatch(

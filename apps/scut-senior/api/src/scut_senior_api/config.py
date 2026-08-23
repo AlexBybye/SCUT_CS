@@ -22,6 +22,12 @@ class Settings:
     model_mode: Literal["mock", "openrouter_platform", "disabled"] = "mock"
     storage_mode: Literal["sqlite_mock", "sqlite", "disabled"] = "sqlite_mock"
     retrieval_mode: Literal["fixture", "local_corpus"] = "fixture"
+    # Iteration 7.5 follow-up (registered improvement candidate, implemented
+    # 2026-08-23): lexical relevance floor for local-corpus retrieval.
+    # Candidates scoring below this weighted-overlap threshold are dropped so
+    # incidental n-gram collisions cannot reach the citation guard; a query
+    # with no candidate at/above the floor yields honest insufficient_evidence.
+    retrieval_min_score: int = 6
     database_path: Path = APP_ROOT / ".local" / "iteration-zero.db"
     corpus_store_path: Path = APP_ROOT / ".local" / "corpus-store"
     cross_course_enabled: bool = False
@@ -52,6 +58,9 @@ class Settings:
             model_mode=os.getenv("SCUT_SENIOR_MODEL_MODE", "mock"),
             storage_mode=os.getenv("SCUT_SENIOR_STORAGE_MODE", "sqlite_mock"),
             retrieval_mode=os.getenv("SCUT_SENIOR_RETRIEVAL_MODE", "fixture"),
+            retrieval_min_score=_env_positive_int(
+                "SCUT_SENIOR_RETRIEVAL_MIN_SCORE", 6
+            ),
             database_path=Path(
                 os.getenv(
                     "SCUT_SENIOR_DATABASE_PATH",
@@ -147,6 +156,12 @@ class Settings:
         if self.retrieval_mode not in {"fixture", "local_corpus"}:
             raise UnsafeRuntimeConfiguration(
                 "retrieval adapter must be explicit fixture or local_corpus"
+            )
+        if isinstance(self.retrieval_min_score, bool) or not (
+            1 <= self.retrieval_min_score <= 100
+        ):
+            raise UnsafeRuntimeConfiguration(
+                "SCUT_SENIOR_RETRIEVAL_MIN_SCORE must be an integer in [1, 100]"
             )
         if (
             self.retrieval_mode == "local_corpus"

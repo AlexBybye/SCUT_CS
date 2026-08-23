@@ -380,3 +380,165 @@ def test_local_mode_rejects_an_unversioned_course_pack_before_model_call(
     assert response.status_code == 409
     assert "course pack version" in response.json()["error"]["detail"]
     assert model.called is False
+
+
+def test_relevance_floor_drops_noise_only_matches(tmp_path: Path) -> None:
+    """A single shared Chinese bigram scores only 2 — below the default floor.
+
+    The floor (iteration 7.5 registered improvement candidate) keeps incidental
+    n-gram collisions away from the citation guard so the workflow answers with
+    an honest insufficient_evidence instead of citing weak-noise candidates.
+    """
+    store, _, _ = _build_store(tmp_path)
+    noise_query = "加密算法体系"  # only "加密" collides -> score 2
+
+    default_gateway = LocalCorpusRetrievalGateway(store)
+    assert default_gateway.min_score == 6
+    assert default_gateway.search([COURSE_ID], noise_query).sources == ()
+
+    permissive = LocalCorpusRetrievalGateway(store, min_score=1)
+    assert len(permissive.search([COURSE_ID], noise_query).sources) == 1
+
+
+def test_relevance_floor_keeps_anchored_matches(tmp_path: Path) -> None:
+    store, _, _ = _build_store(tmp_path)
+    gateway = LocalCorpusRetrievalGateway(store)
+
+    anchored = gateway.search([COURSE_ID], "对称加密的密钥如何管理")
+    assert anchored.sources
+    assert anchored.sources[0].heading_path == ("密码学基础",)
+
+
+def test_relevance_floor_rejects_out_of_range_values(tmp_path: Path) -> None:
+    store, _, _ = _build_store(tmp_path)
+    for bad in (0, 101, True, 2.5):
+        with pytest.raises(ValueError):
+            LocalCorpusRetrievalGateway(store, min_score=bad)
+
+
+def test_settings_rejects_retrieval_min_score_out_of_range() -> None:
+    from scut_senior_api.config import UnsafeRuntimeConfiguration
+
+    for bad in (0, 101, -3):
+        with pytest.raises(UnsafeRuntimeConfiguration):
+            Settings(retrieval_min_score=bad).assert_safe()
+
+
+def test_context_carry_query_prepends_recent_user_turns() -> None:
+    from scut_senior_api.service import ConversationTurn, _compose_context_carry_query
+
+    history = (
+        ConversationTurn(role="user", content="解释 2019-2020年度线性代数期末卷A 的第 1 题。"),
+        ConversationTurn(role="assistant", content="已根据仓库资料引用该卷第 1 题作答。"),
+    )
+    combined = _compose_context_carry_query("再用分步骤的方式把这道题重新讲一遍。", history)
+    assert "2019-2020年度线性代数期末卷A" in combined
+    assert "再用分步骤的方式" in combined
+    assert "已根据仓库资料引用" not in combined
+
+    assistant_only = (
+        ConversationTurn(role="assistant", content="只有助手轮次时不产生回退查询。"),
+    )
+    assert (
+        _compose_context_carry_query("把这道题再讲一遍。", assistant_only) == ""
+    )
+
+
+def test_exam_review_without_syllabus_anchors_on_plan_paper_titles() -> None:
+    from scut_senior_api.exam_review import (
+        ExamReviewPath,
+        ExamReviewPlan,
+        compose_retrieval_query,
+    )
+
+    plan = ExamReviewPlan(
+        plan_version="exam-review-plan-v2",
+        course_id="linear_algebra",
+        path=ExamReviewPath.WITHOUT_SYLLABUS,
+        priority_order=("past_exams",),
+        scope_statement="s",
+        evidence_boundary="e",
+        ai_sample_policy="a",
+        knowledge_points=(
+            {
+                "topic": "初等行变换",
+                "questions": [
+                    {
+                        "question_id": "linear-algebra-012-Q1",
+                        "source_id": "linear-algebra-012",
+                        "source_title": "2019-2020年度线性代数期末卷A",
+                        "year": 2020,
+                    }
+                ],
+            },
+        ),
+        past_exam_stats={
+            "questions": [
+                {
+                    "question_id": "linear-algebra-012-Q1",
+                    "source_id": "linear-algebra-012",
+                    "source_title": "2019-2020年度线性代数期末卷A",
+                    "year": 2019,
+                }
+            ]
+        },
+        review_suggestions=(),
+        uncovered_items=(),
+    )
+    query = compose_retrieval_query(
+        syllabus=None,
+        weak_topics=["初等行变换"],
+        plan=plan,
+        review_question="没有大纲，按历年题带我复习。",
+    )
+    assert "2019-2020年度线性代数期末卷A" in query
+
+
+def test_followup_turn_regains_anchor_via_context_carry(tmp_path: Path) -> None:
+    """Floor drops the noise-only follow-up query; the context-carry retry
+    re-anchors it against the prior user turn so the run still cites."""
+    store, version, pack_version = _build_store(tmp_path)
+    app = create_app(
+        Settings(
+            app_env="test",
+            retrieval_mode="local_corpus",
+            corpus_store_path=store,
+            database_path=tmp_path / "context-carry.db",
+            bilibili_resources_enabled=False,
+        )
+    )
+    client = TestClient(app)
+    conversation_response = client.post(
+        "/api/v1/conversations", json={"course_id": COURSE_ID}
+    )
+    assert conversation_response.status_code == 201
+    conversation_id = conversation_response.json()["conversation_id"]
+
+    first = client.post(
+        "/api/v1/workflow-runs",
+        json=_workflow_request(conversation_id, "对称加密的密钥如何管理"),
+    )
+    assert first.status_code == 201, first.text
+    assert first.json()["citations"]
+
+    followup = client.post(
+        "/api/v1/workflow-runs",
+        json=_workflow_request(
+            conversation_id, "再用分步骤的方式把这道题重新讲一遍。"
+        ),
+    )
+    assert followup.status_code == 201, followup.text
+    result = followup.json()
+    assert result["run_status"] == "completed"
+    carry_event = next(
+        event
+        for event in result["trace"]
+        if event["node"] == "retrieval_context_carry"
+    )
+    assert carry_event["result"]["hit_count"] == 0
+    assert carry_event["result"]["candidate_count"] >= 1
+    assert "2019" not in carry_event["result"]["rewritten_query"]
+    assert carry_event["result"]["rewritten_query"]
+    assert result["citations"]
+    assert result["corpus_version"] == version
+    assert result["course_pack_version"] == pack_version

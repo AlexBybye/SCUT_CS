@@ -986,6 +986,38 @@ class IterationZeroService:
             retrieval_batch = self.retrieval.search(
                 [course.course_id], retrieval_query
             )
+            if (
+                isinstance(retrieval_batch, RetrievalBatch)
+                and not retrieval_batch.sources
+                and history
+                and exam_plan is None
+                and self.settings.retrieval_mode == "local_corpus"
+            ):
+                # 迭代 7.5 检索地板的配套修复：追问轮常丢失词面锚点
+                #（“把这道题再讲一遍”单独检索得分为噪声级），当前查询空结果时
+                # 以最近用户轮次补锚重试一次；不改变课程/范围/工作流语义。
+                context_query = _compose_context_carry_query(
+                    retrieval_query, history
+                )
+                if context_query:
+                    retry_started = perf_counter()
+                    context_batch = self.retrieval.search(
+                        [course.course_id], context_query
+                    )
+                    if isinstance(context_batch, RetrievalBatch) and (
+                        context_batch.sources
+                    ):
+                        retrieval_batch = context_batch
+                        _append_trace(
+                            trace,
+                            node="retrieval_context_carry",
+                            result={
+                                "hit_count": 0,
+                                "candidate_count": len(retrieval_batch.sources),
+                                "rewritten_query": context_query[:200],
+                            },
+                            duration_ms=_elapsed_ms(retry_started),
+                        )
             if not isinstance(retrieval_batch, RetrievalBatch):
                 # Keep injected iteration-1 test doubles compatible, but never
                 # accept an unversioned result in explicit local-corpus mode.
@@ -2105,6 +2137,30 @@ def _is_retryable_model_output_error(error: Exception) -> bool:
 
 _MAX_HISTORY_TURNS = 6
 _MAX_HISTORY_TURN_CHARS = 2_000
+_CONTEXT_CARRY_QUERY_CHARS = 1_200
+_CONTEXT_CARRY_USER_TURNS = 2
+
+
+def _compose_context_carry_query(
+    current_query: str,
+    history: tuple[ConversationTurn, ...],
+) -> str:
+    """Prepend the most recent user turns so follow-up queries regain anchors.
+
+    Bounded and deterministic: only completed prior user turns (latest two)
+    are prepended to the current retrieval query. The combined text is used
+    for lexical matching only — it never changes course, scope or workflow.
+    """
+
+    prior = [
+        turn.content[:400]
+        for turn in reversed(history)
+        if turn.role == "user" and turn.content.strip()
+    ][-_CONTEXT_CARRY_USER_TURNS:]
+    if not prior:
+        return ""
+    combined = " ".join([*reversed(prior), current_query])
+    return combined[:_CONTEXT_CARRY_QUERY_CHARS].strip()
 FEEDBACK_TTL = timedelta(days=30)
 
 
