@@ -14,11 +14,11 @@ locator_type: none
 
 1. n个分组，m段链路，总时延为[n个分组的发送时延+1个分组的发送时延*(m-1)+1段链路的传播时延*m]
 
-![image](assets/computer-networks-051/image-001.tmp)
+![image](assets/computer-networks-051/image-001.png)
 
 2.  易错题：分组大小包含分组头
 
-![image](assets/computer-networks-051/image-002.tmp)
+![image](assets/computer-networks-051/image-002.png)
 
 3.  发方的封装开始，收方的解封装结束。
 
@@ -282,7 +282,7 @@ C类网络只有后面8位可以自由分配，这里有5个子网，则要抽�
 
 PING用来测试主机或路由器间的连通性，应用层直接用网际层的ICMP，没有通过运输层的TCP或UDP，用到了ICMP的回送请求和回答报文。
 
-traceroute![image](assets/computer-networks-051/image-011.tmp)通过分别发送TTL=1、2、3、…的报文，得到时间超过报文来获取路径上的路由器。
+traceroute![image](assets/computer-networks-051/image-011.png)通过分别发送TTL=1、2、3、…的报文，得到时间超过报文来获取路径上的路由器。
 
 **第五章：传输层（运输层）**
 
@@ -294,11 +294,11 @@ traceroute![image](assets/computer-networks-051/image-011.tmp)通过分别发送
 
 4.  重点内容：【当我输入url并回车后，发生了什么？】
 
-如图，我们要访问Web服务器中[www.portest.com](http://www.portest.com)这个域名，而DNS服务器中有这个域名对应的IP地址。浏览器中输入域名后，PC中的DNS客户端进程会发送一个**DNS查询请求报文，**内容为【[www.portest.com对应的IP](http://www.portest.com对应的IP)地址是什么？】，使用运输层UDP协议，封装成UDP数据报，**添加UDP首部**。源端口49152是PC中DNS客户端的端口号，53是![image](assets/computer-networks-051/image-012.tmp)
+如图，我们要访问Web服务器中[www.portest.com](http://www.portest.com)这个域名，而DNS服务器中有这个域名对应的IP地址。浏览器中输入域名后，PC中的DNS客户端进程会发送一个**DNS查询请求报文，**内容为【[www.portest.com对应的IP](http://www.portest.com对应的IP)地址是什么？】，使用运输层UDP协议，封装成UDP数据报，**添加UDP首部**。源端口49152是PC中DNS客户端的端口号，53是![image](assets/computer-networks-051/image-012.png)
 
 DNS服务器端进程所使用的熟知端口号。封装成IP数据报后用以太网发送给DNS服务器，服务器解封装后通过目的端口53知道要用DNS服务器端进程解析DNS查询请求报文的内容，然后**给用户PC发送DNS响应报文**，源端口和目的端口调换。用户解封后根据目的端口49152交付给DNS客户端进程解析，解析后就知道域名的IP地址。
 
-之后用户HTTP客户端进程**向Web服务器发送HTTP请求报文**，**用TCP协议**封装成TCP报文段，挑一个未被使用的端口号作为HTTP客户端进程，目的端口为80——HTTP服务端进程使用的端口号，封装后发送。Web服务器解封后识别出80，于是给HTTP服务器端解析，HTTP服务器端按其要求查找首页内容，然后**给用户PC发送HTTP响应报文**，包含首页内容，在运输层添加TCP首部，源端口和目的端口调换。![image](assets/computer-networks-051/image-013.tmp)
+之后用户HTTP客户端进程**向Web服务器发送HTTP请求报文**，**用TCP协议**封装成TCP报文段，挑一个未被使用的端口号作为HTTP客户端进程，目的端口为80——HTTP服务端进程使用的端口号，封装后发送。Web服务器解封后识别出80，于是给HTTP服务器端解析，HTTP服务器端按其要求查找首页内容，然后**给用户PC发送HTTP响应报文**，包含首页内容，在运输层添加TCP首部，源端口和目的端口调换。![image](assets/computer-networks-051/image-013.png)
 
 5.  TCP和UDP的区别：
 
@@ -320,7 +320,7 @@ DNS服务器端进程所使用的熟知端口号。封装成IP数据报后用以
 
 8. TCP超时重传时间的选择，使用加权平均往返时间RTT_s和RTT偏差的加权平均RTT_d。但是测量RTT时存在问题：
 
-![image](assets/computer-networks-051/image-015.tmp)
+![image](assets/computer-networks-051/image-015.png)
 
 9.  题目
 
@@ -334,7 +334,7 @@ DNS服务器端进程所使用的熟知端口号。封装成IP数据报后用以
 
 **源端口、目的端口**，很简单，不讲。
 
-**序号和确认号，以及ACK**：**序号**的值指出本TCP报文段数据载荷的第一个字节的序号；![image](assets/computer-networks-051/image-018.tmp)
+**序号和确认号，以及ACK**：**序号**的值指出本TCP报文段数据载荷的第一个字节的序号；![image](assets/computer-networks-051/image-018.png)
 
 **确认号**的值指出**期望**收到对方下一个TCP报文段的数据载荷的第一个字节的序号，同时也是对之前收到的所有数据的确认。（若确认号=n，则表明到序号n-1为止的所有数据都被正确接收，期望收到序号=n的数据）
 
@@ -356,11 +356,11 @@ DNS服务器端进程所使用的熟知端口号。封装成IP数据报后用以
 
 **紧急指针**：占16b，以B为单位，来指明紧急数据的长度。
 
-![image](assets/computer-networks-051/image-019.tmp)
+![image](assets/computer-networks-051/image-019.png)
 
 **选项字段**：
 
-![image](assets/computer-networks-051/image-020.tmp)
+![image](assets/computer-networks-051/image-020.png)
 
 **填充**：由于选项长度可变，因此使用填充来确保报文段首部能被4整除
 
@@ -384,7 +384,7 @@ DNS服务器端进程所使用的熟知端口号。封装成IP数据报后用以
 
 第五层：会话层：允许不同机器上的用户之间建立会话关系，如WINDOWS
 
-8.  ![image](assets/computer-networks-051/image-021.tmp)
+8.  ![image](assets/computer-networks-051/image-021.png)
 
 9. OUI(Organizational Unique Indentifier)是MAC地址的前6个16进制位。
 
@@ -452,7 +452,7 @@ NRZI：0电平翻转，1电平不变
 
 19.  互联网校验和：
 
-![image](assets/computer-networks-051/image-024.tmp)
+![image](assets/computer-networks-051/image-024.png)
 
 20. 6种基本DLL协议
 
