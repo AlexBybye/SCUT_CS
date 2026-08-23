@@ -65,6 +65,7 @@ from .config import Settings
 LOGGER = logging.getLogger("scut_senior.api")
 from .course_availability import derive_course_runtime_availability
 from .contracts import (
+    AccountDeletionSummary,
     ContributionDraftSubmit,
     ContributionPreview,
     ContributionPreviewRequest,
@@ -665,6 +666,12 @@ def create_app(
             raise OAuthStateInvalid()
 
         identity = oauth_adapter.authenticate(code)
+        # 迭代 7.5：注销封锁名单——注销后的 GitHub 身份无法再次登录。
+        if repository.account_is_deleted(identity.github_id):
+            raise GitHubOAuthError(
+                code="account_deleted",
+                detail="该账号已注销，无法再次登录。",
+            )
         user_id = repository.upsert_github_user(
             GitHubUserProfile(
                 github_user_id=identity.github_id,
@@ -700,6 +707,40 @@ def create_app(
         response = JSONResponse({"logged_out": not user.is_mock})
         _clear_session_cookie(response)
         response.headers["Cache-Control"] = "no-store"
+        return response
+
+    @app.get("/api/v1/account/export")
+    def export_account_data(
+        user: AuthenticatedPrincipal = Depends(require_github_user),
+    ) -> Response:
+        """导出本人数据：不含他人资源，不含任何模型凭据（密文或明文）。"""
+
+        payload = service.export_account(user)
+        body = json.dumps(payload.model_dump(mode="json"), ensure_ascii=False)
+        return Response(
+            content=body,
+            media_type="application/json",
+            headers={
+                "Content-Disposition": (
+                    f'attachment; filename="scut-senior-account-export-'
+                    f'{user.user_id}.json"'
+                ),
+                "Cache-Control": "private, no-store",
+            },
+        )
+
+    @app.delete("/api/v1/account", response_model=AccountDeletionSummary)
+    def delete_account(
+        request: Request,
+        user: AuthenticatedPrincipal = Depends(require_github_user),
+    ) -> Response:
+        """注销：物理删除本人全部私有数据并封锁再次登录。"""
+
+        summary = service.delete_account(user)
+        repository.revoke_session(request.cookies.get(SESSION_COOKIE_NAME, ""))
+        response = JSONResponse(summary.model_dump(mode="json"))
+        _clear_session_cookie(response)
+        response.headers["Cache-Control"] = "private, no-store"
         return response
 
     @app.get("/api/v1/me")

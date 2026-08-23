@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import os
 import sqlite3
 import stat
@@ -590,6 +591,222 @@ class SQLiteWorkflowRepository:
         if value.tzinfo is None or value.utcoffset() is None:
             raise ValueError("quota timestamps must be timezone-aware")
         return value.astimezone(UTC)
+
+    # ------------------------------------------------------------------
+    # 迭代 7.5（SOP §12A 分组 B / §16 待确认项 3）：账号注销、历史提前删除
+    # 与数据导出。
+    # ------------------------------------------------------------------
+
+    def account_is_deleted(self, github_user_id: int) -> bool:
+        """注销封锁名单查询：命中即拒绝再次登录。"""
+
+        with self._connect() as connection:
+            row = connection.execute(
+                "SELECT 1 FROM deleted_accounts WHERE github_user_id = ?",
+                (int(github_user_id),),
+            ).fetchone()
+        return row is not None
+
+    def delete_account(self, user_id: str) -> dict[str, int]:
+        """物理删除该账号的全部私有数据并封锁其 GitHub 身份。
+
+        注销语义（§16 待确认项 3 决议）：会话立即失效、历史／反馈／临时材料/
+        贡献副本/模型凭据密文全部物理删除、users 行删除；deleted_accounts 仅
+        保留 github_user_id 用于登录封锁。导出请先于注销调用。
+        """
+
+        normalized_user_id = str(UUID(str(user_id)))
+        now = self._now().isoformat()
+        connection = self._connect()
+        try:
+            connection.execute("BEGIN IMMEDIATE")
+            row = connection.execute(
+                "SELECT github_user_id FROM users WHERE user_id = ?",
+                (normalized_user_id,),
+            ).fetchone()
+            if row is None:
+                connection.rollback()
+                raise LookupError("account not found")
+            github_user_id = int(row["github_user_id"])
+            counts = {
+                "temporary_materials": connection.execute(
+                    "DELETE FROM temporary_materials WHERE user_id = ?",
+                    (normalized_user_id,),
+                ).rowcount,
+                "contributions": connection.execute(
+                    "DELETE FROM contributions WHERE user_id = ?",
+                    (normalized_user_id,),
+                ).rowcount,
+                "model_credentials": connection.execute(
+                    "DELETE FROM model_credentials WHERE user_id = ?",
+                    (normalized_user_id,),
+                ).rowcount,
+                "feedback": connection.execute(
+                    "DELETE FROM feedback WHERE user_id = ?",
+                    (normalized_user_id,),
+                ).rowcount,
+                "workflow_runs": connection.execute(
+                    "DELETE FROM workflow_runs WHERE user_id = ?",
+                    (normalized_user_id,),
+                ).rowcount,
+                "conversations": connection.execute(
+                    "DELETE FROM conversations WHERE user_id = ?",
+                    (normalized_user_id,),
+                ).rowcount,
+                "auth_sessions": connection.execute(
+                    "DELETE FROM auth_sessions WHERE user_id = ?",
+                    (normalized_user_id,),
+                ).rowcount,
+            }
+            connection.execute(
+                "DELETE FROM users WHERE user_id = ?", (normalized_user_id,)
+            )
+            connection.execute(
+                """
+                INSERT INTO deleted_accounts (github_user_id, deleted_at)
+                VALUES (?, ?)
+                ON CONFLICT(github_user_id) DO UPDATE SET deleted_at = excluded.deleted_at
+                """,
+                (github_user_id, now),
+            )
+            connection.commit()
+        except Exception:
+            connection.rollback()
+            raise
+        finally:
+            connection.close()
+        return counts
+
+    def export_account_data(self, user_id: str) -> dict[str, object]:
+        """导出本人数据：历史、贡献与临时材料元数据。
+
+        不含他人资源（所有查询按 user_id 硬绑定），不含任何模型凭据——
+        既无密文也无明文，凭据表根本不进入导出路径。
+        """
+
+        normalized_user_id = str(UUID(str(user_id)))
+        with self._connect() as connection:
+            profile = connection.execute(
+                """
+                SELECT github_login, display_name, created_at
+                FROM users WHERE user_id = ?
+                """,
+                (normalized_user_id,),
+            ).fetchone()
+            if profile is None:
+                raise LookupError("account not found")
+            conversations = [
+                {
+                    "conversation_id": row["conversation_id"],
+                    "course_id": row["course_id"],
+                    "title": row["title"],
+                    "created_at": row["created_at"],
+                    "updated_at": row["updated_at"],
+                    "expires_at": row["expires_at"],
+                }
+                for row in connection.execute(
+                    """
+                    SELECT conversation_id, course_id, title,
+                           created_at, updated_at, expires_at
+                    FROM conversations WHERE user_id = ?
+                    ORDER BY created_at ASC
+                    """,
+                    (normalized_user_id,),
+                )
+            ]
+            runs: list[dict[str, object]] = []
+            for row in connection.execute(
+                """
+                SELECT workflow_run_id, conversation_id, workflow_type,
+                       run_status, answer_status, request_json, result_json,
+                       created_at, expires_at
+                FROM workflow_runs WHERE user_id = ?
+                ORDER BY created_at ASC
+                """,
+                (normalized_user_id,),
+            ):
+                try:
+                    result_payload = json.loads(row["result_json"])
+                except json.JSONDecodeError:
+                    result_payload = {"unparseable": True}
+                runs.append(
+                    {
+                        "workflow_run_id": row["workflow_run_id"],
+                        "conversation_id": row["conversation_id"],
+                        "workflow_type": row["workflow_type"],
+                        "run_status": row["run_status"],
+                        "answer_status": row["answer_status"],
+                        "request": json.loads(row["request_json"]),
+                        "result": result_payload,
+                        "created_at": row["created_at"],
+                        "expires_at": row["expires_at"],
+                    }
+                )
+            tables = {
+                table["name"]
+                for table in connection.execute(
+                    "SELECT name FROM sqlite_master WHERE type = 'table'"
+                )
+            }
+            contributions: list[dict[str, object]] = []
+            temporary_materials: list[dict[str, object]] = []
+            if "contributions" in tables:
+                contributions = [
+                    {
+                        "contribution_id": row["contribution_id"],
+                        "course_id": row["course_id"],
+                        "proposed_source_id": row["proposed_source_id"],
+                        "title": row["title"],
+                        "state": row["state"],
+                        "pr_url": row["pr_url"],
+                        "char_count": row["char_count"],
+                        "content_snapshot": row["content_snapshot"],
+                        "created_at": row["created_at"],
+                        "expires_at": row["expires_at"],
+                    }
+                    for row in connection.execute(
+                        """
+                        SELECT contribution_id, course_id, proposed_source_id,
+                               title, state, pr_url, char_count,
+                               content_snapshot, created_at, expires_at
+                        FROM contributions WHERE user_id = ?
+                        ORDER BY created_at ASC
+                        """,
+                        (normalized_user_id,),
+                    )
+                ]
+            if "temporary_materials" in tables:
+                # 临时材料只导出元数据：7 天 TTL 的短命数据不鼓励长期留存，
+                # 内容本身可随时在应用内重新粘贴生成。
+                temporary_materials = [
+                    {
+                        "material_id": row["material_id"],
+                        "conversation_id": row["conversation_id"],
+                        "course_id": row["course_id"],
+                        "title": row["title"],
+                        "char_count": row["char_count"],
+                        "created_at": row["created_at"],
+                        "expires_at": row["expires_at"],
+                    }
+                    for row in connection.execute(
+                        """
+                        SELECT material_id, conversation_id, course_id, title,
+                               char_count, created_at, expires_at
+                        FROM temporary_materials WHERE user_id = ?
+                        ORDER BY created_at ASC
+                        """,
+                        (normalized_user_id,),
+                    )
+                ]
+        return {
+            "github_login": profile["github_login"],
+            "display_name": profile["display_name"],
+            "account_created_at": profile["created_at"],
+            "conversations": conversations,
+            "contributions": contributions,
+            "temporary_materials": temporary_materials,
+            "runs": runs,
+        }
 
 
     @staticmethod
