@@ -146,4 +146,26 @@ const store = useAppStore();
   border-radius: 0 0 var(--r-md) var(--r-md);
   justify-content: center;
 }
+
+/* 弹入动画：右上角锚点的浮层，轻微上移 + 缩放进入。 */
+.menu-pop-enter-active,
+.menu-pop-leave-active {
+  transition:
+    opacity var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+  transform-origin: top right;
+}
+
+.menu-pop-enter-from,
+.menu-pop-leave-to {
+  opacity: 0;
+  transform: translateY(-6px) scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-pop-enter-active,
+  .menu-pop-leave-active {
+    transition: none;
+  }
+}
 </style>

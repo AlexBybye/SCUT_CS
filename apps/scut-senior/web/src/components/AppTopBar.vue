@@ -84,7 +84,9 @@ onBeforeUnmount(() => {
           </svg>
         </button>
 
-        <AccountMenu v-if="store.accountMenuOpen" />
+        <Transition name="menu-pop">
+          <AccountMenu v-if="store.accountMenuOpen" />
+        </Transition>
       </template>
       <button v-else type="button" class="btn btn-primary" @click="store.startGithubLogin">
         使用 GitHub 登录

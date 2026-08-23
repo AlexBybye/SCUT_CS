@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { getPluginRegistry, loadCoursePlugin, unloadCoursePlugin } from "../api";
 import type { CoursePluginEntry, PluginRegistry } from "../contracts";
 
@@ -15,6 +15,12 @@ const registry = ref<PluginRegistry | null>(null);
 const loading = ref(true);
 const errorMessage = ref("");
 const busyCourseId = ref("");
+
+// 分组开合：课程插件默认展开（但限高内滚 + 搜索），预置与工具默认收起。
+const coursesOpen = ref(true);
+const presetsOpen = ref(false);
+const toolsOpen = ref(false);
+const courseQuery = ref("");
 
 const stateLabel: Record<string, string> = {
   active: "可用",
@@ -46,6 +52,28 @@ function presetTools(presetId: string): string[] {
   return preset?.allowed_tools ?? [];
 }
 
+// 课程插件：已装载的浮到最前，其余按名称排；再按搜索词过滤。
+const visibleCourses = computed<CoursePluginEntry[]>(() => {
+  const list = registry.value?.courses ?? [];
+  const q = courseQuery.value.trim().toLowerCase();
+  return list
+    .filter((course) => {
+      if (!q) return true;
+      return (
+        course.display_name.toLowerCase().includes(q) ||
+        course.course_id.toLowerCase().includes(q)
+      );
+    })
+    .sort((a, b) => {
+      if (a.loaded !== b.loaded) return a.loaded ? -1 : 1;
+      return a.display_name.localeCompare(b.display_name, "zh-Hans");
+    });
+});
+
+const loadedCourseCount = computed(
+  () => registry.value?.courses.filter((course) => course.loaded).length ?? 0,
+);
+
 async function togglePlugin(course: CoursePluginEntry): Promise<void> {
   if (!props.canManagePlugins || busyCourseId.value) return;
   busyCourseId.value = course.course_id;
@@ -71,99 +99,196 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
     <p v-else-if="errorMessage" class="note note-bad" role="alert">{{ errorMessage }}</p>
 
     <template v-else-if="registry">
-      <p class="inspector-note">
-        注册表 {{ registry.registry_version }} · 检索
-        {{ registry.retrieval_mode === "local_corpus" ? "本地语料" : "Fixture" }}
+      <p class="registry-meta">
+        <span class="chip chip-mono">v{{ registry.registry_version }}</span>
+        <span>
+          检索：{{ registry.retrieval_mode === "local_corpus" ? "本地语料" : "Fixture" }}
+        </span>
       </p>
 
+      <!-- 课程插件：默认展开，但限高内滚 + 搜索，压掉 55 项的无限长度。 -->
       <section class="plugin-group" aria-labelledby="courses-heading">
-        <div class="inspector-head">
-          <h3 id="courses-heading">课程插件</h3>
-          <span class="chip">{{ registry.courses.length }}</span>
+        <button
+          type="button"
+          class="group-toggle"
+          :aria-expanded="coursesOpen ? 'true' : 'false'"
+          aria-controls="courses-body"
+          @click="coursesOpen = !coursesOpen"
+        >
+          <span class="group-toggle-title">
+            课程插件
+            <span class="chip">{{ registry.courses.length }} 门</span>
+            <span v-if="loadedCourseCount" class="chip chip-ok">已装载 {{ loadedCourseCount }}</span>
+          </span>
+          <svg
+            class="group-caret"
+            :class="{ 'is-open': coursesOpen }"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </button>
+
+        <div v-if="coursesOpen" id="courses-body" class="group-body">
+          <div class="group-filter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+            <input
+              v-model="courseQuery"
+              type="text"
+              class="group-filter-input"
+              placeholder="搜索课程名或别名…"
+              aria-label="搜索课程插件"
+            />
+          </div>
+
+          <div v-if="visibleCourses.length" class="plugin-sheet">
+            <article
+              v-for="course in visibleCourses"
+              :key="course.course_id"
+              class="plugin-row"
+            >
+              <div class="plugin-row-top">
+                <strong>{{ course.display_name }}</strong>
+                <span
+                  class="chip"
+                  :class="course.loaded ? pluginStateChip[course.state] : ''"
+                >
+                  {{ course.loaded ? stateLabel[course.state] : "已卸载" }}
+                </span>
+              </div>
+              <div class="plugin-row-meta">
+                <code>{{ course.course_id }}</code>
+                <span>
+                  {{
+                    course.loaded
+                      ? course.enabled_workflows.length
+                        ? `支持 ${course.enabled_workflows.length} 个 Workflow`
+                        : "未启用 Workflow"
+                      : "插件未装载"
+                  }}
+                </span>
+              </div>
+              <div v-if="canManagePlugins" class="plugin-row-acts">
+                <button
+                  type="button"
+                  class="btn btn-quiet"
+                  :disabled="busyCourseId !== ''"
+                  @click="togglePlugin(course)"
+                >
+                  {{ busyCourseId === course.course_id ? "处理中" : course.loaded ? "卸载" : "装载" }}
+                </button>
+              </div>
+            </article>
+          </div>
+          <p v-else class="inspector-note">没有匹配「{{ courseQuery }}」的课程。</p>
+
+          <p v-if="!canManagePlugins" class="inspector-note">
+            装载与卸载需要真实 GitHub 登录；当前只读展示。
+          </p>
         </div>
-        <p class="inspector-note">
-          状态由检索可用性与装载状态共同决定；卸载后课程不可建会话、不可运行。
-        </p>
-        <article v-for="course in registry.courses" :key="course.course_id" class="plugin-row">
-          <div class="plugin-row-top">
-            <strong>{{ course.display_name }}</strong>
-            <span
-              class="chip"
-              :class="course.loaded ? pluginStateChip[course.state] : ''"
-            >
-              {{ course.loaded ? stateLabel[course.state] : "已卸载" }}
-            </span>
-          </div>
-          <div class="plugin-row-meta">
-            <code>{{ course.course_id }}</code>
-            <span>
-              {{
-                course.loaded
-                  ? course.enabled_workflows.length
-                    ? `支持 ${course.enabled_workflows.length} 个 Workflow`
-                    : "未启用 Workflow"
-                  : "插件未装载"
-              }}
-            </span>
-          </div>
-          <div v-if="canManagePlugins" class="plugin-row-acts">
-            <button
-              type="button"
-              class="btn btn-quiet"
-              :disabled="busyCourseId !== ''"
-              @click="togglePlugin(course)"
-            >
-              {{ busyCourseId === course.course_id ? "处理中" : course.loaded ? "卸载" : "装载" }}
-            </button>
-          </div>
-        </article>
-        <p v-if="!canManagePlugins" class="inspector-note">
-          装载与卸载需要真实 GitHub 登录；当前只读展示。
-        </p>
       </section>
 
+      <!-- Agent Preset：信息性列表，默认收起。 -->
       <section class="plugin-group" aria-labelledby="presets-heading">
-        <div class="inspector-head">
-          <h3 id="presets-heading">Agent Preset</h3>
-          <span class="chip">{{ registry.agent_presets.length }}</span>
+        <button
+          type="button"
+          class="group-toggle"
+          :aria-expanded="presetsOpen ? 'true' : 'false'"
+          aria-controls="presets-body"
+          @click="presetsOpen = !presetsOpen"
+        >
+          <span class="group-toggle-title">
+            Agent Preset
+            <span class="chip">{{ registry.agent_presets.length }} 个</span>
+          </span>
+          <svg
+            class="group-caret"
+            :class="{ 'is-open': presetsOpen }"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </button>
+
+        <div v-if="presetsOpen" id="presets-body" class="group-body">
+          <p class="inspector-note">
+            每个 Workflow 由且仅由一个预设描述能力与工具边界；预设不含提示词。
+          </p>
+          <article v-for="preset in registry.agent_presets" :key="preset.preset_id" class="plugin-row">
+            <div class="plugin-row-top">
+              <strong>{{ preset.display_name }}</strong>
+              <span class="chip chip-mono">v{{ preset.preset_version }}</span>
+            </div>
+            <div class="plugin-row-meta">
+              <code>{{ preset.workflow_type }}</code>
+              <span>聚焦：{{ preset.focus_strategy }}</span>
+              <span>工具：{{ presetTools(preset.preset_id).join("、") || "无" }}</span>
+              <span>
+                模态：{{ preset.required_input_modalities.join("/") }} ·
+                结构化输出：{{ preset.requires_structured_outputs ? "必需" : "否" }}
+              </span>
+            </div>
+          </article>
         </div>
-        <p class="inspector-note">
-          每个 Workflow 由且仅由一个预设描述能力与工具边界；预设不含提示词。
-        </p>
-        <article v-for="preset in registry.agent_presets" :key="preset.preset_id" class="plugin-row">
-          <div class="plugin-row-top">
-            <strong>{{ preset.display_name }}</strong>
-            <span class="chip chip-mono">v{{ preset.preset_version }}</span>
-          </div>
-          <div class="plugin-row-meta">
-            <code>{{ preset.workflow_type }}</code>
-            <span>聚焦：{{ preset.focus_strategy }}</span>
-            <span>工具：{{ presetTools(preset.preset_id).join("、") || "无" }}</span>
-            <span>
-              模态：{{ preset.required_input_modalities.join("/") }} ·
-              结构化输出：{{ preset.requires_structured_outputs ? "必需" : "否" }}
-            </span>
-          </div>
-        </article>
       </section>
 
+      <!-- 受控工具：信息性列表，默认收起。 -->
       <section class="plugin-group" aria-labelledby="tools-heading">
-        <div class="inspector-head">
-          <h3 id="tools-heading">受控工具</h3>
-          <span class="chip">{{ registry.controlled_tools.length }}</span>
+        <button
+          type="button"
+          class="group-toggle"
+          :aria-expanded="toolsOpen ? 'true' : 'false'"
+          aria-controls="tools-body"
+          @click="toolsOpen = !toolsOpen"
+        >
+          <span class="group-toggle-title">
+            受控工具
+            <span class="chip">{{ registry.controlled_tools.length }} 个</span>
+          </span>
+          <svg
+            class="group-caret"
+            :class="{ 'is-open': toolsOpen }"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </button>
+
+        <div v-if="toolsOpen" id="tools-body" class="group-body">
+          <p class="inspector-note">
+            全部由服务端编排，模型不可直接调用（model_callable=false）。
+          </p>
+          <article v-for="tool in registry.controlled_tools" :key="tool.tool_id" class="plugin-row">
+            <div class="plugin-row-top">
+              <strong>{{ tool.display_name }}</strong>
+            </div>
+            <div class="plugin-row-meta">
+              <code>{{ tool.tool_id }}</code>
+              <span>{{ tool.description }}</span>
+            </div>
+          </article>
         </div>
-        <p class="inspector-note">
-          全部由服务端编排，模型不可直接调用（model_callable=false）。
-        </p>
-        <article v-for="tool in registry.controlled_tools" :key="tool.tool_id" class="plugin-row">
-          <div class="plugin-row-top">
-            <strong>{{ tool.display_name }}</strong>
-          </div>
-          <div class="plugin-row-meta">
-            <code>{{ tool.tool_id }}</code>
-            <span>{{ tool.description }}</span>
-          </div>
-        </article>
       </section>
     </template>
   </div>
@@ -172,12 +297,126 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
 <style>
 .plugins {
   display: grid;
-  gap: 12px;
+  gap: 8px;
+}
+
+.registry-meta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--text-muted);
+  font-size: var(--fs-2xs);
 }
 
 .plugin-group {
   display: grid;
+  gap: 4px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--raised);
+  overflow: hidden;
+}
+
+/* 组头：整行可点的开合按钮。 */
+.group-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 11px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: background var(--dur-fast) ease;
+}
+
+.group-toggle:hover {
+  background: var(--sunken);
+}
+
+.group-toggle:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--focus) 34%, transparent);
+  outline-offset: -2px;
+}
+
+.group-toggle-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+}
+
+.group-caret {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  color: var(--text-soft);
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.group-caret.is-open {
+  transform: rotate(180deg);
+}
+
+/* 组内容：课程用内滚限高，其余随内容自然展开。 */
+.group-body {
+  display: grid;
   gap: 6px;
+  padding: 6px 11px 11px;
+  border-top: 1px solid var(--line);
+}
+
+.group-filter {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 9px;
+  height: 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--sunken);
+  transition: border-color var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
+}
+
+.group-filter:focus-within {
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--focus) 18%, transparent);
+}
+
+.group-filter svg {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+  color: var(--text-soft);
+}
+
+.group-filter-input {
+  min-height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: var(--fs-xs);
+}
+
+.group-filter-input::placeholder {
+  color: var(--text-soft);
+}
+
+.group-filter-input:focus {
+  outline: none;
+}
+
+/* 课程清单：限高内滚，绝不再把面板撑成无限长。 */
+.plugin-sheet {
+  display: grid;
+  gap: 5px;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .plugin-row {
@@ -186,7 +425,7 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
   padding: 7px 9px;
   border: 1px solid var(--line);
   border-radius: var(--r-sm);
-  background: var(--raised);
+  background: var(--panel);
 }
 
 .plugin-row-top {

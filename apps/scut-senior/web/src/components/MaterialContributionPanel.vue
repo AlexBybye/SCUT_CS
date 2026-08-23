@@ -206,7 +206,7 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
           <small>{{ item.char_count }} 字 · 过期于 {{ formatDate(item.expires_at) }}</small>
         </div>
         <div class="material-buttons">
-          <button type="button" class="btn btn-ghost" :disabled="busy" @click="onPreview(item.material_id)">
+          <button type="button" class="btn btn-quiet" :disabled="busy" @click="onPreview(item.material_id)">
             预览转换结果
           </button>
           <span
@@ -216,7 +216,7 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
           >
             <button
               type="button"
-              class="btn btn-ghost"
+              class="btn btn-quiet"
               :disabled="CONTRIBUTION_SUBMIT_CLOSED || busy"
               @click="onSubmit(item.material_id, true)"
             >
@@ -331,7 +331,7 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
   padding: 7px 9px;
   border: 1px solid var(--line);
   border-radius: var(--r-sm);
-  background: var(--surface);
+  background: var(--raised);
 }
 
 .material-meta {
@@ -406,10 +406,6 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
-.btn-danger {
-  color: #b42318;
-}
-
 .material-preview {
   display: grid;
   gap: 7px;
@@ -438,7 +434,7 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
 .material-warnings {
   margin: 0;
   padding-left: 18px;
-  color: #8a6100;
+  color: var(--warn-text);
   font-size: var(--fs-2xs);
 }
 
