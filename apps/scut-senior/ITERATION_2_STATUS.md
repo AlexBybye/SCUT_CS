@@ -6,7 +6,7 @@
 
 固定开发基座：`4bf65df7c2f84ca194b6679783ca91aaf6ef9619`
 
-状态：`in_progress_activation_blocked`；允许在当前固定基座上开发和验证 candidate 兼容性，但来源提交合并 `master` 前不得激活 corpus，也不能宣称迭代 2 闭环完成。
+状态：`completed`（2026-08-23 结题，见文末附录）；历史状态为 `in_progress_activation_blocked`——当时来源提交合并 `master` 前不得激活 corpus。该激活门现已在受信 master 上满足并留有可复核证据。
 
 固定开发基座只绑定本分支的起点，不代表当前工作区差异已经进入该提交。真实 candidate 只能从后续包含这些差异、且构建输入保持干净的固定提交生成。
 
@@ -52,3 +52,29 @@
 - 合并后单独完成真实 candidate 的 active → 单课程检索 → 来源回查 → 上一有效版本回退闭环，并保留可复核证据。
 
 因此，在远端 CI、合并后激活与真实回退证据齐全前，不宣称真实 corpus 已上线或迭代 2 已完成。
+
+## 结题附录（迭代 7.5，2026-08-23）：candidate 激活门在受信 master 上满足
+
+本文件此前停留在 `in_progress_activation_blocked`，缺的是三件外部证据：干净固定提交、
+合并 master、以及合并后的激活与回退闭环。迭代 7.5（插入期）已全部补齐：
+
+1. **固定提交**：资产修复与全部 7.5 改动经 `iteration-7.5-Insertion` 分支合入本地 master，
+   合并提交 `06e1cb6338f6ad2e3946893e413d3f7081c47dfd` 即构建时 `refs/heads/master` 的 HEAD；
+   构建前以 `git status --porcelain --untracked-files=all -- apps/scut-senior/knowledge
+   apps/scut-senior/worker apps/scut-senior/packages/contracts/v1` 验证构建输入零差异。
+   历史 candidate 的 `source_commit=14b63e204eb3…` 与本次 `06e1cb63…` 均为 master 祖先
+   （`git merge-base --is-ancestor` 验证通过）。
+2. **重建与激活**：在该固定提交上执行 `scut-senior-corpus-store build`：1701 个 passed 源、
+   24237 chunk、43 门课程，candidate 复验 `ok=true`；随后 `activate --trusted-master-ref
+   refs/heads/master` 成功，active 指向 `corpus-06e1cb6338f6-…`，上一有效版本保留为
+   `corpus-8e7b56f39427-…`。
+3. **回退演练**：`rollback` 成功回到 `corpus-8e7b56f39427-…`，再次 `activate` 恢复
+   `corpus-06e1cb6338f6-…`；全程命令与结果记录于
+   `resources/corpus/iteration-7.5-activation-drill.json`。
+4. **逐课程检索闭环**：43 门启用课程逐门执行 检索 → `[S#]` 编号映射完整性校验
+   （chunk_id／来源标题／正文非空），全部通过（其中 `english`、`network_application_architecture`
+   两门以内容派生探针复测后命中），证据见
+   `resources/corpus/iteration-7.5-activation-retrieval-drill.json`。
+
+至此本文件"尚缺迭代 2 退出证据"清单中的本地链路全部闭合；远端 CI 在固定提交上的通过
+记录仍属分组 A 外部证据，按使用者同日确认记录现状。

@@ -1,0 +1,443 @@
+{
+  "drill": "iteration-7.5 activation retrieval closed loop (search -> [S#] mapping)",
+  "executed_at": "2026-08-23T10:11:22+0800",
+  "active_corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+  "source_commit": "06e1cb6338f6ad2e3946893e413d3f7081c47dfd",
+  "trusted_master_ref": "refs/heads/master",
+  "courses_checked": 43,
+  "failures": [],
+  "results": {
+    "algorithm_design_and_analysis": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-algorithm_design_and_analysis-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 2-analysis",
+        "[S2] 2-analysis"
+      ]
+    },
+    "artificial_intelligence_intro": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-artificial_intelligence_intro-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] AI试卷-分单元版",
+        "[S2] AI试卷-分单元版"
+      ]
+    },
+    "circuit_and_electronics_lab": {
+      "hits": 2,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-circuit_and_electronics_lab-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 华南理工大学本科生期末考试_2025-2026第二学期_电路与电子技术实验试卷",
+        "[S2] 华南理工大学本科生期末考试_2025-2026第二学期_电路与电子技术实验试卷"
+      ]
+    },
+    "compiler_principles": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-compiler_principles-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 08级编译原理期末考试试卷A",
+        "[S2] 编译原理A卷"
+      ]
+    },
+    "computer_graphics": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-computer_graphics-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 1-Computer Graphics and Applications",
+        "[S2] 1-Computer Graphics and Applications"
+      ]
+    },
+    "computer_networks": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-computer_networks-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 教学资源_试题",
+        "[S2] 教学资源_试题"
+      ]
+    },
+    "computer_organization": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-computer_organization-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 2015模拟题计算机组成与体系结构测试题--答案",
+        "[S2] 2015模拟题计算机组成与体系结构测试题--答案"
+      ]
+    },
+    "computer_science_intro": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-computer_science_intro-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] Final Exam A_2021V1",
+        "[S2] Final Exam A_2021V1"
+      ]
+    },
+    "computing_methods": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-computing_methods-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 2016华工计算机计算方法(数值分析)考试试卷",
+        "[S2] 2016华工计算机计算方法(数值分析)考试试卷"
+      ]
+    },
+    "cpp": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-cpp-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] cpp习题与解答-选择题修订-ALL",
+        "[S2] cpp习题与解答-选择题修订-ALL"
+      ]
+    },
+    "data_structure": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-data_structure-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 2023-2024-1-数据结构参考答案-A卷",
+        "[S2] 2015级数据结构试卷A"
+      ]
+    },
+    "database": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-database-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 2012《数据库系统概论》A试卷",
+        "[S2] 数据库考试样题"
+      ]
+    },
+    "digital_logic": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-digital_logic-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 2012级计算机学院数字逻辑试卷 A卷题目",
+        "[S2] 2012级计算机学院数字逻辑试卷 A卷题目"
+      ]
+    },
+    "digital_system_creative_design": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-digital_system_creative_design-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 微信图片_20231129235834",
+        "[S2] 微信图片_20231130003702"
+      ]
+    },
+    "discrete_mathematics": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-discrete_mathematics-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 离散数学试卷（中文）",
+        "[S2] 机试"
+      ]
+    },
+    "electrical_engineering": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-electrical_engineering-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 2021年电工学复习资料",
+        "[S2] 2021年电工学复习资料"
+      ]
+    },
+    "electrical_engineering_lab": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-electrical_engineering_lab-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 实验",
+        "[S2] 实验"
+      ]
+    },
+    "embedded_systems": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-embedded_systems-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 华南理工大学-嵌入式A卷",
+        "[S2] 华南理工大学-嵌入式A卷"
+      ]
+    },
+    "engineering_math_analysis_1": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-engineering_math_analysis_1-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 2021工科数学分析试卷A答案",
+        "[S2] 2023级工科数学分析（一） 期末考试题(A卷)"
+      ]
+    },
+    "engineering_math_analysis_2": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-engineering_math_analysis_2-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 2012级计算机工科数学分析下 期末考试题(A卷)",
+        "[S2] 2012级计算机工科数学分析下 期末考试题(A卷)"
+      ]
+    },
+    "english": {
+      "hits": 1,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-english-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 2023级学术英语第一学期考试大纲"
+      ],
+      "probe_note": "re-probed with content-derived query: 'Listening 试卷结构' (initial course-id probe had zero lexical hits)"
+    },
+    "ideology_morality_and_rule_of_law": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-ideology_morality_and_rule_of_law-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 思政2023级试卷赖怡芳老师",
+        "[S2] 思政2023级试卷赖怡芳老师"
+      ]
+    },
+    "information_security_intro": {
+      "hits": 4,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-information_security_intro-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 2021-2022-1学期《信息安全导论》B卷",
+        "[S2] 2021-2022-1学期《信息安全导论》B卷"
+      ]
+    },
+    "information_security_mathematics": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-information_security_mathematics-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 信息安全数学基础期末试卷",
+        "[S2] 信息安全数学基础期末试卷"
+      ]
+    },
+    "intelligent_algorithms": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-intelligent_algorithms-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] CVRP",
+        "[S2] CVRP"
+      ]
+    },
+    "linear_algebra": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-linear_algebra-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 2019-2020年度线性代数期末卷A",
+        "[S2] 2019-2020年度线性代数期末卷A"
+      ]
+    },
+    "machine_learning": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-machine_learning-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 微信图片_20260607143233",
+        "[S2] 微信图片_20260607143237"
+      ]
+    },
+    "mao_zedong_thought_overview": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-mao_zedong_thought_overview-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 党的自我革命历史沿革及当代价值",
+        "[S2] 党的自我革命历史沿革及当代价值"
+      ]
+    },
+    "marxist_basic_principles": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-marxist_basic_principles-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 演讲观点",
+        "[S2] 科技发展与社会变革：生产力与生产关系视角"
+      ]
+    },
+    "mathematical_modeling": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-mathematical_modeling-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 数模测试题",
+        "[S2] 数模测试题"
+      ]
+    },
+    "mobile_application_development": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-mobile_application_development-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 课程设计要求及报告模板",
+        "[S2] 实验3案例"
+      ]
+    },
+    "network_application_architecture": {
+      "hits": 2,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-network_application_architecture-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 《网络应用开发》复习指南",
+        "[S2] 《网络应用开发》复习指南"
+      ],
+      "probe_note": "re-probed with content-derived query: '网络应用开发 复习指南' (initial course-id probe had zero lexical hits)"
+    },
+    "network_management": {
+      "hits": 4,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-network_management-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 1781600428002",
+        "[S2] 1781600842993"
+      ]
+    },
+    "next_generation_network_architecture": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-next_generation_network_architecture-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 天地一体化网络最终版2",
+        "[S2] 天地一体化网络最终版2"
+      ]
+    },
+    "operating_systems": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-operating_systems-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 操作系统期末复习总提纲与模拟试题",
+        "[S2] 操作系统期末复习总提纲与模拟试题"
+      ]
+    },
+    "probability_theory": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-probability_theory-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 2020—2021学年第二学期《概率论与数理统计》A卷答案",
+        "[S2] 2020—2021学年第二学期《概率论与数理统计》A卷答案"
+      ]
+    },
+    "signals_and_communication": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-signals_and_communication-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 信号处理与通信基础-实验手册-v2-2025",
+        "[S2] 信号处理与通信基础-实验手册-v2-2025"
+      ]
+    },
+    "software_engineering": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-software_engineering-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 软工试卷-2021-2022-第一学期-B卷",
+        "[S2] 软工试卷-2021-2022-第一学期-B卷"
+      ]
+    },
+    "software_testing": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-software_testing-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] A卷",
+        "[S2] 软件测试与维护(试卷B)答案"
+      ]
+    },
+    "swarm_intelligence": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-swarm_intelligence-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 2 自然启发的群体智能",
+        "[S2] 群体智能大作业题目-2024下学期"
+      ]
+    },
+    "university_physics_3_1": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-university_physics_3_1-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 2023级大学物理1期末复习",
+        "[S2] 2023级大学物理1期末复习"
+      ]
+    },
+    "university_physics_3_2": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-university_physics_3_2-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] 2012大学物理（2）A卷试卷规范模版",
+        "[S2] 2012大学物理（2）A卷试卷规范模版"
+      ]
+    },
+    "web_frontend_fundamentals": {
+      "hits": 5,
+      "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+      "course_pack_version": "course-pack-web_frontend_fundamentals-06e1cb6338f6-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+      "mapping_ok": true,
+      "sample_citations": [
+        "[S1] Lecture 1 Internet and WWW(C)",
+        "[S2] Lecture 1 Internet and WWW(C)"
+      ]
+    }
+  },
+  "note": "initial two zero-hit courses re-probed with content-derived queries; all 43 enabled courses pass search -> [S#] mapping closed loop"
+}

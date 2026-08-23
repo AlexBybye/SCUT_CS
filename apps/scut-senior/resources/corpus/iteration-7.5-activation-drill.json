@@ -1,0 +1,52 @@
+{
+  "drill": "iteration-7.5 Group D — rebuild candidate on trusted master, activate, rollback and restore",
+  "executed_at": "2026-08-23",
+  "repository_root": "/Users/bilibili/Documents/SCUT_CS",
+  "source_commit": "06e1cb6338f6ad2e3946893e413d3f7081c47dfd",
+  "source_commit_description": "merge: iteration 7.5 insertion — tech-debt payoff, acceptance gap closure (= refs/heads/master HEAD at execution time)",
+  "preconditions": {
+    "fixed_checkout_verified": true,
+    "tracked_or_untracked_changes_in_build_inputs": "none (git status --porcelain --untracked-files=all on knowledge/, worker/, packages/contracts/v1/ empty)",
+    "manifest_passed_rows": 1701,
+    "candidate_input_validation": "passed (this commit contains the 32 previously-gitignored .tmp->png asset fixes)"
+  },
+  "build": {
+    "command": "scut-senior-corpus-store build --manifest <repo>/apps/scut-senior/knowledge/manifest.csv --knowledge-root <repo>/apps/scut-senior/knowledge --store-root <repo>/apps/scut-senior/.local/corpus-store --source-commit 06e1cb6338f6ad2e3946893e413d3f7081c47dfd --repository-root <repo>",
+    "corpus_version": "corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+    "builder_version": "0.2.0",
+    "source_count": 1701,
+    "chunk_count": 24237,
+    "available_courses": 43,
+    "validation": {
+      "ok": true,
+      "chunk_count": 24237,
+      "course_count": 43,
+      "source_count": 1701,
+      "schema_version": "corpus-candidate-v1"
+    },
+    "active_json_created_by_build": false
+  },
+  "activate": {
+    "command": "scut-senior-corpus-store activate --store-root <store> --corpus-version corpus-06e1cb6338f6-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1 --repository-root <repo> --trusted-master-ref refs/heads/master",
+    "trusted_master_ref": "refs/heads/master",
+    "trusted_master_commit": "06e1cb6338f6ad2e3946893e413d3f7081c47dfd",
+    "previous_corpus_version_before": "corpus-8e7b56f39427-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+    "course_switches_after": "43/43 enabled"
+  },
+  "rollback_drill": [
+    {
+      "step": "rollback",
+      "command": "scut-senior-corpus-store rollback --store-root <store> --repository-root <repo> --trusted-master-ref refs/heads/master",
+      "result": "active=corpus-8e7b56f39427-b0_2_0-m1200…, previous=corpus-06e1cb6338f6-b0_2_0-m1200…"
+    },
+    {
+      "step": "restore (re-activate new candidate)",
+      "command": "scut-senior-corpus-store activate … (same arguments as above)",
+      "result": "active=corpus-06e1cb6338f6-b0_2_0-m1200…, previous=corpus-8e7b56f39427-b0_2_0-m1200…"
+    }
+  ],
+  "retrieval_closed_loop": {
+    "description": "per enabled course: search against validated active pointer -> non-empty hits -> [S#] citation mapping integrity; executed over all 43 enabled courses via LocalCorpusRetrievalGateway(load_active_course)",
+    "evidence_file": "resources/corpus/iteration-7.5-activation-retrieval-drill.json"
+  }
+}

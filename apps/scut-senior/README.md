@@ -186,15 +186,15 @@ GIT_LFS_SKIP_SMUDGE=1 git checkout master
 
 ## 明确关闭或待确认
 
-- 迭代 4 切片（进行中）：多轮上下文已接入——服务端从会话历史派生最多 6 轮已完成尝试作为模型上下文，历史不改变当前请求的课程、Workflow 或知识范围；回答反馈已闭环——`POST/GET /api/v1/feedback` 绑定运行归属并随 30 天历史清理，反馈只进入列表、不自动修改知识库；评测执行器 `scut-senior-eval` 已可执行 7 类 fixture case 并输出逐课程报告，当前 fixture+mock 仅覆盖 answered/repository/page 契约，其余期望须待真实 corpus 与真实模型（不伪造通过）；
+- 迭代 4 切片（已收口，2026-08-23 改写）：多轮上下文已接入——服务端从会话历史派生最多 6 轮已完成尝试作为模型上下文，历史不改变当前请求的课程、Workflow 或知识范围；回答反馈已闭环——`POST/GET /api/v1/feedback` 绑定运行归属并随 30 天历史清理，反馈只进入列表、不自动修改知识库；评测执行器 `scut-senior-eval` 已可执行 7 类 fixture case 并输出逐课程报告，当前 fixture+mock 仅覆盖 answered/repository/page 契约，其余期望须待真实 corpus 与真实模型（不伪造通过）；
 - 迭代 5 备考复习（本地／测试实现完成）：`exam_review` 新增确定性备考计划——有大纲按“用户大纲 > 课程资料 > 历年题 > 标记的通用知识”，无大纲按“历年题 > 课程资料”，并明确声明不是官方范围、不构成考试重点预测；输出历年题年份覆盖、题型分布与客观出现次数（每条可回查题目来源）、按已审核标题组织的知识点分层与建议顺序、未覆盖大纲条目和 AI 样题边界；私有大纲／薄弱点只影响本人计划排序，不进入公共课程包、Trace 或跨用户缓存；`SCUT_SENIOR_EXAM_REVIEW_PLAN_ENABLED=false` 可整体关闭回到迭代 4 行为。统计质量受已审核语料的标题与题号标记限制（无题目标记的历年卷不计入统计），逐课程真实模型评测仍未完成；
 - OpenRouter 三模型平台目录、显式选择、目录健康检查和本地开发调用适配器：迭代 1 已实现；健康检查不发起推理，不能当作真实回答可用性证据；
 - BYOK 固定目录、会话级 AES-256-GCM 保存／替换／删除／清理、四家固定调用和安全错误映射：迭代 1 已在本地／测试实现；未使用真实用户 Key 做四家实网联调；
 - GitHub OAuth：本地／测试适配器、7 天会话、所有权和 SQLite 恢复已实现；真实 GitHub 凭据回调、生产 HTTPS 与部署尚未联调，生产继续 fail-closed；
-- 平台限流状态目前是单进程内存态；多 worker 共享限流、周期清理任务和生产启用仍未完成；
-- 首批课程固定为 10 门；本轮不改 manifest 的 reviewer 或 `passed/pending`，也不把用户的 Markdown 公式替换等同于 corpus 激活。当前没有正式 `active.json`，默认检索仍是 Fixture，远端 CI 与受信 `master` 上的真实 active／回退证据仍缺失；
-- Workflow Runtime 与严格 NDJSON Trace：迭代 3 已完成本地／测试实现；供应商回答会先经兼容解析（自然语言、JSON 或 JSON 代码围栏）与来源 Guard，再按安全回答块发送 `answer_delta`，不是上游 token 原样透传；页面断开会停止后续节点并保存 `interrupted`，但同步 urllib 调用在返回或超时前不能保证终止上游推理或计费；
-- 华为云部署：**设计原样保留，作为后续可选目标**；预算获批前保持 validation-only／fail-closed，不创建资源；未来首发基线为华南-广州优先的 1C2G、40GB、1～2Mbps，不在 ECS 部署大模型。当前启用路径为“本机运行 + HTTPS 隧道”（见上文“在线部署”节）；
+- 平台额度与清理（迭代 7.5 已落地本地实现）：平台 RPM／每日额度锁存迁移到 SQLite 共享存储（重启不丢失、多 worker 不重复发放）；进程内周期清理调度器按固定间隔物理清理到期数据，停机窗口由启动补扫覆盖；账号注销／历史提前删除／数据导出已实现（注销后无法再登录，导出不含他人资源与任何 Key 明文／密文）。生产多副本部署下的调度形态仍按单机语义如实标注；
+- 首批课程固定为 10 门；本轮不改 manifest 的 reviewer 或 `passed/pending`，也不把用户的 Markdown 公式替换等同于 corpus 激活。本地受信 `master` 固定提交上已完成真实 candidate 构建、激活与回退演练（active=`corpus-06e1cb6338f6-…`，1701 passed 源 / 24237 chunk / 43 门课程；证据见 `apps/scut-senior/resources/corpus/`），未配置受信 active store 的环境默认检索仍是 Fixture；远端 CI 在固定提交上的通过记录属外部证据项；
+- Workflow Runtime 与严格 NDJSON Trace：迭代 3 已完成本地／测试实现；供应商回答会先经兼容解析（自然语言、JSON 或 JSON 代码围栏）与来源 Guard，再按安全回答块发送 `answer_delta`，不是上游 token 原样透传；页面断开即请求尽力取消上游调用（迭代 7.5 可取消 transport：放弃等待、运行收敛为 `interrupted` 并留 trace／日志证据），被放弃的上游套接字按其自身超时回收，供应商侧是否停止计费无法在本进程内证实、只如实描述；
+- 华为云部署：**设计原样保留，规划改期到迭代 10**（2026-08-23 决议）；预算获批前保持 validation-only／fail-closed，不创建资源；未来首发基线为华南-广州优先的 1C2G、40GB、1～2Mbps，不在 ECS 部署大模型。当前启用路径为“本机运行 + HTTPS 隧道”（见上文“在线部署”节），该隧道口径继续作为 GitHub OAuth 回调的验收基线；
 - PostgreSQL、Qdrant、对象存储、任务系统、GitHub App、SWR 认证、ECS 灰度/回滚：首发不购买或只保留可替换边界；
 - 跨课程：契约已冻结，feature flag 默认关闭；
 - Bilibili：只保留 0～3 个聚焦词和关键词非空时由后端生成的唯一匿名搜索链接；不建设或维护具体视频资产，不返回或抓取具体视频；
