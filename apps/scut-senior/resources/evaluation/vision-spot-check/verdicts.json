@@ -1,0 +1,252 @@
+{
+  "summary": {
+    "sample_size": 30,
+    "correct": 27,
+    "minor": 0,
+    "semantic_error": 3,
+    "semantic_error_rate": 0.1,
+    "threshold_semantic_error_max": 0.05
+  },
+  "items": [
+    {
+      "id": 1,
+      "source_id": "probability-theory-035",
+      "latex": "f_{Y}(y)=\\int_{-\\infty}^{+\\infty}f(x,y)dx=\\int_0^12\\frac{1}{1-e^{-1}}e^{-(x+2)^2}dx=2e^{-2^2},(y>0)",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 2,
+      "source_id": "probability-theory-033",
+      "latex": "x=99.975,s^2=1.102,t=\\frac{\\overline{x}-\\mu_0}{s/\\sqrt{n-1}}=-0.063",
+      "verdict": "semantic_error",
+      "reviewer_note": "应为 \\overline{x}=99.975（样本均值），转写丢失上划线写成普通 x",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 3,
+      "source_id": "probability-theory-012",
+      "latex": "DT_{2}=\\frac{2(n+1)}{n+2}\\theta^{2}-\\theta^{2}=\\frac{n}{n+2}\\theta^{2}",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 4,
+      "source_id": "probability-theory-031",
+      "latex": "A_1",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 5,
+      "source_id": "probability-theory-012",
+      "latex": "T_1",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 6,
+      "source_id": "probability-theory-031",
+      "latex": "\\hat{\\theta}",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 7,
+      "source_id": "probability-theory-035",
+      "latex": "alpha",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 8,
+      "source_id": "probability-theory-036",
+      "latex": "X_{1},X_{2},X_{3}",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 9,
+      "source_id": "probability-theory-032",
+      "latex": "\\hat{\\theta}_{2}",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 10,
+      "source_id": "probability-theory-033",
+      "latex": "T_2",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 11,
+      "source_id": "probability-theory-012",
+      "latex": "T_{1}=\\frac{n+1}{n}\\hat{\\theta}_{2}",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 12,
+      "source_id": "probability-theory-035",
+      "latex": "\\frac{1}{2\\sqrt{\\pi}}e^{-y^{2}/8}",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 13,
+      "source_id": "probability-theory-028",
+      "latex": "-\\frac{n}{\\hat{\\theta}}+\\frac{1}{\\hat{\\theta}^{2}}\\sum_{i=1}^{n}|x_i|=0",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 14,
+      "source_id": "probability-theory-033",
+      "latex": "H_1:\\mu_0=100",
+      "verdict": "semantic_error",
+      "reviewer_note": "H_1:\\mu_0=100 应为不等于号 H_1:\\mu_0\\neq 100",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 15,
+      "source_id": "probability-theory-029",
+      "latex": "E[(X-1)(X-2)]=1",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 16,
+      "source_id": "probability-theory-029",
+      "latex": "Y=X^{2}",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 17,
+      "source_id": "probability-theory-015",
+      "latex": "(C)p",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 18,
+      "source_id": "probability-theory-015",
+      "latex": "X",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 19,
+      "source_id": "probability-theory-032",
+      "latex": "6p(1-p)^2",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 20,
+      "source_id": "probability-theory-036",
+      "latex": "\\int_{36C}^{36C}\\frac{1}{\\sqrt{2\\pi}}e^{-\\frac{x^2}{2}}dx=",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 21,
+      "source_id": "probability-theory-033",
+      "latex": "EX=0,EY=1,",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 22,
+      "source_id": "probability-theory-032",
+      "latex": "Cov(X,Y)",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 23,
+      "source_id": "probability-theory-028",
+      "latex": "\\left[\\frac{nS_n^2}{\\chi_{1-\\frac{\\alpha}{2}}^2(n-1)},\\frac{nS_n^2}{\\chi_{\\frac{\\alpha}{2}}^2(n-1)}\\right]=[0.548,3.559]",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 24,
+      "source_id": "probability-theory-035",
+      "latex": "1-(1-F(1))^3;",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 25,
+      "source_id": "probability-theory-035",
+      "latex": "P(B)=0.",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 26,
+      "source_id": "probability-theory-036",
+      "latex": "A",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 27,
+      "source_id": "probability-theory-031",
+      "latex": "A_3",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 28,
+      "source_id": "probability-theory-036",
+      "latex": "Y",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 29,
+      "source_id": "probability-theory-033",
+      "latex": "\\frac{\\bar{X}}{S/\\sqrt{n-1}}\\sim\\frac{\\bar{X}}{S}",
+      "verdict": "semantic_error",
+      "reviewer_note": "关系符应为不等于号而非波浪号 \\sim",
+      "reviewer": "maintainer(2026-08-23)"
+    },
+    {
+      "id": 30,
+      "source_id": "probability-theory-012",
+      "latex": "L(x_1,x_2,...,x_n;\\theta)",
+      "verdict": "correct",
+      "reviewer_note": "",
+      "reviewer": "maintainer(2026-08-23)"
+    }
+  ]
+}
