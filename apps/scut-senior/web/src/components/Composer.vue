@@ -1,12 +1,69 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { WORKFLOW_TYPES } from "../contracts";
-import { courseOptionLabel } from "../courseAvailability";
+import { courseAvailabilitySummary } from "../courseAvailability";
 import { modelKey } from "../modelSelection";
-import { modelOptionLabel, workflowCopy } from "../appConfig";
+import { availabilityLabel, billingLabel, workflowCopy } from "../appConfig";
 import WorkflowDrawer from "./WorkflowDrawer.vue";
+import OptionPicker, { type OptionItem } from "./OptionPicker.vue";
 import { useAppStore } from "../composables/useAppStore";
 
 const store = useAppStore();
+
+// 课程：可搜索、按可用性分组、带状态点，避免原生 select 的 55 行超长又超宽。
+const courseOptions = computed<OptionItem[]>(() =>
+  store.courses.map((course) => {
+    const available = course.retrieval_available && course.plugin_loaded;
+    return {
+      value: course.course_id,
+      label: course.display_name,
+      hint: courseAvailabilitySummary(course),
+      disabled: !course.selectable,
+      dot: available ? "ok" : course.retrieval_availability === "fixture" ? "warn" : "",
+      group: course.selectable ? "可选用" : "暂不可用",
+    };
+  }),
+);
+
+const courseDisabled = computed(
+  () => store.isRunning || !store.courses.length,
+);
+const coursePlaceholder = computed(() => {
+  if (store.isLoadingCourses) return "正在读取课程";
+  if (!store.courses.length) return "暂无课程";
+  return store.hasSelectableCourse ? "选课程" : "暂无可用课程";
+});
+
+// 模型：同样可搜索 + 分组 + 状态点；目录加载失败 / 进行中时禁用。
+const modelOptions = computed<OptionItem[]>(() =>
+  store.modelsForSelection.map((model) => ({
+    value: modelKey(model),
+    label: `${model.company} · ${model.display_name}${model.is_preview ? "（Preview）" : ""}`,
+    hint: `${billingLabel(model)} · ${availabilityLabel(model)}`,
+    disabled: !model.user_selectable,
+    dot: model.user_selectable ? "ok" : "",
+    group: model.user_selectable ? "可选" : "暂不可选",
+  })),
+);
+
+const modelDisabled = computed(
+  () => store.isRunning || store.isLoadingModels || !store.modelCatalogLoadSucceeded,
+);
+const modelPlaceholder = computed(() => {
+  if (store.isLoadingModels) return "正在读取模型目录";
+  if (!store.modelCatalogLoadSucceeded) return "模型待选择";
+  return "请选择模型";
+});
+
+// Workflow：固定五种，无需搜索。
+const workflowOptions = computed<OptionItem[]>(() =>
+  WORKFLOW_TYPES.map((type) => ({
+    value: type,
+    label: workflowCopy[type].label,
+    hint: workflowCopy[type].description,
+    dot: "",
+  })),
+);
 </script>
 
 <template>
@@ -22,49 +79,37 @@ const store = useAppStore();
 
       <!-- 配置条：课程、模型、Workflow 收在输入框上沿。 -->
       <div class="composer-bar">
-        <label class="visually-hidden" for="course">课程</label>
-        <select id="course" v-model="store.selectedCourseId" :disabled="store.isRunning || !store.courses.length">
-          <option v-if="!store.courses.length" value="">暂无课程</option>
-          <option v-else-if="!store.hasSelectableCourse" value="" disabled>暂无可用课程</option>
-          <option
-            v-for="course in store.courses"
-            :key="course.course_id"
-            :value="course.course_id"
-            :disabled="!course.selectable"
-          >
-            {{ courseOptionLabel(course) }}
-          </option>
-        </select>
+        <OptionPicker
+          v-model="store.selectedCourseId"
+          :options="courseOptions"
+          :disabled="courseDisabled"
+          :placeholder="coursePlaceholder"
+          searchable
+          placement="up"
+          aria-label="课程"
+        />
 
-        <label class="visually-hidden" for="model">模型</label>
-        <select
-          id="model"
+        <OptionPicker
           v-model="store.selectedModelKey"
-          :disabled="store.isRunning || store.isLoadingModels || !store.modelCatalogLoadSucceeded"
-        >
-          <option v-if="store.isLoadingModels" :value="store.selectedModelKey">正在读取模型目录</option>
-          <option v-else-if="!store.modelCatalogLoadSucceeded" value="">模型待选择</option>
-          <template v-else>
-            <option value="" disabled>请选择模型</option>
-            <option
-              v-for="model in store.modelsForSelection"
-              :key="modelKey(model)"
-              :value="modelKey(model)"
-              :disabled="!model.user_selectable"
-            >
-              {{ modelOptionLabel(model) }}
-            </option>
-          </template>
-        </select>
+          :options="modelOptions"
+          :disabled="modelDisabled"
+          :placeholder="modelPlaceholder"
+          searchable
+          placement="up"
+          aria-label="模型"
+        />
 
         <span class="composer-bar-sep" aria-hidden="true"></span>
 
-        <label class="visually-hidden" for="workflow-select">Workflow</label>
-        <select id="workflow-select" v-model="store.workflowType" :disabled="store.isRunning">
-          <option v-for="type in WORKFLOW_TYPES" :key="type" :value="type">
-            {{ workflowCopy[type].label }}
-          </option>
-        </select>
+        <OptionPicker
+          v-model="store.workflowType"
+          :options="workflowOptions"
+          :disabled="store.isRunning"
+          placeholder="选择 Workflow"
+          :searchable="false"
+          placement="up"
+          aria-label="Workflow"
+        />
 
         <button
           type="button"
@@ -78,7 +123,9 @@ const store = useAppStore();
       </div>
 
       <!-- 抽屉：Workflow 专属字段 + 输出偏好，默认收起以保住记录区高度。 -->
-      <WorkflowDrawer v-if="store.drawerOpen" />
+      <Transition name="drawer-pop">
+        <WorkflowDrawer v-if="store.drawerOpen" />
+      </Transition>
 
       <div class="composer-box">
         <label class="visually-hidden" for="user-input">{{ store.activeWorkflow.inputLabel }}</label>
@@ -146,6 +193,27 @@ const store = useAppStore();
   gap: 5px;
 }
 
+/* 抽屉展开：高度 + 淡入。高度过渡需测量，这里退化为不透明度 + 位移。 */
+.drawer-pop-enter-active,
+.drawer-pop-leave-active {
+  transition:
+    opacity var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+}
+
+.drawer-pop-enter-from,
+.drawer-pop-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer-pop-enter-active,
+  .drawer-pop-leave-active {
+    transition: none;
+  }
+}
+
 /* 配置条：一行紧凑控件，取代原先的整块表单。 */
 .composer-bar {
   display: flex;
@@ -154,18 +222,15 @@ const store = useAppStore();
   gap: 5px;
 }
 
-.composer-bar select {
-  height: 26px;
-  width: auto;
-  max-width: 190px;
-  padding: 0 6px;
-  border-color: var(--line);
-  background: var(--sunken);
-  font-size: var(--fs-2xs);
+/* OptionPicker 在配置条里的收窄：只显示当前值，绝不撑宽。 */
+.composer-bar .op {
+  flex: 0 1 auto;
+  min-width: 0;
 }
 
-.composer-bar select:focus {
-  border-color: var(--focus);
+.composer-bar .op-trigger {
+  max-width: 200px;
+  font-size: var(--fs-2xs);
 }
 
 .composer-bar-sep {
@@ -226,9 +291,12 @@ const store = useAppStore();
     padding-inline: 11px;
   }
 
-  .composer-bar select {
-    max-width: 100%;
+  .composer-bar .op {
     flex: 1 1 120px;
+  }
+
+  .composer-bar .op-trigger {
+    max-width: none;
   }
 
   .composer-bar-sep {
@@ -238,16 +306,15 @@ const store = useAppStore();
 
 /* 窄窗口：输入条控件压缩。 */
 @media (max-width: 899px) {
-  .composer-bar select {
+  .composer-bar .op-trigger {
     max-width: 160px;
   }
 }
 
 /* 更窄窗口：输入条更紧凑。 */
 @media (max-width: 639px) {
-  .composer-bar select {
+  .composer-bar .op-trigger {
     max-width: 132px;
-    flex: 1 1 96px;
   }
 }
 
