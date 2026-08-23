@@ -2,7 +2,7 @@
  * SCUT 老学长 · 全局基础样式
  *
  * 这里只放跨组件共用的东西：
- *   1. 设计令牌（颜色 / 字阶 / 圆角 / 尺寸）
+ *   1. 设计令牌（颜色 / 字阶 / 圆角 / 尺寸 / 动效）
  *   2. 元素重置与表单控件原语
  *   3. 通用碎片（.btn / .chip / .note / .field / .seg / .truncate / .visually-hidden）
  *   4. 应用外壳布局（顶栏 / 左轨 / 主列 / 浮层遮罩 + 响应式框架）
@@ -11,13 +11,19 @@
  *   AppTopBar / AccountMenu / ByokCredentialsPanel / ConversationRail /
  *   TranscriptPanel / Composer / WorkflowDrawer / WorkflowResult / PluginRegistryPanel
  *
- * 圆角规则（全站唯一一套，禁止 pill 与随意值）：
- *   --r-xs 3px  → 嵌套在 --r-sm 容器内的元素（仅分段控件内格）
- *   --r-sm 4px  → 输入框、按钮、状态片、代码块
- *   --r-md 6px  → 面板、卡片、抽屉
- * 强调色规则：全站只有一个强调色 --accent。
- * 主题规则：默认跟随 prefers-color-scheme；个人中心「助手设置」可通过
+ * ── 主题系统 ────────────────────────────────────────────────
+ * 亮/暗：默认跟随 prefers-color-scheme；个人中心「助手设置」可通过
  *   <html data-theme="light|dark"> 强制恒亮/恒暗（auto 时属性为 "auto"，仍走媒体查询）。
+ * 强调色：全站只有一个强调色，但允许在两套「品牌色」间切换：
+ *   <html data-accent="indigo|vermilion">
+ *     · indigo（默认）＝ 靛青，书卷、可信、安静
+ *     · vermilion（可选）＝ 朱砂印章，热忱、有辨识度
+ *   该属性由 themePreference 持久化到 localStorage。
+ *
+ * 圆角规则（全站唯一一套，禁止 pill 与随意值）：
+ *   --r-xs 4px  → 嵌套在 --r-sm 容器内的元素（仅分段控件内格）
+ *   --r-sm 6px  → 输入框、按钮、状态片、代码块
+ *   --r-md 12px → 面板、卡片、抽屉
  */
 
 :root {
@@ -37,109 +43,145 @@
   --fs-xl: 1.375rem;
 
   /* --r-xs 仅用于嵌套在 --r-sm 容器内的元素（分段控件内格）。 */
-  --r-xs: 3px;
-  --r-sm: 4px;
-  --r-md: 6px;
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 12px;
 
   --topbar-h: 60px;
   --rail-w: 292px;
 
-  /* 中性底：冷灰、非蓝调，贴近终端工作台。 */
-  --page: #f2f3f4;
-  --panel: #fafafb;
+  /* 动效：只有一套缓动曲线与时长标尺，避免各组件各写各的显得散。 */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 320ms;
+
+  /* ── 亮色 · 靛青（默认）──
+     中性底：暖调宣纸而非冷灰，贴近书卷工具的气质。 */
+  --page: #f4f2ec;
+  --panel: #faf8f3;
   --raised: #ffffff;
-  --sunken: #ebedee;
+  --sunken: #ebe7dd;
 
-  --text: #16191c;
-  --text-muted: #5b6268;
-  --text-soft: #848c93;
+  --text: #221f19;
+  --text-muted: #6a655b;
+  --text-soft: #948d7f;
 
-  --line: #dcdfe2;
-  --line-strong: #c2c7cc;
+  --line: #e2ddd2;
+  --line-strong: #c7c0b2;
 
-  --accent: #2b5fbe;
-  --accent-hover: #214c9d;
-  --accent-wash: #e5ecfa;
+  --accent: #3a5a8c;
+  --accent-hover: #2d4770;
+  --accent-wash: #e4ebf4;
   --accent-on: #ffffff;
 
-  --focus: #2b5fbe;
+  --focus: #3a5a8c;
 
-  --warn-wash: #fdf1da;
-  --warn-line: #c8912f;
-  --warn-text: #5b4113;
+  --warn-wash: #f8eed6;
+  --warn-line: #c3953a;
+  --warn-text: #6a4e13;
 
-  --ok-wash: #e2f0e8;
-  --ok-line: #4f9271;
-  --ok-text: #1d5138;
+  --ok-wash: #e2efe5;
+  --ok-line: #5f9271;
+  --ok-text: #23503b;
 
-  --bad-wash: #fae4e7;
-  --bad-line: #c1707c;
-  --bad-text: #7b2530;
+  --bad-wash: #fae4e2;
+  --bad-line: #c26a72;
+  --bad-text: #7c2f39;
 
-  --shadow-panel: 0 1px 2px rgb(20 24 28 / 0.05);
-  --shadow-float: 0 12px 32px rgb(20 24 28 / 0.14);
+  --shadow-panel: 0 1px 2px rgb(38 34 26 / 0.06);
+  --shadow-float: 0 16px 40px rgb(38 34 26 / 0.16);
+}
+
+/* ── 亮色 · 朱砂（可选强调色）──
+   只重写强调色与相关 wash/focus，中性底与语义色保持不变。 */
+:root[data-accent="vermilion"] {
+  --accent: #a83b22;
+  --accent-hover: #88301b;
+  --accent-wash: #f6e1da;
+  --accent-on: #ffffff;
+  --focus: #a83b22;
 }
 
 @media (prefers-color-scheme: dark) {
   /* auto 与显式 data-theme="dark" 都走深色令牌；只有手动恒亮排除在外。 */
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --page: #0f141c;
-    --panel: #171e2a;
-    --raised: #1f2836;
-    --sunken: #0a0e14;
-    --text: #eef1f6;
-    --text-muted: #b5bfce;
-    --text-soft: #8f9baf;
-    --line: #2a3547;
-    --line-strong: #3d4a5f;
-    --accent: #93ade2;
-    --accent-hover: #adc1ea;
-    --accent-wash: #24375c;
-    --accent-on: #10151f;
-    --focus: #9cbbf6;
-    --warn-wash: #3a301e;
-    --warn-line: #b78b3d;
-    --warn-text: #f2d28f;
-    --ok-wash: #20382c;
-    --ok-line: #5da384;
+    --page: #14171c;
+    --panel: #1b1f26;
+    --raised: #232830;
+    --sunken: #0f1216;
+    --text: #e9ecef;
+    --text-muted: #a7b0ba;
+    --text-soft: #7e8894;
+    --line: #2c333b;
+    --line-strong: #3e4953;
+    --accent: #93aede;
+    --accent-hover: #a9c0ec;
+    --accent-wash: #263654;
+    --accent-on: #10131b;
+    --focus: #9cb6f0;
+    --warn-wash: #37301b;
+    --warn-line: #c2963f;
+    --warn-text: #f0d28c;
+    --ok-wash: #1f3328;
+    --ok-line: #67a387;
     --ok-text: #a9dbbd;
-    --bad-wash: #45282d;
-    --bad-line: #d18a94;
-    --bad-text: #f2b8c0;
+    --bad-wash: #3b2427;
+    --bad-line: #d28f98;
+    --bad-text: #f0b9c1;
     --shadow-panel: 0 1px 2px rgb(0 0 0 / 0.4);
-    --shadow-float: 0 12px 32px rgb(0 0 0 / 0.5);
+    --shadow-float: 0 16px 40px rgb(0 0 0 / 0.5);
+  }
+
+  /* 暗色 · 朱砂强调色。 */
+  :root:not([data-theme="light"])[data-accent="vermilion"] {
+    --accent: #dd8a72;
+    --accent-hover: #e6a18a;
+    --accent-wash: #3d2924;
+    --accent-on: #160f0c;
+    --focus: #e09880;
   }
 }
 
 /* 手动恒暗：系统是亮色时也要能锁深色。令牌与上方媒体查询块保持一致，改动需同步两处。 */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --page: #0f141c;
-  --panel: #171e2a;
-  --raised: #1f2836;
-  --sunken: #0a0e14;
-  --text: #eef1f6;
-  --text-muted: #b5bfce;
-  --text-soft: #8f9baf;
-  --line: #2a3547;
-  --line-strong: #3d4a5f;
-  --accent: #93ade2;
-  --accent-hover: #adc1ea;
-  --accent-wash: #24375c;
-  --accent-on: #10151f;
-  --focus: #9cbbf6;
-  --warn-wash: #3a301e;
-  --warn-line: #b78b3d;
-  --warn-text: #f2d28f;
-  --ok-wash: #20382c;
-  --ok-line: #5da384;
+  --page: #14171c;
+  --panel: #1b1f26;
+  --raised: #232830;
+  --sunken: #0f1216;
+  --text: #e9ecef;
+  --text-muted: #a7b0ba;
+  --text-soft: #7e8894;
+  --line: #2c333b;
+  --line-strong: #3e4953;
+  --accent: #93aede;
+  --accent-hover: #a9c0ec;
+  --accent-wash: #263654;
+  --accent-on: #10131b;
+  --focus: #9cb6f0;
+  --warn-wash: #37301b;
+  --warn-line: #c2963f;
+  --warn-text: #f0d28c;
+  --ok-wash: #1f3328;
+  --ok-line: #67a387;
   --ok-text: #a9dbbd;
-  --bad-wash: #45282d;
-  --bad-line: #d18a94;
-  --bad-text: #f2b8c0;
+  --bad-wash: #3b2427;
+  --bad-line: #d28f98;
+  --bad-text: #f0b9c1;
   --shadow-panel: 0 1px 2px rgb(0 0 0 / 0.4);
-  --shadow-float: 0 12px 32px rgb(0 0 0 / 0.5);
+  --shadow-float: 0 16px 40px rgb(0 0 0 / 0.5);
+}
+
+/* 手动恒暗 · 朱砂强调色。 */
+:root[data-theme="dark"][data-accent="vermilion"] {
+  --accent: #dd8a72;
+  --accent-hover: #e6a18a;
+  --accent-wash: #3d2924;
+  --accent-on: #160f0c;
+  --focus: #e09880;
 }
 
 /* 手动恒亮：系统是暗色时锁住亮色 UA 控件（滚动条/表单）。颜色令牌沿用 :root 默认。 */
@@ -162,6 +204,8 @@ body {
   min-height: 100dvh;
   background: var(--page);
   color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 h1,
@@ -238,7 +282,10 @@ textarea {
   outline: none;
   background: var(--sunken);
   color: var(--text);
-  transition: border-color 120ms ease, box-shadow 120ms ease, background 120ms ease;
+  transition:
+    border-color var(--dur-fast) ease,
+    box-shadow var(--dur-fast) ease,
+    background var(--dur-fast) ease;
 }
 
 input[type="text"],
@@ -304,7 +351,11 @@ input[type="checkbox"] {
   font-size: var(--fs-xs);
   font-weight: 600;
   white-space: nowrap;
-  transition: background 90ms ease, border-color 90ms ease;
+  transition:
+    background var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    color var(--dur-fast) ease,
+    transform var(--dur-fast) var(--ease-out);
 }
 
 .btn:hover:not(:disabled) {
@@ -313,7 +364,7 @@ input[type="checkbox"] {
 }
 
 .btn:active:not(:disabled) {
-  transform: translateY(1px);
+  transform: translateY(1px) scale(0.99);
 }
 
 .btn-primary {
@@ -326,6 +377,10 @@ input[type="checkbox"] {
   border-color: var(--accent-hover);
   background: var(--accent-hover);
   color: var(--accent-on);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(1px) scale(0.99);
 }
 
 .btn-quiet {
@@ -341,6 +396,10 @@ input[type="checkbox"] {
   background: var(--sunken);
   color: var(--text);
   border-color: transparent;
+}
+
+.btn-danger {
+  color: var(--bad-text);
 }
 
 .btn-danger:hover:not(:disabled) {
@@ -360,6 +419,7 @@ input[type="checkbox"] {
   font-size: var(--fs-2xs);
   font-weight: 600;
   white-space: nowrap;
+  transition: background var(--dur-fast) ease, color var(--dur-fast) ease;
 }
 
 .chip-mono {
@@ -481,7 +541,7 @@ input[type="checkbox"] {
   font-size: var(--fs-xs);
   font-weight: 600;
   white-space: nowrap;
-  transition: background 90ms ease, color 90ms ease;
+  transition: background var(--dur-fast) ease, color var(--dur-fast) ease;
 }
 
 .seg-item:hover > span {
@@ -537,6 +597,7 @@ input[type="checkbox"] {
   font-size: var(--fs-xs);
   font-weight: 650;
   transform: translateY(-200%);
+  transition: transform var(--dur-fast) var(--ease-out);
 }
 
 .skip-link:focus {
@@ -635,6 +696,9 @@ input[type="checkbox"] {
   *::before,
   *::after {
     scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 
   /* 历史记录开合动画在减弱动态设置下直接跳变。 */
@@ -663,7 +727,7 @@ input[type="checkbox"] {
     /* 开合动画：过渡第一列轨道宽度（--rail-w ⇄ 0）。
        轨道保持显式两列，main 始终落在第二列——
        不再用 display:none，也就没有自动放置把 main 挤进 0px 轨道的老 bug。 */
-    transition: grid-template-columns 0.28s ease;
+    transition: grid-template-columns var(--dur-slow) var(--ease-out);
   }
 
   .shell-body[data-rail="closed"] {
@@ -671,13 +735,13 @@ input[type="checkbox"] {
   }
 
   /* 轨内容固定宽度，轨道收窄时被裁切而不是挤压重排；
-     visibility 过渡保证折叠后内部按钮不残留焦点命中。 */
+      visibility 过渡保证折叠后内部按钮不残留焦点命中。 */
   .rail {
     position: static;
     width: var(--rail-w);
     overflow: hidden;
     box-shadow: none;
-    transition: visibility 0.28s ease;
+    transition: visibility var(--dur-slow) ease;
   }
 
   .shell-body[data-rail="closed"] .rail {
@@ -710,8 +774,8 @@ input[type="checkbox"] {
     width: min(var(--rail-w), 86vw);
     box-shadow: var(--shadow-float);
     transition:
-      transform 0.28s ease,
-      visibility 0.28s ease;
+      transform var(--dur-slow) var(--ease-out),
+      visibility var(--dur-slow) ease;
   }
 
   .shell-body[data-rail="closed"] .rail {
@@ -726,10 +790,10 @@ input[type="checkbox"] {
     inset: 0;
     z-index: 20;
     border: 0;
-    background: rgb(10 12 14 / 0.32);
+    background: rgb(14 12 9 / 0.32);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.28s ease;
+    transition: opacity var(--dur-slow) ease;
   }
 
   .scrim[data-rail="open"] {

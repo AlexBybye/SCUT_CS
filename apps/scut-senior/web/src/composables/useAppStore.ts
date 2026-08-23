@@ -55,9 +55,13 @@ import {
 } from "../modelSelection";
 import { createRequestEpoch } from "../requestEpoch";
 import {
+  applyAccent,
   applyThemeMode,
+  readStoredAccent,
   readStoredThemeMode,
+  writeStoredAccent,
   writeStoredThemeMode,
+  type AccentTheme,
   type ThemeMode,
 } from "../themePreference";
 import { buildWorkflowRequest } from "../workflowRequest";
@@ -231,6 +235,14 @@ function createAppStore() {
     applyThemeMode(mode);
   });
 
+  // 强调色（品牌色）偏好：靛青 / 朱砂。设备级设置，登出不清除。
+  const accentTheme = ref<AccentTheme>(readStoredAccent());
+  applyAccent(accentTheme.value);
+  watch(accentTheme, (accent) => {
+    writeStoredAccent(accent);
+    applyAccent(accent);
+  });
+
   function folderIsOpen(courseId: string): boolean {
     return openFolderIds.value.includes(courseId);
   }
@@ -267,6 +279,12 @@ function createAppStore() {
   // 收口主题档位写入：滑块拖动与键盘都走这里，非法值被夹回 0..2。
   function setThemeMode(mode: number): void {
     themeMode.value = Math.min(2, Math.max(0, Math.round(mode))) as ThemeMode;
+  }
+
+  // 收口强调色写入：非法值回退默认靛青。
+  function setAccentTheme(accent: unknown): void {
+    accentTheme.value =
+      accent === "vermilion" || accent === "indigo" ? accent : "indigo";
   }
 
   const historyIsBusy = computed(
@@ -1284,6 +1302,7 @@ function createAppStore() {
     accountMenuOpen,
     accountTab,
     themeMode,
+    accentTheme,
     openFolderIds,
     // 会话
     conversationId,
@@ -1355,6 +1374,7 @@ function createAppStore() {
     githubAvatarUrl,
     openAccountTab,
     setThemeMode,
+    setAccentTheme,
     courseName,
     byokCredentialStatus,
     byokProviderDisabledReason,

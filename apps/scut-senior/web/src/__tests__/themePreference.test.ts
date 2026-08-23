@@ -1,12 +1,20 @@
 import { describe, expect, it } from "vitest";
 import {
+  ACCENT_ATTR_VALUE,
+  ACCENT_LABELS,
+  ACCENT_STORAGE_KEY,
+  DEFAULT_ACCENT,
   DEFAULT_THEME_MODE,
   THEME_ATTR_VALUE,
   THEME_MODE_LABELS,
   THEME_MODE_STORAGE_KEY,
+  isAccentTheme,
+  parseAccentTheme,
   parseThemeMode,
+  readStoredAccent,
   readStoredThemeMode,
   resolveTheme,
+  writeStoredAccent,
   writeStoredThemeMode,
 } from "../themePreference";
 
@@ -89,5 +97,48 @@ describe("展示与 DOM 映射", () => {
     expect(THEME_ATTR_VALUE[0]).toBe("auto");
     expect(THEME_ATTR_VALUE[1]).toBe("light");
     expect(THEME_ATTR_VALUE[2]).toBe("dark");
+  });
+});
+
+describe("强调色（品牌色）偏好", () => {
+  it("解析只接受 indigo / vermilion，其余回退默认靛青", () => {
+    expect(parseAccentTheme("indigo")).toBe("indigo");
+    expect(parseAccentTheme("vermilion")).toBe("vermilion");
+    expect(parseAccentTheme("VERMILION")).toBe("vermilion");
+    expect(parseAccentTheme("blue")).toBe(DEFAULT_ACCENT);
+    expect(parseAccentTheme("")).toBe(DEFAULT_ACCENT);
+    expect(parseAccentTheme(null)).toBe(DEFAULT_ACCENT);
+    expect(parseAccentTheme(undefined)).toBe(DEFAULT_ACCENT);
+  });
+
+  it("isAccentTheme 仅识别两个品牌色", () => {
+    expect(isAccentTheme("indigo")).toBe(true);
+    expect(isAccentTheme("vermilion")).toBe(true);
+    expect(isAccentTheme("indigo ")).toBe(false);
+    expect(isAccentTheme("Indigo")).toBe(false);
+  });
+
+  it("localStorage 读写强调色，键名独立于明暗模式", () => {
+    const storage = fakeStorage();
+    writeStoredAccent("vermilion", storage);
+    expect(storage.getItem(ACCENT_STORAGE_KEY)).toBe("vermilion");
+    expect(readStoredAccent(storage)).toBe("vermilion");
+    // 强调色存储与明暗模式互不影响。
+    expect(storage.getItem(THEME_MODE_STORAGE_KEY)).toBeNull();
+  });
+
+  it("存储脏数据与不可用存储回退默认靛青", () => {
+    expect(readStoredAccent(fakeStorage({ [ACCENT_STORAGE_KEY]: "purple" }))).toBe(
+      DEFAULT_ACCENT,
+    );
+    expect(readStoredAccent(null)).toBe(DEFAULT_ACCENT);
+    expect(() => writeStoredAccent("indigo", null)).not.toThrow();
+  });
+
+  it("强调色有展示名与 data-accent 属性映射", () => {
+    expect(ACCENT_LABELS.indigo).toBe("靛青");
+    expect(ACCENT_LABELS.vermilion).toBe("朱砂");
+    expect(ACCENT_ATTR_VALUE.indigo).toBe("indigo");
+    expect(ACCENT_ATTR_VALUE.vermilion).toBe("vermilion");
   });
 });

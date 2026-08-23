@@ -1,9 +1,20 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { THEME_MODE_LABELS, type ThemeMode } from "../themePreference";
+import {
+  ACCENT_LABELS,
+  THEME_MODE_LABELS,
+  type AccentTheme,
+  type ThemeMode,
+} from "../themePreference";
 import { useAppStore } from "../composables/useAppStore";
 
 const store = useAppStore();
+
+// 两套可选品牌色：靛青（默认）/ 朱砂。与明暗模式相互独立。
+const ACCENT_OPTIONS: { accent: AccentTheme; label: string; swatch: string }[] = [
+  { accent: "indigo", label: ACCENT_LABELS.indigo, swatch: "#3a5a8c" },
+  { accent: "vermilion", label: ACCENT_LABELS.vermilion, swatch: "#a83b22" },
+];
 
 // 三档停靠点：0 Auto（跟随系统）· 1 太阳恒亮 · 2 月亮恒暗。
 const STOPS: { mode: ThemeMode; label: string }[] = [
@@ -142,6 +153,27 @@ function onKeydown(event: KeyboardEvent): void {
       </div>
     </div>
 
+    <div class="accent-picker" role="radiogroup" aria-label="品牌色">
+      <span class="accent-picker-label">品牌色</span>
+      <div class="accent-swatches">
+        <label
+          v-for="option in ACCENT_OPTIONS"
+          :key="option.accent"
+          class="accent-swatch"
+          :class="{ 'is-active': store.accentTheme === option.accent }"
+        >
+          <input
+            v-model="store.accentTheme"
+            type="radio"
+            name="accent"
+            :value="option.accent"
+          />
+          <span class="accent-dot" :style="{ background: option.swatch }" aria-hidden="true"></span>
+          <span class="accent-name">{{ option.label }}</span>
+        </label>
+      </div>
+    </div>
+
     <p class="note note-plain theme-storage-note">
       当前保存在本机浏览器（localStorage），换设备不同步；后续将作为用户设置字段与 API Key 一同存储到服务器。
     </p>
@@ -237,5 +269,74 @@ function onKeydown(event: KeyboardEvent): void {
 
 .theme-storage-note {
   margin-top: 10px;
+}
+
+/* 品牌色（强调色）选择器：两枚色卡单选，与明暗模式互不干扰。 */
+.accent-picker {
+  display: grid;
+  gap: 6px;
+}
+
+.accent-picker-label {
+  color: var(--text);
+  font-size: var(--fs-xs);
+  font-weight: 650;
+}
+
+.accent-swatches {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.accent-swatch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--raised);
+  cursor: pointer;
+  transition:
+    border-color var(--dur-fast) ease,
+    background var(--dur-fast) ease,
+    box-shadow var(--dur-fast) ease;
+}
+
+.accent-swatch:hover {
+  border-color: var(--line-strong);
+}
+
+.accent-swatch.is-active {
+  border-color: var(--accent);
+  background: var(--accent-wash);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.accent-swatch input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.accent-swatch input:focus-visible + .accent-dot {
+  outline: 3px solid color-mix(in srgb, var(--focus) 34%, transparent);
+  outline-offset: 2px;
+}
+
+.accent-dot {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.12);
+}
+
+.accent-name {
+  font-size: var(--fs-xs);
+  font-weight: 600;
 }
 </style>
