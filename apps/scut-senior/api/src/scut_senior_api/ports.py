@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Protocol
@@ -117,6 +118,10 @@ class ModelGateway(Protocol):
         request: WorkflowRunRequest,
         sources: list[RetrievedSource],
         history: tuple[ConversationTurn, ...] = (),
+        *,
+        # 迭代 7.5：可取消 transport。实现方应在阻塞等待上游期间周期检查该
+        # 标记，置位即放弃等待并抛出取消异常；不支持的实现可以忽略。
+        cancel_check: Callable[[], bool] | None = None,
     ) -> GeneratedAnswer: ...
 
 
@@ -128,6 +133,7 @@ class UserKeyModelGateway(Protocol):
         request: WorkflowRunRequest,
         sources: list[RetrievedSource],
         history: tuple[ConversationTurn, ...] = (),
+        cancel_check: Callable[[], bool] | None = None,
     ) -> GeneratedAnswer: ...
 
 

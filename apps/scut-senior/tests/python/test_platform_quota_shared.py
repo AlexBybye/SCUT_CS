@@ -91,6 +91,15 @@ def test_repository_rejects_naive_timestamp(tmp_path):
         )
 
 
+
+
+class _NoNetworkClient:
+    """占位 transport：额度路径不应触达网络。"""
+
+    def post_json(self, url, *, headers, payload, timeout_seconds):
+        raise AssertionError("quota path must not reach the network")
+
+
 def make_gateway(tmp_path: Path, clock: MutableClock) -> OpenRouterModelGateway:
     """构造挂接 SQLite 共享额度存储的真实网关（假 HTTP 不影响额度路径）。"""
 
@@ -144,7 +153,7 @@ def test_gateway_rpm_window_shared_across_instances(tmp_path, fixed_now):
         return OpenRouterModelGateway(
             api_key="secret-key",
             allowed_model_ids={"google/gemma-4-26b-a4b-it:free"},
-            http_client=lambda *a, **k: None,  # 不触达网络
+            http_client=_NoNetworkClient(),  # 不触达网络
             clock=clock,
             quota_store=SqlitePlatformQuotaStore(
                 SQLiteWorkflowRepository(tmp_path / "rpm.db", clock=clock),

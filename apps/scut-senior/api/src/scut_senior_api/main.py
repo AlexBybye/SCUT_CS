@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import logging
 from contextlib import asynccontextmanager
 from hmac import compare_digest
 from uuid import UUID
@@ -60,6 +61,8 @@ from .auth import (
     utc_now,
 )
 from .config import Settings
+
+LOGGER = logging.getLogger("scut_senior.api")
 from .course_availability import derive_course_runtime_availability
 from .contracts import (
     ContributionDraftSubmit,
@@ -944,9 +947,19 @@ def create_app(
                         separators=(",", ":"),
                     ) + "\n"
                 await task
-            except asyncio.CancelledError:
-                # 客户端断开（网络波动/关页）≠ 用户取消：不打断正在执行的
-                # 运行，让它完成后持久化终态；用户稍后重新读取即可拿到结果。
+            except (asyncio.CancelledError, GeneratorExit):
+                # 迭代 7.5（SOP §12A 分组 B）：取代迭代 5"客户端断开后后台跑
+                # 完落库"的过渡语义——页面断开（aclose 触发 GeneratorExit，
+                # 任务取消触发 CancelledError）即请求尽力取消上游调用：
+                # cancel_check 置位后可取消 transport 放弃等待，运行在下一个
+                # 节点边界收敛为 interrupted 并留 trace／日志证据。供应商侧
+                # 是否因此停止计费只如实描述，不冒充已完成取消。
+                session.cancel()
+                LOGGER.warning(
+                    "stream disconnected; best-effort upstream cancellation "
+                    "requested for workflow run %s",
+                    run_key,
+                )
                 raise
             finally:
                 _ACTIVE_STREAMS.pop(run_key, None)

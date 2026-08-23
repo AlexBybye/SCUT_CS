@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import inspect
 import json
 import re
 from collections.abc import Callable
@@ -136,12 +137,20 @@ class OpenRouterModelGateway:
                 monotonic_clock=monotonic_clock,
             )
         )
+        # 迭代 7.5：可取消 transport——仅当注入的客户端声明支持 cancel_check
+        # 时才传递（CancellableJsonHttpClient），旧客户端行为不变。
+        self._transport_accepts_cancel_check = (
+            "cancel_check"
+            in inspect.signature(self._http_client.post_json).parameters
+        )
 
     def generate(
         self,
         request: WorkflowRunRequest,
         sources: list[RetrievedSource],
         history: tuple[ConversationTurn, ...] = (),
+        *,
+        cancel_check: Callable[[], bool] | None = None,
     ) -> GeneratedAnswer:
         if (
             request.provider_id != self.provider_id
@@ -156,16 +165,7 @@ class OpenRouterModelGateway:
         self._reserve_platform_request()
         payload = _build_structured_request(request, sources, history)
         try:
-            response = self._http_client.post_json(
-                OPENROUTER_CHAT_COMPLETIONS_URL,
-                headers={
-                    "Authorization": f"Bearer {self._api_key}",
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                },
-                payload=payload,
-                timeout_seconds=self._timeout_seconds,
-            )
+            response = self._post_upstream(payload, cancel_check)
         except OSError as exc:
             if is_timeout_transport_error(exc):
                 raise OpenRouterGatewayError(
@@ -188,6 +188,31 @@ class OpenRouterModelGateway:
             raise _safe_upstream_error(response.status_code)
 
         return _parse_generated_answer(response.body)
+
+    def _post_upstream(
+        self,
+        payload: Mapping[str, object],
+        cancel_check: Callable[[], bool] | None,
+    ) -> HttpResponse:
+        headers = {
+            "Authorization": f"Bearer {self._api_key}",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        }
+        if cancel_check is not None and self._transport_accepts_cancel_check:
+            return self._http_client.post_json(
+                OPENROUTER_CHAT_COMPLETIONS_URL,
+                headers=headers,
+                payload=payload,
+                timeout_seconds=self._timeout_seconds,
+                cancel_check=cancel_check,
+            )
+        return self._http_client.post_json(
+            OPENROUTER_CHAT_COMPLETIONS_URL,
+            headers=headers,
+            payload=payload,
+            timeout_seconds=self._timeout_seconds,
+        )
 
     def _now(self) -> datetime:
         current = self._clock()

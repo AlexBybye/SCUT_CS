@@ -987,11 +987,19 @@ class IterationZeroService:
                 try:
                     if use_user_key:
                         assert api_key is not None
+                        # 迭代 7.5：断开/取消时尽力中止上游等待（cancel_check
+                        # 由可取消 transport 周期检查；结果被弃置不落库）。
+                        cancel_check = (
+                            stream_session.cancelled
+                            if stream_session is not None
+                            else None
+                        )
                         generated = self.byok_model.generate(
                             api_key=api_key,
                             request=request,
                             sources=sources,
                             history=history,
+                            cancel_check=cancel_check,
                         )
                     else:
                         platform_model = (
@@ -1001,7 +1009,14 @@ class IterationZeroService:
                             else self.model
                         )
                         generated = platform_model.generate(
-                            request, sources, history=history
+                            request,
+                            sources,
+                            history=history,
+                            cancel_check=(
+                                stream_session.cancelled
+                                if stream_session is not None
+                                else None
+                            ),
                         )
                 except Exception as model_error:
                     interrupted = finish_interrupted()

@@ -416,7 +416,8 @@ def test_humanizer_cannot_inject_a_bilibili_link(unsafe_url: str) -> None:
 
 def test_runtime_rejects_in_place_humanizer_mutation(tmp_path: Path) -> None:
     class ScriptedModel:
-        def generate(self, request, sources, history=()):
+        def generate(self, request, sources, history=(), *, cancel_check=None):
+            del cancel_check
             del request, sources, history
             return GeneratedAnswer(
                 repository_answer="矩阵可逆，见 [S1]。",
@@ -463,7 +464,8 @@ def test_runtime_rejects_in_place_humanizer_mutation(tmp_path: Path) -> None:
 
 def test_runtime_enforces_the_selected_visible_tone_contract(tmp_path: Path) -> None:
     class ScriptedModel:
-        def generate(self, request, sources, history=()):
+        def generate(self, request, sources, history=(), *, cancel_check=None):
+            del cancel_check
             del request, sources, history
             return GeneratedAnswer(
                 repository_answer=(
@@ -500,7 +502,8 @@ def test_model_suggestions_cannot_leak_bilibili_urls_or_text_into_trace(
     private_topic_marker = "错答正文私人标记不应写入Trace"
 
     class ScriptedModel:
-        def generate(self, request, sources, history=()):
+        def generate(self, request, sources, history=(), *, cancel_check=None):
+            del cancel_check
             del request, sources, history
             return GeneratedAnswer(
                 repository_answer="矩阵秩回答 [S1]。",
@@ -657,7 +660,8 @@ def test_disconnect_while_model_is_blocked_finishes_as_interrupted_after_return(
     release_model = Event()
 
     class BlockingModel:
-        def generate(self, request, sources, history=()):
+        def generate(self, request, sources, history=(), *, cancel_check=None):
+            del cancel_check
             del request, sources, history
             model_entered.set()
             if not release_model.wait(timeout=2):
@@ -704,16 +708,18 @@ def test_disconnect_while_model_is_blocked_finishes_as_interrupted_after_return(
     assert restored.json()["run_status"] == "interrupted"
 
 
-def test_closing_the_stream_route_keeps_the_run_completing_in_background(
+def test_closing_the_stream_route_requests_upstream_cancellation(
     tmp_path: Path,
 ) -> None:
-    # 静默断线（网络波动/关页）≠ 用户取消：运行继续到完成并持久化终态，
-    # 用户稍后重新读取会话即可拿到结果，而不是被打成 interrupted。
+    # 迭代 7.5（SOP §12A 分组 B）：取代迭代 5"客户端断开后后台跑完落库"。
+    # 关闭流路由即请求尽力取消：会话置为 cancelled，运行在节点边界收敛为
+    # interrupted 并持久化，不再等待上游把回答跑完落库为 completed。
     model_entered = Event()
     release_model = Event()
 
     class BlockingModel:
-        def generate(self, request, sources, history=()):
+        def generate(self, request, sources, history=(), *, cancel_check=None):
+            del cancel_check
             del request, sources, history
             model_entered.set()
             if not release_model.wait(timeout=2):
@@ -739,7 +745,7 @@ def test_closing_the_stream_route_keeps_the_run_completing_in_background(
         if getattr(route, "path", None) == "/api/v1/workflow-runs/stream"
     )
 
-    async def close_route_and_wait_for_history() -> None:
+    async def close_route_and_wait_for_interrupted() -> None:
         response = await route.endpoint(payload=request, user=_mock_user())
         iterator = response.body_iterator
         first_chunk = await anext(iterator)
@@ -754,15 +760,22 @@ def test_closing_the_stream_route_keeps_the_run_completing_in_background(
             restored = app.state.repository.get_run(
                 "mock-user-iteration-0", run_id
             )
-            if restored is not None and restored.run_status == RunStatus.COMPLETED:
+            if restored is not None and restored.run_status == RunStatus.INTERRUPTED:
                 assert restored.workflow_run_id == run_id
-                assert "[S1]" in restored.repository_answer
+                # 中断证据链：trace 记录 client_interrupted，且不落库任何回答。
+                codes = [
+                    step.result.failure_code
+                    for step in restored.trace
+                    if step.result is not None
+                ]
+                assert "client_interrupted" in codes
+                assert restored.repository_answer is None
                 return
             await asyncio.sleep(0.01)
-        raise AssertionError("closed stream route did not persist completed run")
+        raise AssertionError("closed stream route did not persist interrupted run")
 
     try:
-        asyncio.run(close_route_and_wait_for_history())
+        asyncio.run(close_route_and_wait_for_interrupted())
     finally:
         release_model.set()
 
@@ -774,7 +787,8 @@ def test_cancel_endpoint_interrupts_an_active_streamed_run(
     release_model = Event()
 
     class BlockingModel:
-        def generate(self, request, sources, history=()):
+        def generate(self, request, sources, history=(), *, cancel_check=None):
+            del cancel_check
             del request, sources, history
             model_entered.set()
             if not release_model.wait(timeout=2):
@@ -861,7 +875,8 @@ def test_cancellation_wins_when_blocked_retrieval_returns_an_error(
             raise RuntimeError("retrieval failed after cancellation")
 
     class ModelMustNotRun:
-        def generate(self, request, sources, history=()):
+        def generate(self, request, sources, history=(), *, cancel_check=None):
+            del cancel_check
             del request, sources, history
             raise AssertionError("model must not run after cancelled retrieval")
 
@@ -916,7 +931,8 @@ def test_cancellation_wins_model_failure_and_prevents_retry(
         def __init__(self) -> None:
             self.calls = 0
 
-        def generate(self, request, sources, history=()):
+        def generate(self, request, sources, history=(), *, cancel_check=None):
+            del cancel_check
             del request, sources, history
             self.calls += 1
             model_entered.set()
@@ -1061,7 +1077,8 @@ def test_transient_model_failure_retries_the_same_gateway_instance_once(
         def __init__(self) -> None:
             self.calls = 0
 
-        def generate(self, request, sources, history=()):
+        def generate(self, request, sources, history=(), *, cancel_check=None):
+            del cancel_check
             del request, sources, history
             self.calls += 1
             if self.calls == 1:
@@ -1108,7 +1125,8 @@ def test_running_and_terminal_state_are_observable_for_the_same_stream_run(
             self.started = Event()
             self.release = Event()
 
-        def generate(self, request, sources, history=()):
+        def generate(self, request, sources, history=(), *, cancel_check=None):
+            del cancel_check
             del request, sources, history
             self.started.set()
             assert self.release.wait(timeout=5), "test did not release the model"
