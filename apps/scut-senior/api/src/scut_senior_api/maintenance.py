@@ -20,12 +20,9 @@ from __future__ import annotations
 import logging
 import threading
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Any
+from typing import Any
 
 from .auth import Clock, utc_now
-
-if TYPE_CHECKING:  # pragma: no cover - import for type checking only
-    from .adapters.sqlite import SQLiteWorkflowRepository
 
 LOGGER = logging.getLogger("scut_senior.maintenance")
 
@@ -43,6 +40,7 @@ class MaintenanceSweepResult:
     history_feedback: int
     materials: int
     contributions_cleared: int
+    platform_rate_events: int = 0
 
 
 class MaintenanceScheduler:
@@ -50,7 +48,7 @@ class MaintenanceScheduler:
 
     def __init__(
         self,
-        repository: "SQLiteWorkflowRepository",
+        repository: Any,
         *,
         interval_seconds: float = DEFAULT_SWEEP_INTERVAL_SECONDS,
         clock: Clock = utc_now,
@@ -82,6 +80,13 @@ class MaintenanceScheduler:
         auth = self._repository.cleanup_auth_records()
         history = self._repository.cleanup_history_records()
         materials = self._repository.cleanup_material_records()
+        # 迭代 7.5：共享额度锁存的窗口流水／过期闩锁一并周期清理。
+        quota_events = 0
+        cleanup_quota = getattr(
+            self._repository, "cleanup_platform_quota_records", None
+        )
+        if callable(cleanup_quota):
+            quota_events = cleanup_quota()
         result = MaintenanceSweepResult(
             auth_states=auth.oauth_states,
             auth_sessions=auth.auth_sessions,
@@ -90,6 +95,7 @@ class MaintenanceScheduler:
             history_feedback=history.feedback,
             materials=materials.materials,
             contributions_cleared=materials.contributions_cleared,
+            platform_rate_events=quota_events,
         )
         total = (
             result.auth_states
@@ -99,6 +105,7 @@ class MaintenanceScheduler:
             + result.history_feedback
             + result.materials
             + result.contributions_cleared
+            + result.platform_rate_events
         )
         if total:
             LOGGER.info(

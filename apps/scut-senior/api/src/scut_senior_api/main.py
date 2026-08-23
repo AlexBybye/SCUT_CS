@@ -94,6 +94,7 @@ from .harness_registry import (
 )
 from .contributions import ContributionTransitionError
 from .maintenance import MaintenanceScheduler
+from .quota import SqlitePlatformQuotaStore
 from .model_catalog import (
     ModelCatalog,
     ModelCatalogResponse,
@@ -277,6 +278,13 @@ def create_app(
         zhipu_health_checker=zhipu_health_checker,
         clock=clock,
     )
+    resources = BilibiliLinkDiscoveryAdapter()
+    repository = SQLiteWorkflowRepository(
+        active_settings.database_path,
+        clock=clock,
+        state_token_factory=oauth_state_token_factory,
+        session_token_factory=session_token_factory,
+    )
     if platform_credential_configured and openrouter_configured:
         if active_settings.app_env == "test" and model_http_client is None:
             model_http_client = FailClosedJsonHttpClient()
@@ -289,6 +297,8 @@ def create_app(
             ],
             http_client=model_http_client,
             clock=clock,
+            # 迭代 7.5：RPM／每日额度锁存迁移到多 worker 共享存储。
+            quota_store=SqlitePlatformQuotaStore(repository),
         )
     else:
         model = MockModelGateway()
@@ -305,13 +315,6 @@ def create_app(
             ],
             http_client=zhipu_http_client,
         )
-    resources = BilibiliLinkDiscoveryAdapter()
-    repository = SQLiteWorkflowRepository(
-        active_settings.database_path,
-        clock=clock,
-        state_token_factory=oauth_state_token_factory,
-        session_token_factory=session_token_factory,
-    )
     credential_manager = ModelCredentialManager(
         repository=repository,
         catalog=model_catalog.byok_catalog,

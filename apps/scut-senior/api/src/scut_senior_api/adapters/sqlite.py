@@ -490,6 +490,108 @@ class SQLiteWorkflowRepository:
             ).rowcount
         return MaterialCleanupCounts(materials, cleared)
 
+    # ------------------------------------------------------------------
+    # 迭代 7.5（SOP §12A 分组 B）：平台额度锁存的共享存储。
+    # ------------------------------------------------------------------
+
+    def reserve_platform_request(
+        self, *, limit: int, window_seconds: float
+    ) -> bool:
+        """跨 worker 原子预留一个平台请求窗口名额。
+
+        窗口外事件清理、计数与写入在同一条 ``BEGIN IMMEDIATE`` 事务内完成；
+        多进程并发时由 SQLite 写串行化保证不重复发放。重启后窗口状态仍在。
+        """
+
+        if isinstance(limit, bool) or not isinstance(limit, int) or limit < 1:
+            raise ValueError("limit must be a positive integer")
+        if not window_seconds > 0:
+            raise ValueError("window_seconds must be positive")
+        now = self._now()
+        cutoff = (now - timedelta(seconds=window_seconds)).isoformat()
+        connection = self._connect()
+        try:
+            connection.execute("BEGIN IMMEDIATE")
+            connection.execute(
+                "DELETE FROM platform_rate_events WHERE requested_at <= ?",
+                (cutoff,),
+            )
+            row = connection.execute(
+                "SELECT COUNT(*) AS active FROM platform_rate_events"
+            ).fetchone()
+            if int(row["active"]) >= limit:
+                connection.rollback()
+                return False
+            connection.execute(
+                "INSERT INTO platform_rate_events (requested_at) VALUES (?)",
+                (now.isoformat(),),
+            )
+            connection.commit()
+            return True
+        except Exception:
+            connection.rollback()
+            raise
+        finally:
+            connection.close()
+
+    def latch_platform_daily_exhaustion(self, *, exhausted_until: datetime) -> None:
+        """登记每日额度耗尽闩锁；任何 worker 写入后其余 worker 立即可见。"""
+
+        until = self._require_aware(exhausted_until)
+        now = self._now()
+        with self._connect() as connection:
+            connection.execute(
+                """
+                INSERT INTO platform_quota_latch (singleton, exhausted_until, updated_at)
+                VALUES (1, ?, ?)
+                ON CONFLICT(singleton) DO UPDATE SET
+                    exhausted_until = excluded.exhausted_until,
+                    updated_at = excluded.updated_at
+                """,
+                (until.isoformat(), now.isoformat()),
+            )
+
+    def platform_daily_exhaustion(self) -> datetime | None:
+        """返回仍生效的每日额度闩锁到期时间；已过期则清除并返回 None。"""
+
+        now = self._now()
+        with self._connect() as connection:
+            row = connection.execute(
+                "SELECT exhausted_until FROM platform_quota_latch WHERE singleton = 1"
+            ).fetchone()
+        if row is None:
+            return None
+        until = datetime.fromisoformat(row["exhausted_until"])
+        if until <= now:
+            with self._connect() as connection:
+                connection.execute(
+                    "DELETE FROM platform_quota_latch WHERE singleton = 1"
+                )
+            return None
+        return until
+
+    def cleanup_platform_quota_records(self) -> int:
+        """清理过期窗口流水与过期闩锁；返回删除的事件行数。"""
+
+        now = self._now().isoformat()
+        with self._connect() as connection:
+            events = connection.execute(
+                "DELETE FROM platform_rate_events WHERE requested_at <= ?",
+                (now,),
+            ).rowcount
+            connection.execute(
+                "DELETE FROM platform_quota_latch WHERE exhausted_until <= ?",
+                (now,),
+            )
+        return events
+
+    @staticmethod
+    def _require_aware(value: datetime) -> datetime:
+        if value.tzinfo is None or value.utcoffset() is None:
+            raise ValueError("quota timestamps must be timezone-aware")
+        return value.astimezone(UTC)
+
+
     @staticmethod
     def _temporary_material_record(
         row: sqlite3.Row, *, include_content: bool
