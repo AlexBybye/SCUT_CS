@@ -1,0 +1,9 @@
+targets(total waiver queue): 607
+completed(excl. api-error): 22   api-error(retry pending): 19
+outcomes: {'implausible-or-render': 12, 'unsure': 2, 'majority+render': 8}
+accepted: 8  ->  gate pass rate 36.4%  (threshold >= 85%)
+capability view: 8/20 of formula-bearing images = 40.0% (correct abstentions excluded: 2)
+per-course:
+  engineering_math_analysis_2        total=  22 accepted=   8 {'implausible-or-render': 12, 'unsure': 2, 'majority+render': 8}
+remaining(including retries): 566
+SOP §13.1.1 probe gate (preset 85%): BELOW_THRESHOLD  (interim)
