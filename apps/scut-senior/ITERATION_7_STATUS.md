@@ -348,11 +348,15 @@ npm --prefix web run build                   # 成功
   MPLCONFIGDIR 重跑；受污染的部分结果文件删除重计。
 - 运行形态：glm-4.6v-flash，workers=2 + 429 强退避，结果独立于历史 GLM-4V 文件
   （`_vision_results_glm46v_probe.jsonl`，每行带 model 戳）。
+- 实测吞吐（2026-08-23）：免费档 glm-4.6v-flash 有效速率约 1 张/3 分钟（含退避），
+  全量 601 张预计 ~15 小时。**维护者决议：全量磨完再出判定，不改抽样口径**
+  （2026-08-23 使用者确认）；任务可断点续跑，跨会话轮次推进。
 - 探针结果：【待填：accepted/总数、分 why 分布、对照 §13.1.1 阈值判定】
 - 已转写文件抽查（§12A"44 个已转写文件"项）：审计后转写规模增长至 manifest 66 行含
   AI 转写记录；抽查包 `resources/evaluation/vision-spot-check/`（30 例分层、覆盖 6 门课、
   非概率课 106 张原图工作区与 git 均不可恢复已如实登记）。index.html /
-  review-sheet-*.png 已就绪供人工终审，LaTeX 语义错误率结论待维护者签署。【外部输入】
+  review-sheet-*.png 已就绪，**使用者选择即时人工终审**，逐项结论与语义错误率
+  待其回填后销此挂起。【外部输入】
 
 ## 与 §18.2 执行顺序的对应
 
