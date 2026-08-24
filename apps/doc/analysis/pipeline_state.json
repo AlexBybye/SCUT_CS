@@ -1,0 +1,193 @@
+{
+  "units": [
+    {
+      "id": "web::web/src/main.ts#createApp-mount",
+      "status": "completed",
+      "artifact": "repository-learning-map.md",
+      "section_anchors": {
+        "start": "<!-- code-analyzer:unit=web::web/src/main.ts#createApp-mount:start -->",
+        "end": "<!-- code-analyzer:unit=web::web/src/main.ts#createApp-mount:end -->"
+      },
+      "evidence_anchors": [
+        "apps/scut-senior/web/src/main.ts:L1-L10",
+        "apps/scut-senior/web/src/App.vue:L26-L38",
+        "apps/scut-senior/web/package.json#dependencies"
+      ]
+    },
+    {
+      "id": "web::web/src/composables/useAppStore.ts#submitWorkflow",
+      "status": "completed",
+      "artifact": "repository-learning-map.md",
+      "section_anchors": {
+        "start": "<!-- code-analyzer:unit=web::web/src/composables/useAppStore.ts#submitWorkflow:start -->",
+        "end": "<!-- code-analyzer:unit=web::web/src/composables/useAppStore.ts#submitWorkflow:end -->"
+      },
+      "evidence_anchors": [
+        "apps/scut-senior/web/src/api.ts:L45-L86",
+        "apps/scut-senior/web/src/api.ts:L174-L194",
+        "apps/scut-senior/web/src/workflowStream.ts:L191-L235",
+        "apps/scut-senior/web/vite.config.ts#server.proxy"
+      ]
+    },
+    {
+      "id": "backend::api/src/scut_senior_api/main.py#create_app",
+      "status": "completed",
+      "artifact": "repository-learning-map.md",
+      "section_anchors": {
+        "start": "<!-- code-analyzer:unit=backend::api/src/scut_senior_api/main.py#create_app:start -->",
+        "end": "<!-- code-analyzer:unit=backend::api/src/scut_senior_api/main.py#create_app:end -->"
+      },
+      "evidence_anchors": [
+        "apps/scut-senior/api/src/scut_senior_api/main.py:L219-L424",
+        "apps/scut-senior/api/src/scut_senior_api/main.py:L535-L870",
+        "apps/scut-senior/api/src/scut_senior_api/config.py#assert_safe"
+      ]
+    },
+    {
+      "id": "backend::api/src/scut_senior_api/main.py#stream_workflow",
+      "status": "completed",
+      "artifact": "repository-learning-map.md",
+      "section_anchors": {
+        "start": "<!-- code-analyzer:unit=backend::api/src/scut_senior_api/main.py#stream_workflow:start -->",
+        "end": "<!-- code-analyzer:unit=backend::api/src/scut_senior_api/main.py#stream_workflow:end -->"
+      },
+      "evidence_anchors": [
+        "apps/scut-senior/api/src/scut_senior_api/main.py:L933-L1034",
+        "apps/scut-senior/api/src/scut_senior_api/main.py:L120-L121"
+      ]
+    },
+    {
+      "id": "backend::worker/src/scut_senior_worker/corpus_builder.py#main",
+      "status": "completed",
+      "artifact": "repository-learning-map.md",
+      "section_anchors": {
+        "start": "<!-- code-analyzer:unit=backend::worker/src/scut_senior_worker/corpus_builder.py#main:start -->",
+        "end": "<!-- code-analyzer:unit=backend::worker/src/scut_senior_worker/corpus_builder.py#main:end -->"
+      },
+      "evidence_anchors": [
+        "apps/scut-senior/worker/src/scut_senior_worker/corpus_builder.py:L104-L270",
+        "apps/scut-senior/worker/src/scut_senior_worker/corpus_builder.py:L1147-L1364",
+        ".github/workflows/corpus-ci.yml:L104-L141"
+      ]
+    },
+    {
+      "id": "ai::worker/src/scut_senior_worker/corpus_builder.py#_chunk_document",
+      "status": "completed",
+      "artifact": "repository-learning-map.md",
+      "section_anchors": {
+        "start": "<!-- code-analyzer:unit=ai::worker/src/scut_senior_worker/corpus_builder.py#_chunk_document:start -->",
+        "end": "<!-- code-analyzer:unit=ai::worker/src/scut_senior_worker/corpus_builder.py#_chunk_document:end -->"
+      },
+      "evidence_anchors": [
+        "apps/scut-senior/knowledge/manifest.csv#header-row",
+        "apps/scut-senior/worker/src/scut_senior_worker/corpus_builder.py:L344-L535",
+        "apps/tools/material_converter/SKILL.md:L20-L49"
+      ]
+    },
+    {
+      "id": "ai::api/src/scut_senior_api/adapters/local_corpus.py#LocalCorpusRetrievalGateway.search",
+      "status": "completed",
+      "artifact": "repository-learning-map.md",
+      "section_anchors": {
+        "start": "<!-- code-analyzer:unit=ai::api/src/scut_senior_api/adapters/local_corpus.py#LocalCorpusRetrievalGateway.search:start -->",
+        "end": "<!-- code-analyzer:unit=ai::api/src/scut_senior_api/adapters/local_corpus.py#LocalCorpusRetrievalGateway.search:end -->"
+      },
+      "evidence_anchors": [
+        "apps/scut-senior/api/src/scut_senior_api/adapters/local_corpus.py:L24-L92",
+        "apps/scut-senior/api/src/scut_senior_api/adapters/local_corpus.py:L151-L205",
+        "apps/scut-senior/api/src/scut_senior_api/adapters/mock.py#FixtureRetrievalGateway"
+      ]
+    },
+    {
+      "id": "ai::api/src/scut_senior_api/adapters/openrouter.py#_build_structured_request",
+      "status": "completed",
+      "artifact": "repository-learning-map.md",
+      "section_anchors": {
+        "start": "<!-- code-analyzer:unit=ai::api/src/scut_senior_api/adapters/openrouter.py#_build_structured_request:start -->",
+        "end": "<!-- code-analyzer:unit=ai::api/src/scut_senior_api/adapters/openrouter.py#_build_structured_request:end -->"
+      },
+      "evidence_anchors": [
+        "apps/scut-senior/api/src/scut_senior_api/adapters/openrouter.py:L225-L334",
+        "apps/scut-senior/api/src/scut_senior_api/workflow_focus.py:L233-L247",
+        "apps/scut-senior/api/src/scut_senior_api/model_catalog.py:L161-L240",
+        "apps/scut-senior/api/src/scut_senior_api/byok_catalog.py:L18-L141",
+        "apps/scut-senior/api/src/scut_senior_api/adapters/byok.py:L21-L24"
+      ]
+    },
+    {
+      "id": "ai::api/src/scut_senior_api/runtime_guards.py#build_guarded_answer",
+      "status": "completed",
+      "artifact": "repository-learning-map.md",
+      "section_anchors": {
+        "start": "<!-- code-analyzer:unit=ai::api/src/scut_senior_api/runtime_guards.py#build_guarded_answer:start -->",
+        "end": "<!-- code-analyzer:unit=ai::api/src/scut_senior_api/runtime_guards.py#build_guarded_answer:end -->"
+      },
+      "evidence_anchors": [
+        "apps/scut-senior/api/src/scut_senior_api/adapters/answer_parsing.py:L148-L254",
+        "apps/scut-senior/api/src/scut_senior_api/runtime_guards.py:L81-L130",
+        "apps/scut-senior/api/src/scut_senior_api/service.py:L1146-L1349",
+        "apps/scut-senior/api/src/scut_senior_api/service.py:L1922"
+      ]
+    },
+    {
+      "id": "ai::api/src/scut_senior_api/harness_registry.py#HARNESS_REGISTRY",
+      "status": "completed",
+      "artifact": "repository-learning-map.md",
+      "section_anchors": {
+        "start": "<!-- code-analyzer:unit=ai::api/src/scut_senior_api/harness_registry.py#HARNESS_REGISTRY:start -->",
+        "end": "<!-- code-analyzer:unit=ai::api/src/scut_senior_api/harness_registry.py#HARNESS_REGISTRY:end -->"
+      },
+      "evidence_anchors": [
+        "apps/scut-senior/api/src/scut_senior_api/harness_registry.py:L158-L285",
+        "apps/scut-senior/api/src/scut_senior_api/harness_registry.py:L287-L432",
+        "apps/scut-senior/api/src/scut_senior_api/main.py:L813-L870"
+      ]
+    },
+    {
+      "id": "ai::api/src/scut_senior_api/eval_runner.py#run_evaluation",
+      "status": "completed",
+      "artifact": "repository-learning-map.md",
+      "section_anchors": {
+        "start": "<!-- code-analyzer:unit=ai::api/src/scut_senior_api/eval_runner.py#run_evaluation:start -->",
+        "end": "<!-- code-analyzer:unit=ai::api/src/scut_senior_api/eval_runner.py#run_evaluation:end -->"
+      },
+      "evidence_anchors": [
+        "apps/scut-senior/api/pyproject.toml#[project.scripts]",
+        "apps/scut-senior/api/src/scut_senior_api/eval_runner.py:L198-L313",
+        "apps/scut-senior/resources/evaluation/"
+      ]
+    },
+    {
+      "id": "data_infra::api/migrations/0001_iteration_zero.sql#schema-migrations",
+      "status": "completed",
+      "artifact": "repository-learning-map.md",
+      "section_anchors": {
+        "start": "<!-- code-analyzer:unit=data_infra::api/migrations/0001_iteration_zero.sql#schema-migrations:start -->",
+        "end": "<!-- code-analyzer:unit=data_infra::api/migrations/0001_iteration_zero.sql#schema-migrations:end -->"
+      },
+      "evidence_anchors": [
+        "apps/scut-senior/api/migrations/0001_iteration_zero.sql#tables",
+        "apps/scut-senior/api/src/scut_senior_api/adapters/sqlite.py:L231",
+        "apps/scut-senior/api/src/scut_senior_api/quota.py#SqlitePlatformQuotaStore",
+        "apps/scut-senior/api/src/scut_senior_api/maintenance.py#MaintenanceScheduler"
+      ]
+    },
+    {
+      "id": "data_infra::Dockerfile#runtime-stage",
+      "status": "completed",
+      "artifact": "repository-learning-map.md",
+      "section_anchors": {
+        "start": "<!-- code-analyzer:unit=data_infra::Dockerfile#runtime-stage:start -->",
+        "end": "<!-- code-analyzer:unit=data_infra::Dockerfile#runtime-stage:end -->"
+      },
+      "evidence_anchors": [
+        "apps/scut-senior/Dockerfile#runtime-stage",
+        ".github/workflows/app-ci.yml#jobs",
+        ".github/workflows/app-deploy.yml#deployment-skeleton",
+        "apps/scut-senior/infra/README.md#已冻结的安全边界",
+        "apps/scut-senior/Makefile#serve-online"
+      ]
+    }
+  ],
+  "top_level_status": "completed"
+}
