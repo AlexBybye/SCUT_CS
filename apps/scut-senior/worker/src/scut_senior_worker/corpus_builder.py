@@ -441,6 +441,23 @@ def _locator_key(
     return ":".join(components) or "root"
 
 
+def _is_image_preview_document(parsed: Any) -> bool:
+    """True when a Markdown body carries no retrievable text: only headings,
+    locator markers, blank lines, and page-image references. Such documents
+    are approved scan-only page-image previews (zero text chunks); every other
+    document chunks exactly as before, image-reference lines included."""
+    for line in parsed.body.splitlines():
+        s = line.strip()
+        if not s or s.startswith("#"):
+            continue
+        if _LOCATOR_RE.search(line):
+            continue
+        if _IMAGE_ONLY_LINE_RE.match(line):
+            continue
+        return False
+    return True
+
+
 def _chunk_document(
     *,
     parsed: Any,
@@ -449,6 +466,8 @@ def _chunk_document(
     knowledge_root: Path,
     max_chunk_chars: int,
 ) -> list[dict[str, Any]]:
+    if _is_image_preview_document(parsed):
+        return []
     chunks: list[dict[str, Any]] = []
     ordinals: defaultdict[str, int] = defaultdict(int)
     heading_stack: list[str] = []
@@ -532,9 +551,6 @@ def _chunk_document(
             title = heading.group(2).strip()
             heading_stack[:] = heading_stack[: level - 1]
             heading_stack.append(title)
-            continue
-        if _IMAGE_ONLY_LINE_RE.match(line):
-            # pure image-reference lines (page-image previews) are not text
             continue
         buffer.append(line)
     emit()
