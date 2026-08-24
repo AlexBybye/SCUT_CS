@@ -76,7 +76,7 @@ u＝λfν/Δlk （4.2 -4）
 <tr><td>透镜焦距f：</td><td>170mm</td><td>共振频率：</td><td>11.28MHz</td></tr>
 <tr><td>级次</td><td>黄-1</td><td>黄+1</td><td>绿-1</td><td>绿+1</td><td>蓝-1</td><td>蓝+1</td></tr>
 <tr><td>位置（mm）</td><td>4.535</td><td>6.121</td><td>4.681</td><td>5.998</td><td>4.751</td><td>5.785</td></tr>
-<tr><td>![formula-object](assets/university-physics-lab-2-032/image-003.png)（mm）</td><td>0.793</td><td>0.6585</td><td>0.517</td></tr>
+<tr><td>$l_k$（mm）</td><td>0.793</td><td>0.6585</td><td>0.517</td></tr>
 <tr><td>超声波的波长</td><td>0.124</td><td>0.132</td><td>0.143</td></tr>
 <tr><td>超声波的速度</td><td>1402.53</td><td>1493.89</td><td>1613.45</td></tr>
 <tr><td>超声波声速平均测量值（m·s-1：1503.29）</td><td>超声波声速理论值（m·s-1）：1495</td></tr>

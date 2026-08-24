@@ -28,13 +28,15 @@ locator_type: none
 
 两只光栅常数相同的光栅，其刻划面相向叠合并且使两者栅线有很小的交角*θ*，则由于挡光效应（光栅常数*d* >20μm）或光的衍射作用（光栅常数*d* <10μm），在与光栅刻线大致垂直的方向上形成明暗相间的条纹，如图  1所示。
 
-![formula-object](assets/university-physics-lab-2-031/image-001.png)
+$$
+d/2
+$$
 
 图 1  直线光栅莫尔条纹
 
 若主光栅与副光栅之间的夹角为*θ*，光栅常数为*d*，由图  1的几何关系可得出相邻莫尔条纹之间的距离*B*为：
 
-![formula-object](assets/university-physics-lab-2-031/image-002.png)	（1）
+$B=\frac{d}{2\sin\frac{\theta}{2}}-\frac{d}{\theta}$	（1）
 
 式中*θ*的单位为弧度。由上式可知，当改变光栅夹角*θ*，莫尔条纹宽度*B*也将随之改变。
 
@@ -67,7 +69,7 @@ locator_type: none
 
 径向圆光栅的莫尔条纹有如下特点：
 1. 当其中一只光栅转动时，圆族将向外扩张或向内收缩。每转动1个栅距角，莫尔条纹移动一个条纹宽度。用光电器件测得莫尔条纹移动的个数*k*就可以得到光栅的角位移Δ*θ*=*k**α*。用径向圆光栅测量角位移具有误差减小作用。
-1. 莫尔条纹是由上下2组不同半径，不同圆心的圆族组成。上半圆族的圆心位置为![formula-object](assets/university-physics-lab-2-031/image-005.png)，下半圆族的圆心位置为![formula-object](assets/university-physics-lab-2-031/image-006.png)。条纹的曲率半径为![formula-object](assets/university-physics-lab-2-031/image-007.png)。
+1. 莫尔条纹是由上下2组不同半径，不同圆心的圆族组成。上半圆族的圆心位置为![formula-object](assets/university-physics-lab-2-031/image-005.png)，下半圆族的圆心位置为![formula-object](assets/university-physics-lab-2-031/image-006.png)。条纹的曲率半径为$\frac{S\sqrt{\tan^2{k}\alpha+1}}{\tan{k}\alpha}$。
 1. *k*越大，莫尔条纹半径越小，条纹间距也越小，所以靠近传感器中心的莫尔条纹不易分辨，半径最小值为*S*。
 1. 两光栅的中心坐标（*S*，0）和（-*S*，0）恒满足圆方程，所有的圆均通过两光栅的中心。
 
@@ -81,7 +83,7 @@ locator_type: none
 
 两只小圆半径均为*r*，栅距角均为*α*的切向光栅相向同心叠合，其莫尔条纹满足的方程为：
 
-![formula-object](assets/university-physics-lab-2-031/image-009.png)		（3）
+$x^2+y^2=\left(\frac{2r}{k\alpha}\right)^2$		（3）
 
 切向圆光栅莫尔条纹方程的推导见附录3。
 

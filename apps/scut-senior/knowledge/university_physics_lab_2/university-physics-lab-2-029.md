@@ -45,7 +45,7 @@ locator_type: none
 
 光波在不同折射率的介质表面会反射，入射角为零或入射角很小时反射率：
 
-![formula-object](assets/university-physics-lab-2-029/image-003.png)	![formula-object](assets/university-physics-lab-2-029/image-004.png)									（3）
+![formula-object](assets/university-physics-lab-2-029/image-003.png)	$R=(\frac{n_1-n_2}{n_1+n_2})^2$									（3）
 
 由（3）式可见，反射率取决于界面两边材料的折射率。由于色散，材料在不同波长的折射率不同。折射率与衰减系数是表征材料光学特性的最基本参数。
 
@@ -53,11 +53,11 @@ locator_type: none
 
 反射光强与入射光强之比为：
 
-![formula-object](assets/university-physics-lab-2-029/image-005.png)			（4）
+$\frac{I_g}{I_0}=R[(1-(R)^2)e^{-2al}(1+R^3e^{-2at}+R^4e^{-4aL}+\cdots)]=R[1+\frac{(1-R)^2e^{-2al}}{1-R^2e^{-2ab}}]$			（4）
 
 在推导中，用到无穷级数1+*x*+*x*2+*x*3+  ···  = (1－*x*)-1。透射光强与入射光强之比为：
 
-![formula-object](assets/university-physics-lab-2-029/image-006.png)			（5）
+$\frac{I_T}{I_0}=(1-R)^2e^{-al}(1+Re^{-2al}+R^2e^{-4al}+\cdots)=\frac{(1-R)^2e^{-al}}{1-Re^{-2al}}$			（5）
 
 原则上，测量出*I*0、*I*R、*I*T，联立（4）、（5）两式，可以求出*R*与*α*（不一定是解析解）。
 
@@ -65,17 +65,17 @@ locator_type: none
 
 对于衰减可忽略不计的红外光学材料，*α*=0，e –*α**L*=1，此时，由（4）式可解出：
 
-![formula-object](assets/university-physics-lab-2-029/image-007.png)									（6）
+$R=\frac{I_R/I_0}{2-I_R/I_0}$									（6）
 
 对于衰减较大的非红外光学材料，可以认为多次反射的光线经材料衰减后光强度接近零，对图1中的反射光线与透射光线都可只取第一项，此时：
 
-![formula-object](assets/university-physics-lab-2-029/image-008.png)										（7）
+$R=\frac{I_R}{I_0}$										（7）
 
-![formula-object](assets/university-physics-lab-2-029/image-009.png)									（8）
+$\alpha=\frac{1}{L}\ln\frac{I_0(1-R)^2}{I_T}$									（8）
 
 已知空气的折射率为1，求出反射率后，可由（3）式解出材料的折射率：
 
-![formula-object](assets/university-physics-lab-2-029/image-010.png)										（9）
+$n=\frac{1+\sqrt{R}}{1-\sqrt{R}}$										（9）
 1. 发光二极管
 
 红外通信的光源为半导体激光器或发光二极管，本实验采用发光二极管。
@@ -123,7 +123,7 @@ locator_type: none
 
 如果载波的瞬时频率偏移随调制信号m(t)线性变化，即：
 
-![formula-object](assets/university-physics-lab-2-029/image-016.png)									（10）
+$omega_i(t)=k_ym(t)$									（10）
 
 则称为调频，*k*f是调频系数，代表频率调制的灵敏度，单位为2πHz/V。
 
@@ -131,11 +131,11 @@ locator_type: none
 
 ![formula-object](assets/university-physics-lab-2-029/image-017.png)							（11）
 
-式中![formula-object](assets/university-physics-lab-2-029/image-018.png)为载波的角频率，![formula-object](assets/university-physics-lab-2-029/image-019.png)为调频信号的瞬时相位偏移。下面考虑两种特殊情况：
+式中$omega$为载波的角频率，![formula-object](assets/university-physics-lab-2-029/image-019.png)为调频信号的瞬时相位偏移。下面考虑两种特殊情况：
 
 （1）、假设m(t)为电压为V的直流信号，则（11）式可以写为：
 
-![formula-object](assets/university-physics-lab-2-029/image-020.png)								（12）
+$u(t)=A\cos[(\omega+k_f)t]$								（12）
 
 （12）式表明直流信号调制后的载波仍为余弦波，但角频率偏移了*k*f*V*。
 

@@ -23,27 +23,31 @@ locator_type: none
 
 **1.测角原理**
 
-测量光线之间的夹角，实质是测定平行光束的方位角。如图1所示，A、B分别为平行光束和在望远镜焦平面上的会聚像点。焦平面上的每一个点，都与从一定方向入射的平行光束相对应。如果望远镜的光轴绕垂直于光束1和2的转轴转动，光轴由于平行于光束1的方位(光轴上的会聚像点为A)转到平行于光束2的方位(光轴上的会聚像点为 B  )，则光轴所转过的角度即是平行光束1与2之间的夹角![formula-object](assets/university-physics-lab-1-003/image-001.png)。
+测量光线之间的夹角，实质是测定平行光束的方位角。如图1所示，A、B分别为平行光束和在望远镜焦平面上的会聚像点。焦平面上的每一个点，都与从一定方向入射的平行光束相对应。如果望远镜的光轴绕垂直于光束1和2的转轴转动，光轴由于平行于光束1的方位(光轴上的会聚像点为A)转到平行于光束2的方位(光轴上的会聚像点为 B  )，则光轴所转过的角度即是平行光束1与2之间的夹角$\theta_0$。
 
 ![image](assets/university-physics-lab-1-003/image-002.jpeg) 图1
 
 **2.用最小偏向角法测三棱镜折射率n的原理**
 
-如图2所示，单色光PM以入射角![formula-object](assets/university-physics-lab-1-003/image-003.png)投射到三棱镜的AB面，经两次折射后，以![formula-object](assets/university-physics-lab-1-003/image-004.png)角从 AC 面射出。入射光束与折射光束的夹角![formula-object](assets/university-physics-lab-1-003/image-005.png)称为偏向角。显然
+如图2所示，单色光PM以入射角$alpha_1$投射到三棱镜的AB面，经两次折射后，以$alpha_2'$角从 AC 面射出。入射光束与折射光束的夹角$\theta$称为偏向角。显然
 
-![formula-object](assets/university-physics-lab-1-003/image-006.png)
+$$
+theta=(\alpha_1-\alpha_i')+(\alpha'_i-\alpha_2)=\alpha_1+\alpha'_i-\varphi
+$$
 
-式中![formula-object](assets/university-physics-lab-1-003/image-007.png)为棱镜的顶角。
+式中$\phi$为棱镜的顶角。
 
 ![image](assets/university-physics-lab-1-003/image-008.jpeg)图2
 
-对于给定的棱镜，其顶角![formula-object](assets/university-physics-lab-1-003/image-009.png)和折射率n都是已定的。从上式可见，偏向角![formula-object](assets/university-physics-lab-1-003/image-010.png)是![formula-object](assets/university-physics-lab-1-003/image-011.png)的函数。用微商计算可以证明，当![formula-object](assets/university-physics-lab-1-003/image-012.png)时，即MM'//BC(磨砂面)，此时![formula-object](assets/university-physics-lab-1-003/image-013.png)值最小，称为最小偏向角，用![formula-object](assets/university-physics-lab-1-003/image-014.png)表示。此时有![formula-object](assets/university-physics-lab-1-003/image-015.png)，
+对于给定的棱镜，其顶角$\phi$和折射率n都是已定的。从上式可见，偏向角$\theta$是$alpha_1$的函数。用微商计算可以证明，当$\alpha_1=\alpha_2,\alpha_1^\prime=\alpha_2^\prime$时，即MM'//BC(磨砂面)，此时$\theta$值最小，称为最小偏向角，用$\theta_0$表示。此时有$\alpha_1=\frac{\varphi}{2},\alpha_1=\frac{(\varphi+\theta_0)}{2}$，
 
 则折射率
 
-![formula-object](assets/university-physics-lab-1-003/image-016.png)
+$$
+n=\frac{\sin_{2}^{1}(φ+θ_{c})}{\sin\frac{1}{2}\varphi}
+$$
 
-棱镜的顶角![formula-object](assets/university-physics-lab-1-003/image-017.png)由实验室给出，实验时只要测出最小偏向角0。便可计算出棱镜的折射率n。
+棱镜的顶角$\phi$由实验室给出，实验时只要测出最小偏向角0。便可计算出棱镜的折射率n。
 - **内容步骤**
 
 **1.调节分光计**
@@ -72,24 +76,26 @@ locator_type: none
 
 ![image](assets/university-physics-lab-1-003/image-020.jpeg)
 
-微调望远镜使分划板准线的竖线对准狭缝中央，记下左、右游标窗的读数![formula-object](assets/university-physics-lab-1-003/image-021.png);和![formula-object](assets/university-physics-lab-1-003/image-022.png)，即为折射光线位置读数。
+微调望远镜使分划板准线的竖线对准狭缝中央，记下左、右游标窗的读数$alpha_1$;和$alpha_1'$，即为折射光线位置读数。
 
-锁紧控制望远镜与刻度盘一起转动的锁紧螺钉，锁紧游标盘，取下三棱镜，转动望远镜对准平行光管狭缝，并使分划板准线的竖线对准狭缝像中央，记录左、右游标的读数![formula-object](assets/university-physics-lab-1-003/image-023.png)和![formula-object](assets/university-physics-lab-1-003/image-024.png)，即为入射光线位置读数。最小偏向角为
+锁紧控制望远镜与刻度盘一起转动的锁紧螺钉，锁紧游标盘，取下三棱镜，转动望远镜对准平行光管狭缝，并使分划板准线的竖线对准狭缝像中央，记录左、右游标的读数$alpha_2$和$alpha_2'$，即为入射光线位置读数。最小偏向角为
 
-![formula-object](assets/university-physics-lab-1-003/image-025.png)
+$$
+theta_0=\frac{|alpha_1-alpha_2|+|alpha_i-alpha_2|}{2}
+$$
 - **数据处理**
 
 三棱镜顶角=60°00′±5′
 
 <table>
-<tr><td>测量序数</td><td>折射光线位置读数</td><td>入射光线位置读数</td><td>![formula-object](assets/university-physics-lab-1-003/image-026.png)</td><td>![formula-object](assets/university-physics-lab-1-003/image-027.png)</td></tr>
-<tr><td></td><td>![formula-object](assets/university-physics-lab-1-003/image-028.png)（左）</td><td>![formula-object](assets/university-physics-lab-1-003/image-029.png)（右）</td><td>![formula-object](assets/university-physics-lab-1-003/image-030.png)（左）</td><td>![formula-object](assets/university-physics-lab-1-003/image-031.png)（右）</td><td></td><td></td></tr>
+<tr><td>测量序数</td><td>折射光线位置读数</td><td>入射光线位置读数</td><td>$\theta_0$</td><td>$n$</td></tr>
+<tr><td></td><td>$alpha_1$（左）</td><td>$alpha_1'$（右）</td><td>$alpha_2$（左）</td><td>$alpha_2'$（右）</td><td></td><td></td></tr>
 <tr><td>1</td><td>30°22′</td><td>210°22′</td><td>71°34′</td><td>251°34′</td><td>41°12′</td><td>1.545</td></tr>
 <tr><td>2</td><td>46°59′</td><td>226°56′</td><td>88°11′</td><td>268°12′</td><td>41°14′</td><td>1.546</td></tr>
 <tr><td>3</td><td>52°17′</td><td>232°19′</td><td>93°28′</td><td>273°28′</td><td>41°10′</td><td>1.545</td></tr>
 </table>
 
-![formula-object](assets/university-physics-lab-1-003/image-032.png),![formula-object](assets/university-physics-lab-1-003/image-033.png)=1.545±0.002
+$\sigma=\sqrt{\frac{1}{k(k-1)}\left(\sum_{i=1}^{k}(n_i-n)^2\right)}$,$n=\overline{n}+\sigma_{}$=1.545±0.002
 - **结论及分析**
 
 结论：

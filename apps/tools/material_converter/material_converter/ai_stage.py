@@ -81,12 +81,10 @@ def _load_rows():
 
 
 def _save_rows(rows):
-    fields = ["source_id", "course", "title", "original_path", "format",
-              "document_role", "year", "output_md", "locator_type", "method",
-              "ocr_used", "ocr_confidence", "ocr_warning", "status",
-              "reviewer", "notes"]
+    # FIELDS is the single source of truth for manifest columns (incl. preview)
+    from .convert import FIELDS
     with open(MANIFEST, "w", newline="", encoding="utf-8") as fp:
-        w = csv.DictWriter(fp, fieldnames=fields)
+        w = csv.DictWriter(fp, fieldnames=FIELDS)
         w.writeheader()
         w.writerows(rows)
 

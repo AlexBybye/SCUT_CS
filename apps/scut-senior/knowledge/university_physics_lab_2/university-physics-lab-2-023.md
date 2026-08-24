@@ -54,27 +54,27 @@ FB505型双光栅仪、双踪示波器
 
 ![formula-object](assets/university-physics-lab-2-023/image-006.png)                                    （1）
 
-式中：整数![formula-object](assets/university-physics-lab-2-023/image-007.png)为主极大级数*，**![formula-object](assets/university-physics-lab-2-023/image-008.png)*为光栅常数*，**![formula-object](assets/university-physics-lab-2-023/image-009.png)*为衍射角，![formula-object](assets/university-physics-lab-2-023/image-010.png)为光波波长。
+式中：整数$K$为主极大级数*，**$d$*为光栅常数*，**![formula-object](assets/university-physics-lab-2-023/image-009.png)*为衍射角，$\lambda$为光波波长。
 
-如果光栅在![formula-object](assets/university-physics-lab-2-023/image-011.png)方向以速度![formula-object](assets/university-physics-lab-2-023/image-012.png)移动，则从光栅出射的光的波阵面也以速度![formula-object](assets/university-physics-lab-2-023/image-013.png)在![formula-object](assets/university-physics-lab-2-023/image-014.png)方向移动。因此在不同时刻，对应于同一级的衍射光，它从光栅出射时，在![formula-object](assets/university-physics-lab-2-023/image-015.png)方向也有一个![formula-object](assets/university-physics-lab-2-023/image-016.png)的位移量，见图2。
+如果光栅在$y$方向以速度$v$移动，则从光栅出射的光的波阵面也以速度$v$在$y$方向移动。因此在不同时刻，对应于同一级的衍射光，它从光栅出射时，在$y$方向也有一个$vt$的位移量，见图2。
 
-这个位移量对应于出射光波位相的变化量为![formula-object](assets/university-physics-lab-2-023/image-017.png)  ：
+这个位移量对应于出射光波位相的变化量为$\Delta\phi(t)$  ：
 
 ![formula-object](assets/university-physics-lab-2-023/image-018.png)                     (2)
 
 把(1)代入(2)得 ：
 
-![formula-object](assets/university-physics-lab-2-023/image-019.png)                              （3）
+$Deltaphi(t)=\frac{2\pi}{\lambda}v*t\frac{klambda}{d}=2k\pi\frac{v}{d}*t=komega_d*t$                              （3）
 
-式中 ：                                            ![formula-object](assets/university-physics-lab-2-023/image-020.png)
+式中 ：                                            $omega_d=2pi\frac{v}{d}$
 
 若激光从一静止的光栅出射时；光波电
 
-矢量方程为![formula-object](assets/university-physics-lab-2-023/image-021.png)而激光从相应移动光栅出射时，光波电矢量方程则为 ：
+矢量方程为$E=E_0\cos\omega_0t$而激光从相应移动光栅出射时，光波电矢量方程则为 ：
 
-![formula-object](assets/university-physics-lab-2-023/image-022.png)          (4)
+$E=E_{0}\cos(\omega_{0}t+\Delta\phi(t))=E_{0}\cos((\omega_{0}+k\omega_{d})t)$          (4)
 
-显然可见，移动的位相光栅![formula-object](assets/university-physics-lab-2-023/image-023.png)级衍射光波，相对于静止的位相光栅有一个多普勒频移，如图3所示。
+显然可见，移动的位相光栅$K$级衍射光波，相对于静止的位相光栅有一个多普勒频移，如图3所示。
 
 ![image](assets/university-physics-lab-2-023/image-024.png)
 
@@ -90,33 +90,35 @@ FB505型双光栅仪、双踪示波器
 
 光束1：
 
-![formula-object](assets/university-physics-lab-2-023/image-035.png)
+$$
+E_1=E_{10}\cos(\omega_0t+\varphi_1)
+$$
 
-![image](assets/university-physics-lab-2-023/image-036.png)光束2：              ![formula-object](assets/university-physics-lab-2-023/image-037.png)        （取![formula-object](assets/university-physics-lab-2-023/image-038.png)）                    (5)
+![image](assets/university-physics-lab-2-023/image-036.png)光束2：              $E_{2}=E_{20}\cos[(\omega_0+\omega_d)t+\varphi_2]$        （取$K=i$）                    (5)
 
-其中![formula-object](assets/university-physics-lab-2-023/image-039.png)为光电转换常数。因光波频率![formula-object](assets/university-physics-lab-2-023/image-040.png)甚高，在式（6）第一、二、四项中，光电检测器无法反应，第三项即为拍频信号，因为频率较低，光电检测器能够作出相应的响应。其产生的光电流为 ：
+其中![formula-object](assets/university-physics-lab-2-023/image-039.png)为光电转换常数。因光波频率$omega_0$甚高，在式（6）第一、二、四项中，光电检测器无法反应，第三项即为拍频信号，因为频率较低，光电检测器能够作出相应的响应。其产生的光电流为 ：
 
 ![formula-object](assets/university-physics-lab-2-023/image-041.png)
 
 拍频![formula-object](assets/university-physics-lab-2-023/image-042.png)即为：                          ![formula-object](assets/university-physics-lab-2-023/image-043.png)                   (7)
 
-其中![formula-object](assets/university-physics-lab-2-023/image-044.png)为光栅密度，本实验：![formula-object](assets/university-physics-lab-2-023/image-045.png)
+其中$n_0=\frac{1}{d}$为光栅密度，本实验：![formula-object](assets/university-physics-lab-2-023/image-045.png)
 
 ![image](assets/university-physics-lab-2-023/image-046.png)
 
 **3.3** **微弱振动位移量的检测:**
 
-从式（7）可知，![formula-object](assets/university-physics-lab-2-023/image-047.png)与光频率![formula-object](assets/university-physics-lab-2-023/image-048.png)无关，且当光栅密度![formula-object](assets/university-physics-lab-2-023/image-049.png)为常数时，只与光栅移动速度![formula-object](assets/university-physics-lab-2-023/image-050.png)成正比，如果把光栅粘在音叉上，则![formula-object](assets/university-physics-lab-2-023/image-051.png)是周期性变化的。所以光拍信号频率![formula-object](assets/university-physics-lab-2-023/image-052.png)也是随时间而变化的，微弱振动的位移振幅为：
+从式（7）可知，![formula-object](assets/university-physics-lab-2-023/image-047.png)与光频率$omega_0$无关，且当光栅密度$n_0$为常数时，只与光栅移动速度![formula-object](assets/university-physics-lab-2-023/image-050.png)成正比，如果把光栅粘在音叉上，则![formula-object](assets/university-physics-lab-2-023/image-051.png)是周期性变化的。所以光拍信号频率![formula-object](assets/university-physics-lab-2-023/image-052.png)也是随时间而变化的，微弱振动的位移振幅为：
 
-![formula-object](assets/university-physics-lab-2-023/image-053.png)                (8)
+$A=\frac{1}{2}\int_{0}^{T/2}v(t)dt=\frac{1}{2}\int_{0}^{T/2}\frac{F_{in}(t)}{n_0}dt=\frac{1}{2n_0}\int_{0}^{T/2}F_{in}(t)dt$                (8)
 
-式中![formula-object](assets/university-physics-lab-2-023/image-054.png)为音叉振动周期，![formula-object](assets/university-physics-lab-2-023/image-055.png)表示![formula-object](assets/university-physics-lab-2-023/image-056.png)时间内的拍频波的个数。所以，只要测得拍频波的波数，就可得到微弱振动的位移振幅。
+式中![formula-object](assets/university-physics-lab-2-023/image-054.png)为音叉振动周期，$\int_{0}^{T/2}F_{\phi}(t)dt$表示$T/2$时间内的拍频波的个数。所以，只要测得拍频波的波数，就可得到微弱振动的位移振幅。
 
-波形数由完整波形数、波的首数、波的尾数三部分组成，根据示波器上显示计算。波形的分数部份为不是一个完整波形的首数及尾数，需在波群的两端，可按反正弦函数折算为波形的分数份，即波形数＝整数波形数＋波的首数和尾数中满![formula-object](assets/university-physics-lab-2-023/image-057.png)或![formula-object](assets/university-physics-lab-2-023/image-058.png)或![formula-object](assets/university-physics-lab-2-023/image-059.png)个波形
+波形数由完整波形数、波的首数、波的尾数三部分组成，根据示波器上显示计算。波形的分数部份为不是一个完整波形的首数及尾数，需在波群的两端，可按反正弦函数折算为波形的分数份，即波形数＝整数波形数＋波的首数和尾数中满$\frac{1}{2}$或$\frac{1}{4}$或$\frac{3}{4}$个波形
 
-分数部份+![formula-object](assets/university-physics-lab-2-023/image-060.png)    式中![formula-object](assets/university-physics-lab-2-023/image-061.png)为波群的头、尾幅度和该处对应完整波形的振幅
+分数部份+$\frac{\sin^{-1}a}{360^\circ}+\frac{\sin^{-1}b}{360^\circ}$    式中$a,b$为波群的头、尾幅度和该处对应完整波形的振幅
 
-之比。波群指![formula-object](assets/university-physics-lab-2-023/image-062.png)内的波形，分数波形数若满![formula-object](assets/university-physics-lab-2-023/image-063.png)个波形为![formula-object](assets/university-physics-lab-2-023/image-064.png)，满![formula-object](assets/university-physics-lab-2-023/image-065.png)个波形为![formula-object](assets/university-physics-lab-2-023/image-066.png)![formula-object](assets/university-physics-lab-2-023/image-067.png)，满![formula-object](assets/university-physics-lab-2-023/image-068.png)个波形为![formula-object](assets/university-physics-lab-2-023/image-069.png)。
+之比。波群指$T/2$内的波形，分数波形数若满$\frac{1}{2}$个波形为$0.5$，满$\frac{1}{4}$个波形为![formula-object](assets/university-physics-lab-2-023/image-066.png)$0.25$，满$\frac{3}{4}$个波形为$0.75$。
 
 ![image](assets/university-physics-lab-2-023/image-070.png)
 
@@ -128,17 +130,17 @@ FB505型双光栅仪、双踪示波器
 
 ![image](assets/university-physics-lab-2-023/image-072.jpeg)
 
-2．将示波器的![formula-object](assets/university-physics-lab-2-023/image-073.png)、![formula-object](assets/university-physics-lab-2-023/image-074.png)、![formula-object](assets/university-physics-lab-2-023/image-075.png)外触发器插座用专用电缆接至双光栅微弱振动测量仪的![formula-object](assets/university-physics-lab-2-023/image-076.png)、![formula-object](assets/university-physics-lab-2-023/image-077.png)![formula-object](assets/university-physics-lab-2-023/image-078.png)的输出插座上，开启双踪示波器和双光栅微弱振动测量仪的电源。
+2．将示波器的$Y_1$、$Y_2$、$X$外触发器插座用专用电缆接至双光栅微弱振动测量仪的$Y_1$、$Y_2$$X$的输出插座上，开启双踪示波器和双光栅微弱振动测量仪的电源。
 
-3．几何光路的调整。调节激光器固定架左右、上下两个调节旋钮，使红色激光通过静光栅、动光栅并让某一级衍射光正好落入硅光电池前面的小孔内。调节光电池架手轮，锁紧光电池架。调节驱动音叉“功率”旋钮到4点位置左右，频率调节到![formula-object](assets/university-physics-lab-2-023/image-079.png)。一边仔细调节激光器位移上下、左右调节器，一边观察示波器，直到能在屏幕上看到清晰无重叠的拍频波即可。
+3．几何光路的调整。调节激光器固定架左右、上下两个调节旋钮，使红色激光通过静光栅、动光栅并让某一级衍射光正好落入硅光电池前面的小孔内。调节光电池架手轮，锁紧光电池架。调节驱动音叉“功率”旋钮到4点位置左右，频率调节到$505Hz$。一边仔细调节激光器位移上下、左右调节器，一边观察示波器，直到能在屏幕上看到清晰无重叠的拍频波即可。
 
 4．双光栅的调整。轻轻敲击音叉，调节示波器，配合调节激光器输出功率(一般调节到最大即可)，调节静光栅位移调节器、找到清晰无重叠的拍频波即可。
 
-5．音叉谐振调节。先将“功率”旋钮指针旋至![formula-object](assets/university-physics-lab-2-023/image-080.png)点钟附近（输出功劳约为45mA），先左右旋转调节“频率”粗调旋钮，使信号源输出频率在（![formula-object](assets/university-physics-lab-2-023/image-081.png)）附近，然后仔细调节“频率”细调旋钮，使音叉谐振。调节时可以用手轻轻地接触音叉顶部，利用手的感觉，寻找使振动加强的频率调节方向。如果音叉谐振太强烈，可以将“功率”旋钮逆时针方向转动，使示波器上看到的![formula-object](assets/university-physics-lab-2-023/image-082.png)内光拍的波形个数大约为![formula-object](assets/university-physics-lab-2-023/image-083.png)到20个。记录此时音叉振动频率、屏上![formula-object](assets/university-physics-lab-2-023/image-084.png)段内完整波的个数，头、尾不足一个完整波形的部分，由于是正弦波，可以用反正弦把它折算为小数值表示的波形个数。记录此时音叉振动频率、屏幕上完整波个数、不足一个完整波形的首数及尾数值以及对应该处完整波形的振幅值。
+5．音叉谐振调节。先将“功率”旋钮指针旋至$4\sim5$点钟附近（输出功劳约为45mA），先左右旋转调节“频率”粗调旋钮，使信号源输出频率在（$505Hz$）附近，然后仔细调节“频率”细调旋钮，使音叉谐振。调节时可以用手轻轻地接触音叉顶部，利用手的感觉，寻找使振动加强的频率调节方向。如果音叉谐振太强烈，可以将“功率”旋钮逆时针方向转动，使示波器上看到的$T/2$内光拍的波形个数大约为$15$到20个。记录此时音叉振动频率、屏上$T/2$段内完整波的个数，头、尾不足一个完整波形的部分，由于是正弦波，可以用反正弦把它折算为小数值表示的波形个数。记录此时音叉振动频率、屏幕上完整波个数、不足一个完整波形的首数及尾数值以及对应该处完整波形的振幅值。
 
 6．测出外力驱动音叉时的谐振曲线：
 
-固定“功率”旋钮位置，在音叉谐振点附近小心调节“频率”旋钮，测出音叉的振动频率与对应的信号振幅大小，频率间隔可以取![formula-object](assets/university-physics-lab-2-023/image-085.png)，选8个点，分别测出对应的波的个数，由公式计算出每个对应的振幅![formula-object](assets/university-physics-lab-2-023/image-086.png)值。
+固定“功率”旋钮位置，在音叉谐振点附近小心调节“频率”旋钮，测出音叉的振动频率与对应的信号振幅大小，频率间隔可以取$0.1Hz$，选8个点，分别测出对应的波的个数，由公式计算出每个对应的振幅![formula-object](assets/university-physics-lab-2-023/image-086.png)值。
 
 7、使音叉在谐频附近的某一频率下振动。输出功率由10mA开始，每隔10mA测量出每一信号输出功率作用下的音叉振幅，测出音叉功率和音叉振幅的关系。将数据记录于表格。
 
@@ -146,7 +148,7 @@ FB505型双光栅仪、双踪示波器
 
 ![image](assets/university-physics-lab-2-023/image-087.png)
 
-9．保持信号频率不变，把输出功率调节旋钮逆时针旋到零，然后把输出功率调节在![formula-object](assets/university-physics-lab-2-023/image-088.png)、![formula-object](assets/university-physics-lab-2-023/image-089.png)…… 研究输出功率谐振曲线的变化趋势。（注：被测棒质量为![formula-object](assets/university-physics-lab-2-023/image-090.png)）
+9．保持信号频率不变，把输出功率调节旋钮逆时针旋到零，然后把输出功率调节在$5mA$、$15mA$…… 研究输出功率谐振曲线的变化趋势。（注：被测棒质量为$0.033g±0.002g$）
 
 10．把功率旋扭逆时针转到底，用手转动静光栅调节手柄，调节静光栅位移调节器上下移动，或用手轻轻敲击音叉，就可以在示波器上看到或在喇叭中听到双光栅的多普勒频移产生的拍频波。音调随旋转运动速率而变，仔细试验，甚至可以模拟出一些动物的叫声。（为了避免实验时相互干扰，本实验仪采用头戴式耳机演示）
 

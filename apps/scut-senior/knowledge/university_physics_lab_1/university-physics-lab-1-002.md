@@ -84,7 +84,7 @@ locator_type: none
 1. 劈尖干涉D=N0λL/2s(L=48.0mm)=0.0021mm
 1. (牛顿环)用逐差法处理数据，并根据如下公式求出球面的曲率半径。
 
-![formula-object](assets/university-physics-lab-1-002/image-003.png)=875.556mm
+$R=\frac{D_m^3-D_n^3}{4(m-n)\lambda}$=875.556mm
 - **结论与分析**
 
 **牛顿环：**

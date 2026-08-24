@@ -42,17 +42,17 @@ FQJ型非平衡电桥、电桥接线板、电阻箱、稳压电源、电压表�
 
 定义SU=UAB/△R为电桥的输出电压灵敏度，则有
 
-![formula-object](assets/university-physics-lab-1-008/image-005.png)                    （4.17-4）
+$S_v=\frac{KU_0}{(1+K)^RR_0}$                    （4.17-4）
 
 由式（4.17-1）可知，当△R/R0<<1时，非平衡电桥的输出电压与△R呈线性关系。由式（4.17-4）可知，电桥的输出电压灵敏度由选择的电桥倍率K及供电电源电压决定。电桥供电一定，当K=1时，电桥输出电压灵敏度最大，且
 
-![formula-object](assets/university-physics-lab-1-008/image-006.png)                      （4.17-5）
+$S_{\max}=\frac{U_0}{4R_0}$                      （4.17-5）
 
 **2、用非平衡直流电桥测电阻**
 
 根据式（4.17-2），得到
 
-![formula-object](assets/university-physics-lab-1-008/image-007.png)                （4.17-10）
+$xR=\frac{(1+K)^2R_0U_{IS}}{KU_s}$                （4.17-10）
 
 当K=1时，即R2=R3，则有
 
