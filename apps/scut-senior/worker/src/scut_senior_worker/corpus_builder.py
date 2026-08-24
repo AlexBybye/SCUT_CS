@@ -52,6 +52,9 @@ _VERSION_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*")
 _IMAGE_RE = re.compile(
     r"!\[[^\]]*\]\(\s*(?:<([^>]+)>|([^\s)]+))(?:\s+[^)]*)?\)"
 )
+# A line that is nothing but one or more image references carries no
+# retrievable text; it is a page-image preview, never a searchable chunk.
+_IMAGE_ONLY_LINE_RE = re.compile(r"^\s*(?:!\[[^\]]*\]\([^)]*\)\s*)+$")
 
 
 class CorpusBuildError(ValueError):
@@ -530,6 +533,9 @@ def _chunk_document(
             heading_stack[:] = heading_stack[: level - 1]
             heading_stack.append(title)
             continue
+        if _IMAGE_ONLY_LINE_RE.match(line):
+            # pure image-reference lines (page-image previews) are not text
+            continue
         buffer.append(line)
     emit()
     return chunks
@@ -739,9 +745,14 @@ def build_candidate(
                 max_chunk_chars=max_chunk_chars,
             )
             if not source_chunks:
-                raise CorpusBuildError(
-                    f"{source['source_id']}: passed source produced no searchable chunks"
-                )
+                if not assets:
+                    raise CorpusBuildError(
+                        f"{source['source_id']}: passed source produced no searchable chunks"
+                    )
+                # maintainer decision 2026-08-23: approved scan-only sources
+                # stay in the corpus as page-image previews with zero text
+                # chunks; they are preserved (assets copied below) but not
+                # searchable, so the build must not fail on them.
             artifact_assets = [f"assets/{asset}" for asset in assets]
             for asset, artifact_asset in zip(assets, artifact_assets):
                 destination = temporary / artifact_asset
@@ -1016,7 +1027,17 @@ def _validate_candidate_payload(candidate_path: Path) -> dict[str, Any]:
 
         chunks = index.get("chunks")
         if not isinstance(chunks, list) or not chunks:
-            errors.append(f"{course_id}: chunks must be non-empty")
+            # image-preview policy (maintainer decision 2026-08-23): a course
+            # whose sources are all approved scan-only page-image previews
+            # legitimately has zero text chunks.
+            preview_only = bool(source_map) and all(
+                not isinstance(source, dict) or (
+                    not source.get("chunk_ids") and bool(source.get("assets"))
+                )
+                for source in source_map.values()
+            )
+            if not preview_only:
+                errors.append(f"{course_id}: chunks must be non-empty")
             chunks = []
         course_chunk_ids: set[str] = set()
         required_chunk_fields = {

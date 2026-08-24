@@ -41,9 +41,7 @@ MANIFEST_HEADERS = (
     "reviewer",
     "notes",
 )
-MANIFEST_STATUSES = frozenset(
-    {"pending", "passed", "needs_fix", "rejected", "image_only"}
-)
+MANIFEST_STATUSES = frozenset({"pending", "passed", "needs_fix", "rejected"})
 LOCATOR_TYPES = frozenset({"page", "slide", "heading", "none", ""})
 FRONTMATTER_FIELDS = frozenset(
     {
@@ -458,9 +456,7 @@ def _validate_manifest_values(row: dict[str, str], registry: CourseRegistry) -> 
         errors.append(f"{source_id}: year must be null, blank, or four digits")
     if row["status"].strip() == "passed" and not row["reviewer"].strip():
         errors.append(f"{source_id}: passed source requires reviewer")
-    if row["status"].strip() in {"needs_fix", "rejected", "image_only"} and not row[
-        "notes"
-    ].strip():
+    if row["status"].strip() in {"needs_fix", "rejected"} and not row["notes"].strip():
         errors.append(
             f"{source_id}: {row['status'].strip()} source requires notes"
         )

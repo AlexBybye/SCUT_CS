@@ -130,7 +130,7 @@ AI 和工具不得：
 → 写入 page / slide / question / heading 定位
 → 执行工具预检与 OCR 告警
 → 人工对照原件审核并再次执行隐私检查
-→ passed / needs_fix / rejected / image_only
+→ passed / needs_fix / rejected
 → passed 转换结果通过 GitHub PR 人工合并主分支
 → 华为云拉取固定提交并构建 candidate
 → 验证通过后才可切换 active
@@ -382,9 +382,8 @@ locator_type: page
 | `passed` | 人工确认内容具备入库资格 | 通过 GitHub PR 人工合并；不能直接修改 candidate/active |
 | `needs_fix` | 存在可修复问题 | 修复后重新进入人工审核 |
 | `rejected` | 人工决定不进入知识库 | 在 `notes` 写明原因 |
-| `image_only` | 纯图片扫描件，无可提取文本层（零 chunk） | 在 `notes` 写明判定依据；OCR 补文本层并人工比对后重新走审核；构建器自动排除，不算构建失败 |
 
-不得增加“基本通过”“低质量通过”等重叠等级。`image_only` 是技术性排除状态而非内容评价：它只声明“当前生成物没有可检索文本”，不表示内容通过或不通过审核。
+不得增加“基本通过”“低质量通过”等重叠等级。纯图片扫描件（无可提取文本层、零 chunk）按维护者拍板决策处理：经人工审核批准后仍标 `passed`，以整页图片资产形式保留在语料中（不可文本检索，构建器对“有图片资产但零文本 chunk”的 passed 源放行）；若未获批准则保持 `pending` 并等待 OCR 补文本层后重新审核。
 
 修复后由人工判定为高风险的资料，由另一位资料负责人交叉复核后再决定是否 `passed`；不额外建立自动“高风险”分类器。
 

@@ -23,6 +23,7 @@ V = "{urn:schemas-microsoft-com:vml}"
 REL = "{http://schemas.openxmlformats.org/package/2006/relationships}"
 M = "{http://schemas.openxmlformats.org/officeDocument/2006/math}"
 O = "{urn:schemas-microsoft-com:office:office}"
+MC = "{http://schemas.openxmlformats.org/markup-compatibility/2006}"
 
 
 @dataclass
@@ -141,6 +142,17 @@ class DocxConverter:
             if url.startswith("http"):
                 return f"[{inner}]({url})"
             return inner
+        if tag_local == "AlternateContent":
+            # Scan-style docx wrap every page image inside mc:AlternateContent
+            # (mc:Choice with the modern w:drawing + mc:Fallback with w:pict).
+            # Prefer the Choice branch only so one rId is never extracted twice.
+            choice = el.find(MC + "Choice")
+            if choice is not None:
+                return "".join(self._inline(c, bold, italic) for c in choice)
+            fallback = el.find(MC + "Fallback")
+            if fallback is not None:
+                return "".join(self._inline(c, bold, italic) for c in fallback)
+            return ""
         if tag_local in ("drawing", "pict"):
             name = self._drawing_image(el)
             if name:
@@ -202,6 +214,8 @@ class DocxConverter:
             elif local == "drawing":
                 parts.append(self._inline(c, b, i))
             elif local in ("object", "pict"):
+                parts.append(self._inline(c, b, i))
+            elif local == "AlternateContent":
                 parts.append(self._inline(c, b, i))
             elif local == "sym":
                 parts.append(self._inline(c, b, i))
@@ -552,6 +566,9 @@ def convert_docx(path: str, assets_dir: str) -> tuple[str, list[tuple[str, bytes
     md = "\n".join(lines)
     md = re.sub(r"\n{3,}", "\n\n", md)
     md = re.sub(r"[ \t]+\n", "\n", md)
+    # scan-style docx render consecutive page images as one run per paragraph;
+    # split adjacent image refs onto their own lines (page-preview layout)
+    md = re.sub(r"(!\[[^\]]*\]\([^)]+\))(?=!\[)", r"\1\n", md)
     md = postprocess_md(md)
     stats["image_count"] = len(image_files)
     conv.close()

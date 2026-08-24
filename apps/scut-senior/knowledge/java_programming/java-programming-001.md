@@ -10,3 +10,6 @@ locator_type: none
 
 # java往年试题
 
+![image](assets/java-programming-001/image-001.jpg)
+![image](assets/java-programming-001/image-002.jpg)
+![image](assets/java-programming-001/image-003.jpg)

@@ -496,3 +496,108 @@ def test_manifest_without_passed_source_fails_without_creating_candidate(
         _build(repo, knowledge, commit, store)
     assert not (store / "active.json").exists()
     assert not (store / "candidates").exists()
+
+
+def test_passed_image_preview_source_with_zero_chunks_is_allowed(
+    fixed_repo: tuple[Path, Path, str], tmp_path: Path
+) -> None:
+    """Maintainer decision 2026-08-23: approved scan-only sources stay in the
+    corpus as page-image previews (assets, zero text chunks) instead of failing
+    the build."""
+    repo, knowledge, _commit_id = fixed_repo
+    document = knowledge / "linear_algebra" / "scan.md"
+    asset = document.parent / "assets" / "scan" / "page-001.png"
+    asset.parent.mkdir(parents=True)
+    asset.write_bytes(b"synthetic-page")
+    document.write_text(
+        """---
+source_id: scan
+course_id: linear_algebra
+title: 纯图扫描试卷
+original_file: 学科资料/线性代数/scan.pdf
+document_role: past_exam
+year: 2023
+locator_type: none
+---
+
+# 纯图扫描试卷
+
+![](assets/scan/page-001.png)
+""",
+        encoding="utf-8",
+    )
+    _write_manifest(
+        knowledge / "manifest.csv",
+        [
+            _row(
+                source_id="scan",
+                output_md="linear_algebra/scan.md",
+                title="纯图扫描试卷",
+                status="passed",
+                locator_type="none",
+            ),
+        ],
+    )
+    commit = _commit(repo, "image preview")
+    result = _build(repo, knowledge, commit, tmp_path / "store")
+
+    metadata = json.loads(
+        (result.candidate_path / "metadata.json").read_text(encoding="utf-8")
+    )
+    assert "linear_algebra" in metadata["available_courses"]
+    pack = json.loads(
+        (
+            result.candidate_path / "course-packs" / "linear_algebra.json"
+        ).read_text(encoding="utf-8")
+    )
+    source = pack["sources"][0]
+    assert source["source_id"] == "scan"
+    assert source["chunk_ids"] == []
+    assert source["assets"] == ["assets/linear_algebra/assets/scan/page-001.png"]
+    assert (result.candidate_path / "assets" / "linear_algebra" / "assets"
+            / "scan" / "page-001.png").is_file()
+    index = json.loads(
+        (result.candidate_path / "courses" / "linear_algebra.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert index["chunks"] == []
+
+
+def test_passed_zero_chunk_source_without_assets_still_fails(
+    fixed_repo: tuple[Path, Path, str], tmp_path: Path
+) -> None:
+    """A passed source with no text chunks and no image assets is still a
+    broken build input and must keep failing closed."""
+    repo, knowledge, _commit_id = fixed_repo
+    document = knowledge / "linear_algebra" / "empty.md"
+    document.write_text(
+        """---
+source_id: empty
+course_id: linear_algebra
+title: 空壳
+original_file: 学科资料/线性代数/empty.pdf
+document_role: past_exam
+year: 2023
+locator_type: none
+---
+
+# 空壳
+""",
+        encoding="utf-8",
+    )
+    _write_manifest(
+        knowledge / "manifest.csv",
+        [
+            _row(
+                source_id="empty",
+                output_md="linear_algebra/empty.md",
+                title="空壳",
+                status="passed",
+                locator_type="none",
+            ),
+        ],
+    )
+    commit = _commit(repo, "empty passed")
+    with pytest.raises(CorpusBuildError, match="no searchable chunks"):
+        _build(repo, knowledge, commit, tmp_path / "store")
