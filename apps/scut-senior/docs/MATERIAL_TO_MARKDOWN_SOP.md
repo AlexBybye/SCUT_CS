@@ -383,7 +383,7 @@ locator_type: page
 | `needs_fix` | 存在可修复问题 | 修复后重新进入人工审核 |
 | `rejected` | 人工决定不进入知识库 | 在 `notes` 写明原因 |
 
-不得增加“基本通过”“低质量通过”等重叠等级。纯图片扫描件（无可提取文本层、零 chunk）按维护者拍板决策处理：经人工审核批准后仍标 `passed`，以整页图片资产形式保留在语料中（不可文本检索，构建器对“有图片资产但零文本 chunk”的 passed 源放行）；若未获批准则保持 `pending` 并等待 OCR 补文本层后重新审核。
+不得增加“基本通过”“低质量通过”等重叠等级。纯图片扫描件（无可提取文本层、零 chunk）按维护者拍板决策处理：经人工审核批准后仍标 `passed` 并把 `preview` 置为 `page-image`，以整页图片资产形式保留在语料中（零文本 chunk、不可文本检索，构建器只对标记 `preview=page-image` 的 passed 源放行）；若未获批准则保持 `pending` 并等待 OCR 补文本层后重新审核。
 
 修复后由人工判定为高风险的资料，由另一位资料负责人交叉复核后再决定是否 `passed`；不额外建立自动“高风险”分类器。
 
@@ -427,6 +427,7 @@ method
 ocr_used
 ocr_confidence
 ocr_warning
+preview
 status
 reviewer
 notes
@@ -440,6 +441,7 @@ notes
 - 使用 VS Code 插件时，`method` 记录实际版本，例如 `vscode-markdown-to-word@0.1.67`；旧 DOC 记录实际链路，例如 `libreoffice+vscode-markdown-to-word@0.1.67`，版本号以执行时安装版本为准；
 - 没有使用 OCR 时如实填写 `ocr_used`；
 - `ocr_confidence` 只保存工具实际提供且可解释的结果；
+- `preview` 只允许空白、`false` 或 `page-image`：`page-image` 表示该 `passed` 源是维护者批准保留的整页图片预览（零文本 chunk、不可文本检索、图片资产保留在语料中），只能配合 `status=passed` 使用；
 - `reviewer` 填写完成人工审核的人；
 - 所有拒绝、返工或忠实保留的疑似原文错误写入 `notes`；OCR 低置信优先使用 `ocr_confidence` 和 `ocr_warning`，只有需要补充上下文时再写 `notes`。
 - manifest 的 `original_path`、`title`、`notes` 和其他拟公开字段不得残留学生／贡献者姓名、班级或学号；原路径泄露时先重命名，再填写新路径。

@@ -36,6 +36,7 @@ def _row(
     title: str,
     status: str,
     locator_type: str = "page",
+    preview: str = "false",
 ) -> dict[str, str]:
     return {
         "source_id": source_id,
@@ -51,6 +52,7 @@ def _row(
         "ocr_used": "false",
         "ocr_confidence": "",
         "ocr_warning": "",
+        "preview": preview,
         "status": status,
         "reviewer": "reviewer" if status == "passed" else "",
         "notes": "fixture",
@@ -535,6 +537,7 @@ locator_type: none
                 title="纯图扫描试卷",
                 status="passed",
                 locator_type="none",
+                preview="page-image",
             ),
         ],
     )
@@ -601,3 +604,59 @@ locator_type: none
     commit = _commit(repo, "empty passed")
     with pytest.raises(CorpusBuildError, match="no searchable chunks"):
         _build(repo, knowledge, commit, tmp_path / "store")
+
+
+def test_non_preview_image_only_source_still_chunks(
+    fixed_repo: tuple[Path, Path, str], tmp_path: Path
+) -> None:
+    """Image-only documents WITHOUT the preview marker keep their historical
+    behavior: the image-reference line is chunked like any other text. Only
+    preview=page-image rows become zero-chunk previews (regression guard for
+    the 2026-08-24 scoping fix)."""
+    repo, knowledge, _commit_id = fixed_repo
+    document = knowledge / "linear_algebra" / "photo.md"
+    asset = document.parent / "assets" / "photo" / "page-001.png"
+    asset.parent.mkdir(parents=True)
+    asset.write_bytes(b"synthetic-photo")
+    document.write_text(
+        """---
+source_id: photo
+course_id: linear_algebra
+title: 微信图片_001
+original_file: 学科资料/线性代数/photo.pdf
+document_role: past_exam
+year: 2023
+locator_type: none
+---
+
+# 微信图片_001
+
+![](assets/photo/page-001.png)
+""",
+        encoding="utf-8",
+    )
+    _write_manifest(
+        knowledge / "manifest.csv",
+        [
+            _row(
+                source_id="photo",
+                output_md="linear_algebra/photo.md",
+                title="微信图片_001",
+                status="passed",
+                locator_type="none",
+            ),
+        ],
+    )
+    commit = _commit(repo, "non-preview image-only")
+    result = _build(repo, knowledge, commit, tmp_path / "store")
+
+    pack = json.loads(
+        (
+            result.candidate_path / "course-packs" / "linear_algebra.json"
+        ).read_text(encoding="utf-8")
+    )
+    source = pack["sources"][0]
+    assert source["source_id"] == "photo"
+    assert len(source["chunk_ids"]) == 1, (
+        "non-preview image-only source must keep its historical chunk"
+    )

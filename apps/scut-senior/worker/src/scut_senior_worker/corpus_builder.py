@@ -465,8 +465,11 @@ def _chunk_document(
     markdown_path: Path,
     knowledge_root: Path,
     max_chunk_chars: int,
+    preview: bool = False,
 ) -> list[dict[str, Any]]:
-    if _is_image_preview_document(parsed):
+    if preview and _is_image_preview_document(parsed):
+        # preview=page-image sources are approved scan-only page-image previews
+        # (maintainer decision 2026-08-23): no text chunks, assets preserved.
         return []
     chunks: list[dict[str, Any]] = []
     ordinals: defaultdict[str, int] = defaultdict(int)
@@ -578,7 +581,9 @@ def _manifest_rows(
     errors: list[str] = []
     seen_ids: set[str] = set()
     seen_outputs: set[str] = set()
-    passed: list[tuple[dict[str, str], Any, dict[str, Any], Path, list[str]]] = []
+    passed: list[
+        tuple[dict[str, str], Any, dict[str, Any], Path, list[str], bool]
+    ] = []
     for row_number, raw_row in enumerate(raw_rows, start=2):
         row = {key: (value or "") for key, value in raw_row.items() if key is not None}
         source_id = row["source_id"].strip() or f"<row-{row_number}>"
@@ -625,7 +630,16 @@ def _manifest_rows(
                 "source_title": row["title"].strip(),
                 "year": _normalize_optional_year(row["year"]) or None,
             }
-            passed.append((row, parsed, source, markdown_path, assets))
+            passed.append(
+                (
+                    row,
+                    parsed,
+                    source,
+                    markdown_path,
+                    assets,
+                    row["preview"].strip() == "page-image",
+                )
+            )
     if errors:
         raise CorpusBuildError("candidate input validation failed:\n- " + "\n- ".join(errors))
     if not passed:
@@ -752,23 +766,24 @@ def build_candidate(
     read_paths = {_safe_relative_path(root, manifest, "manifest")}
     try:
         temporary.mkdir(parents=False, exist_ok=False)
-        for _row, parsed, source, markdown_path, assets in passed:
+        for _row, parsed, source, markdown_path, assets, preview in passed:
             source_chunks = _chunk_document(
                 parsed=parsed,
                 source=source,
                 markdown_path=markdown_path,
                 knowledge_root=root,
                 max_chunk_chars=max_chunk_chars,
+                preview=preview,
             )
             if not source_chunks:
-                if not assets:
+                if not (preview and assets):
                     raise CorpusBuildError(
                         f"{source['source_id']}: passed source produced no searchable chunks"
                     )
-                # maintainer decision 2026-08-23: approved scan-only sources
-                # stay in the corpus as page-image previews with zero text
-                # chunks; they are preserved (assets copied below) but not
-                # searchable, so the build must not fail on them.
+                # preview=page-image (maintainer decision 2026-08-23): approved
+                # scan-only sources stay in the corpus as page-image previews
+                # with zero text chunks; assets are preserved below but the
+                # source is not searchable, so the build must not fail on it.
             artifact_assets = [f"assets/{asset}" for asset in assets]
             for asset, artifact_asset in zip(assets, artifact_assets):
                 destination = temporary / artifact_asset

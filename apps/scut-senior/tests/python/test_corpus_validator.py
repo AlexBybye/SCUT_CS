@@ -96,6 +96,7 @@ def _row_for_invalid_fixture(name: str) -> dict[str, str]:
         "ocr_used": "false",
         "ocr_confidence": "",
         "ocr_warning": "",
+        "preview": "false",
         "status": "passed",
         "reviewer": "fixture-reviewer",
         "notes": "fixture_only",
@@ -261,6 +262,7 @@ locator_type: heading
         "ocr_used": "false",
         "ocr_confidence": "",
         "ocr_warning": "",
+        "preview": "false",
         "status": "passed",
         "reviewer": "fixture-reviewer",
         "notes": "fixture_only",
@@ -304,6 +306,7 @@ locator_type: none
         "ocr_used": "false",
         "ocr_confidence": "",
         "ocr_warning": "",
+        "preview": "false",
         "status": "passed",
         "reviewer": "fixture-reviewer",
         "notes": "fixture_only",
@@ -333,6 +336,7 @@ def test_pending_and_passed_allow_blank_notes(tmp_path: Path, status: str) -> No
         "ocr_used": "false",
         "ocr_confidence": "",
         "ocr_warning": "",
+        "preview": "false",
         "status": status,
         "reviewer": "fixture-reviewer" if status == "passed" else "",
         "notes": "",
@@ -343,6 +347,49 @@ def test_pending_and_passed_allow_blank_notes(tmp_path: Path, status: str) -> No
 
     assert report.errors == []
     assert len(report.searchable_sources) == (1 if status == "passed" else 0)
+
+
+def test_preview_page_image_requires_passed(tmp_path: Path) -> None:
+    row = _row_for_invalid_fixture("locator-non-increasing.md")
+    row["status"] = "pending"
+    row["reviewer"] = ""
+    row["preview"] = "page-image"
+    manifest = _write_manifest(tmp_path, row)
+
+    report = validate_corpus(manifest, knowledge_root=CORPUS_ROOT)
+
+    assert any(
+        "preview=page-image requires status=passed" in error
+        for error in report.errors
+    )
+
+
+def test_preview_page_image_is_passed_but_not_searchable(tmp_path: Path) -> None:
+    row = {
+        "source_id": "synthetic-linear-algebra-exam",
+        "course": "linear_algebra",
+        "title": "合成线性代数页码题目",
+        "original_path": "sources/linear-algebra-exam.txt",
+        "format": "txt",
+        "document_role": "past_exam",
+        "year": "2023",
+        "output_md": "linear_algebra/synthetic-linear-algebra-exam.md",
+        "locator_type": "page",
+        "method": "synthetic",
+        "ocr_used": "false",
+        "ocr_confidence": "",
+        "ocr_warning": "",
+        "preview": "page-image",
+        "status": "passed",
+        "reviewer": "fixture-reviewer",
+        "notes": "整页图预览保留",
+    }
+    manifest = _write_manifest(tmp_path, row)
+
+    report = validate_corpus(manifest, knowledge_root=CORPUS_ROOT)
+
+    assert report.errors == []
+    assert report.searchable_sources == []
 
 
 @pytest.mark.parametrize("status", ["needs_fix", "rejected"])
@@ -454,6 +501,7 @@ locator_type: heading
         "ocr_used": "false",
         "ocr_confidence": "",
         "ocr_warning": "",
+        "preview": "false",
         "status": "passed",
         "reviewer": "fixture-reviewer",
         "notes": "fixture_only",

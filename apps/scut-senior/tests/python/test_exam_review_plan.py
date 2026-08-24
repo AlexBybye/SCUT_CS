@@ -728,6 +728,7 @@ locator_type: heading
         "ocr_used": "false",
         "ocr_confidence": "",
         "ocr_warning": "",
+        "preview": "false",
         "status": "passed",
         "reviewer": "iteration5-test",
         "notes": "synthetic past exam",

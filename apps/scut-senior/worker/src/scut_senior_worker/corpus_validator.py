@@ -37,6 +37,7 @@ MANIFEST_HEADERS = (
     "ocr_used",
     "ocr_confidence",
     "ocr_warning",
+    "preview",
     "status",
     "reviewer",
     "notes",
@@ -456,6 +457,13 @@ def _validate_manifest_values(row: dict[str, str], registry: CourseRegistry) -> 
         errors.append(f"{source_id}: year must be null, blank, or four digits")
     if row["status"].strip() == "passed" and not row["reviewer"].strip():
         errors.append(f"{source_id}: passed source requires reviewer")
+    if row["preview"].strip() not in {"", "false", "page-image"}:
+        errors.append(f"{source_id}: preview must be blank, false, or page-image")
+    if row["preview"].strip() == "page-image" and row["status"].strip() != "passed":
+        errors.append(
+            f"{source_id}: preview=page-image requires status=passed "
+            "(approved scan-only page-image preview)"
+        )
     if row["status"].strip() in {"needs_fix", "rejected"} and not row["notes"].strip():
         errors.append(
             f"{source_id}: {row['status'].strip()} source requires notes"
@@ -704,7 +712,11 @@ def validate_corpus(
         report.documents.append(document)
         report.errors.extend(row_errors)
 
-        if not row_errors and row["status"].strip() == "passed":
+        if (
+            not row_errors
+            and row["status"].strip() == "passed"
+            and row["preview"].strip() != "page-image"
+        ):
             assert resolved_course is not None
             report.searchable_sources.append(
                 _source_record(row, resolved_course, parsed)

@@ -78,6 +78,7 @@ The principle of least privilege limits each account to required permissions.
         "ocr_used": "false",
         "ocr_confidence": "",
         "ocr_warning": "",
+        "preview": "false",
         "status": "passed",
         "reviewer": "Klosure",
         "notes": "synthetic API retrieval fixture",

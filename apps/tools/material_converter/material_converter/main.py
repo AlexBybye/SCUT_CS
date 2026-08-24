@@ -212,7 +212,8 @@ def run(args):
             "original_path": rel, "format": f["format"], "document_role": role,
             "year": year, "output_md": out_rel, "locator_type": locator,
             "method": method, "ocr_used": "false", "ocr_confidence": "",
-            "ocr_warning": "", "status": "pending", "reviewer": "",
+            "ocr_warning": "", "preview": "false", "status": "pending",
+            "reviewer": "",
             "notes": ("; ".join(notes))[:1400],
         }
         new_rows.append(row)

@@ -34,7 +34,7 @@ MANIFEST = KNOWLEDGE / "manifest.csv"
 CACHE = REPO / "apps/tools/material_converter/.work"          # gitignored scratch
 FIELDS = ["source_id", "course", "title", "original_path", "format",
           "document_role", "year", "output_md", "locator_type", "method",
-          "ocr_used", "ocr_confidence", "ocr_warning", "status",
+          "ocr_used", "ocr_confidence", "ocr_warning", "preview", "status",
           "reviewer", "notes"]
 
 QUESTION_RX = re.compile(r"^[一二三四五六七八九十]{1,3}、")
