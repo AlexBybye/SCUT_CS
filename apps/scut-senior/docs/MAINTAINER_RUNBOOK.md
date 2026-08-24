@@ -1,6 +1,10 @@
 # SCUT 老学长 语料维护操作手册（Maintainer Runbook）
 
-版本：1.0（2026-08-24）
+版本：1.1（2026-08-24）
+
+> 1.1 修订：§6.4/§7.1 依据 2026-08-24 首次真实发布修正——激活与回滚后 API 经指针键控
+> 缓存自动切换、无需重启；补记「新课程开关默认关闭，激活后须显式启用」与 rollback
+> 后 course_switches 重建行为；检索抽查改用 `/api/v1/courses`（无独立 search 端点）。
 
 读者：维护者（内容审核人与语料发布人）
 
@@ -86,7 +90,7 @@
       │ 合并 master 后
       ▼
 ┌─────────────────────┐
-│ ⑥ 激活发布（§6.4）    │  activate → 重启 API → 健康检查
+│ ⑥ 激活发布（§6.4）    │  activate → 启用新课程 → 健康检查
 └─────────────────────┘
       │
       ▼
@@ -323,17 +327,32 @@ PYTHONPATH=apps/scut-senior/worker/src \
 激活只是原子写 `active.json`（新版本 + 保留 `course_switches` + `previous` 指向旧版
 本）。之后：
 
-1. **重启 API 进程**（uvicorn `--reload` 会随代码重载，但 active.json 指针变更建议
-   显式重启以确保指针键控缓存全部刷新）；
-2. 健康检查：
+1. **API 自动切换，无需重启**（2026-08-24 实测）：本地语料读取走指针键控校验缓存，
+   `active.json` 指针变更后下一次请求自然失效重载。仅当本次同时改了 API 代码本身
+   才需要重启 uvicorn。
+2. **显式启用新课程**（重要，易漏）：`activate_candidate` 里新课程的开关继承旧指针
+   的值，**新课程默认 `false`（关闭）**，所以激活后 selectable 数不会自动增加。
+   必须对每一门本次新增的课程执行 §6.5 的 `course` 开关置 `true`，否则课程可构建
+   但不可选。
+3. 健康检查：
 
 ```bash
 curl -s http://127.0.0.1:8000/api/v1/health
-# 期望：retrieval_mode=local_corpus、selectable_course_count=新课程数、
-# local_corpus_available=true、formal_exit_blocked=false
+# 期望：retrieval_mode=local_corpus、local_corpus_available=true、
+# formal_exit_blocked=false、selectable_course_count = 启用课程数（含新课程）
 ```
 
-3. 抽查新课程检索：`/api/v1/.../search` 返回非空。
+4. 抽查新课程可用性（无独立 search REST 端点，检索在对话流内完成）：
+
+```bash
+curl -s http://127.0.0.1:8000/api/v1/courses | python3 -c \
+  "import json,sys; [print(c['course_id'], c['retrieval_available']) \
+   for c in json.load(sys.stdin)['courses'] if c['course_id'] in ('<新课程1>','<新课程2>')]"
+# 期望全部 true；纯图预览课程（preview=page-image）可选但检索返回空，属预期
+```
+
+5. 确认 `active.json` 状态与回滚路径：`previous_corpus_version` 指向旧版
+   （§7.1 回滚依赖它），`course_switches` 含全部启用课程。
 
 ### 6.5 课程级开关
 
@@ -362,7 +381,10 @@ PYTHONPATH=apps/scut-senior/worker/src \
 ```
 
 回滚目标（`previous_corpus_version`）必须是已通过 `validate` 的不可变 candidate，
-`source_commit` 同样必须落在 master。回滚后重启 API + 健康检查。
+`source_commit` 同样必须落在 master。回滚后 API 自动切换（同 §6.4，无需重启），
+随后健康检查确认 selectable 回到旧版本课程数。注意：回滚会把 `course_switches`
+按旧版本的课程集重建，旧版本里没有的课程（本次新增的）开关会变成 `false`——如需
+保留，回滚后按 §6.5 重新启用。
 
 ### 7.2 常见故障排查表
 
