@@ -488,7 +488,8 @@ onBeforeUnmount(() => {
   color: var(--text-soft);
 }
 
-.op-search-input {
+/* 搜索输入：压过全局 input[type="text"]（44px + 边框 + 底色），保持内嵌无边框。 */
+.op-search input.op-search-input {
   min-height: 28px;
   padding: 0;
   border: 0;
@@ -497,12 +498,15 @@ onBeforeUnmount(() => {
   font-size: var(--fs-xs);
 }
 
-.op-search-input::placeholder {
+.op-search input.op-search-input::placeholder {
   color: var(--text-soft);
 }
 
-.op-search-input:focus {
+.op-search input.op-search-input:focus {
   outline: none;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
 }
 
 .op-list {

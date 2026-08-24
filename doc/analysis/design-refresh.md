@@ -113,3 +113,8 @@
 ## 5. 分支与提交
 
 本分支仅含 `apps/scut-senior/web` 与 `doc/analysis/design-refresh.md` 的改动；master 上未提交的 `corpus_validator.py` 等语料校验改动**未纳入**本分支提交。
+
+## 6. 后续修正（按人工复核反馈）
+
+- **搜索输入「两层覆盖」**：全局 `input[type="text"]`（min-height 44px + 边框 + 底色）优先级高于组件内类选择器，导致 `.group-filter`（插件搜索）与 `.op-search`（下拉搜索）的外框里又套了一层原生表单盒子。修复：组件内选择器提权为 `.group-filter input.group-filter-input` / `.op-search input.op-search-input`，并显式重置 focus 时的边框/背景/阴影。
+- **插件浏览页折叠与 sticky 首行**：`PluginRegistryPanel` 组头改为 `position: sticky; top: 0`，浏览某个展开组时组头钉在滚动条上方不随内容滚走（`.plugin-group` 移除 `overflow: hidden` 以让位 sticky，圆角改由组头/内容区用 `:has(.group-body)` 分别承担）；顶部新增「全部展开 / 全部收起」一键折叠按钮。

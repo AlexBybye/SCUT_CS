@@ -74,6 +74,18 @@ const loadedCourseCount = computed(
   () => registry.value?.courses.filter((course) => course.loaded).length ?? 0,
 );
 
+// 「全部展开 / 全部收起」的联动状态与开关。
+const allGroupsOpen = computed(
+  () => coursesOpen.value && presetsOpen.value && toolsOpen.value,
+);
+
+function toggleAllGroups(): void {
+  const next = !allGroupsOpen.value;
+  coursesOpen.value = next;
+  presetsOpen.value = next;
+  toolsOpen.value = next;
+}
+
 async function togglePlugin(course: CoursePluginEntry): Promise<void> {
   if (!props.canManagePlugins || busyCourseId.value) return;
   busyCourseId.value = course.course_id;
@@ -104,6 +116,9 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
         <span>
           检索：{{ registry.retrieval_mode === "local_corpus" ? "本地语料" : "Fixture" }}
         </span>
+        <button type="button" class="btn btn-quiet registry-toggle-all" @click="toggleAllGroups">
+          {{ allGroupsOpen ? "全部收起" : "全部展开" }}
+        </button>
       </p>
 
       <!-- 课程插件：默认展开，但限高内滚 + 搜索，压掉 55 项的无限长度。 -->
@@ -308,17 +323,27 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
   font-size: var(--fs-2xs);
 }
 
+.registry-toggle-all {
+  margin-left: auto;
+  height: 24px;
+  flex: 0 0 auto;
+}
+
 .plugin-group {
   display: grid;
   gap: 4px;
   border: 1px solid var(--line);
   border-radius: var(--r-md);
   background: var(--raised);
-  overflow: hidden;
 }
 
-/* 组头：整行可点的开合按钮。 */
+/* 组头：整行可点的开合按钮。
+   首行 sticky：浏览某个展开组的内容时，组头钉在滚动条上方不随内容滚走。
+   （.plugin-group 不再 overflow:hidden，否则 sticky 会失效。） */
 .group-toggle {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -326,10 +351,16 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
   width: 100%;
   padding: 9px 11px;
   border: 0;
-  background: transparent;
+  border-radius: var(--r-md);
+  background: var(--raised);
   color: var(--text);
   cursor: pointer;
   transition: background var(--dur-fast) ease;
+}
+
+/* 展开时：头部只圆上角，内容区圆下角（由 .group-body 负责）。 */
+.plugin-group:has(.group-body) .group-toggle {
+  border-radius: var(--r-md) var(--r-md) 0 0;
 }
 
 .group-toggle:hover {
@@ -362,12 +393,13 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
   transform: rotate(180deg);
 }
 
-/* 组内容：课程用内滚限高，其余随内容自然展开。 */
+/* 组内容：课程用内滚限高，其余随内容自然展开；底部圆角补上（组容器不再裁剪）。 */
 .group-body {
   display: grid;
   gap: 6px;
   padding: 6px 11px 11px;
   border-top: 1px solid var(--line);
+  border-radius: 0 0 var(--r-md) var(--r-md);
 }
 
 .group-filter {
@@ -394,7 +426,9 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
   color: var(--text-soft);
 }
 
-.group-filter-input {
+/* 搜索输入：必须压过全局 input[type="text"]（min-height 44px + 边框 + 底色），
+   否则会在 .group-filter 外框内再套一层原生表单盒子，出现「两层覆盖」。 */
+.group-filter input.group-filter-input {
   min-height: 28px;
   padding: 0;
   border: 0;
@@ -403,12 +437,15 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
   font-size: var(--fs-xs);
 }
 
-.group-filter-input::placeholder {
+.group-filter input.group-filter-input::placeholder {
   color: var(--text-soft);
 }
 
-.group-filter-input:focus {
+.group-filter input.group-filter-input:focus {
   outline: none;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
 }
 
 /* 课程清单：限高内滚，绝不再把面板撑成无限长。 */
