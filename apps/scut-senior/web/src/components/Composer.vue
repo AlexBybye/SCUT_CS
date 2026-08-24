@@ -11,8 +11,8 @@ import { useAppStore } from "../composables/useAppStore";
 const store = useAppStore();
 
 // 课程：可搜索、按可用性分组、带状态点，避免原生 select 的 55 行超长又超宽。
-const courseOptions = computed<OptionItem[]>(() =>
-  store.courses.map((course) => {
+const courseOptions = computed<OptionItem[]>(() => {
+  const options: OptionItem[] = store.courses.map((course) => {
     const available = course.retrieval_available && course.plugin_loaded;
     return {
       value: course.course_id,
@@ -22,8 +22,10 @@ const courseOptions = computed<OptionItem[]>(() =>
       dot: available ? "ok" : course.retrieval_availability === "fixture" ? "warn" : "",
       group: course.selectable ? "可选用" : "暂不可用",
     };
-  }),
-);
+  });
+  // 暂不可用统一沉底：可选用在前、暂不可用在后；稳定排序保证组内保持 API 顺序。
+  return options.sort((a, b) => (a.group === b.group ? 0 : a.group === "可选用" ? -1 : 1));
+});
 
 const courseDisabled = computed(
   () => store.isRunning || !store.courses.length,

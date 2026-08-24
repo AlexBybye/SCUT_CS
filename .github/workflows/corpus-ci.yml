@@ -71,7 +71,15 @@ jobs:
             /apps/scut-senior/packages/ \
             /apps/scut-senior/tests/ \
             /.github/workflows/corpus-ci.yml
-          git fetch --no-tags --depth=1 --filter=blob:none origin "${GITHUB_REF}"
+          # pull_request 的 GITHUB_REF 是 refs/pull/<n>/merge：GitHub 只在 PR 打开且
+          # 可合并时生成该 ref，PR 合并/关闭后即删除（仅保留 refs/pull/<n>/head）。
+          # merge ref 可用时优先校验合并结果；不可用（如已合并 PR 上 re-run）时
+          # 回退到 head SHA / push SHA，该 ref 恒存在。
+          checkout_ref="${GITHUB_REF}"
+          if ! git fetch --no-tags --depth=1 --filter=blob:none origin "${checkout_ref}"; then
+            checkout_ref="${GITHUB_SHA}"
+            git fetch --no-tags --depth=1 --filter=blob:none origin "${checkout_ref}"
+          fi
           git checkout --detach FETCH_HEAD
           test "$(git config --get remote.origin.partialclonefilter)" = blob:none
           test "$(git config --bool core.sparseCheckout)" = true
