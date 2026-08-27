@@ -450,20 +450,20 @@ def test_local_mode_rejects_an_unversioned_course_pack_before_model_call(
 
 
 def test_relevance_floor_drops_noise_only_matches(tmp_path: Path) -> None:
-    """A single shared Chinese bigram scores only 2 — below the default floor.
+    """A single shared Chinese bigram scores ~0.36 — below the default floor.
 
-    The floor (iteration 7.5 registered improvement candidate) keeps incidental
+    The floor (PLAN-2 阶段一 步骤 2: BM25F score threshold) keeps incidental
     n-gram collisions away from the citation guard so the workflow answers with
     an honest insufficient_evidence instead of citing weak-noise candidates.
     """
     store, _, _ = _build_store(tmp_path)
-    noise_query = "加密算法体系"  # only "加密" collides -> score 2
+    noise_query = "加密算法体系"  # only "加密" collides -> BM25F score ~0.36
 
     default_gateway = LocalCorpusRetrievalGateway(store)
-    assert default_gateway.min_score == 6
+    assert default_gateway.min_score == 1.0
     assert default_gateway.search([COURSE_ID], noise_query).sources == ()
 
-    permissive = LocalCorpusRetrievalGateway(store, min_score=1)
+    permissive = LocalCorpusRetrievalGateway(store, min_score=0.3)
     assert len(permissive.search([COURSE_ID], noise_query).sources) == 1
 
 
@@ -478,7 +478,7 @@ def test_relevance_floor_keeps_anchored_matches(tmp_path: Path) -> None:
 
 def test_relevance_floor_rejects_out_of_range_values(tmp_path: Path) -> None:
     store, _, _ = _build_store(tmp_path)
-    for bad in (0, 101, True, 2.5):
+    for bad in (-1, -0.1, True, "6"):
         with pytest.raises(ValueError):
             LocalCorpusRetrievalGateway(store, min_score=bad)
 
@@ -486,7 +486,7 @@ def test_relevance_floor_rejects_out_of_range_values(tmp_path: Path) -> None:
 def test_settings_rejects_retrieval_min_score_out_of_range() -> None:
     from scut_senior_api.config import UnsafeRuntimeConfiguration
 
-    for bad in (0, 101, -3):
+    for bad in (-3, -0.5):
         with pytest.raises(UnsafeRuntimeConfiguration):
             Settings(retrieval_min_score=bad).assert_safe()
 

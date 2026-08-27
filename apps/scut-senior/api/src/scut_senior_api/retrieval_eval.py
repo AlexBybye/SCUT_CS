@@ -266,7 +266,7 @@ def run_retrieval_evaluation(
     report_path: Path,
     *,
     store_root: Path,
-    min_score: int = 6,
+    min_score: float = 1.0,
     top_n: int = _EVAL_TOP_N,
 ) -> dict[str, object]:
     """Run the golden set against the active local corpus and write the report.

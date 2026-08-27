@@ -140,7 +140,7 @@ def test_run_retrieval_evaluation_reports_per_course_metrics(tmp_path: Path) -> 
     )
     report_path = tmp_path / "report.json"
     report = run_retrieval_evaluation(
-        golden, report_path, store_root=store, min_score=6
+        golden, report_path, store_root=store, min_score=1.0
     )
 
     assert report["runner_id"] == "scut-senior-retrieval-eval-v1"

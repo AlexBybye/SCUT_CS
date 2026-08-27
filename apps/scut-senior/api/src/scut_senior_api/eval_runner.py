@@ -358,9 +358,9 @@ def _parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--min-score",
-        type=int,
-        default=6,
-        help="retrieval min_score floor for --retrieval-only (default 6)",
+        type=float,
+        default=1.0,
+        help="retrieval min_score floor for --retrieval-only (default 1.0)",
     )
     parser.add_argument(
         "--provider",

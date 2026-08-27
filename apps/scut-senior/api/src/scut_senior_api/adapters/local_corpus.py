@@ -2,9 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
-import re
 import threading
-import unicodedata
 from pathlib import Path
 from typing import Any
 
@@ -18,17 +16,16 @@ from scut_senior_worker.corpus_builder import (
     validate_candidate,
 )
 
+from ..bm25f import BM25FIndex
 from ..ports import CapabilityUnavailable, RetrievalBatch, RetrievedSource
 
 
-_WORD_RE = re.compile(r"[a-z0-9_]+(?:[+#][a-z0-9_+#]*)?|[\u3400-\u4dbf\u4e00-\u9fff]+")
 _DISABLED_PREFIX = "course is disabled or unavailable:"
-_MAX_QUERY_TERMS = 256
-# Weighted-overlap relevance floor: drops incidental n-gram collisions
-# (a single shared Chinese bigram scores only 2) so weak-noise candidates
-# never reach the citation guard; empty result -> honest insufficient_evidence.
-_DEFAULT_MIN_SCORE = 6
-_MAX_DOCUMENT_TERMS = 4096
+# BM25F relevance floor (PLAN-2 阶段一 步骤 2): drops incidental n-gram
+# collisions so weak-noise candidates never reach the citation guard; an empty
+# result -> honest insufficient_evidence. Recalibrated from the P0 golden set
+# (see retrieval_eval.py), no longer the iteration-1 integer weighted-overlap 6.
+_DEFAULT_MIN_SCORE = 1.0
 
 
 class LocalCorpusRetrievalGateway:
@@ -39,25 +36,27 @@ class LocalCorpusRetrievalGateway:
         store_root: Path,
         *,
         limit: int = 5,
-        min_score: int = _DEFAULT_MIN_SCORE,
+        min_score: float = _DEFAULT_MIN_SCORE,
     ):
         if isinstance(limit, bool) or not 1 <= limit <= 20:
             raise ValueError("local corpus retrieval limit must be between 1 and 20")
-        if isinstance(min_score, bool) or not isinstance(min_score, int):
-            raise ValueError("local corpus retrieval min score must be an integer")
-        if not 1 <= min_score <= 100:
-            raise ValueError(
-                "local corpus retrieval min score must be between 1 and 100"
-            )
+        if isinstance(min_score, bool) or not isinstance(min_score, (int, float)):
+            raise ValueError("local corpus retrieval min score must be a number")
+        if min_score < 0:
+            raise ValueError("local corpus retrieval min score must be >= 0")
         self.store_root = store_root.resolve()
         self.limit = limit
-        self.min_score = min_score
+        self.min_score = float(min_score)
         # Full-candidate validation is memoized per active-pointer value (see
         # _load_active_course); these slots are guarded for the FastAPI
         # threadpool, where availability checks run concurrently.
         self._cache_lock = threading.Lock()
         self._validated_pointer_key: bytes | None = None
         self._validated_candidate: Path | None = None
+        # BM25F inverted index per course, keyed by corpus_version (candidates
+        # are immutable, so a cached index stays valid until activation/rollback
+        # moves the pointer to a different version).
+        self._index_cache: dict[str, tuple[str, BM25FIndex]] = {}
 
     def _load_active_course(self, course_id: str) -> dict[str, Any]:
         """``load_active_course`` semantics, amortizing full validation.
@@ -120,9 +119,9 @@ class LocalCorpusRetrievalGateway:
             )
         course_id = course_ids[0]
         try:
-            index = self._load_active_course(course_id)
-            corpus_version = index["corpus_version"]
-            raw_chunks = index["chunks"]
+            course_index = self._load_active_course(course_id)
+            corpus_version = course_index["corpus_version"]
+            raw_chunks = course_index["chunks"]
             if not isinstance(corpus_version, str) or not corpus_version:
                 raise ValueError("invalid corpus version")
             if not isinstance(raw_chunks, list):
@@ -136,18 +135,47 @@ class LocalCorpusRetrievalGateway:
         except (json.JSONDecodeError, KeyError, OSError, TypeError, ValueError):
             raise _unavailable() from None
 
-        query_terms = _lexemes(query, max_terms=_MAX_QUERY_TERMS)
-        ranked: list[tuple[int, str, RetrievedSource]] = []
-        for source in sources:
-            score = _score(query, query_terms, source)
-            if score >= self.min_score:
-                ranked.append((-score, source.chunk_id, source))
-        ranked.sort(key=lambda item: (item[0], item[1]))
+        bm25f_index = self._load_index(course_id, corpus_version, sources)
+        source_by_id = {source.chunk_id: source for source in sources}
+        selected: list[RetrievedSource] = []
+        for score, chunk_id in bm25f_index.score(query):
+            if score < self.min_score:
+                continue
+            source = source_by_id.get(chunk_id)
+            if source is None:
+                continue
+            selected.append(source)
+            if len(selected) >= self.limit:
+                break
         return RetrievalBatch(
-            tuple(item[2] for item in ranked[: self.limit]),
+            tuple(selected),
             corpus_version,
             course_pack_version,
         )
+
+    def _load_index(
+        self,
+        course_id: str,
+        corpus_version: str,
+        sources: list[RetrievedSource],
+    ) -> BM25FIndex:
+        with self._cache_lock:
+            cached = self._index_cache.get(course_id)
+            if cached is not None and cached[0] == corpus_version:
+                return cached[1]
+        index = BM25FIndex(
+            {
+                "chunk_id": source.chunk_id,
+                "title": source.source_title,
+                "heading": " ".join(source.heading_path),
+                "question": source.question_id or "",
+                "text": source.text,
+            }
+            for source in sources
+        )
+        with self._cache_lock:
+            self._index_cache[course_id] = (corpus_version, index)
+        return index
 
 
 def _source_from_chunk(chunk: Any, expected_course_id: str) -> RetrievedSource:
@@ -204,56 +232,6 @@ def _load_course_pack_version(
     ):
         raise ValueError("course pack version binding is invalid")
     return pack["course_pack_version"]
-
-
-def _lexemes(value: str, *, max_terms: int = _MAX_DOCUMENT_TERMS) -> frozenset[str]:
-    normalized = unicodedata.normalize("NFKC", value).casefold()
-    terms: list[str] = []
-    seen: set[str] = set()
-    for match in _WORD_RE.finditer(normalized):
-        token = match.group(0)
-        if token[0].isascii():
-            candidates = (token,)
-        elif len(token) == 1:
-            candidates = (token,)
-        else:
-            candidates = tuple(
-                token[index : index + width]
-                for width in (2, 3)
-                if len(token) >= width
-                for index in range(len(token) - width + 1)
-            )
-        for candidate in candidates:
-            if candidate not in seen:
-                seen.add(candidate)
-                terms.append(candidate)
-                if len(terms) >= max_terms:
-                    return frozenset(terms)
-    return frozenset(terms)
-
-
-def _score(
-    raw_query: str, query_terms: frozenset[str], source: RetrievedSource
-) -> int:
-    if not query_terms:
-        return 0
-    title_terms = _lexemes(source.source_title)
-    heading_terms = _lexemes(" ".join(source.heading_path))
-    question_terms = _lexemes(source.question_id or "")
-    text_terms = _lexemes(source.text)
-    score = sum(len(term) for term in query_terms & text_terms)
-    score += 4 * sum(len(term) for term in query_terms & title_terms)
-    score += 3 * sum(len(term) for term in query_terms & heading_terms)
-    score += 3 * sum(len(term) for term in query_terms & question_terms)
-    normalized_query = "".join(
-        unicodedata.normalize("NFKC", raw_query).casefold().split()
-    )
-    normalized_text = "".join(
-        unicodedata.normalize("NFKC", source.text).casefold().split()
-    )
-    if normalized_query and normalized_query in normalized_text:
-        score += 25
-    return score
 
 
 def _unavailable() -> CapabilityUnavailable:

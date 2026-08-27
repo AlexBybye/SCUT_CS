@@ -24,10 +24,10 @@ class Settings:
     retrieval_mode: Literal["fixture", "local_corpus"] = "fixture"
     # Iteration 7.5 follow-up (registered improvement candidate, implemented
     # 2026-08-23): lexical relevance floor for local-corpus retrieval.
-    # Candidates scoring below this weighted-overlap threshold are dropped so
-    # incidental n-gram collisions cannot reach the citation guard; a query
-    # with no candidate at/above the floor yields honest insufficient_evidence.
-    retrieval_min_score: int = 6
+    # PLAN-2 阶段一 步骤 2 upgrades the floor to a BM25F score threshold;
+    # candidates scoring below it are dropped so incidental n-gram collisions
+    # cannot reach the citation guard. Recalibrated from the P0 golden set.
+    retrieval_min_score: float = 1.0
     database_path: Path = APP_ROOT / ".local" / "iteration-zero.db"
     corpus_store_path: Path = APP_ROOT / ".local" / "corpus-store"
     cross_course_enabled: bool = False
@@ -58,8 +58,8 @@ class Settings:
             model_mode=os.getenv("SCUT_SENIOR_MODEL_MODE", "mock"),
             storage_mode=os.getenv("SCUT_SENIOR_STORAGE_MODE", "sqlite_mock"),
             retrieval_mode=os.getenv("SCUT_SENIOR_RETRIEVAL_MODE", "fixture"),
-            retrieval_min_score=_env_positive_int(
-                "SCUT_SENIOR_RETRIEVAL_MIN_SCORE", 6
+            retrieval_min_score=_env_positive_float(
+                "SCUT_SENIOR_RETRIEVAL_MIN_SCORE", 1.0
             ),
             database_path=Path(
                 os.getenv(
@@ -158,10 +158,11 @@ class Settings:
                 "retrieval adapter must be explicit fixture or local_corpus"
             )
         if isinstance(self.retrieval_min_score, bool) or not (
-            1 <= self.retrieval_min_score <= 100
+            isinstance(self.retrieval_min_score, (int, float))
+            and self.retrieval_min_score >= 0
         ):
             raise UnsafeRuntimeConfiguration(
-                "SCUT_SENIOR_RETRIEVAL_MIN_SCORE must be an integer in [1, 100]"
+                "SCUT_SENIOR_RETRIEVAL_MIN_SCORE must be a non-negative number"
             )
         if (
             self.retrieval_mode == "local_corpus"
@@ -250,6 +251,19 @@ def _env_positive_int(name: str, default: int) -> int:
         raise UnsafeRuntimeConfiguration(f"{name} must be a positive integer") from None
     if parsed < 1:
         raise UnsafeRuntimeConfiguration(f"{name} must be a positive integer")
+    return parsed
+
+
+def _env_positive_float(name: str, default: float) -> float:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    try:
+        parsed = float(value)
+    except ValueError:
+        raise UnsafeRuntimeConfiguration(f"{name} must be a number") from None
+    if parsed < 0:
+        raise UnsafeRuntimeConfiguration(f"{name} must be non-negative")
     return parsed
 
 
