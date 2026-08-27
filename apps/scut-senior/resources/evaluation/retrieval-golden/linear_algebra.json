@@ -1,0 +1,47 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "linear_algebra",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+  "entries": [
+    {
+      "query": "2019-2020年度线性代数期末卷A",
+      "expected_chunk_ids": ["linear-algebra-012:p1:c01"],
+      "note": "试卷标题 -> 标题 chunk（精确命中基线）"
+    },
+    {
+      "query": "已知向量组的秩是多少",
+      "expected_chunk_ids": ["linear-algebra-012:p1:q-linear-algebra-012-q3:c01"],
+      "note": "历年题题干 -> 题目 chunk"
+    },
+    {
+      "query": "矩阵与对角矩阵相似的充分必要条件",
+      "expected_chunk_ids": ["linear-algebra-012:p2:q-linear-algebra-012-q10:c01"],
+      "note": "历年题题干 -> 题目 chunk"
+    },
+    {
+      "query": "行列式 代数余子式",
+      "expected_chunk_ids": ["linear-algebra-012:p1:q-linear-algebra-012-q1:c01"],
+      "note": "知识点名词 -> 题目 chunk"
+    },
+    {
+      "query": "yoz面上的曲线绕z轴旋转的旋转面方程",
+      "expected_chunk_ids": ["linear-algebra-012:p1:q-linear-algebra-012-q4:c01"],
+      "note": "历年题题干 -> 题目 chunk"
+    },
+    {
+      "query": "求此曲线绕x轴旋转一周所得旋转面的方程",
+      "expected_chunk_ids": ["linear-algebra-014:p2:q-linear-algebra-014-q11:c01"],
+      "note": "历年题题干 -> 题目 chunk"
+    },
+    {
+      "query": "正交变换化为标准形 二次型的秩",
+      "expected_chunk_ids": ["linear-algebra-022:s2:c05"],
+      "note": "历年题题干 -> 题目 chunk"
+    },
+    {
+      "query": "正交矩阵的特征值的模为1",
+      "expected_chunk_ids": ["linear-algebra-018:p2:q-linear-algebra-018-q21:c01"],
+      "note": "知识点名词 -> 题目 chunk"
+    }
+  ]
+}

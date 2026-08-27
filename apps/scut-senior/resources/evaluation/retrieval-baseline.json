@@ -1,0 +1,245 @@
+{
+  "runner_id": "scut-senior-retrieval-eval-v1",
+  "schema_version": "retrieval-eval-v1",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+  "top_n": 20,
+  "min_score": 6,
+  "executed_at": "2026-08-27T05:19:31.458396+00:00",
+  "summary": {
+    "entry_count": 8,
+    "recall_at_5": 1.0,
+    "recall_at_20": 1.0,
+    "mrr": 1.0,
+    "noise_rate": 0.909226
+  },
+  "by_course": {
+    "linear_algebra": {
+      "entry_count": 8,
+      "recall_at_5": 1.0,
+      "recall_at_20": 1.0,
+      "mrr": 1.0,
+      "noise_rate": 0.909226
+    }
+  },
+  "entries": [
+    {
+      "course_id": "linear_algebra",
+      "query": "2019-2020年度线性代数期末卷A",
+      "note": "试卷标题 -> 标题 chunk（精确命中基线）",
+      "expected_chunk_ids": [
+        "linear-algebra-012:p1:c01"
+      ],
+      "top_chunk_ids": [
+        "linear-algebra-012:p1:c01",
+        "linear-algebra-013:p1:c01",
+        "linear-algebra-012:p1:q-linear-algebra-012-q1:c01",
+        "linear-algebra-012:p2:q-linear-algebra-012-q10:c01",
+        "linear-algebra-012:p2:q-linear-algebra-012-q11:c01",
+        "linear-algebra-012:p3:q-linear-algebra-012-q16:c01",
+        "linear-algebra-012:p1:q-linear-algebra-012-q6:c01",
+        "linear-algebra-012:p1:q-linear-algebra-012-q8:c01",
+        "linear-algebra-012:p1:q-linear-algebra-012-q9:c01",
+        "linear-algebra-012:p2:q-linear-algebra-012-q9:c01",
+        "linear-algebra-012:p3:q-linear-algebra-012-q18:c01",
+        "linear-algebra-012:p3:q-linear-algebra-012-q20:c01",
+        "linear-algebra-012:p3:q-linear-algebra-012-q22:c01",
+        "linear-algebra-013:p1:q-linear-algebra-013-q5:c01",
+        "linear-algebra-013:p2:q-linear-algebra-013-q9:c01",
+        "linear-algebra-013:p2:q-linear-algebra-013-q9:c02",
+        "linear-algebra-013:p3:q-linear-algebra-013-q11:c01",
+        "linear-algebra-013:p4:q-linear-algebra-013-q12:c01",
+        "linear-algebra-012:p1:q-linear-algebra-012-q2:c01",
+        "linear-algebra-012:p1:q-linear-algebra-012-q3:c01"
+      ],
+      "recall_at_5": 1.0,
+      "recall_at_20": 1.0,
+      "mrr": 1.0,
+      "noise_rate": 0.95
+    },
+    {
+      "course_id": "linear_algebra",
+      "query": "yoz面上的曲线绕z轴旋转的旋转面方程",
+      "note": "历年题题干 -> 题目 chunk",
+      "expected_chunk_ids": [
+        "linear-algebra-012:p1:q-linear-algebra-012-q4:c01"
+      ],
+      "top_chunk_ids": [
+        "linear-algebra-012:p1:q-linear-algebra-012-q4:c01",
+        "linear-algebra-015:p1:q-linear-algebra-015-q6:c01",
+        "linear-algebra-017:p1:q-linear-algebra-017-q4:c01",
+        "linear-algebra-014:p2:q-linear-algebra-014-q11:c01",
+        "linear-algebra-016:p2:q-linear-algebra-016-q11:c01",
+        "linear-algebra-013:p1:q-linear-algebra-013-q8:c01",
+        "linear-algebra-012:p3:q-linear-algebra-012-q15:c01",
+        "linear-algebra-014:p3:q-linear-algebra-014-q15:c01",
+        "linear-algebra-015:p4:q-linear-algebra-015-q10:c01",
+        "linear-algebra-016:p3:q-linear-algebra-016-q15:c01",
+        "linear-algebra-017:p3:q-linear-algebra-017-q8:c01",
+        "linear-algebra-014:p2:q-linear-algebra-014-q7:c01"
+      ],
+      "recall_at_5": 1.0,
+      "recall_at_20": 1.0,
+      "mrr": 1.0,
+      "noise_rate": 0.9166666666666666
+    },
+    {
+      "course_id": "linear_algebra",
+      "query": "已知向量组的秩是多少",
+      "note": "历年题题干 -> 题目 chunk",
+      "expected_chunk_ids": [
+        "linear-algebra-012:p1:q-linear-algebra-012-q3:c01"
+      ],
+      "top_chunk_ids": [
+        "linear-algebra-012:p1:q-linear-algebra-012-q3:c01",
+        "linear-algebra-020:p2:q-linear-algebra-020-q7:c01",
+        "linear-algebra-016:p2:q-linear-algebra-016-q10:c01",
+        "linear-algebra-014:p1:q-linear-algebra-014-q3:c01",
+        "linear-algebra-012:p2:q-linear-algebra-012-q10:c01",
+        "linear-algebra-012:p2:q-linear-algebra-012-q11:c01",
+        "linear-algebra-014:p1:q-linear-algebra-014-q2:c01",
+        "linear-algebra-016:p1:q-linear-algebra-016-q2:c01",
+        "linear-algebra-018:p1:q-linear-algebra-018-q2:c01",
+        "linear-algebra-020:p1:q-linear-algebra-020-q3:c01"
+      ],
+      "recall_at_5": 1.0,
+      "recall_at_20": 1.0,
+      "mrr": 1.0,
+      "noise_rate": 0.9
+    },
+    {
+      "course_id": "linear_algebra",
+      "query": "正交变换化为标准形 二次型的秩",
+      "note": "历年题题干 -> 题目 chunk",
+      "expected_chunk_ids": [
+        "linear-algebra-022:s2:c05"
+      ],
+      "top_chunk_ids": [
+        "linear-algebra-022:s2:c05",
+        "linear-algebra-018:p2:q-linear-algebra-018-q19:c01",
+        "linear-algebra-020:p2:q-linear-algebra-020-q16:c01",
+        "linear-algebra-019:p3:q-linear-algebra-019-q14:c01",
+        "linear-algebra-021:p3:q-linear-algebra-021-q14:c01",
+        "linear-algebra-014:p3:q-linear-algebra-014-q14:c01",
+        "linear-algebra-016:p2:q-linear-algebra-016-q14:c01",
+        "linear-algebra-018:p2:q-linear-algebra-018-q20:c01",
+        "linear-algebra-020:p2:q-linear-algebra-020-q17:c01",
+        "linear-algebra-012:p1:q-linear-algebra-012-q5:c01",
+        "linear-algebra-018:p1:q-linear-algebra-018-q12:c01",
+        "linear-algebra-020:p2:q-linear-algebra-020-q9:c01"
+      ],
+      "recall_at_5": 1.0,
+      "recall_at_20": 1.0,
+      "mrr": 1.0,
+      "noise_rate": 0.9166666666666666
+    },
+    {
+      "course_id": "linear_algebra",
+      "query": "正交矩阵的特征值的模为1",
+      "note": "知识点名词 -> 题目 chunk",
+      "expected_chunk_ids": [
+        "linear-algebra-018:p2:q-linear-algebra-018-q21:c01"
+      ],
+      "top_chunk_ids": [
+        "linear-algebra-018:p2:q-linear-algebra-018-q21:c01",
+        "linear-algebra-021:p3:q-linear-algebra-021-q14:c01",
+        "linear-algebra-016:p1:q-linear-algebra-016-q4:c01",
+        "linear-algebra-020:p2:q-linear-algebra-020-q18:c01",
+        "linear-algebra-019:p3:q-linear-algebra-019-q15:c01",
+        "linear-algebra-014:p1:q-linear-algebra-014-q2:c01",
+        "linear-algebra-016:p1:q-linear-algebra-016-q2:c01",
+        "linear-algebra-019:p3:q-linear-algebra-019-q14:c01",
+        "linear-algebra-012:p2:q-linear-algebra-012-q10:c01",
+        "linear-algebra-013:p4:q-linear-algebra-013-q12:c01",
+        "linear-algebra-014:p2:q-linear-algebra-014-q12:c01",
+        "linear-algebra-015:p3:q-linear-algebra-015-q9:c01",
+        "linear-algebra-016:p2:q-linear-algebra-016-q12:c01",
+        "linear-algebra-017:p2:q-linear-algebra-017-q7:c01",
+        "linear-algebra-012:p2:q-linear-algebra-012-q11:c01",
+        "linear-algebra-012:p3:q-linear-algebra-012-q21:c01",
+        "linear-algebra-013:p3:q-linear-algebra-013-q11:c01",
+        "linear-algebra-013:p4:q-linear-algebra-013-q11:c01",
+        "linear-algebra-014:p3:q-linear-algebra-014-q14:c01",
+        "linear-algebra-015:p1:q-linear-algebra-015-q7:c01"
+      ],
+      "recall_at_5": 1.0,
+      "recall_at_20": 1.0,
+      "mrr": 1.0,
+      "noise_rate": 0.95
+    },
+    {
+      "course_id": "linear_algebra",
+      "query": "求此曲线绕x轴旋转一周所得旋转面的方程",
+      "note": "历年题题干 -> 题目 chunk",
+      "expected_chunk_ids": [
+        "linear-algebra-014:p2:q-linear-algebra-014-q11:c01"
+      ],
+      "top_chunk_ids": [
+        "linear-algebra-014:p2:q-linear-algebra-014-q11:c01",
+        "linear-algebra-016:p2:q-linear-algebra-016-q11:c01",
+        "linear-algebra-015:p1:q-linear-algebra-015-q6:c01",
+        "linear-algebra-017:p1:q-linear-algebra-017-q4:c01",
+        "linear-algebra-012:p1:q-linear-algebra-012-q4:c01",
+        "linear-algebra-020:p2:q-linear-algebra-020-q13:c01",
+        "linear-algebra-018:p2:q-linear-algebra-018-q16:c01"
+      ],
+      "recall_at_5": 1.0,
+      "recall_at_20": 1.0,
+      "mrr": 1.0,
+      "noise_rate": 0.8571428571428571
+    },
+    {
+      "course_id": "linear_algebra",
+      "query": "矩阵与对角矩阵相似的充分必要条件",
+      "note": "历年题题干 -> 题目 chunk",
+      "expected_chunk_ids": [
+        "linear-algebra-012:p2:q-linear-algebra-012-q10:c01"
+      ],
+      "top_chunk_ids": [
+        "linear-algebra-012:p2:q-linear-algebra-012-q10:c01",
+        "linear-algebra-014:p1:q-linear-algebra-014-q2:c01",
+        "linear-algebra-016:p1:q-linear-algebra-016-q2:c01",
+        "linear-algebra-014:p1:q-linear-algebra-014-q5:c01",
+        "linear-algebra-012:p3:q-linear-algebra-012-q21:c01",
+        "linear-algebra-020:p1:q-linear-algebra-020-q3:c01"
+      ],
+      "recall_at_5": 1.0,
+      "recall_at_20": 1.0,
+      "mrr": 1.0,
+      "noise_rate": 0.8333333333333334
+    },
+    {
+      "course_id": "linear_algebra",
+      "query": "行列式 代数余子式",
+      "note": "知识点名词 -> 题目 chunk",
+      "expected_chunk_ids": [
+        "linear-algebra-012:p1:q-linear-algebra-012-q1:c01"
+      ],
+      "top_chunk_ids": [
+        "linear-algebra-012:p1:q-linear-algebra-012-q1:c01",
+        "linear-algebra-012:p1:q-linear-algebra-012-q9:c01",
+        "linear-algebra-012:p2:q-linear-algebra-012-q12:c01",
+        "linear-algebra-012:p2:q-linear-algebra-012-q9:c01",
+        "linear-algebra-012:p1:c01",
+        "linear-algebra-013:p1:c01",
+        "linear-algebra-006:p1:c01",
+        "linear-algebra-006:p2:c01",
+        "linear-algebra-007:p1:c01",
+        "linear-algebra-007:p2:c01",
+        "linear-algebra-007:p3:c01",
+        "linear-algebra-007:p4:c01",
+        "linear-algebra-007:p5:c01",
+        "linear-algebra-008:p1:c01",
+        "linear-algebra-008:p2:c01",
+        "linear-algebra-008:p3:c01",
+        "linear-algebra-009:p1:c01",
+        "linear-algebra-009:p2:c01",
+        "linear-algebra-009:p3:c01",
+        "linear-algebra-009:p4:c01"
+      ],
+      "recall_at_5": 1.0,
+      "recall_at_20": 1.0,
+      "mrr": 1.0,
+      "noise_rate": 0.95
+    }
+  ]
+}

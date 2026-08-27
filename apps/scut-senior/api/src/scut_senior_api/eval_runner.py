@@ -32,6 +32,11 @@ from .config import Settings
 from .contracts import WorkflowRunRequest, WorkflowType
 from .main import create_app
 from .ports import UserIdentity
+from .retrieval_eval import (
+    DEFAULT_CORPUS_STORE,
+    DEFAULT_GOLDEN_ROOT,
+    run_retrieval_evaluation,
+)
 
 RUNNER_ID = "scut-senior-eval-v1"
 CONTRACT_VERSION = "v1"
@@ -318,8 +323,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--cases",
         type=Path,
-        required=True,
-        help="evaluation cases.json path",
+        help="evaluation cases.json path (required unless --retrieval-only)",
     )
     parser.add_argument(
         "--runner",
@@ -331,6 +335,32 @@ def _parser() -> argparse.ArgumentParser:
         type=Path,
         required=True,
         help="output report.json path",
+    )
+    parser.add_argument(
+        "--retrieval-only",
+        action="store_true",
+        help="run the PLAN-2 golden-set retrieval baseline instead of the "
+        "pipeline case sweep; writes recall@5/recall@20/MRR/noise-rate per course",
+    )
+    parser.add_argument(
+        "--golden",
+        type=Path,
+        default=DEFAULT_GOLDEN_ROOT,
+        help="golden set directory for --retrieval-only "
+        "(default resources/evaluation/retrieval-golden)",
+    )
+    parser.add_argument(
+        "--corpus-store",
+        type=Path,
+        default=DEFAULT_CORPUS_STORE,
+        help="active local corpus store for --retrieval-only "
+        "(default .local/corpus-store)",
+    )
+    parser.add_argument(
+        "--min-score",
+        type=int,
+        default=6,
+        help="retrieval min_score floor for --retrieval-only (default 6)",
     )
     parser.add_argument(
         "--provider",
@@ -359,8 +389,40 @@ def _parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _run_retrieval_only(args: argparse.Namespace) -> int:
+    try:
+        report = run_retrieval_evaluation(
+            args.golden,
+            args.report,
+            store_root=args.corpus_store,
+            min_score=args.min_score,
+        )
+    except ValueError as exc:
+        print(f"retrieval evaluation failed: {exc}", file=sys.stderr)
+        return 2
+    summary = report["summary"]
+    print(
+        f"retrieval eval: {summary['entry_count']} entries, "
+        f"recall@5={summary['recall_at_5']}, recall@20={summary['recall_at_20']}, "
+        f"mrr={summary['mrr']}, noise_rate={summary['noise_rate']} -> {args.report}"
+    )
+    for course, course_report in report["by_course"].items():
+        print(
+            f"  [{course}] entries={course_report['entry_count']} "
+            f"recall@5={course_report['recall_at_5']} "
+            f"recall@20={course_report['recall_at_20']} "
+            f"mrr={course_report['mrr']} noise_rate={course_report['noise_rate']}"
+        )
+    return 0
+
+
 def main(argv: Iterable[str] | None = None) -> int:
     args = _parser().parse_args(argv)
+    if args.retrieval_only:
+        return _run_retrieval_only(args)
+    if args.cases is None:
+        print("--cases is required unless --retrieval-only is set", file=sys.stderr)
+        return 2
     if args.provider != "mock" and not (
         os.getenv("SCUT_SENIOR_ZHIPU_API_KEY")
         or os.getenv("SCUT_SENIOR_OPENROUTER_API_KEY")
