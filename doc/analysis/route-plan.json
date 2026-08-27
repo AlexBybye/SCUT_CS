@@ -1,9 +1,0 @@
-{
-  "domains": {
-    "web": "relevant",
-    "mobile": "skipped",
-    "backend": "relevant",
-    "data_infra": "relevant",
-    "ai": "relevant"
-  }
-}

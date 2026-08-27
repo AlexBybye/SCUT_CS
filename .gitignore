@@ -56,16 +56,9 @@ apps/scut-senior/**/*.sqlite3
 apps/scut-senior/**/uploads/
 apps/scut-senior/**/indexes/
 
-# 开发计划：跟踪当前已确认基座与代码迭代 SOP，其余本地草稿继续忽略
-# （docs 已整体移入 apps/scut-senior/docs/，仅三个规范文件进 Git）
-apps/scut-senior/docs/*
-!apps/scut-senior/docs/PLAN-1.md
-!apps/scut-senior/docs/CODE_ITERATION_SOP.md
-!apps/scut-senior/docs/MATERIAL_TO_MARKDOWN_SOP.md
-
 # material converter scratch
 work/
-
+apps/scut-senior/docs/review_artifacts/*
 # material converter scratch (auxiliary)
 apps/tools/material_converter/.work/
 apps/tools/material_converter/.ai_jobs/
