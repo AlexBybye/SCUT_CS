@@ -7,8 +7,10 @@ from uuid import UUID, uuid4
 
 from .auth import AuthRequired, AuthenticatedPrincipal, utc_now
 from .agent_loop import (
+    AgentDecisionGateway,
     AgentBudget,
     AgentState,
+    RuleBasedAgentDecision,
     choose_next_action,
     reduce_agent_event,
 )
@@ -150,6 +152,7 @@ class IterationZeroService:
         humanizer: HumanizerGateway | None = None,
         zhipu_model: ModelGateway | None = None,
         exam_facts: object | None = None,
+        agent_decision: AgentDecisionGateway | None = None,
     ):
         self.settings = settings
         self.registry = registry
@@ -165,6 +168,7 @@ class IterationZeroService:
         # Optional iteration-5 exam-review facts provider (fixture or local
         # corpus). ``None`` keeps the pre-iteration-5 behaviour exactly.
         self.exam_facts = exam_facts
+        self.agent_decision = agent_decision or RuleBasedAgentDecision()
 
     def create_conversation(
         self, user: RequestIdentity, course_id_or_alias: str
@@ -1060,8 +1064,8 @@ class IterationZeroService:
             else workflow_focus.authoritative_query
         )
         reduce_agent(
-            "decision_produced", action=choose_next_action(
-                agent_state, phase="retrieve", workflow_type=request.workflow_type.value
+            "decision_produced", action=self.agent_decision.decide(
+                request, agent_state, "retrieve", history=history
             )
         )
         interrupted = interrupt_if_step_not_claimed()
@@ -1095,10 +1099,12 @@ class IterationZeroService:
                     ):
                         reduce_agent(
                             "decision_produced",
-                            action=choose_next_action(
+                            action=self.agent_decision.decide(
+                                request,
                                 agent_state,
-                                phase="retrieve_with_query_rewrite",
-                                workflow_type=request.workflow_type.value,
+                                "retrieve_with_query_rewrite",
+                                sources=retrieval_batch.sources,
+                                history=history,
                             ),
                         )
                         record_agent_action("retrieve_with_query_rewrite")
@@ -1238,10 +1244,12 @@ class IterationZeroService:
                 # for the synchronous provider call and wins at the next node.
                 reduce_agent(
                     "decision_produced",
-                    action=choose_next_action(
+                    action=self.agent_decision.decide(
+                        request,
                         agent_state,
-                        phase="generate",
-                        workflow_type=request.workflow_type.value,
+                        "generate",
+                        sources=retrieval_batch.sources,
+                        history=history,
                     ),
                 )
                 interrupted = interrupt_if_step_not_claimed()

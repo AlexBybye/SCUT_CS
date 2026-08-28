@@ -9,7 +9,10 @@ introduced incrementally.
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
-from typing import Literal
+from typing import Literal, Protocol
+
+from .ports import ConversationTurn, GeneratedAnswer, ModelGateway, RetrievedSource
+from .contracts import WorkflowRunRequest
 
 
 ActionKind = Literal[
@@ -63,6 +66,81 @@ ACTION_KINDS: frozenset[ActionKind] = frozenset(
 def action_allowed_for_workflow(workflow_type: str, action: ActionKind) -> bool:
     """Return whether an Agent action stays inside the selected Workflow."""
     return action in WORKFLOW_ACTIONS.get(workflow_type, frozenset())
+
+
+class AgentDecisionGateway(Protocol):
+    def decide(
+        self,
+        request: WorkflowRunRequest,
+        state: "AgentState",
+        phase: str,
+        *,
+        sources: list[RetrievedSource] | tuple[RetrievedSource, ...] = (),
+        history: tuple[ConversationTurn, ...] = (),
+    ) -> ActionKind: ...
+
+
+class RuleBasedAgentDecision:
+    """Deterministic fallback used when the model decision experiment is off."""
+
+    def decide(self, request, state, phase, *, sources=(), history=()) -> ActionKind:
+        return choose_next_action(state, phase=phase, workflow_type=request.workflow_type.value)
+
+
+def parse_model_action(raw: str, *, workflow_type: str) -> ActionKind | None:
+    """Parse a model's single-action response and apply the Workflow allowlist."""
+    normalized = raw.strip().lower().replace("`", "")
+    aliases: dict[str, ActionKind] = {
+        "retrieve": "retrieve",
+        "retrieve_with_query_rewrite": "retrieve_with_query_rewrite",
+        "query_rewrite": "retrieve_with_query_rewrite",
+        "ask_clarification": "ask_clarification",
+        "generate_answer": "generate_answer",
+        "finish": "finish",
+    }
+    for token in normalized.replace("\n", " ").split():
+        action = aliases.get(token.strip(" .,;:："))
+        if action is not None:
+            return action if action_allowed_for_workflow(workflow_type, action) else None
+    return None
+
+
+class ModelAgentDecision:
+    """Model-backed Action adapter with fail-closed Workflow validation.
+
+    The adapter is intentionally separate from answer generation. Providers
+    that cannot return a clean action fall back to the deterministic policy;
+    an unallowlisted action is never executed.
+    """
+
+    def __init__(self, model: ModelGateway, fallback: AgentDecisionGateway | None = None):
+        self.model = model
+        self.fallback = fallback or RuleBasedAgentDecision()
+
+    def decide(self, request, state, phase, *, sources=(), history=()) -> ActionKind:
+        decision_request = request.model_copy(
+            update={
+                "user_input": (
+                    "只输出一个允许的 Action 名称，不要解释。"
+                    "允许值：retrieve, retrieve_with_query_rewrite, "
+                    "ask_clarification, generate_answer, finish。"
+                    f"当前 Workflow={request.workflow_type.value}，阶段={phase}，"
+                    f"已检索轮次={state.retrieval_rounds}，已有证据数={len(sources)}。"
+                )
+            }
+        )
+        try:
+            generated: GeneratedAnswer = self.model.generate(
+                decision_request, list(sources), history
+            )
+            parsed = parse_model_action(
+                generated.repository_answer, workflow_type=request.workflow_type.value
+            )
+            if parsed is not None:
+                return parsed
+        except Exception:
+            pass
+        return self.fallback.decide(request, state, phase, sources=sources, history=history)
 
 
 def choose_next_action(

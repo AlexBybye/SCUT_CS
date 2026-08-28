@@ -9,6 +9,7 @@ from scut_senior_api.agent_loop import (
     record_action_result,
     record_guard_retry,
     action_allowed_for_workflow,
+    parse_model_action,
     replay_agent_events,
     reduce_agent_event,
 )
@@ -18,6 +19,12 @@ def test_workflow_is_hard_boundary_for_agent_actions() -> None:
     assert action_allowed_for_workflow("knowledge_qa", "retrieve")
     assert not action_allowed_for_workflow("temporary_material_reading", "retrieve_with_query_rewrite")
     assert not action_allowed_for_workflow("unknown", "retrieve")
+
+
+def test_model_action_parser_is_fail_closed_at_workflow_boundary() -> None:
+    assert parse_model_action("retrieve", workflow_type="knowledge_qa") == "retrieve"
+    assert parse_model_action("retrieve_with_query_rewrite", workflow_type="temporary_material_reading") is None
+    assert parse_model_action("switch_workflow", workflow_type="knowledge_qa") is None
 
 
 def event(kind: str, **payload: object) -> dict[str, object]:
