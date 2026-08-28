@@ -46,6 +46,9 @@ class Settings:
     exam_review_plan_enabled: bool = True
     # Phase-two agent progress events are opt-in for old NDJSON clients.
     agent_event_stream_enabled: bool = False
+    # AB test only: model asks for the next bounded Action; invalid/unclear
+    # output falls back to the deterministic policy.
+    agent_decision_mode: Literal["rule", "model"] = "rule"
     # Iteration 7.5 (SOP §12A Group B): in-process periodic cleanup scheduler.
     # Decision gate confirmed form = in-process daemon thread for single-host
     # deployment; disabling restores startup/access-triggered cleanup only.
@@ -110,6 +113,7 @@ class Settings:
             agent_event_stream_enabled=_env_bool(
                 "SCUT_SENIOR_AGENT_EVENT_STREAM_ENABLED", False
             ),
+            agent_decision_mode=os.getenv("SCUT_SENIOR_AGENT_DECISION_MODE", "rule"),
             maintenance_scheduler_enabled=_env_bool(
                 "SCUT_SENIOR_MAINTENANCE_SCHEDULER_ENABLED", True
             ),
@@ -194,6 +198,10 @@ class Settings:
         if isinstance(self.agent_event_stream_enabled, bool) is False:
             raise UnsafeRuntimeConfiguration(
                 "SCUT_SENIOR_AGENT_EVENT_STREAM_ENABLED must be boolean"
+            )
+        if self.agent_decision_mode not in {"rule", "model"}:
+            raise UnsafeRuntimeConfiguration(
+                "SCUT_SENIOR_AGENT_DECISION_MODE must be rule or model"
             )
         if self.dense_retrieval_enabled and self.retrieval_mode == "local_corpus":
             if self.onnx_embedding_model_path is None:

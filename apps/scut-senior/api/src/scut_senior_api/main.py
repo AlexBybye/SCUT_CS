@@ -28,6 +28,7 @@ from .adapters.exam_facts import (
     FixtureExamFactsProvider,
     LocalCorpusExamFactsProvider,
 )
+from .agent_loop import ModelAgentDecision, RuleBasedAgentDecision
 from .adapters.local_corpus import LocalCorpusRetrievalGateway
 from .adapters.onnx import OnnxEmbeddingProvider
 from .adapters.mock import (
@@ -366,6 +367,11 @@ def create_app(
                 else None
             ),
         )
+    agent_decision = (
+        ModelAgentDecision(model)
+        if active_settings.agent_decision_mode == "model"
+        else RuleBasedAgentDecision()
+    )
     service = IterationZeroService(
         settings=active_settings,
         registry=registry,
@@ -383,6 +389,7 @@ def create_app(
             if active_settings.retrieval_mode == "local_corpus"
             else FixtureExamFactsProvider()
         ),
+        agent_decision=agent_decision,
     )
 
     maintenance_scheduler: MaintenanceScheduler | None = None
