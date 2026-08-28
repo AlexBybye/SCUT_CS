@@ -8,9 +8,16 @@ from scut_senior_api.agent_loop import (
     choose_next_action,
     record_action_result,
     record_guard_retry,
+    action_allowed_for_workflow,
     replay_agent_events,
     reduce_agent_event,
 )
+
+
+def test_workflow_is_hard_boundary_for_agent_actions() -> None:
+    assert action_allowed_for_workflow("knowledge_qa", "retrieve")
+    assert not action_allowed_for_workflow("temporary_material_reading", "retrieve_with_query_rewrite")
+    assert not action_allowed_for_workflow("unknown", "retrieve")
 
 
 def event(kind: str, **payload: object) -> dict[str, object]:

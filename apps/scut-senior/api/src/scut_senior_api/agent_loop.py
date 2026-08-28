@@ -19,6 +19,16 @@ ActionKind = Literal[
     "generate_answer",
     "finish",
 ]
+
+# Workflow is the hard boundary. Agent may choose a next step only from the
+# actions the selected workflow exposes; it never chooses a new workflow.
+WORKFLOW_ACTIONS: dict[str, frozenset[ActionKind]] = {
+    "knowledge_qa": frozenset({"retrieve", "retrieve_with_query_rewrite", "generate_answer", "finish"}),
+    "exam_review": frozenset({"retrieve", "retrieve_with_query_rewrite", "generate_answer", "finish"}),
+    "problem_tutor": frozenset({"retrieve", "retrieve_with_query_rewrite", "generate_answer", "finish"}),
+    "mistake_review": frozenset({"retrieve", "retrieve_with_query_rewrite", "generate_answer", "finish"}),
+    "temporary_material_reading": frozenset({"retrieve", "generate_answer", "finish"}),
+}
 EventKind = Literal[
     "decision_produced",
     "action_rejected",
@@ -50,7 +60,14 @@ ACTION_KINDS: frozenset[ActionKind] = frozenset(
 )
 
 
-def choose_next_action(state: "AgentState", *, phase: str) -> ActionKind:
+def action_allowed_for_workflow(workflow_type: str, action: ActionKind) -> bool:
+    """Return whether an Agent action stays inside the selected Workflow."""
+    return action in WORKFLOW_ACTIONS.get(workflow_type, frozenset())
+
+
+def choose_next_action(
+    state: "AgentState", *, phase: str, workflow_type: str = "knowledge_qa"
+) -> ActionKind:
     """Select one bounded action for the compatibility runtime path.
 
     This is deliberately a small policy, not a second planner: retrieval is
@@ -58,11 +75,20 @@ def choose_next_action(state: "AgentState", *, phase: str) -> ActionKind:
     decision adapter can feed the same allowlist and reducer events.
     """
     if phase == "retrieve" and state.retrieval_rounds == 0:
-        return "retrieve"
+        action = "retrieve"
+        if not action_allowed_for_workflow(workflow_type, action):
+            raise ValueError("workflow does not allow retrieval")
+        return action
     if phase == "retrieve_with_query_rewrite":
-        return "retrieve_with_query_rewrite"
+        action = "retrieve_with_query_rewrite"
+        if not action_allowed_for_workflow(workflow_type, action):
+            raise ValueError("workflow does not allow query rewrite retrieval")
+        return action
     if phase == "generate":
-        return "generate_answer"
+        action = "generate_answer"
+        if not action_allowed_for_workflow(workflow_type, action):
+            raise ValueError("workflow does not allow answer generation")
+        return action
     raise ValueError("unknown agent compatibility phase")
 
 

@@ -1060,7 +1060,9 @@ class IterationZeroService:
             else workflow_focus.authoritative_query
         )
         reduce_agent(
-            "decision_produced", action=choose_next_action(agent_state, phase="retrieve")
+            "decision_produced", action=choose_next_action(
+                agent_state, phase="retrieve", workflow_type=request.workflow_type.value
+            )
         )
         interrupted = interrupt_if_step_not_claimed()
         if interrupted is not None:
@@ -1094,7 +1096,9 @@ class IterationZeroService:
                         reduce_agent(
                             "decision_produced",
                             action=choose_next_action(
-                                agent_state, phase="retrieve_with_query_rewrite"
+                                agent_state,
+                                phase="retrieve_with_query_rewrite",
+                                workflow_type=request.workflow_type.value,
                             ),
                         )
                         record_agent_action("retrieve_with_query_rewrite")
@@ -1234,7 +1238,11 @@ class IterationZeroService:
                 # for the synchronous provider call and wins at the next node.
                 reduce_agent(
                     "decision_produced",
-                    action=choose_next_action(agent_state, phase="generate"),
+                    action=choose_next_action(
+                        agent_state,
+                        phase="generate",
+                        workflow_type=request.workflow_type.value,
+                    ),
                 )
                 interrupted = interrupt_if_step_not_claimed()
                 if interrupted is not None:
