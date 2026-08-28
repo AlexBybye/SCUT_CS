@@ -9,8 +9,9 @@ choice (§7.2 待确认) stays a configuration concern, not an architecture one.
 - ``DeterministicHashEmbeddingProvider``: deterministic unit vectors for tests
   and for the disabled-dense-leg fallback. It is explicitly NOT semantic — it
   only exists so the fusion/version-binding machinery can be exercised without
-  an API key. Production semantic vectors come from an API provider
-  (SiliconFlow / Zhipu), which is registered once a vendor and key are chosen.
+  an API key. Production semantic vectors come from the local ONNX BGE
+  provider; this module keeps the provider contract independent from its
+  runtime adapter.
 """
 
 from __future__ import annotations

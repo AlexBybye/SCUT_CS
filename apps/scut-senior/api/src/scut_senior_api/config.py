@@ -28,6 +28,14 @@ class Settings:
     # candidates scoring below it are dropped so incidental n-gram collisions
     # cannot reach the citation guard. Recalibrated from the P0 golden set.
     retrieval_min_score: float = 1.0
+    # PLAN-2 阶段一 步骤 3: the dense leg is enabled by default and uses a
+    # CPU-only ONNX model when its model directory and vectors are available.
+    # Missing local assets degrade to BM25F without a network call.
+    dense_retrieval_enabled: bool = True
+    onnx_embedding_model_path: Path | None = APP_ROOT / ".local" / "models" / "bge-small-zh-v1.5"
+    onnx_embedding_model_id: str = "bge-small-zh-v1.5"
+    onnx_embedding_dimensions: int = 512
+    onnx_embedding_max_length: int = 512
     database_path: Path = APP_ROOT / ".local" / "iteration-zero.db"
     corpus_store_path: Path = APP_ROOT / ".local" / "corpus-store"
     cross_course_enabled: bool = False
@@ -60,6 +68,23 @@ class Settings:
             retrieval_mode=os.getenv("SCUT_SENIOR_RETRIEVAL_MODE", "fixture"),
             retrieval_min_score=_env_positive_float(
                 "SCUT_SENIOR_RETRIEVAL_MIN_SCORE", 1.0
+            ),
+            dense_retrieval_enabled=_env_bool(
+                "SCUT_SENIOR_DENSE_RETRIEVAL_ENABLED", True
+            ),
+            onnx_embedding_model_path=(
+                Path(value)
+                if (value := os.getenv("SCUT_SENIOR_ONNX_MODEL_PATH"))
+                else APP_ROOT / ".local" / "models" / "bge-small-zh-v1.5"
+            ),
+            onnx_embedding_model_id=os.getenv(
+                "SCUT_SENIOR_ONNX_MODEL_ID", "bge-small-zh-v1.5"
+            ),
+            onnx_embedding_dimensions=_env_positive_int(
+                "SCUT_SENIOR_ONNX_EMBEDDING_DIMENSIONS", 512
+            ),
+            onnx_embedding_max_length=_env_positive_int(
+                "SCUT_SENIOR_ONNX_MAX_LENGTH", 512
             ),
             database_path=Path(
                 os.getenv(
@@ -156,6 +181,27 @@ class Settings:
         if self.retrieval_mode not in {"fixture", "local_corpus"}:
             raise UnsafeRuntimeConfiguration(
                 "retrieval adapter must be explicit fixture or local_corpus"
+            )
+        if isinstance(self.dense_retrieval_enabled, bool) is False:
+            raise UnsafeRuntimeConfiguration(
+                "SCUT_SENIOR_DENSE_RETRIEVAL_ENABLED must be boolean"
+            )
+        if self.dense_retrieval_enabled and self.retrieval_mode == "local_corpus":
+            if self.onnx_embedding_model_path is None:
+                raise UnsafeRuntimeConfiguration(
+                    "dense retrieval requires SCUT_SENIOR_ONNX_MODEL_PATH"
+                )
+            if not self.onnx_embedding_model_id.strip():
+                raise UnsafeRuntimeConfiguration(
+                    "dense retrieval requires SCUT_SENIOR_ONNX_MODEL_ID"
+                )
+        if isinstance(self.onnx_embedding_dimensions, bool) or self.onnx_embedding_dimensions < 1:
+            raise UnsafeRuntimeConfiguration(
+                "SCUT_SENIOR_ONNX_EMBEDDING_DIMENSIONS must be a positive integer"
+            )
+        if isinstance(self.onnx_embedding_max_length, bool) or self.onnx_embedding_max_length < 8:
+            raise UnsafeRuntimeConfiguration(
+                "SCUT_SENIOR_ONNX_MAX_LENGTH must be an integer >= 8"
             )
         if isinstance(self.retrieval_min_score, bool) or not (
             isinstance(self.retrieval_min_score, (int, float))

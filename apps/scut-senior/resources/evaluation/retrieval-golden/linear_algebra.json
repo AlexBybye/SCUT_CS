@@ -1,47 +1,217 @@
 {
   "schema_version": "retrieval-golden-v1",
   "course_id": "linear_algebra",
-  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
   "entries": [
     {
-      "query": "2019-2020年度线性代数期末卷A",
-      "expected_chunk_ids": ["linear-algebra-012:p1:c01"],
-      "note": "试卷标题 -> 标题 chunk（精确命中基线）"
+      "query": "2016-2017年度期末卷A主要讲什么？",
+      "expected_chunk_ids": [
+        "linear-algebra-006:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
     },
     {
-      "query": "已知向量组的秩是多少",
-      "expected_chunk_ids": ["linear-algebra-012:p1:q-linear-algebra-012-q3:c01"],
-      "note": "历年题题干 -> 题目 chunk"
+      "query": "我想先复习2016-2017年度期末卷A，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "linear-algebra-006:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
     },
     {
-      "query": "矩阵与对角矩阵相似的充分必要条件",
-      "expected_chunk_ids": ["linear-algebra-012:p2:q-linear-algebra-012-q10:c01"],
-      "note": "历年题题干 -> 题目 chunk"
+      "query": "复习2016-2017年度期末卷A答案时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "linear-algebra-007:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
     },
     {
-      "query": "行列式 代数余子式",
-      "expected_chunk_ids": ["linear-algebra-012:p1:q-linear-algebra-012-q1:c01"],
-      "note": "知识点名词 -> 题目 chunk"
+      "query": "2016-2017年度期末卷A答案里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "linear-algebra-007:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
     },
     {
-      "query": "yoz面上的曲线绕z轴旋转的旋转面方程",
-      "expected_chunk_ids": ["linear-algebra-012:p1:q-linear-algebra-012-q4:c01"],
-      "note": "历年题题干 -> 题目 chunk"
+      "query": "学习2016-2017年度期末卷A答案时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "linear-algebra-007:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
     },
     {
-      "query": "求此曲线绕x轴旋转一周所得旋转面的方程",
-      "expected_chunk_ids": ["linear-algebra-014:p2:q-linear-algebra-014-q11:c01"],
-      "note": "历年题题干 -> 题目 chunk"
+      "query": "考试会怎么考2016-2017年度期末卷A答案？",
+      "expected_chunk_ids": [
+        "linear-algebra-007:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
     },
     {
-      "query": "正交变换化为标准形 二次型的秩",
-      "expected_chunk_ids": ["linear-algebra-022:s2:c05"],
-      "note": "历年题题干 -> 题目 chunk"
+      "query": "2016-2017年度期末卷A答案主要讲什么？",
+      "expected_chunk_ids": [
+        "linear-algebra-007:p5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
     },
     {
-      "query": "正交矩阵的特征值的模为1",
-      "expected_chunk_ids": ["linear-algebra-018:p2:q-linear-algebra-018-q21:c01"],
-      "note": "知识点名词 -> 题目 chunk"
+      "query": "我想先复习2017-2018年度期末卷A，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "linear-algebra-008:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习2017-2018年度期末卷A时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "linear-algebra-008:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "2017-2018年度期末卷A里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "linear-algebra-008:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习2017-2018年度期末卷A答案时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "linear-algebra-009:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考2017-2018年度期末卷A答案？",
+      "expected_chunk_ids": [
+        "linear-algebra-009:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "2017-2018年度期末卷A答案主要讲什么？",
+      "expected_chunk_ids": [
+        "linear-algebra-009:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习2017-2018年度期末卷A答案，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "linear-algebra-009:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习2018-2019年度期末卷B时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "linear-algebra-010:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "2018-2019年度期末卷B里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "linear-algebra-010:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习2018-2019年度期末卷B答案时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "linear-algebra-011:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考2018-2019年度期末卷B答案？",
+      "expected_chunk_ids": [
+        "linear-algebra-011:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "2018-2019年度期末卷B答案主要讲什么？",
+      "expected_chunk_ids": [
+        "linear-algebra-011:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习2019-2020年度期末卷A，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "linear-algebra-012:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "行列式代数余子式怎么计算的答案怎么判断？",
+      "expected_chunk_ids": [
+        "linear-algebra-012:p1:q-linear-algebra-012-q1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "2019-2020年度期末卷A里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "linear-algebra-012:p1:q-linear-algebra-012-q2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做这个向量组的秩怎么求时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "linear-algebra-012:p1:q-linear-algebra-012-q3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用在空间直角坐标系中，yoz 面上的曲线 2 4 y z  绕z 坐标轴旋转形成的旋转面的 方程是举例说明吗？",
+      "expected_chunk_ids": [
+        "linear-algebra-012:p1:q-linear-algebra-012-q4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "二次型的秩和正负惯性指数怎么判断怎么做？",
+      "expected_chunk_ids": [
+        "linear-algebra-012:p1:q-linear-algebra-012-q5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做设4 阶方阵A 满足条件 5 0 E A   ， 2 T A A E   ， 0 A  ，其中E 是4 阶单位矩阵. 则A 的伴随矩阵 A 的一个特征值是 .时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "linear-algebra-012:p1:q-linear-algebra-012-q6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习2019-2020年度期末卷A时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "linear-algebra-012:p1:q-linear-algebra-012-q7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把设A，B 都是n 阶对称矩阵，则下面结论中不正确的是( ).的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "linear-algebra-012:p1:q-linear-algebra-012-q8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做行列式 的值是( ) 1 5 25 125   1 3 9 27时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "linear-algebra-012:p1:q-linear-algebra-012-q9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用  则 3. A m n B n m   设是 矩阵， 是 矩阵举例说明吗？",
+      "expected_chunk_ids": [
+        "linear-algebra-012:p2:q-linear-algebra-012-q9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
     }
   ]
 }

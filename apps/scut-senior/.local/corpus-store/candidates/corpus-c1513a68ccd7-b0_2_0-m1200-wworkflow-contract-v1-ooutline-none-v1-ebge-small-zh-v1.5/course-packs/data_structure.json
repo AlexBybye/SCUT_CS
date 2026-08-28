@@ -1,0 +1,1404 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "data_structure",
+  "course_pack_version": "course-pack-data_structure-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "data-structure-035:h-000:c01"
+      ],
+      "heading_path": [
+        "000"
+      ],
+      "source_ids": [
+        "data-structure-035"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-005:h-1:c01",
+        "data-structure-029:h-1:c01",
+        "data-structure-030:h-1:c01"
+      ],
+      "heading_path": [
+        "1"
+      ],
+      "source_ids": [
+        "data-structure-005",
+        "data-structure-029",
+        "data-structure-030"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-006:h-2:c01"
+      ],
+      "heading_path": [
+        "2"
+      ],
+      "source_ids": [
+        "data-structure-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-010:h-2011级数据结构试卷a及答案:c01",
+        "data-structure-010:h-2011级数据结构试卷a及答案:c02",
+        "data-structure-010:h-2011级数据结构试卷a及答案:c03",
+        "data-structure-010:h-2011级数据结构试卷a及答案:c04",
+        "data-structure-010:q-data-structure-010-q1:c01",
+        "data-structure-010:q-data-structure-010-q1:c02",
+        "data-structure-010:q-data-structure-010-q2:c01",
+        "data-structure-010:q-data-structure-010-q3:c01",
+        "data-structure-010:q-data-structure-010-q4:c01",
+        "data-structure-010:q-data-structure-010-q4:c02",
+        "data-structure-010:q-data-structure-010-q4:c03",
+        "data-structure-010:q-data-structure-010-q4:c04",
+        "data-structure-010:q-data-structure-010-q5:c01"
+      ],
+      "heading_path": [
+        "2011级数据结构试卷A及答案"
+      ],
+      "source_ids": [
+        "data-structure-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-011:h-2012数据结构试卷a及答案:c01",
+        "data-structure-011:h-2012数据结构试卷a及答案:c02",
+        "data-structure-011:q-data-structure-011-q1:c01",
+        "data-structure-011:q-data-structure-011-q1:c02",
+        "data-structure-011:q-data-structure-011-q2:c01",
+        "data-structure-011:q-data-structure-011-q2:c02",
+        "data-structure-011:q-data-structure-011-q2:c03",
+        "data-structure-011:q-data-structure-011-q2:c04",
+        "data-structure-011:q-data-structure-011-q2:c05",
+        "data-structure-011:q-data-structure-011-q2:c06"
+      ],
+      "heading_path": [
+        "2012数据结构试卷A及答案"
+      ],
+      "source_ids": [
+        "data-structure-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-012:h-2015级数据结构试卷a:c01",
+        "data-structure-012:h-2015级数据结构试卷a:c02",
+        "data-structure-012:q-data-structure-012-q1:c01",
+        "data-structure-012:q-data-structure-012-q1:c02",
+        "data-structure-012:q-data-structure-012-q1:c03",
+        "data-structure-012:q-data-structure-012-q2:c01",
+        "data-structure-012:q-data-structure-012-q3:c01",
+        "data-structure-012:q-data-structure-012-q3:c02"
+      ],
+      "heading_path": [
+        "2015级数据结构试卷A"
+      ],
+      "source_ids": [
+        "data-structure-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-013:h-2015级数据结构试卷b:c01",
+        "data-structure-013:q-data-structure-013-q1:c01",
+        "data-structure-013:q-data-structure-013-q1:c02",
+        "data-structure-013:q-data-structure-013-q1:c03",
+        "data-structure-013:q-data-structure-013-q2:c01",
+        "data-structure-013:q-data-structure-013-q3:c01",
+        "data-structure-013:q-data-structure-013-q3:c02",
+        "data-structure-013:q-data-structure-013-q3:c03"
+      ],
+      "heading_path": [
+        "2015级数据结构试卷B"
+      ],
+      "source_ids": [
+        "data-structure-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-014:h-2016数据结构试卷a及答案:c01",
+        "data-structure-014:h-2016数据结构试卷a及答案:c02",
+        "data-structure-014:q-data-structure-014-q1:c01",
+        "data-structure-014:q-data-structure-014-q1:c02",
+        "data-structure-014:q-data-structure-014-q2:c01",
+        "data-structure-014:q-data-structure-014-q2:c02",
+        "data-structure-014:q-data-structure-014-q2:c03",
+        "data-structure-014:q-data-structure-014-q2:c04",
+        "data-structure-014:q-data-structure-014-q2:c05",
+        "data-structure-014:q-data-structure-014-q2:c06",
+        "data-structure-014:q-data-structure-014-q2:c07"
+      ],
+      "heading_path": [
+        "2016数据结构试卷A及答案"
+      ],
+      "source_ids": [
+        "data-structure-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-015:h-2016数据结构试卷b及答案:c01",
+        "data-structure-015:h-2016数据结构试卷b及答案:c02",
+        "data-structure-015:h-2016数据结构试卷b及答案:c03",
+        "data-structure-015:h-2016数据结构试卷b及答案:c04",
+        "data-structure-015:h-2016数据结构试卷b及答案:c05",
+        "data-structure-015:h-2016数据结构试卷b及答案:c06",
+        "data-structure-015:h-2016数据结构试卷b及答案:c07",
+        "data-structure-015:h-2016数据结构试卷b及答案:c08",
+        "data-structure-015:h-2016数据结构试卷b及答案:c09",
+        "data-structure-015:h-2016数据结构试卷b及答案:c10",
+        "data-structure-015:h-2016数据结构试卷b及答案:c11",
+        "data-structure-015:h-2016数据结构试卷b及答案:c12"
+      ],
+      "heading_path": [
+        "2016数据结构试卷B及答案"
+      ],
+      "source_ids": [
+        "data-structure-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-016:p1:c01"
+      ],
+      "heading_path": [
+        "2023 级 数据结构"
+      ],
+      "source_ids": [
+        "data-structure-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-017:h-2023-2024-1-数据结构参考答案-a卷:c01",
+        "data-structure-017:q-data-structure-017-q1:c01",
+        "data-structure-017:q-data-structure-017-q2:c01",
+        "data-structure-017:q-data-structure-017-q3:c01",
+        "data-structure-017:q-data-structure-017-q4:c01",
+        "data-structure-017:q-data-structure-017-q5:c01",
+        "data-structure-017:q-data-structure-017-q6:c01",
+        "data-structure-017:q-data-structure-017-q7:c01",
+        "data-structure-017:q-data-structure-017-q8:c01",
+        "data-structure-017:q-data-structure-017-q9:c01",
+        "data-structure-017:q-data-structure-017-q10:c01",
+        "data-structure-017:q-data-structure-017-q11:c01"
+      ],
+      "heading_path": [
+        "2023-2024-1-数据结构参考答案-A卷"
+      ],
+      "source_ids": [
+        "data-structure-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-018:h-2023-a-数据结构-初稿:c01",
+        "data-structure-018:h-2023-a-数据结构-初稿:c02",
+        "data-structure-018:h-2023-a-数据结构-初稿:c03",
+        "data-structure-018:h-2023-a-数据结构-初稿:c04",
+        "data-structure-018:h-2023-a-数据结构-初稿:c05",
+        "data-structure-018:h-2023-a-数据结构-初稿:c06"
+      ],
+      "heading_path": [
+        "2023-A-数据结构-初稿"
+      ],
+      "source_ids": [
+        "data-structure-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-019:p1:c01"
+      ],
+      "heading_path": [
+        "2023级数据结构回忆版"
+      ],
+      "source_ids": [
+        "data-structure-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-020:h-2024-a-数据结构:c01",
+        "data-structure-020:h-2024-a-数据结构:c02",
+        "data-structure-020:h-2024-a-数据结构:c03",
+        "data-structure-020:h-2024-a-数据结构:c04",
+        "data-structure-020:h-2024-a-数据结构:c05",
+        "data-structure-020:h-2024-a-数据结构:c06",
+        "data-structure-020:h-2024-a-数据结构:c07"
+      ],
+      "heading_path": [
+        "2024-A-数据结构"
+      ],
+      "source_ids": [
+        "data-structure-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-021:h-2024-b-数据结构:c01",
+        "data-structure-021:h-2024-b-数据结构:c02",
+        "data-structure-021:h-2024-b-数据结构:c03",
+        "data-structure-021:h-2024-b-数据结构:c04",
+        "data-structure-021:h-2024-b-数据结构:c05",
+        "data-structure-021:h-2024-b-数据结构:c06",
+        "data-structure-021:h-2024-b-数据结构:c07",
+        "data-structure-021:h-2024-b-数据结构:c08",
+        "data-structure-021:h-2024-b-数据结构:c09"
+      ],
+      "heading_path": [
+        "2024-B-数据结构"
+      ],
+      "source_ids": [
+        "data-structure-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-022:h-2025-a-辅修班卷子:c01",
+        "data-structure-022:h-2025-a-辅修班卷子:c02",
+        "data-structure-022:h-2025-a-辅修班卷子:c03",
+        "data-structure-022:h-2025-a-辅修班卷子:c04"
+      ],
+      "heading_path": [
+        "2025-A（辅修班卷子）"
+      ],
+      "source_ids": [
+        "data-structure-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-007:h-3:c01"
+      ],
+      "heading_path": [
+        "3"
+      ],
+      "source_ids": [
+        "data-structure-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-008:h-4:c01"
+      ],
+      "heading_path": [
+        "4"
+      ],
+      "source_ids": [
+        "data-structure-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-033:h-bst:c01"
+      ],
+      "heading_path": [
+        "BST"
+      ],
+      "source_ids": [
+        "data-structure-033"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-031:h-bst-ooperation:c01"
+      ],
+      "heading_path": [
+        "BST OOperation"
+      ],
+      "source_ids": [
+        "data-structure-031"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-032:h-bst-operation:c01"
+      ],
+      "heading_path": [
+        "BST operation"
+      ],
+      "source_ids": [
+        "data-structure-032"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-009:h-consoleapplication:c01"
+      ],
+      "heading_path": [
+        "ConsoleApplication"
+      ],
+      "source_ids": [
+        "data-structure-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-003:h-contrary:c01"
+      ],
+      "heading_path": [
+        "contrary"
+      ],
+      "source_ids": [
+        "data-structure-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-034:h-print-a-tree:c01"
+      ],
+      "heading_path": [
+        "print a tree"
+      ],
+      "source_ids": [
+        "data-structure-034"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-004:h-sort_faster:c01"
+      ],
+      "heading_path": [
+        "sort_faster"
+      ],
+      "source_ids": [
+        "data-structure-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-002:h-sort_times:c01"
+      ],
+      "heading_path": [
+        "sort_times"
+      ],
+      "source_ids": [
+        "data-structure-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-023:h-作业及分析:c01"
+      ],
+      "heading_path": [
+        "作业及分析"
+      ],
+      "source_ids": [
+        "data-structure-023"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-001:h-关于二分双数组-冒泡排序算法的研究:c01",
+        "data-structure-001:h-关于二分双数组-冒泡排序算法的研究:c02",
+        "data-structure-001:h-关于二分双数组-冒泡排序算法的研究:c03"
+      ],
+      "heading_path": [
+        "关于二分双数组—冒泡排序算法的研究"
+      ],
+      "source_ids": [
+        "data-structure-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-024:p1:c01",
+        "data-structure-024:p2:c01",
+        "data-structure-024:p3:c01",
+        "data-structure-024:p4:c01",
+        "data-structure-024:p5:c01",
+        "data-structure-024:p6:c01"
+      ],
+      "heading_path": [
+        "拷打数据结构AI，并补充知识不足_20241106211930"
+      ],
+      "source_ids": [
+        "data-structure-024"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-025:h-测试结果:c01",
+        "data-structure-026:h-测试结果:c01"
+      ],
+      "heading_path": [
+        "测试结果"
+      ],
+      "source_ids": [
+        "data-structure-025",
+        "data-structure-026"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "data-structure-027:h-测试结果3-200000:c01",
+        "data-structure-028:h-测试结果3-200000:c01"
+      ],
+      "heading_path": [
+        "测试结果3（200000）"
+      ],
+      "source_ids": [
+        "data-structure-027",
+        "data-structure-028"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [
+    {
+      "chunk_ids": [
+        "data-structure-010:q-data-structure-010-q1:c01",
+        "data-structure-010:q-data-structure-010-q1:c02"
+      ],
+      "heading_path": [
+        "2011级数据结构试卷A及答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-010-Q1",
+      "source_id": "data-structure-010",
+      "source_title": "2011级数据结构试卷A及答案"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-010:q-data-structure-010-q2:c01"
+      ],
+      "heading_path": [
+        "2011级数据结构试卷A及答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-010-Q2",
+      "source_id": "data-structure-010",
+      "source_title": "2011级数据结构试卷A及答案"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-010:q-data-structure-010-q3:c01"
+      ],
+      "heading_path": [
+        "2011级数据结构试卷A及答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-010-Q3",
+      "source_id": "data-structure-010",
+      "source_title": "2011级数据结构试卷A及答案"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-010:q-data-structure-010-q4:c01",
+        "data-structure-010:q-data-structure-010-q4:c02",
+        "data-structure-010:q-data-structure-010-q4:c03",
+        "data-structure-010:q-data-structure-010-q4:c04"
+      ],
+      "heading_path": [
+        "2011级数据结构试卷A及答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-010-Q4",
+      "source_id": "data-structure-010",
+      "source_title": "2011级数据结构试卷A及答案"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-010:q-data-structure-010-q5:c01"
+      ],
+      "heading_path": [
+        "2011级数据结构试卷A及答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-010-Q5",
+      "source_id": "data-structure-010",
+      "source_title": "2011级数据结构试卷A及答案"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-011:q-data-structure-011-q1:c01",
+        "data-structure-011:q-data-structure-011-q1:c02"
+      ],
+      "heading_path": [
+        "2012数据结构试卷A及答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-011-Q1",
+      "source_id": "data-structure-011",
+      "source_title": "2012数据结构试卷A及答案"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-011:q-data-structure-011-q2:c01",
+        "data-structure-011:q-data-structure-011-q2:c02",
+        "data-structure-011:q-data-structure-011-q2:c03",
+        "data-structure-011:q-data-structure-011-q2:c04",
+        "data-structure-011:q-data-structure-011-q2:c05",
+        "data-structure-011:q-data-structure-011-q2:c06"
+      ],
+      "heading_path": [
+        "2012数据结构试卷A及答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-011-Q2",
+      "source_id": "data-structure-011",
+      "source_title": "2012数据结构试卷A及答案"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-012:q-data-structure-012-q1:c01",
+        "data-structure-012:q-data-structure-012-q1:c02",
+        "data-structure-012:q-data-structure-012-q1:c03"
+      ],
+      "heading_path": [
+        "2015级数据结构试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-012-Q1",
+      "source_id": "data-structure-012",
+      "source_title": "2015级数据结构试卷A"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-012:q-data-structure-012-q2:c01"
+      ],
+      "heading_path": [
+        "2015级数据结构试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-012-Q2",
+      "source_id": "data-structure-012",
+      "source_title": "2015级数据结构试卷A"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-012:q-data-structure-012-q3:c01",
+        "data-structure-012:q-data-structure-012-q3:c02"
+      ],
+      "heading_path": [
+        "2015级数据结构试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-012-Q3",
+      "source_id": "data-structure-012",
+      "source_title": "2015级数据结构试卷A"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-013:q-data-structure-013-q1:c01",
+        "data-structure-013:q-data-structure-013-q1:c02",
+        "data-structure-013:q-data-structure-013-q1:c03"
+      ],
+      "heading_path": [
+        "2015级数据结构试卷B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-013-Q1",
+      "source_id": "data-structure-013",
+      "source_title": "2015级数据结构试卷B"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-013:q-data-structure-013-q2:c01"
+      ],
+      "heading_path": [
+        "2015级数据结构试卷B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-013-Q2",
+      "source_id": "data-structure-013",
+      "source_title": "2015级数据结构试卷B"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-013:q-data-structure-013-q3:c01",
+        "data-structure-013:q-data-structure-013-q3:c02",
+        "data-structure-013:q-data-structure-013-q3:c03"
+      ],
+      "heading_path": [
+        "2015级数据结构试卷B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-013-Q3",
+      "source_id": "data-structure-013",
+      "source_title": "2015级数据结构试卷B"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-014:q-data-structure-014-q1:c01",
+        "data-structure-014:q-data-structure-014-q1:c02"
+      ],
+      "heading_path": [
+        "2016数据结构试卷A及答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-014-Q1",
+      "source_id": "data-structure-014",
+      "source_title": "2016数据结构试卷A及答案"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-014:q-data-structure-014-q2:c01",
+        "data-structure-014:q-data-structure-014-q2:c02",
+        "data-structure-014:q-data-structure-014-q2:c03",
+        "data-structure-014:q-data-structure-014-q2:c04",
+        "data-structure-014:q-data-structure-014-q2:c05",
+        "data-structure-014:q-data-structure-014-q2:c06",
+        "data-structure-014:q-data-structure-014-q2:c07"
+      ],
+      "heading_path": [
+        "2016数据结构试卷A及答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-014-Q2",
+      "source_id": "data-structure-014",
+      "source_title": "2016数据结构试卷A及答案"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-017:q-data-structure-017-q1:c01"
+      ],
+      "heading_path": [
+        "2023-2024-1-数据结构参考答案-A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-017-Q1",
+      "source_id": "data-structure-017",
+      "source_title": "2023-2024-1-数据结构参考答案-A卷"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-017:q-data-structure-017-q10:c01"
+      ],
+      "heading_path": [
+        "2023-2024-1-数据结构参考答案-A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-017-Q10",
+      "source_id": "data-structure-017",
+      "source_title": "2023-2024-1-数据结构参考答案-A卷"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-017:q-data-structure-017-q11:c01"
+      ],
+      "heading_path": [
+        "2023-2024-1-数据结构参考答案-A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-017-Q11",
+      "source_id": "data-structure-017",
+      "source_title": "2023-2024-1-数据结构参考答案-A卷"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-017:q-data-structure-017-q2:c01"
+      ],
+      "heading_path": [
+        "2023-2024-1-数据结构参考答案-A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-017-Q2",
+      "source_id": "data-structure-017",
+      "source_title": "2023-2024-1-数据结构参考答案-A卷"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-017:q-data-structure-017-q3:c01"
+      ],
+      "heading_path": [
+        "2023-2024-1-数据结构参考答案-A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-017-Q3",
+      "source_id": "data-structure-017",
+      "source_title": "2023-2024-1-数据结构参考答案-A卷"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-017:q-data-structure-017-q4:c01"
+      ],
+      "heading_path": [
+        "2023-2024-1-数据结构参考答案-A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-017-Q4",
+      "source_id": "data-structure-017",
+      "source_title": "2023-2024-1-数据结构参考答案-A卷"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-017:q-data-structure-017-q5:c01"
+      ],
+      "heading_path": [
+        "2023-2024-1-数据结构参考答案-A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-017-Q5",
+      "source_id": "data-structure-017",
+      "source_title": "2023-2024-1-数据结构参考答案-A卷"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-017:q-data-structure-017-q6:c01"
+      ],
+      "heading_path": [
+        "2023-2024-1-数据结构参考答案-A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-017-Q6",
+      "source_id": "data-structure-017",
+      "source_title": "2023-2024-1-数据结构参考答案-A卷"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-017:q-data-structure-017-q7:c01"
+      ],
+      "heading_path": [
+        "2023-2024-1-数据结构参考答案-A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-017-Q7",
+      "source_id": "data-structure-017",
+      "source_title": "2023-2024-1-数据结构参考答案-A卷"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-017:q-data-structure-017-q8:c01"
+      ],
+      "heading_path": [
+        "2023-2024-1-数据结构参考答案-A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-017-Q8",
+      "source_id": "data-structure-017",
+      "source_title": "2023-2024-1-数据结构参考答案-A卷"
+    },
+    {
+      "chunk_ids": [
+        "data-structure-017:q-data-structure-017-q9:c01"
+      ],
+      "heading_path": [
+        "2023-2024-1-数据结构参考答案-A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "data-structure-017-Q9",
+      "source_id": "data-structure-017",
+      "source_title": "2023-2024-1-数据结构参考答案-A卷"
+    }
+  ],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-001:h-关于二分双数组-冒泡排序算法的研究:c01",
+        "data-structure-001:h-关于二分双数组-冒泡排序算法的研究:c02",
+        "data-structure-001:h-关于二分双数组-冒泡排序算法的研究:c03"
+      ],
+      "course_id": "data_structure",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-001.md",
+      "source_id": "data-structure-001",
+      "source_title": "关于二分双数组—冒泡排序算法的研究",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-002:h-sort_times:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-002.md",
+      "source_id": "data-structure-002",
+      "source_title": "sort_times",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-003:h-contrary:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "exercise_solution",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-003.md",
+      "source_id": "data-structure-003",
+      "source_title": "contrary",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-004:h-sort_faster:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "exercise_solution",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-004.md",
+      "source_id": "data-structure-004",
+      "source_title": "sort_faster",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-005:h-1:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "exercise_solution",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-005.md",
+      "source_id": "data-structure-005",
+      "source_title": "1",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-006:h-2:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "exercise_solution",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-006.md",
+      "source_id": "data-structure-006",
+      "source_title": "2",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-007:h-3:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "exercise_solution",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-007.md",
+      "source_id": "data-structure-007",
+      "source_title": "3",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-008:h-4:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "exercise_solution",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-008.md",
+      "source_id": "data-structure-008",
+      "source_title": "4",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-009:h-consoleapplication:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "exercise_solution",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-009.md",
+      "source_id": "data-structure-009",
+      "source_title": "ConsoleApplication",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-010:h-2011级数据结构试卷a及答案:c01",
+        "data-structure-010:h-2011级数据结构试卷a及答案:c02",
+        "data-structure-010:h-2011级数据结构试卷a及答案:c03",
+        "data-structure-010:h-2011级数据结构试卷a及答案:c04",
+        "data-structure-010:q-data-structure-010-q1:c01",
+        "data-structure-010:q-data-structure-010-q1:c02",
+        "data-structure-010:q-data-structure-010-q2:c01",
+        "data-structure-010:q-data-structure-010-q3:c01",
+        "data-structure-010:q-data-structure-010-q4:c01",
+        "data-structure-010:q-data-structure-010-q4:c02",
+        "data-structure-010:q-data-structure-010-q4:c03",
+        "data-structure-010:q-data-structure-010-q4:c04",
+        "data-structure-010:q-data-structure-010-q5:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "past_exam_answer",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-010.md",
+      "source_id": "data-structure-010",
+      "source_title": "2011级数据结构试卷A及答案",
+      "year": "2011"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-011:h-2012数据结构试卷a及答案:c01",
+        "data-structure-011:h-2012数据结构试卷a及答案:c02",
+        "data-structure-011:q-data-structure-011-q1:c01",
+        "data-structure-011:q-data-structure-011-q1:c02",
+        "data-structure-011:q-data-structure-011-q2:c01",
+        "data-structure-011:q-data-structure-011-q2:c02",
+        "data-structure-011:q-data-structure-011-q2:c03",
+        "data-structure-011:q-data-structure-011-q2:c04",
+        "data-structure-011:q-data-structure-011-q2:c05",
+        "data-structure-011:q-data-structure-011-q2:c06"
+      ],
+      "course_id": "data_structure",
+      "document_role": "past_exam_answer",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-011.md",
+      "source_id": "data-structure-011",
+      "source_title": "2012数据结构试卷A及答案",
+      "year": "2012"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-012:h-2015级数据结构试卷a:c01",
+        "data-structure-012:h-2015级数据结构试卷a:c02",
+        "data-structure-012:q-data-structure-012-q1:c01",
+        "data-structure-012:q-data-structure-012-q1:c02",
+        "data-structure-012:q-data-structure-012-q1:c03",
+        "data-structure-012:q-data-structure-012-q2:c01",
+        "data-structure-012:q-data-structure-012-q3:c01",
+        "data-structure-012:q-data-structure-012-q3:c02"
+      ],
+      "course_id": "data_structure",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-012.md",
+      "source_id": "data-structure-012",
+      "source_title": "2015级数据结构试卷A",
+      "year": "2015"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-013:h-2015级数据结构试卷b:c01",
+        "data-structure-013:q-data-structure-013-q1:c01",
+        "data-structure-013:q-data-structure-013-q1:c02",
+        "data-structure-013:q-data-structure-013-q1:c03",
+        "data-structure-013:q-data-structure-013-q2:c01",
+        "data-structure-013:q-data-structure-013-q3:c01",
+        "data-structure-013:q-data-structure-013-q3:c02",
+        "data-structure-013:q-data-structure-013-q3:c03"
+      ],
+      "course_id": "data_structure",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-013.md",
+      "source_id": "data-structure-013",
+      "source_title": "2015级数据结构试卷B",
+      "year": "2015"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-014:h-2016数据结构试卷a及答案:c01",
+        "data-structure-014:h-2016数据结构试卷a及答案:c02",
+        "data-structure-014:q-data-structure-014-q1:c01",
+        "data-structure-014:q-data-structure-014-q1:c02",
+        "data-structure-014:q-data-structure-014-q2:c01",
+        "data-structure-014:q-data-structure-014-q2:c02",
+        "data-structure-014:q-data-structure-014-q2:c03",
+        "data-structure-014:q-data-structure-014-q2:c04",
+        "data-structure-014:q-data-structure-014-q2:c05",
+        "data-structure-014:q-data-structure-014-q2:c06",
+        "data-structure-014:q-data-structure-014-q2:c07"
+      ],
+      "course_id": "data_structure",
+      "document_role": "past_exam_answer",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-014.md",
+      "source_id": "data-structure-014",
+      "source_title": "2016数据结构试卷A及答案",
+      "year": "2016"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-015:h-2016数据结构试卷b及答案:c01",
+        "data-structure-015:h-2016数据结构试卷b及答案:c02",
+        "data-structure-015:h-2016数据结构试卷b及答案:c03",
+        "data-structure-015:h-2016数据结构试卷b及答案:c04",
+        "data-structure-015:h-2016数据结构试卷b及答案:c05",
+        "data-structure-015:h-2016数据结构试卷b及答案:c06",
+        "data-structure-015:h-2016数据结构试卷b及答案:c07",
+        "data-structure-015:h-2016数据结构试卷b及答案:c08",
+        "data-structure-015:h-2016数据结构试卷b及答案:c09",
+        "data-structure-015:h-2016数据结构试卷b及答案:c10",
+        "data-structure-015:h-2016数据结构试卷b及答案:c11",
+        "data-structure-015:h-2016数据结构试卷b及答案:c12"
+      ],
+      "course_id": "data_structure",
+      "document_role": "past_exam_answer",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-015.md",
+      "source_id": "data-structure-015",
+      "source_title": "2016数据结构试卷B及答案",
+      "year": "2016"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-016:p1:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "data_structure/data-structure-016.md",
+      "source_id": "data-structure-016",
+      "source_title": "2023 级 数据结构",
+      "year": "2023"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-017:h-2023-2024-1-数据结构参考答案-a卷:c01",
+        "data-structure-017:q-data-structure-017-q1:c01",
+        "data-structure-017:q-data-structure-017-q2:c01",
+        "data-structure-017:q-data-structure-017-q3:c01",
+        "data-structure-017:q-data-structure-017-q4:c01",
+        "data-structure-017:q-data-structure-017-q5:c01",
+        "data-structure-017:q-data-structure-017-q6:c01",
+        "data-structure-017:q-data-structure-017-q7:c01",
+        "data-structure-017:q-data-structure-017-q8:c01",
+        "data-structure-017:q-data-structure-017-q9:c01",
+        "data-structure-017:q-data-structure-017-q10:c01",
+        "data-structure-017:q-data-structure-017-q11:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "past_exam_answer",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-017.md",
+      "source_id": "data-structure-017",
+      "source_title": "2023-2024-1-数据结构参考答案-A卷",
+      "year": "2023"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-018:h-2023-a-数据结构-初稿:c01",
+        "data-structure-018:h-2023-a-数据结构-初稿:c02",
+        "data-structure-018:h-2023-a-数据结构-初稿:c03",
+        "data-structure-018:h-2023-a-数据结构-初稿:c04",
+        "data-structure-018:h-2023-a-数据结构-初稿:c05",
+        "data-structure-018:h-2023-a-数据结构-初稿:c06"
+      ],
+      "course_id": "data_structure",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-018.md",
+      "source_id": "data-structure-018",
+      "source_title": "2023-A-数据结构-初稿",
+      "year": "2023"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-019:p1:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "data_structure/data-structure-019.md",
+      "source_id": "data-structure-019",
+      "source_title": "2023级数据结构回忆版",
+      "year": "2023"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-020:h-2024-a-数据结构:c01",
+        "data-structure-020:h-2024-a-数据结构:c02",
+        "data-structure-020:h-2024-a-数据结构:c03",
+        "data-structure-020:h-2024-a-数据结构:c04",
+        "data-structure-020:h-2024-a-数据结构:c05",
+        "data-structure-020:h-2024-a-数据结构:c06",
+        "data-structure-020:h-2024-a-数据结构:c07"
+      ],
+      "course_id": "data_structure",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-020.md",
+      "source_id": "data-structure-020",
+      "source_title": "2024-A-数据结构",
+      "year": "2024"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-021:h-2024-b-数据结构:c01",
+        "data-structure-021:h-2024-b-数据结构:c02",
+        "data-structure-021:h-2024-b-数据结构:c03",
+        "data-structure-021:h-2024-b-数据结构:c04",
+        "data-structure-021:h-2024-b-数据结构:c05",
+        "data-structure-021:h-2024-b-数据结构:c06",
+        "data-structure-021:h-2024-b-数据结构:c07",
+        "data-structure-021:h-2024-b-数据结构:c08",
+        "data-structure-021:h-2024-b-数据结构:c09"
+      ],
+      "course_id": "data_structure",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-021.md",
+      "source_id": "data-structure-021",
+      "source_title": "2024-B-数据结构",
+      "year": "2024"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-022:h-2025-a-辅修班卷子:c01",
+        "data-structure-022:h-2025-a-辅修班卷子:c02",
+        "data-structure-022:h-2025-a-辅修班卷子:c03",
+        "data-structure-022:h-2025-a-辅修班卷子:c04"
+      ],
+      "course_id": "data_structure",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-022.md",
+      "source_id": "data-structure-022",
+      "source_title": "2025-A（辅修班卷子）",
+      "year": "2025"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-023:h-作业及分析:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-023.md",
+      "source_id": "data-structure-023",
+      "source_title": "作业及分析",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-024:p1:c01",
+        "data-structure-024:p2:c01",
+        "data-structure-024:p3:c01",
+        "data-structure-024:p4:c01",
+        "data-structure-024:p5:c01",
+        "data-structure-024:p6:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "data_structure/data-structure-024.md",
+      "source_id": "data-structure-024",
+      "source_title": "拷打数据结构AI，并补充知识不足_20241106211930",
+      "year": "2024"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-025:h-测试结果:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-025.md",
+      "source_id": "data-structure-025",
+      "source_title": "测试结果",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-026:h-测试结果:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-026.md",
+      "source_id": "data-structure-026",
+      "source_title": "测试结果",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-027:h-测试结果3-200000:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-027.md",
+      "source_id": "data-structure-027",
+      "source_title": "测试结果3（200000）",
+      "year": "2000"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-028:h-测试结果3-200000:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-028.md",
+      "source_id": "data-structure-028",
+      "source_title": "测试结果3（200000）",
+      "year": "2000"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-029:h-1:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "exercise_solution",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-029.md",
+      "source_id": "data-structure-029",
+      "source_title": "1",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-030:h-1:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "data_structure/data-structure-030.md",
+      "source_id": "data-structure-030",
+      "source_title": "1",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-031:h-bst-ooperation:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "exercise_solution",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-031.md",
+      "source_id": "data-structure-031",
+      "source_title": "BST OOperation",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-032:h-bst-operation:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "exercise_solution",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-032.md",
+      "source_id": "data-structure-032",
+      "source_title": "BST operation",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-033:h-bst:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "exercise_solution",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-033.md",
+      "source_id": "data-structure-033",
+      "source_title": "BST",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-034:h-print-a-tree:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "exercise_solution",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-034.md",
+      "source_id": "data-structure-034",
+      "source_title": "print a tree",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "data-structure-035:h-000:c01"
+      ],
+      "course_id": "data_structure",
+      "document_role": "exercise_solution",
+      "locator_type": "none",
+      "output_md": "data_structure/data-structure-035.md",
+      "source_id": "data-structure-035",
+      "source_title": "000",
+      "year": null
+    }
+  ],
+  "statistics": {
+    "chunk_count": 131,
+    "question_count": 26,
+    "source_count": 35
+  },
+  "workflow_version": "workflow-contract-v1"
+}

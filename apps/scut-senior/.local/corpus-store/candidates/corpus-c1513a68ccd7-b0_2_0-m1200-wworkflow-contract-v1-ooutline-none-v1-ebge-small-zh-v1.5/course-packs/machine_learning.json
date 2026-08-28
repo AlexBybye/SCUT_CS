@@ -1,0 +1,427 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "machine_learning",
+  "course_pack_version": "course-pack-machine_learning-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "machine-learning-014:h-微信图片_20260607131054_18:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607131054_18"
+      ],
+      "source_ids": [
+        "machine-learning-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "machine-learning-015:h-微信图片_20260607131057_19:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607131057_19"
+      ],
+      "source_ids": [
+        "machine-learning-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "machine-learning-016:h-微信图片_20260607131059_20:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607131059_20"
+      ],
+      "source_ids": [
+        "machine-learning-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "machine-learning-017:h-微信图片_20260607131101_21:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607131101_21"
+      ],
+      "source_ids": [
+        "machine-learning-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "machine-learning-001:h-微信图片_20260607143233:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607143233"
+      ],
+      "source_ids": [
+        "machine-learning-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "machine-learning-002:h-微信图片_20260607143237:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607143237"
+      ],
+      "source_ids": [
+        "machine-learning-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "machine-learning-003:h-微信图片_20260607143241:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607143241"
+      ],
+      "source_ids": [
+        "machine-learning-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "machine-learning-004:h-微信图片_20260607143244:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607143244"
+      ],
+      "source_ids": [
+        "machine-learning-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "machine-learning-005:h-微信图片_20260607143246:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607143246"
+      ],
+      "source_ids": [
+        "machine-learning-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "machine-learning-006:h-微信图片_20260607143249:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607143249"
+      ],
+      "source_ids": [
+        "machine-learning-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "machine-learning-007:h-微信图片_20260607143251:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607143251"
+      ],
+      "source_ids": [
+        "machine-learning-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "machine-learning-008:h-微信图片_20260607143254:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607143254"
+      ],
+      "source_ids": [
+        "machine-learning-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "machine-learning-009:h-微信图片_20260607143256:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607143256"
+      ],
+      "source_ids": [
+        "machine-learning-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "machine-learning-010:h-微信图片_20260607143258:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607143258"
+      ],
+      "source_ids": [
+        "machine-learning-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "machine-learning-011:h-微信图片_20260607143301:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607143301"
+      ],
+      "source_ids": [
+        "machine-learning-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "machine-learning-012:h-微信图片_20260607143303:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607143303"
+      ],
+      "source_ids": [
+        "machine-learning-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "machine-learning-013:h-微信图片_20260607143306:c01"
+      ],
+      "heading_path": [
+        "微信图片_20260607143306"
+      ],
+      "source_ids": [
+        "machine-learning-013"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-001:h-微信图片_20260607143233:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-001.md",
+      "source_id": "machine-learning-001",
+      "source_title": "微信图片_20260607143233",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-002:h-微信图片_20260607143237:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-002.md",
+      "source_id": "machine-learning-002",
+      "source_title": "微信图片_20260607143237",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-003:h-微信图片_20260607143241:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-003.md",
+      "source_id": "machine-learning-003",
+      "source_title": "微信图片_20260607143241",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-004:h-微信图片_20260607143244:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-004.md",
+      "source_id": "machine-learning-004",
+      "source_title": "微信图片_20260607143244",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-005:h-微信图片_20260607143246:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-005.md",
+      "source_id": "machine-learning-005",
+      "source_title": "微信图片_20260607143246",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-006:h-微信图片_20260607143249:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-006.md",
+      "source_id": "machine-learning-006",
+      "source_title": "微信图片_20260607143249",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-007:h-微信图片_20260607143251:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-007.md",
+      "source_id": "machine-learning-007",
+      "source_title": "微信图片_20260607143251",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-008:h-微信图片_20260607143254:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-008.md",
+      "source_id": "machine-learning-008",
+      "source_title": "微信图片_20260607143254",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-009:h-微信图片_20260607143256:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-009.md",
+      "source_id": "machine-learning-009",
+      "source_title": "微信图片_20260607143256",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-010:h-微信图片_20260607143258:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-010.md",
+      "source_id": "machine-learning-010",
+      "source_title": "微信图片_20260607143258",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-011:h-微信图片_20260607143301:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-011.md",
+      "source_id": "machine-learning-011",
+      "source_title": "微信图片_20260607143301",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-012:h-微信图片_20260607143303:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-012.md",
+      "source_id": "machine-learning-012",
+      "source_title": "微信图片_20260607143303",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-013:h-微信图片_20260607143306:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-013.md",
+      "source_id": "machine-learning-013",
+      "source_title": "微信图片_20260607143306",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-014:h-微信图片_20260607131054_18:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-014.md",
+      "source_id": "machine-learning-014",
+      "source_title": "微信图片_20260607131054_18",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-015:h-微信图片_20260607131057_19:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-015.md",
+      "source_id": "machine-learning-015",
+      "source_title": "微信图片_20260607131057_19",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-016:h-微信图片_20260607131059_20:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-016.md",
+      "source_id": "machine-learning-016",
+      "source_title": "微信图片_20260607131059_20",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "machine-learning-017:h-微信图片_20260607131101_21:c01"
+      ],
+      "course_id": "machine_learning",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "machine_learning/machine-learning-017.md",
+      "source_id": "machine-learning-017",
+      "source_title": "微信图片_20260607131101_21",
+      "year": "2026"
+    }
+  ],
+  "statistics": {
+    "chunk_count": 17,
+    "question_count": 0,
+    "source_count": 17
+  },
+  "workflow_version": "workflow-contract-v1"
+}

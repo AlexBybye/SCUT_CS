@@ -1,0 +1,1230 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "digital_logic",
+  "course_pack_version": "course-pack-digital_logic-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "digital-logic-002:h-2012级计算机学院数字逻辑试卷-a卷题目:c01",
+        "digital-logic-002:q-digital-logic-002-q1:c01",
+        "digital-logic-002:q-digital-logic-002-q2:c01",
+        "digital-logic-002:q-digital-logic-002-q3:c01",
+        "digital-logic-002:q-digital-logic-002-q4:c01",
+        "digital-logic-002:q-digital-logic-002-q5:c01",
+        "digital-logic-002:q-digital-logic-002-q6:c01",
+        "digital-logic-002:q-digital-logic-002-q7:c01",
+        "digital-logic-002:q-digital-logic-002-q8:c01",
+        "digital-logic-002:q-digital-logic-002-q9:c01",
+        "digital-logic-002:q-digital-logic-002-q10:c01",
+        "digital-logic-002:q-digital-logic-002-q11:c01",
+        "digital-logic-002:q-digital-logic-002-q12:c01",
+        "digital-logic-002:q-digital-logic-002-q13:c01",
+        "digital-logic-002:q-digital-logic-002-q14:c01",
+        "digital-logic-002:q-digital-logic-002-q15:c01",
+        "digital-logic-002:q-digital-logic-002-q16:c01",
+        "digital-logic-002:q-digital-logic-002-q17:c01",
+        "digital-logic-002:q-digital-logic-002-q18:c01",
+        "digital-logic-002:q-digital-logic-002-q19:c01",
+        "digital-logic-002:q-digital-logic-002-q20:c01",
+        "digital-logic-002:q-digital-logic-002-q21:c01",
+        "digital-logic-002:q-digital-logic-002-q22:c01",
+        "digital-logic-002:q-digital-logic-002-q23:c01",
+        "digital-logic-002:q-digital-logic-002-q24:c01",
+        "digital-logic-002:q-digital-logic-002-q25:c01",
+        "digital-logic-002:q-digital-logic-002-q26:c01",
+        "digital-logic-002:q-digital-logic-002-q27:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "source_ids": [
+        "digital-logic-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:h-2012级计算机学院数字逻辑试卷-b卷题目:c01",
+        "digital-logic-003:q-digital-logic-003-q1:c01",
+        "digital-logic-003:q-digital-logic-003-q2:c01",
+        "digital-logic-003:q-digital-logic-003-q3:c01",
+        "digital-logic-003:q-digital-logic-003-q4:c01",
+        "digital-logic-003:q-digital-logic-003-q5:c01",
+        "digital-logic-003:q-digital-logic-003-q6:c01",
+        "digital-logic-003:q-digital-logic-003-q7:c01",
+        "digital-logic-003:q-digital-logic-003-q8:c01",
+        "digital-logic-003:q-digital-logic-003-q9:c01",
+        "digital-logic-003:q-digital-logic-003-q10:c01",
+        "digital-logic-003:q-digital-logic-003-q11:c01",
+        "digital-logic-003:q-digital-logic-003-q12:c01",
+        "digital-logic-003:q-digital-logic-003-q13:c01",
+        "digital-logic-003:q-digital-logic-003-q14:c01",
+        "digital-logic-003:q-digital-logic-003-q15:c01",
+        "digital-logic-003:q-digital-logic-003-q16:c01",
+        "digital-logic-003:q-digital-logic-003-q17:c01",
+        "digital-logic-003:q-digital-logic-003-q18:c01",
+        "digital-logic-003:q-digital-logic-003-q19:c01",
+        "digital-logic-003:q-digital-logic-003-q20:c01",
+        "digital-logic-003:q-digital-logic-003-q21:c01",
+        "digital-logic-003:q-digital-logic-003-q22:c01",
+        "digital-logic-003:q-digital-logic-003-q23:c01",
+        "digital-logic-003:q-digital-logic-003-q24:c01",
+        "digital-logic-003:q-digital-logic-003-q25:c01",
+        "digital-logic-003:q-digital-logic-003-q26:c01",
+        "digital-logic-003:q-digital-logic-003-q27:c01",
+        "digital-logic-003:q-digital-logic-003-q28:c01",
+        "digital-logic-003:q-digital-logic-003-q29:c01",
+        "digital-logic-003:q-digital-logic-003-q30:c01",
+        "digital-logic-003:q-digital-logic-003-q31:c01",
+        "digital-logic-003:q-digital-logic-003-q32:c01",
+        "digital-logic-003:q-digital-logic-003-q33:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "source_ids": [
+        "digital-logic-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-004:p1:c01",
+        "digital-logic-004:p2:c01",
+        "digital-logic-004:p3:c01",
+        "digital-logic-004:p4:c01",
+        "digital-logic-004:p5:c01",
+        "digital-logic-004:p6:c01",
+        "digital-logic-004:p7:c01",
+        "digital-logic-004:p8:c01",
+        "digital-logic-004:p9:c01"
+      ],
+      "heading_path": [
+        "2018a"
+      ],
+      "source_ids": [
+        "digital-logic-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-005:p1:c01",
+        "digital-logic-005:p2:c01",
+        "digital-logic-005:p3:c01",
+        "digital-logic-005:p4:c01",
+        "digital-logic-005:p5:c01",
+        "digital-logic-005:p6:c01",
+        "digital-logic-005:p7:c01",
+        "digital-logic-005:p8:c01",
+        "digital-logic-005:p9:c01"
+      ],
+      "heading_path": [
+        "22a"
+      ],
+      "source_ids": [
+        "digital-logic-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-006:p1:c01",
+        "digital-logic-006:p2:c01",
+        "digital-logic-006:p3:c01",
+        "digital-logic-006:p4:c01"
+      ],
+      "heading_path": [
+        "数字逻辑07-A"
+      ],
+      "source_ids": [
+        "digital-logic-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-007:p1:c01",
+        "digital-logic-007:p2:c01",
+        "digital-logic-007:p3:c01",
+        "digital-logic-007:p4:c01"
+      ],
+      "heading_path": [
+        "数字逻辑07-B"
+      ],
+      "source_ids": [
+        "digital-logic-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-001:h-数字逻辑作业:c01",
+        "digital-logic-001:h-数字逻辑作业:c02",
+        "digital-logic-001:h-数字逻辑作业:c03"
+      ],
+      "heading_path": [
+        "数字逻辑作业"
+      ],
+      "source_ids": [
+        "digital-logic-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c01",
+        "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c02",
+        "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c03",
+        "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c04",
+        "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c05",
+        "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c06"
+      ],
+      "heading_path": [
+        "计算机学院数字逻辑2024级复习大纲"
+      ],
+      "source_ids": [
+        "digital-logic-008"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q1:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q1",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q10:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q10",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q11:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q11",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q12:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q12",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q13:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q13",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q14:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q14",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q15:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q15",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q16:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q16",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q17:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q17",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q18:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q18",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q19:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q19",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q2:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q2",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q20:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q20",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q21:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q21",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q22:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q22",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q23:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q23",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q24:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q24",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q25:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q25",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q26:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q26",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q27:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q27",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q3:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q3",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q4:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q4",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q5:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q5",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q6:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q6",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q7:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q7",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q8:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q8",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q9:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q9",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q1:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q1",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q10:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q10",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q11:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q11",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q12:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q12",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q13:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q13",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q14:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q14",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q15:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q15",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q16:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q16",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q17:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q17",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q18:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q18",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q19:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q19",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q2:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q2",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q20:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q20",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q21:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q21",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q22:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q22",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q23:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q23",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q24:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q24",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q25:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q25",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q26:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q26",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q27:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q27",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q28:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q28",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q29:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q29",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q3:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q3",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q30:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q30",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q31:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q31",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q32:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q32",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q33:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q33",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q4:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q4",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q5:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q5",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q6:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q6",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q7:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q7",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q8:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q8",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q9:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q9",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    }
+  ],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "digital-logic-001:h-数字逻辑作业:c01",
+        "digital-logic-001:h-数字逻辑作业:c02",
+        "digital-logic-001:h-数字逻辑作业:c03"
+      ],
+      "course_id": "digital_logic",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "digital_logic/digital-logic-001.md",
+      "source_id": "digital-logic-001",
+      "source_title": "数字逻辑作业",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "digital-logic-002:h-2012级计算机学院数字逻辑试卷-a卷题目:c01",
+        "digital-logic-002:q-digital-logic-002-q1:c01",
+        "digital-logic-002:q-digital-logic-002-q2:c01",
+        "digital-logic-002:q-digital-logic-002-q3:c01",
+        "digital-logic-002:q-digital-logic-002-q4:c01",
+        "digital-logic-002:q-digital-logic-002-q5:c01",
+        "digital-logic-002:q-digital-logic-002-q6:c01",
+        "digital-logic-002:q-digital-logic-002-q7:c01",
+        "digital-logic-002:q-digital-logic-002-q8:c01",
+        "digital-logic-002:q-digital-logic-002-q9:c01",
+        "digital-logic-002:q-digital-logic-002-q10:c01",
+        "digital-logic-002:q-digital-logic-002-q11:c01",
+        "digital-logic-002:q-digital-logic-002-q12:c01",
+        "digital-logic-002:q-digital-logic-002-q13:c01",
+        "digital-logic-002:q-digital-logic-002-q14:c01",
+        "digital-logic-002:q-digital-logic-002-q15:c01",
+        "digital-logic-002:q-digital-logic-002-q16:c01",
+        "digital-logic-002:q-digital-logic-002-q17:c01",
+        "digital-logic-002:q-digital-logic-002-q18:c01",
+        "digital-logic-002:q-digital-logic-002-q19:c01",
+        "digital-logic-002:q-digital-logic-002-q20:c01",
+        "digital-logic-002:q-digital-logic-002-q21:c01",
+        "digital-logic-002:q-digital-logic-002-q22:c01",
+        "digital-logic-002:q-digital-logic-002-q23:c01",
+        "digital-logic-002:q-digital-logic-002-q24:c01",
+        "digital-logic-002:q-digital-logic-002-q25:c01",
+        "digital-logic-002:q-digital-logic-002-q26:c01",
+        "digital-logic-002:q-digital-logic-002-q27:c01"
+      ],
+      "course_id": "digital_logic",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "digital_logic/digital-logic-002.md",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "year": "2012"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "digital-logic-003:h-2012级计算机学院数字逻辑试卷-b卷题目:c01",
+        "digital-logic-003:q-digital-logic-003-q1:c01",
+        "digital-logic-003:q-digital-logic-003-q2:c01",
+        "digital-logic-003:q-digital-logic-003-q3:c01",
+        "digital-logic-003:q-digital-logic-003-q4:c01",
+        "digital-logic-003:q-digital-logic-003-q5:c01",
+        "digital-logic-003:q-digital-logic-003-q6:c01",
+        "digital-logic-003:q-digital-logic-003-q7:c01",
+        "digital-logic-003:q-digital-logic-003-q8:c01",
+        "digital-logic-003:q-digital-logic-003-q9:c01",
+        "digital-logic-003:q-digital-logic-003-q10:c01",
+        "digital-logic-003:q-digital-logic-003-q11:c01",
+        "digital-logic-003:q-digital-logic-003-q12:c01",
+        "digital-logic-003:q-digital-logic-003-q13:c01",
+        "digital-logic-003:q-digital-logic-003-q14:c01",
+        "digital-logic-003:q-digital-logic-003-q15:c01",
+        "digital-logic-003:q-digital-logic-003-q16:c01",
+        "digital-logic-003:q-digital-logic-003-q17:c01",
+        "digital-logic-003:q-digital-logic-003-q18:c01",
+        "digital-logic-003:q-digital-logic-003-q19:c01",
+        "digital-logic-003:q-digital-logic-003-q20:c01",
+        "digital-logic-003:q-digital-logic-003-q21:c01",
+        "digital-logic-003:q-digital-logic-003-q22:c01",
+        "digital-logic-003:q-digital-logic-003-q23:c01",
+        "digital-logic-003:q-digital-logic-003-q24:c01",
+        "digital-logic-003:q-digital-logic-003-q25:c01",
+        "digital-logic-003:q-digital-logic-003-q26:c01",
+        "digital-logic-003:q-digital-logic-003-q27:c01",
+        "digital-logic-003:q-digital-logic-003-q28:c01",
+        "digital-logic-003:q-digital-logic-003-q29:c01",
+        "digital-logic-003:q-digital-logic-003-q30:c01",
+        "digital-logic-003:q-digital-logic-003-q31:c01",
+        "digital-logic-003:q-digital-logic-003-q32:c01",
+        "digital-logic-003:q-digital-logic-003-q33:c01"
+      ],
+      "course_id": "digital_logic",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "digital_logic/digital-logic-003.md",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "year": "2012"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "digital-logic-004:p1:c01",
+        "digital-logic-004:p2:c01",
+        "digital-logic-004:p3:c01",
+        "digital-logic-004:p4:c01",
+        "digital-logic-004:p5:c01",
+        "digital-logic-004:p6:c01",
+        "digital-logic-004:p7:c01",
+        "digital-logic-004:p8:c01",
+        "digital-logic-004:p9:c01"
+      ],
+      "course_id": "digital_logic",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "digital_logic/digital-logic-004.md",
+      "source_id": "digital-logic-004",
+      "source_title": "2018a",
+      "year": "2018"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "digital-logic-005:p1:c01",
+        "digital-logic-005:p2:c01",
+        "digital-logic-005:p3:c01",
+        "digital-logic-005:p4:c01",
+        "digital-logic-005:p5:c01",
+        "digital-logic-005:p6:c01",
+        "digital-logic-005:p7:c01",
+        "digital-logic-005:p8:c01",
+        "digital-logic-005:p9:c01"
+      ],
+      "course_id": "digital_logic",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "digital_logic/digital-logic-005.md",
+      "source_id": "digital-logic-005",
+      "source_title": "22a",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "digital-logic-006:p1:c01",
+        "digital-logic-006:p2:c01",
+        "digital-logic-006:p3:c01",
+        "digital-logic-006:p4:c01"
+      ],
+      "course_id": "digital_logic",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "digital_logic/digital-logic-006.md",
+      "source_id": "digital-logic-006",
+      "source_title": "数字逻辑07-A",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "digital-logic-007:p1:c01",
+        "digital-logic-007:p2:c01",
+        "digital-logic-007:p3:c01",
+        "digital-logic-007:p4:c01"
+      ],
+      "course_id": "digital_logic",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "digital_logic/digital-logic-007.md",
+      "source_id": "digital-logic-007",
+      "source_title": "数字逻辑07-B",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c01",
+        "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c02",
+        "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c03",
+        "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c04",
+        "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c05",
+        "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c06"
+      ],
+      "course_id": "digital_logic",
+      "document_role": "review_outline",
+      "locator_type": "none",
+      "output_md": "digital_logic/digital-logic-008.md",
+      "source_id": "digital-logic-008",
+      "source_title": "计算机学院数字逻辑2024级复习大纲",
+      "year": "2024"
+    }
+  ],
+  "statistics": {
+    "chunk_count": 97,
+    "question_count": 60,
+    "source_count": 8
+  },
+  "workflow_version": "workflow-contract-v1"
+}

@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "computer_networks",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "总评成绩组成主要讲什么？",
+      "expected_chunk_ids": [
+        "computer-networks-001:h-总评成绩组成:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习期末题目构成，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "computer-networks-002:h-期末题目构成:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习期末试卷及答案 2000级时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "computer-networks-003:h-计算机网络-期末试卷及答案-2000级:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把信道复用有哪几种方式的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做IPv4和IPv6的地址长度分别是多少时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用FTP属于哪一层协议举例说明吗？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "域名解析成IP地址的过程是什么怎么做？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做常见广播式网络一般采用_____和______结构。时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "目前以太网最常用的传输媒体是_________。的答案怎么判断？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把TCP和UDP有什么区别的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做数据链路层分为哪两个子层时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用网络管理的五大功能分别是什么举例说明吗？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "ARP怎么做？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做SDH时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "FDDI的答案怎么判断？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q12:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把WAN的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q13:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做QOS 三、选择题 每小题，共时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q14:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用网络层的互联设备是____。举例说明吗？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q15:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "IP协议是无连接的，其信息传输方式是____。怎么做？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q16:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做用于电子邮件的协议是____。时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q17:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "WEB使用____进行信息传递。的答案怎么判断？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q18:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把检查网络连通性的应用程序是____。的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q19:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做ISDN的基本速率是____。时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q20:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用在INTERNET中，按____地址进行寻址。举例说明吗？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q21:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "在下面的服务中，____不属于INTERNET标准的应用服务。怎么做？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q22:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做数据链路层的数据单位是____。时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q23:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "RIP采用哪种路由算法的答案怎么判断？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q24:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把TCP和UDP有什么区别的解题步骤写出来吗？，对应第25题",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q25:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做对等层实体之间采用____进行通信。时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q26:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用通过改变载波信号的相位值来表示数字信号1、0的方法，称为____.举例说明吗？",
+      "expected_chunk_ids": [
+        "computer-networks-003:q-computer-networks-003-q27:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

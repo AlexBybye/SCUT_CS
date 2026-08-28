@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "english",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "2023级学术第一学期考试大纲主要讲什么？",
+      "expected_chunk_ids": [
+        "english-004:h-2023级学术英语第一学期考试大纲:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习议论文写作个人总结，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "english-005:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习SUMMARY时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "english-006:h-英语summary:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "SUMMARY里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "english-006:h-英语summary:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习作文竞赛时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "english-007:h-英语作文竞赛:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考作文竞赛？",
+      "expected_chunk_ids": [
+        "english-007:h-英语作文竞赛:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "作文竞赛主要讲什么？",
+      "expected_chunk_ids": [
+        "english-007:h-英语作文竞赛:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习作文竞赛，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "english-007:h-英语作文竞赛:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习复习时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "english-008:h-英语复习:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "english-008:h-英语复习:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习2023级学术第一学期考试大纲时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "english-004:h-2023级学术英语第一学期考试大纲:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考议论文写作个人总结？",
+      "expected_chunk_ids": [
+        "english-005:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "SUMMARY主要讲什么？",
+      "expected_chunk_ids": [
+        "english-006:h-英语summary:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习SUMMARY，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "english-006:h-英语summary:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习作文竞赛时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "english-007:h-英语作文竞赛:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "作文竞赛里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "english-007:h-英语作文竞赛:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习作文竞赛时哪些概念容易混淆？，第17条",
+      "expected_chunk_ids": [
+        "english-007:h-英语作文竞赛:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考作文竞赛？，第18条",
+      "expected_chunk_ids": [
+        "english-007:h-英语作文竞赛:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习主要讲什么？",
+      "expected_chunk_ids": [
+        "english-008:h-英语复习:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习复习，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "english-008:h-英语复习:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习2023级学术第一学期考试大纲时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "english-004:h-2023级学术英语第一学期考试大纲:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "议论文写作个人总结里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "english-005:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习SUMMARY时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "english-006:h-英语summary:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考SUMMARY？",
+      "expected_chunk_ids": [
+        "english-006:h-英语summary:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "作文竞赛主要讲什么？，第25条",
+      "expected_chunk_ids": [
+        "english-007:h-英语作文竞赛:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习作文竞赛，应该从哪里开始？，第26条",
+      "expected_chunk_ids": [
+        "english-007:h-英语作文竞赛:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习作文竞赛时哪些内容最重要？，第27条",
+      "expected_chunk_ids": [
+        "english-007:h-英语作文竞赛:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "作文竞赛里的方法或结论怎么理解？，第28条",
+      "expected_chunk_ids": [
+        "english-007:h-英语作文竞赛:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习复习时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "english-008:h-英语复习:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考复习？",
+      "expected_chunk_ids": [
+        "english-008:h-英语复习:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

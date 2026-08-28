@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "intelligent_algorithms",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "CVRP主要讲什么？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-001:h-cvrp:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习CVRP，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-002:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习CVRP时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-002:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "CVRP里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-002:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习CVRP时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-002:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考CVRP？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-002:p5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "CVRP主要讲什么？，见第6页",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-002:p6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习CVRP，应该从哪里开始？，见第7页",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-002:p7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习CVRP时哪些内容最重要？，见第8页",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-002:p8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "CVRP里的方法或结论怎么理解？，见第9页",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-002:p9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习CVRP时哪些概念容易混淆？，见第10页",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-002:p10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考CVRP？，见第11页",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-002:p11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "CVRP主要讲什么？，见第12页",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-002:p12:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习竞赛小组汇报文档，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-003:h-智能算法竞赛小组汇报文档:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习竞赛小组汇报文档时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-003:h-智能算法竞赛小组汇报文档:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "竞赛小组汇报文档里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-004:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习竞赛小组汇报文档时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-004:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考竞赛小组汇报文档？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-004:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "0. 绪论pr主要讲什么？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-005:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习0. 绪论pr，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-005:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习0. 绪论pr时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-005:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "0. 绪论pr里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-005:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习0. 绪论pr时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-005:p5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考0. 绪论pr？",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-005:p6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "0. 绪论pr主要讲什么？，见第7页",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-005:p7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习0. 绪论pr，应该从哪里开始？，见第8页",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-005:p8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习0. 绪论pr时哪些内容最重要？，见第9页",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-005:p9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "0. 绪论pr里的方法或结论怎么理解？，见第10页",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-005:p10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习0. 绪论pr时哪些概念容易混淆？，见第11页",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-005:p11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考0. 绪论pr？，见第12页",
+      "expected_chunk_ids": [
+        "intelligent-algorithms-005:p12:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

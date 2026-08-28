@@ -1,0 +1,2741 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "university_physics_lab_2",
+  "course_pack_version": "course-pack-university_physics_lab_2-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-049:h-1:c01",
+        "university-physics-lab-2-061:h-1:c01"
+      ],
+      "heading_path": [
+        "1"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-049",
+        "university-physics-lab-2-061"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-036:h-1迈克尔逊干涉仪:c01",
+        "university-physics-lab-2-036:h-1迈克尔逊干涉仪:c02",
+        "university-physics-lab-2-036:h-1迈克尔逊干涉仪:c03",
+        "university-physics-lab-2-036:h-1迈克尔逊干涉仪:c04"
+      ],
+      "heading_path": [
+        "1迈克尔逊干涉仪"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-036"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-037:h-2固体导热系数的测量:c01",
+        "university-physics-lab-2-037:h-2固体导热系数的测量:c02",
+        "university-physics-lab-2-037:h-2固体导热系数的测量:c03",
+        "university-physics-lab-2-037:h-2固体导热系数的测量:c04"
+      ],
+      "heading_path": [
+        "2固体导热系数的测量"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-037"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-050:h-3:c01",
+        "university-physics-lab-2-062:h-3:c01"
+      ],
+      "heading_path": [
+        "3"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-050",
+        "university-physics-lab-2-062"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-001:h-3.2-数字示波器:c01",
+        "university-physics-lab-2-001:h-3.2-数字示波器:c02",
+        "university-physics-lab-2-001:h-3.2-数字示波器:c03"
+      ],
+      "heading_path": [
+        "3.2 数字示波器"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c01",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c02",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c03",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c04",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c05",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c06",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c07",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c08",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c09",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c10",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c11",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c12",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c13",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c14",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c15",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c16",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c17",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c18",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c19",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c20",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c21",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c22",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c23",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c24",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c25",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c26",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c27",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c28",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c29",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c30",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c31",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c32",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c33",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c34",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c35",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c36",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c37",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c38",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c39",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c40",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c41"
+      ],
+      "heading_path": [
+        "3.3 共振法测量材料的杨氏模量"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-003:h-3.7-用惠斯登电桥测电阻:c01",
+        "university-physics-lab-2-003:h-3.7-用惠斯登电桥测电阻:c02",
+        "university-physics-lab-2-003:h-3.7-用惠斯登电桥测电阻:c03",
+        "university-physics-lab-2-003:h-3.7-用惠斯登电桥测电阻:c04",
+        "university-physics-lab-2-003:h-3.7-用惠斯登电桥测电阻:c05"
+      ],
+      "heading_path": [
+        "3.7 用惠斯登电桥测电阻"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-073:h-3.通过-θ-调制-实现黑白图像彩色编码:c01",
+        "university-physics-lab-2-073:h-3.通过-θ-调制-实现黑白图像彩色编码:c02"
+      ],
+      "heading_path": [
+        "3.通过**θ**调制，实现黑白图像彩色编码。"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-073"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-038:h-3光栅特性及光波波长的测定:c01",
+        "university-physics-lab-2-038:h-3光栅特性及光波波长的测定:c02",
+        "university-physics-lab-2-038:h-3光栅特性及光波波长的测定:c03"
+      ],
+      "heading_path": [
+        "3光栅特性及光波波长的测定"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-039:h-3超声光栅及其应用:c01",
+        "university-physics-lab-2-039:h-3超声光栅及其应用:c02",
+        "university-physics-lab-2-039:h-3超声光栅及其应用:c03"
+      ],
+      "heading_path": [
+        "3超声光栅及其应用"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-039"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-085:h-4:c01",
+        "university-physics-lab-2-085:h-4:c02",
+        "university-physics-lab-2-085:h-4:c03",
+        "university-physics-lab-2-086:h-4:c01",
+        "university-physics-lab-2-086:h-4:c02"
+      ],
+      "heading_path": [
+        "4"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-085",
+        "university-physics-lab-2-086"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-004:h-4.1-光栅的特性及光波波长的测定:c01",
+        "university-physics-lab-2-004:h-4.1-光栅的特性及光波波长的测定:c02",
+        "university-physics-lab-2-004:h-4.1-光栅的特性及光波波长的测定:c03",
+        "university-physics-lab-2-004:h-4.1-光栅的特性及光波波长的测定:c04"
+      ],
+      "heading_path": [
+        "4.1 光栅的特性及光波波长的测定"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-005:h-4.10超声波:c01",
+        "university-physics-lab-2-005:h-4.10超声波:c02",
+        "university-physics-lab-2-005:h-4.10超声波:c03",
+        "university-physics-lab-2-005:h-4.10超声波:c04"
+      ],
+      "heading_path": [
+        "4.10超声波"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-006:h-4.12-迈克尔逊干涉仪的调整与使用:c01",
+        "university-physics-lab-2-006:h-4.12-迈克尔逊干涉仪的调整与使用:c02",
+        "university-physics-lab-2-006:h-4.12-迈克尔逊干涉仪的调整与使用:c03",
+        "university-physics-lab-2-006:h-4.12-迈克尔逊干涉仪的调整与使用:c04"
+      ],
+      "heading_path": [
+        "4.12 迈克尔逊干涉仪的调整与使用"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-007:h-4.13-物质旋光率的测量:c01",
+        "university-physics-lab-2-007:h-4.13-物质旋光率的测量:c02"
+      ],
+      "heading_path": [
+        "4.13 物质旋光率的测量"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-008:h-4.14-霍尔效应法测磁场:c01",
+        "university-physics-lab-2-008:h-4.14-霍尔效应法测磁场:c02",
+        "university-physics-lab-2-008:h-4.14-霍尔效应法测磁场:c03"
+      ],
+      "heading_path": [
+        "4.14 霍尔效应法测磁场"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-083:h-4.14-定:c01",
+        "university-physics-lab-2-083:h-4.14-定:c02",
+        "university-physics-lab-2-083:h-4.14-定:c03",
+        "university-physics-lab-2-083:h-4.14-定:c04"
+      ],
+      "heading_path": [
+        "4.14（定）"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-083"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-009:h-4.17-非平衡电桥电压输出特性:c01",
+        "university-physics-lab-2-009:h-4.17-非平衡电桥电压输出特性:c02",
+        "university-physics-lab-2-009:h-4.17-非平衡电桥电压输出特性:c03"
+      ],
+      "heading_path": [
+        "4.17 非平衡电桥电压输出特性"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-087:h-4.1-草:c01",
+        "university-physics-lab-2-087:h-4.1-草:c02",
+        "university-physics-lab-2-087:h-4.1-草:c03"
+      ],
+      "heading_path": [
+        "4.1（草）"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-087"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-010:h-4.2-超声光栅及其应用:c01",
+        "university-physics-lab-2-010:h-4.2-超声光栅及其应用:c02"
+      ],
+      "heading_path": [
+        "4.2 超声光栅及其应用"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-011:h-4.21-巨磁阻效应及其应用:c01",
+        "university-physics-lab-2-011:h-4.21-巨磁阻效应及其应用:c02",
+        "university-physics-lab-2-011:h-4.21-巨磁阻效应及其应用:c03",
+        "university-physics-lab-2-011:h-4.21-巨磁阻效应及其应用:c04"
+      ],
+      "heading_path": [
+        "4.21 巨磁阻效应及其应用"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-084:h-4.21-定:c01",
+        "university-physics-lab-2-084:h-4.21-定:c02",
+        "university-physics-lab-2-084:h-4.21-定:c03",
+        "university-physics-lab-2-084:h-4.21-定:c04"
+      ],
+      "heading_path": [
+        "4.21（定）"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-084"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-012:h-4.22-新能源的综合利用及探索-太阳能电池:c01",
+        "university-physics-lab-2-012:h-4.22-新能源的综合利用及探索-太阳能电池:c02",
+        "university-physics-lab-2-012:h-4.22-新能源的综合利用及探索-太阳能电池:c03"
+      ],
+      "heading_path": [
+        "4.22 新能源的综合利用及探索（太阳能电池）"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-088:h-4.2-草:c01",
+        "university-physics-lab-2-088:h-4.2-草:c02",
+        "university-physics-lab-2-088:h-4.2-草:c03"
+      ],
+      "heading_path": [
+        "4.2（草）"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-088"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-013:h-4.4-pn结正向电压温度特性研究:c01",
+        "university-physics-lab-2-013:h-4.4-pn结正向电压温度特性研究:c02",
+        "university-physics-lab-2-013:h-4.4-pn结正向电压温度特性研究:c03"
+      ],
+      "heading_path": [
+        "4.4 PN结正向电压温度特性研究"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-081:h-4.5-结题:c01",
+        "university-physics-lab-2-081:h-4.5-结题:c02",
+        "university-physics-lab-2-081:h-4.5-结题:c03",
+        "university-physics-lab-2-081:h-4.5-结题:c04",
+        "university-physics-lab-2-081:h-4.5-结题:c05",
+        "university-physics-lab-2-081:h-4.5-结题:c06"
+      ],
+      "heading_path": [
+        "4.5（结题）"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-081"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-014:h-4.6-固体导热系数测量:c01",
+        "university-physics-lab-2-014:h-4.6-固体导热系数测量:c02",
+        "university-physics-lab-2-014:h-4.6-固体导热系数测量:c03"
+      ],
+      "heading_path": [
+        "4.6 固体导热系数测量"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-082:h-4.7-结题:c01",
+        "university-physics-lab-2-082:h-4.7-结题:c02",
+        "university-physics-lab-2-082:h-4.7-结题:c03",
+        "university-physics-lab-2-082:h-4.7-结题:c04",
+        "university-physics-lab-2-082:h-4.7-结题:c05"
+      ],
+      "heading_path": [
+        "4.7（结题）"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-082"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-015:h-4.8-交流电桥综合设计性实验:c01",
+        "university-physics-lab-2-015:h-4.8-交流电桥综合设计性实验:c02",
+        "university-physics-lab-2-015:h-4.8-交流电桥综合设计性实验:c03",
+        "university-physics-lab-2-015:h-4.8-交流电桥综合设计性实验:c04"
+      ],
+      "heading_path": [
+        "4.8 交流电桥综合设计性实验"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-080:h-4.8-草:c01",
+        "university-physics-lab-2-080:h-4.8-草:c02",
+        "university-physics-lab-2-080:h-4.8-草:c03"
+      ],
+      "heading_path": [
+        "4.8（草）"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-080"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c01",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c02",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c03",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c04",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c05",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c06",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c07",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c08",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c09",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c10",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c11"
+      ],
+      "heading_path": [
+        "4.9铁磁物质磁化曲线和磁滞回线的测量 & 4.10超声波在介质中在传播速度的测量"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-071"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-040:h-4交流电桥:c01",
+        "university-physics-lab-2-040:h-4交流电桥:c02",
+        "university-physics-lab-2-040:h-4交流电桥:c03",
+        "university-physics-lab-2-041:s1:c01",
+        "university-physics-lab-2-041:s2:c01",
+        "university-physics-lab-2-041:s3:c01",
+        "university-physics-lab-2-041:s4:c01",
+        "university-physics-lab-2-041:s5:c01",
+        "university-physics-lab-2-041:s6:c01",
+        "university-physics-lab-2-041:s7:c01",
+        "university-physics-lab-2-041:s8:c01",
+        "university-physics-lab-2-041:s9:c01",
+        "university-physics-lab-2-041:s10:c01",
+        "university-physics-lab-2-041:s11:c01",
+        "university-physics-lab-2-041:s12:c01",
+        "university-physics-lab-2-041:s13:c01",
+        "university-physics-lab-2-041:s14:c01",
+        "university-physics-lab-2-041:s15:c01",
+        "university-physics-lab-2-041:s16:c01",
+        "university-physics-lab-2-041:s17:c01",
+        "university-physics-lab-2-041:s18:c01",
+        "university-physics-lab-2-041:s19:c01"
+      ],
+      "heading_path": [
+        "4交流电桥"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-040",
+        "university-physics-lab-2-041"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-042:s1:c01"
+      ],
+      "heading_path": [
+        "4科大奥锐虚拟系统简单指引20221126",
+        "内容及要求"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-042"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-042:s3:c01"
+      ],
+      "heading_path": [
+        "4科大奥锐虚拟系统简单指引20221126",
+        "学生使用参考"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-042"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-042:s2:c01"
+      ],
+      "heading_path": [
+        "4科大奥锐虚拟系统简单指引20221126",
+        "虚拟系统碰到的问题及解决方法"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-042"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-043:h-5磁滞回线:c01",
+        "university-physics-lab-2-043:h-5磁滞回线:c02",
+        "university-physics-lab-2-043:h-5磁滞回线:c03",
+        "university-physics-lab-2-043:h-5磁滞回线:c04",
+        "university-physics-lab-2-043:h-5磁滞回线:c05"
+      ],
+      "heading_path": [
+        "5磁滞回线"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-043"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-044:h-5磁滞回线和超声波声速测量预习指导:c01"
+      ],
+      "heading_path": [
+        "5磁滞回线和超声波声速测量预习指导"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-044"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-045:h-6光栅动画:c01",
+        "university-physics-lab-2-045:h-6光栅动画:c02",
+        "university-physics-lab-2-045:h-6光栅动画:c03",
+        "university-physics-lab-2-045:h-6光栅动画:c04",
+        "university-physics-lab-2-045:h-6光栅动画:c05",
+        "university-physics-lab-2-045:h-6光栅动画:c06"
+      ],
+      "heading_path": [
+        "6光栅动画"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-045"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-051:h-load:c01",
+        "university-physics-lab-2-052:h-load:c01",
+        "university-physics-lab-2-053:h-load:c01",
+        "university-physics-lab-2-054:h-load:c01",
+        "university-physics-lab-2-055:h-load:c01",
+        "university-physics-lab-2-056:h-load:c01",
+        "university-physics-lab-2-057:h-load:c01",
+        "university-physics-lab-2-058:h-load:c01",
+        "university-physics-lab-2-059:h-load:c01",
+        "university-physics-lab-2-060:h-load:c01"
+      ],
+      "heading_path": [
+        "load"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-051",
+        "university-physics-lab-2-052",
+        "university-physics-lab-2-053",
+        "university-physics-lab-2-054",
+        "university-physics-lab-2-055",
+        "university-physics-lab-2-056",
+        "university-physics-lab-2-057",
+        "university-physics-lab-2-058",
+        "university-physics-lab-2-059",
+        "university-physics-lab-2-060"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-063:h-walk:c01",
+        "university-physics-lab-2-064:h-walk:c01",
+        "university-physics-lab-2-065:h-walk:c01",
+        "university-physics-lab-2-066:h-walk:c01",
+        "university-physics-lab-2-067:h-walk:c01",
+        "university-physics-lab-2-068:h-walk:c01",
+        "university-physics-lab-2-069:h-walk:c01",
+        "university-physics-lab-2-070:h-walk:c01"
+      ],
+      "heading_path": [
+        "walk"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-063",
+        "university-physics-lab-2-064",
+        "university-physics-lab-2-065",
+        "university-physics-lab-2-066",
+        "university-physics-lab-2-067",
+        "university-physics-lab-2-068",
+        "university-physics-lab-2-069",
+        "university-physics-lab-2-070"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-074:p1:c01",
+        "university-physics-lab-2-074:p1:c02",
+        "university-physics-lab-2-074:p2:c01",
+        "university-physics-lab-2-074:p2:c02",
+        "university-physics-lab-2-074:p3:c01"
+      ],
+      "heading_path": [
+        "《自组显微镜》设计性实验的探索与实践_杨帆"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-074"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-016:h-光栅特性与波长测定:c01",
+        "university-physics-lab-2-016:h-光栅特性与波长测定:c02",
+        "university-physics-lab-2-016:h-光栅特性与波长测定:c03"
+      ],
+      "heading_path": [
+        "光栅特性与波长测定"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-017:h-光栅的特性及光波波长的测定-超声光栅及其应用:c01",
+        "university-physics-lab-2-017:h-光栅的特性及光波波长的测定-超声光栅及其应用:c02",
+        "university-physics-lab-2-017:h-光栅的特性及光波波长的测定-超声光栅及其应用:c03",
+        "university-physics-lab-2-017:h-光栅的特性及光波波长的测定-超声光栅及其应用:c04",
+        "university-physics-lab-2-017:h-光栅的特性及光波波长的测定-超声光栅及其应用:c05",
+        "university-physics-lab-2-017:h-光栅的特性及光波波长的测定-超声光栅及其应用:c06"
+      ],
+      "heading_path": [
+        "光栅的特性及光波波长的测定&超声光栅及其应用"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-018:h-光的偏振特性研究-光的衍射实验报告:c01",
+        "university-physics-lab-2-018:h-光的偏振特性研究-光的衍射实验报告:c02",
+        "university-physics-lab-2-018:h-光的偏振特性研究-光的衍射实验报告:c03",
+        "university-physics-lab-2-018:h-光的偏振特性研究-光的衍射实验报告:c04",
+        "university-physics-lab-2-018:h-光的偏振特性研究-光的衍射实验报告:c05",
+        "university-physics-lab-2-018:h-光的偏振特性研究-光的衍射实验报告:c06",
+        "university-physics-lab-2-018:h-光的偏振特性研究-光的衍射实验报告:c07",
+        "university-physics-lab-2-018:h-光的偏振特性研究-光的衍射实验报告:c08"
+      ],
+      "heading_path": [
+        "光的偏振特性研究&光的衍射实验报告"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-019:h-光的等厚干涉:c01",
+        "university-physics-lab-2-019:h-光的等厚干涉:c02",
+        "university-physics-lab-2-019:h-光的等厚干涉:c03",
+        "university-physics-lab-2-019:h-光的等厚干涉:c04"
+      ],
+      "heading_path": [
+        "光的等厚干涉"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-020:h-光盘轨距的测量及其容量估算:c01",
+        "university-physics-lab-2-020:h-光盘轨距的测量及其容量估算:c02",
+        "university-physics-lab-2-020:h-光盘轨距的测量及其容量估算:c03",
+        "university-physics-lab-2-020:h-光盘轨距的测量及其容量估算:c04"
+      ],
+      "heading_path": [
+        "光盘轨距的测量及其容量估算"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-021:h-压力测人体脉搏:c01",
+        "university-physics-lab-2-021:h-压力测人体脉搏:c02"
+      ],
+      "heading_path": [
+        "压力测人体脉搏"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-022:h-双光栅测微弱振动位移:c01",
+        "university-physics-lab-2-022:h-双光栅测微弱振动位移:c02",
+        "university-physics-lab-2-022:h-双光栅测微弱振动位移:c03",
+        "university-physics-lab-2-022:h-双光栅测微弱振动位移:c04"
+      ],
+      "heading_path": [
+        "双光栅测微弱振动位移"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-023:h-双光栅测量微弱振动位移量实验报告:c01",
+        "university-physics-lab-2-023:h-双光栅测量微弱振动位移量实验报告:c02",
+        "university-physics-lab-2-023:h-双光栅测量微弱振动位移量实验报告:c03",
+        "university-physics-lab-2-023:h-双光栅测量微弱振动位移量实验报告:c04",
+        "university-physics-lab-2-023:h-双光栅测量微弱振动位移量实验报告:c05",
+        "university-physics-lab-2-023:h-双光栅测量微弱振动位移量实验报告:c06",
+        "university-physics-lab-2-023:h-双光栅测量微弱振动位移量实验报告:c07",
+        "university-physics-lab-2-023:h-双光栅测量微弱振动位移量实验报告:c08"
+      ],
+      "heading_path": [
+        "双光栅测量微弱振动位移量实验报告"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-023"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c01",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c02",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c03",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c04",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c05",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c06",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c07",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c08",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c09",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c10",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c11",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c12",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c13",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c14"
+      ],
+      "heading_path": [
+        "变温霍尔效应&三线摆测转动惯量"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-072"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-024:h-多普勒测声速:c01",
+        "university-physics-lab-2-024:h-多普勒测声速:c02",
+        "university-physics-lab-2-024:h-多普勒测声速:c03",
+        "university-physics-lab-2-024:h-多普勒测声速:c04",
+        "university-physics-lab-2-024:h-多普勒测声速:c05",
+        "university-physics-lab-2-024:h-多普勒测声速:c06"
+      ],
+      "heading_path": [
+        "多普勒测声速"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-024"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-089:p1:c01",
+        "university-physics-lab-2-089:p2:c01"
+      ],
+      "heading_path": [
+        "大物实验备考笔记"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-089"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-073:h-实验讲义-阿贝成像和空间滤波实验:c01",
+        "university-physics-lab-2-073:h-实验讲义-阿贝成像和空间滤波实验:c02",
+        "university-physics-lab-2-073:h-实验讲义-阿贝成像和空间滤波实验:c03",
+        "university-physics-lab-2-073:h-实验讲义-阿贝成像和空间滤波实验:c04"
+      ],
+      "heading_path": [
+        "实验讲义 阿贝成像和空间滤波实验"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-073"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-075:h-模板:c01"
+      ],
+      "heading_path": [
+        "模板"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-075"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-025:h-波尔共振:c01",
+        "university-physics-lab-2-025:h-波尔共振:c02",
+        "university-physics-lab-2-025:h-波尔共振:c03",
+        "university-physics-lab-2-025:h-波尔共振:c04"
+      ],
+      "heading_path": [
+        "波尔共振"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-025"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-026:h-液体动力粘度的测量-用拉脱法测定液体表面张力系数:c01",
+        "university-physics-lab-2-026:h-液体动力粘度的测量-用拉脱法测定液体表面张力系数:c02",
+        "university-physics-lab-2-026:h-液体动力粘度的测量-用拉脱法测定液体表面张力系数:c03",
+        "university-physics-lab-2-026:h-液体动力粘度的测量-用拉脱法测定液体表面张力系数:c04",
+        "university-physics-lab-2-026:h-液体动力粘度的测量-用拉脱法测定液体表面张力系数:c05"
+      ],
+      "heading_path": [
+        "液体动力粘度的测量 用拉脱法测定液体表面张力系数"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-026"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-027:h-物理实验字体模板:c01",
+        "university-physics-lab-2-027:h-物理实验字体模板:c02",
+        "university-physics-lab-2-027:h-物理实验字体模板:c03"
+      ],
+      "heading_path": [
+        "物理实验字体模板"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-027"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-046:h-物理实验报告模板:c01"
+      ],
+      "heading_path": [
+        "物理实验报告模板"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-046"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-047:s6:c01"
+      ],
+      "heading_path": [
+        "磁滞回线-2022-大学城",
+        "仪器特性"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-047"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-047:s1:c01"
+      ],
+      "heading_path": [
+        "磁滞回线-2022-大学城",
+        "内容提要"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-047"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-047:s3:c01"
+      ],
+      "heading_path": [
+        "磁滞回线-2022-大学城",
+        "名词解释"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-047"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-047:s2:c01"
+      ],
+      "heading_path": [
+        "磁滞回线-2022-大学城",
+        "实验目的"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-047"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-047:s21:c01"
+      ],
+      "heading_path": [
+        "磁滞回线-2022-大学城",
+        "实验装置"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-047"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-047:s5:c01"
+      ],
+      "heading_path": [
+        "磁滞回线-2022-大学城",
+        "操作指南"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-047"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-047:s22:c01"
+      ],
+      "heading_path": [
+        "磁滞回线-2022-大学城",
+        "数据"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-047"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-047:s13:c01",
+        "university-physics-lab-2-047:s14:c01",
+        "university-physics-lab-2-047:s15:c01"
+      ],
+      "heading_path": [
+        "磁滞回线-2022-大学城",
+        "硬磁与软磁材料"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-047"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-047:s12:c01"
+      ],
+      "heading_path": [
+        "磁滞回线-2022-大学城",
+        "磁滞回线"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-047"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-047:s16:c01",
+        "university-physics-lab-2-047:s17:c01",
+        "university-physics-lab-2-047:s18:c01",
+        "university-physics-lab-2-047:s19:c01",
+        "university-physics-lab-2-047:s20:c01"
+      ],
+      "heading_path": [
+        "磁滞回线-2022-大学城",
+        "磁滞实验仪"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-047"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-047:s10:c01",
+        "university-physics-lab-2-047:s11:c01"
+      ],
+      "heading_path": [
+        "磁滞回线-2022-大学城",
+        "起始磁化曲线"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-047"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-047:s7:c01",
+        "university-physics-lab-2-047:s8:c01",
+        "university-physics-lab-2-047:s9:c01"
+      ],
+      "heading_path": [
+        "磁滞回线-2022-大学城",
+        "问题处理"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-047"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-047:s4:c01"
+      ],
+      "heading_path": [
+        "磁滞回线-2022-大学城",
+        "难点分析"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-047"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-048:s1:c01",
+        "university-physics-lab-2-048:s2:c01",
+        "university-physics-lab-2-048:s3:c01",
+        "university-physics-lab-2-048:s4:c01",
+        "university-physics-lab-2-048:s5:c01",
+        "university-physics-lab-2-048:s6:c01",
+        "university-physics-lab-2-048:s7:c01",
+        "university-physics-lab-2-048:s8:c01",
+        "university-physics-lab-2-048:s9:c01",
+        "university-physics-lab-2-048:s10:c01",
+        "university-physics-lab-2-048:s11:c01",
+        "university-physics-lab-2-048:s12:c01",
+        "university-physics-lab-2-048:s13:c01",
+        "university-physics-lab-2-048:s14:c01",
+        "university-physics-lab-2-048:s15:c01",
+        "university-physics-lab-2-048:s16:c01",
+        "university-physics-lab-2-048:s17:c01",
+        "university-physics-lab-2-048:s18:c01",
+        "university-physics-lab-2-048:s19:c01"
+      ],
+      "heading_path": [
+        "磁滞回线-国际"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-048"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-028:h-磁谐振无线电能传输:c01",
+        "university-physics-lab-2-028:h-磁谐振无线电能传输:c02"
+      ],
+      "heading_path": [
+        "磁谐振无线电能传输"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-028"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-029:h-红外物理特性及应用:c01",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c02",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c03",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c04",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c05",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c06",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c07",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c08",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c09",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c10"
+      ],
+      "heading_path": [
+        "红外物理特性及应用"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-029"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-076:p1:c01"
+      ],
+      "heading_path": [
+        "自组望远镜和显微镜"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-076"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-077:p1:c01",
+        "university-physics-lab-2-077:p1:c02",
+        "university-physics-lab-2-077:p2:c01",
+        "university-physics-lab-2-077:p2:c02",
+        "university-physics-lab-2-077:p3:c01",
+        "university-physics-lab-2-077:p4:c01",
+        "university-physics-lab-2-077:p4:c02"
+      ],
+      "heading_path": [
+        "自组望远镜实验的改进研究_叶丽军"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-077"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-078:p1:c01",
+        "university-physics-lab-2-078:p2:c01",
+        "university-physics-lab-2-078:p2:c02",
+        "university-physics-lab-2-078:p3:c01",
+        "university-physics-lab-2-078:p3:c02"
+      ],
+      "heading_path": [
+        "自组望远镜测量凹透镜焦距_施洋"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-078"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-031:h-莫尔效应及光栅传感实验:c01",
+        "university-physics-lab-2-031:h-莫尔效应及光栅传感实验:c02",
+        "university-physics-lab-2-031:h-莫尔效应及光栅传感实验:c03",
+        "university-physics-lab-2-031:h-莫尔效应及光栅传感实验:c04",
+        "university-physics-lab-2-031:h-莫尔效应及光栅传感实验:c05"
+      ],
+      "heading_path": [
+        "莫尔效应及光栅传感实验"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-031"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c01",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c02",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c03",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c04",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c05",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c06",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c07",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c08",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c09",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c10"
+      ],
+      "heading_path": [
+        "莫尔效应及光栅传感实验&红外物理特性及其应用"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-030"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-079:h-设计性实验-自组望远镜与显微镜:c01",
+        "university-physics-lab-2-079:h-设计性实验-自组望远镜与显微镜:c02",
+        "university-physics-lab-2-079:h-设计性实验-自组望远镜与显微镜:c03"
+      ],
+      "heading_path": [
+        "设计性实验：自组望远镜与显微镜"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-079"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-032:h-超声光栅:c01",
+        "university-physics-lab-2-032:h-超声光栅:c02"
+      ],
+      "heading_path": [
+        "超声光栅"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-032"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-033:h-超声波材料检测-弯曲法测杨氏模量实验报告:c01",
+        "university-physics-lab-2-033:h-超声波材料检测-弯曲法测杨氏模量实验报告:c02",
+        "university-physics-lab-2-033:h-超声波材料检测-弯曲法测杨氏模量实验报告:c03"
+      ],
+      "heading_path": [
+        "超声波材料检测&弯曲法测杨氏模量实验报告"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-033"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-034:h-迈克尔逊干涉仪:c01",
+        "university-physics-lab-2-034:h-迈克尔逊干涉仪:c02",
+        "university-physics-lab-2-034:h-迈克尔逊干涉仪:c03",
+        "university-physics-lab-2-034:h-迈克尔逊干涉仪:c04",
+        "university-physics-lab-2-034:h-迈克尔逊干涉仪:c05"
+      ],
+      "heading_path": [
+        "迈克尔逊干涉仪"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-034"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-lab-2-035:h-阿贝成像-空间滤波报告:c01",
+        "university-physics-lab-2-035:h-阿贝成像-空间滤波报告:c02",
+        "university-physics-lab-2-035:h-阿贝成像-空间滤波报告:c03",
+        "university-physics-lab-2-035:h-阿贝成像-空间滤波报告:c04"
+      ],
+      "heading_path": [
+        "阿贝成像&空间滤波报告"
+      ],
+      "source_ids": [
+        "university-physics-lab-2-035"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-001:h-3.2-数字示波器:c01",
+        "university-physics-lab-2-001:h-3.2-数字示波器:c02",
+        "university-physics-lab-2-001:h-3.2-数字示波器:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-001.md",
+      "source_id": "university-physics-lab-2-001",
+      "source_title": "3.2 数字示波器",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c01",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c02",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c03",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c04",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c05",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c06",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c07",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c08",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c09",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c10",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c11",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c12",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c13",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c14",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c15",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c16",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c17",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c18",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c19",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c20",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c21",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c22",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c23",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c24",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c25",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c26",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c27",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c28",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c29",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c30",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c31",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c32",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c33",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c34",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c35",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c36",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c37",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c38",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c39",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c40",
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c41"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-002.md",
+      "source_id": "university-physics-lab-2-002",
+      "source_title": "3.3 共振法测量材料的杨氏模量",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-003:h-3.7-用惠斯登电桥测电阻:c01",
+        "university-physics-lab-2-003:h-3.7-用惠斯登电桥测电阻:c02",
+        "university-physics-lab-2-003:h-3.7-用惠斯登电桥测电阻:c03",
+        "university-physics-lab-2-003:h-3.7-用惠斯登电桥测电阻:c04",
+        "university-physics-lab-2-003:h-3.7-用惠斯登电桥测电阻:c05"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-003.md",
+      "source_id": "university-physics-lab-2-003",
+      "source_title": "3.7 用惠斯登电桥测电阻",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-004:h-4.1-光栅的特性及光波波长的测定:c01",
+        "university-physics-lab-2-004:h-4.1-光栅的特性及光波波长的测定:c02",
+        "university-physics-lab-2-004:h-4.1-光栅的特性及光波波长的测定:c03",
+        "university-physics-lab-2-004:h-4.1-光栅的特性及光波波长的测定:c04"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-004.md",
+      "source_id": "university-physics-lab-2-004",
+      "source_title": "4.1 光栅的特性及光波波长的测定",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-005:h-4.10超声波:c01",
+        "university-physics-lab-2-005:h-4.10超声波:c02",
+        "university-physics-lab-2-005:h-4.10超声波:c03",
+        "university-physics-lab-2-005:h-4.10超声波:c04"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-005.md",
+      "source_id": "university-physics-lab-2-005",
+      "source_title": "4.10超声波",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-006:h-4.12-迈克尔逊干涉仪的调整与使用:c01",
+        "university-physics-lab-2-006:h-4.12-迈克尔逊干涉仪的调整与使用:c02",
+        "university-physics-lab-2-006:h-4.12-迈克尔逊干涉仪的调整与使用:c03",
+        "university-physics-lab-2-006:h-4.12-迈克尔逊干涉仪的调整与使用:c04"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-006.md",
+      "source_id": "university-physics-lab-2-006",
+      "source_title": "4.12 迈克尔逊干涉仪的调整与使用",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-007:h-4.13-物质旋光率的测量:c01",
+        "university-physics-lab-2-007:h-4.13-物质旋光率的测量:c02"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-007.md",
+      "source_id": "university-physics-lab-2-007",
+      "source_title": "4.13 物质旋光率的测量",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-008:h-4.14-霍尔效应法测磁场:c01",
+        "university-physics-lab-2-008:h-4.14-霍尔效应法测磁场:c02",
+        "university-physics-lab-2-008:h-4.14-霍尔效应法测磁场:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-008.md",
+      "source_id": "university-physics-lab-2-008",
+      "source_title": "4.14 霍尔效应法测磁场",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-009:h-4.17-非平衡电桥电压输出特性:c01",
+        "university-physics-lab-2-009:h-4.17-非平衡电桥电压输出特性:c02",
+        "university-physics-lab-2-009:h-4.17-非平衡电桥电压输出特性:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-009.md",
+      "source_id": "university-physics-lab-2-009",
+      "source_title": "4.17 非平衡电桥电压输出特性",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-010:h-4.2-超声光栅及其应用:c01",
+        "university-physics-lab-2-010:h-4.2-超声光栅及其应用:c02"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-010.md",
+      "source_id": "university-physics-lab-2-010",
+      "source_title": "4.2 超声光栅及其应用",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-011:h-4.21-巨磁阻效应及其应用:c01",
+        "university-physics-lab-2-011:h-4.21-巨磁阻效应及其应用:c02",
+        "university-physics-lab-2-011:h-4.21-巨磁阻效应及其应用:c03",
+        "university-physics-lab-2-011:h-4.21-巨磁阻效应及其应用:c04"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-011.md",
+      "source_id": "university-physics-lab-2-011",
+      "source_title": "4.21 巨磁阻效应及其应用",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-012:h-4.22-新能源的综合利用及探索-太阳能电池:c01",
+        "university-physics-lab-2-012:h-4.22-新能源的综合利用及探索-太阳能电池:c02",
+        "university-physics-lab-2-012:h-4.22-新能源的综合利用及探索-太阳能电池:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-012.md",
+      "source_id": "university-physics-lab-2-012",
+      "source_title": "4.22 新能源的综合利用及探索（太阳能电池）",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-013:h-4.4-pn结正向电压温度特性研究:c01",
+        "university-physics-lab-2-013:h-4.4-pn结正向电压温度特性研究:c02",
+        "university-physics-lab-2-013:h-4.4-pn结正向电压温度特性研究:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-013.md",
+      "source_id": "university-physics-lab-2-013",
+      "source_title": "4.4 PN结正向电压温度特性研究",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-014:h-4.6-固体导热系数测量:c01",
+        "university-physics-lab-2-014:h-4.6-固体导热系数测量:c02",
+        "university-physics-lab-2-014:h-4.6-固体导热系数测量:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-014.md",
+      "source_id": "university-physics-lab-2-014",
+      "source_title": "4.6 固体导热系数测量",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-015:h-4.8-交流电桥综合设计性实验:c01",
+        "university-physics-lab-2-015:h-4.8-交流电桥综合设计性实验:c02",
+        "university-physics-lab-2-015:h-4.8-交流电桥综合设计性实验:c03",
+        "university-physics-lab-2-015:h-4.8-交流电桥综合设计性实验:c04"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-015.md",
+      "source_id": "university-physics-lab-2-015",
+      "source_title": "4.8 交流电桥综合设计性实验",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-016:h-光栅特性与波长测定:c01",
+        "university-physics-lab-2-016:h-光栅特性与波长测定:c02",
+        "university-physics-lab-2-016:h-光栅特性与波长测定:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-016.md",
+      "source_id": "university-physics-lab-2-016",
+      "source_title": "光栅特性与波长测定",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-017:h-光栅的特性及光波波长的测定-超声光栅及其应用:c01",
+        "university-physics-lab-2-017:h-光栅的特性及光波波长的测定-超声光栅及其应用:c02",
+        "university-physics-lab-2-017:h-光栅的特性及光波波长的测定-超声光栅及其应用:c03",
+        "university-physics-lab-2-017:h-光栅的特性及光波波长的测定-超声光栅及其应用:c04",
+        "university-physics-lab-2-017:h-光栅的特性及光波波长的测定-超声光栅及其应用:c05",
+        "university-physics-lab-2-017:h-光栅的特性及光波波长的测定-超声光栅及其应用:c06"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-017.md",
+      "source_id": "university-physics-lab-2-017",
+      "source_title": "光栅的特性及光波波长的测定&超声光栅及其应用",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-018:h-光的偏振特性研究-光的衍射实验报告:c01",
+        "university-physics-lab-2-018:h-光的偏振特性研究-光的衍射实验报告:c02",
+        "university-physics-lab-2-018:h-光的偏振特性研究-光的衍射实验报告:c03",
+        "university-physics-lab-2-018:h-光的偏振特性研究-光的衍射实验报告:c04",
+        "university-physics-lab-2-018:h-光的偏振特性研究-光的衍射实验报告:c05",
+        "university-physics-lab-2-018:h-光的偏振特性研究-光的衍射实验报告:c06",
+        "university-physics-lab-2-018:h-光的偏振特性研究-光的衍射实验报告:c07",
+        "university-physics-lab-2-018:h-光的偏振特性研究-光的衍射实验报告:c08"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-018.md",
+      "source_id": "university-physics-lab-2-018",
+      "source_title": "光的偏振特性研究&光的衍射实验报告",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-019:h-光的等厚干涉:c01",
+        "university-physics-lab-2-019:h-光的等厚干涉:c02",
+        "university-physics-lab-2-019:h-光的等厚干涉:c03",
+        "university-physics-lab-2-019:h-光的等厚干涉:c04"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-019.md",
+      "source_id": "university-physics-lab-2-019",
+      "source_title": "光的等厚干涉",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-020:h-光盘轨距的测量及其容量估算:c01",
+        "university-physics-lab-2-020:h-光盘轨距的测量及其容量估算:c02",
+        "university-physics-lab-2-020:h-光盘轨距的测量及其容量估算:c03",
+        "university-physics-lab-2-020:h-光盘轨距的测量及其容量估算:c04"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-020.md",
+      "source_id": "university-physics-lab-2-020",
+      "source_title": "光盘轨距的测量及其容量估算",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-021:h-压力测人体脉搏:c01",
+        "university-physics-lab-2-021:h-压力测人体脉搏:c02"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-021.md",
+      "source_id": "university-physics-lab-2-021",
+      "source_title": "压力测人体脉搏",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-022:h-双光栅测微弱振动位移:c01",
+        "university-physics-lab-2-022:h-双光栅测微弱振动位移:c02",
+        "university-physics-lab-2-022:h-双光栅测微弱振动位移:c03",
+        "university-physics-lab-2-022:h-双光栅测微弱振动位移:c04"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-022.md",
+      "source_id": "university-physics-lab-2-022",
+      "source_title": "双光栅测微弱振动位移",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-023:h-双光栅测量微弱振动位移量实验报告:c01",
+        "university-physics-lab-2-023:h-双光栅测量微弱振动位移量实验报告:c02",
+        "university-physics-lab-2-023:h-双光栅测量微弱振动位移量实验报告:c03",
+        "university-physics-lab-2-023:h-双光栅测量微弱振动位移量实验报告:c04",
+        "university-physics-lab-2-023:h-双光栅测量微弱振动位移量实验报告:c05",
+        "university-physics-lab-2-023:h-双光栅测量微弱振动位移量实验报告:c06",
+        "university-physics-lab-2-023:h-双光栅测量微弱振动位移量实验报告:c07",
+        "university-physics-lab-2-023:h-双光栅测量微弱振动位移量实验报告:c08"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-023.md",
+      "source_id": "university-physics-lab-2-023",
+      "source_title": "双光栅测量微弱振动位移量实验报告",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-024:h-多普勒测声速:c01",
+        "university-physics-lab-2-024:h-多普勒测声速:c02",
+        "university-physics-lab-2-024:h-多普勒测声速:c03",
+        "university-physics-lab-2-024:h-多普勒测声速:c04",
+        "university-physics-lab-2-024:h-多普勒测声速:c05",
+        "university-physics-lab-2-024:h-多普勒测声速:c06"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-024.md",
+      "source_id": "university-physics-lab-2-024",
+      "source_title": "多普勒测声速",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-025:h-波尔共振:c01",
+        "university-physics-lab-2-025:h-波尔共振:c02",
+        "university-physics-lab-2-025:h-波尔共振:c03",
+        "university-physics-lab-2-025:h-波尔共振:c04"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-025.md",
+      "source_id": "university-physics-lab-2-025",
+      "source_title": "波尔共振",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-026:h-液体动力粘度的测量-用拉脱法测定液体表面张力系数:c01",
+        "university-physics-lab-2-026:h-液体动力粘度的测量-用拉脱法测定液体表面张力系数:c02",
+        "university-physics-lab-2-026:h-液体动力粘度的测量-用拉脱法测定液体表面张力系数:c03",
+        "university-physics-lab-2-026:h-液体动力粘度的测量-用拉脱法测定液体表面张力系数:c04",
+        "university-physics-lab-2-026:h-液体动力粘度的测量-用拉脱法测定液体表面张力系数:c05"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-026.md",
+      "source_id": "university-physics-lab-2-026",
+      "source_title": "液体动力粘度的测量 用拉脱法测定液体表面张力系数",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-027:h-物理实验字体模板:c01",
+        "university-physics-lab-2-027:h-物理实验字体模板:c02",
+        "university-physics-lab-2-027:h-物理实验字体模板:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-027.md",
+      "source_id": "university-physics-lab-2-027",
+      "source_title": "物理实验字体模板",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-028:h-磁谐振无线电能传输:c01",
+        "university-physics-lab-2-028:h-磁谐振无线电能传输:c02"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-028.md",
+      "source_id": "university-physics-lab-2-028",
+      "source_title": "磁谐振无线电能传输",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-029:h-红外物理特性及应用:c01",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c02",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c03",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c04",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c05",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c06",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c07",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c08",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c09",
+        "university-physics-lab-2-029:h-红外物理特性及应用:c10"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-029.md",
+      "source_id": "university-physics-lab-2-029",
+      "source_title": "红外物理特性及应用",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c01",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c02",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c03",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c04",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c05",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c06",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c07",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c08",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c09",
+        "university-physics-lab-2-030:h-莫尔效应及光栅传感实验-红外物理特性及其应用:c10"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-030.md",
+      "source_id": "university-physics-lab-2-030",
+      "source_title": "莫尔效应及光栅传感实验&红外物理特性及其应用",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-031:h-莫尔效应及光栅传感实验:c01",
+        "university-physics-lab-2-031:h-莫尔效应及光栅传感实验:c02",
+        "university-physics-lab-2-031:h-莫尔效应及光栅传感实验:c03",
+        "university-physics-lab-2-031:h-莫尔效应及光栅传感实验:c04",
+        "university-physics-lab-2-031:h-莫尔效应及光栅传感实验:c05"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-031.md",
+      "source_id": "university-physics-lab-2-031",
+      "source_title": "莫尔效应及光栅传感实验",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-032:h-超声光栅:c01",
+        "university-physics-lab-2-032:h-超声光栅:c02"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-032.md",
+      "source_id": "university-physics-lab-2-032",
+      "source_title": "超声光栅",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-033:h-超声波材料检测-弯曲法测杨氏模量实验报告:c01",
+        "university-physics-lab-2-033:h-超声波材料检测-弯曲法测杨氏模量实验报告:c02",
+        "university-physics-lab-2-033:h-超声波材料检测-弯曲法测杨氏模量实验报告:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-033.md",
+      "source_id": "university-physics-lab-2-033",
+      "source_title": "超声波材料检测&弯曲法测杨氏模量实验报告",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-034:h-迈克尔逊干涉仪:c01",
+        "university-physics-lab-2-034:h-迈克尔逊干涉仪:c02",
+        "university-physics-lab-2-034:h-迈克尔逊干涉仪:c03",
+        "university-physics-lab-2-034:h-迈克尔逊干涉仪:c04",
+        "university-physics-lab-2-034:h-迈克尔逊干涉仪:c05"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-034.md",
+      "source_id": "university-physics-lab-2-034",
+      "source_title": "迈克尔逊干涉仪",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-035:h-阿贝成像-空间滤波报告:c01",
+        "university-physics-lab-2-035:h-阿贝成像-空间滤波报告:c02",
+        "university-physics-lab-2-035:h-阿贝成像-空间滤波报告:c03",
+        "university-physics-lab-2-035:h-阿贝成像-空间滤波报告:c04"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-035.md",
+      "source_id": "university-physics-lab-2-035",
+      "source_title": "阿贝成像&空间滤波报告",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-036:h-1迈克尔逊干涉仪:c01",
+        "university-physics-lab-2-036:h-1迈克尔逊干涉仪:c02",
+        "university-physics-lab-2-036:h-1迈克尔逊干涉仪:c03",
+        "university-physics-lab-2-036:h-1迈克尔逊干涉仪:c04"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-036.md",
+      "source_id": "university-physics-lab-2-036",
+      "source_title": "1迈克尔逊干涉仪",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-037:h-2固体导热系数的测量:c01",
+        "university-physics-lab-2-037:h-2固体导热系数的测量:c02",
+        "university-physics-lab-2-037:h-2固体导热系数的测量:c03",
+        "university-physics-lab-2-037:h-2固体导热系数的测量:c04"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-037.md",
+      "source_id": "university-physics-lab-2-037",
+      "source_title": "2固体导热系数的测量",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-038:h-3光栅特性及光波波长的测定:c01",
+        "university-physics-lab-2-038:h-3光栅特性及光波波长的测定:c02",
+        "university-physics-lab-2-038:h-3光栅特性及光波波长的测定:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-038.md",
+      "source_id": "university-physics-lab-2-038",
+      "source_title": "3光栅特性及光波波长的测定",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-039:h-3超声光栅及其应用:c01",
+        "university-physics-lab-2-039:h-3超声光栅及其应用:c02",
+        "university-physics-lab-2-039:h-3超声光栅及其应用:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-039.md",
+      "source_id": "university-physics-lab-2-039",
+      "source_title": "3超声光栅及其应用",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-040:h-4交流电桥:c01",
+        "university-physics-lab-2-040:h-4交流电桥:c02",
+        "university-physics-lab-2-040:h-4交流电桥:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-040.md",
+      "source_id": "university-physics-lab-2-040",
+      "source_title": "4交流电桥",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-041:s1:c01",
+        "university-physics-lab-2-041:s2:c01",
+        "university-physics-lab-2-041:s3:c01",
+        "university-physics-lab-2-041:s4:c01",
+        "university-physics-lab-2-041:s5:c01",
+        "university-physics-lab-2-041:s6:c01",
+        "university-physics-lab-2-041:s7:c01",
+        "university-physics-lab-2-041:s8:c01",
+        "university-physics-lab-2-041:s9:c01",
+        "university-physics-lab-2-041:s10:c01",
+        "university-physics-lab-2-041:s11:c01",
+        "university-physics-lab-2-041:s12:c01",
+        "university-physics-lab-2-041:s13:c01",
+        "university-physics-lab-2-041:s14:c01",
+        "university-physics-lab-2-041:s15:c01",
+        "university-physics-lab-2-041:s16:c01",
+        "university-physics-lab-2-041:s17:c01",
+        "university-physics-lab-2-041:s18:c01",
+        "university-physics-lab-2-041:s19:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-041.md",
+      "source_id": "university-physics-lab-2-041",
+      "source_title": "4交流电桥",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-042:s1:c01",
+        "university-physics-lab-2-042:s2:c01",
+        "university-physics-lab-2-042:s3:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-042.md",
+      "source_id": "university-physics-lab-2-042",
+      "source_title": "4科大奥锐虚拟系统简单指引20221126",
+      "year": "2022"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-043:h-5磁滞回线:c01",
+        "university-physics-lab-2-043:h-5磁滞回线:c02",
+        "university-physics-lab-2-043:h-5磁滞回线:c03",
+        "university-physics-lab-2-043:h-5磁滞回线:c04",
+        "university-physics-lab-2-043:h-5磁滞回线:c05"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-043.md",
+      "source_id": "university-physics-lab-2-043",
+      "source_title": "5磁滞回线",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-044:h-5磁滞回线和超声波声速测量预习指导:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-044.md",
+      "source_id": "university-physics-lab-2-044",
+      "source_title": "5磁滞回线和超声波声速测量预习指导",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-045:h-6光栅动画:c01",
+        "university-physics-lab-2-045:h-6光栅动画:c02",
+        "university-physics-lab-2-045:h-6光栅动画:c03",
+        "university-physics-lab-2-045:h-6光栅动画:c04",
+        "university-physics-lab-2-045:h-6光栅动画:c05",
+        "university-physics-lab-2-045:h-6光栅动画:c06"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-045.md",
+      "source_id": "university-physics-lab-2-045",
+      "source_title": "6光栅动画",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-046:h-物理实验报告模板:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-046.md",
+      "source_id": "university-physics-lab-2-046",
+      "source_title": "物理实验报告模板",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-047:s1:c01",
+        "university-physics-lab-2-047:s2:c01",
+        "university-physics-lab-2-047:s3:c01",
+        "university-physics-lab-2-047:s4:c01",
+        "university-physics-lab-2-047:s5:c01",
+        "university-physics-lab-2-047:s6:c01",
+        "university-physics-lab-2-047:s7:c01",
+        "university-physics-lab-2-047:s8:c01",
+        "university-physics-lab-2-047:s9:c01",
+        "university-physics-lab-2-047:s10:c01",
+        "university-physics-lab-2-047:s11:c01",
+        "university-physics-lab-2-047:s12:c01",
+        "university-physics-lab-2-047:s13:c01",
+        "university-physics-lab-2-047:s14:c01",
+        "university-physics-lab-2-047:s15:c01",
+        "university-physics-lab-2-047:s16:c01",
+        "university-physics-lab-2-047:s17:c01",
+        "university-physics-lab-2-047:s18:c01",
+        "university-physics-lab-2-047:s19:c01",
+        "university-physics-lab-2-047:s20:c01",
+        "university-physics-lab-2-047:s21:c01",
+        "university-physics-lab-2-047:s22:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-047.md",
+      "source_id": "university-physics-lab-2-047",
+      "source_title": "磁滞回线-2022-大学城",
+      "year": "2022"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-048:s1:c01",
+        "university-physics-lab-2-048:s2:c01",
+        "university-physics-lab-2-048:s3:c01",
+        "university-physics-lab-2-048:s4:c01",
+        "university-physics-lab-2-048:s5:c01",
+        "university-physics-lab-2-048:s6:c01",
+        "university-physics-lab-2-048:s7:c01",
+        "university-physics-lab-2-048:s8:c01",
+        "university-physics-lab-2-048:s9:c01",
+        "university-physics-lab-2-048:s10:c01",
+        "university-physics-lab-2-048:s11:c01",
+        "university-physics-lab-2-048:s12:c01",
+        "university-physics-lab-2-048:s13:c01",
+        "university-physics-lab-2-048:s14:c01",
+        "university-physics-lab-2-048:s15:c01",
+        "university-physics-lab-2-048:s16:c01",
+        "university-physics-lab-2-048:s17:c01",
+        "university-physics-lab-2-048:s18:c01",
+        "university-physics-lab-2-048:s19:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-048.md",
+      "source_id": "university-physics-lab-2-048",
+      "source_title": "磁滞回线-国际",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-049:h-1:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-049.md",
+      "source_id": "university-physics-lab-2-049",
+      "source_title": "1",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-050:h-3:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-050.md",
+      "source_id": "university-physics-lab-2-050",
+      "source_title": "3",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-051:h-load:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-051.md",
+      "source_id": "university-physics-lab-2-051",
+      "source_title": "load",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-052:h-load:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-052.md",
+      "source_id": "university-physics-lab-2-052",
+      "source_title": "load",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-053:h-load:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-053.md",
+      "source_id": "university-physics-lab-2-053",
+      "source_title": "load",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-054:h-load:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-054.md",
+      "source_id": "university-physics-lab-2-054",
+      "source_title": "load",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-055:h-load:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-055.md",
+      "source_id": "university-physics-lab-2-055",
+      "source_title": "load",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-056:h-load:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-056.md",
+      "source_id": "university-physics-lab-2-056",
+      "source_title": "load",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-057:h-load:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-057.md",
+      "source_id": "university-physics-lab-2-057",
+      "source_title": "load",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-058:h-load:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-058.md",
+      "source_id": "university-physics-lab-2-058",
+      "source_title": "load",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-059:h-load:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-059.md",
+      "source_id": "university-physics-lab-2-059",
+      "source_title": "load",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-060:h-load:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-060.md",
+      "source_id": "university-physics-lab-2-060",
+      "source_title": "load",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-061:h-1:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-061.md",
+      "source_id": "university-physics-lab-2-061",
+      "source_title": "1",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-062:h-3:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-062.md",
+      "source_id": "university-physics-lab-2-062",
+      "source_title": "3",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-063:h-walk:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-063.md",
+      "source_id": "university-physics-lab-2-063",
+      "source_title": "walk",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-064:h-walk:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-064.md",
+      "source_id": "university-physics-lab-2-064",
+      "source_title": "walk",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-065:h-walk:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-065.md",
+      "source_id": "university-physics-lab-2-065",
+      "source_title": "walk",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-066:h-walk:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-066.md",
+      "source_id": "university-physics-lab-2-066",
+      "source_title": "walk",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-067:h-walk:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-067.md",
+      "source_id": "university-physics-lab-2-067",
+      "source_title": "walk",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-068:h-walk:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-068.md",
+      "source_id": "university-physics-lab-2-068",
+      "source_title": "walk",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-069:h-walk:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-069.md",
+      "source_id": "university-physics-lab-2-069",
+      "source_title": "walk",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-070:h-walk:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-070.md",
+      "source_id": "university-physics-lab-2-070",
+      "source_title": "walk",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c01",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c02",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c03",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c04",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c05",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c06",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c07",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c08",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c09",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c10",
+        "university-physics-lab-2-071:h-4.9铁磁物质磁化曲线和磁滞回线的测量-4.10超声波在介质中在传播速度的测量:c11"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-071.md",
+      "source_id": "university-physics-lab-2-071",
+      "source_title": "4.9铁磁物质磁化曲线和磁滞回线的测量 & 4.10超声波在介质中在传播速度的测量",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c01",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c02",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c03",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c04",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c05",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c06",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c07",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c08",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c09",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c10",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c11",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c12",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c13",
+        "university-physics-lab-2-072:h-变温霍尔效应-三线摆测转动惯量:c14"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-072.md",
+      "source_id": "university-physics-lab-2-072",
+      "source_title": "变温霍尔效应&三线摆测转动惯量",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-073:h-实验讲义-阿贝成像和空间滤波实验:c01",
+        "university-physics-lab-2-073:h-实验讲义-阿贝成像和空间滤波实验:c02",
+        "university-physics-lab-2-073:h-实验讲义-阿贝成像和空间滤波实验:c03",
+        "university-physics-lab-2-073:h-实验讲义-阿贝成像和空间滤波实验:c04",
+        "university-physics-lab-2-073:h-3.通过-θ-调制-实现黑白图像彩色编码:c01",
+        "university-physics-lab-2-073:h-3.通过-θ-调制-实现黑白图像彩色编码:c02"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-073.md",
+      "source_id": "university-physics-lab-2-073",
+      "source_title": "实验讲义 阿贝成像和空间滤波实验",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-074:p1:c01",
+        "university-physics-lab-2-074:p1:c02",
+        "university-physics-lab-2-074:p2:c01",
+        "university-physics-lab-2-074:p2:c02",
+        "university-physics-lab-2-074:p3:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-074.md",
+      "source_id": "university-physics-lab-2-074",
+      "source_title": "《自组显微镜》设计性实验的探索与实践_杨帆",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-075:h-模板:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-075.md",
+      "source_id": "university-physics-lab-2-075",
+      "source_title": "模板",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-076:p1:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-076.md",
+      "source_id": "university-physics-lab-2-076",
+      "source_title": "自组望远镜和显微镜",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-077:p1:c01",
+        "university-physics-lab-2-077:p1:c02",
+        "university-physics-lab-2-077:p2:c01",
+        "university-physics-lab-2-077:p2:c02",
+        "university-physics-lab-2-077:p3:c01",
+        "university-physics-lab-2-077:p4:c01",
+        "university-physics-lab-2-077:p4:c02"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-077.md",
+      "source_id": "university-physics-lab-2-077",
+      "source_title": "自组望远镜实验的改进研究_叶丽军",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-078:p1:c01",
+        "university-physics-lab-2-078:p2:c01",
+        "university-physics-lab-2-078:p2:c02",
+        "university-physics-lab-2-078:p3:c01",
+        "university-physics-lab-2-078:p3:c02"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-078.md",
+      "source_id": "university-physics-lab-2-078",
+      "source_title": "自组望远镜测量凹透镜焦距_施洋",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-079:h-设计性实验-自组望远镜与显微镜:c01",
+        "university-physics-lab-2-079:h-设计性实验-自组望远镜与显微镜:c02",
+        "university-physics-lab-2-079:h-设计性实验-自组望远镜与显微镜:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-079.md",
+      "source_id": "university-physics-lab-2-079",
+      "source_title": "设计性实验：自组望远镜与显微镜",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-080:h-4.8-草:c01",
+        "university-physics-lab-2-080:h-4.8-草:c02",
+        "university-physics-lab-2-080:h-4.8-草:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-080.md",
+      "source_id": "university-physics-lab-2-080",
+      "source_title": "4.8（草）",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-081:h-4.5-结题:c01",
+        "university-physics-lab-2-081:h-4.5-结题:c02",
+        "university-physics-lab-2-081:h-4.5-结题:c03",
+        "university-physics-lab-2-081:h-4.5-结题:c04",
+        "university-physics-lab-2-081:h-4.5-结题:c05",
+        "university-physics-lab-2-081:h-4.5-结题:c06"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-081.md",
+      "source_id": "university-physics-lab-2-081",
+      "source_title": "4.5（结题）",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-082:h-4.7-结题:c01",
+        "university-physics-lab-2-082:h-4.7-结题:c02",
+        "university-physics-lab-2-082:h-4.7-结题:c03",
+        "university-physics-lab-2-082:h-4.7-结题:c04",
+        "university-physics-lab-2-082:h-4.7-结题:c05"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-082.md",
+      "source_id": "university-physics-lab-2-082",
+      "source_title": "4.7（结题）",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-083:h-4.14-定:c01",
+        "university-physics-lab-2-083:h-4.14-定:c02",
+        "university-physics-lab-2-083:h-4.14-定:c03",
+        "university-physics-lab-2-083:h-4.14-定:c04"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-083.md",
+      "source_id": "university-physics-lab-2-083",
+      "source_title": "4.14（定）",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-084:h-4.21-定:c01",
+        "university-physics-lab-2-084:h-4.21-定:c02",
+        "university-physics-lab-2-084:h-4.21-定:c03",
+        "university-physics-lab-2-084:h-4.21-定:c04"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-084.md",
+      "source_id": "university-physics-lab-2-084",
+      "source_title": "4.21（定）",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-085:h-4:c01",
+        "university-physics-lab-2-085:h-4:c02",
+        "university-physics-lab-2-085:h-4:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-085.md",
+      "source_id": "university-physics-lab-2-085",
+      "source_title": "4",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-086:h-4:c01",
+        "university-physics-lab-2-086:h-4:c02"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-086.md",
+      "source_id": "university-physics-lab-2-086",
+      "source_title": "4",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-087:h-4.1-草:c01",
+        "university-physics-lab-2-087:h-4.1-草:c02",
+        "university-physics-lab-2-087:h-4.1-草:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-087.md",
+      "source_id": "university-physics-lab-2-087",
+      "source_title": "4.1（草）",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-088:h-4.2-草:c01",
+        "university-physics-lab-2-088:h-4.2-草:c02",
+        "university-physics-lab-2-088:h-4.2-草:c03"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-088.md",
+      "source_id": "university-physics-lab-2-088",
+      "source_title": "4.2（草）",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-lab-2-089:p1:c01",
+        "university-physics-lab-2-089:p2:c01"
+      ],
+      "course_id": "university_physics_lab_2",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "university_physics_lab_2/university-physics-lab-2-089.md",
+      "source_id": "university-physics-lab-2-089",
+      "source_title": "大物实验备考笔记",
+      "year": null
+    }
+  ],
+  "statistics": {
+    "chunk_count": 389,
+    "question_count": 0,
+    "source_count": 89
+  },
+  "workflow_version": "workflow-contract-v1"
+}

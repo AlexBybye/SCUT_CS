@@ -1,0 +1,203 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "network_management",
+  "course_pack_version": "course-pack-network_management-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "network-management-003:h-1781600428002:c01"
+      ],
+      "heading_path": [
+        "1781600428002"
+      ],
+      "source_ids": [
+        "network-management-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "network-management-004:h-1781600842993:c01"
+      ],
+      "heading_path": [
+        "1781600842993"
+      ],
+      "source_ids": [
+        "network-management-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "network-management-002:p1:c01"
+      ],
+      "heading_path": [
+        "复习题-2026"
+      ],
+      "source_ids": [
+        "network-management-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "network-management-005:h-实验大纲-2026:c01",
+        "network-management-005:h-实验大纲-2026:c02",
+        "network-management-005:h-实验大纲-2026:c03",
+        "network-management-005:h-实验大纲-2026:c04",
+        "network-management-005:h-实验大纲-2026:c05"
+      ],
+      "heading_path": [
+        "实验大纲-2026"
+      ],
+      "source_ids": [
+        "network-management-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "network-management-001:h-网络管理考试~复习题涉及知识点:c01"
+      ],
+      "heading_path": [
+        "网络管理考试",
+        "复习题涉及知识点"
+      ],
+      "source_ids": [
+        "network-management-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "network-management-001:h-网络管理考试~考试题目-2026回忆版~简答题-4-10:c01"
+      ],
+      "heading_path": [
+        "网络管理考试",
+        "考试题目 (2026回忆版)",
+        "简答题（4*10）"
+      ],
+      "source_ids": [
+        "network-management-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "network-management-001:h-网络管理考试~考试题目-2026回忆版~综合题-5-8:c01"
+      ],
+      "heading_path": [
+        "网络管理考试",
+        "考试题目 (2026回忆版)",
+        "综合题(5 * 8)"
+      ],
+      "source_ids": [
+        "network-management-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "network-management-001:h-网络管理考试~考试题目-2026回忆版~选择题-10-2:c01"
+      ],
+      "heading_path": [
+        "网络管理考试",
+        "考试题目 (2026回忆版)",
+        "选择题（10 * 2）"
+      ],
+      "source_ids": [
+        "network-management-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "network-management-001:h-网络管理考试~题型:c01"
+      ],
+      "heading_path": [
+        "网络管理考试",
+        "题型"
+      ],
+      "source_ids": [
+        "network-management-001"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "network-management-001:h-网络管理考试~题型:c01",
+        "network-management-001:h-网络管理考试~复习题涉及知识点:c01",
+        "network-management-001:h-网络管理考试~考试题目-2026回忆版~选择题-10-2:c01",
+        "network-management-001:h-网络管理考试~考试题目-2026回忆版~简答题-4-10:c01",
+        "network-management-001:h-网络管理考试~考试题目-2026回忆版~综合题-5-8:c01"
+      ],
+      "course_id": "network_management",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "network_management/network-management-001.md",
+      "source_id": "network-management-001",
+      "source_title": "README",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "network-management-002:p1:c01"
+      ],
+      "course_id": "network_management",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "network_management/network-management-002.md",
+      "source_id": "network-management-002",
+      "source_title": "复习题-2026",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "network-management-003:h-1781600428002:c01"
+      ],
+      "course_id": "network_management",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "network_management/network-management-003.md",
+      "source_id": "network-management-003",
+      "source_title": "1781600428002",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "network-management-004:h-1781600842993:c01"
+      ],
+      "course_id": "network_management",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "network_management/network-management-004.md",
+      "source_id": "network-management-004",
+      "source_title": "1781600842993",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "network-management-005:h-实验大纲-2026:c01",
+        "network-management-005:h-实验大纲-2026:c02",
+        "network-management-005:h-实验大纲-2026:c03",
+        "network-management-005:h-实验大纲-2026:c04",
+        "network-management-005:h-实验大纲-2026:c05"
+      ],
+      "course_id": "network_management",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "network_management/network-management-005.md",
+      "source_id": "network-management-005",
+      "source_title": "实验大纲-2026",
+      "year": "2026"
+    }
+  ],
+  "statistics": {
+    "chunk_count": 13,
+    "question_count": 0,
+    "source_count": 5
+  },
+  "workflow_version": "workflow-contract-v1"
+}

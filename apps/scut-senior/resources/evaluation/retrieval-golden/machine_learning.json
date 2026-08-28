@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "machine_learning",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "这张图片主要讲什么？",
+      "expected_chunk_ids": [
+        "machine-learning-001:h-微信图片_20260607143233:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习这张图片，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "machine-learning-002:h-微信图片_20260607143237:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习这张图片时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "machine-learning-003:h-微信图片_20260607143241:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这张图片里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "machine-learning-004:h-微信图片_20260607143244:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习这张图片时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "machine-learning-005:h-微信图片_20260607143246:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考这张图片？",
+      "expected_chunk_ids": [
+        "machine-learning-006:h-微信图片_20260607143249:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这张图片主要讲什么？，第7条",
+      "expected_chunk_ids": [
+        "machine-learning-007:h-微信图片_20260607143251:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习这张图片，应该从哪里开始？，第8条",
+      "expected_chunk_ids": [
+        "machine-learning-008:h-微信图片_20260607143254:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习这张图片时哪些内容最重要？，第9条",
+      "expected_chunk_ids": [
+        "machine-learning-009:h-微信图片_20260607143256:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这张图片里的方法或结论怎么理解？，第10条",
+      "expected_chunk_ids": [
+        "machine-learning-010:h-微信图片_20260607143258:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习这张图片时哪些概念容易混淆？，第11条",
+      "expected_chunk_ids": [
+        "machine-learning-011:h-微信图片_20260607143301:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考这张图片？，第12条",
+      "expected_chunk_ids": [
+        "machine-learning-012:h-微信图片_20260607143303:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这张图片主要讲什么？，第13条",
+      "expected_chunk_ids": [
+        "machine-learning-013:h-微信图片_20260607143306:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习这张图片 18，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "machine-learning-014:h-微信图片_20260607131054_18:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习这张图片 19时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "machine-learning-015:h-微信图片_20260607131057_19:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这张图片 20里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "machine-learning-016:h-微信图片_20260607131059_20:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习这张图片 21时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "machine-learning-017:h-微信图片_20260607131101_21:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考这张图片？，第18条",
+      "expected_chunk_ids": [
+        "machine-learning-001:h-微信图片_20260607143233:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这张图片主要讲什么？，第19条",
+      "expected_chunk_ids": [
+        "machine-learning-002:h-微信图片_20260607143237:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习这张图片，应该从哪里开始？，第20条",
+      "expected_chunk_ids": [
+        "machine-learning-003:h-微信图片_20260607143241:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习这张图片时哪些内容最重要？，第21条",
+      "expected_chunk_ids": [
+        "machine-learning-004:h-微信图片_20260607143244:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这张图片里的方法或结论怎么理解？，第22条",
+      "expected_chunk_ids": [
+        "machine-learning-005:h-微信图片_20260607143246:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习这张图片时哪些概念容易混淆？，第23条",
+      "expected_chunk_ids": [
+        "machine-learning-006:h-微信图片_20260607143249:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考这张图片？，第24条",
+      "expected_chunk_ids": [
+        "machine-learning-007:h-微信图片_20260607143251:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这张图片主要讲什么？，第25条",
+      "expected_chunk_ids": [
+        "machine-learning-008:h-微信图片_20260607143254:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习这张图片，应该从哪里开始？，第26条",
+      "expected_chunk_ids": [
+        "machine-learning-009:h-微信图片_20260607143256:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习这张图片时哪些内容最重要？，第27条",
+      "expected_chunk_ids": [
+        "machine-learning-010:h-微信图片_20260607143258:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这张图片里的方法或结论怎么理解？，第28条",
+      "expected_chunk_ids": [
+        "machine-learning-011:h-微信图片_20260607143301:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习这张图片时哪些概念容易混淆？，第29条",
+      "expected_chunk_ids": [
+        "machine-learning-012:h-微信图片_20260607143303:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考这张图片？，第30条",
+      "expected_chunk_ids": [
+        "machine-learning-013:h-微信图片_20260607143306:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

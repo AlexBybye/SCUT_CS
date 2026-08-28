@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "university_physics_3_2",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "2023级期末复习纲要4学分主要讲什么？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-001:h-2023级大学物理iii-二-期末复习纲要4学分:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习2012 2A卷试卷规范模版，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:h-2012大学物理-2-a卷试卷规范模版:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习2012 2A卷试卷规范模版时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把同心带电球面外的电场强度的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做带电金属球壳内的电场和电势时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用带电粒子进入匀强磁场后的运动举例说明吗？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "正方形线圈中心的磁感强度怎么做？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做安培定律判断电流方向时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "两个线圈的互感和磁通的答案怎么判断？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把平板电容器充电时的安培环路的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做相对论速度下薄板面积时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用光电效应中的入射光波长举例说明吗？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "康普顿散射中电子获得的能量怎么做？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习2012 2A卷试卷规范模版，应该从哪里开始？，对应第12题",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q12:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "两根带电直线场强为零的位置的答案怎么判断？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q13:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把由电势求电场强度的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q14:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做电场力沿路径做功时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q15:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用介质插入电容器后的储能举例说明吗？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q16:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "同心线圈转动时磁力矩做功怎么做？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q17:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做磁通量和磁力矩的关系时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q18:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "螺线管储存的磁能比的答案怎么判断？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q19:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把μ子寿命的时间膨胀的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q20:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做电子的德布罗意波长时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q21:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用量子态能容纳的电子数举例说明吗？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q22:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "计算题 共怎么做？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q23:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做带电细杆对点电荷的电场力时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q24:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "带电圆盘轴线上电场的答案怎么判断？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q25:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把电子加速所需的功的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q26:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做线圈离开直导线时的感应电动势时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q27:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用(1) 在任意时刻t通过矩形线圈的磁通量．举例说明吗？",
+      "expected_chunk_ids": [
+        "university-physics-3-2-002:q-university-physics-3-2-002-q28:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

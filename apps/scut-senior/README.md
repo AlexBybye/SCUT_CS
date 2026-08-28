@@ -70,6 +70,28 @@ npm run dev
 
 默认 `SCUT_SENIOR_RETRIEVAL_MODE=fixture`，继续读取合成测试语料。`local_corpus` 不能直接读取当前迭代分支生成的 candidate；只有 candidate 的 `source_commit` 已进入受信 `master`、且通过单独激活门后，才可将 `SCUT_SENIOR_CORPUS_STORE_PATH` 配置为该 corpus store 的绝对路径。缺少有效 `active.json`、课程未启用或版本绑定不完整时，本地语料检索会故障安全关闭，不回退到跨课程或未审核资料。
 
+PLAN-2 阶段一的当前 active candidate 已随仓库提供：
+`SCUT_SENIOR_RETRIEVAL_MODE=local_corpus`，并将
+`SCUT_SENIOR_CORPUS_STORE_PATH` 指向 `.local/corpus-store` 即可在本机运行
+BM25F + 本地 CPU ONNX `bge-small-zh-v1.5` Hybrid 检索。模型文件缺失时自动退回
+BM25F，不发起网络请求；SQLite 运行库、环境文件、日志和缓存仍只保留在本机。
+
+阶段一对照评测可在 `apps/scut-senior` 目录执行：
+
+```bash
+api/.venv/bin/python -m scut_senior_api.eval_runner \
+  --retrieval-only --golden resources/evaluation/retrieval-golden \
+  --corpus-store .local/corpus-store --report /tmp/retrieval-bm25f.json
+api/.venv/bin/python -m scut_senior_api.eval_runner \
+  --retrieval-only --hybrid --golden resources/evaluation/retrieval-golden \
+  --corpus-store .local/corpus-store \
+  --onnx-model-dir .local/models/bge-small-zh-v1.5 \
+  --report /tmp/retrieval-hybrid.json
+```
+
+当前审核基线与结果摘要见 `resources/evaluation/retrieval-comparison.json`；换
+语料或 embedding 模型后必须重新生成并核对对应的 `corpus_version`。
+
 ### 本地验证 OpenRouter 平台通道
 
 先在 OpenRouter 控制台创建一枚新的服务端 Key，并只通过本机环境变量提供；不要把 Key 写入 `.env.example`、Git、前端或聊天记录。真实平台通道会消耗共享额度，因此开发环境也必须同时启用 GitHub OAuth 与正式 SQLite 身份存储，不能搭配匿名 Mock 身份：
@@ -174,14 +196,14 @@ BYOK 真实调用另需稳定的 32 字节 AES 主密钥（见上文“本地验
 
 ## 单独检出应用目录
 
-仓库含大量普通 Git 大文件和 LFS 对象，仅设置 `GIT_LFS_SKIP_SMUDGE=1` 不足以避免下载。轻量开发应同时使用 partial clone 与 sparse checkout：
+仓库含大量普通 Git 大文件。轻量开发可使用 partial clone 与 sparse checkout：
 
 ```bash
 git clone --filter=blob:none --no-checkout git@github.com:AlexBybye/SCUT_CS.git SCUT_CS-app
 cd SCUT_CS-app
 git sparse-checkout init --cone
 git sparse-checkout set apps/scut-senior .github README.md .gitignore .gitattributes
-GIT_LFS_SKIP_SMUDGE=1 git checkout master
+git checkout master
 ```
 
 ## 明确关闭或待确认
@@ -195,6 +217,7 @@ GIT_LFS_SKIP_SMUDGE=1 git checkout master
 - 首批课程固定为 10 门；本地受信 `master` 固定提交上已完成真实 candidate 构建、激活与回退演练（active=`corpus-06e1cb6338f6-…`，构建时点 1701 passed 源 / 24237 chunk / 43 门课程；证据见 `apps/scut-senior/resources/corpus/`），未配置受信 active store 的环境默认检索仍是 Fixture；远端 CI 在固定提交上的通过记录属外部证据项。**2026-08-23：manifest 余量 4 行纯图无文本层文件（电工学原卷答案／原卷·机械、java 往年试题、移动应用开发清朝试卷）经维护者批准转为 `passed`——按整页图预览保留、不产出文本 chunk（图片 OCR 三道闸判定不达标，迭代 8 维持关闭），active 语料内容不变（这 4 个文件本就零 chunk），下次重建自然吸收；**
 - **资料贡献面板为维护者内部功能**（2026-08-23 决议）：贡献提交的状态机、队列与治理后端已完整实现并测试，前端 `MaterialContributionPanel` 的提交入口以 `CONTRIBUTION_SUBMIT_CLOSED=true` 封闭——不向终端使用者开放众包投稿；维护者仍可通过既有工具链与队列视图处理资料。上线开放时把该常量改回 `false` 即可整体恢复；
 - 检索相关性分数地板（迭代 7.5 加权重叠 6 分 → PLAN-2 阶段一 步骤 2 升级为 BM25F 分数地板，默认 1.0）：`SCUT_SENIOR_RETRIEVAL_MIN_SCORE` 为 local_corpus 检索的 BM25F 分数下限，单一中文 bigram 碰撞这类噪声候选不再进入引用 Guard；无候选过线的查询诚实返回"证据不足"。BM25F 已引入 IDF、字段权重（title>heading/question>text）与 k1 饱和抑制，精确命中（题号/公式/函数名）不因算法替换回退；阈值由 P0 golden set 重定标（见 `resources/evaluation/retrieval-golden/`）；
+- PLAN-2 dense 检索使用本机 CPU ONNX `bge-small-zh-v1.5`（512 维）+ SQLite cosine。`SCUT_SENIOR_DENSE_RETRIEVAL_ENABLED` 默认开启；模型目录缺失或没有对应向量时自动退回 BM25F，不发起网络请求。最终规则重排始终先保留 BM25F 候选，dense 只能补足空槽位，原查询的整串词法命中受保护，不会被小模型语义相似度挤掉。
 - Workflow Runtime 与严格 NDJSON Trace：迭代 3 已完成本地／测试实现；供应商回答会先经兼容解析（自然语言、JSON 或 JSON 代码围栏）与来源 Guard，再按安全回答块发送 `answer_delta`，不是上游 token 原样透传；页面断开即请求尽力取消上游调用（迭代 7.5 可取消 transport：放弃等待、运行收敛为 `interrupted` 并留 trace／日志证据），被放弃的上游套接字按其自身超时回收，供应商侧是否停止计费无法在本进程内证实、只如实描述；
 - 华为云部署：**设计原样保留，规划改期到迭代 10**（2026-08-23 决议）；预算获批前保持 validation-only／fail-closed，不创建资源；未来首发基线为华南-广州优先的 1C2G、40GB、1～2Mbps，不在 ECS 部署大模型。当前启用路径为“本机运行 + HTTPS 隧道”（见上文“在线部署”节），该隧道口径继续作为 GitHub OAuth 回调的验收基线；
 - PostgreSQL、Qdrant、对象存储、任务系统、GitHub App、SWR 认证、ECS 灰度/回滚：首发不购买或只保留可替换边界；

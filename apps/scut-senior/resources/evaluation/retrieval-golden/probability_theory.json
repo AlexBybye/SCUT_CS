@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "probability_theory",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "2020—2021学年第二学期A卷答案主要讲什么？",
+      "expected_chunk_ids": [
+        "probability-theory-010:h-2020-2021学年第二学期-概率论与数理统计-a卷答案:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做t分布关于零点对称时概率怎么换算时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习2020—2021学年第二学期A卷答案时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把怎样判断一个估计量是否无偏的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做切比雪夫不等式怎么用时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用$$ \\mathrm {又} ABC\\mathrm {\\subset }AC\\mathrm {，得}\\mathrm {}P\\mathrm {(}ABC\\mathrm {)=0}\\mathrm {，}\\mathrm {代入举例说明吗？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q4:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "2020—2021学年第二学期A卷答案主要讲什么？，对应第4题",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q4:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习2020—2021学年第二学期A卷答案，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "A $$ \\begin {matrix} E\\left ( {T}\\right )\\mathrm {=}E\\left ( {\\hat {X}\\mathrm {-}{S}^{\\mathrm {2}}}\\right )\\ma的答案怎么判断？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把联合分布函数的值怎么求的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做B 10.设 ${F}_{\\mathrm {1}}\\mathrm {(}x\\mathrm {),}{F}_{\\mathrm {2}}\\mathrm {(}x\\mathrm {)}$ 为两个分布函数, 其相应的概率密度 $时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用D 由分布函数和概率密度的性质可得 ${F}_{\\mathrm {1}}^{\\mathrm {'}}\\mathrm {(}x\\mathrm {)=}{f}_{\\mathrm {1}}\\mathrm {(}x\\mathrm举例说明吗？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "所以 ${f}_{\\mathrm {1}}\\mathrm {(}x\\mathrm {)}{F}_{2}\\mathrm {(}x\\mathrm {)+}{f}_{\\mathrm {2}}\\mathrm {(}x\\mathr怎么做？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q9:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做$$ E\\left ( {X{Y}^{\\mathrm {2}}}\\right )\\mathrm {=}E\\left ( {X}\\right )E\\left ( {{Y}^{\\mathrm {2}}}\\right )=E\\时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q9:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "D 因为 $X$ 与 $Y$ 的相关系数 ${\\rho }_{XY}\\mathrm {=1}$, 所以 $Y$与 $X$ 正相关, 即存在常数 $a\\mathrm {,}b$, 使得 $Y\\mathrm {=}aX\\ma的答案怎么判断？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把(1) 乙在第一次投篮时投中的概率； (2) 甲在第二次投篮时投中的概率。的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做1$P =P P(A|B)+P(\\overline{B})P(A|\\overline{B})$ $=0.7\\times0.5+0.3\\times0.6=0.53$时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q12:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用2$P =0.53,=>P(A^c)=0.47$ $$ P(B_2)=P(A_)P(B_2|A_)+P(^(A_))P(B_2^(A_)) $$ $=0.53\\times0.4+0.47\\times0.7=0.541举例说明吗？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q13:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "(1) 求$\\mu$ 的置信度为0.95的置信区间怎么做？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q14:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做(2) 检验假设${H}_{0}: {\\sigma }^{2}=0.1$ 显著性水平为0.05。时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q15:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "(2) ${H}_{0}: {\\sigma }^{2}=0.1$ $$ \\chi^2=\\frac{(n-1)S^2}{\\sigma_0^2}\\sim\\chi^2(n-1) $$ $$ X_{0.975}^2(15)=27的答案怎么判断？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q16:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把解 (1) ${F}_{Y}\\mathrm {(}y\\mathrm {)=}P\\mathrm {\\{}Y\\mathrm {\\le }y\\mathrm {\\} }$ 由 $Y$ 的概率分布知，当 $y\\mathrm {<1的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q16:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做解 令$3-4\\hat{\\theta}=2$，解得 的矩估计$\\hat{\\theta}_M=\\frac{1}{4}$. 对于给定的样本值,似然函数为 令 ,解得 .因 不合题意,所以 的最大似然估计为$\\hat{\\the时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q16:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用且 $P\\left \\{ {{X}^{\\mathrm {2}}\\mathrm {=}{Y}^{\\mathrm {2}}}\\right \\}\\mathrm {=1.}$ 1. 求二维随机向量$\\mathrm {(}X\\ma举例说明吗？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q16:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "$$ P\\mathrm {\\{}Y\\mathrm {=-1\\} =}P\\mathrm {\\{}X\\mathrm {=0,}Y\\mathrm {=-1\\} +}P\\mathrm {\\{}X\\mathrm {=1,}Y\\ma怎么做？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q16:c05"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做(2) 因为 $Z\\mathrm {=}XY$ 的可能取值为 $\\mathrm {-1, 0, 1}$. $$ \\begin {matrix} P\\left \\{ {Z\\mathrm {=-1}}\\right \\}\\ma时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q17:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "$$ \\begin {matrix} \\left ( {3}\\right ) E\\mathrm {(}X\\mathrm {)=0\\cdot }\\frac {\\mathrm {1}} {\\mathrm {3}}\\mathr的答案怎么判断？",
+      "expected_chunk_ids": [
+        "probability-theory-010:q-probability-theory-010-q17:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "2014春B卷无答案里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "probability-theory-011:h-2014春b卷无答案:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做(1)头两位数码都是8的概率时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "probability-theory-011:q-probability-theory-011-q1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用(2)头两位数码至少有一个不超过8的概率举例说明吗？",
+      "expected_chunk_ids": [
+        "probability-theory-011:q-probability-theory-011-q2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

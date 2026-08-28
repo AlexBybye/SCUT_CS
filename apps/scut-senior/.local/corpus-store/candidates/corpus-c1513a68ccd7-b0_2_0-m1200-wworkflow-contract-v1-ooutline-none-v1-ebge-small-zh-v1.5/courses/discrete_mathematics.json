@@ -1,0 +1,2269 @@
+{
+  "chunks": [
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-002:p1:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "华南理工大学《离散数学》2021-2022学年第一学期期末试卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-002",
+      "source_title": "华南理工大学《离散数学》2021-2022学年第一学期期末试卷",
+      "text": "![page-001.jpg](assets/discrete-mathematics-002/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-002:p2:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "华南理工大学《离散数学》2021-2022学年第一学期期末试卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-002",
+      "source_title": "华南理工大学《离散数学》2021-2022学年第一学期期末试卷",
+      "text": "![page-002.jpg](assets/discrete-mathematics-002/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-002:p3:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "华南理工大学《离散数学》2021-2022学年第一学期期末试卷"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-002",
+      "source_title": "华南理工大学《离散数学》2021-2022学年第一学期期末试卷",
+      "text": "![page-003.jpg](assets/discrete-mathematics-002/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-002:p4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "华南理工大学《离散数学》2021-2022学年第一学期期末试卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-002",
+      "source_title": "华南理工大学《离散数学》2021-2022学年第一学期期末试卷",
+      "text": "![page-004.jpg](assets/discrete-mathematics-002/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-002:p5:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "华南理工大学《离散数学》2021-2022学年第一学期期末试卷"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-002",
+      "source_title": "华南理工大学《离散数学》2021-2022学年第一学期期末试卷",
+      "text": "![page-005.jpg](assets/discrete-mathematics-002/page-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p1:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "![image](assets/discrete-mathematics-003/image-001.jpeg)\n\n![image](assets/discrete-mathematics-003/image-002.png)\n\n![image](assets/discrete-mathematics-003/image-003.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p2:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "![image](assets/discrete-mathematics-003/image-004.jpeg)\n\n![image](assets/discrete-mathematics-003/image-005.png)\n\n![image](assets/discrete-mathematics-003/image-006.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p3:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "… … … … … … … … … … … … … … … … 密… … … … … … … … … … … … … … … … … … 封… … … … … … … … … … … … … … … 线… … … … … … … … … … … … … …\n\n姓名                学号\n  学院                  专业                     座位号\n\n诚信应考,考试作弊将带来严重后果！\n\n华南理工大学期末考试\n\n《离散数学》试卷A\n\n注意事项：1. 考前请将密封线内填写清楚；"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p3:q-discrete-mathematics-003-q1:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q1",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "2. 所有答案请直接答在试卷上；"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p3:q-discrete-mathematics-003-q2:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q2",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "3．考试形式：闭卷；"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p3:q-discrete-mathematics-003-q3:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q3",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "4. 本试卷共  五  大题，满分100 分，\n考试时间120 分钟。\n题 号\n一\n二\n三\n四\n五\n总分\n得 分\n评卷人"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p3:q-discrete-mathematics-003-q4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q4",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "一、填空题(本大题共12 小题，每小题2 分，共24 分)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p3:q-discrete-mathematics-003-q5:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q5",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "1．求合式公式xP(x)→xQ(x,y)的前束范式________________。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p3:q-discrete-mathematics-003-q6:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q6",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "2．设集合A={a, b, {a,b}, }, B = {{a,b}, }，求B-A=_____________．\n\n_____________ ________\n\n( 密 封 线 内 不 答 题 )"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p3:q-discrete-mathematics-003-q7:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q7",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "3．设p 与q 的真值为0, ,r s 的真值为1 则命题\n(\n(\n(\n)))\n(\n)\ns\nq\nr\np\nr\np\n\n\n\n\n\n\n的\n\n真值是__________."
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p3:q-discrete-mathematics-003-q8:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q8",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "4．设R 是在正整数集合Z 上如下定义的二元关系\n\n\n\n,\n( ,\n)\n(\n10)\nR\nx y\nx y\nZ\nx\ny\n\n\n\n\n\n\n\n，\n\n则它一共有         个有序对，且有自反性、对称性、传递性、反自反\n\n性和反对称性各性质中的                   性质。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p3:q-discrete-mathematics-003-q9:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q9",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "5．公式x(P(x)→Q(x,y))→S(x)中的自由变元为________________，约束变元为\n\n________________。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p3:q-discrete-mathematics-003-q10:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q10",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "6．设有命题T(x): x 是火车，C(x): x 是汽车，Q(x, y): x 跑得比y 快，那么命题\n\n“有的汽车比一些火车跑得快”的逻辑表达式是______________________."
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p3:q-discrete-mathematics-003-q11:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q11",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "7．设G 是n 阶m 条边的无向图，若G 连通且m=__________则G 是无向树."
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p3:q-discrete-mathematics-003-q12:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q12",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "8．设X={1，2，3}，f：X→X，g：X→X，f={<1, 2>,<2,3>,<3,1>},\n\ng={<1,2>,<2,3>,<3,3>}，则f-1 g=________________，gf=________________。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p3:q-discrete-mathematics-003-q13:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q13",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "9. 不能再分解的命题称为________________，至少包含一个联结词的命题称为\n\n《离散数学》试卷A 第 1 页 共 6 页"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p4:q-discrete-mathematics-003-q13:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q13",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "________________．"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p4:q-discrete-mathematics-003-q14:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q14",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "10. 连通无向图G 含有欧拉回路的充分必要条件是                      .\n11．设集合A={,{a}}，则A 的幂集P(A)=                                      ，\n     |P(A)|=_____________________________。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p4:q-discrete-mathematics-003-q15:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q15",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "12. 设G = <V, E>, G’ = <V’, E’>为两个图(同为无向图或有向图), 若E’ Í E 且\n_______________, 则称G’是G 的子图, 若E’ Í E 且_______________, 则称G’\n是G 的生成子图。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p4:q-discrete-mathematics-003-q16:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q16",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "二、单选题 (本大题共12 小题，每小题2 分，共26 分)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p4:q-discrete-mathematics-003-q17:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q17",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "1．下列命题公式为重言式的是（  b ）\n\nA. (p∨┐p)→q．  B．p→ (p∨q)  C．q∧┐q   D．( p→p)→q"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p4:q-discrete-mathematics-003-q18:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q18",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "2．下列语句中为命题的是( d)\n\nA．你好吗？\n\nB．人有6 指.\n\nC．我所说的是假的.\n\nD．明天是晴天.\n\n3. 设D=<V, E>为有向图，V={a, b, c, d, e, f}, E={<a, b>, <b, c>, <a, d>, <d, e>,\n\n<f, e>}是（ c ）\n\nA．强连通图\nB．单向连通图\n\nC．弱连通图\nD．不连通图"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p4:q-discrete-mathematics-003-q19:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q19",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "4．集合A＝{a，b，c}上的下列关系矩阵中符合偏序关系条件的是( d  )\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1\n0\n1\n0\n0\n1 1\n0\n0\n0\n1 1\n1 1\n0\n1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1\n0\n1\n0\n1\n0\n1\n0\n1\n\n1\n0\n1\n1 1\n0\n0\n0\n1\n\n1 1 1\n0\n1\n0\n0\n1 1\n\nA．\n\nB．\n\nC．\n\nD．"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p4:q-discrete-mathematics-003-q20:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q20",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "5．设A={1，2，3}，A 上二元关系S={<1，1>，<1，2>，<3，2>，<3，3>}，则S 是\n\n（  b   ）\n\nA．自反关系 B．传递关系C．对称关系  D． 反自反关系\n\n6. 设A={a,b,c,d}，A 上的等价关系R={<a, b>, <b, a>, <c, d>, <d, c>}∪IA，则对\n\n应于R 的A 的划分是（ d ）\n\nA．{{a},{b, c},{d}}\nB．{{a, b},{c}, {d}}\n\nC．{{a},{b},{c},{d}}\nD．{{a, b}, {c,d}}\n\n《离散数学》试卷A 第 2 页 共 6 页"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p5:q-discrete-mathematics-003-q21:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q21",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "7. 以下非负整数列可简单图化为一个欧拉图的是( d )\n\nA. {2, 2, 2, 2, 0}               B. {4, 2, 6, 2, 2}\n\nC. {2, 2, 3, 4, 1}               D. {4, 2, 2, 4, 2}"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p5:q-discrete-mathematics-003-q22:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q22",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "8. 设论域D＝{a，b }，与公式xA(x)等价的命题公式是(c )\n\nA．A(a)∧A(b)  B．A(a)→A(b)  C．A(a)∨A(b)  D．A(b)→A(a)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p5:q-discrete-mathematics-003-q23:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q23",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "9. 一棵树有3 个4 度顶点，4 个2 度顶点其余都是树叶，求这棵树有多少个树叶\n\n顶点( b  )\n\nA. 12     B. 8     C. 10       D. 13"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p5:q-discrete-mathematics-003-q24:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q24",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "10. 有ABC 三个人猜测甲乙丙三个球队中的冠军.各人的猜测如下:\n\nA: 冠军不是甲,也不是乙. B: 冠军不是甲,而是丙. C: 冠军不是丙,而是甲.\n\n已知其中有一个人说的完全正确.一个人说的都不对,而另外一人恰有一半说\n\n对了.据此推算,冠军应该是( a  )\n\nA．甲        B. 乙   C. 丙       D. 不确定"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p5:q-discrete-mathematics-003-q25:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q25",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "11．如第11 题图所示各图，其中存在哈密顿回路的图是 ( c   )"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p5:q-discrete-mathematics-003-q26:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q26",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "12．设C(x): x 是国家级运动员，G(x): x 是健壮的，则命题“没有一个国家级运动员不是健\n壮的”可符号化为 (  d  )\n))\n(\n)\n(\n(\n)\nA\n(\nx\nG\nx\nC\nx\n\n\n\n))\n(\n)\n(\n(\n)\nB\n(\nx\nG\nx\nC\nx\n\n\n\n))\n(\n)\n(\n(\n)\nC\n(\nx\nG\nx\nC\nx\n\n\n\n))\n(\n)\n(\n(\n)\nD\n(\nx\nG\nx\nC\nx\n\n\n\n\n(A)       (B)         (C)           (D)      \n\n                                              \n                                          "
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p5:q-discrete-mathematics-003-q27:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q27",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "第11 题图\n\n三．计算题(30 分)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p5:q-discrete-mathematics-003-q28:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q28",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "1．用等值演算法求取求下列公式：(PQ)(P∨Q)的合取范式（5 分）\n\n《离散数学》试卷A 第 3 页 共 6 页"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p6:q-discrete-mathematics-003-q29:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q29",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "2．图G 如下图所示，求图G 的最小生成树.（5 分）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p6:q-discrete-mathematics-003-q30:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q30",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "3．有向图D 如图所示，求D 的关联矩阵M(D) （5 分）\n\n3\n\n12\n6\n\n4\n\n9\n9\n7\n\n10\n\n8\n5\n\n7"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p6:q-discrete-mathematics-003-q31:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q31",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "4.化简表达式\n)\n(\n)))\n(\n(\n)\n))\n(\n(((\nA\nC\nA\nB\nB\nA\nC\nB\nA\n\n\n\n\n\n\n\n\n（7 分）\n\n《离散数学》试卷A 第 4 页 共 6 页\n\n![image](assets/discrete-mathematics-003/image-007.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p7:q-discrete-mathematics-003-q32:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q32",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "5．设R={<2，1>，<2，5>，<2，4>，<3，4>，<4，4>，<5，2>}，求r(R)和s(R)，\n并作出它们及R 的关系图(8 分)\n\n五．证明题(22 分)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p7:q-discrete-mathematics-003-q33:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q33",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "1．构造下面推理的证明(5 分)\n\n前提：p\nq\n\n，p\nr\n，s\nt\n ，\ns\nr\n，\nt\n\n\n结论：q"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p7:q-discrete-mathematics-003-q34:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q34",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "2．设A={1, 2, 3, 4}, 在A A\n\n定义的二元关系R，\n\n,\n,\n,\nA A, < , >R< , >\n+ = +\nu v\nx y\nu v\nx y\nu y x v\n\n\n\n\n\n\n证明R 是A A\n\n上的等价关系。(5 分)\n\n《离散数学》试卷A 第 5 页 共 6 页"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p8:q-discrete-mathematics-003-q35:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q35",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "3．已知A、B、C 是三个集合，证明A-(B∪C)=(A-B)∩(A-C) （6 分）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-003:p8:q-discrete-mathematics-003-q36:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q36",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "text": "4． 无向图G = <V,E>，且|V|=n, |E|=m, 试证明以下两个命题是等价命题\n1）G 中每对顶点间具有唯一的通路，\n2）G 连通且n=m+1。（6 分）\n\n《离散数学》试卷A 第 6 页 共 6 页"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-004:p1:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-004",
+      "source_title": "机试",
+      "text": "![page-001.jpg](assets/discrete-mathematics-004/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-004:p2:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-004",
+      "source_title": "机试",
+      "text": "![page-002.jpg](assets/discrete-mathematics-004/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-004:p3:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-004",
+      "source_title": "机试",
+      "text": "![page-003.jpg](assets/discrete-mathematics-004/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-004:p4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-004",
+      "source_title": "机试",
+      "text": "![page-004.jpg](assets/discrete-mathematics-004/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-004:p5:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-004",
+      "source_title": "机试",
+      "text": "![page-005.jpg](assets/discrete-mathematics-004/page-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-004:p6:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-004",
+      "source_title": "机试",
+      "text": "![page-006.jpg](assets/discrete-mathematics-004/page-006.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-004:p7:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-004",
+      "source_title": "机试",
+      "text": "![page-007.jpg](assets/discrete-mathematics-004/page-007.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-004:p8:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-004",
+      "source_title": "机试",
+      "text": "![page-008.jpg](assets/discrete-mathematics-004/page-008.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-004:p9:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-004",
+      "source_title": "机试",
+      "text": "![page-009.jpg](assets/discrete-mathematics-004/page-009.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-004:p10:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 10,
+      "locator_start": 10,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-004",
+      "source_title": "机试",
+      "text": "![page-010.jpg](assets/discrete-mathematics-004/page-010.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-004:p11:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 11,
+      "locator_start": 11,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-004",
+      "source_title": "机试",
+      "text": "![page-011.jpg](assets/discrete-mathematics-004/page-011.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-004:p12:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 12,
+      "locator_start": 12,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-004",
+      "source_title": "机试",
+      "text": "![page-012.jpg](assets/discrete-mathematics-004/page-012.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-004:p13:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 13,
+      "locator_start": 13,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-004",
+      "source_title": "机试",
+      "text": "![page-013.jpg](assets/discrete-mathematics-004/page-013.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-005:p1:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试",
+      "text": "22计科2马杀鸡制作\n\n考生须知"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-005:p1:q-discrete-mathematics-005-q1:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q1",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试",
+      "text": "1.本次考试形式采用闭卷方式"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-005:p1:q-discrete-mathematics-005-q2:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q2",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试",
+      "text": "2.请各位同学抓紧时间考试"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-005:p1:q-discrete-mathematics-005-q3:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q3",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试",
+      "text": "3.请自觉遵守考场纪律"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-005:p1:q-discrete-mathematics-005-q4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q4",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试",
+      "text": "4.填空题，只要填写最终的作答结果，不用填写解答过程，多个填空位请在答题区标明答案对应的序号\n\n本试卷共3大题，满分100分，考试时间60分钟。\n\n一.单项选择题\n\n共11题，每题3分，共33分\n\n1.\n\n下列式子中，错误的是\n\nAÈA=A\n\nA)\n\n( AÈB)ÈC=A È(BÈC)\n\nB)\n\nAÇ(BÈC)= (AÇB)ÈC\n\nC)\n\nAÈÆ=A\n\nD)\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n在        下有A´BÍA\n\n2.\n\nA)\n\nA=B；\n\nBÍA；\n\nB)\n\nAÍB；\n\nC)\n\nA=Æ或B=Æ\n\nD)\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n设A, B为集合，当A– B =Æ，有        。\n\n3.\n\nB ¹ Æ\n\nA)\n\nA Í B\n\nB)\n\nB Í A\n\nC)\n\nB = Æ\n\nD)\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n4.\nA)\n\n下列关系中能构成函数的是           。\n\n；\n\nB)\n\n；"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-005:p2:q-discrete-mathematics-005-q4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q4",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试",
+      "text": "C)\n\n；\n\nD)\n\n。\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n5.\nA)\n\n设X = {a, b, c, d}, Y = {1, 2, 3}, f = {<a, 1>, <b, 2>, <c, 3> } ,则f是                            。\n\n从X到Y的二元关系，但不是从X到Y的函数。\n\nB)\n\n从X到Y的函数，但不是满射，也不是单射。\n\nC)\n\n从X到Y的满射，但不是单射。\n\nD)\n\n从X到Y的双射。\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n6.\n\n设S={1，2，3}，R为S上的关系，其关系图为\n\n则R具有（         ）的性质。\n\nA)\n\n自反、对称、传递；\n\nB)\n\n什么性质也没有；\n\nC)\n\n反自反、反对称、传递；\n\nD)\n\n自反、对称、反对称、传递。\n\nA\nB\nC\nD\n\n分值：3分，得分：0分\n\n7.\n\n下面函数（        ）是单射而非满射，其中R为实数集，Z为整数集，R+，Z+分别表示正实数与正整数集。\n\nA)\n\n；\n\nB)\n\n；\n\nC)\n\n；\n\nD)\n\n。\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n8.\n\n设S={1,2,3}，S上关系R的关系图为\n\n则R具有     性质。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-005:p3:q-discrete-mathematics-005-q4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q4",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试",
+      "text": "A)\n\n自反性、对称性、传递性；\n\nB)\n\n反自反性、反对称性；\n\nC)\n\n反自反性、反对称性、传递性；\n\nD)\n\n自反性。\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n设A={1，2，3，4}，P（A）（A 的幂集）上规定二元关系如下R={(s,t)|s,tÎP(A)Ù(|s|=|t|)}则P\n（A）/ R =\n\n9.\n\nA)\n\nA；\n\nB)\n\nP(A) ；\n\n{{Æ}，{{1}}，{{1，2}}，{{1，2，3}}，{{1，2，3，4}}}；\n\nC)\n\n{{Æ}，{{1}，{2}，{3}，{4}}，{{1，2}，{1，3}，{1，4}，{2，3}，{2，4}，{3，4}}，{{1，2，3}，\n\nD)\n\n{1，2，4}，{1，3，4}，{2，3，4}}，{ A}}\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n10.\n\n下列函数，既不是单射也不是满射的一般函数是      。\n\nA)\n\n；\n\nB)\n\n（\n除以3的余数）；\n\nC)\n\n；\n\nD)\n\n。\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n11.\nA)\n\n设A = {1, 2, 3}，则A上的二元关系有(      ) 个\n\n23\n\nB)\n\n32\n\nC)\n\n23x3\n\nD)\n\n32x2\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n二.多项选择题\n\n共11题，每题3分，共33分\n\n12.\n\n设A, B, C是任意集合，判断下列断言为真的是          。\n\n若 A Í B, 且 B Í C，则A Í C\n\nA)\n\n若 A Í B, 且 B Î C，则A Í C\n\nB)\n\n若 A Î B, 且 B Î C，则A Î C\n\nC)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-005:p4:q-discrete-mathematics-005-q4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q4",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试",
+      "text": "若 A Î B, 且 B Í C，则A Î C\n\nD)\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n13.\n\n下列是真命题的有\n\nA)\n\n；\n\nB)\n\n；\n\nC)\n\n；\n\nD)\n\n。\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n14.\n\n下列结果正确的是            。\n\nA)\n\n；\n\nB)\n\n；\n\nC)\n\n；\n\nD)\n\n；\n\nE)\n\n；\n\nAÅA=A\n\nF)\n\nA\nB\nC\nD\nE\nF\n\n分值：3分，得分：3分\n\n15.\n\n下列命题中真值为真的有          。\n\n若 AÇB=B，则 A=B\n\nA)\n\nA={x }Èx，则xÎA 且 x ÍA\n\nB)\n\n若 AÌB 且 CÌD，则 AÇC ÌBÇD\n\nC)\n\n若 AÍB且CÍD，则 AÈCÍBÈD\n\nD)\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n16.\n\n集合A={1，2，3，4，5，6，7}，下面哪个集合是集合A的划分？\n\nA)\n\n{{1，2，3}，{1，4，5，6}，{2，3，5，7}}\n\n{Æ，{1，2，3，4}，{5，6，7}}\n\nB)\n\nC)\n\n{{1，2，3}，{4，5}，{6，7}}\n\nD)\n\n{{1，2，5}，{3，4，6，7}}\n\nE)\n\n{{1，2，6}，{3，4，5}}\n\nA\nB\nC\nD\nE\n\n分值：3分，得分：3分\n\n17.\n\n设f和g是函数，gof是f和g的复合函数，下列命题正确的有             。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-005:p5:q-discrete-mathematics-005-q4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q4",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试",
+      "text": "A)\n\n若g和f是满射，则gof是满射；\n\nB)\n\n若gof是满射，则g和f都是满射；\n\nC)\n\n若gof是单射，则g和f都是单射；\n\nD)\n\n若gof是双射，则f是单射，g是满射。\n\nA\nB\nC\nD\n\n分值：3分，得分：0分\n\n18.\n\n设X= {1, 2, 3}, Y = {a, b, c}，下列关系中                   为从X 到Y 的函数。\n\nA)\n\n{<1, a>, <2, a>, <3, c>}\n\nB)\n\n{<1, c>, <2, a>, <3, b>}\n\nC)\n\n{<1, c>, <1, b>, <3, a>}\n\nD)\n\n{<1, b>, <2, b>, <3, b>}\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n19.\n\n设A = {a, b, c, d}, R = IA∪{ <a, c>, <c, a>, <b, d>, <d, b>}为A上的等价关系，下面哪些是正确的？\n\nA)\n\na 与 b 等价\n\nB)\n\na 与 c 等价\n\nC)\n\nb 与 c 等价\n\nD)\n\nb 与 d 等价\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n20.\nA)\n\n下列函数，                  是满射。\n\n；\n\nB)\n\n（\n除以3的余数）；\n\nC)\n\n；\n\nD)\n\n。\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n21.\nA)\n\n对于以下函数：（R为实数集合，N为自然数集合）是双射的函数有_____________\n\nf: R→R, f(x) = x2 – x.\n\nB)\n\nf: R→R, f(x) = x3\n\nC)\n\nf: N→N, f(x) = x + 5\n\nD)\n\nf: R→R+, f(x) = 2x, R+ = {x| xÎR 且 x> 0}\n\nE)\n\nf: N→N, f(x) = 2x\n\nF)\n\nf: N→N, f(x) = | x |\n\nA\nB\nC\nD\nE\nF"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-005:p6:q-discrete-mathematics-005-q4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q4",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试",
+      "text": "分值：3分，得分：3分\n\n22.\n\nR1和R2都是集合A上的等价关系，下列A上的二元关系是A上的等价关系的是：\n\nA)\n\nR1-1\n\nB)\n\nR1 – R2\n\nC)\n\nr (R1 – R2)\n\nD)\n\nR1oR2\n\nR1ÇR2\n\nE)\n\nA\nB\nC\nD\nE\n\n分值：3分，得分：3分\n\n三.判断题\n\n共17题，每题2分，共34分\n\n设A、B是任意集合，若{A-B，B-A}是A∪B的一个划分，则有A∩B=Æ，其中A¹Æ，B¹Æ。\n\n23.\n\n对\n错\n\n分值：2分，得分：2分\n\n若A-BÍB，则BÍA。\n\n24.\n\n对\n错\n\n分值：2分，得分：0分\n\n(A-B)´C = (A´C-B´C)\n\n25.\n\n对\n错\n\n分值：2分，得分：2分\n\n存在集合A使得AÍA´A\n\n26.\n\n对\n错\n\n分值：2分，得分：2分\n\nA、B是集合，则命题AÍB和AÎB可能同时成立。\n\n27.\n\n对\n错\n\n分值：2分，得分：2分\n\n28.\n\n已知A∪B = A∪C，则必须有B = C\n\n对\n错\n\n分值：2分，得分：2分\n\n设R和S是集合A上的等价关系，则RÈS一定是等价的。\n\n29."
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-005:p7:q-discrete-mathematics-005-q4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q4",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试",
+      "text": "对\n错\n\n分值：2分，得分：2分\n\n30.\n\n实数集合上的小于等于关系是良序关系。\n\n对\n错\n\n分值：2分，得分：2分\n\n设R和S是集合A上的关系，则有r(RÈS)=r(R)Èr(S)\n\n31.\n\n对\n错\n\n分值：2分，得分：2分\n\n32.\n\n集合A={a，b，c}上的关系R={(a,b),(a,c)}是不可传递的。\n\n对\n错\n\n分值：2分，得分：2分\n\n设R和S是集合A上的偏序关系，则RÇS一定是偏序的。\n\n33.\n\n对\n错\n\n分值：2分，得分：0分\n\n34.\n\n若R和S是集合A上的任意两个反自反关系，则RoS也是反自反的。\n\n对\n错\n\n分值：2分，得分：2分\n\n若集合A上的关系R是对称的，则~R也是对称的。\n\n35.\n\n对\n错\n\n分值：2分，得分：2分\n\n设R和S是集合A上的关系，则有t(RÈS)Ít(R)Ès(S)\n\n36.\n\n对\n错\n\n分值：2分，得分：2分\n\n37.\n\n若R和S是集合A上的任意两个传递关系，则RoS也是传递的\n\n对\n错\n\n分值：2分，得分：2分\n\n38.\n\n若R和S是集合A上的任意两个对称关系，则RoS也是对称的。\n\n对\n错\n\n分值：2分，得分：2分\n\n39.\n\n自然数集合上的大于等于关系是良序关系。\n\n对\n错\n\n分值：2分，得分：0分"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-006:p1:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试",
+      "text": "22计科2马杀鸡制作\n\n考生须知"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-006:p1:q-discrete-mathematics-006-q1:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q1",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试",
+      "text": "1.本次考试形式采用闭卷方式"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-006:p1:q-discrete-mathematics-006-q2:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q2",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试",
+      "text": "2.请各位同学抓紧时间考试"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-006:p1:q-discrete-mathematics-006-q3:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q3",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试",
+      "text": "3.请自觉遵守考场纪律"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-006:p1:q-discrete-mathematics-006-q4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q4",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试",
+      "text": "4.填空题，只要填写最终的作答结果，不用填写解答过程，多个填空位请在答题区标明答案对应的序号\n\n本试卷共3大题，满分100分，考试时间60分钟。\n\n一.单项选择题\n\n共14题，每题2分，共28分\n\n1.\n\n设G=<V，E>为有向图，V={a,b,c,d,e,f}，E={<a,b>,<b,c>,<a,d>,<d,e>,<f,e>}是（     ）。\n\nA)\n\n强连通图\n\nB)\n\n单向连通图\n\nC)\n\n弱连通图\n\nD)\n\n不连通图\n\nA\nB\nC\nD\n\n分值：2分，得分：2分\n\n2.\nA)\n\n一个有n个结点的图，最多有（    ）个连通分支。\n\n0\n\nB)\n\n1\n\nC)\n\nn-1\n\nD)\n\nn\n\nA\nB\nC\nD\n\n分值：2分，得分：2分\n\n3.\n\n有向图D如图,\n到\n长度为1，2，3，4的回路数为（        ）；\n\nA)\n\n0,0,4,0\n\nB)\n\n0,1, 4, 0\n\nC)\n\n0,2,0,0\n\nD)\n\n0, 2, 1, 1\n\nA\nB\nC\nD\n\n分值：2分，得分：2分"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-006:p2:q-discrete-mathematics-006-q4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q4",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试",
+      "text": "4.\n\n设图G和它的补图\n的边数分别为\n和\n，G的阶数为（      ）。\n\nA)\n\nB)\n\nC)\n\nD)\n\nA\nB\nC\nD\n\n分值：2分，得分：2分\n\n5.\n\n设n阶无向简单图为3-正则图，且边数m与n满足2n-3=m，则n为（         ）。\n\nA)\n\n5\n\nB)\n\n6\n\nC)\n\n7\n\nD)\n\n8\n\nA\nB\nC\nD\n\n分值：2分，得分：2分\n\n6.\n\n对Cn(n为偶数)图的结点着色，最少用几种颜色？\n\nA)\n\n2\n\nB)\n\n3\n\nC)\n\nn-1\n\nD)\n\nn\n\nA\nB\nC\nD\n\n分值：2分，得分：2分\n\n7.\n\n在如下各图中（     ）欧拉图。\n\nA)\n\nA\n\nB)\n\nB\n\nC)\n\nC\n\nD)\n\nD\n\nA\nB\nC\nD\n\n分值：2分，得分：2分\n\n![image](assets/discrete-mathematics-006/image-001.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-006:p3:q-discrete-mathematics-006-q4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q4",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试",
+      "text": "8.\n\n在Peterson图\n中，至少填加（       ）条边才能构成Euler图。\n\nA)\n\n1\n\nB)\n\n2\n\nC)\n\n4\n\nD)\n\n5\n\nA\nB\nC\nD\n\n分值：2分，得分：2分\n\n9.\n\n把平面分成x个区域，每两个区域都相邻，问x最大为（      ）。\n\nA)\n\n6\n\nB)\n\n4\n\nC)\n\n5\n\nD)\n\n3\n\nA\nB\nC\nD\n\n分值：2分，得分：2分\n\n若完全图G中有n个结点（n³2）,m条边，则当（         ）时，图G是欧拉图。\n\n10.\n\nA)\n\nn为奇数\n\nB)\n\nn为偶数\n\nC)\n\nm为奇数\n\nD)\n\nm为偶数\n\nA\nB\nC\nD\n\n分值：2分，得分：2分\n\n11.\n\n有7结点的所有非同构的无向树有多少棵？\n\nA)\n\n6\n\nB)\n\n7\n\nC)\n\n11\n\nD)\n\n20\n\nA\nB\nC\nD\n\n分值：2分，得分：2分\n\n12.\nA)\n\n下面给出的各符号串集合，哪个不是前缀码？\n\n{11,00,10,01}\n\nB)\n\n{a,b,c,ac,abc,bc}\n\nC)\n\n{11,101,010,0001,0011}\n\nD)\n\n{a,b,cb,cde}"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-006:p4:q-discrete-mathematics-006-q4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q4",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试",
+      "text": "A\nB\nC\nD\n\n分值：2分，得分：2分\n\n13.\n\n有4结点的所有非同构的无向树有多少棵？\n\nA)\n\n2\n\nB)\n\n3\n\nC)\n\n4\n\nD)\n\n5\n\nA\nB\nC\nD\n\n分值：2分，得分：2分\n\n14.\n\n设G是一棵树，n,m分别表示结点树和边数，则（         ）成立。\n\nA)\n\nn=m\n\nB)\n\nm=n+1\n\nC)\n\nn=m+1\n\nD)\n\n不能确定\n\nA\nB\nC\nD\n\n分值：2分，得分：2分\n\n二.多项选择题\n\n共14题，每题3分，共42分\n\n15.\n\n无向图G如图，\n，下面(           )是点割集。\n\nA)\n\n{a, b}\n\nB)\n\n{b, e}\n\nC)\n\n{a,c}\n\nD)\n\n{d}\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n16.\nA)\n\n用邻接矩阵表示无向图，下列说法正确的是(               ).\n\n全零的行对应的是孤立点\n\nB)\n\n矩阵的所有元素之和等于无向图的边数\n\nC)\n\n完全图的邻接矩阵的元素全都为1\n\nD)\n\n邻接矩阵关于主对角线对称\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n17.\n\n当n为偶数时，下面哪些图是二分图？"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-006:p5:q-discrete-mathematics-006-q4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q4",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试",
+      "text": "A)\n\nKn\n\nB)\n\nCn\n\nC)\n\nWn\n\nD)\n\nQn\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n18.\n\n在二分图K3,3中有长度为（          ）的回路。\n\nA)\n\n3\n\nB)\n\n4\n\nC)\n\n5\n\nD)\n\n6\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n19.\n\n用邻接矩阵表示有向图，下列说法正确的是(               ).\n\nA)\n\n全零的行对应的是孤立点\n\nB)\n\n矩阵的所有元素之和等于有向图的边数\n\nC)\n\n主对角线的元素不为0表示对应的结点有环\n\nD)\n\n邻接矩阵关于主对角线对称\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n20.\n\n给设d=（d1,d2,…,dn），其中di为正数，i=1,2, …,n。若存在n个结点的简单图，使得结点vi的度数为di，\n\n则称d是可图解的。下面给出的各序列中(            )是可图解的。\n\nA)\n\n（1，1，1，2，3）\n\nB)\n\n（2，3，3，4，4，5）\n\nC)\n\n（3，3，3，3）\n\nD)\n\n（2，3，4，4，5）\n\nE)\n\n（1，3，3，3）\n\nA\nB\nC\nD\nE\n\n分值：3分，得分：3分\n\n21.\n\n下面哪些图是平面图？\n\nA)\n\nK10\n\nB)\n\nC10\n\nC)\n\nQ10\n\nD)\n\nW10\n\nA\nB\nC\nD"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-006:p6:q-discrete-mathematics-006-q4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q4",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试",
+      "text": "分值：3分，得分：0分\n\n22.\n\n在下图中，（    ）是欧拉图。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-006:p6:q-discrete-mathematics-006-q5:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q5",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试",
+      "text": "（1）                  （2）              （3）             （4）\n\nA)\n\n1\n\nB)\n\n2\n\nC)\n\n3\n\nD)\n\n4\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n23.\n\n设Kr,s为完全二分（部）图，当r,s为(        )时，Kr,s为哈密顿图。\n\nA)\n\nr=s且均为大于1的奇数\n\nr¹ s且均为大于1的奇数\n\nB)\n\nC)\n\nr=s且均为大于1的偶数\n\nr¹ s且均为大于1的偶数\n\nD)\n\nE)\n\nr,s中一个为偶数，一个为奇数\n\nA\nB\nC\nD\nE\n\n分值：3分，得分：3分\n\n24.\n\n对于完全图Kn，下面（           ）是正确的\n\nA)\n\n都可以一笔画出\n\nB)\n\n都不可以一笔画出\n\n当n¹1且为奇数时，可以一笔画出\n\nC)\n\n当n¹1且为偶数时，可以一笔画出\n\nD)\n\n当n¹1且为偶数时，可以n/2笔画出\n\nE)\n\nA\nB\nC\nD\nE\n\n分值：3分，得分：3分\n\n25.\n\n下面命题正确的是（    ）。\n\nA)\n\n非平凡无向树一定是平面图。\n\nB)\n\n非平凡无向树一定不是二分图。\n\nC)\n\n非平凡无向树一定不是欧拉图。\n\nD)\n\n非平凡无向树一定是哈密顿图。\n\nA\nB\nC\nD\n\n分值：3分，得分：3分"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-006:p7:q-discrete-mathematics-006-q5:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q5",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试",
+      "text": "26.\n\n下面哪几种图是树（       ）。\n\nA)\n\n无简单回路的连通图\n\nB)\n\n有n个结点，n-1条边的图\n\nC)\n\n每对结点间都有通路的图\n\nD)\n\n连通但删去任意一条边则不连通的图。\n\nA\nB\nC\nD\n\n分值：3分，得分：0分\n\n27.\n\n下面命题正确的是(                 ).\n\nA)\n\n任何树T都至少有2片树叶。\n\nn(n³2)阶树至少有2片树叶。\n\nB)\n\nC)\n\n图G中的每条边都是割边，则G必是树。\n\nD)\n\n一棵完全二元树，必有奇数个结点。\n\nA\nB\nC\nD\n\n分值：3分，得分：0分\n\n28.\n\n设Ｇ是一棵根树，则G一定是（     ）。\n\nA)\n\n强连通图\n\nB)\n\n单向连通图\n\nC)\n\n弱连通图\n\nD)\n\n有向连通图\n\nA\nB\nC\nD\n\n分值：3分，得分：3分\n\n三.判断题\n\n共15题，每题2分，共30分\n\n29.\n\n有向图中每个结点必属于一个强分图，每条有向边都一定属于一个强分图。\n\n对\n错\n\n分值：2分，得分：2分\n\n30.\n\n若无向图G的边e不包含在G的任一简单回路中，则e是G的割边。\n\n对\n错\n\n分值：2分，得分：2分\n\n31.\n\n正则图必有偶数个结点\n\n对\n错\n\n分值：2分，得分：2分\n\n32.\n\n两个图同构，当且仅当它们的邻接矩阵相同。\n\n对\n错"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-006:p8:q-discrete-mathematics-006-q5:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q5",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试",
+      "text": "分值：2分，得分：2分\n\n33.\n\n有3个结点的有向完全图，它的包含4条边的不同构的子图有4个。\n\n对\n错\n\n分值：2分，得分：2分\n\n34.\n\n如果一个有向图D是强连通图，则D是欧拉图\n\n对\n错\n\n分值：2分，得分：0分\n\n35.\n\n若无向图G是欧拉图，G中不存在割边。\n\n对\n错\n\n分值：2分，得分：2分\n\n36.\n\nKm,n，当m等于n且大于等于2时是哈密顿图。\n\n对\n错\n\n分值：2分，得分：2分\n\n37.\n\nKm,n，当m等于n时是哈密顿图。\n\n对\n错\n\n分值：2分，得分：0分\n\n38.\n\n设图G有11个结点，则G或G的补图是非平面图。\n\n对\n错\n\n分值：2分，得分：2分\n\n39.\n\n除平凡树外，树都不是哈密顿图。\n\n对\n错\n\n分值：2分，得分：2分\n\nn(n³2)阶无向树都是二分图。\n\n40.\n\n对\n错\n\n分值：2分，得分：2分\n\n41.\n\n不存在既是欧拉图，又是哈密顿图的树。\n\n对\n错\n\n分值：2分，得分：2分\n\n42.\n\n任何树T都至少有2片树叶。\n\n对\n错"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-006:p9:q-discrete-mathematics-006-q5:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q5",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试",
+      "text": "分值：2分，得分：2分\n\n43.\n\nT为完全二元树，有t片树叶，则其边的总数e=2t-1。\n\n分值：2分，得分：2分\n对\n错"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-007:h-离散数学试卷-中文-答案:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案",
+      "text": "**华南理工大学期末考试答案**\n\n**《离散数学》试卷A**\n\n**一、填空题(本大题共12小题，每小题2分，共24分)**\n\n**1.** $\\forall$x$\\exists$z (P(x)→Q(z,y))"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-007:q-discrete-mathematics-007-q1:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q1",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案",
+      "text": "2.  $\\phi$"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-007:q-discrete-mathematics-007-q2:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q2",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案",
+      "text": "3. 1"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-007:q-discrete-mathematics-007-q3:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q3",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案",
+      "text": "4. 9,  对称"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-007:q-discrete-mathematics-007-q4:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q4",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案",
+      "text": "5．Q(x,y)中的y与S(x)中的x，Q(x,y)中的x  与P(x)  中的x\n\n6． $\\exists$x (C(x) ![formula-object](assets/discrete-mathematics-007/image-002.png)$\\exists$y(T(y) ![formula-object](assets/discrete-mathematics-007/image-003.png)  (Q(x, y))"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-007:q-discrete-mathematics-007-q5:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q5",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案",
+      "text": "7. n-1"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-007:q-discrete-mathematics-007-q6:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q6",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案",
+      "text": "8. {<2,2>, <3,3>,<1,3>}, {<1,3>,<2,1>,<3,1>}"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-007:q-discrete-mathematics-007-q7:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q7",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案",
+      "text": "9.  原子命题，复合命题"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-007:q-discrete-mathematics-007-q8:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q8",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案",
+      "text": "10．图中无奇数度顶点"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-007:q-discrete-mathematics-007-q9:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q9",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案",
+      "text": "11．{$\\phi$，{$\\phi$}，{{a}}，{$\\phi$，{a}}}，4\n\n12．V’![formula-object](assets/discrete-mathematics-007/image-007.png)V ,  V’= V\n\n**二、单选题** **(本大题共12小题，每小题2分，共26分)**\n\n**B D C D B, D D C B A, C D**\n\n**三．计算题(30分)**\n\n**1.**\n\n![formula-object](assets/discrete-mathematics-007/image-008.png)\n\n2.\n\n3.  $\\left(\\begin{array}{ccccc}-1&1&0&0&0\\\\1&0&-1&1&-1\\\\0&0&0&0&1\\\\0&-1&1&-1&0\\end{array}\\right)$\n\n4.\n\n![formula-object](assets/discrete-mathematics-007/image-010.png)\n\n5.\n\n1）R的关系图                                        R的关系矩阵\n\n![image](assets/discrete-mathematics-007/image-011.jpeg)$\\left[\\begin{array}{cccc}0&1&0&0\\\\0&0&1&1\\\\0&1&0&1\\\\0&0&1&1\\\\\\end{array}\\right]$\n\nr(R)的关系图                                          r(R)的关系矩阵\n\n![image](assets/discrete-mathematics-007/image-013.jpeg)$\\left[\\begin{array}{cccc}1&1&0&0\\\\0&1&1&1\\\\0&1&1&1\\\\0&0&1&1\\\\\\end{array}\\right]$\n\ns(R)的关系图                                        s(R)的关系矩阵\n\n![image](assets/discrete-mathematics-007/image-015.jpeg)$\\left[\\begin{array}{cccc}0&1&0&0\\\\1&0&1&1\\\\0&1&0&1\\\\0&0&1&0\\\\\\end{array}\\right]$\n\n**五．证明题(22分)**"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-007:q-discrete-mathematics-007-q9:c02",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q9",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案",
+      "text": "1.\n- $t$        前提引入\n- ![formula-object](assets/discrete-mathematics-007/image-018.png)     前提引入\n- ![formula-object](assets/discrete-mathematics-007/image-019.png)       拒取式\n- ![formula-object](assets/discrete-mathematics-007/image-020.png)    前提引入\n- r                  假言推理\n- ![formula-object](assets/discrete-mathematics-007/image-021.png)   前提引入\n- ![formula-object](assets/discrete-mathematics-007/image-022.png)      拒取式\n- ![formula-object](assets/discrete-mathematics-007/image-023.png)     前提引入\n- $q$         析取三段论\n\n2.\n\n![formula-object](assets/discrete-mathematics-007/image-025.png)\n\n1)  关系R的自反性\n\n取![formula-object](assets/discrete-mathematics-007/image-026.png)\n\n![formula-object](assets/discrete-mathematics-007/image-027.png) *u* +  *v*  =  *u* +  *v*\n\n![formula-object](assets/discrete-mathematics-007/image-028.png)![formula-object](assets/discrete-mathematics-007/image-029.png)\n\n所以关系R满足自反性\n\n2)  关系R的对称性\n\n取![formula-object](assets/discrete-mathematics-007/image-030.png)  且  ![formula-object](assets/discrete-mathematics-007/image-031.png)\n\n![formula-object](assets/discrete-mathematics-007/image-032.png) $u+y=x+v$"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-007:q-discrete-mathematics-007-q9:c03",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q9",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案",
+      "text": "![formula-object](assets/discrete-mathematics-007/image-034.png) $x+v=u+y$\n\n![formula-object](assets/discrete-mathematics-007/image-036.png) ![formula-object](assets/discrete-mathematics-007/image-037.png)\n\n所以关系R满足对称性\n\n3)  关系R的传递性\n\n取![formula-object](assets/discrete-mathematics-007/image-038.png)  且  ![formula-object](assets/discrete-mathematics-007/image-039.png)\n\n![formula-object](assets/discrete-mathematics-007/image-040.png) ![formula-object](assets/discrete-mathematics-007/image-041.png)，![formula-object](assets/discrete-mathematics-007/image-042.png)\n\n![formula-object](assets/discrete-mathematics-007/image-043.png) $u-v=x-y$\n\n![formula-object](assets/discrete-mathematics-007/image-045.png) $u+y=x+v$\n\n![formula-object](assets/discrete-mathematics-007/image-047.png) ![formula-object](assets/discrete-mathematics-007/image-048.png)\n\n所以关系R满足传递性\n\n由以上结论可知关系R是等价关系。\n\n3.    设![formula-object](assets/discrete-mathematics-007/image-049.png)\n\n![formula-object](assets/discrete-mathematics-007/image-050.png)\n\n所以原命题成立\n\n4．\n\n先证  1）![formula-object](assets/discrete-mathematics-007/image-051.png)2）\n\n如果G不是连通的，那么G中至少存在两个连通子图，任何两个不同连通子图的顶点间不存在通路，这与命题1）矛盾，所以G是连通的。\n\n下面证  n=m+1\n\n当n=1时， 显然n=m+1成立，"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-007:q-discrete-mathematics-007-q9:c04",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q9",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案",
+      "text": "假设n=k时，n=m+1成立，往证n=k+1时n=m+1成立，\n\n由n=k时结论成立可知，此时m=k-1；\n\n假设新增加顶点nk+1通过边w1,w2分别与原来的k个顶点中的两个顶点nt,np连接，又由命题1）可知顶点nt，np间存在唯一的通路，不妨设为L；那么顶点np存在两条到达顶点的nk+1通路，它们分别是np—w2—nk+1和np—L—nt—w1—nk+1—nk+1；这与命题1)中任何两个顶点间存在唯一的通路矛盾，因此nk+1只能与原来的k个顶点中的一个顶点存在两条以下的边。而如果顶点nk+1与原来的k个顶点间不存在连接的边，则任何定点nt与nk+1之间不存在通路，也与命题1）矛盾。因此nk+1只能与原来的k个顶点中的一个顶点存在且仅存在一条边。这样，当n=k+1时，m=k-1+1 = k;  结论成立。\n\n再证  2）![formula-object](assets/discrete-mathematics-007/image-052.png)1）\n\n当n=1，2时， 如果n=m+1，则顶点间存在唯一的通路，结论成立；\n\n假设n=k时， 如果n=m+1，顶点间存在唯一的通路成立，\n\n往证n=k+1时，如果n=m+1，则顶点间存在唯一的通路，\n\n由于n=k时，n=m+1，则此时m=k-1，而n=k+1时  m=k；因此在增加一个顶点nk+1之后只增加了一条边，假设顶点nk+1与顶点nt之间通过边W连接，由于其它的顶点与顶点nt之间存在唯一的通路，那么其它的顶点和顶点nk+1之间都存在一条通过顶点nt、边W的通路。假设某个顶点np与nk+1之间存在两条通路，由于np顶点nt之间的通路是唯一的，因此np必须通过nt和nk+1之间的另外一条边到达nk+1，这与顶点nk+1只由一条边与原来的k个顶点相连矛盾。所以n=k+1时，如果n=m+1，则顶点间存在唯一的通路成立。\n\n通过以上的结论可知1）![formula-object](assets/discrete-mathematics-007/image-053.png)2）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-008:p1:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-008",
+      "source_title": "离散数学",
+      "text": "![page-001.jpg](assets/discrete-mathematics-008/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-008:p2:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-008",
+      "source_title": "离散数学",
+      "text": "![page-002.jpg](assets/discrete-mathematics-008/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "discrete-mathematics-008:p3:c01",
+      "course_id": "discrete_mathematics",
+      "heading_path": [
+        "离散数学"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "discrete-mathematics-008",
+      "source_title": "离散数学",
+      "text": "![page-003.jpg](assets/discrete-mathematics-008/page-003.jpg)"
+    }
+  ],
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "discrete_mathematics",
+  "questions": [
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q1:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q1",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q10:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q10",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q11:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q11",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q12:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q12",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q13:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q13:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q13",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q14:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q14",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q15:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q15",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q16:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q16",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q17:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q17",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q18:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q18",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q19:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q19",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q2:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q2",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q20:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q20",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q21:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q21",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q22:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q22",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q23:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q23",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q24:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q24",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q25:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q25",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q26:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q26",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q27:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q27",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q28:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q28",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p6:q-discrete-mathematics-003-q29:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q29",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q3:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q3",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p6:q-discrete-mathematics-003-q30:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q30",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p6:q-discrete-mathematics-003-q31:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q31",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p7:q-discrete-mathematics-003-q32:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q32",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p7:q-discrete-mathematics-003-q33:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q33",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p7:q-discrete-mathematics-003-q34:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q34",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p8:q-discrete-mathematics-003-q35:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q35",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p8:q-discrete-mathematics-003-q36:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q36",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q4:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q4",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q5:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q5",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q6:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q6",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q7:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q7",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q8:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q8",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q9:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q9",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-005:p1:q-discrete-mathematics-005-q1:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q1",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-005:p1:q-discrete-mathematics-005-q2:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q2",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-005:p1:q-discrete-mathematics-005-q3:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q3",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-005:p1:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p2:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p3:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p4:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p5:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p6:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p7:q-discrete-mathematics-005-q4:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 7,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q4",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-006:p1:q-discrete-mathematics-006-q1:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q1",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-006:p1:q-discrete-mathematics-006-q2:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q2",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-006:p1:q-discrete-mathematics-006-q3:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q3",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-006:p1:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p2:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p3:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p4:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p5:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p6:q-discrete-mathematics-006-q4:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 6,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q4",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-006:p6:q-discrete-mathematics-006-q5:c01",
+        "discrete-mathematics-006:p7:q-discrete-mathematics-006-q5:c01",
+        "discrete-mathematics-006:p8:q-discrete-mathematics-006-q5:c01",
+        "discrete-mathematics-006:p9:q-discrete-mathematics-006-q5:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 9,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q5",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q1:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q1",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q2:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q2",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q3:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q3",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q4:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q4",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q5:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q5",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q6:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q6",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q7:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q7",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q8:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q8",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q9:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q9:c02",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q9:c03",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q9:c04"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q9",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    }
+  ],
+  "schema_version": "course-index-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e"
+}

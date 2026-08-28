@@ -1,0 +1,1128 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "discrete_mathematics",
+  "course_pack_version": "course-pack-discrete_mathematics-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "discrete-mathematics-002:p1:c01",
+        "discrete-mathematics-002:p2:c01",
+        "discrete-mathematics-002:p3:c01",
+        "discrete-mathematics-002:p4:c01",
+        "discrete-mathematics-002:p5:c01"
+      ],
+      "heading_path": [
+        "华南理工大学《离散数学》2021-2022学年第一学期期末试卷"
+      ],
+      "source_ids": [
+        "discrete-mathematics-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-004:p1:c01",
+        "discrete-mathematics-004:p2:c01",
+        "discrete-mathematics-004:p3:c01",
+        "discrete-mathematics-004:p4:c01",
+        "discrete-mathematics-004:p5:c01",
+        "discrete-mathematics-004:p6:c01",
+        "discrete-mathematics-004:p7:c01",
+        "discrete-mathematics-004:p8:c01",
+        "discrete-mathematics-004:p9:c01",
+        "discrete-mathematics-004:p10:c01",
+        "discrete-mathematics-004:p11:c01",
+        "discrete-mathematics-004:p12:c01",
+        "discrete-mathematics-004:p13:c01",
+        "discrete-mathematics-005:p1:c01",
+        "discrete-mathematics-005:p1:q-discrete-mathematics-005-q1:c01",
+        "discrete-mathematics-005:p1:q-discrete-mathematics-005-q2:c01",
+        "discrete-mathematics-005:p1:q-discrete-mathematics-005-q3:c01",
+        "discrete-mathematics-005:p1:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p2:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p3:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p4:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p5:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p6:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p7:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-006:p1:c01",
+        "discrete-mathematics-006:p1:q-discrete-mathematics-006-q1:c01",
+        "discrete-mathematics-006:p1:q-discrete-mathematics-006-q2:c01",
+        "discrete-mathematics-006:p1:q-discrete-mathematics-006-q3:c01",
+        "discrete-mathematics-006:p1:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p2:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p3:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p4:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p5:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p6:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p6:q-discrete-mathematics-006-q5:c01",
+        "discrete-mathematics-006:p7:q-discrete-mathematics-006-q5:c01",
+        "discrete-mathematics-006:p8:q-discrete-mathematics-006-q5:c01",
+        "discrete-mathematics-006:p9:q-discrete-mathematics-006-q5:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "source_ids": [
+        "discrete-mathematics-004",
+        "discrete-mathematics-005",
+        "discrete-mathematics-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-008:p1:c01",
+        "discrete-mathematics-008:p2:c01",
+        "discrete-mathematics-008:p3:c01"
+      ],
+      "heading_path": [
+        "离散数学"
+      ],
+      "source_ids": [
+        "discrete-mathematics-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p1:c01",
+        "discrete-mathematics-003:p2:c01",
+        "discrete-mathematics-003:p3:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q1:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q2:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q3:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q4:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q5:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q6:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q7:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q8:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q9:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q10:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q11:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q12:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q13:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q13:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q14:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q15:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q16:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q17:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q18:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q19:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q20:c01",
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q21:c01",
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q22:c01",
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q23:c01",
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q24:c01",
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q25:c01",
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q26:c01",
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q27:c01",
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q28:c01",
+        "discrete-mathematics-003:p6:q-discrete-mathematics-003-q29:c01",
+        "discrete-mathematics-003:p6:q-discrete-mathematics-003-q30:c01",
+        "discrete-mathematics-003:p6:q-discrete-mathematics-003-q31:c01",
+        "discrete-mathematics-003:p7:q-discrete-mathematics-003-q32:c01",
+        "discrete-mathematics-003:p7:q-discrete-mathematics-003-q33:c01",
+        "discrete-mathematics-003:p7:q-discrete-mathematics-003-q34:c01",
+        "discrete-mathematics-003:p8:q-discrete-mathematics-003-q35:c01",
+        "discrete-mathematics-003:p8:q-discrete-mathematics-003-q36:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "source_ids": [
+        "discrete-mathematics-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:h-离散数学试卷-中文-答案:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q1:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q2:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q3:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q4:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q5:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q6:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q7:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q8:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q9:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q9:c02",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q9:c03",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q9:c04"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "source_ids": [
+        "discrete-mathematics-007"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q1:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q1",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q10:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q10",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q11:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q11",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q12:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q12",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q13:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q13:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q13",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q14:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q14",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q15:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q15",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q16:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q16",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q17:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q17",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q18:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q18",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q19:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q19",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q2:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q2",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q20:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q20",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q21:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q21",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q22:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q22",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q23:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q23",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q24:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q24",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q25:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q25",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q26:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q26",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q27:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q27",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q28:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q28",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p6:q-discrete-mathematics-003-q29:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q29",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q3:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q3",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p6:q-discrete-mathematics-003-q30:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q30",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p6:q-discrete-mathematics-003-q31:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q31",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p7:q-discrete-mathematics-003-q32:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q32",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p7:q-discrete-mathematics-003-q33:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q33",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p7:q-discrete-mathematics-003-q34:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q34",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p8:q-discrete-mathematics-003-q35:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q35",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p8:q-discrete-mathematics-003-q36:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q36",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q4:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q4",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q5:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q5",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q6:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q6",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q7:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q7",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q8:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q8",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q9:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-003-Q9",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-005:p1:q-discrete-mathematics-005-q1:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q1",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-005:p1:q-discrete-mathematics-005-q2:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q2",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-005:p1:q-discrete-mathematics-005-q3:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q3",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-005:p1:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p2:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p3:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p4:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p5:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p6:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p7:q-discrete-mathematics-005-q4:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 7,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-005-Q4",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-006:p1:q-discrete-mathematics-006-q1:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q1",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-006:p1:q-discrete-mathematics-006-q2:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q2",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-006:p1:q-discrete-mathematics-006-q3:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q3",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-006:p1:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p2:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p3:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p4:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p5:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p6:q-discrete-mathematics-006-q4:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 6,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q4",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-006:p6:q-discrete-mathematics-006-q5:c01",
+        "discrete-mathematics-006:p7:q-discrete-mathematics-006-q5:c01",
+        "discrete-mathematics-006:p8:q-discrete-mathematics-006-q5:c01",
+        "discrete-mathematics-006:p9:q-discrete-mathematics-006-q5:c01"
+      ],
+      "heading_path": [
+        "机试"
+      ],
+      "locator_end": 9,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "discrete-mathematics-006-Q5",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q1:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q1",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q2:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q2",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q3:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q3",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q4:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q4",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q5:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q5",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q6:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q6",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q7:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q7",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q8:c01"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q8",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    },
+    {
+      "chunk_ids": [
+        "discrete-mathematics-007:q-discrete-mathematics-007-q9:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q9:c02",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q9:c03",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q9:c04"
+      ],
+      "heading_path": [
+        "离散数学试卷（中文）答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "discrete-mathematics-007-Q9",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案"
+    }
+  ],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "discrete-mathematics-002:p1:c01",
+        "discrete-mathematics-002:p2:c01",
+        "discrete-mathematics-002:p3:c01",
+        "discrete-mathematics-002:p4:c01",
+        "discrete-mathematics-002:p5:c01"
+      ],
+      "course_id": "discrete_mathematics",
+      "document_role": "past_exam",
+      "locator_type": "page",
+      "output_md": "discrete_mathematics/discrete-mathematics-002.md",
+      "source_id": "discrete-mathematics-002",
+      "source_title": "华南理工大学《离散数学》2021-2022学年第一学期期末试卷",
+      "year": "2021"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "discrete-mathematics-003:p1:c01",
+        "discrete-mathematics-003:p2:c01",
+        "discrete-mathematics-003:p3:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q1:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q2:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q3:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q4:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q5:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q6:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q7:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q8:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q9:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q10:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q11:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q12:c01",
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q13:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q13:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q14:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q15:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q16:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q17:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q18:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q19:c01",
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q20:c01",
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q21:c01",
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q22:c01",
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q23:c01",
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q24:c01",
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q25:c01",
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q26:c01",
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q27:c01",
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q28:c01",
+        "discrete-mathematics-003:p6:q-discrete-mathematics-003-q29:c01",
+        "discrete-mathematics-003:p6:q-discrete-mathematics-003-q30:c01",
+        "discrete-mathematics-003:p6:q-discrete-mathematics-003-q31:c01",
+        "discrete-mathematics-003:p7:q-discrete-mathematics-003-q32:c01",
+        "discrete-mathematics-003:p7:q-discrete-mathematics-003-q33:c01",
+        "discrete-mathematics-003:p7:q-discrete-mathematics-003-q34:c01",
+        "discrete-mathematics-003:p8:q-discrete-mathematics-003-q35:c01",
+        "discrete-mathematics-003:p8:q-discrete-mathematics-003-q36:c01"
+      ],
+      "course_id": "discrete_mathematics",
+      "document_role": "past_exam",
+      "locator_type": "page",
+      "output_md": "discrete_mathematics/discrete-mathematics-003.md",
+      "source_id": "discrete-mathematics-003",
+      "source_title": "离散数学试卷（中文）",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "discrete-mathematics-004:p1:c01",
+        "discrete-mathematics-004:p2:c01",
+        "discrete-mathematics-004:p3:c01",
+        "discrete-mathematics-004:p4:c01",
+        "discrete-mathematics-004:p5:c01",
+        "discrete-mathematics-004:p6:c01",
+        "discrete-mathematics-004:p7:c01",
+        "discrete-mathematics-004:p8:c01",
+        "discrete-mathematics-004:p9:c01",
+        "discrete-mathematics-004:p10:c01",
+        "discrete-mathematics-004:p11:c01",
+        "discrete-mathematics-004:p12:c01",
+        "discrete-mathematics-004:p13:c01"
+      ],
+      "course_id": "discrete_mathematics",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "discrete_mathematics/discrete-mathematics-004.md",
+      "source_id": "discrete-mathematics-004",
+      "source_title": "机试",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "discrete-mathematics-005:p1:c01",
+        "discrete-mathematics-005:p1:q-discrete-mathematics-005-q1:c01",
+        "discrete-mathematics-005:p1:q-discrete-mathematics-005-q2:c01",
+        "discrete-mathematics-005:p1:q-discrete-mathematics-005-q3:c01",
+        "discrete-mathematics-005:p1:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p2:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p3:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p4:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p5:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p6:q-discrete-mathematics-005-q4:c01",
+        "discrete-mathematics-005:p7:q-discrete-mathematics-005-q4:c01"
+      ],
+      "course_id": "discrete_mathematics",
+      "document_role": "past_exam",
+      "locator_type": "page",
+      "output_md": "discrete_mathematics/discrete-mathematics-005.md",
+      "source_id": "discrete-mathematics-005",
+      "source_title": "机试",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "discrete-mathematics-006:p1:c01",
+        "discrete-mathematics-006:p1:q-discrete-mathematics-006-q1:c01",
+        "discrete-mathematics-006:p1:q-discrete-mathematics-006-q2:c01",
+        "discrete-mathematics-006:p1:q-discrete-mathematics-006-q3:c01",
+        "discrete-mathematics-006:p1:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p2:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p3:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p4:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p5:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p6:q-discrete-mathematics-006-q4:c01",
+        "discrete-mathematics-006:p6:q-discrete-mathematics-006-q5:c01",
+        "discrete-mathematics-006:p7:q-discrete-mathematics-006-q5:c01",
+        "discrete-mathematics-006:p8:q-discrete-mathematics-006-q5:c01",
+        "discrete-mathematics-006:p9:q-discrete-mathematics-006-q5:c01"
+      ],
+      "course_id": "discrete_mathematics",
+      "document_role": "past_exam",
+      "locator_type": "page",
+      "output_md": "discrete_mathematics/discrete-mathematics-006.md",
+      "source_id": "discrete-mathematics-006",
+      "source_title": "机试",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "discrete-mathematics-007:h-离散数学试卷-中文-答案:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q1:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q2:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q3:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q4:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q5:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q6:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q7:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q8:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q9:c01",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q9:c02",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q9:c03",
+        "discrete-mathematics-007:q-discrete-mathematics-007-q9:c04"
+      ],
+      "course_id": "discrete_mathematics",
+      "document_role": "past_exam_answer",
+      "locator_type": "none",
+      "output_md": "discrete_mathematics/discrete-mathematics-007.md",
+      "source_id": "discrete-mathematics-007",
+      "source_title": "离散数学试卷（中文）答案",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "discrete-mathematics-008:p1:c01",
+        "discrete-mathematics-008:p2:c01",
+        "discrete-mathematics-008:p3:c01"
+      ],
+      "course_id": "discrete_mathematics",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "discrete_mathematics/discrete-mathematics-008.md",
+      "source_id": "discrete-mathematics-008",
+      "source_title": "离散数学",
+      "year": null
+    }
+  ],
+  "statistics": {
+    "chunk_count": 99,
+    "question_count": 54,
+    "source_count": 7
+  },
+  "workflow_version": "workflow-contract-v1"
+}

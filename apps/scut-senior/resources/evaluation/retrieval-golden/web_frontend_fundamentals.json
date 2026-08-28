@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "web_frontend_fundamentals",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "第0讲 课程简介主要讲什么？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-001:s1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习课程概要，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-001:s2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习课程概要时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-001:s3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "课程概要里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-001:s4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习课程概要时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-001:s7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考本课程主要包含的内容？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-001:s8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "本课程主要包含的内容主要讲什么？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-001:s9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习第1讲 因特网与万维网，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习概要时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "因特网是什么?里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习因特网时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考简史？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "谁能够关掉因特网?主要讲什么？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习因特网的关键点，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习人员和组织时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "分层架构里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习因特网协议时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考传输控制协议？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "概要主要讲什么？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s12:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习Web服务器 与 浏览器，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s13:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习域名解析系统时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s14:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "统一资源定位符里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s15:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习高级 URL时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s16:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考超文本传输协议？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s17:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "HTTP 错误码主要讲什么？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s18:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习互联网媒体类型，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s19:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习Web语言/技术时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s20:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "名词里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s21:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习概要时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s22:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考Web 1.0 vs. Web 2.0？",
+      "expected_chunk_ids": [
+        "web-frontend-fundamentals-002:s23:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

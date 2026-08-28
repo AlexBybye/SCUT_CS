@@ -1,0 +1,534 @@
+{
+  "chunks": [
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-001:p1:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-001",
+      "source_title": "实验",
+      "text": "![page-001.jpg](assets/electrical-engineering-lab-001/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-001:p2:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-001",
+      "source_title": "实验",
+      "text": "![page-002.jpg](assets/electrical-engineering-lab-001/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-001:p3:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-001",
+      "source_title": "实验",
+      "text": "![page-003.jpg](assets/electrical-engineering-lab-001/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-001:p4:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-001",
+      "source_title": "实验",
+      "text": "![page-004.jpg](assets/electrical-engineering-lab-001/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-002:h-微信图片_20250301151417:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "微信图片_20250301151417"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-002",
+      "source_title": "微信图片_20250301151417",
+      "text": "![page-001.png](assets/electrical-engineering-lab-002/page-001.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-003:p1:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "自选实验"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-003",
+      "source_title": "自选实验",
+      "text": "![page-001.jpg](assets/electrical-engineering-lab-003/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-003:p2:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "自选实验"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-003",
+      "source_title": "自选实验",
+      "text": "![page-002.jpg](assets/electrical-engineering-lab-003/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-003:p3:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "自选实验"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-003",
+      "source_title": "自选实验",
+      "text": "![page-003.jpg](assets/electrical-engineering-lab-003/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-003:p4:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "自选实验"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-003",
+      "source_title": "自选实验",
+      "text": "![page-004.jpg](assets/electrical-engineering-lab-003/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-004:p1:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验7，"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-004",
+      "source_title": "实验7，",
+      "text": "![page-001.jpg](assets/electrical-engineering-lab-004/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-004:p2:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验7，"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-004",
+      "source_title": "实验7，",
+      "text": "![page-002.jpg](assets/electrical-engineering-lab-004/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-004:p3:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验7，"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-004",
+      "source_title": "实验7，",
+      "text": "![page-003.jpg](assets/electrical-engineering-lab-004/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-004:p4:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验7，"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-004",
+      "source_title": "实验7，",
+      "text": "![page-004.jpg](assets/electrical-engineering-lab-004/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-004:p5:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验7，"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-004",
+      "source_title": "实验7，",
+      "text": "![page-005.jpg](assets/electrical-engineering-lab-004/page-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-005:p1:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验5，"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-005",
+      "source_title": "实验5，",
+      "text": "![page-001.jpg](assets/electrical-engineering-lab-005/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-005:p2:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验5，"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-005",
+      "source_title": "实验5，",
+      "text": "![page-002.jpg](assets/electrical-engineering-lab-005/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-005:p3:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验5，"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-005",
+      "source_title": "实验5，",
+      "text": "![page-003.jpg](assets/electrical-engineering-lab-005/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-005:p4:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验5，"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-005",
+      "source_title": "实验5，",
+      "text": "![page-004.jpg](assets/electrical-engineering-lab-005/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-005:p5:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验5，"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-005",
+      "source_title": "实验5，",
+      "text": "![page-005.jpg](assets/electrical-engineering-lab-005/page-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-005:p6:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验5，"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-005",
+      "source_title": "实验5，",
+      "text": "![page-006.jpg](assets/electrical-engineering-lab-005/page-006.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-006:p1:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验20，"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-006",
+      "source_title": "实验20，",
+      "text": "![page-001.jpg](assets/electrical-engineering-lab-006/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-006:p2:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验20，"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-006",
+      "source_title": "实验20，",
+      "text": "![page-002.jpg](assets/electrical-engineering-lab-006/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-006:p3:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验20，"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-006",
+      "source_title": "实验20，",
+      "text": "![page-003.jpg](assets/electrical-engineering-lab-006/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-006:p4:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验20，"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-006",
+      "source_title": "实验20，",
+      "text": "![page-004.jpg](assets/electrical-engineering-lab-006/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-006:p5:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验20，"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-006",
+      "source_title": "实验20，",
+      "text": "![page-005.jpg](assets/electrical-engineering-lab-006/page-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-007:p1:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验1，"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-007",
+      "source_title": "实验1，",
+      "text": "![page-001.jpg](assets/electrical-engineering-lab-007/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-007:p2:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验1，"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-007",
+      "source_title": "实验1，",
+      "text": "![page-002.jpg](assets/electrical-engineering-lab-007/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-007:p3:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验1，"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-007",
+      "source_title": "实验1，",
+      "text": "![page-003.jpg](assets/electrical-engineering-lab-007/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-007:p4:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验1，"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-007",
+      "source_title": "实验1，",
+      "text": "![page-004.jpg](assets/electrical-engineering-lab-007/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-007:p5:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验1，"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-007",
+      "source_title": "实验1，",
+      "text": "![page-005.jpg](assets/electrical-engineering-lab-007/page-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-008:p1:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验15，"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-008",
+      "source_title": "实验15，",
+      "text": "![page-001.jpg](assets/electrical-engineering-lab-008/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-008:p2:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验15，"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-008",
+      "source_title": "实验15，",
+      "text": "![page-002.jpg](assets/electrical-engineering-lab-008/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-008:p3:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验15，"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-008",
+      "source_title": "实验15，",
+      "text": "![page-003.jpg](assets/electrical-engineering-lab-008/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-008:p4:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验15，"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-008",
+      "source_title": "实验15，",
+      "text": "![page-004.jpg](assets/electrical-engineering-lab-008/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-lab-008:p5:c01",
+      "course_id": "electrical_engineering_lab",
+      "heading_path": [
+        "实验15，"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-lab-008",
+      "source_title": "实验15，",
+      "text": "![page-005.jpg](assets/electrical-engineering-lab-008/page-005.jpg)"
+    }
+  ],
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "electrical_engineering_lab",
+  "questions": [],
+  "schema_version": "course-index-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e"
+}

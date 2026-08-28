@@ -1,0 +1,4251 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "university_physics_3_1",
+  "course_pack_version": "course-pack-university_physics_3_1-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-0.-期末复习总览:c01"
+      ],
+      "heading_path": [
+        "0. 期末复习总览"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-1.-质点运动学~1.1-位置-位移与路程:c01"
+      ],
+      "heading_path": [
+        "1. 质点运动学",
+        "1.1 位置、位移与路程"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-1.-质点运动学~1.2-速度与速率:c01"
+      ],
+      "heading_path": [
+        "1. 质点运动学",
+        "1.2 速度与速率"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-1.-质点运动学~1.3-加速度:c01"
+      ],
+      "heading_path": [
+        "1. 质点运动学",
+        "1.3 加速度"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-1.-质点运动学~1.4-圆周运动:c01"
+      ],
+      "heading_path": [
+        "1. 质点运动学",
+        "1.4 圆周运动"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-10.-气体动理论~10.1-理想气体状态方程:c01"
+      ],
+      "heading_path": [
+        "10. 气体动理论",
+        "10.1 理想气体状态方程"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-10.-气体动理论~10.2-温标:c01"
+      ],
+      "heading_path": [
+        "10. 气体动理论",
+        "10.2 温标"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-10.-气体动理论~10.3-压强微观公式:c01"
+      ],
+      "heading_path": [
+        "10. 气体动理论",
+        "10.3 压强微观公式"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-10.-气体动理论~10.4-平均平动动能:c01"
+      ],
+      "heading_path": [
+        "10. 气体动理论",
+        "10.4 平均平动动能"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-10.-气体动理论~10.5-能量均分定理:c01"
+      ],
+      "heading_path": [
+        "10. 气体动理论",
+        "10.5 能量均分定理"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-10.-气体动理论~10.6-三种统计速率:c01"
+      ],
+      "heading_path": [
+        "10. 气体动理论",
+        "10.6 三种统计速率"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.1-符号规定:c01"
+      ],
+      "heading_path": [
+        "11. 热力学第一定律",
+        "11.1 符号规定"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.2-理想气体内能与热容:c01"
+      ],
+      "heading_path": [
+        "11. 热力学第一定律",
+        "11.2 理想气体内能与热容"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.3-等体过程:c01"
+      ],
+      "heading_path": [
+        "11. 热力学第一定律",
+        "11.3 等体过程"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.4-等压过程:c01"
+      ],
+      "heading_path": [
+        "11. 热力学第一定律",
+        "11.4 等压过程"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.5-等温过程:c01"
+      ],
+      "heading_path": [
+        "11. 热力学第一定律",
+        "11.5 等温过程"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.6-绝热过程:c01"
+      ],
+      "heading_path": [
+        "11. 热力学第一定律",
+        "11.6 绝热过程"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.7-循环过程:c01"
+      ],
+      "heading_path": [
+        "11. 热力学第一定律",
+        "11.7 循环过程"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.8-热机效率:c01"
+      ],
+      "heading_path": [
+        "11. 热力学第一定律",
+        "11.8 热机效率"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.9-卡诺热机与制冷机:c01"
+      ],
+      "heading_path": [
+        "11. 热力学第一定律",
+        "11.9 卡诺热机与制冷机"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-12.-热力学第二定律与熵~12.1-第二定律的两种表述:c01"
+      ],
+      "heading_path": [
+        "12. 热力学第二定律与熵",
+        "12.1 第二定律的两种表述"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-12.-热力学第二定律与熵~12.2-可逆与不可逆过程:c01"
+      ],
+      "heading_path": [
+        "12. 热力学第二定律与熵",
+        "12.2 可逆与不可逆过程"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-12.-热力学第二定律与熵~12.3-熵:c01"
+      ],
+      "heading_path": [
+        "12. 热力学第二定律与熵",
+        "12.3 熵"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-13.-四类计算题固定模板~13.1-刚体综合题:c01"
+      ],
+      "heading_path": [
+        "13. 四类计算题固定模板",
+        "13.1 刚体综合题"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-13.-四类计算题固定模板~13.2-波动方程题:c01"
+      ],
+      "heading_path": [
+        "13. 四类计算题固定模板",
+        "13.2 波动方程题"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-13.-四类计算题固定模板~13.3-光栅题:c01"
+      ],
+      "heading_path": [
+        "13. 四类计算题固定模板",
+        "13.3 光栅题"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-13.-四类计算题固定模板~13.4-热力学题:c01"
+      ],
+      "heading_path": [
+        "13. 四类计算题固定模板",
+        "13.4 热力学题"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-14.-考前易错点清单:c01"
+      ],
+      "heading_path": [
+        "14. 考前易错点清单"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-15.-建议复习顺序:c01"
+      ],
+      "heading_path": [
+        "15. 建议复习顺序"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-2.-质点动力学~2.1-牛顿第二定律:c01"
+      ],
+      "heading_path": [
+        "2. 质点动力学",
+        "2.1 牛顿第二定律"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-2.-质点动力学~2.2-常见力:c01"
+      ],
+      "heading_path": [
+        "2. 质点动力学",
+        "2.2 常见力"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:h-2012级大学物理-i-a卷试卷规范模版-4学分:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q1:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q2:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q3:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q4:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q5:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q6:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q7:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q8:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q9:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q10:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q11:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q12:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q13:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q14:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q15:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q16:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q17:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q18:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q19:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q20:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q21:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q22:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q23:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q24:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q25:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q26:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q27:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q28:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q29:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q30:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q31:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q32:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q33:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q34:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "source_ids": [
+        "university-physics-3-1-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-004:h-2012级大学物理-i-期末试卷解答-a卷:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q1:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q2:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q3:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q4:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q5:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q5:c02",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q6:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q7:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q8:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "source_ids": [
+        "university-physics-3-1-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:h-2013级大学物理-i-a卷试卷规范模版-4学分:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q1:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q2:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q3:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q4:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q5:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q6:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q7:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q8:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q9:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q10:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q11:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q12:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q13:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q14:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q15:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q16:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q17:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q18:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q19:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q20:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q21:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q22:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q23:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q24:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q25:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q26:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q27:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q28:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q29:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q30:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q31:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q32:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "source_ids": [
+        "university-physics-3-1-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-006:h-2013级大学物理-i-期末试卷解答-a卷:c01",
+        "university-physics-3-1-006:q-university-physics-3-1-006-q1:c01",
+        "university-physics-3-1-006:q-university-physics-3-1-006-q2:c01",
+        "university-physics-3-1-006:q-university-physics-3-1-006-q3:c01",
+        "university-physics-3-1-006:q-university-physics-3-1-006-q4:c01",
+        "university-physics-3-1-006:q-university-physics-3-1-006-q5:c01",
+        "university-physics-3-1-006:q-university-physics-3-1-006-q6:c01",
+        "university-physics-3-1-006:q-university-physics-3-1-006-q7:c01",
+        "university-physics-3-1-006:q-university-physics-3-1-006-q8:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "source_ids": [
+        "university-physics-3-1-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:h-2020级大学物理iii-一-期末考试试卷b卷-4学分:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q1:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q2:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q3:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q4:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q5:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q6:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q7:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q8:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q9:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q10:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q11:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q12:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q13:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q14:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q15:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q16:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q17:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q18:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q19:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q20:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q21:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q22:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q23:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q24:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q25:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q26:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q27:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q28:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q29:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q30:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q31:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q32:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q33:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q34:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q35:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "source_ids": [
+        "university-physics-3-1-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-008:h-2020级大学物理-i-期末试卷解答-b卷:c01",
+        "university-physics-3-1-008:q-university-physics-3-1-008-q1:c01",
+        "university-physics-3-1-008:q-university-physics-3-1-008-q2:c01",
+        "university-physics-3-1-008:q-university-physics-3-1-008-q3:c01",
+        "university-physics-3-1-008:q-university-physics-3-1-008-q4:c01",
+        "university-physics-3-1-008:q-university-physics-3-1-008-q5:c01",
+        "university-physics-3-1-008:q-university-physics-3-1-008-q6:c01",
+        "university-physics-3-1-008:q-university-physics-3-1-008-q7:c01",
+        "university-physics-3-1-008:q-university-physics-3-1-008-q8:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理（I）期末试卷解答（B卷）"
+      ],
+      "source_ids": [
+        "university-physics-3-1-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:h-2022级大学物理iii-一-期末考试试卷b卷-4学分:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q1:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q2:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q3:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q4:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q5:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q6:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q7:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q8:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q9:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q10:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q11:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q12:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q13:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q14:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q15:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q16:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q17:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q18:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q19:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q20:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q21:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q22:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q23:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q24:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q25:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q26:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q27:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q28:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q29:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q30:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q31:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q32:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q33:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q34:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q35:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q36:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q37:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q38:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "source_ids": [
+        "university-physics-3-1-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-013:h-2022级大学物理-一-期末试卷答案简版-b卷:c01",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q1:c01",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q2:c01",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q3:c01",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q4:c01",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q4:c02",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q5:c01",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q6:c01",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q7:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理（一）期末试卷答案简版（B卷）"
+      ],
+      "source_ids": [
+        "university-physics-3-1-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-010:h-2023级大学物理-上-期末考试复习纲要-4学分:c01"
+      ],
+      "heading_path": [
+        "2023级大学物理(上)期末考试复习纲要（4学分）"
+      ],
+      "source_ids": [
+        "university-physics-3-1-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-011:p1:c01",
+        "university-physics-3-1-011:p2:c01",
+        "university-physics-3-1-011:p3:q-university-physics-3-1-011-q1:c01",
+        "university-physics-3-1-011:p3:q-university-physics-3-1-011-q2:c01",
+        "university-physics-3-1-011:p3:q-university-physics-3-1-011-q3:c01",
+        "university-physics-3-1-011:p3:q-university-physics-3-1-011-q4:c01",
+        "university-physics-3-1-011:p4:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p5:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p6:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p7:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p8:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p9:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p10:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p11:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p12:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p13:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p14:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p15:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p16:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p17:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p17:q-university-physics-3-1-011-q6:c01",
+        "university-physics-3-1-011:p18:q-university-physics-3-1-011-q6:c01",
+        "university-physics-3-1-011:p19:q-university-physics-3-1-011-q6:c01",
+        "university-physics-3-1-011:p19:q-university-physics-3-1-011-q7:c01",
+        "university-physics-3-1-011:p19:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p20:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p21:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p22:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p23:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p24:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p25:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p26:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p27:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p28:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p29:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p30:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p31:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p32:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p33:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p34:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p35:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p36:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p37:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p38:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p39:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p40:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p41:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p42:q-university-physics-3-1-011-q8:c01"
+      ],
+      "heading_path": [
+        "2023级大学物理1期末复习"
+      ],
+      "source_ids": [
+        "university-physics-3-1-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-012:h-2025级大学物理iii-一-期末考试复习纲要-4学分:c01"
+      ],
+      "heading_path": [
+        "2025级大学物理III(一)期末考试复习纲要（4学分）"
+      ],
+      "source_ids": [
+        "university-physics-3-1-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-3.-冲量-动量与能量~3.1-动量与冲量:c01"
+      ],
+      "heading_path": [
+        "3. 冲量、动量与能量",
+        "3.1 动量与冲量"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-3.-冲量-动量与能量~3.2-动量守恒:c01"
+      ],
+      "heading_path": [
+        "3. 冲量、动量与能量",
+        "3.2 动量守恒"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-3.-冲量-动量与能量~3.3-功:c01"
+      ],
+      "heading_path": [
+        "3. 冲量、动量与能量",
+        "3.3 功"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-3.-冲量-动量与能量~3.4-动能定理:c01"
+      ],
+      "heading_path": [
+        "3. 冲量、动量与能量",
+        "3.4 动能定理"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-3.-冲量-动量与能量~3.5-势能与机械能:c01"
+      ],
+      "heading_path": [
+        "3. 冲量、动量与能量",
+        "3.5 势能与机械能"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-4.-刚体力学~4.1-线量与角量:c01"
+      ],
+      "heading_path": [
+        "4. 刚体力学",
+        "4.1 线量与角量"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-4.-刚体力学~4.2-力矩:c01"
+      ],
+      "heading_path": [
+        "4. 刚体力学",
+        "4.2 力矩"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-4.-刚体力学~4.3-转动惯量:c01"
+      ],
+      "heading_path": [
+        "4. 刚体力学",
+        "4.3 转动惯量"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-4.-刚体力学~4.4-刚体定轴转动定律:c01"
+      ],
+      "heading_path": [
+        "4. 刚体力学",
+        "4.4 刚体定轴转动定律"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-4.-刚体力学~4.5-角动量:c01"
+      ],
+      "heading_path": [
+        "4. 刚体力学",
+        "4.5 角动量"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-4.-刚体力学~4.6-角动量定理与守恒:c01"
+      ],
+      "heading_path": [
+        "4. 刚体力学",
+        "4.6 角动量定理与守恒"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-4.-刚体力学~4.7-转动功与转动动能:c01"
+      ],
+      "heading_path": [
+        "4. 刚体力学",
+        "4.7 转动功与转动动能"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-4.-刚体力学~4.8-子弹击杆类题目~阶段一-碰撞:c01"
+      ],
+      "heading_path": [
+        "4. 刚体力学",
+        "4.8 子弹击杆类题目",
+        "阶段一：碰撞"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-4.-刚体力学~4.8-子弹击杆类题目~阶段二-受阻力矩减速:c01"
+      ],
+      "heading_path": [
+        "4. 刚体力学",
+        "4.8 子弹击杆类题目",
+        "阶段二：受阻力矩减速"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-4.-刚体力学~4.9-滑轮综合题:c01"
+      ],
+      "heading_path": [
+        "4. 刚体力学",
+        "4.9 滑轮综合题"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-5.-机械振动~5.1-简谐振动判据:c01"
+      ],
+      "heading_path": [
+        "5. 机械振动",
+        "5.1 简谐振动判据"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-5.-机械振动~5.2-周期-频率与圆频率:c01"
+      ],
+      "heading_path": [
+        "5. 机械振动",
+        "5.2 周期、频率与圆频率"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-5.-机械振动~5.3-速度与加速度:c01"
+      ],
+      "heading_path": [
+        "5. 机械振动",
+        "5.3 速度与加速度"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-5.-机械振动~5.4-根据初始条件求初相:c01"
+      ],
+      "heading_path": [
+        "5. 机械振动",
+        "5.4 根据初始条件求初相"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-5.-机械振动~5.5-简谐振动能量:c01"
+      ],
+      "heading_path": [
+        "5. 机械振动",
+        "5.5 简谐振动能量"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-5.-机械振动~5.6-同方向同频率振动合成:c01"
+      ],
+      "heading_path": [
+        "5. 机械振动",
+        "5.6 同方向同频率振动合成"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-6.-机械波~6.1-基本关系:c01"
+      ],
+      "heading_path": [
+        "6. 机械波",
+        "6.1 基本关系"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-6.-机械波~6.2-波动方程:c01"
+      ],
+      "heading_path": [
+        "6. 机械波",
+        "6.2 波动方程"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-6.-机械波~6.3-根据波形图判断质点运动方向:c01"
+      ],
+      "heading_path": [
+        "6. 机械波",
+        "6.3 根据波形图判断质点运动方向"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-6.-机械波~6.4-相位差与波程差:c01"
+      ],
+      "heading_path": [
+        "6. 机械波",
+        "6.4 相位差与波程差"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-6.-机械波~6.5-波的干涉:c01"
+      ],
+      "heading_path": [
+        "6. 机械波",
+        "6.5 波的干涉"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-6.-机械波~6.6-反射与驻波:c01"
+      ],
+      "heading_path": [
+        "6. 机械波",
+        "6.6 反射与驻波"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-6.-机械波~6.7-多普勒效应:c01"
+      ],
+      "heading_path": [
+        "6. 机械波",
+        "6.7 多普勒效应"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-7.-光的干涉~7.1-光程:c01"
+      ],
+      "heading_path": [
+        "7. 光的干涉",
+        "7.1 光程"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-7.-光的干涉~7.2-杨氏双缝干涉:c01"
+      ],
+      "heading_path": [
+        "7. 光的干涉",
+        "7.2 杨氏双缝干涉"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-7.-光的干涉~7.3-半波损失:c01"
+      ],
+      "heading_path": [
+        "7. 光的干涉",
+        "7.3 半波损失"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-7.-光的干涉~7.4-薄膜干涉:c01"
+      ],
+      "heading_path": [
+        "7. 光的干涉",
+        "7.4 薄膜干涉"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-7.-光的干涉~7.5-劈尖干涉:c01"
+      ],
+      "heading_path": [
+        "7. 光的干涉",
+        "7.5 劈尖干涉"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-7.-光的干涉~7.6-牛顿环:c01"
+      ],
+      "heading_path": [
+        "7. 光的干涉",
+        "7.6 牛顿环"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-8.-光的衍射~8.1-单缝夫琅禾费衍射:c01"
+      ],
+      "heading_path": [
+        "8. 光的衍射",
+        "8.1 单缝夫琅禾费衍射"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-8.-光的衍射~8.2-光栅常数:c01"
+      ],
+      "heading_path": [
+        "8. 光的衍射",
+        "8.2 光栅常数"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-8.-光的衍射~8.3-光栅方程:c01"
+      ],
+      "heading_path": [
+        "8. 光的衍射",
+        "8.3 光栅方程"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-8.-光的衍射~8.4-最大级次:c01"
+      ],
+      "heading_path": [
+        "8. 光的衍射",
+        "8.4 最大级次"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-8.-光的衍射~8.5-缺级:c01"
+      ],
+      "heading_path": [
+        "8. 光的衍射",
+        "8.5 缺级"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-8.-光的衍射~8.6-谱线重叠:c01"
+      ],
+      "heading_path": [
+        "8. 光的衍射",
+        "8.6 谱线重叠"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-9.-光的偏振~9.1-自然光通过偏振片:c01"
+      ],
+      "heading_path": [
+        "9. 光的偏振",
+        "9.1 自然光通过偏振片"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-9.-光的偏振~9.2-马吕斯定律:c01"
+      ],
+      "heading_path": [
+        "9. 光的偏振",
+        "9.2 马吕斯定律"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-9.-光的偏振~9.3-布儒斯特定律:c01"
+      ],
+      "heading_path": [
+        "9. 光的偏振",
+        "9.3 布儒斯特定律"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-大学物理期末总复习:c01"
+      ],
+      "heading_path": [
+        "大学物理期末总复习"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-002:h-资料来源:c01"
+      ],
+      "heading_path": [
+        "资料来源"
+      ],
+      "source_ids": [
+        "university-physics-3-1-002"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q1:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q1",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q10:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q10",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q11:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q11",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q12:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q12",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q13:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q13",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q14:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q14",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q15:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q15",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q16:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q16",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q17:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q17",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q18:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q18",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q19:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q19",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q2:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q2",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q20:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q20",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q21:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q21",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q22:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q22",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q23:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q23",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q24:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q24",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q25:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q25",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q26:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q26",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q27:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q27",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q28:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q28",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q29:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q29",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q3:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q3",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q30:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q30",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q31:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q31",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q32:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q32",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q33:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q33",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q34:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q34",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q4:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q4",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q5:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q5",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q6:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q6",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q7:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q7",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q8:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q8",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-003:q-university-physics-3-1-003-q9:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-003-Q9",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-004:q-university-physics-3-1-004-q1:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-004-Q1",
+      "source_id": "university-physics-3-1-004",
+      "source_title": "2012级大学物理（I）期末试卷解答（A卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-004:q-university-physics-3-1-004-q2:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-004-Q2",
+      "source_id": "university-physics-3-1-004",
+      "source_title": "2012级大学物理（I）期末试卷解答（A卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-004:q-university-physics-3-1-004-q3:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-004-Q3",
+      "source_id": "university-physics-3-1-004",
+      "source_title": "2012级大学物理（I）期末试卷解答（A卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-004:q-university-physics-3-1-004-q4:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-004-Q4",
+      "source_id": "university-physics-3-1-004",
+      "source_title": "2012级大学物理（I）期末试卷解答（A卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-004:q-university-physics-3-1-004-q5:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q5:c02"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-004-Q5",
+      "source_id": "university-physics-3-1-004",
+      "source_title": "2012级大学物理（I）期末试卷解答（A卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-004:q-university-physics-3-1-004-q6:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-004-Q6",
+      "source_id": "university-physics-3-1-004",
+      "source_title": "2012级大学物理（I）期末试卷解答（A卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-004:q-university-physics-3-1-004-q7:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-004-Q7",
+      "source_id": "university-physics-3-1-004",
+      "source_title": "2012级大学物理（I）期末试卷解答（A卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-004:q-university-physics-3-1-004-q8:c01"
+      ],
+      "heading_path": [
+        "2012级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-004-Q8",
+      "source_id": "university-physics-3-1-004",
+      "source_title": "2012级大学物理（I）期末试卷解答（A卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q1:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q1",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q10:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q10",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q11:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q11",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q12:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q12",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q13:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q13",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q14:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q14",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q15:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q15",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q16:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q16",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q17:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q17",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q18:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q18",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q19:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q19",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q2:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q2",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q20:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q20",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q21:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q21",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q22:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q22",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q23:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q23",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q24:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q24",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q25:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q25",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q26:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q26",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q27:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q27",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q28:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q28",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q29:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q29",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q3:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q3",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q30:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q30",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q31:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q31",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q32:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q32",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q4:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q4",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q5:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q5",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q6:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q6",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q7:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q7",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q8:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q8",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-005:q-university-physics-3-1-005-q9:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）A卷试卷规范模版（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-005-Q9",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-006:q-university-physics-3-1-006-q1:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-006-Q1",
+      "source_id": "university-physics-3-1-006",
+      "source_title": "2013级大学物理（I）期末试卷解答（A卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-006:q-university-physics-3-1-006-q2:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-006-Q2",
+      "source_id": "university-physics-3-1-006",
+      "source_title": "2013级大学物理（I）期末试卷解答（A卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-006:q-university-physics-3-1-006-q3:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-006-Q3",
+      "source_id": "university-physics-3-1-006",
+      "source_title": "2013级大学物理（I）期末试卷解答（A卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-006:q-university-physics-3-1-006-q4:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-006-Q4",
+      "source_id": "university-physics-3-1-006",
+      "source_title": "2013级大学物理（I）期末试卷解答（A卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-006:q-university-physics-3-1-006-q5:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-006-Q5",
+      "source_id": "university-physics-3-1-006",
+      "source_title": "2013级大学物理（I）期末试卷解答（A卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-006:q-university-physics-3-1-006-q6:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-006-Q6",
+      "source_id": "university-physics-3-1-006",
+      "source_title": "2013级大学物理（I）期末试卷解答（A卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-006:q-university-physics-3-1-006-q7:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-006-Q7",
+      "source_id": "university-physics-3-1-006",
+      "source_title": "2013级大学物理（I）期末试卷解答（A卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-006:q-university-physics-3-1-006-q8:c01"
+      ],
+      "heading_path": [
+        "2013级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-006-Q8",
+      "source_id": "university-physics-3-1-006",
+      "source_title": "2013级大学物理（I）期末试卷解答（A卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q1:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q1",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q10:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q10",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q11:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q11",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q12:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q12",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q13:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q13",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q14:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q14",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q15:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q15",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q16:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q16",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q17:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q17",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q18:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q18",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q19:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q19",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q2:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q2",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q20:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q20",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q21:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q21",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q22:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q22",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q23:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q23",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q24:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q24",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q25:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q25",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q26:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q26",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q27:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q27",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q28:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q28",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q29:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q29",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q3:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q3",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q30:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q30",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q31:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q31",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q32:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q32",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q33:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q33",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q34:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q34",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q35:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q35",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q4:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q4",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q5:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q5",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q6:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q6",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q7:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q7",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q8:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q8",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-007:q-university-physics-3-1-007-q9:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-007-Q9",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-008:q-university-physics-3-1-008-q1:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理（I）期末试卷解答（B卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-008-Q1",
+      "source_id": "university-physics-3-1-008",
+      "source_title": "2020级大学物理（I）期末试卷解答（B卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-008:q-university-physics-3-1-008-q2:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理（I）期末试卷解答（B卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-008-Q2",
+      "source_id": "university-physics-3-1-008",
+      "source_title": "2020级大学物理（I）期末试卷解答（B卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-008:q-university-physics-3-1-008-q3:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理（I）期末试卷解答（B卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-008-Q3",
+      "source_id": "university-physics-3-1-008",
+      "source_title": "2020级大学物理（I）期末试卷解答（B卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-008:q-university-physics-3-1-008-q4:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理（I）期末试卷解答（B卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-008-Q4",
+      "source_id": "university-physics-3-1-008",
+      "source_title": "2020级大学物理（I）期末试卷解答（B卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-008:q-university-physics-3-1-008-q5:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理（I）期末试卷解答（B卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-008-Q5",
+      "source_id": "university-physics-3-1-008",
+      "source_title": "2020级大学物理（I）期末试卷解答（B卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-008:q-university-physics-3-1-008-q6:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理（I）期末试卷解答（B卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-008-Q6",
+      "source_id": "university-physics-3-1-008",
+      "source_title": "2020级大学物理（I）期末试卷解答（B卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-008:q-university-physics-3-1-008-q7:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理（I）期末试卷解答（B卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-008-Q7",
+      "source_id": "university-physics-3-1-008",
+      "source_title": "2020级大学物理（I）期末试卷解答（B卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-008:q-university-physics-3-1-008-q8:c01"
+      ],
+      "heading_path": [
+        "2020级大学物理（I）期末试卷解答（B卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-008-Q8",
+      "source_id": "university-physics-3-1-008",
+      "source_title": "2020级大学物理（I）期末试卷解答（B卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q1:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q1",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q10:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q10",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q11:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q11",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q12:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q12",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q13:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q13",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q14:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q14",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q15:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q15",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q16:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q16",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q17:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q17",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q18:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q18",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q19:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q19",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q2:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q2",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q20:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q20",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q21:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q21",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q22:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q22",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q23:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q23",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q24:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q24",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q25:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q25",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q26:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q26",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q27:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q27",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q28:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q28",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q29:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q29",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q3:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q3",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q30:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q30",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q31:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q31",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q32:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q32",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q33:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q33",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q34:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q34",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q35:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q35",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q36:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q36",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q37:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q37",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q38:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q38",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q4:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q4",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q5:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q5",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q6:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q6",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q7:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q7",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q8:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q8",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-009:q-university-physics-3-1-009-q9:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-009-Q9",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-011:p3:q-university-physics-3-1-011-q1:c01"
+      ],
+      "heading_path": [
+        "2023级大学物理1期末复习"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "university-physics-3-1-011-Q1",
+      "source_id": "university-physics-3-1-011",
+      "source_title": "2023级大学物理1期末复习"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-011:p3:q-university-physics-3-1-011-q2:c01"
+      ],
+      "heading_path": [
+        "2023级大学物理1期末复习"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "university-physics-3-1-011-Q2",
+      "source_id": "university-physics-3-1-011",
+      "source_title": "2023级大学物理1期末复习"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-011:p3:q-university-physics-3-1-011-q3:c01"
+      ],
+      "heading_path": [
+        "2023级大学物理1期末复习"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "university-physics-3-1-011-Q3",
+      "source_id": "university-physics-3-1-011",
+      "source_title": "2023级大学物理1期末复习"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-011:p3:q-university-physics-3-1-011-q4:c01"
+      ],
+      "heading_path": [
+        "2023级大学物理1期末复习"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "university-physics-3-1-011-Q4",
+      "source_id": "university-physics-3-1-011",
+      "source_title": "2023级大学物理1期末复习"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-011:p4:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p5:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p6:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p7:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p8:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p9:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p10:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p11:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p12:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p13:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p14:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p15:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p16:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p17:q-university-physics-3-1-011-q5:c01"
+      ],
+      "heading_path": [
+        "2023级大学物理1期末复习"
+      ],
+      "locator_end": 17,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "university-physics-3-1-011-Q5",
+      "source_id": "university-physics-3-1-011",
+      "source_title": "2023级大学物理1期末复习"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-011:p17:q-university-physics-3-1-011-q6:c01",
+        "university-physics-3-1-011:p18:q-university-physics-3-1-011-q6:c01",
+        "university-physics-3-1-011:p19:q-university-physics-3-1-011-q6:c01"
+      ],
+      "heading_path": [
+        "2023级大学物理1期末复习"
+      ],
+      "locator_end": 19,
+      "locator_start": 17,
+      "locator_type": "page",
+      "question_id": "university-physics-3-1-011-Q6",
+      "source_id": "university-physics-3-1-011",
+      "source_title": "2023级大学物理1期末复习"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-011:p19:q-university-physics-3-1-011-q7:c01"
+      ],
+      "heading_path": [
+        "2023级大学物理1期末复习"
+      ],
+      "locator_end": 19,
+      "locator_start": 19,
+      "locator_type": "page",
+      "question_id": "university-physics-3-1-011-Q7",
+      "source_id": "university-physics-3-1-011",
+      "source_title": "2023级大学物理1期末复习"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-011:p19:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p20:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p21:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p22:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p23:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p24:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p25:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p26:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p27:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p28:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p29:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p30:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p31:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p32:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p33:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p34:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p35:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p36:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p37:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p38:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p39:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p40:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p41:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p42:q-university-physics-3-1-011-q8:c01"
+      ],
+      "heading_path": [
+        "2023级大学物理1期末复习"
+      ],
+      "locator_end": 42,
+      "locator_start": 19,
+      "locator_type": "page",
+      "question_id": "university-physics-3-1-011-Q8",
+      "source_id": "university-physics-3-1-011",
+      "source_title": "2023级大学物理1期末复习"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-013:q-university-physics-3-1-013-q1:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理（一）期末试卷答案简版（B卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-013-Q1",
+      "source_id": "university-physics-3-1-013",
+      "source_title": "2022级大学物理（一）期末试卷答案简版（B卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-013:q-university-physics-3-1-013-q2:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理（一）期末试卷答案简版（B卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-013-Q2",
+      "source_id": "university-physics-3-1-013",
+      "source_title": "2022级大学物理（一）期末试卷答案简版（B卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-013:q-university-physics-3-1-013-q3:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理（一）期末试卷答案简版（B卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-013-Q3",
+      "source_id": "university-physics-3-1-013",
+      "source_title": "2022级大学物理（一）期末试卷答案简版（B卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-013:q-university-physics-3-1-013-q4:c01",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q4:c02"
+      ],
+      "heading_path": [
+        "2022级大学物理（一）期末试卷答案简版（B卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-013-Q4",
+      "source_id": "university-physics-3-1-013",
+      "source_title": "2022级大学物理（一）期末试卷答案简版（B卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-013:q-university-physics-3-1-013-q5:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理（一）期末试卷答案简版（B卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-013-Q5",
+      "source_id": "university-physics-3-1-013",
+      "source_title": "2022级大学物理（一）期末试卷答案简版（B卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-013:q-university-physics-3-1-013-q6:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理（一）期末试卷答案简版（B卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-013-Q6",
+      "source_id": "university-physics-3-1-013",
+      "source_title": "2022级大学物理（一）期末试卷答案简版（B卷）"
+    },
+    {
+      "chunk_ids": [
+        "university-physics-3-1-013:q-university-physics-3-1-013-q7:c01"
+      ],
+      "heading_path": [
+        "2022级大学物理（一）期末试卷答案简版（B卷）"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "university-physics-3-1-013-Q7",
+      "source_id": "university-physics-3-1-013",
+      "source_title": "2022级大学物理（一）期末试卷答案简版（B卷）"
+    }
+  ],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-3-1-002:h-大学物理期末总复习:c01",
+        "university-physics-3-1-002:h-0.-期末复习总览:c01",
+        "university-physics-3-1-002:h-1.-质点运动学~1.1-位置-位移与路程:c01",
+        "university-physics-3-1-002:h-1.-质点运动学~1.2-速度与速率:c01",
+        "university-physics-3-1-002:h-1.-质点运动学~1.3-加速度:c01",
+        "university-physics-3-1-002:h-1.-质点运动学~1.4-圆周运动:c01",
+        "university-physics-3-1-002:h-2.-质点动力学~2.1-牛顿第二定律:c01",
+        "university-physics-3-1-002:h-2.-质点动力学~2.2-常见力:c01",
+        "university-physics-3-1-002:h-3.-冲量-动量与能量~3.1-动量与冲量:c01",
+        "university-physics-3-1-002:h-3.-冲量-动量与能量~3.2-动量守恒:c01",
+        "university-physics-3-1-002:h-3.-冲量-动量与能量~3.3-功:c01",
+        "university-physics-3-1-002:h-3.-冲量-动量与能量~3.4-动能定理:c01",
+        "university-physics-3-1-002:h-3.-冲量-动量与能量~3.5-势能与机械能:c01",
+        "university-physics-3-1-002:h-4.-刚体力学~4.1-线量与角量:c01",
+        "university-physics-3-1-002:h-4.-刚体力学~4.2-力矩:c01",
+        "university-physics-3-1-002:h-4.-刚体力学~4.3-转动惯量:c01",
+        "university-physics-3-1-002:h-4.-刚体力学~4.4-刚体定轴转动定律:c01",
+        "university-physics-3-1-002:h-4.-刚体力学~4.5-角动量:c01",
+        "university-physics-3-1-002:h-4.-刚体力学~4.6-角动量定理与守恒:c01",
+        "university-physics-3-1-002:h-4.-刚体力学~4.7-转动功与转动动能:c01",
+        "university-physics-3-1-002:h-4.-刚体力学~4.8-子弹击杆类题目~阶段一-碰撞:c01",
+        "university-physics-3-1-002:h-4.-刚体力学~4.8-子弹击杆类题目~阶段二-受阻力矩减速:c01",
+        "university-physics-3-1-002:h-4.-刚体力学~4.9-滑轮综合题:c01",
+        "university-physics-3-1-002:h-5.-机械振动~5.1-简谐振动判据:c01",
+        "university-physics-3-1-002:h-5.-机械振动~5.2-周期-频率与圆频率:c01",
+        "university-physics-3-1-002:h-5.-机械振动~5.3-速度与加速度:c01",
+        "university-physics-3-1-002:h-5.-机械振动~5.4-根据初始条件求初相:c01",
+        "university-physics-3-1-002:h-5.-机械振动~5.5-简谐振动能量:c01",
+        "university-physics-3-1-002:h-5.-机械振动~5.6-同方向同频率振动合成:c01",
+        "university-physics-3-1-002:h-6.-机械波~6.1-基本关系:c01",
+        "university-physics-3-1-002:h-6.-机械波~6.2-波动方程:c01",
+        "university-physics-3-1-002:h-6.-机械波~6.3-根据波形图判断质点运动方向:c01",
+        "university-physics-3-1-002:h-6.-机械波~6.4-相位差与波程差:c01",
+        "university-physics-3-1-002:h-6.-机械波~6.5-波的干涉:c01",
+        "university-physics-3-1-002:h-6.-机械波~6.6-反射与驻波:c01",
+        "university-physics-3-1-002:h-6.-机械波~6.7-多普勒效应:c01",
+        "university-physics-3-1-002:h-7.-光的干涉~7.1-光程:c01",
+        "university-physics-3-1-002:h-7.-光的干涉~7.2-杨氏双缝干涉:c01",
+        "university-physics-3-1-002:h-7.-光的干涉~7.3-半波损失:c01",
+        "university-physics-3-1-002:h-7.-光的干涉~7.4-薄膜干涉:c01",
+        "university-physics-3-1-002:h-7.-光的干涉~7.5-劈尖干涉:c01",
+        "university-physics-3-1-002:h-7.-光的干涉~7.6-牛顿环:c01",
+        "university-physics-3-1-002:h-8.-光的衍射~8.1-单缝夫琅禾费衍射:c01",
+        "university-physics-3-1-002:h-8.-光的衍射~8.2-光栅常数:c01",
+        "university-physics-3-1-002:h-8.-光的衍射~8.3-光栅方程:c01",
+        "university-physics-3-1-002:h-8.-光的衍射~8.4-最大级次:c01",
+        "university-physics-3-1-002:h-8.-光的衍射~8.5-缺级:c01",
+        "university-physics-3-1-002:h-8.-光的衍射~8.6-谱线重叠:c01",
+        "university-physics-3-1-002:h-9.-光的偏振~9.1-自然光通过偏振片:c01",
+        "university-physics-3-1-002:h-9.-光的偏振~9.2-马吕斯定律:c01",
+        "university-physics-3-1-002:h-9.-光的偏振~9.3-布儒斯特定律:c01",
+        "university-physics-3-1-002:h-10.-气体动理论~10.1-理想气体状态方程:c01",
+        "university-physics-3-1-002:h-10.-气体动理论~10.2-温标:c01",
+        "university-physics-3-1-002:h-10.-气体动理论~10.3-压强微观公式:c01",
+        "university-physics-3-1-002:h-10.-气体动理论~10.4-平均平动动能:c01",
+        "university-physics-3-1-002:h-10.-气体动理论~10.5-能量均分定理:c01",
+        "university-physics-3-1-002:h-10.-气体动理论~10.6-三种统计速率:c01",
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.1-符号规定:c01",
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.2-理想气体内能与热容:c01",
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.3-等体过程:c01",
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.4-等压过程:c01",
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.5-等温过程:c01",
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.6-绝热过程:c01",
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.7-循环过程:c01",
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.8-热机效率:c01",
+        "university-physics-3-1-002:h-11.-热力学第一定律~11.9-卡诺热机与制冷机:c01",
+        "university-physics-3-1-002:h-12.-热力学第二定律与熵~12.1-第二定律的两种表述:c01",
+        "university-physics-3-1-002:h-12.-热力学第二定律与熵~12.2-可逆与不可逆过程:c01",
+        "university-physics-3-1-002:h-12.-热力学第二定律与熵~12.3-熵:c01",
+        "university-physics-3-1-002:h-13.-四类计算题固定模板~13.1-刚体综合题:c01",
+        "university-physics-3-1-002:h-13.-四类计算题固定模板~13.2-波动方程题:c01",
+        "university-physics-3-1-002:h-13.-四类计算题固定模板~13.3-光栅题:c01",
+        "university-physics-3-1-002:h-13.-四类计算题固定模板~13.4-热力学题:c01",
+        "university-physics-3-1-002:h-14.-考前易错点清单:c01",
+        "university-physics-3-1-002:h-15.-建议复习顺序:c01",
+        "university-physics-3-1-002:h-资料来源:c01"
+      ],
+      "course_id": "university_physics_3_1",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "university_physics_3_1/university-physics-3-1-002.md",
+      "source_id": "university-physics-3-1-002",
+      "source_title": "大物上-速通指南",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-3-1-003:h-2012级大学物理-i-a卷试卷规范模版-4学分:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q1:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q2:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q3:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q4:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q5:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q6:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q7:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q8:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q9:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q10:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q11:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q12:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q13:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q14:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q15:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q16:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q17:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q18:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q19:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q20:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q21:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q22:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q23:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q24:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q25:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q26:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q27:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q28:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q29:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q30:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q31:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q32:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q33:c01",
+        "university-physics-3-1-003:q-university-physics-3-1-003-q34:c01"
+      ],
+      "course_id": "university_physics_3_1",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "university_physics_3_1/university-physics-3-1-003.md",
+      "source_id": "university-physics-3-1-003",
+      "source_title": "2012级大学物理（I）A卷试卷规范模版（4学分）",
+      "year": "2012"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-3-1-004:h-2012级大学物理-i-期末试卷解答-a卷:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q1:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q2:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q3:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q4:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q5:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q5:c02",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q6:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q7:c01",
+        "university-physics-3-1-004:q-university-physics-3-1-004-q8:c01"
+      ],
+      "course_id": "university_physics_3_1",
+      "document_role": "past_exam_answer",
+      "locator_type": "none",
+      "output_md": "university_physics_3_1/university-physics-3-1-004.md",
+      "source_id": "university-physics-3-1-004",
+      "source_title": "2012级大学物理（I）期末试卷解答（A卷）",
+      "year": "2012"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-3-1-005:h-2013级大学物理-i-a卷试卷规范模版-4学分:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q1:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q2:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q3:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q4:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q5:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q6:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q7:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q8:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q9:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q10:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q11:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q12:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q13:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q14:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q15:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q16:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q17:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q18:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q19:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q20:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q21:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q22:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q23:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q24:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q25:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q26:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q27:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q28:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q29:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q30:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q31:c01",
+        "university-physics-3-1-005:q-university-physics-3-1-005-q32:c01"
+      ],
+      "course_id": "university_physics_3_1",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "university_physics_3_1/university-physics-3-1-005.md",
+      "source_id": "university-physics-3-1-005",
+      "source_title": "2013级大学物理（I）A卷试卷规范模版（4学分）",
+      "year": "2013"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-3-1-006:h-2013级大学物理-i-期末试卷解答-a卷:c01",
+        "university-physics-3-1-006:q-university-physics-3-1-006-q1:c01",
+        "university-physics-3-1-006:q-university-physics-3-1-006-q2:c01",
+        "university-physics-3-1-006:q-university-physics-3-1-006-q3:c01",
+        "university-physics-3-1-006:q-university-physics-3-1-006-q4:c01",
+        "university-physics-3-1-006:q-university-physics-3-1-006-q5:c01",
+        "university-physics-3-1-006:q-university-physics-3-1-006-q6:c01",
+        "university-physics-3-1-006:q-university-physics-3-1-006-q7:c01",
+        "university-physics-3-1-006:q-university-physics-3-1-006-q8:c01"
+      ],
+      "course_id": "university_physics_3_1",
+      "document_role": "past_exam_answer",
+      "locator_type": "none",
+      "output_md": "university_physics_3_1/university-physics-3-1-006.md",
+      "source_id": "university-physics-3-1-006",
+      "source_title": "2013级大学物理（I）期末试卷解答（A卷）",
+      "year": "2013"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-3-1-007:h-2020级大学物理iii-一-期末考试试卷b卷-4学分:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q1:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q2:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q3:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q4:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q5:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q6:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q7:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q8:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q9:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q10:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q11:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q12:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q13:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q14:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q15:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q16:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q17:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q18:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q19:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q20:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q21:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q22:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q23:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q24:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q25:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q26:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q27:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q28:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q29:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q30:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q31:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q32:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q33:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q34:c01",
+        "university-physics-3-1-007:q-university-physics-3-1-007-q35:c01"
+      ],
+      "course_id": "university_physics_3_1",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "university_physics_3_1/university-physics-3-1-007.md",
+      "source_id": "university-physics-3-1-007",
+      "source_title": "2020级大学物理III（一）期末考试试卷B卷（4学分）",
+      "year": "2020"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-3-1-008:h-2020级大学物理-i-期末试卷解答-b卷:c01",
+        "university-physics-3-1-008:q-university-physics-3-1-008-q1:c01",
+        "university-physics-3-1-008:q-university-physics-3-1-008-q2:c01",
+        "university-physics-3-1-008:q-university-physics-3-1-008-q3:c01",
+        "university-physics-3-1-008:q-university-physics-3-1-008-q4:c01",
+        "university-physics-3-1-008:q-university-physics-3-1-008-q5:c01",
+        "university-physics-3-1-008:q-university-physics-3-1-008-q6:c01",
+        "university-physics-3-1-008:q-university-physics-3-1-008-q7:c01",
+        "university-physics-3-1-008:q-university-physics-3-1-008-q8:c01"
+      ],
+      "course_id": "university_physics_3_1",
+      "document_role": "past_exam_answer",
+      "locator_type": "none",
+      "output_md": "university_physics_3_1/university-physics-3-1-008.md",
+      "source_id": "university-physics-3-1-008",
+      "source_title": "2020级大学物理（I）期末试卷解答（B卷）",
+      "year": "2020"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-3-1-009:h-2022级大学物理iii-一-期末考试试卷b卷-4学分:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q1:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q2:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q3:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q4:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q5:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q6:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q7:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q8:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q9:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q10:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q11:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q12:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q13:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q14:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q15:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q16:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q17:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q18:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q19:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q20:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q21:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q22:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q23:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q24:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q25:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q26:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q27:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q28:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q29:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q30:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q31:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q32:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q33:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q34:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q35:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q36:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q37:c01",
+        "university-physics-3-1-009:q-university-physics-3-1-009-q38:c01"
+      ],
+      "course_id": "university_physics_3_1",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "university_physics_3_1/university-physics-3-1-009.md",
+      "source_id": "university-physics-3-1-009",
+      "source_title": "2022级大学物理III（一）期末考试试卷B卷（4学分）",
+      "year": "2022"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-3-1-010:h-2023级大学物理-上-期末考试复习纲要-4学分:c01"
+      ],
+      "course_id": "university_physics_3_1",
+      "document_role": "review_outline",
+      "locator_type": "none",
+      "output_md": "university_physics_3_1/university-physics-3-1-010.md",
+      "source_id": "university-physics-3-1-010",
+      "source_title": "2023级大学物理(上)期末考试复习纲要（4学分）",
+      "year": "2023"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-3-1-011:p1:c01",
+        "university-physics-3-1-011:p2:c01",
+        "university-physics-3-1-011:p3:q-university-physics-3-1-011-q1:c01",
+        "university-physics-3-1-011:p3:q-university-physics-3-1-011-q2:c01",
+        "university-physics-3-1-011:p3:q-university-physics-3-1-011-q3:c01",
+        "university-physics-3-1-011:p3:q-university-physics-3-1-011-q4:c01",
+        "university-physics-3-1-011:p4:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p5:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p6:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p7:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p8:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p9:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p10:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p11:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p12:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p13:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p14:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p15:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p16:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p17:q-university-physics-3-1-011-q5:c01",
+        "university-physics-3-1-011:p17:q-university-physics-3-1-011-q6:c01",
+        "university-physics-3-1-011:p18:q-university-physics-3-1-011-q6:c01",
+        "university-physics-3-1-011:p19:q-university-physics-3-1-011-q6:c01",
+        "university-physics-3-1-011:p19:q-university-physics-3-1-011-q7:c01",
+        "university-physics-3-1-011:p19:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p20:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p21:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p22:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p23:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p24:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p25:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p26:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p27:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p28:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p29:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p30:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p31:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p32:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p33:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p34:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p35:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p36:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p37:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p38:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p39:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p40:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p41:q-university-physics-3-1-011-q8:c01",
+        "university-physics-3-1-011:p42:q-university-physics-3-1-011-q8:c01"
+      ],
+      "course_id": "university_physics_3_1",
+      "document_role": "past_exam",
+      "locator_type": "page",
+      "output_md": "university_physics_3_1/university-physics-3-1-011.md",
+      "source_id": "university-physics-3-1-011",
+      "source_title": "2023级大学物理1期末复习",
+      "year": "2023"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-3-1-012:h-2025级大学物理iii-一-期末考试复习纲要-4学分:c01"
+      ],
+      "course_id": "university_physics_3_1",
+      "document_role": "review_outline",
+      "locator_type": "none",
+      "output_md": "university_physics_3_1/university-physics-3-1-012.md",
+      "source_id": "university-physics-3-1-012",
+      "source_title": "2025级大学物理III(一)期末考试复习纲要（4学分）",
+      "year": "2025"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "university-physics-3-1-013:h-2022级大学物理-一-期末试卷答案简版-b卷:c01",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q1:c01",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q2:c01",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q3:c01",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q4:c01",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q4:c02",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q5:c01",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q6:c01",
+        "university-physics-3-1-013:q-university-physics-3-1-013-q7:c01"
+      ],
+      "course_id": "university_physics_3_1",
+      "document_role": "past_exam_answer",
+      "locator_type": "none",
+      "output_md": "university_physics_3_1/university-physics-3-1-013.md",
+      "source_id": "university-physics-3-1-013",
+      "source_title": "2022级大学物理（一）期末试卷答案简版（B卷）",
+      "year": "2022"
+    }
+  ],
+  "statistics": {
+    "chunk_count": 306,
+    "question_count": 178,
+    "source_count": 12
+  },
+  "workflow_version": "workflow-contract-v1"
+}

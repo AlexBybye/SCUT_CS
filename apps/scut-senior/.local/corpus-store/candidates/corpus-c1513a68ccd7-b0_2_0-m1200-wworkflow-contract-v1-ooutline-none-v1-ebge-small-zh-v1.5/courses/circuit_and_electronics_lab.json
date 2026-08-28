@@ -1,0 +1,39 @@
+{
+  "chunks": [
+    {
+      "assets": [],
+      "chunk_id": "circuit-and-electronics-lab-001:p1:c01",
+      "course_id": "circuit_and_electronics_lab",
+      "heading_path": [
+        "华南理工大学本科生期末考试_2025-2026第二学期_电路与电子技术实验试卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "circuit-and-electronics-lab-001",
+      "source_title": "华南理工大学本科生期末考试_2025-2026第二学期_电路与电子技术实验试卷",
+      "text": "![page-001.jpg](assets/circuit-and-electronics-lab-001/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "circuit-and-electronics-lab-001:p2:c01",
+      "course_id": "circuit_and_electronics_lab",
+      "heading_path": [
+        "华南理工大学本科生期末考试_2025-2026第二学期_电路与电子技术实验试卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "circuit-and-electronics-lab-001",
+      "source_title": "华南理工大学本科生期末考试_2025-2026第二学期_电路与电子技术实验试卷",
+      "text": "![page-002.jpg](assets/circuit-and-electronics-lab-001/page-002.jpg)"
+    }
+  ],
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "circuit_and_electronics_lab",
+  "questions": [],
+  "schema_version": "course-index-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e"
+}

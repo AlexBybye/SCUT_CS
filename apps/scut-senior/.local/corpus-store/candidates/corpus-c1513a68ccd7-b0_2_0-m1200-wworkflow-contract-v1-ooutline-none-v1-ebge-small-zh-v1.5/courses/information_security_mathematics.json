@@ -1,0 +1,2284 @@
+{
+  "chunks": [
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-001:p1:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "05信安A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-001",
+      "source_title": "05信安A",
+      "text": "![page-001.jpg](assets/information-security-mathematics-001/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-001:p2:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "05信安A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-001",
+      "source_title": "05信安A",
+      "text": "![page-002.jpg](assets/information-security-mathematics-001/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-001:p3:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "05信安A"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-001",
+      "source_title": "05信安A",
+      "text": "![page-003.jpg](assets/information-security-mathematics-001/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-001:p4:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "05信安A"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-001",
+      "source_title": "05信安A",
+      "text": "![page-004.jpg](assets/information-security-mathematics-001/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-001:p5:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "05信安A"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-001",
+      "source_title": "05信安A",
+      "text": "![page-005.jpg](assets/information-security-mathematics-001/page-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-001:p6:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "05信安A"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-001",
+      "source_title": "05信安A",
+      "text": "![page-006.jpg](assets/information-security-mathematics-001/page-006.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-002:p1:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "06信安A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-002",
+      "source_title": "06信安A",
+      "text": "![page-001.jpg](assets/information-security-mathematics-002/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-002:p2:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "06信安A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-002",
+      "source_title": "06信安A",
+      "text": "![page-002.jpg](assets/information-security-mathematics-002/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-002:p3:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "06信安A"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-002",
+      "source_title": "06信安A",
+      "text": "![page-003.jpg](assets/information-security-mathematics-002/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-002:p4:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "06信安A"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-002",
+      "source_title": "06信安A",
+      "text": "![page-004.jpg](assets/information-security-mathematics-002/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-002:p5:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "06信安A"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-002",
+      "source_title": "06信安A",
+      "text": "![page-005.jpg](assets/information-security-mathematics-002/page-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-002:p6:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "06信安A"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-002",
+      "source_title": "06信安A",
+      "text": "![page-006.jpg](assets/information-security-mathematics-002/page-006.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-002:p7:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "06信安A"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-002",
+      "source_title": "06信安A",
+      "text": "![page-007.jpg](assets/information-security-mathematics-002/page-007.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-003:p1:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "06信安B"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-003",
+      "source_title": "06信安B",
+      "text": "![page-001.jpg](assets/information-security-mathematics-003/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-003:p2:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "06信安B"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-003",
+      "source_title": "06信安B",
+      "text": "![page-002.jpg](assets/information-security-mathematics-003/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-003:p3:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "06信安B"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-003",
+      "source_title": "06信安B",
+      "text": "![page-003.jpg](assets/information-security-mathematics-003/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-003:p4:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "06信安B"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-003",
+      "source_title": "06信安B",
+      "text": "![page-004.jpg](assets/information-security-mathematics-003/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-003:p5:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "06信安B"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-003",
+      "source_title": "06信安B",
+      "text": "![page-005.jpg](assets/information-security-mathematics-003/page-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-003:p6:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "06信安B"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-003",
+      "source_title": "06信安B",
+      "text": "![page-006.jpg](assets/information-security-mathematics-003/page-006.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-004:p1:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "07信安A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-004",
+      "source_title": "07信安A",
+      "text": "![page-001.jpg](assets/information-security-mathematics-004/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-004:p2:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "07信安A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-004",
+      "source_title": "07信安A",
+      "text": "![page-002.jpg](assets/information-security-mathematics-004/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-004:p3:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "07信安A"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-004",
+      "source_title": "07信安A",
+      "text": "![page-003.jpg](assets/information-security-mathematics-004/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-004:p4:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "07信安A"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-004",
+      "source_title": "07信安A",
+      "text": "![page-004.jpg](assets/information-security-mathematics-004/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-004:p5:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "07信安A"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-004",
+      "source_title": "07信安A",
+      "text": "![page-005.jpg](assets/information-security-mathematics-004/page-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-004:p6:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "07信安A"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-004",
+      "source_title": "07信安A",
+      "text": "![page-006.jpg](assets/information-security-mathematics-004/page-006.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-005:p1:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "07信安B"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-005",
+      "source_title": "07信安B",
+      "text": "![page-001.jpg](assets/information-security-mathematics-005/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-005:p2:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "07信安B"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-005",
+      "source_title": "07信安B",
+      "text": "![page-002.jpg](assets/information-security-mathematics-005/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-005:p3:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "07信安B"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-005",
+      "source_title": "07信安B",
+      "text": "![page-003.jpg](assets/information-security-mathematics-005/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-005:p4:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "07信安B"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-005",
+      "source_title": "07信安B",
+      "text": "![page-004.jpg](assets/information-security-mathematics-005/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-005:p5:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "07信安B"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-005",
+      "source_title": "07信安B",
+      "text": "![page-005.jpg](assets/information-security-mathematics-005/page-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-005:p6:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "07信安B"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-005",
+      "source_title": "07信安B",
+      "text": "![page-006.jpg](assets/information-security-mathematics-005/page-006.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-005:p7:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "07信安B"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-005",
+      "source_title": "07信安B",
+      "text": "![page-007.jpg](assets/information-security-mathematics-005/page-007.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-006:p1:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础2025回忆版"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-006",
+      "source_title": "信息安全数学基础2025回忆版",
+      "text": "… … … … … … … … … … … … … … … … 密… … … … … … … … … … … … … … … … … … 封… … … … … … … … … … … … … … … 线… … … … … … … … … … … … … …\n\n姓名                学号\n  学院                  专业                     座位号\n\n诚信应考,考试作弊将带来严重后果！\n\n华南理工大学期末考试\n\n2025 级《信息安全数学基础》试卷回忆版\n\n注意事项：1. 考前请将密封线内填写清楚；\n          2. 所有答案请直接答在试卷上；\n          3．考试形式：闭卷；不许使用计算器；\n\n4. 本试卷共四大题，满分100 分，考试时间120 分钟。\n\n5. 作者：GuMianQAQ，夹带私货来了。\n题 号\n一\n二\n三\n四\n总分\n得 分\n评卷人\n\n一．选择题(在每小题的备选答案中只有一个正确答案，将正确答案序号填入下\n\n列叙述中的括号内，选错或多选不给分)：\n\n1．设S = 1,2,3,4,5,6,7,8,9,10，下面定义的*为S 上的运算的是\n\n_____________ ________\n\nA. x ∗𝑦= [𝑥, 𝑦]  B. x ∗𝑦= x −y  C. x ∗𝑦= (𝑥, 𝑦)  D. x ∗𝑦= x + y, x, y ∈𝑆\n\n( 密 封 线 内 不 答 题 )\n\n2．设a＝17，b＝6，根据欧几里得除法，对整数c＝－100，存在唯一一对整\n\n数q＝            ，r＝            ，使得a＝bq ＋ r，c  r < b＋c。\n\n3． 今天为星期二，这天后的22023天为星期几\n\n4. 下面以2 为基的拟素数为\n\nA.29   B.67  C.59  D.341\n\n5．设 a＝23×32×54×116 ，b＝22×36×74×113，使得a' | a，b' | b，a' ×b'＝[a，\n\nb]，(a'，b' )＝1 的a'，b' 分别为(          )。\n\n(1)  54 ×116 ，22×36×74，   (2)  23×54  ，36×74×113，\n\n(3)  23×54 ×116 ，36×74，   (4)  23×54 ×116 ，36×74×113\n\n二． 填空题(将正确答案填在        上)：（每题2 分，共20 分）\n\n1．模29 下7 的逆元为\n\n2． (665, 399)＝            。\n\n3． n＝155232 的欧拉函数值 (n)＝______________。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-006:p1:c02",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础2025回忆版"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-006",
+      "source_title": "信息安全数学基础2025回忆版",
+      "text": "4. F13 *＝Z/13Z \\{0}＝{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}关于运算：(a, b)→\n\n(a×b)mod13 构成群。则元素5 生成的循环子群为                           ，\n\n《信息安全数学基础》试卷第 1 页 共 5 页"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-006:p2:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础2025回忆版"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-006",
+      "source_title": "信息安全数学基础2025回忆版",
+      "text": "元素5 的阶为____________。\n\n三．简答题\n\n1．给一个具体的“域”的例子，解释其为何构成域\n\n2．写出欧拉定理并证明\n\n3．设 n 为一个大的奇数，描述检验n 是否为素数的Fermat 小定理测试算法(素\n\n性检验法)\n\n4．描述完全剩余系和简化剩余系的定义\n\n《信息安全数学基础》试卷第 2 页 共 5 页"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-006:p3:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础2025回忆版"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-006",
+      "source_title": "信息安全数学基础2025回忆版",
+      "text": "四．证明题\n\n1.设p 是正整数n 的最小(正)素因数，证明：若p>n1/3，则n/p 是素数或1。\n\n2.证明63 是对基8 的拟素数\n\n3.设m 为一个正整数，a 是满足(𝑎, 𝑚) = 1的整数，若k 遍历模m 的一个简化剩\n\n余系，则ak 也遍历模m 的一个简化剩余系\n\n4.a,b,c 为3 个整数，且c ≠0，如果c ∣𝑎b，(𝑎, 𝑐) = 1,则c ∣𝑏\n\n五．计算题\n\n1.设a＝1001，b＝1287，运用广义欧几里得除法计算(a, b)并求整数s 和t，使得\n\nsa＋tb＝(a, b)。\n\n2.用中国剩余定理求解\n\n𝑥≡1 (𝑚𝑜𝑑3),\n\n𝑥≡2 (𝑚𝑜𝑑5),\n\n𝑥≡3 (𝑚𝑜𝑑7),\n\n𝑥≡3 (𝑚𝑜𝑑11)\n\n《信息安全数学基础》试卷第 3 页 共 5 页"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-006:p4:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础2025回忆版"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-006",
+      "source_title": "信息安全数学基础2025回忆版",
+      "text": "3.求集合Z/12Z＝{0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}上的运算：(a, b)→ (a×b)mod12\n\n的可逆元，并求可逆元的逆元\n\n4．1) 构造RSA 公钥密码系统：取 p＝17, q＝29,\n计算n＝pq＝             ，  (n)＝              。取e＝13。\n设RSA 公钥密码系统使用N＝26 字符集：＝{a, b, c, d, e, f, ..., x, y, z}\n＝ {0, 1, 2, 3, ..., 24, 25}\n明文信息空间由2 字符组组成的集合＝ 2＝{aa, ab, ac, ... , xz, yz, zz}。\n密文信息空间由2 字符组组成的集合＝ 2＝{aa, ab, ac, ... , xz, yz, zz}。\n2) 用广义欧几里德除法计算d，满足de≡1 (mod  (n) )(写出详细计算过程)。\n3) 公钥Ke＝             ，私钥Kd＝             。\n4) 用模重复平方法计算公钥Ke 对“bc”加密后的密文\n\n《信息安全数学基础》试卷第 4 页 共 5 页"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-006:p5:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础2025回忆版"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-006",
+      "source_title": "信息安全数学基础2025回忆版",
+      "text": "《信息安全数学基础》试卷第 5 页 共 5 页"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-007:h-信息安全数学基础期末试卷:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础期末试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "information-security-mathematics-007",
+      "source_title": "信息安全数学基础期末试卷",
+      "text": "**诚信应考,考试作弊将带来严重后果！**\n\n**华南理工大学期末考试**\n\n**XXXX级《信息安全数学基础》试卷A**\n\n**注意事项：1.** **考前请将密封线内填写清楚；**\n\n**2.** **所有答案请直接答在试卷上；**\n\n**3．考试形式：闭卷；不许使用计算器；**\n\n**4.** **本试卷共** **四大题，满分100分，**\t**考试时间120分钟**。\n\n| **题** **号** | **一** | **二** | **三** | **四** | **总分** |\n|---|---|---|---|---|---|\n| **得** **分** |  |  |  |  |  |\n| **评卷人** |  |  |  |  |  |\n\n**一．**选择题(在每小题的备选答案中只有一个正确答案，将正确答案序号填入下列叙述中的括号内，选错或多选不给分)：           （每题2分，共10分）\n\n**1．**设  *m* 是大于  1  的整数,  *a* 是满足(*a*,  *m*)＝1  的整数,则  (         )。\n\n(1)  *a* *m* ≡*a*  (mod  ** (*m*))，               (2)    *a*** (*m*)≡*a*  (mod  *m*)，\n\n(3)  *a* *m* ≡1 (mod  ** (*m*))，             (4) *a*** (*m*)≡1 (mod  *m*)。\n\n**2．**设*m* 是一个正整数，*a*,  *b* 是整数，下面正确的是(　　   )。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-007:q-information-security-mathematics-007-q1:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础期末试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-007-Q1",
+      "source_id": "information-security-mathematics-007",
+      "source_title": "信息安全数学基础期末试卷",
+      "text": "(1)    若*ad*≡*bd*  (mod  *m*)，则 *a*≡*b*  (mod  *m*)；"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-007:q-information-security-mathematics-007-q2:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础期末试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-007-Q2",
+      "source_id": "information-security-mathematics-007",
+      "source_title": "信息安全数学基础期末试卷",
+      "text": "(2)    若*a*≡*b* (mod  *m*) ,  则  *ak*≡*bk* (mod  *mk*)；\n\n(3)    若*a* ≡ *b* (mod  *m*)，正整数 *d*  | (*a*,  *b*  ,  *m*)，则![formula-object](assets/information-security-mathematics-007/image-001.png)；\n\n(4)    *a*≡*b*  (mod  *m*)， 如果*m* | *d*，则 *a*≡*b*  (mod  *d*)。\n\n**3．**整数*kn*和*k*(*n*+2)的最大公因数(*kn*  ,  *k*(*n*+2))=(　　  　)。\n\n(1)  1或2，                                       (2)     *kn* ，\n\n(3)   *n*  或  *kn* ，                          (4)     *k*  或2 *k*  。\n\n**4．**设 *a*＝23×32×54×116  ，*b*＝22×36×74×113，使得*a'* |  *a*，*b'* |  *b*，*a'* ×*b'*＝[*a*，*b*]，(*a'*，*b'* )＝1  的*a'*，*b'* 分别为(          )。\n\n(1)    54  ×116  ，22×36×74，      (2)    23×54    ，36×74×113，\n\n(3)    23×54  ×116  ，36×74，    (4)    23×54  ×116  ，36×74×113\n\n**5．**集合*F*上定义了“＋”和“  · ”两种运算。如果(       )，则<*F*,  “＋”,“ · ”>构成一个域。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-007:q-information-security-mathematics-007-q3:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础期末试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-007-Q3",
+      "source_id": "information-security-mathematics-007",
+      "source_title": "信息安全数学基础期末试卷",
+      "text": "(1)    *F*对于运算“＋”和运算“  · ”都构成群，运算“  · ”对于“＋”满足分配律。\n\n(2)    *F*对于运算  “＋”构成交换群，单位元是*e*；*F*\\{*e*}对于运算“  · ”构成交换群，运算“  · ”对于“＋”满足分配律。\n\n(3)    *F*对于运算  “＋”和  “  · ”构成交换环，运算“＋”的单位元是*e*，运算“＋”对于“  · ”满足分配律。\n\n(4)    *F*对于运算“＋”构成交换群，单位元是*e*；*F*\\{*e*}对于运算“  · ”构成交换环，运算“＋”对于“  · ”满足分配律。\n\n**二．** 填空题(将正确答案填在        上)：（每题2分，共20分）\n\n**1．**设*a*＝1520，*b*＝162，根据欧几里得除法，对整数*c*＝－100，存在唯一一对整数*q*＝            ，*r*＝            ，使得*a*＝*bq* ＋  *r*，*c*  *r*  <  *b*＋*c*。\n\n**2．**如果整数*a*，*b*满足(*a*,  *b*)=1，那么(*a*＋*b*,  *a*－*b*)＝            。\n\n**3．** *n*＝1764的欧拉函数值 **(*n*)＝______________。\n\n**4．**模11的平方剩余是            ，模11的平方非剩余是              。\n\n**5．**[12, 15, 21, 35]的最小公倍数是                 。\n\n**6.** 模10的最小非负完全剩余系是                                   ，最小非负简化剩余系是                                   。\n\n**7.** 一次同余式234*x* ≡ 72（mod 198）的解数是             。\n\n**8.** *Q*为有理数集合，定义*Q*上的运算⊙为：对任意*a*，*b*Î*Q*，*a*⊙*b*＝(*a*＋*b*)－*a*×*b*。*Q*关于运算⊙的单位元为         ，4关于运算⊙的逆元是         。\n\n**9.** *F*13  *＝*Z*/13*Z* \\{0}＝{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}关于运算：(*a*,  *b*)  (*a*×*b*)mod13构成群。则元素5生成的循环子群为                           ，元素5的阶为____________。\n\n**10.** 设 *m* 是一个正整数，*a*是满足              的整数，则存在整数*a*¢，1≤*a*¢＜*m* ，使得*aa*¢≡1 (mod  *m*)。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-007:q-information-security-mathematics-007-q3:c02",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础期末试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-007-Q3",
+      "source_id": "information-security-mathematics-007",
+      "source_title": "信息安全数学基础期末试卷",
+      "text": "**三．**证明题 （写出详细证明过程，4题，共30分）\n\n**1．**设*a*,  *b*是任意两个不全为零的整数，若  *m* 是任一正整数，则(*am*,  *bm*)＝(*a*,  *b*)*m*.（7分）\n\n**2．**如果*a*,  *b*是整数，*n*是正整数，且*a**n**b**n*，那么*a**b*。         （5分）\n\n**3．**设  *m* 是一个正整数，*a*是满足![formula-object](assets/information-security-mathematics-007/image-002.png)的整数。则一次同余式*ax≡b* (mod *m*)有解的充分必要条件是(*a*  ,  *m*)*|b*。                             （10分）\n\n**4．**设*a*,  *b*和*u*,  *v*都是不全为零的整数,  如果*a* ＝  *qu*＋*rv*， *b* ＝  *su*＋*tv*，\n\n其中*q* ,  *r*，*s* ,  *t*是整数,且*qt*－*rs* ＝  1，则    (*a*, *b* )  ＝  (*u*, *v* )  。（8分）\n\n**四．**计算题（写出详细计算过程，3题，共40分）\n\n1．设*a*＝822916，*b*＝1107，运用广义欧几里得除法计算(*a*,  *b*)并求整数*s*和*t*，使得*sa*＋*tb*＝(*a*,  *b*)。                                        （10分）\n\n**2．**1)  构造RSA公钥密码系统：取 *p*＝11,  *q*＝13,\n\n计算*n*＝*pq*＝             ， ** (*n*)＝              。取*e*＝7。\n\n设RSA公钥密码系统使用*N*＝26字符集：＝{*a*,  *b*,  *c*,  *d*,  *e*,  *f*, ...,  *x*,  *y*,  *z*}\n\n**＝** {0, 1, 2, 3, ..., 24, 25}\n\n明文信息空间由2字符组组成的集合＝ 2＝{*aa*,  *ab*,  *ac*, ... ,  *xz*,  *yz*,  *zz*}。\n\n密文信息空间由2字符组组成的集合＝ 2＝{*aa*,  *ab*,  *ac*, ... ,  *xz*,  *yz*,  *zz*}。\n\n2)  用广义欧几里德除法计算*d*，满足*de*≡1 (mod  ** (*n*) )(写出详细计算过程)。\n\n3)  公钥*K**e*＝             ，私钥*K**d*＝             。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-007:q-information-security-mathematics-007-q3:c03",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础期末试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-007-Q3",
+      "source_id": "information-security-mathematics-007",
+      "source_title": "信息安全数学基础期末试卷",
+      "text": "4) 求用公钥*K**e*对“*b**g*”加密后的密文(写出详细计算过程)。\n\n（20分）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-007:q-information-security-mathematics-007-q4:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础期末试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-007-Q4",
+      "source_id": "information-security-mathematics-007",
+      "source_title": "信息安全数学基础期末试卷",
+      "text": "3．求17的倍数，使得该数被2, 3, 5除的余数为1。          （10分）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:h-信息安全数学基础试卷-a:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "**诚信应考,考试作弊将带来严重后果！**\n\n**华南理工大学期末考试**\n\n**《信息安全数学基础》试卷A**\n\n**注意事项：1.** **考前请将密封线内填写清楚；**\n\n**2.** **所有答案请直接答在试卷上；**\n\n**3．考试形式：闭卷；**\n\n**4.** **本试卷共 四大题，满分100分，**\t**考试时间120分钟**。\n\n| **题 号** | **一** | **二** | **三** | **四** | **总分** |\n|---|---|---|---|---|---|\n| **得 分** |  |  |  |  |  |\n| **评卷人** |  |  |  |  |  |\n\n- 选择题：（每题2分，共20分）\n\n1．设*a*,  *b*,  *c*0是三个整数，*c**a*，*c**b*，如果存在整数*s*,  *t*，使得*sa*＋*tb*＝1，则  (         )  。\n\n(1)  (*a*,  *b*)= *c*，(2)    *c*＝ 1，(3)    *c*＝*s*，(4)    *c*＝*t* 。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q1:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q1",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "2．大于20且小于70的素数有 (        )  个 。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q2:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q2",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "(1)  9，(2)  10，(3)  11，(4)  15  。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q3:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q3",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "3．模7的最小正完全剩余系是 (          )  。\n\n(1) 1, 2, 3, 4, 5, 6, 7，      (2)  －6,  －5,  －4,  －3,  －2,  －1, 0，\n\n(3)  －3,  －2,  －1, 0, 1, 2, 3，                (4)  0, 1, 2, 3, 4, 5, 6。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q4:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q4",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "4．模30的简化剩余系是  (          )  。\n\n(1)    －1, 2, 5, 7, 9, 19, 20, 29，      (2)    －1,  －7, 10, 13, 17, 25, 23, 29，\n\n(3)  1, 7, 11, 13, 17, 19, 23, 29，    (4)  3, 7, 11, 13, 17, 19, 23, 29    。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q5:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q5",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "5．设*n*是整数，则  $\\sum_{d|n}\\varphi(d)=$(         )  。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q6:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q6",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "(1)    *d*，(2)    *n*，(3)    *nd*，(4)  2*n* 。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q7:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q7",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "6．下面的集合和运算是群的是  (          )  。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q8:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q8",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "(1)  <*N*，＋>  （运算“＋”是自然数集*N*上的普通加法）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q9:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q9",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "(2)  <*R*，×>  （*R*是实数集，“×”是普通乘法）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q10:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q10",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "(3)  <*Q*，＋>  （运算“＋”是有理数集*Q*上的普通加法）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q11:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q11",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "(4)  <*P*（*S*），∪>  （*P*（*S*）是集合S的幂集，“∪”为集合的并）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q12:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q12",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "7．模17的平方剩余是 (         )。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q13:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q13",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "(1)  3，(2)  10，(3)  12，(4)  15"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q14:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q14",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "8．整数5模17的指数ord17(5)＝(         )。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q15:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q15",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "(1)  3，(2)  8，(3)  16，(4)  32"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q16:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q16",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "9．  Fermat定理：设*p*是一个素数，则对任意整数*a*有  (         )。\n\n(1)    *a* *p*＝1 (mod  *p*)，              (2)    *a* ** (*p*)＝1 (mod  *a*)，\n\n(3)    *a* ** (*p*)＝*a*  (mod  *p*)，          (4)    *a* *p* ＝*a* (mod  *p*)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q17:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q17",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "10．设*a*是整数，\n\nA．*a*≡0（mod 9），B．*a*≡20××（mod 9）\n\nC．*a*的十进位表示的各位数字之和可被9整除\n\nD．去掉*a*的十进位表示中所有的数字9，所得的新数被9整除\n\n以上各条件中，成为9|*a*的充要条件的共有（　　      ）。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q18:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q18",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "(1)  1个， (2) 2个， (3) 3个， (4) 4个。\n\n二． 填空题：（每题2分，共20分）\n\n1．设*m*是正整数，*a*是满足*a*  *m*的整数，则一次同余式：*ax*  *b*  (mod  *m*)有解的充分必要条件是                  。当同余式*ax*  *b*  (mod  *m*)  有解时，其解数为                 。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q19:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q19",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "2．设*m*是正整数，则*m*个数0, 1, 2,  …  ,  *m*－1中\n\n叫做*m*的欧拉(Euler)函数，记做** (*m*)。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q20:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q20",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "3．设*m*是正整数，若同余式                      有解，则*a*叫模*m*的平方剩余。\n\n4．设*a*,  *b*是正整数，且有素因数分解  $a={p}_{1}^{{\\alpha }_{1}}{p}_{2}^{{\\alpha }_{2}}\\cdots {p}_{s}^{{\\alpha }_{s}},{\\alpha }_{i}0,i=1,2,\\cdots ,s$，$b={p}_{1}^{{\\beta }_{1}}{p}_{2}^{{\\beta }_{2}}\\cdots {p}_{s}^{{\\beta }_{s}},{\\beta }_{i}0,i=1,2,\\cdots ,s$，则(*a*,  *b*)＝                           ，\n\n[*a*,  *b*]＝                                  。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q21:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q21",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "5．如果*a*对模*m*的指数是              ，则*a*叫做模*m*的原根。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q22:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q22",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "6．设*m*是一个正整数，若  *r*1,  *r*2,  …,  *r*** (*m*)是** (*m*)个\n\n，则*r*1,  *r*2,  …,  *r*** (*m*)是模*m*的一个简化剩余系。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q23:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q23",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "7．Wilson定理：设*p*是一个素数，则                              。\n\n8．20××年1月18日是星期四，第220××0118天是星期                 。\n\n9．(中国剩余定理)  设*m*1,  …,  *m**k*是*k*个两两互素的正整数，则对任意的整数*b*1,  …,  *b**k* 同余式组                    *x*  *b*1    (mod  *m*1)\n\n… …  …   …\n\n*x*  *b**k*    (mod  *m**k*)\n\n有唯一解。令*m*＝*m*1…*m**k*，*m*＝*m**i**M**i*，*i*＝1,…,*k*，则同余式组的解为：\n\n，\n\n其中                                   。\n\n10．正整数*n*有标准因数分解式为  $n={p}_{1}^{{\\alpha }_{1}}\\cdots {p}_{k}^{{\\alpha }_{k}}$，则*n*的欧拉函数\n\n** (*n*)＝                                                            。\n\n三．证明题 （写出详细证明过程）：（共30分）\n\n1．设*m*是一个正整数，*a*≡*b*（mod *m*），如果整数*d*∣(*a*,  *b*,  *m*)证明：![formula-object](assets/information-security-mathematics-008/image-002.png)。                                             （6分）\n\n3．设*m*是一个正整数，*a*满足(*a*,  *m*)＝1，则存在整数*a*，1   *a*  <  *m*使得    *aa*1 (mod  *m*)。                                               （6分）\n\n3．证明Euler定理：设*m*是大于1的正整数，如果*a*是满足(*a*,  *m*)＝1的整数。则*a*** (*m*)   1 (mod  *m*)。                                    （12分）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q24:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q24",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "4．证明：设*p*和*q*是两个不相等的素数，证明：$p^{q-1}+q^{p-1}=1(modpq)$。\n\n（6分）\n\n四．计算题（写出详细计算过程）：（共30分）\n\n1．设*m*＝737，*a*＝635，利用广义欧几里得除法求整数*a*，1   *a*  <  *m*使得    *aa*1 (mod  *m*)。                                          （6分）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q25:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q25",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "2．设*a*＝－1859，*b*＝1573，运用广义欧几里得除法\n\n(1)  计算(*a*,  *b*)；    (2)  求整数*s*，*t*使得*sa*＋*tb*＝(*a*,  *b*)。  （8分）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-008:q-information-security-mathematics-008-q26:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q26",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A",
+      "text": "3．运用中国剩余定理和模重复平方法计算31213  (mod 667)。   （16分）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:h-信息安全数学基础试卷-b:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "**诚信应考,考试作弊将带来严重后果！**\n\n**华南理工大学期末考试**\n\n**《信息安全数学基础》试卷B**\n\n**注意事项：1.** **考前请将密封线内填写清楚；**\n\n**2.** **所有答案请直接答在试卷上；**\n\n**3．考试形式：闭卷；**\n\n**4.** **本试卷共 四大题，满分100分，**\t**考试时间120分钟**。\n\n| **题 号** | **一** | **二** | **三** | **四** | **总分** |\n|---|---|---|---|---|---|\n| **得 分** |  |  |  |  |  |\n| **评卷人** |  |  |  |  |  |\n\n- 选择题：（每题2分，共20分）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q1:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q1",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "1．设*a*,  *b*都是非零整数。若*a**b*，*b**a*，则  (         )。\n\n(1)    *a*＝*b*，(2)    *a*＝ *b*，(3)    *a*＝－*b*，(4)    *a*  >  *b*"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q2:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q2",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "2．大于10且小于50的素数有  (        )  个。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q3:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q3",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "(1)  9，(2)  10，(3)  11，(4)  15"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q4:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q4",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "3．模7的最小非负完全剩余系是  (          )。\n\n(1)  －3,  －2,  －1, 0, 1, 2, 3，  (2)  －6,  －5,  －4,  －3,  －2,  －1, 0，\n\n(3)  1, 2, 3, 4, 5, 6, 7，              (4)  0, 1, 2, 3, 4, 5, 6"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q5:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q5",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "4．模30的简化剩余系是  (          )。\n\n(1)    －1, 0, 5, 7, 9, 19, 20, 29，      (2)    －1,  －7, 10, 13, 17, 25, 23, 29，\n\n(3)  1, 7, 11, 13, 17, 19, 23, 29，    (4)    －1, 7, 11, 13, 17, 19, 23, 29"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q6:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q6",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "5．设*n*是整数，则  (2*n*, 2(*n*＋1))＝(         )。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q7:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q7",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "(1)  1，(2)  2，(3)    *n*，(4)  2*n*"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q8:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q8",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "6．设*a*,  *b*是正整数，若  [*a*,  *b*]＝(*a*,  *b*)，则  (         )。\n\n(1)    *a*＝*b*，(2)  [*a*,  *b*]＝*ab*，(3)  (*a*,  *b*)＝1，(4)    *a*  >  *b*"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q9:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q9",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "7．模17的平方剩余是 (         )。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q10:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q10",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "(1)  3，(2)  10，(3)  12，(4)  15"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q11:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q11",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "8．整数5模17的指数ord17(5)＝(         )。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q12:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q12",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "(1)  3，(2)  8，(3)  16，(4)  32\n\n9．欧拉(Euler)定理：设*m*是大于1的整数，如果*a*是满足(*a*,  *m*)＝1的整数，则  (         )。\n\n(1)    *a* *m*＝*a*  (mod  *m*)，              (2)    *a* ** (*m*)＝1 (mod  *a*)，\n\n(3)    *a* ** (*m*)＝*a*  (mod  *m*)，          (4)    *a* ** (*m*)＝1 (mod  *m*)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q13:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q13",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "10．Fermat定理：设*p*是一个素数，则对任意整数*a*，有  (          )。\n\n(1)    *a* *p*＝*a*  (mod  *a*)，                (2)    *a* *p*＝*a*  (mod  *p*)，\n\n(3)    *a* ** (*m*)＝*a*  (mod  *m*)，          (4)    *a* ** (*p*)＝*a*  (mod  *p*)\n\n二． 填空题：（每题2分，共20分）\n\n1．设*m*是正整数，*a*是满足*a*  *m*的整数，则一次同余式：*ax*  *b*  (mod  *m*)有解的充分必要条件是                  。当同余式*ax*  *b*  (mod  *m*)  有解时，其解数为                 。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q14:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q14",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "2．设*m*是正整数，则*m*个数0, 1, 2,  …  ,  *m*－1中\n\n叫做*m*的欧拉(Euler)函数，记做** (*m*)。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q15:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q15",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "3．设*m*是正整数，若同余式                      有解，则*a*叫模*m*的平方剩余。\n\n4．设*a*,  *b*是正整数，且有素因数分解  $a={p}_{1}^{{\\alpha }_{1}}{p}_{2}^{{\\alpha }_{2}}\\cdots {p}_{s}^{{\\alpha }_{s}},{\\alpha }_{i}0,i=1,2,\\cdots ,s$，$b={p}_{1}^{{\\beta }_{1}}{p}_{2}^{{\\beta }_{2}}\\cdots {p}_{s}^{{\\beta }_{s}},{\\beta }_{i}0,i=1,2,\\cdots ,s$，则(*a*,  *b*)＝                           ，\n\n[*a*,  *b*]＝                                  。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q16:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q16",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "5．如果*a*对模*m*的指数是              ，则*a*叫做模*m*的原根。\n\n6．3288的素因数分解式是                               。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q17:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q17",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "7．Wilson定理：设*p*是一个素数，则                              。\n\n8．20××年1月18日是星期三，第220××0118天是星期                 。\n\n9．(中国剩余定理)  设*m*1,  …,  *m**k*是*k*个两两互素的正整数，则对任意的整数*b*1,  …,  *b**k* 同余式组                    *x*  *b*1    (mod  *m*1)\n\n… …  …   …\n\n*x*  *b**k*    (mod  *m**k*)\n\n有唯一解。令*m*＝*m*1…*m**k*，*m*＝*m**i**M**i*，*i*＝1,…,*k*，则同余式组的解为：\n\n，\n\n其中                                   。\n\n10．正整数*n*有标准因数分解式为  $n={p}_{1}^{{\\alpha }_{1}}\\cdots {p}_{k}^{{\\alpha }_{k}}$，则*n*的欧拉函数\n\n** (*n*)＝                                                            。\n\n三．证明题 （写出详细证明过程）：（每题7分，共28分）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q18:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q18",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "1．证明：如果正整数*a*，*b*满足(*a*,  *b*)＝1，则  (*a**n*,  *b**n*)＝1。\n\n2．证明：设*m*是一个正整数，*a*  *b*  (mod  *m*)，则(*a*,  *m*)＝(*b*,  *m*)。\n\n3．设*m*是一个正整数，*a*满足(*a*,  *m*)＝1，则存在整数*a*，1   *a*  <  *m*使得    *aa*1 (mod  *m*)。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q19:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q19",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "4．证明，任给两个整数*a*及*b*（*b*＞0），必有二整数*q*及*r*使\n\n*a=bq+r*， 0≤*r*＜*b*\n\n四．计算题（写出详细计算过程）：（每题8分，共32分）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q20:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q20",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "1．计算整数  120，150，210，35的最大公因数和最小公倍数：\n\n[120，150，210，35]和(120，150，210，35)。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q21:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q21",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "2．设*a*＝－1859，*b*＝1573，运用广义欧几里得除法\n\n(1)  计算(*a*,  *b*)；    (2)  求整数*s*，*t*使得*sa*＋*tb*＝(*a*,  *b*)。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q22:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q22",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "3．用欧拉定理和模重复平方计算法计算21000000  (mod 77)。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-009:q-information-security-mathematics-009-q23:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q23",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B",
+      "text": "4．用中国剩余定理计算21000000  (mod 77)。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-010:p1:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "试卷答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-010",
+      "source_title": "试卷答案",
+      "text": "![page-001.jpg](assets/information-security-mathematics-010/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-010:p2:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "试卷答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-010",
+      "source_title": "试卷答案",
+      "text": "![page-002.jpg](assets/information-security-mathematics-010/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-010:p3:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "试卷答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-010",
+      "source_title": "试卷答案",
+      "text": "![page-003.jpg](assets/information-security-mathematics-010/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-010:p4:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "试卷答案"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-010",
+      "source_title": "试卷答案",
+      "text": "![page-004.jpg](assets/information-security-mathematics-010/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-010:p5:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "试卷答案"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-010",
+      "source_title": "试卷答案",
+      "text": "![page-005.jpg](assets/information-security-mathematics-010/page-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-mathematics-010:p6:c01",
+      "course_id": "information_security_mathematics",
+      "heading_path": [
+        "试卷答案"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-mathematics-010",
+      "source_title": "试卷答案",
+      "text": "![page-006.jpg](assets/information-security-mathematics-010/page-006.jpg)"
+    }
+  ],
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "information_security_mathematics",
+  "questions": [
+    {
+      "chunk_ids": [
+        "information-security-mathematics-007:q-information-security-mathematics-007-q1:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础期末试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-007-Q1",
+      "source_id": "information-security-mathematics-007",
+      "source_title": "信息安全数学基础期末试卷"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-007:q-information-security-mathematics-007-q2:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础期末试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-007-Q2",
+      "source_id": "information-security-mathematics-007",
+      "source_title": "信息安全数学基础期末试卷"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-007:q-information-security-mathematics-007-q3:c01",
+        "information-security-mathematics-007:q-information-security-mathematics-007-q3:c02",
+        "information-security-mathematics-007:q-information-security-mathematics-007-q3:c03"
+      ],
+      "heading_path": [
+        "信息安全数学基础期末试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-007-Q3",
+      "source_id": "information-security-mathematics-007",
+      "source_title": "信息安全数学基础期末试卷"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-007:q-information-security-mathematics-007-q4:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础期末试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-007-Q4",
+      "source_id": "information-security-mathematics-007",
+      "source_title": "信息安全数学基础期末试卷"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q1:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q1",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q10:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q10",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q11:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q11",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q12:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q12",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q13:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q13",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q14:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q14",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q15:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q15",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q16:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q16",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q17:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q17",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q18:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q18",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q19:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q19",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q2:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q2",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q20:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q20",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q21:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q21",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q22:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q22",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q23:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q23",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q24:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q24",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q25:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q25",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q26:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q26",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q3:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q3",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q4:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q4",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q5:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q5",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q6:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q6",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q7:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q7",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q8:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q8",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-008:q-information-security-mathematics-008-q9:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-008-Q9",
+      "source_id": "information-security-mathematics-008",
+      "source_title": "信息安全数学基础试卷-A"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q1:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q1",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q10:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q10",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q11:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q11",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q12:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q12",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q13:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q13",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q14:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q14",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q15:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q15",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q16:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q16",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q17:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q17",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q18:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q18",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q19:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q19",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q2:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q2",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q20:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q20",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q21:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q21",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q22:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q22",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q23:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q23",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q3:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q3",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q4:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q4",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q5:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q5",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q6:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q6",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q7:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q7",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q8:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q8",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    },
+    {
+      "chunk_ids": [
+        "information-security-mathematics-009:q-information-security-mathematics-009-q9:c01"
+      ],
+      "heading_path": [
+        "信息安全数学基础试卷-B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "information-security-mathematics-009-Q9",
+      "source_id": "information-security-mathematics-009",
+      "source_title": "信息安全数学基础试卷-B"
+    }
+  ],
+  "schema_version": "course-index-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e"
+}

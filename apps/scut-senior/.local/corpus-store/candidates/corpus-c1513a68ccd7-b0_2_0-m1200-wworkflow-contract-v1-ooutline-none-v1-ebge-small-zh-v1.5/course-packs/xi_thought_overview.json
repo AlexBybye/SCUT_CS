@@ -1,0 +1,51 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "xi_thought_overview",
+  "course_pack_version": "course-pack-xi_thought_overview-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "xi-thought-overview-001:h-主题七-人才计划的广东实践:c01",
+        "xi-thought-overview-001:h-主题七-人才计划的广东实践:c02",
+        "xi-thought-overview-001:h-主题七-人才计划的广东实践:c03",
+        "xi-thought-overview-001:h-主题七-人才计划的广东实践:c04",
+        "xi-thought-overview-001:h-主题七-人才计划的广东实践:c05"
+      ],
+      "heading_path": [
+        "主题七：人才计划的广东实践"
+      ],
+      "source_ids": [
+        "xi-thought-overview-001"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "xi-thought-overview-001:h-主题七-人才计划的广东实践:c01",
+        "xi-thought-overview-001:h-主题七-人才计划的广东实践:c02",
+        "xi-thought-overview-001:h-主题七-人才计划的广东实践:c03",
+        "xi-thought-overview-001:h-主题七-人才计划的广东实践:c04",
+        "xi-thought-overview-001:h-主题七-人才计划的广东实践:c05"
+      ],
+      "course_id": "xi_thought_overview",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "xi_thought_overview/xi-thought-overview-001.md",
+      "source_id": "xi-thought-overview-001",
+      "source_title": "主题七：人才计划的广东实践",
+      "year": null
+    }
+  ],
+  "statistics": {
+    "chunk_count": 5,
+    "question_count": 0,
+    "source_count": 1
+  },
+  "workflow_version": "workflow-contract-v1"
+}

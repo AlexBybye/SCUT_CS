@@ -177,3 +177,17 @@ class BM25FIndex:
             ranked.append((score, doc.chunk_id))
         ranked.sort(key=lambda item: (-item[0], item[1]))
         return ranked
+
+    def exact_match_ids(self, query: str) -> set[str]:
+        """Return chunk ids containing the original query as one exact phrase."""
+        normalized_query = _normalized_substring(query)
+        if not normalized_query:
+            return set()
+        return {
+            document.chunk_id
+            for document in self._docs
+            if any(
+                normalized_query in _normalized_substring(document.fields[field])
+                for field in self.field_weights
+            )
+        }

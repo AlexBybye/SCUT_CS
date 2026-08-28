@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "digital_system_creative_design",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "这张图片主要讲什么？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-001:h-微信图片_20231129235834:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习这张图片，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-002:h-微信图片_20231130003702:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习Mindspore口罩检测 yolov3时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "Mindspore口罩检测 yolov3里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习Mindspore口罩检测 yolov3时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考Mindspore口罩检测 yolov3？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "Mindspore口罩检测 yolov3主要讲什么？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c05"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习Mindspore口罩检测 yolov3，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c06"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习Mindspore口罩检测 yolov3时哪些内容最重要？，第9条",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c07"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "Mindspore口罩检测 yolov3里的方法或结论怎么理解？，第10条",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c08"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习Mindspore口罩检测 yolov3时哪些概念容易混淆？，第11条",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c09"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考Mindspore口罩检测 yolov3？，第12条",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c10"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "Mindspore口罩检测 yolov3主要讲什么？，第13条",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c11"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习Mindspore口罩检测 yolov3，应该从哪里开始？，第14条",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c12"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习Mindspore口罩检测 yolov3时哪些内容最重要？，第15条",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c13"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "Mindspore口罩检测 yolov3里的方法或结论怎么理解？，第16条",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c14"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习Mindspore口罩检测 yolov3时哪些概念容易混淆？，第17条",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c15"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考Mindspore口罩检测 yolov3？，见第1页",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-004:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "Mindspore口罩检测 yolov3主要讲什么？，见第2页",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-004:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习Mindspore口罩检测 yolov3，应该从哪里开始？，见第3页",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-004:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习定义学习率时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-004:p3:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "定义网络初始化参数里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-004:p3:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习定义网络初始化参数时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-004:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考定义训练网络？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-004:p4:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "定义训练网络主要讲什么？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-004:p4:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习定义训练网络，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-004:p5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习yolov3 train时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-004:p5:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "\"train url\": 's3://yyq-2/DATA/code/yolov3/yolov3 out/'里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-004:p5:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习调用data to mindrecord byte image将图片数据集转为mingrecord格式，创建mindrecord文件时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-004:p5:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考调用data to mindrecord byte image将图片数据集转为mingrecord格式，创建mindrecord文件？",
+      "expected_chunk_ids": [
+        "digital-system-creative-design-004:p6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

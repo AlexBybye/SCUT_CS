@@ -1,0 +1,2628 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "algorithm_design_and_analysis",
+  "course_pack_version": "course-pack-algorithm_design_and_analysis-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-004:p1:c01",
+        "algorithm-design-and-analysis-004:p2:c01",
+        "algorithm-design-and-analysis-004:p3:c01",
+        "algorithm-design-and-analysis-004:p4:c01",
+        "algorithm-design-and-analysis-004:p5:c01",
+        "algorithm-design-and-analysis-004:p6:c01",
+        "algorithm-design-and-analysis-004:p7:c01",
+        "algorithm-design-and-analysis-004:p8:c01",
+        "algorithm-design-and-analysis-004:p9:c01",
+        "algorithm-design-and-analysis-004:p10:c01",
+        "algorithm-design-and-analysis-004:p11:c01",
+        "algorithm-design-and-analysis-004:p12:c01",
+        "algorithm-design-and-analysis-004:p13:c01",
+        "algorithm-design-and-analysis-004:p14:c01",
+        "algorithm-design-and-analysis-004:p15:c01",
+        "algorithm-design-and-analysis-004:p16:c01",
+        "algorithm-design-and-analysis-004:p17:c01",
+        "algorithm-design-and-analysis-004:p18:c01",
+        "algorithm-design-and-analysis-004:p19:c01",
+        "algorithm-design-and-analysis-004:p20:c01",
+        "algorithm-design-and-analysis-004:p21:c01",
+        "algorithm-design-and-analysis-004:p22:c01",
+        "algorithm-design-and-analysis-004:p23:c01",
+        "algorithm-design-and-analysis-004:p24:c01",
+        "algorithm-design-and-analysis-004:p25:c01",
+        "algorithm-design-and-analysis-004:p26:c01"
+      ],
+      "heading_path": [
+        "0-introduction"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-005:p1:c01",
+        "algorithm-design-and-analysis-005:p2:c01",
+        "algorithm-design-and-analysis-005:p3:c01",
+        "algorithm-design-and-analysis-005:p4:c01",
+        "algorithm-design-and-analysis-005:p5:c01",
+        "algorithm-design-and-analysis-005:p6:c01",
+        "algorithm-design-and-analysis-005:p7:c01",
+        "algorithm-design-and-analysis-005:p8:c01",
+        "algorithm-design-and-analysis-005:p9:c01",
+        "algorithm-design-and-analysis-005:p10:c01",
+        "algorithm-design-and-analysis-005:p11:c01",
+        "algorithm-design-and-analysis-005:p12:c01",
+        "algorithm-design-and-analysis-005:p13:c01",
+        "algorithm-design-and-analysis-005:p14:c01",
+        "algorithm-design-and-analysis-005:p15:c01",
+        "algorithm-design-and-analysis-005:p16:c01",
+        "algorithm-design-and-analysis-005:p17:c01",
+        "algorithm-design-and-analysis-005:p18:c01",
+        "algorithm-design-and-analysis-005:p19:c01",
+        "algorithm-design-and-analysis-005:p20:c01",
+        "algorithm-design-and-analysis-005:p21:c01",
+        "algorithm-design-and-analysis-005:p22:c01",
+        "algorithm-design-and-analysis-005:p23:c01",
+        "algorithm-design-and-analysis-005:p24:c01",
+        "algorithm-design-and-analysis-005:p25:c01",
+        "algorithm-design-and-analysis-005:p26:c01",
+        "algorithm-design-and-analysis-005:p27:c01",
+        "algorithm-design-and-analysis-005:p28:c01",
+        "algorithm-design-and-analysis-005:p29:c01",
+        "algorithm-design-and-analysis-005:p30:c01",
+        "algorithm-design-and-analysis-005:p31:c01",
+        "algorithm-design-and-analysis-005:p32:c01",
+        "algorithm-design-and-analysis-005:p33:c01",
+        "algorithm-design-and-analysis-005:p34:c01",
+        "algorithm-design-and-analysis-005:p35:c01",
+        "algorithm-design-and-analysis-005:p36:c01",
+        "algorithm-design-and-analysis-005:p37:c01",
+        "algorithm-design-and-analysis-005:p38:c01",
+        "algorithm-design-and-analysis-005:p39:c01",
+        "algorithm-design-and-analysis-005:p40:c01",
+        "algorithm-design-and-analysis-005:p41:c01",
+        "algorithm-design-and-analysis-005:p42:c01",
+        "algorithm-design-and-analysis-005:p43:c01",
+        "algorithm-design-and-analysis-005:p44:c01",
+        "algorithm-design-and-analysis-005:p45:c01",
+        "algorithm-design-and-analysis-005:p46:c01",
+        "algorithm-design-and-analysis-005:p47:c01",
+        "algorithm-design-and-analysis-005:p48:c01",
+        "algorithm-design-and-analysis-005:p49:c01",
+        "algorithm-design-and-analysis-005:p50:c01",
+        "algorithm-design-and-analysis-005:p51:c01",
+        "algorithm-design-and-analysis-005:p52:c01",
+        "algorithm-design-and-analysis-005:p53:c01",
+        "algorithm-design-and-analysis-005:p54:c01",
+        "algorithm-design-and-analysis-005:p55:c01",
+        "algorithm-design-and-analysis-005:p56:c01",
+        "algorithm-design-and-analysis-005:p57:c01",
+        "algorithm-design-and-analysis-005:p58:c01",
+        "algorithm-design-and-analysis-005:p59:c01",
+        "algorithm-design-and-analysis-005:p60:c01",
+        "algorithm-design-and-analysis-005:p61:c01",
+        "algorithm-design-and-analysis-005:p62:c01",
+        "algorithm-design-and-analysis-005:p63:c01",
+        "algorithm-design-and-analysis-005:p64:c01",
+        "algorithm-design-and-analysis-005:p65:c01",
+        "algorithm-design-and-analysis-005:p66:c01",
+        "algorithm-design-and-analysis-005:p67:c01",
+        "algorithm-design-and-analysis-005:p68:c01"
+      ],
+      "heading_path": [
+        "1-sort"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-006:p1:c01",
+        "algorithm-design-and-analysis-006:p2:c01",
+        "algorithm-design-and-analysis-006:p3:c01",
+        "algorithm-design-and-analysis-006:p4:c01",
+        "algorithm-design-and-analysis-006:p5:c01",
+        "algorithm-design-and-analysis-006:p6:c01",
+        "algorithm-design-and-analysis-006:p7:c01",
+        "algorithm-design-and-analysis-006:p8:c01",
+        "algorithm-design-and-analysis-006:p9:c01",
+        "algorithm-design-and-analysis-006:p10:c01",
+        "algorithm-design-and-analysis-006:p11:c01",
+        "algorithm-design-and-analysis-006:p12:c01",
+        "algorithm-design-and-analysis-006:p13:c01",
+        "algorithm-design-and-analysis-006:p14:c01",
+        "algorithm-design-and-analysis-006:p15:c01",
+        "algorithm-design-and-analysis-006:p16:c01",
+        "algorithm-design-and-analysis-006:p17:c01",
+        "algorithm-design-and-analysis-006:p18:c01",
+        "algorithm-design-and-analysis-006:p19:c01",
+        "algorithm-design-and-analysis-006:p20:c01",
+        "algorithm-design-and-analysis-006:p21:c01",
+        "algorithm-design-and-analysis-006:p22:c01",
+        "algorithm-design-and-analysis-006:p23:c01",
+        "algorithm-design-and-analysis-006:p24:c01",
+        "algorithm-design-and-analysis-006:p25:c01",
+        "algorithm-design-and-analysis-006:p26:c01",
+        "algorithm-design-and-analysis-006:p27:c01",
+        "algorithm-design-and-analysis-006:p28:c01",
+        "algorithm-design-and-analysis-006:p29:c01",
+        "algorithm-design-and-analysis-006:p30:c01",
+        "algorithm-design-and-analysis-006:p31:c01",
+        "algorithm-design-and-analysis-006:p32:c01",
+        "algorithm-design-and-analysis-006:p33:c01"
+      ],
+      "heading_path": [
+        "10-approximation"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-007:p1:c01",
+        "algorithm-design-and-analysis-007:p2:c01",
+        "algorithm-design-and-analysis-007:p3:c01",
+        "algorithm-design-and-analysis-007:p4:c01",
+        "algorithm-design-and-analysis-007:p5:c01",
+        "algorithm-design-and-analysis-007:p6:c01",
+        "algorithm-design-and-analysis-007:p7:c01",
+        "algorithm-design-and-analysis-007:p8:c01",
+        "algorithm-design-and-analysis-007:p9:c01",
+        "algorithm-design-and-analysis-007:p10:c01",
+        "algorithm-design-and-analysis-007:p11:c01",
+        "algorithm-design-and-analysis-007:p12:c01",
+        "algorithm-design-and-analysis-007:p13:c01",
+        "algorithm-design-and-analysis-007:p14:c01",
+        "algorithm-design-and-analysis-007:p15:c01",
+        "algorithm-design-and-analysis-007:p16:c01",
+        "algorithm-design-and-analysis-007:p17:c01",
+        "algorithm-design-and-analysis-007:p18:c01"
+      ],
+      "heading_path": [
+        "11-tutorial"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-008:p1:c01",
+        "algorithm-design-and-analysis-008:p2:c01",
+        "algorithm-design-and-analysis-008:p3:c01",
+        "algorithm-design-and-analysis-008:p4:c01",
+        "algorithm-design-and-analysis-008:p5:c01",
+        "algorithm-design-and-analysis-008:p6:c01",
+        "algorithm-design-and-analysis-008:p7:c01",
+        "algorithm-design-and-analysis-008:p8:c01",
+        "algorithm-design-and-analysis-008:p9:c01",
+        "algorithm-design-and-analysis-008:p10:c01",
+        "algorithm-design-and-analysis-008:p11:c01",
+        "algorithm-design-and-analysis-008:p12:c01",
+        "algorithm-design-and-analysis-008:p13:c01",
+        "algorithm-design-and-analysis-008:p14:c01",
+        "algorithm-design-and-analysis-008:p15:c01",
+        "algorithm-design-and-analysis-008:p16:c01",
+        "algorithm-design-and-analysis-008:p17:c01",
+        "algorithm-design-and-analysis-008:p18:c01",
+        "algorithm-design-and-analysis-008:p19:c01",
+        "algorithm-design-and-analysis-008:p20:c01",
+        "algorithm-design-and-analysis-008:p21:c01",
+        "algorithm-design-and-analysis-008:p22:c01",
+        "algorithm-design-and-analysis-008:p23:c01",
+        "algorithm-design-and-analysis-008:p24:c01",
+        "algorithm-design-and-analysis-008:p25:c01",
+        "algorithm-design-and-analysis-008:p26:c01",
+        "algorithm-design-and-analysis-008:p27:c01",
+        "algorithm-design-and-analysis-008:p28:c01",
+        "algorithm-design-and-analysis-008:p29:c01",
+        "algorithm-design-and-analysis-008:p30:c01",
+        "algorithm-design-and-analysis-008:p31:c01",
+        "algorithm-design-and-analysis-008:p32:c01",
+        "algorithm-design-and-analysis-008:p33:c01",
+        "algorithm-design-and-analysis-008:p34:c01",
+        "algorithm-design-and-analysis-008:p35:c01",
+        "algorithm-design-and-analysis-008:p36:c01",
+        "algorithm-design-and-analysis-008:p37:c01",
+        "algorithm-design-and-analysis-008:p38:c01",
+        "algorithm-design-and-analysis-008:p39:c01"
+      ],
+      "heading_path": [
+        "11_backtrack"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-009:p1:c01",
+        "algorithm-design-and-analysis-009:p2:c01",
+        "algorithm-design-and-analysis-009:p3:c01",
+        "algorithm-design-and-analysis-009:p4:c01",
+        "algorithm-design-and-analysis-009:p5:c01",
+        "algorithm-design-and-analysis-009:p6:c01",
+        "algorithm-design-and-analysis-009:p7:c01",
+        "algorithm-design-and-analysis-009:p8:c01",
+        "algorithm-design-and-analysis-009:p9:c01",
+        "algorithm-design-and-analysis-009:p10:c01",
+        "algorithm-design-and-analysis-009:p11:c01",
+        "algorithm-design-and-analysis-009:p12:c01",
+        "algorithm-design-and-analysis-009:p13:c01",
+        "algorithm-design-and-analysis-009:p14:c01",
+        "algorithm-design-and-analysis-009:p15:c01",
+        "algorithm-design-and-analysis-009:p16:c01",
+        "algorithm-design-and-analysis-009:p17:c01",
+        "algorithm-design-and-analysis-009:p18:c01",
+        "algorithm-design-and-analysis-009:p19:c01",
+        "algorithm-design-and-analysis-009:p20:c01",
+        "algorithm-design-and-analysis-009:p21:c01",
+        "algorithm-design-and-analysis-009:p22:c01",
+        "algorithm-design-and-analysis-009:p23:c01",
+        "algorithm-design-and-analysis-009:p24:c01",
+        "algorithm-design-and-analysis-009:p25:c01",
+        "algorithm-design-and-analysis-009:p26:c01"
+      ],
+      "heading_path": [
+        "13_supplimental"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-010:p1:c01",
+        "algorithm-design-and-analysis-010:p2:c01",
+        "algorithm-design-and-analysis-010:p3:c01",
+        "algorithm-design-and-analysis-010:p4:c01",
+        "algorithm-design-and-analysis-010:p5:c01",
+        "algorithm-design-and-analysis-010:p6:c01",
+        "algorithm-design-and-analysis-010:p7:c01",
+        "algorithm-design-and-analysis-010:p8:c01"
+      ],
+      "heading_path": [
+        "1_tutorial"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-011:p1:c01",
+        "algorithm-design-and-analysis-011:p2:c01",
+        "algorithm-design-and-analysis-011:p3:c01",
+        "algorithm-design-and-analysis-011:p4:c01",
+        "algorithm-design-and-analysis-011:p5:c01",
+        "algorithm-design-and-analysis-011:p6:c01",
+        "algorithm-design-and-analysis-011:p7:c01",
+        "algorithm-design-and-analysis-011:p8:c01",
+        "algorithm-design-and-analysis-011:p9:c01",
+        "algorithm-design-and-analysis-011:p10:c01",
+        "algorithm-design-and-analysis-011:p11:c01",
+        "algorithm-design-and-analysis-011:p12:c01",
+        "algorithm-design-and-analysis-011:p13:c01",
+        "algorithm-design-and-analysis-011:p14:c01",
+        "algorithm-design-and-analysis-011:p15:c01",
+        "algorithm-design-and-analysis-011:p16:c01",
+        "algorithm-design-and-analysis-011:p17:c01",
+        "algorithm-design-and-analysis-011:p18:c01",
+        "algorithm-design-and-analysis-011:p19:c01",
+        "algorithm-design-and-analysis-011:p20:c01",
+        "algorithm-design-and-analysis-011:p21:c01"
+      ],
+      "heading_path": [
+        "2-analysis"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-012:p1:c01",
+        "algorithm-design-and-analysis-012:p2:c01",
+        "algorithm-design-and-analysis-012:p3:c01",
+        "algorithm-design-and-analysis-012:p4:c01"
+      ],
+      "heading_path": [
+        "2-tutorial"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q1:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q2:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q3:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q4:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q5:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q6:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q7:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q8:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q9:c01",
+        "algorithm-design-and-analysis-001:p2:q-algorithm-design-and-analysis-001-q10:c01",
+        "algorithm-design-and-analysis-001:p2:q-algorithm-design-and-analysis-001-q11:c01",
+        "algorithm-design-and-analysis-001:p3:q-algorithm-design-and-analysis-001-q12:c01",
+        "algorithm-design-and-analysis-001:p3:q-algorithm-design-and-analysis-001-q13:c01",
+        "algorithm-design-and-analysis-001:p4:q-algorithm-design-and-analysis-001-q14:c01",
+        "algorithm-design-and-analysis-001:p4:q-algorithm-design-and-analysis-001-q15:c01",
+        "algorithm-design-and-analysis-001:p4:q-algorithm-design-and-analysis-001-q16:c01",
+        "algorithm-design-and-analysis-001:p4:q-algorithm-design-and-analysis-001-q17:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-002:h-23-24-2-算法设计与分析:c01"
+      ],
+      "heading_path": [
+        "23-24（2）算法设计与分析"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-013:p1:c01",
+        "algorithm-design-and-analysis-013:p2:c01",
+        "algorithm-design-and-analysis-013:p3:c01",
+        "algorithm-design-and-analysis-013:p4:c01",
+        "algorithm-design-and-analysis-013:p5:c01",
+        "algorithm-design-and-analysis-013:p6:c01",
+        "algorithm-design-and-analysis-013:p7:c01",
+        "algorithm-design-and-analysis-013:p8:c01",
+        "algorithm-design-and-analysis-013:p9:c01",
+        "algorithm-design-and-analysis-013:p10:c01",
+        "algorithm-design-and-analysis-013:p11:c01",
+        "algorithm-design-and-analysis-013:p12:c01",
+        "algorithm-design-and-analysis-013:p13:c01",
+        "algorithm-design-and-analysis-013:p14:c01",
+        "algorithm-design-and-analysis-013:p15:c01",
+        "algorithm-design-and-analysis-013:p16:c01",
+        "algorithm-design-and-analysis-013:p17:c01",
+        "algorithm-design-and-analysis-013:p18:c01",
+        "algorithm-design-and-analysis-013:p19:c01",
+        "algorithm-design-and-analysis-013:p20:c01",
+        "algorithm-design-and-analysis-013:p21:c01",
+        "algorithm-design-and-analysis-013:p22:c01",
+        "algorithm-design-and-analysis-013:p23:c01",
+        "algorithm-design-and-analysis-013:p24:c01",
+        "algorithm-design-and-analysis-013:p25:c01",
+        "algorithm-design-and-analysis-013:p26:c01",
+        "algorithm-design-and-analysis-013:p27:c01",
+        "algorithm-design-and-analysis-013:p28:c01",
+        "algorithm-design-and-analysis-013:p29:c01",
+        "algorithm-design-and-analysis-013:p30:c01"
+      ],
+      "heading_path": [
+        "3-recurrence"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-014:p1:c01",
+        "algorithm-design-and-analysis-014:p2:c01",
+        "algorithm-design-and-analysis-014:p3:c01",
+        "algorithm-design-and-analysis-014:p4:c01",
+        "algorithm-design-and-analysis-014:p5:c01",
+        "algorithm-design-and-analysis-014:p6:c01",
+        "algorithm-design-and-analysis-014:p7:c01",
+        "algorithm-design-and-analysis-014:p8:c01",
+        "algorithm-design-and-analysis-014:p9:c01",
+        "algorithm-design-and-analysis-014:p10:c01",
+        "algorithm-design-and-analysis-014:p11:c01",
+        "algorithm-design-and-analysis-014:p12:c01",
+        "algorithm-design-and-analysis-014:p13:c01",
+        "algorithm-design-and-analysis-014:p14:c01"
+      ],
+      "heading_path": [
+        "3_tutorial"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-015:p1:c01",
+        "algorithm-design-and-analysis-015:p2:c01",
+        "algorithm-design-and-analysis-015:p3:c01",
+        "algorithm-design-and-analysis-015:p4:c01",
+        "algorithm-design-and-analysis-015:p5:c01",
+        "algorithm-design-and-analysis-015:p6:c01",
+        "algorithm-design-and-analysis-015:p7:c01",
+        "algorithm-design-and-analysis-015:p8:c01",
+        "algorithm-design-and-analysis-015:p9:c01",
+        "algorithm-design-and-analysis-015:p10:c01",
+        "algorithm-design-and-analysis-015:p11:c01",
+        "algorithm-design-and-analysis-015:p12:c01",
+        "algorithm-design-and-analysis-015:p13:c01",
+        "algorithm-design-and-analysis-015:p14:c01",
+        "algorithm-design-and-analysis-015:p15:c01",
+        "algorithm-design-and-analysis-015:p16:c01",
+        "algorithm-design-and-analysis-015:p17:c01",
+        "algorithm-design-and-analysis-015:p18:c01",
+        "algorithm-design-and-analysis-015:p19:c01",
+        "algorithm-design-and-analysis-015:p20:c01",
+        "algorithm-design-and-analysis-015:p21:c01",
+        "algorithm-design-and-analysis-015:p22:c01",
+        "algorithm-design-and-analysis-015:p23:c01",
+        "algorithm-design-and-analysis-015:p24:c01",
+        "algorithm-design-and-analysis-015:p25:c01",
+        "algorithm-design-and-analysis-015:p26:c01",
+        "algorithm-design-and-analysis-015:p27:c01",
+        "algorithm-design-and-analysis-015:p28:c01",
+        "algorithm-design-and-analysis-015:p29:c01",
+        "algorithm-design-and-analysis-015:p30:c01",
+        "algorithm-design-and-analysis-015:p31:c01",
+        "algorithm-design-and-analysis-015:p32:c01",
+        "algorithm-design-and-analysis-015:p33:c01",
+        "algorithm-design-and-analysis-015:p34:c01",
+        "algorithm-design-and-analysis-015:p35:c01",
+        "algorithm-design-and-analysis-015:p36:c01",
+        "algorithm-design-and-analysis-015:p37:c01",
+        "algorithm-design-and-analysis-015:p38:c01",
+        "algorithm-design-and-analysis-015:p39:c01",
+        "algorithm-design-and-analysis-015:p40:c01",
+        "algorithm-design-and-analysis-015:p41:c01",
+        "algorithm-design-and-analysis-015:p42:c01",
+        "algorithm-design-and-analysis-015:p43:c01",
+        "algorithm-design-and-analysis-015:p44:c01",
+        "algorithm-design-and-analysis-015:p45:c01",
+        "algorithm-design-and-analysis-015:p46:c01",
+        "algorithm-design-and-analysis-015:p47:c01",
+        "algorithm-design-and-analysis-015:p48:c01",
+        "algorithm-design-and-analysis-015:p49:c01",
+        "algorithm-design-and-analysis-015:p50:c01",
+        "algorithm-design-and-analysis-016:p1:c01",
+        "algorithm-design-and-analysis-016:p2:c01",
+        "algorithm-design-and-analysis-016:p3:c01",
+        "algorithm-design-and-analysis-016:p4:c01",
+        "algorithm-design-and-analysis-016:p5:c01",
+        "algorithm-design-and-analysis-016:p6:c01",
+        "algorithm-design-and-analysis-016:p7:c01",
+        "algorithm-design-and-analysis-016:p8:c01",
+        "algorithm-design-and-analysis-016:p9:c01",
+        "algorithm-design-and-analysis-016:p10:c01",
+        "algorithm-design-and-analysis-016:p11:c01",
+        "algorithm-design-and-analysis-016:p12:c01",
+        "algorithm-design-and-analysis-016:p13:c01",
+        "algorithm-design-and-analysis-016:p14:c01",
+        "algorithm-design-and-analysis-016:p15:c01",
+        "algorithm-design-and-analysis-016:p16:c01",
+        "algorithm-design-and-analysis-016:p17:c01",
+        "algorithm-design-and-analysis-016:p18:c01",
+        "algorithm-design-and-analysis-016:p19:c01",
+        "algorithm-design-and-analysis-016:p20:c01",
+        "algorithm-design-and-analysis-016:p21:c01",
+        "algorithm-design-and-analysis-016:p22:c01",
+        "algorithm-design-and-analysis-016:p23:c01",
+        "algorithm-design-and-analysis-016:p24:c01",
+        "algorithm-design-and-analysis-016:p25:c01",
+        "algorithm-design-and-analysis-016:p26:c01",
+        "algorithm-design-and-analysis-016:p27:c01",
+        "algorithm-design-and-analysis-016:p28:c01",
+        "algorithm-design-and-analysis-016:p29:c01",
+        "algorithm-design-and-analysis-016:p30:c01",
+        "algorithm-design-and-analysis-016:p31:c01",
+        "algorithm-design-and-analysis-016:p32:c01",
+        "algorithm-design-and-analysis-016:p33:c01",
+        "algorithm-design-and-analysis-016:p34:c01",
+        "algorithm-design-and-analysis-016:p35:c01",
+        "algorithm-design-and-analysis-016:p36:c01",
+        "algorithm-design-and-analysis-016:p37:c01",
+        "algorithm-design-and-analysis-016:p38:c01",
+        "algorithm-design-and-analysis-016:p39:c01"
+      ],
+      "heading_path": [
+        "4-divideConquer"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-015",
+        "algorithm-design-and-analysis-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-017:p1:c01",
+        "algorithm-design-and-analysis-017:p2:c01",
+        "algorithm-design-and-analysis-017:p3:c01",
+        "algorithm-design-and-analysis-017:p4:c01",
+        "algorithm-design-and-analysis-017:p5:c01",
+        "algorithm-design-and-analysis-017:p6:c01",
+        "algorithm-design-and-analysis-017:p7:c01",
+        "algorithm-design-and-analysis-017:p8:c01"
+      ],
+      "heading_path": [
+        "4-tutorial"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-018:p1:c01",
+        "algorithm-design-and-analysis-018:p2:c01",
+        "algorithm-design-and-analysis-018:p3:c01",
+        "algorithm-design-and-analysis-018:p4:c01",
+        "algorithm-design-and-analysis-018:p5:c01",
+        "algorithm-design-and-analysis-018:p6:c01",
+        "algorithm-design-and-analysis-018:p7:c01",
+        "algorithm-design-and-analysis-018:p8:c01",
+        "algorithm-design-and-analysis-018:p9:c01",
+        "algorithm-design-and-analysis-018:p10:c01",
+        "algorithm-design-and-analysis-018:p11:c01",
+        "algorithm-design-and-analysis-018:p12:c01",
+        "algorithm-design-and-analysis-018:p13:c01",
+        "algorithm-design-and-analysis-018:p14:c01",
+        "algorithm-design-and-analysis-018:p15:c01",
+        "algorithm-design-and-analysis-018:p16:c01",
+        "algorithm-design-and-analysis-018:p17:c01",
+        "algorithm-design-and-analysis-018:p18:c01",
+        "algorithm-design-and-analysis-018:p19:c01",
+        "algorithm-design-and-analysis-018:p20:c01",
+        "algorithm-design-and-analysis-018:p21:c01",
+        "algorithm-design-and-analysis-018:p22:c01",
+        "algorithm-design-and-analysis-018:p23:c01",
+        "algorithm-design-and-analysis-018:p24:c01",
+        "algorithm-design-and-analysis-018:p25:c01",
+        "algorithm-design-and-analysis-018:p26:c01",
+        "algorithm-design-and-analysis-018:p27:c01",
+        "algorithm-design-and-analysis-018:p28:c01",
+        "algorithm-design-and-analysis-018:p29:c01",
+        "algorithm-design-and-analysis-018:p30:c01",
+        "algorithm-design-and-analysis-018:p31:c01",
+        "algorithm-design-and-analysis-018:p32:c01",
+        "algorithm-design-and-analysis-018:p33:c01",
+        "algorithm-design-and-analysis-018:p34:c01",
+        "algorithm-design-and-analysis-018:p35:c01",
+        "algorithm-design-and-analysis-018:p36:c01",
+        "algorithm-design-and-analysis-018:p37:c01",
+        "algorithm-design-and-analysis-018:p38:c01",
+        "algorithm-design-and-analysis-018:p39:c01",
+        "algorithm-design-and-analysis-018:p40:c01",
+        "algorithm-design-and-analysis-018:p41:c01",
+        "algorithm-design-and-analysis-018:p42:c01",
+        "algorithm-design-and-analysis-018:p43:c01",
+        "algorithm-design-and-analysis-018:p44:c01",
+        "algorithm-design-and-analysis-018:p45:c01",
+        "algorithm-design-and-analysis-018:p46:c01",
+        "algorithm-design-and-analysis-018:p47:c01",
+        "algorithm-design-and-analysis-018:p48:c01",
+        "algorithm-design-and-analysis-018:p49:c01",
+        "algorithm-design-and-analysis-018:p50:c01",
+        "algorithm-design-and-analysis-018:p51:c01",
+        "algorithm-design-and-analysis-018:p52:c01",
+        "algorithm-design-and-analysis-018:p53:c01",
+        "algorithm-design-and-analysis-018:p54:c01",
+        "algorithm-design-and-analysis-018:p55:c01",
+        "algorithm-design-and-analysis-018:p56:c01",
+        "algorithm-design-and-analysis-018:p57:c01",
+        "algorithm-design-and-analysis-018:p58:c01",
+        "algorithm-design-and-analysis-018:p59:c01",
+        "algorithm-design-and-analysis-018:p60:c01",
+        "algorithm-design-and-analysis-018:p61:c01",
+        "algorithm-design-and-analysis-018:p62:c01",
+        "algorithm-design-and-analysis-018:p63:c01"
+      ],
+      "heading_path": [
+        "5-greedy"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-019:p1:c01",
+        "algorithm-design-and-analysis-019:p2:c01",
+        "algorithm-design-and-analysis-019:p3:c01",
+        "algorithm-design-and-analysis-019:p4:c01",
+        "algorithm-design-and-analysis-019:p5:c01",
+        "algorithm-design-and-analysis-019:p6:c01",
+        "algorithm-design-and-analysis-019:p7:c01",
+        "algorithm-design-and-analysis-019:p8:c01",
+        "algorithm-design-and-analysis-019:p9:c01",
+        "algorithm-design-and-analysis-019:p10:c01",
+        "algorithm-design-and-analysis-019:p11:c01",
+        "algorithm-design-and-analysis-019:p12:c01",
+        "algorithm-design-and-analysis-019:p13:c01",
+        "algorithm-design-and-analysis-019:p14:c01",
+        "algorithm-design-and-analysis-019:p15:c01",
+        "algorithm-design-and-analysis-019:p16:c01",
+        "algorithm-design-and-analysis-019:p17:c01",
+        "algorithm-design-and-analysis-019:p18:c01",
+        "algorithm-design-and-analysis-019:p19:c01",
+        "algorithm-design-and-analysis-019:p20:c01",
+        "algorithm-design-and-analysis-019:p21:c01",
+        "algorithm-design-and-analysis-019:p22:c01",
+        "algorithm-design-and-analysis-019:p23:c01",
+        "algorithm-design-and-analysis-019:p24:c01",
+        "algorithm-design-and-analysis-019:p25:c01",
+        "algorithm-design-and-analysis-019:p26:c01",
+        "algorithm-design-and-analysis-019:p27:c01",
+        "algorithm-design-and-analysis-019:p28:c01",
+        "algorithm-design-and-analysis-019:p29:c01",
+        "algorithm-design-and-analysis-019:p30:c01",
+        "algorithm-design-and-analysis-019:p31:c01",
+        "algorithm-design-and-analysis-019:p32:c01",
+        "algorithm-design-and-analysis-019:p33:c01",
+        "algorithm-design-and-analysis-019:p34:c01",
+        "algorithm-design-and-analysis-019:p35:c01",
+        "algorithm-design-and-analysis-019:p36:c01",
+        "algorithm-design-and-analysis-019:p37:c01",
+        "algorithm-design-and-analysis-019:p38:c01"
+      ],
+      "heading_path": [
+        "6-linear"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-020:p1:c01",
+        "algorithm-design-and-analysis-020:p2:c01",
+        "algorithm-design-and-analysis-020:p3:c01",
+        "algorithm-design-and-analysis-020:p4:c01",
+        "algorithm-design-and-analysis-020:p5:c01",
+        "algorithm-design-and-analysis-020:p6:c01",
+        "algorithm-design-and-analysis-020:p7:c01",
+        "algorithm-design-and-analysis-020:p8:c01",
+        "algorithm-design-and-analysis-020:p9:c01",
+        "algorithm-design-and-analysis-020:p10:c01",
+        "algorithm-design-and-analysis-020:p11:c01"
+      ],
+      "heading_path": [
+        "6-tutorial"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-021:p1:c01",
+        "algorithm-design-and-analysis-021:p2:c01",
+        "algorithm-design-and-analysis-021:p3:c01",
+        "algorithm-design-and-analysis-021:p4:c01",
+        "algorithm-design-and-analysis-021:p5:c01",
+        "algorithm-design-and-analysis-021:p6:c01",
+        "algorithm-design-and-analysis-021:p7:c01",
+        "algorithm-design-and-analysis-021:p8:c01",
+        "algorithm-design-and-analysis-021:p9:c01",
+        "algorithm-design-and-analysis-021:p10:c01",
+        "algorithm-design-and-analysis-021:p11:c01",
+        "algorithm-design-and-analysis-021:p12:c01",
+        "algorithm-design-and-analysis-021:p13:c01",
+        "algorithm-design-and-analysis-021:p14:c01",
+        "algorithm-design-and-analysis-021:p15:c01",
+        "algorithm-design-and-analysis-021:p16:c01",
+        "algorithm-design-and-analysis-021:p17:c01",
+        "algorithm-design-and-analysis-021:p18:c01",
+        "algorithm-design-and-analysis-021:p19:c01",
+        "algorithm-design-and-analysis-021:p20:c01",
+        "algorithm-design-and-analysis-021:p21:c01",
+        "algorithm-design-and-analysis-021:p22:c01",
+        "algorithm-design-and-analysis-021:p23:c01",
+        "algorithm-design-and-analysis-021:p24:c01",
+        "algorithm-design-and-analysis-021:p25:c01",
+        "algorithm-design-and-analysis-021:p26:c01",
+        "algorithm-design-and-analysis-021:p27:c01",
+        "algorithm-design-and-analysis-021:p28:c01",
+        "algorithm-design-and-analysis-021:p29:c01",
+        "algorithm-design-and-analysis-021:p30:c01",
+        "algorithm-design-and-analysis-021:p31:c01",
+        "algorithm-design-and-analysis-021:p32:c01",
+        "algorithm-design-and-analysis-021:p33:c01",
+        "algorithm-design-and-analysis-021:p34:c01",
+        "algorithm-design-and-analysis-021:p35:c01",
+        "algorithm-design-and-analysis-021:p36:c01",
+        "algorithm-design-and-analysis-021:p37:c01",
+        "algorithm-design-and-analysis-021:p38:c01",
+        "algorithm-design-and-analysis-021:p39:c01",
+        "algorithm-design-and-analysis-021:p40:c01",
+        "algorithm-design-and-analysis-022:p1:c01",
+        "algorithm-design-and-analysis-022:p2:c01",
+        "algorithm-design-and-analysis-022:p3:c01",
+        "algorithm-design-and-analysis-022:p4:c01",
+        "algorithm-design-and-analysis-022:p5:c01",
+        "algorithm-design-and-analysis-022:p6:c01",
+        "algorithm-design-and-analysis-022:p7:c01",
+        "algorithm-design-and-analysis-022:p8:c01",
+        "algorithm-design-and-analysis-022:p9:c01",
+        "algorithm-design-and-analysis-022:p10:c01",
+        "algorithm-design-and-analysis-022:p11:c01",
+        "algorithm-design-and-analysis-022:p12:c01",
+        "algorithm-design-and-analysis-022:p13:c01",
+        "algorithm-design-and-analysis-022:p14:c01",
+        "algorithm-design-and-analysis-022:p15:c01",
+        "algorithm-design-and-analysis-022:p16:c01",
+        "algorithm-design-and-analysis-022:p17:c01",
+        "algorithm-design-and-analysis-022:p18:c01",
+        "algorithm-design-and-analysis-022:p19:c01",
+        "algorithm-design-and-analysis-022:p20:c01",
+        "algorithm-design-and-analysis-022:p21:c01",
+        "algorithm-design-and-analysis-022:p22:c01",
+        "algorithm-design-and-analysis-022:p23:c01",
+        "algorithm-design-and-analysis-022:p24:c01",
+        "algorithm-design-and-analysis-022:p25:c01",
+        "algorithm-design-and-analysis-022:p26:c01",
+        "algorithm-design-and-analysis-022:p27:c01",
+        "algorithm-design-and-analysis-022:p28:c01",
+        "algorithm-design-and-analysis-022:p29:c01",
+        "algorithm-design-and-analysis-022:p30:c01",
+        "algorithm-design-and-analysis-022:p31:c01",
+        "algorithm-design-and-analysis-022:p32:c01",
+        "algorithm-design-and-analysis-022:p33:c01",
+        "algorithm-design-and-analysis-022:p34:c01",
+        "algorithm-design-and-analysis-022:p35:c01",
+        "algorithm-design-and-analysis-022:p36:c01"
+      ],
+      "heading_path": [
+        "7-dynamic"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-021",
+        "algorithm-design-and-analysis-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-023:p1:c01",
+        "algorithm-design-and-analysis-023:p2:c01",
+        "algorithm-design-and-analysis-023:p3:c01",
+        "algorithm-design-and-analysis-023:p4:c01",
+        "algorithm-design-and-analysis-023:p5:c01",
+        "algorithm-design-and-analysis-023:p6:c01",
+        "algorithm-design-and-analysis-023:p7:c01",
+        "algorithm-design-and-analysis-023:p8:c01",
+        "algorithm-design-and-analysis-024:p1:c01",
+        "algorithm-design-and-analysis-024:p2:c01",
+        "algorithm-design-and-analysis-024:p3:c01",
+        "algorithm-design-and-analysis-024:p4:c01",
+        "algorithm-design-and-analysis-024:p5:c01"
+      ],
+      "heading_path": [
+        "7-tutorial"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-023",
+        "algorithm-design-and-analysis-024"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-025:p1:c01",
+        "algorithm-design-and-analysis-025:p2:c01",
+        "algorithm-design-and-analysis-025:p3:c01",
+        "algorithm-design-and-analysis-025:p4:c01",
+        "algorithm-design-and-analysis-025:p5:c01",
+        "algorithm-design-and-analysis-025:p6:c01",
+        "algorithm-design-and-analysis-025:p7:c01",
+        "algorithm-design-and-analysis-025:p8:c01",
+        "algorithm-design-and-analysis-025:p9:c01",
+        "algorithm-design-and-analysis-025:p10:c01",
+        "algorithm-design-and-analysis-025:p11:c01",
+        "algorithm-design-and-analysis-025:p12:c01",
+        "algorithm-design-and-analysis-025:p13:c01",
+        "algorithm-design-and-analysis-025:p14:c01",
+        "algorithm-design-and-analysis-025:p15:c01",
+        "algorithm-design-and-analysis-025:p16:c01",
+        "algorithm-design-and-analysis-025:p17:c01",
+        "algorithm-design-and-analysis-025:p18:c01",
+        "algorithm-design-and-analysis-025:p19:c01",
+        "algorithm-design-and-analysis-025:p20:c01",
+        "algorithm-design-and-analysis-025:p21:c01",
+        "algorithm-design-and-analysis-025:p22:c01",
+        "algorithm-design-and-analysis-025:p23:c01",
+        "algorithm-design-and-analysis-025:p24:c01",
+        "algorithm-design-and-analysis-025:p25:c01",
+        "algorithm-design-and-analysis-025:p26:c01",
+        "algorithm-design-and-analysis-025:p27:c01",
+        "algorithm-design-and-analysis-025:p28:c01",
+        "algorithm-design-and-analysis-025:p29:c01",
+        "algorithm-design-and-analysis-025:p30:c01",
+        "algorithm-design-and-analysis-025:p31:c01",
+        "algorithm-design-and-analysis-025:p32:c01",
+        "algorithm-design-and-analysis-025:p33:c01",
+        "algorithm-design-and-analysis-025:p34:c01",
+        "algorithm-design-and-analysis-025:p35:c01",
+        "algorithm-design-and-analysis-025:p36:c01",
+        "algorithm-design-and-analysis-025:p37:c01",
+        "algorithm-design-and-analysis-025:p38:c01",
+        "algorithm-design-and-analysis-025:p39:c01",
+        "algorithm-design-and-analysis-025:p40:c01",
+        "algorithm-design-and-analysis-025:p41:c01",
+        "algorithm-design-and-analysis-025:p42:c01",
+        "algorithm-design-and-analysis-025:p43:c01",
+        "algorithm-design-and-analysis-025:p44:c01",
+        "algorithm-design-and-analysis-025:p45:c01",
+        "algorithm-design-and-analysis-025:p46:c01",
+        "algorithm-design-and-analysis-025:p47:c01",
+        "algorithm-design-and-analysis-025:p48:c01",
+        "algorithm-design-and-analysis-025:p49:c01",
+        "algorithm-design-and-analysis-025:p50:c01",
+        "algorithm-design-and-analysis-025:p51:c01",
+        "algorithm-design-and-analysis-025:p52:c01",
+        "algorithm-design-and-analysis-025:p53:c01",
+        "algorithm-design-and-analysis-025:p54:c01",
+        "algorithm-design-and-analysis-025:p55:c01",
+        "algorithm-design-and-analysis-025:p56:c01",
+        "algorithm-design-and-analysis-025:p57:c01",
+        "algorithm-design-and-analysis-026:p1:c01",
+        "algorithm-design-and-analysis-026:p2:c01",
+        "algorithm-design-and-analysis-026:p3:c01",
+        "algorithm-design-and-analysis-026:p4:c01",
+        "algorithm-design-and-analysis-026:p5:c01",
+        "algorithm-design-and-analysis-026:p6:c01",
+        "algorithm-design-and-analysis-026:p7:c01",
+        "algorithm-design-and-analysis-026:p8:c01",
+        "algorithm-design-and-analysis-026:p9:c01",
+        "algorithm-design-and-analysis-026:p10:c01",
+        "algorithm-design-and-analysis-026:p11:c01",
+        "algorithm-design-and-analysis-026:p12:c01",
+        "algorithm-design-and-analysis-026:p13:c01",
+        "algorithm-design-and-analysis-026:p14:c01",
+        "algorithm-design-and-analysis-026:p15:c01",
+        "algorithm-design-and-analysis-026:p16:c01",
+        "algorithm-design-and-analysis-026:p17:c01",
+        "algorithm-design-and-analysis-026:p18:c01",
+        "algorithm-design-and-analysis-026:p19:c01",
+        "algorithm-design-and-analysis-026:p20:c01",
+        "algorithm-design-and-analysis-026:p21:c01",
+        "algorithm-design-and-analysis-026:p22:c01",
+        "algorithm-design-and-analysis-026:p23:c01"
+      ],
+      "heading_path": [
+        "9-networkFlow"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-025",
+        "algorithm-design-and-analysis-026"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-027:p1:c01",
+        "algorithm-design-and-analysis-027:p2:c01",
+        "algorithm-design-and-analysis-027:p3:c01",
+        "algorithm-design-and-analysis-027:p4:c01",
+        "algorithm-design-and-analysis-027:p5:c01",
+        "algorithm-design-and-analysis-027:p6:c01",
+        "algorithm-design-and-analysis-027:p7:c01",
+        "algorithm-design-and-analysis-027:p8:c01",
+        "algorithm-design-and-analysis-027:p9:c01",
+        "algorithm-design-and-analysis-027:p10:c01"
+      ],
+      "heading_path": [
+        "9-tutorial"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-027"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-028:p1:c01",
+        "algorithm-design-and-analysis-028:p1:c02",
+        "algorithm-design-and-analysis-028:p2:c01",
+        "algorithm-design-and-analysis-028:p2:c02",
+        "algorithm-design-and-analysis-028:p3:c01",
+        "algorithm-design-and-analysis-028:p4:c01",
+        "algorithm-design-and-analysis-028:p5:c01",
+        "algorithm-design-and-analysis-028:p6:c01",
+        "algorithm-design-and-analysis-028:p6:c02",
+        "algorithm-design-and-analysis-028:p7:c01",
+        "algorithm-design-and-analysis-028:p7:c02",
+        "algorithm-design-and-analysis-028:p8:c01"
+      ],
+      "heading_path": [
+        "Algorthm 2023-2024 A"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-028"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-003:p1:c01",
+        "algorithm-design-and-analysis-003:p2:c01",
+        "algorithm-design-and-analysis-003:p3:c01",
+        "algorithm-design-and-analysis-003:p4:c01",
+        "algorithm-design-and-analysis-003:p4:c02",
+        "algorithm-design-and-analysis-003:p5:c01",
+        "algorithm-design-and-analysis-003:p6:c01",
+        "algorithm-design-and-analysis-003:p7:c01",
+        "algorithm-design-and-analysis-003:p8:c01",
+        "algorithm-design-and-analysis-003:p9:c01",
+        "algorithm-design-and-analysis-003:p10:c01",
+        "algorithm-design-and-analysis-003:p11:c01",
+        "algorithm-design-and-analysis-003:p12:c01",
+        "algorithm-design-and-analysis-003:p13:c01",
+        "algorithm-design-and-analysis-003:p14:c01",
+        "algorithm-design-and-analysis-003:p15:c01",
+        "algorithm-design-and-analysis-003:p16:c01",
+        "algorithm-design-and-analysis-003:p17:c01",
+        "algorithm-design-and-analysis-003:p18:c01"
+      ],
+      "heading_path": [
+        "DAL-2020-Exam Paper A"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-029:p1:c01",
+        "algorithm-design-and-analysis-029:p2:c01",
+        "algorithm-design-and-analysis-029:p3:c01",
+        "algorithm-design-and-analysis-029:p4:c01",
+        "algorithm-design-and-analysis-029:p5:c01",
+        "algorithm-design-and-analysis-029:p6:c01"
+      ],
+      "heading_path": [
+        "tutorial-matMult"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-029"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-030:p1:c01"
+      ],
+      "heading_path": [
+        "第一次课板书"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-030"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-031:p1:c01"
+      ],
+      "heading_path": [
+        "第七次课板书"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-031"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-032:p1:c01",
+        "algorithm-design-and-analysis-033:p1:c01"
+      ],
+      "heading_path": [
+        "第三次课板书"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-032",
+        "algorithm-design-and-analysis-033"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-034:p1:c01",
+        "algorithm-design-and-analysis-034:p2:c01",
+        "algorithm-design-and-analysis-034:p3:c01",
+        "algorithm-design-and-analysis-034:p4:c01",
+        "algorithm-design-and-analysis-034:p5:c01",
+        "algorithm-design-and-analysis-034:p6:c01",
+        "algorithm-design-and-analysis-034:p7:c01",
+        "algorithm-design-and-analysis-034:p8:c01",
+        "algorithm-design-and-analysis-035:p1:c01"
+      ],
+      "heading_path": [
+        "第二次上课板书"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-034",
+        "algorithm-design-and-analysis-035"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-036:p1:c01",
+        "algorithm-design-and-analysis-037:p1:c01",
+        "algorithm-design-and-analysis-038:p1:c01",
+        "algorithm-design-and-analysis-038:p2:c01",
+        "algorithm-design-and-analysis-038:p3:c01",
+        "algorithm-design-and-analysis-038:p4:c01",
+        "algorithm-design-and-analysis-038:p5:c01",
+        "algorithm-design-and-analysis-038:p6:c01"
+      ],
+      "heading_path": [
+        "第五次课板书"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-036",
+        "algorithm-design-and-analysis-037",
+        "algorithm-design-and-analysis-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-039:p1:c01",
+        "algorithm-design-and-analysis-040:p1:c01"
+      ],
+      "heading_path": [
+        "第八次课板书"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-039",
+        "algorithm-design-and-analysis-040"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-041:p1:c01"
+      ],
+      "heading_path": [
+        "第六次课板书"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-041"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-042:p1:c01",
+        "algorithm-design-and-analysis-043:p1:c01"
+      ],
+      "heading_path": [
+        "第四次课板书"
+      ],
+      "source_ids": [
+        "algorithm-design-and-analysis-042",
+        "algorithm-design-and-analysis-043"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q1:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q1",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p2:q-algorithm-design-and-analysis-001-q10:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q10",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p2:q-algorithm-design-and-analysis-001-q11:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q11",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p3:q-algorithm-design-and-analysis-001-q12:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q12",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p3:q-algorithm-design-and-analysis-001-q13:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q13",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p4:q-algorithm-design-and-analysis-001-q14:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q14",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p4:q-algorithm-design-and-analysis-001-q15:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q15",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p4:q-algorithm-design-and-analysis-001-q16:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q16",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p4:q-algorithm-design-and-analysis-001-q17:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q17",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q2:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q2",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q3:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q3",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q4:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q4",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q5:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q5",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q6:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q6",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q7:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q7",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q8:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q8",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    },
+    {
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q9:c01"
+      ],
+      "heading_path": [
+        "2023-2024 算法设计与分析B卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "algorithm-design-and-analysis-001-Q9",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷"
+    }
+  ],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q1:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q2:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q3:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q4:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q5:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q6:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q7:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q8:c01",
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q9:c01",
+        "algorithm-design-and-analysis-001:p2:q-algorithm-design-and-analysis-001-q10:c01",
+        "algorithm-design-and-analysis-001:p2:q-algorithm-design-and-analysis-001-q11:c01",
+        "algorithm-design-and-analysis-001:p3:q-algorithm-design-and-analysis-001-q12:c01",
+        "algorithm-design-and-analysis-001:p3:q-algorithm-design-and-analysis-001-q13:c01",
+        "algorithm-design-and-analysis-001:p4:q-algorithm-design-and-analysis-001-q14:c01",
+        "algorithm-design-and-analysis-001:p4:q-algorithm-design-and-analysis-001-q15:c01",
+        "algorithm-design-and-analysis-001:p4:q-algorithm-design-and-analysis-001-q16:c01",
+        "algorithm-design-and-analysis-001:p4:q-algorithm-design-and-analysis-001-q17:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "past_exam",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-001.md",
+      "source_id": "algorithm-design-and-analysis-001",
+      "source_title": "2023-2024 算法设计与分析B卷",
+      "year": "2023"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-002:h-23-24-2-算法设计与分析:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-002.md",
+      "source_id": "algorithm-design-and-analysis-002",
+      "source_title": "23-24（2）算法设计与分析",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-003:p1:c01",
+        "algorithm-design-and-analysis-003:p2:c01",
+        "algorithm-design-and-analysis-003:p3:c01",
+        "algorithm-design-and-analysis-003:p4:c01",
+        "algorithm-design-and-analysis-003:p4:c02",
+        "algorithm-design-and-analysis-003:p5:c01",
+        "algorithm-design-and-analysis-003:p6:c01",
+        "algorithm-design-and-analysis-003:p7:c01",
+        "algorithm-design-and-analysis-003:p8:c01",
+        "algorithm-design-and-analysis-003:p9:c01",
+        "algorithm-design-and-analysis-003:p10:c01",
+        "algorithm-design-and-analysis-003:p11:c01",
+        "algorithm-design-and-analysis-003:p12:c01",
+        "algorithm-design-and-analysis-003:p13:c01",
+        "algorithm-design-and-analysis-003:p14:c01",
+        "algorithm-design-and-analysis-003:p15:c01",
+        "algorithm-design-and-analysis-003:p16:c01",
+        "algorithm-design-and-analysis-003:p17:c01",
+        "algorithm-design-and-analysis-003:p18:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-003.md",
+      "source_id": "algorithm-design-and-analysis-003",
+      "source_title": "DAL-2020-Exam Paper A",
+      "year": "2020"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-004:p1:c01",
+        "algorithm-design-and-analysis-004:p2:c01",
+        "algorithm-design-and-analysis-004:p3:c01",
+        "algorithm-design-and-analysis-004:p4:c01",
+        "algorithm-design-and-analysis-004:p5:c01",
+        "algorithm-design-and-analysis-004:p6:c01",
+        "algorithm-design-and-analysis-004:p7:c01",
+        "algorithm-design-and-analysis-004:p8:c01",
+        "algorithm-design-and-analysis-004:p9:c01",
+        "algorithm-design-and-analysis-004:p10:c01",
+        "algorithm-design-and-analysis-004:p11:c01",
+        "algorithm-design-and-analysis-004:p12:c01",
+        "algorithm-design-and-analysis-004:p13:c01",
+        "algorithm-design-and-analysis-004:p14:c01",
+        "algorithm-design-and-analysis-004:p15:c01",
+        "algorithm-design-and-analysis-004:p16:c01",
+        "algorithm-design-and-analysis-004:p17:c01",
+        "algorithm-design-and-analysis-004:p18:c01",
+        "algorithm-design-and-analysis-004:p19:c01",
+        "algorithm-design-and-analysis-004:p20:c01",
+        "algorithm-design-and-analysis-004:p21:c01",
+        "algorithm-design-and-analysis-004:p22:c01",
+        "algorithm-design-and-analysis-004:p23:c01",
+        "algorithm-design-and-analysis-004:p24:c01",
+        "algorithm-design-and-analysis-004:p25:c01",
+        "algorithm-design-and-analysis-004:p26:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-004.md",
+      "source_id": "algorithm-design-and-analysis-004",
+      "source_title": "0-introduction",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-005:p1:c01",
+        "algorithm-design-and-analysis-005:p2:c01",
+        "algorithm-design-and-analysis-005:p3:c01",
+        "algorithm-design-and-analysis-005:p4:c01",
+        "algorithm-design-and-analysis-005:p5:c01",
+        "algorithm-design-and-analysis-005:p6:c01",
+        "algorithm-design-and-analysis-005:p7:c01",
+        "algorithm-design-and-analysis-005:p8:c01",
+        "algorithm-design-and-analysis-005:p9:c01",
+        "algorithm-design-and-analysis-005:p10:c01",
+        "algorithm-design-and-analysis-005:p11:c01",
+        "algorithm-design-and-analysis-005:p12:c01",
+        "algorithm-design-and-analysis-005:p13:c01",
+        "algorithm-design-and-analysis-005:p14:c01",
+        "algorithm-design-and-analysis-005:p15:c01",
+        "algorithm-design-and-analysis-005:p16:c01",
+        "algorithm-design-and-analysis-005:p17:c01",
+        "algorithm-design-and-analysis-005:p18:c01",
+        "algorithm-design-and-analysis-005:p19:c01",
+        "algorithm-design-and-analysis-005:p20:c01",
+        "algorithm-design-and-analysis-005:p21:c01",
+        "algorithm-design-and-analysis-005:p22:c01",
+        "algorithm-design-and-analysis-005:p23:c01",
+        "algorithm-design-and-analysis-005:p24:c01",
+        "algorithm-design-and-analysis-005:p25:c01",
+        "algorithm-design-and-analysis-005:p26:c01",
+        "algorithm-design-and-analysis-005:p27:c01",
+        "algorithm-design-and-analysis-005:p28:c01",
+        "algorithm-design-and-analysis-005:p29:c01",
+        "algorithm-design-and-analysis-005:p30:c01",
+        "algorithm-design-and-analysis-005:p31:c01",
+        "algorithm-design-and-analysis-005:p32:c01",
+        "algorithm-design-and-analysis-005:p33:c01",
+        "algorithm-design-and-analysis-005:p34:c01",
+        "algorithm-design-and-analysis-005:p35:c01",
+        "algorithm-design-and-analysis-005:p36:c01",
+        "algorithm-design-and-analysis-005:p37:c01",
+        "algorithm-design-and-analysis-005:p38:c01",
+        "algorithm-design-and-analysis-005:p39:c01",
+        "algorithm-design-and-analysis-005:p40:c01",
+        "algorithm-design-and-analysis-005:p41:c01",
+        "algorithm-design-and-analysis-005:p42:c01",
+        "algorithm-design-and-analysis-005:p43:c01",
+        "algorithm-design-and-analysis-005:p44:c01",
+        "algorithm-design-and-analysis-005:p45:c01",
+        "algorithm-design-and-analysis-005:p46:c01",
+        "algorithm-design-and-analysis-005:p47:c01",
+        "algorithm-design-and-analysis-005:p48:c01",
+        "algorithm-design-and-analysis-005:p49:c01",
+        "algorithm-design-and-analysis-005:p50:c01",
+        "algorithm-design-and-analysis-005:p51:c01",
+        "algorithm-design-and-analysis-005:p52:c01",
+        "algorithm-design-and-analysis-005:p53:c01",
+        "algorithm-design-and-analysis-005:p54:c01",
+        "algorithm-design-and-analysis-005:p55:c01",
+        "algorithm-design-and-analysis-005:p56:c01",
+        "algorithm-design-and-analysis-005:p57:c01",
+        "algorithm-design-and-analysis-005:p58:c01",
+        "algorithm-design-and-analysis-005:p59:c01",
+        "algorithm-design-and-analysis-005:p60:c01",
+        "algorithm-design-and-analysis-005:p61:c01",
+        "algorithm-design-and-analysis-005:p62:c01",
+        "algorithm-design-and-analysis-005:p63:c01",
+        "algorithm-design-and-analysis-005:p64:c01",
+        "algorithm-design-and-analysis-005:p65:c01",
+        "algorithm-design-and-analysis-005:p66:c01",
+        "algorithm-design-and-analysis-005:p67:c01",
+        "algorithm-design-and-analysis-005:p68:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-005.md",
+      "source_id": "algorithm-design-and-analysis-005",
+      "source_title": "1-sort",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-006:p1:c01",
+        "algorithm-design-and-analysis-006:p2:c01",
+        "algorithm-design-and-analysis-006:p3:c01",
+        "algorithm-design-and-analysis-006:p4:c01",
+        "algorithm-design-and-analysis-006:p5:c01",
+        "algorithm-design-and-analysis-006:p6:c01",
+        "algorithm-design-and-analysis-006:p7:c01",
+        "algorithm-design-and-analysis-006:p8:c01",
+        "algorithm-design-and-analysis-006:p9:c01",
+        "algorithm-design-and-analysis-006:p10:c01",
+        "algorithm-design-and-analysis-006:p11:c01",
+        "algorithm-design-and-analysis-006:p12:c01",
+        "algorithm-design-and-analysis-006:p13:c01",
+        "algorithm-design-and-analysis-006:p14:c01",
+        "algorithm-design-and-analysis-006:p15:c01",
+        "algorithm-design-and-analysis-006:p16:c01",
+        "algorithm-design-and-analysis-006:p17:c01",
+        "algorithm-design-and-analysis-006:p18:c01",
+        "algorithm-design-and-analysis-006:p19:c01",
+        "algorithm-design-and-analysis-006:p20:c01",
+        "algorithm-design-and-analysis-006:p21:c01",
+        "algorithm-design-and-analysis-006:p22:c01",
+        "algorithm-design-and-analysis-006:p23:c01",
+        "algorithm-design-and-analysis-006:p24:c01",
+        "algorithm-design-and-analysis-006:p25:c01",
+        "algorithm-design-and-analysis-006:p26:c01",
+        "algorithm-design-and-analysis-006:p27:c01",
+        "algorithm-design-and-analysis-006:p28:c01",
+        "algorithm-design-and-analysis-006:p29:c01",
+        "algorithm-design-and-analysis-006:p30:c01",
+        "algorithm-design-and-analysis-006:p31:c01",
+        "algorithm-design-and-analysis-006:p32:c01",
+        "algorithm-design-and-analysis-006:p33:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-006.md",
+      "source_id": "algorithm-design-and-analysis-006",
+      "source_title": "10-approximation",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-007:p1:c01",
+        "algorithm-design-and-analysis-007:p2:c01",
+        "algorithm-design-and-analysis-007:p3:c01",
+        "algorithm-design-and-analysis-007:p4:c01",
+        "algorithm-design-and-analysis-007:p5:c01",
+        "algorithm-design-and-analysis-007:p6:c01",
+        "algorithm-design-and-analysis-007:p7:c01",
+        "algorithm-design-and-analysis-007:p8:c01",
+        "algorithm-design-and-analysis-007:p9:c01",
+        "algorithm-design-and-analysis-007:p10:c01",
+        "algorithm-design-and-analysis-007:p11:c01",
+        "algorithm-design-and-analysis-007:p12:c01",
+        "algorithm-design-and-analysis-007:p13:c01",
+        "algorithm-design-and-analysis-007:p14:c01",
+        "algorithm-design-and-analysis-007:p15:c01",
+        "algorithm-design-and-analysis-007:p16:c01",
+        "algorithm-design-and-analysis-007:p17:c01",
+        "algorithm-design-and-analysis-007:p18:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-007.md",
+      "source_id": "algorithm-design-and-analysis-007",
+      "source_title": "11-tutorial",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-008:p1:c01",
+        "algorithm-design-and-analysis-008:p2:c01",
+        "algorithm-design-and-analysis-008:p3:c01",
+        "algorithm-design-and-analysis-008:p4:c01",
+        "algorithm-design-and-analysis-008:p5:c01",
+        "algorithm-design-and-analysis-008:p6:c01",
+        "algorithm-design-and-analysis-008:p7:c01",
+        "algorithm-design-and-analysis-008:p8:c01",
+        "algorithm-design-and-analysis-008:p9:c01",
+        "algorithm-design-and-analysis-008:p10:c01",
+        "algorithm-design-and-analysis-008:p11:c01",
+        "algorithm-design-and-analysis-008:p12:c01",
+        "algorithm-design-and-analysis-008:p13:c01",
+        "algorithm-design-and-analysis-008:p14:c01",
+        "algorithm-design-and-analysis-008:p15:c01",
+        "algorithm-design-and-analysis-008:p16:c01",
+        "algorithm-design-and-analysis-008:p17:c01",
+        "algorithm-design-and-analysis-008:p18:c01",
+        "algorithm-design-and-analysis-008:p19:c01",
+        "algorithm-design-and-analysis-008:p20:c01",
+        "algorithm-design-and-analysis-008:p21:c01",
+        "algorithm-design-and-analysis-008:p22:c01",
+        "algorithm-design-and-analysis-008:p23:c01",
+        "algorithm-design-and-analysis-008:p24:c01",
+        "algorithm-design-and-analysis-008:p25:c01",
+        "algorithm-design-and-analysis-008:p26:c01",
+        "algorithm-design-and-analysis-008:p27:c01",
+        "algorithm-design-and-analysis-008:p28:c01",
+        "algorithm-design-and-analysis-008:p29:c01",
+        "algorithm-design-and-analysis-008:p30:c01",
+        "algorithm-design-and-analysis-008:p31:c01",
+        "algorithm-design-and-analysis-008:p32:c01",
+        "algorithm-design-and-analysis-008:p33:c01",
+        "algorithm-design-and-analysis-008:p34:c01",
+        "algorithm-design-and-analysis-008:p35:c01",
+        "algorithm-design-and-analysis-008:p36:c01",
+        "algorithm-design-and-analysis-008:p37:c01",
+        "algorithm-design-and-analysis-008:p38:c01",
+        "algorithm-design-and-analysis-008:p39:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-008.md",
+      "source_id": "algorithm-design-and-analysis-008",
+      "source_title": "11_backtrack",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-009:p1:c01",
+        "algorithm-design-and-analysis-009:p2:c01",
+        "algorithm-design-and-analysis-009:p3:c01",
+        "algorithm-design-and-analysis-009:p4:c01",
+        "algorithm-design-and-analysis-009:p5:c01",
+        "algorithm-design-and-analysis-009:p6:c01",
+        "algorithm-design-and-analysis-009:p7:c01",
+        "algorithm-design-and-analysis-009:p8:c01",
+        "algorithm-design-and-analysis-009:p9:c01",
+        "algorithm-design-and-analysis-009:p10:c01",
+        "algorithm-design-and-analysis-009:p11:c01",
+        "algorithm-design-and-analysis-009:p12:c01",
+        "algorithm-design-and-analysis-009:p13:c01",
+        "algorithm-design-and-analysis-009:p14:c01",
+        "algorithm-design-and-analysis-009:p15:c01",
+        "algorithm-design-and-analysis-009:p16:c01",
+        "algorithm-design-and-analysis-009:p17:c01",
+        "algorithm-design-and-analysis-009:p18:c01",
+        "algorithm-design-and-analysis-009:p19:c01",
+        "algorithm-design-and-analysis-009:p20:c01",
+        "algorithm-design-and-analysis-009:p21:c01",
+        "algorithm-design-and-analysis-009:p22:c01",
+        "algorithm-design-and-analysis-009:p23:c01",
+        "algorithm-design-and-analysis-009:p24:c01",
+        "algorithm-design-and-analysis-009:p25:c01",
+        "algorithm-design-and-analysis-009:p26:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-009.md",
+      "source_id": "algorithm-design-and-analysis-009",
+      "source_title": "13_supplimental",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-010:p1:c01",
+        "algorithm-design-and-analysis-010:p2:c01",
+        "algorithm-design-and-analysis-010:p3:c01",
+        "algorithm-design-and-analysis-010:p4:c01",
+        "algorithm-design-and-analysis-010:p5:c01",
+        "algorithm-design-and-analysis-010:p6:c01",
+        "algorithm-design-and-analysis-010:p7:c01",
+        "algorithm-design-and-analysis-010:p8:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-010.md",
+      "source_id": "algorithm-design-and-analysis-010",
+      "source_title": "1_tutorial",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-011:p1:c01",
+        "algorithm-design-and-analysis-011:p2:c01",
+        "algorithm-design-and-analysis-011:p3:c01",
+        "algorithm-design-and-analysis-011:p4:c01",
+        "algorithm-design-and-analysis-011:p5:c01",
+        "algorithm-design-and-analysis-011:p6:c01",
+        "algorithm-design-and-analysis-011:p7:c01",
+        "algorithm-design-and-analysis-011:p8:c01",
+        "algorithm-design-and-analysis-011:p9:c01",
+        "algorithm-design-and-analysis-011:p10:c01",
+        "algorithm-design-and-analysis-011:p11:c01",
+        "algorithm-design-and-analysis-011:p12:c01",
+        "algorithm-design-and-analysis-011:p13:c01",
+        "algorithm-design-and-analysis-011:p14:c01",
+        "algorithm-design-and-analysis-011:p15:c01",
+        "algorithm-design-and-analysis-011:p16:c01",
+        "algorithm-design-and-analysis-011:p17:c01",
+        "algorithm-design-and-analysis-011:p18:c01",
+        "algorithm-design-and-analysis-011:p19:c01",
+        "algorithm-design-and-analysis-011:p20:c01",
+        "algorithm-design-and-analysis-011:p21:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-011.md",
+      "source_id": "algorithm-design-and-analysis-011",
+      "source_title": "2-analysis",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-012:p1:c01",
+        "algorithm-design-and-analysis-012:p2:c01",
+        "algorithm-design-and-analysis-012:p3:c01",
+        "algorithm-design-and-analysis-012:p4:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-012.md",
+      "source_id": "algorithm-design-and-analysis-012",
+      "source_title": "2-tutorial",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-013:p1:c01",
+        "algorithm-design-and-analysis-013:p2:c01",
+        "algorithm-design-and-analysis-013:p3:c01",
+        "algorithm-design-and-analysis-013:p4:c01",
+        "algorithm-design-and-analysis-013:p5:c01",
+        "algorithm-design-and-analysis-013:p6:c01",
+        "algorithm-design-and-analysis-013:p7:c01",
+        "algorithm-design-and-analysis-013:p8:c01",
+        "algorithm-design-and-analysis-013:p9:c01",
+        "algorithm-design-and-analysis-013:p10:c01",
+        "algorithm-design-and-analysis-013:p11:c01",
+        "algorithm-design-and-analysis-013:p12:c01",
+        "algorithm-design-and-analysis-013:p13:c01",
+        "algorithm-design-and-analysis-013:p14:c01",
+        "algorithm-design-and-analysis-013:p15:c01",
+        "algorithm-design-and-analysis-013:p16:c01",
+        "algorithm-design-and-analysis-013:p17:c01",
+        "algorithm-design-and-analysis-013:p18:c01",
+        "algorithm-design-and-analysis-013:p19:c01",
+        "algorithm-design-and-analysis-013:p20:c01",
+        "algorithm-design-and-analysis-013:p21:c01",
+        "algorithm-design-and-analysis-013:p22:c01",
+        "algorithm-design-and-analysis-013:p23:c01",
+        "algorithm-design-and-analysis-013:p24:c01",
+        "algorithm-design-and-analysis-013:p25:c01",
+        "algorithm-design-and-analysis-013:p26:c01",
+        "algorithm-design-and-analysis-013:p27:c01",
+        "algorithm-design-and-analysis-013:p28:c01",
+        "algorithm-design-and-analysis-013:p29:c01",
+        "algorithm-design-and-analysis-013:p30:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-013.md",
+      "source_id": "algorithm-design-and-analysis-013",
+      "source_title": "3-recurrence",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-014:p1:c01",
+        "algorithm-design-and-analysis-014:p2:c01",
+        "algorithm-design-and-analysis-014:p3:c01",
+        "algorithm-design-and-analysis-014:p4:c01",
+        "algorithm-design-and-analysis-014:p5:c01",
+        "algorithm-design-and-analysis-014:p6:c01",
+        "algorithm-design-and-analysis-014:p7:c01",
+        "algorithm-design-and-analysis-014:p8:c01",
+        "algorithm-design-and-analysis-014:p9:c01",
+        "algorithm-design-and-analysis-014:p10:c01",
+        "algorithm-design-and-analysis-014:p11:c01",
+        "algorithm-design-and-analysis-014:p12:c01",
+        "algorithm-design-and-analysis-014:p13:c01",
+        "algorithm-design-and-analysis-014:p14:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-014.md",
+      "source_id": "algorithm-design-and-analysis-014",
+      "source_title": "3_tutorial",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-015:p1:c01",
+        "algorithm-design-and-analysis-015:p2:c01",
+        "algorithm-design-and-analysis-015:p3:c01",
+        "algorithm-design-and-analysis-015:p4:c01",
+        "algorithm-design-and-analysis-015:p5:c01",
+        "algorithm-design-and-analysis-015:p6:c01",
+        "algorithm-design-and-analysis-015:p7:c01",
+        "algorithm-design-and-analysis-015:p8:c01",
+        "algorithm-design-and-analysis-015:p9:c01",
+        "algorithm-design-and-analysis-015:p10:c01",
+        "algorithm-design-and-analysis-015:p11:c01",
+        "algorithm-design-and-analysis-015:p12:c01",
+        "algorithm-design-and-analysis-015:p13:c01",
+        "algorithm-design-and-analysis-015:p14:c01",
+        "algorithm-design-and-analysis-015:p15:c01",
+        "algorithm-design-and-analysis-015:p16:c01",
+        "algorithm-design-and-analysis-015:p17:c01",
+        "algorithm-design-and-analysis-015:p18:c01",
+        "algorithm-design-and-analysis-015:p19:c01",
+        "algorithm-design-and-analysis-015:p20:c01",
+        "algorithm-design-and-analysis-015:p21:c01",
+        "algorithm-design-and-analysis-015:p22:c01",
+        "algorithm-design-and-analysis-015:p23:c01",
+        "algorithm-design-and-analysis-015:p24:c01",
+        "algorithm-design-and-analysis-015:p25:c01",
+        "algorithm-design-and-analysis-015:p26:c01",
+        "algorithm-design-and-analysis-015:p27:c01",
+        "algorithm-design-and-analysis-015:p28:c01",
+        "algorithm-design-and-analysis-015:p29:c01",
+        "algorithm-design-and-analysis-015:p30:c01",
+        "algorithm-design-and-analysis-015:p31:c01",
+        "algorithm-design-and-analysis-015:p32:c01",
+        "algorithm-design-and-analysis-015:p33:c01",
+        "algorithm-design-and-analysis-015:p34:c01",
+        "algorithm-design-and-analysis-015:p35:c01",
+        "algorithm-design-and-analysis-015:p36:c01",
+        "algorithm-design-and-analysis-015:p37:c01",
+        "algorithm-design-and-analysis-015:p38:c01",
+        "algorithm-design-and-analysis-015:p39:c01",
+        "algorithm-design-and-analysis-015:p40:c01",
+        "algorithm-design-and-analysis-015:p41:c01",
+        "algorithm-design-and-analysis-015:p42:c01",
+        "algorithm-design-and-analysis-015:p43:c01",
+        "algorithm-design-and-analysis-015:p44:c01",
+        "algorithm-design-and-analysis-015:p45:c01",
+        "algorithm-design-and-analysis-015:p46:c01",
+        "algorithm-design-and-analysis-015:p47:c01",
+        "algorithm-design-and-analysis-015:p48:c01",
+        "algorithm-design-and-analysis-015:p49:c01",
+        "algorithm-design-and-analysis-015:p50:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-015.md",
+      "source_id": "algorithm-design-and-analysis-015",
+      "source_title": "4-divideConquer",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-016:p1:c01",
+        "algorithm-design-and-analysis-016:p2:c01",
+        "algorithm-design-and-analysis-016:p3:c01",
+        "algorithm-design-and-analysis-016:p4:c01",
+        "algorithm-design-and-analysis-016:p5:c01",
+        "algorithm-design-and-analysis-016:p6:c01",
+        "algorithm-design-and-analysis-016:p7:c01",
+        "algorithm-design-and-analysis-016:p8:c01",
+        "algorithm-design-and-analysis-016:p9:c01",
+        "algorithm-design-and-analysis-016:p10:c01",
+        "algorithm-design-and-analysis-016:p11:c01",
+        "algorithm-design-and-analysis-016:p12:c01",
+        "algorithm-design-and-analysis-016:p13:c01",
+        "algorithm-design-and-analysis-016:p14:c01",
+        "algorithm-design-and-analysis-016:p15:c01",
+        "algorithm-design-and-analysis-016:p16:c01",
+        "algorithm-design-and-analysis-016:p17:c01",
+        "algorithm-design-and-analysis-016:p18:c01",
+        "algorithm-design-and-analysis-016:p19:c01",
+        "algorithm-design-and-analysis-016:p20:c01",
+        "algorithm-design-and-analysis-016:p21:c01",
+        "algorithm-design-and-analysis-016:p22:c01",
+        "algorithm-design-and-analysis-016:p23:c01",
+        "algorithm-design-and-analysis-016:p24:c01",
+        "algorithm-design-and-analysis-016:p25:c01",
+        "algorithm-design-and-analysis-016:p26:c01",
+        "algorithm-design-and-analysis-016:p27:c01",
+        "algorithm-design-and-analysis-016:p28:c01",
+        "algorithm-design-and-analysis-016:p29:c01",
+        "algorithm-design-and-analysis-016:p30:c01",
+        "algorithm-design-and-analysis-016:p31:c01",
+        "algorithm-design-and-analysis-016:p32:c01",
+        "algorithm-design-and-analysis-016:p33:c01",
+        "algorithm-design-and-analysis-016:p34:c01",
+        "algorithm-design-and-analysis-016:p35:c01",
+        "algorithm-design-and-analysis-016:p36:c01",
+        "algorithm-design-and-analysis-016:p37:c01",
+        "algorithm-design-and-analysis-016:p38:c01",
+        "algorithm-design-and-analysis-016:p39:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-016.md",
+      "source_id": "algorithm-design-and-analysis-016",
+      "source_title": "4-divideConquer",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-017:p1:c01",
+        "algorithm-design-and-analysis-017:p2:c01",
+        "algorithm-design-and-analysis-017:p3:c01",
+        "algorithm-design-and-analysis-017:p4:c01",
+        "algorithm-design-and-analysis-017:p5:c01",
+        "algorithm-design-and-analysis-017:p6:c01",
+        "algorithm-design-and-analysis-017:p7:c01",
+        "algorithm-design-and-analysis-017:p8:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-017.md",
+      "source_id": "algorithm-design-and-analysis-017",
+      "source_title": "4-tutorial",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-018:p1:c01",
+        "algorithm-design-and-analysis-018:p2:c01",
+        "algorithm-design-and-analysis-018:p3:c01",
+        "algorithm-design-and-analysis-018:p4:c01",
+        "algorithm-design-and-analysis-018:p5:c01",
+        "algorithm-design-and-analysis-018:p6:c01",
+        "algorithm-design-and-analysis-018:p7:c01",
+        "algorithm-design-and-analysis-018:p8:c01",
+        "algorithm-design-and-analysis-018:p9:c01",
+        "algorithm-design-and-analysis-018:p10:c01",
+        "algorithm-design-and-analysis-018:p11:c01",
+        "algorithm-design-and-analysis-018:p12:c01",
+        "algorithm-design-and-analysis-018:p13:c01",
+        "algorithm-design-and-analysis-018:p14:c01",
+        "algorithm-design-and-analysis-018:p15:c01",
+        "algorithm-design-and-analysis-018:p16:c01",
+        "algorithm-design-and-analysis-018:p17:c01",
+        "algorithm-design-and-analysis-018:p18:c01",
+        "algorithm-design-and-analysis-018:p19:c01",
+        "algorithm-design-and-analysis-018:p20:c01",
+        "algorithm-design-and-analysis-018:p21:c01",
+        "algorithm-design-and-analysis-018:p22:c01",
+        "algorithm-design-and-analysis-018:p23:c01",
+        "algorithm-design-and-analysis-018:p24:c01",
+        "algorithm-design-and-analysis-018:p25:c01",
+        "algorithm-design-and-analysis-018:p26:c01",
+        "algorithm-design-and-analysis-018:p27:c01",
+        "algorithm-design-and-analysis-018:p28:c01",
+        "algorithm-design-and-analysis-018:p29:c01",
+        "algorithm-design-and-analysis-018:p30:c01",
+        "algorithm-design-and-analysis-018:p31:c01",
+        "algorithm-design-and-analysis-018:p32:c01",
+        "algorithm-design-and-analysis-018:p33:c01",
+        "algorithm-design-and-analysis-018:p34:c01",
+        "algorithm-design-and-analysis-018:p35:c01",
+        "algorithm-design-and-analysis-018:p36:c01",
+        "algorithm-design-and-analysis-018:p37:c01",
+        "algorithm-design-and-analysis-018:p38:c01",
+        "algorithm-design-and-analysis-018:p39:c01",
+        "algorithm-design-and-analysis-018:p40:c01",
+        "algorithm-design-and-analysis-018:p41:c01",
+        "algorithm-design-and-analysis-018:p42:c01",
+        "algorithm-design-and-analysis-018:p43:c01",
+        "algorithm-design-and-analysis-018:p44:c01",
+        "algorithm-design-and-analysis-018:p45:c01",
+        "algorithm-design-and-analysis-018:p46:c01",
+        "algorithm-design-and-analysis-018:p47:c01",
+        "algorithm-design-and-analysis-018:p48:c01",
+        "algorithm-design-and-analysis-018:p49:c01",
+        "algorithm-design-and-analysis-018:p50:c01",
+        "algorithm-design-and-analysis-018:p51:c01",
+        "algorithm-design-and-analysis-018:p52:c01",
+        "algorithm-design-and-analysis-018:p53:c01",
+        "algorithm-design-and-analysis-018:p54:c01",
+        "algorithm-design-and-analysis-018:p55:c01",
+        "algorithm-design-and-analysis-018:p56:c01",
+        "algorithm-design-and-analysis-018:p57:c01",
+        "algorithm-design-and-analysis-018:p58:c01",
+        "algorithm-design-and-analysis-018:p59:c01",
+        "algorithm-design-and-analysis-018:p60:c01",
+        "algorithm-design-and-analysis-018:p61:c01",
+        "algorithm-design-and-analysis-018:p62:c01",
+        "algorithm-design-and-analysis-018:p63:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-018.md",
+      "source_id": "algorithm-design-and-analysis-018",
+      "source_title": "5-greedy",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-019:p1:c01",
+        "algorithm-design-and-analysis-019:p2:c01",
+        "algorithm-design-and-analysis-019:p3:c01",
+        "algorithm-design-and-analysis-019:p4:c01",
+        "algorithm-design-and-analysis-019:p5:c01",
+        "algorithm-design-and-analysis-019:p6:c01",
+        "algorithm-design-and-analysis-019:p7:c01",
+        "algorithm-design-and-analysis-019:p8:c01",
+        "algorithm-design-and-analysis-019:p9:c01",
+        "algorithm-design-and-analysis-019:p10:c01",
+        "algorithm-design-and-analysis-019:p11:c01",
+        "algorithm-design-and-analysis-019:p12:c01",
+        "algorithm-design-and-analysis-019:p13:c01",
+        "algorithm-design-and-analysis-019:p14:c01",
+        "algorithm-design-and-analysis-019:p15:c01",
+        "algorithm-design-and-analysis-019:p16:c01",
+        "algorithm-design-and-analysis-019:p17:c01",
+        "algorithm-design-and-analysis-019:p18:c01",
+        "algorithm-design-and-analysis-019:p19:c01",
+        "algorithm-design-and-analysis-019:p20:c01",
+        "algorithm-design-and-analysis-019:p21:c01",
+        "algorithm-design-and-analysis-019:p22:c01",
+        "algorithm-design-and-analysis-019:p23:c01",
+        "algorithm-design-and-analysis-019:p24:c01",
+        "algorithm-design-and-analysis-019:p25:c01",
+        "algorithm-design-and-analysis-019:p26:c01",
+        "algorithm-design-and-analysis-019:p27:c01",
+        "algorithm-design-and-analysis-019:p28:c01",
+        "algorithm-design-and-analysis-019:p29:c01",
+        "algorithm-design-and-analysis-019:p30:c01",
+        "algorithm-design-and-analysis-019:p31:c01",
+        "algorithm-design-and-analysis-019:p32:c01",
+        "algorithm-design-and-analysis-019:p33:c01",
+        "algorithm-design-and-analysis-019:p34:c01",
+        "algorithm-design-and-analysis-019:p35:c01",
+        "algorithm-design-and-analysis-019:p36:c01",
+        "algorithm-design-and-analysis-019:p37:c01",
+        "algorithm-design-and-analysis-019:p38:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-019.md",
+      "source_id": "algorithm-design-and-analysis-019",
+      "source_title": "6-linear",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-020:p1:c01",
+        "algorithm-design-and-analysis-020:p2:c01",
+        "algorithm-design-and-analysis-020:p3:c01",
+        "algorithm-design-and-analysis-020:p4:c01",
+        "algorithm-design-and-analysis-020:p5:c01",
+        "algorithm-design-and-analysis-020:p6:c01",
+        "algorithm-design-and-analysis-020:p7:c01",
+        "algorithm-design-and-analysis-020:p8:c01",
+        "algorithm-design-and-analysis-020:p9:c01",
+        "algorithm-design-and-analysis-020:p10:c01",
+        "algorithm-design-and-analysis-020:p11:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-020.md",
+      "source_id": "algorithm-design-and-analysis-020",
+      "source_title": "6-tutorial",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-021:p1:c01",
+        "algorithm-design-and-analysis-021:p2:c01",
+        "algorithm-design-and-analysis-021:p3:c01",
+        "algorithm-design-and-analysis-021:p4:c01",
+        "algorithm-design-and-analysis-021:p5:c01",
+        "algorithm-design-and-analysis-021:p6:c01",
+        "algorithm-design-and-analysis-021:p7:c01",
+        "algorithm-design-and-analysis-021:p8:c01",
+        "algorithm-design-and-analysis-021:p9:c01",
+        "algorithm-design-and-analysis-021:p10:c01",
+        "algorithm-design-and-analysis-021:p11:c01",
+        "algorithm-design-and-analysis-021:p12:c01",
+        "algorithm-design-and-analysis-021:p13:c01",
+        "algorithm-design-and-analysis-021:p14:c01",
+        "algorithm-design-and-analysis-021:p15:c01",
+        "algorithm-design-and-analysis-021:p16:c01",
+        "algorithm-design-and-analysis-021:p17:c01",
+        "algorithm-design-and-analysis-021:p18:c01",
+        "algorithm-design-and-analysis-021:p19:c01",
+        "algorithm-design-and-analysis-021:p20:c01",
+        "algorithm-design-and-analysis-021:p21:c01",
+        "algorithm-design-and-analysis-021:p22:c01",
+        "algorithm-design-and-analysis-021:p23:c01",
+        "algorithm-design-and-analysis-021:p24:c01",
+        "algorithm-design-and-analysis-021:p25:c01",
+        "algorithm-design-and-analysis-021:p26:c01",
+        "algorithm-design-and-analysis-021:p27:c01",
+        "algorithm-design-and-analysis-021:p28:c01",
+        "algorithm-design-and-analysis-021:p29:c01",
+        "algorithm-design-and-analysis-021:p30:c01",
+        "algorithm-design-and-analysis-021:p31:c01",
+        "algorithm-design-and-analysis-021:p32:c01",
+        "algorithm-design-and-analysis-021:p33:c01",
+        "algorithm-design-and-analysis-021:p34:c01",
+        "algorithm-design-and-analysis-021:p35:c01",
+        "algorithm-design-and-analysis-021:p36:c01",
+        "algorithm-design-and-analysis-021:p37:c01",
+        "algorithm-design-and-analysis-021:p38:c01",
+        "algorithm-design-and-analysis-021:p39:c01",
+        "algorithm-design-and-analysis-021:p40:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-021.md",
+      "source_id": "algorithm-design-and-analysis-021",
+      "source_title": "7-dynamic",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-022:p1:c01",
+        "algorithm-design-and-analysis-022:p2:c01",
+        "algorithm-design-and-analysis-022:p3:c01",
+        "algorithm-design-and-analysis-022:p4:c01",
+        "algorithm-design-and-analysis-022:p5:c01",
+        "algorithm-design-and-analysis-022:p6:c01",
+        "algorithm-design-and-analysis-022:p7:c01",
+        "algorithm-design-and-analysis-022:p8:c01",
+        "algorithm-design-and-analysis-022:p9:c01",
+        "algorithm-design-and-analysis-022:p10:c01",
+        "algorithm-design-and-analysis-022:p11:c01",
+        "algorithm-design-and-analysis-022:p12:c01",
+        "algorithm-design-and-analysis-022:p13:c01",
+        "algorithm-design-and-analysis-022:p14:c01",
+        "algorithm-design-and-analysis-022:p15:c01",
+        "algorithm-design-and-analysis-022:p16:c01",
+        "algorithm-design-and-analysis-022:p17:c01",
+        "algorithm-design-and-analysis-022:p18:c01",
+        "algorithm-design-and-analysis-022:p19:c01",
+        "algorithm-design-and-analysis-022:p20:c01",
+        "algorithm-design-and-analysis-022:p21:c01",
+        "algorithm-design-and-analysis-022:p22:c01",
+        "algorithm-design-and-analysis-022:p23:c01",
+        "algorithm-design-and-analysis-022:p24:c01",
+        "algorithm-design-and-analysis-022:p25:c01",
+        "algorithm-design-and-analysis-022:p26:c01",
+        "algorithm-design-and-analysis-022:p27:c01",
+        "algorithm-design-and-analysis-022:p28:c01",
+        "algorithm-design-and-analysis-022:p29:c01",
+        "algorithm-design-and-analysis-022:p30:c01",
+        "algorithm-design-and-analysis-022:p31:c01",
+        "algorithm-design-and-analysis-022:p32:c01",
+        "algorithm-design-and-analysis-022:p33:c01",
+        "algorithm-design-and-analysis-022:p34:c01",
+        "algorithm-design-and-analysis-022:p35:c01",
+        "algorithm-design-and-analysis-022:p36:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-022.md",
+      "source_id": "algorithm-design-and-analysis-022",
+      "source_title": "7-dynamic",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-023:p1:c01",
+        "algorithm-design-and-analysis-023:p2:c01",
+        "algorithm-design-and-analysis-023:p3:c01",
+        "algorithm-design-and-analysis-023:p4:c01",
+        "algorithm-design-and-analysis-023:p5:c01",
+        "algorithm-design-and-analysis-023:p6:c01",
+        "algorithm-design-and-analysis-023:p7:c01",
+        "algorithm-design-and-analysis-023:p8:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-023.md",
+      "source_id": "algorithm-design-and-analysis-023",
+      "source_title": "7-tutorial",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-024:p1:c01",
+        "algorithm-design-and-analysis-024:p2:c01",
+        "algorithm-design-and-analysis-024:p3:c01",
+        "algorithm-design-and-analysis-024:p4:c01",
+        "algorithm-design-and-analysis-024:p5:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-024.md",
+      "source_id": "algorithm-design-and-analysis-024",
+      "source_title": "7-tutorial",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-025:p1:c01",
+        "algorithm-design-and-analysis-025:p2:c01",
+        "algorithm-design-and-analysis-025:p3:c01",
+        "algorithm-design-and-analysis-025:p4:c01",
+        "algorithm-design-and-analysis-025:p5:c01",
+        "algorithm-design-and-analysis-025:p6:c01",
+        "algorithm-design-and-analysis-025:p7:c01",
+        "algorithm-design-and-analysis-025:p8:c01",
+        "algorithm-design-and-analysis-025:p9:c01",
+        "algorithm-design-and-analysis-025:p10:c01",
+        "algorithm-design-and-analysis-025:p11:c01",
+        "algorithm-design-and-analysis-025:p12:c01",
+        "algorithm-design-and-analysis-025:p13:c01",
+        "algorithm-design-and-analysis-025:p14:c01",
+        "algorithm-design-and-analysis-025:p15:c01",
+        "algorithm-design-and-analysis-025:p16:c01",
+        "algorithm-design-and-analysis-025:p17:c01",
+        "algorithm-design-and-analysis-025:p18:c01",
+        "algorithm-design-and-analysis-025:p19:c01",
+        "algorithm-design-and-analysis-025:p20:c01",
+        "algorithm-design-and-analysis-025:p21:c01",
+        "algorithm-design-and-analysis-025:p22:c01",
+        "algorithm-design-and-analysis-025:p23:c01",
+        "algorithm-design-and-analysis-025:p24:c01",
+        "algorithm-design-and-analysis-025:p25:c01",
+        "algorithm-design-and-analysis-025:p26:c01",
+        "algorithm-design-and-analysis-025:p27:c01",
+        "algorithm-design-and-analysis-025:p28:c01",
+        "algorithm-design-and-analysis-025:p29:c01",
+        "algorithm-design-and-analysis-025:p30:c01",
+        "algorithm-design-and-analysis-025:p31:c01",
+        "algorithm-design-and-analysis-025:p32:c01",
+        "algorithm-design-and-analysis-025:p33:c01",
+        "algorithm-design-and-analysis-025:p34:c01",
+        "algorithm-design-and-analysis-025:p35:c01",
+        "algorithm-design-and-analysis-025:p36:c01",
+        "algorithm-design-and-analysis-025:p37:c01",
+        "algorithm-design-and-analysis-025:p38:c01",
+        "algorithm-design-and-analysis-025:p39:c01",
+        "algorithm-design-and-analysis-025:p40:c01",
+        "algorithm-design-and-analysis-025:p41:c01",
+        "algorithm-design-and-analysis-025:p42:c01",
+        "algorithm-design-and-analysis-025:p43:c01",
+        "algorithm-design-and-analysis-025:p44:c01",
+        "algorithm-design-and-analysis-025:p45:c01",
+        "algorithm-design-and-analysis-025:p46:c01",
+        "algorithm-design-and-analysis-025:p47:c01",
+        "algorithm-design-and-analysis-025:p48:c01",
+        "algorithm-design-and-analysis-025:p49:c01",
+        "algorithm-design-and-analysis-025:p50:c01",
+        "algorithm-design-and-analysis-025:p51:c01",
+        "algorithm-design-and-analysis-025:p52:c01",
+        "algorithm-design-and-analysis-025:p53:c01",
+        "algorithm-design-and-analysis-025:p54:c01",
+        "algorithm-design-and-analysis-025:p55:c01",
+        "algorithm-design-and-analysis-025:p56:c01",
+        "algorithm-design-and-analysis-025:p57:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-025.md",
+      "source_id": "algorithm-design-and-analysis-025",
+      "source_title": "9-networkFlow",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-026:p1:c01",
+        "algorithm-design-and-analysis-026:p2:c01",
+        "algorithm-design-and-analysis-026:p3:c01",
+        "algorithm-design-and-analysis-026:p4:c01",
+        "algorithm-design-and-analysis-026:p5:c01",
+        "algorithm-design-and-analysis-026:p6:c01",
+        "algorithm-design-and-analysis-026:p7:c01",
+        "algorithm-design-and-analysis-026:p8:c01",
+        "algorithm-design-and-analysis-026:p9:c01",
+        "algorithm-design-and-analysis-026:p10:c01",
+        "algorithm-design-and-analysis-026:p11:c01",
+        "algorithm-design-and-analysis-026:p12:c01",
+        "algorithm-design-and-analysis-026:p13:c01",
+        "algorithm-design-and-analysis-026:p14:c01",
+        "algorithm-design-and-analysis-026:p15:c01",
+        "algorithm-design-and-analysis-026:p16:c01",
+        "algorithm-design-and-analysis-026:p17:c01",
+        "algorithm-design-and-analysis-026:p18:c01",
+        "algorithm-design-and-analysis-026:p19:c01",
+        "algorithm-design-and-analysis-026:p20:c01",
+        "algorithm-design-and-analysis-026:p21:c01",
+        "algorithm-design-and-analysis-026:p22:c01",
+        "algorithm-design-and-analysis-026:p23:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-026.md",
+      "source_id": "algorithm-design-and-analysis-026",
+      "source_title": "9-networkFlow",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-027:p1:c01",
+        "algorithm-design-and-analysis-027:p2:c01",
+        "algorithm-design-and-analysis-027:p3:c01",
+        "algorithm-design-and-analysis-027:p4:c01",
+        "algorithm-design-and-analysis-027:p5:c01",
+        "algorithm-design-and-analysis-027:p6:c01",
+        "algorithm-design-and-analysis-027:p7:c01",
+        "algorithm-design-and-analysis-027:p8:c01",
+        "algorithm-design-and-analysis-027:p9:c01",
+        "algorithm-design-and-analysis-027:p10:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-027.md",
+      "source_id": "algorithm-design-and-analysis-027",
+      "source_title": "9-tutorial",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-028:p1:c01",
+        "algorithm-design-and-analysis-028:p1:c02",
+        "algorithm-design-and-analysis-028:p2:c01",
+        "algorithm-design-and-analysis-028:p2:c02",
+        "algorithm-design-and-analysis-028:p3:c01",
+        "algorithm-design-and-analysis-028:p4:c01",
+        "algorithm-design-and-analysis-028:p5:c01",
+        "algorithm-design-and-analysis-028:p6:c01",
+        "algorithm-design-and-analysis-028:p6:c02",
+        "algorithm-design-and-analysis-028:p7:c01",
+        "algorithm-design-and-analysis-028:p7:c02",
+        "algorithm-design-and-analysis-028:p8:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-028.md",
+      "source_id": "algorithm-design-and-analysis-028",
+      "source_title": "Algorthm 2023-2024 A",
+      "year": "2023"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-029:p1:c01",
+        "algorithm-design-and-analysis-029:p2:c01",
+        "algorithm-design-and-analysis-029:p3:c01",
+        "algorithm-design-and-analysis-029:p4:c01",
+        "algorithm-design-and-analysis-029:p5:c01",
+        "algorithm-design-and-analysis-029:p6:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-029.md",
+      "source_id": "algorithm-design-and-analysis-029",
+      "source_title": "tutorial-matMult",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-030:p1:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-030.md",
+      "source_id": "algorithm-design-and-analysis-030",
+      "source_title": "第一次课板书",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-031:p1:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-031.md",
+      "source_id": "algorithm-design-and-analysis-031",
+      "source_title": "第七次课板书",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-032:p1:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-032.md",
+      "source_id": "algorithm-design-and-analysis-032",
+      "source_title": "第三次课板书",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-033:p1:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-033.md",
+      "source_id": "algorithm-design-and-analysis-033",
+      "source_title": "第三次课板书",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-034:p1:c01",
+        "algorithm-design-and-analysis-034:p2:c01",
+        "algorithm-design-and-analysis-034:p3:c01",
+        "algorithm-design-and-analysis-034:p4:c01",
+        "algorithm-design-and-analysis-034:p5:c01",
+        "algorithm-design-and-analysis-034:p6:c01",
+        "algorithm-design-and-analysis-034:p7:c01",
+        "algorithm-design-and-analysis-034:p8:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-034.md",
+      "source_id": "algorithm-design-and-analysis-034",
+      "source_title": "第二次上课板书",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-035:p1:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-035.md",
+      "source_id": "algorithm-design-and-analysis-035",
+      "source_title": "第二次上课板书",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-036:p1:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-036.md",
+      "source_id": "algorithm-design-and-analysis-036",
+      "source_title": "第五次课板书",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-037:p1:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-037.md",
+      "source_id": "algorithm-design-and-analysis-037",
+      "source_title": "第五次课板书",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-038:p1:c01",
+        "algorithm-design-and-analysis-038:p2:c01",
+        "algorithm-design-and-analysis-038:p3:c01",
+        "algorithm-design-and-analysis-038:p4:c01",
+        "algorithm-design-and-analysis-038:p5:c01",
+        "algorithm-design-and-analysis-038:p6:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-038.md",
+      "source_id": "algorithm-design-and-analysis-038",
+      "source_title": "第五次课板书",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-039:p1:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-039.md",
+      "source_id": "algorithm-design-and-analysis-039",
+      "source_title": "第八次课板书",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-040:p1:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-040.md",
+      "source_id": "algorithm-design-and-analysis-040",
+      "source_title": "第八次课板书",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-041:p1:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-041.md",
+      "source_id": "algorithm-design-and-analysis-041",
+      "source_title": "第六次课板书",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-042:p1:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-042.md",
+      "source_id": "algorithm-design-and-analysis-042",
+      "source_title": "第四次课板书",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "algorithm-design-and-analysis-043:p1:c01"
+      ],
+      "course_id": "algorithm_design_and_analysis",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "algorithm_design_and_analysis/algorithm-design-and-analysis-043.md",
+      "source_id": "algorithm-design-and-analysis-043",
+      "source_title": "第四次课板书",
+      "year": null
+    }
+  ],
+  "statistics": {
+    "chunk_count": 757,
+    "question_count": 17,
+    "source_count": 43
+  },
+  "workflow_version": "workflow-contract-v1"
+}

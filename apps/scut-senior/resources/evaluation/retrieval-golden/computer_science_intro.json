@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "computer_science_intro",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "Final Exam A 2021V1主要讲什么？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做Write your answers on the answer sheet.时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "This is a close-book exam. 4. The exam with full score of 100 points lasts 120 minutes. Question No. I II III的答案怎么判断？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把Fill in the blanks 5 blanks×2’ (1) Computer _______________ is the collection of programs that ( DONNOT WRIT的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做(3) A TrueColor RGB representation of one pixel takes up _______________ bytes. (4) A gate that accepts two in时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用Single selection questions 20×2’ (1) Which of the following terms best describes the concept of abstraction?举例说明吗？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "C) exposing distance怎么做？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做(2) What is a single binary digit called?时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "(3) How many digits are there in the octal number system?的答案怎么判断？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把(4) How many things can be represented using four bits?的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做(7) A transistor is made up of what kind of material?时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用(10) Which of the following manages the fetch-execute cycle?举例说明吗？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p3:q-computer-science-intro-003-q9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "(15) RAM is non-volatile and ROM is volatile.怎么做？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p3:q-computer-science-intro-003-q10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做(16) A touch screen is both an input and output device.时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p3:q-computer-science-intro-003-q11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "space.的答案怎么判断？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把(18) An AND gate and an OR gate produce opposite output.的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q12:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做Calculations ( 5×6’ )时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q13:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用(1) Convert the binary number 11011011 to the target base .举例说明吗？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q14:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "the boolean expression: A B C (5) What does code X8BBCA9 represent using run-length encoding? What is the comp怎么做？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q14:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做Essay questions (4×5’) (1) Why do computers have difficulty with analog information?时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q15:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "(2) Name the components of a von Neumann machine.的答案怎么判断？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q16:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把(3) How can gates be combined into circuits? (4) Write a pseudocode algorithm for Binary Search in a sorted ar的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q17:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习这张图片时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "computer-science-intro-004:h-微信图片_20231218194317:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考The Big Picture？",
+      "expected_chunk_ids": [
+        "computer-science-intro-005:s1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "Chapter Goals主要讲什么？",
+      "expected_chunk_ids": [
+        "computer-science-intro-005:s2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习Computing Systems，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "computer-science-intro-005:s3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习Computing Systems时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "computer-science-intro-005:s4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "Layers of a Computing System里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "computer-science-intro-005:s5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习Abstraction时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "computer-science-intro-005:s6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考Internal View？",
+      "expected_chunk_ids": [
+        "computer-science-intro-005:s7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

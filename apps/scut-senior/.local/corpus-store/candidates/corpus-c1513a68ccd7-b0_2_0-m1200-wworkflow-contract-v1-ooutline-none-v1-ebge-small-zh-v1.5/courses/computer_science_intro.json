@@ -1,0 +1,4431 @@
+{
+  "chunks": [
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p1:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "……………………………………………Seal Line………………………………………………Seal Line………………………………………Seal Line……………………………………\n\nName                    Student ID\n  School                 Major/Class              Seat No.\n\nWARNING: MISBEHAVIOR AT EXAM TIME WILL LEAD TO SERIOUS\nCONSEQUENCE.\n\nSCUT Final Exam\n\nFoundations of Computer Science Exam Paper A (2021-2022-1)\n\nNotice:     1. Make sure that you have filled the form on the left side of seal line."
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p1:q-computer-science-intro-003-q1:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q1",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "2. Write your answers on the answer sheet."
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p1:q-computer-science-intro-003-q2:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q2",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "3. This is a close-book exam.\n4. The exam with full score of 100 points lasts 120 minutes.\n\nQuestion No.\nI\nII\nIII\nIV\nSum\nScore"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p1:q-computer-science-intro-003-q3:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q3",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "1. Fill in the blanks （5 blanks×2’）\n\n(1) Computer _______________ is the collection of programs that\n\n( DONNOT WRITE YOUR ANSWER IN THIS AREA )\n\nprovide the instructions that a computer carries out.\n\n(2) A(n) _______________ is a natural number, a negative of a natural\n\nnumber, or zero."
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p1:q-computer-science-intro-003-q4:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q4",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "(3) A TrueColor RGB representation of one pixel takes up\n\n_______________ bytes.\n\n(4) A gate that accepts two input values has _______________ possible\n\ninput combinations.\n\n(5) The _______________ is a set of wires through which data travels\n\nbetween the main components of a computer."
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p1:q-computer-science-intro-003-q5:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q5",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "2. Single selection questions（20×2’）\n\n(1) Which of the following terms best describes the concept of\n\nabstraction?\n\nA)  exposing difficulty\nB)  hiding quantity\n\nFoundations of Computer Science Exam Paper A Page 1 of 5"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p2:q-computer-science-intro-003-q5:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q5",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "C)  exposing distance\nD)  hiding details"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p2:q-computer-science-intro-003-q6:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q6",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "(2) What is a single binary digit called?\n\nA)  byte\nB)  nibble\nC)  bit\nD)  word"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p2:q-computer-science-intro-003-q7:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q7",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "(3) How many digits are there in the octal number system?\n\nA)  10\nB)  2\nC)  7\nD)  8"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p2:q-computer-science-intro-003-q8:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q8",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "(4) How many things can be represented using four bits?\n\nA)  4\nB)  8\nC)  12\nD)  16\n\n(5) Which technique for representing numeric data has two forms of zero?\n\nA)  signed-magnitude\nB)  fixed-sized numbers\n\nC)  floating point\nD)  ten's complement\n\n(6) Which text compression technique replaces a frequently used word\n\nwith a single character?\n\nA)  run-length encoding\nB)  character set encoding\n\nC)  keyword encoding\nD)  Huffman encoding"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p2:q-computer-science-intro-003-q9:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q9",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "(7) A transistor is made up of what kind of material?\n\nA)  semiconductor\nB)  conductor\nC)  insulation\nD)  rubber\n\n(8) Which of the following circuits represented by Boolean expressions\n\nis/are equivalent?\n\nA)  AB , BA\nB)  A(B+C) , (AB) + (AC)\n\nC)  A+BC , (A+B)(A+C)\nD)  all of the above\n\n(9) The ________ memory contains a copy of a portion of main memory.\n\nA) CPU     B) main     C) cache     D) ROM\n\nFoundations of Computer Science Exam Paper A Page 2 of 5"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p3:q-computer-science-intro-003-q9:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q9",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "(10) Which of the following manages the fetch-execute cycle?\n\nA)  control unit\nB)  arithmetic/logic unit\n\nC)  auxiliary storage device\nD)  RAM\n\n(11) Which language is actually executed by the central processing unit of\n\na computer?\n\nA)  high-level language\nB)  assembly language\n\nC)  machine language\nD)  virtual language\n\n(12) Which of the following represents a set of unambiguous instructions\n\nfor solving a problem in a finite amount of time using a finite set of data?\n\nA)  algorithm\nB)  pseudocode\n\nC)  program construct\nD)  problem specification\n\n(13) Pseudocode uses a mixture of English and indentation to express the\n\nprocessing steps of an algorithm.\n\nA) True\nB) False\n\n(14) The code-coverage testing approach eliminates the need to test some\n\nof the code by covering it with a theoretical “black box.”\n\nA) True\nB) False"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p3:q-computer-science-intro-003-q10:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q10",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "(15) RAM is non-volatile and ROM is volatile.\n\nA) True\nB) False"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p3:q-computer-science-intro-003-q11:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q11",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "(16) A touch screen is both an input and output device.\n\nA) True\nB) False\n\n(17) A megabyte of memory space is larger than a gigabyte of memory\n\nFoundations of Computer Science Exam Paper A Page 3 of 5"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p4:q-computer-science-intro-003-q11:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q11",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "space.\n\nA) True\nB) False"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p4:q-computer-science-intro-003-q12:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q12",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "(18) An AND gate and an OR gate produce opposite output.\n\nA) True\nB) False\n\n(19) A character set is a list of characters and their numeric codes.\n\nA) True\nB) False\n\n(20) The letter C is used to represent the number 11 in hexadecimal.\n\nA) True\nB) False"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p4:q-computer-science-intro-003-q13:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q13",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "3. Calculations  ( 5×6’ )"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p4:q-computer-science-intro-003-q14:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q14",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "(1) Convert the binary number 11011011 to the target base .\n\nA.  to base 10\nB.  to base 8\nC.  to base 16\n\n(2) If 891 is a number in each of the following bases, how many 1s are\n\nthere?\n\nA.  base 12\n\nB.  base 8\n\n(3) Given a fixed-sized number scheme where k in the formula for the\n\nten's complement is 3 (Negative(I) = 10k - I), answer the following\n\nquestions.\n\nA.  How many negative integers can be represented?\n\nB.  Show the three smallest and largest positive numbers, the three\n\nsmallest and largest negative numbers?\n\n(4) Show the behavior of the following circuit with a truth table and give\n\nFoundations of Computer Science Exam Paper A Page 4 of 5"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p5:q-computer-science-intro-003-q14:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q14",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "the boolean expression:\n\nA\n\nB\n\nC\n\n(5) What does code *X8BBC*A9 represent using run-length encoding?\n\nWhat is the compression ratio?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p5:q-computer-science-intro-003-q15:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q15",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "4.  Essay questions (4×5’)\n\n(1) Why do computers have difficulty with analog information?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p5:q-computer-science-intro-003-q16:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q16",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "(2) Name the components of a von Neumann machine."
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-003:p5:q-computer-science-intro-003-q17:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q17",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "text": "(3) How can gates be combined into circuits?\n\n(4) Write a pseudocode algorithm for Binary Search in a sorted array.\n\nFoundations of Computer Science Exam Paper A Page 5 of 5"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-004:h-微信图片_20231218194317:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "微信图片_20231218194317"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "computer-science-intro-004",
+      "source_title": "微信图片_20231218194317",
+      "text": "![page-001.png](assets/computer-science-intro-004/page-001.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s1:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "The Big Picture"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- Chapter 1"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s2:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Chapter Goals"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- Describe the layers of a computer system\n- Describe the concept of abstraction and its relationship to computing\n- Describe the history of computer hardware and software\n- Describe the changing role of the computer user\n- Distinguish between systems programmers and applications programmers\n- Distinguish between computing as a tool and computing as a discipline\n- <number>\n- 25"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s3:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Computing Systems"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- <number>\n- 2\n- Computing systems are dynamic!\n- computer hardware ,software, data which interact to solve the problem.\n- What is the difference between hardware and software?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s4:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Computing Systems"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- <number>\n- 3\n- Hardware  The physical elements of a computing system (printer, circuit boards, wires, keyboard…)\n- Software  The programs that provide the instructions for a computer to execute"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s5:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Layers of a Computing System"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- <number>\n- 4\n![image](assets/computer-science-intro-005/image-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s6:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Abstraction"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- <number>\n- 5\n- Abstraction  A mental model that removes complex details\n- This is a key concept.  Abstraction will reappear throughout the text – be sure you understand it!"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s7:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Internal View"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- <number>\n![image](assets/computer-science-intro-005/image-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s8:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Abstract View"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- <number>\n![image](assets/computer-science-intro-005/image-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s9:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "History"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- <number>\n![image](assets/computer-science-intro-005/image-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s10:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Early History of Computing"
+      ],
+      "locator_end": 10,
+      "locator_start": 10,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- <number>\n- 6\n- Abacus\n- An early device to record numeric values\n- Blaise Pascal\n- Mechanical device to add, subtract, divide & multiply\n- Joseph Jacquard\n- Jacquard’s Loom, the punched card\n- Charles Babbage\n- Analytical Engine\n![image](assets/computer-science-intro-005/image-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s11:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Early History of Computing"
+      ],
+      "locator_end": 11,
+      "locator_start": 11,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- <number>\n- 7\n- Ada Lovelace\n- First Programmer, the loop\n- Alan Turing\n- Turing Machine, Artificial Intelligence Testing\n- Harvard Mark I, ENIAC, UNIVAC I\n- Early computers launch new era in mathematics, physics, engineering and economics"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s12:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "First Generation Hardware"
+      ],
+      "locator_end": 12,
+      "locator_start": 12,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "(1951-1959)\n\n- <number>\n- 8\n- Vacuum Tubes\n- Large, not very reliable, generated a lot of heat\n- Magnetic Drum\n- Memory device that rotated under a read/write head\n- Card Readers  Magnetic Tape Drives\n- Sequential auxiliary storage devices\n![image](assets/computer-science-intro-005/image-006.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s13:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Second Generation Hardware"
+      ],
+      "locator_end": 13,
+      "locator_start": 13,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "(1959-1965)\n\n- <number>\n- 9\n- Transistor\n- Replaced vacuum tube, fast, small, durable, cheap\n- Magnetic Cores\n- Replaced magnetic drums, information available instantly\n- Magnetic Disks\n- Replaced magnetic tape, data can be accessed directly\n![image](assets/computer-science-intro-005/image-007.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s14:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Third Generation Hardware"
+      ],
+      "locator_end": 14,
+      "locator_start": 14,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "(1965-1971)\n\n- <number>\n- 10\n- Integrated Circuits\n- Replaced circuit boards, smaller, cheaper, faster, more reliable\n- Transistors\n- Now used for memory construction\n- Terminal\n- An input/output device with a  keyboard and screen"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s15:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Fourth Generation Hardware"
+      ],
+      "locator_end": 15,
+      "locator_start": 15,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "(1971-?)\n\n- <number>\n- 11\n- Large-scale Integration\n- Great advances in chip technology\n- PCs, the Commercial Market, Workstations\n- Personal Computers and Workstations emerge\n- New companies emerge: Apple, Sun, Dell …\n- Laptops, Tablet Computers, and Smart Phones\n- Everyone has his/her own portable computer"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s16:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Parallel Computing and Networking"
+      ],
+      "locator_end": 16,
+      "locator_start": 16,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- <number>\n- 12\n- Parallel Computing\n- Computers rely on interconnected central processing and/or memory units that increase processing speed\n- Networking\n- Ethernet connects small computers to share resources\n- File servers connect PCs in the late 1980s\n- ARPANET and LANs  Internet"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s17:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "First Generation Software"
+      ],
+      "locator_end": 17,
+      "locator_start": 17,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "(1951-1959)\n\n- <number>\n- 13\n- Machine Language\n- Computer programs written in binary (1s and 0s)\n- Assembly Languages and Translators\n- Programs written using mnemonics, which were translated into machine language\n- Programmer Changes\n- Programmers divide into two groups: application programmers and systems programmers"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s18:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Assembly/Machine"
+      ],
+      "locator_end": 18,
+      "locator_start": 18,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- <number>\n![image](assets/computer-science-intro-005/image-008.jpg)\n- Systems programmers\n- write the assembler\n- (translator)\n- Applications programmers\n- use assembly language to\n- solve problems"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s19:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Second Generation Software"
+      ],
+      "locator_end": 19,
+      "locator_start": 19,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "(1959-1965)\n\n- <number>\n- 14\n- High-level Languages\n- English-like statements made programming easier:\n- Fortran, COBOL, Lisp\n![image](assets/computer-science-intro-005/image-009.jpg)\n- Systems\n- programmers\n- write translators for\n- high-level languages\n- Application\n- programmers\n- use high-level\n- languages to\n- solve problems"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s20:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Third Generation Software"
+      ],
+      "locator_end": 20,
+      "locator_start": 20,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "(1965-1971)\n\n- Systems Software\n- Utility programs\n- Language translators\n- Operating system, which decides which programs \tto run and when\n- Separation between Users and Hardware\n- Computer programmers write programs to be used by general public (i.e., nonprogrammers)\n- <number>\n- 15"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s21:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Third Generation Software"
+      ],
+      "locator_end": 21,
+      "locator_start": 21,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "(1965-1971)\n\n- <number>\n- 16\n![image](assets/computer-science-intro-005/image-010.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s22:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Fourth Generation Software"
+      ],
+      "locator_end": 22,
+      "locator_start": 22,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "(1971-1989)\n\n- <number>\n- 17\n- Structured Programming\n- Pascal\n- C++\n- New Application Software for Users\n- Spreadsheets\n- Word processors\n- Database management systems"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s23:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Fifth Generation Software"
+      ],
+      "locator_end": 23,
+      "locator_start": 23,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "(1990- present)\n\n- <number>\n- 18\n- Microsoft\n- Windows operating system and other Microsoft application programs dominate the market\n- Object-Oriented Design\n- Based on a hierarchy of data objects (i.e. Java)\n- World Wide Web\n- Allows easy global communication through the Internet\n- New Users\n- Today’s user needs no computer knowledge"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s24:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Computing as a Tool"
+      ],
+      "locator_end": 24,
+      "locator_start": 24,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- <number>\n- Programmer / User\n- Applications Programmer\n- (uses tools)\n- User with No\n- Computer Background\n- Systems Programmer\n- (builds tools)\n- Domain-Specific Programs"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s25:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Computing as a Discipline"
+      ],
+      "locator_end": 25,
+      "locator_start": 25,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- What can be (efficiently) automated?\n- Four Necessary Skills\n    - Algorithmic Thinking\n    - Representation\n    - Programming\n    - Design\n- <number>\n- 21"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s26:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Computing as a Discipline"
+      ],
+      "locator_end": 26,
+      "locator_start": 26,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- <number>\n- Is Computer Science a mathematical,  scientific, or engineering discipline?\n- 22\n- What do you think?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s27:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Examples of Systems Areas"
+      ],
+      "locator_end": 27,
+      "locator_start": 27,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- Algorithms and Data Structures\n- Programming Languages\n- Architecture\n- Operating Systems\n- Software Engineering\n- Human-Computer Communication\n- <number>\n- 23"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s28:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "Examples of Application Areas"
+      ],
+      "locator_end": 28,
+      "locator_start": 28,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- Numerical and Symbolic Computation\n- Databases and Information Retrieval\n- Intelligent Systems\n- Graphics and Visual Computing\n- Net-Centric Computing\n- Computational Science\n- <number>\n- 24"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-005:s29:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第1章",
+        "作业"
+      ],
+      "locator_end": 29,
+      "locator_start": 29,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "text": "- <number>\n![image](assets/computer-science-intro-005/image-011.jpg)\n- 通过网络进行信息检索，写一篇400字以内\n- 关于我国计算机硬件和软件发展历史的文章。\n- 提交：http://1024.se.scut.edu.cn\n- 截止时间：10.4晚上。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s1:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Chapter 2"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- Binary Values and Number Systems"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s2:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Chapter Goals"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- 6\n- 24\n- Distinguish among categories of numbers\n- Describe positional notation\n- Convert numbers in other bases to base 10\n- Convert base-10 numbers to numbers in other bases\n- Describe the relationship between bases 2, 8, and 16\n- Explain the importance to computing of bases that are powers of 2"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s3:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Numbers"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- 2\n- Natural Numbers\n- Zero and any number obtained by repeatedly adding one to it.\n- Examples:   100, 0, 45645, 32\n- Negative Numbers\n- A value less than 0, with a – sign\n- Examples:  -24,  -1, -45645, -32"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s4:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Numbers"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- 3\n- Integers\n- A natural number, a negative number, zero\n- Examples:   249, 0, - 45645, - 32\n- Rational Numbers\n- An integer or the quotient of two integers\n- Examples:  -249,  -1, 0, 3/7, -2/5"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s5:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Natural Numbers"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- 4\n- How many ones are there in 642?\n- 600 + 40 + 2 ?\n- Or is it\n- 384 + 32 + 2 ?\n- Or maybe…\n- 1536 + 64 + 2 ?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s6:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Natural Numbers"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- 5\n- Aha!\n- 642  is 600 + 40 + 2 in BASE 10\n- The base of a number determines the number of digits and the value of digit positions"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s7:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Positional Notation"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- 6\n- Continuing with our example…\n- 642 in base 10 positional notation is:\n- 6 x 102 =  6 x 100   = 600\n- + 4 x 101  =   4 x 10    = 40\n- + 2 x 10º  =    2 x 1     = 2      = 642 in base 10\n- This number is in\n- base 10\n- The power indicates\n- the position of\n- the number"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s8:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Positional Notation"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- 7\n- dn * Rn-1 + dn-1 * Rn-2 + ... + d2 * R + d1\n- As a formula:\n- 642 is   63 * 102 +  42 * 10 +  21\n- R is the base\n- of the number\n- n is the number of\n- digits in the number\n- d is the digit in the\n- ith position\n- in the number"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s9:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Positional Notation"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- 6\n- 8\n- What if 642 has the base of 13?\n- 642 in base 13 is equivalent to 1068\n- in base 10\n- + 6 x 132  =  6 x 169   = 1014\n- + 4 x 131  =   4 x 13    = 52\n- + 2 x 13º  =    2 x 1     =   2\n- =  1068 in base 10"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s10:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Binary"
+      ],
+      "locator_end": 10,
+      "locator_start": 10,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- 9\n- Decimal is base 10 and has 10 digits: \t\t0,1,2,3,4,5,6,7,8,9\n- Binary is base 2 and has 2 digits:\n- 0,1\n- For a number to exist in a given base, it can only  contain the digits in that base, which range from 0 up to (but not including) the base.\n- What bases can these numbers be in? 122, 198, 178, G1A4"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s11:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Bases Higher than 10"
+      ],
+      "locator_end": 11,
+      "locator_start": 11,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- 10\n- How are digits in bases higher than 10 represented?\n- With distinct symbols for 10 and above.\n- Base 16 has 16 digits:\n- 0,1,2,3,4,5,6,7,8,9,A,B,C,D,E, and F"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s12:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Converting Octal to Decimal"
+      ],
+      "locator_end": 12,
+      "locator_start": 12,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- What is the decimal equivalent of the octal number 642?\n- 6 x 82  =  6 x 64   = 384\n- + 4 x 81  =  4 x  8   = 32\n- + 2 x 8º  =   2 x 1   = 2\n- = 418 in base 10\n- 11"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s13:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Converting Hexadecimal to Decimal"
+      ],
+      "locator_end": 13,
+      "locator_start": 13,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- What is the decimal equivalent of the hexadecimal number DEF?\n- D x 162  =  13 x 256 = 3328\n- + E x 161  =  14 x  16  = 224\n- + F x 16º  =  15 x 1     = 15\n- = 3567 in base 10\n- Remember, the digits in base 16 are 0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s14:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Converting Binary to Decimal"
+      ],
+      "locator_end": 14,
+      "locator_start": 14,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- What is the decimal equivalent of the binary number 1101110?\n- 1 x 26  =  1 x 64  = 64\n- + 1 x 25  =  1 x 32  = 32\n- + 0 x 24  =  0 x 16  = 0\n- + 1 x 23  =  1 x 8    = 8\n- + 1 x 22  =  1 x 4    = 4\n- + 1 x 21  =  1 x 2    = 2\n- + 0 x 2º  =  0 x 1    = 0\n- = 110 in base 10\n- 13"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s15:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Arithmetic in Binary"
+      ],
+      "locator_end": 15,
+      "locator_start": 15,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- Remember that there are only 2 digits in binary, 0 and 1\n- 1 + 1 is 0 with a carry\n- Carry Values\n- 1 1 1 1 1 1\n- 1 0 1 0 1 1 1\n- +1 0 0 1 0 1 1\n- 1 0 1 0 0 0 1 0\n- 14"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s16:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Subtracting Binary Numbers"
+      ],
+      "locator_end": 16,
+      "locator_start": 16,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- Remember borrowing?  Apply that concept here:\n- 1 2\n- 2 0 2\n- 1 0 1 0 1 1 1\n- -   1 1 1 0 1 1\n- 0 0 1 1 1 0 0\n- 15"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s17:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Counting in Binary/Octal/Decimal"
+      ],
+      "locator_end": 17,
+      "locator_start": 17,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n![image](assets/computer-science-intro-006/image-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s18:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Converting Binary to Octal"
+      ],
+      "locator_end": 18,
+      "locator_start": 18,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- Mark groups of three (from right)\n- Convert each group\n- 10101011\t     10  101  011\n- 2    5     3\n- 10101011 is 253 in base 8\n- 17"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s19:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Converting Binary to Hexadecimal"
+      ],
+      "locator_end": 19,
+      "locator_start": 19,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- Mark groups of four (from right)\n- Convert each group\n- 10101011\t     1010  1011\n- A      B\n- 10101011 is AB in base 16\n- 18"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s20:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Converting Decimal to Octal"
+      ],
+      "locator_end": 20,
+      "locator_start": 20,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- We can use the calculate tools!\n- http://fclass.vaniercollege.qc.ca/web/mathematics/real/Calculators/BaseConv_calc_1.htm"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s21:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Abacus"
+      ],
+      "locator_end": 21,
+      "locator_start": 21,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n![image](assets/computer-science-intro-006/image-002.jpg)\n\n> 备注：Insert picture of an abacus"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s22:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Converting Decimal to Other Bases"
+      ],
+      "locator_end": 22,
+      "locator_start": 22,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- While (the quotient is not zero)\n  - Divide the decimal number by the new base\n  - Make the remainder the next digit to the left in the answer\n  - Replace the original decimal number with the quotient\n- Algorithm for converting number in base 10 to other bases\n- 19"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s23:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Converting Decimal to Octal"
+      ],
+      "locator_end": 23,
+      "locator_start": 23,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- What is 1988 (base 10) in base 8?\n- Try it!"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s24:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Converting Decimal to Octal"
+      ],
+      "locator_end": 24,
+      "locator_start": 24,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- 248\t         31  \t     3              0\n- 8  1988\t   8  248        8  31          8  3\n- 16            24              24              0\n- 38\t         08\t      7             3\n- 32\t           8\n- 68\t           0\n- 64\n- 4\n- Answer is : 3 7 0 4"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s25:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Converting Decimal to Hexadecimal"
+      ],
+      "locator_end": 25,
+      "locator_start": 25,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- What is 3567 (base 10) in base 16?\n- Try it!\n- 20"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s26:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Converting Decimal to Hexadecimal"
+      ],
+      "locator_end": 26,
+      "locator_start": 26,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- 222\t        13                   0\n- 16  3567 \t16  222           16  13\n- 32                   16                      0\n- 36\t\t        62\t        13\n- 32\t\t        48\n- 47\t        14\n- 32\n- 15\n- D E F\n- 21"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s27:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Binary Numbers and Computers"
+      ],
+      "locator_end": 27,
+      "locator_start": 27,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- Computers have storage units called binary digits or bits\n- Low Voltage = 0\n- High Voltage = 1           all bits have 0 or 1\n- 22"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s28:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Binary and Computers"
+      ],
+      "locator_end": 28,
+      "locator_start": 28,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- Byte\n- 8 bits\n- The number of bits in a word determines the word length of the computer, but it is usually a multiple of 8\n  - 32-bit machines\n  - 64-bit machines etc.\n- 23"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s29:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Binary and Computers"
+      ],
+      "locator_end": 29,
+      "locator_start": 29,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n![image](assets/computer-science-intro-006/image-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s30:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Ethical Issues"
+      ],
+      "locator_end": 30,
+      "locator_start": 30,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- Tenth Strand\n  - What is a knowledge Unit?\n  - How many units did the ImpactCS project recommend?\n  - How many units did Curricula 2001 recommend?\n  - How were these similar/different?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s31:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "Who am I?"
+      ],
+      "locator_end": 31,
+      "locator_start": 31,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n- Can you tell the\n- person sitting\n- next to you three\n- things about me?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-006:s32:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第2章",
+        "作业"
+      ],
+      "locator_end": 32,
+      "locator_start": 32,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "text": "- <number>\n![image](assets/computer-science-intro-006/image-005.jpg)\n- P48:\n- 23.a 23.b 23.c 28.a  29.b 31.b 32.c 33.a"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s1:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Chapter 4"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- Gates and Circuits"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s2:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Chapter Goals"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Identify the basic gates and describe the behavior of each\n- Describe how gates are implemented using transistors\n- Combine basic gates into circuits\n- Describe the behavior of a gate or circuit using Boolean expressions, truth tables, and logic diagrams"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s3:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Chapter Goals"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Compare and contrast a half adder and a full adder\n- Describe how a multiplexer works\n- Explain how an S-R latch operates\n- Describe the characteristics of the four generations of integrated circuits"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s4:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Computers and Electricity"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Gate\n- A device that performs a basic operation on\n- electrical signals\n- Circuits\n- Gates combined to perform more\n- complicated tasks"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s5:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Computers and Electricity"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- How do we describe the behavior of gates and circuits?\n- Boolean expressions\n- Uses Boolean algebra, a mathematical notation for expressing two-valued logic\n- Logic diagrams\n- A graphical representation of a circuit; each gate has its\n- own symbol\n- Truth tables\n- A table showing all possible input values and the associated\n- output values"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s6:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Gates"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Six types of gates\n  - NOT\n  - AND\n  - OR\n  - XOR\n  - NAND\n  - NOR\n- Typically, logic diagrams are black and white with gates distinguished only by their shape\n- We use color for emphasis (and fun)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s7:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "NOT Gate"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- A NOT gate accepts one input signal (0 or 1) and returns the opposite signal as output\n![image](assets/computer-science-intro-007/image-001.png)\n- Figure 4.1  Various representations of a NOT gate"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s8:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "AND Gate"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- An AND gate accepts two input signals\n- If both are 1, the output is 1; otherwise,\n- the output is 0\n- Figure 4.2  Various representations of an AND gate\n![image](assets/computer-science-intro-007/image-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s9:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "OR Gate"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- An OR gate accepts two input signals\n- If both are 0, the output is 0; otherwise,\n- the output is 1\n- Figure 4.3  Various representations of an OR gate\n![image](assets/computer-science-intro-007/image-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s10:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "XOR Gate"
+      ],
+      "locator_end": 10,
+      "locator_start": 10,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Figure 4.4  Various representations of an XOR gate\n- An XOR gate accepts two input signals\n- If both are the same, the output is 0; otherwise,\n- the output is 1\n![image](assets/computer-science-intro-007/image-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s11:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "XOR Gate"
+      ],
+      "locator_end": 11,
+      "locator_start": 11,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Note the difference between the XOR gate and the OR gate; they differ only in one input situation\n- When both input signals are 1, the OR gate produces a 1 and the XOR produces a 0\n- XOR is called the exclusive OR"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s12:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "NAND Gate"
+      ],
+      "locator_end": 12,
+      "locator_start": 12,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- The NAND gate accepts two input signals\n- If both are 1, the output is 0; otherwise,\n- the output is 1\n![image](assets/computer-science-intro-007/image-005.png)\n- Figure 4.5  Various representations of a NAND gate"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s13:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "NOR Gate"
+      ],
+      "locator_end": 13,
+      "locator_start": 13,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Figure 4.6  Various representations of a NOR gate\n- The NOR gate accepts two input signals\n- If both are 0, the output is 1; otherwise,\n- the output is 0\n![image](assets/computer-science-intro-007/image-006.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s14:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Review of Gate Processing"
+      ],
+      "locator_end": 14,
+      "locator_start": 14,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- A NOT gate inverts its single input\n- An AND gate produces 1 if both input values are 1\n- An OR gate produces 0 if both input values are 0\n- An XOR gate produces 0 if input values are the same\n- A NAND gate produces 0 if both inputs are 1\n- A NOR gate produces a 1 if both inputs are 0"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s15:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Gates with More Inputs"
+      ],
+      "locator_end": 15,
+      "locator_start": 15,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Gates can be designed to accept three or more input values\n- A three-input AND gate, for example, produces an output of 1 only if all input values are 1\n- Figure 4.7  Various representations of a three-input AND gate\n![image](assets/computer-science-intro-007/image-007.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s16:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Constructing Gates"
+      ],
+      "locator_end": 16,
+      "locator_start": 16,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Transistor\n- A device that acts either as a wire that conducts electricity or as a resistor that blocks the flow of electricity, depending on the voltage level of an input signal\n- A transistor has no moving parts, yet acts like a switch\n- It is made of a semiconductor material, which is neither a particularly good conductor of electricity nor a particularly good insulator"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s17:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Constructing Gates"
+      ],
+      "locator_end": 17,
+      "locator_start": 17,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- A transistor has three terminals\n  - A source\n  - A base\n  - An emitter, typically connected to a ground wire\n- If the electrical signal is grounded, it is allowed to flow through an alternative route to the ground (literally) where it can do no harm\n- Figure 4.8  The connections of a transistor\n![image](assets/computer-science-intro-007/image-008.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s18:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Constructing Gates"
+      ],
+      "locator_end": 18,
+      "locator_start": 18,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- The easiest gates to create are the NOT, NAND, and NOR gates\n- Figure 4.9  Constructing gates using transistors\n![image](assets/computer-science-intro-007/image-009.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s19:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Circuits"
+      ],
+      "locator_end": 19,
+      "locator_start": 19,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Combinational circuit\n- The input values explicitly determine the output\n- Sequential circuit\n- The output is a function of the input values and the existing state of the circuit\n- We describe the circuit operations using\n  - Boolean expressions\n  - Logic diagrams\n  - Truth tables\n- Are you surprised?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s20:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Combinational Circuits"
+      ],
+      "locator_end": 20,
+      "locator_start": 20,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Gates are combined into circuits by using the output of one gate as the input for another\n![image](assets/computer-science-intro-007/image-010.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s21:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Combinational Circuits"
+      ],
+      "locator_end": 21,
+      "locator_start": 21,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Three inputs require eight rows to describe all possible input combinations\n- This same circuit using a Boolean expression is (AB + AC)\n![image](assets/computer-science-intro-007/image-011.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s22:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Combinational Circuits"
+      ],
+      "locator_end": 22,
+      "locator_start": 22,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Consider the following Boolean expression A(B + C)\n- Does this truth table look familiar?\n- Compare it with previous table\n![image](assets/computer-science-intro-007/image-012.jpg)\n![image](assets/computer-science-intro-007/image-013.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s23:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Combinational Circuits"
+      ],
+      "locator_end": 23,
+      "locator_start": 23,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Circuit equivalence\n- Two circuits that produce the same output for identical input\n- Boolean algebra allows us to apply provable mathematical principles to help design circuits\n- A(B + C) = AB + BC (distributive law) so circuits must be equivalent"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s24:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Properties of Boolean Algebra"
+      ],
+      "locator_end": 24,
+      "locator_start": 24,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n![image](assets/computer-science-intro-007/image-014.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s25:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Adders"
+      ],
+      "locator_end": 25,
+      "locator_start": 25,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- At the digital logic level, addition is performed in binary\n- Addition operations are carried out by special circuits called, appropriately, adders"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s26:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Adders"
+      ],
+      "locator_end": 26,
+      "locator_start": 26,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- The result of adding two binary digits could produce a carry value\n- Recall that 1 + 1 = 10 in base two\n- Half adder\n- A circuit that computes the sum of two bits and produces the correct carry bit\n![image](assets/computer-science-intro-007/image-015.jpg)\n- Truth table"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s27:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Adders"
+      ],
+      "locator_end": 27,
+      "locator_start": 27,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Circuit diagram representing a half adder\n- Boolean expressions\n- sum = A  B\n- carry = AB\n![image](assets/computer-science-intro-007/image-016.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s28:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Adders"
+      ],
+      "locator_end": 28,
+      "locator_start": 28,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Full adder\n- A circuit that takes the carry-in value into account\n- Figure 4.10  A full adder\n![image](assets/computer-science-intro-007/image-017.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s29:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Multiplexers"
+      ],
+      "locator_end": 29,
+      "locator_start": 29,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Multiplexer\n- A circuit that uses a few input control signals to determine which of several output data lines is routed to its output"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s30:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Multiplexers"
+      ],
+      "locator_end": 30,
+      "locator_start": 30,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- The control lines S0, S1, and S2 determine which of eight other input lines\n- (D0 … D7)\n- are routed to the output (F)\n- Figure 4.11  A block diagram of a multiplexer with three select control lines\n![image](assets/computer-science-intro-007/image-018.jpg)\n![image](assets/computer-science-intro-007/image-019.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s31:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Circuits as Memory"
+      ],
+      "locator_end": 31,
+      "locator_start": 31,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Digital circuits can be used to store information\n- These circuits form a sequential circuit, because the output of the circuit is also used as input to the circuit"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s32:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Circuits as Memory"
+      ],
+      "locator_end": 32,
+      "locator_start": 32,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- An S-R latch stores a single binary digit (1 or 0)\n- There are several ways an S-R latch circuit can be designed using various kinds of gates\n![image](assets/computer-science-intro-007/image-020.png)\n- Figure 4.12  An S-R latch"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s33:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Circuits as Memory"
+      ],
+      "locator_end": 33,
+      "locator_start": 33,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- The design of this circuit guarantees that the two outputs X and Y are always complements of each other\n- The value of X at any point in time is considered to be the current state of the circuit\n- Therefore, if X is 1, the circuit is storing a 1; if X is 0, the circuit is storing a 0\n![image](assets/computer-science-intro-007/image-021.png)\n- Figure 4.12  An S-R latch"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s34:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Integrated Circuits"
+      ],
+      "locator_end": 34,
+      "locator_start": 34,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Integrated circuit (also called a chip)\n- A piece of silicon on which multiple gates have been embedded\n- Silicon pieces are mounted on a plastic or ceramic package with pins along the edges that can be soldered onto circuit boards or inserted into appropriate sockets"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s35:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Integrated Circuits"
+      ],
+      "locator_end": 35,
+      "locator_start": 35,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Integrated circuits (IC) are classified by the number of gates contained in them\n![image](assets/computer-science-intro-007/image-022.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s36:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "Integrated Circuits"
+      ],
+      "locator_end": 36,
+      "locator_start": 36,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- Figure 4.13  An SSI chip contains independent NAND gates\n![image](assets/computer-science-intro-007/image-023.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s37:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "CPU Chips"
+      ],
+      "locator_end": 37,
+      "locator_start": 37,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n- The most important integrated circuit in any computer is the Central Processing Unit, or CPU\n- Each CPU chip has a large number of pins through which essentially all communication in a computer system occurs"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-007:s38:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第4章",
+        "作业"
+      ],
+      "locator_end": 38,
+      "locator_start": 38,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "text": "- <number>\n![image](assets/computer-science-intro-007/image-024.jpg)\n- 1:P114 39 43 P115 60\n- 2:思政小论文：通过 Internet进行信息检索，\n- 写一篇综述介绍我国半导体技术发展的历史\n- 和现状，然后和国外的现状进行对比分析，\n- 结合目前中美贸易战中华为公司事件阐述你\n- 的应对方法。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s1:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Chapter 5"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- Computing Components"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s2:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Chapter Goals"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- Read an ad for a computer and understand the jargon\n  - List the components and their function in a von Neumann machine\n  - Describe the fetch-decode-execute cycle of the von Neumann machine\n  - Describe how computer memory is organized and accessed\n- <number>"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s3:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Chapter Goals"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Name and describe different auxiliary storage devices\n- Define three alternative parallel computer configurations\n- Explain the concept of embedded systems and give examples from your own home"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s4:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Computer Components"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Consider the following ad:\n- Insatavialion 640 Laptop\n- Exceptional Performance and Portability\n![image](assets/computer-science-intro-008/image-001.jpg)\n- • Intel® Core™ 2 Duo (2.66GHz/1066Mhz\n- FSB/6MB cache)\n- • 15.6” High Definition (1080p) LED\n- Backlit LCD Display (1366 x 768)\n- • 512MB ATI Mobility Radeon Graphics\n- • Built-in 2.0MP Web Camera\n- • 4GB Shared Dual Channel DDR2 at\n- 800MHz\n- • 500GB SATA Hard Drive at 5400RPM\n- • 8X Slot Load DL DVD+/- RW Drive\n- • 802.11 a/g/n and Bluetooth 3.0\n- • 85 WHr Lithium Ion Battery\n- • (2) USB 2.0, HDMI, 15-pin VGA, Ethernet\n- 10/100/1000, IEEE 1394 Firewire, Express\n- Card, Audio line-in, line-out, mic-in\n- • 14.8W X 1.2H X 10.1D, 5.6 lbs\n- • Microsoft0® Windows 7® Professional\n- • Microsoft® Office Home and Student\n- 2007\n- • 36-Month subscription to McAfee\n- Security Center Anti-virus"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s5:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Computer Components"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- What does all this jargon mean?\n- Intel® Core™ 2 Duo (2.66GHz/1066Mhz\n- FSB/6MB cache)\n- 4GB Shared Dual Channel DDR2 at 800 MHz\n- 500 GB SATA Hard Drive at 5400RPM\n- 15.6” High Definition (1080p) LED Backlit\n- LCD Display (1366 x 768)\n- 8X Slot Load DL DVD+/- RW Drive\n- 14.8”W X 1.2”H X10.1” D, 5.6 lbs.\n- Be patient!\n- If you don't\n- know now, you\n- should know\n- shortly"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s6:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Computer Components (continued)"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- 512 MB ATI Mobility Radeon Graphics\n- 85 WHr Lithium Ion Battery\n- (2) USB 2.0, HDMI, 15-Pin VGA, Ethernet 10/100/1000 IEEE 1394 Firewire, Express Card, Audio line-in, line-out, mic-in\n- Microsoft® Windows 7® Professional\n- Microsoft® Office Home and Student 2007\n- 36-Month subscription to McAfee Security Center Anti-virus\n- <number>"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s7:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Sizes in Perspective"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Admiral Grace Murray Hopper\n  - A coil of wire nearly 1,000 feet long\n    - Distance traveled by an electron along the wire in the space of a microsecond\n  - A short piece of wire\n    - In the space of a nanosecond\n  - A bag containing grains of pepper\n    - In the space of a picosecond"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s8:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Sizes in Perspective"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- What is a hertz?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s9:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Sizes in Perspective"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Intel Processor\n- speed 2.66 GHz\n- SDRAM\n- size 4GB\n- speed 800 MHz\n- 500GB SATA at 5400 RPM\n- Transfer rate 300MB per second\n- Flat screen dot pitch .28mm\n- To which do these\n- apply?\n- Bigger is better\n- Faster is better\n- Smaller is better"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s10:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Stored-Program Concept"
+      ],
+      "locator_end": 10,
+      "locator_start": 10,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Figure 5.1  The von Neumann architecture"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s11:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Memory"
+      ],
+      "locator_end": 11,
+      "locator_start": 11,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- Memory\n- A collection of cells,\n- each with a unique\n- physical address; both\n- addresses and\n- contents are in\n- binary\n![image](assets/computer-science-intro-008/image-004.jpg)\n![image](assets/computer-science-intro-008/image-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s12:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Arithmetic/Logic Unit"
+      ],
+      "locator_end": 12,
+      "locator_start": 12,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Performs basic arithmetic operations such as adding\n- Performs logical operations such as AND, OR, and NOT\n- Most modern ALUs have a small amount of special storage units called registers"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s13:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Input/Output Units"
+      ],
+      "locator_end": 13,
+      "locator_start": 13,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Input Unit\n- A device through which data and programs from\n- the outside world are entered into the computer;\n- Can you name three?\n- Output unit\n- A device through which results stored in the\n- computer memory are made available to the\n- outside world\n- Can you name two?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s14:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Control Unit"
+      ],
+      "locator_end": 14,
+      "locator_start": 14,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Control unit\n- The organizing force in the computer\n- Instruction register (IR)\n- Contains the instruction that is being executed\n- Program counter (PC)\n- Contains the address of the next instruction to be\n- executed\n- Central Processing Unit (CPU)\n- ALU and the control unit called the Central Processing Unit, or CPU"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s15:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Flow of Information"
+      ],
+      "locator_end": 15,
+      "locator_start": 15,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Bus\n- A set of wires that connect all major sections\n- Figure 5.2  Data flow through a von Neumann architecture\n![image](assets/computer-science-intro-008/image-006.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s16:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "The Fetch-Execute Cycle"
+      ],
+      "locator_end": 16,
+      "locator_start": 16,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Fetch the next instruction\n- Decode the instruction\n- Get data if needed\n- Execute the instruction\n- Why is it called a cycle?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s17:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "The Fetch-Execute Cycle"
+      ],
+      "locator_end": 17,
+      "locator_start": 17,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n![image](assets/computer-science-intro-008/image-007.jpg)\n- Figure 5.3  The Fetch-Execute Cycle"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s18:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "RAM and ROM"
+      ],
+      "locator_end": 18,
+      "locator_start": 18,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Random Access Memory (RAM)\n- Memory in which each location can be accessed and changed\n- Read Only Memory (ROM)\n- Memory in which each location can be accessed but not changed\n- RAM is volatile, ROM is not\n- What does volatile mean?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s19:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Secondary Storage Devices"
+      ],
+      "locator_end": 19,
+      "locator_start": 19,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Why is it necessary to have secondary storage devices?\n- Can you name some of these devices?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s20:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Magnetic Tape"
+      ],
+      "locator_end": 20,
+      "locator_start": 20,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- The first truly mass auxiliary storage device was the magnetic tape drive\n- Tape drives have a\n- major problem; can\n- you describe it?\n- Figure 5.4  A magnetic tape\n![image](assets/computer-science-intro-008/image-008.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s21:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Magnetic Disks"
+      ],
+      "locator_end": 21,
+      "locator_start": 21,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- Figure 5.5  The organization of a magnetic disk\n![image](assets/computer-science-intro-008/image-009.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s22:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Magnetic Disks"
+      ],
+      "locator_end": 22,
+      "locator_start": 22,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- History\n- Floppy disks (Why \"floppy\"?)\n- 1970. 8\" in diameter \"\n- late 1970, 5 1/2\"\n- now, 3 1/2\"\n- Zip drives\n- Tracks near center are more densely packed\t\t\t\t\t\t\t\tWhy?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s23:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Magnetic Disks"
+      ],
+      "locator_end": 23,
+      "locator_start": 23,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Seek time\n- Time it takes for read/write head to be over right track\n- Latency\n- Time it takes for sector to be in position\n- Access time\n- Can you define it?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s24:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Magnetic Disks"
+      ],
+      "locator_end": 24,
+      "locator_start": 24,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- 10.18"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s25:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Compact Disks"
+      ],
+      "locator_end": 25,
+      "locator_start": 25,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- CD\n- A compact disk that uses a laser to read information stored optically on a plastic disk; data is evenly distributed around track\n- CD-ROM read-only memory\n- CD-DA digital audio\n- CD-WORM write once, read many\n- RW or RAM both read from and written to\n- DVD\n- Digital Versatile Disk, used  for storing audio and video"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s26:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Flash Drives"
+      ],
+      "locator_end": 26,
+      "locator_start": 26,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Flash Memory\n- Nonvolatile\n- Can be erased and rewritten\n![image](assets/computer-science-intro-008/image-010.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s27:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Touch Screens"
+      ],
+      "locator_end": 27,
+      "locator_start": 27,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Touch screen\n- A computer monitor that can respond to the user, touching the screen with a stylus or finger\n- There are three types\n  - Resistive\n  - Capacitive\n  - Infrared\n  - Surface acoustic wave (SAW)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s28:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Touch Screens"
+      ],
+      "locator_end": 28,
+      "locator_start": 28,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Figure 5.7\n- A touch screen\n![image](assets/computer-science-intro-008/image-011.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s29:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Touch Screens"
+      ],
+      "locator_end": 29,
+      "locator_start": 29,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Resistive touch screen\n- A screen made up of two layers of electrically conductive material\n  - One layer has vertical lines, the other has horizontal lines\n  - When the top layer is pressed, it comes in contact with the second layer which allows electrical current to flow\n  - The specific vertical and horizontal lines that make contact dictate the location on the screen that was touched"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s30:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Touch Screens"
+      ],
+      "locator_end": 30,
+      "locator_start": 30,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Capacitive touch screen\n- A screen made up of a laminate applied over a glass screen\n  - Laminate conducts electricity in all directions; a very small current is applied equally on the four corners\n  - When the screen is touched, current flows to the finger or stylus\n  - The location of the touch on the screen is determined by comparing how strong the flow of electricity is from each corner"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s31:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Touch Screens"
+      ],
+      "locator_end": 31,
+      "locator_start": 31,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Infrared touch screen\n- A screen with crisscrossing horizontal and vertical beams of infrared light\n  - Sensors on opposite sides of the screen detect the beams\n  - When the user breaks the beams by touching the screen, the location of the break can be determined"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s32:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Touch Screens"
+      ],
+      "locator_end": 32,
+      "locator_start": 32,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Surface acoustic wave (SAW)\n- A screen  with crisscrossing high frequency sound waves across the horizontal and vertical axes\n  - When a finger touches the surface, corresponding sensors detect the interruption and determine location of the touch"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s33:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Synchronous processing"
+      ],
+      "locator_end": 33,
+      "locator_start": 33,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- One approach to parallelism is to have multiple processors apply the same program to multiple data sets\n- Figure 5.8  Processors in a synchronous computing environment\n![image](assets/computer-science-intro-008/image-012.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s34:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Pipelining"
+      ],
+      "locator_end": 34,
+      "locator_start": 34,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Arranges processors in tandem, where each processor contributes one part to an overall computation\n- Figure 5.9  Processors in a pipeline\n![image](assets/computer-science-intro-008/image-013.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s35:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Shared Memory"
+      ],
+      "locator_end": 35,
+      "locator_start": 35,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "Parallel Processor\n\n- <number>\n![image](assets/computer-science-intro-008/image-014.jpg)\n- Communicate through shared memory\n- Figure 5.10  Shared memory configuration of processors"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s36:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "Embedded Systems"
+      ],
+      "locator_end": 36,
+      "locator_start": 36,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- Embedded systems\n- Computers that are dedicated to perform\n- a narrow range of functions as part of a\n- larger system\n- Empty your pockets or backpacks.\n- How many embedded systems do you \t\t\thave?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s37:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "思政：中国超级计算机"
+      ],
+      "locator_end": 37,
+      "locator_start": 37,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n- 国防科技大学计算机研究所——银河系列\n- 中科院计算技术研究所—曙光系列\n- 国家并行计算机工程技术中心——神威系列"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-008:s38:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第5章",
+        "作业"
+      ],
+      "locator_end": 38,
+      "locator_start": 38,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "text": "- <number>\n![image](assets/computer-science-intro-008/image-015.jpg)\n- 1:P146 30 32 37 38 39 P147 62\n- 2:思政小论文：通过 Internet进行信息检索，\n- 写一篇综述介绍我国高性能计算机体系架构的发展。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s1:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Low-Level Programming Languages and Pseudocode"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- Chapter 6"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s2:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Chapter Goals"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- List the operations that a computer can perform\n- Distinguish between machine language and assembly language\n- Describe the pseudocode constructs used in expressing an algorithm"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s3:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Chapter Goals"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Use pseudocode to express an algorithm\n- Describe two approaches to testing\n- Design and implement a test plan for a  simple assembly-language program"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s4:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Computer Operations"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Computer\n- A programmable electronic device that can store, retrieve, and process data\n- Data and instructions to manipulate the data are logically the same and can be stored in the same place\n- What operations can a computer execute?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s5:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Machine Language"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Machine language\n- The language made up of binary coded instructions built into the hardware of a particular computer and used directly by the computer\n- Why would anyone choose to use machine language?\n- (Hint: they had no choice. Why?)\n- Why would anyone choose to use machine language?\n- (Hint: they had no choice.  Why?)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s6:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Machine Language"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Characteristics of machine language:\n  - Every processor type has its own set of specific machine instructions\n  - The relationship between the processor and the instructions it can carry out is completely integrated\n  - Each machine-language instruction does only one very low-level task"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s7:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Assembly Language"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Assembly language\n- A language that uses mnemonic codes to represent machine-language instructions\n- Assembler\n- A program  that reads each of the instructions in mnemonic form and translates it into the machine-language equivalent"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s8:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Pep/8 Assembly Language"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Remember\n- the\n- difference\n- between\n- immediate\n- and\n- direct\n- addressing?\n- i : immediate\n- d: direct"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s9:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Assembly Process"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n![image](assets/computer-science-intro-009/image-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s10:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Pseudocode"
+      ],
+      "locator_end": 10,
+      "locator_start": 10,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Pseudocode\n- A mixture of English and formatting to make the steps in an algorithm explicit\n- Algorithm to Convert base-10 number to other bases\n- While (the quotient is not zero)\n- Divide the decimal number by the new base\n- Make the remainder the next digit to the left in the answer\n- Replace the original decimal number with the quotient"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s11:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Developing an Algorithm"
+      ],
+      "locator_end": 11,
+      "locator_start": 11,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Two methodologies used to develop computer solutions to a problem\n  - Top-down design focuses on the tasks to be done\n  - Object-oriented design focuses on the data involved in the solution\n- But first, let's look at a way to express algorithms: pseudocode"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s12:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Pseudocode"
+      ],
+      "locator_end": 12,
+      "locator_start": 12,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Pseudocode\n- A way of expressing algorithms that uses a mixture of English phrases and indention to make the steps in the solution explicit\n- There are no grammar rules in pseudocode\n- Pseudocode is not case sensitive"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s13:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Following Pseudocode"
+      ],
+      "locator_end": 13,
+      "locator_start": 13,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- What is 93 in base 8?\n- 93/8 gives 11 remainder 5\n- 11/8 gives 1 remainder 3\n- 1/ 8 gives 0 remainder 1\n- answer       1 3 5\n- While (the quotient is not zero)\n- Divide the decimal number by the new base\n- Make the remainder the next digit to the left in the answer\n- Replace the original decimal number with"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s14:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Following Pseudocode"
+      ],
+      "locator_end": 14,
+      "locator_start": 14,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n![image](assets/computer-science-intro-009/image-003.jpg)\n- Easier way to organize solution"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s15:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Pseudocode for Complete Computer Solution"
+      ],
+      "locator_end": 15,
+      "locator_start": 15,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Write \"Enter the new base\"\n- Read newBase\n- Write \"Enter the number to be converted\"\n- Read decimalNumber\n- Set quotient to 1\n- WHILE (quotient is not zero)\n- Set quotient to decimalNumber DIV newBase\n- Set remainder to decimalNumber REM newBase\n- Make the remainder the next digit to the left in the answer\n- Set decimalNumber to quotient\n- Write \"The answer is \"\n- Write answer"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s17:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Pseudocode Functionality"
+      ],
+      "locator_end": 17,
+      "locator_start": 17,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Variables\n- Names of places to store values\n- quotient, decimalNumber, newBase\n- Assignment\n- Storing the value of an expression into a\n- variable\n- Set quotient to 64\n- quotient <-- 64\n- quotient <-- 6 * 10 + 4"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s18:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Pseudocode Functionality"
+      ],
+      "locator_end": 18,
+      "locator_start": 18,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Output\n- Printing a value on  an output device\n- Write, Print\n- Input\n- Getting values from the outside word and storing them into variables\n- Get, Read"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s19:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Pseudocode Functionality"
+      ],
+      "locator_end": 19,
+      "locator_start": 19,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Repetition\n- Repeating a series of statements\n- Set count to 1\n- WHILE ( count < 10)\n- Write \"Enter an integer number\"\n- Read aNumber\n- Write \"You entered \" + aNumber\n- Set count to count + 1\n- How many values were read?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s20:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Pseudocode Functionality"
+      ],
+      "locator_end": 20,
+      "locator_start": 20,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Selection\n- Making a choice to execute or skip a statement (or group of statements)\n- Read number\n- IF (number < 0)\n- Write number + \" is less than zero.\"\n- or\n- Write \"Enter a positive number.\"\n- Read number\n- IF(number < 0)\n- Write number + \" is less than zero.\"\n- Write \"You didn't follow instructions.\""
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s21:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Pseudocode Functionality"
+      ],
+      "locator_end": 21,
+      "locator_start": 21,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Selection\n- Choose to execute one statement (or group of statements) or another statement (or group of statements)\n- IF ( age < 12 )\n- Write \"Pay children's rate\"\n- Write \"You get a free box of popcorn\"\n- ELSE IF ( age < 65 )\n- Write \"Pay regular rate\"\n- ELSE\n- Write \"Pay senior citizens rate\""
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s22:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Pseudocode Example"
+      ],
+      "locator_end": 22,
+      "locator_start": 22,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Problem: Read in pairs of positive numbers and print each pair in order.\n- WHILE (not done)\n- Write \"Enter two values separated by blanks\"\n- Read number1\n- Read number2\n- Print them in order"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s23:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Pseudocode Example"
+      ],
+      "locator_end": 23,
+      "locator_start": 23,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- How do we know when to stop?\n- Let the user tell us how many\n- Print them in order?\n- If first number is smaller\n- print first, then second\n- If first number if larger\n- print second, then first"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s24:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Pseudocode Example"
+      ],
+      "locator_end": 24,
+      "locator_start": 24,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Write \"How many pairs of values are to be entered?\"\n- Read numberOfPairs\n- Set numberRead to 0\n- WHILE (numberRead < numberOfPairs)\n- Write \"Enter two values separated by a blank; press return\"\n- Read number1\n- Read number2\n- IF(number1 < number2)\n- Print number1 + \" \" + number2\n- ELSE\n- Print number2 + \" \" number1\n- Increment numberRead"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s25:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Walk Through"
+      ],
+      "locator_end": 25,
+      "locator_start": 25,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Data\t\tFill in values during each iteration\n- 3\t\t\tnumberRead\tnumber1\t\tnumber2\n- 55 70\n- 2 1\n- 33 33\n- numberOfPairs\n- What is the output?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s26:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Translating Pseudocode"
+      ],
+      "locator_end": 26,
+      "locator_start": 26,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- To What?\n- Assembly language\n- Very detailed and time consuming\n- High-level language\n- Easy as you'll see in Chapter 9"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s27:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Testing"
+      ],
+      "locator_end": 27,
+      "locator_start": 27,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Test plan\n- A document that specifies how many times and with what data the program must be run in order to thoroughly test it\n- Code coverage (clear-box testing)\n- An approach that designs test cases by looking at\n- the code\n- Data coverage (black-box testing)\n- An approach that designs test cases by looking at the allowable data values"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s28:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Testing"
+      ],
+      "locator_end": 28,
+      "locator_start": 28,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n- Test plan implementation\n- Using the test cases outlined in the test plan to verify that the program outputs the predicted results"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s29:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Important Threads"
+      ],
+      "locator_end": 29,
+      "locator_start": 29,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- Operations of a Computer\n- Computer can store, retrieve, and process data\n- Computer’s Machine Language\n- A set of instructions the machine’s hardware is built to recognize and execute\n- Machine-language Programs\n- Written by entering a series of these instructions in binary form\n- <number>"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s30:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "Important Threads"
+      ],
+      "locator_end": 30,
+      "locator_start": 30,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- Pseudocode\n- Shorthand-type language people use to express algorithms\n- Testing Programs\n- All programs must be tested; code coverage testing and data coverage (black-box testing) are two common approaches\n- <number>"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-009:s31:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第6章",
+        "作业"
+      ],
+      "locator_end": 31,
+      "locator_start": 31,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "text": "- <number>\n![image](assets/computer-science-intro-009/image-004.jpg)\n- 1:P192 55"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s1:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Chapter 7"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- Problem Solving and Algorithms\n\n> 备注：Change cover and background"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s2:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Chapter Goals"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Describe the computer problem-solving process and relate it to Polya’s How to Solve It list\n- Distinguish between a simple type and a composite type\n- Describe two composite data-structuring mechanisms\n- Recognize a recursive problem and write a recursive algorithm to solve it\n- Distinguish between an unsorted array and a sorted array\n- Distinguish between a selection sort and an insertion sort"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s3:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Chapter Goals"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Apply the selection sort, the bubble sort to an array of items by hand\n- Apply the binary search algorithm\n- Demonstrate an understanding of the algorithms in this chapter by hand-simulating them with a sequence of items"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s4:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Problem Solving"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Problem solving\n- The act of finding a solution to a perplexing, distressing, vexing, or unsettled question\n- How do you define problem solving?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s5:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Problem Solving"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- How to Solve It: A New Aspect of Mathematical Method by George Polya\n- \"How to solve it list\" written within the context of mathematical problems\n- But list is quite general\n- We can use it to solve computer\n- related problems!"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s6:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Problem Solving"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- How do you solve problems?\n- Understand the problem\n- Devise a plan\n- Carry out the plan\n- Look back"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s7:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Strategies"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Ask questions!\n  - What do I know about the problem?\n  - What is the information that I have to process in order the find the solution?\n  - What does the solution look like?\n  - What sort of special cases exist?\n  - How will I recognize that I have found the solution?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s8:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Strategies"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Ask questions! Never reinvent the wheel!\n- Similar problems come up again and again in different guises\n- A good programmer recognizes a task or subtask that has been solved before and plugs in the solution\n- Can you think of two similar problems?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s9:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Strategies"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Divide and Conquer!\n- Break up a large problem into smaller units and solve each smaller problem\n  - Applies the concept of abstraction\n  - The divide-and-conquer approach can be applied over and over again until each subtask is manageable"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s10:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Computer Problem-Solving"
+      ],
+      "locator_end": 10,
+      "locator_start": 10,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Analysis and Specification Phase\n- Analyze\n- Specification\n- Algorithm Development Phase\n- Develop algorithm\n- Test algorithm\n- Implementation Phase\n- Code algorithm\n- Test algorithm\n- Maintenance Phase\n- Use\n- Maintain\n- Can you\n- name\n- a recurring\n- theme?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s11:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Phase Interactions"
+      ],
+      "locator_end": 11,
+      "locator_start": 11,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n![image](assets/computer-science-intro-010/image-001.jpg)\n- Should we\n- add another\n- arrow?\n- (What happens\n- if the problem\n- is revised?)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s12:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Algorithms"
+      ],
+      "locator_end": 12,
+      "locator_start": 12,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Algorithm\n- A set of unambiguous instructions for solving a problem or subproblem in a finite amount of time using a finite amount of data\n- Abstract Step\n- An algorithmic step containing unspecified details\n- Concrete Step\n- An algorithm step in which all details are specified"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s13:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Developing an Algorithm"
+      ],
+      "locator_end": 13,
+      "locator_start": 13,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Two methodologies used to develop computer solutions to a problem\n  - Top-down design focuses on the tasks to be done\n  - Object-oriented design focuses on the data involved in the solution (We will discuss this design in Ch. 9)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s14:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Summary of Methodology"
+      ],
+      "locator_end": 14,
+      "locator_start": 14,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Analyze the Problem\n  - Understand the problem!!\n  - Develop a plan of attack\n- List the Main Tasks (becomes Main Module)\n  - Restate problem as a list of tasks (modules)\n  - Give each task a name\n- Write the Remaining Modules\n  - Restate each abstract module as a list of tasks\n  - Give each task a name\n- Re-sequence and Revise as Necessary\n  - Process ends when all steps (modules) are concrete"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s15:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Top-Down Design"
+      ],
+      "locator_end": 15,
+      "locator_start": 15,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Process continues for as many levels as it takes to make every step concrete\n- Name of (sub)problem at one level becomes a module at next lower level\n![image](assets/computer-science-intro-010/image-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s16:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Control Structures"
+      ],
+      "locator_end": 16,
+      "locator_start": 16,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Control structure\n- An instruction that determines the order in which other instructions in a program are executed\n- Can you name the ones we defined in the functionality of pseudocode?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s17:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Selection Statements"
+      ],
+      "locator_end": 17,
+      "locator_start": 17,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Flow of control of if statement\n![image](assets/computer-science-intro-010/image-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s18:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Algorithm with Selection"
+      ],
+      "locator_end": 18,
+      "locator_start": 18,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Problem: Write the appropriate dress for a given temperature.\n- Write \"Enter  temperature\"\n- Read temperature\n- Determine Dress\n- Which statements are concrete?\n- Which statements are abstract?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s19:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Algorithm with Selection"
+      ],
+      "locator_end": 19,
+      "locator_start": 19,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- IF (temperature > 90)\n- Write “Texas weather: wear shorts”\n- ELSE IF (temperature > 70)\n- Write “Ideal weather: short sleeves are fine”\n- ELSE IF (temperature > 50)\n- Write “A little chilly: wear a light jacket”\n- ELSE IF (temperature > 32)\n- Write “Philadelphia weather: wear a heavy coat”\n- ELSE\n- Write “Stay inside”\n- Determine Dress"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s20:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Looping Statements"
+      ],
+      "locator_end": 20,
+      "locator_start": 20,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n![image](assets/computer-science-intro-010/image-004.jpg)\n- Flow of control of while statement"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s21:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Looping Statements"
+      ],
+      "locator_end": 21,
+      "locator_start": 21,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Set sum to 0\n- Set count to 1\n- While (count <= limit)\n- Read number\n- Set sum to sum + number\n- Increment count\n- Write \"Sum is \" + sum\n- Why is it\n- called a\n- count-controlled\n- loop?\n- A count-controlled loop"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s22:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Looping Statements"
+      ],
+      "locator_end": 22,
+      "locator_start": 22,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Set sum to 0\n- Set allPositive to true\n- WHILE (allPositive)\n- Read number\n- IF (number > 0)\n- Set sum to sum + number\n- ELSE\n- Set allPositive to false\n- Write \"Sum is \" + sum\n- Why is it\n- called an\n- event-controlled\n- loop?\n- What is the\n- event?\n- An event-controlled loop"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s23:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Looping Statements"
+      ],
+      "locator_end": 23,
+      "locator_start": 23,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Read in square\n- Calculate the square root\n- Write out square and the square root\n- Calculate Square Root\n- Are there any abstract steps?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s24:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Looping Statements"
+      ],
+      "locator_end": 24,
+      "locator_start": 24,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Set epsilon to 1\n- WHILE  (epsilon > 0.001)\n- Calculate new guess\n- Set epsilon to abs(square - guess * guess)\n- Are there any abstract steps?\n- Calculate Square Root"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s25:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Looping Statements"
+      ],
+      "locator_end": 25,
+      "locator_start": 25,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Set newGuess to\n- (guess + (square/guess)) / 2.0\n- Are there any abstract steps?\n- Calculate New Guess"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s26:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Looping Statements"
+      ],
+      "locator_end": 26,
+      "locator_start": 26,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Read in square\n- Set guess to square/4\n- Set epsilon to 1\n- WHILE  (epsilon > 0.001)\n- Calculate new guess\n- Set epsilon to abs(square - guess * guess)\n- Write out square and the guess"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s27:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Composite Data Types"
+      ],
+      "locator_end": 27,
+      "locator_start": 27,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Records\n- A named heterogeneous collection of items in which individual items are accessed by name. For example, we could bundle name, age and hourly wage items into a record named Employee\n- Arrays\n- A named homogeneous collection of items in which an individual item is accessed by its position (index) within the collection"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s28:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Composite Data Types"
+      ],
+      "locator_end": 28,
+      "locator_start": 28,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- Employee\n- name\n- age\n- hourly/Wage\n- Following algorithm, stores values into the fields of record:\n- Employee employee         // Declare and Employee variable\n- Set employee.name to “Frank Jones”\n- Set employee.age to 32\n- Set employee.hourlyWage to 27.50\n- <number>"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s29:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Composite Data Types"
+      ],
+      "locator_end": 29,
+      "locator_start": 29,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- numbers[0]\n- numbers[4]\n![image](assets/computer-science-intro-010/image-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s30:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Arrays"
+      ],
+      "locator_end": 30,
+      "locator_start": 30,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- As data is being read into an array, a counter is updated so that we always know how many data items were stored\n- If the array is called list, we are working with\n- list[0] to list[length-1]\tor\n- list[0]..list[length-1]\n- <number>"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s31:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "An Unsorted Array"
+      ],
+      "locator_end": 31,
+      "locator_start": 31,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n![image](assets/computer-science-intro-010/image-006.png)\n- data[0]...data[length-1]\n- is of interest"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s32:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Composite Data Types"
+      ],
+      "locator_end": 32,
+      "locator_start": 32,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- integer data[20]\n- Write “How many values?”\n- Read length\n- Set index to 0\n- WHILE (index < length)\n- Read data[index]\n- Set index to index + 1\n- Fill array numbers with limit values"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s33:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Sequential Search of an Unsorted Array"
+      ],
+      "locator_end": 33,
+      "locator_start": 33,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- A sequential search examines each item in turn and compares it to the one we are searching.\n- If it matches, we have found the item. If not, we look at the next item in the array.\n- We stop either when we have found the item or when we have looked at all the items and not found a match\n- Thus, a loop with two ending conditions\n- <number>"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s34:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Sequential Search Algorithm"
+      ],
+      "locator_end": 34,
+      "locator_start": 34,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- Set Position to 0\n- Set found to FALSE\n- WHILE (position < length AND NOT found )\n- IF (numbers [position] equals searchitem)\n- Set Found to TRUE\n- ELSE\n- Set position to position + 1\n- <number>"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s35:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Booleans"
+      ],
+      "locator_end": 35,
+      "locator_start": 35,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Boolean Operators\n- A Boolean variable is a location in memory that can contain either true or false\n- Boolean operator AND returns TRUE if both operands are true and FALSE otherwise\n- Boolean operator OR returns TRUE if either operand is true and FALSE otherwise\n- Boolean operator NOT returns TRUE if its operand is false and FALSE if its operand is true"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s36:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Sorted Arrays"
+      ],
+      "locator_end": 36,
+      "locator_start": 36,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- The values stored in an array have unique keys of a type for which the relational operators are defined\n- Sorting rearranges the elements into either ascending or descending order within the array\n- A sorted array is one in which the elements are in order"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s37:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Sequential Search in a Sorted Array"
+      ],
+      "locator_end": 37,
+      "locator_start": 37,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- If items in an array are sorted, we can stop looking when we pass the place where the item would be it were present in the array\n- <number>\n- Is this better?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s38:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "A Sorted Array"
+      ],
+      "locator_end": 38,
+      "locator_start": 38,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n![image](assets/computer-science-intro-010/image-007.png)\n- A sorted array of\n- integers"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s39:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "A Sorted Array"
+      ],
+      "locator_end": 39,
+      "locator_start": 39,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Read in array of values\n- Write “Enter value for which to search”\n- Read searchItem\n- Set found to TRUE if searchItem is there\n- IF (found)\n- Write “Item is found”\n- ELSE\n- Write “Item is not found”"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s40:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "A Sorted Array"
+      ],
+      "locator_end": 40,
+      "locator_start": 40,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Set found to TRUE if searchItem is there\n- Set index to 0\n- Set found to FALSE\n- WHILE (index < length AND NOT found)\n- IF (data[index] equals searchItem)\n- Set found to TRUE\n- ELSE IF (data[index] > searchItem)\n- Set index to length\n- ELSE\n- Set index to index + 1"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s41:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Binary Search"
+      ],
+      "locator_end": 41,
+      "locator_start": 41,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Sequential search\n- Search begins at the beginning of the list and continues until the item is found or the entire list has been searched\n- Binary search (list must be sorted)\n- Search begins at the middle and finds the item or eliminates half of the unexamined items; process is repeated on the half where the item might be\n- Say that again…"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s42:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Binary Search"
+      ],
+      "locator_end": 42,
+      "locator_start": 42,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Set first to 0\n- Set last to length-1\n- Set found to FALSE\n- WHILE (first <= last AND NOT found)\n- Set middle to (first + last)/ 2\n- IF (item equals data[middle]))\n- Set found to TRUE\n- ELSE\n- IF (item < data[middle])\n- Set last to middle – 1\n- ELSE\n- Set first to middle + 1\n- RETURN found"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s43:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Binary Search"
+      ],
+      "locator_end": 43,
+      "locator_start": 43,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n![image](assets/computer-science-intro-010/image-008.png)\n- Figure 7.10  Trace of the binary search"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s44:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Binary Search"
+      ],
+      "locator_end": 44,
+      "locator_start": 44,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Table 7.1 Average Number of Comparisons\n- Is a binary search\n- always better?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s45:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Sorting"
+      ],
+      "locator_end": 45,
+      "locator_start": 45,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Sorting\n- Arranging items in a collection so that there is an ordering on one (or more) of the fields in the items\n- Sort Key\n- The field (or fields) on which the ordering is based\n- Sorting algorithms\n- Algorithms that order the items in the collection based on the sort key\n- Why is sorting important?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s46:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Selection Sort"
+      ],
+      "locator_end": 46,
+      "locator_start": 46,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Given a list of names, put them in alphabetical order\n  - Find the name that comes first in the alphabet, and write it on a second sheet of paper\n  - Cross out the name off the original list\n  - Continue this cycle until all the names on the original list have been crossed out and written onto the second list, at which point the second list contains the same items but in sorted order"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s47:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Selection Sort"
+      ],
+      "locator_end": 47,
+      "locator_start": 47,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- A slight adjustment to this manual approach does away with the need to duplicate space\n  - As you cross a name off the original list, a free space opens up\n  - Instead of writing the value found on a second list, exchange it with the value currently in the position where the crossed-off item should go"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s48:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Selection Sort"
+      ],
+      "locator_end": 48,
+      "locator_start": 48,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n![image](assets/computer-science-intro-010/image-011.png)\n- Figure 7.11  Example of a selection sort (sorted elements are shaded)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s49:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Selection Sort"
+      ],
+      "locator_end": 49,
+      "locator_start": 49,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Selection Sort\n- Set firstUnsorted to 0\n- WHILE (not sorted yet)\n- Find smallest unsorted item\n- Swap firstUnsorted item with the smallest\n- Set firstUnsorted to firstUnsorted + 1\n- Not sorted yet\n- current < length – 1"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s50:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Selection Sort"
+      ],
+      "locator_end": 50,
+      "locator_start": 50,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Find smallest unsorted item\n- Set indexOfSmallest to firstUnsorted\n- Set index to firstUnsorted + 1\n- WHILE (index <= length – 1)\n- IF (data[index] < data[indexOfSmallest])\n- Set indexOfSmallest to index\n- Set index to index + 1\n- Set index to indexOfSmallest"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s51:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Selection Sort"
+      ],
+      "locator_end": 51,
+      "locator_start": 51,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Swap firstUnsorted with smallest\n- Set tempItem to data[firstUnsorted]\n- Set data[firstUnsorted] to data[indexOfSmallest]\n- Set data[indexOfSmallest] to tempItem"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s52:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Bubble Sort"
+      ],
+      "locator_end": 52,
+      "locator_start": 52,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Bubble Sort uses the same strategy:\n- Find the next item\n- Put it into its proper place\n- But uses a different scheme for finding the next item\n- Starting with the last list element, compare successive pairs of elements, swapping whenever the bottom element of the pair is smaller than the one above it"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s53:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Bubble Sort"
+      ],
+      "locator_end": 53,
+      "locator_start": 53,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s54:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Bubble Sort"
+      ],
+      "locator_end": 54,
+      "locator_start": 54,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Bubble sort is very slow!\n- Can you see a way to make it faster?\n- Under what circumstances is bubble\n- sort fast?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s55:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Bubble Sort"
+      ],
+      "locator_end": 55,
+      "locator_start": 55,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Bubble Sort\n- Set firstUnsorted to 0\n- Set index to firstUnsorted + 1\n- Set swap to TRUE\n- WHILE (index < length AND swap)\n- Set swap to FALSE\n- “Bubble up” the smallest item in unsorted part\n- Set firstUnsorted to firstUnsorted + 1"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s56:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Bubble Sort"
+      ],
+      "locator_end": 56,
+      "locator_start": 56,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Bubble up\n- Set index to length – 1\n- WHILE (index > firstUnsorted + 1)\n- IF (data[index] < data[index – 1])\n- Swap data[index] and data[index – 1]\n- Set swap to TRUE\n- Set index to index - 1"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s57:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Subprogram Statements"
+      ],
+      "locator_end": 57,
+      "locator_start": 57,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- We can give a section of code a name and use that name as a statement in another part of the program\n- When the name is encountered, the processing in the other part of the program halts while the named code is executed\n- Remember?"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s58:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Subprogram Statements"
+      ],
+      "locator_end": 58,
+      "locator_start": 58,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- What if the subprogram needs data from the calling unit?\n- Parameters\n- Identifiers listed in parentheses beside the subprogram declaration; sometimes called formal parameters\n- Arguments\n- Identifiers listed in parentheses on the subprogram call; sometimes called actual parameters"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s59:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Subprogram Statements"
+      ],
+      "locator_end": 59,
+      "locator_start": 59,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n![image](assets/computer-science-intro-010/image-013.png)\n- Figure 7.14  Subprogram flow of control"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s60:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Subprogram Statements"
+      ],
+      "locator_end": 60,
+      "locator_start": 60,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n![image](assets/computer-science-intro-010/image-014.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s61:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Recursion"
+      ],
+      "locator_end": 61,
+      "locator_start": 61,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Recursion\n- The ability of a subprogram to call itself\n- Base case\n- The case to which we have an answer\n- General case\n- The case that expresses the solution in terms of a call to itself with a smaller version of the problem"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s62:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Recursion"
+      ],
+      "locator_end": 62,
+      "locator_start": 62,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- For example, the factorial of a number is defined as the number times the product of all the numbers between itself and 0:\n- N! = N * (N  1)!\n- Base case\n- Factorial(0) = 1 (0! is 1)\n- General Case\n- Factorial(N) = N * Factorial(N-1)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s63:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Recursion"
+      ],
+      "locator_end": 63,
+      "locator_start": 63,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Write “Enter n”\n- Read n\n- Set result to Factorial(n)\n- Write result + “ is the factorial of “ + n\n- Factorial(n)\n- IF (n equals 0)\n- RETURN 1\n- ELSE\n- RETURN n * Factorial(n-1)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s64:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Recursion"
+      ],
+      "locator_end": 64,
+      "locator_start": 64,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- BinarySearch (first, last)\n- IF (first > last)\n- RETURN FALSE\n- ELSE\n- Set middle to (first + last)/ 2\n- IF (item equals data[middle])\n- RETURN TRUE\n- ELSE\n- IF (item < data[middle])\n- BinarySearch (first, middle – 1)\n- ELSE\n- BinarySearch (middle + 1, last"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s65:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Important Threads"
+      ],
+      "locator_end": 65,
+      "locator_start": 65,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n- Information Hiding\n- The practice of hiding the details of a module with the goal of controlling access to it\n- Abstraction\n- A model of a complex system that includes only the details essential to the viewer\n- Information Hiding and Abstraction are two sides of the same coin"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s66:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "Important Threads"
+      ],
+      "locator_end": 66,
+      "locator_start": 66,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n  - Data abstraction\n  - Separation of the logical view of data from their implementation\n  - Procedural abstraction\n  - Separation of the logical view of actions from their implementation\n  - Control abstraction\n  - Separation of the logical view of a control structure from its implementation"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-010:s67:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "第7章",
+        "作业"
+      ],
+      "locator_end": 67,
+      "locator_start": 67,
+      "locator_type": "slide",
+      "question_id": null,
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "text": "- <number>\n![image](assets/computer-science-intro-010/image-015.jpg)\n- 用伪码语言设计和描述顺序查询，二分查询，\n- 选择排序，冒泡排序算法。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-011:h-计算机科学概论:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "计算机科学概论"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "computer-science-intro-011",
+      "source_title": "计算机科学概论",
+      "text": "中国计算机软硬件发展历史\n\n软件发展史：三轮跨越，从固定桌面到移动，从封闭到开源\n\n中国由于建国时期处于优先发展重工业阶段，因此对于轻工业高科技IT行业起步较晚，而纵使起步虽晚，却在近五十年间弯道超车，实现软件的飞跃。\n\n以下载类软件为例，上世纪八十年代，中国软件下载器（HTTP下载）催生了计划下载技术，在当时的条件下，成功推开了下载器大门。紧接着，如同上课对于早期计算机更迭所适用的**摩尔定律**一般，十年之后，1999年网络快车（MHT下载）又一次将市场洗盘，并顺理成章成了国内第一款打下全球市场的中国软件。又是十年之后，2011年互联网基础建设的进步，让中心化服务器的存储和带宽不成问题，网盘开始崛起，市场再次充满活力与无限可能。\n\n个人以为，中国计算机软件历史基本上都经历了三代演变，即80年代后期初步形成雏形，90年代后期基本建成体系，00年代后期跻身世界领先水平。\n\n硬件发展史：四代风雨征程，甲子见证奇迹\n\n早在1947～1948年，华罗庚教授心里已经开始盘算着回国后也要在中国开展电子计算机的研制工作。他回国后从清华大学电机系物色了闵乃大、夏培肃和王传英三位科研人员在他任所长的中国科学院数学所内建立了中国第一个电子计算机科研小组任务就是要设计和研制中国自己的电子计算机。毛主席和周总理深谋远虑，十分赞同。终于在那个独特的历史年代里，闵大可教授率队赴苏考察，得到了弯道超车的机会。根据苏联提供的M-3机设计图纸局部修改，在专家的指导下，中科院计算所完成了我国第一台小型电脑的建设，后改名为103型计算机，运算速度只有每秒几十次，后来安装了自行研制的磁心存储器**（从上课内容不难发现其实中国计算机似乎并没有经历magnet** **drum** **的时期，似乎中国电子计算机研制起步比美国整整晚一代）**，将速度提升到3000次每秒。而我国在研制第一代电子管计算机的同时，已开始研制晶体管计算机，并于1965年研制成功的我国第一台大型晶体管计算机。但由于**文革**等历史原因，1977年4月，清华大学方研制成功我国第一台微型四代计算机。**改革开放**后，计算机发展可谓是百花齐放，终于在新时代赶上国际潮流。\n\n总的来讲，中国计算机硬件经历了四代发展，而我们的研制水平与国外的差距在逐步缩小。包括本人现在使用的联想Y9000P，都足以证明中国计算机软硬件其实已经与国际接轨，作为新一代IT人员，我们应接过前辈的接力棒，迎心积力再进发，为建设大国IT付出不懈努力！"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-012:h-计算机科学概论:c01",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "计算机科学概论"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "computer-science-intro-012",
+      "source_title": "计算机科学概论",
+      "text": "**Chapter 1（概念）**\n\nComputer system: Computer hardware, software, data which  interact  to solve the problem.\n\nHardware: The  physical  elements of a computing system (printer, circuit boards, wires, keyboard…)【物理】\n\nSoftware:  The programs that provide the  instructions  for a computer to execute.【指令集合】\n\nAbstraction(抽象):  A mental model  that removes complex details.【心理模型】\n\n**Chapter 2（概念、进制转换）**\n\nIntegers(整数):  A natural number,  a negative of a natural number, zero\n\nRational Numbers(有理数): An integer or the  quotient(商) of two integers.\n\nBase(基数): It determines the number of digits and the value of  digit positions(使用的数字量和数位位置的值).\n\nPositional notation(位置记数法):(数字连续排列的表示系统，每个位置都有位值，数字为每个数字乘以位值的乘积之和)\n\n进制转换：Binary(二进制) Decimal(十进制) Octal(八进制) Hexadecimal(十六进制)\n\nIn base n = n进制(以n为基数)（XX 进制 places)[保留小数点后几位]\n\n十进制转二进制小数：0.XXX（X=0,1),小数×2，有一提出一，无一0补位。\n\n**Chapter 3（概念、补码、数据压缩）**\n\n多媒体压缩及压缩算法：\n1. 算法分为无损、有损两种\n1. 图像：二皆有之\n1. 音频：有损（MP3 AAC）\n1. 视频：有损（VP9 AV1）\n1. 文本：无损（UTF-8，ASCII）\n1. 三维模型：有损（STL OBJ）\n1. 总之就是文本和部分图片无损。\n\nCompression ratio(压缩比): (压缩数据的大小除以原始数据的大小).\n\nComplement(补码): Ten’s complement(十进制补码) Two’s complement(二进制补码)\n\ne.g.1-49表示1~49 50-99表示-50~-1  0表示0\n\ne.g.01111111表示127\n\n10000000表示-128"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-012:h-计算机科学概论:c02",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "计算机科学概论"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "computer-science-intro-012",
+      "source_title": "计算机科学概论",
+      "text": "补码->十进位：即首数为0直接算，首数为1后调换再-1.\n\nOverflow(溢出):  如八位二进制补码若要表示128则溢出,需扩充一位或只表示正数\n\nScientific notation(科学计数法): e.g.0.12000 -> 12000E-5\n\nASCII: 0->48 A->65 a->97\n\nText compression:\n1. Keyword encoding（关键字编码）：quickly\n1. Run-length encoding（游程编码）\n\ne.g. Original text\n\nbbbbbbbbjjjkllqqqqqq+++++\n\nEncoded text\n\n*b8jjjkll*q6*+5\n\n长度为1、2、3的不必压缩,*字符数字空格都算空间。\n1. Huffman encoding（霍夫曼编码）\n\n原字母一般都为8字节，将对应字母编码\n\nColor(RGB)-Red, Green, Blue\n\nHi-color:16bits-3bytes\n\nTrue-color:24bits-3bytes\n\n**Chapter 4（概念、门电路及其表达式）**\n\nGate\n\nCircuits(电路)\n\nTools to describe:\n- Boolean Expressions(布尔表达式)\n\n（与离散数学不一样的是：与是AND点乘 ； ‘是NOT否 ； 或是OR+ ; XOR是非兼容或非/兼容或非 ；NAND是与或）\n- Logic diagrams(逻辑图)\n- Truth tables(真值表)\n\nTypes  of gate:\n\n![image](assets/computer-science-intro-012/image-001.png)\n\n![image](assets/computer-science-intro-012/image-002.png)\n\nTransistor(晶体管):  半导体材料制成、可做导线可做电阻、相当于开关\n\n![image](assets/computer-science-intro-012/image-003.png)\n\nCombinational Circuits(组合电路):  即类似于分配律等将电路布尔表达式和真值表写出\n\n**![image](assets/computer-science-intro-012/image-004.png)**![image](assets/computer-science-intro-012/image-005.png)\n\n注：AND门的乘号可省略\n\nHalf-adder(半加法器):产生两位之和并产生正确进位（2输入位，2输出位sum=A非兼容非或B；carry=A且B）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-012:h-计算机科学概论:c03",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "计算机科学概论"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "computer-science-intro-012",
+      "source_title": "计算机科学概论",
+      "text": "Full-adder(全加法器):在半加法器的基础上考虑进位输入的电路，即较半加法器多一项Carry-in。（3输入位，2输出位）\n\nCircuits as memory(存储器电路)-Sequential circuits(时序电路)-输出也用作输入\n\nS-R latch(S-R锁存器)\n\n![image](assets/computer-science-intro-012/image-006.png)\n\n工作原理:X和Y始终相互补充，X被认作电路状态值，X为1电路存储1，为0存储0\n\nCPU：最重要的集成电路\n\n第一代（SSI）：1950～1960少于10个晶体管\n\n第二代（MSI）：1960～1970几十到几百个晶体管\n\n第三代（LSI）：1970成千上万晶体管，可以集成更多组件\n\n第四代（VLSI）：1980以后：可以集成上亿的晶体管，尺寸不断缩小\n\n**Chapter 5（概念）**\n\nThe von Neumann architecture(冯诺依曼结构)\n\n![image](assets/computer-science-intro-012/image-007.png)\n\nMemory  unit(内存单元):存放数据指令\n\nlogic unit(算术逻辑单元):对数据执行算术和逻辑运算、register（寄存器）\n\nControl unit(控制单元):担当舞台监督、确保其它部件参与\n\n指令寄存器(IR)  程序计数器(PC)  中央处理器(CPU)\n\nInput device(输入设备):将数据从外部转移到计算机中\n\nOutput device(输出设备):将数据结果从计算机中转移到外部\n\nRAM(随机存取存储器)-内容可更改，易失性\n\nROM(只读存储器)-内容不可更改，稳定\n\n辅助存储设备：磁带、磁盘、CD、DVD、触摸屏\n\n并行体系结构：\n\n同步计算环境、流水线模式、共享内存……\n\n**Chapter 6** **（概念）**\n\nComputer【功能】可编程、可存储、检索、处理数据\n\nMachine language(机器语言):由硬件中直接使用的二进制编码指令组成\n\nAssembly language(汇编语言):用助记码表示特定的机器语言指令\n\nPseudocode(伪码):表示算法的速记性语言（无语法规则、不区分大小写）\n\n测试程序的两种方法：\n- Code coverage(代码覆盖)【明箱测试】\n- Data coverage(数据覆盖)【暗箱测试】-记忆：dark-data\n\n**Chapter 7（伪码的具体使用）**\n\nSorted array(排序数组)\n- 顺序查询\n\nSet Position to 0\n\nSet found to FALSE"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-012:h-计算机科学概论:c04",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "计算机科学概论"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "computer-science-intro-012",
+      "source_title": "计算机科学概论",
+      "text": "WHILE (position < length AND NOT found )\n\nIF (numbers [position] equals searchitem)\n\nSet Found to TRUE\n\nELSE\n\nSet position to position + 1\n- 累加查询\n\nSet sum to 0\n\nSet allPositive to true\n\nWHILE (allPositive)\n\nRead number\n\nIF (number > 0)\n\nSet sum to sum + number\n\nELSE\n\nSet allPositive to false\n\nWrite \"Sum is \" + sum\n- 二分查询(Binary Search)\n\nSet first to 0\n\nSet last to length-1\n\nSet found to FALSE\n\nWHILE (first <= last AND NOT found)\n\nSet middle to (first + last)/ 2\n\nIF (item equals data[middle]))\n\nSet found to TRUE\n\nELSE\n\nIF (item < data[middle])\n\nSet last to middle – 1\n\nELSE\n\nSet first to middle + 1\n\nRETURN found\n- 选择排序(Selection Sort)\n\nSet firstUnsorted to 0\n\nWHILE (not sorted yet)\n\nFind smallest unsorted item\n\nSwap firstUnsorted item with the smallest\n\nSet firstUnsorted to firstUnsorted + 1\n\nNot sorted yet\n\ncurrent < length – 1\n\nFind smallest unsorted item\n\nSet indexOfSmallest to firstUnsorted\n\nSet index to firstUnsorted + 1\n\nWHILE (index <= length – 1)\n\nIF (data[index] < data[indexOfSmallest])\n\nSet indexOfSmallest to index\n\nSet index to index + 1\n\nSet index to indexOfSmallest\n\nSwap firstUnsorted with smallest\n\nSet tempItem to data[firstUnsorted]"
+    },
+    {
+      "assets": [],
+      "chunk_id": "computer-science-intro-012:h-计算机科学概论:c05",
+      "course_id": "computer_science_intro",
+      "heading_path": [
+        "计算机科学概论"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "computer-science-intro-012",
+      "source_title": "计算机科学概论",
+      "text": "Set data[firstUnsorted] to data[indexOfSmallest]\n\nSet data[indexOfSmallest] to tempItem\n- 冒泡排序(Bubble Sort)\n\nSet firstUnsorted to 0\n\nSet index to firstUnsorted + 1\n\nSet swap to TRUE\n\nWHILE (index < length AND swap)\n\nSet swap to FALSE\n\n“Bubble up” the smallest item in unsorted part\n\nSet firstUnsorted to firstUnsorted + 1\n\nBubble up\n\nSet index to length – 1\n\nWHILE (index > firstUnsorted + 1)\n\nIF (data[index] < data[index – 1])\n\nSwap data[index] and data[index – 1]\n\nSet swap to TRUE\n\nSet index to index – 1\n\n一些语句:WHILE  循环、Set  to  定义赋值、IF ELSE  条件语句、Read 读取输入\n\nWrite 输出 、AND=&&、  OR=||、  NOT=！"
+    }
+  ],
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "computer_science_intro",
+  "questions": [
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q1:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q1",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p3:q-computer-science-intro-003-q10:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q10",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p3:q-computer-science-intro-003-q11:c01",
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q11:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 4,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q11",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q12:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q12",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q13:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q13",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q14:c01",
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q14:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 5,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q14",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q15:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q15",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q16:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q16",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q17:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q17",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q2:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q2",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q3:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q3",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q4:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q4",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q5:c01",
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q5:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 2,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q5",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q6:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q6",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q7:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q7",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q8:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q8",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q9:c01",
+        "computer-science-intro-003:p3:q-computer-science-intro-003-q9:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 3,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q9",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    }
+  ],
+  "schema_version": "course-index-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e"
+}

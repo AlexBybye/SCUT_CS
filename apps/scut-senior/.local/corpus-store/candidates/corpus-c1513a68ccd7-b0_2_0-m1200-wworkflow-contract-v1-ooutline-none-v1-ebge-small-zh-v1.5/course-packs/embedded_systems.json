@@ -1,0 +1,4985 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "embedded_systems",
+  "course_pack_version": "course-pack-embedded_systems-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "embedded-systems-001:s1:c01",
+        "embedded-systems-001:s2:c01",
+        "embedded-systems-001:s3:c01",
+        "embedded-systems-001:s4:c01",
+        "embedded-systems-001:s5:c01",
+        "embedded-systems-001:s6:c01",
+        "embedded-systems-001:s7:c01",
+        "embedded-systems-001:s8:c01",
+        "embedded-systems-001:s9:c01",
+        "embedded-systems-001:s10:c01",
+        "embedded-systems-001:s11:c01",
+        "embedded-systems-001:s12:c01",
+        "embedded-systems-001:s13:c01"
+      ],
+      "heading_path": [
+        "ch10DMA",
+        "第10章 DMA方式"
+      ],
+      "source_ids": [
+        "embedded-systems-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-002:s1:c01",
+        "embedded-systems-002:s2:c01",
+        "embedded-systems-002:s3:c01",
+        "embedded-systems-002:s4:c01",
+        "embedded-systems-002:s5:c01",
+        "embedded-systems-002:s6:c01",
+        "embedded-systems-002:s7:c01",
+        "embedded-systems-002:s8:c01",
+        "embedded-systems-002:s9:c01",
+        "embedded-systems-002:s10:c01",
+        "embedded-systems-002:s11:c01",
+        "embedded-systems-002:s12:c01",
+        "embedded-systems-002:s13:c01",
+        "embedded-systems-002:s14:c01",
+        "embedded-systems-002:s15:c01",
+        "embedded-systems-002:s16:c01",
+        "embedded-systems-002:s17:c01",
+        "embedded-systems-002:s18:c01",
+        "embedded-systems-002:s19:c01",
+        "embedded-systems-002:s20:c01",
+        "embedded-systems-002:s21:c01",
+        "embedded-systems-002:s22:c01",
+        "embedded-systems-002:s23:c01",
+        "embedded-systems-002:s24:c01",
+        "embedded-systems-002:s25:c01",
+        "embedded-systems-002:s26:c01"
+      ],
+      "heading_path": [
+        "ch11其他接口",
+        "第11章  其他接口"
+      ],
+      "source_ids": [
+        "embedded-systems-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-003:s1:c01",
+        "embedded-systems-003:s2:c01",
+        "embedded-systems-003:s3:c01",
+        "embedded-systems-003:s4:c01",
+        "embedded-systems-003:s5:c01",
+        "embedded-systems-003:s6:c01",
+        "embedded-systems-003:s7:c01",
+        "embedded-systems-003:s8:c01",
+        "embedded-systems-003:s9:c01",
+        "embedded-systems-003:s10:c01",
+        "embedded-systems-003:s11:c01",
+        "embedded-systems-003:s12:c01",
+        "embedded-systems-003:s13:c01",
+        "embedded-systems-003:s14:c01",
+        "embedded-systems-003:s15:c01",
+        "embedded-systems-003:s16:c01",
+        "embedded-systems-003:s17:c01",
+        "embedded-systems-003:s18:c01",
+        "embedded-systems-003:s19:c01",
+        "embedded-systems-003:s20:c01",
+        "embedded-systems-003:s21:c01",
+        "embedded-systems-003:s22:c01",
+        "embedded-systems-003:s23:c01",
+        "embedded-systems-003:s24:c01",
+        "embedded-systems-003:s25:c01",
+        "embedded-systems-003:s26:c01",
+        "embedded-systems-003:s27:c01",
+        "embedded-systems-003:s28:c01",
+        "embedded-systems-003:s29:c01",
+        "embedded-systems-003:s30:c01",
+        "embedded-systems-003:s31:c01",
+        "embedded-systems-003:s32:c01",
+        "embedded-systems-003:s33:c01",
+        "embedded-systems-003:s34:c01",
+        "embedded-systems-003:s35:c01",
+        "embedded-systems-003:s36:c01",
+        "embedded-systems-003:s37:c01",
+        "embedded-systems-003:s38:c01",
+        "embedded-systems-003:s39:c01",
+        "embedded-systems-003:s40:c01",
+        "embedded-systems-003:s41:c01",
+        "embedded-systems-003:s42:c01",
+        "embedded-systems-003:s43:c01",
+        "embedded-systems-003:s44:c01",
+        "embedded-systems-003:s45:c01",
+        "embedded-systems-003:s46:c01",
+        "embedded-systems-003:s47:c01",
+        "embedded-systems-003:s48:c01",
+        "embedded-systems-003:s49:c01",
+        "embedded-systems-003:s50:c01",
+        "embedded-systems-003:s51:c01",
+        "embedded-systems-003:s52:c01",
+        "embedded-systems-003:s53:c01",
+        "embedded-systems-003:s54:c01",
+        "embedded-systems-003:s55:c01",
+        "embedded-systems-003:s56:c01",
+        "embedded-systems-003:s57:c01",
+        "embedded-systems-003:s58:c01",
+        "embedded-systems-003:s59:c01",
+        "embedded-systems-003:s60:c01",
+        "embedded-systems-003:s61:c01",
+        "embedded-systems-003:s62:c01",
+        "embedded-systems-003:s63:c01",
+        "embedded-systems-003:s64:c01",
+        "embedded-systems-003:s65:c01",
+        "embedded-systems-003:s66:c01",
+        "embedded-systems-003:s67:c01",
+        "embedded-systems-003:s68:c01",
+        "embedded-systems-003:s69:c01",
+        "embedded-systems-003:s70:c01",
+        "embedded-systems-003:s71:c01",
+        "embedded-systems-003:s72:c01",
+        "embedded-systems-003:s73:c01"
+      ],
+      "heading_path": [
+        "ch12嵌入式操作系统",
+        "第12章"
+      ],
+      "source_ids": [
+        "embedded-systems-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-004:s7:c01",
+        "embedded-systems-004:s8:c01",
+        "embedded-systems-004:s9:c01",
+        "embedded-systems-004:s10:c01",
+        "embedded-systems-004:s11:c01",
+        "embedded-systems-004:s12:c01",
+        "embedded-systems-004:s13:c01",
+        "embedded-systems-004:s14:c01",
+        "embedded-systems-004:s15:c01",
+        "embedded-systems-004:s16:c01",
+        "embedded-systems-004:s17:c01",
+        "embedded-systems-004:s18:c01",
+        "embedded-systems-004:s19:c01",
+        "embedded-systems-004:s20:c01",
+        "embedded-systems-004:s21:c01",
+        "embedded-systems-004:s22:c01",
+        "embedded-systems-004:s23:c01",
+        "embedded-systems-004:s24:c01",
+        "embedded-systems-004:s25:c01",
+        "embedded-systems-004:s26:c01",
+        "embedded-systems-004:s27:c01",
+        "embedded-systems-004:s28:c01",
+        "embedded-systems-004:s29:c01",
+        "embedded-systems-004:s30:c01",
+        "embedded-systems-004:s31:c01",
+        "embedded-systems-004:s32:c01"
+      ],
+      "heading_path": [
+        "ch13综合设计实例",
+        "4.系统测试阶段"
+      ],
+      "source_ids": [
+        "embedded-systems-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-004:s1:c01",
+        "embedded-systems-004:s2:c01",
+        "embedded-systems-004:s3:c01",
+        "embedded-systems-004:s4:c01",
+        "embedded-systems-004:s5:c01",
+        "embedded-systems-004:s6:c01"
+      ],
+      "heading_path": [
+        "ch13综合设计实例",
+        "第13章"
+      ],
+      "source_ids": [
+        "embedded-systems-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-005:s4:c01",
+        "embedded-systems-005:s5:c01",
+        "embedded-systems-005:s6:c01",
+        "embedded-systems-005:s7:c01",
+        "embedded-systems-005:s8:c01",
+        "embedded-systems-005:s9:c01",
+        "embedded-systems-005:s10:c01",
+        "embedded-systems-005:s11:c01",
+        "embedded-systems-005:s12:c01",
+        "embedded-systems-005:s13:c01",
+        "embedded-systems-005:s14:c01",
+        "embedded-systems-005:s15:c01"
+      ],
+      "heading_path": [
+        "ch1嵌入式系统与微控制器",
+        "1.1 嵌入式系统相关概念"
+      ],
+      "source_ids": [
+        "embedded-systems-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-005:s16:c01",
+        "embedded-systems-005:s17:c01",
+        "embedded-systems-005:s18:c01",
+        "embedded-systems-005:s19:c01",
+        "embedded-systems-005:s20:c01"
+      ],
+      "heading_path": [
+        "ch1嵌入式系统与微控制器",
+        "1.1.4 嵌入式系统类型"
+      ],
+      "source_ids": [
+        "embedded-systems-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-005:s21:c01",
+        "embedded-systems-005:s22:c01"
+      ],
+      "heading_path": [
+        "ch1嵌入式系统与微控制器",
+        "1.2 微控制器系统"
+      ],
+      "source_ids": [
+        "embedded-systems-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-005:s29:c01"
+      ],
+      "heading_path": [
+        "ch1嵌入式系统与微控制器",
+        "ARM单片机(Cortex-M)"
+      ],
+      "source_ids": [
+        "embedded-systems-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-005:s23:c01"
+      ],
+      "heading_path": [
+        "ch1嵌入式系统与微控制器",
+        "AVR系列单片机(www.atmel.com)"
+      ],
+      "source_ids": [
+        "embedded-systems-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-005:s24:c01"
+      ],
+      "heading_path": [
+        "ch1嵌入式系统与微控制器",
+        "PIC系列单片机"
+      ],
+      "source_ids": [
+        "embedded-systems-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-005:s30:c01"
+      ],
+      "heading_path": [
+        "ch1嵌入式系统与微控制器",
+        "常用的Cortex-M系列芯片内核"
+      ],
+      "source_ids": [
+        "embedded-systems-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-005:s1:c01",
+        "embedded-systems-005:s2:c01"
+      ],
+      "heading_path": [
+        "ch1嵌入式系统与微控制器",
+        "第1章"
+      ],
+      "source_ids": [
+        "embedded-systems-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-005:s3:c01"
+      ],
+      "heading_path": [
+        "ch1嵌入式系统与微控制器",
+        "第1章 嵌入式系统与微控制器"
+      ],
+      "source_ids": [
+        "embedded-systems-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-005:s25:c01",
+        "embedded-systems-005:s26:c01",
+        "embedded-systems-005:s27:c01",
+        "embedded-systems-005:s28:c01"
+      ],
+      "heading_path": [
+        "ch1嵌入式系统与微控制器",
+        "飞思卡尔（freescale）系列单片机"
+      ],
+      "source_ids": [
+        "embedded-systems-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-005:s31:c01"
+      ],
+      "heading_path": [
+        "ch1嵌入式系统与微控制器",
+        "（2）NXP公司的ARM核芯片"
+      ],
+      "source_ids": [
+        "embedded-systems-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-005:s32:c01",
+        "embedded-systems-005:s33:c01",
+        "embedded-systems-005:s34:c01",
+        "embedded-systems-005:s35:c01",
+        "embedded-systems-005:s36:c01",
+        "embedded-systems-005:s37:c01",
+        "embedded-systems-005:s38:c01",
+        "embedded-systems-005:s39:c01",
+        "embedded-systems-005:s40:c01",
+        "embedded-systems-005:s41:c01",
+        "embedded-systems-005:s42:c01",
+        "embedded-systems-005:s43:c01",
+        "embedded-systems-005:s44:c01",
+        "embedded-systems-005:s45:c01",
+        "embedded-systems-005:s46:c01",
+        "embedded-systems-005:s47:c01",
+        "embedded-systems-005:s48:c01",
+        "embedded-systems-005:s49:c01",
+        "embedded-systems-005:s50:c01",
+        "embedded-systems-005:s51:c01",
+        "embedded-systems-005:s52:c01",
+        "embedded-systems-005:s53:c01",
+        "embedded-systems-005:s54:c01",
+        "embedded-systems-005:s55:c01",
+        "embedded-systems-005:s56:c01"
+      ],
+      "heading_path": [
+        "ch1嵌入式系统与微控制器",
+        "（3）Ti（德州仪器公司）的Stellaris MCU 系列，采用了Cortex内核。"
+      ],
+      "source_ids": [
+        "embedded-systems-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s26:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "2.2 汇编指令寻址方式"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s38:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "2.3 ARM汇编"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s42:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "2.3.1指令基本形式"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s140:c01",
+        "embedded-systems-006:s141:c01",
+        "embedded-systems-006:s142:c01",
+        "embedded-systems-006:s143:c01",
+        "embedded-systems-006:s144:c01",
+        "embedded-systems-006:s145:c01",
+        "embedded-systems-006:s146:c01",
+        "embedded-systems-006:s147:c01",
+        "embedded-systems-006:s148:c01",
+        "embedded-systems-006:s149:c01",
+        "embedded-systems-006:s150:c01",
+        "embedded-systems-006:s151:c01",
+        "embedded-systems-006:s152:c01",
+        "embedded-systems-006:s153:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM伪指令"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s154:c01",
+        "embedded-systems-006:s155:c01",
+        "embedded-systems-006:s156:c01",
+        "embedded-systems-006:s157:c01",
+        "embedded-systems-006:s158:c01",
+        "embedded-systems-006:s159:c01",
+        "embedded-systems-006:s160:c01",
+        "embedded-systems-006:s161:c01",
+        "embedded-systems-006:s162:c01",
+        "embedded-systems-006:s163:c01",
+        "embedded-systems-006:s164:c01",
+        "embedded-systems-006:s165:c01",
+        "embedded-systems-006:s166:c01",
+        "embedded-systems-006:s167:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM伪指令——空操作伪指令"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s58:c01",
+        "embedded-systems-006:s59:c01",
+        "embedded-systems-006:s60:c01",
+        "embedded-systems-006:s61:c01",
+        "embedded-systems-006:s62:c01",
+        "embedded-systems-006:s63:c01",
+        "embedded-systems-006:s64:c01",
+        "embedded-systems-006:s65:c01",
+        "embedded-systems-006:s66:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM存储器访问指令——单寄存器存取"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s67:c01",
+        "embedded-systems-006:s68:c01",
+        "embedded-systems-006:s69:c01",
+        "embedded-systems-006:s70:c01",
+        "embedded-systems-006:s71:c01",
+        "embedded-systems-006:s72:c01",
+        "embedded-systems-006:s73:c01",
+        "embedded-systems-006:s74:c01",
+        "embedded-systems-006:s75:c01",
+        "embedded-systems-006:s76:c01",
+        "embedded-systems-006:s77:c01",
+        "embedded-systems-006:s78:c01",
+        "embedded-systems-006:s79:c01",
+        "embedded-systems-006:s80:c01",
+        "embedded-systems-006:s81:c01",
+        "embedded-systems-006:s82:c01",
+        "embedded-systems-006:s83:c01",
+        "embedded-systems-006:s84:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM存储器访问指令——多寄存器存取"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s39:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM微处理器的指令集是加载/存储型的，即指令集仅能处理寄存器中的数据，而且处理结果都要放回寄存器中，而对系统存储器的访问则需要通过专门的加载/存储指令来完成。"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s114:c01",
+        "embedded-systems-006:s115:c01",
+        "embedded-systems-006:s116:c01",
+        "embedded-systems-006:s117:c01",
+        "embedded-systems-006:s118:c01",
+        "embedded-systems-006:s119:c01",
+        "embedded-systems-006:s120:c01",
+        "embedded-systems-006:s121:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM指令集——"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s110:c01",
+        "embedded-systems-006:s111:c01",
+        "embedded-systems-006:s112:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM指令集——32×32位乘加法指令"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s108:c01",
+        "embedded-systems-006:s109:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM指令集——32×32位乘法指令"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s85:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM指令集——ARM数据处理指令"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s106:c01",
+        "embedded-systems-006:s107:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM指令集——乘法指令"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s122:c01",
+        "embedded-systems-006:s123:c01",
+        "embedded-systems-006:s124:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM指令集——协处理器指令"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s57:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM指令集——存储器访问指令"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s125:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM指令集——杂项指令"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s51:c01",
+        "embedded-systems-006:s52:c01",
+        "embedded-systems-006:s53:c01",
+        "embedded-systems-006:s54:c01",
+        "embedded-systems-006:s55:c01",
+        "embedded-systems-006:s56:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM指令集——条件码"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s134:c01",
+        "embedded-systems-006:s135:c01",
+        "embedded-systems-006:s136:c01",
+        "embedded-systems-006:s137:c01",
+        "embedded-systems-006:s138:c01",
+        "embedded-systems-006:s139:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM指令集——状态寄存器写指令"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s131:c01",
+        "embedded-systems-006:s132:c01",
+        "embedded-systems-006:s133:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM指令集——状态寄存器读指令"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s113:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM指令集——程序如何跳转"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s43:c01",
+        "embedded-systems-006:s44:c01",
+        "embedded-systems-006:s45:c01",
+        "embedded-systems-006:s46:c01",
+        "embedded-systems-006:s47:c01",
+        "embedded-systems-006:s48:c01",
+        "embedded-systems-006:s49:c01",
+        "embedded-systems-006:s50:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM指令集——第2个操作数"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s126:c01",
+        "embedded-systems-006:s127:c01",
+        "embedded-systems-006:s128:c01",
+        "embedded-systems-006:s129:c01",
+        "embedded-systems-006:s130:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "ARM指令集——软中断指令"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s19:c01",
+        "embedded-systems-006:s20:c01",
+        "embedded-systems-006:s21:c01",
+        "embedded-systems-006:s22:c01",
+        "embedded-systems-006:s23:c01",
+        "embedded-systems-006:s24:c01",
+        "embedded-systems-006:s25:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "Cortex-M3带分支预测的3级流水线推演过程"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s31:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "寻址方式分类——基址寻址"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s33:c01",
+        "embedded-systems-006:s34:c01",
+        "embedded-systems-006:s35:c01",
+        "embedded-systems-006:s36:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "寻址方式分类——堆栈寻址"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s32:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "寻址方式分类——多寄存器寻址"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s27:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "寻址方式分类——寄存器寻址"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s29:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "寻址方式分类——寄存器移位寻址"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s30:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "寻址方式分类——寄存器间接寻址"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s37:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "寻址方式分类——相对寻址"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s28:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "寻址方式分类——立即寻址"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s86:c01",
+        "embedded-systems-006:s87:c01",
+        "embedded-systems-006:s88:c01",
+        "embedded-systems-006:s89:c01",
+        "embedded-systems-006:s90:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "数据传送指令"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s100:c01",
+        "embedded-systems-006:s101:c01",
+        "embedded-systems-006:s102:c01",
+        "embedded-systems-006:s103:c01",
+        "embedded-systems-006:s104:c01",
+        "embedded-systems-006:s105:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "比较指令"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s1:c01",
+        "embedded-systems-006:s2:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "第2章"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s3:c01",
+        "embedded-systems-006:s4:c01",
+        "embedded-systems-006:s5:c01",
+        "embedded-systems-006:s6:c01",
+        "embedded-systems-006:s7:c01",
+        "embedded-systems-006:s8:c01",
+        "embedded-systems-006:s9:c01",
+        "embedded-systems-006:s10:c01",
+        "embedded-systems-006:s11:c01",
+        "embedded-systems-006:s12:c01",
+        "embedded-systems-006:s13:c01",
+        "embedded-systems-006:s14:c01",
+        "embedded-systems-006:s15:c01",
+        "embedded-systems-006:s16:c01",
+        "embedded-systems-006:s17:c01",
+        "embedded-systems-006:s18:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "第2章 微控制器体系结构及汇编语言"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s40:c01",
+        "embedded-systems-006:s41:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "简单的ARM程序"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-006:s91:c01",
+        "embedded-systems-006:s92:c01",
+        "embedded-systems-006:s93:c01",
+        "embedded-systems-006:s94:c01",
+        "embedded-systems-006:s95:c01",
+        "embedded-systems-006:s96:c01",
+        "embedded-systems-006:s97:c01",
+        "embedded-systems-006:s98:c01",
+        "embedded-systems-006:s99:c01"
+      ],
+      "heading_path": [
+        "ch2微控制器体系结构及汇编语言",
+        "算术逻辑运算指令"
+      ],
+      "source_ids": [
+        "embedded-systems-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-007:s1:c01",
+        "embedded-systems-007:s2:c01",
+        "embedded-systems-007:s3:c01",
+        "embedded-systems-007:s4:c01",
+        "embedded-systems-007:s5:c01",
+        "embedded-systems-007:s6:c01",
+        "embedded-systems-007:s7:c01",
+        "embedded-systems-007:s8:c01",
+        "embedded-systems-007:s9:c01",
+        "embedded-systems-007:s10:c01",
+        "embedded-systems-007:s11:c01",
+        "embedded-systems-007:s12:c01",
+        "embedded-systems-007:s13:c01",
+        "embedded-systems-007:s14:c01",
+        "embedded-systems-007:s15:c01",
+        "embedded-systems-007:s16:c01",
+        "embedded-systems-007:s17:c01",
+        "embedded-systems-007:s18:c01",
+        "embedded-systems-007:s19:c01",
+        "embedded-systems-007:s20:c01",
+        "embedded-systems-007:s21:c01",
+        "embedded-systems-007:s22:c01",
+        "embedded-systems-007:s23:c01",
+        "embedded-systems-007:s24:c01"
+      ],
+      "heading_path": [
+        "ch3微控制器硬件系统",
+        "第3章"
+      ],
+      "source_ids": [
+        "embedded-systems-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-008:s1:c01",
+        "embedded-systems-008:s2:c01",
+        "embedded-systems-008:s3:c01",
+        "embedded-systems-008:s4:c01",
+        "embedded-systems-008:s5:c01",
+        "embedded-systems-008:s6:c01",
+        "embedded-systems-008:s7:c01",
+        "embedded-systems-008:s8:c01",
+        "embedded-systems-008:s9:c01",
+        "embedded-systems-008:s10:c01",
+        "embedded-systems-008:s11:c01",
+        "embedded-systems-008:s12:c01",
+        "embedded-systems-008:s13:c01",
+        "embedded-systems-008:s14:c01",
+        "embedded-systems-008:s15:c01",
+        "embedded-systems-008:s16:c01",
+        "embedded-systems-008:s17:c01",
+        "embedded-systems-008:s18:c01",
+        "embedded-systems-008:s19:c01",
+        "embedded-systems-008:s20:c01",
+        "embedded-systems-008:s21:c01",
+        "embedded-systems-008:s22:c01",
+        "embedded-systems-008:s23:c01",
+        "embedded-systems-008:s24:c01",
+        "embedded-systems-008:s25:c01",
+        "embedded-systems-008:s26:c01",
+        "embedded-systems-008:s27:c01",
+        "embedded-systems-008:s28:c01"
+      ],
+      "heading_path": [
+        "ch4微控制器软件开发",
+        "第4章"
+      ],
+      "source_ids": [
+        "embedded-systems-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-009:s1:c01",
+        "embedded-systems-009:s2:c01",
+        "embedded-systems-009:s3:c01",
+        "embedded-systems-009:s4:c01",
+        "embedded-systems-009:s5:c01",
+        "embedded-systems-009:s6:c01",
+        "embedded-systems-009:s7:c01",
+        "embedded-systems-009:s8:c01",
+        "embedded-systems-009:s9:c01",
+        "embedded-systems-009:s10:c01",
+        "embedded-systems-009:s11:c01",
+        "embedded-systems-009:s12:c01",
+        "embedded-systems-009:s13:c01",
+        "embedded-systems-009:s14:c01",
+        "embedded-systems-009:s15:c01",
+        "embedded-systems-009:s16:c01",
+        "embedded-systems-009:s17:c01",
+        "embedded-systems-009:s18:c01",
+        "embedded-systems-009:s19:c01",
+        "embedded-systems-009:s20:c01",
+        "embedded-systems-009:s21:c01",
+        "embedded-systems-009:s22:c01",
+        "embedded-systems-009:s23:c01",
+        "embedded-systems-009:s24:c01",
+        "embedded-systems-009:s25:c01",
+        "embedded-systems-009:s26:c01",
+        "embedded-systems-009:s27:c01",
+        "embedded-systems-009:s28:c01",
+        "embedded-systems-009:s29:c01",
+        "embedded-systems-009:s30:c01",
+        "embedded-systems-009:s31:c01",
+        "embedded-systems-009:s32:c01",
+        "embedded-systems-009:s33:c01",
+        "embedded-systems-009:s34:c01",
+        "embedded-systems-009:s35:c01",
+        "embedded-systems-009:s36:c01",
+        "embedded-systems-009:s37:c01",
+        "embedded-systems-009:s38:c01",
+        "embedded-systems-009:s39:c01",
+        "embedded-systems-009:s40:c01",
+        "embedded-systems-009:s41:c01",
+        "embedded-systems-009:s42:c01",
+        "embedded-systems-009:s43:c01",
+        "embedded-systems-009:s44:c01",
+        "embedded-systems-009:s45:c01",
+        "embedded-systems-009:s46:c01",
+        "embedded-systems-009:s47:c01"
+      ],
+      "heading_path": [
+        "ch5GPIO",
+        "第5章 GPIO"
+      ],
+      "source_ids": [
+        "embedded-systems-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-010:s1:c01",
+        "embedded-systems-010:s2:c01",
+        "embedded-systems-010:s3:c01",
+        "embedded-systems-010:s4:c01",
+        "embedded-systems-010:s5:c01",
+        "embedded-systems-010:s6:c01",
+        "embedded-systems-010:s7:c01",
+        "embedded-systems-010:s8:c01",
+        "embedded-systems-010:s9:c01",
+        "embedded-systems-010:s10:c01",
+        "embedded-systems-010:s11:c01",
+        "embedded-systems-010:s12:c01",
+        "embedded-systems-010:s13:c01",
+        "embedded-systems-010:s14:c01",
+        "embedded-systems-010:s15:c01",
+        "embedded-systems-010:s16:c01",
+        "embedded-systems-010:s17:c01",
+        "embedded-systems-010:s18:c01",
+        "embedded-systems-010:s19:c01",
+        "embedded-systems-010:s20:c01",
+        "embedded-systems-010:s21:c01"
+      ],
+      "heading_path": [
+        "ch6微控制器中断",
+        "第6章"
+      ],
+      "source_ids": [
+        "embedded-systems-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-011:s1:c01",
+        "embedded-systems-011:s2:c01",
+        "embedded-systems-011:s3:c01",
+        "embedded-systems-011:s4:c01",
+        "embedded-systems-011:s5:c01",
+        "embedded-systems-011:s6:c01",
+        "embedded-systems-011:s7:c01",
+        "embedded-systems-011:s8:c01",
+        "embedded-systems-011:s9:c01",
+        "embedded-systems-011:s10:c01",
+        "embedded-systems-011:s11:c01",
+        "embedded-systems-011:s12:c01",
+        "embedded-systems-011:s13:c01",
+        "embedded-systems-011:s14:c01",
+        "embedded-systems-011:s15:c01",
+        "embedded-systems-011:s16:c01",
+        "embedded-systems-011:s17:c01",
+        "embedded-systems-011:s18:c01",
+        "embedded-systems-011:s19:c01",
+        "embedded-systems-011:s20:c01",
+        "embedded-systems-011:s21:c01",
+        "embedded-systems-011:s22:c01",
+        "embedded-systems-011:s23:c01",
+        "embedded-systems-011:s24:c01",
+        "embedded-systems-011:s25:c01",
+        "embedded-systems-011:s26:c01",
+        "embedded-systems-011:s27:c01",
+        "embedded-systems-011:s28:c01",
+        "embedded-systems-011:s29:c01",
+        "embedded-systems-011:s30:c01",
+        "embedded-systems-011:s31:c01",
+        "embedded-systems-011:s32:c01",
+        "embedded-systems-011:s33:c01",
+        "embedded-systems-011:s34:c01",
+        "embedded-systems-011:s35:c01",
+        "embedded-systems-011:s36:c01",
+        "embedded-systems-011:s37:c01",
+        "embedded-systems-011:s38:c01",
+        "embedded-systems-011:s39:c01",
+        "embedded-systems-011:s40:c01",
+        "embedded-systems-011:s41:c01",
+        "embedded-systems-011:s42:c01",
+        "embedded-systems-011:s43:c01",
+        "embedded-systems-011:s44:c01",
+        "embedded-systems-011:s45:c01",
+        "embedded-systems-011:s46:c01",
+        "embedded-systems-011:s47:c01",
+        "embedded-systems-011:s48:c01",
+        "embedded-systems-011:s49:c01",
+        "embedded-systems-011:s50:c01",
+        "embedded-systems-011:s51:c01",
+        "embedded-systems-011:s52:c01",
+        "embedded-systems-011:s53:c01",
+        "embedded-systems-011:s54:c01",
+        "embedded-systems-011:s55:c01",
+        "embedded-systems-011:s56:c01",
+        "embedded-systems-011:s57:c01",
+        "embedded-systems-011:s58:c01"
+      ],
+      "heading_path": [
+        "ch7串行通信",
+        "第7章 串行通信"
+      ],
+      "source_ids": [
+        "embedded-systems-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-012:s1:c01",
+        "embedded-systems-012:s2:c01",
+        "embedded-systems-012:s3:c01",
+        "embedded-systems-012:s4:c01",
+        "embedded-systems-012:s5:c01",
+        "embedded-systems-012:s6:c01",
+        "embedded-systems-012:s7:c01",
+        "embedded-systems-012:s8:c01",
+        "embedded-systems-012:s9:c01",
+        "embedded-systems-012:s10:c01",
+        "embedded-systems-012:s11:c01",
+        "embedded-systems-012:s12:c01",
+        "embedded-systems-012:s13:c01",
+        "embedded-systems-012:s14:c01",
+        "embedded-systems-012:s15:c01",
+        "embedded-systems-012:s16:c01",
+        "embedded-systems-012:s17:c01",
+        "embedded-systems-012:s18:c01",
+        "embedded-systems-012:s19:c01",
+        "embedded-systems-012:s20:c01",
+        "embedded-systems-012:s21:c01",
+        "embedded-systems-012:s22:c01",
+        "embedded-systems-012:s23:c01",
+        "embedded-systems-012:s24:c01",
+        "embedded-systems-012:s25:c01",
+        "embedded-systems-012:s26:c01",
+        "embedded-systems-012:s27:c01",
+        "embedded-systems-012:s28:c01",
+        "embedded-systems-012:s29:c01",
+        "embedded-systems-012:s30:c01",
+        "embedded-systems-012:s31:c01",
+        "embedded-systems-012:s32:c01",
+        "embedded-systems-012:s33:c01",
+        "embedded-systems-012:s34:c01",
+        "embedded-systems-012:s35:c01",
+        "embedded-systems-012:s36:c01",
+        "embedded-systems-012:s37:c01",
+        "embedded-systems-012:s38:c01",
+        "embedded-systems-012:s39:c01",
+        "embedded-systems-012:s40:c01",
+        "embedded-systems-012:s41:c01",
+        "embedded-systems-012:s42:c01",
+        "embedded-systems-012:s43:c01",
+        "embedded-systems-012:s44:c01",
+        "embedded-systems-012:s45:c01",
+        "embedded-systems-012:s46:c01",
+        "embedded-systems-012:s47:c01",
+        "embedded-systems-012:s48:c01",
+        "embedded-systems-012:s49:c01",
+        "embedded-systems-012:s50:c01",
+        "embedded-systems-012:s51:c01",
+        "embedded-systems-012:s52:c01",
+        "embedded-systems-012:s53:c01",
+        "embedded-systems-012:s54:c01",
+        "embedded-systems-012:s55:c01"
+      ],
+      "heading_path": [
+        "ch8定时器",
+        "第8章 定时器"
+      ],
+      "source_ids": [
+        "embedded-systems-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-013:s1:c01",
+        "embedded-systems-013:s2:c01",
+        "embedded-systems-013:s3:c01",
+        "embedded-systems-013:s4:c01",
+        "embedded-systems-013:s5:c01",
+        "embedded-systems-013:s6:c01",
+        "embedded-systems-013:s7:c01",
+        "embedded-systems-013:s8:c01",
+        "embedded-systems-013:s9:c01",
+        "embedded-systems-013:s10:c01",
+        "embedded-systems-013:s11:c01",
+        "embedded-systems-013:s12:c01",
+        "embedded-systems-013:s13:c01",
+        "embedded-systems-013:s14:c01",
+        "embedded-systems-013:s15:c01",
+        "embedded-systems-013:s16:c01",
+        "embedded-systems-013:s17:c01",
+        "embedded-systems-013:s18:c01",
+        "embedded-systems-013:s19:c01",
+        "embedded-systems-013:s20:c01",
+        "embedded-systems-013:s21:c01",
+        "embedded-systems-013:s22:c01",
+        "embedded-systems-013:s23:c01",
+        "embedded-systems-013:s24:c01",
+        "embedded-systems-013:s25:c01",
+        "embedded-systems-013:s26:c01",
+        "embedded-systems-013:s27:c01",
+        "embedded-systems-013:s28:c01",
+        "embedded-systems-013:s29:c01"
+      ],
+      "heading_path": [
+        "ch9ADC",
+        "第9章  ADC"
+      ],
+      "source_ids": [
+        "embedded-systems-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-019:h-作业内容-2025:c01"
+      ],
+      "heading_path": [
+        "作业内容-2025"
+      ],
+      "source_ids": [
+        "embedded-systems-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p1:c01",
+        "embedded-systems-014:p1:q-embedded-systems-014-q1:c01",
+        "embedded-systems-014:p1:q-embedded-systems-014-q2:c01",
+        "embedded-systems-014:p1:q-embedded-systems-014-q3:c01",
+        "embedded-systems-014:p1:q-embedded-systems-014-q4:c01",
+        "embedded-systems-014:p1:q-embedded-systems-014-q5:c01",
+        "embedded-systems-014:p1:q-embedded-systems-014-q6:c01",
+        "embedded-systems-014:p1:q-embedded-systems-014-q7:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q8:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q9:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q10:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q11:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q12:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q13:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q14:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q15:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q16:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q17:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q18:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q19:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q20:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q21:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q22:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q23:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q24:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q25:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q26:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q27:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q28:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q29:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q30:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q31:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q32:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q33:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q34:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q35:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q36:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q37:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q38:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q39:c01",
+        "embedded-systems-014:p5:q-embedded-systems-014-q40:c01",
+        "embedded-systems-014:p5:q-embedded-systems-014-q41:c01",
+        "embedded-systems-014:p5:q-embedded-systems-014-q42:c01",
+        "embedded-systems-014:p5:q-embedded-systems-014-q43:c01",
+        "embedded-systems-014:p5:q-embedded-systems-014-q44:c01",
+        "embedded-systems-014:p5:q-embedded-systems-014-q45:c01",
+        "embedded-systems-014:p5:q-embedded-systems-014-q46:c01",
+        "embedded-systems-014:p6:q-embedded-systems-014-q46:c01",
+        "embedded-systems-014:p6:q-embedded-systems-014-q47:c01",
+        "embedded-systems-014:p6:q-embedded-systems-014-q48:c01",
+        "embedded-systems-014:p6:q-embedded-systems-014-q49:c01",
+        "embedded-systems-014:p6:q-embedded-systems-014-q50:c01",
+        "embedded-systems-014:p7:q-embedded-systems-014-q51:c01",
+        "embedded-systems-014:p7:q-embedded-systems-014-q52:c01",
+        "embedded-systems-014:p7:q-embedded-systems-014-q53:c01",
+        "embedded-systems-014:p7:q-embedded-systems-014-q54:c01",
+        "embedded-systems-014:p7:q-embedded-systems-014-q55:c01",
+        "embedded-systems-014:p7:q-embedded-systems-014-q56:c01",
+        "embedded-systems-014:p7:q-embedded-systems-014-q57:c01",
+        "embedded-systems-014:p8:q-embedded-systems-014-q57:c01",
+        "embedded-systems-014:p9:q-embedded-systems-014-q58:c01",
+        "embedded-systems-014:p9:q-embedded-systems-014-q59:c01",
+        "embedded-systems-014:p9:q-embedded-systems-014-q60:c01",
+        "embedded-systems-014:p10:q-embedded-systems-014-q61:c01",
+        "embedded-systems-014:p11:q-embedded-systems-014-q61:c01",
+        "embedded-systems-014:p12:q-embedded-systems-014-q61:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "source_ids": [
+        "embedded-systems-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-020:s1:c01",
+        "embedded-systems-020:s2:c01",
+        "embedded-systems-020:s3:c01",
+        "embedded-systems-020:s4:c01",
+        "embedded-systems-020:s5:c01",
+        "embedded-systems-020:s6:c01",
+        "embedded-systems-020:s7:c01",
+        "embedded-systems-020:s8:c01",
+        "embedded-systems-020:s9:c01",
+        "embedded-systems-020:s10:c01",
+        "embedded-systems-020:s11:c01",
+        "embedded-systems-020:s12:c01",
+        "embedded-systems-020:s13:c01"
+      ],
+      "heading_path": [
+        "嵌入式"
+      ],
+      "source_ids": [
+        "embedded-systems-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-015:h-嵌入式2024级回忆版:c01",
+        "embedded-systems-015:h-嵌入式2024级回忆版:c02",
+        "embedded-systems-015:h-嵌入式2024级回忆版:c03"
+      ],
+      "heading_path": [
+        "嵌入式2024级回忆版"
+      ],
+      "source_ids": [
+        "embedded-systems-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-016:h-嵌入式回忆:c01"
+      ],
+      "heading_path": [
+        "嵌入式回忆"
+      ],
+      "source_ids": [
+        "embedded-systems-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p1:c01",
+        "embedded-systems-017:p1:q-embedded-systems-017-q1:c01",
+        "embedded-systems-017:p1:q-embedded-systems-017-q2:c01",
+        "embedded-systems-017:p1:q-embedded-systems-017-q3:c01",
+        "embedded-systems-017:p1:q-embedded-systems-017-q4:c01",
+        "embedded-systems-017:p1:q-embedded-systems-017-q5:c01",
+        "embedded-systems-017:p1:q-embedded-systems-017-q6:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q6:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q7:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q8:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q9:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q10:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q11:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q12:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q13:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q14:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q15:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q16:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q17:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q18:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q19:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q20:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q21:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q22:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q23:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q24:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q24:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q25:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q26:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q27:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q28:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q29:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q30:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q31:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q32:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q33:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q34:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q35:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q36:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q37:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q38:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q39:c01",
+        "embedded-systems-017:p4:q-embedded-systems-017-q39:c01",
+        "embedded-systems-017:p4:q-embedded-systems-017-q39:c02"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "source_ids": [
+        "embedded-systems-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p1:c01",
+        "embedded-systems-018:p1:q-embedded-systems-018-q1:c01",
+        "embedded-systems-018:p1:q-embedded-systems-018-q2:c01",
+        "embedded-systems-018:p1:q-embedded-systems-018-q3:c01",
+        "embedded-systems-018:p1:q-embedded-systems-018-q4:c01",
+        "embedded-systems-018:p1:q-embedded-systems-018-q5:c01",
+        "embedded-systems-018:p2:q-embedded-systems-018-q5:c01",
+        "embedded-systems-018:p2:q-embedded-systems-018-q6:c01",
+        "embedded-systems-018:p2:q-embedded-systems-018-q7:c01",
+        "embedded-systems-018:p2:q-embedded-systems-018-q8:c01",
+        "embedded-systems-018:p2:q-embedded-systems-018-q9:c01",
+        "embedded-systems-018:p2:q-embedded-systems-018-q10:c01",
+        "embedded-systems-018:p2:q-embedded-systems-018-q11:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q11:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q12:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q13:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q14:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q15:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q16:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q17:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q18:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q19:c01",
+        "embedded-systems-018:p4:q-embedded-systems-018-q19:c01",
+        "embedded-systems-018:p4:q-embedded-systems-018-q20:c01",
+        "embedded-systems-018:p4:q-embedded-systems-018-q21:c01",
+        "embedded-systems-018:p4:q-embedded-systems-018-q22:c01",
+        "embedded-systems-018:p4:q-embedded-systems-018-q23:c01",
+        "embedded-systems-018:p4:q-embedded-systems-018-q24:c01",
+        "embedded-systems-018:p4:q-embedded-systems-018-q25:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q25:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q26:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q27:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q28:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q29:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q30:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q31:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q32:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q32:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q33:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q34:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q35:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q36:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q37:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q38:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q39:c01",
+        "embedded-systems-018:p7:q-embedded-systems-018-q39:c01",
+        "embedded-systems-018:p8:q-embedded-systems-018-q39:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q39:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q40:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q41:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q42:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q43:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q44:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q45:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q46:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q47:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q48:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q49:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q50:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q51:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q52:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q53:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q54:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q55:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q56:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q57:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q58:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q59:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q60:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q61:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q62:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q63:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "source_ids": [
+        "embedded-systems-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-021:h-嵌入式系统复习2025:c01",
+        "embedded-systems-021:h-嵌入式系统复习2025:c02",
+        "embedded-systems-021:h-嵌入式系统复习2025:c03"
+      ],
+      "heading_path": [
+        "嵌入式系统复习2025"
+      ],
+      "source_ids": [
+        "embedded-systems-021"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p1:q-embedded-systems-014-q1:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q1",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p2:q-embedded-systems-014-q10:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q10",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p2:q-embedded-systems-014-q11:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q11",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p2:q-embedded-systems-014-q12:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q12",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p2:q-embedded-systems-014-q13:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q13",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p2:q-embedded-systems-014-q14:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q14",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p2:q-embedded-systems-014-q15:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q15",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p2:q-embedded-systems-014-q16:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q16",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p2:q-embedded-systems-014-q17:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q17",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p2:q-embedded-systems-014-q18:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q18",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p2:q-embedded-systems-014-q19:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q19",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p1:q-embedded-systems-014-q2:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q2",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p3:q-embedded-systems-014-q20:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q20",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p3:q-embedded-systems-014-q21:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q21",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p3:q-embedded-systems-014-q22:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q22",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p3:q-embedded-systems-014-q23:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q23",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p3:q-embedded-systems-014-q24:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q24",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p3:q-embedded-systems-014-q25:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q25",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p3:q-embedded-systems-014-q26:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q26",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p3:q-embedded-systems-014-q27:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q27",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p3:q-embedded-systems-014-q28:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q28",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p3:q-embedded-systems-014-q29:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q29",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p1:q-embedded-systems-014-q3:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q3",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p4:q-embedded-systems-014-q30:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q30",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p4:q-embedded-systems-014-q31:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q31",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p4:q-embedded-systems-014-q32:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q32",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p4:q-embedded-systems-014-q33:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q33",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p4:q-embedded-systems-014-q34:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q34",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p4:q-embedded-systems-014-q35:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q35",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p4:q-embedded-systems-014-q36:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q36",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p4:q-embedded-systems-014-q37:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q37",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p4:q-embedded-systems-014-q38:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q38",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p4:q-embedded-systems-014-q39:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q39",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p1:q-embedded-systems-014-q4:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q4",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p5:q-embedded-systems-014-q40:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q40",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p5:q-embedded-systems-014-q41:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q41",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p5:q-embedded-systems-014-q42:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q42",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p5:q-embedded-systems-014-q43:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q43",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p5:q-embedded-systems-014-q44:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q44",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p5:q-embedded-systems-014-q45:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q45",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p5:q-embedded-systems-014-q46:c01",
+        "embedded-systems-014:p6:q-embedded-systems-014-q46:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 6,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q46",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p6:q-embedded-systems-014-q47:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q47",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p6:q-embedded-systems-014-q48:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q48",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p6:q-embedded-systems-014-q49:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q49",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p1:q-embedded-systems-014-q5:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q5",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p6:q-embedded-systems-014-q50:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q50",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p7:q-embedded-systems-014-q51:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q51",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p7:q-embedded-systems-014-q52:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q52",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p7:q-embedded-systems-014-q53:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q53",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p7:q-embedded-systems-014-q54:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q54",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p7:q-embedded-systems-014-q55:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q55",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p7:q-embedded-systems-014-q56:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q56",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p7:q-embedded-systems-014-q57:c01",
+        "embedded-systems-014:p8:q-embedded-systems-014-q57:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 8,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q57",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p9:q-embedded-systems-014-q58:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q58",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p9:q-embedded-systems-014-q59:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q59",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p1:q-embedded-systems-014-q6:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q6",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p9:q-embedded-systems-014-q60:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q60",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p10:q-embedded-systems-014-q61:c01",
+        "embedded-systems-014:p11:q-embedded-systems-014-q61:c01",
+        "embedded-systems-014:p12:q-embedded-systems-014-q61:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 12,
+      "locator_start": 10,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q61",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p1:q-embedded-systems-014-q7:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q7",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p2:q-embedded-systems-014-q8:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q8",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-014:p2:q-embedded-systems-014-q9:c01"
+      ],
+      "heading_path": [
+        "华南理工大学-嵌入式A卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-014-Q9",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p1:q-embedded-systems-017-q1:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q1",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q10:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q10",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q11:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q11",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q12:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q12",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q13:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q13",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q14:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q14",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q15:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q15",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q16:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q16",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q17:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q17",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q18:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q18",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q19:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q19",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p1:q-embedded-systems-017-q2:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q2",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q20:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q20",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q21:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q21",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q22:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q22",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q23:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q23",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q24:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q24:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q24",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p3:q-embedded-systems-017-q25:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q25",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p3:q-embedded-systems-017-q26:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q26",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p3:q-embedded-systems-017-q27:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q27",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p3:q-embedded-systems-017-q28:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q28",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p3:q-embedded-systems-017-q29:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q29",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p1:q-embedded-systems-017-q3:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q3",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p3:q-embedded-systems-017-q30:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q30",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p3:q-embedded-systems-017-q31:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q31",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p3:q-embedded-systems-017-q32:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q32",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p3:q-embedded-systems-017-q33:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q33",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p3:q-embedded-systems-017-q34:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q34",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p3:q-embedded-systems-017-q35:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q35",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p3:q-embedded-systems-017-q36:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q36",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p3:q-embedded-systems-017-q37:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q37",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p3:q-embedded-systems-017-q38:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q38",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p3:q-embedded-systems-017-q39:c01",
+        "embedded-systems-017:p4:q-embedded-systems-017-q39:c01",
+        "embedded-systems-017:p4:q-embedded-systems-017-q39:c02"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 4,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q39",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p1:q-embedded-systems-017-q4:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q4",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p1:q-embedded-systems-017-q5:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q5",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p1:q-embedded-systems-017-q6:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q6:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q6",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q7:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q7",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q8:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q8",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-017:p2:q-embedded-systems-017-q9:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版无答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-017-Q9",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p1:q-embedded-systems-018-q1:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q1",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p2:q-embedded-systems-018-q10:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q10",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p2:q-embedded-systems-018-q11:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q11:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q11",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p3:q-embedded-systems-018-q12:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q12",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p3:q-embedded-systems-018-q13:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q13",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p3:q-embedded-systems-018-q14:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q14",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p3:q-embedded-systems-018-q15:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q15",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p3:q-embedded-systems-018-q16:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q16",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p3:q-embedded-systems-018-q17:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q17",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p3:q-embedded-systems-018-q18:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q18",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p3:q-embedded-systems-018-q19:c01",
+        "embedded-systems-018:p4:q-embedded-systems-018-q19:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 4,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q19",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p1:q-embedded-systems-018-q2:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q2",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p4:q-embedded-systems-018-q20:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q20",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p4:q-embedded-systems-018-q21:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q21",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p4:q-embedded-systems-018-q22:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q22",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p4:q-embedded-systems-018-q23:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q23",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p4:q-embedded-systems-018-q24:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q24",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p4:q-embedded-systems-018-q25:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q25:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 5,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q25",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p5:q-embedded-systems-018-q26:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q26",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p5:q-embedded-systems-018-q27:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q27",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p5:q-embedded-systems-018-q28:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q28",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p5:q-embedded-systems-018-q29:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q29",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p1:q-embedded-systems-018-q3:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q3",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p5:q-embedded-systems-018-q30:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q30",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p5:q-embedded-systems-018-q31:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q31",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p5:q-embedded-systems-018-q32:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q32:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 6,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q32",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p6:q-embedded-systems-018-q33:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q33",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p6:q-embedded-systems-018-q34:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q34",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p6:q-embedded-systems-018-q35:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q35",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p6:q-embedded-systems-018-q36:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q36",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p6:q-embedded-systems-018-q37:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q37",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p6:q-embedded-systems-018-q38:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q38",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p6:q-embedded-systems-018-q39:c01",
+        "embedded-systems-018:p7:q-embedded-systems-018-q39:c01",
+        "embedded-systems-018:p8:q-embedded-systems-018-q39:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q39:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q39",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p1:q-embedded-systems-018-q4:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q4",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q40:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q40",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q41:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q41",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q42:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q42",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q43:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q43",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q44:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q44",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q45:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q45",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q46:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q46",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q47:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q47",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q48:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q48",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q49:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q49",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p1:q-embedded-systems-018-q5:c01",
+        "embedded-systems-018:p2:q-embedded-systems-018-q5:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q5",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q50:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q50",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q51:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q51",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q52:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q52",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q53:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q53",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q54:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q54",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q55:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q55",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q56:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q56",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q57:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q57",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q58:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q58",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q59:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q59",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p2:q-embedded-systems-018-q6:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q6",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q60:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q60",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q61:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q61",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q62:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q62",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p9:q-embedded-systems-018-q63:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q63",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p2:q-embedded-systems-018-q7:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q7",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p2:q-embedded-systems-018-q8:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q8",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    },
+    {
+      "chunk_ids": [
+        "embedded-systems-018:p2:q-embedded-systems-018-q9:c01"
+      ],
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "embedded-systems-018-Q9",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案"
+    }
+  ],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-001:s1:c01",
+        "embedded-systems-001:s2:c01",
+        "embedded-systems-001:s3:c01",
+        "embedded-systems-001:s4:c01",
+        "embedded-systems-001:s5:c01",
+        "embedded-systems-001:s6:c01",
+        "embedded-systems-001:s7:c01",
+        "embedded-systems-001:s8:c01",
+        "embedded-systems-001:s9:c01",
+        "embedded-systems-001:s10:c01",
+        "embedded-systems-001:s11:c01",
+        "embedded-systems-001:s12:c01",
+        "embedded-systems-001:s13:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "embedded_systems/embedded-systems-001.md",
+      "source_id": "embedded-systems-001",
+      "source_title": "ch10DMA",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-002:s1:c01",
+        "embedded-systems-002:s2:c01",
+        "embedded-systems-002:s3:c01",
+        "embedded-systems-002:s4:c01",
+        "embedded-systems-002:s5:c01",
+        "embedded-systems-002:s6:c01",
+        "embedded-systems-002:s7:c01",
+        "embedded-systems-002:s8:c01",
+        "embedded-systems-002:s9:c01",
+        "embedded-systems-002:s10:c01",
+        "embedded-systems-002:s11:c01",
+        "embedded-systems-002:s12:c01",
+        "embedded-systems-002:s13:c01",
+        "embedded-systems-002:s14:c01",
+        "embedded-systems-002:s15:c01",
+        "embedded-systems-002:s16:c01",
+        "embedded-systems-002:s17:c01",
+        "embedded-systems-002:s18:c01",
+        "embedded-systems-002:s19:c01",
+        "embedded-systems-002:s20:c01",
+        "embedded-systems-002:s21:c01",
+        "embedded-systems-002:s22:c01",
+        "embedded-systems-002:s23:c01",
+        "embedded-systems-002:s24:c01",
+        "embedded-systems-002:s25:c01",
+        "embedded-systems-002:s26:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "embedded_systems/embedded-systems-002.md",
+      "source_id": "embedded-systems-002",
+      "source_title": "ch11其他接口",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-003:s1:c01",
+        "embedded-systems-003:s2:c01",
+        "embedded-systems-003:s3:c01",
+        "embedded-systems-003:s4:c01",
+        "embedded-systems-003:s5:c01",
+        "embedded-systems-003:s6:c01",
+        "embedded-systems-003:s7:c01",
+        "embedded-systems-003:s8:c01",
+        "embedded-systems-003:s9:c01",
+        "embedded-systems-003:s10:c01",
+        "embedded-systems-003:s11:c01",
+        "embedded-systems-003:s12:c01",
+        "embedded-systems-003:s13:c01",
+        "embedded-systems-003:s14:c01",
+        "embedded-systems-003:s15:c01",
+        "embedded-systems-003:s16:c01",
+        "embedded-systems-003:s17:c01",
+        "embedded-systems-003:s18:c01",
+        "embedded-systems-003:s19:c01",
+        "embedded-systems-003:s20:c01",
+        "embedded-systems-003:s21:c01",
+        "embedded-systems-003:s22:c01",
+        "embedded-systems-003:s23:c01",
+        "embedded-systems-003:s24:c01",
+        "embedded-systems-003:s25:c01",
+        "embedded-systems-003:s26:c01",
+        "embedded-systems-003:s27:c01",
+        "embedded-systems-003:s28:c01",
+        "embedded-systems-003:s29:c01",
+        "embedded-systems-003:s30:c01",
+        "embedded-systems-003:s31:c01",
+        "embedded-systems-003:s32:c01",
+        "embedded-systems-003:s33:c01",
+        "embedded-systems-003:s34:c01",
+        "embedded-systems-003:s35:c01",
+        "embedded-systems-003:s36:c01",
+        "embedded-systems-003:s37:c01",
+        "embedded-systems-003:s38:c01",
+        "embedded-systems-003:s39:c01",
+        "embedded-systems-003:s40:c01",
+        "embedded-systems-003:s41:c01",
+        "embedded-systems-003:s42:c01",
+        "embedded-systems-003:s43:c01",
+        "embedded-systems-003:s44:c01",
+        "embedded-systems-003:s45:c01",
+        "embedded-systems-003:s46:c01",
+        "embedded-systems-003:s47:c01",
+        "embedded-systems-003:s48:c01",
+        "embedded-systems-003:s49:c01",
+        "embedded-systems-003:s50:c01",
+        "embedded-systems-003:s51:c01",
+        "embedded-systems-003:s52:c01",
+        "embedded-systems-003:s53:c01",
+        "embedded-systems-003:s54:c01",
+        "embedded-systems-003:s55:c01",
+        "embedded-systems-003:s56:c01",
+        "embedded-systems-003:s57:c01",
+        "embedded-systems-003:s58:c01",
+        "embedded-systems-003:s59:c01",
+        "embedded-systems-003:s60:c01",
+        "embedded-systems-003:s61:c01",
+        "embedded-systems-003:s62:c01",
+        "embedded-systems-003:s63:c01",
+        "embedded-systems-003:s64:c01",
+        "embedded-systems-003:s65:c01",
+        "embedded-systems-003:s66:c01",
+        "embedded-systems-003:s67:c01",
+        "embedded-systems-003:s68:c01",
+        "embedded-systems-003:s69:c01",
+        "embedded-systems-003:s70:c01",
+        "embedded-systems-003:s71:c01",
+        "embedded-systems-003:s72:c01",
+        "embedded-systems-003:s73:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "embedded_systems/embedded-systems-003.md",
+      "source_id": "embedded-systems-003",
+      "source_title": "ch12嵌入式操作系统",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-004:s1:c01",
+        "embedded-systems-004:s2:c01",
+        "embedded-systems-004:s3:c01",
+        "embedded-systems-004:s4:c01",
+        "embedded-systems-004:s5:c01",
+        "embedded-systems-004:s6:c01",
+        "embedded-systems-004:s7:c01",
+        "embedded-systems-004:s8:c01",
+        "embedded-systems-004:s9:c01",
+        "embedded-systems-004:s10:c01",
+        "embedded-systems-004:s11:c01",
+        "embedded-systems-004:s12:c01",
+        "embedded-systems-004:s13:c01",
+        "embedded-systems-004:s14:c01",
+        "embedded-systems-004:s15:c01",
+        "embedded-systems-004:s16:c01",
+        "embedded-systems-004:s17:c01",
+        "embedded-systems-004:s18:c01",
+        "embedded-systems-004:s19:c01",
+        "embedded-systems-004:s20:c01",
+        "embedded-systems-004:s21:c01",
+        "embedded-systems-004:s22:c01",
+        "embedded-systems-004:s23:c01",
+        "embedded-systems-004:s24:c01",
+        "embedded-systems-004:s25:c01",
+        "embedded-systems-004:s26:c01",
+        "embedded-systems-004:s27:c01",
+        "embedded-systems-004:s28:c01",
+        "embedded-systems-004:s29:c01",
+        "embedded-systems-004:s30:c01",
+        "embedded-systems-004:s31:c01",
+        "embedded-systems-004:s32:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "embedded_systems/embedded-systems-004.md",
+      "source_id": "embedded-systems-004",
+      "source_title": "ch13综合设计实例",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-005:s1:c01",
+        "embedded-systems-005:s2:c01",
+        "embedded-systems-005:s3:c01",
+        "embedded-systems-005:s4:c01",
+        "embedded-systems-005:s5:c01",
+        "embedded-systems-005:s6:c01",
+        "embedded-systems-005:s7:c01",
+        "embedded-systems-005:s8:c01",
+        "embedded-systems-005:s9:c01",
+        "embedded-systems-005:s10:c01",
+        "embedded-systems-005:s11:c01",
+        "embedded-systems-005:s12:c01",
+        "embedded-systems-005:s13:c01",
+        "embedded-systems-005:s14:c01",
+        "embedded-systems-005:s15:c01",
+        "embedded-systems-005:s16:c01",
+        "embedded-systems-005:s17:c01",
+        "embedded-systems-005:s18:c01",
+        "embedded-systems-005:s19:c01",
+        "embedded-systems-005:s20:c01",
+        "embedded-systems-005:s21:c01",
+        "embedded-systems-005:s22:c01",
+        "embedded-systems-005:s23:c01",
+        "embedded-systems-005:s24:c01",
+        "embedded-systems-005:s25:c01",
+        "embedded-systems-005:s26:c01",
+        "embedded-systems-005:s27:c01",
+        "embedded-systems-005:s28:c01",
+        "embedded-systems-005:s29:c01",
+        "embedded-systems-005:s30:c01",
+        "embedded-systems-005:s31:c01",
+        "embedded-systems-005:s32:c01",
+        "embedded-systems-005:s33:c01",
+        "embedded-systems-005:s34:c01",
+        "embedded-systems-005:s35:c01",
+        "embedded-systems-005:s36:c01",
+        "embedded-systems-005:s37:c01",
+        "embedded-systems-005:s38:c01",
+        "embedded-systems-005:s39:c01",
+        "embedded-systems-005:s40:c01",
+        "embedded-systems-005:s41:c01",
+        "embedded-systems-005:s42:c01",
+        "embedded-systems-005:s43:c01",
+        "embedded-systems-005:s44:c01",
+        "embedded-systems-005:s45:c01",
+        "embedded-systems-005:s46:c01",
+        "embedded-systems-005:s47:c01",
+        "embedded-systems-005:s48:c01",
+        "embedded-systems-005:s49:c01",
+        "embedded-systems-005:s50:c01",
+        "embedded-systems-005:s51:c01",
+        "embedded-systems-005:s52:c01",
+        "embedded-systems-005:s53:c01",
+        "embedded-systems-005:s54:c01",
+        "embedded-systems-005:s55:c01",
+        "embedded-systems-005:s56:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "embedded_systems/embedded-systems-005.md",
+      "source_id": "embedded-systems-005",
+      "source_title": "ch1嵌入式系统与微控制器",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-006:s1:c01",
+        "embedded-systems-006:s2:c01",
+        "embedded-systems-006:s3:c01",
+        "embedded-systems-006:s4:c01",
+        "embedded-systems-006:s5:c01",
+        "embedded-systems-006:s6:c01",
+        "embedded-systems-006:s7:c01",
+        "embedded-systems-006:s8:c01",
+        "embedded-systems-006:s9:c01",
+        "embedded-systems-006:s10:c01",
+        "embedded-systems-006:s11:c01",
+        "embedded-systems-006:s12:c01",
+        "embedded-systems-006:s13:c01",
+        "embedded-systems-006:s14:c01",
+        "embedded-systems-006:s15:c01",
+        "embedded-systems-006:s16:c01",
+        "embedded-systems-006:s17:c01",
+        "embedded-systems-006:s18:c01",
+        "embedded-systems-006:s19:c01",
+        "embedded-systems-006:s20:c01",
+        "embedded-systems-006:s21:c01",
+        "embedded-systems-006:s22:c01",
+        "embedded-systems-006:s23:c01",
+        "embedded-systems-006:s24:c01",
+        "embedded-systems-006:s25:c01",
+        "embedded-systems-006:s26:c01",
+        "embedded-systems-006:s27:c01",
+        "embedded-systems-006:s28:c01",
+        "embedded-systems-006:s29:c01",
+        "embedded-systems-006:s30:c01",
+        "embedded-systems-006:s31:c01",
+        "embedded-systems-006:s32:c01",
+        "embedded-systems-006:s33:c01",
+        "embedded-systems-006:s34:c01",
+        "embedded-systems-006:s35:c01",
+        "embedded-systems-006:s36:c01",
+        "embedded-systems-006:s37:c01",
+        "embedded-systems-006:s38:c01",
+        "embedded-systems-006:s39:c01",
+        "embedded-systems-006:s40:c01",
+        "embedded-systems-006:s41:c01",
+        "embedded-systems-006:s42:c01",
+        "embedded-systems-006:s43:c01",
+        "embedded-systems-006:s44:c01",
+        "embedded-systems-006:s45:c01",
+        "embedded-systems-006:s46:c01",
+        "embedded-systems-006:s47:c01",
+        "embedded-systems-006:s48:c01",
+        "embedded-systems-006:s49:c01",
+        "embedded-systems-006:s50:c01",
+        "embedded-systems-006:s51:c01",
+        "embedded-systems-006:s52:c01",
+        "embedded-systems-006:s53:c01",
+        "embedded-systems-006:s54:c01",
+        "embedded-systems-006:s55:c01",
+        "embedded-systems-006:s56:c01",
+        "embedded-systems-006:s57:c01",
+        "embedded-systems-006:s58:c01",
+        "embedded-systems-006:s59:c01",
+        "embedded-systems-006:s60:c01",
+        "embedded-systems-006:s61:c01",
+        "embedded-systems-006:s62:c01",
+        "embedded-systems-006:s63:c01",
+        "embedded-systems-006:s64:c01",
+        "embedded-systems-006:s65:c01",
+        "embedded-systems-006:s66:c01",
+        "embedded-systems-006:s67:c01",
+        "embedded-systems-006:s68:c01",
+        "embedded-systems-006:s69:c01",
+        "embedded-systems-006:s70:c01",
+        "embedded-systems-006:s71:c01",
+        "embedded-systems-006:s72:c01",
+        "embedded-systems-006:s73:c01",
+        "embedded-systems-006:s74:c01",
+        "embedded-systems-006:s75:c01",
+        "embedded-systems-006:s76:c01",
+        "embedded-systems-006:s77:c01",
+        "embedded-systems-006:s78:c01",
+        "embedded-systems-006:s79:c01",
+        "embedded-systems-006:s80:c01",
+        "embedded-systems-006:s81:c01",
+        "embedded-systems-006:s82:c01",
+        "embedded-systems-006:s83:c01",
+        "embedded-systems-006:s84:c01",
+        "embedded-systems-006:s85:c01",
+        "embedded-systems-006:s86:c01",
+        "embedded-systems-006:s87:c01",
+        "embedded-systems-006:s88:c01",
+        "embedded-systems-006:s89:c01",
+        "embedded-systems-006:s90:c01",
+        "embedded-systems-006:s91:c01",
+        "embedded-systems-006:s92:c01",
+        "embedded-systems-006:s93:c01",
+        "embedded-systems-006:s94:c01",
+        "embedded-systems-006:s95:c01",
+        "embedded-systems-006:s96:c01",
+        "embedded-systems-006:s97:c01",
+        "embedded-systems-006:s98:c01",
+        "embedded-systems-006:s99:c01",
+        "embedded-systems-006:s100:c01",
+        "embedded-systems-006:s101:c01",
+        "embedded-systems-006:s102:c01",
+        "embedded-systems-006:s103:c01",
+        "embedded-systems-006:s104:c01",
+        "embedded-systems-006:s105:c01",
+        "embedded-systems-006:s106:c01",
+        "embedded-systems-006:s107:c01",
+        "embedded-systems-006:s108:c01",
+        "embedded-systems-006:s109:c01",
+        "embedded-systems-006:s110:c01",
+        "embedded-systems-006:s111:c01",
+        "embedded-systems-006:s112:c01",
+        "embedded-systems-006:s113:c01",
+        "embedded-systems-006:s114:c01",
+        "embedded-systems-006:s115:c01",
+        "embedded-systems-006:s116:c01",
+        "embedded-systems-006:s117:c01",
+        "embedded-systems-006:s118:c01",
+        "embedded-systems-006:s119:c01",
+        "embedded-systems-006:s120:c01",
+        "embedded-systems-006:s121:c01",
+        "embedded-systems-006:s122:c01",
+        "embedded-systems-006:s123:c01",
+        "embedded-systems-006:s124:c01",
+        "embedded-systems-006:s125:c01",
+        "embedded-systems-006:s126:c01",
+        "embedded-systems-006:s127:c01",
+        "embedded-systems-006:s128:c01",
+        "embedded-systems-006:s129:c01",
+        "embedded-systems-006:s130:c01",
+        "embedded-systems-006:s131:c01",
+        "embedded-systems-006:s132:c01",
+        "embedded-systems-006:s133:c01",
+        "embedded-systems-006:s134:c01",
+        "embedded-systems-006:s135:c01",
+        "embedded-systems-006:s136:c01",
+        "embedded-systems-006:s137:c01",
+        "embedded-systems-006:s138:c01",
+        "embedded-systems-006:s139:c01",
+        "embedded-systems-006:s140:c01",
+        "embedded-systems-006:s141:c01",
+        "embedded-systems-006:s142:c01",
+        "embedded-systems-006:s143:c01",
+        "embedded-systems-006:s144:c01",
+        "embedded-systems-006:s145:c01",
+        "embedded-systems-006:s146:c01",
+        "embedded-systems-006:s147:c01",
+        "embedded-systems-006:s148:c01",
+        "embedded-systems-006:s149:c01",
+        "embedded-systems-006:s150:c01",
+        "embedded-systems-006:s151:c01",
+        "embedded-systems-006:s152:c01",
+        "embedded-systems-006:s153:c01",
+        "embedded-systems-006:s154:c01",
+        "embedded-systems-006:s155:c01",
+        "embedded-systems-006:s156:c01",
+        "embedded-systems-006:s157:c01",
+        "embedded-systems-006:s158:c01",
+        "embedded-systems-006:s159:c01",
+        "embedded-systems-006:s160:c01",
+        "embedded-systems-006:s161:c01",
+        "embedded-systems-006:s162:c01",
+        "embedded-systems-006:s163:c01",
+        "embedded-systems-006:s164:c01",
+        "embedded-systems-006:s165:c01",
+        "embedded-systems-006:s166:c01",
+        "embedded-systems-006:s167:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "embedded_systems/embedded-systems-006.md",
+      "source_id": "embedded-systems-006",
+      "source_title": "ch2微控制器体系结构及汇编语言",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-007:s1:c01",
+        "embedded-systems-007:s2:c01",
+        "embedded-systems-007:s3:c01",
+        "embedded-systems-007:s4:c01",
+        "embedded-systems-007:s5:c01",
+        "embedded-systems-007:s6:c01",
+        "embedded-systems-007:s7:c01",
+        "embedded-systems-007:s8:c01",
+        "embedded-systems-007:s9:c01",
+        "embedded-systems-007:s10:c01",
+        "embedded-systems-007:s11:c01",
+        "embedded-systems-007:s12:c01",
+        "embedded-systems-007:s13:c01",
+        "embedded-systems-007:s14:c01",
+        "embedded-systems-007:s15:c01",
+        "embedded-systems-007:s16:c01",
+        "embedded-systems-007:s17:c01",
+        "embedded-systems-007:s18:c01",
+        "embedded-systems-007:s19:c01",
+        "embedded-systems-007:s20:c01",
+        "embedded-systems-007:s21:c01",
+        "embedded-systems-007:s22:c01",
+        "embedded-systems-007:s23:c01",
+        "embedded-systems-007:s24:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "embedded_systems/embedded-systems-007.md",
+      "source_id": "embedded-systems-007",
+      "source_title": "ch3微控制器硬件系统",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-008:s1:c01",
+        "embedded-systems-008:s2:c01",
+        "embedded-systems-008:s3:c01",
+        "embedded-systems-008:s4:c01",
+        "embedded-systems-008:s5:c01",
+        "embedded-systems-008:s6:c01",
+        "embedded-systems-008:s7:c01",
+        "embedded-systems-008:s8:c01",
+        "embedded-systems-008:s9:c01",
+        "embedded-systems-008:s10:c01",
+        "embedded-systems-008:s11:c01",
+        "embedded-systems-008:s12:c01",
+        "embedded-systems-008:s13:c01",
+        "embedded-systems-008:s14:c01",
+        "embedded-systems-008:s15:c01",
+        "embedded-systems-008:s16:c01",
+        "embedded-systems-008:s17:c01",
+        "embedded-systems-008:s18:c01",
+        "embedded-systems-008:s19:c01",
+        "embedded-systems-008:s20:c01",
+        "embedded-systems-008:s21:c01",
+        "embedded-systems-008:s22:c01",
+        "embedded-systems-008:s23:c01",
+        "embedded-systems-008:s24:c01",
+        "embedded-systems-008:s25:c01",
+        "embedded-systems-008:s26:c01",
+        "embedded-systems-008:s27:c01",
+        "embedded-systems-008:s28:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "embedded_systems/embedded-systems-008.md",
+      "source_id": "embedded-systems-008",
+      "source_title": "ch4微控制器软件开发",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-009:s1:c01",
+        "embedded-systems-009:s2:c01",
+        "embedded-systems-009:s3:c01",
+        "embedded-systems-009:s4:c01",
+        "embedded-systems-009:s5:c01",
+        "embedded-systems-009:s6:c01",
+        "embedded-systems-009:s7:c01",
+        "embedded-systems-009:s8:c01",
+        "embedded-systems-009:s9:c01",
+        "embedded-systems-009:s10:c01",
+        "embedded-systems-009:s11:c01",
+        "embedded-systems-009:s12:c01",
+        "embedded-systems-009:s13:c01",
+        "embedded-systems-009:s14:c01",
+        "embedded-systems-009:s15:c01",
+        "embedded-systems-009:s16:c01",
+        "embedded-systems-009:s17:c01",
+        "embedded-systems-009:s18:c01",
+        "embedded-systems-009:s19:c01",
+        "embedded-systems-009:s20:c01",
+        "embedded-systems-009:s21:c01",
+        "embedded-systems-009:s22:c01",
+        "embedded-systems-009:s23:c01",
+        "embedded-systems-009:s24:c01",
+        "embedded-systems-009:s25:c01",
+        "embedded-systems-009:s26:c01",
+        "embedded-systems-009:s27:c01",
+        "embedded-systems-009:s28:c01",
+        "embedded-systems-009:s29:c01",
+        "embedded-systems-009:s30:c01",
+        "embedded-systems-009:s31:c01",
+        "embedded-systems-009:s32:c01",
+        "embedded-systems-009:s33:c01",
+        "embedded-systems-009:s34:c01",
+        "embedded-systems-009:s35:c01",
+        "embedded-systems-009:s36:c01",
+        "embedded-systems-009:s37:c01",
+        "embedded-systems-009:s38:c01",
+        "embedded-systems-009:s39:c01",
+        "embedded-systems-009:s40:c01",
+        "embedded-systems-009:s41:c01",
+        "embedded-systems-009:s42:c01",
+        "embedded-systems-009:s43:c01",
+        "embedded-systems-009:s44:c01",
+        "embedded-systems-009:s45:c01",
+        "embedded-systems-009:s46:c01",
+        "embedded-systems-009:s47:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "embedded_systems/embedded-systems-009.md",
+      "source_id": "embedded-systems-009",
+      "source_title": "ch5GPIO",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-010:s1:c01",
+        "embedded-systems-010:s2:c01",
+        "embedded-systems-010:s3:c01",
+        "embedded-systems-010:s4:c01",
+        "embedded-systems-010:s5:c01",
+        "embedded-systems-010:s6:c01",
+        "embedded-systems-010:s7:c01",
+        "embedded-systems-010:s8:c01",
+        "embedded-systems-010:s9:c01",
+        "embedded-systems-010:s10:c01",
+        "embedded-systems-010:s11:c01",
+        "embedded-systems-010:s12:c01",
+        "embedded-systems-010:s13:c01",
+        "embedded-systems-010:s14:c01",
+        "embedded-systems-010:s15:c01",
+        "embedded-systems-010:s16:c01",
+        "embedded-systems-010:s17:c01",
+        "embedded-systems-010:s18:c01",
+        "embedded-systems-010:s19:c01",
+        "embedded-systems-010:s20:c01",
+        "embedded-systems-010:s21:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "embedded_systems/embedded-systems-010.md",
+      "source_id": "embedded-systems-010",
+      "source_title": "ch6微控制器中断",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-011:s1:c01",
+        "embedded-systems-011:s2:c01",
+        "embedded-systems-011:s3:c01",
+        "embedded-systems-011:s4:c01",
+        "embedded-systems-011:s5:c01",
+        "embedded-systems-011:s6:c01",
+        "embedded-systems-011:s7:c01",
+        "embedded-systems-011:s8:c01",
+        "embedded-systems-011:s9:c01",
+        "embedded-systems-011:s10:c01",
+        "embedded-systems-011:s11:c01",
+        "embedded-systems-011:s12:c01",
+        "embedded-systems-011:s13:c01",
+        "embedded-systems-011:s14:c01",
+        "embedded-systems-011:s15:c01",
+        "embedded-systems-011:s16:c01",
+        "embedded-systems-011:s17:c01",
+        "embedded-systems-011:s18:c01",
+        "embedded-systems-011:s19:c01",
+        "embedded-systems-011:s20:c01",
+        "embedded-systems-011:s21:c01",
+        "embedded-systems-011:s22:c01",
+        "embedded-systems-011:s23:c01",
+        "embedded-systems-011:s24:c01",
+        "embedded-systems-011:s25:c01",
+        "embedded-systems-011:s26:c01",
+        "embedded-systems-011:s27:c01",
+        "embedded-systems-011:s28:c01",
+        "embedded-systems-011:s29:c01",
+        "embedded-systems-011:s30:c01",
+        "embedded-systems-011:s31:c01",
+        "embedded-systems-011:s32:c01",
+        "embedded-systems-011:s33:c01",
+        "embedded-systems-011:s34:c01",
+        "embedded-systems-011:s35:c01",
+        "embedded-systems-011:s36:c01",
+        "embedded-systems-011:s37:c01",
+        "embedded-systems-011:s38:c01",
+        "embedded-systems-011:s39:c01",
+        "embedded-systems-011:s40:c01",
+        "embedded-systems-011:s41:c01",
+        "embedded-systems-011:s42:c01",
+        "embedded-systems-011:s43:c01",
+        "embedded-systems-011:s44:c01",
+        "embedded-systems-011:s45:c01",
+        "embedded-systems-011:s46:c01",
+        "embedded-systems-011:s47:c01",
+        "embedded-systems-011:s48:c01",
+        "embedded-systems-011:s49:c01",
+        "embedded-systems-011:s50:c01",
+        "embedded-systems-011:s51:c01",
+        "embedded-systems-011:s52:c01",
+        "embedded-systems-011:s53:c01",
+        "embedded-systems-011:s54:c01",
+        "embedded-systems-011:s55:c01",
+        "embedded-systems-011:s56:c01",
+        "embedded-systems-011:s57:c01",
+        "embedded-systems-011:s58:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "embedded_systems/embedded-systems-011.md",
+      "source_id": "embedded-systems-011",
+      "source_title": "ch7串行通信",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-012:s1:c01",
+        "embedded-systems-012:s2:c01",
+        "embedded-systems-012:s3:c01",
+        "embedded-systems-012:s4:c01",
+        "embedded-systems-012:s5:c01",
+        "embedded-systems-012:s6:c01",
+        "embedded-systems-012:s7:c01",
+        "embedded-systems-012:s8:c01",
+        "embedded-systems-012:s9:c01",
+        "embedded-systems-012:s10:c01",
+        "embedded-systems-012:s11:c01",
+        "embedded-systems-012:s12:c01",
+        "embedded-systems-012:s13:c01",
+        "embedded-systems-012:s14:c01",
+        "embedded-systems-012:s15:c01",
+        "embedded-systems-012:s16:c01",
+        "embedded-systems-012:s17:c01",
+        "embedded-systems-012:s18:c01",
+        "embedded-systems-012:s19:c01",
+        "embedded-systems-012:s20:c01",
+        "embedded-systems-012:s21:c01",
+        "embedded-systems-012:s22:c01",
+        "embedded-systems-012:s23:c01",
+        "embedded-systems-012:s24:c01",
+        "embedded-systems-012:s25:c01",
+        "embedded-systems-012:s26:c01",
+        "embedded-systems-012:s27:c01",
+        "embedded-systems-012:s28:c01",
+        "embedded-systems-012:s29:c01",
+        "embedded-systems-012:s30:c01",
+        "embedded-systems-012:s31:c01",
+        "embedded-systems-012:s32:c01",
+        "embedded-systems-012:s33:c01",
+        "embedded-systems-012:s34:c01",
+        "embedded-systems-012:s35:c01",
+        "embedded-systems-012:s36:c01",
+        "embedded-systems-012:s37:c01",
+        "embedded-systems-012:s38:c01",
+        "embedded-systems-012:s39:c01",
+        "embedded-systems-012:s40:c01",
+        "embedded-systems-012:s41:c01",
+        "embedded-systems-012:s42:c01",
+        "embedded-systems-012:s43:c01",
+        "embedded-systems-012:s44:c01",
+        "embedded-systems-012:s45:c01",
+        "embedded-systems-012:s46:c01",
+        "embedded-systems-012:s47:c01",
+        "embedded-systems-012:s48:c01",
+        "embedded-systems-012:s49:c01",
+        "embedded-systems-012:s50:c01",
+        "embedded-systems-012:s51:c01",
+        "embedded-systems-012:s52:c01",
+        "embedded-systems-012:s53:c01",
+        "embedded-systems-012:s54:c01",
+        "embedded-systems-012:s55:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "embedded_systems/embedded-systems-012.md",
+      "source_id": "embedded-systems-012",
+      "source_title": "ch8定时器",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-013:s1:c01",
+        "embedded-systems-013:s2:c01",
+        "embedded-systems-013:s3:c01",
+        "embedded-systems-013:s4:c01",
+        "embedded-systems-013:s5:c01",
+        "embedded-systems-013:s6:c01",
+        "embedded-systems-013:s7:c01",
+        "embedded-systems-013:s8:c01",
+        "embedded-systems-013:s9:c01",
+        "embedded-systems-013:s10:c01",
+        "embedded-systems-013:s11:c01",
+        "embedded-systems-013:s12:c01",
+        "embedded-systems-013:s13:c01",
+        "embedded-systems-013:s14:c01",
+        "embedded-systems-013:s15:c01",
+        "embedded-systems-013:s16:c01",
+        "embedded-systems-013:s17:c01",
+        "embedded-systems-013:s18:c01",
+        "embedded-systems-013:s19:c01",
+        "embedded-systems-013:s20:c01",
+        "embedded-systems-013:s21:c01",
+        "embedded-systems-013:s22:c01",
+        "embedded-systems-013:s23:c01",
+        "embedded-systems-013:s24:c01",
+        "embedded-systems-013:s25:c01",
+        "embedded-systems-013:s26:c01",
+        "embedded-systems-013:s27:c01",
+        "embedded-systems-013:s28:c01",
+        "embedded-systems-013:s29:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "embedded_systems/embedded-systems-013.md",
+      "source_id": "embedded-systems-013",
+      "source_title": "ch9ADC",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-014:p1:c01",
+        "embedded-systems-014:p1:q-embedded-systems-014-q1:c01",
+        "embedded-systems-014:p1:q-embedded-systems-014-q2:c01",
+        "embedded-systems-014:p1:q-embedded-systems-014-q3:c01",
+        "embedded-systems-014:p1:q-embedded-systems-014-q4:c01",
+        "embedded-systems-014:p1:q-embedded-systems-014-q5:c01",
+        "embedded-systems-014:p1:q-embedded-systems-014-q6:c01",
+        "embedded-systems-014:p1:q-embedded-systems-014-q7:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q8:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q9:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q10:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q11:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q12:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q13:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q14:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q15:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q16:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q17:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q18:c01",
+        "embedded-systems-014:p2:q-embedded-systems-014-q19:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q20:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q21:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q22:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q23:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q24:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q25:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q26:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q27:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q28:c01",
+        "embedded-systems-014:p3:q-embedded-systems-014-q29:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q30:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q31:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q32:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q33:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q34:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q35:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q36:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q37:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q38:c01",
+        "embedded-systems-014:p4:q-embedded-systems-014-q39:c01",
+        "embedded-systems-014:p5:q-embedded-systems-014-q40:c01",
+        "embedded-systems-014:p5:q-embedded-systems-014-q41:c01",
+        "embedded-systems-014:p5:q-embedded-systems-014-q42:c01",
+        "embedded-systems-014:p5:q-embedded-systems-014-q43:c01",
+        "embedded-systems-014:p5:q-embedded-systems-014-q44:c01",
+        "embedded-systems-014:p5:q-embedded-systems-014-q45:c01",
+        "embedded-systems-014:p5:q-embedded-systems-014-q46:c01",
+        "embedded-systems-014:p6:q-embedded-systems-014-q46:c01",
+        "embedded-systems-014:p6:q-embedded-systems-014-q47:c01",
+        "embedded-systems-014:p6:q-embedded-systems-014-q48:c01",
+        "embedded-systems-014:p6:q-embedded-systems-014-q49:c01",
+        "embedded-systems-014:p6:q-embedded-systems-014-q50:c01",
+        "embedded-systems-014:p7:q-embedded-systems-014-q51:c01",
+        "embedded-systems-014:p7:q-embedded-systems-014-q52:c01",
+        "embedded-systems-014:p7:q-embedded-systems-014-q53:c01",
+        "embedded-systems-014:p7:q-embedded-systems-014-q54:c01",
+        "embedded-systems-014:p7:q-embedded-systems-014-q55:c01",
+        "embedded-systems-014:p7:q-embedded-systems-014-q56:c01",
+        "embedded-systems-014:p7:q-embedded-systems-014-q57:c01",
+        "embedded-systems-014:p8:q-embedded-systems-014-q57:c01",
+        "embedded-systems-014:p9:q-embedded-systems-014-q58:c01",
+        "embedded-systems-014:p9:q-embedded-systems-014-q59:c01",
+        "embedded-systems-014:p9:q-embedded-systems-014-q60:c01",
+        "embedded-systems-014:p10:q-embedded-systems-014-q61:c01",
+        "embedded-systems-014:p11:q-embedded-systems-014-q61:c01",
+        "embedded-systems-014:p12:q-embedded-systems-014-q61:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "past_exam",
+      "locator_type": "page",
+      "output_md": "embedded_systems/embedded-systems-014.md",
+      "source_id": "embedded-systems-014",
+      "source_title": "华南理工大学-嵌入式A卷",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-015:h-嵌入式2024级回忆版:c01",
+        "embedded-systems-015:h-嵌入式2024级回忆版:c02",
+        "embedded-systems-015:h-嵌入式2024级回忆版:c03"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "embedded_systems/embedded-systems-015.md",
+      "source_id": "embedded-systems-015",
+      "source_title": "嵌入式2024级回忆版",
+      "year": "2024"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-016:h-嵌入式回忆:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "embedded_systems/embedded-systems-016.md",
+      "source_id": "embedded-systems-016",
+      "source_title": "嵌入式回忆",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-017:p1:c01",
+        "embedded-systems-017:p1:q-embedded-systems-017-q1:c01",
+        "embedded-systems-017:p1:q-embedded-systems-017-q2:c01",
+        "embedded-systems-017:p1:q-embedded-systems-017-q3:c01",
+        "embedded-systems-017:p1:q-embedded-systems-017-q4:c01",
+        "embedded-systems-017:p1:q-embedded-systems-017-q5:c01",
+        "embedded-systems-017:p1:q-embedded-systems-017-q6:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q6:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q7:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q8:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q9:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q10:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q11:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q12:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q13:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q14:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q15:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q16:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q17:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q18:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q19:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q20:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q21:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q22:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q23:c01",
+        "embedded-systems-017:p2:q-embedded-systems-017-q24:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q24:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q25:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q26:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q27:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q28:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q29:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q30:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q31:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q32:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q33:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q34:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q35:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q36:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q37:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q38:c01",
+        "embedded-systems-017:p3:q-embedded-systems-017-q39:c01",
+        "embedded-systems-017:p4:q-embedded-systems-017-q39:c01",
+        "embedded-systems-017:p4:q-embedded-systems-017-q39:c02"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "past_exam_answer",
+      "locator_type": "page",
+      "output_md": "embedded_systems/embedded-systems-017.md",
+      "source_id": "embedded-systems-017",
+      "source_title": "嵌入式期末真题回忆版无答案",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-018:p1:c01",
+        "embedded-systems-018:p1:q-embedded-systems-018-q1:c01",
+        "embedded-systems-018:p1:q-embedded-systems-018-q2:c01",
+        "embedded-systems-018:p1:q-embedded-systems-018-q3:c01",
+        "embedded-systems-018:p1:q-embedded-systems-018-q4:c01",
+        "embedded-systems-018:p1:q-embedded-systems-018-q5:c01",
+        "embedded-systems-018:p2:q-embedded-systems-018-q5:c01",
+        "embedded-systems-018:p2:q-embedded-systems-018-q6:c01",
+        "embedded-systems-018:p2:q-embedded-systems-018-q7:c01",
+        "embedded-systems-018:p2:q-embedded-systems-018-q8:c01",
+        "embedded-systems-018:p2:q-embedded-systems-018-q9:c01",
+        "embedded-systems-018:p2:q-embedded-systems-018-q10:c01",
+        "embedded-systems-018:p2:q-embedded-systems-018-q11:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q11:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q12:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q13:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q14:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q15:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q16:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q17:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q18:c01",
+        "embedded-systems-018:p3:q-embedded-systems-018-q19:c01",
+        "embedded-systems-018:p4:q-embedded-systems-018-q19:c01",
+        "embedded-systems-018:p4:q-embedded-systems-018-q20:c01",
+        "embedded-systems-018:p4:q-embedded-systems-018-q21:c01",
+        "embedded-systems-018:p4:q-embedded-systems-018-q22:c01",
+        "embedded-systems-018:p4:q-embedded-systems-018-q23:c01",
+        "embedded-systems-018:p4:q-embedded-systems-018-q24:c01",
+        "embedded-systems-018:p4:q-embedded-systems-018-q25:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q25:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q26:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q27:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q28:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q29:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q30:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q31:c01",
+        "embedded-systems-018:p5:q-embedded-systems-018-q32:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q32:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q33:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q34:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q35:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q36:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q37:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q38:c01",
+        "embedded-systems-018:p6:q-embedded-systems-018-q39:c01",
+        "embedded-systems-018:p7:q-embedded-systems-018-q39:c01",
+        "embedded-systems-018:p8:q-embedded-systems-018-q39:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q39:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q40:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q41:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q42:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q43:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q44:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q45:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q46:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q47:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q48:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q49:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q50:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q51:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q52:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q53:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q54:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q55:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q56:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q57:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q58:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q59:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q60:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q61:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q62:c01",
+        "embedded-systems-018:p9:q-embedded-systems-018-q63:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "past_exam_answer",
+      "locator_type": "page",
+      "output_md": "embedded_systems/embedded-systems-018.md",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-019:h-作业内容-2025:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "embedded_systems/embedded-systems-019.md",
+      "source_id": "embedded-systems-019",
+      "source_title": "作业内容-2025",
+      "year": "2025"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-020:s1:c01",
+        "embedded-systems-020:s2:c01",
+        "embedded-systems-020:s3:c01",
+        "embedded-systems-020:s4:c01",
+        "embedded-systems-020:s5:c01",
+        "embedded-systems-020:s6:c01",
+        "embedded-systems-020:s7:c01",
+        "embedded-systems-020:s8:c01",
+        "embedded-systems-020:s9:c01",
+        "embedded-systems-020:s10:c01",
+        "embedded-systems-020:s11:c01",
+        "embedded-systems-020:s12:c01",
+        "embedded-systems-020:s13:c01"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "embedded_systems/embedded-systems-020.md",
+      "source_id": "embedded-systems-020",
+      "source_title": "嵌入式",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "embedded-systems-021:h-嵌入式系统复习2025:c01",
+        "embedded-systems-021:h-嵌入式系统复习2025:c02",
+        "embedded-systems-021:h-嵌入式系统复习2025:c03"
+      ],
+      "course_id": "embedded_systems",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "embedded_systems/embedded-systems-021.md",
+      "source_id": "embedded-systems-021",
+      "source_title": "嵌入式系统复习2025",
+      "year": "2025"
+    }
+  ],
+  "statistics": {
+    "chunk_count": 832,
+    "question_count": 163,
+    "source_count": 21
+  },
+  "workflow_version": "workflow-contract-v1"
+}

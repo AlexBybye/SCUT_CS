@@ -1,0 +1,3513 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "signals_and_communication",
+  "course_pack_version": "course-pack-signals_and_communication-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "signals-and-communication-018:s2:c01",
+        "signals-and-communication-018:s3:c01"
+      ],
+      "heading_path": [
+        "1. 数字通信的特点",
+        "数字通信的特点"
+      ],
+      "source_ids": [
+        "signals-and-communication-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-018:s1:c01"
+      ],
+      "heading_path": [
+        "1. 数字通信的特点",
+        "通信原理"
+      ],
+      "source_ids": [
+        "signals-and-communication-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-019:s2:c01"
+      ],
+      "heading_path": [
+        "2. 通信信道",
+        "信道分类："
+      ],
+      "source_ids": [
+        "signals-and-communication-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-019:s11:c01"
+      ],
+      "heading_path": [
+        "2. 通信信道",
+        "光纤"
+      ],
+      "source_ids": [
+        "signals-and-communication-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-019:s10:c01"
+      ],
+      "heading_path": [
+        "2. 通信信道",
+        "对称电缆：由许多对双绞线组成"
+      ],
+      "source_ids": [
+        "signals-and-communication-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-019:s7:c01"
+      ],
+      "heading_path": [
+        "2. 通信信道",
+        "散射传播"
+      ],
+      "source_ids": [
+        "signals-and-communication-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-019:s3:c01"
+      ],
+      "heading_path": [
+        "2. 通信信道",
+        "无线信道"
+      ],
+      "source_ids": [
+        "signals-and-communication-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-019:s9:c01"
+      ],
+      "heading_path": [
+        "2. 通信信道",
+        "有线信道"
+      ],
+      "source_ids": [
+        "signals-and-communication-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-019:s8:c01"
+      ],
+      "heading_path": [
+        "2. 通信信道",
+        "流星余迹散射"
+      ],
+      "source_ids": [
+        "signals-and-communication-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-019:s5:c01"
+      ],
+      "heading_path": [
+        "2. 通信信道",
+        "电磁波的分类："
+      ],
+      "source_ids": [
+        "signals-and-communication-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-019:s4:c01"
+      ],
+      "heading_path": [
+        "2. 通信信道",
+        "电离层对于传播的影响"
+      ],
+      "source_ids": [
+        "signals-and-communication-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-019:s6:c01"
+      ],
+      "heading_path": [
+        "2. 通信信道",
+        "视线传播："
+      ],
+      "source_ids": [
+        "signals-and-communication-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-019:s1:c01"
+      ],
+      "heading_path": [
+        "2. 通信信道",
+        "通信原理"
+      ],
+      "source_ids": [
+        "signals-and-communication-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s11:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "AM信号的特性"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s16:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "SSB信号的频谱"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s21:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "为了保证相干解调的输出无失真地恢复调制信号m(t)，上式中的传递函数必须满足："
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s23:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "几种调制的特点与应用"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s13:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "双边带调制（DSB）"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s2:c01",
+        "signals-and-communication-020:s3:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "基本概念"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s20:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "对残留边带滤波器特性的要求"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s5:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "幅度调制（线性调制）的原理"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s22:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "残留边带滤波器特性的两种形式"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s18:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "残留边带（VSB）调制"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s8:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "波形图"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s15:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "滤波法及SSB信号的频域表示"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s17:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "滤波法的技术难点"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s12:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "调制效率"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s14:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "调制效率：100％"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s19:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "调制方法：用滤波法实现残留边带调制的原理框图与滤波法SBB调制器相同。"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s4:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "调制的目的"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s9:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "调幅的程度及“过调幅”："
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s7:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "调幅（AM）"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s1:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "通信原理"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s10:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "频谱图"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-020:s6:c01"
+      ],
+      "heading_path": [
+        "3. 模拟调制方法",
+        "频谱：设调制信号m(t)的频谱为M()，则已调信号的频谱为"
+      ],
+      "source_ids": [
+        "signals-and-communication-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-021:s12:c01"
+      ],
+      "heading_path": [
+        "4. 无码间串扰的判决",
+        "例："
+      ],
+      "source_ids": [
+        "signals-and-communication-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-021:s5:c01"
+      ],
+      "heading_path": [
+        "4. 无码间串扰的判决",
+        "在上式中，若让h [(k-n)Ts +t0] 在Ts+ t0 、2Ts +t0等后面码元抽样判决时刻上正好为0，就能消除码间串扰，如下图所示："
+      ],
+      "source_ids": [
+        "signals-and-communication-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-021:s10:c01"
+      ],
+      "heading_path": [
+        "4. 无码间串扰的判决",
+        "在无码间串扰时域条件的要求下，我们得到无码间串扰时的基带传输特性应满足"
+      ],
+      "source_ids": [
+        "signals-and-communication-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-021:s2:c01"
+      ],
+      "heading_path": [
+        "4. 无码间串扰的判决",
+        "基带系统的各点波形示意图"
+      ],
+      "source_ids": [
+        "signals-and-communication-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-021:s8:c01"
+      ],
+      "heading_path": [
+        "4. 无码间串扰的判决",
+        "将上式作变量代换：令"
+      ],
+      "source_ids": [
+        "signals-and-communication-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-021:s6:c01"
+      ],
+      "heading_path": [
+        "4. 无码间串扰的判决",
+        "无码间串扰的条件"
+      ],
+      "source_ids": [
+        "signals-and-communication-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-021:s4:c01"
+      ],
+      "heading_path": [
+        "4. 无码间串扰的判决",
+        "消除码间串扰的基本思想"
+      ],
+      "source_ids": [
+        "signals-and-communication-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-021:s3:c01"
+      ],
+      "heading_path": [
+        "4. 无码间串扰的判决",
+        "码间串扰"
+      ],
+      "source_ids": [
+        "signals-and-communication-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-021:s9:c01"
+      ],
+      "heading_path": [
+        "4. 无码间串扰的判决",
+        "这里，我们已把重新换为。"
+      ],
+      "source_ids": [
+        "signals-and-communication-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-021:s1:c01"
+      ],
+      "heading_path": [
+        "4. 无码间串扰的判决",
+        "通信原理"
+      ],
+      "source_ids": [
+        "signals-and-communication-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-021:s7:c01"
+      ],
+      "heading_path": [
+        "4. 无码间串扰的判决",
+        "频域条件"
+      ],
+      "source_ids": [
+        "signals-and-communication-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-021:s11:c01"
+      ],
+      "heading_path": [
+        "4. 无码间串扰的判决",
+        "频域条件的物理意义"
+      ],
+      "source_ids": [
+        "signals-and-communication-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-022:s3:c01",
+        "signals-and-communication-022:s4:c01"
+      ],
+      "heading_path": [
+        "5. 信道复用技术",
+        "1. 频分复用"
+      ],
+      "source_ids": [
+        "signals-and-communication-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-022:s5:c01",
+        "signals-and-communication-022:s6:c01"
+      ],
+      "heading_path": [
+        "5. 信道复用技术",
+        "2. 时分复用"
+      ],
+      "source_ids": [
+        "signals-and-communication-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-022:s7:c01",
+        "signals-and-communication-022:s10:c01"
+      ],
+      "heading_path": [
+        "5. 信道复用技术",
+        "3. 码分复用 / 码分多址"
+      ],
+      "source_ids": [
+        "signals-and-communication-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-022:s8:c01",
+        "signals-and-communication-022:s9:c01"
+      ],
+      "heading_path": [
+        "5. 信道复用技术",
+        "3. 码分复用 / 码分多址的理解"
+      ],
+      "source_ids": [
+        "signals-and-communication-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-022:s11:c01"
+      ],
+      "heading_path": [
+        "5. 信道复用技术",
+        "4. 波分复用"
+      ],
+      "source_ids": [
+        "signals-and-communication-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-022:s12:c01"
+      ],
+      "heading_path": [
+        "5. 信道复用技术",
+        "5. 空分复用"
+      ],
+      "source_ids": [
+        "signals-and-communication-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-022:s13:c01",
+        "signals-and-communication-022:s14:c01"
+      ],
+      "heading_path": [
+        "5. 信道复用技术",
+        "6. 统计复用 / 异步时分复用"
+      ],
+      "source_ids": [
+        "signals-and-communication-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-022:s2:c01"
+      ],
+      "heading_path": [
+        "5. 信道复用技术",
+        "信道复用技术是提高通信系统效率和资源利用率的核心技术。"
+      ],
+      "source_ids": [
+        "signals-and-communication-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-022:s1:c01"
+      ],
+      "heading_path": [
+        "5. 信道复用技术",
+        "通信原理"
+      ],
+      "source_ids": [
+        "signals-and-communication-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-023:s13:c01"
+      ],
+      "heading_path": [
+        "6. 3G、4G、5G技术",
+        "1. 增强移动宽带（高速公路）"
+      ],
+      "source_ids": [
+        "signals-and-communication-023"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-023:s14:c01"
+      ],
+      "heading_path": [
+        "6. 3G、4G、5G技术",
+        "2. 超高可靠低时延通信（特快专递）"
+      ],
+      "source_ids": [
+        "signals-and-communication-023"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-023:s15:c01"
+      ],
+      "heading_path": [
+        "6. 3G、4G、5G技术",
+        "3.海量设备通信（海量邮递）"
+      ],
+      "source_ids": [
+        "signals-and-communication-023"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-023:s5:c01"
+      ],
+      "heading_path": [
+        "6. 3G、4G、5G技术",
+        "3G主要应用："
+      ],
+      "source_ids": [
+        "signals-and-communication-023"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-023:s2:c01",
+        "signals-and-communication-023:s3:c01"
+      ],
+      "heading_path": [
+        "6. 3G、4G、5G技术",
+        "3G：移动互联网的开启者"
+      ],
+      "source_ids": [
+        "signals-and-communication-023"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-023:s10:c01",
+        "signals-and-communication-023:s11:c01",
+        "signals-and-communication-023:s12:c01"
+      ],
+      "heading_path": [
+        "6. 3G、4G、5G技术",
+        "4G的主要应用"
+      ],
+      "source_ids": [
+        "signals-and-communication-023"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-023:s6:c01"
+      ],
+      "heading_path": [
+        "6. 3G、4G、5G技术",
+        "4G：移动宽带时代"
+      ],
+      "source_ids": [
+        "signals-and-communication-023"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-023:s4:c01"
+      ],
+      "heading_path": [
+        "6. 3G、4G、5G技术",
+        "CDMA（码分多址）技术："
+      ],
+      "source_ids": [
+        "signals-and-communication-023"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-023:s7:c01",
+        "signals-and-communication-023:s8:c01"
+      ],
+      "heading_path": [
+        "6. 3G、4G、5G技术",
+        "OFDMA（正交频分多址）"
+      ],
+      "source_ids": [
+        "signals-and-communication-023"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-023:s9:c01"
+      ],
+      "heading_path": [
+        "6. 3G、4G、5G技术",
+        "扁平化的全IP网络架构：网络结构极大简化，降低了延迟，提高了数据传输效率。"
+      ],
+      "source_ids": [
+        "signals-and-communication-023"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-023:s1:c01"
+      ],
+      "heading_path": [
+        "6. 3G、4G、5G技术",
+        "通信原理"
+      ],
+      "source_ids": [
+        "signals-and-communication-023"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-024:s3:c01"
+      ],
+      "heading_path": [
+        "7. 跳频和扩频",
+        "典型应用"
+      ],
+      "source_ids": [
+        "signals-and-communication-024"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-024:s5:c01"
+      ],
+      "heading_path": [
+        "7. 跳频和扩频",
+        "应用"
+      ],
+      "source_ids": [
+        "signals-and-communication-024"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-024:s4:c01"
+      ],
+      "heading_path": [
+        "7. 跳频和扩频",
+        "扩频技术"
+      ],
+      "source_ids": [
+        "signals-and-communication-024"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-024:s2:c01"
+      ],
+      "heading_path": [
+        "7. 跳频和扩频",
+        "跳频技术"
+      ],
+      "source_ids": [
+        "signals-and-communication-024"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-024:s1:c01"
+      ],
+      "heading_path": [
+        "7. 跳频和扩频",
+        "通信原理"
+      ],
+      "source_ids": [
+        "signals-and-communication-024"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-003:p1:c01",
+        "signals-and-communication-003:p2:c01",
+        "signals-and-communication-003:p3:c01",
+        "signals-and-communication-003:p4:c01",
+        "signals-and-communication-003:p5:c01",
+        "signals-and-communication-003:p6:c01",
+        "signals-and-communication-003:p7:c01",
+        "signals-and-communication-003:p8:c01",
+        "signals-and-communication-003:p9:c01",
+        "signals-and-communication-003:p10:c01",
+        "signals-and-communication-003:p11:c01",
+        "signals-and-communication-003:p12:c01",
+        "signals-and-communication-003:p13:c01",
+        "signals-and-communication-003:p14:c01",
+        "signals-and-communication-003:p15:c01",
+        "signals-and-communication-003:p16:c01"
+      ],
+      "heading_path": [
+        "习题讲解-通信部分-2025F"
+      ],
+      "source_ids": [
+        "signals-and-communication-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-001:h-信号处理与通信基础-实验手册-v2-2025:c01",
+        "signals-and-communication-001:h-信号处理与通信基础-实验手册-v2-2025:c02",
+        "signals-and-communication-001:h-信号处理与通信基础-实验手册-v2-2025:c03",
+        "signals-and-communication-001:h-信号处理与通信基础-实验手册-v2-2025:c04",
+        "signals-and-communication-001:h-信号处理与通信基础-实验手册-v2-2025:c05",
+        "signals-and-communication-001:h-信号处理与通信基础-实验手册-v2-2025:c06",
+        "signals-and-communication-001:h-信号处理与通信基础-实验手册-v2-2025:c07"
+      ],
+      "heading_path": [
+        "信号处理与通信基础-实验手册-v2-2025"
+      ],
+      "source_ids": [
+        "signals-and-communication-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-004:s1:c01",
+        "signals-and-communication-004:s2:c01",
+        "signals-and-communication-004:s3:c01"
+      ],
+      "heading_path": [
+        "信息论基础-作业-2025F",
+        "信息论基础（第4章）作业"
+      ],
+      "source_ids": [
+        "signals-and-communication-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-002:h-实验报告模板:c01"
+      ],
+      "heading_path": [
+        "实验报告模板"
+      ],
+      "source_ids": [
+        "signals-and-communication-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-011:p1:c01"
+      ],
+      "heading_path": [
+        "数字信号处理复习提纲"
+      ],
+      "source_ids": [
+        "signals-and-communication-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-012:s1:c01"
+      ],
+      "heading_path": [
+        "第0章 绪论"
+      ],
+      "source_ids": [
+        "signals-and-communication-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-012:s7:c01",
+        "signals-and-communication-012:s8:c01",
+        "signals-and-communication-012:s9:c01",
+        "signals-and-communication-012:s10:c01",
+        "signals-and-communication-012:s11:c01",
+        "signals-and-communication-012:s12:c01",
+        "signals-and-communication-012:s13:c01",
+        "signals-and-communication-012:s14:c01",
+        "signals-and-communication-012:s15:c01",
+        "signals-and-communication-012:s16:c01",
+        "signals-and-communication-012:s18:c01",
+        "signals-and-communication-012:s19:c01"
+      ],
+      "heading_path": [
+        "第0章 绪论",
+        "不同的信号形式"
+      ],
+      "source_ids": [
+        "signals-and-communication-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-012:s6:c01"
+      ],
+      "heading_path": [
+        "第0章 绪论",
+        "基本概念"
+      ],
+      "source_ids": [
+        "signals-and-communication-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-012:s2:c01",
+        "signals-and-communication-012:s3:c01"
+      ],
+      "heading_path": [
+        "第0章 绪论",
+        "教材与参考书目"
+      ],
+      "source_ids": [
+        "signals-and-communication-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-012:s4:c01",
+        "signals-and-communication-012:s5:c01"
+      ],
+      "heading_path": [
+        "第0章 绪论",
+        "课程内容"
+      ],
+      "source_ids": [
+        "signals-and-communication-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-013:s1:c01",
+        "signals-and-communication-013:s2:c01",
+        "signals-and-communication-013:s3:c01",
+        "signals-and-communication-013:s4:c01",
+        "signals-and-communication-013:s5:c01",
+        "signals-and-communication-013:s6:c01",
+        "signals-and-communication-013:s7:c01",
+        "signals-and-communication-013:s8:c01",
+        "signals-and-communication-013:s9:c01",
+        "signals-and-communication-013:s10:c01",
+        "signals-and-communication-013:s11:c01",
+        "signals-and-communication-013:s12:c01",
+        "signals-and-communication-013:s13:c01",
+        "signals-and-communication-013:s14:c01",
+        "signals-and-communication-013:s15:c01",
+        "signals-and-communication-013:s16:c01",
+        "signals-and-communication-013:s17:c01",
+        "signals-and-communication-013:s18:c01",
+        "signals-and-communication-013:s19:c01",
+        "signals-and-communication-013:s20:c01",
+        "signals-and-communication-013:s21:c01",
+        "signals-and-communication-013:s22:c01",
+        "signals-and-communication-013:s23:c01",
+        "signals-and-communication-013:s24:c01",
+        "signals-and-communication-013:s25:c01",
+        "signals-and-communication-013:s26:c01",
+        "signals-and-communication-013:s27:c01",
+        "signals-and-communication-013:s28:c01",
+        "signals-and-communication-013:s29:c01",
+        "signals-and-communication-013:s30:c01",
+        "signals-and-communication-013:s31:c01",
+        "signals-and-communication-013:s32:c01",
+        "signals-and-communication-013:s33:c01",
+        "signals-and-communication-013:s34:c01",
+        "signals-and-communication-013:s35:c01",
+        "signals-and-communication-013:s36:c01",
+        "signals-and-communication-013:s37:c01",
+        "signals-and-communication-013:s38:c01",
+        "signals-and-communication-013:s39:c01",
+        "signals-and-communication-013:s40:c01",
+        "signals-and-communication-013:s41:c01",
+        "signals-and-communication-013:s42:c01",
+        "signals-and-communication-013:s43:c01",
+        "signals-and-communication-013:s44:c01",
+        "signals-and-communication-013:s45:c01",
+        "signals-and-communication-013:s46:c01",
+        "signals-and-communication-013:s47:c01",
+        "signals-and-communication-013:s48:c01",
+        "signals-and-communication-013:s49:c01",
+        "signals-and-communication-013:s50:c01",
+        "signals-and-communication-013:s51:c01",
+        "signals-and-communication-013:s52:c01",
+        "signals-and-communication-013:s53:c01",
+        "signals-and-communication-013:s54:c01",
+        "signals-and-communication-013:s55:c01",
+        "signals-and-communication-013:s56:c01",
+        "signals-and-communication-013:s57:c01",
+        "signals-and-communication-013:s58:c01",
+        "signals-and-communication-013:s59:c01",
+        "signals-and-communication-013:s60:c01",
+        "signals-and-communication-013:s61:c01",
+        "signals-and-communication-013:s62:c01",
+        "signals-and-communication-013:s63:c01",
+        "signals-and-communication-013:s64:c01",
+        "signals-and-communication-013:s65:c01",
+        "signals-and-communication-013:s66:c01",
+        "signals-and-communication-013:s67:c01",
+        "signals-and-communication-013:s68:c01",
+        "signals-and-communication-013:s69:c01",
+        "signals-and-communication-013:s70:c01",
+        "signals-and-communication-013:s71:c01",
+        "signals-and-communication-013:s72:c01",
+        "signals-and-communication-013:s73:c01",
+        "signals-and-communication-013:s74:c01",
+        "signals-and-communication-013:s75:c01",
+        "signals-and-communication-013:s76:c01",
+        "signals-and-communication-013:s77:c01",
+        "signals-and-communication-013:s78:c01",
+        "signals-and-communication-013:s79:c01",
+        "signals-and-communication-013:s80:c01"
+      ],
+      "heading_path": [
+        "第2章 Z变换与序列傅里叶变换"
+      ],
+      "source_ids": [
+        "signals-and-communication-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-014:s1:c01",
+        "signals-and-communication-014:s2:c01"
+      ],
+      "heading_path": [
+        "第3章 离散傅里叶变换"
+      ],
+      "source_ids": [
+        "signals-and-communication-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-014:s4:c01",
+        "signals-and-communication-014:s5:c01",
+        "signals-and-communication-014:s6:c01",
+        "signals-and-communication-014:s7:c01",
+        "signals-and-communication-014:s8:c01",
+        "signals-and-communication-014:s9:c01",
+        "signals-and-communication-014:s10:c01",
+        "signals-and-communication-014:s11:c01",
+        "signals-and-communication-014:s12:c01"
+      ],
+      "heading_path": [
+        "第3章 离散傅里叶变换",
+        "1. 连续时间非周期信号的傅里叶变换"
+      ],
+      "source_ids": [
+        "signals-and-communication-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-014:s21:c01"
+      ],
+      "heading_path": [
+        "第3章 离散傅里叶变换",
+        "3. 周期卷积"
+      ],
+      "source_ids": [
+        "signals-and-communication-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-014:s17:c01"
+      ],
+      "heading_path": [
+        "第3章 离散傅里叶变换",
+        "【例3-3】傅里叶级数系数        和周期信号        的一个周期的傅里叶变换之间的关系 (周期N=10) 。"
+      ],
+      "source_ids": [
+        "signals-and-communication-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-014:s26:c01"
+      ],
+      "heading_path": [
+        "第3章 离散傅里叶变换",
+        "【例3-4】已知序列x(n)=δ(n)，求它的N点DFT。"
+      ],
+      "source_ids": [
+        "signals-and-communication-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-014:s27:c01",
+        "signals-and-communication-014:s28:c01",
+        "signals-and-communication-014:s29:c01",
+        "signals-and-communication-014:s30:c01",
+        "signals-and-communication-014:s31:c01",
+        "signals-and-communication-014:s32:c01",
+        "signals-and-communication-014:s33:c01",
+        "signals-and-communication-014:s34:c01",
+        "signals-and-communication-014:s35:c01",
+        "signals-and-communication-014:s36:c01",
+        "signals-and-communication-014:s37:c01",
+        "signals-and-communication-014:s38:c01",
+        "signals-and-communication-014:s39:c01",
+        "signals-and-communication-014:s40:c01",
+        "signals-and-communication-014:s41:c01",
+        "signals-and-communication-014:s42:c01",
+        "signals-and-communication-014:s43:c01",
+        "signals-and-communication-014:s44:c01",
+        "signals-and-communication-014:s45:c01",
+        "signals-and-communication-014:s46:c01",
+        "signals-and-communication-014:s47:c01",
+        "signals-and-communication-014:s48:c01",
+        "signals-and-communication-014:s49:c01",
+        "signals-and-communication-014:s50:c01",
+        "signals-and-communication-014:s51:c01",
+        "signals-and-communication-014:s52:c01",
+        "signals-and-communication-014:s53:c01",
+        "signals-and-communication-014:s54:c01",
+        "signals-and-communication-014:s55:c01",
+        "signals-and-communication-014:s56:c01",
+        "signals-and-communication-014:s57:c01",
+        "signals-and-communication-014:s58:c01",
+        "signals-and-communication-014:s59:c01",
+        "signals-and-communication-014:s60:c01",
+        "signals-and-communication-014:s61:c01",
+        "signals-and-communication-014:s62:c01"
+      ],
+      "heading_path": [
+        "第3章 离散傅里叶变换",
+        "【例3-5】已知x(n)=cos(nπ/6)是一个长度N=12的有限长序列，求它的N点DFT。"
+      ],
+      "source_ids": [
+        "signals-and-communication-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-014:s18:c01"
+      ],
+      "heading_path": [
+        "第3章 离散傅里叶变换",
+        "图3-10 周期序列"
+      ],
+      "source_ids": [
+        "signals-and-communication-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-014:s19:c01"
+      ],
+      "heading_path": [
+        "第3章 离散傅里叶变换",
+        "图3-12          一个周期的DTFT幅度谱和DFS"
+      ],
+      "source_ids": [
+        "signals-and-communication-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-014:s22:c01",
+        "signals-and-communication-014:s23:c01"
+      ],
+      "heading_path": [
+        "第3章 离散傅里叶变换",
+        "图3-13 两个周期序列(N=6)的周期卷积过程"
+      ],
+      "source_ids": [
+        "signals-and-communication-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-014:s24:c01"
+      ],
+      "heading_path": [
+        "第3章 离散傅里叶变换",
+        "图3-14 周期序列、主值区间、主值序列之间关系"
+      ],
+      "source_ids": [
+        "signals-and-communication-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-014:s13:c01",
+        "signals-and-communication-014:s14:c01"
+      ],
+      "heading_path": [
+        "第3章 离散傅里叶变换",
+        "正变换定义公式(3-8)中的周期序列        可看成是对        的第一个周期x(n)作Z变换，然后将Z变换在Z平面单位圆上按等间隔角2π/N采样而得到，如图3-8所示。令"
+      ],
+      "source_ids": [
+        "signals-and-communication-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-014:s15:c01",
+        "signals-and-communication-014:s16:c01"
+      ],
+      "heading_path": [
+        "第3章 离散傅里叶变换",
+        "由于单位圆上的Z变换为序列的傅里叶变换，所以周期序列"
+      ],
+      "source_ids": [
+        "signals-and-communication-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-014:s3:c01"
+      ],
+      "heading_path": [
+        "第3章 离散傅里叶变换",
+        "计算机只能计算有限长离散序列，因此有限长序列在数字信号处理中就显得很重要，虽然可以用Z变换和序列的傅里叶变换来研究它，但是这两种变换无法直接利用计算机进行数值计算。针对序列“有限长”这一特点，可以导出一种更有效的变换：离散傅里叶变换(Discrete Fourier Transform，简写为DFT)。"
+      ],
+      "source_ids": [
+        "signals-and-communication-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-014:s20:c01"
+      ],
+      "heading_path": [
+        "第3章 离散傅里叶变换",
+        "设    和    皆是周期为N的周期序列，它们各自的DFS分别为          ，        ："
+      ],
+      "source_ids": [
+        "signals-and-communication-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-014:s25:c01"
+      ],
+      "heading_path": [
+        "第3章 离散傅里叶变换",
+        "问题：有限长序列x(n)本身有傅里叶变换（频谱），为什么不直接进行傅里叶变换？为什么要把它看成周期为N的周期序列     的一个周期来处理？"
+      ],
+      "source_ids": [
+        "signals-and-communication-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-015:s1:c01"
+      ],
+      "heading_path": [
+        "第5章 数字滤波器"
+      ],
+      "source_ids": [
+        "signals-and-communication-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-015:s3:c01",
+        "signals-and-communication-015:s4:c01",
+        "signals-and-communication-015:s5:c01"
+      ],
+      "heading_path": [
+        "第5章 数字滤波器",
+        "5.1引言"
+      ],
+      "source_ids": [
+        "signals-and-communication-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-015:s7:c01",
+        "signals-and-communication-015:s8:c01",
+        "signals-and-communication-015:s9:c01",
+        "signals-and-communication-015:s10:c01",
+        "signals-and-communication-015:s11:c01",
+        "signals-and-communication-015:s12:c01",
+        "signals-and-communication-015:s13:c01",
+        "signals-and-communication-015:s14:c01",
+        "signals-and-communication-015:s15:c01",
+        "signals-and-communication-015:s16:c01",
+        "signals-and-communication-015:s17:c01",
+        "signals-and-communication-015:s18:c01",
+        "signals-and-communication-015:s19:c01",
+        "signals-and-communication-015:s20:c01",
+        "signals-and-communication-015:s21:c01",
+        "signals-and-communication-015:s22:c01",
+        "signals-and-communication-015:s23:c01",
+        "signals-and-communication-015:s24:c01",
+        "signals-and-communication-015:s25:c01",
+        "signals-and-communication-015:s26:c01",
+        "signals-and-communication-015:s27:c01",
+        "signals-and-communication-015:s28:c01",
+        "signals-and-communication-015:s29:c01",
+        "signals-and-communication-015:s30:c01",
+        "signals-and-communication-015:s31:c01",
+        "signals-and-communication-015:s32:c01",
+        "signals-and-communication-015:s33:c01",
+        "signals-and-communication-015:s34:c01",
+        "signals-and-communication-015:s35:c01",
+        "signals-and-communication-015:s36:c01",
+        "signals-and-communication-015:s37:c01",
+        "signals-and-communication-015:s38:c01",
+        "signals-and-communication-015:s39:c01",
+        "signals-and-communication-015:s40:c01"
+      ],
+      "heading_path": [
+        "第5章 数字滤波器",
+        "5.2  用信号流图表示网络结构"
+      ],
+      "source_ids": [
+        "signals-and-communication-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-015:s41:c01",
+        "signals-and-communication-015:s42:c01",
+        "signals-and-communication-015:s43:c01",
+        "signals-and-communication-015:s44:c01",
+        "signals-and-communication-015:s45:c01",
+        "signals-and-communication-015:s46:c01",
+        "signals-and-communication-015:s47:c01",
+        "signals-and-communication-015:s48:c01",
+        "signals-and-communication-015:s49:c01",
+        "signals-and-communication-015:s50:c01",
+        "signals-and-communication-015:s51:c01",
+        "signals-and-communication-015:s52:c01",
+        "signals-and-communication-015:s53:c01",
+        "signals-and-communication-015:s54:c01",
+        "signals-and-communication-015:s55:c01",
+        "signals-and-communication-015:s56:c01",
+        "signals-and-communication-015:s57:c01",
+        "signals-and-communication-015:s58:c01",
+        "signals-and-communication-015:s59:c01",
+        "signals-and-communication-015:s60:c01",
+        "signals-and-communication-015:s61:c01",
+        "signals-and-communication-015:s62:c01",
+        "signals-and-communication-015:s63:c01",
+        "signals-and-communication-015:s64:c01",
+        "signals-and-communication-015:s65:c01",
+        "signals-and-communication-015:s66:c01",
+        "signals-and-communication-015:s67:c01",
+        "signals-and-communication-015:s68:c01",
+        "signals-and-communication-015:s69:c01",
+        "signals-and-communication-015:s70:c01",
+        "signals-and-communication-015:s71:c01",
+        "signals-and-communication-015:s72:c01",
+        "signals-and-communication-015:s73:c01",
+        "signals-and-communication-015:s74:c01",
+        "signals-and-communication-015:s75:c01",
+        "signals-and-communication-015:s76:c01",
+        "signals-and-communication-015:s77:c01",
+        "signals-and-communication-015:s78:c01",
+        "signals-and-communication-015:s79:c01",
+        "signals-and-communication-015:s80:c01",
+        "signals-and-communication-015:s81:c01",
+        "signals-and-communication-015:s82:c01",
+        "signals-and-communication-015:s83:c01",
+        "signals-and-communication-015:s84:c01",
+        "signals-and-communication-015:s85:c01",
+        "signals-and-communication-015:s86:c01",
+        "signals-and-communication-015:s87:c01",
+        "signals-and-communication-015:s88:c01",
+        "signals-and-communication-015:s89:c01"
+      ],
+      "heading_path": [
+        "第5章 数字滤波器",
+        "5.4.1直接型(或称卷积型、横截型、横向型)"
+      ],
+      "source_ids": [
+        "signals-and-communication-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-015:s6:c01"
+      ],
+      "heading_path": [
+        "第5章 数字滤波器",
+        "不同的算法直接影响系统运算误差、运算速度以及系统的复杂程度和成本等，因此研究实现信号处理的算法是一个很重要的问题。我们用网络结构表示具体的算法，因此网络结构实际表示的是一种运算结构。这一章是第6、7章数字滤波器设计的必要基础。在介绍数字系统的基本网络结构之前，先介绍网络结构的表示方法。"
+      ],
+      "source_ids": [
+        "signals-and-communication-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-015:s2:c01"
+      ],
+      "heading_path": [
+        "第5章 数字滤波器",
+        "第5章 数字滤波器基本结构及状态变量分析法"
+      ],
+      "source_ids": [
+        "signals-and-communication-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-016:s1:c01",
+        "signals-and-communication-016:s2:c01",
+        "signals-and-communication-016:s3:c01",
+        "signals-and-communication-016:s4:c01",
+        "signals-and-communication-016:s5:c01",
+        "signals-and-communication-016:s6:c01",
+        "signals-and-communication-016:s7:c01",
+        "signals-and-communication-016:s8:c01",
+        "signals-and-communication-016:s9:c01",
+        "signals-and-communication-016:s10:c01",
+        "signals-and-communication-016:s11:c01",
+        "signals-and-communication-016:s12:c01",
+        "signals-and-communication-016:s13:c01",
+        "signals-and-communication-016:s14:c01",
+        "signals-and-communication-016:s15:c01",
+        "signals-and-communication-016:s16:c01",
+        "signals-and-communication-016:s17:c01",
+        "signals-and-communication-016:s18:c01",
+        "signals-and-communication-016:s19:c01",
+        "signals-and-communication-016:s20:c01",
+        "signals-and-communication-016:s21:c01",
+        "signals-and-communication-016:s22:c01",
+        "signals-and-communication-016:s23:c01",
+        "signals-and-communication-016:s24:c01",
+        "signals-and-communication-016:s25:c01",
+        "signals-and-communication-016:s26:c01",
+        "signals-and-communication-016:s27:c01",
+        "signals-and-communication-016:s28:c01",
+        "signals-and-communication-016:s29:c01",
+        "signals-and-communication-016:s30:c01",
+        "signals-and-communication-016:s31:c01"
+      ],
+      "heading_path": [
+        "第6章 无限脉冲响应数字滤波器"
+      ],
+      "source_ids": [
+        "signals-and-communication-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-017:s1:c01",
+        "signals-and-communication-017:s2:c01",
+        "signals-and-communication-017:s3:c01",
+        "signals-and-communication-017:s4:c01",
+        "signals-and-communication-017:s5:c01",
+        "signals-and-communication-017:s6:c01",
+        "signals-and-communication-017:s7:c01",
+        "signals-and-communication-017:s8:c01",
+        "signals-and-communication-017:s9:c01",
+        "signals-and-communication-017:s10:c01",
+        "signals-and-communication-017:s11:c01",
+        "signals-and-communication-017:s12:c01",
+        "signals-and-communication-017:s13:c01",
+        "signals-and-communication-017:s14:c01",
+        "signals-and-communication-017:s15:c01",
+        "signals-and-communication-017:s16:c01",
+        "signals-and-communication-017:s17:c01",
+        "signals-and-communication-017:s18:c01",
+        "signals-and-communication-017:s19:c01",
+        "signals-and-communication-017:s20:c01",
+        "signals-and-communication-017:s21:c01",
+        "signals-and-communication-017:s22:c01",
+        "signals-and-communication-017:s23:c01",
+        "signals-and-communication-017:s24:c01",
+        "signals-and-communication-017:s25:c01",
+        "signals-and-communication-017:s26:c01",
+        "signals-and-communication-017:s27:c01",
+        "signals-and-communication-017:s28:c01",
+        "signals-and-communication-017:s29:c01",
+        "signals-and-communication-017:s30:c01",
+        "signals-and-communication-017:s31:c01",
+        "signals-and-communication-017:s32:c01",
+        "signals-and-communication-017:s33:c01",
+        "signals-and-communication-017:s34:c01",
+        "signals-and-communication-017:s35:c01",
+        "signals-and-communication-017:s36:c01",
+        "signals-and-communication-017:s37:c01",
+        "signals-and-communication-017:s38:c01",
+        "signals-and-communication-017:s39:c01",
+        "signals-and-communication-017:s40:c01",
+        "signals-and-communication-017:s41:c01",
+        "signals-and-communication-017:s42:c01",
+        "signals-and-communication-017:s43:c01",
+        "signals-and-communication-017:s44:c01",
+        "signals-and-communication-017:s45:c01",
+        "signals-and-communication-017:s46:c01",
+        "signals-and-communication-017:s47:c01",
+        "signals-and-communication-017:s48:c01",
+        "signals-and-communication-017:s49:c01"
+      ],
+      "heading_path": [
+        "第7章 有限脉冲响应数字滤波器"
+      ],
+      "source_ids": [
+        "signals-and-communication-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-025:p1:c01"
+      ],
+      "heading_path": [
+        "通信原理（补充）复习提纲"
+      ],
+      "source_ids": [
+        "signals-and-communication-025"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-005:p1:c01",
+        "signals-and-communication-005:p2:c01",
+        "signals-and-communication-005:p3:c01",
+        "signals-and-communication-005:p4:c01",
+        "signals-and-communication-005:p5:c01",
+        "signals-and-communication-005:p6:c01",
+        "signals-and-communication-005:p7:c01",
+        "signals-and-communication-005:p8:c01",
+        "signals-and-communication-005:p9:c01",
+        "signals-and-communication-005:p10:c01",
+        "signals-and-communication-005:p11:c01",
+        "signals-and-communication-005:p12:c01",
+        "signals-and-communication-005:p13:c01",
+        "signals-and-communication-005:p14:c01",
+        "signals-and-communication-005:p15:c01",
+        "signals-and-communication-005:p16:c01",
+        "signals-and-communication-005:p17:c01",
+        "signals-and-communication-005:p18:c01",
+        "signals-and-communication-005:p19:c01",
+        "signals-and-communication-005:p20:c01",
+        "signals-and-communication-005:p21:c01",
+        "signals-and-communication-005:p22:c01",
+        "signals-and-communication-005:p23:c01",
+        "signals-and-communication-005:p24:c01",
+        "signals-and-communication-005:p25:c01",
+        "signals-and-communication-005:p26:c01",
+        "signals-and-communication-005:p27:c01",
+        "signals-and-communication-005:p28:c01",
+        "signals-and-communication-005:p29:c01",
+        "signals-and-communication-005:p30:c01",
+        "signals-and-communication-005:p31:c01",
+        "signals-and-communication-005:p32:c01",
+        "signals-and-communication-005:p33:c01",
+        "signals-and-communication-005:p34:c01",
+        "signals-and-communication-005:p35:c01",
+        "signals-and-communication-005:p36:c01",
+        "signals-and-communication-005:p37:c01",
+        "signals-and-communication-005:p38:c01",
+        "signals-and-communication-005:p39:c01",
+        "signals-and-communication-005:p40:c01",
+        "signals-and-communication-005:p41:c01",
+        "signals-and-communication-005:p42:c01",
+        "signals-and-communication-005:p43:c01",
+        "signals-and-communication-005:p44:c01",
+        "signals-and-communication-005:p45:c01",
+        "signals-and-communication-005:p46:c01",
+        "signals-and-communication-005:p47:c01",
+        "signals-and-communication-005:p48:c01",
+        "signals-and-communication-005:p49:c01",
+        "signals-and-communication-005:p50:c01",
+        "signals-and-communication-005:p51:c01",
+        "signals-and-communication-005:p52:c01",
+        "signals-and-communication-005:p53:c01"
+      ],
+      "heading_path": [
+        "通信基础-信息论基础1-2025F"
+      ],
+      "source_ids": [
+        "signals-and-communication-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-006:p1:c01",
+        "signals-and-communication-006:p2:c01",
+        "signals-and-communication-006:p3:c01",
+        "signals-and-communication-006:p4:c01",
+        "signals-and-communication-006:p5:c01",
+        "signals-and-communication-006:p6:c01",
+        "signals-and-communication-006:p7:c01",
+        "signals-and-communication-006:p8:c01",
+        "signals-and-communication-006:p9:c01",
+        "signals-and-communication-006:p10:c01",
+        "signals-and-communication-006:p11:c01",
+        "signals-and-communication-006:p12:c01",
+        "signals-and-communication-006:p13:c01",
+        "signals-and-communication-006:p14:c01",
+        "signals-and-communication-006:p15:c01",
+        "signals-and-communication-006:p16:c01",
+        "signals-and-communication-006:p17:c01",
+        "signals-and-communication-006:p18:c01",
+        "signals-and-communication-006:p19:c01",
+        "signals-and-communication-006:p20:c01",
+        "signals-and-communication-006:p21:c01",
+        "signals-and-communication-006:p22:c01",
+        "signals-and-communication-006:p23:c01",
+        "signals-and-communication-006:p24:c01",
+        "signals-and-communication-006:p25:c01",
+        "signals-and-communication-006:p26:c01",
+        "signals-and-communication-006:p27:c01",
+        "signals-and-communication-006:p28:c01",
+        "signals-and-communication-006:p29:c01",
+        "signals-and-communication-006:p30:c01",
+        "signals-and-communication-006:p31:c01",
+        "signals-and-communication-006:p32:c01",
+        "signals-and-communication-006:p33:c01",
+        "signals-and-communication-006:p34:c01",
+        "signals-and-communication-006:p35:c01",
+        "signals-and-communication-006:p36:c01",
+        "signals-and-communication-006:p37:c01",
+        "signals-and-communication-006:p38:c01",
+        "signals-and-communication-006:p39:c01",
+        "signals-and-communication-006:p40:c01",
+        "signals-and-communication-006:p41:c01",
+        "signals-and-communication-006:p42:c01",
+        "signals-and-communication-006:p43:c01",
+        "signals-and-communication-006:p44:c01",
+        "signals-and-communication-006:p45:c01",
+        "signals-and-communication-006:p46:c01",
+        "signals-and-communication-006:p47:c01",
+        "signals-and-communication-006:p48:c01",
+        "signals-and-communication-006:p49:c01",
+        "signals-and-communication-006:p50:c01",
+        "signals-and-communication-006:p51:c01",
+        "signals-and-communication-006:p52:c01",
+        "signals-and-communication-006:p53:c01",
+        "signals-and-communication-006:p54:c01",
+        "signals-and-communication-006:p55:c01",
+        "signals-and-communication-006:p56:c01",
+        "signals-and-communication-006:p57:c01",
+        "signals-and-communication-006:p58:c01",
+        "signals-and-communication-006:p59:c01",
+        "signals-and-communication-006:p60:c01",
+        "signals-and-communication-006:p61:c01",
+        "signals-and-communication-006:p62:c01",
+        "signals-and-communication-006:p63:c01",
+        "signals-and-communication-006:p64:c01",
+        "signals-and-communication-006:p65:c01",
+        "signals-and-communication-006:p66:c01",
+        "signals-and-communication-006:p67:c01",
+        "signals-and-communication-006:p68:c01",
+        "signals-and-communication-006:p69:c01",
+        "signals-and-communication-006:p70:c01",
+        "signals-and-communication-006:p71:c01",
+        "signals-and-communication-006:p72:c01",
+        "signals-and-communication-006:p73:c01",
+        "signals-and-communication-006:p74:c01",
+        "signals-and-communication-006:p75:c01",
+        "signals-and-communication-006:p76:c01",
+        "signals-and-communication-006:p77:c01",
+        "signals-and-communication-006:p78:c01",
+        "signals-and-communication-006:p79:c01",
+        "signals-and-communication-006:p80:c01",
+        "signals-and-communication-006:p81:c01",
+        "signals-and-communication-006:p82:c01",
+        "signals-and-communication-006:p83:c01",
+        "signals-and-communication-006:p84:c01",
+        "signals-and-communication-006:p85:c01",
+        "signals-and-communication-006:p86:c01",
+        "signals-and-communication-006:p87:c01",
+        "signals-and-communication-006:p88:c01",
+        "signals-and-communication-006:p89:c01",
+        "signals-and-communication-006:p90:c01",
+        "signals-and-communication-006:p91:c01",
+        "signals-and-communication-006:p92:c01",
+        "signals-and-communication-006:p93:c01",
+        "signals-and-communication-006:p94:c01",
+        "signals-and-communication-006:p95:c01",
+        "signals-and-communication-006:p96:c01",
+        "signals-and-communication-006:p97:c01",
+        "signals-and-communication-006:p98:c01",
+        "signals-and-communication-006:p99:c01",
+        "signals-and-communication-006:p100:c01",
+        "signals-and-communication-006:p101:c01",
+        "signals-and-communication-006:p102:c01",
+        "signals-and-communication-006:p103:c01",
+        "signals-and-communication-006:p104:c01",
+        "signals-and-communication-006:p105:c01",
+        "signals-and-communication-006:p106:c01",
+        "signals-and-communication-006:p107:c01",
+        "signals-and-communication-006:p108:c01",
+        "signals-and-communication-006:p109:c01",
+        "signals-and-communication-006:p110:c01",
+        "signals-and-communication-006:p111:c01",
+        "signals-and-communication-006:p112:c01",
+        "signals-and-communication-006:p113:c01",
+        "signals-and-communication-006:p114:c01",
+        "signals-and-communication-006:p115:c01",
+        "signals-and-communication-006:p116:c01",
+        "signals-and-communication-006:p117:c01",
+        "signals-and-communication-006:p118:c01",
+        "signals-and-communication-006:p119:c01",
+        "signals-and-communication-006:p120:c01",
+        "signals-and-communication-006:p121:c01",
+        "signals-and-communication-006:p122:c01",
+        "signals-and-communication-006:p123:c01",
+        "signals-and-communication-006:p124:c01",
+        "signals-and-communication-006:p125:c01",
+        "signals-and-communication-006:p126:c01",
+        "signals-and-communication-006:p127:c01",
+        "signals-and-communication-006:p128:c01",
+        "signals-and-communication-006:p129:c01",
+        "signals-and-communication-006:p130:c01",
+        "signals-and-communication-006:p131:c01",
+        "signals-and-communication-006:p132:c01",
+        "signals-and-communication-006:p133:c01",
+        "signals-and-communication-006:p134:c01",
+        "signals-and-communication-006:p135:c01",
+        "signals-and-communication-006:p136:c01",
+        "signals-and-communication-006:p137:c01",
+        "signals-and-communication-006:p138:c01",
+        "signals-and-communication-006:p139:c01",
+        "signals-and-communication-006:p140:c01",
+        "signals-and-communication-006:p141:c01",
+        "signals-and-communication-006:p142:c01",
+        "signals-and-communication-006:p143:c01",
+        "signals-and-communication-006:p144:c01",
+        "signals-and-communication-006:p145:c01",
+        "signals-and-communication-006:p146:c01",
+        "signals-and-communication-006:p147:c01",
+        "signals-and-communication-006:p148:c01",
+        "signals-and-communication-006:p149:c01",
+        "signals-and-communication-006:p150:c01",
+        "signals-and-communication-006:p151:c01",
+        "signals-and-communication-006:p152:c01",
+        "signals-and-communication-006:p153:c01",
+        "signals-and-communication-006:p154:c01",
+        "signals-and-communication-006:p155:c01",
+        "signals-and-communication-006:p156:c01",
+        "signals-and-communication-006:p157:c01",
+        "signals-and-communication-006:p158:c01",
+        "signals-and-communication-006:p159:c01",
+        "signals-and-communication-006:p160:c01",
+        "signals-and-communication-006:p161:c01",
+        "signals-and-communication-006:p162:c01",
+        "signals-and-communication-006:p163:c01",
+        "signals-and-communication-006:p164:c01",
+        "signals-and-communication-006:p165:c01",
+        "signals-and-communication-006:p166:c01",
+        "signals-and-communication-006:p167:c01",
+        "signals-and-communication-006:p168:c01",
+        "signals-and-communication-006:p169:c01",
+        "signals-and-communication-006:p170:c01",
+        "signals-and-communication-006:p171:c01",
+        "signals-and-communication-006:p172:c01",
+        "signals-and-communication-006:p173:c01",
+        "signals-and-communication-006:p174:c01",
+        "signals-and-communication-006:p175:c01",
+        "signals-and-communication-006:p176:c01",
+        "signals-and-communication-006:p177:c01",
+        "signals-and-communication-006:p178:c01",
+        "signals-and-communication-006:p179:c01",
+        "signals-and-communication-006:p180:c01",
+        "signals-and-communication-006:p181:c01",
+        "signals-and-communication-006:p182:c01",
+        "signals-and-communication-006:p183:c01",
+        "signals-and-communication-006:p184:c01",
+        "signals-and-communication-006:p185:c01",
+        "signals-and-communication-006:p186:c01",
+        "signals-and-communication-006:p187:c01",
+        "signals-and-communication-006:p188:c01",
+        "signals-and-communication-006:p189:c01",
+        "signals-and-communication-006:p190:c01",
+        "signals-and-communication-006:p191:c01",
+        "signals-and-communication-006:p192:c01"
+      ],
+      "heading_path": [
+        "通信基础-信息论基础2-2025F-更新"
+      ],
+      "source_ids": [
+        "signals-and-communication-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-007:p1:c01",
+        "signals-and-communication-007:p2:c01",
+        "signals-and-communication-007:p3:c01",
+        "signals-and-communication-007:p4:c01",
+        "signals-and-communication-007:p5:c01",
+        "signals-and-communication-007:p6:c01",
+        "signals-and-communication-007:p7:c01",
+        "signals-and-communication-007:p8:c01",
+        "signals-and-communication-007:p9:c01",
+        "signals-and-communication-007:p10:c01",
+        "signals-and-communication-007:p11:c01",
+        "signals-and-communication-007:p12:c01",
+        "signals-and-communication-007:p13:c01",
+        "signals-and-communication-007:p14:c01",
+        "signals-and-communication-007:p15:c01",
+        "signals-and-communication-007:p16:c01",
+        "signals-and-communication-007:p17:c01",
+        "signals-and-communication-007:p18:c01",
+        "signals-and-communication-007:p19:c01",
+        "signals-and-communication-007:p20:c01",
+        "signals-and-communication-007:p21:c01",
+        "signals-and-communication-007:p22:c01",
+        "signals-and-communication-007:p23:c01",
+        "signals-and-communication-007:p24:c01",
+        "signals-and-communication-007:p25:c01",
+        "signals-and-communication-007:p26:c01",
+        "signals-and-communication-007:p27:c01",
+        "signals-and-communication-007:p28:c01",
+        "signals-and-communication-007:p29:c01",
+        "signals-and-communication-007:p30:c01",
+        "signals-and-communication-007:p31:c01",
+        "signals-and-communication-007:p32:c01",
+        "signals-and-communication-007:p33:c01",
+        "signals-and-communication-007:p34:c01",
+        "signals-and-communication-007:p35:c01",
+        "signals-and-communication-007:p36:c01",
+        "signals-and-communication-007:p37:c01",
+        "signals-and-communication-007:p38:c01",
+        "signals-and-communication-007:p39:c01",
+        "signals-and-communication-007:p40:c01",
+        "signals-and-communication-007:p41:c01",
+        "signals-and-communication-007:p42:c01",
+        "signals-and-communication-007:p43:c01",
+        "signals-and-communication-007:p44:c01",
+        "signals-and-communication-007:p45:c01",
+        "signals-and-communication-007:p46:c01",
+        "signals-and-communication-007:p47:c01",
+        "signals-and-communication-007:p48:c01",
+        "signals-and-communication-007:p49:c01",
+        "signals-and-communication-007:p50:c01",
+        "signals-and-communication-007:p51:c01",
+        "signals-and-communication-007:p52:c01",
+        "signals-and-communication-007:p53:c01",
+        "signals-and-communication-007:p54:c01",
+        "signals-and-communication-007:p55:c01",
+        "signals-and-communication-007:p56:c01",
+        "signals-and-communication-007:p57:c01",
+        "signals-and-communication-007:p58:c01",
+        "signals-and-communication-007:p59:c01",
+        "signals-and-communication-007:p60:c01",
+        "signals-and-communication-007:p61:c01",
+        "signals-and-communication-007:p62:c01",
+        "signals-and-communication-007:p63:c01",
+        "signals-and-communication-007:p64:c01",
+        "signals-and-communication-007:p65:c01",
+        "signals-and-communication-007:p66:c01",
+        "signals-and-communication-007:p67:c01",
+        "signals-and-communication-007:p68:c01",
+        "signals-and-communication-007:p69:c01",
+        "signals-and-communication-007:p70:c01",
+        "signals-and-communication-007:p71:c01",
+        "signals-and-communication-007:p72:c01",
+        "signals-and-communication-007:p73:c01",
+        "signals-and-communication-007:p74:c01",
+        "signals-and-communication-007:p75:c01",
+        "signals-and-communication-007:p76:c01",
+        "signals-and-communication-007:p77:c01",
+        "signals-and-communication-007:p78:c01",
+        "signals-and-communication-007:p79:c01",
+        "signals-and-communication-007:p80:c01",
+        "signals-and-communication-007:p81:c01",
+        "signals-and-communication-007:p82:c01",
+        "signals-and-communication-007:p83:c01",
+        "signals-and-communication-007:p84:c01",
+        "signals-and-communication-007:p85:c01",
+        "signals-and-communication-007:p86:c01",
+        "signals-and-communication-007:p87:c01",
+        "signals-and-communication-007:p88:c01",
+        "signals-and-communication-007:p89:c01",
+        "signals-and-communication-007:p90:c01",
+        "signals-and-communication-007:p91:c01",
+        "signals-and-communication-007:p92:c01",
+        "signals-and-communication-007:p93:c01",
+        "signals-and-communication-007:p94:c01",
+        "signals-and-communication-007:p95:c01",
+        "signals-and-communication-007:p96:c01",
+        "signals-and-communication-007:p97:c01",
+        "signals-and-communication-007:p98:c01",
+        "signals-and-communication-007:p99:c01",
+        "signals-and-communication-007:p100:c01",
+        "signals-and-communication-007:p101:c01",
+        "signals-and-communication-007:p102:c01",
+        "signals-and-communication-007:p103:c01",
+        "signals-and-communication-007:p104:c01",
+        "signals-and-communication-007:p105:c01",
+        "signals-and-communication-007:p106:c01",
+        "signals-and-communication-007:p107:c01",
+        "signals-and-communication-007:p108:c01",
+        "signals-and-communication-007:p109:c01",
+        "signals-and-communication-007:p110:c01",
+        "signals-and-communication-007:p111:c01",
+        "signals-and-communication-007:p112:c01",
+        "signals-and-communication-007:p113:c01",
+        "signals-and-communication-007:p114:c01",
+        "signals-and-communication-007:p115:c01",
+        "signals-and-communication-007:p116:c01",
+        "signals-and-communication-007:p117:c01",
+        "signals-and-communication-007:p118:c01",
+        "signals-and-communication-007:p119:c01",
+        "signals-and-communication-007:p120:c01",
+        "signals-and-communication-007:p121:c01",
+        "signals-and-communication-007:p122:c01",
+        "signals-and-communication-007:p123:c01",
+        "signals-and-communication-007:p124:c01",
+        "signals-and-communication-007:p125:c01",
+        "signals-and-communication-007:p126:c01",
+        "signals-and-communication-007:p127:c01",
+        "signals-and-communication-007:p128:c01",
+        "signals-and-communication-007:p129:c01",
+        "signals-and-communication-007:p130:c01",
+        "signals-and-communication-007:p131:c01",
+        "signals-and-communication-007:p132:c01",
+        "signals-and-communication-007:p133:c01",
+        "signals-and-communication-007:p134:c01",
+        "signals-and-communication-007:p135:c01",
+        "signals-and-communication-007:p136:c01",
+        "signals-and-communication-007:p137:c01",
+        "signals-and-communication-007:p138:c01",
+        "signals-and-communication-007:p139:c01",
+        "signals-and-communication-007:p140:c01",
+        "signals-and-communication-007:p141:c01",
+        "signals-and-communication-007:p142:c01",
+        "signals-and-communication-007:p143:c01",
+        "signals-and-communication-007:p144:c01",
+        "signals-and-communication-007:p145:c01",
+        "signals-and-communication-007:p146:c01",
+        "signals-and-communication-007:p147:c01",
+        "signals-and-communication-007:p148:c01",
+        "signals-and-communication-007:p149:c01",
+        "signals-and-communication-007:p150:c01",
+        "signals-and-communication-007:p151:c01",
+        "signals-and-communication-007:p152:c01",
+        "signals-and-communication-007:p153:c01",
+        "signals-and-communication-007:p154:c01",
+        "signals-and-communication-007:p155:c01",
+        "signals-and-communication-007:p156:c01",
+        "signals-and-communication-007:p157:c01",
+        "signals-and-communication-007:p158:c01",
+        "signals-and-communication-007:p159:c01",
+        "signals-and-communication-007:p160:c01",
+        "signals-and-communication-007:p161:c01",
+        "signals-and-communication-007:p162:c01",
+        "signals-and-communication-007:p163:c01",
+        "signals-and-communication-007:p164:c01",
+        "signals-and-communication-007:p165:c01",
+        "signals-and-communication-007:p166:c01",
+        "signals-and-communication-007:p167:c01",
+        "signals-and-communication-007:p168:c01"
+      ],
+      "heading_path": [
+        "通信基础-差错控制编码-2025F"
+      ],
+      "source_ids": [
+        "signals-and-communication-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-008:p1:c01",
+        "signals-and-communication-008:p2:c01",
+        "signals-and-communication-008:p3:c01",
+        "signals-and-communication-008:p4:c01",
+        "signals-and-communication-008:p5:c01",
+        "signals-and-communication-008:p6:c01",
+        "signals-and-communication-008:p7:c01",
+        "signals-and-communication-008:p8:c01",
+        "signals-and-communication-008:p9:c01",
+        "signals-and-communication-008:p10:c01",
+        "signals-and-communication-008:p11:c01",
+        "signals-and-communication-008:p12:c01",
+        "signals-and-communication-008:p13:c01",
+        "signals-and-communication-008:p14:c01",
+        "signals-and-communication-008:p15:c01",
+        "signals-and-communication-008:p16:c01",
+        "signals-and-communication-008:p17:c01",
+        "signals-and-communication-008:p18:c01",
+        "signals-and-communication-008:p19:c01",
+        "signals-and-communication-008:p20:c01",
+        "signals-and-communication-008:p21:c01",
+        "signals-and-communication-008:p22:c01",
+        "signals-and-communication-008:p23:c01",
+        "signals-and-communication-008:p24:c01",
+        "signals-and-communication-008:p25:c01",
+        "signals-and-communication-008:p26:c01",
+        "signals-and-communication-008:p27:c01",
+        "signals-and-communication-008:p28:c01",
+        "signals-and-communication-008:p29:c01",
+        "signals-and-communication-008:p30:c01",
+        "signals-and-communication-008:p31:c01",
+        "signals-and-communication-008:p32:c01",
+        "signals-and-communication-008:p33:c01",
+        "signals-and-communication-008:p34:c01",
+        "signals-and-communication-008:p35:c01",
+        "signals-and-communication-008:p36:c01",
+        "signals-and-communication-008:p37:c01",
+        "signals-and-communication-008:p38:c01",
+        "signals-and-communication-008:p39:c01",
+        "signals-and-communication-008:p40:c01",
+        "signals-and-communication-008:p41:c01",
+        "signals-and-communication-008:p42:c01",
+        "signals-and-communication-008:p43:c01",
+        "signals-and-communication-008:p44:c01",
+        "signals-and-communication-008:p45:c01",
+        "signals-and-communication-008:p46:c01",
+        "signals-and-communication-008:p47:c01",
+        "signals-and-communication-008:p48:c01"
+      ],
+      "heading_path": [
+        "通信基础-数字基带传输系统1-2025F"
+      ],
+      "source_ids": [
+        "signals-and-communication-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-009:p1:c01",
+        "signals-and-communication-009:p2:c01",
+        "signals-and-communication-009:p3:c01",
+        "signals-and-communication-009:p4:c01",
+        "signals-and-communication-009:p5:c01",
+        "signals-and-communication-009:p6:c01",
+        "signals-and-communication-009:p7:c01",
+        "signals-and-communication-009:p8:c01",
+        "signals-and-communication-009:p9:c01",
+        "signals-and-communication-009:p10:c01",
+        "signals-and-communication-009:p11:c01",
+        "signals-and-communication-009:p12:c01",
+        "signals-and-communication-009:p13:c01",
+        "signals-and-communication-009:p14:c01",
+        "signals-and-communication-009:p15:c01",
+        "signals-and-communication-009:p16:c01",
+        "signals-and-communication-009:p17:c01",
+        "signals-and-communication-009:p18:c01",
+        "signals-and-communication-009:p19:c01",
+        "signals-and-communication-009:p20:c01",
+        "signals-and-communication-009:p21:c01",
+        "signals-and-communication-009:p22:c01",
+        "signals-and-communication-009:p23:c01",
+        "signals-and-communication-009:p24:c01",
+        "signals-and-communication-009:p25:c01",
+        "signals-and-communication-009:p26:c01",
+        "signals-and-communication-009:p27:c01",
+        "signals-and-communication-009:p28:c01",
+        "signals-and-communication-009:p29:c01",
+        "signals-and-communication-009:p30:c01",
+        "signals-and-communication-009:p31:c01",
+        "signals-and-communication-009:p32:c01",
+        "signals-and-communication-009:p33:c01",
+        "signals-and-communication-009:p34:c01",
+        "signals-and-communication-009:p35:c01",
+        "signals-and-communication-009:p36:c01",
+        "signals-and-communication-009:p37:c01",
+        "signals-and-communication-009:p38:c01",
+        "signals-and-communication-009:p39:c01",
+        "signals-and-communication-009:p40:c01",
+        "signals-and-communication-009:p41:c01",
+        "signals-and-communication-009:p42:c01",
+        "signals-and-communication-009:p43:c01",
+        "signals-and-communication-009:p44:c01",
+        "signals-and-communication-009:p45:c01",
+        "signals-and-communication-009:p46:c01",
+        "signals-and-communication-009:p47:c01",
+        "signals-and-communication-009:p48:c01",
+        "signals-and-communication-009:p49:c01",
+        "signals-and-communication-009:p50:c01",
+        "signals-and-communication-009:p51:c01",
+        "signals-and-communication-009:p52:c01",
+        "signals-and-communication-009:p53:c01",
+        "signals-and-communication-009:p54:c01",
+        "signals-and-communication-009:p55:c01",
+        "signals-and-communication-009:p56:c01",
+        "signals-and-communication-009:p57:c01",
+        "signals-and-communication-009:p58:c01",
+        "signals-and-communication-009:p59:c01",
+        "signals-and-communication-009:p60:c01",
+        "signals-and-communication-009:p61:c01",
+        "signals-and-communication-009:p62:c01",
+        "signals-and-communication-009:p63:c01",
+        "signals-and-communication-009:p64:c01",
+        "signals-and-communication-009:p65:c01",
+        "signals-and-communication-009:p66:c01",
+        "signals-and-communication-009:p67:c01",
+        "signals-and-communication-009:p68:c01",
+        "signals-and-communication-009:p69:c01",
+        "signals-and-communication-009:p70:c01",
+        "signals-and-communication-009:p71:c01",
+        "signals-and-communication-009:p72:c01",
+        "signals-and-communication-009:p73:c01",
+        "signals-and-communication-009:p74:c01",
+        "signals-and-communication-009:p75:c01",
+        "signals-and-communication-009:p76:c01",
+        "signals-and-communication-009:p77:c01",
+        "signals-and-communication-009:p78:c01",
+        "signals-and-communication-009:p79:c01",
+        "signals-and-communication-009:p80:c01",
+        "signals-and-communication-009:p81:c01"
+      ],
+      "heading_path": [
+        "通信基础-数字基带传输系统2-2025F"
+      ],
+      "source_ids": [
+        "signals-and-communication-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "signals-and-communication-010:h-通信基础部分-复习提纲-2025f-更新:c01"
+      ],
+      "heading_path": [
+        "通信基础部分-复习提纲-2025F-更新"
+      ],
+      "source_ids": [
+        "signals-and-communication-010"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-001:h-信号处理与通信基础-实验手册-v2-2025:c01",
+        "signals-and-communication-001:h-信号处理与通信基础-实验手册-v2-2025:c02",
+        "signals-and-communication-001:h-信号处理与通信基础-实验手册-v2-2025:c03",
+        "signals-and-communication-001:h-信号处理与通信基础-实验手册-v2-2025:c04",
+        "signals-and-communication-001:h-信号处理与通信基础-实验手册-v2-2025:c05",
+        "signals-and-communication-001:h-信号处理与通信基础-实验手册-v2-2025:c06",
+        "signals-and-communication-001:h-信号处理与通信基础-实验手册-v2-2025:c07"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "signals_and_communication/signals-and-communication-001.md",
+      "source_id": "signals-and-communication-001",
+      "source_title": "信号处理与通信基础-实验手册-v2-2025",
+      "year": "2025"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-002:h-实验报告模板:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "signals_and_communication/signals-and-communication-002.md",
+      "source_id": "signals-and-communication-002",
+      "source_title": "实验报告模板",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-003:p1:c01",
+        "signals-and-communication-003:p2:c01",
+        "signals-and-communication-003:p3:c01",
+        "signals-and-communication-003:p4:c01",
+        "signals-and-communication-003:p5:c01",
+        "signals-and-communication-003:p6:c01",
+        "signals-and-communication-003:p7:c01",
+        "signals-and-communication-003:p8:c01",
+        "signals-and-communication-003:p9:c01",
+        "signals-and-communication-003:p10:c01",
+        "signals-and-communication-003:p11:c01",
+        "signals-and-communication-003:p12:c01",
+        "signals-and-communication-003:p13:c01",
+        "signals-and-communication-003:p14:c01",
+        "signals-and-communication-003:p15:c01",
+        "signals-and-communication-003:p16:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "signals_and_communication/signals-and-communication-003.md",
+      "source_id": "signals-and-communication-003",
+      "source_title": "习题讲解-通信部分-2025F",
+      "year": "2025"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-004:s1:c01",
+        "signals-and-communication-004:s2:c01",
+        "signals-and-communication-004:s3:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "signals_and_communication/signals-and-communication-004.md",
+      "source_id": "signals-and-communication-004",
+      "source_title": "信息论基础-作业-2025F",
+      "year": "2025"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-005:p1:c01",
+        "signals-and-communication-005:p2:c01",
+        "signals-and-communication-005:p3:c01",
+        "signals-and-communication-005:p4:c01",
+        "signals-and-communication-005:p5:c01",
+        "signals-and-communication-005:p6:c01",
+        "signals-and-communication-005:p7:c01",
+        "signals-and-communication-005:p8:c01",
+        "signals-and-communication-005:p9:c01",
+        "signals-and-communication-005:p10:c01",
+        "signals-and-communication-005:p11:c01",
+        "signals-and-communication-005:p12:c01",
+        "signals-and-communication-005:p13:c01",
+        "signals-and-communication-005:p14:c01",
+        "signals-and-communication-005:p15:c01",
+        "signals-and-communication-005:p16:c01",
+        "signals-and-communication-005:p17:c01",
+        "signals-and-communication-005:p18:c01",
+        "signals-and-communication-005:p19:c01",
+        "signals-and-communication-005:p20:c01",
+        "signals-and-communication-005:p21:c01",
+        "signals-and-communication-005:p22:c01",
+        "signals-and-communication-005:p23:c01",
+        "signals-and-communication-005:p24:c01",
+        "signals-and-communication-005:p25:c01",
+        "signals-and-communication-005:p26:c01",
+        "signals-and-communication-005:p27:c01",
+        "signals-and-communication-005:p28:c01",
+        "signals-and-communication-005:p29:c01",
+        "signals-and-communication-005:p30:c01",
+        "signals-and-communication-005:p31:c01",
+        "signals-and-communication-005:p32:c01",
+        "signals-and-communication-005:p33:c01",
+        "signals-and-communication-005:p34:c01",
+        "signals-and-communication-005:p35:c01",
+        "signals-and-communication-005:p36:c01",
+        "signals-and-communication-005:p37:c01",
+        "signals-and-communication-005:p38:c01",
+        "signals-and-communication-005:p39:c01",
+        "signals-and-communication-005:p40:c01",
+        "signals-and-communication-005:p41:c01",
+        "signals-and-communication-005:p42:c01",
+        "signals-and-communication-005:p43:c01",
+        "signals-and-communication-005:p44:c01",
+        "signals-and-communication-005:p45:c01",
+        "signals-and-communication-005:p46:c01",
+        "signals-and-communication-005:p47:c01",
+        "signals-and-communication-005:p48:c01",
+        "signals-and-communication-005:p49:c01",
+        "signals-and-communication-005:p50:c01",
+        "signals-and-communication-005:p51:c01",
+        "signals-and-communication-005:p52:c01",
+        "signals-and-communication-005:p53:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "signals_and_communication/signals-and-communication-005.md",
+      "source_id": "signals-and-communication-005",
+      "source_title": "通信基础-信息论基础1-2025F",
+      "year": "2025"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-006:p1:c01",
+        "signals-and-communication-006:p2:c01",
+        "signals-and-communication-006:p3:c01",
+        "signals-and-communication-006:p4:c01",
+        "signals-and-communication-006:p5:c01",
+        "signals-and-communication-006:p6:c01",
+        "signals-and-communication-006:p7:c01",
+        "signals-and-communication-006:p8:c01",
+        "signals-and-communication-006:p9:c01",
+        "signals-and-communication-006:p10:c01",
+        "signals-and-communication-006:p11:c01",
+        "signals-and-communication-006:p12:c01",
+        "signals-and-communication-006:p13:c01",
+        "signals-and-communication-006:p14:c01",
+        "signals-and-communication-006:p15:c01",
+        "signals-and-communication-006:p16:c01",
+        "signals-and-communication-006:p17:c01",
+        "signals-and-communication-006:p18:c01",
+        "signals-and-communication-006:p19:c01",
+        "signals-and-communication-006:p20:c01",
+        "signals-and-communication-006:p21:c01",
+        "signals-and-communication-006:p22:c01",
+        "signals-and-communication-006:p23:c01",
+        "signals-and-communication-006:p24:c01",
+        "signals-and-communication-006:p25:c01",
+        "signals-and-communication-006:p26:c01",
+        "signals-and-communication-006:p27:c01",
+        "signals-and-communication-006:p28:c01",
+        "signals-and-communication-006:p29:c01",
+        "signals-and-communication-006:p30:c01",
+        "signals-and-communication-006:p31:c01",
+        "signals-and-communication-006:p32:c01",
+        "signals-and-communication-006:p33:c01",
+        "signals-and-communication-006:p34:c01",
+        "signals-and-communication-006:p35:c01",
+        "signals-and-communication-006:p36:c01",
+        "signals-and-communication-006:p37:c01",
+        "signals-and-communication-006:p38:c01",
+        "signals-and-communication-006:p39:c01",
+        "signals-and-communication-006:p40:c01",
+        "signals-and-communication-006:p41:c01",
+        "signals-and-communication-006:p42:c01",
+        "signals-and-communication-006:p43:c01",
+        "signals-and-communication-006:p44:c01",
+        "signals-and-communication-006:p45:c01",
+        "signals-and-communication-006:p46:c01",
+        "signals-and-communication-006:p47:c01",
+        "signals-and-communication-006:p48:c01",
+        "signals-and-communication-006:p49:c01",
+        "signals-and-communication-006:p50:c01",
+        "signals-and-communication-006:p51:c01",
+        "signals-and-communication-006:p52:c01",
+        "signals-and-communication-006:p53:c01",
+        "signals-and-communication-006:p54:c01",
+        "signals-and-communication-006:p55:c01",
+        "signals-and-communication-006:p56:c01",
+        "signals-and-communication-006:p57:c01",
+        "signals-and-communication-006:p58:c01",
+        "signals-and-communication-006:p59:c01",
+        "signals-and-communication-006:p60:c01",
+        "signals-and-communication-006:p61:c01",
+        "signals-and-communication-006:p62:c01",
+        "signals-and-communication-006:p63:c01",
+        "signals-and-communication-006:p64:c01",
+        "signals-and-communication-006:p65:c01",
+        "signals-and-communication-006:p66:c01",
+        "signals-and-communication-006:p67:c01",
+        "signals-and-communication-006:p68:c01",
+        "signals-and-communication-006:p69:c01",
+        "signals-and-communication-006:p70:c01",
+        "signals-and-communication-006:p71:c01",
+        "signals-and-communication-006:p72:c01",
+        "signals-and-communication-006:p73:c01",
+        "signals-and-communication-006:p74:c01",
+        "signals-and-communication-006:p75:c01",
+        "signals-and-communication-006:p76:c01",
+        "signals-and-communication-006:p77:c01",
+        "signals-and-communication-006:p78:c01",
+        "signals-and-communication-006:p79:c01",
+        "signals-and-communication-006:p80:c01",
+        "signals-and-communication-006:p81:c01",
+        "signals-and-communication-006:p82:c01",
+        "signals-and-communication-006:p83:c01",
+        "signals-and-communication-006:p84:c01",
+        "signals-and-communication-006:p85:c01",
+        "signals-and-communication-006:p86:c01",
+        "signals-and-communication-006:p87:c01",
+        "signals-and-communication-006:p88:c01",
+        "signals-and-communication-006:p89:c01",
+        "signals-and-communication-006:p90:c01",
+        "signals-and-communication-006:p91:c01",
+        "signals-and-communication-006:p92:c01",
+        "signals-and-communication-006:p93:c01",
+        "signals-and-communication-006:p94:c01",
+        "signals-and-communication-006:p95:c01",
+        "signals-and-communication-006:p96:c01",
+        "signals-and-communication-006:p97:c01",
+        "signals-and-communication-006:p98:c01",
+        "signals-and-communication-006:p99:c01",
+        "signals-and-communication-006:p100:c01",
+        "signals-and-communication-006:p101:c01",
+        "signals-and-communication-006:p102:c01",
+        "signals-and-communication-006:p103:c01",
+        "signals-and-communication-006:p104:c01",
+        "signals-and-communication-006:p105:c01",
+        "signals-and-communication-006:p106:c01",
+        "signals-and-communication-006:p107:c01",
+        "signals-and-communication-006:p108:c01",
+        "signals-and-communication-006:p109:c01",
+        "signals-and-communication-006:p110:c01",
+        "signals-and-communication-006:p111:c01",
+        "signals-and-communication-006:p112:c01",
+        "signals-and-communication-006:p113:c01",
+        "signals-and-communication-006:p114:c01",
+        "signals-and-communication-006:p115:c01",
+        "signals-and-communication-006:p116:c01",
+        "signals-and-communication-006:p117:c01",
+        "signals-and-communication-006:p118:c01",
+        "signals-and-communication-006:p119:c01",
+        "signals-and-communication-006:p120:c01",
+        "signals-and-communication-006:p121:c01",
+        "signals-and-communication-006:p122:c01",
+        "signals-and-communication-006:p123:c01",
+        "signals-and-communication-006:p124:c01",
+        "signals-and-communication-006:p125:c01",
+        "signals-and-communication-006:p126:c01",
+        "signals-and-communication-006:p127:c01",
+        "signals-and-communication-006:p128:c01",
+        "signals-and-communication-006:p129:c01",
+        "signals-and-communication-006:p130:c01",
+        "signals-and-communication-006:p131:c01",
+        "signals-and-communication-006:p132:c01",
+        "signals-and-communication-006:p133:c01",
+        "signals-and-communication-006:p134:c01",
+        "signals-and-communication-006:p135:c01",
+        "signals-and-communication-006:p136:c01",
+        "signals-and-communication-006:p137:c01",
+        "signals-and-communication-006:p138:c01",
+        "signals-and-communication-006:p139:c01",
+        "signals-and-communication-006:p140:c01",
+        "signals-and-communication-006:p141:c01",
+        "signals-and-communication-006:p142:c01",
+        "signals-and-communication-006:p143:c01",
+        "signals-and-communication-006:p144:c01",
+        "signals-and-communication-006:p145:c01",
+        "signals-and-communication-006:p146:c01",
+        "signals-and-communication-006:p147:c01",
+        "signals-and-communication-006:p148:c01",
+        "signals-and-communication-006:p149:c01",
+        "signals-and-communication-006:p150:c01",
+        "signals-and-communication-006:p151:c01",
+        "signals-and-communication-006:p152:c01",
+        "signals-and-communication-006:p153:c01",
+        "signals-and-communication-006:p154:c01",
+        "signals-and-communication-006:p155:c01",
+        "signals-and-communication-006:p156:c01",
+        "signals-and-communication-006:p157:c01",
+        "signals-and-communication-006:p158:c01",
+        "signals-and-communication-006:p159:c01",
+        "signals-and-communication-006:p160:c01",
+        "signals-and-communication-006:p161:c01",
+        "signals-and-communication-006:p162:c01",
+        "signals-and-communication-006:p163:c01",
+        "signals-and-communication-006:p164:c01",
+        "signals-and-communication-006:p165:c01",
+        "signals-and-communication-006:p166:c01",
+        "signals-and-communication-006:p167:c01",
+        "signals-and-communication-006:p168:c01",
+        "signals-and-communication-006:p169:c01",
+        "signals-and-communication-006:p170:c01",
+        "signals-and-communication-006:p171:c01",
+        "signals-and-communication-006:p172:c01",
+        "signals-and-communication-006:p173:c01",
+        "signals-and-communication-006:p174:c01",
+        "signals-and-communication-006:p175:c01",
+        "signals-and-communication-006:p176:c01",
+        "signals-and-communication-006:p177:c01",
+        "signals-and-communication-006:p178:c01",
+        "signals-and-communication-006:p179:c01",
+        "signals-and-communication-006:p180:c01",
+        "signals-and-communication-006:p181:c01",
+        "signals-and-communication-006:p182:c01",
+        "signals-and-communication-006:p183:c01",
+        "signals-and-communication-006:p184:c01",
+        "signals-and-communication-006:p185:c01",
+        "signals-and-communication-006:p186:c01",
+        "signals-and-communication-006:p187:c01",
+        "signals-and-communication-006:p188:c01",
+        "signals-and-communication-006:p189:c01",
+        "signals-and-communication-006:p190:c01",
+        "signals-and-communication-006:p191:c01",
+        "signals-and-communication-006:p192:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "signals_and_communication/signals-and-communication-006.md",
+      "source_id": "signals-and-communication-006",
+      "source_title": "通信基础-信息论基础2-2025F-更新",
+      "year": "2025"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-007:p1:c01",
+        "signals-and-communication-007:p2:c01",
+        "signals-and-communication-007:p3:c01",
+        "signals-and-communication-007:p4:c01",
+        "signals-and-communication-007:p5:c01",
+        "signals-and-communication-007:p6:c01",
+        "signals-and-communication-007:p7:c01",
+        "signals-and-communication-007:p8:c01",
+        "signals-and-communication-007:p9:c01",
+        "signals-and-communication-007:p10:c01",
+        "signals-and-communication-007:p11:c01",
+        "signals-and-communication-007:p12:c01",
+        "signals-and-communication-007:p13:c01",
+        "signals-and-communication-007:p14:c01",
+        "signals-and-communication-007:p15:c01",
+        "signals-and-communication-007:p16:c01",
+        "signals-and-communication-007:p17:c01",
+        "signals-and-communication-007:p18:c01",
+        "signals-and-communication-007:p19:c01",
+        "signals-and-communication-007:p20:c01",
+        "signals-and-communication-007:p21:c01",
+        "signals-and-communication-007:p22:c01",
+        "signals-and-communication-007:p23:c01",
+        "signals-and-communication-007:p24:c01",
+        "signals-and-communication-007:p25:c01",
+        "signals-and-communication-007:p26:c01",
+        "signals-and-communication-007:p27:c01",
+        "signals-and-communication-007:p28:c01",
+        "signals-and-communication-007:p29:c01",
+        "signals-and-communication-007:p30:c01",
+        "signals-and-communication-007:p31:c01",
+        "signals-and-communication-007:p32:c01",
+        "signals-and-communication-007:p33:c01",
+        "signals-and-communication-007:p34:c01",
+        "signals-and-communication-007:p35:c01",
+        "signals-and-communication-007:p36:c01",
+        "signals-and-communication-007:p37:c01",
+        "signals-and-communication-007:p38:c01",
+        "signals-and-communication-007:p39:c01",
+        "signals-and-communication-007:p40:c01",
+        "signals-and-communication-007:p41:c01",
+        "signals-and-communication-007:p42:c01",
+        "signals-and-communication-007:p43:c01",
+        "signals-and-communication-007:p44:c01",
+        "signals-and-communication-007:p45:c01",
+        "signals-and-communication-007:p46:c01",
+        "signals-and-communication-007:p47:c01",
+        "signals-and-communication-007:p48:c01",
+        "signals-and-communication-007:p49:c01",
+        "signals-and-communication-007:p50:c01",
+        "signals-and-communication-007:p51:c01",
+        "signals-and-communication-007:p52:c01",
+        "signals-and-communication-007:p53:c01",
+        "signals-and-communication-007:p54:c01",
+        "signals-and-communication-007:p55:c01",
+        "signals-and-communication-007:p56:c01",
+        "signals-and-communication-007:p57:c01",
+        "signals-and-communication-007:p58:c01",
+        "signals-and-communication-007:p59:c01",
+        "signals-and-communication-007:p60:c01",
+        "signals-and-communication-007:p61:c01",
+        "signals-and-communication-007:p62:c01",
+        "signals-and-communication-007:p63:c01",
+        "signals-and-communication-007:p64:c01",
+        "signals-and-communication-007:p65:c01",
+        "signals-and-communication-007:p66:c01",
+        "signals-and-communication-007:p67:c01",
+        "signals-and-communication-007:p68:c01",
+        "signals-and-communication-007:p69:c01",
+        "signals-and-communication-007:p70:c01",
+        "signals-and-communication-007:p71:c01",
+        "signals-and-communication-007:p72:c01",
+        "signals-and-communication-007:p73:c01",
+        "signals-and-communication-007:p74:c01",
+        "signals-and-communication-007:p75:c01",
+        "signals-and-communication-007:p76:c01",
+        "signals-and-communication-007:p77:c01",
+        "signals-and-communication-007:p78:c01",
+        "signals-and-communication-007:p79:c01",
+        "signals-and-communication-007:p80:c01",
+        "signals-and-communication-007:p81:c01",
+        "signals-and-communication-007:p82:c01",
+        "signals-and-communication-007:p83:c01",
+        "signals-and-communication-007:p84:c01",
+        "signals-and-communication-007:p85:c01",
+        "signals-and-communication-007:p86:c01",
+        "signals-and-communication-007:p87:c01",
+        "signals-and-communication-007:p88:c01",
+        "signals-and-communication-007:p89:c01",
+        "signals-and-communication-007:p90:c01",
+        "signals-and-communication-007:p91:c01",
+        "signals-and-communication-007:p92:c01",
+        "signals-and-communication-007:p93:c01",
+        "signals-and-communication-007:p94:c01",
+        "signals-and-communication-007:p95:c01",
+        "signals-and-communication-007:p96:c01",
+        "signals-and-communication-007:p97:c01",
+        "signals-and-communication-007:p98:c01",
+        "signals-and-communication-007:p99:c01",
+        "signals-and-communication-007:p100:c01",
+        "signals-and-communication-007:p101:c01",
+        "signals-and-communication-007:p102:c01",
+        "signals-and-communication-007:p103:c01",
+        "signals-and-communication-007:p104:c01",
+        "signals-and-communication-007:p105:c01",
+        "signals-and-communication-007:p106:c01",
+        "signals-and-communication-007:p107:c01",
+        "signals-and-communication-007:p108:c01",
+        "signals-and-communication-007:p109:c01",
+        "signals-and-communication-007:p110:c01",
+        "signals-and-communication-007:p111:c01",
+        "signals-and-communication-007:p112:c01",
+        "signals-and-communication-007:p113:c01",
+        "signals-and-communication-007:p114:c01",
+        "signals-and-communication-007:p115:c01",
+        "signals-and-communication-007:p116:c01",
+        "signals-and-communication-007:p117:c01",
+        "signals-and-communication-007:p118:c01",
+        "signals-and-communication-007:p119:c01",
+        "signals-and-communication-007:p120:c01",
+        "signals-and-communication-007:p121:c01",
+        "signals-and-communication-007:p122:c01",
+        "signals-and-communication-007:p123:c01",
+        "signals-and-communication-007:p124:c01",
+        "signals-and-communication-007:p125:c01",
+        "signals-and-communication-007:p126:c01",
+        "signals-and-communication-007:p127:c01",
+        "signals-and-communication-007:p128:c01",
+        "signals-and-communication-007:p129:c01",
+        "signals-and-communication-007:p130:c01",
+        "signals-and-communication-007:p131:c01",
+        "signals-and-communication-007:p132:c01",
+        "signals-and-communication-007:p133:c01",
+        "signals-and-communication-007:p134:c01",
+        "signals-and-communication-007:p135:c01",
+        "signals-and-communication-007:p136:c01",
+        "signals-and-communication-007:p137:c01",
+        "signals-and-communication-007:p138:c01",
+        "signals-and-communication-007:p139:c01",
+        "signals-and-communication-007:p140:c01",
+        "signals-and-communication-007:p141:c01",
+        "signals-and-communication-007:p142:c01",
+        "signals-and-communication-007:p143:c01",
+        "signals-and-communication-007:p144:c01",
+        "signals-and-communication-007:p145:c01",
+        "signals-and-communication-007:p146:c01",
+        "signals-and-communication-007:p147:c01",
+        "signals-and-communication-007:p148:c01",
+        "signals-and-communication-007:p149:c01",
+        "signals-and-communication-007:p150:c01",
+        "signals-and-communication-007:p151:c01",
+        "signals-and-communication-007:p152:c01",
+        "signals-and-communication-007:p153:c01",
+        "signals-and-communication-007:p154:c01",
+        "signals-and-communication-007:p155:c01",
+        "signals-and-communication-007:p156:c01",
+        "signals-and-communication-007:p157:c01",
+        "signals-and-communication-007:p158:c01",
+        "signals-and-communication-007:p159:c01",
+        "signals-and-communication-007:p160:c01",
+        "signals-and-communication-007:p161:c01",
+        "signals-and-communication-007:p162:c01",
+        "signals-and-communication-007:p163:c01",
+        "signals-and-communication-007:p164:c01",
+        "signals-and-communication-007:p165:c01",
+        "signals-and-communication-007:p166:c01",
+        "signals-and-communication-007:p167:c01",
+        "signals-and-communication-007:p168:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "signals_and_communication/signals-and-communication-007.md",
+      "source_id": "signals-and-communication-007",
+      "source_title": "通信基础-差错控制编码-2025F",
+      "year": "2025"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-008:p1:c01",
+        "signals-and-communication-008:p2:c01",
+        "signals-and-communication-008:p3:c01",
+        "signals-and-communication-008:p4:c01",
+        "signals-and-communication-008:p5:c01",
+        "signals-and-communication-008:p6:c01",
+        "signals-and-communication-008:p7:c01",
+        "signals-and-communication-008:p8:c01",
+        "signals-and-communication-008:p9:c01",
+        "signals-and-communication-008:p10:c01",
+        "signals-and-communication-008:p11:c01",
+        "signals-and-communication-008:p12:c01",
+        "signals-and-communication-008:p13:c01",
+        "signals-and-communication-008:p14:c01",
+        "signals-and-communication-008:p15:c01",
+        "signals-and-communication-008:p16:c01",
+        "signals-and-communication-008:p17:c01",
+        "signals-and-communication-008:p18:c01",
+        "signals-and-communication-008:p19:c01",
+        "signals-and-communication-008:p20:c01",
+        "signals-and-communication-008:p21:c01",
+        "signals-and-communication-008:p22:c01",
+        "signals-and-communication-008:p23:c01",
+        "signals-and-communication-008:p24:c01",
+        "signals-and-communication-008:p25:c01",
+        "signals-and-communication-008:p26:c01",
+        "signals-and-communication-008:p27:c01",
+        "signals-and-communication-008:p28:c01",
+        "signals-and-communication-008:p29:c01",
+        "signals-and-communication-008:p30:c01",
+        "signals-and-communication-008:p31:c01",
+        "signals-and-communication-008:p32:c01",
+        "signals-and-communication-008:p33:c01",
+        "signals-and-communication-008:p34:c01",
+        "signals-and-communication-008:p35:c01",
+        "signals-and-communication-008:p36:c01",
+        "signals-and-communication-008:p37:c01",
+        "signals-and-communication-008:p38:c01",
+        "signals-and-communication-008:p39:c01",
+        "signals-and-communication-008:p40:c01",
+        "signals-and-communication-008:p41:c01",
+        "signals-and-communication-008:p42:c01",
+        "signals-and-communication-008:p43:c01",
+        "signals-and-communication-008:p44:c01",
+        "signals-and-communication-008:p45:c01",
+        "signals-and-communication-008:p46:c01",
+        "signals-and-communication-008:p47:c01",
+        "signals-and-communication-008:p48:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "signals_and_communication/signals-and-communication-008.md",
+      "source_id": "signals-and-communication-008",
+      "source_title": "通信基础-数字基带传输系统1-2025F",
+      "year": "2025"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-009:p1:c01",
+        "signals-and-communication-009:p2:c01",
+        "signals-and-communication-009:p3:c01",
+        "signals-and-communication-009:p4:c01",
+        "signals-and-communication-009:p5:c01",
+        "signals-and-communication-009:p6:c01",
+        "signals-and-communication-009:p7:c01",
+        "signals-and-communication-009:p8:c01",
+        "signals-and-communication-009:p9:c01",
+        "signals-and-communication-009:p10:c01",
+        "signals-and-communication-009:p11:c01",
+        "signals-and-communication-009:p12:c01",
+        "signals-and-communication-009:p13:c01",
+        "signals-and-communication-009:p14:c01",
+        "signals-and-communication-009:p15:c01",
+        "signals-and-communication-009:p16:c01",
+        "signals-and-communication-009:p17:c01",
+        "signals-and-communication-009:p18:c01",
+        "signals-and-communication-009:p19:c01",
+        "signals-and-communication-009:p20:c01",
+        "signals-and-communication-009:p21:c01",
+        "signals-and-communication-009:p22:c01",
+        "signals-and-communication-009:p23:c01",
+        "signals-and-communication-009:p24:c01",
+        "signals-and-communication-009:p25:c01",
+        "signals-and-communication-009:p26:c01",
+        "signals-and-communication-009:p27:c01",
+        "signals-and-communication-009:p28:c01",
+        "signals-and-communication-009:p29:c01",
+        "signals-and-communication-009:p30:c01",
+        "signals-and-communication-009:p31:c01",
+        "signals-and-communication-009:p32:c01",
+        "signals-and-communication-009:p33:c01",
+        "signals-and-communication-009:p34:c01",
+        "signals-and-communication-009:p35:c01",
+        "signals-and-communication-009:p36:c01",
+        "signals-and-communication-009:p37:c01",
+        "signals-and-communication-009:p38:c01",
+        "signals-and-communication-009:p39:c01",
+        "signals-and-communication-009:p40:c01",
+        "signals-and-communication-009:p41:c01",
+        "signals-and-communication-009:p42:c01",
+        "signals-and-communication-009:p43:c01",
+        "signals-and-communication-009:p44:c01",
+        "signals-and-communication-009:p45:c01",
+        "signals-and-communication-009:p46:c01",
+        "signals-and-communication-009:p47:c01",
+        "signals-and-communication-009:p48:c01",
+        "signals-and-communication-009:p49:c01",
+        "signals-and-communication-009:p50:c01",
+        "signals-and-communication-009:p51:c01",
+        "signals-and-communication-009:p52:c01",
+        "signals-and-communication-009:p53:c01",
+        "signals-and-communication-009:p54:c01",
+        "signals-and-communication-009:p55:c01",
+        "signals-and-communication-009:p56:c01",
+        "signals-and-communication-009:p57:c01",
+        "signals-and-communication-009:p58:c01",
+        "signals-and-communication-009:p59:c01",
+        "signals-and-communication-009:p60:c01",
+        "signals-and-communication-009:p61:c01",
+        "signals-and-communication-009:p62:c01",
+        "signals-and-communication-009:p63:c01",
+        "signals-and-communication-009:p64:c01",
+        "signals-and-communication-009:p65:c01",
+        "signals-and-communication-009:p66:c01",
+        "signals-and-communication-009:p67:c01",
+        "signals-and-communication-009:p68:c01",
+        "signals-and-communication-009:p69:c01",
+        "signals-and-communication-009:p70:c01",
+        "signals-and-communication-009:p71:c01",
+        "signals-and-communication-009:p72:c01",
+        "signals-and-communication-009:p73:c01",
+        "signals-and-communication-009:p74:c01",
+        "signals-and-communication-009:p75:c01",
+        "signals-and-communication-009:p76:c01",
+        "signals-and-communication-009:p77:c01",
+        "signals-and-communication-009:p78:c01",
+        "signals-and-communication-009:p79:c01",
+        "signals-and-communication-009:p80:c01",
+        "signals-and-communication-009:p81:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "signals_and_communication/signals-and-communication-009.md",
+      "source_id": "signals-and-communication-009",
+      "source_title": "通信基础-数字基带传输系统2-2025F",
+      "year": "2025"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-010:h-通信基础部分-复习提纲-2025f-更新:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "review_outline",
+      "locator_type": "none",
+      "output_md": "signals_and_communication/signals-and-communication-010.md",
+      "source_id": "signals-and-communication-010",
+      "source_title": "通信基础部分-复习提纲-2025F-更新",
+      "year": "2025"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-011:p1:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "review_outline",
+      "locator_type": "page",
+      "output_md": "signals_and_communication/signals-and-communication-011.md",
+      "source_id": "signals-and-communication-011",
+      "source_title": "数字信号处理复习提纲",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-012:s1:c01",
+        "signals-and-communication-012:s2:c01",
+        "signals-and-communication-012:s3:c01",
+        "signals-and-communication-012:s4:c01",
+        "signals-and-communication-012:s5:c01",
+        "signals-and-communication-012:s6:c01",
+        "signals-and-communication-012:s7:c01",
+        "signals-and-communication-012:s8:c01",
+        "signals-and-communication-012:s9:c01",
+        "signals-and-communication-012:s10:c01",
+        "signals-and-communication-012:s11:c01",
+        "signals-and-communication-012:s12:c01",
+        "signals-and-communication-012:s13:c01",
+        "signals-and-communication-012:s14:c01",
+        "signals-and-communication-012:s15:c01",
+        "signals-and-communication-012:s16:c01",
+        "signals-and-communication-012:s18:c01",
+        "signals-and-communication-012:s19:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "signals_and_communication/signals-and-communication-012.md",
+      "source_id": "signals-and-communication-012",
+      "source_title": "第0章 绪论",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-013:s1:c01",
+        "signals-and-communication-013:s2:c01",
+        "signals-and-communication-013:s3:c01",
+        "signals-and-communication-013:s4:c01",
+        "signals-and-communication-013:s5:c01",
+        "signals-and-communication-013:s6:c01",
+        "signals-and-communication-013:s7:c01",
+        "signals-and-communication-013:s8:c01",
+        "signals-and-communication-013:s9:c01",
+        "signals-and-communication-013:s10:c01",
+        "signals-and-communication-013:s11:c01",
+        "signals-and-communication-013:s12:c01",
+        "signals-and-communication-013:s13:c01",
+        "signals-and-communication-013:s14:c01",
+        "signals-and-communication-013:s15:c01",
+        "signals-and-communication-013:s16:c01",
+        "signals-and-communication-013:s17:c01",
+        "signals-and-communication-013:s18:c01",
+        "signals-and-communication-013:s19:c01",
+        "signals-and-communication-013:s20:c01",
+        "signals-and-communication-013:s21:c01",
+        "signals-and-communication-013:s22:c01",
+        "signals-and-communication-013:s23:c01",
+        "signals-and-communication-013:s24:c01",
+        "signals-and-communication-013:s25:c01",
+        "signals-and-communication-013:s26:c01",
+        "signals-and-communication-013:s27:c01",
+        "signals-and-communication-013:s28:c01",
+        "signals-and-communication-013:s29:c01",
+        "signals-and-communication-013:s30:c01",
+        "signals-and-communication-013:s31:c01",
+        "signals-and-communication-013:s32:c01",
+        "signals-and-communication-013:s33:c01",
+        "signals-and-communication-013:s34:c01",
+        "signals-and-communication-013:s35:c01",
+        "signals-and-communication-013:s36:c01",
+        "signals-and-communication-013:s37:c01",
+        "signals-and-communication-013:s38:c01",
+        "signals-and-communication-013:s39:c01",
+        "signals-and-communication-013:s40:c01",
+        "signals-and-communication-013:s41:c01",
+        "signals-and-communication-013:s42:c01",
+        "signals-and-communication-013:s43:c01",
+        "signals-and-communication-013:s44:c01",
+        "signals-and-communication-013:s45:c01",
+        "signals-and-communication-013:s46:c01",
+        "signals-and-communication-013:s47:c01",
+        "signals-and-communication-013:s48:c01",
+        "signals-and-communication-013:s49:c01",
+        "signals-and-communication-013:s50:c01",
+        "signals-and-communication-013:s51:c01",
+        "signals-and-communication-013:s52:c01",
+        "signals-and-communication-013:s53:c01",
+        "signals-and-communication-013:s54:c01",
+        "signals-and-communication-013:s55:c01",
+        "signals-and-communication-013:s56:c01",
+        "signals-and-communication-013:s57:c01",
+        "signals-and-communication-013:s58:c01",
+        "signals-and-communication-013:s59:c01",
+        "signals-and-communication-013:s60:c01",
+        "signals-and-communication-013:s61:c01",
+        "signals-and-communication-013:s62:c01",
+        "signals-and-communication-013:s63:c01",
+        "signals-and-communication-013:s64:c01",
+        "signals-and-communication-013:s65:c01",
+        "signals-and-communication-013:s66:c01",
+        "signals-and-communication-013:s67:c01",
+        "signals-and-communication-013:s68:c01",
+        "signals-and-communication-013:s69:c01",
+        "signals-and-communication-013:s70:c01",
+        "signals-and-communication-013:s71:c01",
+        "signals-and-communication-013:s72:c01",
+        "signals-and-communication-013:s73:c01",
+        "signals-and-communication-013:s74:c01",
+        "signals-and-communication-013:s75:c01",
+        "signals-and-communication-013:s76:c01",
+        "signals-and-communication-013:s77:c01",
+        "signals-and-communication-013:s78:c01",
+        "signals-and-communication-013:s79:c01",
+        "signals-and-communication-013:s80:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "signals_and_communication/signals-and-communication-013.md",
+      "source_id": "signals-and-communication-013",
+      "source_title": "第2章 Z变换与序列傅里叶变换",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-014:s1:c01",
+        "signals-and-communication-014:s2:c01",
+        "signals-and-communication-014:s3:c01",
+        "signals-and-communication-014:s4:c01",
+        "signals-and-communication-014:s5:c01",
+        "signals-and-communication-014:s6:c01",
+        "signals-and-communication-014:s7:c01",
+        "signals-and-communication-014:s8:c01",
+        "signals-and-communication-014:s9:c01",
+        "signals-and-communication-014:s10:c01",
+        "signals-and-communication-014:s11:c01",
+        "signals-and-communication-014:s12:c01",
+        "signals-and-communication-014:s13:c01",
+        "signals-and-communication-014:s14:c01",
+        "signals-and-communication-014:s15:c01",
+        "signals-and-communication-014:s16:c01",
+        "signals-and-communication-014:s17:c01",
+        "signals-and-communication-014:s18:c01",
+        "signals-and-communication-014:s19:c01",
+        "signals-and-communication-014:s20:c01",
+        "signals-and-communication-014:s21:c01",
+        "signals-and-communication-014:s22:c01",
+        "signals-and-communication-014:s23:c01",
+        "signals-and-communication-014:s24:c01",
+        "signals-and-communication-014:s25:c01",
+        "signals-and-communication-014:s26:c01",
+        "signals-and-communication-014:s27:c01",
+        "signals-and-communication-014:s28:c01",
+        "signals-and-communication-014:s29:c01",
+        "signals-and-communication-014:s30:c01",
+        "signals-and-communication-014:s31:c01",
+        "signals-and-communication-014:s32:c01",
+        "signals-and-communication-014:s33:c01",
+        "signals-and-communication-014:s34:c01",
+        "signals-and-communication-014:s35:c01",
+        "signals-and-communication-014:s36:c01",
+        "signals-and-communication-014:s37:c01",
+        "signals-and-communication-014:s38:c01",
+        "signals-and-communication-014:s39:c01",
+        "signals-and-communication-014:s40:c01",
+        "signals-and-communication-014:s41:c01",
+        "signals-and-communication-014:s42:c01",
+        "signals-and-communication-014:s43:c01",
+        "signals-and-communication-014:s44:c01",
+        "signals-and-communication-014:s45:c01",
+        "signals-and-communication-014:s46:c01",
+        "signals-and-communication-014:s47:c01",
+        "signals-and-communication-014:s48:c01",
+        "signals-and-communication-014:s49:c01",
+        "signals-and-communication-014:s50:c01",
+        "signals-and-communication-014:s51:c01",
+        "signals-and-communication-014:s52:c01",
+        "signals-and-communication-014:s53:c01",
+        "signals-and-communication-014:s54:c01",
+        "signals-and-communication-014:s55:c01",
+        "signals-and-communication-014:s56:c01",
+        "signals-and-communication-014:s57:c01",
+        "signals-and-communication-014:s58:c01",
+        "signals-and-communication-014:s59:c01",
+        "signals-and-communication-014:s60:c01",
+        "signals-and-communication-014:s61:c01",
+        "signals-and-communication-014:s62:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "signals_and_communication/signals-and-communication-014.md",
+      "source_id": "signals-and-communication-014",
+      "source_title": "第3章 离散傅里叶变换",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-015:s1:c01",
+        "signals-and-communication-015:s2:c01",
+        "signals-and-communication-015:s3:c01",
+        "signals-and-communication-015:s4:c01",
+        "signals-and-communication-015:s5:c01",
+        "signals-and-communication-015:s6:c01",
+        "signals-and-communication-015:s7:c01",
+        "signals-and-communication-015:s8:c01",
+        "signals-and-communication-015:s9:c01",
+        "signals-and-communication-015:s10:c01",
+        "signals-and-communication-015:s11:c01",
+        "signals-and-communication-015:s12:c01",
+        "signals-and-communication-015:s13:c01",
+        "signals-and-communication-015:s14:c01",
+        "signals-and-communication-015:s15:c01",
+        "signals-and-communication-015:s16:c01",
+        "signals-and-communication-015:s17:c01",
+        "signals-and-communication-015:s18:c01",
+        "signals-and-communication-015:s19:c01",
+        "signals-and-communication-015:s20:c01",
+        "signals-and-communication-015:s21:c01",
+        "signals-and-communication-015:s22:c01",
+        "signals-and-communication-015:s23:c01",
+        "signals-and-communication-015:s24:c01",
+        "signals-and-communication-015:s25:c01",
+        "signals-and-communication-015:s26:c01",
+        "signals-and-communication-015:s27:c01",
+        "signals-and-communication-015:s28:c01",
+        "signals-and-communication-015:s29:c01",
+        "signals-and-communication-015:s30:c01",
+        "signals-and-communication-015:s31:c01",
+        "signals-and-communication-015:s32:c01",
+        "signals-and-communication-015:s33:c01",
+        "signals-and-communication-015:s34:c01",
+        "signals-and-communication-015:s35:c01",
+        "signals-and-communication-015:s36:c01",
+        "signals-and-communication-015:s37:c01",
+        "signals-and-communication-015:s38:c01",
+        "signals-and-communication-015:s39:c01",
+        "signals-and-communication-015:s40:c01",
+        "signals-and-communication-015:s41:c01",
+        "signals-and-communication-015:s42:c01",
+        "signals-and-communication-015:s43:c01",
+        "signals-and-communication-015:s44:c01",
+        "signals-and-communication-015:s45:c01",
+        "signals-and-communication-015:s46:c01",
+        "signals-and-communication-015:s47:c01",
+        "signals-and-communication-015:s48:c01",
+        "signals-and-communication-015:s49:c01",
+        "signals-and-communication-015:s50:c01",
+        "signals-and-communication-015:s51:c01",
+        "signals-and-communication-015:s52:c01",
+        "signals-and-communication-015:s53:c01",
+        "signals-and-communication-015:s54:c01",
+        "signals-and-communication-015:s55:c01",
+        "signals-and-communication-015:s56:c01",
+        "signals-and-communication-015:s57:c01",
+        "signals-and-communication-015:s58:c01",
+        "signals-and-communication-015:s59:c01",
+        "signals-and-communication-015:s60:c01",
+        "signals-and-communication-015:s61:c01",
+        "signals-and-communication-015:s62:c01",
+        "signals-and-communication-015:s63:c01",
+        "signals-and-communication-015:s64:c01",
+        "signals-and-communication-015:s65:c01",
+        "signals-and-communication-015:s66:c01",
+        "signals-and-communication-015:s67:c01",
+        "signals-and-communication-015:s68:c01",
+        "signals-and-communication-015:s69:c01",
+        "signals-and-communication-015:s70:c01",
+        "signals-and-communication-015:s71:c01",
+        "signals-and-communication-015:s72:c01",
+        "signals-and-communication-015:s73:c01",
+        "signals-and-communication-015:s74:c01",
+        "signals-and-communication-015:s75:c01",
+        "signals-and-communication-015:s76:c01",
+        "signals-and-communication-015:s77:c01",
+        "signals-and-communication-015:s78:c01",
+        "signals-and-communication-015:s79:c01",
+        "signals-and-communication-015:s80:c01",
+        "signals-and-communication-015:s81:c01",
+        "signals-and-communication-015:s82:c01",
+        "signals-and-communication-015:s83:c01",
+        "signals-and-communication-015:s84:c01",
+        "signals-and-communication-015:s85:c01",
+        "signals-and-communication-015:s86:c01",
+        "signals-and-communication-015:s87:c01",
+        "signals-and-communication-015:s88:c01",
+        "signals-and-communication-015:s89:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "signals_and_communication/signals-and-communication-015.md",
+      "source_id": "signals-and-communication-015",
+      "source_title": "第5章 数字滤波器",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-016:s1:c01",
+        "signals-and-communication-016:s2:c01",
+        "signals-and-communication-016:s3:c01",
+        "signals-and-communication-016:s4:c01",
+        "signals-and-communication-016:s5:c01",
+        "signals-and-communication-016:s6:c01",
+        "signals-and-communication-016:s7:c01",
+        "signals-and-communication-016:s8:c01",
+        "signals-and-communication-016:s9:c01",
+        "signals-and-communication-016:s10:c01",
+        "signals-and-communication-016:s11:c01",
+        "signals-and-communication-016:s12:c01",
+        "signals-and-communication-016:s13:c01",
+        "signals-and-communication-016:s14:c01",
+        "signals-and-communication-016:s15:c01",
+        "signals-and-communication-016:s16:c01",
+        "signals-and-communication-016:s17:c01",
+        "signals-and-communication-016:s18:c01",
+        "signals-and-communication-016:s19:c01",
+        "signals-and-communication-016:s20:c01",
+        "signals-and-communication-016:s21:c01",
+        "signals-and-communication-016:s22:c01",
+        "signals-and-communication-016:s23:c01",
+        "signals-and-communication-016:s24:c01",
+        "signals-and-communication-016:s25:c01",
+        "signals-and-communication-016:s26:c01",
+        "signals-and-communication-016:s27:c01",
+        "signals-and-communication-016:s28:c01",
+        "signals-and-communication-016:s29:c01",
+        "signals-and-communication-016:s30:c01",
+        "signals-and-communication-016:s31:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "signals_and_communication/signals-and-communication-016.md",
+      "source_id": "signals-and-communication-016",
+      "source_title": "第6章 无限脉冲响应数字滤波器",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-017:s1:c01",
+        "signals-and-communication-017:s2:c01",
+        "signals-and-communication-017:s3:c01",
+        "signals-and-communication-017:s4:c01",
+        "signals-and-communication-017:s5:c01",
+        "signals-and-communication-017:s6:c01",
+        "signals-and-communication-017:s7:c01",
+        "signals-and-communication-017:s8:c01",
+        "signals-and-communication-017:s9:c01",
+        "signals-and-communication-017:s10:c01",
+        "signals-and-communication-017:s11:c01",
+        "signals-and-communication-017:s12:c01",
+        "signals-and-communication-017:s13:c01",
+        "signals-and-communication-017:s14:c01",
+        "signals-and-communication-017:s15:c01",
+        "signals-and-communication-017:s16:c01",
+        "signals-and-communication-017:s17:c01",
+        "signals-and-communication-017:s18:c01",
+        "signals-and-communication-017:s19:c01",
+        "signals-and-communication-017:s20:c01",
+        "signals-and-communication-017:s21:c01",
+        "signals-and-communication-017:s22:c01",
+        "signals-and-communication-017:s23:c01",
+        "signals-and-communication-017:s24:c01",
+        "signals-and-communication-017:s25:c01",
+        "signals-and-communication-017:s26:c01",
+        "signals-and-communication-017:s27:c01",
+        "signals-and-communication-017:s28:c01",
+        "signals-and-communication-017:s29:c01",
+        "signals-and-communication-017:s30:c01",
+        "signals-and-communication-017:s31:c01",
+        "signals-and-communication-017:s32:c01",
+        "signals-and-communication-017:s33:c01",
+        "signals-and-communication-017:s34:c01",
+        "signals-and-communication-017:s35:c01",
+        "signals-and-communication-017:s36:c01",
+        "signals-and-communication-017:s37:c01",
+        "signals-and-communication-017:s38:c01",
+        "signals-and-communication-017:s39:c01",
+        "signals-and-communication-017:s40:c01",
+        "signals-and-communication-017:s41:c01",
+        "signals-and-communication-017:s42:c01",
+        "signals-and-communication-017:s43:c01",
+        "signals-and-communication-017:s44:c01",
+        "signals-and-communication-017:s45:c01",
+        "signals-and-communication-017:s46:c01",
+        "signals-and-communication-017:s47:c01",
+        "signals-and-communication-017:s48:c01",
+        "signals-and-communication-017:s49:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "signals_and_communication/signals-and-communication-017.md",
+      "source_id": "signals-and-communication-017",
+      "source_title": "第7章 有限脉冲响应数字滤波器",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-018:s1:c01",
+        "signals-and-communication-018:s2:c01",
+        "signals-and-communication-018:s3:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "signals_and_communication/signals-and-communication-018.md",
+      "source_id": "signals-and-communication-018",
+      "source_title": "1. 数字通信的特点",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-019:s1:c01",
+        "signals-and-communication-019:s2:c01",
+        "signals-and-communication-019:s3:c01",
+        "signals-and-communication-019:s4:c01",
+        "signals-and-communication-019:s5:c01",
+        "signals-and-communication-019:s6:c01",
+        "signals-and-communication-019:s7:c01",
+        "signals-and-communication-019:s8:c01",
+        "signals-and-communication-019:s9:c01",
+        "signals-and-communication-019:s10:c01",
+        "signals-and-communication-019:s11:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "signals_and_communication/signals-and-communication-019.md",
+      "source_id": "signals-and-communication-019",
+      "source_title": "2. 通信信道",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-020:s1:c01",
+        "signals-and-communication-020:s2:c01",
+        "signals-and-communication-020:s3:c01",
+        "signals-and-communication-020:s4:c01",
+        "signals-and-communication-020:s5:c01",
+        "signals-and-communication-020:s6:c01",
+        "signals-and-communication-020:s7:c01",
+        "signals-and-communication-020:s8:c01",
+        "signals-and-communication-020:s9:c01",
+        "signals-and-communication-020:s10:c01",
+        "signals-and-communication-020:s11:c01",
+        "signals-and-communication-020:s12:c01",
+        "signals-and-communication-020:s13:c01",
+        "signals-and-communication-020:s14:c01",
+        "signals-and-communication-020:s15:c01",
+        "signals-and-communication-020:s16:c01",
+        "signals-and-communication-020:s17:c01",
+        "signals-and-communication-020:s18:c01",
+        "signals-and-communication-020:s19:c01",
+        "signals-and-communication-020:s20:c01",
+        "signals-and-communication-020:s21:c01",
+        "signals-and-communication-020:s22:c01",
+        "signals-and-communication-020:s23:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "signals_and_communication/signals-and-communication-020.md",
+      "source_id": "signals-and-communication-020",
+      "source_title": "3. 模拟调制方法",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-021:s1:c01",
+        "signals-and-communication-021:s2:c01",
+        "signals-and-communication-021:s3:c01",
+        "signals-and-communication-021:s4:c01",
+        "signals-and-communication-021:s5:c01",
+        "signals-and-communication-021:s6:c01",
+        "signals-and-communication-021:s7:c01",
+        "signals-and-communication-021:s8:c01",
+        "signals-and-communication-021:s9:c01",
+        "signals-and-communication-021:s10:c01",
+        "signals-and-communication-021:s11:c01",
+        "signals-and-communication-021:s12:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "signals_and_communication/signals-and-communication-021.md",
+      "source_id": "signals-and-communication-021",
+      "source_title": "4. 无码间串扰的判决",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-022:s1:c01",
+        "signals-and-communication-022:s2:c01",
+        "signals-and-communication-022:s3:c01",
+        "signals-and-communication-022:s4:c01",
+        "signals-and-communication-022:s5:c01",
+        "signals-and-communication-022:s6:c01",
+        "signals-and-communication-022:s7:c01",
+        "signals-and-communication-022:s8:c01",
+        "signals-and-communication-022:s9:c01",
+        "signals-and-communication-022:s10:c01",
+        "signals-and-communication-022:s11:c01",
+        "signals-and-communication-022:s12:c01",
+        "signals-and-communication-022:s13:c01",
+        "signals-and-communication-022:s14:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "signals_and_communication/signals-and-communication-022.md",
+      "source_id": "signals-and-communication-022",
+      "source_title": "5. 信道复用技术",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-023:s1:c01",
+        "signals-and-communication-023:s2:c01",
+        "signals-and-communication-023:s3:c01",
+        "signals-and-communication-023:s4:c01",
+        "signals-and-communication-023:s5:c01",
+        "signals-and-communication-023:s6:c01",
+        "signals-and-communication-023:s7:c01",
+        "signals-and-communication-023:s8:c01",
+        "signals-and-communication-023:s9:c01",
+        "signals-and-communication-023:s10:c01",
+        "signals-and-communication-023:s11:c01",
+        "signals-and-communication-023:s12:c01",
+        "signals-and-communication-023:s13:c01",
+        "signals-and-communication-023:s14:c01",
+        "signals-and-communication-023:s15:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "signals_and_communication/signals-and-communication-023.md",
+      "source_id": "signals-and-communication-023",
+      "source_title": "6. 3G、4G、5G技术",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-024:s1:c01",
+        "signals-and-communication-024:s2:c01",
+        "signals-and-communication-024:s3:c01",
+        "signals-and-communication-024:s4:c01",
+        "signals-and-communication-024:s5:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "signals_and_communication/signals-and-communication-024.md",
+      "source_id": "signals-and-communication-024",
+      "source_title": "7. 跳频和扩频",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "signals-and-communication-025:p1:c01"
+      ],
+      "course_id": "signals_and_communication",
+      "document_role": "review_outline",
+      "locator_type": "page",
+      "output_md": "signals_and_communication/signals-and-communication-025.md",
+      "source_id": "signals-and-communication-025",
+      "source_title": "通信原理（补充）复习提纲",
+      "year": null
+    }
+  ],
+  "statistics": {
+    "chunk_count": 984,
+    "question_count": 0,
+    "source_count": 25
+  },
+  "workflow_version": "workflow-contract-v1"
+}

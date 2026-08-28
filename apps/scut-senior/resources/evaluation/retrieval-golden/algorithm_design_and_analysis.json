@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "algorithm_design_and_analysis",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "2023-2024 B卷主要讲什么？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习2023-2024 B卷，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习2023-2024 B卷时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "2023-2024 B卷里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习2023-2024 B卷时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用渐进增长率的比较举例说明吗？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "渐进增长率的比较怎么做？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做渐进增长率的比较时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "渐进增长率的比较的答案怎么判断？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把渐进增长率的比较的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p1:q-algorithm-design-and-analysis-001-q9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做递推关系的通项和复杂度时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p2:q-algorithm-design-and-analysis-001-q10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用Prim算法求最小生成树举例说明吗？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p2:q-algorithm-design-and-analysis-001-q11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "Dijkstra算法求单源最短路径怎么做？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p3:q-algorithm-design-and-analysis-001-q12:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做0-1背包问题的最优价值和物品选择时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p3:q-algorithm-design-and-analysis-001-q13:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "矩阵连乘的最小计算次数的答案怎么判断？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p4:q-algorithm-design-and-analysis-001-q14:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把矩阵连乘的动态规划实现的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p4:q-algorithm-design-and-analysis-001-q15:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做矩阵连乘的动态规划求解过程时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p4:q-algorithm-design-and-analysis-001-q16:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用在线性时间内找出序列的近似中值举例说明吗？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-001:p4:q-algorithm-design-and-analysis-001-q17:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "矩阵连乘的最小计算次数怎么做？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-002:h-23-24-2-算法设计与分析:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习DAL-2020-Exam Paper A，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-003:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习DAL-2020-Exam Paper A时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-003:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "DAL-2020-Exam Paper A里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-003:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习DAL-2020-Exam Paper A时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-003:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考DAL-2020-Exam Paper A？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-003:p4:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "DAL-2020-Exam Paper A主要讲什么？",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-003:p5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习DAL-2020-Exam Paper A，应该从哪里开始？，见第6页",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-003:p6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习DAL-2020-Exam Paper A时哪些内容最重要？，见第7页",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-003:p7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "DAL-2020-Exam Paper A里的方法或结论怎么理解？，见第8页",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-003:p8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习DAL-2020-Exam Paper A时哪些概念容易混淆？，见第9页",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-003:p9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考DAL-2020-Exam Paper A？，见第10页",
+      "expected_chunk_ids": [
+        "algorithm-design-and-analysis-003:p10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

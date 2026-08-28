@@ -1,0 +1,5593 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "compiler_principles",
+  "course_pack_version": "course-pack-compiler_principles-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "compiler-principles-008:h-08级编译原理期末考试试卷a:c01",
+        "compiler-principles-008:q-compiler-principles-008-q1:c01",
+        "compiler-principles-008:q-compiler-principles-008-q2:c01",
+        "compiler-principles-008:q-compiler-principles-008-q3:c01",
+        "compiler-principles-008:q-compiler-principles-008-q4:c01",
+        "compiler-principles-008:q-compiler-principles-008-q5:c01",
+        "compiler-principles-008:q-compiler-principles-008-q6:c01",
+        "compiler-principles-008:q-compiler-principles-008-q7:c01",
+        "compiler-principles-008:q-compiler-principles-008-q7:c02",
+        "compiler-principles-008:q-compiler-principles-008-q7:c03",
+        "compiler-principles-008:q-compiler-principles-008-q7:c04"
+      ],
+      "heading_path": [
+        "08级编译原理期末考试试卷A"
+      ],
+      "source_ids": [
+        "compiler-principles-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-009:h-09级编译原理期末考试试卷a:c01",
+        "compiler-principles-009:q-compiler-principles-009-q1:c01",
+        "compiler-principles-009:q-compiler-principles-009-q2:c01",
+        "compiler-principles-009:q-compiler-principles-009-q3:c01",
+        "compiler-principles-009:q-compiler-principles-009-q4:c01",
+        "compiler-principles-009:q-compiler-principles-009-q5:c01",
+        "compiler-principles-009:q-compiler-principles-009-q6:c01",
+        "compiler-principles-009:q-compiler-principles-009-q7:c01",
+        "compiler-principles-009:q-compiler-principles-009-q8:c01",
+        "compiler-principles-009:q-compiler-principles-009-q8:c02",
+        "compiler-principles-009:q-compiler-principles-009-q8:c03"
+      ],
+      "heading_path": [
+        "09级编译原理期末考试试卷A"
+      ],
+      "source_ids": [
+        "compiler-principles-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p1:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q1:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q2:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q3:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q4:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q5:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q6:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q7:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q8:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q9:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q10:c01",
+        "compiler-principles-010:p2:q-compiler-principles-010-q11:c01",
+        "compiler-principles-010:p2:q-compiler-principles-010-q12:c01",
+        "compiler-principles-010:p2:q-compiler-principles-010-q13:c01",
+        "compiler-principles-010:p2:q-compiler-principles-010-q14:c01",
+        "compiler-principles-010:p2:q-compiler-principles-010-q15:c01",
+        "compiler-principles-010:p2:q-compiler-principles-010-q16:c01",
+        "compiler-principles-010:p2:q-compiler-principles-010-q17:c01",
+        "compiler-principles-010:p2:q-compiler-principles-010-q18:c01",
+        "compiler-principles-010:p3:q-compiler-principles-010-q18:c01",
+        "compiler-principles-010:p3:q-compiler-principles-010-q19:c01",
+        "compiler-principles-010:p4:q-compiler-principles-010-q20:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "source_ids": [
+        "compiler-principles-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-011:h-2011年编译原理期末考试试卷a答案:c01",
+        "compiler-principles-011:q-compiler-principles-011-q1:c01",
+        "compiler-principles-011:q-compiler-principles-011-q2:c01",
+        "compiler-principles-011:q-compiler-principles-011-q3:c01",
+        "compiler-principles-011:q-compiler-principles-011-q4:c01",
+        "compiler-principles-011:q-compiler-principles-011-q5:c01",
+        "compiler-principles-011:q-compiler-principles-011-q6:c01",
+        "compiler-principles-011:q-compiler-principles-011-q7:c01",
+        "compiler-principles-011:q-compiler-principles-011-q8:c01",
+        "compiler-principles-011:q-compiler-principles-011-q9:c01",
+        "compiler-principles-011:q-compiler-principles-011-q10:c01",
+        "compiler-principles-011:q-compiler-principles-011-q11:c01",
+        "compiler-principles-011:q-compiler-principles-011-q12:c01",
+        "compiler-principles-011:q-compiler-principles-011-q13:c01",
+        "compiler-principles-011:q-compiler-principles-011-q14:c01",
+        "compiler-principles-011:q-compiler-principles-011-q15:c01",
+        "compiler-principles-011:q-compiler-principles-011-q15:c02",
+        "compiler-principles-011:q-compiler-principles-011-q15:c03",
+        "compiler-principles-011:q-compiler-principles-011-q15:c04",
+        "compiler-principles-012:p1:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q1:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q2:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q3:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q4:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q5:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q6:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q7:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q8:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q9:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q10:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q11:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q12:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q13:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q14:c01",
+        "compiler-principles-012:p2:q-compiler-principles-012-q15:c01",
+        "compiler-principles-012:p2:q-compiler-principles-012-q16:c01",
+        "compiler-principles-012:p2:q-compiler-principles-012-q17:c01",
+        "compiler-principles-012:p2:q-compiler-principles-012-q18:c01",
+        "compiler-principles-012:p3:q-compiler-principles-012-q19:c01",
+        "compiler-principles-012:p3:q-compiler-principles-012-q20:c01",
+        "compiler-principles-012:p3:q-compiler-principles-012-q21:c01",
+        "compiler-principles-012:p3:q-compiler-principles-012-q22:c01",
+        "compiler-principles-012:p3:q-compiler-principles-012-q23:c01",
+        "compiler-principles-012:p3:q-compiler-principles-012-q24:c01",
+        "compiler-principles-012:p3:q-compiler-principles-012-q25:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "source_ids": [
+        "compiler-principles-011",
+        "compiler-principles-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-013:h-2012年编译原理期末考试试卷a:c01",
+        "compiler-principles-013:q-compiler-principles-013-q1:c01",
+        "compiler-principles-013:q-compiler-principles-013-q2:c01",
+        "compiler-principles-013:q-compiler-principles-013-q3:c01",
+        "compiler-principles-013:q-compiler-principles-013-q4:c01",
+        "compiler-principles-013:q-compiler-principles-013-q5:c01",
+        "compiler-principles-013:q-compiler-principles-013-q6:c01",
+        "compiler-principles-013:q-compiler-principles-013-q7:c01",
+        "compiler-principles-013:q-compiler-principles-013-q8:c01",
+        "compiler-principles-013:q-compiler-principles-013-q9:c01",
+        "compiler-principles-013:q-compiler-principles-013-q10:c01",
+        "compiler-principles-013:q-compiler-principles-013-q11:c01",
+        "compiler-principles-013:q-compiler-principles-013-q11:c02"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷A"
+      ],
+      "source_ids": [
+        "compiler-principles-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-014:h-2012年编译原理期末考试试卷b:c01",
+        "compiler-principles-014:q-compiler-principles-014-q1:c01",
+        "compiler-principles-014:q-compiler-principles-014-q2:c01",
+        "compiler-principles-014:q-compiler-principles-014-q3:c01",
+        "compiler-principles-014:q-compiler-principles-014-q4:c01",
+        "compiler-principles-014:q-compiler-principles-014-q5:c01",
+        "compiler-principles-014:q-compiler-principles-014-q6:c01",
+        "compiler-principles-014:q-compiler-principles-014-q7:c01",
+        "compiler-principles-014:q-compiler-principles-014-q8:c01",
+        "compiler-principles-014:q-compiler-principles-014-q8:c02",
+        "compiler-principles-014:q-compiler-principles-014-q9:c01",
+        "compiler-principles-014:q-compiler-principles-014-q10:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷B"
+      ],
+      "source_ids": [
+        "compiler-principles-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-018:h-4中语法分析方法比较:c01"
+      ],
+      "heading_path": [
+        "4中语法分析方法比较"
+      ],
+      "source_ids": [
+        "compiler-principles-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-019:p1:c01",
+        "compiler-principles-019:p2:c01",
+        "compiler-principles-019:p3:c01",
+        "compiler-principles-019:p4:c01",
+        "compiler-principles-019:p5:c01",
+        "compiler-principles-019:p6:c01",
+        "compiler-principles-019:p7:c01",
+        "compiler-principles-019:p8:c01",
+        "compiler-principles-019:p9:c01",
+        "compiler-principles-019:p10:c01",
+        "compiler-principles-019:p11:c01",
+        "compiler-principles-019:p12:c01",
+        "compiler-principles-019:p13:c01",
+        "compiler-principles-019:p14:c01",
+        "compiler-principles-019:p15:c01",
+        "compiler-principles-019:p16:c01",
+        "compiler-principles-019:p17:c01",
+        "compiler-principles-019:p18:c01",
+        "compiler-principles-019:p19:c01",
+        "compiler-principles-019:p20:c01",
+        "compiler-principles-019:p21:c01",
+        "compiler-principles-019:p22:c01",
+        "compiler-principles-019:p23:c01",
+        "compiler-principles-019:p24:c01",
+        "compiler-principles-019:p25:c01",
+        "compiler-principles-019:p26:c01",
+        "compiler-principles-019:p27:c01",
+        "compiler-principles-019:p28:c01",
+        "compiler-principles-019:p29:c01",
+        "compiler-principles-019:p30:c01",
+        "compiler-principles-019:p31:c01",
+        "compiler-principles-019:p32:c01",
+        "compiler-principles-019:p33:c01",
+        "compiler-principles-019:p34:c01",
+        "compiler-principles-019:p35:c01",
+        "compiler-principles-019:p36:c01",
+        "compiler-principles-019:p37:c01",
+        "compiler-principles-019:p38:c01",
+        "compiler-principles-019:p39:c01",
+        "compiler-principles-019:p40:c01",
+        "compiler-principles-019:p41:c01",
+        "compiler-principles-019:p42:c01",
+        "compiler-principles-019:p43:c01",
+        "compiler-principles-019:p44:c01",
+        "compiler-principles-019:p45:c01",
+        "compiler-principles-019:p46:c01",
+        "compiler-principles-019:p47:c01",
+        "compiler-principles-019:p48:c01",
+        "compiler-principles-019:p49:c01",
+        "compiler-principles-019:p50:c01",
+        "compiler-principles-019:p51:c01",
+        "compiler-principles-019:p52:c01",
+        "compiler-principles-019:p53:c01",
+        "compiler-principles-019:p54:c01",
+        "compiler-principles-019:p55:c01",
+        "compiler-principles-019:p56:c01",
+        "compiler-principles-019:p57:c01",
+        "compiler-principles-019:p58:c01",
+        "compiler-principles-019:p59:c01",
+        "compiler-principles-019:p60:c01",
+        "compiler-principles-019:p61:c01",
+        "compiler-principles-019:p62:c01",
+        "compiler-principles-019:p63:c01",
+        "compiler-principles-019:p64:c01",
+        "compiler-principles-019:p65:c01",
+        "compiler-principles-019:p66:c01",
+        "compiler-principles-019:p67:c01",
+        "compiler-principles-019:p68:c01",
+        "compiler-principles-019:p69:c01",
+        "compiler-principles-019:p70:c01",
+        "compiler-principles-019:p71:c01",
+        "compiler-principles-019:p72:c01",
+        "compiler-principles-019:p73:c01",
+        "compiler-principles-019:p74:c01",
+        "compiler-principles-019:p75:c01",
+        "compiler-principles-019:p76:c01",
+        "compiler-principles-019:p77:c01",
+        "compiler-principles-019:p78:c01",
+        "compiler-principles-019:p79:c01",
+        "compiler-principles-019:p80:c01",
+        "compiler-principles-019:p81:c01",
+        "compiler-principles-019:p82:c01",
+        "compiler-principles-019:p83:c01",
+        "compiler-principles-019:p84:c01",
+        "compiler-principles-019:p85:c01",
+        "compiler-principles-019:p86:c01",
+        "compiler-principles-019:p87:c01",
+        "compiler-principles-019:p88:c01",
+        "compiler-principles-019:p89:c01",
+        "compiler-principles-019:p90:c01",
+        "compiler-principles-019:p91:c01",
+        "compiler-principles-019:p92:c01",
+        "compiler-principles-019:p93:c01",
+        "compiler-principles-019:p94:c01",
+        "compiler-principles-019:p95:c01",
+        "compiler-principles-019:p96:c01",
+        "compiler-principles-019:p97:c01",
+        "compiler-principles-019:p98:c01",
+        "compiler-principles-019:p99:c01",
+        "compiler-principles-019:p100:c01",
+        "compiler-principles-019:p101:c01",
+        "compiler-principles-019:p102:c01",
+        "compiler-principles-019:p103:c01",
+        "compiler-principles-019:p104:c01",
+        "compiler-principles-019:p105:c01",
+        "compiler-principles-019:p106:c01",
+        "compiler-principles-019:p107:c01",
+        "compiler-principles-019:p108:c01"
+      ],
+      "heading_path": [
+        "7-8第七章语法制导和中间代码生成"
+      ],
+      "source_ids": [
+        "compiler-principles-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-020:h-action和goto表合并:c01"
+      ],
+      "heading_path": [
+        "ACTION和GOTO表合并"
+      ],
+      "source_ids": [
+        "compiler-principles-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p3:q-compiler-principles-012-q25:c03",
+        "compiler-principles-012:p4:q-compiler-principles-012-q25:c01",
+        "compiler-principles-012:p4:q-compiler-principles-012-q26:c01",
+        "compiler-principles-012:p4:q-compiler-principles-012-q27:c01",
+        "compiler-principles-012:p4:q-compiler-principles-012-q28:c01",
+        "compiler-principles-012:p4:q-compiler-principles-012-q29:c01",
+        "compiler-principles-012:p5:q-compiler-principles-012-q30:c01",
+        "compiler-principles-012:p6:q-compiler-principles-012-q30:c01",
+        "compiler-principles-012:p6:q-compiler-principles-012-q31:c01",
+        "compiler-principles-012:p7:q-compiler-principles-012-q31:c01",
+        "compiler-principles-012:p7:q-compiler-principles-012-q32:c01",
+        "compiler-principles-012:p7:q-compiler-principles-012-q33:c01",
+        "compiler-principles-012:p7:q-compiler-principles-012-q34:c01",
+        "compiler-principles-012:p7:q-compiler-principles-012-q35:c01",
+        "compiler-principles-012:p8:q-compiler-principles-012-q35:c01",
+        "compiler-principles-012:p8:q-compiler-principles-012-q36:c01"
+      ],
+      "heading_path": [
+        "A’"
+      ],
+      "source_ids": [
+        "compiler-principles-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p3:q-compiler-principles-012-q25:c02"
+      ],
+      "heading_path": [
+        "A’ a"
+      ],
+      "source_ids": [
+        "compiler-principles-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-021:h-first集:c01"
+      ],
+      "heading_path": [
+        "FIRST集"
+      ],
+      "source_ids": [
+        "compiler-principles-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-022:h-ll-1-分析法的动作文法:c01"
+      ],
+      "heading_path": [
+        "LL(1)分析法的动作文法"
+      ],
+      "source_ids": [
+        "compiler-principles-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-023:h-ll-1-文法的判别:c01"
+      ],
+      "heading_path": [
+        "LL(1)文法的判别"
+      ],
+      "source_ids": [
+        "compiler-principles-023"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-024:h-ll分析的错误恢复:c01"
+      ],
+      "heading_path": [
+        "LL分析的错误恢复"
+      ],
+      "source_ids": [
+        "compiler-principles-024"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-025:h-lr-1-分析的思想:c01"
+      ],
+      "heading_path": [
+        "LR(1)分析的思想"
+      ],
+      "source_ids": [
+        "compiler-principles-025"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-026:h-lr-1-新增内容:c01"
+      ],
+      "heading_path": [
+        "LR(1)新增内容"
+      ],
+      "source_ids": [
+        "compiler-principles-026"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-027:h-lr分析表:c01"
+      ],
+      "heading_path": [
+        "LR分析表"
+      ],
+      "source_ids": [
+        "compiler-principles-027"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-028:h-lr分析错误处理的应急式:c01"
+      ],
+      "heading_path": [
+        "LR分析错误处理的应急式"
+      ],
+      "source_ids": [
+        "compiler-principles-028"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-029:h-select集:c01"
+      ],
+      "heading_path": [
+        "SELECT集"
+      ],
+      "source_ids": [
+        "compiler-principles-029"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-030:h-slr:c01"
+      ],
+      "heading_path": [
+        "SLR"
+      ],
+      "source_ids": [
+        "compiler-principles-030"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-031:p1:c01",
+        "compiler-principles-031:p2:c01"
+      ],
+      "heading_path": [
+        "《不同参数传递方式对 Pascal 程序中变量 A 值的影响》"
+      ],
+      "source_ids": [
+        "compiler-principles-031"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-032:h-分享对话-豆包:c01"
+      ],
+      "heading_path": [
+        "分享对话-豆包"
+      ],
+      "source_ids": [
+        "compiler-principles-032"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-033:h-分析栈:c01"
+      ],
+      "heading_path": [
+        "分析栈"
+      ],
+      "source_ids": [
+        "compiler-principles-033"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-034:h-化成正规式:c01"
+      ],
+      "heading_path": [
+        "化成正规式"
+      ],
+      "source_ids": [
+        "compiler-principles-034"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-035:h-基本块代码生成算法:c01"
+      ],
+      "heading_path": [
+        "基本块代码生成算法"
+      ],
+      "source_ids": [
+        "compiler-principles-035"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-036:h-基本块代码生成算法生成目标代码:c01"
+      ],
+      "heading_path": [
+        "基本块代码生成算法生成目标代码"
+      ],
+      "source_ids": [
+        "compiler-principles-036"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-037:h-基本块的dag表示:c01"
+      ],
+      "heading_path": [
+        "基本块的DAG表示"
+      ],
+      "source_ids": [
+        "compiler-principles-037"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s30:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "2.  计算每个产生式右部α的FIRST(α)集"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s34:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "4．计算每个产生式A→α的SELECT(A→α)集"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s27:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "G1(S)："
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s29:c01",
+        "compiler-principles-001:s31:c01",
+        "compiler-principles-001:s32:c01",
+        "compiler-principles-001:s33:c01",
+        "compiler-principles-001:s35:c01",
+        "compiler-principles-001:s36:c01",
+        "compiler-principles-001:s37:c01",
+        "compiler-principles-001:s38:c01",
+        "compiler-principles-001:s39:c01",
+        "compiler-principles-001:s40:c01",
+        "compiler-principles-001:s41:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "G’1(S)："
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s28:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "LL(1)文法的判别"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s57:c01",
+        "compiler-principles-001:s58:c01",
+        "compiler-principles-001:s59:c01",
+        "compiler-principles-001:s60:c01",
+        "compiler-principles-001:s61:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "LR分析："
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s56:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "SLR文法判断"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s67:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "if A<D or A>C then A:=A+1"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s5:c01",
+        "compiler-principles-001:s6:c01",
+        "compiler-principles-001:s7:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "上下文无关文法"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s46:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "令文法G1为："
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s94:c01",
+        "compiler-principles-001:s95:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "假设只有R0和R1是可用寄存器，生成的目标代码和相应的RVALUE和AVALUE:"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s13:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "关系图"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s9:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "写一个文法，使其语言是奇数集，且每个奇数不以0开头。"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s52:c01",
+        "compiler-principles-001:s53:c01",
+        "compiler-principles-001:s54:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "利用函数CLOSURE和GO来构造项目集规范族"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s8:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "如何写出产生特定语言的文法"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s74:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "对于下面的程序："
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s93:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "对以下中间代码序列G："
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s86:c01",
+        "compiler-principles-001:s87:c01",
+        "compiler-principles-001:s88:c01",
+        "compiler-principles-001:s89:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "对以下四元式程序，对其中循环进行循环优化。"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s22:c01",
+        "compiler-principles-001:s62:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "小结"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s64:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "把下面的语句按照直接翻译翻译成四元式序列："
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s66:c01",
+        "compiler-principles-001:s68:c01",
+        "compiler-principles-001:s69:c01",
+        "compiler-principles-001:s70:c01",
+        "compiler-principles-001:s71:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "把下面的语句翻译成四元式序列："
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s20:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "最小化"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s19:c01",
+        "compiler-principles-001:s19:c02"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "最小化：对状态集进行划分"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s21:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "构造一个DFA，它接受＝{0,1}上所有满足如下条件的字符串：每个1都有0直接跟在右边。"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s15:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "构造下列正规式相应的DFA"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s91:c01",
+        "compiler-principles-001:s92:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "求待用信息的实例"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s45:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "短语、直接短语和句柄"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s17:c01",
+        "compiler-principles-001:s18:c01",
+        "compiler-principles-001:s51:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "确定化"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s16:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "确定化的过程"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s2:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "第一章 编译程序概论小结"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s3:c01",
+        "compiler-principles-001:s4:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "第三章  文法和语言"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s72:c01",
+        "compiler-principles-001:s73:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "第九章  运行时存储空间组织"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s42:c01",
+        "compiler-principles-001:s43:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "第五章 语法分析——自下而上分析"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s63:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "第八章 语义分析和中间代码产生"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s90:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "第十一章  代码生成"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s75:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "第十章  优化"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s11:c01",
+        "compiler-principles-001:s12:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "第四章  词法分析"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s23:c01",
+        "compiler-principles-001:s24:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "第四章  语法分析—自上而下分析"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s10:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "给出下面语言的相应文法"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s1:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "编译原理"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s26:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "考虑下面文法G1(S)："
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s47:c01",
+        "compiler-principles-001:s48:c01",
+        "compiler-principles-001:s49:c01",
+        "compiler-principles-001:s55:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "考虑文法"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s14:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "要点"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s50:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "识别活前缀的DFA"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s83:c01",
+        "compiler-principles-001:s84:c01",
+        "compiler-principles-001:s85:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "试对以下基本块B1和B2："
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s76:c01",
+        "compiler-principles-001:s77:c01",
+        "compiler-principles-001:s78:c01",
+        "compiler-principles-001:s79:c01",
+        "compiler-principles-001:s80:c01",
+        "compiler-principles-001:s81:c01",
+        "compiler-principles-001:s82:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "试把以下程序划分为基本块并作出其程序流图。"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-001:s25:c01",
+        "compiler-principles-001:s44:c01"
+      ],
+      "heading_path": [
+        "复习课 2025",
+        "语法分析的方法"
+      ],
+      "source_ids": [
+        "compiler-principles-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-038:h-存储空间分配大致示意图:c01"
+      ],
+      "heading_path": [
+        "存储空间分配大致示意图"
+      ],
+      "source_ids": [
+        "compiler-principles-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-039:h-循环优化流图的例子:c01"
+      ],
+      "heading_path": [
+        "循环优化流图的例子"
+      ],
+      "source_ids": [
+        "compiler-principles-039"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-040:h-微信图片_2025-06-24_074818:c01"
+      ],
+      "heading_path": [
+        "微信图片_2025-06-24_074818"
+      ],
+      "source_ids": [
+        "compiler-principles-040"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-041:h-改进的slr:c01"
+      ],
+      "heading_path": [
+        "改进的SLR"
+      ],
+      "source_ids": [
+        "compiler-principles-041"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-042:h-最左归约得到可归前缀的过程:c01"
+      ],
+      "heading_path": [
+        "最左归约得到可归前缀的过程"
+      ],
+      "source_ids": [
+        "compiler-principles-042"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-043:h-正则表达式:c01"
+      ],
+      "heading_path": [
+        "正则表达式"
+      ],
+      "source_ids": [
+        "compiler-principles-043"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-044:h-活前缀的定义:c01"
+      ],
+      "heading_path": [
+        "活前缀的定义"
+      ],
+      "source_ids": [
+        "compiler-principles-044"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:h-编译原理a卷:c01",
+        "compiler-principles-015:q-compiler-principles-015-q1:c01",
+        "compiler-principles-015:q-compiler-principles-015-q2:c01",
+        "compiler-principles-015:q-compiler-principles-015-q3:c01",
+        "compiler-principles-015:q-compiler-principles-015-q4:c01",
+        "compiler-principles-015:q-compiler-principles-015-q5:c01",
+        "compiler-principles-015:q-compiler-principles-015-q6:c01",
+        "compiler-principles-015:q-compiler-principles-015-q7:c01",
+        "compiler-principles-015:q-compiler-principles-015-q8:c01",
+        "compiler-principles-015:q-compiler-principles-015-q9:c01",
+        "compiler-principles-015:q-compiler-principles-015-q10:c01",
+        "compiler-principles-015:q-compiler-principles-015-q11:c01",
+        "compiler-principles-015:q-compiler-principles-015-q12:c01",
+        "compiler-principles-015:q-compiler-principles-015-q13:c01",
+        "compiler-principles-015:q-compiler-principles-015-q14:c01",
+        "compiler-principles-015:q-compiler-principles-015-q15:c01",
+        "compiler-principles-015:q-compiler-principles-015-q16:c01",
+        "compiler-principles-015:q-compiler-principles-015-q17:c01",
+        "compiler-principles-015:q-compiler-principles-015-q18:c01",
+        "compiler-principles-015:q-compiler-principles-015-q19:c01",
+        "compiler-principles-015:q-compiler-principles-015-q20:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "source_ids": [
+        "compiler-principles-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:h-编译原理期末考试试卷:c01",
+        "compiler-principles-016:q-compiler-principles-016-q1:c01",
+        "compiler-principles-016:q-compiler-principles-016-q2:c01",
+        "compiler-principles-016:q-compiler-principles-016-q3:c01",
+        "compiler-principles-016:q-compiler-principles-016-q4:c01",
+        "compiler-principles-016:q-compiler-principles-016-q5:c01",
+        "compiler-principles-016:q-compiler-principles-016-q6:c01",
+        "compiler-principles-016:q-compiler-principles-016-q7:c01",
+        "compiler-principles-016:q-compiler-principles-016-q8:c01",
+        "compiler-principles-016:q-compiler-principles-016-q9:c01",
+        "compiler-principles-016:q-compiler-principles-016-q10:c01",
+        "compiler-principles-016:q-compiler-principles-016-q11:c01",
+        "compiler-principles-016:q-compiler-principles-016-q12:c01",
+        "compiler-principles-016:q-compiler-principles-016-q13:c01",
+        "compiler-principles-016:q-compiler-principles-016-q14:c01",
+        "compiler-principles-016:q-compiler-principles-016-q15:c01",
+        "compiler-principles-016:q-compiler-principles-016-q16:c01",
+        "compiler-principles-016:q-compiler-principles-016-q17:c01",
+        "compiler-principles-016:q-compiler-principles-016-q18:c01",
+        "compiler-principles-016:q-compiler-principles-016-q19:c01",
+        "compiler-principles-016:q-compiler-principles-016-q20:c01",
+        "compiler-principles-016:q-compiler-principles-016-q21:c01",
+        "compiler-principles-016:q-compiler-principles-016-q22:c01",
+        "compiler-principles-016:q-compiler-principles-016-q23:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "source_ids": [
+        "compiler-principles-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:h-编译原理期末考试试卷答案:c01",
+        "compiler-principles-017:q-compiler-principles-017-q1:c01",
+        "compiler-principles-017:q-compiler-principles-017-q2:c01",
+        "compiler-principles-017:q-compiler-principles-017-q3:c01",
+        "compiler-principles-017:q-compiler-principles-017-q4:c01",
+        "compiler-principles-017:q-compiler-principles-017-q5:c01",
+        "compiler-principles-017:q-compiler-principles-017-q6:c01",
+        "compiler-principles-017:q-compiler-principles-017-q7:c01",
+        "compiler-principles-017:q-compiler-principles-017-q8:c01",
+        "compiler-principles-017:q-compiler-principles-017-q9:c01",
+        "compiler-principles-017:q-compiler-principles-017-q10:c01",
+        "compiler-principles-017:q-compiler-principles-017-q11:c01",
+        "compiler-principles-017:q-compiler-principles-017-q12:c01",
+        "compiler-principles-017:q-compiler-principles-017-q13:c01",
+        "compiler-principles-017:q-compiler-principles-017-q14:c01",
+        "compiler-principles-017:q-compiler-principles-017-q15:c01",
+        "compiler-principles-017:q-compiler-principles-017-q16:c01",
+        "compiler-principles-017:q-compiler-principles-017-q17:c01",
+        "compiler-principles-017:q-compiler-principles-017-q18:c01",
+        "compiler-principles-017:q-compiler-principles-017-q19:c01",
+        "compiler-principles-017:q-compiler-principles-017-q20:c01",
+        "compiler-principles-017:q-compiler-principles-017-q21:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "source_ids": [
+        "compiler-principles-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-002:p1:c01"
+      ],
+      "heading_path": [
+        "编译原理要点 来自老师2020"
+      ],
+      "source_ids": [
+        "compiler-principles-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-003:h-编译复习提纲:c01",
+        "compiler-principles-003:h-编译复习提纲:c02",
+        "compiler-principles-003:h-编译复习提纲:c03",
+        "compiler-principles-003:h-编译复习提纲:c04",
+        "compiler-principles-003:h-编译复习提纲:c05",
+        "compiler-principles-003:h-编译复习提纲:c06",
+        "compiler-principles-003:h-编译复习提纲:c07",
+        "compiler-principles-003:h-编译复习提纲:c08"
+      ],
+      "heading_path": [
+        "编译复习提纲"
+      ],
+      "source_ids": [
+        "compiler-principles-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-004:h-编译复习题:c01"
+      ],
+      "heading_path": [
+        "编译复习题"
+      ],
+      "source_ids": [
+        "compiler-principles-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-005:h-编译模拟试题:c01",
+        "compiler-principles-005:q-compiler-principles-005-q1:c01",
+        "compiler-principles-005:q-compiler-principles-005-q2:c01",
+        "compiler-principles-005:q-compiler-principles-005-q3:c01",
+        "compiler-principles-005:q-compiler-principles-005-q4:c01",
+        "compiler-principles-005:q-compiler-principles-005-q5:c01",
+        "compiler-principles-005:q-compiler-principles-005-q6:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题"
+      ],
+      "source_ids": [
+        "compiler-principles-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-006:h-编译模拟试题答案:c01",
+        "compiler-principles-006:q-compiler-principles-006-q1:c01",
+        "compiler-principles-006:q-compiler-principles-006-q2:c01",
+        "compiler-principles-006:q-compiler-principles-006-q3:c01",
+        "compiler-principles-006:q-compiler-principles-006-q4:c01",
+        "compiler-principles-006:q-compiler-principles-006-q5:c01",
+        "compiler-principles-006:q-compiler-principles-006-q6:c01",
+        "compiler-principles-006:q-compiler-principles-006-q7:c01",
+        "compiler-principles-006:q-compiler-principles-006-q8:c01",
+        "compiler-principles-006:q-compiler-principles-006-q9:c01",
+        "compiler-principles-006:q-compiler-principles-006-q9:c02",
+        "compiler-principles-007:p1:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q1:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q2:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q3:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q4:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q5:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q6:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q7:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q8:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q9:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q10:c01",
+        "compiler-principles-007:p2:q-compiler-principles-007-q11:c01",
+        "compiler-principles-007:p2:q-compiler-principles-007-q12:c01",
+        "compiler-principles-007:p2:q-compiler-principles-007-q13:c01",
+        "compiler-principles-007:p2:q-compiler-principles-007-q14:c01",
+        "compiler-principles-007:p3:q-compiler-principles-007-q15:c01",
+        "compiler-principles-007:p3:q-compiler-principles-007-q16:c01",
+        "compiler-principles-007:p4:q-compiler-principles-007-q17:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "source_ids": [
+        "compiler-principles-006",
+        "compiler-principles-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-045:h-编译过程的阶段和功能:c01"
+      ],
+      "heading_path": [
+        "编译过程的阶段和功能"
+      ],
+      "source_ids": [
+        "compiler-principles-045"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-046:h-网站和笔记:c01"
+      ],
+      "heading_path": [
+        "网站和笔记"
+      ],
+      "source_ids": [
+        "compiler-principles-046"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-047:h-解决冲突的slr-0-方法:c01"
+      ],
+      "heading_path": [
+        "解决冲突的SLR(0)方法"
+      ],
+      "source_ids": [
+        "compiler-principles-047"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-048:h-识别活前缀的nfa:c01"
+      ],
+      "heading_path": [
+        "识别活前缀的NFA"
+      ],
+      "source_ids": [
+        "compiler-principles-048"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-049:h-语义分析的例子:c01"
+      ],
+      "heading_path": [
+        "语义分析的例子"
+      ],
+      "source_ids": [
+        "compiler-principles-049"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-050:h-语义栈:c01"
+      ],
+      "heading_path": [
+        "语义栈"
+      ],
+      "source_ids": [
+        "compiler-principles-050"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-051:h-语法制导翻译总结:c01"
+      ],
+      "heading_path": [
+        "语法制导翻译总结"
+      ],
+      "source_ids": [
+        "compiler-principles-051"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-052:h-运行时的存储空间结构:c01"
+      ],
+      "heading_path": [
+        "运行时的存储空间结构"
+      ],
+      "source_ids": [
+        "compiler-principles-052"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-053:h-递归下降方法的错误处理:c01"
+      ],
+      "heading_path": [
+        "递归下降方法的错误处理"
+      ],
+      "source_ids": [
+        "compiler-principles-053"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-054:h-项目的closure和go:c01"
+      ],
+      "heading_path": [
+        "项目的CLOSURE和GO"
+      ],
+      "source_ids": [
+        "compiler-principles-054"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-055:h-预测分析法:c01"
+      ],
+      "heading_path": [
+        "预测分析法"
+      ],
+      "source_ids": [
+        "compiler-principles-055"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-056:h-预测分析法的分析表:c01"
+      ],
+      "heading_path": [
+        "预测分析法的分析表"
+      ],
+      "source_ids": [
+        "compiler-principles-056"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [
+    {
+      "chunk_ids": [
+        "compiler-principles-005:q-compiler-principles-005-q1:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-005-Q1",
+      "source_id": "compiler-principles-005",
+      "source_title": "编译模拟试题"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-005:q-compiler-principles-005-q2:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-005-Q2",
+      "source_id": "compiler-principles-005",
+      "source_title": "编译模拟试题"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-005:q-compiler-principles-005-q3:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-005-Q3",
+      "source_id": "compiler-principles-005",
+      "source_title": "编译模拟试题"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-005:q-compiler-principles-005-q4:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-005-Q4",
+      "source_id": "compiler-principles-005",
+      "source_title": "编译模拟试题"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-005:q-compiler-principles-005-q5:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-005-Q5",
+      "source_id": "compiler-principles-005",
+      "source_title": "编译模拟试题"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-005:q-compiler-principles-005-q6:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-005-Q6",
+      "source_id": "compiler-principles-005",
+      "source_title": "编译模拟试题"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-006:q-compiler-principles-006-q1:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-006-Q1",
+      "source_id": "compiler-principles-006",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-006:q-compiler-principles-006-q2:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-006-Q2",
+      "source_id": "compiler-principles-006",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-006:q-compiler-principles-006-q3:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-006-Q3",
+      "source_id": "compiler-principles-006",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-006:q-compiler-principles-006-q4:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-006-Q4",
+      "source_id": "compiler-principles-006",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-006:q-compiler-principles-006-q5:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-006-Q5",
+      "source_id": "compiler-principles-006",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-006:q-compiler-principles-006-q6:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-006-Q6",
+      "source_id": "compiler-principles-006",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-006:q-compiler-principles-006-q7:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-006-Q7",
+      "source_id": "compiler-principles-006",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-006:q-compiler-principles-006-q8:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-006-Q8",
+      "source_id": "compiler-principles-006",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-006:q-compiler-principles-006-q9:c01",
+        "compiler-principles-006:q-compiler-principles-006-q9:c02"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-006-Q9",
+      "source_id": "compiler-principles-006",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p1:q-compiler-principles-007-q1:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q1",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p1:q-compiler-principles-007-q10:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q10",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p2:q-compiler-principles-007-q11:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q11",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p2:q-compiler-principles-007-q12:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q12",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p2:q-compiler-principles-007-q13:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q13",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p2:q-compiler-principles-007-q14:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q14",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p3:q-compiler-principles-007-q15:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q15",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p3:q-compiler-principles-007-q16:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q16",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p4:q-compiler-principles-007-q17:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q17",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p1:q-compiler-principles-007-q2:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q2",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p1:q-compiler-principles-007-q3:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q3",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p1:q-compiler-principles-007-q4:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q4",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p1:q-compiler-principles-007-q5:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q5",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p1:q-compiler-principles-007-q6:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q6",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p1:q-compiler-principles-007-q7:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q7",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p1:q-compiler-principles-007-q8:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q8",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-007:p1:q-compiler-principles-007-q9:c01"
+      ],
+      "heading_path": [
+        "编译模拟试题答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-007-Q9",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-008:q-compiler-principles-008-q1:c01"
+      ],
+      "heading_path": [
+        "08级编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-008-Q1",
+      "source_id": "compiler-principles-008",
+      "source_title": "08级编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-008:q-compiler-principles-008-q2:c01"
+      ],
+      "heading_path": [
+        "08级编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-008-Q2",
+      "source_id": "compiler-principles-008",
+      "source_title": "08级编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-008:q-compiler-principles-008-q3:c01"
+      ],
+      "heading_path": [
+        "08级编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-008-Q3",
+      "source_id": "compiler-principles-008",
+      "source_title": "08级编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-008:q-compiler-principles-008-q4:c01"
+      ],
+      "heading_path": [
+        "08级编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-008-Q4",
+      "source_id": "compiler-principles-008",
+      "source_title": "08级编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-008:q-compiler-principles-008-q5:c01"
+      ],
+      "heading_path": [
+        "08级编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-008-Q5",
+      "source_id": "compiler-principles-008",
+      "source_title": "08级编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-008:q-compiler-principles-008-q6:c01"
+      ],
+      "heading_path": [
+        "08级编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-008-Q6",
+      "source_id": "compiler-principles-008",
+      "source_title": "08级编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-008:q-compiler-principles-008-q7:c01",
+        "compiler-principles-008:q-compiler-principles-008-q7:c02",
+        "compiler-principles-008:q-compiler-principles-008-q7:c03",
+        "compiler-principles-008:q-compiler-principles-008-q7:c04"
+      ],
+      "heading_path": [
+        "08级编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-008-Q7",
+      "source_id": "compiler-principles-008",
+      "source_title": "08级编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-009:q-compiler-principles-009-q1:c01"
+      ],
+      "heading_path": [
+        "09级编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-009-Q1",
+      "source_id": "compiler-principles-009",
+      "source_title": "09级编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-009:q-compiler-principles-009-q2:c01"
+      ],
+      "heading_path": [
+        "09级编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-009-Q2",
+      "source_id": "compiler-principles-009",
+      "source_title": "09级编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-009:q-compiler-principles-009-q3:c01"
+      ],
+      "heading_path": [
+        "09级编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-009-Q3",
+      "source_id": "compiler-principles-009",
+      "source_title": "09级编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-009:q-compiler-principles-009-q4:c01"
+      ],
+      "heading_path": [
+        "09级编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-009-Q4",
+      "source_id": "compiler-principles-009",
+      "source_title": "09级编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-009:q-compiler-principles-009-q5:c01"
+      ],
+      "heading_path": [
+        "09级编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-009-Q5",
+      "source_id": "compiler-principles-009",
+      "source_title": "09级编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-009:q-compiler-principles-009-q6:c01"
+      ],
+      "heading_path": [
+        "09级编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-009-Q6",
+      "source_id": "compiler-principles-009",
+      "source_title": "09级编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-009:q-compiler-principles-009-q7:c01"
+      ],
+      "heading_path": [
+        "09级编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-009-Q7",
+      "source_id": "compiler-principles-009",
+      "source_title": "09级编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-009:q-compiler-principles-009-q8:c01",
+        "compiler-principles-009:q-compiler-principles-009-q8:c02",
+        "compiler-principles-009:q-compiler-principles-009-q8:c03"
+      ],
+      "heading_path": [
+        "09级编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-009-Q8",
+      "source_id": "compiler-principles-009",
+      "source_title": "09级编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p1:q-compiler-principles-010-q1:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q1",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p1:q-compiler-principles-010-q10:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q10",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p2:q-compiler-principles-010-q11:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q11",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p2:q-compiler-principles-010-q12:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q12",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p2:q-compiler-principles-010-q13:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q13",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p2:q-compiler-principles-010-q14:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q14",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p2:q-compiler-principles-010-q15:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q15",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p2:q-compiler-principles-010-q16:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q16",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p2:q-compiler-principles-010-q17:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q17",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p2:q-compiler-principles-010-q18:c01",
+        "compiler-principles-010:p3:q-compiler-principles-010-q18:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 3,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q18",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p3:q-compiler-principles-010-q19:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q19",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p1:q-compiler-principles-010-q2:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q2",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p4:q-compiler-principles-010-q20:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q20",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p1:q-compiler-principles-010-q3:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q3",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p1:q-compiler-principles-010-q4:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q4",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p1:q-compiler-principles-010-q5:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q5",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p1:q-compiler-principles-010-q6:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q6",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p1:q-compiler-principles-010-q7:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q7",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p1:q-compiler-principles-010-q8:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q8",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-010:p1:q-compiler-principles-010-q9:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-010-Q9",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-011:q-compiler-principles-011-q1:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-011-Q1",
+      "source_id": "compiler-principles-011",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-011:q-compiler-principles-011-q10:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-011-Q10",
+      "source_id": "compiler-principles-011",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-011:q-compiler-principles-011-q11:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-011-Q11",
+      "source_id": "compiler-principles-011",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-011:q-compiler-principles-011-q12:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-011-Q12",
+      "source_id": "compiler-principles-011",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-011:q-compiler-principles-011-q13:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-011-Q13",
+      "source_id": "compiler-principles-011",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-011:q-compiler-principles-011-q14:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-011-Q14",
+      "source_id": "compiler-principles-011",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-011:q-compiler-principles-011-q15:c01",
+        "compiler-principles-011:q-compiler-principles-011-q15:c02",
+        "compiler-principles-011:q-compiler-principles-011-q15:c03",
+        "compiler-principles-011:q-compiler-principles-011-q15:c04"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-011-Q15",
+      "source_id": "compiler-principles-011",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-011:q-compiler-principles-011-q2:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-011-Q2",
+      "source_id": "compiler-principles-011",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-011:q-compiler-principles-011-q3:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-011-Q3",
+      "source_id": "compiler-principles-011",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-011:q-compiler-principles-011-q4:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-011-Q4",
+      "source_id": "compiler-principles-011",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-011:q-compiler-principles-011-q5:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-011-Q5",
+      "source_id": "compiler-principles-011",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-011:q-compiler-principles-011-q6:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-011-Q6",
+      "source_id": "compiler-principles-011",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-011:q-compiler-principles-011-q7:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-011-Q7",
+      "source_id": "compiler-principles-011",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-011:q-compiler-principles-011-q8:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-011-Q8",
+      "source_id": "compiler-principles-011",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-011:q-compiler-principles-011-q9:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-011-Q9",
+      "source_id": "compiler-principles-011",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p1:q-compiler-principles-012-q1:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q1",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p1:q-compiler-principles-012-q10:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q10",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p1:q-compiler-principles-012-q11:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q11",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p1:q-compiler-principles-012-q12:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q12",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p1:q-compiler-principles-012-q13:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q13",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p1:q-compiler-principles-012-q14:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q14",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p2:q-compiler-principles-012-q15:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q15",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p2:q-compiler-principles-012-q16:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q16",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p2:q-compiler-principles-012-q17:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q17",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p2:q-compiler-principles-012-q18:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q18",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p3:q-compiler-principles-012-q19:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q19",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p1:q-compiler-principles-012-q2:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q2",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p3:q-compiler-principles-012-q20:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q20",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p3:q-compiler-principles-012-q21:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q21",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p3:q-compiler-principles-012-q22:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q22",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p3:q-compiler-principles-012-q23:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q23",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p3:q-compiler-principles-012-q24:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q24",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p3:q-compiler-principles-012-q25:c01",
+        "compiler-principles-012:p3:q-compiler-principles-012-q25:c02",
+        "compiler-principles-012:p3:q-compiler-principles-012-q25:c03",
+        "compiler-principles-012:p4:q-compiler-principles-012-q25:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 4,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q25",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p4:q-compiler-principles-012-q26:c01"
+      ],
+      "heading_path": [
+        "A’"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q26",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p4:q-compiler-principles-012-q27:c01"
+      ],
+      "heading_path": [
+        "A’"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q27",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p4:q-compiler-principles-012-q28:c01"
+      ],
+      "heading_path": [
+        "A’"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q28",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p4:q-compiler-principles-012-q29:c01"
+      ],
+      "heading_path": [
+        "A’"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q29",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p1:q-compiler-principles-012-q3:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q3",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p5:q-compiler-principles-012-q30:c01",
+        "compiler-principles-012:p6:q-compiler-principles-012-q30:c01"
+      ],
+      "heading_path": [
+        "A’"
+      ],
+      "locator_end": 6,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q30",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p6:q-compiler-principles-012-q31:c01",
+        "compiler-principles-012:p7:q-compiler-principles-012-q31:c01"
+      ],
+      "heading_path": [
+        "A’"
+      ],
+      "locator_end": 7,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q31",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p7:q-compiler-principles-012-q32:c01"
+      ],
+      "heading_path": [
+        "A’"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q32",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p7:q-compiler-principles-012-q33:c01"
+      ],
+      "heading_path": [
+        "A’"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q33",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p7:q-compiler-principles-012-q34:c01"
+      ],
+      "heading_path": [
+        "A’"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q34",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p7:q-compiler-principles-012-q35:c01",
+        "compiler-principles-012:p8:q-compiler-principles-012-q35:c01"
+      ],
+      "heading_path": [
+        "A’"
+      ],
+      "locator_end": 8,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q35",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p8:q-compiler-principles-012-q36:c01"
+      ],
+      "heading_path": [
+        "A’"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q36",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p1:q-compiler-principles-012-q4:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q4",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p1:q-compiler-principles-012-q5:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q5",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p1:q-compiler-principles-012-q6:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q6",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p1:q-compiler-principles-012-q7:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q7",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p1:q-compiler-principles-012-q8:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q8",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-012:p1:q-compiler-principles-012-q9:c01"
+      ],
+      "heading_path": [
+        "2011年编译原理期末考试试卷A答案"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "compiler-principles-012-Q9",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-013:q-compiler-principles-013-q1:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-013-Q1",
+      "source_id": "compiler-principles-013",
+      "source_title": "2012年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-013:q-compiler-principles-013-q10:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-013-Q10",
+      "source_id": "compiler-principles-013",
+      "source_title": "2012年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-013:q-compiler-principles-013-q11:c01",
+        "compiler-principles-013:q-compiler-principles-013-q11:c02"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-013-Q11",
+      "source_id": "compiler-principles-013",
+      "source_title": "2012年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-013:q-compiler-principles-013-q2:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-013-Q2",
+      "source_id": "compiler-principles-013",
+      "source_title": "2012年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-013:q-compiler-principles-013-q3:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-013-Q3",
+      "source_id": "compiler-principles-013",
+      "source_title": "2012年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-013:q-compiler-principles-013-q4:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-013-Q4",
+      "source_id": "compiler-principles-013",
+      "source_title": "2012年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-013:q-compiler-principles-013-q5:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-013-Q5",
+      "source_id": "compiler-principles-013",
+      "source_title": "2012年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-013:q-compiler-principles-013-q6:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-013-Q6",
+      "source_id": "compiler-principles-013",
+      "source_title": "2012年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-013:q-compiler-principles-013-q7:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-013-Q7",
+      "source_id": "compiler-principles-013",
+      "source_title": "2012年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-013:q-compiler-principles-013-q8:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-013-Q8",
+      "source_id": "compiler-principles-013",
+      "source_title": "2012年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-013:q-compiler-principles-013-q9:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷A"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-013-Q9",
+      "source_id": "compiler-principles-013",
+      "source_title": "2012年编译原理期末考试试卷A"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-014:q-compiler-principles-014-q1:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-014-Q1",
+      "source_id": "compiler-principles-014",
+      "source_title": "2012年编译原理期末考试试卷B"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-014:q-compiler-principles-014-q10:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-014-Q10",
+      "source_id": "compiler-principles-014",
+      "source_title": "2012年编译原理期末考试试卷B"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-014:q-compiler-principles-014-q2:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-014-Q2",
+      "source_id": "compiler-principles-014",
+      "source_title": "2012年编译原理期末考试试卷B"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-014:q-compiler-principles-014-q3:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-014-Q3",
+      "source_id": "compiler-principles-014",
+      "source_title": "2012年编译原理期末考试试卷B"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-014:q-compiler-principles-014-q4:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-014-Q4",
+      "source_id": "compiler-principles-014",
+      "source_title": "2012年编译原理期末考试试卷B"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-014:q-compiler-principles-014-q5:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-014-Q5",
+      "source_id": "compiler-principles-014",
+      "source_title": "2012年编译原理期末考试试卷B"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-014:q-compiler-principles-014-q6:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-014-Q6",
+      "source_id": "compiler-principles-014",
+      "source_title": "2012年编译原理期末考试试卷B"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-014:q-compiler-principles-014-q7:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-014-Q7",
+      "source_id": "compiler-principles-014",
+      "source_title": "2012年编译原理期末考试试卷B"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-014:q-compiler-principles-014-q8:c01",
+        "compiler-principles-014:q-compiler-principles-014-q8:c02"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-014-Q8",
+      "source_id": "compiler-principles-014",
+      "source_title": "2012年编译原理期末考试试卷B"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-014:q-compiler-principles-014-q9:c01"
+      ],
+      "heading_path": [
+        "2012年编译原理期末考试试卷B"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-014-Q9",
+      "source_id": "compiler-principles-014",
+      "source_title": "2012年编译原理期末考试试卷B"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q1:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q1",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q10:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q10",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q11:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q11",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q12:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q12",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q13:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q13",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q14:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q14",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q15:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q15",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q16:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q16",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q17:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q17",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q18:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q18",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q19:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q19",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q2:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q2",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q20:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q20",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q3:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q3",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q4:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q4",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q5:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q5",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q6:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q6",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q7:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q7",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q8:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q8",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-015:q-compiler-principles-015-q9:c01"
+      ],
+      "heading_path": [
+        "编译原理A卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-015-Q9",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q1:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q1",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q10:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q10",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q11:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q11",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q12:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q12",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q13:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q13",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q14:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q14",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q15:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q15",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q16:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q16",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q17:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q17",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q18:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q18",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q19:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q19",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q2:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q2",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q20:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q20",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q21:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q21",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q22:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q22",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q23:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q23",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q3:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q3",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q4:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q4",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q5:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q5",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q6:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q6",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q7:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q7",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q8:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q8",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-016:q-compiler-principles-016-q9:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-016-Q9",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q1:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q1",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q10:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q10",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q11:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q11",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q12:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q12",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q13:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q13",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q14:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q14",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q15:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q15",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q16:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q16",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q17:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q17",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q18:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q18",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q19:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q19",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q2:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q2",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q20:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q20",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q21:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q21",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q3:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q3",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q4:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q4",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q5:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q5",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q6:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q6",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q7:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q7",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q8:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q8",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    },
+    {
+      "chunk_ids": [
+        "compiler-principles-017:q-compiler-principles-017-q9:c01"
+      ],
+      "heading_path": [
+        "编译原理期末考试试卷答案"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "compiler-principles-017-Q9",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案"
+    }
+  ],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-001:s1:c01",
+        "compiler-principles-001:s2:c01",
+        "compiler-principles-001:s3:c01",
+        "compiler-principles-001:s4:c01",
+        "compiler-principles-001:s5:c01",
+        "compiler-principles-001:s6:c01",
+        "compiler-principles-001:s7:c01",
+        "compiler-principles-001:s8:c01",
+        "compiler-principles-001:s9:c01",
+        "compiler-principles-001:s10:c01",
+        "compiler-principles-001:s11:c01",
+        "compiler-principles-001:s12:c01",
+        "compiler-principles-001:s13:c01",
+        "compiler-principles-001:s14:c01",
+        "compiler-principles-001:s15:c01",
+        "compiler-principles-001:s16:c01",
+        "compiler-principles-001:s17:c01",
+        "compiler-principles-001:s18:c01",
+        "compiler-principles-001:s19:c01",
+        "compiler-principles-001:s19:c02",
+        "compiler-principles-001:s20:c01",
+        "compiler-principles-001:s21:c01",
+        "compiler-principles-001:s22:c01",
+        "compiler-principles-001:s23:c01",
+        "compiler-principles-001:s24:c01",
+        "compiler-principles-001:s25:c01",
+        "compiler-principles-001:s26:c01",
+        "compiler-principles-001:s27:c01",
+        "compiler-principles-001:s28:c01",
+        "compiler-principles-001:s29:c01",
+        "compiler-principles-001:s30:c01",
+        "compiler-principles-001:s31:c01",
+        "compiler-principles-001:s32:c01",
+        "compiler-principles-001:s33:c01",
+        "compiler-principles-001:s34:c01",
+        "compiler-principles-001:s35:c01",
+        "compiler-principles-001:s36:c01",
+        "compiler-principles-001:s37:c01",
+        "compiler-principles-001:s38:c01",
+        "compiler-principles-001:s39:c01",
+        "compiler-principles-001:s40:c01",
+        "compiler-principles-001:s41:c01",
+        "compiler-principles-001:s42:c01",
+        "compiler-principles-001:s43:c01",
+        "compiler-principles-001:s44:c01",
+        "compiler-principles-001:s45:c01",
+        "compiler-principles-001:s46:c01",
+        "compiler-principles-001:s47:c01",
+        "compiler-principles-001:s48:c01",
+        "compiler-principles-001:s49:c01",
+        "compiler-principles-001:s50:c01",
+        "compiler-principles-001:s51:c01",
+        "compiler-principles-001:s52:c01",
+        "compiler-principles-001:s53:c01",
+        "compiler-principles-001:s54:c01",
+        "compiler-principles-001:s55:c01",
+        "compiler-principles-001:s56:c01",
+        "compiler-principles-001:s57:c01",
+        "compiler-principles-001:s58:c01",
+        "compiler-principles-001:s59:c01",
+        "compiler-principles-001:s60:c01",
+        "compiler-principles-001:s61:c01",
+        "compiler-principles-001:s62:c01",
+        "compiler-principles-001:s63:c01",
+        "compiler-principles-001:s64:c01",
+        "compiler-principles-001:s66:c01",
+        "compiler-principles-001:s67:c01",
+        "compiler-principles-001:s68:c01",
+        "compiler-principles-001:s69:c01",
+        "compiler-principles-001:s70:c01",
+        "compiler-principles-001:s71:c01",
+        "compiler-principles-001:s72:c01",
+        "compiler-principles-001:s73:c01",
+        "compiler-principles-001:s74:c01",
+        "compiler-principles-001:s75:c01",
+        "compiler-principles-001:s76:c01",
+        "compiler-principles-001:s77:c01",
+        "compiler-principles-001:s78:c01",
+        "compiler-principles-001:s79:c01",
+        "compiler-principles-001:s80:c01",
+        "compiler-principles-001:s81:c01",
+        "compiler-principles-001:s82:c01",
+        "compiler-principles-001:s83:c01",
+        "compiler-principles-001:s84:c01",
+        "compiler-principles-001:s85:c01",
+        "compiler-principles-001:s86:c01",
+        "compiler-principles-001:s87:c01",
+        "compiler-principles-001:s88:c01",
+        "compiler-principles-001:s89:c01",
+        "compiler-principles-001:s90:c01",
+        "compiler-principles-001:s91:c01",
+        "compiler-principles-001:s92:c01",
+        "compiler-principles-001:s93:c01",
+        "compiler-principles-001:s94:c01",
+        "compiler-principles-001:s95:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "compiler_principles/compiler-principles-001.md",
+      "source_id": "compiler-principles-001",
+      "source_title": "复习课 2025",
+      "year": "2025"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-002:p1:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "compiler_principles/compiler-principles-002.md",
+      "source_id": "compiler-principles-002",
+      "source_title": "编译原理要点 来自老师2020",
+      "year": "2020"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-003:h-编译复习提纲:c01",
+        "compiler-principles-003:h-编译复习提纲:c02",
+        "compiler-principles-003:h-编译复习提纲:c03",
+        "compiler-principles-003:h-编译复习提纲:c04",
+        "compiler-principles-003:h-编译复习提纲:c05",
+        "compiler-principles-003:h-编译复习提纲:c06",
+        "compiler-principles-003:h-编译复习提纲:c07",
+        "compiler-principles-003:h-编译复习提纲:c08"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "review_outline",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-003.md",
+      "source_id": "compiler-principles-003",
+      "source_title": "编译复习提纲",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-004:h-编译复习题:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-004.md",
+      "source_id": "compiler-principles-004",
+      "source_title": "编译复习题",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-005:h-编译模拟试题:c01",
+        "compiler-principles-005:q-compiler-principles-005-q1:c01",
+        "compiler-principles-005:q-compiler-principles-005-q2:c01",
+        "compiler-principles-005:q-compiler-principles-005-q3:c01",
+        "compiler-principles-005:q-compiler-principles-005-q4:c01",
+        "compiler-principles-005:q-compiler-principles-005-q5:c01",
+        "compiler-principles-005:q-compiler-principles-005-q6:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-005.md",
+      "source_id": "compiler-principles-005",
+      "source_title": "编译模拟试题",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-006:h-编译模拟试题答案:c01",
+        "compiler-principles-006:q-compiler-principles-006-q1:c01",
+        "compiler-principles-006:q-compiler-principles-006-q2:c01",
+        "compiler-principles-006:q-compiler-principles-006-q3:c01",
+        "compiler-principles-006:q-compiler-principles-006-q4:c01",
+        "compiler-principles-006:q-compiler-principles-006-q5:c01",
+        "compiler-principles-006:q-compiler-principles-006-q6:c01",
+        "compiler-principles-006:q-compiler-principles-006-q7:c01",
+        "compiler-principles-006:q-compiler-principles-006-q8:c01",
+        "compiler-principles-006:q-compiler-principles-006-q9:c01",
+        "compiler-principles-006:q-compiler-principles-006-q9:c02"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "past_exam_answer",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-006.md",
+      "source_id": "compiler-principles-006",
+      "source_title": "编译模拟试题答案",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-007:p1:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q1:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q2:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q3:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q4:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q5:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q6:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q7:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q8:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q9:c01",
+        "compiler-principles-007:p1:q-compiler-principles-007-q10:c01",
+        "compiler-principles-007:p2:q-compiler-principles-007-q11:c01",
+        "compiler-principles-007:p2:q-compiler-principles-007-q12:c01",
+        "compiler-principles-007:p2:q-compiler-principles-007-q13:c01",
+        "compiler-principles-007:p2:q-compiler-principles-007-q14:c01",
+        "compiler-principles-007:p3:q-compiler-principles-007-q15:c01",
+        "compiler-principles-007:p3:q-compiler-principles-007-q16:c01",
+        "compiler-principles-007:p4:q-compiler-principles-007-q17:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "past_exam_answer",
+      "locator_type": "page",
+      "output_md": "compiler_principles/compiler-principles-007.md",
+      "source_id": "compiler-principles-007",
+      "source_title": "编译模拟试题答案",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-008:h-08级编译原理期末考试试卷a:c01",
+        "compiler-principles-008:q-compiler-principles-008-q1:c01",
+        "compiler-principles-008:q-compiler-principles-008-q2:c01",
+        "compiler-principles-008:q-compiler-principles-008-q3:c01",
+        "compiler-principles-008:q-compiler-principles-008-q4:c01",
+        "compiler-principles-008:q-compiler-principles-008-q5:c01",
+        "compiler-principles-008:q-compiler-principles-008-q6:c01",
+        "compiler-principles-008:q-compiler-principles-008-q7:c01",
+        "compiler-principles-008:q-compiler-principles-008-q7:c02",
+        "compiler-principles-008:q-compiler-principles-008-q7:c03",
+        "compiler-principles-008:q-compiler-principles-008-q7:c04"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-008.md",
+      "source_id": "compiler-principles-008",
+      "source_title": "08级编译原理期末考试试卷A",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-009:h-09级编译原理期末考试试卷a:c01",
+        "compiler-principles-009:q-compiler-principles-009-q1:c01",
+        "compiler-principles-009:q-compiler-principles-009-q2:c01",
+        "compiler-principles-009:q-compiler-principles-009-q3:c01",
+        "compiler-principles-009:q-compiler-principles-009-q4:c01",
+        "compiler-principles-009:q-compiler-principles-009-q5:c01",
+        "compiler-principles-009:q-compiler-principles-009-q6:c01",
+        "compiler-principles-009:q-compiler-principles-009-q7:c01",
+        "compiler-principles-009:q-compiler-principles-009-q8:c01",
+        "compiler-principles-009:q-compiler-principles-009-q8:c02",
+        "compiler-principles-009:q-compiler-principles-009-q8:c03"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-009.md",
+      "source_id": "compiler-principles-009",
+      "source_title": "09级编译原理期末考试试卷A",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-010:p1:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q1:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q2:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q3:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q4:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q5:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q6:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q7:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q8:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q9:c01",
+        "compiler-principles-010:p1:q-compiler-principles-010-q10:c01",
+        "compiler-principles-010:p2:q-compiler-principles-010-q11:c01",
+        "compiler-principles-010:p2:q-compiler-principles-010-q12:c01",
+        "compiler-principles-010:p2:q-compiler-principles-010-q13:c01",
+        "compiler-principles-010:p2:q-compiler-principles-010-q14:c01",
+        "compiler-principles-010:p2:q-compiler-principles-010-q15:c01",
+        "compiler-principles-010:p2:q-compiler-principles-010-q16:c01",
+        "compiler-principles-010:p2:q-compiler-principles-010-q17:c01",
+        "compiler-principles-010:p2:q-compiler-principles-010-q18:c01",
+        "compiler-principles-010:p3:q-compiler-principles-010-q18:c01",
+        "compiler-principles-010:p3:q-compiler-principles-010-q19:c01",
+        "compiler-principles-010:p4:q-compiler-principles-010-q20:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "past_exam",
+      "locator_type": "page",
+      "output_md": "compiler_principles/compiler-principles-010.md",
+      "source_id": "compiler-principles-010",
+      "source_title": "2011年编译原理期末考试试卷A",
+      "year": "2011"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-011:h-2011年编译原理期末考试试卷a答案:c01",
+        "compiler-principles-011:q-compiler-principles-011-q1:c01",
+        "compiler-principles-011:q-compiler-principles-011-q2:c01",
+        "compiler-principles-011:q-compiler-principles-011-q3:c01",
+        "compiler-principles-011:q-compiler-principles-011-q4:c01",
+        "compiler-principles-011:q-compiler-principles-011-q5:c01",
+        "compiler-principles-011:q-compiler-principles-011-q6:c01",
+        "compiler-principles-011:q-compiler-principles-011-q7:c01",
+        "compiler-principles-011:q-compiler-principles-011-q8:c01",
+        "compiler-principles-011:q-compiler-principles-011-q9:c01",
+        "compiler-principles-011:q-compiler-principles-011-q10:c01",
+        "compiler-principles-011:q-compiler-principles-011-q11:c01",
+        "compiler-principles-011:q-compiler-principles-011-q12:c01",
+        "compiler-principles-011:q-compiler-principles-011-q13:c01",
+        "compiler-principles-011:q-compiler-principles-011-q14:c01",
+        "compiler-principles-011:q-compiler-principles-011-q15:c01",
+        "compiler-principles-011:q-compiler-principles-011-q15:c02",
+        "compiler-principles-011:q-compiler-principles-011-q15:c03",
+        "compiler-principles-011:q-compiler-principles-011-q15:c04"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "past_exam_answer",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-011.md",
+      "source_id": "compiler-principles-011",
+      "source_title": "2011年编译原理期末考试试卷A答案",
+      "year": "2011"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-012:p1:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q1:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q2:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q3:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q4:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q5:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q6:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q7:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q8:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q9:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q10:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q11:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q12:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q13:c01",
+        "compiler-principles-012:p1:q-compiler-principles-012-q14:c01",
+        "compiler-principles-012:p2:q-compiler-principles-012-q15:c01",
+        "compiler-principles-012:p2:q-compiler-principles-012-q16:c01",
+        "compiler-principles-012:p2:q-compiler-principles-012-q17:c01",
+        "compiler-principles-012:p2:q-compiler-principles-012-q18:c01",
+        "compiler-principles-012:p3:q-compiler-principles-012-q19:c01",
+        "compiler-principles-012:p3:q-compiler-principles-012-q20:c01",
+        "compiler-principles-012:p3:q-compiler-principles-012-q21:c01",
+        "compiler-principles-012:p3:q-compiler-principles-012-q22:c01",
+        "compiler-principles-012:p3:q-compiler-principles-012-q23:c01",
+        "compiler-principles-012:p3:q-compiler-principles-012-q24:c01",
+        "compiler-principles-012:p3:q-compiler-principles-012-q25:c01",
+        "compiler-principles-012:p3:q-compiler-principles-012-q25:c02",
+        "compiler-principles-012:p3:q-compiler-principles-012-q25:c03",
+        "compiler-principles-012:p4:q-compiler-principles-012-q25:c01",
+        "compiler-principles-012:p4:q-compiler-principles-012-q26:c01",
+        "compiler-principles-012:p4:q-compiler-principles-012-q27:c01",
+        "compiler-principles-012:p4:q-compiler-principles-012-q28:c01",
+        "compiler-principles-012:p4:q-compiler-principles-012-q29:c01",
+        "compiler-principles-012:p5:q-compiler-principles-012-q30:c01",
+        "compiler-principles-012:p6:q-compiler-principles-012-q30:c01",
+        "compiler-principles-012:p6:q-compiler-principles-012-q31:c01",
+        "compiler-principles-012:p7:q-compiler-principles-012-q31:c01",
+        "compiler-principles-012:p7:q-compiler-principles-012-q32:c01",
+        "compiler-principles-012:p7:q-compiler-principles-012-q33:c01",
+        "compiler-principles-012:p7:q-compiler-principles-012-q34:c01",
+        "compiler-principles-012:p7:q-compiler-principles-012-q35:c01",
+        "compiler-principles-012:p8:q-compiler-principles-012-q35:c01",
+        "compiler-principles-012:p8:q-compiler-principles-012-q36:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "past_exam_answer",
+      "locator_type": "page",
+      "output_md": "compiler_principles/compiler-principles-012.md",
+      "source_id": "compiler-principles-012",
+      "source_title": "2011年编译原理期末考试试卷A答案",
+      "year": "2011"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-013:h-2012年编译原理期末考试试卷a:c01",
+        "compiler-principles-013:q-compiler-principles-013-q1:c01",
+        "compiler-principles-013:q-compiler-principles-013-q2:c01",
+        "compiler-principles-013:q-compiler-principles-013-q3:c01",
+        "compiler-principles-013:q-compiler-principles-013-q4:c01",
+        "compiler-principles-013:q-compiler-principles-013-q5:c01",
+        "compiler-principles-013:q-compiler-principles-013-q6:c01",
+        "compiler-principles-013:q-compiler-principles-013-q7:c01",
+        "compiler-principles-013:q-compiler-principles-013-q8:c01",
+        "compiler-principles-013:q-compiler-principles-013-q9:c01",
+        "compiler-principles-013:q-compiler-principles-013-q10:c01",
+        "compiler-principles-013:q-compiler-principles-013-q11:c01",
+        "compiler-principles-013:q-compiler-principles-013-q11:c02"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-013.md",
+      "source_id": "compiler-principles-013",
+      "source_title": "2012年编译原理期末考试试卷A",
+      "year": "2012"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-014:h-2012年编译原理期末考试试卷b:c01",
+        "compiler-principles-014:q-compiler-principles-014-q1:c01",
+        "compiler-principles-014:q-compiler-principles-014-q2:c01",
+        "compiler-principles-014:q-compiler-principles-014-q3:c01",
+        "compiler-principles-014:q-compiler-principles-014-q4:c01",
+        "compiler-principles-014:q-compiler-principles-014-q5:c01",
+        "compiler-principles-014:q-compiler-principles-014-q6:c01",
+        "compiler-principles-014:q-compiler-principles-014-q7:c01",
+        "compiler-principles-014:q-compiler-principles-014-q8:c01",
+        "compiler-principles-014:q-compiler-principles-014-q8:c02",
+        "compiler-principles-014:q-compiler-principles-014-q9:c01",
+        "compiler-principles-014:q-compiler-principles-014-q10:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-014.md",
+      "source_id": "compiler-principles-014",
+      "source_title": "2012年编译原理期末考试试卷B",
+      "year": "2012"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-015:h-编译原理a卷:c01",
+        "compiler-principles-015:q-compiler-principles-015-q1:c01",
+        "compiler-principles-015:q-compiler-principles-015-q2:c01",
+        "compiler-principles-015:q-compiler-principles-015-q3:c01",
+        "compiler-principles-015:q-compiler-principles-015-q4:c01",
+        "compiler-principles-015:q-compiler-principles-015-q5:c01",
+        "compiler-principles-015:q-compiler-principles-015-q6:c01",
+        "compiler-principles-015:q-compiler-principles-015-q7:c01",
+        "compiler-principles-015:q-compiler-principles-015-q8:c01",
+        "compiler-principles-015:q-compiler-principles-015-q9:c01",
+        "compiler-principles-015:q-compiler-principles-015-q10:c01",
+        "compiler-principles-015:q-compiler-principles-015-q11:c01",
+        "compiler-principles-015:q-compiler-principles-015-q12:c01",
+        "compiler-principles-015:q-compiler-principles-015-q13:c01",
+        "compiler-principles-015:q-compiler-principles-015-q14:c01",
+        "compiler-principles-015:q-compiler-principles-015-q15:c01",
+        "compiler-principles-015:q-compiler-principles-015-q16:c01",
+        "compiler-principles-015:q-compiler-principles-015-q17:c01",
+        "compiler-principles-015:q-compiler-principles-015-q18:c01",
+        "compiler-principles-015:q-compiler-principles-015-q19:c01",
+        "compiler-principles-015:q-compiler-principles-015-q20:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-015.md",
+      "source_id": "compiler-principles-015",
+      "source_title": "编译原理A卷",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-016:h-编译原理期末考试试卷:c01",
+        "compiler-principles-016:q-compiler-principles-016-q1:c01",
+        "compiler-principles-016:q-compiler-principles-016-q2:c01",
+        "compiler-principles-016:q-compiler-principles-016-q3:c01",
+        "compiler-principles-016:q-compiler-principles-016-q4:c01",
+        "compiler-principles-016:q-compiler-principles-016-q5:c01",
+        "compiler-principles-016:q-compiler-principles-016-q6:c01",
+        "compiler-principles-016:q-compiler-principles-016-q7:c01",
+        "compiler-principles-016:q-compiler-principles-016-q8:c01",
+        "compiler-principles-016:q-compiler-principles-016-q9:c01",
+        "compiler-principles-016:q-compiler-principles-016-q10:c01",
+        "compiler-principles-016:q-compiler-principles-016-q11:c01",
+        "compiler-principles-016:q-compiler-principles-016-q12:c01",
+        "compiler-principles-016:q-compiler-principles-016-q13:c01",
+        "compiler-principles-016:q-compiler-principles-016-q14:c01",
+        "compiler-principles-016:q-compiler-principles-016-q15:c01",
+        "compiler-principles-016:q-compiler-principles-016-q16:c01",
+        "compiler-principles-016:q-compiler-principles-016-q17:c01",
+        "compiler-principles-016:q-compiler-principles-016-q18:c01",
+        "compiler-principles-016:q-compiler-principles-016-q19:c01",
+        "compiler-principles-016:q-compiler-principles-016-q20:c01",
+        "compiler-principles-016:q-compiler-principles-016-q21:c01",
+        "compiler-principles-016:q-compiler-principles-016-q22:c01",
+        "compiler-principles-016:q-compiler-principles-016-q23:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-016.md",
+      "source_id": "compiler-principles-016",
+      "source_title": "编译原理期末考试试卷",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-017:h-编译原理期末考试试卷答案:c01",
+        "compiler-principles-017:q-compiler-principles-017-q1:c01",
+        "compiler-principles-017:q-compiler-principles-017-q2:c01",
+        "compiler-principles-017:q-compiler-principles-017-q3:c01",
+        "compiler-principles-017:q-compiler-principles-017-q4:c01",
+        "compiler-principles-017:q-compiler-principles-017-q5:c01",
+        "compiler-principles-017:q-compiler-principles-017-q6:c01",
+        "compiler-principles-017:q-compiler-principles-017-q7:c01",
+        "compiler-principles-017:q-compiler-principles-017-q8:c01",
+        "compiler-principles-017:q-compiler-principles-017-q9:c01",
+        "compiler-principles-017:q-compiler-principles-017-q10:c01",
+        "compiler-principles-017:q-compiler-principles-017-q11:c01",
+        "compiler-principles-017:q-compiler-principles-017-q12:c01",
+        "compiler-principles-017:q-compiler-principles-017-q13:c01",
+        "compiler-principles-017:q-compiler-principles-017-q14:c01",
+        "compiler-principles-017:q-compiler-principles-017-q15:c01",
+        "compiler-principles-017:q-compiler-principles-017-q16:c01",
+        "compiler-principles-017:q-compiler-principles-017-q17:c01",
+        "compiler-principles-017:q-compiler-principles-017-q18:c01",
+        "compiler-principles-017:q-compiler-principles-017-q19:c01",
+        "compiler-principles-017:q-compiler-principles-017-q20:c01",
+        "compiler-principles-017:q-compiler-principles-017-q21:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "past_exam_answer",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-017.md",
+      "source_id": "compiler-principles-017",
+      "source_title": "编译原理期末考试试卷答案",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-018:h-4中语法分析方法比较:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-018.md",
+      "source_id": "compiler-principles-018",
+      "source_title": "4中语法分析方法比较",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-019:p1:c01",
+        "compiler-principles-019:p2:c01",
+        "compiler-principles-019:p3:c01",
+        "compiler-principles-019:p4:c01",
+        "compiler-principles-019:p5:c01",
+        "compiler-principles-019:p6:c01",
+        "compiler-principles-019:p7:c01",
+        "compiler-principles-019:p8:c01",
+        "compiler-principles-019:p9:c01",
+        "compiler-principles-019:p10:c01",
+        "compiler-principles-019:p11:c01",
+        "compiler-principles-019:p12:c01",
+        "compiler-principles-019:p13:c01",
+        "compiler-principles-019:p14:c01",
+        "compiler-principles-019:p15:c01",
+        "compiler-principles-019:p16:c01",
+        "compiler-principles-019:p17:c01",
+        "compiler-principles-019:p18:c01",
+        "compiler-principles-019:p19:c01",
+        "compiler-principles-019:p20:c01",
+        "compiler-principles-019:p21:c01",
+        "compiler-principles-019:p22:c01",
+        "compiler-principles-019:p23:c01",
+        "compiler-principles-019:p24:c01",
+        "compiler-principles-019:p25:c01",
+        "compiler-principles-019:p26:c01",
+        "compiler-principles-019:p27:c01",
+        "compiler-principles-019:p28:c01",
+        "compiler-principles-019:p29:c01",
+        "compiler-principles-019:p30:c01",
+        "compiler-principles-019:p31:c01",
+        "compiler-principles-019:p32:c01",
+        "compiler-principles-019:p33:c01",
+        "compiler-principles-019:p34:c01",
+        "compiler-principles-019:p35:c01",
+        "compiler-principles-019:p36:c01",
+        "compiler-principles-019:p37:c01",
+        "compiler-principles-019:p38:c01",
+        "compiler-principles-019:p39:c01",
+        "compiler-principles-019:p40:c01",
+        "compiler-principles-019:p41:c01",
+        "compiler-principles-019:p42:c01",
+        "compiler-principles-019:p43:c01",
+        "compiler-principles-019:p44:c01",
+        "compiler-principles-019:p45:c01",
+        "compiler-principles-019:p46:c01",
+        "compiler-principles-019:p47:c01",
+        "compiler-principles-019:p48:c01",
+        "compiler-principles-019:p49:c01",
+        "compiler-principles-019:p50:c01",
+        "compiler-principles-019:p51:c01",
+        "compiler-principles-019:p52:c01",
+        "compiler-principles-019:p53:c01",
+        "compiler-principles-019:p54:c01",
+        "compiler-principles-019:p55:c01",
+        "compiler-principles-019:p56:c01",
+        "compiler-principles-019:p57:c01",
+        "compiler-principles-019:p58:c01",
+        "compiler-principles-019:p59:c01",
+        "compiler-principles-019:p60:c01",
+        "compiler-principles-019:p61:c01",
+        "compiler-principles-019:p62:c01",
+        "compiler-principles-019:p63:c01",
+        "compiler-principles-019:p64:c01",
+        "compiler-principles-019:p65:c01",
+        "compiler-principles-019:p66:c01",
+        "compiler-principles-019:p67:c01",
+        "compiler-principles-019:p68:c01",
+        "compiler-principles-019:p69:c01",
+        "compiler-principles-019:p70:c01",
+        "compiler-principles-019:p71:c01",
+        "compiler-principles-019:p72:c01",
+        "compiler-principles-019:p73:c01",
+        "compiler-principles-019:p74:c01",
+        "compiler-principles-019:p75:c01",
+        "compiler-principles-019:p76:c01",
+        "compiler-principles-019:p77:c01",
+        "compiler-principles-019:p78:c01",
+        "compiler-principles-019:p79:c01",
+        "compiler-principles-019:p80:c01",
+        "compiler-principles-019:p81:c01",
+        "compiler-principles-019:p82:c01",
+        "compiler-principles-019:p83:c01",
+        "compiler-principles-019:p84:c01",
+        "compiler-principles-019:p85:c01",
+        "compiler-principles-019:p86:c01",
+        "compiler-principles-019:p87:c01",
+        "compiler-principles-019:p88:c01",
+        "compiler-principles-019:p89:c01",
+        "compiler-principles-019:p90:c01",
+        "compiler-principles-019:p91:c01",
+        "compiler-principles-019:p92:c01",
+        "compiler-principles-019:p93:c01",
+        "compiler-principles-019:p94:c01",
+        "compiler-principles-019:p95:c01",
+        "compiler-principles-019:p96:c01",
+        "compiler-principles-019:p97:c01",
+        "compiler-principles-019:p98:c01",
+        "compiler-principles-019:p99:c01",
+        "compiler-principles-019:p100:c01",
+        "compiler-principles-019:p101:c01",
+        "compiler-principles-019:p102:c01",
+        "compiler-principles-019:p103:c01",
+        "compiler-principles-019:p104:c01",
+        "compiler-principles-019:p105:c01",
+        "compiler-principles-019:p106:c01",
+        "compiler-principles-019:p107:c01",
+        "compiler-principles-019:p108:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "compiler_principles/compiler-principles-019.md",
+      "source_id": "compiler-principles-019",
+      "source_title": "7-8第七章语法制导和中间代码生成",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-020:h-action和goto表合并:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-020.md",
+      "source_id": "compiler-principles-020",
+      "source_title": "ACTION和GOTO表合并",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-021:h-first集:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-021.md",
+      "source_id": "compiler-principles-021",
+      "source_title": "FIRST集",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-022:h-ll-1-分析法的动作文法:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-022.md",
+      "source_id": "compiler-principles-022",
+      "source_title": "LL(1)分析法的动作文法",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-023:h-ll-1-文法的判别:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-023.md",
+      "source_id": "compiler-principles-023",
+      "source_title": "LL(1)文法的判别",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-024:h-ll分析的错误恢复:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-024.md",
+      "source_id": "compiler-principles-024",
+      "source_title": "LL分析的错误恢复",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-025:h-lr-1-分析的思想:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-025.md",
+      "source_id": "compiler-principles-025",
+      "source_title": "LR(1)分析的思想",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-026:h-lr-1-新增内容:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-026.md",
+      "source_id": "compiler-principles-026",
+      "source_title": "LR(1)新增内容",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-027:h-lr分析表:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-027.md",
+      "source_id": "compiler-principles-027",
+      "source_title": "LR分析表",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-028:h-lr分析错误处理的应急式:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-028.md",
+      "source_id": "compiler-principles-028",
+      "source_title": "LR分析错误处理的应急式",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-029:h-select集:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-029.md",
+      "source_id": "compiler-principles-029",
+      "source_title": "SELECT集",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-030:h-slr:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-030.md",
+      "source_id": "compiler-principles-030",
+      "source_title": "SLR",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-031:p1:c01",
+        "compiler-principles-031:p2:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "compiler_principles/compiler-principles-031.md",
+      "source_id": "compiler-principles-031",
+      "source_title": "《不同参数传递方式对 Pascal 程序中变量 A 值的影响》",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-032:h-分享对话-豆包:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-032.md",
+      "source_id": "compiler-principles-032",
+      "source_title": "分享对话-豆包",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-033:h-分析栈:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-033.md",
+      "source_id": "compiler-principles-033",
+      "source_title": "分析栈",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-034:h-化成正规式:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-034.md",
+      "source_id": "compiler-principles-034",
+      "source_title": "化成正规式",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-035:h-基本块代码生成算法:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-035.md",
+      "source_id": "compiler-principles-035",
+      "source_title": "基本块代码生成算法",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-036:h-基本块代码生成算法生成目标代码:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-036.md",
+      "source_id": "compiler-principles-036",
+      "source_title": "基本块代码生成算法生成目标代码",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-037:h-基本块的dag表示:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-037.md",
+      "source_id": "compiler-principles-037",
+      "source_title": "基本块的DAG表示",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-038:h-存储空间分配大致示意图:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-038.md",
+      "source_id": "compiler-principles-038",
+      "source_title": "存储空间分配大致示意图",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-039:h-循环优化流图的例子:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-039.md",
+      "source_id": "compiler-principles-039",
+      "source_title": "循环优化流图的例子",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-040:h-微信图片_2025-06-24_074818:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-040.md",
+      "source_id": "compiler-principles-040",
+      "source_title": "微信图片_2025-06-24_074818",
+      "year": "2025"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-041:h-改进的slr:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-041.md",
+      "source_id": "compiler-principles-041",
+      "source_title": "改进的SLR",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-042:h-最左归约得到可归前缀的过程:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-042.md",
+      "source_id": "compiler-principles-042",
+      "source_title": "最左归约得到可归前缀的过程",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-043:h-正则表达式:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-043.md",
+      "source_id": "compiler-principles-043",
+      "source_title": "正则表达式",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-044:h-活前缀的定义:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-044.md",
+      "source_id": "compiler-principles-044",
+      "source_title": "活前缀的定义",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-045:h-编译过程的阶段和功能:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-045.md",
+      "source_id": "compiler-principles-045",
+      "source_title": "编译过程的阶段和功能",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-046:h-网站和笔记:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-046.md",
+      "source_id": "compiler-principles-046",
+      "source_title": "网站和笔记",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-047:h-解决冲突的slr-0-方法:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-047.md",
+      "source_id": "compiler-principles-047",
+      "source_title": "解决冲突的SLR(0)方法",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-048:h-识别活前缀的nfa:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-048.md",
+      "source_id": "compiler-principles-048",
+      "source_title": "识别活前缀的NFA",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-049:h-语义分析的例子:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-049.md",
+      "source_id": "compiler-principles-049",
+      "source_title": "语义分析的例子",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-050:h-语义栈:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-050.md",
+      "source_id": "compiler-principles-050",
+      "source_title": "语义栈",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-051:h-语法制导翻译总结:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-051.md",
+      "source_id": "compiler-principles-051",
+      "source_title": "语法制导翻译总结",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-052:h-运行时的存储空间结构:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-052.md",
+      "source_id": "compiler-principles-052",
+      "source_title": "运行时的存储空间结构",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-053:h-递归下降方法的错误处理:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-053.md",
+      "source_id": "compiler-principles-053",
+      "source_title": "递归下降方法的错误处理",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-054:h-项目的closure和go:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-054.md",
+      "source_id": "compiler-principles-054",
+      "source_title": "项目的CLOSURE和GO",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-055:h-预测分析法:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-055.md",
+      "source_id": "compiler-principles-055",
+      "source_title": "预测分析法",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "compiler-principles-056:h-预测分析法的分析表:c01"
+      ],
+      "course_id": "compiler_principles",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "compiler_principles/compiler-principles-056.md",
+      "source_id": "compiler-principles-056",
+      "source_title": "预测分析法的分析表",
+      "year": null
+    }
+  ],
+  "statistics": {
+    "chunk_count": 486,
+    "question_count": 203,
+    "source_count": 56
+  },
+  "workflow_version": "workflow-contract-v1"
+}

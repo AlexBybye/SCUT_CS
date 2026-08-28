@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "university_physics_lab_2",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "3.2 数字示波器主要讲什么？",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-001:h-3.2-数字示波器:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习3.2 数字示波器，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-001:h-3.2-数字示波器:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习3.2 数字示波器时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-001:h-3.2-数字示波器:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "3.3 共振法测量材料的杨氏模量里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习3.3 共振法测量材料的杨氏模量时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考3.3 共振法测量材料的杨氏模量？",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "3.3 共振法测量材料的杨氏模量主要讲什么？",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习3.3 共振法测量材料的杨氏模量，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c05"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习3.3 共振法测量材料的杨氏模量时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c06"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "3.3 共振法测量材料的杨氏模量里的方法或结论怎么理解？，第10条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c07"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习3.3 共振法测量材料的杨氏模量时哪些概念容易混淆？，第11条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c08"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考3.3 共振法测量材料的杨氏模量？，第12条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c09"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "3.3 共振法测量材料的杨氏模量主要讲什么？，第13条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c10"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习3.3 共振法测量材料的杨氏模量，应该从哪里开始？，第14条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c11"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习3.3 共振法测量材料的杨氏模量时哪些内容最重要？，第15条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c12"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "3.3 共振法测量材料的杨氏模量里的方法或结论怎么理解？，第16条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c13"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习3.3 共振法测量材料的杨氏模量时哪些概念容易混淆？，第17条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c14"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考3.3 共振法测量材料的杨氏模量？，第18条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c15"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "3.3 共振法测量材料的杨氏模量主要讲什么？，第19条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c16"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习3.3 共振法测量材料的杨氏模量，应该从哪里开始？，第20条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c17"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习3.3 共振法测量材料的杨氏模量时哪些内容最重要？，第21条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c18"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "3.3 共振法测量材料的杨氏模量里的方法或结论怎么理解？，第22条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c19"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习3.3 共振法测量材料的杨氏模量时哪些概念容易混淆？，第23条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c20"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考3.3 共振法测量材料的杨氏模量？，第24条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c21"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "3.3 共振法测量材料的杨氏模量主要讲什么？，第25条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c22"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习3.3 共振法测量材料的杨氏模量，应该从哪里开始？，第26条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c23"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习3.3 共振法测量材料的杨氏模量时哪些内容最重要？，第27条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c24"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "3.3 共振法测量材料的杨氏模量里的方法或结论怎么理解？，第28条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c25"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习3.3 共振法测量材料的杨氏模量时哪些概念容易混淆？，第29条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c26"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考3.3 共振法测量材料的杨氏模量？，第30条",
+      "expected_chunk_ids": [
+        "university-physics-lab-2-002:h-3.3-共振法测量材料的杨氏模量:c27"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

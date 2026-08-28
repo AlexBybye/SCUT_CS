@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "circuit_and_electronics_lab",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "期末 2025-2026第二学期 试卷主要讲什么？",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习期末 2025-2026第二学期 试卷，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习期末 2025-2026第二学期 试卷时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "期末 2025-2026第二学期 试卷里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习期末 2025-2026第二学期 试卷时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考期末 2025-2026第二学期 试卷？",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "期末 2025-2026第二学期 试卷主要讲什么？，见第1页",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习期末 2025-2026第二学期 试卷，应该从哪里开始？，见第2页",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习期末 2025-2026第二学期 试卷时哪些内容最重要？，见第1页",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "期末 2025-2026第二学期 试卷里的方法或结论怎么理解？，见第2页",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习期末 2025-2026第二学期 试卷时哪些概念容易混淆？，见第1页",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考期末 2025-2026第二学期 试卷？，见第2页",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "期末 2025-2026第二学期 试卷主要讲什么？，第13条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习期末 2025-2026第二学期 试卷，应该从哪里开始？，第14条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习期末 2025-2026第二学期 试卷时哪些内容最重要？，第15条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "期末 2025-2026第二学期 试卷里的方法或结论怎么理解？，第16条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习期末 2025-2026第二学期 试卷时哪些概念容易混淆？，第17条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考期末 2025-2026第二学期 试卷？，第18条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "期末 2025-2026第二学期 试卷主要讲什么？，第19条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习期末 2025-2026第二学期 试卷，应该从哪里开始？，第20条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习期末 2025-2026第二学期 试卷时哪些内容最重要？，第21条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "期末 2025-2026第二学期 试卷里的方法或结论怎么理解？，第22条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习期末 2025-2026第二学期 试卷时哪些概念容易混淆？，第23条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考期末 2025-2026第二学期 试卷？，第24条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "期末 2025-2026第二学期 试卷主要讲什么？，第25条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习期末 2025-2026第二学期 试卷，应该从哪里开始？，第26条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习期末 2025-2026第二学期 试卷时哪些内容最重要？，第27条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "期末 2025-2026第二学期 试卷里的方法或结论怎么理解？，第28条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习期末 2025-2026第二学期 试卷时哪些概念容易混淆？，第29条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考期末 2025-2026第二学期 试卷？，第30条",
+      "expected_chunk_ids": [
+        "circuit-and-electronics-lab-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

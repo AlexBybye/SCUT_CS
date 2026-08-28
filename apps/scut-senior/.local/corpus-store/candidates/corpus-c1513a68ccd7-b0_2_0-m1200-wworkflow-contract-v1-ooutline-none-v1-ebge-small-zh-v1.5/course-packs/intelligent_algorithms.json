@@ -1,0 +1,2523 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "intelligent_algorithms",
+  "course_pack_version": "course-pack-intelligent_algorithms-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-005:p1:c01",
+        "intelligent-algorithms-005:p2:c01",
+        "intelligent-algorithms-005:p3:c01",
+        "intelligent-algorithms-005:p4:c01",
+        "intelligent-algorithms-005:p5:c01",
+        "intelligent-algorithms-005:p6:c01",
+        "intelligent-algorithms-005:p7:c01",
+        "intelligent-algorithms-005:p8:c01",
+        "intelligent-algorithms-005:p9:c01",
+        "intelligent-algorithms-005:p10:c01",
+        "intelligent-algorithms-005:p11:c01",
+        "intelligent-algorithms-005:p12:c01",
+        "intelligent-algorithms-005:p13:c01",
+        "intelligent-algorithms-005:p14:c01",
+        "intelligent-algorithms-005:p15:c01",
+        "intelligent-algorithms-005:p16:c01",
+        "intelligent-algorithms-005:p17:c01",
+        "intelligent-algorithms-005:p18:c01",
+        "intelligent-algorithms-005:p19:c01",
+        "intelligent-algorithms-005:p20:c01",
+        "intelligent-algorithms-005:p21:c01"
+      ],
+      "heading_path": [
+        "0. 绪论pr"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-006:p1:c01",
+        "intelligent-algorithms-006:p2:c01",
+        "intelligent-algorithms-006:p3:c01",
+        "intelligent-algorithms-006:p4:c01",
+        "intelligent-algorithms-006:p5:c01",
+        "intelligent-algorithms-006:p6:c01",
+        "intelligent-algorithms-006:p7:c01",
+        "intelligent-algorithms-006:p8:c01",
+        "intelligent-algorithms-006:p9:c01",
+        "intelligent-algorithms-006:p10:c01",
+        "intelligent-algorithms-006:p11:c01",
+        "intelligent-algorithms-006:p12:c01",
+        "intelligent-algorithms-006:p13:c01",
+        "intelligent-algorithms-006:p14:c01",
+        "intelligent-algorithms-006:p15:c01",
+        "intelligent-algorithms-006:p16:c01",
+        "intelligent-algorithms-006:p17:c01",
+        "intelligent-algorithms-006:p18:c01",
+        "intelligent-algorithms-006:p19:c01",
+        "intelligent-algorithms-006:p20:c01",
+        "intelligent-algorithms-006:p21:c01",
+        "intelligent-algorithms-006:p22:c01",
+        "intelligent-algorithms-006:p23:c01"
+      ],
+      "heading_path": [
+        "1. 模拟退火pr"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-007:p1:c01",
+        "intelligent-algorithms-007:p2:c01",
+        "intelligent-algorithms-007:p3:c01",
+        "intelligent-algorithms-007:p4:c01",
+        "intelligent-algorithms-007:p5:c01",
+        "intelligent-algorithms-007:p6:c01",
+        "intelligent-algorithms-007:p7:c01",
+        "intelligent-algorithms-007:p8:c01",
+        "intelligent-algorithms-007:p9:c01",
+        "intelligent-algorithms-007:p10:c01",
+        "intelligent-algorithms-007:p11:c01",
+        "intelligent-algorithms-007:p12:c01",
+        "intelligent-algorithms-007:p13:c01",
+        "intelligent-algorithms-007:p14:c01",
+        "intelligent-algorithms-007:p15:c01",
+        "intelligent-algorithms-007:p16:c01",
+        "intelligent-algorithms-007:p17:c01",
+        "intelligent-algorithms-007:p18:c01",
+        "intelligent-algorithms-007:p19:c01",
+        "intelligent-algorithms-007:p20:c01",
+        "intelligent-algorithms-007:p21:c01",
+        "intelligent-algorithms-007:p22:c01",
+        "intelligent-algorithms-007:p23:c01",
+        "intelligent-algorithms-007:p24:c01",
+        "intelligent-algorithms-007:p25:c01",
+        "intelligent-algorithms-007:p26:c01",
+        "intelligent-algorithms-007:p27:c01",
+        "intelligent-algorithms-007:p28:c01",
+        "intelligent-algorithms-007:p29:c01",
+        "intelligent-algorithms-007:p30:c01",
+        "intelligent-algorithms-007:p31:c01",
+        "intelligent-algorithms-007:p32:c01",
+        "intelligent-algorithms-007:p33:c01"
+      ],
+      "heading_path": [
+        "10. 价值学习方法pr"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-008:p1:c01",
+        "intelligent-algorithms-008:p2:c01",
+        "intelligent-algorithms-008:p3:c01",
+        "intelligent-algorithms-008:p4:c01",
+        "intelligent-algorithms-008:p5:c01",
+        "intelligent-algorithms-008:p6:c01",
+        "intelligent-algorithms-008:p7:c01",
+        "intelligent-algorithms-008:p8:c01",
+        "intelligent-algorithms-008:p9:c01",
+        "intelligent-algorithms-008:p10:c01",
+        "intelligent-algorithms-008:p11:c01",
+        "intelligent-algorithms-008:p12:c01",
+        "intelligent-algorithms-008:p13:c01",
+        "intelligent-algorithms-008:p14:c01",
+        "intelligent-algorithms-008:p15:c01",
+        "intelligent-algorithms-008:p16:c01",
+        "intelligent-algorithms-008:p17:c01",
+        "intelligent-algorithms-008:p18:c01",
+        "intelligent-algorithms-008:p19:c01",
+        "intelligent-algorithms-008:p20:c01",
+        "intelligent-algorithms-008:p21:c01",
+        "intelligent-algorithms-008:p22:c01",
+        "intelligent-algorithms-008:p23:c01",
+        "intelligent-algorithms-008:p24:c01"
+      ],
+      "heading_path": [
+        "11. 策略学习方法pr"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-009:p1:c01",
+        "intelligent-algorithms-009:p2:c01",
+        "intelligent-algorithms-009:p3:c01",
+        "intelligent-algorithms-009:p4:c01",
+        "intelligent-algorithms-009:p5:c01",
+        "intelligent-algorithms-009:p6:c01",
+        "intelligent-algorithms-009:p7:c01",
+        "intelligent-algorithms-009:p8:c01",
+        "intelligent-algorithms-009:p9:c01",
+        "intelligent-algorithms-009:p10:c01",
+        "intelligent-algorithms-009:p11:c01",
+        "intelligent-algorithms-009:p12:c01",
+        "intelligent-algorithms-009:p13:c01",
+        "intelligent-algorithms-009:p14:c01",
+        "intelligent-algorithms-009:p15:c01",
+        "intelligent-algorithms-009:p16:c01",
+        "intelligent-algorithms-009:p17:c01",
+        "intelligent-algorithms-009:p18:c01",
+        "intelligent-algorithms-009:p19:c01",
+        "intelligent-algorithms-009:p20:c01",
+        "intelligent-algorithms-009:p21:c01",
+        "intelligent-algorithms-009:p22:c01",
+        "intelligent-algorithms-009:p23:c01",
+        "intelligent-algorithms-009:p24:c01",
+        "intelligent-algorithms-009:p25:c01",
+        "intelligent-algorithms-009:p26:c01",
+        "intelligent-algorithms-009:p27:c01",
+        "intelligent-algorithms-009:p28:c01",
+        "intelligent-algorithms-009:p29:c01",
+        "intelligent-algorithms-009:p30:c01",
+        "intelligent-algorithms-009:p31:c01",
+        "intelligent-algorithms-009:p32:c01",
+        "intelligent-algorithms-009:p33:c01",
+        "intelligent-algorithms-009:p34:c01",
+        "intelligent-algorithms-009:p35:c01",
+        "intelligent-algorithms-009:p36:c01",
+        "intelligent-algorithms-009:p37:c01",
+        "intelligent-algorithms-009:p38:c01",
+        "intelligent-algorithms-009:p39:c01",
+        "intelligent-algorithms-009:p40:c01"
+      ],
+      "heading_path": [
+        "12. 代理模型辅助的优化pr"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-010:p1:c01",
+        "intelligent-algorithms-010:p1:c02",
+        "intelligent-algorithms-010:p1:c03",
+        "intelligent-algorithms-010:p1:c04",
+        "intelligent-algorithms-010:p2:c01",
+        "intelligent-algorithms-010:p3:c01",
+        "intelligent-algorithms-010:p4:c01",
+        "intelligent-algorithms-010:p5:c01",
+        "intelligent-algorithms-010:p6:c01",
+        "intelligent-algorithms-010:p7:c01",
+        "intelligent-algorithms-010:p8:c01",
+        "intelligent-algorithms-010:p9:c01",
+        "intelligent-algorithms-010:p10:c01",
+        "intelligent-algorithms-010:p11:c01",
+        "intelligent-algorithms-010:p12:c01",
+        "intelligent-algorithms-010:p13:c01",
+        "intelligent-algorithms-010:p14:c01",
+        "intelligent-algorithms-010:p15:c01",
+        "intelligent-algorithms-010:p16:c01",
+        "intelligent-algorithms-010:p17:c01",
+        "intelligent-algorithms-010:p18:c01",
+        "intelligent-algorithms-010:p19:c01",
+        "intelligent-algorithms-010:p20:c01",
+        "intelligent-algorithms-010:p21:c01",
+        "intelligent-algorithms-010:p22:c01",
+        "intelligent-algorithms-010:p23:c01",
+        "intelligent-algorithms-010:p24:c01",
+        "intelligent-algorithms-010:p25:c01",
+        "intelligent-algorithms-010:p26:c01",
+        "intelligent-algorithms-010:p27:c01",
+        "intelligent-algorithms-010:p28:c01",
+        "intelligent-algorithms-010:p29:c01",
+        "intelligent-algorithms-010:p30:c01",
+        "intelligent-algorithms-010:p31:c01",
+        "intelligent-algorithms-010:p32:c01",
+        "intelligent-algorithms-010:p33:c01",
+        "intelligent-algorithms-010:p34:c01",
+        "intelligent-algorithms-010:p35:c01",
+        "intelligent-algorithms-010:p36:c01",
+        "intelligent-algorithms-010:p37:c01"
+      ],
+      "heading_path": [
+        "13. 基于学习的优化pr"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-011:p1:c01",
+        "intelligent-algorithms-011:p2:c01",
+        "intelligent-algorithms-011:p3:c01",
+        "intelligent-algorithms-011:p4:c01",
+        "intelligent-algorithms-011:p5:c01",
+        "intelligent-algorithms-011:p6:c01",
+        "intelligent-algorithms-011:p7:c01",
+        "intelligent-algorithms-011:p8:c01",
+        "intelligent-algorithms-011:p9:c01",
+        "intelligent-algorithms-011:p10:c01",
+        "intelligent-algorithms-011:p11:c01",
+        "intelligent-algorithms-011:p12:c01",
+        "intelligent-algorithms-011:p13:c01",
+        "intelligent-algorithms-011:p14:c01",
+        "intelligent-algorithms-011:p15:c01",
+        "intelligent-algorithms-011:p16:c01",
+        "intelligent-algorithms-011:p17:c01",
+        "intelligent-algorithms-011:p18:c01",
+        "intelligent-algorithms-011:p19:c01",
+        "intelligent-algorithms-011:p20:c01",
+        "intelligent-algorithms-011:p21:c01",
+        "intelligent-algorithms-011:p22:c01",
+        "intelligent-algorithms-011:p23:c01",
+        "intelligent-algorithms-011:p24:c01",
+        "intelligent-algorithms-011:p25:c01",
+        "intelligent-algorithms-011:p26:c01",
+        "intelligent-algorithms-011:p27:c01",
+        "intelligent-algorithms-011:p28:c01",
+        "intelligent-algorithms-011:p29:c01",
+        "intelligent-algorithms-011:p30:c01",
+        "intelligent-algorithms-011:p31:c01",
+        "intelligent-algorithms-011:p32:c01",
+        "intelligent-algorithms-011:p33:c01",
+        "intelligent-algorithms-011:p34:c01",
+        "intelligent-algorithms-011:p35:c01",
+        "intelligent-algorithms-011:p36:c01",
+        "intelligent-algorithms-011:p37:c01",
+        "intelligent-algorithms-011:p38:c01",
+        "intelligent-algorithms-011:p39:c01",
+        "intelligent-algorithms-011:p40:c01",
+        "intelligent-algorithms-011:p41:c01",
+        "intelligent-algorithms-011:p42:c01",
+        "intelligent-algorithms-011:p43:c01",
+        "intelligent-algorithms-011:p44:c01",
+        "intelligent-algorithms-011:p45:c01",
+        "intelligent-algorithms-011:p46:c01",
+        "intelligent-algorithms-011:p47:c01",
+        "intelligent-algorithms-011:p48:c01",
+        "intelligent-algorithms-011:p49:c01"
+      ],
+      "heading_path": [
+        "14. 多目标优化pr"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-012:p1:c01",
+        "intelligent-algorithms-012:p2:c01",
+        "intelligent-algorithms-012:p3:c01",
+        "intelligent-algorithms-012:p4:c01",
+        "intelligent-algorithms-012:p5:c01",
+        "intelligent-algorithms-012:p6:c01",
+        "intelligent-algorithms-012:p7:c01",
+        "intelligent-algorithms-012:p8:c01",
+        "intelligent-algorithms-012:p9:c01",
+        "intelligent-algorithms-012:p10:c01",
+        "intelligent-algorithms-012:p11:c01",
+        "intelligent-algorithms-012:p12:c01",
+        "intelligent-algorithms-012:p13:c01",
+        "intelligent-algorithms-012:p14:c01",
+        "intelligent-algorithms-012:p15:c01",
+        "intelligent-algorithms-012:p16:c01",
+        "intelligent-algorithms-012:p17:c01",
+        "intelligent-algorithms-012:p18:c01",
+        "intelligent-algorithms-012:p19:c01",
+        "intelligent-algorithms-012:p20:c01",
+        "intelligent-algorithms-012:p21:c01",
+        "intelligent-algorithms-012:p22:c01",
+        "intelligent-algorithms-012:p23:c01",
+        "intelligent-algorithms-012:p24:c01",
+        "intelligent-algorithms-012:p25:c01",
+        "intelligent-algorithms-012:p26:c01",
+        "intelligent-algorithms-012:p27:c01",
+        "intelligent-algorithms-012:p28:c01",
+        "intelligent-algorithms-012:p29:c01",
+        "intelligent-algorithms-012:p30:c01",
+        "intelligent-algorithms-012:p31:c01",
+        "intelligent-algorithms-012:p32:c01",
+        "intelligent-algorithms-012:p33:c01",
+        "intelligent-algorithms-012:p34:c01",
+        "intelligent-algorithms-012:p35:c01",
+        "intelligent-algorithms-012:p36:c01",
+        "intelligent-algorithms-012:p37:c01",
+        "intelligent-algorithms-012:p38:c01",
+        "intelligent-algorithms-012:p39:c01",
+        "intelligent-algorithms-012:p40:c01",
+        "intelligent-algorithms-012:p41:c01",
+        "intelligent-algorithms-012:p42:c01",
+        "intelligent-algorithms-012:p43:c01",
+        "intelligent-algorithms-012:p44:c01",
+        "intelligent-algorithms-012:p45:c01",
+        "intelligent-algorithms-012:p46:c01",
+        "intelligent-algorithms-012:p47:c01",
+        "intelligent-algorithms-012:p48:c01",
+        "intelligent-algorithms-012:p49:c01",
+        "intelligent-algorithms-012:p50:c01",
+        "intelligent-algorithms-012:p51:c01",
+        "intelligent-algorithms-012:p52:c01",
+        "intelligent-algorithms-012:p53:c01",
+        "intelligent-algorithms-012:p54:c01",
+        "intelligent-algorithms-012:p55:c01",
+        "intelligent-algorithms-012:p56:c01",
+        "intelligent-algorithms-012:p57:c01",
+        "intelligent-algorithms-012:p58:c01",
+        "intelligent-algorithms-012:p59:c01",
+        "intelligent-algorithms-012:p60:c01",
+        "intelligent-algorithms-012:p61:c01",
+        "intelligent-algorithms-012:p62:c01",
+        "intelligent-algorithms-012:p63:c01",
+        "intelligent-algorithms-012:p64:c01",
+        "intelligent-algorithms-012:p65:c01",
+        "intelligent-algorithms-012:p66:c01",
+        "intelligent-algorithms-012:p67:c01",
+        "intelligent-algorithms-012:p68:c01",
+        "intelligent-algorithms-012:p69:c01",
+        "intelligent-algorithms-012:p70:c01",
+        "intelligent-algorithms-012:p71:c01",
+        "intelligent-algorithms-012:p72:c01"
+      ],
+      "heading_path": [
+        "15. 多样性优化pr"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-013:p1:c01",
+        "intelligent-algorithms-013:p2:c01",
+        "intelligent-algorithms-013:p3:c01",
+        "intelligent-algorithms-013:p4:c01",
+        "intelligent-algorithms-013:p5:c01",
+        "intelligent-algorithms-013:p6:c01",
+        "intelligent-algorithms-013:p7:c01",
+        "intelligent-algorithms-013:p8:c01",
+        "intelligent-algorithms-013:p9:c01",
+        "intelligent-algorithms-013:p10:c01",
+        "intelligent-algorithms-013:p11:c01",
+        "intelligent-algorithms-013:p12:c01",
+        "intelligent-algorithms-013:p13:c01",
+        "intelligent-algorithms-013:p14:c01",
+        "intelligent-algorithms-013:p15:c01",
+        "intelligent-algorithms-013:p16:c01",
+        "intelligent-algorithms-013:p17:c01",
+        "intelligent-algorithms-013:p18:c01",
+        "intelligent-algorithms-013:p19:c01",
+        "intelligent-algorithms-013:p20:c01",
+        "intelligent-algorithms-013:p21:c01",
+        "intelligent-algorithms-013:p22:c01",
+        "intelligent-algorithms-013:p23:c01",
+        "intelligent-algorithms-013:p24:c01",
+        "intelligent-algorithms-013:p25:c01",
+        "intelligent-algorithms-013:p26:c01",
+        "intelligent-algorithms-013:p27:c01",
+        "intelligent-algorithms-013:p28:c01",
+        "intelligent-algorithms-013:p29:c01",
+        "intelligent-algorithms-013:p30:c01",
+        "intelligent-algorithms-013:p31:c01",
+        "intelligent-algorithms-013:p32:c01",
+        "intelligent-algorithms-013:p33:c01",
+        "intelligent-algorithms-013:p34:c01",
+        "intelligent-algorithms-013:p35:c01",
+        "intelligent-algorithms-013:p36:c01",
+        "intelligent-algorithms-013:p37:c01",
+        "intelligent-algorithms-013:p38:c01",
+        "intelligent-algorithms-013:p39:c01",
+        "intelligent-algorithms-013:p40:c01",
+        "intelligent-algorithms-013:p41:c01",
+        "intelligent-algorithms-013:p42:c01",
+        "intelligent-algorithms-013:p43:c01",
+        "intelligent-algorithms-013:p44:c01"
+      ],
+      "heading_path": [
+        "2. 遗传算法pr"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-014:p1:c01",
+        "intelligent-algorithms-014:p2:c01",
+        "intelligent-algorithms-014:p3:c01",
+        "intelligent-algorithms-014:p4:c01",
+        "intelligent-algorithms-014:p5:c01",
+        "intelligent-algorithms-014:p6:c01",
+        "intelligent-algorithms-014:p7:c01",
+        "intelligent-algorithms-014:p8:c01",
+        "intelligent-algorithms-014:p9:c01",
+        "intelligent-algorithms-014:p10:c01",
+        "intelligent-algorithms-014:p11:c01",
+        "intelligent-algorithms-014:p12:c01",
+        "intelligent-algorithms-014:p13:c01",
+        "intelligent-algorithms-014:p14:c01",
+        "intelligent-algorithms-014:p15:c01",
+        "intelligent-algorithms-014:p16:c01",
+        "intelligent-algorithms-014:p17:c01",
+        "intelligent-algorithms-014:p18:c01",
+        "intelligent-algorithms-014:p19:c01",
+        "intelligent-algorithms-014:p20:c01",
+        "intelligent-algorithms-014:p21:c01",
+        "intelligent-algorithms-014:p22:c01",
+        "intelligent-algorithms-014:p23:c01",
+        "intelligent-algorithms-014:p24:c01",
+        "intelligent-algorithms-014:p25:c01",
+        "intelligent-algorithms-014:p26:c01",
+        "intelligent-algorithms-014:p27:c01",
+        "intelligent-algorithms-014:p28:c01",
+        "intelligent-algorithms-014:p29:c01"
+      ],
+      "heading_path": [
+        "3. 差分进化pr"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-015:p1:c01",
+        "intelligent-algorithms-015:p2:c01",
+        "intelligent-algorithms-015:p3:c01",
+        "intelligent-algorithms-015:p4:c01",
+        "intelligent-algorithms-015:p5:c01",
+        "intelligent-algorithms-015:p6:c01",
+        "intelligent-algorithms-015:p7:c01",
+        "intelligent-algorithms-015:p8:c01",
+        "intelligent-algorithms-015:p9:c01",
+        "intelligent-algorithms-015:p10:c01",
+        "intelligent-algorithms-015:p11:c01",
+        "intelligent-algorithms-015:p12:c01",
+        "intelligent-algorithms-015:p13:c01",
+        "intelligent-algorithms-015:p14:c01",
+        "intelligent-algorithms-015:p15:c01",
+        "intelligent-algorithms-015:p16:c01",
+        "intelligent-algorithms-015:p17:c01",
+        "intelligent-algorithms-015:p18:c01",
+        "intelligent-algorithms-015:p19:c01",
+        "intelligent-algorithms-015:p20:c01",
+        "intelligent-algorithms-015:p21:c01",
+        "intelligent-algorithms-015:p22:c01",
+        "intelligent-algorithms-015:p23:c01",
+        "intelligent-algorithms-015:p24:c01",
+        "intelligent-algorithms-015:p25:c01",
+        "intelligent-algorithms-015:p26:c01",
+        "intelligent-algorithms-015:p27:c01",
+        "intelligent-algorithms-015:p28:c01",
+        "intelligent-algorithms-015:p29:c01",
+        "intelligent-algorithms-015:p30:c01",
+        "intelligent-algorithms-015:p31:c01",
+        "intelligent-algorithms-015:p32:c01",
+        "intelligent-algorithms-015:p33:c01",
+        "intelligent-algorithms-015:p34:c01",
+        "intelligent-algorithms-015:p35:c01",
+        "intelligent-algorithms-015:p36:c01",
+        "intelligent-algorithms-015:p37:c01",
+        "intelligent-algorithms-015:p38:c01",
+        "intelligent-algorithms-015:p39:c01",
+        "intelligent-algorithms-015:p40:c01"
+      ],
+      "heading_path": [
+        "4. 粒子群优化pr"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-016:p1:c01",
+        "intelligent-algorithms-016:p2:c01",
+        "intelligent-algorithms-016:p3:c01",
+        "intelligent-algorithms-016:p4:c01",
+        "intelligent-algorithms-016:p5:c01",
+        "intelligent-algorithms-016:p6:c01",
+        "intelligent-algorithms-016:p7:c01",
+        "intelligent-algorithms-016:p8:c01",
+        "intelligent-algorithms-016:p9:c01",
+        "intelligent-algorithms-016:p10:c01",
+        "intelligent-algorithms-016:p11:c01",
+        "intelligent-algorithms-016:p12:c01",
+        "intelligent-algorithms-016:p13:c01",
+        "intelligent-algorithms-016:p14:c01",
+        "intelligent-algorithms-016:p15:c01",
+        "intelligent-algorithms-016:p16:c01",
+        "intelligent-algorithms-016:p17:c01",
+        "intelligent-algorithms-016:p18:c01",
+        "intelligent-algorithms-016:p19:c01",
+        "intelligent-algorithms-016:p20:c01",
+        "intelligent-algorithms-016:p21:c01",
+        "intelligent-algorithms-016:p22:c01",
+        "intelligent-algorithms-016:p23:c01",
+        "intelligent-algorithms-016:p24:c01",
+        "intelligent-algorithms-016:p25:c01",
+        "intelligent-algorithms-016:p26:c01",
+        "intelligent-algorithms-016:p27:c01",
+        "intelligent-algorithms-016:p28:c01",
+        "intelligent-algorithms-016:p29:c01",
+        "intelligent-algorithms-016:p30:c01",
+        "intelligent-algorithms-016:p31:c01",
+        "intelligent-algorithms-016:p32:c01",
+        "intelligent-algorithms-016:p33:c01",
+        "intelligent-algorithms-016:p34:c01",
+        "intelligent-algorithms-016:p35:c01",
+        "intelligent-algorithms-016:p36:c01",
+        "intelligent-algorithms-016:p37:c01",
+        "intelligent-algorithms-016:p38:c01",
+        "intelligent-algorithms-016:p39:c01",
+        "intelligent-algorithms-016:p40:c01",
+        "intelligent-algorithms-016:p41:c01",
+        "intelligent-algorithms-016:p42:c01",
+        "intelligent-algorithms-016:p43:c01",
+        "intelligent-algorithms-016:p44:c01",
+        "intelligent-algorithms-016:p45:c01"
+      ],
+      "heading_path": [
+        "5. 蚁群优化pr"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-017:p1:c01",
+        "intelligent-algorithms-017:p2:c01",
+        "intelligent-algorithms-017:p3:c01",
+        "intelligent-algorithms-017:p4:c01",
+        "intelligent-algorithms-017:p5:c01",
+        "intelligent-algorithms-017:p6:c01",
+        "intelligent-algorithms-017:p7:c01",
+        "intelligent-algorithms-017:p8:c01",
+        "intelligent-algorithms-017:p9:c01",
+        "intelligent-algorithms-017:p10:c01",
+        "intelligent-algorithms-017:p11:c01",
+        "intelligent-algorithms-017:p12:c01",
+        "intelligent-algorithms-017:p13:c01",
+        "intelligent-algorithms-017:p14:c01",
+        "intelligent-algorithms-017:p15:c01",
+        "intelligent-algorithms-017:p16:c01",
+        "intelligent-algorithms-017:p17:c01",
+        "intelligent-algorithms-017:p18:c01",
+        "intelligent-algorithms-017:p19:c01",
+        "intelligent-algorithms-017:p20:c01",
+        "intelligent-algorithms-017:p21:c01",
+        "intelligent-algorithms-017:p22:c01",
+        "intelligent-algorithms-017:p23:c01",
+        "intelligent-algorithms-017:p24:c01",
+        "intelligent-algorithms-017:p25:c01",
+        "intelligent-algorithms-017:p26:c01",
+        "intelligent-algorithms-017:p27:c01",
+        "intelligent-algorithms-017:p28:c01",
+        "intelligent-algorithms-017:p29:c01",
+        "intelligent-algorithms-017:p30:c01",
+        "intelligent-algorithms-017:p31:c01",
+        "intelligent-algorithms-017:p32:c01",
+        "intelligent-algorithms-017:p33:c01",
+        "intelligent-algorithms-017:p34:c01",
+        "intelligent-algorithms-017:p35:c01",
+        "intelligent-algorithms-017:p36:c01",
+        "intelligent-algorithms-017:p37:c01",
+        "intelligent-algorithms-017:p38:c01",
+        "intelligent-algorithms-017:p39:c01",
+        "intelligent-algorithms-017:p40:c01"
+      ],
+      "heading_path": [
+        "6. 进化策略pr"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-018:p1:c01",
+        "intelligent-algorithms-018:p2:c01",
+        "intelligent-algorithms-018:p3:c01",
+        "intelligent-algorithms-018:p4:c01",
+        "intelligent-algorithms-018:p5:c01",
+        "intelligent-algorithms-018:p6:c01",
+        "intelligent-algorithms-018:p7:c01",
+        "intelligent-algorithms-018:p8:c01",
+        "intelligent-algorithms-018:p9:c01",
+        "intelligent-algorithms-018:p10:c01",
+        "intelligent-algorithms-018:p11:c01",
+        "intelligent-algorithms-018:p12:c01",
+        "intelligent-algorithms-018:p13:c01",
+        "intelligent-algorithms-018:p14:c01",
+        "intelligent-algorithms-018:p15:c01",
+        "intelligent-algorithms-018:p16:c01",
+        "intelligent-algorithms-018:p17:c01",
+        "intelligent-algorithms-018:p18:c01",
+        "intelligent-algorithms-018:p19:c01",
+        "intelligent-algorithms-018:p20:c01",
+        "intelligent-algorithms-018:p21:c01",
+        "intelligent-algorithms-018:p22:c01",
+        "intelligent-algorithms-018:p23:c01",
+        "intelligent-algorithms-018:p24:c01",
+        "intelligent-algorithms-018:p25:c01",
+        "intelligent-algorithms-018:p26:c01",
+        "intelligent-algorithms-018:p27:c01",
+        "intelligent-algorithms-018:p28:c01",
+        "intelligent-algorithms-018:p29:c01",
+        "intelligent-algorithms-018:p30:c01",
+        "intelligent-algorithms-018:p31:c01",
+        "intelligent-algorithms-018:p32:c01",
+        "intelligent-algorithms-018:p33:c01",
+        "intelligent-algorithms-018:p34:c01",
+        "intelligent-algorithms-018:p35:c01",
+        "intelligent-algorithms-018:p36:c01",
+        "intelligent-algorithms-018:p37:c01",
+        "intelligent-algorithms-018:p38:c01"
+      ],
+      "heading_path": [
+        "7. 遗传编程pr"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-019:p1:c01",
+        "intelligent-algorithms-019:p2:c01",
+        "intelligent-algorithms-019:p3:c01",
+        "intelligent-algorithms-019:p4:c01",
+        "intelligent-algorithms-019:p5:c01",
+        "intelligent-algorithms-019:p6:c01",
+        "intelligent-algorithms-019:p7:c01",
+        "intelligent-algorithms-019:p8:c01",
+        "intelligent-algorithms-019:p9:c01",
+        "intelligent-algorithms-019:p10:c01",
+        "intelligent-algorithms-019:p11:c01",
+        "intelligent-algorithms-019:p12:c01",
+        "intelligent-algorithms-019:p13:c01",
+        "intelligent-algorithms-019:p14:c01",
+        "intelligent-algorithms-019:p15:c01",
+        "intelligent-algorithms-019:p16:c01",
+        "intelligent-algorithms-019:p17:c01",
+        "intelligent-algorithms-019:p18:c01",
+        "intelligent-algorithms-019:p19:c01",
+        "intelligent-algorithms-019:p20:c01",
+        "intelligent-algorithms-019:p21:c01",
+        "intelligent-algorithms-019:p22:c01",
+        "intelligent-algorithms-019:p23:c01",
+        "intelligent-algorithms-019:p24:c01",
+        "intelligent-algorithms-019:p25:c01",
+        "intelligent-algorithms-019:p26:c01",
+        "intelligent-algorithms-019:p27:c01",
+        "intelligent-algorithms-019:p28:c01",
+        "intelligent-algorithms-019:p29:c01",
+        "intelligent-algorithms-019:p30:c01",
+        "intelligent-algorithms-019:p31:c01",
+        "intelligent-algorithms-019:p32:c01",
+        "intelligent-algorithms-019:p33:c01"
+      ],
+      "heading_path": [
+        "9. 强化学习基础pr"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-027:h-aco算法的基本理念:c01"
+      ],
+      "heading_path": [
+        "ACO算法的基本理念："
+      ],
+      "source_ids": [
+        "intelligent-algorithms-027"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-027:h-aco算法适合应用场景~广泛应用于解决组合优化问题~具体优化:c01"
+      ],
+      "heading_path": [
+        "ACO算法适合应用场景",
+        "广泛应用于解决组合优化问题",
+        "具体优化："
+      ],
+      "source_ids": [
+        "intelligent-algorithms-027"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-027:h-aco算法适合应用场景~广泛应用于解决组合优化问题~相关优化参数设置:c01",
+        "intelligent-algorithms-027:h-aco算法适合应用场景~广泛应用于解决组合优化问题~相关优化参数设置:c02"
+      ],
+      "heading_path": [
+        "ACO算法适合应用场景",
+        "广泛应用于解决组合优化问题",
+        "相关优化参数设置："
+      ],
+      "source_ids": [
+        "intelligent-algorithms-027"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-001:h-cvrp:c01",
+        "intelligent-algorithms-002:p1:c01",
+        "intelligent-algorithms-002:p2:c01",
+        "intelligent-algorithms-002:p3:c01",
+        "intelligent-algorithms-002:p4:c01",
+        "intelligent-algorithms-002:p5:c01",
+        "intelligent-algorithms-002:p6:c01",
+        "intelligent-algorithms-002:p7:c01",
+        "intelligent-algorithms-002:p8:c01",
+        "intelligent-algorithms-002:p9:c01",
+        "intelligent-algorithms-002:p10:c01",
+        "intelligent-algorithms-002:p11:c01",
+        "intelligent-algorithms-002:p12:c01"
+      ],
+      "heading_path": [
+        "CVRP"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-001",
+        "intelligent-algorithms-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-022:h-de算法的基本理念:c01"
+      ],
+      "heading_path": [
+        "DE算法的基本理念："
+      ],
+      "source_ids": [
+        "intelligent-algorithms-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-022:h-de算法的基本理念~1.-初始化种群-设置算法参数:c01"
+      ],
+      "heading_path": [
+        "DE算法的基本理念：",
+        "1. 初始化种群&设置算法参数"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-022:h-de算法的基本理念~1.-初始化种群-设置算法参数~2.-进化过程:c01"
+      ],
+      "heading_path": [
+        "DE算法的基本理念：",
+        "1. 初始化种群&设置算法参数",
+        "2. 进化过程"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-022:h-de算法适合应用场景:c01"
+      ],
+      "heading_path": [
+        "DE算法适合应用场景"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-022:h-de算法适合应用场景~相比ga-它不能做离散优化问题-但优势是参数少-可以在精度和速度中较为平衡-3.-差分进化pr-1-.pdf-page-16-rect-123-84-783-394-3.-差分进化pr-1-p.16:c01"
+      ],
+      "heading_path": [
+        "DE算法适合应用场景",
+        "相比GA，它不能做离散优化问题，但优势是参数少，可以在精度和速度中较为平衡。![[3. 差分进化pr(1).pdf#page=16&rect=123,84,783,394|3. 差分进化pr(1), p.16]]"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-032:h-fes:c01"
+      ],
+      "heading_path": [
+        "FEs"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-032"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-029:h-ga算法的基本理念:c01"
+      ],
+      "heading_path": [
+        "GA算法的基本理念："
+      ],
+      "source_ids": [
+        "intelligent-algorithms-029"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-029:h-ga算法适合应用场景~广泛应用于优化和搜索问题-可以用于优化函数和tsp问题:c01",
+        "intelligent-algorithms-029:h-ga算法适合应用场景~广泛应用于优化和搜索问题-可以用于优化函数和tsp问题:c02"
+      ],
+      "heading_path": [
+        "GA算法适合应用场景",
+        "广泛应用于优化和搜索问题，可以用于优化函数和TSP问题"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-029"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-033:h-gap:c01"
+      ],
+      "heading_path": [
+        "Gap"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-033"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-034:h-gap_c:c01"
+      ],
+      "heading_path": [
+        "Gap_C"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-034"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c01",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c02",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c03",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c04",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c05",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c06",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c07",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c08",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c09",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c10",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c11",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c12",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c13",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c14",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c15"
+      ],
+      "heading_path": [
+        "LYBBO：融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-031"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-035:h-obj:c01"
+      ],
+      "heading_path": [
+        "Obj"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-035"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-036:h-obj_c:c01"
+      ],
+      "heading_path": [
+        "Obj_C"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-036"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-026:h-pso算法的基本理念:c01"
+      ],
+      "heading_path": [
+        "PSO算法的基本理念："
+      ],
+      "source_ids": [
+        "intelligent-algorithms-026"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-026:h-pso算法适合应用场景~在函数优化和参数权重及图像处理有优势-但传统pso函数优化比不过de-de的rand-1适合多峰-best-1适合单峰:c01"
+      ],
+      "heading_path": [
+        "PSO算法适合应用场景",
+        "在函数优化和参数权重及图像处理有优势，但传统PSO函数优化比不过DE DE的rand/1适合多峰 best/1适合单峰"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-026"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-020:h-pasted-image-20250331190819:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20250331190819"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-021:h-pasted-image-20250331190918:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20250331190918"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-025:h-sa算法的基本理念:c01"
+      ],
+      "heading_path": [
+        "SA算法的基本理念："
+      ],
+      "source_ids": [
+        "intelligent-algorithms-025"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-025:h-sa算法适合应用场景~在解空间复杂-存在多个局部最优解的情况下表现出色~优点~全局搜索能力-能够跳出局部最优-具有较强的全局优化能力~参数选择敏感-算法的性能对参数-如初始温度-降温系数等-的选择较为敏感:c01"
+      ],
+      "heading_path": [
+        "SA算法适合应用场景",
+        "在解空间复杂、存在多个局部最优解的情况下表现出色",
+        "**优点**",
+        "-**全局搜索能力**：能够跳出局部最优，具有较强的全局优化能力。",
+        "- **参数选择敏感**：算法的性能对参数（如初始温度、降温系数等）的选择较为敏感。"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-025"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-037:h-overall_table_processed:c01"
+      ],
+      "heading_path": [
+        "overall_table_processed"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-037"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-028:h-我们学这两个东西用处是什么:c01"
+      ],
+      "heading_path": [
+        "我们学这两个东西用处是什么？"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-028"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-028:h-我们学这两个东西用处是什么~使用遗传算法来优化一个简单的神经网络-解决xor问题:c01"
+      ],
+      "heading_path": [
+        "我们学这两个东西用处是什么？",
+        "使用遗传算法来优化一个简单的神经网络，解决XOR问题"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-028"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-023:h-智能优化算法目录~优化算法-顾名思义-optimize其他算法-结合-参数很重要:c01"
+      ],
+      "heading_path": [
+        "智能优化算法目录",
+        "优化算法，顾名思义，optimize其他算法，结合&参数很重要！"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-023"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-003:h-智能算法竞赛小组汇报文档:c01",
+        "intelligent-algorithms-003:h-智能算法竞赛小组汇报文档:c02",
+        "intelligent-algorithms-004:p1:c01",
+        "intelligent-algorithms-004:p2:c01",
+        "intelligent-algorithms-004:p3:c01"
+      ],
+      "heading_path": [
+        "智能算法竞赛小组汇报文档"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-003",
+        "intelligent-algorithms-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-024:h-梯度优化策略gd:c01"
+      ],
+      "heading_path": [
+        "梯度优化策略GD"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-024"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-024:h-梯度优化策略gd~小心过拟合-万事留一线-我们可以搞一个lambert去测试拟合好坏:c01"
+      ],
+      "heading_path": [
+        "梯度优化策略GD",
+        "小心过拟合！万事留一线！我们可以搞一个Lambert去测试拟合好坏"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-024"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-026:h-自适应参数调整-邻域最优经验和精英策略的优化pso算法的python代码示例-用于求解sphere函数优化问题:c01"
+      ],
+      "heading_path": [
+        "自适应参数调整、邻域最优经验和精英策略的优化PSO算法的Python代码示例，用于求解Sphere函数优化问题:"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-026"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-026:h-解析-对传统pso的优化:c01"
+      ],
+      "heading_path": [
+        "解析：对传统PSO的优化："
+      ],
+      "source_ids": [
+        "intelligent-algorithms-026"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-028:h-进化策略es~cma-es-协方差矩阵自适应演化:c01"
+      ],
+      "heading_path": [
+        "进化策略ES",
+        "CMA-ES（协方差矩阵自适应演化）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-028"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-030:h-遗传编程gp~7.-遗传编程pr.pdf-page-13-rect-62-104-800-451-7.-遗传编程pr-p.13-7.-遗传编程pr.pdf-page-14-rect-64-58-800-468-7.-遗传编程pr-p.14-gp参数终止条件:c01"
+      ],
+      "heading_path": [
+        "遗传编程GP",
+        "![[7. 遗传编程pr.pdf#page=13&rect=62,104,800,451|7. 遗传编程pr, p.13]]![[7. 遗传编程pr.pdf#page=14&rect=64,58,800,468|7. 遗传编程pr, p.14]]##  GP参数终止条件"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-030"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-030:h-遗传编程gp~gp解决符号回归代码示例:c01",
+        "intelligent-algorithms-030:h-遗传编程gp~gp解决符号回归代码示例:c02"
+      ],
+      "heading_path": [
+        "遗传编程GP",
+        "GP解决符号回归代码示例："
+      ],
+      "source_ids": [
+        "intelligent-algorithms-030"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-025:h-问题-初始参数的选择~1.-初始温度-t0:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "1. 初始温度（T0）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-025"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-029:h-问题-初始参数的选择~1.-种群大小-population-size:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "1. 种群大小（Population Size）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-029"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-029:h-问题-初始参数的选择~1.-种群大小-population-size~2.-交叉概率-crossover-probability:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "1. 种群大小（Population Size）",
+        "2. 交叉概率（Crossover Probability）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-029"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-029:h-问题-初始参数的选择~1.-种群大小-population-size~3.-变异概率-mutation-probability:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "1. 种群大小（Population Size）",
+        "3. 变异概率（Mutation Probability）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-029"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-029:h-问题-初始参数的选择~1.-种群大小-population-size~4.-迭代次数-generations:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "1. 种群大小（Population Size）",
+        "4. 迭代次数（Generations）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-029"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-029:h-问题-初始参数的选择~1.-种群大小-population-size~5.-选择策略-selection-strategy:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "1. 种群大小（Population Size）",
+        "5. 选择策略（Selection Strategy）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-029"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-029:h-问题-初始参数的选择~1.-种群大小-population-size~6.-交叉策略-crossover-strategy:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "1. 种群大小（Population Size）",
+        "6. 交叉策略（Crossover Strategy）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-029"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-029:h-问题-初始参数的选择~1.-种群大小-population-size~7.-变异策略-mutation-strategy:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "1. 种群大小（Population Size）",
+        "7. 变异策略（Mutation Strategy）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-029"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-029:h-问题-初始参数的选择~1.-种群大小-population-size~8.-精英策略-elitist-strategy:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "1. 种群大小（Population Size）",
+        "8. 精英策略（Elitist Strategy）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-029"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-027:h-问题-初始参数的选择~1.-蚂蚁数量-num_ants:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "1. 蚂蚁数量（num_ants）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-027"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-027:h-问题-初始参数的选择~1.-蚂蚁数量-num_ants~2.-最大迭代次数-max_iterations:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "1. 蚂蚁数量（num_ants）",
+        "2. 最大迭代次数（max_iterations）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-027"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-027:h-问题-初始参数的选择~1.-蚂蚁数量-num_ants~3.-信息素重要性参数-alpha:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "1. 蚂蚁数量（num_ants）",
+        "3. 信息素重要性参数（alpha）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-027"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-027:h-问题-初始参数的选择~1.-蚂蚁数量-num_ants~4.-启发式信息重要性参数-beta:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "1. 蚂蚁数量（num_ants）",
+        "4. 启发式信息重要性参数（beta）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-027"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-027:h-问题-初始参数的选择~1.-蚂蚁数量-num_ants~5.-信息素蒸发率-evaporation_rate:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "1. 蚂蚁数量（num_ants）",
+        "5. 信息素蒸发率（evaporation_rate）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-027"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-027:h-问题-初始参数的选择~1.-蚂蚁数量-num_ants~6.-信息素增加量-q:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "1. 蚂蚁数量（num_ants）",
+        "6. 信息素增加量（Q）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-027"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-027:h-问题-初始参数的选择~1.-蚂蚁数量-num_ants~7.-信息素最小值-tau_min-和最大值-tau_max:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "1. 蚂蚁数量（num_ants）",
+        "7. 信息素最小值（tau_min）和最大值（tau_max）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-027"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-025:h-问题-初始参数的选择~2.-降温系数-alpha:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "2. 降温系数（alpha）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-025"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-025:h-问题-初始参数的选择~3.-每个温度下的迭代次数-l:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "3. 每个温度下的迭代次数（L）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-025"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "intelligent-algorithms-025:h-问题-初始参数的选择~4.-结束温度-tk:c01"
+      ],
+      "heading_path": [
+        "问题：初始参数的选择",
+        "4. 结束温度（Tk）"
+      ],
+      "source_ids": [
+        "intelligent-algorithms-025"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-001:h-cvrp:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "exercise_solution",
+      "locator_type": "none",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-001.md",
+      "source_id": "intelligent-algorithms-001",
+      "source_title": "CVRP",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-002:p1:c01",
+        "intelligent-algorithms-002:p2:c01",
+        "intelligent-algorithms-002:p3:c01",
+        "intelligent-algorithms-002:p4:c01",
+        "intelligent-algorithms-002:p5:c01",
+        "intelligent-algorithms-002:p6:c01",
+        "intelligent-algorithms-002:p7:c01",
+        "intelligent-algorithms-002:p8:c01",
+        "intelligent-algorithms-002:p9:c01",
+        "intelligent-algorithms-002:p10:c01",
+        "intelligent-algorithms-002:p11:c01",
+        "intelligent-algorithms-002:p12:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-002.md",
+      "source_id": "intelligent-algorithms-002",
+      "source_title": "CVRP",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-003:h-智能算法竞赛小组汇报文档:c01",
+        "intelligent-algorithms-003:h-智能算法竞赛小组汇报文档:c02"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-003.md",
+      "source_id": "intelligent-algorithms-003",
+      "source_title": "智能算法竞赛小组汇报文档",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-004:p1:c01",
+        "intelligent-algorithms-004:p2:c01",
+        "intelligent-algorithms-004:p3:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-004.md",
+      "source_id": "intelligent-algorithms-004",
+      "source_title": "智能算法竞赛小组汇报文档",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-005:p1:c01",
+        "intelligent-algorithms-005:p2:c01",
+        "intelligent-algorithms-005:p3:c01",
+        "intelligent-algorithms-005:p4:c01",
+        "intelligent-algorithms-005:p5:c01",
+        "intelligent-algorithms-005:p6:c01",
+        "intelligent-algorithms-005:p7:c01",
+        "intelligent-algorithms-005:p8:c01",
+        "intelligent-algorithms-005:p9:c01",
+        "intelligent-algorithms-005:p10:c01",
+        "intelligent-algorithms-005:p11:c01",
+        "intelligent-algorithms-005:p12:c01",
+        "intelligent-algorithms-005:p13:c01",
+        "intelligent-algorithms-005:p14:c01",
+        "intelligent-algorithms-005:p15:c01",
+        "intelligent-algorithms-005:p16:c01",
+        "intelligent-algorithms-005:p17:c01",
+        "intelligent-algorithms-005:p18:c01",
+        "intelligent-algorithms-005:p19:c01",
+        "intelligent-algorithms-005:p20:c01",
+        "intelligent-algorithms-005:p21:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-005.md",
+      "source_id": "intelligent-algorithms-005",
+      "source_title": "0. 绪论pr",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-006:p1:c01",
+        "intelligent-algorithms-006:p2:c01",
+        "intelligent-algorithms-006:p3:c01",
+        "intelligent-algorithms-006:p4:c01",
+        "intelligent-algorithms-006:p5:c01",
+        "intelligent-algorithms-006:p6:c01",
+        "intelligent-algorithms-006:p7:c01",
+        "intelligent-algorithms-006:p8:c01",
+        "intelligent-algorithms-006:p9:c01",
+        "intelligent-algorithms-006:p10:c01",
+        "intelligent-algorithms-006:p11:c01",
+        "intelligent-algorithms-006:p12:c01",
+        "intelligent-algorithms-006:p13:c01",
+        "intelligent-algorithms-006:p14:c01",
+        "intelligent-algorithms-006:p15:c01",
+        "intelligent-algorithms-006:p16:c01",
+        "intelligent-algorithms-006:p17:c01",
+        "intelligent-algorithms-006:p18:c01",
+        "intelligent-algorithms-006:p19:c01",
+        "intelligent-algorithms-006:p20:c01",
+        "intelligent-algorithms-006:p21:c01",
+        "intelligent-algorithms-006:p22:c01",
+        "intelligent-algorithms-006:p23:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-006.md",
+      "source_id": "intelligent-algorithms-006",
+      "source_title": "1. 模拟退火pr",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-007:p1:c01",
+        "intelligent-algorithms-007:p2:c01",
+        "intelligent-algorithms-007:p3:c01",
+        "intelligent-algorithms-007:p4:c01",
+        "intelligent-algorithms-007:p5:c01",
+        "intelligent-algorithms-007:p6:c01",
+        "intelligent-algorithms-007:p7:c01",
+        "intelligent-algorithms-007:p8:c01",
+        "intelligent-algorithms-007:p9:c01",
+        "intelligent-algorithms-007:p10:c01",
+        "intelligent-algorithms-007:p11:c01",
+        "intelligent-algorithms-007:p12:c01",
+        "intelligent-algorithms-007:p13:c01",
+        "intelligent-algorithms-007:p14:c01",
+        "intelligent-algorithms-007:p15:c01",
+        "intelligent-algorithms-007:p16:c01",
+        "intelligent-algorithms-007:p17:c01",
+        "intelligent-algorithms-007:p18:c01",
+        "intelligent-algorithms-007:p19:c01",
+        "intelligent-algorithms-007:p20:c01",
+        "intelligent-algorithms-007:p21:c01",
+        "intelligent-algorithms-007:p22:c01",
+        "intelligent-algorithms-007:p23:c01",
+        "intelligent-algorithms-007:p24:c01",
+        "intelligent-algorithms-007:p25:c01",
+        "intelligent-algorithms-007:p26:c01",
+        "intelligent-algorithms-007:p27:c01",
+        "intelligent-algorithms-007:p28:c01",
+        "intelligent-algorithms-007:p29:c01",
+        "intelligent-algorithms-007:p30:c01",
+        "intelligent-algorithms-007:p31:c01",
+        "intelligent-algorithms-007:p32:c01",
+        "intelligent-algorithms-007:p33:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-007.md",
+      "source_id": "intelligent-algorithms-007",
+      "source_title": "10. 价值学习方法pr",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-008:p1:c01",
+        "intelligent-algorithms-008:p2:c01",
+        "intelligent-algorithms-008:p3:c01",
+        "intelligent-algorithms-008:p4:c01",
+        "intelligent-algorithms-008:p5:c01",
+        "intelligent-algorithms-008:p6:c01",
+        "intelligent-algorithms-008:p7:c01",
+        "intelligent-algorithms-008:p8:c01",
+        "intelligent-algorithms-008:p9:c01",
+        "intelligent-algorithms-008:p10:c01",
+        "intelligent-algorithms-008:p11:c01",
+        "intelligent-algorithms-008:p12:c01",
+        "intelligent-algorithms-008:p13:c01",
+        "intelligent-algorithms-008:p14:c01",
+        "intelligent-algorithms-008:p15:c01",
+        "intelligent-algorithms-008:p16:c01",
+        "intelligent-algorithms-008:p17:c01",
+        "intelligent-algorithms-008:p18:c01",
+        "intelligent-algorithms-008:p19:c01",
+        "intelligent-algorithms-008:p20:c01",
+        "intelligent-algorithms-008:p21:c01",
+        "intelligent-algorithms-008:p22:c01",
+        "intelligent-algorithms-008:p23:c01",
+        "intelligent-algorithms-008:p24:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-008.md",
+      "source_id": "intelligent-algorithms-008",
+      "source_title": "11. 策略学习方法pr",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-009:p1:c01",
+        "intelligent-algorithms-009:p2:c01",
+        "intelligent-algorithms-009:p3:c01",
+        "intelligent-algorithms-009:p4:c01",
+        "intelligent-algorithms-009:p5:c01",
+        "intelligent-algorithms-009:p6:c01",
+        "intelligent-algorithms-009:p7:c01",
+        "intelligent-algorithms-009:p8:c01",
+        "intelligent-algorithms-009:p9:c01",
+        "intelligent-algorithms-009:p10:c01",
+        "intelligent-algorithms-009:p11:c01",
+        "intelligent-algorithms-009:p12:c01",
+        "intelligent-algorithms-009:p13:c01",
+        "intelligent-algorithms-009:p14:c01",
+        "intelligent-algorithms-009:p15:c01",
+        "intelligent-algorithms-009:p16:c01",
+        "intelligent-algorithms-009:p17:c01",
+        "intelligent-algorithms-009:p18:c01",
+        "intelligent-algorithms-009:p19:c01",
+        "intelligent-algorithms-009:p20:c01",
+        "intelligent-algorithms-009:p21:c01",
+        "intelligent-algorithms-009:p22:c01",
+        "intelligent-algorithms-009:p23:c01",
+        "intelligent-algorithms-009:p24:c01",
+        "intelligent-algorithms-009:p25:c01",
+        "intelligent-algorithms-009:p26:c01",
+        "intelligent-algorithms-009:p27:c01",
+        "intelligent-algorithms-009:p28:c01",
+        "intelligent-algorithms-009:p29:c01",
+        "intelligent-algorithms-009:p30:c01",
+        "intelligent-algorithms-009:p31:c01",
+        "intelligent-algorithms-009:p32:c01",
+        "intelligent-algorithms-009:p33:c01",
+        "intelligent-algorithms-009:p34:c01",
+        "intelligent-algorithms-009:p35:c01",
+        "intelligent-algorithms-009:p36:c01",
+        "intelligent-algorithms-009:p37:c01",
+        "intelligent-algorithms-009:p38:c01",
+        "intelligent-algorithms-009:p39:c01",
+        "intelligent-algorithms-009:p40:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-009.md",
+      "source_id": "intelligent-algorithms-009",
+      "source_title": "12. 代理模型辅助的优化pr",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-010:p1:c01",
+        "intelligent-algorithms-010:p1:c02",
+        "intelligent-algorithms-010:p1:c03",
+        "intelligent-algorithms-010:p1:c04",
+        "intelligent-algorithms-010:p2:c01",
+        "intelligent-algorithms-010:p3:c01",
+        "intelligent-algorithms-010:p4:c01",
+        "intelligent-algorithms-010:p5:c01",
+        "intelligent-algorithms-010:p6:c01",
+        "intelligent-algorithms-010:p7:c01",
+        "intelligent-algorithms-010:p8:c01",
+        "intelligent-algorithms-010:p9:c01",
+        "intelligent-algorithms-010:p10:c01",
+        "intelligent-algorithms-010:p11:c01",
+        "intelligent-algorithms-010:p12:c01",
+        "intelligent-algorithms-010:p13:c01",
+        "intelligent-algorithms-010:p14:c01",
+        "intelligent-algorithms-010:p15:c01",
+        "intelligent-algorithms-010:p16:c01",
+        "intelligent-algorithms-010:p17:c01",
+        "intelligent-algorithms-010:p18:c01",
+        "intelligent-algorithms-010:p19:c01",
+        "intelligent-algorithms-010:p20:c01",
+        "intelligent-algorithms-010:p21:c01",
+        "intelligent-algorithms-010:p22:c01",
+        "intelligent-algorithms-010:p23:c01",
+        "intelligent-algorithms-010:p24:c01",
+        "intelligent-algorithms-010:p25:c01",
+        "intelligent-algorithms-010:p26:c01",
+        "intelligent-algorithms-010:p27:c01",
+        "intelligent-algorithms-010:p28:c01",
+        "intelligent-algorithms-010:p29:c01",
+        "intelligent-algorithms-010:p30:c01",
+        "intelligent-algorithms-010:p31:c01",
+        "intelligent-algorithms-010:p32:c01",
+        "intelligent-algorithms-010:p33:c01",
+        "intelligent-algorithms-010:p34:c01",
+        "intelligent-algorithms-010:p35:c01",
+        "intelligent-algorithms-010:p36:c01",
+        "intelligent-algorithms-010:p37:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-010.md",
+      "source_id": "intelligent-algorithms-010",
+      "source_title": "13. 基于学习的优化pr",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-011:p1:c01",
+        "intelligent-algorithms-011:p2:c01",
+        "intelligent-algorithms-011:p3:c01",
+        "intelligent-algorithms-011:p4:c01",
+        "intelligent-algorithms-011:p5:c01",
+        "intelligent-algorithms-011:p6:c01",
+        "intelligent-algorithms-011:p7:c01",
+        "intelligent-algorithms-011:p8:c01",
+        "intelligent-algorithms-011:p9:c01",
+        "intelligent-algorithms-011:p10:c01",
+        "intelligent-algorithms-011:p11:c01",
+        "intelligent-algorithms-011:p12:c01",
+        "intelligent-algorithms-011:p13:c01",
+        "intelligent-algorithms-011:p14:c01",
+        "intelligent-algorithms-011:p15:c01",
+        "intelligent-algorithms-011:p16:c01",
+        "intelligent-algorithms-011:p17:c01",
+        "intelligent-algorithms-011:p18:c01",
+        "intelligent-algorithms-011:p19:c01",
+        "intelligent-algorithms-011:p20:c01",
+        "intelligent-algorithms-011:p21:c01",
+        "intelligent-algorithms-011:p22:c01",
+        "intelligent-algorithms-011:p23:c01",
+        "intelligent-algorithms-011:p24:c01",
+        "intelligent-algorithms-011:p25:c01",
+        "intelligent-algorithms-011:p26:c01",
+        "intelligent-algorithms-011:p27:c01",
+        "intelligent-algorithms-011:p28:c01",
+        "intelligent-algorithms-011:p29:c01",
+        "intelligent-algorithms-011:p30:c01",
+        "intelligent-algorithms-011:p31:c01",
+        "intelligent-algorithms-011:p32:c01",
+        "intelligent-algorithms-011:p33:c01",
+        "intelligent-algorithms-011:p34:c01",
+        "intelligent-algorithms-011:p35:c01",
+        "intelligent-algorithms-011:p36:c01",
+        "intelligent-algorithms-011:p37:c01",
+        "intelligent-algorithms-011:p38:c01",
+        "intelligent-algorithms-011:p39:c01",
+        "intelligent-algorithms-011:p40:c01",
+        "intelligent-algorithms-011:p41:c01",
+        "intelligent-algorithms-011:p42:c01",
+        "intelligent-algorithms-011:p43:c01",
+        "intelligent-algorithms-011:p44:c01",
+        "intelligent-algorithms-011:p45:c01",
+        "intelligent-algorithms-011:p46:c01",
+        "intelligent-algorithms-011:p47:c01",
+        "intelligent-algorithms-011:p48:c01",
+        "intelligent-algorithms-011:p49:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-011.md",
+      "source_id": "intelligent-algorithms-011",
+      "source_title": "14. 多目标优化pr",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-012:p1:c01",
+        "intelligent-algorithms-012:p2:c01",
+        "intelligent-algorithms-012:p3:c01",
+        "intelligent-algorithms-012:p4:c01",
+        "intelligent-algorithms-012:p5:c01",
+        "intelligent-algorithms-012:p6:c01",
+        "intelligent-algorithms-012:p7:c01",
+        "intelligent-algorithms-012:p8:c01",
+        "intelligent-algorithms-012:p9:c01",
+        "intelligent-algorithms-012:p10:c01",
+        "intelligent-algorithms-012:p11:c01",
+        "intelligent-algorithms-012:p12:c01",
+        "intelligent-algorithms-012:p13:c01",
+        "intelligent-algorithms-012:p14:c01",
+        "intelligent-algorithms-012:p15:c01",
+        "intelligent-algorithms-012:p16:c01",
+        "intelligent-algorithms-012:p17:c01",
+        "intelligent-algorithms-012:p18:c01",
+        "intelligent-algorithms-012:p19:c01",
+        "intelligent-algorithms-012:p20:c01",
+        "intelligent-algorithms-012:p21:c01",
+        "intelligent-algorithms-012:p22:c01",
+        "intelligent-algorithms-012:p23:c01",
+        "intelligent-algorithms-012:p24:c01",
+        "intelligent-algorithms-012:p25:c01",
+        "intelligent-algorithms-012:p26:c01",
+        "intelligent-algorithms-012:p27:c01",
+        "intelligent-algorithms-012:p28:c01",
+        "intelligent-algorithms-012:p29:c01",
+        "intelligent-algorithms-012:p30:c01",
+        "intelligent-algorithms-012:p31:c01",
+        "intelligent-algorithms-012:p32:c01",
+        "intelligent-algorithms-012:p33:c01",
+        "intelligent-algorithms-012:p34:c01",
+        "intelligent-algorithms-012:p35:c01",
+        "intelligent-algorithms-012:p36:c01",
+        "intelligent-algorithms-012:p37:c01",
+        "intelligent-algorithms-012:p38:c01",
+        "intelligent-algorithms-012:p39:c01",
+        "intelligent-algorithms-012:p40:c01",
+        "intelligent-algorithms-012:p41:c01",
+        "intelligent-algorithms-012:p42:c01",
+        "intelligent-algorithms-012:p43:c01",
+        "intelligent-algorithms-012:p44:c01",
+        "intelligent-algorithms-012:p45:c01",
+        "intelligent-algorithms-012:p46:c01",
+        "intelligent-algorithms-012:p47:c01",
+        "intelligent-algorithms-012:p48:c01",
+        "intelligent-algorithms-012:p49:c01",
+        "intelligent-algorithms-012:p50:c01",
+        "intelligent-algorithms-012:p51:c01",
+        "intelligent-algorithms-012:p52:c01",
+        "intelligent-algorithms-012:p53:c01",
+        "intelligent-algorithms-012:p54:c01",
+        "intelligent-algorithms-012:p55:c01",
+        "intelligent-algorithms-012:p56:c01",
+        "intelligent-algorithms-012:p57:c01",
+        "intelligent-algorithms-012:p58:c01",
+        "intelligent-algorithms-012:p59:c01",
+        "intelligent-algorithms-012:p60:c01",
+        "intelligent-algorithms-012:p61:c01",
+        "intelligent-algorithms-012:p62:c01",
+        "intelligent-algorithms-012:p63:c01",
+        "intelligent-algorithms-012:p64:c01",
+        "intelligent-algorithms-012:p65:c01",
+        "intelligent-algorithms-012:p66:c01",
+        "intelligent-algorithms-012:p67:c01",
+        "intelligent-algorithms-012:p68:c01",
+        "intelligent-algorithms-012:p69:c01",
+        "intelligent-algorithms-012:p70:c01",
+        "intelligent-algorithms-012:p71:c01",
+        "intelligent-algorithms-012:p72:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-012.md",
+      "source_id": "intelligent-algorithms-012",
+      "source_title": "15. 多样性优化pr",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-013:p1:c01",
+        "intelligent-algorithms-013:p2:c01",
+        "intelligent-algorithms-013:p3:c01",
+        "intelligent-algorithms-013:p4:c01",
+        "intelligent-algorithms-013:p5:c01",
+        "intelligent-algorithms-013:p6:c01",
+        "intelligent-algorithms-013:p7:c01",
+        "intelligent-algorithms-013:p8:c01",
+        "intelligent-algorithms-013:p9:c01",
+        "intelligent-algorithms-013:p10:c01",
+        "intelligent-algorithms-013:p11:c01",
+        "intelligent-algorithms-013:p12:c01",
+        "intelligent-algorithms-013:p13:c01",
+        "intelligent-algorithms-013:p14:c01",
+        "intelligent-algorithms-013:p15:c01",
+        "intelligent-algorithms-013:p16:c01",
+        "intelligent-algorithms-013:p17:c01",
+        "intelligent-algorithms-013:p18:c01",
+        "intelligent-algorithms-013:p19:c01",
+        "intelligent-algorithms-013:p20:c01",
+        "intelligent-algorithms-013:p21:c01",
+        "intelligent-algorithms-013:p22:c01",
+        "intelligent-algorithms-013:p23:c01",
+        "intelligent-algorithms-013:p24:c01",
+        "intelligent-algorithms-013:p25:c01",
+        "intelligent-algorithms-013:p26:c01",
+        "intelligent-algorithms-013:p27:c01",
+        "intelligent-algorithms-013:p28:c01",
+        "intelligent-algorithms-013:p29:c01",
+        "intelligent-algorithms-013:p30:c01",
+        "intelligent-algorithms-013:p31:c01",
+        "intelligent-algorithms-013:p32:c01",
+        "intelligent-algorithms-013:p33:c01",
+        "intelligent-algorithms-013:p34:c01",
+        "intelligent-algorithms-013:p35:c01",
+        "intelligent-algorithms-013:p36:c01",
+        "intelligent-algorithms-013:p37:c01",
+        "intelligent-algorithms-013:p38:c01",
+        "intelligent-algorithms-013:p39:c01",
+        "intelligent-algorithms-013:p40:c01",
+        "intelligent-algorithms-013:p41:c01",
+        "intelligent-algorithms-013:p42:c01",
+        "intelligent-algorithms-013:p43:c01",
+        "intelligent-algorithms-013:p44:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-013.md",
+      "source_id": "intelligent-algorithms-013",
+      "source_title": "2. 遗传算法pr",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-014:p1:c01",
+        "intelligent-algorithms-014:p2:c01",
+        "intelligent-algorithms-014:p3:c01",
+        "intelligent-algorithms-014:p4:c01",
+        "intelligent-algorithms-014:p5:c01",
+        "intelligent-algorithms-014:p6:c01",
+        "intelligent-algorithms-014:p7:c01",
+        "intelligent-algorithms-014:p8:c01",
+        "intelligent-algorithms-014:p9:c01",
+        "intelligent-algorithms-014:p10:c01",
+        "intelligent-algorithms-014:p11:c01",
+        "intelligent-algorithms-014:p12:c01",
+        "intelligent-algorithms-014:p13:c01",
+        "intelligent-algorithms-014:p14:c01",
+        "intelligent-algorithms-014:p15:c01",
+        "intelligent-algorithms-014:p16:c01",
+        "intelligent-algorithms-014:p17:c01",
+        "intelligent-algorithms-014:p18:c01",
+        "intelligent-algorithms-014:p19:c01",
+        "intelligent-algorithms-014:p20:c01",
+        "intelligent-algorithms-014:p21:c01",
+        "intelligent-algorithms-014:p22:c01",
+        "intelligent-algorithms-014:p23:c01",
+        "intelligent-algorithms-014:p24:c01",
+        "intelligent-algorithms-014:p25:c01",
+        "intelligent-algorithms-014:p26:c01",
+        "intelligent-algorithms-014:p27:c01",
+        "intelligent-algorithms-014:p28:c01",
+        "intelligent-algorithms-014:p29:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-014.md",
+      "source_id": "intelligent-algorithms-014",
+      "source_title": "3. 差分进化pr",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-015:p1:c01",
+        "intelligent-algorithms-015:p2:c01",
+        "intelligent-algorithms-015:p3:c01",
+        "intelligent-algorithms-015:p4:c01",
+        "intelligent-algorithms-015:p5:c01",
+        "intelligent-algorithms-015:p6:c01",
+        "intelligent-algorithms-015:p7:c01",
+        "intelligent-algorithms-015:p8:c01",
+        "intelligent-algorithms-015:p9:c01",
+        "intelligent-algorithms-015:p10:c01",
+        "intelligent-algorithms-015:p11:c01",
+        "intelligent-algorithms-015:p12:c01",
+        "intelligent-algorithms-015:p13:c01",
+        "intelligent-algorithms-015:p14:c01",
+        "intelligent-algorithms-015:p15:c01",
+        "intelligent-algorithms-015:p16:c01",
+        "intelligent-algorithms-015:p17:c01",
+        "intelligent-algorithms-015:p18:c01",
+        "intelligent-algorithms-015:p19:c01",
+        "intelligent-algorithms-015:p20:c01",
+        "intelligent-algorithms-015:p21:c01",
+        "intelligent-algorithms-015:p22:c01",
+        "intelligent-algorithms-015:p23:c01",
+        "intelligent-algorithms-015:p24:c01",
+        "intelligent-algorithms-015:p25:c01",
+        "intelligent-algorithms-015:p26:c01",
+        "intelligent-algorithms-015:p27:c01",
+        "intelligent-algorithms-015:p28:c01",
+        "intelligent-algorithms-015:p29:c01",
+        "intelligent-algorithms-015:p30:c01",
+        "intelligent-algorithms-015:p31:c01",
+        "intelligent-algorithms-015:p32:c01",
+        "intelligent-algorithms-015:p33:c01",
+        "intelligent-algorithms-015:p34:c01",
+        "intelligent-algorithms-015:p35:c01",
+        "intelligent-algorithms-015:p36:c01",
+        "intelligent-algorithms-015:p37:c01",
+        "intelligent-algorithms-015:p38:c01",
+        "intelligent-algorithms-015:p39:c01",
+        "intelligent-algorithms-015:p40:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-015.md",
+      "source_id": "intelligent-algorithms-015",
+      "source_title": "4. 粒子群优化pr",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-016:p1:c01",
+        "intelligent-algorithms-016:p2:c01",
+        "intelligent-algorithms-016:p3:c01",
+        "intelligent-algorithms-016:p4:c01",
+        "intelligent-algorithms-016:p5:c01",
+        "intelligent-algorithms-016:p6:c01",
+        "intelligent-algorithms-016:p7:c01",
+        "intelligent-algorithms-016:p8:c01",
+        "intelligent-algorithms-016:p9:c01",
+        "intelligent-algorithms-016:p10:c01",
+        "intelligent-algorithms-016:p11:c01",
+        "intelligent-algorithms-016:p12:c01",
+        "intelligent-algorithms-016:p13:c01",
+        "intelligent-algorithms-016:p14:c01",
+        "intelligent-algorithms-016:p15:c01",
+        "intelligent-algorithms-016:p16:c01",
+        "intelligent-algorithms-016:p17:c01",
+        "intelligent-algorithms-016:p18:c01",
+        "intelligent-algorithms-016:p19:c01",
+        "intelligent-algorithms-016:p20:c01",
+        "intelligent-algorithms-016:p21:c01",
+        "intelligent-algorithms-016:p22:c01",
+        "intelligent-algorithms-016:p23:c01",
+        "intelligent-algorithms-016:p24:c01",
+        "intelligent-algorithms-016:p25:c01",
+        "intelligent-algorithms-016:p26:c01",
+        "intelligent-algorithms-016:p27:c01",
+        "intelligent-algorithms-016:p28:c01",
+        "intelligent-algorithms-016:p29:c01",
+        "intelligent-algorithms-016:p30:c01",
+        "intelligent-algorithms-016:p31:c01",
+        "intelligent-algorithms-016:p32:c01",
+        "intelligent-algorithms-016:p33:c01",
+        "intelligent-algorithms-016:p34:c01",
+        "intelligent-algorithms-016:p35:c01",
+        "intelligent-algorithms-016:p36:c01",
+        "intelligent-algorithms-016:p37:c01",
+        "intelligent-algorithms-016:p38:c01",
+        "intelligent-algorithms-016:p39:c01",
+        "intelligent-algorithms-016:p40:c01",
+        "intelligent-algorithms-016:p41:c01",
+        "intelligent-algorithms-016:p42:c01",
+        "intelligent-algorithms-016:p43:c01",
+        "intelligent-algorithms-016:p44:c01",
+        "intelligent-algorithms-016:p45:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-016.md",
+      "source_id": "intelligent-algorithms-016",
+      "source_title": "5. 蚁群优化pr",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-017:p1:c01",
+        "intelligent-algorithms-017:p2:c01",
+        "intelligent-algorithms-017:p3:c01",
+        "intelligent-algorithms-017:p4:c01",
+        "intelligent-algorithms-017:p5:c01",
+        "intelligent-algorithms-017:p6:c01",
+        "intelligent-algorithms-017:p7:c01",
+        "intelligent-algorithms-017:p8:c01",
+        "intelligent-algorithms-017:p9:c01",
+        "intelligent-algorithms-017:p10:c01",
+        "intelligent-algorithms-017:p11:c01",
+        "intelligent-algorithms-017:p12:c01",
+        "intelligent-algorithms-017:p13:c01",
+        "intelligent-algorithms-017:p14:c01",
+        "intelligent-algorithms-017:p15:c01",
+        "intelligent-algorithms-017:p16:c01",
+        "intelligent-algorithms-017:p17:c01",
+        "intelligent-algorithms-017:p18:c01",
+        "intelligent-algorithms-017:p19:c01",
+        "intelligent-algorithms-017:p20:c01",
+        "intelligent-algorithms-017:p21:c01",
+        "intelligent-algorithms-017:p22:c01",
+        "intelligent-algorithms-017:p23:c01",
+        "intelligent-algorithms-017:p24:c01",
+        "intelligent-algorithms-017:p25:c01",
+        "intelligent-algorithms-017:p26:c01",
+        "intelligent-algorithms-017:p27:c01",
+        "intelligent-algorithms-017:p28:c01",
+        "intelligent-algorithms-017:p29:c01",
+        "intelligent-algorithms-017:p30:c01",
+        "intelligent-algorithms-017:p31:c01",
+        "intelligent-algorithms-017:p32:c01",
+        "intelligent-algorithms-017:p33:c01",
+        "intelligent-algorithms-017:p34:c01",
+        "intelligent-algorithms-017:p35:c01",
+        "intelligent-algorithms-017:p36:c01",
+        "intelligent-algorithms-017:p37:c01",
+        "intelligent-algorithms-017:p38:c01",
+        "intelligent-algorithms-017:p39:c01",
+        "intelligent-algorithms-017:p40:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-017.md",
+      "source_id": "intelligent-algorithms-017",
+      "source_title": "6. 进化策略pr",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-018:p1:c01",
+        "intelligent-algorithms-018:p2:c01",
+        "intelligent-algorithms-018:p3:c01",
+        "intelligent-algorithms-018:p4:c01",
+        "intelligent-algorithms-018:p5:c01",
+        "intelligent-algorithms-018:p6:c01",
+        "intelligent-algorithms-018:p7:c01",
+        "intelligent-algorithms-018:p8:c01",
+        "intelligent-algorithms-018:p9:c01",
+        "intelligent-algorithms-018:p10:c01",
+        "intelligent-algorithms-018:p11:c01",
+        "intelligent-algorithms-018:p12:c01",
+        "intelligent-algorithms-018:p13:c01",
+        "intelligent-algorithms-018:p14:c01",
+        "intelligent-algorithms-018:p15:c01",
+        "intelligent-algorithms-018:p16:c01",
+        "intelligent-algorithms-018:p17:c01",
+        "intelligent-algorithms-018:p18:c01",
+        "intelligent-algorithms-018:p19:c01",
+        "intelligent-algorithms-018:p20:c01",
+        "intelligent-algorithms-018:p21:c01",
+        "intelligent-algorithms-018:p22:c01",
+        "intelligent-algorithms-018:p23:c01",
+        "intelligent-algorithms-018:p24:c01",
+        "intelligent-algorithms-018:p25:c01",
+        "intelligent-algorithms-018:p26:c01",
+        "intelligent-algorithms-018:p27:c01",
+        "intelligent-algorithms-018:p28:c01",
+        "intelligent-algorithms-018:p29:c01",
+        "intelligent-algorithms-018:p30:c01",
+        "intelligent-algorithms-018:p31:c01",
+        "intelligent-algorithms-018:p32:c01",
+        "intelligent-algorithms-018:p33:c01",
+        "intelligent-algorithms-018:p34:c01",
+        "intelligent-algorithms-018:p35:c01",
+        "intelligent-algorithms-018:p36:c01",
+        "intelligent-algorithms-018:p37:c01",
+        "intelligent-algorithms-018:p38:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-018.md",
+      "source_id": "intelligent-algorithms-018",
+      "source_title": "7. 遗传编程pr",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-019:p1:c01",
+        "intelligent-algorithms-019:p2:c01",
+        "intelligent-algorithms-019:p3:c01",
+        "intelligent-algorithms-019:p4:c01",
+        "intelligent-algorithms-019:p5:c01",
+        "intelligent-algorithms-019:p6:c01",
+        "intelligent-algorithms-019:p7:c01",
+        "intelligent-algorithms-019:p8:c01",
+        "intelligent-algorithms-019:p9:c01",
+        "intelligent-algorithms-019:p10:c01",
+        "intelligent-algorithms-019:p11:c01",
+        "intelligent-algorithms-019:p12:c01",
+        "intelligent-algorithms-019:p13:c01",
+        "intelligent-algorithms-019:p14:c01",
+        "intelligent-algorithms-019:p15:c01",
+        "intelligent-algorithms-019:p16:c01",
+        "intelligent-algorithms-019:p17:c01",
+        "intelligent-algorithms-019:p18:c01",
+        "intelligent-algorithms-019:p19:c01",
+        "intelligent-algorithms-019:p20:c01",
+        "intelligent-algorithms-019:p21:c01",
+        "intelligent-algorithms-019:p22:c01",
+        "intelligent-algorithms-019:p23:c01",
+        "intelligent-algorithms-019:p24:c01",
+        "intelligent-algorithms-019:p25:c01",
+        "intelligent-algorithms-019:p26:c01",
+        "intelligent-algorithms-019:p27:c01",
+        "intelligent-algorithms-019:p28:c01",
+        "intelligent-algorithms-019:p29:c01",
+        "intelligent-algorithms-019:p30:c01",
+        "intelligent-algorithms-019:p31:c01",
+        "intelligent-algorithms-019:p32:c01",
+        "intelligent-algorithms-019:p33:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-019.md",
+      "source_id": "intelligent-algorithms-019",
+      "source_title": "9. 强化学习基础pr",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-020:h-pasted-image-20250331190819:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-020.md",
+      "source_id": "intelligent-algorithms-020",
+      "source_title": "Pasted image 20250331190819",
+      "year": "2025"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-021:h-pasted-image-20250331190918:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-021.md",
+      "source_id": "intelligent-algorithms-021",
+      "source_title": "Pasted image 20250331190918",
+      "year": "2025"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-022:h-de算法的基本理念:c01",
+        "intelligent-algorithms-022:h-de算法的基本理念~1.-初始化种群-设置算法参数:c01",
+        "intelligent-algorithms-022:h-de算法的基本理念~1.-初始化种群-设置算法参数~2.-进化过程:c01",
+        "intelligent-algorithms-022:h-de算法适合应用场景:c01",
+        "intelligent-algorithms-022:h-de算法适合应用场景~相比ga-它不能做离散优化问题-但优势是参数少-可以在精度和速度中较为平衡-3.-差分进化pr-1-.pdf-page-16-rect-123-84-783-394-3.-差分进化pr-1-p.16:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-022.md",
+      "source_id": "intelligent-algorithms-022",
+      "source_title": "差分进化DE",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-023:h-智能优化算法目录~优化算法-顾名思义-optimize其他算法-结合-参数很重要:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-023.md",
+      "source_id": "intelligent-algorithms-023",
+      "source_title": "智能优化算法目录",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-024:h-梯度优化策略gd:c01",
+        "intelligent-algorithms-024:h-梯度优化策略gd~小心过拟合-万事留一线-我们可以搞一个lambert去测试拟合好坏:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-024.md",
+      "source_id": "intelligent-algorithms-024",
+      "source_title": "梯度优化策略GD",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-025:h-sa算法的基本理念:c01",
+        "intelligent-algorithms-025:h-sa算法适合应用场景~在解空间复杂-存在多个局部最优解的情况下表现出色~优点~全局搜索能力-能够跳出局部最优-具有较强的全局优化能力~参数选择敏感-算法的性能对参数-如初始温度-降温系数等-的选择较为敏感:c01",
+        "intelligent-algorithms-025:h-问题-初始参数的选择~1.-初始温度-t0:c01",
+        "intelligent-algorithms-025:h-问题-初始参数的选择~2.-降温系数-alpha:c01",
+        "intelligent-algorithms-025:h-问题-初始参数的选择~3.-每个温度下的迭代次数-l:c01",
+        "intelligent-algorithms-025:h-问题-初始参数的选择~4.-结束温度-tk:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-025.md",
+      "source_id": "intelligent-algorithms-025",
+      "source_title": "模拟退火SA",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-026:h-pso算法的基本理念:c01",
+        "intelligent-algorithms-026:h-pso算法适合应用场景~在函数优化和参数权重及图像处理有优势-但传统pso函数优化比不过de-de的rand-1适合多峰-best-1适合单峰:c01",
+        "intelligent-algorithms-026:h-自适应参数调整-邻域最优经验和精英策略的优化pso算法的python代码示例-用于求解sphere函数优化问题:c01",
+        "intelligent-algorithms-026:h-解析-对传统pso的优化:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-026.md",
+      "source_id": "intelligent-algorithms-026",
+      "source_title": "粒子群优化PSO",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-027:h-aco算法的基本理念:c01",
+        "intelligent-algorithms-027:h-aco算法适合应用场景~广泛应用于解决组合优化问题~具体优化:c01",
+        "intelligent-algorithms-027:h-aco算法适合应用场景~广泛应用于解决组合优化问题~相关优化参数设置:c01",
+        "intelligent-algorithms-027:h-aco算法适合应用场景~广泛应用于解决组合优化问题~相关优化参数设置:c02",
+        "intelligent-algorithms-027:h-问题-初始参数的选择~1.-蚂蚁数量-num_ants:c01",
+        "intelligent-algorithms-027:h-问题-初始参数的选择~1.-蚂蚁数量-num_ants~2.-最大迭代次数-max_iterations:c01",
+        "intelligent-algorithms-027:h-问题-初始参数的选择~1.-蚂蚁数量-num_ants~3.-信息素重要性参数-alpha:c01",
+        "intelligent-algorithms-027:h-问题-初始参数的选择~1.-蚂蚁数量-num_ants~4.-启发式信息重要性参数-beta:c01",
+        "intelligent-algorithms-027:h-问题-初始参数的选择~1.-蚂蚁数量-num_ants~5.-信息素蒸发率-evaporation_rate:c01",
+        "intelligent-algorithms-027:h-问题-初始参数的选择~1.-蚂蚁数量-num_ants~6.-信息素增加量-q:c01",
+        "intelligent-algorithms-027:h-问题-初始参数的选择~1.-蚂蚁数量-num_ants~7.-信息素最小值-tau_min-和最大值-tau_max:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-027.md",
+      "source_id": "intelligent-algorithms-027",
+      "source_title": "蚁群优化ACO",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-028:h-进化策略es~cma-es-协方差矩阵自适应演化:c01",
+        "intelligent-algorithms-028:h-我们学这两个东西用处是什么:c01",
+        "intelligent-algorithms-028:h-我们学这两个东西用处是什么~使用遗传算法来优化一个简单的神经网络-解决xor问题:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-028.md",
+      "source_id": "intelligent-algorithms-028",
+      "source_title": "进化策略ES",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-029:h-ga算法的基本理念:c01",
+        "intelligent-algorithms-029:h-ga算法适合应用场景~广泛应用于优化和搜索问题-可以用于优化函数和tsp问题:c01",
+        "intelligent-algorithms-029:h-ga算法适合应用场景~广泛应用于优化和搜索问题-可以用于优化函数和tsp问题:c02",
+        "intelligent-algorithms-029:h-问题-初始参数的选择~1.-种群大小-population-size:c01",
+        "intelligent-algorithms-029:h-问题-初始参数的选择~1.-种群大小-population-size~2.-交叉概率-crossover-probability:c01",
+        "intelligent-algorithms-029:h-问题-初始参数的选择~1.-种群大小-population-size~3.-变异概率-mutation-probability:c01",
+        "intelligent-algorithms-029:h-问题-初始参数的选择~1.-种群大小-population-size~4.-迭代次数-generations:c01",
+        "intelligent-algorithms-029:h-问题-初始参数的选择~1.-种群大小-population-size~5.-选择策略-selection-strategy:c01",
+        "intelligent-algorithms-029:h-问题-初始参数的选择~1.-种群大小-population-size~6.-交叉策略-crossover-strategy:c01",
+        "intelligent-algorithms-029:h-问题-初始参数的选择~1.-种群大小-population-size~7.-变异策略-mutation-strategy:c01",
+        "intelligent-algorithms-029:h-问题-初始参数的选择~1.-种群大小-population-size~8.-精英策略-elitist-strategy:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-029.md",
+      "source_id": "intelligent-algorithms-029",
+      "source_title": "遗传算法GA",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-030:h-遗传编程gp~7.-遗传编程pr.pdf-page-13-rect-62-104-800-451-7.-遗传编程pr-p.13-7.-遗传编程pr.pdf-page-14-rect-64-58-800-468-7.-遗传编程pr-p.14-gp参数终止条件:c01",
+        "intelligent-algorithms-030:h-遗传编程gp~gp解决符号回归代码示例:c01",
+        "intelligent-algorithms-030:h-遗传编程gp~gp解决符号回归代码示例:c02"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-030.md",
+      "source_id": "intelligent-algorithms-030",
+      "source_title": "遗传编程GP",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c01",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c02",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c03",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c04",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c05",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c06",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c07",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c08",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c09",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c10",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c11",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c12",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c13",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c14",
+        "intelligent-algorithms-031:h-lybbo-融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用:c15"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-031.md",
+      "source_id": "intelligent-algorithms-031",
+      "source_title": "LYBBO：融合差分进化与增强蚁群的生物地理优化器在复杂地形无人机路径规划中的应用",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-032:h-fes:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-032.md",
+      "source_id": "intelligent-algorithms-032",
+      "source_title": "FEs",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-033:h-gap:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-033.md",
+      "source_id": "intelligent-algorithms-033",
+      "source_title": "Gap",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-034:h-gap_c:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-034.md",
+      "source_id": "intelligent-algorithms-034",
+      "source_title": "Gap_C",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-035:h-obj:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-035.md",
+      "source_id": "intelligent-algorithms-035",
+      "source_title": "Obj",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-036:h-obj_c:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-036.md",
+      "source_id": "intelligent-algorithms-036",
+      "source_title": "Obj_C",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "intelligent-algorithms-037:h-overall_table_processed:c01"
+      ],
+      "course_id": "intelligent_algorithms",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "intelligent_algorithms/intelligent-algorithms-037.md",
+      "source_id": "intelligent-algorithms-037",
+      "source_title": "overall_table_processed",
+      "year": null
+    }
+  ],
+  "statistics": {
+    "chunk_count": 658,
+    "question_count": 0,
+    "source_count": 37
+  },
+  "workflow_version": "workflow-contract-v1"
+}

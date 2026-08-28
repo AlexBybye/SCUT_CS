@@ -1,0 +1,129 @@
+{
+  "chunks": [
+    {
+      "assets": [],
+      "chunk_id": "information-security-intro-002:p1:c01",
+      "course_id": "information_security_intro",
+      "heading_path": [
+        "2021-2022-1学期《信息安全导论》B卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-intro-002",
+      "source_title": "2021-2022-1学期《信息安全导论》B卷",
+      "text": "![page-001.jpg](assets/information-security-intro-002/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-intro-002:p2:c01",
+      "course_id": "information_security_intro",
+      "heading_path": [
+        "2021-2022-1学期《信息安全导论》B卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-intro-002",
+      "source_title": "2021-2022-1学期《信息安全导论》B卷",
+      "text": "![page-002.jpg](assets/information-security-intro-002/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-intro-002:p3:c01",
+      "course_id": "information_security_intro",
+      "heading_path": [
+        "2021-2022-1学期《信息安全导论》B卷"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-intro-002",
+      "source_title": "2021-2022-1学期《信息安全导论》B卷",
+      "text": "![page-003.jpg](assets/information-security-intro-002/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-intro-002:p4:c01",
+      "course_id": "information_security_intro",
+      "heading_path": [
+        "2021-2022-1学期《信息安全导论》B卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "information-security-intro-002",
+      "source_title": "2021-2022-1学期《信息安全导论》B卷",
+      "text": "![page-004.jpg](assets/information-security-intro-002/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-intro-003:h-信安导论-复习提纲-v1-精简版:c01",
+      "course_id": "information_security_intro",
+      "heading_path": [
+        "《信安导论》复习提纲 v1 (精简版)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "information-security-intro-003",
+      "source_title": "《信安导论》复习提纲 v1 (精简版)",
+      "text": "复习提纲\n\n第一章\n\n1.1\n- 信息安全的ISO定义、信息安全的目的（p1）。\n- 信息安全的几个要素的涵义，具体包括：机密性、完整性、可用性、可控性、不可否认性。（p2）\n- 信息保障的三要素：人、技术和管理。（p2）\n- 信息保障的四个方面：保护、检测、反应和恢复。（p2)\n\n1.2\n- 信息安全威胁的基本类型：信息泄露、伪造、完整性破坏、业务否决或拒绝服务、未经授权访问（p3~4)\n\n1.3\n- 社会工程学攻击的概念 （教材p9）\n\n1.4\n- 信息安全的三个基本目标 ，CIA三元组，DAD三元组（教材p9）\n- 信息系统的三个基本要素：人、信息、系统（p10）\n- 信息系统的五个安全层次：物理安全、运行安全、数据安全、内容安全、管理安全（p10-11）\n\n第二章\n\n2.1\n- 密码学（Cryptography）的作用：是信息安全的核心基础。\n- 密码学的构成：（1）密码编码学；（2）密码分析学；\n- 密码编码学、密码分析学的定义（p15，2.1.1）\n- 现代密码学的理论基础：香农在1949年发表的《秘密体制的通信理论》使密码学真正成为了一门科学。（p15）\n- 加密通信模型（p16\t，图2.1）\n- 密码体制的五要素：M、C、K、E、D（p16）\n- 依据密码体制的特点及出现的时间，可以将密码大致划分为三个类别：古典替换密码、对称密钥密码和公开密钥密码。\n- 古典替换密码主要包括：单表代替密码、多表代替密码等。（p17）\n- 对称密钥密码通常分为两类：分组密码（Block Cipher）和序列密码（Stream Cipher，流密码）\n\n2.2 古典替换密码\n- 移位密码原理，凯撒密码是一种移位密码。\n- 乘数密码原理.\n- 仿射密码原理\n- 多表替代密码原理\n\n2.3 对称密钥密码\n- DES加密算法主要特点：分组长度，有效密钥长度，运算轮数…\n- 分组密码的工作模式：ECB模式，CBC模式,……（p27，2.3.3）\n- 三重DES基本原理（p30）\n- AES加密算法主要特点：分组长度、密钥长度、计算轮数…（p31）\n- （补充）对称密钥体制的加密过程中，混淆（confusion）和扩散（diffusion）两种操作的作用（参见ppt）."
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-intro-003:h-信安导论-复习提纲-v1-精简版:c02",
+      "course_id": "information_security_intro",
+      "heading_path": [
+        "《信安导论》复习提纲 v1 (精简版)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "information-security-intro-003",
+      "source_title": "《信安导论》复习提纲 v1 (精简版)",
+      "text": "2.4 公开密钥密码\n- 公钥密码提出的标志：1976年的Diffie-Hellman密钥交换算法（p33）\n- 公开密钥密码与对称密钥密码的不同：不是基于代替和置换，而是基于数学函数；非对称/双密钥； 六要素；支持不可抵赖性（不可否认性）（p32）\n- 公开密钥密码与对称密钥密码相比，其优缺点：\n  - 优点：解决了密钥分发到的难题，密钥管理简单容易，便于实现数字签名。\n  - 缺点：计算开销大、加密和解密速度慢、要求密钥位数更多、密文长度往往大于明文长度。\n- 公钥密码通信的安全性保障：私钥的保密性\n- 公钥密码体系的特点：公、私钥成对生成，公钥和算法对外公开，私钥保密。\n- 公钥密码体系的应用场合：（1）加密信息（机密性）；（2）身份认证（可认证性）；\n- 公钥密码的核心思想：单向陷门函数的三个条件、单向性、陷门性、陷门信息（p33）；\n- Diffie-Hellman密钥交换算法：原根、离散对数、算法过程（p34）\n- 公开密钥算法数学基础：欧拉函数的概念、欧拉定理的使用、算法时间复杂度的表示方式（p35）\n- RSA密码算法：大整数因子分解问题、分组密码、密钥生成步骤、辗转相除法求逆元（p35-36）\n- 椭圆曲线密码体制（Elliptic Curve Cryptosystems，ECC）相比RSA的优势（p37）\n\n2.5 消息认证\n- 认证的目的：（1）验证收发双方；（2）验证消息的完整性；（p38）\n- 认证的手段：消息认证、数字签名、实体认证、摘要函数（Hash 函数）（p38）\n- 消息认证的目的：证明消息的信源、信宿真实性；消息内容没有受到篡改、消息序号和时间性正确。\n- 消息认证的手段：消息加密；消息认证码（MAC）； （p38）\n- 主要的消息摘要算法：MD5， SHA-1， SHA-256等\n- 散列函数的健壮性：弱无碰撞、强无碰撞、单向性（p40-41）\n- 散列函数的安全长度：生日悖论、生日攻击、消息摘要长度下限…(p41)\n- 数字签名作用：防止抵赖\n- 数字签名原理：用私钥对散列值进行加密，用公钥做验证。（p45）\n\n第四章\n\n4.1\n- 身份认证的依据：三个方面：用户所知道的、所拥有的、所具有的…（p57）\n- 身份认证的技术：口令认证、密码学认证、生物特征认证，各自的优缺点（p57）\n- （补充）基于令牌的认证：用户持有的用于进行认证的一种物品，比如：银行卡（磁条卡、智能卡，……）、电子身份证；\n- 单因子认证与双因子认证；"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-intro-003:h-信安导论-复习提纲-v1-精简版:c03",
+      "course_id": "information_security_intro",
+      "heading_path": [
+        "《信安导论》复习提纲 v1 (精简版)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "information-security-intro-003",
+      "source_title": "《信安导论》复习提纲 v1 (精简版)",
+      "text": "4.2 认证协议\n- 基于挑战-应答方式的认证协议基本原理（p58）\n- Needham-Schroeder认证协议：理解认证过程；\n- Kerberos认证协议：基于对称密钥系统为C/S应用提供的第三方认证服务；由AS和TGS构成；理解其认证过程（三阶段、六步骤）。（p59）\n- Windows系统安全认证：主域控制器的作用、交互过程不在网络上传递口令及其散列值（哈希值）。\n- Needham-Schroeder公钥认证协议：协议交互过程；(p62)\n- 公钥交换存在的问题： 双方直接交换公钥容易受到中间人攻击，由此提出了基于数字证书、利用PKI解决公钥交换的问题。(见ppt)\n- 数字证书的结构（X.509 v3）（p62 图4.4）；\n- 数字证书的可信性验证方法： 获取证书、生成摘要、与CA签名比较……\n- 基于CA数字证书的认证协议：数字证书的概念、主要内容，身份认证过程（图4.5）；（p62-63）\n\n4.3 PKI\n- 公钥基础设施（PKI）的组成结构及各个组件的功能（图4.6， p63-64）\n- PKI涉及的标准： 证书格式遵循X.509，访问协议遵循LDAP . （p64-66）\n- 根证书、证书链的概念（p64）\n- 用户查询证书库的目的：获取公钥、验证证书有效性（p64）\n- PKI的密钥备份与恢复功能（p64）\n- 证书申请撤销的原因（p64）\n- PKI的典型功能（p66）\n\n第五章\n\n5.1\n- 访问控制的基本组成元素： 主体、客体、访问控制策略（p67）\n- 主要的三种访问控制模型（p68）\n- 自主访问控制模型（DAC Model）的原理、权限的三种存储方式（ACL/ACCL/ACM）， 优缺点； （p68-70）\n- 强制访问控制模型（MAC Model）的原理，优缺点（p70）\n- Bell-LaPadula (BLP)模型与Biba模型的比较（p70）\n- 基于角色的访问控制模型（RBAC Model）原理，优缺点；\n- 制定访问控制策略需遵守的三个原则（p72）\n\n5.3  Windows 系统的安全管理\n- Windows系统的访问控制的构成（两大组件）（p74）\n- 访问令牌和安全描述符的主要功能（p74-76）\n\n第六章"
+    },
+    {
+      "assets": [],
+      "chunk_id": "information-security-intro-003:h-信安导论-复习提纲-v1-精简版:c04",
+      "course_id": "information_security_intro",
+      "heading_path": [
+        "《信安导论》复习提纲 v1 (精简版)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "information-security-intro-003",
+      "source_title": "《信安导论》复习提纲 v1 (精简版)",
+      "text": "6.2\n- 计算机病毒根据工作原理和传播方式划分为三类（p82）\n- CIH病毒属于传统病毒，其主要由三个模块构成，包括：  …（p82-83）\n- CIH病毒的攻击对象：PE格式的exe文件（p83）\n- CIH病毒发作的方式：启动模块驻留内存，传染模块和破坏模块均为条件触发。（p83）\n- CIH病毒的主要传播方式是文件复制（p83）\n- CIH病毒的查杀方式：手工检测、杀毒软件。（p83）\n- 蠕虫病毒的特征：传染性、网络传播、利用漏洞…\n- 尼姆达（Nimda）是典型的蠕虫病毒，能够通过网页、邮件和本地共享区传播（p85）\n- Nimda病毒的攻击对象：本地PE格式文件（p86）\n- 木马病毒的特点：以控制计算机为目的（87）\n- 木马的构成：控制端（客户端）、木马程序（服务器端）、木马配置程序（p87）\n- 病毒防治的四个方面：检测、清除、预防、免疫（p89-92）\n\n6.3 网络入侵\n- 拒绝服务攻击（DoS）的攻击方式：发送非法的协议分组，或构造大量网络流量，使系统或网络无法响应正常的服务（p93）\n\n第七章\n\n7.2\n- 防火墙的定义（p107）\n- 防火墙的主要功能：主要用于隔离内网与外网，控制和过滤内外网之间的网络数据流量（p107-108）\n- 防火墙的主要局限性：无法检测不经过防火墙的流量，不能防范内部人员的恶意攻击，不能阻止被病毒感染和有害程序或文件的传递（比如：木马），不能阻止数据驱动式攻击（比如：缓冲区溢出）。\n- 入侵检测系统（IDS）主要功能：对网络传输实时监测，并及时发出警报。（p116）\n\n---End---"
+    }
+  ],
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "information_security_intro",
+  "questions": [],
+  "schema_version": "course-index-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e"
+}

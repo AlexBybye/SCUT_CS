@@ -21,6 +21,7 @@ query 变体、rerank）的评测基线。格式契约见 `retrieval_eval.py` �
 
 - `query`：学生自然会问的检索词，**不是** chunk 原文照抄。
 - `expected_chunk_ids`：该 query 必须命中的 chunk_id（可多个，表示"都该进 top-K"）。
+  纯图片且没有任何文本 chunk 的课程不进入当前 active candidate，也不进入本次评测。
 - `note`：标注来源类别（历年题题干→题目 chunk / 知识点名词→定义标题 chunk 等）。
 
 ## 标注规则（每门首批 ≥30 条，人工核对）
@@ -40,10 +41,11 @@ api/.venv/bin/python -m scut_senior_api.eval_runner \
   --report resources/evaluation/retrieval-baseline.json
 ```
 
-`--min-score` 默认 6（沿用一期 `retrieval_min_score`），噪声率偏高时再据此重定标。
+`--min-score` 默认 1.0（PLAN-2 BM25F 重定标后的 `retrieval_min_score`），噪声率偏高时再据此重定标。
 
 ## 状态
 
-- `linear_algebra.json`：**种子样例**（8 条，已验证 top-1 命中），用于打通机制；
-  完整 ≥30 条人工标注待补（PLAN-2 §7 待确认事项 1：标注人力归属）。
-- 其余 45 门课程：待标注。
+- 46 门课程：每门 30 条查询与目标 chunk 已由维护者审核确认，均绑定当前 active
+  corpus 的真实 chunk。纯图片、零文本来源已从 active candidate 排除。
+- 这些条目是当前 `corpus-c1513a68...-ebge-small-zh-v1.5` 的 P0 验收基线；换语料
+  或 embedding 模型后，必须重新核对并记录对应版本。

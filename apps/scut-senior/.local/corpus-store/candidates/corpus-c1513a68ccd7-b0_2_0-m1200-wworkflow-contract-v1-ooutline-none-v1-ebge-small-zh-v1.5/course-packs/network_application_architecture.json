@@ -1,0 +1,45 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "network_application_architecture",
+  "course_pack_version": "course-pack-network_application_architecture-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "network-application-architecture-001:p1:c01",
+        "network-application-architecture-001:p2:c01"
+      ],
+      "heading_path": [
+        "《网络应用开发》复习指南"
+      ],
+      "source_ids": [
+        "network-application-architecture-001"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "network-application-architecture-001:p1:c01",
+        "network-application-architecture-001:p2:c01"
+      ],
+      "course_id": "network_application_architecture",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "network_application_architecture/network-application-architecture-001.md",
+      "source_id": "network-application-architecture-001",
+      "source_title": "《网络应用开发》复习指南",
+      "year": null
+    }
+  ],
+  "statistics": {
+    "chunk_count": 2,
+    "question_count": 0,
+    "source_count": 1
+  },
+  "workflow_version": "workflow-contract-v1"
+}

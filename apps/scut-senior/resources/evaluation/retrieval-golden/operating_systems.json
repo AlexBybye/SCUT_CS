@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "operating_systems",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "OS Review主要讲什么？",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-os-review:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习① 知识点，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-1-题-用户态与内核态~1-知识点:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习② 测试题型时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-1-题-用户态与内核态~1-知识点~2-测试题型:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "③ 参考答案与解析里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-1-题-用户态与内核态~1-知识点~3-参考答案与解析:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习① 知识点时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-2-题-进程与线程~1-知识点:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考② 测试题型？",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-2-题-进程与线程~1-知识点~2-测试题型:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "③ 参考答案与解析主要讲什么？",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-2-题-进程与线程~1-知识点~3-参考答案与解析:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习① 知识点，应该从哪里开始？，第8条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-3-题-进程状态~1-知识点:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习② 测试题型时哪些内容最重要？，第9条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-3-题-进程状态~1-知识点~2-测试题型:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "③ 参考答案与解析里的方法或结论怎么理解？，第10条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-3-题-进程状态~1-知识点~3-参考答案与解析:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习① 知识点时哪些概念容易混淆？，第11条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-4-题-pcb-process-control-block~1-知识点:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考② 测试题型？，第12条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-4-题-pcb-process-control-block~1-知识点~2-测试题型:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "③ 参考答案与解析主要讲什么？，第13条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-4-题-pcb-process-control-block~1-知识点~3-参考答案与解析:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习① 知识点，应该从哪里开始？，第14条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-5-题-上下文切换~1-知识点:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习② 测试题型时哪些内容最重要？，第15条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-5-题-上下文切换~1-知识点~2-测试题型:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "③ 参考答案与解析里的方法或结论怎么理解？，第16条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-5-题-上下文切换~1-知识点~3-参考答案与解析:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习① 知识点时哪些概念容易混淆？，第17条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-6-题-系统调用机制~1-知识点:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考② 测试题型？，第18条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-6-题-系统调用机制~1-知识点~2-测试题型:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "③ 参考答案与解析主要讲什么？，第19条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-6-题-系统调用机制~1-知识点~3-参考答案与解析:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习① 知识点，应该从哪里开始？，第20条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-7-题-中断-interrupt~1-知识点:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习② 测试题型时哪些内容最重要？，第21条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-7-题-中断-interrupt~1-知识点~2-测试题型:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "③ 参考答案与解析里的方法或结论怎么理解？，第22条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-7-题-中断-interrupt~1-知识点~3-参考答案与解析:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习① 知识点时哪些概念容易混淆？，第23条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-8-题-cpu-调度-fcfs~1-知识点:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考② 测试题型？，第24条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-8-题-cpu-调度-fcfs~1-知识点~2-测试题型:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "③ 参考答案与解析主要讲什么？，第25条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-8-题-cpu-调度-fcfs~1-知识点~3-参考答案与解析:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习① 知识点，应该从哪里开始？，第26条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-9-题-sjf-shortest-job-first~1-知识点:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习② 测试题型时哪些内容最重要？，第27条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-9-题-sjf-shortest-job-first~1-知识点~2-测试题型:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "③ 参考答案与解析里的方法或结论怎么理解？，第28条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-9-题-sjf-shortest-job-first~1-知识点~3-参考答案与解析:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习① 知识点时哪些概念容易混淆？，第29条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-10-题-rr-round-robin~1-知识点:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考② 测试题型？，第30条",
+      "expected_chunk_ids": [
+        "operating-systems-001:h-第-10-题-rr-round-robin~1-知识点~2-测试题型:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

@@ -29,8 +29,10 @@ from typing import Any, Iterable
 from .adapters.mock import MockIdentityProvider
 from .adapters.openrouter import UrllibJsonHttpClient
 from .config import Settings
+from .adapters.onnx import OnnxEmbeddingProvider
 from .contracts import WorkflowRunRequest, WorkflowType
 from .main import create_app
+from .paths import APP_ROOT
 from .ports import UserIdentity
 from .retrieval_eval import (
     DEFAULT_CORPUS_STORE,
@@ -363,6 +365,16 @@ def _parser() -> argparse.ArgumentParser:
         help="retrieval min_score floor for --retrieval-only (default 1.0)",
     )
     parser.add_argument(
+        "--hybrid",
+        action="store_true",
+        help="enable the local ONNX dense leg and rule rerank for retrieval-only",
+    )
+    parser.add_argument(
+        "--onnx-model-dir",
+        type=Path,
+        help="local bge-small-zh-v1.5 directory for --hybrid (default .local/models/...)",
+    )
+    parser.add_argument(
         "--provider",
         default="mock",
         help="platform provider id for real-model runs (e.g. zhipu); "
@@ -391,11 +403,18 @@ def _parser() -> argparse.ArgumentParser:
 
 def _run_retrieval_only(args: argparse.Namespace) -> int:
     try:
+        embedding = None
+        if args.hybrid:
+            model_dir = args.onnx_model_dir or (
+                APP_ROOT / ".local" / "models" / "bge-small-zh-v1.5"
+            )
+            embedding = OnnxEmbeddingProvider(model_dir)
         report = run_retrieval_evaluation(
             args.golden,
             args.report,
             store_root=args.corpus_store,
             min_score=args.min_score,
+            embedding=embedding,
         )
     except ValueError as exc:
         print(f"retrieval evaluation failed: {exc}", file=sys.stderr)

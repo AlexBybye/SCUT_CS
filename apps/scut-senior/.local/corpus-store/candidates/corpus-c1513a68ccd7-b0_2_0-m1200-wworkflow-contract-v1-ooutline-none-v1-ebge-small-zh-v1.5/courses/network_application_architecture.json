@@ -1,0 +1,39 @@
+{
+  "chunks": [
+    {
+      "assets": [],
+      "chunk_id": "network-application-architecture-001:p1:c01",
+      "course_id": "network_application_architecture",
+      "heading_path": [
+        "《网络应用开发》复习指南"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "network-application-architecture-001",
+      "source_title": "《网络应用开发》复习指南",
+      "text": "《网络应用开发》复习指南\n\n考试安排\n\n日期：2026年1月12日（星期一）\n\n时间：9:00 ~ 11:00\n\n地点：A1-201， A1-202\n\n期末试卷的说明\n\n四道大题\n\n单项选择题 (10道单选)\n\n填空题 （5个）\n\n简答题 （4~5道）\n\n编程题\n\n注意事项\n\n试卷分为试题卷(4页)和答题卷(6页)；\n\n请把答案写在答题卷上，试卷上的答题无效；\n\n考试前公布座位号，因此一定要在试题卷以及答题卷的相应位置填写自己的姓名，学号，专业班级，座位号。\n\n试题特点\n\n侧重对基础知识的考查\n\n侧重对实践编程能力的考查\n\n考试范围\n\nWeb 基础知识\n\nHTML 基本概念\n\nHTTP 协议\n\nTomcat 的基本概念，配置，部署\n\nServlet\n\nServlet 基本概念\n\nHttpServlet 类\n\nServletConfig 接口和`ServletContext 接口\n\nHttpServletResponse 对象 和 HttpServletRequest 对象\n\ndoGet() 和doPost()\n\nRequestDispatch 对象\n\nCookie 对象和Session 对象"
+    },
+    {
+      "assets": [],
+      "chunk_id": "network-application-architecture-001:p2:c01",
+      "course_id": "network_application_architecture",
+      "heading_path": [
+        "《网络应用开发》复习指南"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "network-application-architecture-001",
+      "source_title": "《网络应用开发》复习指南",
+      "text": "Servlet 的生命周期\n\nFilter 过滤器\n\nListener 监听器\n\nJSP\n\nJSP 基本概念\n\nJSP 的语法\n\nJSP 的执行过程\n\n与Servlet 的区别\n\nJSP 指令\n\nJSP 的内置对象\n\nJSP 动作\n\nJSP 隐含对象\n\ninclude 与forward\n\nEL 和 JSTL\n\nJavaBean 的基本概念\n\nEL 的基本概念，标识符，保留字，变量，常量，运算符\n\nJSTL 的基本概念，标签\n\nJDBC\n\nJDBC 的基本概念\n\nJDBC 的常用API\n\nJDBC 的程序实现\n\nMVC 设计模式\n\nMVC 设计模式的基本概念\n\n两种常用的设计模式\n\nSpring\n\nSpring 的基本概念\n\n依赖注入\n\n面向切面的编程，\n\n备注：\n\n以上所列考试范围仅供参考；\n\n为了确保考试的公平，考前将不回答任何与考题相关内容的提问，敬请谅解。"
+    }
+  ],
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "network_application_architecture",
+  "questions": [],
+  "schema_version": "course-index-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e"
+}

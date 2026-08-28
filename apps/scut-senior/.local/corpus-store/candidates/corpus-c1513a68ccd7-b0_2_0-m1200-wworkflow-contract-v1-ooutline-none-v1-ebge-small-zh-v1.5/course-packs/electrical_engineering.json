@@ -1,0 +1,379 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "electrical_engineering",
+  "course_pack_version": "course-pack-electrical_engineering-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "electrical-engineering-003:p1:c01",
+        "electrical-engineering-003:p2:c01"
+      ],
+      "heading_path": [
+        "2020电工学a卷"
+      ],
+      "source_ids": [
+        "electrical-engineering-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "electrical-engineering-001:p1:c01",
+        "electrical-engineering-001:p2:c01",
+        "electrical-engineering-001:p3:c01",
+        "electrical-engineering-001:p4:c01",
+        "electrical-engineering-001:p5:c01",
+        "electrical-engineering-001:p6:c01",
+        "electrical-engineering-001:p7:c01"
+      ],
+      "heading_path": [
+        "2021年电工学复习资料"
+      ],
+      "source_ids": [
+        "electrical-engineering-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "electrical-engineering-004:h-2022级电工回忆版:c01"
+      ],
+      "heading_path": [
+        "2022级电工回忆版"
+      ],
+      "source_ids": [
+        "electrical-engineering-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "electrical-engineering-005:p1:c01",
+        "electrical-engineering-005:p2:c01",
+        "electrical-engineering-005:p3:c01",
+        "electrical-engineering-005:p4:c01",
+        "electrical-engineering-005:p5:c01"
+      ],
+      "heading_path": [
+        "2023电工学a卷"
+      ],
+      "source_ids": [
+        "electrical-engineering-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "electrical-engineering-003:p4:c02",
+        "electrical-engineering-003:p5:c01"
+      ],
+      "heading_path": [
+        "A# 4A # 5"
+      ],
+      "source_ids": [
+        "electrical-engineering-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "electrical-engineering-003:p2:c02",
+        "electrical-engineering-003:p3:c01",
+        "electrical-engineering-003:p4:c01"
+      ],
+      "heading_path": [
+        "NI#"
+      ],
+      "source_ids": [
+        "electrical-engineering-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "electrical-engineering-008:p1:c01",
+        "electrical-engineering-008:p2:c01",
+        "electrical-engineering-008:p3:c01",
+        "electrical-engineering-008:p4:c01",
+        "electrical-engineering-008:p5:c01"
+      ],
+      "heading_path": [
+        "电工与电子技术II 复习大纲 修改"
+      ],
+      "source_ids": [
+        "electrical-engineering-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "electrical-engineering-009:h-电路与电子技术-复习大纲:c01",
+        "electrical-engineering-009:h-电路与电子技术-复习大纲:c02"
+      ],
+      "heading_path": [
+        "电路与电子技术 复习大纲"
+      ],
+      "source_ids": [
+        "electrical-engineering-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "electrical-engineering-002:p1:c01",
+        "electrical-engineering-002:p2:c01",
+        "electrical-engineering-002:p3:c01",
+        "electrical-engineering-002:p4:c01",
+        "electrical-engineering-002:p5:c01",
+        "electrical-engineering-002:p6:c01",
+        "electrical-engineering-002:p7:c01",
+        "electrical-engineering-002:p8:c01",
+        "electrical-engineering-002:p9:c01",
+        "electrical-engineering-002:p10:c01",
+        "electrical-engineering-002:p11:c01",
+        "electrical-engineering-002:p12:c01",
+        "electrical-engineering-002:p13:c01",
+        "electrical-engineering-002:p14:c01",
+        "electrical-engineering-002:p15:c01",
+        "electrical-engineering-002:p16:c01",
+        "electrical-engineering-002:p17:c01",
+        "electrical-engineering-002:p18:c01",
+        "electrical-engineering-002:p19:c01",
+        "electrical-engineering-002:p20:c01",
+        "electrical-engineering-002:p21:c01",
+        "electrical-engineering-002:p22:c01",
+        "electrical-engineering-002:p23:c01",
+        "electrical-engineering-002:p24:c01",
+        "electrical-engineering-002:p25:c01",
+        "electrical-engineering-002:p26:c01",
+        "electrical-engineering-002:p27:c01",
+        "electrical-engineering-002:p28:c01",
+        "electrical-engineering-002:p29:c01",
+        "electrical-engineering-002:p30:c01",
+        "electrical-engineering-002:p31:c01",
+        "electrical-engineering-002:p32:c01",
+        "electrical-engineering-002:p33:c01",
+        "electrical-engineering-002:p34:c01",
+        "electrical-engineering-002:p35:c01",
+        "electrical-engineering-002:p36:c01",
+        "electrical-engineering-002:p37:c01",
+        "electrical-engineering-002:p38:c01",
+        "electrical-engineering-002:p39:c01",
+        "electrical-engineering-002:p40:c01",
+        "electrical-engineering-002:p41:c01",
+        "electrical-engineering-002:p42:c01",
+        "electrical-engineering-002:p43:c01",
+        "electrical-engineering-002:p44:c01",
+        "electrical-engineering-002:p45:c01",
+        "electrical-engineering-002:p46:c01",
+        "electrical-engineering-002:p47:c01",
+        "electrical-engineering-002:p48:c01",
+        "electrical-engineering-002:p49:c01",
+        "electrical-engineering-002:p50:c01",
+        "electrical-engineering-002:p51:c01",
+        "electrical-engineering-002:p52:c01",
+        "electrical-engineering-002:p53:c01",
+        "electrical-engineering-002:p54:c01",
+        "electrical-engineering-002:p55:c01",
+        "electrical-engineering-002:p56:c01",
+        "electrical-engineering-002:p57:c01",
+        "electrical-engineering-002:p58:c01",
+        "electrical-engineering-002:p59:c01",
+        "electrical-engineering-002:p60:c01",
+        "electrical-engineering-002:p61:c01",
+        "electrical-engineering-002:p62:c01",
+        "electrical-engineering-002:p63:c01",
+        "electrical-engineering-002:p64:c01",
+        "electrical-engineering-002:p65:c01",
+        "electrical-engineering-002:p66:c01"
+      ],
+      "heading_path": [
+        "第七版下册"
+      ],
+      "source_ids": [
+        "electrical-engineering-002"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "electrical-engineering-001:p1:c01",
+        "electrical-engineering-001:p2:c01",
+        "electrical-engineering-001:p3:c01",
+        "electrical-engineering-001:p4:c01",
+        "electrical-engineering-001:p5:c01",
+        "electrical-engineering-001:p6:c01",
+        "electrical-engineering-001:p7:c01"
+      ],
+      "course_id": "electrical_engineering",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "electrical_engineering/electrical-engineering-001.md",
+      "source_id": "electrical-engineering-001",
+      "source_title": "2021年电工学复习资料",
+      "year": "2021"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "electrical-engineering-002:p1:c01",
+        "electrical-engineering-002:p2:c01",
+        "electrical-engineering-002:p3:c01",
+        "electrical-engineering-002:p4:c01",
+        "electrical-engineering-002:p5:c01",
+        "electrical-engineering-002:p6:c01",
+        "electrical-engineering-002:p7:c01",
+        "electrical-engineering-002:p8:c01",
+        "electrical-engineering-002:p9:c01",
+        "electrical-engineering-002:p10:c01",
+        "electrical-engineering-002:p11:c01",
+        "electrical-engineering-002:p12:c01",
+        "electrical-engineering-002:p13:c01",
+        "electrical-engineering-002:p14:c01",
+        "electrical-engineering-002:p15:c01",
+        "electrical-engineering-002:p16:c01",
+        "electrical-engineering-002:p17:c01",
+        "electrical-engineering-002:p18:c01",
+        "electrical-engineering-002:p19:c01",
+        "electrical-engineering-002:p20:c01",
+        "electrical-engineering-002:p21:c01",
+        "electrical-engineering-002:p22:c01",
+        "electrical-engineering-002:p23:c01",
+        "electrical-engineering-002:p24:c01",
+        "electrical-engineering-002:p25:c01",
+        "electrical-engineering-002:p26:c01",
+        "electrical-engineering-002:p27:c01",
+        "electrical-engineering-002:p28:c01",
+        "electrical-engineering-002:p29:c01",
+        "electrical-engineering-002:p30:c01",
+        "electrical-engineering-002:p31:c01",
+        "electrical-engineering-002:p32:c01",
+        "electrical-engineering-002:p33:c01",
+        "electrical-engineering-002:p34:c01",
+        "electrical-engineering-002:p35:c01",
+        "electrical-engineering-002:p36:c01",
+        "electrical-engineering-002:p37:c01",
+        "electrical-engineering-002:p38:c01",
+        "electrical-engineering-002:p39:c01",
+        "electrical-engineering-002:p40:c01",
+        "electrical-engineering-002:p41:c01",
+        "electrical-engineering-002:p42:c01",
+        "electrical-engineering-002:p43:c01",
+        "electrical-engineering-002:p44:c01",
+        "electrical-engineering-002:p45:c01",
+        "electrical-engineering-002:p46:c01",
+        "electrical-engineering-002:p47:c01",
+        "electrical-engineering-002:p48:c01",
+        "electrical-engineering-002:p49:c01",
+        "electrical-engineering-002:p50:c01",
+        "electrical-engineering-002:p51:c01",
+        "electrical-engineering-002:p52:c01",
+        "electrical-engineering-002:p53:c01",
+        "electrical-engineering-002:p54:c01",
+        "electrical-engineering-002:p55:c01",
+        "electrical-engineering-002:p56:c01",
+        "electrical-engineering-002:p57:c01",
+        "electrical-engineering-002:p58:c01",
+        "electrical-engineering-002:p59:c01",
+        "electrical-engineering-002:p60:c01",
+        "electrical-engineering-002:p61:c01",
+        "electrical-engineering-002:p62:c01",
+        "electrical-engineering-002:p63:c01",
+        "electrical-engineering-002:p64:c01",
+        "electrical-engineering-002:p65:c01",
+        "electrical-engineering-002:p66:c01"
+      ],
+      "course_id": "electrical_engineering",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "electrical_engineering/electrical-engineering-002.md",
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "electrical-engineering-003:p1:c01",
+        "electrical-engineering-003:p2:c01",
+        "electrical-engineering-003:p2:c02",
+        "electrical-engineering-003:p3:c01",
+        "electrical-engineering-003:p4:c01",
+        "electrical-engineering-003:p4:c02",
+        "electrical-engineering-003:p5:c01"
+      ],
+      "course_id": "electrical_engineering",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "electrical_engineering/electrical-engineering-003.md",
+      "source_id": "electrical-engineering-003",
+      "source_title": "2020电工学a卷",
+      "year": "2020"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "electrical-engineering-004:h-2022级电工回忆版:c01"
+      ],
+      "course_id": "electrical_engineering",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "electrical_engineering/electrical-engineering-004.md",
+      "source_id": "electrical-engineering-004",
+      "source_title": "2022级电工回忆版",
+      "year": "2022"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "electrical-engineering-005:p1:c01",
+        "electrical-engineering-005:p2:c01",
+        "electrical-engineering-005:p3:c01",
+        "electrical-engineering-005:p4:c01",
+        "electrical-engineering-005:p5:c01"
+      ],
+      "course_id": "electrical_engineering",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "electrical_engineering/electrical-engineering-005.md",
+      "source_id": "electrical-engineering-005",
+      "source_title": "2023电工学a卷",
+      "year": "2023"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "electrical-engineering-008:p1:c01",
+        "electrical-engineering-008:p2:c01",
+        "electrical-engineering-008:p3:c01",
+        "electrical-engineering-008:p4:c01",
+        "electrical-engineering-008:p5:c01"
+      ],
+      "course_id": "electrical_engineering",
+      "document_role": "review_outline",
+      "locator_type": "page",
+      "output_md": "electrical_engineering/electrical-engineering-008.md",
+      "source_id": "electrical-engineering-008",
+      "source_title": "电工与电子技术II 复习大纲 修改",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "electrical-engineering-009:h-电路与电子技术-复习大纲:c01",
+        "electrical-engineering-009:h-电路与电子技术-复习大纲:c02"
+      ],
+      "course_id": "electrical_engineering",
+      "document_role": "review_outline",
+      "locator_type": "none",
+      "output_md": "electrical_engineering/electrical-engineering-009.md",
+      "source_id": "electrical-engineering-009",
+      "source_title": "电路与电子技术 复习大纲",
+      "year": null
+    }
+  ],
+  "statistics": {
+    "chunk_count": 93,
+    "question_count": 0,
+    "source_count": 7
+  },
+  "workflow_version": "workflow-contract-v1"
+}

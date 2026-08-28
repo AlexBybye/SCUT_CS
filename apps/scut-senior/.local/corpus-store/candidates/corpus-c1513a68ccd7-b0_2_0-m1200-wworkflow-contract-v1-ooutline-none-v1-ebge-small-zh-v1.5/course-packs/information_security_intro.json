@@ -1,0 +1,79 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "information_security_intro",
+  "course_pack_version": "course-pack-information_security_intro-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "information-security-intro-002:p1:c01",
+        "information-security-intro-002:p2:c01",
+        "information-security-intro-002:p3:c01",
+        "information-security-intro-002:p4:c01"
+      ],
+      "heading_path": [
+        "2021-2022-1学期《信息安全导论》B卷"
+      ],
+      "source_ids": [
+        "information-security-intro-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "information-security-intro-003:h-信安导论-复习提纲-v1-精简版:c01",
+        "information-security-intro-003:h-信安导论-复习提纲-v1-精简版:c02",
+        "information-security-intro-003:h-信安导论-复习提纲-v1-精简版:c03",
+        "information-security-intro-003:h-信安导论-复习提纲-v1-精简版:c04"
+      ],
+      "heading_path": [
+        "《信安导论》复习提纲 v1 (精简版)"
+      ],
+      "source_ids": [
+        "information-security-intro-003"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "information-security-intro-002:p1:c01",
+        "information-security-intro-002:p2:c01",
+        "information-security-intro-002:p3:c01",
+        "information-security-intro-002:p4:c01"
+      ],
+      "course_id": "information_security_intro",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "information_security_intro/information-security-intro-002.md",
+      "source_id": "information-security-intro-002",
+      "source_title": "2021-2022-1学期《信息安全导论》B卷",
+      "year": "2021"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "information-security-intro-003:h-信安导论-复习提纲-v1-精简版:c01",
+        "information-security-intro-003:h-信安导论-复习提纲-v1-精简版:c02",
+        "information-security-intro-003:h-信安导论-复习提纲-v1-精简版:c03",
+        "information-security-intro-003:h-信安导论-复习提纲-v1-精简版:c04"
+      ],
+      "course_id": "information_security_intro",
+      "document_role": "review_outline",
+      "locator_type": "none",
+      "output_md": "information_security_intro/information-security-intro-003.md",
+      "source_id": "information-security-intro-003",
+      "source_title": "《信安导论》复习提纲 v1 (精简版)",
+      "year": null
+    }
+  ],
+  "statistics": {
+    "chunk_count": 8,
+    "question_count": 0,
+    "source_count": 2
+  },
+  "workflow_version": "workflow-contract-v1"
+}

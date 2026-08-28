@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "engineering_math_analysis_2",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "工科数分第14讲主要讲什么？",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习工科数分第14讲，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习工科数分第14讲时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "工科数分第14讲里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习工科数分第14讲时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考工科数分第14讲？",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "工科数分第14讲主要讲什么？，见第7页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习工科数分第14讲，应该从哪里开始？，见第8页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习工科数分第14讲时哪些内容最重要？，见第9页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "工科数分第14讲里的方法或结论怎么理解？，见第10页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习工科数分第14讲时哪些概念容易混淆？，见第11页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考工科数分第14讲？，见第12页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p12:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "工科数分第14讲主要讲什么？，见第13页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p13:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习工科数分第14讲，应该从哪里开始？，见第14页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p14:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习工科数分第14讲时哪些内容最重要？，见第15页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p15:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "工科数分第14讲里的方法或结论怎么理解？，见第16页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p16:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习工科数分第14讲时哪些概念容易混淆？，见第17页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p17:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考工科数分第14讲？，见第18页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p18:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "工科数分第14讲主要讲什么？，见第19页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p19:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习工科数分第14讲，应该从哪里开始？，见第20页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p20:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习工科数分第14讲时哪些内容最重要？，见第21页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p21:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "工科数分第14讲里的方法或结论怎么理解？，见第22页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p22:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习工科数分第14讲时哪些概念容易混淆？，见第23页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p23:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考工科数分第14讲？，见第24页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p24:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "工科数分第14讲主要讲什么？，见第25页",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-002:p25:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习工科数分第1讲，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-003:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习工科数分第1讲时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-003:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "工科数分第1讲里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-003:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习工科数分第1讲时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-003:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考工科数分第1讲？",
+      "expected_chunk_ids": [
+        "engineering-mathematical-analysis-2-003:p5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

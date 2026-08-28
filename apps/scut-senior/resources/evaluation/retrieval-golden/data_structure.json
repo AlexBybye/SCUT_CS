@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "data_structure",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "关于二分双数组—冒泡排序算法的研究主要讲什么？",
+      "expected_chunk_ids": [
+        "data-structure-001:h-关于二分双数组-冒泡排序算法的研究:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习关于二分双数组—冒泡排序算法的研究，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "data-structure-001:h-关于二分双数组-冒泡排序算法的研究:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习关于二分双数组—冒泡排序算法的研究时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "data-structure-001:h-关于二分双数组-冒泡排序算法的研究:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "sort times里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "data-structure-002:h-sort_times:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习contrary时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "data-structure-003:h-contrary:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考sort faster？",
+      "expected_chunk_ids": [
+        "data-structure-004:h-sort_faster:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "1主要讲什么？",
+      "expected_chunk_ids": [
+        "data-structure-005:h-1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习2，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "data-structure-006:h-2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习3时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "data-structure-007:h-3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "4里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "data-structure-008:h-4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习ConsoleApplication时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "data-structure-009:h-consoleapplication:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考2011级试卷A及答案？",
+      "expected_chunk_ids": [
+        "data-structure-010:h-2011级数据结构试卷a及答案:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "2011级试卷A及答案主要讲什么？",
+      "expected_chunk_ids": [
+        "data-structure-010:h-2011级数据结构试卷a及答案:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习2011级试卷A及答案，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "data-structure-010:h-2011级数据结构试卷a及答案:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习2011级试卷A及答案时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "data-structure-010:h-2011级数据结构试卷a及答案:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把Fill the blank with correct C++ codes: (16 scores) (1) Given an array storing integers ordered by distinct val的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "data-structure-010:q-data-structure-010-q1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做这段双重循环的时间复杂度是多少时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "data-structure-010:q-data-structure-010-q1:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用这段双重循环的时间复杂度是多少举例说明吗？",
+      "expected_chunk_ids": [
+        "data-structure-010:q-data-structure-010-q2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这段双重循环的时间复杂度是多少怎么做？",
+      "expected_chunk_ids": [
+        "data-structure-010:q-data-structure-010-q3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做这段双重循环的时间复杂度是多少时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "data-structure-010:q-data-structure-010-q4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "Assume a disk drive is configured as follows. The total storage is approximately 675M divided among 15 surface的答案怎么判断？",
+      "expected_chunk_ids": [
+        "data-structure-010:q-data-structure-010-q4:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把Using closed hashing, with double hashing to resolve collisions, insert the following keys into a hash table o的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "data-structure-010:q-data-structure-010-q4:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做You are given a series of records whose keys are chars. The records arrive in the following order: C, S, D, T时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "data-structure-010:q-data-structure-010-q4:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用Draw the MST: It is a Hamilton path.举例说明吗？",
+      "expected_chunk_ids": [
+        "data-structure-010:q-data-structure-010-q5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "2012试卷A及答案主要讲什么？",
+      "expected_chunk_ids": [
+        "data-structure-011:h-2012数据结构试卷a及答案:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习2012试卷A及答案，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "data-structure-011:h-2012数据结构试卷a及答案:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "(7) In the hash function, collision refers to ( B ). Two elements have the same key value. Different keys are的答案怎么判断？",
+      "expected_chunk_ids": [
+        "data-structure-011:q-data-structure-011-q1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把(10) Assume that we have eight records, with key values A to H, and that they are initially placed in alphabet的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "data-structure-011:q-data-structure-011-q1:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做Fill the blank with correct C++ codes: (18 scores) 1. Given an array storing integers ordered by value, modify时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "data-structure-011:q-data-structure-011-q2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用The height of the shortest tree and the tallest tree with both n nodes is respectively _2_or n(n<2) and __n举例说明吗？",
+      "expected_chunk_ids": [
+        "data-structure-011:q-data-structure-011-q2:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

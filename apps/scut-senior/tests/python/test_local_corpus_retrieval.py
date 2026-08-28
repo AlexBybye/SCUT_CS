@@ -35,7 +35,7 @@ def _git(repository: Path, *args: str) -> str:
 
 
 def _build_store(
-    tmp_path: Path, *, enabled: bool = True
+    tmp_path: Path, *, enabled: bool = True, embedding_model_id: str | None = None
 ) -> tuple[Path, str, str]:
     repository = tmp_path / "repository"
     knowledge = repository / "apps" / "scut-senior" / "knowledge"
@@ -121,6 +121,7 @@ The principle of least privilege limits each account to required permissions.
         source_commit=commit,
         repository_root=repository,
         max_chunk_chars=200,
+        embedding_model_id=embedding_model_id,
     )
     activate_candidate(
         store,
@@ -232,9 +233,9 @@ def _count_validations(
     calls = {"count": 0}
     real_validate = local_corpus_module.validate_candidate
 
-    def counting_validate(candidate_path):
+    def counting_validate(candidate_path, **kwargs):
         calls["count"] += 1
-        return real_validate(candidate_path)
+        return real_validate(candidate_path, **kwargs)
 
     monkeypatch.setattr(local_corpus_module, "validate_candidate", counting_validate)
     return calls

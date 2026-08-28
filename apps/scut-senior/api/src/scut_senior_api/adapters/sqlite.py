@@ -1537,7 +1537,7 @@ class SQLiteWorkflowRepository:
                 FROM workflow_runs
                 WHERE conversation_id = ? AND user_id = ?
                   AND run_status NOT IN ('created', 'running')
-                ORDER BY created_at ASC, workflow_run_id ASC
+                ORDER BY created_at DESC, workflow_run_id DESC
                 """,
                 (str(conversation_id), user_id),
             ).fetchall()

@@ -1,0 +1,148 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "ideology_morality_and_rule_of_law",
+  "course_pack_version": "course-pack-ideology_morality_and_rule_of_law-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "ideology-morality-and-rule-of-law-001:h-思政2023级试卷赖怡芳老师:c01",
+        "ideology-morality-and-rule-of-law-001:q-ideology-morality-and-rule-of-law-001-q1:c01",
+        "ideology-morality-and-rule-of-law-001:q-ideology-morality-and-rule-of-law-001-q2:c01",
+        "ideology-morality-and-rule-of-law-001:q-ideology-morality-and-rule-of-law-001-q3:c01",
+        "ideology-morality-and-rule-of-law-001:q-ideology-morality-and-rule-of-law-001-q4:c01",
+        "ideology-morality-and-rule-of-law-001:q-ideology-morality-and-rule-of-law-001-q5:c01"
+      ],
+      "heading_path": [
+        "思政2023级试卷赖怡芳老师"
+      ],
+      "source_ids": [
+        "ideology-morality-and-rule-of-law-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "ideology-morality-and-rule-of-law-002:h-思政题目2024级回忆:c01"
+      ],
+      "heading_path": [
+        "思政题目2024级回忆"
+      ],
+      "source_ids": [
+        "ideology-morality-and-rule-of-law-002"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [
+    {
+      "chunk_ids": [
+        "ideology-morality-and-rule-of-law-001:q-ideology-morality-and-rule-of-law-001-q1:c01"
+      ],
+      "heading_path": [
+        "思政2023级试卷赖怡芳老师"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "ideology-morality-and-rule-of-law-001-Q1",
+      "source_id": "ideology-morality-and-rule-of-law-001",
+      "source_title": "思政2023级试卷赖怡芳老师"
+    },
+    {
+      "chunk_ids": [
+        "ideology-morality-and-rule-of-law-001:q-ideology-morality-and-rule-of-law-001-q2:c01"
+      ],
+      "heading_path": [
+        "思政2023级试卷赖怡芳老师"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "ideology-morality-and-rule-of-law-001-Q2",
+      "source_id": "ideology-morality-and-rule-of-law-001",
+      "source_title": "思政2023级试卷赖怡芳老师"
+    },
+    {
+      "chunk_ids": [
+        "ideology-morality-and-rule-of-law-001:q-ideology-morality-and-rule-of-law-001-q3:c01"
+      ],
+      "heading_path": [
+        "思政2023级试卷赖怡芳老师"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "ideology-morality-and-rule-of-law-001-Q3",
+      "source_id": "ideology-morality-and-rule-of-law-001",
+      "source_title": "思政2023级试卷赖怡芳老师"
+    },
+    {
+      "chunk_ids": [
+        "ideology-morality-and-rule-of-law-001:q-ideology-morality-and-rule-of-law-001-q4:c01"
+      ],
+      "heading_path": [
+        "思政2023级试卷赖怡芳老师"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "ideology-morality-and-rule-of-law-001-Q4",
+      "source_id": "ideology-morality-and-rule-of-law-001",
+      "source_title": "思政2023级试卷赖怡芳老师"
+    },
+    {
+      "chunk_ids": [
+        "ideology-morality-and-rule-of-law-001:q-ideology-morality-and-rule-of-law-001-q5:c01"
+      ],
+      "heading_path": [
+        "思政2023级试卷赖怡芳老师"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "ideology-morality-and-rule-of-law-001-Q5",
+      "source_id": "ideology-morality-and-rule-of-law-001",
+      "source_title": "思政2023级试卷赖怡芳老师"
+    }
+  ],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "ideology-morality-and-rule-of-law-001:h-思政2023级试卷赖怡芳老师:c01",
+        "ideology-morality-and-rule-of-law-001:q-ideology-morality-and-rule-of-law-001-q1:c01",
+        "ideology-morality-and-rule-of-law-001:q-ideology-morality-and-rule-of-law-001-q2:c01",
+        "ideology-morality-and-rule-of-law-001:q-ideology-morality-and-rule-of-law-001-q3:c01",
+        "ideology-morality-and-rule-of-law-001:q-ideology-morality-and-rule-of-law-001-q4:c01",
+        "ideology-morality-and-rule-of-law-001:q-ideology-morality-and-rule-of-law-001-q5:c01"
+      ],
+      "course_id": "ideology_morality_and_rule_of_law",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "ideology_morality_and_rule_of_law/ideology-morality-and-rule-of-law-001.md",
+      "source_id": "ideology-morality-and-rule-of-law-001",
+      "source_title": "思政2023级试卷赖怡芳老师",
+      "year": "2023"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "ideology-morality-and-rule-of-law-002:h-思政题目2024级回忆:c01"
+      ],
+      "course_id": "ideology_morality_and_rule_of_law",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "ideology_morality_and_rule_of_law/ideology-morality-and-rule-of-law-002.md",
+      "source_id": "ideology-morality-and-rule-of-law-002",
+      "source_title": "思政题目2024级回忆",
+      "year": "2024"
+    }
+  ],
+  "statistics": {
+    "chunk_count": 7,
+    "question_count": 5,
+    "source_count": 2
+  },
+  "workflow_version": "workflow-contract-v1"
+}

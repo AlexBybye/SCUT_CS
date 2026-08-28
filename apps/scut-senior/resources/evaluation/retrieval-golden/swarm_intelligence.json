@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "swarm_intelligence",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "大作业题目-2024下学期主要讲什么？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习大作业题目-2024下学期，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习大作业题目-2024下学期时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "大作业题目-2024下学期里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习大作业题目-2024下学期时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c05"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考大作业题目-2024下学期？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c06"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "大作业题目-2024下学期主要讲什么？，第7条",
+      "expected_chunk_ids": [
+        "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c07"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习大作业题目-2024下学期，应该从哪里开始？，第8条",
+      "expected_chunk_ids": [
+        "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c08"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习大作业题目-2024下学期时哪些内容最重要？，第9条",
+      "expected_chunk_ids": [
+        "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c09"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "大作业题目-2024下学期里的方法或结论怎么理解？，第10条",
+      "expected_chunk_ids": [
+        "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c10"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习大作业题目-2024下学期时哪些概念容易混淆？，第11条",
+      "expected_chunk_ids": [
+        "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c11"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考大作业题目-2024下学期？，第12条",
+      "expected_chunk_ids": [
+        "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c12"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "大作业题目-2024下学期主要讲什么？，第13条",
+      "expected_chunk_ids": [
+        "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c13"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习大作业题目-2024下学期，应该从哪里开始？，第14条",
+      "expected_chunk_ids": [
+        "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c14"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习大作业题目-2024下学期时哪些内容最重要？，第15条",
+      "expected_chunk_ids": [
+        "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c15"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "关于中强化学习的研究结果里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-002:h-关于群体智能中强化学习的研究结果:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习关于中强化学习的研究结果时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-002:h-关于群体智能中强化学习的研究结果:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考关于中强化学习的研究结果？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-002:h-关于群体智能中强化学习的研究结果:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "关于中强化学习的研究结果主要讲什么？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-002:h-关于群体智能中强化学习的研究结果:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习rewards，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-003:h-rewards:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习实验报告时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-004:h-群体智能实验报告:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "算法复述里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-004:h-群体智能实验报告~算法复述:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习关键代码截图时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-004:h-群体智能实验报告~算法复述~关键代码截图:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考实验分析？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-004:h-群体智能实验报告~算法复述~实验分析:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "实验分析主要讲什么？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-004:h-群体智能实验报告~算法复述~实验分析:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习分析与见解，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-004:h-群体智能实验报告~算法复述~分析与见解:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习引言时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-004:h-群体智能实验报告~粒子群优化算法的改进策略研究~引言:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "正文里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-004:h-群体智能实验报告~粒子群优化算法的改进策略研究~正文:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习pso results时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-005:h-pso_results:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考考试会怎么考考试会怎么考考试会怎么考考试会怎么考考试会怎么考第30个知识点？？？？？？",
+      "expected_chunk_ids": [
+        "swarm-intelligence-006:h-群体智能:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

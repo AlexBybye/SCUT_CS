@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "electrical_engineering_lab",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "实验主要讲什么？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习实验，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习实验时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-001:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "实验里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-001:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习这张图片时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-002:h-微信图片_20250301151417:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考自选实验？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-003:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "自选实验主要讲什么？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-003:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习自选实验，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-003:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习自选实验时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-003:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "实验7里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-004:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习实验7时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-004:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考实验7？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-004:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "实验7主要讲什么？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-004:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习实验7，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-004:p5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习实验5时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-005:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "实验5里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-005:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习实验5时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-005:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考实验5？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-005:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "实验5主要讲什么？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-005:p5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习实验5，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-005:p6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习实验20时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-006:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "实验20里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-006:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习实验20时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-006:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考实验20？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-006:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "实验20主要讲什么？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-006:p5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习实验1，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-007:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习实验1时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-007:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "实验1里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-007:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习实验1时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-007:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考实验1？",
+      "expected_chunk_ids": [
+        "electrical-engineering-lab-007:p5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

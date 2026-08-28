@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "digital_logic",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "作业主要讲什么？",
+      "expected_chunk_ids": [
+        "digital-logic-001:h-数字逻辑作业:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习作业，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "digital-logic-001:h-数字逻辑作业:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习作业时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "digital-logic-001:h-数字逻辑作业:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "2012级计算机学院试卷 A卷题目里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "digital-logic-002:h-2012级计算机学院数字逻辑试卷-a卷题目:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做下列逻辑表达式中正确的是 C时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用逻辑表达式的对偶式怎么写举例说明吗？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "八路数据选择器的接线如下图所示，该电路实现的逻辑表达式F=( B )怎么做？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做如图所示的组合电路中，其逻辑函数F=时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "电路如下图所示，经CP脉冲作用后，${Q}^{n+1}$=( )。的答案怎么判断？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把设计一个28进制的计数器，至少需要 个触发器。的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做20488位EPROM芯片，其地址线有 条，数据线有 条。时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用FPGA指的是 C 。举例说明吗？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "将BCD8421码0101转换成余3码是 1000 。怎么做？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做时序逻辑电路任一时刻的输出状态与电路原来所处的状态 有关 。时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "同步时序电路的状态图怎么画的答案怎么判断？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把只读存储器的英文缩写为ROM，这种存储器具有断电后信息仍 的特点。的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q12:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做n个变量的函数的全体最小项之或恒为 1 。时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q13:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用若要某共阳极数码管显示数字“3”，则显示代码abcdefg 为 1111001 0000000~1111111。举例说明吗？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q14:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "对于n输入端的与非门，要使输出为1，则必有一输入端取值为 0 。怎么做？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q15:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做八进制的基数为 8 。时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q16:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "触发器有2个稳态，分别是0态和 1 态。的答案怎么判断？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q17:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把一个逻辑函数，如果有k个变量，则有 个最小项。的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q18:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做存储器必须有控制线、地址线和 。时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q19:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用逻辑电路如图所示，试写出逻辑式，并化简之，列出真值表，并说明它的逻辑功能。举例说明吗？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q20:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "优先排队电路应该怎么设计怎么做？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q21:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做列出真值表。时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q22:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "写出输出逻辑表达式。的答案怎么判断？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q23:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把用集成芯片和门电路实现逻辑函数的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q24:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做同步时序电路的状态图怎么画时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q25:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用用一个ROM实现下列函数，请画出该ROM的阵列结构图 ${F}_{1}=AB+CD;{F}_{2}=BC+\\overline {A}$举例说明吗？",
+      "expected_chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q26:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

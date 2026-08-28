@@ -1,0 +1,6567 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "web_frontend_fundamentals",
+  "course_pack_version": "course-pack-web_frontend_fundamentals-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-001:s8:c01",
+        "web-frontend-fundamentals-001:s9:c01"
+      ],
+      "heading_path": [
+        "Lecture 0 Introduction",
+        "本课程主要包含的内容"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-001:s1:c01"
+      ],
+      "heading_path": [
+        "Lecture 0 Introduction",
+        "第0讲 课程简介"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-001:s2:c01",
+        "web-frontend-fundamentals-001:s3:c01",
+        "web-frontend-fundamentals-001:s4:c01",
+        "web-frontend-fundamentals-001:s7:c01"
+      ],
+      "heading_path": [
+        "Lecture 0 Introduction",
+        "课程概要"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s26:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "2.0 风暴"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s18:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "HTTP 错误码"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s23:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "Web 1.0 vs. Web 2.0"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s25:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "Web 2.0 例子"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s24:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "Web 2.0 备忘图"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s27:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "Web 2.0 技术"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s13:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "Web服务器 与 浏览器"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s20:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "Web语言/技术"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s19:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "互联网媒体(MIME)类型"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s8:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "人员和组织"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s11:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "传输控制协议(TCP)"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s9:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "分层架构"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s21:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "名词"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s4:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "因特网"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s3:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "因特网(Internet)是什么?"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s10:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "因特网协议 (IP)"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s7:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "因特网的关键点"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s14:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "域名解析系统(DNS)"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s28:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "总结"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s2:c01",
+        "web-frontend-fundamentals-002:s12:c01",
+        "web-frontend-fundamentals-002:s22:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "概要"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s1:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "第1讲 因特网与万维网"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s5:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "简史"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s29:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "练习"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s15:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "统一资源定位符(URL)"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s6:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "谁能够关掉因特网?"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s17:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "超文本传输协议 (HTTP)"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s30:c01",
+        "web-frontend-fundamentals-002:s31:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "阅读材料"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s16:c01"
+      ],
+      "heading_path": [
+        "Lecture 1 Internet and WWW(C)",
+        "高级 URL"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s12:c01",
+        "web-frontend-fundamentals-003:s13:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "DOM 2 事件类型"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s17:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "事件对象"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s7:c01",
+        "web-frontend-fundamentals-003:s8:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "事件流"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s3:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "事件驱动编程"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s16:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "使用 $$ 附加多个事件句柄"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s11:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "关键字 this"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s14:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "常用的事件类型"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s21:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "总结"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s2:c01",
+        "web-frontend-fundamentals-003:s6:c01",
+        "web-frontend-fundamentals-003:s10:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "概要"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s9:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "注册事件句柄"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s15:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "用Prototype附加事件句柄"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s22:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "练习"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s4:c01",
+        "web-frontend-fundamentals-003:s5:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "观察者模式"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s23:c01",
+        "web-frontend-fundamentals-003:s24:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "阅读材料"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s18:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "鼠标事件"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s20:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "鼠标事件例子"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s19:c01"
+      ],
+      "heading_path": [
+        "Lecture 10 DOM Events(C)",
+        "鼠标事件对象"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s19:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "DOM vs. innerHTML 编辑"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s4:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "DOM 树"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s7:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "DOM 树遍历示例"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s5:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "DOM 节点的类型"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s1:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "Lecture 11"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s11:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "Prototype的 DOM 树遍历方法"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s10:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "Prototype的 DOM元素 方法"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s15:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "Prototype选择元素的方法"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s14:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "与getElementById联合使用"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s18:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "从网页中删除一个节点"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s17:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "修改DOM树"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s8:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "元素vs. 文本节点"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s16:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "创造新节点"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s23:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "在Prototype中设置CSS 的class属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s21:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "在Prototype中访问样式属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s3:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "复杂的DOM 操纵问题"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s22:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "常见错误: 对存在的样式的错误使用"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s24:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "总结"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s2:c01",
+        "web-frontend-fundamentals-004:s9:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "概要"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s25:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "练习"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s20:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "读取/更改样式的问题"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s26:c01",
+        "web-frontend-fundamentals-004:s27:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "进阶阅读"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s12:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "选择多组DOM对象"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s13:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "选择特定类型的所有元素"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s6:c01"
+      ],
+      "heading_path": [
+        "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+        "遍历DOM 树"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-005:s13:c01"
+      ],
+      "heading_path": [
+        "Lecture 12 Advanced+Events+and+Client+Side+Validations(中文版)",
+        "JavaScript中的正则表达式"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-005:s1:c01"
+      ],
+      "heading_path": [
+        "Lecture 12 Advanced+Events+and+Client+Side+Validations(中文版)",
+        "Lecture 12"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-005:s5:c01"
+      ],
+      "heading_path": [
+        "Lecture 12 Advanced+Events+and+Client+Side+Validations(中文版)",
+        "Prototype 和表单"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-005:s14:c01"
+      ],
+      "heading_path": [
+        "Lecture 12 Advanced+Events+and+Client+Side+Validations(中文版)",
+        "使用正则表达式替换文本"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-005:s9:c01"
+      ],
+      "heading_path": [
+        "Lecture 12 Advanced+Events+and+Client+Side+Validations(中文版)",
+        "客户端验证"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-005:s15:c01"
+      ],
+      "heading_path": [
+        "Lecture 12 Advanced+Events+and+Client+Side+Validations(中文版)",
+        "总结"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-005:s7:c01"
+      ],
+      "heading_path": [
+        "Lecture 12 Advanced+Events+and+Client+Side+Validations(中文版)",
+        "按键事件 对象"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-005:s2:c01",
+        "web-frontend-fundamentals-005:s8:c01"
+      ],
+      "heading_path": [
+        "Lecture 12 Advanced+Events+and+Client+Side+Validations(中文版)",
+        "概要"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-005:s10:c01",
+        "web-frontend-fundamentals-005:s11:c01",
+        "web-frontend-fundamentals-005:s12:c01"
+      ],
+      "heading_path": [
+        "Lecture 12 Advanced+Events+and+Client+Side+Validations(中文版)",
+        "正则表达式"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-005:s16:c01"
+      ],
+      "heading_path": [
+        "Lecture 12 Advanced+Events+and+Client+Side+Validations(中文版)",
+        "练习"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-005:s4:c01"
+      ],
+      "heading_path": [
+        "Lecture 12 Advanced+Events+and+Client+Side+Validations(中文版)",
+        "表单事件"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-005:s17:c01",
+        "web-frontend-fundamentals-005:s18:c01"
+      ],
+      "heading_path": [
+        "Lecture 12 Advanced+Events+and+Client+Side+Validations(中文版)",
+        "进阶阅读"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-005:s6:c01"
+      ],
+      "heading_path": [
+        "Lecture 12 Advanced+Events+and+Client+Side+Validations(中文版)",
+        "键盘/文本 事件"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-005:s3:c01"
+      ],
+      "heading_path": [
+        "Lecture 12 Advanced+Events+and+Client+Side+Validations(中文版)",
+        "页面/窗口  事件"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s10:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "AJAX如何工作"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s19:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "Ajax response 对象"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s20:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "Prototype 的 Ajax Updater"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s17:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "Prototype 的 Ajax 方法和属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s16:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "Prototype 的 Ajax 模型"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s18:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "Prototype的Ajax模板"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s5:c01",
+        "web-frontend-fundamentals-006:s6:c01",
+        "web-frontend-fundamentals-006:s7:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "Web应用 与 Ajax"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s12:c01",
+        "web-frontend-fundamentals-006:s13:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "XMLHttpRequest"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s23:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "XMLHttpRequest 安全约束"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s9:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "XML实现Ajax的原理"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s14:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "一个典型的Ajax请求"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s21:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "创建POST请求"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s4:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "同步网络通信"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s24:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "同源策略"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s27:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "处理Ajax错误"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s8:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "异步网络通信"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s29:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "总结"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s3:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "服务器与浏览器的交互"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s2:c01",
+        "web-frontend-fundamentals-006:s11:c01",
+        "web-frontend-fundamentals-006:s15:c01",
+        "web-frontend-fundamentals-006:s22:c01",
+        "web-frontend-fundamentals-006:s26:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "概要"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s30:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "练习"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s28:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "调试Ajax代码"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s31:c01",
+        "web-frontend-fundamentals-006:s32:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "阅读材料"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s25:c01"
+      ],
+      "heading_path": [
+        "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+        "限制同时最多2条请求"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s12:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "Doctype和Schema"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s15:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "XML DOM 树状结构"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s34:c01",
+        "web-frontend-fundamentals-007:s35:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "XML JavaScript"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s20:c01",
+        "web-frontend-fundamentals-007:s21:c01",
+        "web-frontend-fundamentals-007:s29:c01",
+        "web-frontend-fundamentals-007:s30:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "XML基础 - 元素"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s22:c01",
+        "web-frontend-fundamentals-007:s23:c01",
+        "web-frontend-fundamentals-007:s24:c01",
+        "web-frontend-fundamentals-007:s31:c01",
+        "web-frontend-fundamentals-007:s32:c01",
+        "web-frontend-fundamentals-007:s33:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "XML基础 - 属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s14:c01",
+        "web-frontend-fundamentals-007:s16:c01",
+        "web-frontend-fundamentals-007:s25:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "XML基础 - 树结构"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s8:c01",
+        "web-frontend-fundamentals-007:s9:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "XML基础 - 用途"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s5:c01",
+        "web-frontend-fundamentals-007:s6:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "XML基础 - 简介"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s17:c01",
+        "web-frontend-fundamentals-007:s18:c01",
+        "web-frontend-fundamentals-007:s19:c01",
+        "web-frontend-fundamentals-007:s26:c01",
+        "web-frontend-fundamentals-007:s27:c01",
+        "web-frontend-fundamentals-007:s28:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "XML基础 - 语法规则"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s10:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "XML的利弊"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s3:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "什么是XML?"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s40:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "使用Ajax (模板)提取XML"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s41:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "使用DOM分析一个被提取的 XML 文件"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s7:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "使用XML"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s4:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "剖析XML 文件"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s45:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "历史的插曲: 为什么是XHTML?"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s42:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "回顾: DOM里面的陷阱"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s36:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "回顾: Javascript XML (XHTML) DOM"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s46:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "在Firebug中调试 responseXML"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s11:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "在XML中，什么是合法标签?"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s39:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "在网页中使用XML 数据"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s47:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "总结"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s37:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "操纵节点树"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s44:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "操纵节点树示例"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s43:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "更大的XML 文件示例"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s2:c01",
+        "web-frontend-fundamentals-007:s13:c01",
+        "web-frontend-fundamentals-007:s38:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "概要"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s48:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "练习"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s49:c01",
+        "web-frontend-fundamentals-007:s50:c01"
+      ],
+      "heading_path": [
+        "Lecture 14+Pragmatic+XML",
+        "阅读材料"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s4:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "Cookie是什么?"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s9:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "JavaScript中的cookie"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s17:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "PHP中的session: session_start"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s19:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "PHP的session函数完整列表"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s15:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "Session是什么?"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s8:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "cookie在电脑的什么地方?"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s5:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "cookie是如何传递的"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s18:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "session_abort — Discard session array changes and finish session"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s16:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "session是如何建立的?"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s21:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "session的数据放在什么地方?"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s7:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "一个cookie能够存活多久?"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s22:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "不支持cookie的浏览器"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s11:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "从cookie中获取信息"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s23:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "会话超时"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s6:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "关于cookie的传说"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s13:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "删除一个长期的cookie"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s12:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "在PHP中设定一个长期的cookie"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s10:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "在PHP中设置cookie"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s24:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "总结"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s3:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "有状态的浏览器/服务器交互"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s2:c01",
+        "web-frontend-fundamentals-008:s14:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "概要"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s25:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "练习"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s20:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "访问session的数据"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s26:c01",
+        "web-frontend-fundamentals-008:s27:c01"
+      ],
+      "heading_path": [
+        "Lecture 15 Cookies and Sessions(C)",
+        "阅读材料"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s15:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "API 类型"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s19:c01",
+        "web-frontend-fundamentals-009:s20:c01",
+        "web-frontend-fundamentals-009:s21:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "API 类型: HTTP :: REST"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s16:c01",
+        "web-frontend-fundamentals-009:s17:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "API 类型: HTTP :: RPC"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s18:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "API 类型: HTTP :: SOAP"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s22:c01",
+        "web-frontend-fundamentals-009:s23:c01",
+        "web-frontend-fundamentals-009:s24:c01",
+        "web-frontend-fundamentals-009:s25:c01",
+        "web-frontend-fundamentals-009:s26:c01",
+        "web-frontend-fundamentals-009:s27:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "API 类型: 可视化"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s28:c01",
+        "web-frontend-fundamentals-009:s30:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "API 类型: 插件"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s32:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "Google API"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s38:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "Google API: Google Data的API"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s39:c01",
+        "web-frontend-fundamentals-009:s40:c01",
+        "web-frontend-fundamentals-009:s41:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "Google API: Google Docs的API"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s33:c01",
+        "web-frontend-fundamentals-009:s34:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "Google API: Google Map的API"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s35:c01",
+        "web-frontend-fundamentals-009:s36:c01",
+        "web-frontend-fundamentals-009:s37:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "Google API: Google Wave的API"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s3:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "Mashups = 重新混合的数据"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s4:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "为什么需要Mashups ?"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s12:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "其它类型的Mashup"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s8:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "可视化Mashup"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s9:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "地图类Mashup"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s14:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "定义: API ... Web API"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s42:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "总结"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s10:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "手机类Mashup"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s29:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "插件"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s7:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "搜索/ 搜索整合型Mashup"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s5:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "文特·瑟夫"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s2:c01",
+        "web-frontend-fundamentals-009:s13:c01",
+        "web-frontend-fundamentals-009:s31:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "概要"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s11:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "游戏类Mashup"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s43:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "练习"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s6:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "聚合型Mashup"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s44:c01",
+        "web-frontend-fundamentals-009:s45:c01"
+      ],
+      "heading_path": [
+        "Lecture 16 Mashup",
+        "阅读材料"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-010:s24:c01",
+        "web-frontend-fundamentals-010:s25:c01"
+      ],
+      "heading_path": [
+        "Lecture 17 Basic HTML",
+        "<audio> 标签的属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-010:s19:c01"
+      ],
+      "heading_path": [
+        "Lecture 17 Basic HTML",
+        "<video> 标签的属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-010:s15:c01"
+      ],
+      "heading_path": [
+        "Lecture 17 Basic HTML",
+        "HTML 5 视频"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-010:s22:c01"
+      ],
+      "heading_path": [
+        "Lecture 17 Basic HTML",
+        "HTML 5 音频"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-010:s20:c01"
+      ],
+      "heading_path": [
+        "Lecture 17 Basic HTML",
+        "HTML5 <video> - 使用 DOM 进行控制"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-010:s21:c01"
+      ],
+      "heading_path": [
+        "Lecture 17 Basic HTML",
+        "HTML5 <video> - 方法、属性以及事件"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-010:s2:c01"
+      ],
+      "heading_path": [
+        "Lecture 17 Basic HTML",
+        "HTML5 是下一代的 HTML"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-010:s3:c01"
+      ],
+      "heading_path": [
+        "Lecture 17 Basic HTML",
+        "HTML5 是如何起步的？"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-010:s18:c01"
+      ],
+      "heading_path": [
+        "Lecture 17 Basic HTML",
+        "Internet Explorer"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-010:s17:c01"
+      ],
+      "heading_path": [
+        "Lecture 17 Basic HTML",
+        "实例"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-010:s4:c01"
+      ],
+      "heading_path": [
+        "Lecture 17 Basic HTML",
+        "新特性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-010:s16:c01"
+      ],
+      "heading_path": [
+        "Lecture 17 Basic HTML",
+        "视频格式"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-010:s23:c01"
+      ],
+      "heading_path": [
+        "Lecture 17 Basic HTML",
+        "音频格式"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s19:c01",
+        "web-frontend-fundamentals-011:s20:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "B/S系统下的MVC和SpringMVC的设计模式对比"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s54:c01",
+        "web-frontend-fundamentals-011:s55:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "Hibernate"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s56:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "Hibernate框架图"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s57:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "Hibernate的下载与安装"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s21:c01",
+        "web-frontend-fundamentals-011:s22:c01",
+        "web-frontend-fundamentals-011:s23:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "JSP + Servlet + JavaBean的MVC"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s1:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "Lecture 18"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s15:c01",
+        "web-frontend-fundamentals-011:s16:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "MVC框架模式与SpringMVC框架"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s28:c01",
+        "web-frontend-fundamentals-011:s29:c01",
+        "web-frontend-fundamentals-011:s30:c01",
+        "web-frontend-fundamentals-011:s31:c01",
+        "web-frontend-fundamentals-011:s32:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "MVC设计案例一"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s42:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "MVC设计案例三"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s33:c01",
+        "web-frontend-fundamentals-011:s34:c01",
+        "web-frontend-fundamentals-011:s35:c01",
+        "web-frontend-fundamentals-011:s36:c01",
+        "web-frontend-fundamentals-011:s37:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "MVC设计案例二：在线班级管理系统"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s2:c01",
+        "web-frontend-fundamentals-011:s5:c01",
+        "web-frontend-fundamentals-011:s6:c01",
+        "web-frontend-fundamentals-011:s7:c01",
+        "web-frontend-fundamentals-011:s8:c01",
+        "web-frontend-fundamentals-011:s9:c01",
+        "web-frontend-fundamentals-011:s27:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "MVC设计模式"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s24:c01",
+        "web-frontend-fundamentals-011:s25:c01",
+        "web-frontend-fundamentals-011:s26:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "MVC设计模式优缺点"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s11:c01",
+        "web-frontend-fundamentals-011:s12:c01",
+        "web-frontend-fundamentals-011:s13:c01",
+        "web-frontend-fundamentals-011:s14:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "MVC设计模式和SSH框架的关系"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s43:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "SSH框架"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s17:c01",
+        "web-frontend-fundamentals-011:s18:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "SpringMVC的工作流程"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s50:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "Spring介绍"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s51:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "Spring特点"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s52:c01",
+        "web-frontend-fundamentals-011:s53:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "Spring的下载与安装"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s44:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "Struts介绍"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s45:c01",
+        "web-frontend-fundamentals-011:s46:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "Struts的下载与安装"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s47:c01",
+        "web-frontend-fundamentals-011:s48:c01",
+        "web-frontend-fundamentals-011:s49:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "Struts的配置"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s41:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "各类不同应用：量化系统"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s58:c01",
+        "web-frontend-fundamentals-011:s59:c01",
+        "web-frontend-fundamentals-011:s60:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "基于SSH的应用开发案例"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s10:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "常用于MVC开发的语言与工具"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s3:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "设计原则"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s4:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "设计模式"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s38:c01",
+        "web-frontend-fundamentals-011:s39:c01",
+        "web-frontend-fundamentals-011:s40:c01"
+      ],
+      "heading_path": [
+        "Lecture 18 MVC",
+        "金融业量化系统架构"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s38:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "CSS 字体属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s36:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "CSS 颜色属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s1:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "Lecture 2"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s31:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "W3C XHTML 验证器"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s28:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "Web 标准"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s30:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "XHTML 1.0 vs HTML 4.01"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s29:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "XHTML 版本"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s7:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "XHTML 网页的结构"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s39:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "font-family"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s41:c01",
+        "web-frontend-fundamentals-012:s41:c02"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "font-size"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s42:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "font-weight, font-style"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s26:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "ol 表示一个有编号的项目列表(块)"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s24:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "ul\t表示一个项目列表 (块)"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s25:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "一个列表可以包含其他列表:"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s33:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "不好的使用样式属性的方式"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s20:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "图像: <img>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s11:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "块跟内联元素"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s35:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "基础 CSS 规则的语法"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s45:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "声明式编程"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s10:c01",
+        "web-frontend-fundamentals-012:s10:c02",
+        "web-frontend-fundamentals-012:s10:c03"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "字符编码"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s34:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "层叠样式表(CSS): <link>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s23:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "嵌套标签"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s44:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "思考…"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s46:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "总结"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s13:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "换行符: <br />"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s40:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "更多关于 font-family"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s17:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "更多关于HTML 的标签"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s21:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "更多关于图像"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s14:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "标题: <h1>, <h2>, …<h6>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s2:c01",
+        "web-frontend-fundamentals-012:s27:c01",
+        "web-frontend-fundamentals-012:s32:c01",
+        "web-frontend-fundamentals-012:s43:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "概览"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s12:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "段落: <p>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s16:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "水平线: <hr />"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s6:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "注释: <!-- … -->"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s22:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "短语元素: <em>, <strong>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s47:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "练习"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s9:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "网页元数据: <meta>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s8:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "网页的标题: <title>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s37:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "设定颜色"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s15:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "语义化的HTML"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s3:c01",
+        "web-frontend-fundamentals-012:s4:c01",
+        "web-frontend-fundamentals-012:s5:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "超文本标记语言(HTML)"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s48:c01",
+        "web-frontend-fundamentals-012:s49:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "进阶阅读"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s18:c01",
+        "web-frontend-fundamentals-012:s19:c01"
+      ],
+      "heading_path": [
+        "Lecture 2 HTML and CSS Basics",
+        "链接: <a>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s30:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "Body 样式"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s35:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "CSS 的背景属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s25:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "CSS的文本属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s20:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "HTML-编码文本"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s19:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "HTML字符实体"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s34:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "W3C CSS 验证器"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s36:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "background-image"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s38:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "background-position"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s37:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "background-repeat"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s28:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "list-style-type 属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s26:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "text-align"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s27:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "text-decoration"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s33:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "冲突的样式"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s16:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "定义列表: <dl>, <dt>, <dd>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s31:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "层叠样式表"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s17:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "引用: <blockquote>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s40:c01",
+        "web-frontend-fundamentals-013:s41:c01",
+        "web-frontend-fundamentals-013:s42:c01",
+        "web-frontend-fundamentals-013:s43:c01",
+        "web-frontend-fundamentals-013:s44:c01",
+        "web-frontend-fundamentals-013:s45:c01",
+        "web-frontend-fundamentals-013:s46:c01",
+        "web-frontend-fundamentals-013:s47:c01",
+        "web-frontend-fundamentals-013:s48:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "总结"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s49:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "所有CSS的列表"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s39:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "收藏夹图标(“favicon”)"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s24:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "样式分组"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s2:c01",
+        "web-frontend-fundamentals-013:s23:c01",
+        "web-frontend-fundamentals-013:s29:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "概要"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s1:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "第三讲"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s50:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "练习"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s32:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "继承样式"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s3:c01",
+        "web-frontend-fundamentals-013:s4:c01",
+        "web-frontend-fundamentals-013:s5:c01",
+        "web-frontend-fundamentals-013:s6:c01",
+        "web-frontend-fundamentals-013:s7:c01",
+        "web-frontend-fundamentals-013:s8:c01",
+        "web-frontend-fundamentals-013:s9:c01",
+        "web-frontend-fundamentals-013:s10:c01",
+        "web-frontend-fundamentals-013:s11:c01",
+        "web-frontend-fundamentals-013:s12:c01",
+        "web-frontend-fundamentals-013:s13:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "网页元数据: <meta>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s18:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "行内引用: <q>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s14:c01",
+        "web-frontend-fundamentals-013:s15:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "表格: <table>, <tr>, <td>, <th>, <caption>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s21:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "计算机代码: <code>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s51:c01",
+        "web-frontend-fundamentals-013:s52:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "阅读资料"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s22:c01"
+      ],
+      "heading_path": [
+        "Lecture 3 More Basic HTM and CSS(C)",
+        "预编排文字: <pre>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s9:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "CSS  伪类"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s5:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "CSS ID 选择器"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s14:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "CSS 上下文选择器"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s29:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "CSS 内边距(padding)的属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s32:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "CSS 外边距属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s35:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "CSS 尺寸属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s17:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "CSS 层叠"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s22:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "CSS 的盒子模型"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s7:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "CSS 类选择器（class selector）"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s20:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "CSS 继承"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s26:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "CSS 边框的属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s3:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "HTML 的id 属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s6:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "HTML 的类(class) 属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s1:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "Lecture 4"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s15:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "上下文选择器 示例"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s36:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "中间对齐一个块元素: 自动化(auto) 边缘"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s13:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "内联区域: <span>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s30:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "内边距 例子 1"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s31:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "内边距 例子 2"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s33:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "外边距 例子1"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s34:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "外边距 例子2"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s8:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "多重类属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s37:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "总结"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s24:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "文档浮动– 内联元素"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s23:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "文档浮动– 块元素"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s25:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "文档浮动– 更大的示例"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s16:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "更多复合示例"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s27:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "更多边框(border)属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s2:c01",
+        "web-frontend-fundamentals-014:s10:c01",
+        "web-frontend-fundamentals-014:s21:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "概述"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s38:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "练习"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s12:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "网页区域: <div>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s11:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "网页区域化的目的"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s28:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "边框(border) 例子2"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s39:c01",
+        "web-frontend-fundamentals-014:s40:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "进阶阅读"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s18:c01",
+        "web-frontend-fundamentals-014:s19:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "选择器特征值"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s4:c01"
+      ],
+      "heading_path": [
+        "Lecture 4 Page Sections and the CSS Box Model",
+        "链接到Web 网页的某个区域"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s13:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "Absolute 定位"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s3:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "CSS float 属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s7:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "Clear 图解"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s15:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "Fixed 定位"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s14:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "Relative 定位"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s37:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "UCD – 网页: 修辞情境"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s36:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "UCD – 网页: 元素"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s35:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "UCD – 网页: 目的"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s6:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "clear 属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s21:c01",
+        "web-frontend-fundamentals-015:s22:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "display 属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s4:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "float元素图解"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s9:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "overflow 属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s12:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "position 属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s19:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "vertical-align 例子"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s18:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "vertical-align 属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s24:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "visibility 属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s31:c01",
+        "web-frontend-fundamentals-015:s32:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "什么是设计?"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s33:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "以用户为中心的设计"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s23:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "以行内的方式显示块元素"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s17:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "关于行内盒模型的细节"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s29:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "声明式编程"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s10:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "多列布局"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s16:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "对齐 vs. 浮动 vs. 定位"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s34:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "常见UCD过程"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s5:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "常见的 float 错误: 缺少width"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s8:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "常见的错误: 容器太短"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s20:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "常见错误: 图片下的空白"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s38:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "总结"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s2:c01",
+        "web-frontend-fundamentals-015:s11:c01",
+        "web-frontend-fundamentals-015:s25:c01",
+        "web-frontend-fundamentals-015:s28:c01",
+        "web-frontend-fundamentals-015:s30:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "概要"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s39:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "练习"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s26:c01",
+        "web-frontend-fundamentals-015:s27:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "邪恶的 IE"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s40:c01",
+        "web-frontend-fundamentals-015:s41:c01"
+      ],
+      "heading_path": [
+        "Lecture 5 Floating and Positioning(C)",
+        "阅读资料"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-016:s6:c01"
+      ],
+      "heading_path": [
+        "Lecture 6 Basic JavaScript",
+        "Hello, World!"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-016:s19:c01",
+        "web-frontend-fundamentals-016:s20:c01",
+        "web-frontend-fundamentals-016:s21:c01",
+        "web-frontend-fundamentals-016:s22:c01",
+        "web-frontend-fundamentals-016:s23:c01",
+        "web-frontend-fundamentals-016:s24:c01",
+        "web-frontend-fundamentals-016:s25:c01"
+      ],
+      "heading_path": [
+        "Lecture 6 Basic JavaScript",
+        "JS能做什么？"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-016:s12:c01",
+        "web-frontend-fundamentals-016:s13:c01",
+        "web-frontend-fundamentals-016:s14:c01",
+        "web-frontend-fundamentals-016:s15:c01",
+        "web-frontend-fundamentals-016:s16:c01",
+        "web-frontend-fundamentals-016:s17:c01",
+        "web-frontend-fundamentals-016:s18:c01"
+      ],
+      "heading_path": [
+        "Lecture 6 Basic JavaScript",
+        "JavaScript 的使用"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-016:s4:c01",
+        "web-frontend-fundamentals-016:s5:c01"
+      ],
+      "heading_path": [
+        "Lecture 6 Basic JavaScript",
+        "JavaScript简介"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-016:s26:c01",
+        "web-frontend-fundamentals-016:s27:c01"
+      ],
+      "heading_path": [
+        "Lecture 6 Basic JavaScript",
+        "JavaScript编程案例-根据日期动态改变"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-016:s8:c01"
+      ],
+      "heading_path": [
+        "Lecture 6 Basic JavaScript",
+        "JavaScript：对事件作出反应"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-016:s9:c01"
+      ],
+      "heading_path": [
+        "Lecture 6 Basic JavaScript",
+        "JavaScript：改变 HTML 内容"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-016:s10:c01"
+      ],
+      "heading_path": [
+        "Lecture 6 Basic JavaScript",
+        "JavaScript：改变 HTML 图像"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-016:s11:c01"
+      ],
+      "heading_path": [
+        "Lecture 6 Basic JavaScript",
+        "JavaScript：改变 HTML 样式"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-016:s1:c01"
+      ],
+      "heading_path": [
+        "Lecture 6 Basic JavaScript",
+        "Lecture 6"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-016:s2:c01"
+      ],
+      "heading_path": [
+        "Lecture 6 Basic JavaScript",
+        "动态Vs. 静态"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-016:s28:c01"
+      ],
+      "heading_path": [
+        "Lecture 6 Basic JavaScript",
+        "总结"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-016:s3:c01"
+      ],
+      "heading_path": [
+        "Lecture 6 Basic JavaScript",
+        "概要"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-016:s29:c01",
+        "web-frontend-fundamentals-016:s30:c01"
+      ],
+      "heading_path": [
+        "Lecture 6 Basic JavaScript",
+        "练习题"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-016:s7:c01"
+      ],
+      "heading_path": [
+        "Lecture 6 Basic JavaScript",
+        "观察JavaScript的输出"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s25:c01",
+        "web-frontend-fundamentals-017:s26:c01"
+      ],
+      "heading_path": [
+        "Lecture 7 Basic JavaScript",
+        "JavaScript Break 和 Continue 语句"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s21:c01",
+        "web-frontend-fundamentals-017:s22:c01"
+      ],
+      "heading_path": [
+        "Lecture 7 Basic JavaScript",
+        "JavaScript For 循环"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s19:c01"
+      ],
+      "heading_path": [
+        "Lecture 7 Basic JavaScript",
+        "JavaScript If...Else 语句"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s20:c01"
+      ],
+      "heading_path": [
+        "Lecture 7 Basic JavaScript",
+        "JavaScript Switch 语句"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s23:c01",
+        "web-frontend-fundamentals-017:s24:c01"
+      ],
+      "heading_path": [
+        "Lecture 7 Basic JavaScript",
+        "JavaScript While 循环"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s2:c01",
+        "web-frontend-fundamentals-017:s3:c01"
+      ],
+      "heading_path": [
+        "Lecture 7 Basic JavaScript",
+        "JavaScript 对象"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s17:c01",
+        "web-frontend-fundamentals-017:s18:c01"
+      ],
+      "heading_path": [
+        "Lecture 7 Basic JavaScript",
+        "JavaScript 比较和逻辑运算符"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s14:c01",
+        "web-frontend-fundamentals-017:s15:c01",
+        "web-frontend-fundamentals-017:s16:c01"
+      ],
+      "heading_path": [
+        "Lecture 7 Basic JavaScript",
+        "JavaScript 运算符"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s27:c01",
+        "web-frontend-fundamentals-017:s28:c01",
+        "web-frontend-fundamentals-017:s29:c01",
+        "web-frontend-fundamentals-017:s30:c01"
+      ],
+      "heading_path": [
+        "Lecture 7 Basic JavaScript",
+        "JavaScript异常处理"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s1:c01"
+      ],
+      "heading_path": [
+        "Lecture 7 Basic JavaScript",
+        "Lecture 7"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s4:c01",
+        "web-frontend-fundamentals-017:s5:c01",
+        "web-frontend-fundamentals-017:s6:c01",
+        "web-frontend-fundamentals-017:s7:c01",
+        "web-frontend-fundamentals-017:s8:c01",
+        "web-frontend-fundamentals-017:s9:c01"
+      ],
+      "heading_path": [
+        "Lecture 7 Basic JavaScript",
+        "创建 JavaScript 对象"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s13:c01"
+      ],
+      "heading_path": [
+        "Lecture 7 Basic JavaScript",
+        "局部和全局"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s11:c01",
+        "web-frontend-fundamentals-017:s12:c01"
+      ],
+      "heading_path": [
+        "Lecture 7 Basic JavaScript",
+        "带有返回值的函数"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s31:c01"
+      ],
+      "heading_path": [
+        "Lecture 7 Basic JavaScript",
+        "总结"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s32:c01",
+        "web-frontend-fundamentals-017:s33:c01"
+      ],
+      "heading_path": [
+        "Lecture 7 Basic JavaScript",
+        "练习题"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s10:c01"
+      ],
+      "heading_path": [
+        "Lecture 7 Basic JavaScript",
+        "调用带参数的函数"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s6:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "JavaScript != Java"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s31:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "JavaScript 是面向对象的语言?"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s10:c01",
+        "web-frontend-fundamentals-018:s11:c01",
+        "web-frontend-fundamentals-018:s12:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "JavaScript对象表示法(JSON)"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s1:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "Lecture 8"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s24:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "__proto__"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s25:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "__proto__ 链"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s22:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "prototype属性的使用"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s19:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "内置构造函数"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s13:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "函数"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s14:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "函数是对象"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s21:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "原型"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s29:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "原型的继承"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s3:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "学习工具– Firebug"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s4:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "学习工具– JavaScript shell"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s7:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "对象"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s8:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "对象字面量"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s27:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "怎样实现?"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s34:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "总结"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s9:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "数组"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s17:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "构造函数"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s18:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "构造函数属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s2:c01",
+        "web-frontend-fundamentals-018:s5:c01",
+        "web-frontend-fundamentals-018:s16:c01",
+        "web-frontend-fundamentals-018:s26:c01",
+        "web-frontend-fundamentals-018:s30:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "概要"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s20:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "约定"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s35:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "练习"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s23:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "自带属性 vs. prototype包含的属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s32:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "载入时分支"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s33:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "运行时替换"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s15:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "返回值"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s36:c01",
+        "web-frontend-fundamentals-018:s37:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "进阶阅读"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s28:c01"
+      ],
+      "heading_path": [
+        "Lecture 8 Object-Oriented JavaScript",
+        "通过复制实现对象的继承"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s14:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "$ 函数"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s4:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "<button>"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s8:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "DOM 元素"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s15:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "DOM 对象属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s10:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "DOM 本质"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s12:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "JavaScript 的问题"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s13:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "Prototype 框架"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s22:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "Timer 事件"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s24:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "setInterval 例子"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s23:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "setTimeout 例子"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s20:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "不显眼的样式"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s5:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "事件句柄"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s3:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "事件驱动编程"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s25:c01",
+        "web-frontend-fundamentals-019:s26:c01",
+        "web-frontend-fundamentals-019:s27:c01",
+        "web-frontend-fundamentals-019:s28:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "传递参数给计时器"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s19:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "常见的 DOM 样式错误"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s29:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "常见计时器错误"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s30:c01",
+        "web-frontend-fundamentals-019:s31:c01",
+        "web-frontend-fundamentals-019:s32:c01",
+        "web-frontend-fundamentals-019:s33:c01",
+        "web-frontend-fundamentals-019:s34:c01",
+        "web-frontend-fundamentals-019:s35:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "总结"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s7:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "文档对象模型(DOM)"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s2:c01",
+        "web-frontend-fundamentals-019:s6:c01",
+        "web-frontend-fundamentals-019:s11:c01",
+        "web-frontend-fundamentals-019:s21:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "概要"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s17:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "滥用 innerHTML"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s1:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "第9讲"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s36:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "练习"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s16:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "表单控件的 DOM 属性"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s9:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "访问元素: document.getElementById"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s18:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "通过 DOM 调整样式"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s37:c01",
+        "web-frontend-fundamentals-019:s38:c01"
+      ],
+      "heading_path": [
+        "Lecture 9 More JavaScript and DOM(C)",
+        "阅读材料"
+      ],
+      "source_ids": [
+        "web-frontend-fundamentals-019"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-001:s1:c01",
+        "web-frontend-fundamentals-001:s2:c01",
+        "web-frontend-fundamentals-001:s3:c01",
+        "web-frontend-fundamentals-001:s4:c01",
+        "web-frontend-fundamentals-001:s7:c01",
+        "web-frontend-fundamentals-001:s8:c01",
+        "web-frontend-fundamentals-001:s9:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-001.md",
+      "source_id": "web-frontend-fundamentals-001",
+      "source_title": "Lecture 0 Introduction",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-002:s1:c01",
+        "web-frontend-fundamentals-002:s2:c01",
+        "web-frontend-fundamentals-002:s3:c01",
+        "web-frontend-fundamentals-002:s4:c01",
+        "web-frontend-fundamentals-002:s5:c01",
+        "web-frontend-fundamentals-002:s6:c01",
+        "web-frontend-fundamentals-002:s7:c01",
+        "web-frontend-fundamentals-002:s8:c01",
+        "web-frontend-fundamentals-002:s9:c01",
+        "web-frontend-fundamentals-002:s10:c01",
+        "web-frontend-fundamentals-002:s11:c01",
+        "web-frontend-fundamentals-002:s12:c01",
+        "web-frontend-fundamentals-002:s13:c01",
+        "web-frontend-fundamentals-002:s14:c01",
+        "web-frontend-fundamentals-002:s15:c01",
+        "web-frontend-fundamentals-002:s16:c01",
+        "web-frontend-fundamentals-002:s17:c01",
+        "web-frontend-fundamentals-002:s18:c01",
+        "web-frontend-fundamentals-002:s19:c01",
+        "web-frontend-fundamentals-002:s20:c01",
+        "web-frontend-fundamentals-002:s21:c01",
+        "web-frontend-fundamentals-002:s22:c01",
+        "web-frontend-fundamentals-002:s23:c01",
+        "web-frontend-fundamentals-002:s24:c01",
+        "web-frontend-fundamentals-002:s25:c01",
+        "web-frontend-fundamentals-002:s26:c01",
+        "web-frontend-fundamentals-002:s27:c01",
+        "web-frontend-fundamentals-002:s28:c01",
+        "web-frontend-fundamentals-002:s29:c01",
+        "web-frontend-fundamentals-002:s30:c01",
+        "web-frontend-fundamentals-002:s31:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-002.md",
+      "source_id": "web-frontend-fundamentals-002",
+      "source_title": "Lecture 1 Internet and WWW(C)",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-003:s2:c01",
+        "web-frontend-fundamentals-003:s3:c01",
+        "web-frontend-fundamentals-003:s4:c01",
+        "web-frontend-fundamentals-003:s5:c01",
+        "web-frontend-fundamentals-003:s6:c01",
+        "web-frontend-fundamentals-003:s7:c01",
+        "web-frontend-fundamentals-003:s8:c01",
+        "web-frontend-fundamentals-003:s9:c01",
+        "web-frontend-fundamentals-003:s10:c01",
+        "web-frontend-fundamentals-003:s11:c01",
+        "web-frontend-fundamentals-003:s12:c01",
+        "web-frontend-fundamentals-003:s13:c01",
+        "web-frontend-fundamentals-003:s14:c01",
+        "web-frontend-fundamentals-003:s15:c01",
+        "web-frontend-fundamentals-003:s16:c01",
+        "web-frontend-fundamentals-003:s17:c01",
+        "web-frontend-fundamentals-003:s18:c01",
+        "web-frontend-fundamentals-003:s19:c01",
+        "web-frontend-fundamentals-003:s20:c01",
+        "web-frontend-fundamentals-003:s21:c01",
+        "web-frontend-fundamentals-003:s22:c01",
+        "web-frontend-fundamentals-003:s23:c01",
+        "web-frontend-fundamentals-003:s24:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-003.md",
+      "source_id": "web-frontend-fundamentals-003",
+      "source_title": "Lecture 10 DOM Events(C)",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-004:s1:c01",
+        "web-frontend-fundamentals-004:s2:c01",
+        "web-frontend-fundamentals-004:s3:c01",
+        "web-frontend-fundamentals-004:s4:c01",
+        "web-frontend-fundamentals-004:s5:c01",
+        "web-frontend-fundamentals-004:s6:c01",
+        "web-frontend-fundamentals-004:s7:c01",
+        "web-frontend-fundamentals-004:s8:c01",
+        "web-frontend-fundamentals-004:s9:c01",
+        "web-frontend-fundamentals-004:s10:c01",
+        "web-frontend-fundamentals-004:s11:c01",
+        "web-frontend-fundamentals-004:s12:c01",
+        "web-frontend-fundamentals-004:s13:c01",
+        "web-frontend-fundamentals-004:s14:c01",
+        "web-frontend-fundamentals-004:s15:c01",
+        "web-frontend-fundamentals-004:s16:c01",
+        "web-frontend-fundamentals-004:s17:c01",
+        "web-frontend-fundamentals-004:s18:c01",
+        "web-frontend-fundamentals-004:s19:c01",
+        "web-frontend-fundamentals-004:s20:c01",
+        "web-frontend-fundamentals-004:s21:c01",
+        "web-frontend-fundamentals-004:s22:c01",
+        "web-frontend-fundamentals-004:s23:c01",
+        "web-frontend-fundamentals-004:s24:c01",
+        "web-frontend-fundamentals-004:s25:c01",
+        "web-frontend-fundamentals-004:s26:c01",
+        "web-frontend-fundamentals-004:s27:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-004.md",
+      "source_id": "web-frontend-fundamentals-004",
+      "source_title": "Lecture 11 Manipulating+DOM+with+JavaScript(中文版)",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-005:s1:c01",
+        "web-frontend-fundamentals-005:s2:c01",
+        "web-frontend-fundamentals-005:s3:c01",
+        "web-frontend-fundamentals-005:s4:c01",
+        "web-frontend-fundamentals-005:s5:c01",
+        "web-frontend-fundamentals-005:s6:c01",
+        "web-frontend-fundamentals-005:s7:c01",
+        "web-frontend-fundamentals-005:s8:c01",
+        "web-frontend-fundamentals-005:s9:c01",
+        "web-frontend-fundamentals-005:s10:c01",
+        "web-frontend-fundamentals-005:s11:c01",
+        "web-frontend-fundamentals-005:s12:c01",
+        "web-frontend-fundamentals-005:s13:c01",
+        "web-frontend-fundamentals-005:s14:c01",
+        "web-frontend-fundamentals-005:s15:c01",
+        "web-frontend-fundamentals-005:s16:c01",
+        "web-frontend-fundamentals-005:s17:c01",
+        "web-frontend-fundamentals-005:s18:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-005.md",
+      "source_id": "web-frontend-fundamentals-005",
+      "source_title": "Lecture 12 Advanced+Events+and+Client+Side+Validations(中文版)",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-006:s2:c01",
+        "web-frontend-fundamentals-006:s3:c01",
+        "web-frontend-fundamentals-006:s4:c01",
+        "web-frontend-fundamentals-006:s5:c01",
+        "web-frontend-fundamentals-006:s6:c01",
+        "web-frontend-fundamentals-006:s7:c01",
+        "web-frontend-fundamentals-006:s8:c01",
+        "web-frontend-fundamentals-006:s9:c01",
+        "web-frontend-fundamentals-006:s10:c01",
+        "web-frontend-fundamentals-006:s11:c01",
+        "web-frontend-fundamentals-006:s12:c01",
+        "web-frontend-fundamentals-006:s13:c01",
+        "web-frontend-fundamentals-006:s14:c01",
+        "web-frontend-fundamentals-006:s15:c01",
+        "web-frontend-fundamentals-006:s16:c01",
+        "web-frontend-fundamentals-006:s17:c01",
+        "web-frontend-fundamentals-006:s18:c01",
+        "web-frontend-fundamentals-006:s19:c01",
+        "web-frontend-fundamentals-006:s20:c01",
+        "web-frontend-fundamentals-006:s21:c01",
+        "web-frontend-fundamentals-006:s22:c01",
+        "web-frontend-fundamentals-006:s23:c01",
+        "web-frontend-fundamentals-006:s24:c01",
+        "web-frontend-fundamentals-006:s25:c01",
+        "web-frontend-fundamentals-006:s26:c01",
+        "web-frontend-fundamentals-006:s27:c01",
+        "web-frontend-fundamentals-006:s28:c01",
+        "web-frontend-fundamentals-006:s29:c01",
+        "web-frontend-fundamentals-006:s30:c01",
+        "web-frontend-fundamentals-006:s31:c01",
+        "web-frontend-fundamentals-006:s32:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-006.md",
+      "source_id": "web-frontend-fundamentals-006",
+      "source_title": "Lecture 13 Asynchronous JavaScript and XML (AJAX)(C)",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-007:s2:c01",
+        "web-frontend-fundamentals-007:s3:c01",
+        "web-frontend-fundamentals-007:s4:c01",
+        "web-frontend-fundamentals-007:s5:c01",
+        "web-frontend-fundamentals-007:s6:c01",
+        "web-frontend-fundamentals-007:s7:c01",
+        "web-frontend-fundamentals-007:s8:c01",
+        "web-frontend-fundamentals-007:s9:c01",
+        "web-frontend-fundamentals-007:s10:c01",
+        "web-frontend-fundamentals-007:s11:c01",
+        "web-frontend-fundamentals-007:s12:c01",
+        "web-frontend-fundamentals-007:s13:c01",
+        "web-frontend-fundamentals-007:s14:c01",
+        "web-frontend-fundamentals-007:s15:c01",
+        "web-frontend-fundamentals-007:s16:c01",
+        "web-frontend-fundamentals-007:s17:c01",
+        "web-frontend-fundamentals-007:s18:c01",
+        "web-frontend-fundamentals-007:s19:c01",
+        "web-frontend-fundamentals-007:s20:c01",
+        "web-frontend-fundamentals-007:s21:c01",
+        "web-frontend-fundamentals-007:s22:c01",
+        "web-frontend-fundamentals-007:s23:c01",
+        "web-frontend-fundamentals-007:s24:c01",
+        "web-frontend-fundamentals-007:s25:c01",
+        "web-frontend-fundamentals-007:s26:c01",
+        "web-frontend-fundamentals-007:s27:c01",
+        "web-frontend-fundamentals-007:s28:c01",
+        "web-frontend-fundamentals-007:s29:c01",
+        "web-frontend-fundamentals-007:s30:c01",
+        "web-frontend-fundamentals-007:s31:c01",
+        "web-frontend-fundamentals-007:s32:c01",
+        "web-frontend-fundamentals-007:s33:c01",
+        "web-frontend-fundamentals-007:s34:c01",
+        "web-frontend-fundamentals-007:s35:c01",
+        "web-frontend-fundamentals-007:s36:c01",
+        "web-frontend-fundamentals-007:s37:c01",
+        "web-frontend-fundamentals-007:s38:c01",
+        "web-frontend-fundamentals-007:s39:c01",
+        "web-frontend-fundamentals-007:s40:c01",
+        "web-frontend-fundamentals-007:s41:c01",
+        "web-frontend-fundamentals-007:s42:c01",
+        "web-frontend-fundamentals-007:s43:c01",
+        "web-frontend-fundamentals-007:s44:c01",
+        "web-frontend-fundamentals-007:s45:c01",
+        "web-frontend-fundamentals-007:s46:c01",
+        "web-frontend-fundamentals-007:s47:c01",
+        "web-frontend-fundamentals-007:s48:c01",
+        "web-frontend-fundamentals-007:s49:c01",
+        "web-frontend-fundamentals-007:s50:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-007.md",
+      "source_id": "web-frontend-fundamentals-007",
+      "source_title": "Lecture 14+Pragmatic+XML",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-008:s2:c01",
+        "web-frontend-fundamentals-008:s3:c01",
+        "web-frontend-fundamentals-008:s4:c01",
+        "web-frontend-fundamentals-008:s5:c01",
+        "web-frontend-fundamentals-008:s6:c01",
+        "web-frontend-fundamentals-008:s7:c01",
+        "web-frontend-fundamentals-008:s8:c01",
+        "web-frontend-fundamentals-008:s9:c01",
+        "web-frontend-fundamentals-008:s10:c01",
+        "web-frontend-fundamentals-008:s11:c01",
+        "web-frontend-fundamentals-008:s12:c01",
+        "web-frontend-fundamentals-008:s13:c01",
+        "web-frontend-fundamentals-008:s14:c01",
+        "web-frontend-fundamentals-008:s15:c01",
+        "web-frontend-fundamentals-008:s16:c01",
+        "web-frontend-fundamentals-008:s17:c01",
+        "web-frontend-fundamentals-008:s18:c01",
+        "web-frontend-fundamentals-008:s19:c01",
+        "web-frontend-fundamentals-008:s20:c01",
+        "web-frontend-fundamentals-008:s21:c01",
+        "web-frontend-fundamentals-008:s22:c01",
+        "web-frontend-fundamentals-008:s23:c01",
+        "web-frontend-fundamentals-008:s24:c01",
+        "web-frontend-fundamentals-008:s25:c01",
+        "web-frontend-fundamentals-008:s26:c01",
+        "web-frontend-fundamentals-008:s27:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-008.md",
+      "source_id": "web-frontend-fundamentals-008",
+      "source_title": "Lecture 15 Cookies and Sessions(C)",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-009:s2:c01",
+        "web-frontend-fundamentals-009:s3:c01",
+        "web-frontend-fundamentals-009:s4:c01",
+        "web-frontend-fundamentals-009:s5:c01",
+        "web-frontend-fundamentals-009:s6:c01",
+        "web-frontend-fundamentals-009:s7:c01",
+        "web-frontend-fundamentals-009:s8:c01",
+        "web-frontend-fundamentals-009:s9:c01",
+        "web-frontend-fundamentals-009:s10:c01",
+        "web-frontend-fundamentals-009:s11:c01",
+        "web-frontend-fundamentals-009:s12:c01",
+        "web-frontend-fundamentals-009:s13:c01",
+        "web-frontend-fundamentals-009:s14:c01",
+        "web-frontend-fundamentals-009:s15:c01",
+        "web-frontend-fundamentals-009:s16:c01",
+        "web-frontend-fundamentals-009:s17:c01",
+        "web-frontend-fundamentals-009:s18:c01",
+        "web-frontend-fundamentals-009:s19:c01",
+        "web-frontend-fundamentals-009:s20:c01",
+        "web-frontend-fundamentals-009:s21:c01",
+        "web-frontend-fundamentals-009:s22:c01",
+        "web-frontend-fundamentals-009:s23:c01",
+        "web-frontend-fundamentals-009:s24:c01",
+        "web-frontend-fundamentals-009:s25:c01",
+        "web-frontend-fundamentals-009:s26:c01",
+        "web-frontend-fundamentals-009:s27:c01",
+        "web-frontend-fundamentals-009:s28:c01",
+        "web-frontend-fundamentals-009:s29:c01",
+        "web-frontend-fundamentals-009:s30:c01",
+        "web-frontend-fundamentals-009:s31:c01",
+        "web-frontend-fundamentals-009:s32:c01",
+        "web-frontend-fundamentals-009:s33:c01",
+        "web-frontend-fundamentals-009:s34:c01",
+        "web-frontend-fundamentals-009:s35:c01",
+        "web-frontend-fundamentals-009:s36:c01",
+        "web-frontend-fundamentals-009:s37:c01",
+        "web-frontend-fundamentals-009:s38:c01",
+        "web-frontend-fundamentals-009:s39:c01",
+        "web-frontend-fundamentals-009:s40:c01",
+        "web-frontend-fundamentals-009:s41:c01",
+        "web-frontend-fundamentals-009:s42:c01",
+        "web-frontend-fundamentals-009:s43:c01",
+        "web-frontend-fundamentals-009:s44:c01",
+        "web-frontend-fundamentals-009:s45:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-009.md",
+      "source_id": "web-frontend-fundamentals-009",
+      "source_title": "Lecture 16 Mashup",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-010:s2:c01",
+        "web-frontend-fundamentals-010:s3:c01",
+        "web-frontend-fundamentals-010:s4:c01",
+        "web-frontend-fundamentals-010:s15:c01",
+        "web-frontend-fundamentals-010:s16:c01",
+        "web-frontend-fundamentals-010:s17:c01",
+        "web-frontend-fundamentals-010:s18:c01",
+        "web-frontend-fundamentals-010:s19:c01",
+        "web-frontend-fundamentals-010:s20:c01",
+        "web-frontend-fundamentals-010:s21:c01",
+        "web-frontend-fundamentals-010:s22:c01",
+        "web-frontend-fundamentals-010:s23:c01",
+        "web-frontend-fundamentals-010:s24:c01",
+        "web-frontend-fundamentals-010:s25:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-010.md",
+      "source_id": "web-frontend-fundamentals-010",
+      "source_title": "Lecture 17 Basic HTML",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-011:s1:c01",
+        "web-frontend-fundamentals-011:s2:c01",
+        "web-frontend-fundamentals-011:s3:c01",
+        "web-frontend-fundamentals-011:s4:c01",
+        "web-frontend-fundamentals-011:s5:c01",
+        "web-frontend-fundamentals-011:s6:c01",
+        "web-frontend-fundamentals-011:s7:c01",
+        "web-frontend-fundamentals-011:s8:c01",
+        "web-frontend-fundamentals-011:s9:c01",
+        "web-frontend-fundamentals-011:s10:c01",
+        "web-frontend-fundamentals-011:s11:c01",
+        "web-frontend-fundamentals-011:s12:c01",
+        "web-frontend-fundamentals-011:s13:c01",
+        "web-frontend-fundamentals-011:s14:c01",
+        "web-frontend-fundamentals-011:s15:c01",
+        "web-frontend-fundamentals-011:s16:c01",
+        "web-frontend-fundamentals-011:s17:c01",
+        "web-frontend-fundamentals-011:s18:c01",
+        "web-frontend-fundamentals-011:s19:c01",
+        "web-frontend-fundamentals-011:s20:c01",
+        "web-frontend-fundamentals-011:s21:c01",
+        "web-frontend-fundamentals-011:s22:c01",
+        "web-frontend-fundamentals-011:s23:c01",
+        "web-frontend-fundamentals-011:s24:c01",
+        "web-frontend-fundamentals-011:s25:c01",
+        "web-frontend-fundamentals-011:s26:c01",
+        "web-frontend-fundamentals-011:s27:c01",
+        "web-frontend-fundamentals-011:s28:c01",
+        "web-frontend-fundamentals-011:s29:c01",
+        "web-frontend-fundamentals-011:s30:c01",
+        "web-frontend-fundamentals-011:s31:c01",
+        "web-frontend-fundamentals-011:s32:c01",
+        "web-frontend-fundamentals-011:s33:c01",
+        "web-frontend-fundamentals-011:s34:c01",
+        "web-frontend-fundamentals-011:s35:c01",
+        "web-frontend-fundamentals-011:s36:c01",
+        "web-frontend-fundamentals-011:s37:c01",
+        "web-frontend-fundamentals-011:s38:c01",
+        "web-frontend-fundamentals-011:s39:c01",
+        "web-frontend-fundamentals-011:s40:c01",
+        "web-frontend-fundamentals-011:s41:c01",
+        "web-frontend-fundamentals-011:s42:c01",
+        "web-frontend-fundamentals-011:s43:c01",
+        "web-frontend-fundamentals-011:s44:c01",
+        "web-frontend-fundamentals-011:s45:c01",
+        "web-frontend-fundamentals-011:s46:c01",
+        "web-frontend-fundamentals-011:s47:c01",
+        "web-frontend-fundamentals-011:s48:c01",
+        "web-frontend-fundamentals-011:s49:c01",
+        "web-frontend-fundamentals-011:s50:c01",
+        "web-frontend-fundamentals-011:s51:c01",
+        "web-frontend-fundamentals-011:s52:c01",
+        "web-frontend-fundamentals-011:s53:c01",
+        "web-frontend-fundamentals-011:s54:c01",
+        "web-frontend-fundamentals-011:s55:c01",
+        "web-frontend-fundamentals-011:s56:c01",
+        "web-frontend-fundamentals-011:s57:c01",
+        "web-frontend-fundamentals-011:s58:c01",
+        "web-frontend-fundamentals-011:s59:c01",
+        "web-frontend-fundamentals-011:s60:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-011.md",
+      "source_id": "web-frontend-fundamentals-011",
+      "source_title": "Lecture 18 MVC",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-012:s1:c01",
+        "web-frontend-fundamentals-012:s2:c01",
+        "web-frontend-fundamentals-012:s3:c01",
+        "web-frontend-fundamentals-012:s4:c01",
+        "web-frontend-fundamentals-012:s5:c01",
+        "web-frontend-fundamentals-012:s6:c01",
+        "web-frontend-fundamentals-012:s7:c01",
+        "web-frontend-fundamentals-012:s8:c01",
+        "web-frontend-fundamentals-012:s9:c01",
+        "web-frontend-fundamentals-012:s10:c01",
+        "web-frontend-fundamentals-012:s10:c02",
+        "web-frontend-fundamentals-012:s10:c03",
+        "web-frontend-fundamentals-012:s11:c01",
+        "web-frontend-fundamentals-012:s12:c01",
+        "web-frontend-fundamentals-012:s13:c01",
+        "web-frontend-fundamentals-012:s14:c01",
+        "web-frontend-fundamentals-012:s15:c01",
+        "web-frontend-fundamentals-012:s16:c01",
+        "web-frontend-fundamentals-012:s17:c01",
+        "web-frontend-fundamentals-012:s18:c01",
+        "web-frontend-fundamentals-012:s19:c01",
+        "web-frontend-fundamentals-012:s20:c01",
+        "web-frontend-fundamentals-012:s21:c01",
+        "web-frontend-fundamentals-012:s22:c01",
+        "web-frontend-fundamentals-012:s23:c01",
+        "web-frontend-fundamentals-012:s24:c01",
+        "web-frontend-fundamentals-012:s25:c01",
+        "web-frontend-fundamentals-012:s26:c01",
+        "web-frontend-fundamentals-012:s27:c01",
+        "web-frontend-fundamentals-012:s28:c01",
+        "web-frontend-fundamentals-012:s29:c01",
+        "web-frontend-fundamentals-012:s30:c01",
+        "web-frontend-fundamentals-012:s31:c01",
+        "web-frontend-fundamentals-012:s32:c01",
+        "web-frontend-fundamentals-012:s33:c01",
+        "web-frontend-fundamentals-012:s34:c01",
+        "web-frontend-fundamentals-012:s35:c01",
+        "web-frontend-fundamentals-012:s36:c01",
+        "web-frontend-fundamentals-012:s37:c01",
+        "web-frontend-fundamentals-012:s38:c01",
+        "web-frontend-fundamentals-012:s39:c01",
+        "web-frontend-fundamentals-012:s40:c01",
+        "web-frontend-fundamentals-012:s41:c01",
+        "web-frontend-fundamentals-012:s41:c02",
+        "web-frontend-fundamentals-012:s42:c01",
+        "web-frontend-fundamentals-012:s43:c01",
+        "web-frontend-fundamentals-012:s44:c01",
+        "web-frontend-fundamentals-012:s45:c01",
+        "web-frontend-fundamentals-012:s46:c01",
+        "web-frontend-fundamentals-012:s47:c01",
+        "web-frontend-fundamentals-012:s48:c01",
+        "web-frontend-fundamentals-012:s49:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-012.md",
+      "source_id": "web-frontend-fundamentals-012",
+      "source_title": "Lecture 2 HTML and CSS Basics",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-013:s1:c01",
+        "web-frontend-fundamentals-013:s2:c01",
+        "web-frontend-fundamentals-013:s3:c01",
+        "web-frontend-fundamentals-013:s4:c01",
+        "web-frontend-fundamentals-013:s5:c01",
+        "web-frontend-fundamentals-013:s6:c01",
+        "web-frontend-fundamentals-013:s7:c01",
+        "web-frontend-fundamentals-013:s8:c01",
+        "web-frontend-fundamentals-013:s9:c01",
+        "web-frontend-fundamentals-013:s10:c01",
+        "web-frontend-fundamentals-013:s11:c01",
+        "web-frontend-fundamentals-013:s12:c01",
+        "web-frontend-fundamentals-013:s13:c01",
+        "web-frontend-fundamentals-013:s14:c01",
+        "web-frontend-fundamentals-013:s15:c01",
+        "web-frontend-fundamentals-013:s16:c01",
+        "web-frontend-fundamentals-013:s17:c01",
+        "web-frontend-fundamentals-013:s18:c01",
+        "web-frontend-fundamentals-013:s19:c01",
+        "web-frontend-fundamentals-013:s20:c01",
+        "web-frontend-fundamentals-013:s21:c01",
+        "web-frontend-fundamentals-013:s22:c01",
+        "web-frontend-fundamentals-013:s23:c01",
+        "web-frontend-fundamentals-013:s24:c01",
+        "web-frontend-fundamentals-013:s25:c01",
+        "web-frontend-fundamentals-013:s26:c01",
+        "web-frontend-fundamentals-013:s27:c01",
+        "web-frontend-fundamentals-013:s28:c01",
+        "web-frontend-fundamentals-013:s29:c01",
+        "web-frontend-fundamentals-013:s30:c01",
+        "web-frontend-fundamentals-013:s31:c01",
+        "web-frontend-fundamentals-013:s32:c01",
+        "web-frontend-fundamentals-013:s33:c01",
+        "web-frontend-fundamentals-013:s34:c01",
+        "web-frontend-fundamentals-013:s35:c01",
+        "web-frontend-fundamentals-013:s36:c01",
+        "web-frontend-fundamentals-013:s37:c01",
+        "web-frontend-fundamentals-013:s38:c01",
+        "web-frontend-fundamentals-013:s39:c01",
+        "web-frontend-fundamentals-013:s40:c01",
+        "web-frontend-fundamentals-013:s41:c01",
+        "web-frontend-fundamentals-013:s42:c01",
+        "web-frontend-fundamentals-013:s43:c01",
+        "web-frontend-fundamentals-013:s44:c01",
+        "web-frontend-fundamentals-013:s45:c01",
+        "web-frontend-fundamentals-013:s46:c01",
+        "web-frontend-fundamentals-013:s47:c01",
+        "web-frontend-fundamentals-013:s48:c01",
+        "web-frontend-fundamentals-013:s49:c01",
+        "web-frontend-fundamentals-013:s50:c01",
+        "web-frontend-fundamentals-013:s51:c01",
+        "web-frontend-fundamentals-013:s52:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-013.md",
+      "source_id": "web-frontend-fundamentals-013",
+      "source_title": "Lecture 3 More Basic HTM and CSS(C)",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-014:s1:c01",
+        "web-frontend-fundamentals-014:s2:c01",
+        "web-frontend-fundamentals-014:s3:c01",
+        "web-frontend-fundamentals-014:s4:c01",
+        "web-frontend-fundamentals-014:s5:c01",
+        "web-frontend-fundamentals-014:s6:c01",
+        "web-frontend-fundamentals-014:s7:c01",
+        "web-frontend-fundamentals-014:s8:c01",
+        "web-frontend-fundamentals-014:s9:c01",
+        "web-frontend-fundamentals-014:s10:c01",
+        "web-frontend-fundamentals-014:s11:c01",
+        "web-frontend-fundamentals-014:s12:c01",
+        "web-frontend-fundamentals-014:s13:c01",
+        "web-frontend-fundamentals-014:s14:c01",
+        "web-frontend-fundamentals-014:s15:c01",
+        "web-frontend-fundamentals-014:s16:c01",
+        "web-frontend-fundamentals-014:s17:c01",
+        "web-frontend-fundamentals-014:s18:c01",
+        "web-frontend-fundamentals-014:s19:c01",
+        "web-frontend-fundamentals-014:s20:c01",
+        "web-frontend-fundamentals-014:s21:c01",
+        "web-frontend-fundamentals-014:s22:c01",
+        "web-frontend-fundamentals-014:s23:c01",
+        "web-frontend-fundamentals-014:s24:c01",
+        "web-frontend-fundamentals-014:s25:c01",
+        "web-frontend-fundamentals-014:s26:c01",
+        "web-frontend-fundamentals-014:s27:c01",
+        "web-frontend-fundamentals-014:s28:c01",
+        "web-frontend-fundamentals-014:s29:c01",
+        "web-frontend-fundamentals-014:s30:c01",
+        "web-frontend-fundamentals-014:s31:c01",
+        "web-frontend-fundamentals-014:s32:c01",
+        "web-frontend-fundamentals-014:s33:c01",
+        "web-frontend-fundamentals-014:s34:c01",
+        "web-frontend-fundamentals-014:s35:c01",
+        "web-frontend-fundamentals-014:s36:c01",
+        "web-frontend-fundamentals-014:s37:c01",
+        "web-frontend-fundamentals-014:s38:c01",
+        "web-frontend-fundamentals-014:s39:c01",
+        "web-frontend-fundamentals-014:s40:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-014.md",
+      "source_id": "web-frontend-fundamentals-014",
+      "source_title": "Lecture 4 Page Sections and the CSS Box Model",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-015:s2:c01",
+        "web-frontend-fundamentals-015:s3:c01",
+        "web-frontend-fundamentals-015:s4:c01",
+        "web-frontend-fundamentals-015:s5:c01",
+        "web-frontend-fundamentals-015:s6:c01",
+        "web-frontend-fundamentals-015:s7:c01",
+        "web-frontend-fundamentals-015:s8:c01",
+        "web-frontend-fundamentals-015:s9:c01",
+        "web-frontend-fundamentals-015:s10:c01",
+        "web-frontend-fundamentals-015:s11:c01",
+        "web-frontend-fundamentals-015:s12:c01",
+        "web-frontend-fundamentals-015:s13:c01",
+        "web-frontend-fundamentals-015:s14:c01",
+        "web-frontend-fundamentals-015:s15:c01",
+        "web-frontend-fundamentals-015:s16:c01",
+        "web-frontend-fundamentals-015:s17:c01",
+        "web-frontend-fundamentals-015:s18:c01",
+        "web-frontend-fundamentals-015:s19:c01",
+        "web-frontend-fundamentals-015:s20:c01",
+        "web-frontend-fundamentals-015:s21:c01",
+        "web-frontend-fundamentals-015:s22:c01",
+        "web-frontend-fundamentals-015:s23:c01",
+        "web-frontend-fundamentals-015:s24:c01",
+        "web-frontend-fundamentals-015:s25:c01",
+        "web-frontend-fundamentals-015:s26:c01",
+        "web-frontend-fundamentals-015:s27:c01",
+        "web-frontend-fundamentals-015:s28:c01",
+        "web-frontend-fundamentals-015:s29:c01",
+        "web-frontend-fundamentals-015:s30:c01",
+        "web-frontend-fundamentals-015:s31:c01",
+        "web-frontend-fundamentals-015:s32:c01",
+        "web-frontend-fundamentals-015:s33:c01",
+        "web-frontend-fundamentals-015:s34:c01",
+        "web-frontend-fundamentals-015:s35:c01",
+        "web-frontend-fundamentals-015:s36:c01",
+        "web-frontend-fundamentals-015:s37:c01",
+        "web-frontend-fundamentals-015:s38:c01",
+        "web-frontend-fundamentals-015:s39:c01",
+        "web-frontend-fundamentals-015:s40:c01",
+        "web-frontend-fundamentals-015:s41:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-015.md",
+      "source_id": "web-frontend-fundamentals-015",
+      "source_title": "Lecture 5 Floating and Positioning(C)",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-016:s1:c01",
+        "web-frontend-fundamentals-016:s2:c01",
+        "web-frontend-fundamentals-016:s3:c01",
+        "web-frontend-fundamentals-016:s4:c01",
+        "web-frontend-fundamentals-016:s5:c01",
+        "web-frontend-fundamentals-016:s6:c01",
+        "web-frontend-fundamentals-016:s7:c01",
+        "web-frontend-fundamentals-016:s8:c01",
+        "web-frontend-fundamentals-016:s9:c01",
+        "web-frontend-fundamentals-016:s10:c01",
+        "web-frontend-fundamentals-016:s11:c01",
+        "web-frontend-fundamentals-016:s12:c01",
+        "web-frontend-fundamentals-016:s13:c01",
+        "web-frontend-fundamentals-016:s14:c01",
+        "web-frontend-fundamentals-016:s15:c01",
+        "web-frontend-fundamentals-016:s16:c01",
+        "web-frontend-fundamentals-016:s17:c01",
+        "web-frontend-fundamentals-016:s18:c01",
+        "web-frontend-fundamentals-016:s19:c01",
+        "web-frontend-fundamentals-016:s20:c01",
+        "web-frontend-fundamentals-016:s21:c01",
+        "web-frontend-fundamentals-016:s22:c01",
+        "web-frontend-fundamentals-016:s23:c01",
+        "web-frontend-fundamentals-016:s24:c01",
+        "web-frontend-fundamentals-016:s25:c01",
+        "web-frontend-fundamentals-016:s26:c01",
+        "web-frontend-fundamentals-016:s27:c01",
+        "web-frontend-fundamentals-016:s28:c01",
+        "web-frontend-fundamentals-016:s29:c01",
+        "web-frontend-fundamentals-016:s30:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-016.md",
+      "source_id": "web-frontend-fundamentals-016",
+      "source_title": "Lecture 6 Basic JavaScript",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-017:s1:c01",
+        "web-frontend-fundamentals-017:s2:c01",
+        "web-frontend-fundamentals-017:s3:c01",
+        "web-frontend-fundamentals-017:s4:c01",
+        "web-frontend-fundamentals-017:s5:c01",
+        "web-frontend-fundamentals-017:s6:c01",
+        "web-frontend-fundamentals-017:s7:c01",
+        "web-frontend-fundamentals-017:s8:c01",
+        "web-frontend-fundamentals-017:s9:c01",
+        "web-frontend-fundamentals-017:s10:c01",
+        "web-frontend-fundamentals-017:s11:c01",
+        "web-frontend-fundamentals-017:s12:c01",
+        "web-frontend-fundamentals-017:s13:c01",
+        "web-frontend-fundamentals-017:s14:c01",
+        "web-frontend-fundamentals-017:s15:c01",
+        "web-frontend-fundamentals-017:s16:c01",
+        "web-frontend-fundamentals-017:s17:c01",
+        "web-frontend-fundamentals-017:s18:c01",
+        "web-frontend-fundamentals-017:s19:c01",
+        "web-frontend-fundamentals-017:s20:c01",
+        "web-frontend-fundamentals-017:s21:c01",
+        "web-frontend-fundamentals-017:s22:c01",
+        "web-frontend-fundamentals-017:s23:c01",
+        "web-frontend-fundamentals-017:s24:c01",
+        "web-frontend-fundamentals-017:s25:c01",
+        "web-frontend-fundamentals-017:s26:c01",
+        "web-frontend-fundamentals-017:s27:c01",
+        "web-frontend-fundamentals-017:s28:c01",
+        "web-frontend-fundamentals-017:s29:c01",
+        "web-frontend-fundamentals-017:s30:c01",
+        "web-frontend-fundamentals-017:s31:c01",
+        "web-frontend-fundamentals-017:s32:c01",
+        "web-frontend-fundamentals-017:s33:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-017.md",
+      "source_id": "web-frontend-fundamentals-017",
+      "source_title": "Lecture 7 Basic JavaScript",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-018:s1:c01",
+        "web-frontend-fundamentals-018:s2:c01",
+        "web-frontend-fundamentals-018:s3:c01",
+        "web-frontend-fundamentals-018:s4:c01",
+        "web-frontend-fundamentals-018:s5:c01",
+        "web-frontend-fundamentals-018:s6:c01",
+        "web-frontend-fundamentals-018:s7:c01",
+        "web-frontend-fundamentals-018:s8:c01",
+        "web-frontend-fundamentals-018:s9:c01",
+        "web-frontend-fundamentals-018:s10:c01",
+        "web-frontend-fundamentals-018:s11:c01",
+        "web-frontend-fundamentals-018:s12:c01",
+        "web-frontend-fundamentals-018:s13:c01",
+        "web-frontend-fundamentals-018:s14:c01",
+        "web-frontend-fundamentals-018:s15:c01",
+        "web-frontend-fundamentals-018:s16:c01",
+        "web-frontend-fundamentals-018:s17:c01",
+        "web-frontend-fundamentals-018:s18:c01",
+        "web-frontend-fundamentals-018:s19:c01",
+        "web-frontend-fundamentals-018:s20:c01",
+        "web-frontend-fundamentals-018:s21:c01",
+        "web-frontend-fundamentals-018:s22:c01",
+        "web-frontend-fundamentals-018:s23:c01",
+        "web-frontend-fundamentals-018:s24:c01",
+        "web-frontend-fundamentals-018:s25:c01",
+        "web-frontend-fundamentals-018:s26:c01",
+        "web-frontend-fundamentals-018:s27:c01",
+        "web-frontend-fundamentals-018:s28:c01",
+        "web-frontend-fundamentals-018:s29:c01",
+        "web-frontend-fundamentals-018:s30:c01",
+        "web-frontend-fundamentals-018:s31:c01",
+        "web-frontend-fundamentals-018:s32:c01",
+        "web-frontend-fundamentals-018:s33:c01",
+        "web-frontend-fundamentals-018:s34:c01",
+        "web-frontend-fundamentals-018:s35:c01",
+        "web-frontend-fundamentals-018:s36:c01",
+        "web-frontend-fundamentals-018:s37:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-018.md",
+      "source_id": "web-frontend-fundamentals-018",
+      "source_title": "Lecture 8 Object-Oriented JavaScript",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "web-frontend-fundamentals-019:s1:c01",
+        "web-frontend-fundamentals-019:s2:c01",
+        "web-frontend-fundamentals-019:s3:c01",
+        "web-frontend-fundamentals-019:s4:c01",
+        "web-frontend-fundamentals-019:s5:c01",
+        "web-frontend-fundamentals-019:s6:c01",
+        "web-frontend-fundamentals-019:s7:c01",
+        "web-frontend-fundamentals-019:s8:c01",
+        "web-frontend-fundamentals-019:s9:c01",
+        "web-frontend-fundamentals-019:s10:c01",
+        "web-frontend-fundamentals-019:s11:c01",
+        "web-frontend-fundamentals-019:s12:c01",
+        "web-frontend-fundamentals-019:s13:c01",
+        "web-frontend-fundamentals-019:s14:c01",
+        "web-frontend-fundamentals-019:s15:c01",
+        "web-frontend-fundamentals-019:s16:c01",
+        "web-frontend-fundamentals-019:s17:c01",
+        "web-frontend-fundamentals-019:s18:c01",
+        "web-frontend-fundamentals-019:s19:c01",
+        "web-frontend-fundamentals-019:s20:c01",
+        "web-frontend-fundamentals-019:s21:c01",
+        "web-frontend-fundamentals-019:s22:c01",
+        "web-frontend-fundamentals-019:s23:c01",
+        "web-frontend-fundamentals-019:s24:c01",
+        "web-frontend-fundamentals-019:s25:c01",
+        "web-frontend-fundamentals-019:s26:c01",
+        "web-frontend-fundamentals-019:s27:c01",
+        "web-frontend-fundamentals-019:s28:c01",
+        "web-frontend-fundamentals-019:s29:c01",
+        "web-frontend-fundamentals-019:s30:c01",
+        "web-frontend-fundamentals-019:s31:c01",
+        "web-frontend-fundamentals-019:s32:c01",
+        "web-frontend-fundamentals-019:s33:c01",
+        "web-frontend-fundamentals-019:s34:c01",
+        "web-frontend-fundamentals-019:s35:c01",
+        "web-frontend-fundamentals-019:s36:c01",
+        "web-frontend-fundamentals-019:s37:c01",
+        "web-frontend-fundamentals-019:s38:c01"
+      ],
+      "course_id": "web_frontend_fundamentals",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "web_frontend_fundamentals/web-frontend-fundamentals-019.md",
+      "source_id": "web-frontend-fundamentals-019",
+      "source_title": "Lecture 9 More JavaScript and DOM(C)",
+      "year": null
+    }
+  ],
+  "statistics": {
+    "chunk_count": 652,
+    "question_count": 0,
+    "source_count": 19
+  },
+  "workflow_version": "workflow-contract-v1"
+}

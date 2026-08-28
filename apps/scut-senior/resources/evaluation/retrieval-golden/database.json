@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "database",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "2012A试卷主要讲什么？",
+      "expected_chunk_ids": [
+        "database-001:h-2012-数据库系统概论-a试卷:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做自然连接的条件时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "数据库系统中的死锁故障类型的答案怎么判断？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把E-R图的三个基本要素的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做视图中保存的数据和定义时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用候选码的定义和组成举例说明吗？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "关系模式设计的任务怎么做？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做两个事务并发执行的正确性判断时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "恢复和并发控制的基本单位的答案怎么判断？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把事务原子性的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做共享锁S锁的作用和兼容性时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用两阶段锁协议的判断举例说明吗？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "下列 SQL语句中，修改表结构的是 。怎么做？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q12:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做关系代数表达式的优化策略中，首先要做的是时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q13:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "SQL中，下列涉及空值的操作，不正确的是的答案怎么判断？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q14:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把管理系统中 故障的恢复需要DBA的介入的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q15:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做关于查询优化正确的说法有时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q16:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用在规范化的关系中，下列说法正确的是 。举例说明吗？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q17:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "在SQL语言中，建立索引用 。怎么做？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q18:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做下列SQL语句中，能够实现实体完整性控制的子句是 。时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q19:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "一般不适合建立索引的属性有 。的答案怎么判断？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q20:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把SQL 的 SELECT 语句中，“ HAVING 条件表达式”用来筛选满足条件的 。的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q21:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做满足2NF但不满足3NF时可能存在的依赖时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q22:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用自然连接的条件举例说明吗？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q23:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "按系号分组统计平均年龄的SQL怎么做？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q24:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做按系号分组统计平均年龄的SQL时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q25:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "用来记录对中数据进行的每一次更新操作的答案怎么判断？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q26:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把当局部E-R图合并成全局E-R图时可能出现的合并冲突中包含了命名冲突。的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q27:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做恢复的基本原理是利用存储在后备副本、日志文件和镜像中的冗余数据来重建。时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q28:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用将所有事务串行起来的调度策略一定是正确的调度策略。举例说明吗？",
+      "expected_chunk_ids": [
+        "database-001:q-database-001-q29:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

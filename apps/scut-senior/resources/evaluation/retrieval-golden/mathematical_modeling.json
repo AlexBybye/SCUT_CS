@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "mathematical_modeling",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "数模大全主要讲什么？",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习数模大全，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习数模大全时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "数模大全里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习数模大全时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p4:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考数模大全？",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "数模大全主要讲什么？，见第6页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习数模大全，应该从哪里开始？，见第7页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习数模大全时哪些内容最重要？，见第8页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "数模大全里的方法或结论怎么理解？，见第9页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习数模大全时哪些概念容易混淆？，见第10页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考数模大全？，见第10页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p10:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "数模大全主要讲什么？，见第11页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习数模大全，应该从哪里开始？，见第12页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p12:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习数模大全时哪些内容最重要？，见第13页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p13:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "数模大全里的方法或结论怎么理解？，见第14页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p14:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习数模大全时哪些概念容易混淆？，见第15页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p15:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考数模大全？，见第15页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p15:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "数模大全主要讲什么？，见第16页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p16:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习数模大全，应该从哪里开始？，见第17页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p17:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习数模大全时哪些内容最重要？，见第18页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p18:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "数模大全里的方法或结论怎么理解？，见第18页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p18:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习数模大全时哪些概念容易混淆？，见第19页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p19:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考数模大全？，见第20页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p20:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "数模大全主要讲什么？，见第21页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p21:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习数模大全，应该从哪里开始？，见第21页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p21:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习数模大全时哪些内容最重要？，见第22页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p22:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "数模大全里的方法或结论怎么理解？，见第22页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p22:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习数模大全时哪些概念容易混淆？，见第23页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p23:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考数模大全？，见第24页",
+      "expected_chunk_ids": [
+        "mathematical-modeling-001:p24:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

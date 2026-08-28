@@ -1,0 +1,744 @@
+{
+  "chunks": [
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-002:p1:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Android 应用开发课程大作业及报告要求2026春季"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-002",
+      "source_title": "Android 应用开发课程大作业及报告要求2026春季",
+      "text": "移动应用开发（Android ）课程大作业及报告要求\n\n教师：张晶\n\n一、设计要求\n\n1、大作业以小组为单位进行开发，可单人成组。\n\n2、大作业开发主题可从如下几项目中选择：\n\n1） （有基础代码，基础功能完成难度较小，高分不易）从本课程的五个项目 GeoQuiz /NewsApp /\n\nSunflower /CriminalIntent /HandwrittenRecognition 中选择一个作为大作业的基础进行开发。\n\n要求从零开始实现，并对项目的功能或界面做改造。例如：在GeoQuiz 或者 NewsApp 项目中\n\n增加数据库存储等功能；在各项目中提供点赞、地图、社交分享等功能。对项目进行的界面或者功\n\n能改造，将有加分。\n\n功能方面，APP 必须实现的功能包括：i）基本的注册功能、登陆功能，和某些数据的增删改查\n\n功能。ii）要求 APP 提供适当的人机交互界面。\n\n2）（全新从零开发，综合性强，项目跑通难度较大，高分不难）为本课程开发一款 Android 移动端\n\n的 APP，供教师端或者学生端使用均可（类似于为课程网站 ecourse.scut.edu.cn 开发一款 Android\n\n平台的 APP）。\n\n项目要求提供前端和后端，其中，前端为 Android 平台上的APP，后端为Web应用程序，提供\n\n数据查询、存储等。后端可使用开源代码，例如，使用 Ruoyi 开源代码（https://www.ruoyi.vip/），\n\n或者其它开源代码，或者自行设计完成项目的后端Web应用程序。\n\n功能方面，i）APP 必须实现的功能为用户登陆功能。考虑到本任务综合性强，难度较大，APP\n\n的其它功能可由小组自行设计，如用户管理、讨论区管理、教案管理、作业管理、课堂管理等，均\n\n可。ii）要求 APP 提供适当的人机交互界面。\n\n3）自选命题：需跟指导老师通过QQ或者面谈，讨论之后确定选题。\n\n3、技术方面，开发中要求使用 ROOM 操作数据库。 如果使用 Repository 层，有加分。\n\n二、以小组为单位提交如下文件（每组提交一份即可）\n\n1、大作业报告，文件名： AppName_leaderStudentID.pdf. eg. scutTourMap_ 202235221111.pdf\n\n2、展示 APP 运行情况的视频文件\n\n3、zip 文件，包括：\n\na) .apk，命名：AppName_leaderStudentID.apk\n\nb) 源代码，命名：AppName_leaderStudentID.zip\n\n3、2026/07/01 23:59:59 前提交到：ecourse.scut.edu.cn"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-002:p2:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Android 应用开发课程大作业及报告要求2026春季"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-002",
+      "source_title": "Android 应用开发课程大作业及报告要求2026春季",
+      "text": "三、项目设计报告内容要求:\n\n1、请下载大作业报告模板 doc 文件，按模板格式撰写报告\n\n2、请说明 app 的功能、架构、主要界面、所采用的技术、设计和实现中的亮点\n\n3、使用截屏展示运行效果；\n\n4、对 app 的优缺点进行分析及改进思路的展望；\n\n5、报告最后一部分请说明组内每位同学在大作业设计过程中的工作内容；\n\n6、其它任何想解释的内容。\n\n四、大作业及报告的成绩评定：\n\n1、APP 能正常运行，可得到 45 分；\n\n2、如使用 ROOM 和 Repository 层，可得到 10 分；\n\n3、项目的创意部分另外有加分，最多可加 25 分；\n\n4、大作业报告要求内容详实，最高 20 分；\n\n5、以上几项的分数之和，不超过 100 分。\n\n五、备注：\n\n1、鼓励使用开源代码作为APP的组成部分，但是禁止从网上下载开源代码后直接作为大作业提交。\n\n请在报告中说明所下载的开源代码在APP中的功能。\n\n2、鼓励使用AI编程，请在报告中详细说明AI编程的程度及范围。合理使用AI辅助编程，有加分。\n\n3、根据往年经验，因为版本及其它原因，有些同学的 APP 无法在我的电脑模拟器和手机上运行。\n\n所以请录制视频或者录屏，说明该 APP 在模拟器或手机上的运行情况。\n\n4、确定小组成员后，请尽快通过 QQ 或者邮件，将组队成员名单发送给我，以便我在教学网站上设\n\n置分组信息。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-003:h-课程设计要求及报告模板:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "课程设计要求及报告模板"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "mobile-application-development-003",
+      "source_title": "课程设计要求及报告模板",
+      "text": "**移动应用开发（Android** **）课程大作业及报告要求**\n\n教师：张晶\n\n一、目的\n\n本课程培养综合性 Android 手机移动应用设计和开发能力以及小组成员的协作开发能力。\n\n二、设计要求\n\n1 、大作业以小组为单位进行开发，可单人成组。\n\n2 、大作业开发主题可从如下几项目中选择：\n\n1） （有基础代码，基础功能完成难度较小 ，高分不易）从本课程的五个项目 GeoQuiz /NewsApp / Sunﬂower /CriminalIntent /HandwrittenRecognition 中选择一个作为大作业的基础进行开发。\n\n要求从零开始实现，并对项目的功能或界面做改造。例如：在GeoQuiz或者  NewsApp 项目中增加数据库存储等功能；在各项目中提供点赞、地图、社交分享等功能。对项目进行的界面或者功能改造，将有加分。\n\n功能方面 ，APP  必须实现的功能包括：i）基本的注册功能、登陆功能，和某些数据的增删改查功能。ii）要求  APP  提供适当的人机交互界面。\n\n2）（全新从零开发，综合性强，项目跑通难度较大 ，高分不难）为本课程开发一款 Android移动端的 APP，供教师端或者学生端使用均可（类似于为课程网站ecourse.scut.edu.cn 开发一款 Android平台的 APP）。\n\n项目要求提供前端和后端，其中，前端为 Android  平台上的APP，后端为Web应用程序，提供数据查询、存储等。后端可使用开源代码，例如，使用 Ruoyi  开源代码（https://www.ruoyi.vip/），或者其它开源代码，或者自行设计完成项目的后端Web应用程序。\n\n功能方面 ，i）APP  必须实现的功能为用户登陆功能。考虑到本任务综合性强，难度较大 ，APP的其它功能可由小组自行设计，如用户管理、讨论区管理、教案管理、作业管理、课堂管理等，均可。ii）要求  APP  提供适当的人机交互界面。\n\n3） 自选命题：需跟指导老师通过QQ或者面谈，讨论之后确定选题。\n\n3、技术方面，开发中要求使用 ROOM  操作数据库。 如果使用 Repository  层，有加分。\n\n三、以小组为单位提交如下文件（每组提交一份即可）\n\n1、大作业报告，文件名：  AppName_leaderStudentID.pdf. eg. scutTourMap_ 202235221111.pdf\n\n2、展示  APP  运行情况的视频文件\n\n3 、zip  文件，包括：\n\na) .apk，命名：AppName_leaderStudentID.apk\n\nb)  源代码，命名：AppName_leaderStudentID.zip\n\n4、2026/07/01 23:59:59  前提交到：ecourse.scut.edu.cn"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-003:h-课程设计要求及报告模板:c02",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "课程设计要求及报告模板"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "mobile-application-development-003",
+      "source_title": "课程设计要求及报告模板",
+      "text": "四、项目设计报告内容要求:\n\n1、请下载大作业报告模板  doc  文件，按模板格式撰写报告\n\n2、请说明 app 的功能、架构、主要界面、所采用的技术、设计和实现中的亮点\n\n3、使用截屏展示运行效果；\n\n4、对  app 的优缺点进行分析及改进思路的展望；\n\n5、报告最后一部分请说明组内每位同学在大作业设计过程中的工作内容；\n\n6、其它任何想解释的内容。\n\n五、大作业及报告的成绩评定：\n\n1 、APP  能正常运行，可得到  45 分；\n\n2、如使用 ROOM  和  Repository  层，可得到  10 分；\n\n3、项目的创意部分另外有加分，最多可加  25  分；\n\n4 、大作业报告要求内容详实，最高  20  分；\n1. 以上几项的分数之和，不超过  100  分。\n\n六、备注：\n\n1 、鼓励使用开源代码作为APP的组成部分，但是禁止从网上下载开源代码后直接作为大作业提交。请在报告中说明所下载的开源代码在APP中的功能。\n\n2 、鼓励使用AI编程，请在报告中详细说明AI编程的程度及范围。合理使用AI辅助编程，有加分。\n\n3、根据往年经验，因为版本及其它原因，有些同学的  APP  无法在我的电脑模拟器和手机上运行。所以请录制视频或者录屏，说明该 APP  在模拟器或手机上的运行情况。\n\n4、确定小组成员后，请尽快通过  QQ  或者邮件，将组队成员名单发送给我，以便我在教学网站上设置分组信息。\n\n附件：\n\n**![image](assets/mobile-application-development-003/image-001.jpeg)**\n\n大作业设计报告书\n\n**题目：**二号，黑体，加粗，居中\n\n**学  院**\n\n**专  业**\n\n**组长姓名学号**\n\n**成员姓名学号**\n\n**指导教师**\n\n**起始日期**\n\n编辑完后需将全文绿色说明文字删除，格式不变\n\n（另起页）\n\n（题目格式：宋体，3号，加粗，居中对齐，上下空一行）\n\n大作业APP名称\n\n（剩余部分采用正文格式：宋体，小4号，不加粗，两端对齐，行距为固定值20磅）\n\n一、选题背景  ：简述本应用的功能.\n\n二**、**方案论证(设计理念)\n\n说明设计原理（理念）并进行方案选择，阐述选择该设计方案的原因及所采用方案的特点。\n\n重点说明要实现的功能。\n\n三**、**过程论述\n\n重点说明设计是如何实现的，包括：对设计工作的详细表述。要求层次分明、表达确切。\n\n要求：每个图都必须有文字说明，说明为什么使用该图、图的主要作用；图中各组件的作用，组件之间的交互或图所表达的流程。\n\n四**、**结果分析\n\n通过截屏，说明APP在手机上的运行效果，得出结论和推论。\n\n五**、**项目成员工作内容分配\n\n详细地说明组内每位同学在大作业设计过程中的工作内容；\n\n六、参考文献 （可选）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-003:h-课程设计要求及报告模板:c03",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "课程设计要求及报告模板"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "mobile-application-development-003",
+      "source_title": "课程设计要求及报告模板",
+      "text": "**课程设计报告格式说明：**\n1. 请按照以上内容的要求撰写；正文部分两端对齐，首行缩进2字符；左右缩进0字符；行距按上文要求，段前、段后为0行。\n1. 所有的图须有图号和图名，放在图的下方，居中对齐。如：图1  模拟计费系统用例图。\n1. 所有的表格须有表号和表名，放在表的上方，居中对齐。如：表1  计费功能测试数据和预期结果。\n1. 所有公式编号，用括号括起来写在右边行末，其间不加虚线。\n1. 图纸要求：图面整洁，布局合理，线条粗细均匀，圆弧连接光滑，尺寸标注规范，文字注释必须使用工程字书写；必须按国家规定标准或工程要求绘制。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-004:h-移动应用开发:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "移动应用开发"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "mobile-application-development-004",
+      "source_title": "移动应用开发",
+      "text": "华南理工大学\n\n《移动应用开发 - Android》课程实验报告\n\n实验题目：\n\n指导教师：\n\n| 实验概述 |\n|---|\n| 【实验目的及要求】<br>本次任务综合性较强，且需要阅读文献，难度较大。<br>实验目的：<br>熟悉Service的使用；<br>熟悉第三方SDK的使用；<br>综合性APP的设计与开发。<br>实验要求：<br>鼓励使用AI工具完成代码开发，或者使用AI工具辅助编程。鼓励讨论及小组合作。<br>鼓励参考开源代码，但不允许直接将下载的开源代码作为作业提交，并要求在实验报告中将开源代码的链接作为参考文献。<br>可以独立完成，也可以小组形式合作完成如下2项任务：<br>任务1：设计并实现一款使用Service的应用，以熟悉Service的使用。比如使用Service播放音乐、或下载文件、或其它功能。可采用任一种Service实现该功能，如启动服务Start Service、绑定服务Bind Service或者前台服务 Foreground Service。<br>任务2：设计并实现一款使用第三方SDK的应用，以掌握如何使用第三方SDK。eg。腾讯/百度/高德地图应用、天气应用、或其它应用均可。（SDK的使用步骤，需阅读各家厂商官网上的说明，并可参考放在ecourse上的示例代码）<br>已开始进行大作业  APP开发的小组，如大作业中涉及使用第三方SDK或者使用Service，可将大作业完成进展作为相应的实验代码，撰写实验报告。<br>将实验成果提交到  ecourse.scut.edu.cn<br>实验报告：每位同学需要有独立的实验报告，截屏展示  APP  的功能，阐述自己的工作内容，回顾和总结在实验过程中遇到的问题及解决方案。同小组成员的截屏内容可相同。<br>请将整个项目源码打成zip包，提交到课程网站  ecourse.scut.edu.cn。<br>【实验环境】<br>操作系统：Windows XP  或 其它 |\n| 实验内容 |\n| 1. APP的功能设计及其实现技术：<br>2.  Screenshots： |\n| 小结（此栏目阐述对实验所开发的APP  在应用方面的反馈，回顾总结在开发过程中遇到的问题和经验，但不限于此） |\n|  |"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-005:p1:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "实验3案例"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-005",
+      "source_title": "实验3案例",
+      "text": "华南理工大学\n《移动应用开发 - Android》课程实验3案例\u0001\n\n1. NewsAPP 新闻列表应用\n一个简易版的新闻应用，要求兼容手机和平板用于展示新闻。在平板和手机上展示\n的效果分别如下图所示。\n本案例的示例代码简单，只涉及列表显示、详情显示。数据库操作部分需自行设计\n并实现。\n\n![image](assets/mobile-application-development-005/image-001.png)\n\n![image](assets/mobile-application-development-005/image-002.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-005:p2:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "实验3案例"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-005",
+      "source_title": "实验3案例",
+      "text": "2. CriminalIntent APP\n\n功能：用于“办公室吐槽”的随手记，记录队友们一些令人厌烦的行为，比如：把脏\n盘子放在休息室里、打印完文件后不加纸就离开公用打印机等等。\nCriminalIntent APP 中记录的内容包括行为名称（标题）、日期、详情和照片等。\n用户还可以从其联系方法中识别出这人是谁，并通过电子邮件或其他方式通知。\nCriminalIntent APP 的用户界面是如下图所示的列表：主屏幕显示所有记录，用户\n可以添加新的行为，也可以选中某现有的行为，以便查看和编辑其详细信息。\n本案例的示例代码涉及数据库、⽹络数据获取、第三⽅API等内容，易错。有兴趣\n的同学可参考，本实验中只需要实现列表显示、详情显示、数据库操作部分。\n\n![image](assets/mobile-application-development-005/image-003.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-005:p3:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "实验3案例"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-005",
+      "source_title": "实验3案例",
+      "text": "3. Sunflower APP\n功能：展示花园的植物\n用户界面的主屏幕显示所有植物，用户可以选中某植物，查看其详细信息。也可以\n选中植物，放入自己的花园。\n本案例的示例代码涉及数据库、⽹络数据获取、第三⽅API等内容，易错。有兴趣\n的同学可参考，本实验中只需要实现列表显示、详情显示、数据库操作部分。\n\n![image](assets/mobile-application-development-005/image-004.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-006:h-移动应用开发:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "移动应用开发"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "mobile-application-development-006",
+      "source_title": "移动应用开发",
+      "text": "华南理工大学\n\n《移动应用开发 - Android》课程实验报告\n\n实验题目：\n\n指导教师：\n\n| 实验概述 |\n|---|\n| 【实验目的及要求】<br>任务：<br>要求：<br>【实验环境】<br>操作系统：Windows XP  或 其它 |\n| 实验内容 |\n| 1. APP的功能设计及其实现技术：<br>2. Screenshots： |\n| 小结（此栏目阐述对实验所开发的APP  在应用方面的反馈，回顾总结在开发过程中遇到的问题和经验，但不限于此） |\n|  |"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-007:p1:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "GeoQuiz V"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-007",
+      "source_title": "GeoQuiz V",
+      "text": "GeoQuiz\n\nGeoQuiz consists of one Activity (MainActivity) and a layout(activity_main.xml):\n\nMainActivity will manage the user interface, or UI, shown in Figure 1.1.\n\nA layout defines a set of UI objects and the objects’ positions on the screen. A\nlayout is made up of definitions written in XML. Each definition is used to create\nan object that appears onscreen, like a button or some text.\n\nGeoQuiz will include a layout file named activity_main.xml. The XML in this file\nwill define the UI shown in the above figure.\n\nStep 1. Create an Android project\n\n1.\nOpen Android Studio and create an Android project. Choose Empty\nView Activity -> Enter GeoQuiz as the application name ->  For package\nname, enter com.example.geoquiz -> For the project location, use any\nlocation on your filesystem that you want.  -> Select Kotlin from the\nLanguage drop-down menu.  -> Select a Minimum API level of API 21: Android\n5.0 (Lollipop). -> Make sure the checkbox next to Use AndroidX artifacts is\nchecked. -> Finish\n\n![image](assets/mobile-application-development-007/image-001.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-007:p2:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "GeoQuiz V"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-007",
+      "source_title": "GeoQuiz V",
+      "text": "2.\nClick Finish. Android Studio will create and open your new project.\n\n3.\nClick the tab for the layout file, activity_main.xml -> Open the file. ->\nUse the Design or Code tab.\n\nBy convention, a layout file is named based on the activity it is associated\nwith. Its name begins with activity_, and the rest of the activity name\nfollows in all lowercase, using underscores to separate words.\n\neg. The layout file for an activity called SplashScreenActivity would be\nnamed activity_splash_screen.\n\nViews are the building blocks you use to compose a UI. Everything you see\non the screen is a view. Views that the user can see or interact with are\ncalled widgets. Some widgets show text, like textviews. Some widgets show\ngraphics. Others, like buttons, do things when touched.\n\nSomething has to tell the widgets where they belong onscreen. A\nViewGroup is a kind of View that contains and arranges other views. A\nViewGroup does not display content itself. ViewGroups are often referred\nto as layouts. ConstraintLayout is the default activity layout responsible\nfor laying out its sole child, a TextView widget."
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-007:p2:c02",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "GeoQuiz V"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-007",
+      "source_title": "GeoQuiz V",
+      "text": "Edit the text contents of activity_main.xml to define these widgets in your\nlayout XML. Each element has a set of XML attributes. Each attribute is an\ninstruction about how the widget should be configured.\n\nWIDGET ATTRIBUTES\n\nandroid:layout_width and android:layout_height: required for almost every type\nof widget. typically set to either match_parent( view will be as big as its parent )\nor wrap_content( view will be as big as its contents wrap_content require )\n\nandroid:text: It tells the widget what text to display. You can give a widget a\nhardcoded string, like android:text=\"True\", but it is usually not a good idea.\nPlacing strings into a separate file and then referencing them is better.\n\nHere, they are references to string resources, as denoted by the @string/\nsyntax.  A string resource is a string that lives in a separate XML file called\na strings file.\n\nThe string resources you are referencing in activity_main.xml do not exist\nyet. Let’s fix that.\n\nStep 2. CREATING RESOURCES"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-007:p3:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "GeoQuiz V"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-007",
+      "source_title": "GeoQuiz V",
+      "text": "Every project includes a default strings file named res/values/strings.xml.\n\nOpen res/values/strings.xml. The template has already added one string\nresource for you. Add the three new strings that your layout requires.\n\n<resources>\n    <string name=“app_name\">GeoQuiz</string>\n    <string name=\"question_text\">Canberra is the capital of Australia.</string>\n    <string name=\"true_button\">True</string>\n    <string name=\"false_button\">False</string>\n</resources>\n\nNow, whenever you refer to @string/false_button in any XML file in the\nGeoQuiz project, you will get the literal string “False” at runtime.\n\nThe default strings file is named strings.xml, but you can name a strings file\nanything you want. You can also have multiple strings files in a project.\n\nStep 3. PREVIEWING THE LAYOUT\n\nYour layout is now complete. Switch back to activity_main.xml and preview\nthe layout in the Design pane by clicking the tab of the editor tool window.\nThis shows how the layout would look on a device, including theming."
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-007:p3:c02",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "GeoQuiz V"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-007",
+      "source_title": "GeoQuiz V",
+      "text": "In addition to previewing, you can also build your layouts using the palette\nthat contains all of the built-in widgets in the layout editor. You can drag\nthese widgets from the palette and drop them into your view. The\ngraphical editor especially valuable when working with ConstraintLayout.\n\nWhen you created the GeoQuiz project, a subclass of Activity named\nMainActivity was created for you. The onCreate(Bundle?) function is called\nwhen an instance of the activity subclass is created. When an activity is\ncreated, it needs a UI to manage. To give the activity its UI, you call\nActivity.setContentView(layoutResID: Int). The function inflates a layout and\nputs it onscreen. When a layout is inflated, each widget in the layout file is\ninstantiated as defined by its attributes. You specify which layout to inflate\nby passing in the layout’s resource ID.\n\nStep 4. RESOURCES AND RESOURCE IDS\n\nA layout is a resource. A resource is a piece of your application that is not\ncode – things like image files, audio files, and XML files.\n\nResources for your project live in a subdirectory of the app/res directory. In\nthe project tool window, you can see that activity_main.xml lives in res/"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-007:p4:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "GeoQuiz V"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-007",
+      "source_title": "GeoQuiz V",
+      "text": "layout/. Your strings file, which contains string resources, lives in res/\nvalues/.\n\nNot every widget needs a resource ID. In GeoQuiz, you will only interact\nwith the two buttons in code, so only they need resource IDs.\n\nNotice that there is a + sign in the values for android:id but not in the\nvalues for android:text. This is because you are creating the resource IDs and\nonly referencing the strings.\n\nIn an activity, you can get a reference to an inflated widget by calling\nActivity.findViewById(Int). This function returns the corresponding view.\nRather than return it as a View, it is cast to the expected subtype of View.\nHere, that type is Button.\n\nStep 5. SETTING LISTENERS\n\nYour listener will implement the View.OnClickListener interface. Start with the\nTRUE button. In MainActivity.kt, add the following code to\nonCreate(Bundle?) just after the variable assignments.\n\nType to enter textoverride fun onCreate(savedInstanceState: Bundle?) { ...\ntrueButton.setOnClickListener { view: View ->\n// Do something in response to the click here\n}\nfalseButton.setOnClickListener { view: View ->\n// Do something in response to the click here\n}\n}\n\nStep 6. Making Toasts"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-007:p4:c02",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "GeoQuiz V"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-007",
+      "source_title": "GeoQuiz V",
+      "text": "You are going to have a press of each button trigger a pop-up message\ncalled a toast. A toast is a short message that informs the user of something\nbut does not require any input or action. You are going to make toasts that\nannounce whether the user answered correctly or incorrectly (Figure 1.17).\n\nFirst, return to strings.xml and add the string resources that your toasts\nwill display.\n\n<resources>\n    <string name=\"app_name\">GeoQuiz</string>\n    <string name=\"true_button\">True</string>\n    <string name=\"false_button\">False</string>\n    <string name=\"correct_toast\">Correct!</string>\n    <string name=\"incorrect_toast\">Incorrect!</string>\n</resources>"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-007:p5:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "GeoQuiz V"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-007",
+      "source_title": "GeoQuiz V",
+      "text": "Next, update your click listeners to create and show a toast.\n\noverride fun onCreate(savedInstanceState: Bundle?) { ...\ntrueButton.setOnClickListener { view: View ->\n// Do something in response to the click here\nToast.makeText( this, R.string.correct_toast, Toast.LENGTH_SHORT) .show()\n}\nfalse.setOnClickListener { view: View ->\n// Do something in response to the click here\nToast.makeText( this, R.string.incorrect_toast, Toast.LENGTH_SHORT) .show()\n}\n}\n\nStep 7. Running on the Emulator\n\nFirst, create an Android virtual device (or AVD), choose Tools → AVD\n\nManager. Then, click the +Create Virtual Device... button. Eg. Choose to emulate a\nPixel 2\n\nOn the next screen, choose a system image for your emulator. For this\nemulator, select an x86 Pie emulator and select Next (Figure 1.19). (You\nmay need to follow the steps to download the emulator’s components\nbefore you can click Next.)\n\nYou can also edit the properties of an existing emulator later. For now,\nname your emulator something that will help you to identify it later and\nclick Finish."
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-007:p5:c02",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "GeoQuiz V"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-007",
+      "source_title": "GeoQuiz V",
+      "text": "Once you have an AVD, you can run GeoQuiz on it. From the Android\nStudio toolbar, click the run button. Android Studio will start your virtual\ndevice, install the application package on it, and run the app."
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p1:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "移动应⽤开发(Android)\n\n实验1-1\n\nzhjing@scut.edu.cn\n教案及提交作业：lms.scutnc.cn\n\n![image](assets/mobile-application-development-008/image-001.jpeg)\n\n![image](assets/mobile-application-development-008/image-002.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p2:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "⽬标\n\n• 1. 创建 Android 开发环境\n\n• 2. 了解并熟悉启动 Activity\n\n• 3. 了解基本的 UI 元素使⽤\n\n![image](assets/mobile-application-development-008/image-003.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p3:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "任务\n\n• 1.  创建 Android 开发环境\n\n• 运⾏第1个 HelloWorld App (不⽤写⼊实验报告)\n\n• 在模拟器或者真机上运⾏，确定开发环境安装正常\n\n• 2.  三选一实验：\n\n• 实现案例 GeoQuiz App，增加⾳乐播放功能，运⾏\n\n• 实现本教案中的 “WriteNumberGame” ，运⾏\n\n• 运⾏ Android 某官⽅案例，并分析其结构\n\n![image](assets/mobile-application-development-008/image-004.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p4:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "1. Android 开发环境\n\n![image](assets/mobile-application-development-008/image-005.jpeg)\n\n![image](assets/mobile-application-development-008/image-006.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p5:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "Android 开发环境\n\ndeveloper.android.com\n\n• 1.  JDK,  Android SDK\n\n• java —version\n\n• 2. IDE:  Android Studio\n\n• developer.android.google.cn\n\n• 3. 创建并运⾏ HelloWorld App\n\n![image](assets/mobile-application-development-008/image-007.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p6:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "Project WriteNumberGame\n\n![image](assets/mobile-application-development-008/image-008.jpeg)\n\n![image](assets/mobile-application-development-008/image-009.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p7:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "Project WriteNumberGame\n\n•\n步骤 1: 使⽤ Empty Activity 模板创\n\n建 WriteNumberGame 项⽬\n\n•\n步骤 2：设计启动界⾯\n\n•\n5秒后，跳转到主界⾯\n\n来⾃<<Android项⽬开发实战⼊⻔>>\n\n![image](assets/mobile-application-development-008/image-010.jpeg)\n\n![image](assets/mobile-application-development-008/image-011.jpeg)\n\n![image](assets/mobile-application-development-008/image-012.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p8:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "步骤 2: Launch to the Start Activity\n\n• 1. 导⼊必需资源(resources).\n\n• 2. 修改 layout.\n\n• 3. 使 activity 全屏.\n\n![image](assets/mobile-application-development-008/image-013.jpeg)\n\n![image](assets/mobile-application-development-008/image-014.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p9:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "1. 导⼊资源(resources)\n\n• 如果有较多图⽚，则创建新⽬录：\n(resource directory)\n\n• copy+paste\n\n![image](assets/mobile-application-development-008/image-015.jpeg)\n\n![image](assets/mobile-application-development-008/image-016.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p10:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 10,
+      "locator_start": 10,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "1. 导⼊资源(resources)\n\n• drawable ⽬录⾥的⽂件：\n\n• xml\n\n• png\n\n• jpg…\n\nplay_btn.xml，⽂件中的btn_play*.png 在⽬录res/mipmap下\n\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<selector xmlns:android=\"http://schemas.android.com/apk/res/android\">\n    <item android:drawable=\"@mipmap/btn_play1\" android:state_focused=\"false\" android:state_pressed=\"false\" />\n    <item android:drawable=\"@mipmap/btn_play2\" android:state_focused=\"false\" android:state_pressed=\"true\" />\n    <item android:drawable=\"@mipmap/btn_play2\" android:state_focused=\"false\" android:state_pressed=\"true\" />\n</selector>\n\n![image](assets/mobile-application-development-008/image-017.jpeg)\n\n![image](assets/mobile-application-development-008/image-018.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p11:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 11,
+      "locator_start": 11,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "2. 修改 layout\n\n• activity_main.xml\n\n• background etc.\n\n• 在模拟器上运⾏项⽬\n\n• LinearLayout\n\n![image](assets/mobile-application-development-008/image-019.jpeg)\n\n![image](assets/mobile-application-development-008/image-020.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p12:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 12,
+      "locator_start": 12,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "3. 检查 Manifest ⽂件\n\n![image](assets/mobile-application-development-008/image-021.jpeg)\n\n![image](assets/mobile-application-development-008/image-022.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p13:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 13,
+      "locator_start": 13,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "步骤 4. The Main Game Activity\n\n• 4. 从启动 Activity 跳转到 主 Activity.\n\n• 5. 设计对应的 layout.\n\n![image](assets/mobile-application-development-008/image-023.jpeg)\n\n![image](assets/mobile-application-development-008/image-024.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p14:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 14,
+      "locator_start": 14,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "4. 从启动 Activity 跳转到 主 Activity\n\n• 刚才是启动界⾯，再创建新的空 Activity 作\n\n为游戏的主界⾯，提供游戏功能.\n\n• 启动界⾯ 5秒后跳转，转变为游戏主界⾯\n\n• 确保模拟器上运⾏⽆误\n\n![image](assets/mobile-application-development-008/image-025.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p15:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 15,
+      "locator_start": 15,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "![image](assets/mobile-application-development-008/image-026.jpeg)\n\n![image](assets/mobile-application-development-008/image-027.png)\n\n![image](assets/mobile-application-development-008/image-028.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p16:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 16,
+      "locator_start": 16,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "![image](assets/mobile-application-development-008/image-029.jpeg)\n\n![image](assets/mobile-application-development-008/image-030.png)\n\n![image](assets/mobile-application-development-008/image-031.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p17:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 17,
+      "locator_start": 17,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "5. 设计对应的 layout\n\n• 图⽚放⼊ drawable or mipmap.\n\n• R.drawable.pic1; R.mipmap.pic2\n\n• 创建新的 raw 资源⽬录，⽤于保存⾳乐⽂件\n\n• 创建⽤于游戏主界⾯ MainActivity2 类对应的 layout\n\n• button-1: (onPlay) 跳转到 Digit-Selection 界⾯.\n\n• button-2: (onAbout) 跳转到 About 界⾯.\n\n• button-3: (onMusic) ⽤于 Play or Stop ⾳乐.\n\n![image](assets/mobile-application-development-008/image-032.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p18:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 18,
+      "locator_start": 18,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:background=\"@mipmap/main_bg\"\n    tools:context=\"com.example.jan.gamenumber.Main2Activity\">"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p18:c02",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 18,
+      "locator_start": 18,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "<Button\n        android:layout_width=\"90dp\"\n        android:layout_height=\"90dp\"\n        android:layout_above=\"@+id/btn_music\"\n        android:layout_centerHorizontal=\"true\"\n        android:background=\"@drawable/play_btn\"\n        android:onClick=\"onPlay\"/>\n    <Button\n        android:layout_width=\"90dp\"\n        android:layout_height=\"90dp\"\n        android:id=\"@+id/btn_music\"\n        android:layout_alignParentBottom=\"true\"\n        android:layout_margin=\"10dp\"\n        android:background=\"@mipmap/btn_music1\"\n        android:onClick=\"onMusic\" />\n    <Button\n        android:layout_width=\"60dp\"\n        android:layout_height=\"60dp\"\n        android:id=\"@+id/btn_music2\"\n        android:layout_alignParentBottom=\"true\"\n        android:layout_alignParentRight=\"true\"\n        android:layout_margin=\"10dp\"\n        android:background=\"@mipmap/btn_music1\"\n        android:onClick=\"onAbout\" />\n</RelativeLayout>\n\n![image](assets/mobile-application-development-008/image-033.jpeg)\n\n![image](assets/mobile-application-development-008/image-034.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p19:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 19,
+      "locator_start": 19,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "步骤 5. 要启动的其它 Activities\n\n• 7. 创建 Digit-Selection Activity 和 About Activity.\n\n• 8. 设计 Digit-Selection Activity 对应的界⾯.\n\n• 9. 设计 About Activity 对应的界⾯.\n\n• 10. 从游戏主界⾯ Activity 跳转到这2个 Activity.\n\n• 11. 在项⽬⾥播放⾳乐.\n\n![image](assets/mobile-application-development-008/image-035.jpeg)\n\n![image](assets/mobile-application-development-008/image-036.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p20:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 20,
+      "locator_start": 20,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "7. 创建 Digit-Selection 和 About Activity\n\n• ⽤ Empty Activity 模板创建 SelectActivity\n\n• ⽤ Empty Activity 模板创建  AboutActivity\n\n![image](assets/mobile-application-development-008/image-037.jpeg)\n\n![image](assets/mobile-application-development-008/image-038.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p21:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 21,
+      "locator_start": 21,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "8/9. 设计对应的界⾯\n\n• 将图⽚放⼊ drawable 或 mipmap ⽬录\n\n• 将⾳乐⽂件 (mp3) 放⼊ raw 资源⽬录写\nlayout:\n\n• activity_about.xml\n\n• activity_select.xml\n\n• 加⼊各种需要的控件\n\n![image](assets/mobile-application-development-008/image-039.jpeg)\n\n![image](assets/mobile-application-development-008/image-040.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p22:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 22,
+      "locator_start": 22,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "10. 从主界⾯跳转到2个界⾯\n\n• SelectActivity: onPlay()\n\n• AboutActivity: onAbout()\n\npublic class Main2Activity extends AppCompatActivity {\n\n… …\npublic void onAbout(View view) {\n    startActivity(new Intent(Main2Activity.this,AboutActivity.class));\n\n}\n\npublic void onPlay(View view) {\n    startActivity(new Intent(Main2Activity.this,SelectActivity.class));\n\n}\n… …\n}\n\n![image](assets/mobile-application-development-008/image-041.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p23:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 23,
+      "locator_start": 23,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "11. 在项⽬⾥播放⾳乐\n\n• 功能描述：\n\n• 1. ⽤户点击按钮时，播放或者停⽌⾳乐\n\n• onMusic\n\n• 2. 当⽤户启动项⽬，⾃动播放⾳乐。\n\n![image](assets/mobile-application-development-008/image-042.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p24:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 24,
+      "locator_start": 24,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "public class Main2Activity extends AppCompatActivity {\n\n… …\n  static boolean isPlay=true;  //Music playing status\n  MediaPlayer mediaPlayer;  //Music player object\n  Button music_btn;  //Music playing button\n\n@Override\nprotected void onCreate(Bundle savedInstanceState) {\n    super.onCreate(savedInstanceState);\n    setContentView(R.layout.activity_main2);\n    music_btn=(Button)findViewById(R.id.btn_music);\n    PlayMusic();\n\n}\n\npublic void onMusic(View view) {\n    if(isPlay){\n        if(mediaPlayer!=null){\n            mediaPlayer.stop();\n            music_btn.setBackgroundResource(R.mipmap.btn_music2);\n            isPlay=false;\n        }\n    }else {\n        PlayMusic();\n        music_btn.setBackgroundResource(R.mipmap.btn_music1);\n        isPlay=true;\n    }\n\n}\n… …\n}\n\n![image](assets/mobile-application-development-008/image-043.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p25:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 25,
+      "locator_start": 25,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "11. 在项⽬⾥播放⾳乐\n\n• 3. 当其它 Activity 启动，⾃动停⽌播放\n\n• 4. 当主界⾯出现，重新播放⾳乐\n\n![image](assets/mobile-application-development-008/image-044.jpeg)\n\n![image](assets/mobile-application-development-008/image-045.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p26:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 26,
+      "locator_start": 26,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "public class Main2Activity extends AppCompatActivity {\n\n… …\n@Override\nprotected void onStop() {\n    super.onStop();\n    if(mediaPlayer!=null){\n        mediaPlayer.stop();\n    }\n\n}\n\n@Override\nprotected void onDestroy() {\n    super.onDestroy();\n    if(mediaPlayer!=null){\n        mediaPlayer.stop();\n        mediaPlayer.release();\n        mediaPlayer=null;\n    }\n\n}\n\n@Override\nprotected void onRestart() {\n    super.onRestart();\n    if(isPlay==true){\n        PlayMusic();\n    }\n\nActivity LifeCycle\n\n}\n… …\n}\n\n![image](assets/mobile-application-development-008/image-046.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p27:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 27,
+      "locator_start": 27,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "![image](assets/mobile-application-development-008/image-047.jpeg)\n\n![image](assets/mobile-application-development-008/image-048.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-008:p28:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Exp_1_1_2026"
+      ],
+      "locator_end": 28,
+      "locator_start": 28,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-008",
+      "source_title": "Exp_1_1_2026",
+      "text": "通过本实验，学习\n\n• 1. 界⾯跳转功能\n\n• 2. 定时功能\n\n• 3. ⾳乐播放功能\n\n• 4. 界⾯之间的数据传递\n\n![image](assets/mobile-application-development-008/image-049.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "mobile-application-development-009:p1:c01",
+      "course_id": "mobile_application_development",
+      "heading_path": [
+        "Sample_handwritten"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "mobile-application-development-009",
+      "source_title": "Sample_handwritten",
+      "text": "https://developer.android.google.cn/codelabs/digit-classifier-tflite#0 Build a\n\nhandwritten digit classifier app with TensorFlow Lite (google.cn)\n\nFollow the instructions to implement an Android app that can recognize handwritten\n\ndigits that you write.\n\nIf you do not want to train the TensorFlow Lite model by yourself, use the attached\n\nTensorFlow Lite model file mnist.tflite. Follow the instructions from\n\nhttps://developer.android.google.cn/codelabs/digit-classifier-tflite#2 to develop the\n\nhandwritten_Digits_Recognition Android application."
+    }
+  ],
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "mobile_application_development",
+  "questions": [],
+  "schema_version": "course-index-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e"
+}

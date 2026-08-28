@@ -24,9 +24,14 @@ dev = [
   "pytest>=8.4,<9",
   "pytest-cov>=6.2,<7",
 ]
+onnx = [
+  "onnxruntime>=1.18,<2",
+  "tokenizers>=0.19,<1",
+]
 
 [project.scripts]
 scut-senior-eval = "scut_senior_api.eval_runner:main"
+scut-senior-build-vectors = "scut_senior_api.vector_index:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/scut_senior_api"]

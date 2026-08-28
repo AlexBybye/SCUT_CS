@@ -53,12 +53,31 @@ apps/scut-senior/.local/
 apps/scut-senior/**/*.db
 apps/scut-senior/**/*.sqlite
 apps/scut-senior/**/*.sqlite3
+apps/scut-senior/**/:memory:.ses
 apps/scut-senior/**/uploads/
 apps/scut-senior/**/indexes/
 
 # material converter scratch
 work/
 apps/scut-senior/docs/review_artifacts/*
+
+# PLAN-2 reproducible local retrieval bundle. Keep the runtime databases,
+# environment files, logs, caches, and historical non-active candidates local.
+# The unignored candidate is the active hybrid corpus referenced by active.json;
+# all other `.local` files remain ignored.
+!apps/scut-senior/.local/
+apps/scut-senior/.local/*
+!apps/scut-senior/.local/models/
+apps/scut-senior/.local/models/*
+!apps/scut-senior/.local/models/bge-small-zh-v1.5/
+!apps/scut-senior/.local/models/bge-small-zh-v1.5/**
+!apps/scut-senior/.local/corpus-store/
+apps/scut-senior/.local/corpus-store/*
+!apps/scut-senior/.local/corpus-store/active.json
+!apps/scut-senior/.local/corpus-store/candidates/
+apps/scut-senior/.local/corpus-store/candidates/*
+!apps/scut-senior/.local/corpus-store/candidates/corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5/
+!apps/scut-senior/.local/corpus-store/candidates/corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5/**
 # material converter scratch (auxiliary)
 apps/tools/material_converter/.work/
 apps/tools/material_converter/.ai_jobs/

@@ -1,0 +1,4779 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "computing_methods",
+  "course_pack_version": "course-pack-computing_methods-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "computing-methods-045:p29:c02",
+        "computing-methods-045:p30:c01",
+        "computing-methods-045:p31:c01",
+        "computing-methods-045:p32:c01",
+        "computing-methods-045:p33:c01",
+        "computing-methods-045:p34:c01",
+        "computing-methods-045:p35:c01",
+        "computing-methods-045:p36:c01",
+        "computing-methods-045:p37:c01",
+        "computing-methods-045:p38:c01",
+        "computing-methods-045:p39:c01",
+        "computing-methods-045:p40:c01"
+      ],
+      "heading_path": [
+        "$∗%# &∗"
+      ],
+      "source_ids": [
+        "computing-methods-045"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-049:p10:c02"
+      ],
+      "heading_path": [
+        "(𝑖, 𝑗= 2,3, ⋯, 𝑛)需要"
+      ],
+      "source_ids": [
+        "computing-methods-049"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-049:p10:c04"
+      ],
+      "heading_path": [
+        "(𝑖= 2,3, ⋯, 𝑛)需要𝑛−"
+      ],
+      "source_ids": [
+        "computing-methods-049"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-049:p36:c02"
+      ],
+      "heading_path": [
+        "(𝑖−1) = #(#'!)"
+      ],
+      "source_ids": [
+        "computing-methods-049"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-049:p36:c03",
+        "computing-methods-049:p37:c01",
+        "computing-methods-049:p38:c01",
+        "computing-methods-049:p39:c01",
+        "computing-methods-049:p40:c01",
+        "computing-methods-049:p41:c01",
+        "computing-methods-049:p42:c01",
+        "computing-methods-049:p43:c01",
+        "computing-methods-049:p44:c01",
+        "computing-methods-049:p45:c01",
+        "computing-methods-049:p46:c01",
+        "computing-methods-049:p47:c01",
+        "computing-methods-049:p48:c01",
+        "computing-methods-049:p49:c01",
+        "computing-methods-049:p50:c01",
+        "computing-methods-049:p51:c01",
+        "computing-methods-049:p52:c01",
+        "computing-methods-049:p53:c01",
+        "computing-methods-049:p54:c01",
+        "computing-methods-049:p55:c01",
+        "computing-methods-049:p56:c01",
+        "computing-methods-049:p57:c01",
+        "computing-methods-049:p58:c01",
+        "computing-methods-049:p59:c01",
+        "computing-methods-049:p60:c01",
+        "computing-methods-049:p61:c01",
+        "computing-methods-049:p62:c01",
+        "computing-methods-049:p63:c01",
+        "computing-methods-049:p64:c01",
+        "computing-methods-049:p65:c01"
+      ],
+      "heading_path": [
+        "(𝑛−𝑖+ 1) = #(#)!)"
+      ],
+      "source_ids": [
+        "computing-methods-049"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-045:p1:c01",
+        "computing-methods-045:p2:c01",
+        "computing-methods-045:p3:c01",
+        "computing-methods-045:p4:c01",
+        "computing-methods-045:p5:c01",
+        "computing-methods-045:p6:c01",
+        "computing-methods-045:p7:c01",
+        "computing-methods-045:p8:c01",
+        "computing-methods-045:p9:c01",
+        "computing-methods-045:p10:c01",
+        "computing-methods-045:p11:c01",
+        "computing-methods-045:p12:c01",
+        "computing-methods-045:p13:c01",
+        "computing-methods-045:p14:c01",
+        "computing-methods-045:p15:c01",
+        "computing-methods-045:p16:c01",
+        "computing-methods-045:p17:c01",
+        "computing-methods-045:p18:c01",
+        "computing-methods-045:p19:c01",
+        "computing-methods-045:p20:c01",
+        "computing-methods-045:p21:c01",
+        "computing-methods-045:p22:c01",
+        "computing-methods-045:p23:c01",
+        "computing-methods-045:p24:c01",
+        "computing-methods-045:p25:c01",
+        "computing-methods-045:p26:c01",
+        "computing-methods-045:p27:c01",
+        "computing-methods-045:p28:c01",
+        "computing-methods-045:p29:c01"
+      ],
+      "heading_path": [
+        "1 误差"
+      ],
+      "source_ids": [
+        "computing-methods-045"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-046:p1:c01",
+        "computing-methods-046:p2:c01",
+        "computing-methods-046:p3:c01",
+        "computing-methods-046:p4:c01",
+        "computing-methods-046:p5:c01",
+        "computing-methods-046:p6:c01",
+        "computing-methods-046:p7:c01",
+        "computing-methods-046:p8:c01",
+        "computing-methods-046:p9:c01",
+        "computing-methods-046:p10:c01",
+        "computing-methods-046:p11:c01",
+        "computing-methods-046:p12:c01",
+        "computing-methods-046:p13:c01",
+        "computing-methods-046:p14:c01",
+        "computing-methods-046:p15:c01",
+        "computing-methods-046:p16:c01",
+        "computing-methods-046:p17:c01",
+        "computing-methods-046:p18:c01",
+        "computing-methods-046:p19:c01",
+        "computing-methods-046:p20:c01",
+        "computing-methods-046:p21:c01",
+        "computing-methods-046:p22:c01",
+        "computing-methods-046:p23:c01",
+        "computing-methods-046:p24:c01",
+        "computing-methods-046:p25:c01",
+        "computing-methods-046:p26:c01",
+        "computing-methods-046:p27:c01",
+        "computing-methods-046:p28:c01",
+        "computing-methods-046:p29:c01",
+        "computing-methods-046:p30:c01",
+        "computing-methods-046:p31:c01",
+        "computing-methods-046:p32:c01",
+        "computing-methods-046:p33:c01",
+        "computing-methods-046:p34:c01",
+        "computing-methods-046:p35:c01",
+        "computing-methods-046:p36:c01",
+        "computing-methods-046:p37:c01",
+        "computing-methods-046:p38:c01",
+        "computing-methods-046:p39:c01",
+        "computing-methods-046:p40:c01",
+        "computing-methods-046:p41:c01",
+        "computing-methods-046:p42:c01",
+        "computing-methods-046:p43:c01",
+        "computing-methods-046:p44:c01",
+        "computing-methods-046:p45:c01",
+        "computing-methods-046:p46:c01",
+        "computing-methods-046:p47:c01",
+        "computing-methods-046:p48:c01",
+        "computing-methods-046:p49:c01",
+        "computing-methods-046:p50:c01",
+        "computing-methods-046:p51:c01",
+        "computing-methods-046:p52:c01",
+        "computing-methods-046:p53:c01",
+        "computing-methods-046:p54:c01",
+        "computing-methods-046:p55:c01",
+        "computing-methods-046:p56:c01",
+        "computing-methods-046:p57:c01",
+        "computing-methods-046:p58:c01",
+        "computing-methods-046:p59:c01",
+        "computing-methods-046:p60:c01",
+        "computing-methods-046:p61:c01",
+        "computing-methods-046:p62:c01",
+        "computing-methods-046:p63:c01",
+        "computing-methods-046:p64:c01",
+        "computing-methods-046:p65:c01",
+        "computing-methods-046:p66:c01",
+        "computing-methods-046:p67:c01",
+        "computing-methods-046:p68:c01",
+        "computing-methods-046:p69:c01",
+        "computing-methods-046:p70:c01",
+        "computing-methods-046:p71:c01"
+      ],
+      "heading_path": [
+        "2 代数插值与数值微分"
+      ],
+      "source_ids": [
+        "computing-methods-046"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:h-2016华工计算机计算方法-数值分析-考试试卷:c01",
+        "computing-methods-006:q-computing-methods-006-q1:c01",
+        "computing-methods-006:q-computing-methods-006-q2:c01",
+        "computing-methods-006:q-computing-methods-006-q3:c01",
+        "computing-methods-006:q-computing-methods-006-q4:c01",
+        "computing-methods-006:q-computing-methods-006-q5:c01",
+        "computing-methods-006:q-computing-methods-006-q6:c01",
+        "computing-methods-006:q-computing-methods-006-q7:c01",
+        "computing-methods-006:q-computing-methods-006-q8:c01",
+        "computing-methods-006:q-computing-methods-006-q9:c01",
+        "computing-methods-006:q-computing-methods-006-q10:c01",
+        "computing-methods-006:q-computing-methods-006-q11:c01",
+        "computing-methods-006:q-computing-methods-006-q12:c01",
+        "computing-methods-006:q-computing-methods-006-q13:c01",
+        "computing-methods-006:q-computing-methods-006-q14:c01",
+        "computing-methods-006:q-computing-methods-006-q15:c01",
+        "computing-methods-006:q-computing-methods-006-q16:c01",
+        "computing-methods-006:q-computing-methods-006-q17:c01",
+        "computing-methods-006:q-computing-methods-006-q18:c01",
+        "computing-methods-006:q-computing-methods-006-q19:c01",
+        "computing-methods-006:q-computing-methods-006-q20:c01",
+        "computing-methods-006:q-computing-methods-006-q21:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "source_ids": [
+        "computing-methods-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-007:h-2024提纲:c01"
+      ],
+      "heading_path": [
+        "2024提纲"
+      ],
+      "source_ids": [
+        "computing-methods-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p1:c01",
+        "computing-methods-008:p1:q-computing-methods-008-q1:c01",
+        "computing-methods-008:p1:q-computing-methods-008-q2:c01",
+        "computing-methods-008:p1:q-computing-methods-008-q3:c01",
+        "computing-methods-008:p1:q-computing-methods-008-q4:c01",
+        "computing-methods-008:p1:q-computing-methods-008-q5:c01",
+        "computing-methods-008:p1:q-computing-methods-008-q6:c01",
+        "computing-methods-008:p1:q-computing-methods-008-q7:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q7:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q8:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q9:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q10:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q11:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q12:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q13:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q14:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q15:c01",
+        "computing-methods-008:p3:q-computing-methods-008-q15:c01",
+        "computing-methods-008:p4:q-computing-methods-008-q15:c01",
+        "computing-methods-008:p4:q-computing-methods-008-q16:c01",
+        "computing-methods-008:p4:q-computing-methods-008-q17:c01",
+        "computing-methods-008:p5:q-computing-methods-008-q17:c01",
+        "computing-methods-008:p5:q-computing-methods-008-q18:c01",
+        "computing-methods-008:p5:q-computing-methods-008-q19:c01",
+        "computing-methods-008:p6:q-computing-methods-008-q19:c01",
+        "computing-methods-008:p6:q-computing-methods-008-q20:c01",
+        "computing-methods-008:p6:q-computing-methods-008-q21:c01",
+        "computing-methods-008:p7:q-computing-methods-008-q21:c01",
+        "computing-methods-008:p8:q-computing-methods-008-q21:c01",
+        "computing-methods-008:p8:q-computing-methods-008-q22:c01",
+        "computing-methods-008:p8:q-computing-methods-008-q23:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "source_ids": [
+        "computing-methods-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-047:p1:c01",
+        "computing-methods-047:p2:c01",
+        "computing-methods-047:p3:c01",
+        "computing-methods-047:p4:c01",
+        "computing-methods-047:p5:c01",
+        "computing-methods-047:p6:c01",
+        "computing-methods-047:p7:c01",
+        "computing-methods-047:p8:c01",
+        "computing-methods-047:p9:c01",
+        "computing-methods-047:p10:c01",
+        "computing-methods-047:p11:c01",
+        "computing-methods-047:p12:c01",
+        "computing-methods-047:p13:c01",
+        "computing-methods-047:p14:c01",
+        "computing-methods-047:p15:c01",
+        "computing-methods-047:p16:c01",
+        "computing-methods-047:p17:c01",
+        "computing-methods-047:p18:c01",
+        "computing-methods-047:p19:c01",
+        "computing-methods-047:p20:c01",
+        "computing-methods-047:p21:c01",
+        "computing-methods-047:p22:c01",
+        "computing-methods-047:p23:c01"
+      ],
+      "heading_path": [
+        "3 数据拟合"
+      ],
+      "source_ids": [
+        "computing-methods-047"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-048:p1:c01",
+        "computing-methods-048:p2:c01",
+        "computing-methods-048:p3:c01",
+        "computing-methods-048:p4:c01",
+        "computing-methods-048:p5:c01",
+        "computing-methods-048:p6:c01",
+        "computing-methods-048:p7:c01",
+        "computing-methods-048:p8:c01",
+        "computing-methods-048:p9:c01",
+        "computing-methods-048:p10:c01",
+        "computing-methods-048:p11:c01",
+        "computing-methods-048:p12:c01",
+        "computing-methods-048:p13:c01",
+        "computing-methods-048:p14:c01",
+        "computing-methods-048:p15:c01",
+        "computing-methods-048:p16:c01",
+        "computing-methods-048:p17:c01",
+        "computing-methods-048:p18:c01",
+        "computing-methods-048:p19:c01",
+        "computing-methods-048:p20:c01",
+        "computing-methods-048:p21:c01",
+        "computing-methods-048:p22:c01",
+        "computing-methods-048:p23:c01"
+      ],
+      "heading_path": [
+        "4 数值积分"
+      ],
+      "source_ids": [
+        "computing-methods-048"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-049:p1:c01",
+        "computing-methods-049:p2:c01",
+        "computing-methods-049:p3:c01",
+        "computing-methods-049:p4:c01",
+        "computing-methods-049:p5:c01",
+        "computing-methods-049:p6:c01",
+        "computing-methods-049:p7:c01"
+      ],
+      "heading_path": [
+        "5 解线性代数方程组的直接法"
+      ],
+      "source_ids": [
+        "computing-methods-049"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-050:p1:c01",
+        "computing-methods-050:p2:c01",
+        "computing-methods-050:p3:c01",
+        "computing-methods-050:p4:c01",
+        "computing-methods-050:p5:c01",
+        "computing-methods-050:p6:c01",
+        "computing-methods-050:p7:c01",
+        "computing-methods-050:p8:c01",
+        "computing-methods-050:p9:c01",
+        "computing-methods-050:p10:c01",
+        "computing-methods-050:p11:c01",
+        "computing-methods-050:p12:c01",
+        "computing-methods-050:p13:c01",
+        "computing-methods-050:p14:c01",
+        "computing-methods-050:p15:c01",
+        "computing-methods-050:p16:c01",
+        "computing-methods-050:p17:c01",
+        "computing-methods-050:p18:c01",
+        "computing-methods-050:p19:c01",
+        "computing-methods-050:p20:c01",
+        "computing-methods-050:p21:c01",
+        "computing-methods-050:p22:c01",
+        "computing-methods-050:p23:c01",
+        "computing-methods-050:p24:c01",
+        "computing-methods-050:p25:c01",
+        "computing-methods-050:p26:c01",
+        "computing-methods-050:p27:c01",
+        "computing-methods-050:p28:c01"
+      ],
+      "heading_path": [
+        "6 解线性代数方程组的迭代法"
+      ],
+      "source_ids": [
+        "computing-methods-050"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-051:p1:c01",
+        "computing-methods-051:p2:c01",
+        "computing-methods-051:p3:c01",
+        "computing-methods-051:p4:c01",
+        "computing-methods-051:p5:c01",
+        "computing-methods-051:p6:c01",
+        "computing-methods-051:p7:c01",
+        "computing-methods-051:p8:c01",
+        "computing-methods-051:p9:c01",
+        "computing-methods-051:p10:c01",
+        "computing-methods-051:p11:c01",
+        "computing-methods-051:p12:c01",
+        "computing-methods-051:p13:c01",
+        "computing-methods-051:p14:c01",
+        "computing-methods-051:p15:c01",
+        "computing-methods-051:p16:c01",
+        "computing-methods-051:p17:c01",
+        "computing-methods-051:p18:c01",
+        "computing-methods-051:p19:c01",
+        "computing-methods-051:p20:c01",
+        "computing-methods-051:p21:c01"
+      ],
+      "heading_path": [
+        "7 非线性方程和非线性方程组的数值解"
+      ],
+      "source_ids": [
+        "computing-methods-051"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-051:p21:c02"
+      ],
+      "heading_path": [
+        "="
+      ],
+      "source_ids": [
+        "computing-methods-051"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-048:p34:c02"
+      ],
+      "heading_path": [
+        "= 𝑎((𝑞/' −𝑞/&)"
+      ],
+      "source_ids": [
+        "computing-methods-048"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-052:p1:c01",
+        "computing-methods-052:p2:c01",
+        "computing-methods-052:p3:c01",
+        "computing-methods-052:p4:c01",
+        "computing-methods-052:p5:c01",
+        "computing-methods-052:p6:c01",
+        "computing-methods-052:p7:c01",
+        "computing-methods-052:p8:c01",
+        "computing-methods-052:p9:c01",
+        "computing-methods-052:p10:c01",
+        "computing-methods-052:p11:c01",
+        "computing-methods-052:p12:c01",
+        "computing-methods-052:p13:c01",
+        "computing-methods-052:p14:c01",
+        "computing-methods-052:p15:c01",
+        "computing-methods-052:p16:c01",
+        "computing-methods-052:p16:c02",
+        "computing-methods-052:p17:c01",
+        "computing-methods-052:p18:c01",
+        "computing-methods-052:p19:c01",
+        "computing-methods-052:p20:c01",
+        "computing-methods-052:p21:c01",
+        "computing-methods-052:p22:c01",
+        "computing-methods-052:p23:c01"
+      ],
+      "heading_path": [
+        "Cubic Spline"
+      ],
+      "source_ids": [
+        "computing-methods-052"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-053:p1:c01",
+        "computing-methods-053:p2:c01",
+        "computing-methods-053:p3:c01",
+        "computing-methods-053:p4:c01",
+        "computing-methods-053:p5:c01",
+        "computing-methods-053:p6:c01",
+        "computing-methods-053:p7:c01",
+        "computing-methods-053:p8:c01",
+        "computing-methods-053:p9:c01",
+        "computing-methods-053:p9:c02",
+        "computing-methods-053:p10:c01",
+        "computing-methods-053:p11:c01"
+      ],
+      "heading_path": [
+        "Examples"
+      ],
+      "source_ids": [
+        "computing-methods-053"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-021:p1:c01",
+        "computing-methods-021:p2:c01"
+      ],
+      "heading_path": [
+        "Homework-Answers"
+      ],
+      "source_ids": [
+        "computing-methods-021"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-022:h-pasted-image-20260328225422:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20260328225422"
+      ],
+      "source_ids": [
+        "computing-methods-022"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-023:h-pasted-image-20260416131924:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20260416131924"
+      ],
+      "source_ids": [
+        "computing-methods-023"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-024:h-pasted-image-20260416132007:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20260416132007"
+      ],
+      "source_ids": [
+        "computing-methods-024"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-025:h-pasted-image-20260416132038:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20260416132038"
+      ],
+      "source_ids": [
+        "computing-methods-025"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-026:h-pasted-image-20260416134427:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20260416134427"
+      ],
+      "source_ids": [
+        "computing-methods-026"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-027:h-pasted-image-20260416134908:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20260416134908"
+      ],
+      "source_ids": [
+        "computing-methods-027"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-028:h-pasted-image-20260416135134:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20260416135134"
+      ],
+      "source_ids": [
+        "computing-methods-028"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-029:h-pasted-image-20260416135252:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20260416135252"
+      ],
+      "source_ids": [
+        "computing-methods-029"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-030:h-pasted-image-20260416143406:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20260416143406"
+      ],
+      "source_ids": [
+        "computing-methods-030"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-031:h-pasted-image-20260416144827:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20260416144827"
+      ],
+      "source_ids": [
+        "computing-methods-031"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-032:h-pasted-image-20260416144927:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20260416144927"
+      ],
+      "source_ids": [
+        "computing-methods-032"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-033:h-pasted-image-20260416145205:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20260416145205"
+      ],
+      "source_ids": [
+        "computing-methods-033"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-034:h-pasted-image-20260423143744:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20260423143744"
+      ],
+      "source_ids": [
+        "computing-methods-034"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-035:h-pasted-image-20260423143905:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20260423143905"
+      ],
+      "source_ids": [
+        "computing-methods-035"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-036:h-pasted-image-20260511093151:c01"
+      ],
+      "heading_path": [
+        "Pasted image 20260511093151"
+      ],
+      "source_ids": [
+        "computing-methods-036"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-005:p1:c01",
+        "computing-methods-005:p2:c01",
+        "computing-methods-005:p3:c01",
+        "computing-methods-005:p4:c01",
+        "computing-methods-005:p5:c01",
+        "computing-methods-005:p6:c01",
+        "computing-methods-005:p7:c01",
+        "computing-methods-005:p8:c01",
+        "computing-methods-005:p9:c01",
+        "computing-methods-005:p10:c01",
+        "computing-methods-005:p11:c01",
+        "computing-methods-005:p12:c01",
+        "computing-methods-005:p13:c01",
+        "computing-methods-005:p14:c01",
+        "computing-methods-005:p15:c01",
+        "computing-methods-005:p16:c01",
+        "computing-methods-005:p17:c01",
+        "computing-methods-005:p18:c01",
+        "computing-methods-005:p19:c01",
+        "computing-methods-005:p20:c01",
+        "computing-methods-005:p21:c01",
+        "computing-methods-005:p22:c01",
+        "computing-methods-005:p23:c01",
+        "computing-methods-005:p24:c01",
+        "computing-methods-005:p25:c01",
+        "computing-methods-005:p26:c01",
+        "computing-methods-005:p27:c01",
+        "computing-methods-005:p28:c01",
+        "computing-methods-005:p29:c01",
+        "computing-methods-005:p30:c01",
+        "computing-methods-005:p31:c01",
+        "computing-methods-005:p32:c01",
+        "computing-methods-005:p33:c01",
+        "computing-methods-005:p34:c01"
+      ],
+      "heading_path": [
+        "Review2026"
+      ],
+      "source_ids": [
+        "computing-methods-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-009:p1:c01",
+        "computing-methods-009:p2:c01",
+        "computing-methods-009:p3:c01",
+        "computing-methods-009:p4:c01",
+        "computing-methods-009:p5:c01",
+        "computing-methods-009:p6:c01",
+        "computing-methods-009:p7:c01",
+        "computing-methods-009:p8:c01"
+      ],
+      "heading_path": [
+        "a华南理工大学数值分析A"
+      ],
+      "source_ids": [
+        "computing-methods-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答:c01"
+      ],
+      "heading_path": [
+        "y少的试卷解答"
+      ],
+      "source_ids": [
+        "computing-methods-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答~一.-单项选择题:c01"
+      ],
+      "heading_path": [
+        "y少的试卷解答",
+        "一. 单项选择题"
+      ],
+      "source_ids": [
+        "computing-methods-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答~七.-最小二乘拟合:c01"
+      ],
+      "heading_path": [
+        "y少的试卷解答",
+        "七. 最小二乘拟合"
+      ],
+      "source_ids": [
+        "computing-methods-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答~三.-解答题~1-求矩阵的范数-条件数和谱半径:c01"
+      ],
+      "heading_path": [
+        "y少的试卷解答",
+        "三. 解答题",
+        "(1) 求矩阵的范数、条件数和谱半径"
+      ],
+      "source_ids": [
+        "computing-methods-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答~三.-解答题~2-直接三角分解法求解线性方程组:c01"
+      ],
+      "heading_path": [
+        "y少的试卷解答",
+        "三. 解答题",
+        "(2) 直接三角分解法求解线性方程组"
+      ],
+      "source_ids": [
+        "computing-methods-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答~二.-填空题:c01"
+      ],
+      "heading_path": [
+        "y少的试卷解答",
+        "二. 填空题"
+      ],
+      "source_ids": [
+        "computing-methods-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答~五.-牛顿迭代法求-sqrt-5~1-视为-x-2-5-2-0-的根:c01"
+      ],
+      "heading_path": [
+        "y少的试卷解答",
+        "五. 牛顿迭代法求 $\\sqrt{5}$",
+        "(1) 视为 $(x^2-5)^2=0$ 的根"
+      ],
+      "source_ids": [
+        "computing-methods-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答~五.-牛顿迭代法求-sqrt-5~2-视为-x-2-5-0-的根:c01"
+      ],
+      "heading_path": [
+        "y少的试卷解答",
+        "五. 牛顿迭代法求 $\\sqrt{5}$",
+        "(2) 视为 $x^2-5=0$ 的根"
+      ],
+      "source_ids": [
+        "computing-methods-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答~八.-数值积分~1-插值型求积公式:c01"
+      ],
+      "heading_path": [
+        "y少的试卷解答",
+        "八. 数值积分",
+        "(1) 插值型求积公式"
+      ],
+      "source_ids": [
+        "computing-methods-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答~八.-数值积分~2-求积公式的代数精度与余项:c01"
+      ],
+      "heading_path": [
+        "y少的试卷解答",
+        "八. 数值积分",
+        "(2) 求积公式的代数精度与余项"
+      ],
+      "source_ids": [
+        "computing-methods-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答~六.-插值多项式:c01"
+      ],
+      "heading_path": [
+        "y少的试卷解答",
+        "六. 插值多项式"
+      ],
+      "source_ids": [
+        "computing-methods-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答~六.-插值多项式~1-两种构造方法:c01"
+      ],
+      "heading_path": [
+        "y少的试卷解答",
+        "六. 插值多项式",
+        "(1) 两种构造方法"
+      ],
+      "source_ids": [
+        "computing-methods-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答~六.-插值多项式~2-插值余项表达式:c01"
+      ],
+      "heading_path": [
+        "y少的试卷解答",
+        "六. 插值多项式",
+        "(2) 插值余项表达式"
+      ],
+      "source_ids": [
+        "computing-methods-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答~四.-线性方程组迭代法:c01"
+      ],
+      "heading_path": [
+        "y少的试卷解答",
+        "四. 线性方程组迭代法"
+      ],
+      "source_ids": [
+        "computing-methods-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答~四.-线性方程组迭代法~1-jacobi迭代格式:c01"
+      ],
+      "heading_path": [
+        "y少的试卷解答",
+        "四. 线性方程组迭代法",
+        "(1) Jacobi迭代格式"
+      ],
+      "source_ids": [
+        "computing-methods-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答~四.-线性方程组迭代法~2-gauss-seidel迭代格式:c01"
+      ],
+      "heading_path": [
+        "y少的试卷解答",
+        "四. 线性方程组迭代法",
+        "(2) Gauss-Seidel迭代格式"
+      ],
+      "source_ids": [
+        "computing-methods-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-048:p34:c03"
+      ],
+      "heading_path": [
+        "ℎ/' + ⋯"
+      ],
+      "source_ids": [
+        "computing-methods-048"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-051:p21:c04"
+      ],
+      "heading_path": [
+        "−"
+      ],
+      "source_ids": [
+        "computing-methods-051"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-051:p21:c05",
+        "computing-methods-051:p22:c01",
+        "computing-methods-051:p23:c01",
+        "computing-methods-051:p24:c01",
+        "computing-methods-051:p25:c01",
+        "computing-methods-051:p26:c01",
+        "computing-methods-051:p27:c01",
+        "computing-methods-051:p28:c01",
+        "computing-methods-051:p29:c01",
+        "computing-methods-051:p30:c01",
+        "computing-methods-051:p31:c01",
+        "computing-methods-051:p32:c01",
+        "computing-methods-051:p33:c01",
+        "computing-methods-051:p34:c01",
+        "computing-methods-051:p35:c01",
+        "computing-methods-051:p36:c01",
+        "computing-methods-051:p37:c01",
+        "computing-methods-051:p38:c01",
+        "computing-methods-051:p39:c01"
+      ],
+      "heading_path": [
+        "−2𝑥\""
+      ],
+      "source_ids": [
+        "computing-methods-051"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-049:p10:c03"
+      ],
+      "heading_path": [
+        "−𝑚!#𝑎#&"
+      ],
+      "source_ids": [
+        "computing-methods-049"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-049:p10:c05",
+        "computing-methods-049:p11:c01",
+        "computing-methods-049:p12:c01",
+        "computing-methods-049:p13:c01",
+        "computing-methods-049:p14:c01",
+        "computing-methods-049:p15:c01",
+        "computing-methods-049:p16:c01",
+        "computing-methods-049:p17:c01",
+        "computing-methods-049:p18:c01",
+        "computing-methods-049:p19:c01",
+        "computing-methods-049:p20:c01",
+        "computing-methods-049:p21:c01",
+        "computing-methods-049:p22:c01",
+        "computing-methods-049:p23:c01",
+        "computing-methods-049:p24:c01",
+        "computing-methods-049:p25:c01",
+        "computing-methods-049:p26:c01",
+        "computing-methods-049:p27:c01",
+        "computing-methods-049:p28:c01",
+        "computing-methods-049:p29:c01",
+        "computing-methods-049:p30:c01",
+        "computing-methods-049:p31:c01",
+        "computing-methods-049:p32:c01",
+        "computing-methods-049:p33:c01",
+        "computing-methods-049:p34:c01",
+        "computing-methods-049:p35:c01",
+        "computing-methods-049:p36:c01"
+      ],
+      "heading_path": [
+        "−𝑚!#𝑏#"
+      ],
+      "source_ids": [
+        "computing-methods-049"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-051:p21:c03"
+      ],
+      "heading_path": [
+        "−𝑥\""
+      ],
+      "source_ids": [
+        "computing-methods-051"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-011:h-计算方法-课程考试试卷-a卷:c01",
+        "computing-methods-011:q-computing-methods-011-q1:c01",
+        "computing-methods-011:q-computing-methods-011-q2:c01",
+        "computing-methods-011:q-computing-methods-011-q3:c01",
+        "computing-methods-011:q-computing-methods-011-q4:c01",
+        "computing-methods-011:q-computing-methods-011-q5:c01",
+        "computing-methods-011:q-computing-methods-011-q6:c01"
+      ],
+      "heading_path": [
+        "《计算方法》课程考试试卷(A卷)"
+      ],
+      "source_ids": [
+        "computing-methods-011"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-012:h-计算方法-课程考试试卷-b卷:c01",
+        "computing-methods-012:q-computing-methods-012-q1:c01",
+        "computing-methods-012:q-computing-methods-012-q2:c01",
+        "computing-methods-012:q-computing-methods-012-q3:c01",
+        "computing-methods-012:q-computing-methods-012-q4:c01",
+        "computing-methods-012:q-computing-methods-012-q5:c01",
+        "computing-methods-012:q-computing-methods-012-q6:c01",
+        "computing-methods-012:q-computing-methods-012-q7:c01"
+      ],
+      "heading_path": [
+        "《计算方法》课程考试试卷(B卷)"
+      ],
+      "source_ids": [
+        "computing-methods-012"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-013:h-华南理工大学数值分析a:c01",
+        "computing-methods-013:h-华南理工大学数值分析a:c02",
+        "computing-methods-013:h-华南理工大学数值分析a:c03"
+      ],
+      "heading_path": [
+        "华南理工大学数值分析A"
+      ],
+      "source_ids": [
+        "computing-methods-013"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-014:h-华南理工大学数值分析试题c:c01",
+        "computing-methods-014:q-computing-methods-014-q1:c01",
+        "computing-methods-014:q-computing-methods-014-q2:c01",
+        "computing-methods-014:q-computing-methods-014-q3:c01",
+        "computing-methods-014:q-computing-methods-014-q4:c01",
+        "computing-methods-014:q-computing-methods-014-q5:c01",
+        "computing-methods-014:q-computing-methods-014-q6:c01",
+        "computing-methods-014:q-computing-methods-014-q7:c01",
+        "computing-methods-014:q-computing-methods-014-q8:c01"
+      ],
+      "heading_path": [
+        "华南理工大学数值分析试题C"
+      ],
+      "source_ids": [
+        "computing-methods-014"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-015:p1:c01",
+        "computing-methods-015:p1:c02",
+        "computing-methods-015:p1:q-computing-methods-015-q1:c01",
+        "computing-methods-015:p1:q-computing-methods-015-q2:c01",
+        "computing-methods-015:p2:q-computing-methods-015-q2:c01",
+        "computing-methods-015:p2:q-computing-methods-015-q2:c02"
+      ],
+      "heading_path": [
+        "华南理工大学研究生数值分析试卷"
+      ],
+      "source_ids": [
+        "computing-methods-015"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-016:h-数值分析模拟试题:c01"
+      ],
+      "heading_path": [
+        "数值分析模拟试题"
+      ],
+      "source_ids": [
+        "computing-methods-016"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-017:h-数值分析试卷:c01",
+        "computing-methods-017:q-computing-methods-017-q1:c01",
+        "computing-methods-017:q-computing-methods-017-q2:c01",
+        "computing-methods-017:q-computing-methods-017-q3:c01",
+        "computing-methods-017:q-computing-methods-017-q4:c01",
+        "computing-methods-017:q-computing-methods-017-q5:c01",
+        "computing-methods-017:q-computing-methods-017-q6:c01",
+        "computing-methods-017:q-computing-methods-017-q7:c01",
+        "computing-methods-017:q-computing-methods-017-q8:c01",
+        "computing-methods-017:q-computing-methods-017-q9:c01"
+      ],
+      "heading_path": [
+        "数值分析试卷"
+      ],
+      "source_ids": [
+        "computing-methods-017"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-002:p1:c01",
+        "computing-methods-002:p2:c01",
+        "computing-methods-002:p3:c01",
+        "computing-methods-002:p4:c01",
+        "computing-methods-002:p5:c01",
+        "computing-methods-002:p5:c02",
+        "computing-methods-002:p6:c01",
+        "computing-methods-002:p6:c02",
+        "computing-methods-002:p7:c01",
+        "computing-methods-002:p8:c01",
+        "computing-methods-002:p9:c01",
+        "computing-methods-002:p10:c01",
+        "computing-methods-002:p11:c01",
+        "computing-methods-002:p12:c01",
+        "computing-methods-002:p13:c01",
+        "computing-methods-002:p14:c01",
+        "computing-methods-002:p15:c01",
+        "computing-methods-002:p16:c01",
+        "computing-methods-002:p17:c01",
+        "computing-methods-002:p18:c01",
+        "computing-methods-002:p19:c01",
+        "computing-methods-002:p20:c01",
+        "computing-methods-002:p21:c01",
+        "computing-methods-002:p22:c01",
+        "computing-methods-002:p23:c01",
+        "computing-methods-002:p24:c01",
+        "computing-methods-002:p25:c01",
+        "computing-methods-002:p26:c01",
+        "computing-methods-002:p27:c01",
+        "computing-methods-002:p28:c01",
+        "computing-methods-002:p29:c01",
+        "computing-methods-002:p30:c01",
+        "computing-methods-002:p31:c01",
+        "computing-methods-002:p32:c01",
+        "computing-methods-002:p33:c01",
+        "computing-methods-002:p34:c01",
+        "computing-methods-002:p35:c01",
+        "computing-methods-002:p36:c01",
+        "computing-methods-002:p37:c01",
+        "computing-methods-002:p38:c01",
+        "computing-methods-002:p39:c01",
+        "computing-methods-002:p40:c01",
+        "computing-methods-002:p41:c01",
+        "computing-methods-002:p42:c01",
+        "computing-methods-002:p43:c01",
+        "computing-methods-002:p44:c01",
+        "computing-methods-002:p45:c01",
+        "computing-methods-002:p46:c01",
+        "computing-methods-002:p47:c01",
+        "computing-methods-002:p48:c01",
+        "computing-methods-002:p48:c02",
+        "computing-methods-002:p49:c01",
+        "computing-methods-002:p49:c02",
+        "computing-methods-002:p50:c01",
+        "computing-methods-002:p51:c01",
+        "computing-methods-002:p52:c01",
+        "computing-methods-002:p53:c01",
+        "computing-methods-002:p54:c01",
+        "computing-methods-002:p55:c01",
+        "computing-methods-002:p56:c01",
+        "computing-methods-002:p57:c01",
+        "computing-methods-002:p58:c01",
+        "computing-methods-002:p59:c01",
+        "computing-methods-002:p60:c01",
+        "computing-methods-002:p61:c01",
+        "computing-methods-002:p62:c01",
+        "computing-methods-002:p63:c01",
+        "computing-methods-002:p64:c01",
+        "computing-methods-002:p65:c01",
+        "computing-methods-002:p65:c02",
+        "computing-methods-002:p66:c01",
+        "computing-methods-002:p67:c01",
+        "computing-methods-002:p68:c01",
+        "computing-methods-002:p69:c01",
+        "computing-methods-002:p70:c01",
+        "computing-methods-002:p71:c01",
+        "computing-methods-002:p72:c01",
+        "computing-methods-002:p73:c01",
+        "computing-methods-002:p74:c01",
+        "computing-methods-002:p75:c01",
+        "computing-methods-002:p76:c01",
+        "computing-methods-002:p77:c01",
+        "computing-methods-002:p78:c01",
+        "computing-methods-002:p79:c01",
+        "computing-methods-002:p80:c01",
+        "computing-methods-002:p81:c01",
+        "computing-methods-002:p82:c01",
+        "computing-methods-002:p83:c01",
+        "computing-methods-002:p84:c01",
+        "computing-methods-002:p85:c01",
+        "computing-methods-002:p86:c01",
+        "computing-methods-002:p87:c01",
+        "computing-methods-002:p88:c01",
+        "computing-methods-002:p89:c01",
+        "computing-methods-002:p90:c01",
+        "computing-methods-002:p91:c01",
+        "computing-methods-002:p92:c01",
+        "computing-methods-002:p92:c02",
+        "computing-methods-002:p93:c01",
+        "computing-methods-002:p94:c01",
+        "computing-methods-002:p95:c01",
+        "computing-methods-002:p96:c01",
+        "computing-methods-002:p97:c01",
+        "computing-methods-002:p98:c01",
+        "computing-methods-002:p99:c01",
+        "computing-methods-002:p100:c01",
+        "computing-methods-002:p101:c01",
+        "computing-methods-002:p102:c01",
+        "computing-methods-002:p103:c01",
+        "computing-methods-002:p104:c01",
+        "computing-methods-002:p105:c01",
+        "computing-methods-002:p106:c01",
+        "computing-methods-002:p107:c01",
+        "computing-methods-002:p108:c01",
+        "computing-methods-002:p109:c01",
+        "computing-methods-002:p110:c01",
+        "computing-methods-002:p111:c01",
+        "computing-methods-002:p112:c01",
+        "computing-methods-002:p113:c01",
+        "computing-methods-002:p114:c01",
+        "computing-methods-002:p115:c01",
+        "computing-methods-002:p116:c01",
+        "computing-methods-002:p117:c01",
+        "computing-methods-002:p118:c01",
+        "computing-methods-002:p119:c01",
+        "computing-methods-002:p120:c01",
+        "computing-methods-002:p121:c01",
+        "computing-methods-002:p122:c01",
+        "computing-methods-002:p123:c01",
+        "computing-methods-002:p124:c01",
+        "computing-methods-002:p125:c01",
+        "computing-methods-002:p126:c01",
+        "computing-methods-002:p127:c01",
+        "computing-methods-002:p128:c01",
+        "computing-methods-002:p129:c01",
+        "computing-methods-002:p130:c01",
+        "computing-methods-002:p131:c01",
+        "computing-methods-002:p132:c01",
+        "computing-methods-002:p133:c01",
+        "computing-methods-002:p134:c01",
+        "computing-methods-002:p135:c01",
+        "computing-methods-002:p136:c01",
+        "computing-methods-002:p137:c01",
+        "computing-methods-002:p138:c01",
+        "computing-methods-002:p139:c01",
+        "computing-methods-002:p140:c01",
+        "computing-methods-002:p141:c01",
+        "computing-methods-002:p142:c01",
+        "computing-methods-002:p143:c01",
+        "computing-methods-002:p144:c01",
+        "computing-methods-002:p145:c01",
+        "computing-methods-002:p146:c01",
+        "computing-methods-002:p147:c01",
+        "computing-methods-002:p148:c01",
+        "computing-methods-002:p149:c01",
+        "computing-methods-002:p150:c01",
+        "computing-methods-002:p151:c01",
+        "computing-methods-002:p152:c01",
+        "computing-methods-002:p153:c01",
+        "computing-methods-002:p154:c01",
+        "computing-methods-002:p155:c01",
+        "computing-methods-002:p156:c01",
+        "computing-methods-002:p157:c01",
+        "computing-methods-002:p158:c01",
+        "computing-methods-002:p159:c01",
+        "computing-methods-002:p160:c01",
+        "computing-methods-002:p161:c01",
+        "computing-methods-002:p162:c01",
+        "computing-methods-002:p163:c01",
+        "computing-methods-002:p164:c01",
+        "computing-methods-002:p165:c01",
+        "computing-methods-002:p166:c01",
+        "computing-methods-002:p167:c01",
+        "computing-methods-002:p168:c01",
+        "computing-methods-002:p169:c01",
+        "computing-methods-002:p170:c01",
+        "computing-methods-002:p171:c01",
+        "computing-methods-002:p172:c01",
+        "computing-methods-002:p173:c01",
+        "computing-methods-002:p174:c01",
+        "computing-methods-002:p175:c01",
+        "computing-methods-002:p176:c01",
+        "computing-methods-002:p177:c01",
+        "computing-methods-002:p178:c01",
+        "computing-methods-002:p179:c01",
+        "computing-methods-002:p180:c01",
+        "computing-methods-002:p181:c01",
+        "computing-methods-002:p182:c01",
+        "computing-methods-002:p183:c01",
+        "computing-methods-002:p184:c01",
+        "computing-methods-002:p185:c01",
+        "computing-methods-002:p186:c01",
+        "computing-methods-002:p187:c01",
+        "computing-methods-002:p188:c01",
+        "computing-methods-002:p189:c01",
+        "computing-methods-002:p190:c01",
+        "computing-methods-002:p191:c01",
+        "computing-methods-002:p192:c01",
+        "computing-methods-002:p193:c01",
+        "computing-methods-002:p194:c01",
+        "computing-methods-002:p195:c01",
+        "computing-methods-002:p196:c01",
+        "computing-methods-002:p197:c01",
+        "computing-methods-002:p198:c01",
+        "computing-methods-002:p199:c01",
+        "computing-methods-002:p200:c01",
+        "computing-methods-002:p201:c01",
+        "computing-methods-002:p202:c01",
+        "computing-methods-002:p203:c01"
+      ],
+      "heading_path": [
+        "数值分析（电子版教材-仅供学生参考-勿对外分享）"
+      ],
+      "source_ids": [
+        "computing-methods-002"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-018:h-数学系09级数值分析a:c01",
+        "computing-methods-018:h-数学系09级数值分析a:c02",
+        "computing-methods-018:h-数学系09级数值分析a:c03"
+      ],
+      "heading_path": [
+        "数学系09级数值分析A"
+      ],
+      "source_ids": [
+        "computing-methods-018"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-019:h-数学系11级数值分析a:c01",
+        "computing-methods-019:h-数学系11级数值分析a:c02",
+        "computing-methods-019:h-数学系11级数值分析a:c03"
+      ],
+      "heading_path": [
+        "数学系11级数值分析A"
+      ],
+      "source_ids": [
+        "computing-methods-019"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-048:p34:c04",
+        "computing-methods-048:p35:c01",
+        "computing-methods-048:p36:c01",
+        "computing-methods-048:p37:c01",
+        "computing-methods-048:p38:c01",
+        "computing-methods-048:p39:c01",
+        "computing-methods-048:p40:c01",
+        "computing-methods-048:p41:c01"
+      ],
+      "heading_path": [
+        "是与ℎ无关的常数."
+      ],
+      "source_ids": [
+        "computing-methods-048"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-003:h-笔记:c01",
+        "computing-methods-003:h-笔记:c02"
+      ],
+      "heading_path": [
+        "笔记"
+      ],
+      "source_ids": [
+        "computing-methods-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-001:p1:c01",
+        "computing-methods-001:p2:c01",
+        "computing-methods-001:p3:c01",
+        "computing-methods-001:p4:c01",
+        "computing-methods-001:p5:c01",
+        "computing-methods-001:p6:c01"
+      ],
+      "heading_path": [
+        "老粉福利：证明题通用模板"
+      ],
+      "source_ids": [
+        "computing-methods-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-037:h-计算方法unit-1课后题:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit 1课后题"
+      ],
+      "source_ids": [
+        "computing-methods-037"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-037:h-计算方法unit-1课后题~要求完成1-3-4-5题-如下所示:c01",
+        "computing-methods-037:h-计算方法unit-1课后题~要求完成1-3-4-5题-如下所示:c02"
+      ],
+      "heading_path": [
+        "计算方法Unit 1课后题",
+        "要求完成1、3、4、5题，如下所示："
+      ],
+      "source_ids": [
+        "computing-methods-037"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "于博宇 计算机科学与技术一班 202330453151"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目1:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "于博宇 计算机科学与技术一班 202330453151",
+        "题目1"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目1~1-lagrange二次插值:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "于博宇 计算机科学与技术一班 202330453151",
+        "题目1",
+        "（1）Lagrange二次插值"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目1~2-newton二次插值:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "于博宇 计算机科学与技术一班 202330453151",
+        "题目1",
+        "（2）Newton二次插值"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目1~3-误差估计:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "于博宇 计算机科学与技术一班 202330453151",
+        "题目1",
+        "（3）误差估计"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目3:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "于博宇 计算机科学与技术一班 202330453151",
+        "题目3"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目3~1-lagrange三次插值:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "于博宇 计算机科学与技术一班 202330453151",
+        "题目3",
+        "（1）Lagrange三次插值"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目3~2-newton三次插值:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "于博宇 计算机科学与技术一班 202330453151",
+        "题目3",
+        "（2）Newton三次插值"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目3~3-插值余项:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "于博宇 计算机科学与技术一班 202330453151",
+        "题目3",
+        "（3）插值余项"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目6:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "于博宇 计算机科学与技术一班 202330453151",
+        "题目6"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目6~分段线性插值函数:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "于博宇 计算机科学与技术一班 202330453151",
+        "题目6",
+        "分段线性插值函数"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目6~计算-f-2.5:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "于博宇 计算机科学与技术一班 202330453151",
+        "题目6",
+        "计算 ``f(2.5)``"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目7:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "于博宇 计算机科学与技术一班 202330453151",
+        "题目7"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目8:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "于博宇 计算机科学与技术一班 202330453151",
+        "题目8"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~题目1-sin-x-的二次插值与误差估计~检查结果-结果凑对-但过程存在符号与计算错误:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "题目1：$\\sin x$ 的二次插值与误差估计",
+        "🔴 检查结果：结果凑对，但过程存在符号与计算错误"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~题目3-三次插值多项式与余项~检查结果-完全错误-由于二阶差商算错-导致满盘皆输:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "题目3：三次插值多项式与余项",
+        "❌ 检查结果：完全错误（由于二阶差商算错，导致满盘皆输）"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~题目6-分段线性插值~检查结果-完全正确:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "题目6：分段线性插值",
+        "检查结果：完全正确"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~题目7-三次-hermite-插值~检查结果-错误-基函数全对-但最后化简合并翻车:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "题目7：三次 Hermite 插值",
+        "❌ 检查结果：错误（基函数全对，但最后化简合并翻车）"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~题目8-不高于4次的多项式构造~检查结果-错误-设元和列方程极聪明-但解方程算错:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "题目8：不高于4次的多项式构造",
+        "❌ 检查结果：错误（设元和列方程极聪明，但解方程算错）"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~题目8-不高于4次的多项式构造~总结复习建议:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit2课后题",
+        "题目8：不高于4次的多项式构造",
+        "💡 总结复习建议"
+      ],
+      "source_ids": [
+        "computing-methods-038"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-039:h-计算方法unit3课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260416143409.png~1.求方程组:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit3课后题",
+        "于博宇 计算机科学与技术一班 202330453151![[Pasted image 20260416143409.png]]",
+        "1.求方程组"
+      ],
+      "source_ids": [
+        "computing-methods-039"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-039:h-计算方法unit3课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260416143409.png~2.给定数据表如表3-11所示-求形如-y-a-bx-2-的拟合函数:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit3课后题",
+        "于博宇 计算机科学与技术一班 202330453151![[Pasted image 20260416143409.png]]",
+        "2.给定数据表如表3-11所示，求形如`y = a + bx^2`的拟合函数。"
+      ],
+      "source_ids": [
+        "computing-methods-039"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-039:h-计算方法unit3课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260416143409.png~3-用最小二乘法求一个形如-y-1-a-bx-的经验公式-使之与表3-12数据相拟合:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit3课后题",
+        "于博宇 计算机科学与技术一班 202330453151![[Pasted image 20260416143409.png]]",
+        "3、用最小二乘法求一个形如`y = 1/(a + bx)`的经验公式，使之与表3-12数据相拟合。"
+      ],
+      "source_ids": [
+        "computing-methods-039"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-039:h-计算方法unit3课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260416143409.png~4.在某个低温过程中-函数-y-依赖于温度-θ-c-的测试数据如表3-13所示-而且已知经验公式是-y-aθ-bθ-2-试用最小二乘法确定-a-和-b:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit3课后题",
+        "于博宇 计算机科学与技术一班 202330453151![[Pasted image 20260416143409.png]]",
+        "4.在某个低温过程中，函数`y`依赖于温度`θ(℃)`的测试数据如表3-13所示，而且已知经验公式是`y = aθ + bθ^2`，试用最小二乘法确定`a`和`b`。"
+      ],
+      "source_ids": [
+        "computing-methods-039"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-040:h-计算方法unit4课后题:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit4课后题"
+      ],
+      "source_ids": [
+        "computing-methods-040"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit4课后题",
+        "第 1 题：分别使用梯形求积公式和 Simpson 求积公式计算积分并进行误差估计"
+      ],
+      "source_ids": [
+        "computing-methods-040"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计~第-2-题-使用-newton-cotes-求积公式计算积分-n-4:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit4课后题",
+        "第 1 题：分别使用梯形求积公式和 Simpson 求积公式计算积分并进行误差估计",
+        "第 2 题：使用 Newton-Cotes 求积公式计算积分（$n=4$）"
+      ],
+      "source_ids": [
+        "computing-methods-040"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计~第-5-题-分别使用复化梯形公式和复化-simpson-公式计算积分并比较有效数字:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit4课后题",
+        "第 1 题：分别使用梯形求积公式和 Simpson 求积公式计算积分并进行误差估计",
+        "第 5 题：分别使用复化梯形公式和复化 Simpson 公式计算积分并比较有效数字"
+      ],
+      "source_ids": [
+        "computing-methods-040"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计~第-5-题-分别使用复化梯形公式和复化-simpson-公式计算积分并比较有效数字~1-复化梯形公式-n-8:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit4课后题",
+        "第 1 题：分别使用梯形求积公式和 Simpson 求积公式计算积分并进行误差估计",
+        "第 5 题：分别使用复化梯形公式和复化 Simpson 公式计算积分并比较有效数字",
+        "（1）复化梯形公式（$n=8$）"
+      ],
+      "source_ids": [
+        "computing-methods-040"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计~第-5-题-分别使用复化梯形公式和复化-simpson-公式计算积分并比较有效数字~2-复化-simpson-公式-标准-n-8-子区间:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit4课后题",
+        "第 1 题：分别使用梯形求积公式和 Simpson 求积公式计算积分并进行误差估计",
+        "第 5 题：分别使用复化梯形公式和复化 Simpson 公式计算积分并比较有效数字",
+        "（2）复化 Simpson 公式（标准 $n=8$ 子区间）"
+      ],
+      "source_ids": [
+        "computing-methods-040"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计~第-6-题-利用复化-simpson-求积公式保证-5-位有效数字所需的-n:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit4课后题",
+        "第 1 题：分别使用梯形求积公式和 Simpson 求积公式计算积分并进行误差估计",
+        "第 6 题：利用复化 Simpson 求积公式保证 5 位有效数字所需的 $n$"
+      ],
+      "source_ids": [
+        "computing-methods-040"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计~第-9-题-确定积分公式参数使其成为-gauss-求积公式:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit4课后题",
+        "第 1 题：分别使用梯形求积公式和 Simpson 求积公式计算积分并进行误差估计",
+        "第 9 题：确定积分公式参数使其成为 Gauss 求积公式"
+      ],
+      "source_ids": [
+        "computing-methods-040"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计~1-梯形公式计算与误差估计:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit4课后题",
+        "第 1 题：分别使用梯形求积公式和 Simpson 求积公式计算积分并进行误差估计",
+        "（1）梯形公式计算与误差估计"
+      ],
+      "source_ids": [
+        "computing-methods-040"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计~1-梯形公式计算与误差估计~2-simpson-公式计算与误差估计:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit4课后题",
+        "第 1 题：分别使用梯形求积公式和 Simpson 求积公式计算积分并进行误差估计",
+        "（1）梯形公式计算与误差估计",
+        "（2）Simpson 公式计算与误差估计"
+      ],
+      "source_ids": [
+        "computing-methods-040"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-041:h-计算方法unit5课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260511093151.png~要求完成1-2-3题-如下所示:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit5课后题",
+        "于博宇 计算机科学与技术一班 202330453151![[Pasted image 20260511093151.png]]",
+        "要求完成1、2、3题，如下所示："
+      ],
+      "source_ids": [
+        "computing-methods-041"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-041:h-计算方法unit5课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260511093151.png~要求完成1-2-3题-如下所示~1-顺序高斯消去法:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit5课后题",
+        "于博宇 计算机科学与技术一班 202330453151![[Pasted image 20260511093151.png]]",
+        "要求完成1、2、3题，如下所示：",
+        "（1）顺序高斯消去法"
+      ],
+      "source_ids": [
+        "computing-methods-041"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-041:h-计算方法unit5课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260511093151.png~要求完成1-2-3题-如下所示~1-顺序高斯消去法~2-列主元高斯消去法:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit5课后题",
+        "于博宇 计算机科学与技术一班 202330453151![[Pasted image 20260511093151.png]]",
+        "要求完成1、2、3题，如下所示：",
+        "（1）顺序高斯消去法",
+        "（2）列主元高斯消去法"
+      ],
+      "source_ids": [
+        "computing-methods-041"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-041:h-计算方法unit5课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260511093151.png~要求完成1-2-3题-如下所示~1-顺序高斯消去法~3-全主元高斯消去法:c01",
+        "computing-methods-041:h-计算方法unit5课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260511093151.png~要求完成1-2-3题-如下所示~1-顺序高斯消去法~3-全主元高斯消去法:c02"
+      ],
+      "heading_path": [
+        "计算方法Unit5课后题",
+        "于博宇 计算机科学与技术一班 202330453151![[Pasted image 20260511093151.png]]",
+        "要求完成1、2、3题，如下所示：",
+        "（1）顺序高斯消去法",
+        "（3）全主元高斯消去法"
+      ],
+      "source_ids": [
+        "computing-methods-041"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-042:h-计算方法unit6书后题:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit6书后题"
+      ],
+      "source_ids": [
+        "computing-methods-042"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-042:h-计算方法unit6书后题~第2题:c01",
+        "computing-methods-042:h-计算方法unit6书后题~第2题:c02"
+      ],
+      "heading_path": [
+        "计算方法Unit6书后题",
+        "第2题"
+      ],
+      "source_ids": [
+        "computing-methods-042"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-042:h-计算方法unit6书后题~第2题~第3题:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit6书后题",
+        "第2题",
+        "第3题"
+      ],
+      "source_ids": [
+        "computing-methods-042"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-043:h-计算方法unit7书后题:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit7书后题"
+      ],
+      "source_ids": [
+        "computing-methods-043"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-043:h-计算方法unit7书后题~第七单元-非线性方程与方程组的数值解法~第11题:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit7书后题",
+        "第七单元：非线性方程与方程组的数值解法",
+        "第11题"
+      ],
+      "source_ids": [
+        "computing-methods-043"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-043:h-计算方法unit7书后题~第七单元-非线性方程与方程组的数值解法~第1题:c01",
+        "computing-methods-043:h-计算方法unit7书后题~第七单元-非线性方程与方程组的数值解法~第1题:c02"
+      ],
+      "heading_path": [
+        "计算方法Unit7书后题",
+        "第七单元：非线性方程与方程组的数值解法",
+        "第1题"
+      ],
+      "source_ids": [
+        "computing-methods-043"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-043:h-计算方法unit7书后题~第七单元-非线性方程与方程组的数值解法~第4题:c01"
+      ],
+      "heading_path": [
+        "计算方法Unit7书后题",
+        "第七单元：非线性方程与方程组的数值解法",
+        "第4题"
+      ],
+      "source_ids": [
+        "computing-methods-043"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-043:h-计算方法unit7书后题~第七单元-非线性方程与方程组的数值解法~第9题:c01",
+        "computing-methods-043:h-计算方法unit7书后题~第七单元-非线性方程与方程组的数值解法~第9题:c02"
+      ],
+      "heading_path": [
+        "计算方法Unit7书后题",
+        "第七单元：非线性方程与方程组的数值解法",
+        "第9题"
+      ],
+      "source_ids": [
+        "computing-methods-043"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-004:p1:c01",
+        "computing-methods-004:p2:c01",
+        "computing-methods-004:p3:c01",
+        "computing-methods-004:p4:c01",
+        "computing-methods-004:p5:c01",
+        "computing-methods-004:p6:c01"
+      ],
+      "heading_path": [
+        "计算方法笔记"
+      ],
+      "source_ids": [
+        "computing-methods-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-044:h-课后题汇总:c01"
+      ],
+      "heading_path": [
+        "课后题汇总"
+      ],
+      "source_ids": [
+        "computing-methods-044"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-020:h-题目分值分布:c01"
+      ],
+      "heading_path": [
+        "题目分值分布"
+      ],
+      "source_ids": [
+        "computing-methods-020"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-048:p41:c02",
+        "computing-methods-048:p42:c01",
+        "computing-methods-048:p43:c01",
+        "computing-methods-048:p44:c01",
+        "computing-methods-048:p45:c01",
+        "computing-methods-048:p46:c01",
+        "computing-methods-048:p47:c01",
+        "computing-methods-048:p48:c01",
+        "computing-methods-048:p49:c01",
+        "computing-methods-048:p50:c01"
+      ],
+      "heading_path": [
+        "："
+      ],
+      "source_ids": [
+        "computing-methods-048"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-048:p23:c02",
+        "computing-methods-048:p24:c01",
+        "computing-methods-048:p25:c01"
+      ],
+      "heading_path": [
+        "𝑒-𝑑𝑥的近似值，要求保证有5位有"
+      ],
+      "source_ids": [
+        "computing-methods-048"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-048:p25:c02",
+        "computing-methods-048:p26:c01",
+        "computing-methods-048:p27:c01",
+        "computing-methods-048:p28:c01",
+        "computing-methods-048:p29:c01",
+        "computing-methods-048:p30:c01",
+        "computing-methods-048:p31:c01",
+        "computing-methods-048:p32:c01",
+        "computing-methods-048:p33:c01",
+        "computing-methods-048:p34:c01"
+      ],
+      "heading_path": [
+        "𝑒-𝑑𝑥的近似值，要求保证有5位有",
+        "&%\""
+      ],
+      "source_ids": [
+        "computing-methods-048"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-049:p7:c02",
+        "computing-methods-049:p8:c01",
+        "computing-methods-049:p9:c01",
+        "computing-methods-049:p10:c01"
+      ],
+      "heading_path": [
+        "𝑥# = 𝑏#"
+      ],
+      "source_ids": [
+        "computing-methods-049"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q1:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q1",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q10:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q10",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q11:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q11",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q12:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q12",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q13:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q13",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q14:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q14",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q15:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q15",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q16:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q16",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q17:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q17",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q18:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q18",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q19:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q19",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q2:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q2",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q20:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q20",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q21:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q21",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q3:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q3",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q4:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q4",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q5:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q5",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q6:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q6",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q7:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q7",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q8:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q8",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-006:q-computing-methods-006-q9:c01"
+      ],
+      "heading_path": [
+        "2016华工计算机计算方法(数值分析)考试试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-006-Q9",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p1:q-computing-methods-008-q1:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q1",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p2:q-computing-methods-008-q10:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q10",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p2:q-computing-methods-008-q11:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q11",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p2:q-computing-methods-008-q12:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q12",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p2:q-computing-methods-008-q13:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q13",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p2:q-computing-methods-008-q14:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q14",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p2:q-computing-methods-008-q15:c01",
+        "computing-methods-008:p3:q-computing-methods-008-q15:c01",
+        "computing-methods-008:p4:q-computing-methods-008-q15:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 4,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q15",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p4:q-computing-methods-008-q16:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q16",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p4:q-computing-methods-008-q17:c01",
+        "computing-methods-008:p5:q-computing-methods-008-q17:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 5,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q17",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p5:q-computing-methods-008-q18:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q18",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p5:q-computing-methods-008-q19:c01",
+        "computing-methods-008:p6:q-computing-methods-008-q19:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 6,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q19",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p1:q-computing-methods-008-q2:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q2",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p6:q-computing-methods-008-q20:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q20",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p6:q-computing-methods-008-q21:c01",
+        "computing-methods-008:p7:q-computing-methods-008-q21:c01",
+        "computing-methods-008:p8:q-computing-methods-008-q21:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 8,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q21",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p8:q-computing-methods-008-q22:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q22",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p8:q-computing-methods-008-q23:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q23",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p1:q-computing-methods-008-q3:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q3",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p1:q-computing-methods-008-q4:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q4",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p1:q-computing-methods-008-q5:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q5",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p1:q-computing-methods-008-q6:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q6",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p1:q-computing-methods-008-q7:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q7:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 2,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q7",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p2:q-computing-methods-008-q8:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q8",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-008:p2:q-computing-methods-008-q9:c01"
+      ],
+      "heading_path": [
+        "2024计算方法试卷A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computing-methods-008-Q9",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-011:q-computing-methods-011-q1:c01"
+      ],
+      "heading_path": [
+        "《计算方法》课程考试试卷(A卷)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-011-Q1",
+      "source_id": "computing-methods-011",
+      "source_title": "《计算方法》课程考试试卷(A卷)"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-011:q-computing-methods-011-q2:c01"
+      ],
+      "heading_path": [
+        "《计算方法》课程考试试卷(A卷)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-011-Q2",
+      "source_id": "computing-methods-011",
+      "source_title": "《计算方法》课程考试试卷(A卷)"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-011:q-computing-methods-011-q3:c01"
+      ],
+      "heading_path": [
+        "《计算方法》课程考试试卷(A卷)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-011-Q3",
+      "source_id": "computing-methods-011",
+      "source_title": "《计算方法》课程考试试卷(A卷)"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-011:q-computing-methods-011-q4:c01"
+      ],
+      "heading_path": [
+        "《计算方法》课程考试试卷(A卷)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-011-Q4",
+      "source_id": "computing-methods-011",
+      "source_title": "《计算方法》课程考试试卷(A卷)"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-011:q-computing-methods-011-q5:c01"
+      ],
+      "heading_path": [
+        "《计算方法》课程考试试卷(A卷)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-011-Q5",
+      "source_id": "computing-methods-011",
+      "source_title": "《计算方法》课程考试试卷(A卷)"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-011:q-computing-methods-011-q6:c01"
+      ],
+      "heading_path": [
+        "《计算方法》课程考试试卷(A卷)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-011-Q6",
+      "source_id": "computing-methods-011",
+      "source_title": "《计算方法》课程考试试卷(A卷)"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-012:q-computing-methods-012-q1:c01"
+      ],
+      "heading_path": [
+        "《计算方法》课程考试试卷(B卷)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-012-Q1",
+      "source_id": "computing-methods-012",
+      "source_title": "《计算方法》课程考试试卷(B卷)"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-012:q-computing-methods-012-q2:c01"
+      ],
+      "heading_path": [
+        "《计算方法》课程考试试卷(B卷)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-012-Q2",
+      "source_id": "computing-methods-012",
+      "source_title": "《计算方法》课程考试试卷(B卷)"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-012:q-computing-methods-012-q3:c01"
+      ],
+      "heading_path": [
+        "《计算方法》课程考试试卷(B卷)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-012-Q3",
+      "source_id": "computing-methods-012",
+      "source_title": "《计算方法》课程考试试卷(B卷)"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-012:q-computing-methods-012-q4:c01"
+      ],
+      "heading_path": [
+        "《计算方法》课程考试试卷(B卷)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-012-Q4",
+      "source_id": "computing-methods-012",
+      "source_title": "《计算方法》课程考试试卷(B卷)"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-012:q-computing-methods-012-q5:c01"
+      ],
+      "heading_path": [
+        "《计算方法》课程考试试卷(B卷)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-012-Q5",
+      "source_id": "computing-methods-012",
+      "source_title": "《计算方法》课程考试试卷(B卷)"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-012:q-computing-methods-012-q6:c01"
+      ],
+      "heading_path": [
+        "《计算方法》课程考试试卷(B卷)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-012-Q6",
+      "source_id": "computing-methods-012",
+      "source_title": "《计算方法》课程考试试卷(B卷)"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-012:q-computing-methods-012-q7:c01"
+      ],
+      "heading_path": [
+        "《计算方法》课程考试试卷(B卷)"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-012-Q7",
+      "source_id": "computing-methods-012",
+      "source_title": "《计算方法》课程考试试卷(B卷)"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-014:q-computing-methods-014-q1:c01"
+      ],
+      "heading_path": [
+        "华南理工大学数值分析试题C"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-014-Q1",
+      "source_id": "computing-methods-014",
+      "source_title": "华南理工大学数值分析试题C"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-014:q-computing-methods-014-q2:c01"
+      ],
+      "heading_path": [
+        "华南理工大学数值分析试题C"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-014-Q2",
+      "source_id": "computing-methods-014",
+      "source_title": "华南理工大学数值分析试题C"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-014:q-computing-methods-014-q3:c01"
+      ],
+      "heading_path": [
+        "华南理工大学数值分析试题C"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-014-Q3",
+      "source_id": "computing-methods-014",
+      "source_title": "华南理工大学数值分析试题C"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-014:q-computing-methods-014-q4:c01"
+      ],
+      "heading_path": [
+        "华南理工大学数值分析试题C"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-014-Q4",
+      "source_id": "computing-methods-014",
+      "source_title": "华南理工大学数值分析试题C"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-014:q-computing-methods-014-q5:c01"
+      ],
+      "heading_path": [
+        "华南理工大学数值分析试题C"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-014-Q5",
+      "source_id": "computing-methods-014",
+      "source_title": "华南理工大学数值分析试题C"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-014:q-computing-methods-014-q6:c01"
+      ],
+      "heading_path": [
+        "华南理工大学数值分析试题C"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-014-Q6",
+      "source_id": "computing-methods-014",
+      "source_title": "华南理工大学数值分析试题C"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-014:q-computing-methods-014-q7:c01"
+      ],
+      "heading_path": [
+        "华南理工大学数值分析试题C"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-014-Q7",
+      "source_id": "computing-methods-014",
+      "source_title": "华南理工大学数值分析试题C"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-014:q-computing-methods-014-q8:c01"
+      ],
+      "heading_path": [
+        "华南理工大学数值分析试题C"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-014-Q8",
+      "source_id": "computing-methods-014",
+      "source_title": "华南理工大学数值分析试题C"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-015:p1:q-computing-methods-015-q1:c01"
+      ],
+      "heading_path": [
+        "华南理工大学研究生数值分析试卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computing-methods-015-Q1",
+      "source_id": "computing-methods-015",
+      "source_title": "华南理工大学研究生数值分析试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-015:p1:q-computing-methods-015-q2:c01",
+        "computing-methods-015:p2:q-computing-methods-015-q2:c01",
+        "computing-methods-015:p2:q-computing-methods-015-q2:c02"
+      ],
+      "heading_path": [
+        "华南理工大学研究生数值分析试卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computing-methods-015-Q2",
+      "source_id": "computing-methods-015",
+      "source_title": "华南理工大学研究生数值分析试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-017:q-computing-methods-017-q1:c01"
+      ],
+      "heading_path": [
+        "数值分析试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-017-Q1",
+      "source_id": "computing-methods-017",
+      "source_title": "数值分析试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-017:q-computing-methods-017-q2:c01"
+      ],
+      "heading_path": [
+        "数值分析试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-017-Q2",
+      "source_id": "computing-methods-017",
+      "source_title": "数值分析试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-017:q-computing-methods-017-q3:c01"
+      ],
+      "heading_path": [
+        "数值分析试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-017-Q3",
+      "source_id": "computing-methods-017",
+      "source_title": "数值分析试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-017:q-computing-methods-017-q4:c01"
+      ],
+      "heading_path": [
+        "数值分析试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-017-Q4",
+      "source_id": "computing-methods-017",
+      "source_title": "数值分析试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-017:q-computing-methods-017-q5:c01"
+      ],
+      "heading_path": [
+        "数值分析试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-017-Q5",
+      "source_id": "computing-methods-017",
+      "source_title": "数值分析试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-017:q-computing-methods-017-q6:c01"
+      ],
+      "heading_path": [
+        "数值分析试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-017-Q6",
+      "source_id": "computing-methods-017",
+      "source_title": "数值分析试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-017:q-computing-methods-017-q7:c01"
+      ],
+      "heading_path": [
+        "数值分析试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-017-Q7",
+      "source_id": "computing-methods-017",
+      "source_title": "数值分析试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-017:q-computing-methods-017-q8:c01"
+      ],
+      "heading_path": [
+        "数值分析试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-017-Q8",
+      "source_id": "computing-methods-017",
+      "source_title": "数值分析试卷"
+    },
+    {
+      "chunk_ids": [
+        "computing-methods-017:q-computing-methods-017-q9:c01"
+      ],
+      "heading_path": [
+        "数值分析试卷"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "computing-methods-017-Q9",
+      "source_id": "computing-methods-017",
+      "source_title": "数值分析试卷"
+    }
+  ],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-001:p1:c01",
+        "computing-methods-001:p2:c01",
+        "computing-methods-001:p3:c01",
+        "computing-methods-001:p4:c01",
+        "computing-methods-001:p5:c01",
+        "computing-methods-001:p6:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-001.md",
+      "source_id": "computing-methods-001",
+      "source_title": "老粉福利：证明题通用模板",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-002:p1:c01",
+        "computing-methods-002:p2:c01",
+        "computing-methods-002:p3:c01",
+        "computing-methods-002:p4:c01",
+        "computing-methods-002:p5:c01",
+        "computing-methods-002:p5:c02",
+        "computing-methods-002:p6:c01",
+        "computing-methods-002:p6:c02",
+        "computing-methods-002:p7:c01",
+        "computing-methods-002:p8:c01",
+        "computing-methods-002:p9:c01",
+        "computing-methods-002:p10:c01",
+        "computing-methods-002:p11:c01",
+        "computing-methods-002:p12:c01",
+        "computing-methods-002:p13:c01",
+        "computing-methods-002:p14:c01",
+        "computing-methods-002:p15:c01",
+        "computing-methods-002:p16:c01",
+        "computing-methods-002:p17:c01",
+        "computing-methods-002:p18:c01",
+        "computing-methods-002:p19:c01",
+        "computing-methods-002:p20:c01",
+        "computing-methods-002:p21:c01",
+        "computing-methods-002:p22:c01",
+        "computing-methods-002:p23:c01",
+        "computing-methods-002:p24:c01",
+        "computing-methods-002:p25:c01",
+        "computing-methods-002:p26:c01",
+        "computing-methods-002:p27:c01",
+        "computing-methods-002:p28:c01",
+        "computing-methods-002:p29:c01",
+        "computing-methods-002:p30:c01",
+        "computing-methods-002:p31:c01",
+        "computing-methods-002:p32:c01",
+        "computing-methods-002:p33:c01",
+        "computing-methods-002:p34:c01",
+        "computing-methods-002:p35:c01",
+        "computing-methods-002:p36:c01",
+        "computing-methods-002:p37:c01",
+        "computing-methods-002:p38:c01",
+        "computing-methods-002:p39:c01",
+        "computing-methods-002:p40:c01",
+        "computing-methods-002:p41:c01",
+        "computing-methods-002:p42:c01",
+        "computing-methods-002:p43:c01",
+        "computing-methods-002:p44:c01",
+        "computing-methods-002:p45:c01",
+        "computing-methods-002:p46:c01",
+        "computing-methods-002:p47:c01",
+        "computing-methods-002:p48:c01",
+        "computing-methods-002:p48:c02",
+        "computing-methods-002:p49:c01",
+        "computing-methods-002:p49:c02",
+        "computing-methods-002:p50:c01",
+        "computing-methods-002:p51:c01",
+        "computing-methods-002:p52:c01",
+        "computing-methods-002:p53:c01",
+        "computing-methods-002:p54:c01",
+        "computing-methods-002:p55:c01",
+        "computing-methods-002:p56:c01",
+        "computing-methods-002:p57:c01",
+        "computing-methods-002:p58:c01",
+        "computing-methods-002:p59:c01",
+        "computing-methods-002:p60:c01",
+        "computing-methods-002:p61:c01",
+        "computing-methods-002:p62:c01",
+        "computing-methods-002:p63:c01",
+        "computing-methods-002:p64:c01",
+        "computing-methods-002:p65:c01",
+        "computing-methods-002:p65:c02",
+        "computing-methods-002:p66:c01",
+        "computing-methods-002:p67:c01",
+        "computing-methods-002:p68:c01",
+        "computing-methods-002:p69:c01",
+        "computing-methods-002:p70:c01",
+        "computing-methods-002:p71:c01",
+        "computing-methods-002:p72:c01",
+        "computing-methods-002:p73:c01",
+        "computing-methods-002:p74:c01",
+        "computing-methods-002:p75:c01",
+        "computing-methods-002:p76:c01",
+        "computing-methods-002:p77:c01",
+        "computing-methods-002:p78:c01",
+        "computing-methods-002:p79:c01",
+        "computing-methods-002:p80:c01",
+        "computing-methods-002:p81:c01",
+        "computing-methods-002:p82:c01",
+        "computing-methods-002:p83:c01",
+        "computing-methods-002:p84:c01",
+        "computing-methods-002:p85:c01",
+        "computing-methods-002:p86:c01",
+        "computing-methods-002:p87:c01",
+        "computing-methods-002:p88:c01",
+        "computing-methods-002:p89:c01",
+        "computing-methods-002:p90:c01",
+        "computing-methods-002:p91:c01",
+        "computing-methods-002:p92:c01",
+        "computing-methods-002:p92:c02",
+        "computing-methods-002:p93:c01",
+        "computing-methods-002:p94:c01",
+        "computing-methods-002:p95:c01",
+        "computing-methods-002:p96:c01",
+        "computing-methods-002:p97:c01",
+        "computing-methods-002:p98:c01",
+        "computing-methods-002:p99:c01",
+        "computing-methods-002:p100:c01",
+        "computing-methods-002:p101:c01",
+        "computing-methods-002:p102:c01",
+        "computing-methods-002:p103:c01",
+        "computing-methods-002:p104:c01",
+        "computing-methods-002:p105:c01",
+        "computing-methods-002:p106:c01",
+        "computing-methods-002:p107:c01",
+        "computing-methods-002:p108:c01",
+        "computing-methods-002:p109:c01",
+        "computing-methods-002:p110:c01",
+        "computing-methods-002:p111:c01",
+        "computing-methods-002:p112:c01",
+        "computing-methods-002:p113:c01",
+        "computing-methods-002:p114:c01",
+        "computing-methods-002:p115:c01",
+        "computing-methods-002:p116:c01",
+        "computing-methods-002:p117:c01",
+        "computing-methods-002:p118:c01",
+        "computing-methods-002:p119:c01",
+        "computing-methods-002:p120:c01",
+        "computing-methods-002:p121:c01",
+        "computing-methods-002:p122:c01",
+        "computing-methods-002:p123:c01",
+        "computing-methods-002:p124:c01",
+        "computing-methods-002:p125:c01",
+        "computing-methods-002:p126:c01",
+        "computing-methods-002:p127:c01",
+        "computing-methods-002:p128:c01",
+        "computing-methods-002:p129:c01",
+        "computing-methods-002:p130:c01",
+        "computing-methods-002:p131:c01",
+        "computing-methods-002:p132:c01",
+        "computing-methods-002:p133:c01",
+        "computing-methods-002:p134:c01",
+        "computing-methods-002:p135:c01",
+        "computing-methods-002:p136:c01",
+        "computing-methods-002:p137:c01",
+        "computing-methods-002:p138:c01",
+        "computing-methods-002:p139:c01",
+        "computing-methods-002:p140:c01",
+        "computing-methods-002:p141:c01",
+        "computing-methods-002:p142:c01",
+        "computing-methods-002:p143:c01",
+        "computing-methods-002:p144:c01",
+        "computing-methods-002:p145:c01",
+        "computing-methods-002:p146:c01",
+        "computing-methods-002:p147:c01",
+        "computing-methods-002:p148:c01",
+        "computing-methods-002:p149:c01",
+        "computing-methods-002:p150:c01",
+        "computing-methods-002:p151:c01",
+        "computing-methods-002:p152:c01",
+        "computing-methods-002:p153:c01",
+        "computing-methods-002:p154:c01",
+        "computing-methods-002:p155:c01",
+        "computing-methods-002:p156:c01",
+        "computing-methods-002:p157:c01",
+        "computing-methods-002:p158:c01",
+        "computing-methods-002:p159:c01",
+        "computing-methods-002:p160:c01",
+        "computing-methods-002:p161:c01",
+        "computing-methods-002:p162:c01",
+        "computing-methods-002:p163:c01",
+        "computing-methods-002:p164:c01",
+        "computing-methods-002:p165:c01",
+        "computing-methods-002:p166:c01",
+        "computing-methods-002:p167:c01",
+        "computing-methods-002:p168:c01",
+        "computing-methods-002:p169:c01",
+        "computing-methods-002:p170:c01",
+        "computing-methods-002:p171:c01",
+        "computing-methods-002:p172:c01",
+        "computing-methods-002:p173:c01",
+        "computing-methods-002:p174:c01",
+        "computing-methods-002:p175:c01",
+        "computing-methods-002:p176:c01",
+        "computing-methods-002:p177:c01",
+        "computing-methods-002:p178:c01",
+        "computing-methods-002:p179:c01",
+        "computing-methods-002:p180:c01",
+        "computing-methods-002:p181:c01",
+        "computing-methods-002:p182:c01",
+        "computing-methods-002:p183:c01",
+        "computing-methods-002:p184:c01",
+        "computing-methods-002:p185:c01",
+        "computing-methods-002:p186:c01",
+        "computing-methods-002:p187:c01",
+        "computing-methods-002:p188:c01",
+        "computing-methods-002:p189:c01",
+        "computing-methods-002:p190:c01",
+        "computing-methods-002:p191:c01",
+        "computing-methods-002:p192:c01",
+        "computing-methods-002:p193:c01",
+        "computing-methods-002:p194:c01",
+        "computing-methods-002:p195:c01",
+        "computing-methods-002:p196:c01",
+        "computing-methods-002:p197:c01",
+        "computing-methods-002:p198:c01",
+        "computing-methods-002:p199:c01",
+        "computing-methods-002:p200:c01",
+        "computing-methods-002:p201:c01",
+        "computing-methods-002:p202:c01",
+        "computing-methods-002:p203:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-002.md",
+      "source_id": "computing-methods-002",
+      "source_title": "数值分析（电子版教材-仅供学生参考-勿对外分享）",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-003:h-笔记:c01",
+        "computing-methods-003:h-笔记:c02"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-003.md",
+      "source_id": "computing-methods-003",
+      "source_title": "笔记",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-004:p1:c01",
+        "computing-methods-004:p2:c01",
+        "computing-methods-004:p3:c01",
+        "computing-methods-004:p4:c01",
+        "computing-methods-004:p5:c01",
+        "computing-methods-004:p6:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-004.md",
+      "source_id": "computing-methods-004",
+      "source_title": "计算方法笔记",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-005:p1:c01",
+        "computing-methods-005:p2:c01",
+        "computing-methods-005:p3:c01",
+        "computing-methods-005:p4:c01",
+        "computing-methods-005:p5:c01",
+        "computing-methods-005:p6:c01",
+        "computing-methods-005:p7:c01",
+        "computing-methods-005:p8:c01",
+        "computing-methods-005:p9:c01",
+        "computing-methods-005:p10:c01",
+        "computing-methods-005:p11:c01",
+        "computing-methods-005:p12:c01",
+        "computing-methods-005:p13:c01",
+        "computing-methods-005:p14:c01",
+        "computing-methods-005:p15:c01",
+        "computing-methods-005:p16:c01",
+        "computing-methods-005:p17:c01",
+        "computing-methods-005:p18:c01",
+        "computing-methods-005:p19:c01",
+        "computing-methods-005:p20:c01",
+        "computing-methods-005:p21:c01",
+        "computing-methods-005:p22:c01",
+        "computing-methods-005:p23:c01",
+        "computing-methods-005:p24:c01",
+        "computing-methods-005:p25:c01",
+        "computing-methods-005:p26:c01",
+        "computing-methods-005:p27:c01",
+        "computing-methods-005:p28:c01",
+        "computing-methods-005:p29:c01",
+        "computing-methods-005:p30:c01",
+        "computing-methods-005:p31:c01",
+        "computing-methods-005:p32:c01",
+        "computing-methods-005:p33:c01",
+        "computing-methods-005:p34:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-005.md",
+      "source_id": "computing-methods-005",
+      "source_title": "Review2026",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-006:h-2016华工计算机计算方法-数值分析-考试试卷:c01",
+        "computing-methods-006:q-computing-methods-006-q1:c01",
+        "computing-methods-006:q-computing-methods-006-q2:c01",
+        "computing-methods-006:q-computing-methods-006-q3:c01",
+        "computing-methods-006:q-computing-methods-006-q4:c01",
+        "computing-methods-006:q-computing-methods-006-q5:c01",
+        "computing-methods-006:q-computing-methods-006-q6:c01",
+        "computing-methods-006:q-computing-methods-006-q7:c01",
+        "computing-methods-006:q-computing-methods-006-q8:c01",
+        "computing-methods-006:q-computing-methods-006-q9:c01",
+        "computing-methods-006:q-computing-methods-006-q10:c01",
+        "computing-methods-006:q-computing-methods-006-q11:c01",
+        "computing-methods-006:q-computing-methods-006-q12:c01",
+        "computing-methods-006:q-computing-methods-006-q13:c01",
+        "computing-methods-006:q-computing-methods-006-q14:c01",
+        "computing-methods-006:q-computing-methods-006-q15:c01",
+        "computing-methods-006:q-computing-methods-006-q16:c01",
+        "computing-methods-006:q-computing-methods-006-q17:c01",
+        "computing-methods-006:q-computing-methods-006-q18:c01",
+        "computing-methods-006:q-computing-methods-006-q19:c01",
+        "computing-methods-006:q-computing-methods-006-q20:c01",
+        "computing-methods-006:q-computing-methods-006-q21:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-006.md",
+      "source_id": "computing-methods-006",
+      "source_title": "2016华工计算机计算方法(数值分析)考试试卷",
+      "year": "2016"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-007:h-2024提纲:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-007.md",
+      "source_id": "computing-methods-007",
+      "source_title": "2024提纲",
+      "year": "2024"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-008:p1:c01",
+        "computing-methods-008:p1:q-computing-methods-008-q1:c01",
+        "computing-methods-008:p1:q-computing-methods-008-q2:c01",
+        "computing-methods-008:p1:q-computing-methods-008-q3:c01",
+        "computing-methods-008:p1:q-computing-methods-008-q4:c01",
+        "computing-methods-008:p1:q-computing-methods-008-q5:c01",
+        "computing-methods-008:p1:q-computing-methods-008-q6:c01",
+        "computing-methods-008:p1:q-computing-methods-008-q7:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q7:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q8:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q9:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q10:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q11:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q12:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q13:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q14:c01",
+        "computing-methods-008:p2:q-computing-methods-008-q15:c01",
+        "computing-methods-008:p3:q-computing-methods-008-q15:c01",
+        "computing-methods-008:p4:q-computing-methods-008-q15:c01",
+        "computing-methods-008:p4:q-computing-methods-008-q16:c01",
+        "computing-methods-008:p4:q-computing-methods-008-q17:c01",
+        "computing-methods-008:p5:q-computing-methods-008-q17:c01",
+        "computing-methods-008:p5:q-computing-methods-008-q18:c01",
+        "computing-methods-008:p5:q-computing-methods-008-q19:c01",
+        "computing-methods-008:p6:q-computing-methods-008-q19:c01",
+        "computing-methods-008:p6:q-computing-methods-008-q20:c01",
+        "computing-methods-008:p6:q-computing-methods-008-q21:c01",
+        "computing-methods-008:p7:q-computing-methods-008-q21:c01",
+        "computing-methods-008:p8:q-computing-methods-008-q21:c01",
+        "computing-methods-008:p8:q-computing-methods-008-q22:c01",
+        "computing-methods-008:p8:q-computing-methods-008-q23:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "past_exam",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-008.md",
+      "source_id": "computing-methods-008",
+      "source_title": "2024计算方法试卷A",
+      "year": "2024"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-009:p1:c01",
+        "computing-methods-009:p2:c01",
+        "computing-methods-009:p3:c01",
+        "computing-methods-009:p4:c01",
+        "computing-methods-009:p5:c01",
+        "computing-methods-009:p6:c01",
+        "computing-methods-009:p7:c01",
+        "computing-methods-009:p8:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-009.md",
+      "source_id": "computing-methods-009",
+      "source_title": "a华南理工大学数值分析A",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-010:h-y少的试卷解答:c01",
+        "computing-methods-010:h-y少的试卷解答~一.-单项选择题:c01",
+        "computing-methods-010:h-y少的试卷解答~二.-填空题:c01",
+        "computing-methods-010:h-y少的试卷解答~三.-解答题~1-求矩阵的范数-条件数和谱半径:c01",
+        "computing-methods-010:h-y少的试卷解答~三.-解答题~2-直接三角分解法求解线性方程组:c01",
+        "computing-methods-010:h-y少的试卷解答~四.-线性方程组迭代法:c01",
+        "computing-methods-010:h-y少的试卷解答~四.-线性方程组迭代法~1-jacobi迭代格式:c01",
+        "computing-methods-010:h-y少的试卷解答~四.-线性方程组迭代法~2-gauss-seidel迭代格式:c01",
+        "computing-methods-010:h-y少的试卷解答~五.-牛顿迭代法求-sqrt-5~1-视为-x-2-5-2-0-的根:c01",
+        "computing-methods-010:h-y少的试卷解答~五.-牛顿迭代法求-sqrt-5~2-视为-x-2-5-0-的根:c01",
+        "computing-methods-010:h-y少的试卷解答~六.-插值多项式:c01",
+        "computing-methods-010:h-y少的试卷解答~六.-插值多项式~1-两种构造方法:c01",
+        "computing-methods-010:h-y少的试卷解答~六.-插值多项式~2-插值余项表达式:c01",
+        "computing-methods-010:h-y少的试卷解答~七.-最小二乘拟合:c01",
+        "computing-methods-010:h-y少的试卷解答~八.-数值积分~1-插值型求积公式:c01",
+        "computing-methods-010:h-y少的试卷解答~八.-数值积分~2-求积公式的代数精度与余项:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "past_exam_answer",
+      "locator_type": "heading",
+      "output_md": "computing_methods/computing-methods-010.md",
+      "source_id": "computing-methods-010",
+      "source_title": "y少的试卷解答",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-011:h-计算方法-课程考试试卷-a卷:c01",
+        "computing-methods-011:q-computing-methods-011-q1:c01",
+        "computing-methods-011:q-computing-methods-011-q2:c01",
+        "computing-methods-011:q-computing-methods-011-q3:c01",
+        "computing-methods-011:q-computing-methods-011-q4:c01",
+        "computing-methods-011:q-computing-methods-011-q5:c01",
+        "computing-methods-011:q-computing-methods-011-q6:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-011.md",
+      "source_id": "computing-methods-011",
+      "source_title": "《计算方法》课程考试试卷(A卷)",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-012:h-计算方法-课程考试试卷-b卷:c01",
+        "computing-methods-012:q-computing-methods-012-q1:c01",
+        "computing-methods-012:q-computing-methods-012-q2:c01",
+        "computing-methods-012:q-computing-methods-012-q3:c01",
+        "computing-methods-012:q-computing-methods-012-q4:c01",
+        "computing-methods-012:q-computing-methods-012-q5:c01",
+        "computing-methods-012:q-computing-methods-012-q6:c01",
+        "computing-methods-012:q-computing-methods-012-q7:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-012.md",
+      "source_id": "computing-methods-012",
+      "source_title": "《计算方法》课程考试试卷(B卷)",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-013:h-华南理工大学数值分析a:c01",
+        "computing-methods-013:h-华南理工大学数值分析a:c02",
+        "computing-methods-013:h-华南理工大学数值分析a:c03"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-013.md",
+      "source_id": "computing-methods-013",
+      "source_title": "华南理工大学数值分析A",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-014:h-华南理工大学数值分析试题c:c01",
+        "computing-methods-014:q-computing-methods-014-q1:c01",
+        "computing-methods-014:q-computing-methods-014-q2:c01",
+        "computing-methods-014:q-computing-methods-014-q3:c01",
+        "computing-methods-014:q-computing-methods-014-q4:c01",
+        "computing-methods-014:q-computing-methods-014-q5:c01",
+        "computing-methods-014:q-computing-methods-014-q6:c01",
+        "computing-methods-014:q-computing-methods-014-q7:c01",
+        "computing-methods-014:q-computing-methods-014-q8:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-014.md",
+      "source_id": "computing-methods-014",
+      "source_title": "华南理工大学数值分析试题C",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-015:p1:c01",
+        "computing-methods-015:p1:c02",
+        "computing-methods-015:p1:q-computing-methods-015-q1:c01",
+        "computing-methods-015:p1:q-computing-methods-015-q2:c01",
+        "computing-methods-015:p2:q-computing-methods-015-q2:c01",
+        "computing-methods-015:p2:q-computing-methods-015-q2:c02"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "past_exam",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-015.md",
+      "source_id": "computing-methods-015",
+      "source_title": "华南理工大学研究生数值分析试卷",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-016:h-数值分析模拟试题:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-016.md",
+      "source_id": "computing-methods-016",
+      "source_title": "数值分析模拟试题",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-017:h-数值分析试卷:c01",
+        "computing-methods-017:q-computing-methods-017-q1:c01",
+        "computing-methods-017:q-computing-methods-017-q2:c01",
+        "computing-methods-017:q-computing-methods-017-q3:c01",
+        "computing-methods-017:q-computing-methods-017-q4:c01",
+        "computing-methods-017:q-computing-methods-017-q5:c01",
+        "computing-methods-017:q-computing-methods-017-q6:c01",
+        "computing-methods-017:q-computing-methods-017-q7:c01",
+        "computing-methods-017:q-computing-methods-017-q8:c01",
+        "computing-methods-017:q-computing-methods-017-q9:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "past_exam",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-017.md",
+      "source_id": "computing-methods-017",
+      "source_title": "数值分析试卷",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-018:h-数学系09级数值分析a:c01",
+        "computing-methods-018:h-数学系09级数值分析a:c02",
+        "computing-methods-018:h-数学系09级数值分析a:c03"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-018.md",
+      "source_id": "computing-methods-018",
+      "source_title": "数学系09级数值分析A",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-019:h-数学系11级数值分析a:c01",
+        "computing-methods-019:h-数学系11级数值分析a:c02",
+        "computing-methods-019:h-数学系11级数值分析a:c03"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-019.md",
+      "source_id": "computing-methods-019",
+      "source_title": "数学系11级数值分析A",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-020:h-题目分值分布:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-020.md",
+      "source_id": "computing-methods-020",
+      "source_title": "题目分值分布",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-021:p1:c01",
+        "computing-methods-021:p2:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-021.md",
+      "source_id": "computing-methods-021",
+      "source_title": "Homework-Answers",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-022:h-pasted-image-20260328225422:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-022.md",
+      "source_id": "computing-methods-022",
+      "source_title": "Pasted image 20260328225422",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-023:h-pasted-image-20260416131924:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-023.md",
+      "source_id": "computing-methods-023",
+      "source_title": "Pasted image 20260416131924",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-024:h-pasted-image-20260416132007:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-024.md",
+      "source_id": "computing-methods-024",
+      "source_title": "Pasted image 20260416132007",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-025:h-pasted-image-20260416132038:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-025.md",
+      "source_id": "computing-methods-025",
+      "source_title": "Pasted image 20260416132038",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-026:h-pasted-image-20260416134427:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-026.md",
+      "source_id": "computing-methods-026",
+      "source_title": "Pasted image 20260416134427",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-027:h-pasted-image-20260416134908:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-027.md",
+      "source_id": "computing-methods-027",
+      "source_title": "Pasted image 20260416134908",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-028:h-pasted-image-20260416135134:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-028.md",
+      "source_id": "computing-methods-028",
+      "source_title": "Pasted image 20260416135134",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-029:h-pasted-image-20260416135252:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-029.md",
+      "source_id": "computing-methods-029",
+      "source_title": "Pasted image 20260416135252",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-030:h-pasted-image-20260416143406:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-030.md",
+      "source_id": "computing-methods-030",
+      "source_title": "Pasted image 20260416143406",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-031:h-pasted-image-20260416144827:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-031.md",
+      "source_id": "computing-methods-031",
+      "source_title": "Pasted image 20260416144827",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-032:h-pasted-image-20260416144927:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-032.md",
+      "source_id": "computing-methods-032",
+      "source_title": "Pasted image 20260416144927",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-033:h-pasted-image-20260416145205:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-033.md",
+      "source_id": "computing-methods-033",
+      "source_title": "Pasted image 20260416145205",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-034:h-pasted-image-20260423143744:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-034.md",
+      "source_id": "computing-methods-034",
+      "source_title": "Pasted image 20260423143744",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-035:h-pasted-image-20260423143905:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-035.md",
+      "source_id": "computing-methods-035",
+      "source_title": "Pasted image 20260423143905",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-036:h-pasted-image-20260511093151:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-036.md",
+      "source_id": "computing-methods-036",
+      "source_title": "Pasted image 20260511093151",
+      "year": "2026"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-037:h-计算方法unit-1课后题:c01",
+        "computing-methods-037:h-计算方法unit-1课后题~要求完成1-3-4-5题-如下所示:c01",
+        "computing-methods-037:h-计算方法unit-1课后题~要求完成1-3-4-5题-如下所示:c02"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "computing_methods/computing-methods-037.md",
+      "source_id": "computing-methods-037",
+      "source_title": "计算方法Unit 1课后题",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151:c01",
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目1:c01",
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目1~1-lagrange二次插值:c01",
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目1~2-newton二次插值:c01",
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目1~3-误差估计:c01",
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目3:c01",
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目3~1-lagrange三次插值:c01",
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目3~2-newton三次插值:c01",
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目3~3-插值余项:c01",
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目6:c01",
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目6~分段线性插值函数:c01",
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目6~计算-f-2.5:c01",
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目7:c01",
+        "computing-methods-038:h-计算方法unit2课后题~于博宇-计算机科学与技术一班-202330453151~题目8:c01",
+        "computing-methods-038:h-计算方法unit2课后题~题目1-sin-x-的二次插值与误差估计~检查结果-结果凑对-但过程存在符号与计算错误:c01",
+        "computing-methods-038:h-计算方法unit2课后题~题目3-三次插值多项式与余项~检查结果-完全错误-由于二阶差商算错-导致满盘皆输:c01",
+        "computing-methods-038:h-计算方法unit2课后题~题目6-分段线性插值~检查结果-完全正确:c01",
+        "computing-methods-038:h-计算方法unit2课后题~题目7-三次-hermite-插值~检查结果-错误-基函数全对-但最后化简合并翻车:c01",
+        "computing-methods-038:h-计算方法unit2课后题~题目8-不高于4次的多项式构造~检查结果-错误-设元和列方程极聪明-但解方程算错:c01",
+        "computing-methods-038:h-计算方法unit2课后题~题目8-不高于4次的多项式构造~总结复习建议:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "computing_methods/computing-methods-038.md",
+      "source_id": "computing-methods-038",
+      "source_title": "计算方法Unit2课后题",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-039:h-计算方法unit3课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260416143409.png~1.求方程组:c01",
+        "computing-methods-039:h-计算方法unit3课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260416143409.png~2.给定数据表如表3-11所示-求形如-y-a-bx-2-的拟合函数:c01",
+        "computing-methods-039:h-计算方法unit3课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260416143409.png~3-用最小二乘法求一个形如-y-1-a-bx-的经验公式-使之与表3-12数据相拟合:c01",
+        "computing-methods-039:h-计算方法unit3课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260416143409.png~4.在某个低温过程中-函数-y-依赖于温度-θ-c-的测试数据如表3-13所示-而且已知经验公式是-y-aθ-bθ-2-试用最小二乘法确定-a-和-b:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "computing_methods/computing-methods-039.md",
+      "source_id": "computing-methods-039",
+      "source_title": "计算方法Unit3课后题",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-040:h-计算方法unit4课后题:c01",
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计:c01",
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计~1-梯形公式计算与误差估计:c01",
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计~1-梯形公式计算与误差估计~2-simpson-公式计算与误差估计:c01",
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计~第-2-题-使用-newton-cotes-求积公式计算积分-n-4:c01",
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计~第-5-题-分别使用复化梯形公式和复化-simpson-公式计算积分并比较有效数字:c01",
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计~第-5-题-分别使用复化梯形公式和复化-simpson-公式计算积分并比较有效数字~1-复化梯形公式-n-8:c01",
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计~第-5-题-分别使用复化梯形公式和复化-simpson-公式计算积分并比较有效数字~2-复化-simpson-公式-标准-n-8-子区间:c01",
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计~第-6-题-利用复化-simpson-求积公式保证-5-位有效数字所需的-n:c01",
+        "computing-methods-040:h-计算方法unit4课后题~第-1-题-分别使用梯形求积公式和-simpson-求积公式计算积分并进行误差估计~第-9-题-确定积分公式参数使其成为-gauss-求积公式:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "computing_methods/computing-methods-040.md",
+      "source_id": "computing-methods-040",
+      "source_title": "计算方法Unit4课后题",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-041:h-计算方法unit5课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260511093151.png~要求完成1-2-3题-如下所示:c01",
+        "computing-methods-041:h-计算方法unit5课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260511093151.png~要求完成1-2-3题-如下所示~1-顺序高斯消去法:c01",
+        "computing-methods-041:h-计算方法unit5课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260511093151.png~要求完成1-2-3题-如下所示~1-顺序高斯消去法~2-列主元高斯消去法:c01",
+        "computing-methods-041:h-计算方法unit5课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260511093151.png~要求完成1-2-3题-如下所示~1-顺序高斯消去法~3-全主元高斯消去法:c01",
+        "computing-methods-041:h-计算方法unit5课后题~于博宇-计算机科学与技术一班-202330453151-pasted-image-20260511093151.png~要求完成1-2-3题-如下所示~1-顺序高斯消去法~3-全主元高斯消去法:c02"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "computing_methods/computing-methods-041.md",
+      "source_id": "computing-methods-041",
+      "source_title": "计算方法Unit5课后题",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-042:h-计算方法unit6书后题:c01",
+        "computing-methods-042:h-计算方法unit6书后题~第2题:c01",
+        "computing-methods-042:h-计算方法unit6书后题~第2题:c02",
+        "computing-methods-042:h-计算方法unit6书后题~第2题~第3题:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "computing_methods/computing-methods-042.md",
+      "source_id": "computing-methods-042",
+      "source_title": "计算方法Unit6书后题",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-043:h-计算方法unit7书后题:c01",
+        "computing-methods-043:h-计算方法unit7书后题~第七单元-非线性方程与方程组的数值解法~第1题:c01",
+        "computing-methods-043:h-计算方法unit7书后题~第七单元-非线性方程与方程组的数值解法~第1题:c02",
+        "computing-methods-043:h-计算方法unit7书后题~第七单元-非线性方程与方程组的数值解法~第4题:c01",
+        "computing-methods-043:h-计算方法unit7书后题~第七单元-非线性方程与方程组的数值解法~第9题:c01",
+        "computing-methods-043:h-计算方法unit7书后题~第七单元-非线性方程与方程组的数值解法~第9题:c02",
+        "computing-methods-043:h-计算方法unit7书后题~第七单元-非线性方程与方程组的数值解法~第11题:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "heading",
+      "output_md": "computing_methods/computing-methods-043.md",
+      "source_id": "computing-methods-043",
+      "source_title": "计算方法Unit7书后题",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-044:h-课后题汇总:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computing_methods/computing-methods-044.md",
+      "source_id": "computing-methods-044",
+      "source_title": "课后题汇总",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-045:p1:c01",
+        "computing-methods-045:p2:c01",
+        "computing-methods-045:p3:c01",
+        "computing-methods-045:p4:c01",
+        "computing-methods-045:p5:c01",
+        "computing-methods-045:p6:c01",
+        "computing-methods-045:p7:c01",
+        "computing-methods-045:p8:c01",
+        "computing-methods-045:p9:c01",
+        "computing-methods-045:p10:c01",
+        "computing-methods-045:p11:c01",
+        "computing-methods-045:p12:c01",
+        "computing-methods-045:p13:c01",
+        "computing-methods-045:p14:c01",
+        "computing-methods-045:p15:c01",
+        "computing-methods-045:p16:c01",
+        "computing-methods-045:p17:c01",
+        "computing-methods-045:p18:c01",
+        "computing-methods-045:p19:c01",
+        "computing-methods-045:p20:c01",
+        "computing-methods-045:p21:c01",
+        "computing-methods-045:p22:c01",
+        "computing-methods-045:p23:c01",
+        "computing-methods-045:p24:c01",
+        "computing-methods-045:p25:c01",
+        "computing-methods-045:p26:c01",
+        "computing-methods-045:p27:c01",
+        "computing-methods-045:p28:c01",
+        "computing-methods-045:p29:c01",
+        "computing-methods-045:p29:c02",
+        "computing-methods-045:p30:c01",
+        "computing-methods-045:p31:c01",
+        "computing-methods-045:p32:c01",
+        "computing-methods-045:p33:c01",
+        "computing-methods-045:p34:c01",
+        "computing-methods-045:p35:c01",
+        "computing-methods-045:p36:c01",
+        "computing-methods-045:p37:c01",
+        "computing-methods-045:p38:c01",
+        "computing-methods-045:p39:c01",
+        "computing-methods-045:p40:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-045.md",
+      "source_id": "computing-methods-045",
+      "source_title": "1 误差",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-046:p1:c01",
+        "computing-methods-046:p2:c01",
+        "computing-methods-046:p3:c01",
+        "computing-methods-046:p4:c01",
+        "computing-methods-046:p5:c01",
+        "computing-methods-046:p6:c01",
+        "computing-methods-046:p7:c01",
+        "computing-methods-046:p8:c01",
+        "computing-methods-046:p9:c01",
+        "computing-methods-046:p10:c01",
+        "computing-methods-046:p11:c01",
+        "computing-methods-046:p12:c01",
+        "computing-methods-046:p13:c01",
+        "computing-methods-046:p14:c01",
+        "computing-methods-046:p15:c01",
+        "computing-methods-046:p16:c01",
+        "computing-methods-046:p17:c01",
+        "computing-methods-046:p18:c01",
+        "computing-methods-046:p19:c01",
+        "computing-methods-046:p20:c01",
+        "computing-methods-046:p21:c01",
+        "computing-methods-046:p22:c01",
+        "computing-methods-046:p23:c01",
+        "computing-methods-046:p24:c01",
+        "computing-methods-046:p25:c01",
+        "computing-methods-046:p26:c01",
+        "computing-methods-046:p27:c01",
+        "computing-methods-046:p28:c01",
+        "computing-methods-046:p29:c01",
+        "computing-methods-046:p30:c01",
+        "computing-methods-046:p31:c01",
+        "computing-methods-046:p32:c01",
+        "computing-methods-046:p33:c01",
+        "computing-methods-046:p34:c01",
+        "computing-methods-046:p35:c01",
+        "computing-methods-046:p36:c01",
+        "computing-methods-046:p37:c01",
+        "computing-methods-046:p38:c01",
+        "computing-methods-046:p39:c01",
+        "computing-methods-046:p40:c01",
+        "computing-methods-046:p41:c01",
+        "computing-methods-046:p42:c01",
+        "computing-methods-046:p43:c01",
+        "computing-methods-046:p44:c01",
+        "computing-methods-046:p45:c01",
+        "computing-methods-046:p46:c01",
+        "computing-methods-046:p47:c01",
+        "computing-methods-046:p48:c01",
+        "computing-methods-046:p49:c01",
+        "computing-methods-046:p50:c01",
+        "computing-methods-046:p51:c01",
+        "computing-methods-046:p52:c01",
+        "computing-methods-046:p53:c01",
+        "computing-methods-046:p54:c01",
+        "computing-methods-046:p55:c01",
+        "computing-methods-046:p56:c01",
+        "computing-methods-046:p57:c01",
+        "computing-methods-046:p58:c01",
+        "computing-methods-046:p59:c01",
+        "computing-methods-046:p60:c01",
+        "computing-methods-046:p61:c01",
+        "computing-methods-046:p62:c01",
+        "computing-methods-046:p63:c01",
+        "computing-methods-046:p64:c01",
+        "computing-methods-046:p65:c01",
+        "computing-methods-046:p66:c01",
+        "computing-methods-046:p67:c01",
+        "computing-methods-046:p68:c01",
+        "computing-methods-046:p69:c01",
+        "computing-methods-046:p70:c01",
+        "computing-methods-046:p71:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-046.md",
+      "source_id": "computing-methods-046",
+      "source_title": "2 代数插值与数值微分",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-047:p1:c01",
+        "computing-methods-047:p2:c01",
+        "computing-methods-047:p3:c01",
+        "computing-methods-047:p4:c01",
+        "computing-methods-047:p5:c01",
+        "computing-methods-047:p6:c01",
+        "computing-methods-047:p7:c01",
+        "computing-methods-047:p8:c01",
+        "computing-methods-047:p9:c01",
+        "computing-methods-047:p10:c01",
+        "computing-methods-047:p11:c01",
+        "computing-methods-047:p12:c01",
+        "computing-methods-047:p13:c01",
+        "computing-methods-047:p14:c01",
+        "computing-methods-047:p15:c01",
+        "computing-methods-047:p16:c01",
+        "computing-methods-047:p17:c01",
+        "computing-methods-047:p18:c01",
+        "computing-methods-047:p19:c01",
+        "computing-methods-047:p20:c01",
+        "computing-methods-047:p21:c01",
+        "computing-methods-047:p22:c01",
+        "computing-methods-047:p23:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-047.md",
+      "source_id": "computing-methods-047",
+      "source_title": "3 数据拟合",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-048:p1:c01",
+        "computing-methods-048:p2:c01",
+        "computing-methods-048:p3:c01",
+        "computing-methods-048:p4:c01",
+        "computing-methods-048:p5:c01",
+        "computing-methods-048:p6:c01",
+        "computing-methods-048:p7:c01",
+        "computing-methods-048:p8:c01",
+        "computing-methods-048:p9:c01",
+        "computing-methods-048:p10:c01",
+        "computing-methods-048:p11:c01",
+        "computing-methods-048:p12:c01",
+        "computing-methods-048:p13:c01",
+        "computing-methods-048:p14:c01",
+        "computing-methods-048:p15:c01",
+        "computing-methods-048:p16:c01",
+        "computing-methods-048:p17:c01",
+        "computing-methods-048:p18:c01",
+        "computing-methods-048:p19:c01",
+        "computing-methods-048:p20:c01",
+        "computing-methods-048:p21:c01",
+        "computing-methods-048:p22:c01",
+        "computing-methods-048:p23:c01",
+        "computing-methods-048:p23:c02",
+        "computing-methods-048:p24:c01",
+        "computing-methods-048:p25:c01",
+        "computing-methods-048:p25:c02",
+        "computing-methods-048:p26:c01",
+        "computing-methods-048:p27:c01",
+        "computing-methods-048:p28:c01",
+        "computing-methods-048:p29:c01",
+        "computing-methods-048:p30:c01",
+        "computing-methods-048:p31:c01",
+        "computing-methods-048:p32:c01",
+        "computing-methods-048:p33:c01",
+        "computing-methods-048:p34:c01",
+        "computing-methods-048:p34:c02",
+        "computing-methods-048:p34:c03",
+        "computing-methods-048:p34:c04",
+        "computing-methods-048:p35:c01",
+        "computing-methods-048:p36:c01",
+        "computing-methods-048:p37:c01",
+        "computing-methods-048:p38:c01",
+        "computing-methods-048:p39:c01",
+        "computing-methods-048:p40:c01",
+        "computing-methods-048:p41:c01",
+        "computing-methods-048:p41:c02",
+        "computing-methods-048:p42:c01",
+        "computing-methods-048:p43:c01",
+        "computing-methods-048:p44:c01",
+        "computing-methods-048:p45:c01",
+        "computing-methods-048:p46:c01",
+        "computing-methods-048:p47:c01",
+        "computing-methods-048:p48:c01",
+        "computing-methods-048:p49:c01",
+        "computing-methods-048:p50:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-048.md",
+      "source_id": "computing-methods-048",
+      "source_title": "4 数值积分",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-049:p1:c01",
+        "computing-methods-049:p2:c01",
+        "computing-methods-049:p3:c01",
+        "computing-methods-049:p4:c01",
+        "computing-methods-049:p5:c01",
+        "computing-methods-049:p6:c01",
+        "computing-methods-049:p7:c01",
+        "computing-methods-049:p7:c02",
+        "computing-methods-049:p8:c01",
+        "computing-methods-049:p9:c01",
+        "computing-methods-049:p10:c01",
+        "computing-methods-049:p10:c02",
+        "computing-methods-049:p10:c03",
+        "computing-methods-049:p10:c04",
+        "computing-methods-049:p10:c05",
+        "computing-methods-049:p11:c01",
+        "computing-methods-049:p12:c01",
+        "computing-methods-049:p13:c01",
+        "computing-methods-049:p14:c01",
+        "computing-methods-049:p15:c01",
+        "computing-methods-049:p16:c01",
+        "computing-methods-049:p17:c01",
+        "computing-methods-049:p18:c01",
+        "computing-methods-049:p19:c01",
+        "computing-methods-049:p20:c01",
+        "computing-methods-049:p21:c01",
+        "computing-methods-049:p22:c01",
+        "computing-methods-049:p23:c01",
+        "computing-methods-049:p24:c01",
+        "computing-methods-049:p25:c01",
+        "computing-methods-049:p26:c01",
+        "computing-methods-049:p27:c01",
+        "computing-methods-049:p28:c01",
+        "computing-methods-049:p29:c01",
+        "computing-methods-049:p30:c01",
+        "computing-methods-049:p31:c01",
+        "computing-methods-049:p32:c01",
+        "computing-methods-049:p33:c01",
+        "computing-methods-049:p34:c01",
+        "computing-methods-049:p35:c01",
+        "computing-methods-049:p36:c01",
+        "computing-methods-049:p36:c02",
+        "computing-methods-049:p36:c03",
+        "computing-methods-049:p37:c01",
+        "computing-methods-049:p38:c01",
+        "computing-methods-049:p39:c01",
+        "computing-methods-049:p40:c01",
+        "computing-methods-049:p41:c01",
+        "computing-methods-049:p42:c01",
+        "computing-methods-049:p43:c01",
+        "computing-methods-049:p44:c01",
+        "computing-methods-049:p45:c01",
+        "computing-methods-049:p46:c01",
+        "computing-methods-049:p47:c01",
+        "computing-methods-049:p48:c01",
+        "computing-methods-049:p49:c01",
+        "computing-methods-049:p50:c01",
+        "computing-methods-049:p51:c01",
+        "computing-methods-049:p52:c01",
+        "computing-methods-049:p53:c01",
+        "computing-methods-049:p54:c01",
+        "computing-methods-049:p55:c01",
+        "computing-methods-049:p56:c01",
+        "computing-methods-049:p57:c01",
+        "computing-methods-049:p58:c01",
+        "computing-methods-049:p59:c01",
+        "computing-methods-049:p60:c01",
+        "computing-methods-049:p61:c01",
+        "computing-methods-049:p62:c01",
+        "computing-methods-049:p63:c01",
+        "computing-methods-049:p64:c01",
+        "computing-methods-049:p65:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-049.md",
+      "source_id": "computing-methods-049",
+      "source_title": "5 解线性代数方程组的直接法",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-050:p1:c01",
+        "computing-methods-050:p2:c01",
+        "computing-methods-050:p3:c01",
+        "computing-methods-050:p4:c01",
+        "computing-methods-050:p5:c01",
+        "computing-methods-050:p6:c01",
+        "computing-methods-050:p7:c01",
+        "computing-methods-050:p8:c01",
+        "computing-methods-050:p9:c01",
+        "computing-methods-050:p10:c01",
+        "computing-methods-050:p11:c01",
+        "computing-methods-050:p12:c01",
+        "computing-methods-050:p13:c01",
+        "computing-methods-050:p14:c01",
+        "computing-methods-050:p15:c01",
+        "computing-methods-050:p16:c01",
+        "computing-methods-050:p17:c01",
+        "computing-methods-050:p18:c01",
+        "computing-methods-050:p19:c01",
+        "computing-methods-050:p20:c01",
+        "computing-methods-050:p21:c01",
+        "computing-methods-050:p22:c01",
+        "computing-methods-050:p23:c01",
+        "computing-methods-050:p24:c01",
+        "computing-methods-050:p25:c01",
+        "computing-methods-050:p26:c01",
+        "computing-methods-050:p27:c01",
+        "computing-methods-050:p28:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-050.md",
+      "source_id": "computing-methods-050",
+      "source_title": "6 解线性代数方程组的迭代法",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-051:p1:c01",
+        "computing-methods-051:p2:c01",
+        "computing-methods-051:p3:c01",
+        "computing-methods-051:p4:c01",
+        "computing-methods-051:p5:c01",
+        "computing-methods-051:p6:c01",
+        "computing-methods-051:p7:c01",
+        "computing-methods-051:p8:c01",
+        "computing-methods-051:p9:c01",
+        "computing-methods-051:p10:c01",
+        "computing-methods-051:p11:c01",
+        "computing-methods-051:p12:c01",
+        "computing-methods-051:p13:c01",
+        "computing-methods-051:p14:c01",
+        "computing-methods-051:p15:c01",
+        "computing-methods-051:p16:c01",
+        "computing-methods-051:p17:c01",
+        "computing-methods-051:p18:c01",
+        "computing-methods-051:p19:c01",
+        "computing-methods-051:p20:c01",
+        "computing-methods-051:p21:c01",
+        "computing-methods-051:p21:c02",
+        "computing-methods-051:p21:c03",
+        "computing-methods-051:p21:c04",
+        "computing-methods-051:p21:c05",
+        "computing-methods-051:p22:c01",
+        "computing-methods-051:p23:c01",
+        "computing-methods-051:p24:c01",
+        "computing-methods-051:p25:c01",
+        "computing-methods-051:p26:c01",
+        "computing-methods-051:p27:c01",
+        "computing-methods-051:p28:c01",
+        "computing-methods-051:p29:c01",
+        "computing-methods-051:p30:c01",
+        "computing-methods-051:p31:c01",
+        "computing-methods-051:p32:c01",
+        "computing-methods-051:p33:c01",
+        "computing-methods-051:p34:c01",
+        "computing-methods-051:p35:c01",
+        "computing-methods-051:p36:c01",
+        "computing-methods-051:p37:c01",
+        "computing-methods-051:p38:c01",
+        "computing-methods-051:p39:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-051.md",
+      "source_id": "computing-methods-051",
+      "source_title": "7 非线性方程和非线性方程组的数值解",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-052:p1:c01",
+        "computing-methods-052:p2:c01",
+        "computing-methods-052:p3:c01",
+        "computing-methods-052:p4:c01",
+        "computing-methods-052:p5:c01",
+        "computing-methods-052:p6:c01",
+        "computing-methods-052:p7:c01",
+        "computing-methods-052:p8:c01",
+        "computing-methods-052:p9:c01",
+        "computing-methods-052:p10:c01",
+        "computing-methods-052:p11:c01",
+        "computing-methods-052:p12:c01",
+        "computing-methods-052:p13:c01",
+        "computing-methods-052:p14:c01",
+        "computing-methods-052:p15:c01",
+        "computing-methods-052:p16:c01",
+        "computing-methods-052:p16:c02",
+        "computing-methods-052:p17:c01",
+        "computing-methods-052:p18:c01",
+        "computing-methods-052:p19:c01",
+        "computing-methods-052:p20:c01",
+        "computing-methods-052:p21:c01",
+        "computing-methods-052:p22:c01",
+        "computing-methods-052:p23:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-052.md",
+      "source_id": "computing-methods-052",
+      "source_title": "Cubic Spline",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computing-methods-053:p1:c01",
+        "computing-methods-053:p2:c01",
+        "computing-methods-053:p3:c01",
+        "computing-methods-053:p4:c01",
+        "computing-methods-053:p5:c01",
+        "computing-methods-053:p6:c01",
+        "computing-methods-053:p7:c01",
+        "computing-methods-053:p8:c01",
+        "computing-methods-053:p9:c01",
+        "computing-methods-053:p9:c02",
+        "computing-methods-053:p10:c01",
+        "computing-methods-053:p11:c01"
+      ],
+      "course_id": "computing_methods",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "computing_methods/computing-methods-053.md",
+      "source_id": "computing-methods-053",
+      "source_title": "Examples",
+      "year": null
+    }
+  ],
+  "statistics": {
+    "chunk_count": 827,
+    "question_count": 76,
+    "source_count": 53
+  },
+  "workflow_version": "workflow-contract-v1"
+}

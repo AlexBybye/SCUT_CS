@@ -29,6 +29,7 @@ from .adapters.exam_facts import (
     LocalCorpusExamFactsProvider,
 )
 from .adapters.local_corpus import LocalCorpusRetrievalGateway
+from .adapters.onnx import OnnxEmbeddingProvider
 from .adapters.mock import (
     FixtureRetrievalGateway,
     MockIdentityProvider,
@@ -234,10 +235,26 @@ def create_app(
     active_settings.assert_safe()
     registry = CourseRegistry.load()
     mock_identity = MockIdentityProvider().current_user()
+    embedding = None
+    if (
+        active_settings.dense_retrieval_enabled
+        and active_settings.retrieval_mode == "local_corpus"
+        and active_settings.onnx_embedding_model_path is not None
+        and active_settings.onnx_embedding_model_path.is_dir()
+        and (active_settings.onnx_embedding_model_path / "model.onnx").is_file()
+        and (active_settings.onnx_embedding_model_path / "tokenizer.json").is_file()
+    ):
+        embedding = OnnxEmbeddingProvider(
+            active_settings.onnx_embedding_model_path,
+            model_id=active_settings.onnx_embedding_model_id,
+            dimensions=active_settings.onnx_embedding_dimensions,
+            max_length=active_settings.onnx_embedding_max_length,
+        )
     retrieval = (
         LocalCorpusRetrievalGateway(
             active_settings.corpus_store_path,
             min_score=active_settings.retrieval_min_score,
+            embedding=embedding,
         )
         if active_settings.retrieval_mode == "local_corpus"
         else FixtureRetrievalGateway(registry)

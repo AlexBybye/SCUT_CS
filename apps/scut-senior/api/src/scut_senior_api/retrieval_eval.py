@@ -2,7 +2,7 @@
 
 This module is the retrieval-only half of the evaluation baseline that every
 later phase-1 change (BM25F, dense + RRF, query variants, rerank) is measured
-against. It loads a human-curated golden set, proves every referenced chunk
+against. It loads a checked-in golden/query candidate set, proves every referenced chunk
 actually exists in the active corpus, drives the local-corpus retrieval
 gateway, and reports per-course recall@5 / recall@20 / MRR and a noise-rate
 proxy used to re-calibrate ``min_score``.
@@ -37,6 +37,10 @@ top-N candidates for the single query):
 Reference validation fails closed: an expected chunk_id that is absent from
 the active course index aborts the evaluation, because a golden set whose
 references do not resolve cannot produce a meaningful recall number.
+
+Preview-only courses with no text chunks may use an explicitly noted empty
+``expected_chunk_ids`` list; those entries are query candidates only and have
+no recall target until text is added to the course corpus.
 """
 
 from __future__ import annotations
@@ -55,6 +59,7 @@ from scut_senior_worker.corpus_builder import (
 )
 
 from .adapters.local_corpus import LocalCorpusRetrievalGateway
+from .embedding import EmbeddingProvider
 from .paths import APP_ROOT
 
 GOLDEN_SCHEMA_VERSION = "retrieval-golden-v1"
@@ -176,22 +181,25 @@ def _parse_golden_entry(
             f"{path.name}: entries[{index}].query must be a non-empty string"
         )
     expected = raw.get("expected_chunk_ids")
+    note = raw.get("note")
+    if note is not None and not isinstance(note, str):
+        raise ValueError(f"{path.name}: entries[{index}].note must be a string")
+    # A preview-only course can have no searchable chunk at all. Keep its
+    # generated query candidates loadable, but require an explicit note so an
+    # accidentally empty target list never passes silently.
     if (
         not isinstance(expected, list)
-        or not expected
+        or (not expected and not (note or "").startswith("无可检索文本 chunk"))
         or not all(isinstance(chunk, str) and chunk for chunk in expected)
     ):
         raise ValueError(
             f"{path.name}: entries[{index}].expected_chunk_ids must be a "
-            "non-empty list of non-empty strings"
+            "list of non-empty strings (or an explicitly noted empty list)"
         )
     if len(set(expected)) != len(expected):
         raise ValueError(
             f"{path.name}: entries[{index}].expected_chunk_ids must be unique"
         )
-    note = raw.get("note")
-    if note is not None and not isinstance(note, str):
-        raise ValueError(f"{path.name}: entries[{index}].note must be a string")
     return GoldenEntry(
         course_id=course_id,
         query=query.strip(),
@@ -268,6 +276,7 @@ def run_retrieval_evaluation(
     store_root: Path,
     min_score: float = 1.0,
     top_n: int = _EVAL_TOP_N,
+    embedding: EmbeddingProvider | None = None,
 ) -> dict[str, object]:
     """Run the golden set against the active local corpus and write the report.
 
@@ -282,7 +291,7 @@ def run_retrieval_evaluation(
             + "\n- ".join(sorted(missing))
         )
     gateway = LocalCorpusRetrievalGateway(
-        store_root, limit=top_n, min_score=min_score
+        store_root, limit=top_n, min_score=min_score, embedding=embedding
     )
     results: list[EntryResult] = []
     for entry in entries:

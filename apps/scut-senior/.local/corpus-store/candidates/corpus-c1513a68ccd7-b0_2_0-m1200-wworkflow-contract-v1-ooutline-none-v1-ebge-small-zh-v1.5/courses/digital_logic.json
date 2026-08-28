@@ -1,0 +1,2305 @@
+{
+  "chunks": [
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-001:h-数字逻辑作业:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "数字逻辑作业"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "digital-logic-001",
+      "source_title": "数字逻辑作业",
+      "text": "1.\n\n![image](assets/digital-logic-001/image-001.png)\n\n![image](assets/digital-logic-001/image-002.png)\n\n2.函数f(A,B,C,D)=AB+AB否 可以简化为f(A,B)=A,因为无论B的值如何,只要A为1,函\n\n数值就为1。\n\n要使用74153实现这个函数,可以将A和B分别连接到选择输入SO和S1,然后将使能端G接高电平(1)。数据输入D0-D3可以设置为:\n\n· D0=0(当SOS1=00时,输出为0)\n\n·D1=0(当SOS1=01时,输出为0)\n\n· D2=1(当SOS1=10时,输出为1)\n\n· D3=1(当S0S1=11时,输出为1)\n\n这样,无论A和B的组合如何,只要A为1,输出Y就会为1,满足函数f(A,B)=A的要求。\n\n3.列出函数L=AB+BC+AC 的真值表：\n\n| A | B | C | L |\n|---|---|---|---|\n| 0 | 0 | 0 | 0 |\n| 0 | 0 | 1 | 0 |\n| 0 | 1 | 0 | 0 |\n| 0 | 1 | 1 | 1 |\n| 1 | 0 | 0 | 0 |\n| 1 | 0 | 1 | 1 |\n| 1 | 1 | 0 | 1 |\n| 1 | 1 | 1 | 1 |\n\n接下来，将这些值分配给74151的数据输入D0-D7。选择输入S0-S2对应于A、B和C的值。\n\nD0 = 0 （当S0S1S2 = 000时，输出为0）\n\nD1 = 0 （当S0S1S2 = 001时，输出为0）\n\nD2 = 0 （当S0S1S2 = 010时，输出为0）\n\nD3 = 1 （当S0S1S2 = 011时，输出为1）\n\nD4 = 0 （当S0S1S2 = 100时，输出为0）\n\nD5 = 1 （当S0S1S2 = 101时，输出为1）\n\nD6 = 1 （当S0S1S2 = 110时，输出为1）\n\nD7 = 1 （当S0S1S2 = 111时，输出为1）\n\n这样，无论A、B和C的组合如何，只要满足 𝐴𝐵+𝐵𝐶+𝐴𝐶AB+BC+AC 的条件，输出Y就会为1\n\n4.\n\n![formula-object](assets/digital-logic-001/image-003.png)\n\n5. 设计一个奇偶校验器\n\n可以使用XOR门来实现这个功能。\n\n奇数校验器设计：\n\n将所有输入位连接到一个XOR门的输入端。\n\nXOR门的输出将是1，如果输入位中1的个数是奇数；输出将是0，如果输入位中1的个数是偶数。\n\n偶数校验器设计：\n\n在奇数校验器的基础上，添加一个NOT门。\n\n将XOR门的输出连接到NOT门的输入端。\n\nNOT门的输出将是1，如果输入位中1的个数是偶数；输出将是0，如果输入位中1的个数是奇数。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-001:h-数字逻辑作业:c02",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "数字逻辑作业"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "digital-logic-001",
+      "source_title": "数字逻辑作业",
+      "text": "6.分别用摩尔逻辑和米里逻辑设计”101”信号检测\n\n摩尔逻辑设计：\n\n摩尔逻辑使用状态机来实现序列检测。对于序列”101”，可以设计一个具有三个状态的状态机：S0（初始状态），S1（检测到\"1\"），S2（检测到\"101\"）。\n\nS0：初始状态。如果输入是1，转移到S1。\n\nS1：如果输入是0，转移到S2；如果输入是1，保持在S1。\n\nS2：如果输入是1，输出1并回到S0；如果输入是0，回到S1。\n\n米里逻辑设计：\n\n米里逻辑与摩尔逻辑类似，但输出不仅依赖于当前状态，还依赖于输入。\n\nS0：初始状态。如果输入是1，转移到S1。\n\nS1：如果输入是0，转移到S2；如果输入是1，保持在S1。\n\nS2：如果输入是1，输出1并回到S0；如果输入是0，回到S1。\n\n在米里逻辑中，输出条件可以直接在状态转移中指定，而不需要额外的输出逻辑。\n\n7.首先，需要确定函数的最小项。\n\n函数L=AB+BC+AC 的最小项是：\n\nAB 对应于最小项 m5​（A=1, B=1, C=0）\n\nBC 对应于最小项 m6​（A=0, B=1, C=1）\n\nAC 对应于最小项 m7​（A=1, B=0, C=1）\n\n接下来，可以设计PLA的AND阵列和OR阵列。\n\nAND阵列：\n\n每个AND门对应一个最小项，输入为变量A、B和C的某种组合。对于的函数，需要三个AND门，每个门对应一个最小项。\n\nOR阵列：\n\nOR阵列将所有AND门的输出组合起来，形成最终的输出L。\n\n下面是PLA的简化表示：\n\n输入  |  AND |  OR  | 输出\n\n-------------------------\n\nA B C  |   m5 |   m6 |   m7 | L\n\n------------------------\n\n0 0 0  |  0  |  0  |  0  |  0\n\n0 0 1  |  0  |  0  |  0  |  0\n\n0 1 0  |  0  |  0  |  0  |  0\n\n0 1 1  |  0  |  1  |  0  |  1\n\n1 0 0  |  0  |  0  |  1  |  1\n\n1 0 1  |  1  |  0  |  0  |  1\n\n1 1 0  |  1  |  0  |  0  |  1\n\n1 1 1  |  0  |  0  |  0  |  0\n\n根据这个真值表来配置AND阵列和OR阵列的连接。每个AND门的输出对应于一个最小项，而OR门则将这些最小项组合起来形成最终的输出。\n\n可编程逻辑器件的特点及开发语言。\n\n8.可编程逻辑器件（如FPGA和CPLD）具有可重构性、灵活性和并行处理能力。它们通常使用硬件描述语言（HDL）进行开发，如VHDL和Verilog。\n\n9.\n\nVerilog是一种硬件描述语言，用于模拟和综合数字系统。它的特点是："
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-001:h-数字逻辑作业:c03",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "数字逻辑作业"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "digital-logic-001",
+      "source_title": "数字逻辑作业",
+      "text": "行为、数据流和结构化建模。\n\n丰富的语法，支持模块化设计。\n\n支持并行性和同步性。\n\n易于理解和学习。\n\n10.\n\nFPGA（现场可编程门阵列）的主要特点包括：\n\n可编程性：用户可以根据需要重新配置逻辑功能。\n\n灵活性：可以快速适应新的设计需求。\n\n并行处理能力：可以同时执行多个操作。\n\n低功耗：与ASIC相比，FPGA通常具有较低的功耗。\n\n快速上市时间：由于可编程性，FPGA可以快速部署新设计。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:h-2012级计算机学院数字逻辑试卷-a卷题目:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "**诚信应考,考试作弊将带来严重后果！**\n\n**华南理工大学期末考试**\n\n**《2012级计算机学院数字逻辑》试卷** **A卷**\n\n**2014年1月15日**\n\n**注意事项：1.** **考前请将密封线内填写清楚；**\n\n**2.** **所有答案请直接答在试卷或答题纸上；**\n\n**3．考试形式：闭卷；**\n\n**4.** **本试卷共  三  大题，满分100分，考试时间120分钟**。\n\n| **题 号** | **一** | **二** | **三** | **总分** |\n|---|---|---|---|---|\n| **得 分** |  |  |  |  |\n| **评卷人** |  |  |  |  |\n\n**一.** **选择题，请把选项填入下列的方框内（每题2分，共20分）**\n\n| **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9** | **10** |\n|---|---|---|---|---|---|---|---|---|---|\n|  |  |  |  |  |  |  |  |  |  |"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q1:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q1",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1.下列逻辑表达式中正确的是（      C      ）\n\nA.、A+A=1   B.$A\\cdot A=0$    C.A+A=A   D.A+B = A"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q2:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q2",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "2.逻辑表达式中$(A+1)(B+\\overline {C})$的对偶式是(   B   )\n\nA.$\\overline {A}+\\overline {B}\\overline {C}$\n\nB.$\\hat {A}\\cdot 0+\\hat {B}\\cdot C$\n\nC. $\\hat {A}\\cdot 0+B\\cdot \\hat {C}$\n\nD. $A\\cdot 1+B\\cdot \\hat {C}$\n\n3 .组合逻辑电路通常由（      A      ）组合而成。\n\nA.门电路        B.触发器        C.计数器        D.寄存器"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q3:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q3",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "4.八路数据选择器的接线如下图所示，该电路实现的逻辑表达式F=(   B   )\n\nA.  $\\hat {A}B+A\\hat {B}$\n\nB.  $\\hat {A}B+AB$\n\nC. $\\hat {A}\\hat {B}+A\\hat {B}$\n\nD. $A+B$"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q4:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q4",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "5．如图所示的组合电路中，其逻辑函数F=  （     ）\n\n![formula-object](assets/digital-logic-002/image-001.png)A．  $\\overline {AB}\\cdot \\overline {(B+C)}$\n\nB.    $\\sum {m}^{3}(1,2,3,5,6,7)$\n\nC.    $\\sum {m}^{3}(2,3,4,5,6,7)$\n\nD.    以上都不对"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q5:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q5",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "6.电路如下图所示，经CP脉冲作用后，${Q}^{n+1}$=(      )。\n\nA. 1   B. 0   C.  *X*        D.  $\\hat {X}$\n\n![formula-object](assets/digital-logic-002/image-002.png)\n\n7．8线—3线优先编码器的输入为I0-I7，当有限级别最高的I7有效时，其输出 ![formula-object](assets/digital-logic-002/image-003.png)的值是（        ）。\n\nA.  111    B.  010    C.  000  D.  101"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q6:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q6",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "8.  设计一个28进制的计数器，至少需要（      ）个触发器。\n\nA.4      B.5       C.14       D. 28"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q7:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q7",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "9. 2048*8位EPROM芯片，其地址线有（     ）条，数据线有（     ）条。\n\nA.8, 2048   B.2048, 8    C. 8, 11     D. 11, 8"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q8:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q8",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "10. FPGA指的是（      C      ）。\n\nA.门阵列                                          B.  可编程逻辑阵列\n\nC.现场可编程门阵列                      D.  可擦写编程的只读存储器\n\n**二．填空题，请在空格内填入正确的内容（每题1分，共20分）**\n1. 假设m13是变量A、B、C、D、E的一个最小项，用这些变量写出该最小项是       01101              。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q9:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q9",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. 将BCD8421码0101转换成余3码是      1000                。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q10:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q10",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. 时序逻辑电路任一时刻的输出状态与电路原来所处的状态            有关                。\n1. 数字电路按逻辑功能的不同特点分为两大类：组合逻辑电路和              时序逻辑电路              。\n1. 完整地描述一个实现逻辑电路的功能，需要3个方程，分别是：输出方程、激励方程和              次态方程              。\n1. VHDL的基本组成包括3个部分，分别是：参数部分——library库 、接口部分—设计实体和        描述部分-结构体              。\n1. 触发器是具有记忆功能的电路，它是                时序            逻辑电路中最基本的单元电路。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q11:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q11",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. 某同步时序电路有9个状态，该电路需要       4            个触发器。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q12:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q12",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. 只读存储器的英文缩写为ROM，这种存储器具有断电后信息仍              的特点。\n1. （82）10=（             1010                        ）8421BCD。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q13:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q13",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. n个变量的函数的全体最小项之或恒为      1                 。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q14:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q14",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. 若要某共阳极数码管显示数字“3”，则显示代码abcdefg\n\n为       1111001              （0000000~1111111）。\n\n![image](assets/digital-logic-002/image-004.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q15:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q15",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. 对于n输入端的与非门，要使输出为1，则必有一输入端取值为      0                 。\n1. 74LS138是3线—8线译码器，译码为输出低电平有效，若输入为A2A1A0=110时，输出Y7Y6Y5  Y4Y3  Y2Y1  Y0应为      10111111                。\n1. 三态门除了具有高电平和低电平两种状态外，还有第三种状态叫            高阻态              。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q16:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q16",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. 八进制的基数为     8                  。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q17:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q17",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. 触发器有2个稳态，分别是0态和        1            态。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q18:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q18",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. 一个逻辑函数，如果有k个变量，则有              个最小项。\n1. 将一个包含有32768个基本存储单元的存储电路设计16位为一个字节的ROM。该ROM有11根地址线，有              根数据读出线。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q19:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q19",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. 存储器必须有控制线、地址线和              。\n\n**三．分析设计题（共计60分）**"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q20:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q20",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. （10分）逻辑电路如图所示，试写出逻辑式，并化简之，列出真值表，并说明它的逻辑功能。\n\n![image](assets/digital-logic-002/image-005.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q21:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q21",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. （10分）设计一个优先排队电路，其优先顺序为：\n\n当E=F=G=0时，所有的灯都不亮。\n\n当E=1时，不论F、G为何值，X灯亮，其余灯不亮。\n\n当E=0，F=1时，不论G为何值，Y灯亮，其余灯不亮。\n\n当E=F=0，G=1时，Z灯亮，其余灯不亮。\n\n注：灯亮表示输出“1”，灯不亮表示输出“0”。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q22:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q22",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. 列出真值表。（4分）\n\n<table>\n<tr><td>输入</td><td>输出</td></tr>\n<tr><td>E</td><td>F</td><td>G</td><td>X</td><td>Y</td><td>Z</td></tr>\n<tr><td>0</td><td>0</td><td>0</td><td></td><td></td><td></td></tr>\n<tr><td>0</td><td>0</td><td>1</td><td></td><td></td><td></td></tr>\n<tr><td>0</td><td>1</td><td>0</td><td></td><td></td><td></td></tr>\n<tr><td>0</td><td>1</td><td>1</td><td></td><td></td><td></td></tr>\n<tr><td>1</td><td>0</td><td>0</td><td></td><td></td><td></td></tr>\n<tr><td>1</td><td>0</td><td>1</td><td></td><td></td><td></td></tr>\n<tr><td>1</td><td>1</td><td>0</td><td></td><td></td><td></td></tr>\n<tr><td>1</td><td>1</td><td>1</td><td></td><td></td><td></td></tr>\n</table>"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q23:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q23",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. 写出输出逻辑表达式。（3分）"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q24:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q24",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "（3）已知一种集成芯片的功能表如下表，试用该片芯片和若干门电路来实现上述逻辑函数，直接补全该电路图。（3分）\n\n![image](assets/digital-logic-002/image-006.png)\n\nH=High Level，L=Low Level, X=don’t care, Note 1:  $G2=\\overline {G2A}+\\overline {G2B}$\n\n![image](assets/digital-logic-002/image-007.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q25:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q25",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. （12分）分析下图所示同步时序逻辑电路，作出状态转移表和状态图，说明这个电路能对何种序列进行检测？\n\n![image](assets/digital-logic-002/image-008.png)\n1. （12分）设计一个奇偶校验器，数输入信号X中1的个数，如果X中1的个数为奇数，输出Z为1；若X中1的个数为偶数，则输出Z为0，画出状态图和状态表，并使用D触发器实现该电路。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q26:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q26",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. （6分）用一个ROM实现下列函数，请画出该ROM的阵列结构图\n\n${F}_{1}=AB+CD;{F}_{2}=BC+\\overline {A}$"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-002:q-digital-logic-002-q27:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q27",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目",
+      "text": "1. （10分）补全全加器的VHDL源码。\n\n**library IEEE;**\n\n**use IEEE.std_logic_1164.all;**\n\n**entity full_adder is**\n\n**port (**\n\n**A, B, Cin:** **in std_logic**         **;**\n\n**Cout,s: out std_logic**       **);**\n\n**end full_adder;**\n\n**architecture**   **add_arc of full_adder is**\n\n**begin**\n\n**S**                                     **;**\n\n**Cout**                                  **;**\n\n**end full_adder_arch;**"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:h-2012级计算机学院数字逻辑试卷-b卷题目:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "**诚信应考,考试作弊将带来严重后果！**\n\n**华南理工大学期末考试**\n\n**《2012级计算机学院数字逻辑》试卷** **B卷**\n\n**2014年1月15日**\n\n**注意事项：1.** **考前请将密封线内填写清楚；**\n\n**2.** **所有答案请直接答在试卷或答题纸上；**\n\n**3．考试形式：闭卷；**\n\n**4.** **本试卷共  三  大题，满分100分，考试时间120分钟**。\n\n| **题 号** | **一** | **二** | **三** | **总分** |\n|---|---|---|---|---|\n| **得 分** |  |  |  |  |\n| **评卷人** |  |  |  |  |\n\n**一.** **选择题，请把选项填入下列的方框内（每题2分，共20分）**\n\n| **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9** | **10** |\n|---|---|---|---|---|---|---|---|---|---|\n|  |  |  |  |  |  |  |  |  |  |"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q1:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q1",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1.下列逻辑表达式中正确的是（    C        ）\n\nA. A+A= 0   B.$A\\cdot A=1$    C. A+A=A   D.A+B = A\n\n2.逻辑表达式中$(A\\cdot 1)+(\\hat {B}\\cdot C)=A\\hat {B}+AC$的对偶式是(      )\n\nA.  $(A+0)\\cdot (\\hat {B}+C)=(A+\\hat {B})\\cdot (A+C)$\n\nB.  $(A+1)\\cdot (\\hat {B}+C)=(A+\\hat {B})\\cdot (A+C)$\n\nC. $(\\hat {A}+0)\\cdot (B+\\hat {C})=(\\hat {A}+B)\\cdot (\\hat {A}+\\hat {C})$\n\nD. $(\\hat {A}+1)\\cdot (B+\\hat {C})=(\\hat {A}+B)\\cdot (\\hat {A}+\\hat {C})$"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q2:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q2",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "3.在下列电路中，不是典型组合电路的是（      ）。\n\nA.译码器        B.全加器        C.计数器        D.数据选择器\n\n4.设B1、B0为四选一数据选择器的地址码，X0~X3为数据输入，Y为数据输出，则输出Y与Xi和Bi之间的逻辑表达式为(      )\n\nA.  $\\overline {{B}_{1}}{B}_{0}{X}_{0}+\\overline {{B}_{1}}\\overline {{B}_{0}}{X}_{1}+{B}_{1}{B}_{0}{X}_{2}+{B}_{1}\\overline {{B}_{0}}{X}_{3}$\n\nB.${B}_{1}{B}_{0}{X}_{0}+{B}_{1}\\overline {{B}_{0}}{X}_{1}+\\overline {{B}_{1}}{B}_{0}{X}_{2}+\\overline {{B}_{1}}\\overline {{B}_{0}}{X}_{3}$\n\nC. $\\overline {{B}_{1}}\\overline {{B}_{0}}{X}_{0}+\\overline {{B}_{1}}{B}_{0}{X}_{1}+{B}_{1}\\overline {{B}_{0}}{X}_{2}+{B}_{1}{B}_{0}{X}_{3}$\n\nD. ${B}_{1}\\overline {{B}_{0}}{X}_{0}+{B}_{1}{B}_{0}{X}_{1}+\\overline {{B}_{1}}\\overline {{B}_{0}}{X}_{2}+\\overline {{B}_{1}}{B}_{0}{X}_{3}$"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q3:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q3",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "5．如图所示的组合电路中，其逻辑函数F=  （     ）\n\n![formula-object](assets/digital-logic-003/image-001.png)A．  $\\overline {AB}+\\overline {(B+C)}$\n\nB.    $\\sum {m}^{3}(2,3,6,7)$\n\nC.    $\\sum {m}^{3}(6,7)$\n\nD.    以上都不对"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q4:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q4",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "6.电路如下图所示，经CP脉冲作用后，${Q}^{n+1}$=(      )。\n\nA. 1   B. 0   C.  *X*        D.  $\\hat {X}$\n\n![formula-object](assets/digital-logic-003/image-002.png)\n\n7．8线—3线优先编码器的输入为I0-I7，当有限级别最高的I7有效时，其输出 ![formula-object](assets/digital-logic-003/image-003.png)的值是（        ）。\n\nA.  111    B.  010    C.  000  D.  101"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q5:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q5",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "8.  关于存储器描述**不正确的**是（         ）\n\nA.  DRAM的存储密度比SRAM要高；\n\nB.    现代的ROM不仅能读出，而且还能写入；\n\nC.  SRAM的访问速度一般要慢于DRAM；\n\nD.  ROM掉电后内容依然存在。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q6:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q6",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "9. 2048*8位EPROM芯片，其地址线有（     ）条，数据线有（     ）条。\n\nA.8, 2048   B.2048, 8    C. 8, 11     D. 11, 8"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q7:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q7",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "10.  使用256*1位ROM芯片组成1024*4位存储器，需要ROM芯片（      ）片。\n\nA.10    B.32     C.16       D.64\n\n**二．填空题，请在空格内填入正确的内容（每题1分，共20分）**"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q8:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q8",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 一个逻辑函数，如果有m个变量，则有              个最小项。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q9:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q9",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 两个最小项只有一个变量不同，其余各变量均相同，则称这两个最小项\n\n为              。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q10:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q10",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 十六进制的基数为               。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q11:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q11",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 七单位字符代码是用7位二进制数来表示不同的字符，它可表示               种不同的字符。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q12:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q12",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 将BCD8421码0010转换成余3码是               。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q13:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q13",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 格雷码是一种典型的循环码，从某一编码变到下一个相邻编码时，只\n\n有               位的状态发生变化。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q14:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q14",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 数字电路按逻辑功能的不同特点分为两大类：              和时序逻辑电路。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q15:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q15",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 组合逻辑电路任一时刻的输出状态与电路原来所处的状态              。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q16:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q16",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 触发器有2个稳态，分别是              态和1态。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q17:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q17",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 完整地描述一个实现逻辑电路的功能，需要3个方程，分别是：              、激励方程和状态方程。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q18:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q18",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. VHDL的基本组成包括3个部分，分别是：参数部分——library\n\n库 、              和描述部分—结构体。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q19:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q19",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 触发器是具有              功能的电路，它是时序逻辑电路中最基本的单元电路。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q20:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q20",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 任意进制计数器又称N进制计数器，2n进制计数器就至少要用\n\n到              个触发器。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q21:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q21",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 随机存储器的英文缩写为RAM，在通电的情况下数据可以一\n\n直              ，断电后数据会丢失。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q22:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q22",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 将（459）10编成（                           ）8421BCD。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q23:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q23",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 三态门除了具有高电平和低电平两种状态外，还有第三种状态叫              。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q24:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q24",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 任意两个最小项的乘积恒等于              。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q25:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q25",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 若要某共阴极数码管显示数字“3”，则显示代码abcdefg\n\n为              （0000000~1111111）。\n\n![image](assets/digital-logic-003/image-004.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q26:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q26",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. 存储器必须有              、地址线和数据线。\n1. 74LS138是3线—8线译码器，译码为输出低电平有效，若输入为A2A1A0=011时，输出Y7Y6Y5  Y4Y3  Y2Y1  Y0应为              。\n\n**三．分析设计题（共计60分）**"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q27:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q27",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. （10分）逻辑电路如图所示，试写出逻辑式，并化简之，列出真值表，并说明它的逻辑功能。\n\n![formula-object](assets/digital-logic-003/image-005.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q28:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q28",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. （10分）设计一个组合逻辑电路，该电路的输入X和输出F均为3位二进制数。两者之间关系如下：\n\n1)当$2\\le X\\le 5$时，$F=X-2$\n\n2)当$X<2$时，$F=4$\n\n3)当$X>5$时，$F=0$"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q29:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q29",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "（1）列出真值表（4分）\n\n<table>\n<tr><td>输入</td><td>输出</td></tr>\n<tr><td>X2</td><td>X1</td><td>X0</td><td>F2</td><td>F1</td><td>F0</td></tr>\n<tr><td>0</td><td>0</td><td>0</td><td></td><td></td><td></td></tr>\n<tr><td>0</td><td>0</td><td>1</td><td></td><td></td><td></td></tr>\n<tr><td>0</td><td>1</td><td>0</td><td></td><td></td><td></td></tr>\n<tr><td>0</td><td>1</td><td>1</td><td></td><td></td><td></td></tr>\n<tr><td>1</td><td>0</td><td>0</td><td></td><td></td><td></td></tr>\n<tr><td>1</td><td>0</td><td>1</td><td></td><td></td><td></td></tr>\n<tr><td>1</td><td>1</td><td>0</td><td></td><td></td><td></td></tr>\n<tr><td>1</td><td>1</td><td>1</td><td></td><td></td><td></td></tr>\n</table>"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q30:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q30",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "（2）已知一种集成芯片的逻辑电路图和管脚图。试使用该芯片一片和若干逻辑门实现上述的电路。（6分）\n\n**![image](assets/digital-logic-003/image-006.png)**"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q31:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q31",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. （12分）分析下图所示同步时序逻辑电路，作出状态转移表和状态图，说明这个电路能对何种序列进行检测？\n\n![image](assets/digital-logic-003/image-007.png)\n1. （10分）设计一个奇偶校验器，数输入信号X中1的个数，如果X中1的个数为奇数，输出Z为1；若X中1的个数为偶数，则输出Z为0，画出状态图和状态表，并使用D触发器实现该电路。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q32:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q32",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. （8分）用一个ROM实现下列函数，请画出该ROM的阵列结构图\n\n${F}_{1}=AB+CD;{F}_{2}=BC+\\overline {A}$"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-003:q-digital-logic-003-q33:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q33",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "text": "1. （10分）补全全加器的VHDL源码。\n\n**library IEEE;**\n\n**use IEEE.std_logic_1164.all;**\n\n**entity full_adder is**\n\n**port (**\n\n**A, B, Cin:**          **;**\n\n**);**\n\n**end full_adder;**\n\n**architecture**\n\n**begin**\n\n**S**                                     **;**\n\n**Cout**                                  **;**\n\n**end full_adder_arch;**"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-004:p1:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2018a"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-004",
+      "source_title": "2018a",
+      "text": "![page-001.jpg](assets/digital-logic-004/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-004:p2:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2018a"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-004",
+      "source_title": "2018a",
+      "text": "![page-002.jpg](assets/digital-logic-004/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-004:p3:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2018a"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-004",
+      "source_title": "2018a",
+      "text": "![page-003.jpg](assets/digital-logic-004/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-004:p4:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2018a"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-004",
+      "source_title": "2018a",
+      "text": "![page-004.jpg](assets/digital-logic-004/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-004:p5:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2018a"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-004",
+      "source_title": "2018a",
+      "text": "![page-005.jpg](assets/digital-logic-004/page-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-004:p6:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2018a"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-004",
+      "source_title": "2018a",
+      "text": "![page-006.jpg](assets/digital-logic-004/page-006.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-004:p7:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2018a"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-004",
+      "source_title": "2018a",
+      "text": "![page-007.jpg](assets/digital-logic-004/page-007.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-004:p8:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2018a"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-004",
+      "source_title": "2018a",
+      "text": "![page-008.jpg](assets/digital-logic-004/page-008.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-004:p9:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "2018a"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-004",
+      "source_title": "2018a",
+      "text": "![page-009.jpg](assets/digital-logic-004/page-009.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-005:p1:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "22a"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-005",
+      "source_title": "22a",
+      "text": "华南理工大学大学期末考试试题（闭卷）\n\n（2022 学年第2 学期）A 卷答案及评分标准\n\n课程号：304051030 课序号：课程名称：数字逻辑任课教师：成绩：\n\n适用专业年级：学生人数：印题份数：学号：姓名：\n\n一、单项选择题（本大题共10 小题，每小题2 分，共20 分）提示：在每小题列出的四个备选项中只有\n\n一个是符合题目要求的，请将其代码填写在题后的括号内。错选、多选或未选均无分。\n\n1.\n和逻辑函数F=A⊕( A ⊕B)的值相等的表达式是（ A）。\n\n（A）B（B）A（C）A⊕B（D）A' ⊙B\n\n微信公众号：五山情报站\n\n2.\n若只有变量A、B 全为1 时输出F=0，则输入与输出的关系是（C）。\n\n（A）异或（B）同或（C）与非（D）或非\n\n3.\n所有的布尔表达式都可以由什么来实现?（D）\n\n（A）只用与非门（B）只用或非门\n\n（C）与门、或门和反相器的组合（D）上述的任何一种\n\n4.\n下列哪个表达式是最小项之和形式？（C）\n\n（A）\n（B）\n\n（C）\n（D）\n\n5.\n如果一个8-3 优先编码器的输入端I 0，I2，I 5，I 6都为有效电平，优先级最高的为I 7，输出\n\n为高电平有效，则其二进制输出为：（ B）。\n\n（A）010\n（B）110\n（C）101\n（D）000\n\n6.\n一个8421BCD 码计数器至少需要（C）个触发器。\n\n（A）8\n（B）3\n（C）4\n（D）6\n\n7.\n以下触发器中（B）不能实现保持功能。\n\n（A）JK 触发器\n（B）D 触发器（C）T 触发器\n（D）RS 触发器\n\n8.\n同步时序逻辑电路和异步时序逻辑电路的区别在于异步时序逻辑电路（B）。\n\n（A）没有触发器（B）没有统一的时钟脉冲控制\n\n（C）没有稳定状态（D）输出只与内部状态有关\n\n9.\n下列器件中，具有串行—并行数据转换功能的是（D）。\n\n![image](assets/digital-logic-005/image-001.jpeg)\n\n![image](assets/digital-logic-005/image-002.png)\n\n![image](assets/digital-logic-005/image-003.png)\n\n![image](assets/digital-logic-005/image-004.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-005:p2:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "22a"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-005",
+      "source_title": "22a",
+      "text": "更多考试真题\n\n请扫码获取\n\n![image](assets/digital-logic-005/image-005.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-005:p3:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "22a"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-005",
+      "source_title": "22a",
+      "text": "（A）译码器（B）数据比较器（C）计数器（D）移位寄存器\n\n10. 异步计数器如下图所示，若触发器当前状态Q3Q2Q1为110，则在时钟作用下，计数器的下一\n\n状态为（A）\n\n（A）101（B）111           （C）010（D）000\n\nACDCB CBBDA\n\n二、填空题（本大题共8 小题，每空2 分，共20 分）。\n\n微信公众号：五山情报站\n\n1.\n按要求完成如下数值转换：(1011110.101 )2 = (5E.A)16 = (94.625)10\n\n2.\n时序逻辑电路在任一时刻的稳定输出不仅与当时的输入有关，而且还与_输入信号作用前面电\n\n路所处的状态_有关。\n\n3.\n若D 触发器的D 端连在Q 端上，经100 个脉冲作用后，其次态为0，则现态为__0__。\n\n4.\n有一个左移移位寄存器，当预先置入1011 后，其串行输入固定接0，在3 个移位脉冲CP 作用\n\n下，其状态为1000。\n\n5.\n一位二进制比较器有2 个数据输入和3 个比较结果输出。\n\n6.\n一个十六路数据选择器，其地址输入端有4 个。\n\n7.\n计数器工作时，对时钟脉冲出现的个数进行计数。\n\n8.\n对JK 触发器，若J=K，则可完成T 触发器的逻辑功能。\n\n三、简答题（本大题共5 小题，每小题5 分，共25 分）。\n\n1．（5 分）用卡诺图化简表达式F(A,B,C,D) = m(0,4,5,7,10,13) + d(2,8,9,11,14,15)\n\n![image](assets/digital-logic-005/image-006.jpeg)\n\n![image](assets/digital-logic-005/image-007.png)\n\n![image](assets/digital-logic-005/image-008.png)\n\n![image](assets/digital-logic-005/image-009.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-005:p4:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "22a"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-005",
+      "source_title": "22a",
+      "text": "F(A,B,C,D) =\n（图2 分，圈2 分，表达式1 分）\n\n2．（5 分）如图电路中，写出表达式，并画出真值表，并描述功能。\n\n微信公众号：五山情报站\n\n解：输出函数f0=C,   f1=B⊕C,f2=A’B+ A’C+AB’C’ （2 分）\n\nA\nB\nC\nf2\nf1\nf0\n\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n1\n1\n0\n1\n0\n1\n1\n0\n0\n1\n1\n1\n0\n1\n1\n0\n0\n1\n0\n0\n1\n0\n1\n0\n1\n1\n1\n1\n0\n0\n1\n0\n1\n1\n1\n0\n0\n1\n(表2 分)\n\n功能描述：ABC 与f2f1f0互为补数（以2 为基）。(1 分)\n\n![image](assets/digital-logic-005/image-010.jpeg)\n\n![image](assets/digital-logic-005/image-011.png)\n\n![image](assets/digital-logic-005/image-012.png)\n\n![image](assets/digital-logic-005/image-013.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-005:p5:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "22a"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-005",
+      "source_title": "22a",
+      "text": "3．（5 分）用八选一数据选择器实现函数F(A,B,C,D) = m(0,4,5,8,12,13,14)，要求选用B、C、D\n\n作为选择信号，画出逻辑图。\n\nD0=D4=D5=1,D6=A，D1=D2=D3=D7=0（2 分）\n\n（D0-D7 1 分，BCD 1 分， F 1 分）\n\n4．（5 分）列出一位二进制全减器的真值表。\n\nA\nB\nCi-1\nS\nCi\n0\n0\n0\n0\n0\n0\n0\n1\n1\n1\n0\n1\n0\n1\n1\n0\n1\n1\n0\n1\n1\n0\n0\n1\n0\n1\n0\n1\n0\n0\n1\n1\n0\n0\n0\n1\n1\n1\n1\n1\n\n微信公众号：五山情报站\n\n（输入输出1 分，每2 行1 分）\n\n5．（5 分）完成由负边沿触发的T 触发器的时序图。\n\nC lock\n\nT\n\nQ T\n0\n\nC lo ck\n\nT\n\nQ T\n\n（2 个周期1 分）\n\n四、分析题（本大题共3 小题，共35 分）。\n\n![image](assets/digital-logic-005/image-014.jpeg)\n\n![image](assets/digital-logic-005/image-015.png)\n\n![image](assets/digital-logic-005/image-016.png)\n\n![image](assets/digital-logic-005/image-017.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-005:p6:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "22a"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-005",
+      "source_title": "22a",
+      "text": "1.\n设计一个逻辑电路，判别余3 码（下表）所表示的十进制数的值是否大于6。(1)列出真值表。\n\n(2)画出卡诺图并化简，写出最简逻辑函数表达式。(3)画出电路图。\n\n十进制\n余3 码\n十进制\n余3 码\n0\n0011\n5\n1000\n\n1\n0100\n6\n1001\n\n2\n0101\n7\n1010\n\n3\n0110\n8\n1011\n\n4\n0111\n9\n1100\n\n该判别电路输入变量为余3 码，4 位二进制，设为A、B、C、D，输出函数为F，为1 表示大\n\n于6，否则为0 。（1 分）\n\n十进制\nA\nB\nC\nD\nF\n\n0\n0\n0\n1\n1\n0\n\n1\n0\n1\n0\n0\n0\n\n微信公众号：五山情报站\n\n2\n0\n1\n0\n1\n0\n\n3\n0\n1\n1\n0\n0\n\n4\n0\n1\n1\n1\n0\n\n5\n1\n0\n0\n0\n0\n\n6\n1\n0\n0\n1\n0\n\n7\n1\n0\n1\n0\n1\n\n8\n1\n0\n1\n1\n1\n\n9\n1\n1\n0\n0\n1\n\n其余\nd\n\n（2 分）\nF=∑m(10,11,12)+∑d(0,1,2,13,14,15) （2 分）\n卡诺图（2 分）\n\n化简得： F= AC+AB=A(B+C)。（2 分）\n\n（2 分）\n\n![image](assets/digital-logic-005/image-018.jpeg)\n\n![image](assets/digital-logic-005/image-019.png)\n\n![image](assets/digital-logic-005/image-020.png)\n\n![image](assets/digital-logic-005/image-021.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-005:p7:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "22a"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-005",
+      "source_title": "22a",
+      "text": "2.\n（12 分）电路输入为A,B,C,输出为F，波形图如图所示，设计满足波形图的逻辑电路。要求：\n\n(1)列出真值表并写出逻辑方程；(2)用与非门和非门实现；(3)用74LS138 实现。\n\nF=（A，B，C）=∑\n\n(4,5,7)（4 分）\n\nm\n\n微信公众号：五山情报站\n\nF=AB+AC=A B∙AC=（2 分）\n\n（图2 分）\n\n![image](assets/digital-logic-005/image-022.jpeg)\n\n![image](assets/digital-logic-005/image-023.png)\n\n![image](assets/digital-logic-005/image-024.png)\n\n![image](assets/digital-logic-005/image-025.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-005:p8:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "22a"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-005",
+      "source_title": "22a",
+      "text": "（ABC 接对1 分，EN1 分，F2 分）\n\n3.\n（12 分）分析下图所示的时序电路的逻辑功能，写出电路的激励方程、状态方程和输出方程，\n\n列出状态表，画出电路的状态转换图，并说明该电路是否能自启动。\n\n微信公众号：五山情报站\n\nn\nQ\nD\n3\n1 \nn\nQ\nD\n1\n2 \nn\nn\nQ\nQ\nD\n2\n1\n3\n\n\n\n激励方程：\n；\n；\n(1 分)\n\nn\nn\nQ\nQ\nY\n3\n1 \n\n\n输出方程：\n(1 分)\n\nn\nn\nQ\nQ\n3\n1\n1\n\n\nn\nn\nQ\nQ\n1\n1\n2\n\n\nn\nn\nn\nQ\nQ\nQ\n2\n1\n1\n3\n\n\n\n\n状态方程：\n；\n；\n(3 分)\n\nn\nQ3\n\nn\nQ2\n\nn\nQ1\n\n1\n3\n\nn\nQ\n1\n2\n\nn\nQ\n1\n1\n\nn\nQ\n\nCP\n Y\n\n1\n 0   0   0\n 0    0    1      1\n\n2\n 0   0   1\n 0    1    1      1\n\n3\n 0   1   0\n 0    0    1      0\n\n4\n 0   1   1\n 1    1    1      1\n\n5\n 1   0   0\n 0    0    0      0\n\n6\n 1   0   1\n 0    1    0      0\n\n7\n 1   1   0\n 0    0    0      0\n\n8\n 1   1   1\n 1    1    0      1\n\n![image](assets/digital-logic-005/image-026.jpeg)\n\n![image](assets/digital-logic-005/image-027.png)\n\n![image](assets/digital-logic-005/image-028.png)\n\n![image](assets/digital-logic-005/image-029.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-005:p9:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "22a"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-005",
+      "source_title": "22a",
+      "text": "(表2 分图3 分)\n\n100\n010\n101\n\n/1\n\n/1\n\n000\n001\n\nQ3 Q2 Q1/Y\n\n/0\n\n011\n111\n110\n\n/1\n/1\n\n电路具有自启功能。(2 分)\n\n微信公众号：五山情报站\n\n![image](assets/digital-logic-005/image-030.jpeg)\n\n![image](assets/digital-logic-005/image-031.png)\n\n![image](assets/digital-logic-005/image-032.png)\n\n![image](assets/digital-logic-005/image-033.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-006:p1:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "数字逻辑07-A"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-006",
+      "source_title": "数字逻辑07-A",
+      "text": "![page-001.jpg](assets/digital-logic-006/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-006:p2:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "数字逻辑07-A"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-006",
+      "source_title": "数字逻辑07-A",
+      "text": "![page-002.jpg](assets/digital-logic-006/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-006:p3:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "数字逻辑07-A"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-006",
+      "source_title": "数字逻辑07-A",
+      "text": "![page-003.jpg](assets/digital-logic-006/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-006:p4:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "数字逻辑07-A"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-006",
+      "source_title": "数字逻辑07-A",
+      "text": "![page-004.jpg](assets/digital-logic-006/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-007:p1:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "数字逻辑07-B"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-007",
+      "source_title": "数字逻辑07-B",
+      "text": "![page-001.jpg](assets/digital-logic-007/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-007:p2:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "数字逻辑07-B"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-007",
+      "source_title": "数字逻辑07-B",
+      "text": "![page-002.jpg](assets/digital-logic-007/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-007:p3:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "数字逻辑07-B"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-007",
+      "source_title": "数字逻辑07-B",
+      "text": "![page-003.jpg](assets/digital-logic-007/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-007:p4:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "数字逻辑07-B"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "digital-logic-007",
+      "source_title": "数字逻辑07-B",
+      "text": "![page-004.jpg](assets/digital-logic-007/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c01",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "计算机学院数字逻辑2024级复习大纲"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "digital-logic-008",
+      "source_title": "计算机学院数字逻辑2024级复习大纲",
+      "text": "**2024级数字逻辑复习大纲**\n\n**本课程掌握要点：**\n\n**第一章 数制和编码**\n\n（1）数制转换，主要掌握  2进制、8进制、10进制和16进制的转换关系,包括整数和小数转换。\n\n（2）编码。对8421码，2421码，奇偶校验码，余3码和格雷码特点进行了解。\n\n**第二章**  **逻辑代数基础**\n\n（1）布尔代数定律：2.2.1  逻辑代数的公理和基本定理，一些常用公式：$A+\\overline {A}B=A+B$和摩根定律。\n\n（2）三个规则：代入规则，反演规则，对偶规则\n\n（3）逻辑函数证明：公式规则证明法\n\n（4）了解最小项和最大项的特点。\n\n（5）逻辑化简：公式化简法，卡诺图，利用无关项卡诺图化简\n\n**第三章和第六章部分 组合逻辑电路和集成电路**\n\n（1）逻辑门电路\n\n![image](assets/digital-logic-008/image-001.png)\n\n![image](assets/digital-logic-008/image-002.png)\n\n![image](assets/digital-logic-008/image-003.png)    ![image](assets/digital-logic-008/image-004.png)\n\n同或      ![formula-object](assets/digital-logic-008/image-005.png)    ![image](assets/digital-logic-008/image-006.png)\n\n（2）逻辑函数实现（与非，或非，与或非形式）\n\n（3）组合逻辑电路分析\n\n（4）组合逻辑电路设计\n\n（5）组合逻辑电路的竞争和冒险（原因，解决思路）\n\n（6）组合逻辑构件\n\n(a)译码器（3-8译码器），会用译码器实现逻辑电路。\n\n(b)多路选择器（4选1），会用多路选择器实现逻辑电路。\n\n(c)了解加法器，数值比较器的功能，如何应用。\n\n**第四章和第六章部分 同步时序逻辑和集成电路**\n\n（1）时序逻辑电路特点，与组合逻辑电路区别。\n\n掌握JK触发器，D触发器的特征方程。\n\n（2）时序逻辑分析，会分析用JK触发器，D触发器组成的时序逻辑电路。\n\n会写出激励函数，输出函数，状态函数；从而得到状态表（状态转换表），状态图，时序波形图，会在电路分析过程中画出标准的Moore和Mealy型逻辑的状态表（状态转换表）和状态图（状态转移图）。\n\n（3）时序逻辑电路设计，会用分别利用Moore  和  Mealy  状态机实现一个时序逻辑的设计，只掌握用D触发器即可。\n\n(a)会根据实际问题，画出时序状态转移图（直接实现最简即可，书中化简过程方法了解就好）。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c02",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "计算机学院数字逻辑2024级复习大纲"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "digital-logic-008",
+      "source_title": "计算机学院数字逻辑2024级复习大纲",
+      "text": "(b)会根据状态转移图，状态编码（如何状态编码不做要求）和并会利用D触发器建立出时序逻辑电路图。\n\n（4）了解常用同步时序逻辑电路的功能和特点：寄存器，只读存储器。\n\n（5）掌握时序逻辑构件：计数器（主要器件：74LS163，74LS161,74LS193）\n\n(a)什么是同步/异步置位、什么是同步/异步清零。\n\n(b)会设计任意进制模数的计数器。\n\n(c)会分析计数器电路功能（计数器计数）。\n\n（6）可编程逻辑阵列\n\n(1)可编程逻辑构件。了解PLA、PAL、GAL、FPGA、CPLD的概念和特点。\n\n（2）会用PLA实现逻辑函数，难度不超出书中  P204页 例6.14。\n\n6．可编程逻辑语言\n\n可编程逻辑系列器件的特点、应用及开发过程。\n\n**复习内容参考（仅供参考）：**\n- **数制与编码**\n\n**1．考点：**\n\n（1）几种常用的计数体制，十进制、二进制、十六进制、八进制。\n\n（2）不同数制之间的相互转换。\n\n（3）编码形式。\n\n什么是余3码，什么是格雷码，了解编码的形式就好。\n\n**二．逻辑代数**\n\n**1．考点：**\n\n（1）逻辑代数是分析和设计逻辑电路的工具。应熟记基本公式与基本规则。\n\n表1  逻辑代数的基本公式\n\n**$A.1=AA.0=0A+0=AA+1=1AA=0A+A=1AB=BAA+B=B+AA(BC)=(AB)CA(B+C)=AB+ACA+B=C+(A+B)CAB=ABA(A+B)=AA·A̅B=AB(A+B)(A̅+C)=(A+B)(A̅+C)A̅=AAB+AC=AB+AC$**\n\n逻辑代数的基本规则：\n\n**a.代入规则**     对于任何一个逻辑等式，以某个逻辑变量或逻辑函数同时取代等式两端任何一个逻辑变量后，等式依然成立。                                               例如，在反演律中用BC去代替等式中的B，则新的等式仍成立：\n\nb. **对偶规则**\n\n将一个逻辑函数L进行下列变换：                                                   ·→＋，＋ →·                                                   0  →  1，1  →  0  所得新函数表达式叫做L的对偶式.。\n\n对偶规则的基本内容是：如果两个逻辑函数表达式相等，那么它们的对偶式也一定相等。\n\n基本公式中的公式l和公式2就互为对偶 式。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c03",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "计算机学院数字逻辑2024级复习大纲"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "digital-logic-008",
+      "source_title": "计算机学院数字逻辑2024级复习大纲",
+      "text": "**c.** **反演规则**  将一个逻辑函数L进行下列变换：                                         ·→＋，＋ →·  ；                                         0  →  1，1  →  0  ；                     原变量 → 反变量，  反变量 → 原变量。 所得新函数表达式叫做L的反函数。\n\n利用反演规则，可以非常方便地求得一个函数的反函数。\n\n（2）可用两种方法化简逻辑函数，公式法和卡诺图法。\n\n公式法是用逻辑代数的基本公式与规则进行化简，必须熟记基本公式和规则并具有一定的运算技巧和经验。\n- 合并项法\n- 吸收法\n- 消去法\n- 配项法\n\n卡诺图法是基于合并相邻最小项的原理进行化简的，特点是简单、直观，不易出错，有一定的步骤和方法可循。\n\n![image](assets/digital-logic-008/image-008.png)\n\n![image](assets/digital-logic-008/image-009.png)\n\n2．练习题：\n\n**（1）利用公式证明下列等式：**\n\n$AB+BCD+\\overline {A}C+\\overline {B}C=AB+C$\n\n$A\\overline {B}+B\\overline {C}+C\\overline {A}=\\overline {A}B+\\overline {B}C+\\overline {C}A$\n\n**（2）化简逻辑函数：**\n\n![image](assets/digital-logic-008/image-010.png)\n\n**(3)** **用卡诺图化简逻辑函数：**\n\n![image](assets/digital-logic-008/image-011.png)\n\n（4）**具有无关项的逻辑函数的化简：**\n\n例:某逻辑函数输入是8421BCD码，其逻辑表达式为：   L（A,B,C,D）=∑m（1,4,5,6,7,9）+∑d（10,11,12,13,14,15）   用卡诺图法化简该逻辑函数。\n\n![image](assets/digital-logic-008/image-012.png)\n\n三．**组合逻辑电路的分析和设计**\n\n1．组合逻辑电路的分析：\n\n![formula-object](assets/digital-logic-008/image-013.png)\n\n**例：组合电路如图所示，分析该电路的逻辑功能。**\n\n![formula-object](assets/digital-logic-008/image-014.png)\n\n![image](assets/digital-logic-008/image-015.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c04",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "计算机学院数字逻辑2024级复习大纲"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "digital-logic-008",
+      "source_title": "计算机学院数字逻辑2024级复习大纲",
+      "text": "2．组合逻辑电路的设计：\n\n**![formula-object](assets/digital-logic-008/image-016.png)**\n\n**![image](assets/digital-logic-008/image-017.png)**\n\n**![image](assets/digital-logic-008/image-018.png)**\n\n**画出逻辑电路图：**\n\n![formula-object](assets/digital-logic-008/image-019.png)\n\n**四．组合逻辑模块及其应用**\n\n**1.译码器**\n\n![image](assets/digital-logic-008/image-020.png)\n\n**2.多路选择器**\n\n**（1）4选** **1多路选择器参考书中例题（例6.7，6.8）。**\n\n**（2）8选1多路选择器。**\n\n![image](assets/digital-logic-008/image-021.png)\n\n![image](assets/digital-logic-008/image-022.png)\n\n**练习题：**\n\n1．\n\n![image](assets/digital-logic-008/image-023.png)\n\n2．\n\n![image](assets/digital-logic-008/image-024.png)\n\n**五.时序逻辑电路的分析与设计**\n\n1．触发器\n\n主要掌握边沿型的JK、D触发器，特征方程。\n\n2．会分析JK、D  触发器构成的时序电路（可见书中例题及PPT）\n\n例题：这道题也告诉如何画出Mealy型逻辑的状态表和状态图。\n\n![image](assets/digital-logic-008/image-025.png)\n\n![image](assets/digital-logic-008/image-026.png)\n\n3．会设计D触发器时序电路，在设计时序电路过程中要有状态机思路。\n\n![image](assets/digital-logic-008/image-027.png)\n\n例题：这道题也告诉如何画出Moore型逻辑的状态图和状态表。\n\n（１）设计一个奇偶校验器，数输入信号X中1的个数，如果X中1的个数为奇数，输出Z为1；若X中1的个数为偶数，则输出Z为0。画出状态图和状态表，分别用D触发器构成。\n\n画出状态图：\n\n![formula-object](assets/digital-logic-008/image-028.png)\n\n列出状态表：\n\n![formula-object](assets/digital-logic-008/image-029.png)\n\n利用D触发器来实现："
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c05",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "计算机学院数字逻辑2024级复习大纲"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "digital-logic-008",
+      "source_title": "计算机学院数字逻辑2024级复习大纲",
+      "text": "分别用0，1来表示S0,S1状态，画出次态和输出的卡诺图。\n\n![formula-object](assets/digital-logic-008/image-030.png)\n\n得出：\n\n$$\n{Q}^{n+1}=X\\overline {{Q}^{n}}+\\overline {X}{Q}^{n}\n$$\n\n$$\nZ={Q}^{n+1}\n$$\n\n又因为：  D触发器方程：${Q}^{n+1}=D$\n\n所以：$D=X\\overline {{Q}^{n}}+\\overline {X}{Q}^{n}$\n\n根据逻辑表达式，画出电路图：\n\n注：本题所实现的状态为Moore状态机，这种状态机的输出电位只与目前所处的状态有关，而与输入信号无立即的关系。\n\n![image](assets/digital-logic-008/image-031.png)\n\n![image](assets/digital-logic-008/image-032.png)\n\n![image](assets/digital-logic-008/image-033.png)\n\n![image](assets/digital-logic-008/image-034.png)\n\n![image](assets/digital-logic-008/image-035.png)\n\n![image](assets/digital-logic-008/image-036.png)\n\n注：本题所实现的状态为Mealy状态机，这种状态机的输出电位不仅与目前所处的状态有关，而且与输入信号也有关联。\n\n**用Moore逻辑来实现**\n\n![image](assets/digital-logic-008/image-037.png)\n\n![image](assets/digital-logic-008/image-038.png)\n\n![image](assets/digital-logic-008/image-039.png)\n\n![image](assets/digital-logic-008/image-040.png)         ![image](assets/digital-logic-008/image-041.png)\n\n![image](assets/digital-logic-008/image-042.png)\n\n**六.时序逻辑电路-计数器**\n\n中规模集成计数器：有同步计数器和异步计数器两大类，而且是多功能的。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "digital-logic-008:h-计算机学院数字逻辑2024级复习大纲:c06",
+      "course_id": "digital_logic",
+      "heading_path": [
+        "计算机学院数字逻辑2024级复习大纲"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "digital-logic-008",
+      "source_title": "计算机学院数字逻辑2024级复习大纲",
+      "text": "| 型号 | 模式 | 预置 | 清零 | 工作频率 |\n|---|---|---|---|---|\n| 74LS162A | 十进 | 同步 | 同步（低） | 25MHz |\n| 74LS160A | 十进 | 同步 | 异步（低） | 25MHz |\n| 74LS168 | 十进可逆 | 同步 | 无 | 40MHz |\n| 74LS190 | 十进可逆 | 异步 | 无 | 20MHz |\n| 74ALS568 | 十进可逆 | 同步 | 同步（低） | 20MHz |\n| **74LS163A** | **4****位二进** | **同步** | **同步（低）** | **25MHz** |\n| **74LS161A** | **4****位二进** | **同步** | **异步（低）** | **25MHz** |\n| 74ALS561 | 4位二进 | 同步 | 同步（低） | 30MHz |\n| **74LS193** | **4****位二进可逆** | **异步** | **异步（高）** | **25MHz** |\n| 74LS191 | 4位二进可逆 | 异步 | 无 | 20MHz |\n| 74ALS569 | 4位二进可逆 | 同步 | 异步（低） | 20MHz |\n| 74ALS867 | 8位二进 | 同步 | 同步 | 115MHz |\n| 74ALS869 | 8位二进 | 异步 | 异步 | 115MHz |\n\n会设计任意进制模数的计数器。\n\n会分析计数器电路功能（计数器计数）。\n\n**七．存储器，可编程阵列**\n\n**只读存储器：**\n\n![image](assets/digital-logic-008/image-043.png)\n\n可编程逻辑阵列PLA、可编程阵列逻辑(PAL)、通用阵列逻辑（GAL）和高密度可编程逻辑器件（CPLD  和  FPGA）。\n\n了解：\n\n![image](assets/digital-logic-008/image-044.png)"
+    }
+  ],
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "digital_logic",
+  "questions": [
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q1:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q1",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q10:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q10",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q11:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q11",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q12:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q12",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q13:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q13",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q14:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q14",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q15:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q15",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q16:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q16",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q17:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q17",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q18:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q18",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q19:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q19",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q2:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q2",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q20:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q20",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q21:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q21",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q22:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q22",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q23:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q23",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q24:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q24",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q25:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q25",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q26:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q26",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q27:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q27",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q3:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q3",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q4:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q4",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q5:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q5",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q6:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q6",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q7:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q7",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q8:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q8",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-002:q-digital-logic-002-q9:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 A卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-002-Q9",
+      "source_id": "digital-logic-002",
+      "source_title": "2012级计算机学院数字逻辑试卷 A卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q1:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q1",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q10:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q10",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q11:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q11",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q12:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q12",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q13:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q13",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q14:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q14",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q15:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q15",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q16:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q16",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q17:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q17",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q18:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q18",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q19:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q19",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q2:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q2",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q20:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q20",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q21:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q21",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q22:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q22",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q23:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q23",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q24:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q24",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q25:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q25",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q26:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q26",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q27:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q27",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q28:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q28",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q29:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q29",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q3:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q3",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q30:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q30",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q31:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q31",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q32:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q32",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q33:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q33",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q4:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q4",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q5:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q5",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q6:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q6",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q7:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q7",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q8:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q8",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    },
+    {
+      "chunk_ids": [
+        "digital-logic-003:q-digital-logic-003-q9:c01"
+      ],
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": "digital-logic-003-Q9",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目"
+    }
+  ],
+  "schema_version": "course-index-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e"
+}

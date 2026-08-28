@@ -1,0 +1,149 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "english",
+  "course_pack_version": "course-pack-english-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "english-004:h-2023级学术英语第一学期考试大纲:c01"
+      ],
+      "heading_path": [
+        "2023级学术英语第一学期考试大纲"
+      ],
+      "source_ids": [
+        "english-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "english-006:h-英语summary:c01",
+        "english-006:h-英语summary:c02"
+      ],
+      "heading_path": [
+        "英语SUMMARY"
+      ],
+      "source_ids": [
+        "english-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "english-007:h-英语作文竞赛:c01",
+        "english-007:h-英语作文竞赛:c02",
+        "english-007:h-英语作文竞赛:c03",
+        "english-007:h-英语作文竞赛:c04"
+      ],
+      "heading_path": [
+        "英语作文竞赛"
+      ],
+      "source_ids": [
+        "english-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "english-008:h-英语复习:c01",
+        "english-008:h-英语复习:c02"
+      ],
+      "heading_path": [
+        "英语复习"
+      ],
+      "source_ids": [
+        "english-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "english-005:p1:c01"
+      ],
+      "heading_path": [
+        "英语议论文写作个人总结"
+      ],
+      "source_ids": [
+        "english-005"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "english-004:h-2023级学术英语第一学期考试大纲:c01"
+      ],
+      "course_id": "english",
+      "document_role": "review_outline",
+      "locator_type": "none",
+      "output_md": "english/english-004.md",
+      "source_id": "english-004",
+      "source_title": "2023级学术英语第一学期考试大纲",
+      "year": "2023"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "english-005:p1:c01"
+      ],
+      "course_id": "english",
+      "document_role": "note",
+      "locator_type": "page",
+      "output_md": "english/english-005.md",
+      "source_id": "english-005",
+      "source_title": "英语议论文写作个人总结",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "english-006:h-英语summary:c01",
+        "english-006:h-英语summary:c02"
+      ],
+      "course_id": "english",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "english/english-006.md",
+      "source_id": "english-006",
+      "source_title": "英语SUMMARY",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "english-007:h-英语作文竞赛:c01",
+        "english-007:h-英语作文竞赛:c02",
+        "english-007:h-英语作文竞赛:c03",
+        "english-007:h-英语作文竞赛:c04"
+      ],
+      "course_id": "english",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "english/english-007.md",
+      "source_id": "english-007",
+      "source_title": "英语作文竞赛",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "english-008:h-英语复习:c01",
+        "english-008:h-英语复习:c02"
+      ],
+      "course_id": "english",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "english/english-008.md",
+      "source_id": "english-008",
+      "source_title": "英语复习",
+      "year": null
+    }
+  ],
+  "statistics": {
+    "chunk_count": 10,
+    "question_count": 0,
+    "source_count": 5
+  },
+  "workflow_version": "workflow-contract-v1"
+}

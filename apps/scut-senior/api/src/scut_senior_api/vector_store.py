@@ -27,8 +27,6 @@ class VectorStore:
         if not model_id or not isinstance(model_id, str):
             raise ValueError("vector model_id must be a non-empty string")
         self.path = path.resolve()
-        self.dimensions = dimensions
-        self.model_id = model_id
         self._connection = sqlite3.connect(str(self.path))
         self._connection.execute(
             "CREATE TABLE IF NOT EXISTS vectors ("
@@ -37,6 +35,45 @@ class VectorStore:
             " vector BLOB NOT NULL"
             ")"
         )
+        self._connection.execute(
+            "CREATE TABLE IF NOT EXISTS meta ("
+            " key TEXT PRIMARY KEY,"
+            " value TEXT NOT NULL"
+            ")"
+        )
+        self.dimensions, self.model_id = self._load_or_write_meta(dimensions, model_id)
+
+    def _load_or_write_meta(
+        self, dimensions: int, model_id: str
+    ) -> tuple[int, str]:
+        """Persist the store identity on first open; on later opens, fail closed
+        when the caller's expected identity does not match what is on disk."""
+        row = self._connection.execute(
+            "SELECT value FROM meta WHERE key = 'model_id'"
+        ).fetchone()
+        if row is None:
+            self._connection.execute(
+                "INSERT INTO meta (key, value) VALUES ('model_id', ?)", (model_id,)
+            )
+            self._connection.execute(
+                "INSERT INTO meta (key, value) VALUES ('dimensions', ?)",
+                (str(dimensions),),
+            )
+            self._connection.commit()
+            return dimensions, model_id
+        persisted_model = row[0]
+        persisted_dimensions_row = self._connection.execute(
+            "SELECT value FROM meta WHERE key = 'dimensions'"
+        ).fetchone()
+        persisted_dimensions = (
+            int(persisted_dimensions_row[0]) if persisted_dimensions_row else -1
+        )
+        if persisted_model != model_id or persisted_dimensions != dimensions:
+            raise ValueError(
+                "vector store identity mismatch: expected "
+                f"{model_id}/{dimensions}, found {persisted_model}/{persisted_dimensions}"
+            )
+        return persisted_dimensions, persisted_model
 
     def upsert(
         self, chunk_id: str, course_id: str, vector: Sequence[float]

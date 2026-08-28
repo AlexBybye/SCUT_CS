@@ -6,7 +6,38 @@ from scut_senior_api.config import Settings, UnsafeRuntimeConfiguration
 from scut_senior_api.main import create_app
 
 
-def test_production_refuses_mock_adapters(tmp_path: Path) -> None:
+def test_dense_retrieval_is_enabled_by_default() -> None:
+    settings = Settings()
+    assert settings.dense_retrieval_enabled is True
+    assert settings.onnx_embedding_model_id == "bge-small-zh-v1.5"
+    assert settings.onnx_embedding_dimensions == 512
+
+
+def test_dense_retrieval_requires_onnx_model_path(tmp_path: Path) -> None:
+    settings = Settings(
+        app_env="test",
+        retrieval_mode="local_corpus",
+        dense_retrieval_enabled=True,
+        onnx_embedding_model_path=None,
+        corpus_store_path=tmp_path,
+    )
+    with pytest.raises(UnsafeRuntimeConfiguration, match="ONNX_MODEL_PATH"):
+        settings.assert_safe()
+
+
+def test_dense_retrieval_requires_onnx_model_id(tmp_path: Path) -> None:
+    settings = Settings(
+        app_env="test",
+        retrieval_mode="local_corpus",
+        dense_retrieval_enabled=True,
+        onnx_embedding_model_path=tmp_path,
+        onnx_embedding_model_id="",
+        corpus_store_path=tmp_path,
+    )
+    with pytest.raises(UnsafeRuntimeConfiguration, match="ONNX_MODEL_ID"):
+        settings.assert_safe()
+
+
     settings = Settings(app_env="production", database_path=tmp_path / "unsafe.db")
 
     with pytest.raises(UnsafeRuntimeConfiguration, match="refuses production"):

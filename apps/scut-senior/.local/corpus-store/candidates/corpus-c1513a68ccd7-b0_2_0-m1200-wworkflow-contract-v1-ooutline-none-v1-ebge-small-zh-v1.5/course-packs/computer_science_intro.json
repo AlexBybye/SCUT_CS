@@ -1,0 +1,2534 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "computer_science_intro",
+  "course_pack_version": "course-pack-computer_science_intro-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p1:c01",
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q1:c01",
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q2:c01",
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q3:c01",
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q4:c01",
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q5:c01",
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q5:c01",
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q6:c01",
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q7:c01",
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q8:c01",
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q9:c01",
+        "computer-science-intro-003:p3:q-computer-science-intro-003-q9:c01",
+        "computer-science-intro-003:p3:q-computer-science-intro-003-q10:c01",
+        "computer-science-intro-003:p3:q-computer-science-intro-003-q11:c01",
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q11:c01",
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q12:c01",
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q13:c01",
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q14:c01",
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q14:c01",
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q15:c01",
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q16:c01",
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q17:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "source_ids": [
+        "computer-science-intro-003"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-004:h-微信图片_20231218194317:c01"
+      ],
+      "heading_path": [
+        "微信图片_20231218194317"
+      ],
+      "source_ids": [
+        "computer-science-intro-004"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s8:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Abstract View"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s6:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Abstraction"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s18:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Assembly/Machine"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s2:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Chapter Goals"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s3:c01",
+        "computer-science-intro-005:s4:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Computing Systems"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s25:c01",
+        "computer-science-intro-005:s26:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Computing as a Discipline"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s24:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Computing as a Tool"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s10:c01",
+        "computer-science-intro-005:s11:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Early History of Computing"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s28:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Examples of Application Areas"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s27:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Examples of Systems Areas"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s23:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Fifth Generation Software"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s12:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "First Generation Hardware"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s17:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "First Generation Software"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s15:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Fourth Generation Hardware"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s22:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Fourth Generation Software"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s9:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "History"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s7:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Internal View"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s5:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Layers of a Computing System"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s16:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Parallel Computing and Networking"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s13:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Second Generation Hardware"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s19:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Second Generation Software"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s1:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "The Big Picture"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s14:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Third Generation Hardware"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s20:c01",
+        "computer-science-intro-005:s21:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "Third Generation Software"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-005:s29:c01"
+      ],
+      "heading_path": [
+        "第1章",
+        "作业"
+      ],
+      "source_ids": [
+        "computer-science-intro-005"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s21:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Abacus"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s15:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Arithmetic in Binary"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s11:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Bases Higher than 10"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s10:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Binary"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s27:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Binary Numbers and Computers"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s28:c01",
+        "computer-science-intro-006:s29:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Binary and Computers"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s1:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Chapter 2"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s2:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Chapter Goals"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s14:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Converting Binary to Decimal"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s19:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Converting Binary to Hexadecimal"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s18:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Converting Binary to Octal"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s25:c01",
+        "computer-science-intro-006:s26:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Converting Decimal to Hexadecimal"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s20:c01",
+        "computer-science-intro-006:s23:c01",
+        "computer-science-intro-006:s24:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Converting Decimal to Octal"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s22:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Converting Decimal to Other Bases"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s13:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Converting Hexadecimal to Decimal"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s12:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Converting Octal to Decimal"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s17:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Counting in Binary/Octal/Decimal"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s30:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Ethical Issues"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s5:c01",
+        "computer-science-intro-006:s6:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Natural Numbers"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s3:c01",
+        "computer-science-intro-006:s4:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Numbers"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s7:c01",
+        "computer-science-intro-006:s8:c01",
+        "computer-science-intro-006:s9:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Positional Notation"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s16:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Subtracting Binary Numbers"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s31:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "Who am I?"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-006:s32:c01"
+      ],
+      "heading_path": [
+        "第2章",
+        "作业"
+      ],
+      "source_ids": [
+        "computer-science-intro-006"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s8:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "AND Gate"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s25:c01",
+        "computer-science-intro-007:s26:c01",
+        "computer-science-intro-007:s27:c01",
+        "computer-science-intro-007:s28:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "Adders"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s37:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "CPU Chips"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s1:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "Chapter 4"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s2:c01",
+        "computer-science-intro-007:s3:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "Chapter Goals"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s19:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "Circuits"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s31:c01",
+        "computer-science-intro-007:s32:c01",
+        "computer-science-intro-007:s33:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "Circuits as Memory"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s20:c01",
+        "computer-science-intro-007:s21:c01",
+        "computer-science-intro-007:s22:c01",
+        "computer-science-intro-007:s23:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "Combinational Circuits"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s4:c01",
+        "computer-science-intro-007:s5:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "Computers and Electricity"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s16:c01",
+        "computer-science-intro-007:s17:c01",
+        "computer-science-intro-007:s18:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "Constructing Gates"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s6:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "Gates"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s15:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "Gates with More Inputs"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s34:c01",
+        "computer-science-intro-007:s35:c01",
+        "computer-science-intro-007:s36:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "Integrated Circuits"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s29:c01",
+        "computer-science-intro-007:s30:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "Multiplexers"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s12:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "NAND Gate"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s13:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "NOR Gate"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s7:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "NOT Gate"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s9:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "OR Gate"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s24:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "Properties of Boolean Algebra"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s14:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "Review of Gate Processing"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s10:c01",
+        "computer-science-intro-007:s11:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "XOR Gate"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-007:s38:c01"
+      ],
+      "heading_path": [
+        "第4章",
+        "作业"
+      ],
+      "source_ids": [
+        "computer-science-intro-007"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s12:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Arithmetic/Logic Unit"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s1:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Chapter 5"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s2:c01",
+        "computer-science-intro-008:s3:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Chapter Goals"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s25:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Compact Disks"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s4:c01",
+        "computer-science-intro-008:s5:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Computer Components"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s6:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Computer Components (continued)"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s14:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Control Unit"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s36:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Embedded Systems"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s26:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Flash Drives"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s15:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Flow of Information"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s13:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Input/Output Units"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s21:c01",
+        "computer-science-intro-008:s22:c01",
+        "computer-science-intro-008:s23:c01",
+        "computer-science-intro-008:s24:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Magnetic Disks"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s20:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Magnetic Tape"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s11:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Memory"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s34:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Pipelining"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s18:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "RAM and ROM"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s19:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Secondary Storage Devices"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s35:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Shared Memory"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s7:c01",
+        "computer-science-intro-008:s8:c01",
+        "computer-science-intro-008:s9:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Sizes in Perspective"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s10:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Stored-Program Concept"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s33:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Synchronous processing"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s16:c01",
+        "computer-science-intro-008:s17:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "The Fetch-Execute Cycle"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s27:c01",
+        "computer-science-intro-008:s28:c01",
+        "computer-science-intro-008:s29:c01",
+        "computer-science-intro-008:s30:c01",
+        "computer-science-intro-008:s31:c01",
+        "computer-science-intro-008:s32:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "Touch Screens"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s38:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "作业"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-008:s37:c01"
+      ],
+      "heading_path": [
+        "第5章",
+        "思政：中国超级计算机"
+      ],
+      "source_ids": [
+        "computer-science-intro-008"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s7:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Assembly Language"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s9:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Assembly Process"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s2:c01",
+        "computer-science-intro-009:s3:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Chapter Goals"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s4:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Computer Operations"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s11:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Developing an Algorithm"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s13:c01",
+        "computer-science-intro-009:s14:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Following Pseudocode"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s29:c01",
+        "computer-science-intro-009:s30:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Important Threads"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s1:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Low-Level Programming Languages and Pseudocode"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s5:c01",
+        "computer-science-intro-009:s6:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Machine Language"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s8:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Pep/8 Assembly Language"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s10:c01",
+        "computer-science-intro-009:s12:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Pseudocode"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s22:c01",
+        "computer-science-intro-009:s23:c01",
+        "computer-science-intro-009:s24:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Pseudocode Example"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s17:c01",
+        "computer-science-intro-009:s18:c01",
+        "computer-science-intro-009:s19:c01",
+        "computer-science-intro-009:s20:c01",
+        "computer-science-intro-009:s21:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Pseudocode Functionality"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s15:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Pseudocode for Complete Computer Solution"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s27:c01",
+        "computer-science-intro-009:s28:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Testing"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s26:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Translating Pseudocode"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s25:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "Walk Through"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-009:s31:c01"
+      ],
+      "heading_path": [
+        "第6章",
+        "作业"
+      ],
+      "source_ids": [
+        "computer-science-intro-009"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s38:c01",
+        "computer-science-intro-010:s39:c01",
+        "computer-science-intro-010:s40:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "A Sorted Array"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s18:c01",
+        "computer-science-intro-010:s19:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Algorithm with Selection"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s12:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Algorithms"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s31:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "An Unsorted Array"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s30:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Arrays"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s41:c01",
+        "computer-science-intro-010:s42:c01",
+        "computer-science-intro-010:s43:c01",
+        "computer-science-intro-010:s44:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Binary Search"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s35:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Booleans"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s52:c01",
+        "computer-science-intro-010:s53:c01",
+        "computer-science-intro-010:s54:c01",
+        "computer-science-intro-010:s55:c01",
+        "computer-science-intro-010:s56:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Bubble Sort"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s1:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Chapter 7"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s2:c01",
+        "computer-science-intro-010:s3:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Chapter Goals"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s27:c01",
+        "computer-science-intro-010:s28:c01",
+        "computer-science-intro-010:s29:c01",
+        "computer-science-intro-010:s32:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Composite Data Types"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s10:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Computer Problem-Solving"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s16:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Control Structures"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s13:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Developing an Algorithm"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s65:c01",
+        "computer-science-intro-010:s66:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Important Threads"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s20:c01",
+        "computer-science-intro-010:s21:c01",
+        "computer-science-intro-010:s22:c01",
+        "computer-science-intro-010:s23:c01",
+        "computer-science-intro-010:s24:c01",
+        "computer-science-intro-010:s25:c01",
+        "computer-science-intro-010:s26:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Looping Statements"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s11:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Phase Interactions"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s4:c01",
+        "computer-science-intro-010:s5:c01",
+        "computer-science-intro-010:s6:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Problem Solving"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s61:c01",
+        "computer-science-intro-010:s62:c01",
+        "computer-science-intro-010:s63:c01",
+        "computer-science-intro-010:s64:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Recursion"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s46:c01",
+        "computer-science-intro-010:s47:c01",
+        "computer-science-intro-010:s48:c01",
+        "computer-science-intro-010:s49:c01",
+        "computer-science-intro-010:s50:c01",
+        "computer-science-intro-010:s51:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Selection Sort"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s17:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Selection Statements"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s34:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Sequential Search Algorithm"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s37:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Sequential Search in a Sorted Array"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s33:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Sequential Search of an Unsorted Array"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s36:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Sorted Arrays"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s45:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Sorting"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s7:c01",
+        "computer-science-intro-010:s8:c01",
+        "computer-science-intro-010:s9:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Strategies"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s57:c01",
+        "computer-science-intro-010:s58:c01",
+        "computer-science-intro-010:s59:c01",
+        "computer-science-intro-010:s60:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Subprogram Statements"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s14:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Summary of Methodology"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s15:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "Top-Down Design"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-010:s67:c01"
+      ],
+      "heading_path": [
+        "第7章",
+        "作业"
+      ],
+      "source_ids": [
+        "computer-science-intro-010"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-011:h-计算机科学概论:c01",
+        "computer-science-intro-012:h-计算机科学概论:c01",
+        "computer-science-intro-012:h-计算机科学概论:c02",
+        "computer-science-intro-012:h-计算机科学概论:c03",
+        "computer-science-intro-012:h-计算机科学概论:c04",
+        "computer-science-intro-012:h-计算机科学概论:c05"
+      ],
+      "heading_path": [
+        "计算机科学概论"
+      ],
+      "source_ids": [
+        "computer-science-intro-011",
+        "computer-science-intro-012"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q1:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q1",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p3:q-computer-science-intro-003-q10:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q10",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p3:q-computer-science-intro-003-q11:c01",
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q11:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 4,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q11",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q12:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q12",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q13:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q13",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q14:c01",
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q14:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 5,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q14",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q15:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q15",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q16:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q16",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q17:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q17",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q2:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q2",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q3:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q3",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q4:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q4",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q5:c01",
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q5:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 2,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q5",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q6:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q6",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q7:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q7",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q8:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q8",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    },
+    {
+      "chunk_ids": [
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q9:c01",
+        "computer-science-intro-003:p3:q-computer-science-intro-003-q9:c01"
+      ],
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "locator_end": 3,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": "computer-science-intro-003-Q9",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1"
+    }
+  ],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computer-science-intro-003:p1:c01",
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q1:c01",
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q2:c01",
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q3:c01",
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q4:c01",
+        "computer-science-intro-003:p1:q-computer-science-intro-003-q5:c01",
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q5:c01",
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q6:c01",
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q7:c01",
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q8:c01",
+        "computer-science-intro-003:p2:q-computer-science-intro-003-q9:c01",
+        "computer-science-intro-003:p3:q-computer-science-intro-003-q9:c01",
+        "computer-science-intro-003:p3:q-computer-science-intro-003-q10:c01",
+        "computer-science-intro-003:p3:q-computer-science-intro-003-q11:c01",
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q11:c01",
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q12:c01",
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q13:c01",
+        "computer-science-intro-003:p4:q-computer-science-intro-003-q14:c01",
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q14:c01",
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q15:c01",
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q16:c01",
+        "computer-science-intro-003:p5:q-computer-science-intro-003-q17:c01"
+      ],
+      "course_id": "computer_science_intro",
+      "document_role": "past_exam",
+      "locator_type": "page",
+      "output_md": "computer_science_intro/computer-science-intro-003.md",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "year": "2021"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computer-science-intro-004:h-微信图片_20231218194317:c01"
+      ],
+      "course_id": "computer_science_intro",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computer_science_intro/computer-science-intro-004.md",
+      "source_id": "computer-science-intro-004",
+      "source_title": "微信图片_20231218194317",
+      "year": "2023"
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computer-science-intro-005:s1:c01",
+        "computer-science-intro-005:s2:c01",
+        "computer-science-intro-005:s3:c01",
+        "computer-science-intro-005:s4:c01",
+        "computer-science-intro-005:s5:c01",
+        "computer-science-intro-005:s6:c01",
+        "computer-science-intro-005:s7:c01",
+        "computer-science-intro-005:s8:c01",
+        "computer-science-intro-005:s9:c01",
+        "computer-science-intro-005:s10:c01",
+        "computer-science-intro-005:s11:c01",
+        "computer-science-intro-005:s12:c01",
+        "computer-science-intro-005:s13:c01",
+        "computer-science-intro-005:s14:c01",
+        "computer-science-intro-005:s15:c01",
+        "computer-science-intro-005:s16:c01",
+        "computer-science-intro-005:s17:c01",
+        "computer-science-intro-005:s18:c01",
+        "computer-science-intro-005:s19:c01",
+        "computer-science-intro-005:s20:c01",
+        "computer-science-intro-005:s21:c01",
+        "computer-science-intro-005:s22:c01",
+        "computer-science-intro-005:s23:c01",
+        "computer-science-intro-005:s24:c01",
+        "computer-science-intro-005:s25:c01",
+        "computer-science-intro-005:s26:c01",
+        "computer-science-intro-005:s27:c01",
+        "computer-science-intro-005:s28:c01",
+        "computer-science-intro-005:s29:c01"
+      ],
+      "course_id": "computer_science_intro",
+      "document_role": "lecture_slides",
+      "locator_type": "slide",
+      "output_md": "computer_science_intro/computer-science-intro-005.md",
+      "source_id": "computer-science-intro-005",
+      "source_title": "第1章",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computer-science-intro-006:s1:c01",
+        "computer-science-intro-006:s2:c01",
+        "computer-science-intro-006:s3:c01",
+        "computer-science-intro-006:s4:c01",
+        "computer-science-intro-006:s5:c01",
+        "computer-science-intro-006:s6:c01",
+        "computer-science-intro-006:s7:c01",
+        "computer-science-intro-006:s8:c01",
+        "computer-science-intro-006:s9:c01",
+        "computer-science-intro-006:s10:c01",
+        "computer-science-intro-006:s11:c01",
+        "computer-science-intro-006:s12:c01",
+        "computer-science-intro-006:s13:c01",
+        "computer-science-intro-006:s14:c01",
+        "computer-science-intro-006:s15:c01",
+        "computer-science-intro-006:s16:c01",
+        "computer-science-intro-006:s17:c01",
+        "computer-science-intro-006:s18:c01",
+        "computer-science-intro-006:s19:c01",
+        "computer-science-intro-006:s20:c01",
+        "computer-science-intro-006:s21:c01",
+        "computer-science-intro-006:s22:c01",
+        "computer-science-intro-006:s23:c01",
+        "computer-science-intro-006:s24:c01",
+        "computer-science-intro-006:s25:c01",
+        "computer-science-intro-006:s26:c01",
+        "computer-science-intro-006:s27:c01",
+        "computer-science-intro-006:s28:c01",
+        "computer-science-intro-006:s29:c01",
+        "computer-science-intro-006:s30:c01",
+        "computer-science-intro-006:s31:c01",
+        "computer-science-intro-006:s32:c01"
+      ],
+      "course_id": "computer_science_intro",
+      "document_role": "lecture_slides",
+      "locator_type": "slide",
+      "output_md": "computer_science_intro/computer-science-intro-006.md",
+      "source_id": "computer-science-intro-006",
+      "source_title": "第2章",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computer-science-intro-007:s1:c01",
+        "computer-science-intro-007:s2:c01",
+        "computer-science-intro-007:s3:c01",
+        "computer-science-intro-007:s4:c01",
+        "computer-science-intro-007:s5:c01",
+        "computer-science-intro-007:s6:c01",
+        "computer-science-intro-007:s7:c01",
+        "computer-science-intro-007:s8:c01",
+        "computer-science-intro-007:s9:c01",
+        "computer-science-intro-007:s10:c01",
+        "computer-science-intro-007:s11:c01",
+        "computer-science-intro-007:s12:c01",
+        "computer-science-intro-007:s13:c01",
+        "computer-science-intro-007:s14:c01",
+        "computer-science-intro-007:s15:c01",
+        "computer-science-intro-007:s16:c01",
+        "computer-science-intro-007:s17:c01",
+        "computer-science-intro-007:s18:c01",
+        "computer-science-intro-007:s19:c01",
+        "computer-science-intro-007:s20:c01",
+        "computer-science-intro-007:s21:c01",
+        "computer-science-intro-007:s22:c01",
+        "computer-science-intro-007:s23:c01",
+        "computer-science-intro-007:s24:c01",
+        "computer-science-intro-007:s25:c01",
+        "computer-science-intro-007:s26:c01",
+        "computer-science-intro-007:s27:c01",
+        "computer-science-intro-007:s28:c01",
+        "computer-science-intro-007:s29:c01",
+        "computer-science-intro-007:s30:c01",
+        "computer-science-intro-007:s31:c01",
+        "computer-science-intro-007:s32:c01",
+        "computer-science-intro-007:s33:c01",
+        "computer-science-intro-007:s34:c01",
+        "computer-science-intro-007:s35:c01",
+        "computer-science-intro-007:s36:c01",
+        "computer-science-intro-007:s37:c01",
+        "computer-science-intro-007:s38:c01"
+      ],
+      "course_id": "computer_science_intro",
+      "document_role": "lecture_slides",
+      "locator_type": "slide",
+      "output_md": "computer_science_intro/computer-science-intro-007.md",
+      "source_id": "computer-science-intro-007",
+      "source_title": "第4章",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computer-science-intro-008:s1:c01",
+        "computer-science-intro-008:s2:c01",
+        "computer-science-intro-008:s3:c01",
+        "computer-science-intro-008:s4:c01",
+        "computer-science-intro-008:s5:c01",
+        "computer-science-intro-008:s6:c01",
+        "computer-science-intro-008:s7:c01",
+        "computer-science-intro-008:s8:c01",
+        "computer-science-intro-008:s9:c01",
+        "computer-science-intro-008:s10:c01",
+        "computer-science-intro-008:s11:c01",
+        "computer-science-intro-008:s12:c01",
+        "computer-science-intro-008:s13:c01",
+        "computer-science-intro-008:s14:c01",
+        "computer-science-intro-008:s15:c01",
+        "computer-science-intro-008:s16:c01",
+        "computer-science-intro-008:s17:c01",
+        "computer-science-intro-008:s18:c01",
+        "computer-science-intro-008:s19:c01",
+        "computer-science-intro-008:s20:c01",
+        "computer-science-intro-008:s21:c01",
+        "computer-science-intro-008:s22:c01",
+        "computer-science-intro-008:s23:c01",
+        "computer-science-intro-008:s24:c01",
+        "computer-science-intro-008:s25:c01",
+        "computer-science-intro-008:s26:c01",
+        "computer-science-intro-008:s27:c01",
+        "computer-science-intro-008:s28:c01",
+        "computer-science-intro-008:s29:c01",
+        "computer-science-intro-008:s30:c01",
+        "computer-science-intro-008:s31:c01",
+        "computer-science-intro-008:s32:c01",
+        "computer-science-intro-008:s33:c01",
+        "computer-science-intro-008:s34:c01",
+        "computer-science-intro-008:s35:c01",
+        "computer-science-intro-008:s36:c01",
+        "computer-science-intro-008:s37:c01",
+        "computer-science-intro-008:s38:c01"
+      ],
+      "course_id": "computer_science_intro",
+      "document_role": "lecture_slides",
+      "locator_type": "slide",
+      "output_md": "computer_science_intro/computer-science-intro-008.md",
+      "source_id": "computer-science-intro-008",
+      "source_title": "第5章",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computer-science-intro-009:s1:c01",
+        "computer-science-intro-009:s2:c01",
+        "computer-science-intro-009:s3:c01",
+        "computer-science-intro-009:s4:c01",
+        "computer-science-intro-009:s5:c01",
+        "computer-science-intro-009:s6:c01",
+        "computer-science-intro-009:s7:c01",
+        "computer-science-intro-009:s8:c01",
+        "computer-science-intro-009:s9:c01",
+        "computer-science-intro-009:s10:c01",
+        "computer-science-intro-009:s11:c01",
+        "computer-science-intro-009:s12:c01",
+        "computer-science-intro-009:s13:c01",
+        "computer-science-intro-009:s14:c01",
+        "computer-science-intro-009:s15:c01",
+        "computer-science-intro-009:s17:c01",
+        "computer-science-intro-009:s18:c01",
+        "computer-science-intro-009:s19:c01",
+        "computer-science-intro-009:s20:c01",
+        "computer-science-intro-009:s21:c01",
+        "computer-science-intro-009:s22:c01",
+        "computer-science-intro-009:s23:c01",
+        "computer-science-intro-009:s24:c01",
+        "computer-science-intro-009:s25:c01",
+        "computer-science-intro-009:s26:c01",
+        "computer-science-intro-009:s27:c01",
+        "computer-science-intro-009:s28:c01",
+        "computer-science-intro-009:s29:c01",
+        "computer-science-intro-009:s30:c01",
+        "computer-science-intro-009:s31:c01"
+      ],
+      "course_id": "computer_science_intro",
+      "document_role": "lecture_slides",
+      "locator_type": "slide",
+      "output_md": "computer_science_intro/computer-science-intro-009.md",
+      "source_id": "computer-science-intro-009",
+      "source_title": "第6章",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computer-science-intro-010:s1:c01",
+        "computer-science-intro-010:s2:c01",
+        "computer-science-intro-010:s3:c01",
+        "computer-science-intro-010:s4:c01",
+        "computer-science-intro-010:s5:c01",
+        "computer-science-intro-010:s6:c01",
+        "computer-science-intro-010:s7:c01",
+        "computer-science-intro-010:s8:c01",
+        "computer-science-intro-010:s9:c01",
+        "computer-science-intro-010:s10:c01",
+        "computer-science-intro-010:s11:c01",
+        "computer-science-intro-010:s12:c01",
+        "computer-science-intro-010:s13:c01",
+        "computer-science-intro-010:s14:c01",
+        "computer-science-intro-010:s15:c01",
+        "computer-science-intro-010:s16:c01",
+        "computer-science-intro-010:s17:c01",
+        "computer-science-intro-010:s18:c01",
+        "computer-science-intro-010:s19:c01",
+        "computer-science-intro-010:s20:c01",
+        "computer-science-intro-010:s21:c01",
+        "computer-science-intro-010:s22:c01",
+        "computer-science-intro-010:s23:c01",
+        "computer-science-intro-010:s24:c01",
+        "computer-science-intro-010:s25:c01",
+        "computer-science-intro-010:s26:c01",
+        "computer-science-intro-010:s27:c01",
+        "computer-science-intro-010:s28:c01",
+        "computer-science-intro-010:s29:c01",
+        "computer-science-intro-010:s30:c01",
+        "computer-science-intro-010:s31:c01",
+        "computer-science-intro-010:s32:c01",
+        "computer-science-intro-010:s33:c01",
+        "computer-science-intro-010:s34:c01",
+        "computer-science-intro-010:s35:c01",
+        "computer-science-intro-010:s36:c01",
+        "computer-science-intro-010:s37:c01",
+        "computer-science-intro-010:s38:c01",
+        "computer-science-intro-010:s39:c01",
+        "computer-science-intro-010:s40:c01",
+        "computer-science-intro-010:s41:c01",
+        "computer-science-intro-010:s42:c01",
+        "computer-science-intro-010:s43:c01",
+        "computer-science-intro-010:s44:c01",
+        "computer-science-intro-010:s45:c01",
+        "computer-science-intro-010:s46:c01",
+        "computer-science-intro-010:s47:c01",
+        "computer-science-intro-010:s48:c01",
+        "computer-science-intro-010:s49:c01",
+        "computer-science-intro-010:s50:c01",
+        "computer-science-intro-010:s51:c01",
+        "computer-science-intro-010:s52:c01",
+        "computer-science-intro-010:s53:c01",
+        "computer-science-intro-010:s54:c01",
+        "computer-science-intro-010:s55:c01",
+        "computer-science-intro-010:s56:c01",
+        "computer-science-intro-010:s57:c01",
+        "computer-science-intro-010:s58:c01",
+        "computer-science-intro-010:s59:c01",
+        "computer-science-intro-010:s60:c01",
+        "computer-science-intro-010:s61:c01",
+        "computer-science-intro-010:s62:c01",
+        "computer-science-intro-010:s63:c01",
+        "computer-science-intro-010:s64:c01",
+        "computer-science-intro-010:s65:c01",
+        "computer-science-intro-010:s66:c01",
+        "computer-science-intro-010:s67:c01"
+      ],
+      "course_id": "computer_science_intro",
+      "document_role": "lecture_slides",
+      "locator_type": "slide",
+      "output_md": "computer_science_intro/computer-science-intro-010.md",
+      "source_id": "computer-science-intro-010",
+      "source_title": "第7章",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computer-science-intro-011:h-计算机科学概论:c01"
+      ],
+      "course_id": "computer_science_intro",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computer_science_intro/computer-science-intro-011.md",
+      "source_id": "computer-science-intro-011",
+      "source_title": "计算机科学概论",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "computer-science-intro-012:h-计算机科学概论:c01",
+        "computer-science-intro-012:h-计算机科学概论:c02",
+        "computer-science-intro-012:h-计算机科学概论:c03",
+        "computer-science-intro-012:h-计算机科学概论:c04",
+        "computer-science-intro-012:h-计算机科学概论:c05"
+      ],
+      "course_id": "computer_science_intro",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "computer_science_intro/computer-science-intro-012.md",
+      "source_id": "computer-science-intro-012",
+      "source_title": "计算机科学概论",
+      "year": null
+    }
+  ],
+  "statistics": {
+    "chunk_count": 263,
+    "question_count": 17,
+    "source_count": 10
+  },
+  "workflow_version": "workflow-contract-v1"
+}

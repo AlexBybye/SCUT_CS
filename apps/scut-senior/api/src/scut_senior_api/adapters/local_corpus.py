@@ -17,7 +17,12 @@ from scut_senior_worker.corpus_builder import (
 )
 
 from ..bm25f import BM25FIndex
+from ..embedding import EmbeddingProvider
+from ..fusion import reciprocal_rank_fusion
 from ..ports import CapabilityUnavailable, RetrievalBatch, RetrievedSource
+from ..query_variants import build_query_variants
+from ..rule_rerank import rule_rerank
+from ..vector_store import VectorStore
 
 
 _DISABLED_PREFIX = "course is disabled or unavailable:"
@@ -37,6 +42,7 @@ class LocalCorpusRetrievalGateway:
         *,
         limit: int = 5,
         min_score: float = _DEFAULT_MIN_SCORE,
+        embedding: EmbeddingProvider | None = None,
     ):
         if isinstance(limit, bool) or not 1 <= limit <= 20:
             raise ValueError("local corpus retrieval limit must be between 1 and 20")
@@ -47,6 +53,10 @@ class LocalCorpusRetrievalGateway:
         self.store_root = store_root.resolve()
         self.limit = limit
         self.min_score = float(min_score)
+        # Optional dense leg (PLAN-2 阶段一 步骤 3). ``None`` keeps the gateway
+        # lexical-only; the dense leg is only exercised when a provider is wired
+        # AND the corpus carries a matching ``-e{model}`` version segment.
+        self.embedding = embedding
         # Full-candidate validation is memoized per active-pointer value (see
         # _load_active_course); these slots are guarded for the FastAPI
         # threadpool, where availability checks run concurrently.
@@ -89,7 +99,11 @@ class LocalCorpusRetrievalGateway:
                 else None
             )
         if validated is None:
-            validate_candidate(candidate)
+            # Dense identity is checked when the vector file is opened below;
+            # keep that explicit ValueError visible to callers. Full candidate
+            # validation (including vector completeness) remains available to
+            # the corpus build/activation gates.
+            validate_candidate(candidate, check_vectors=False)
             with self._cache_lock:
                 self._validated_pointer_key = pointer_key
                 self._validated_candidate = candidate
@@ -137,21 +151,94 @@ class LocalCorpusRetrievalGateway:
 
         bm25f_index = self._load_index(course_id, corpus_version, sources)
         source_by_id = {source.chunk_id: source for source in sources}
-        selected: list[RetrievedSource] = []
-        for score, chunk_id in bm25f_index.score(query):
-            if score < self.min_score:
-                continue
-            source = source_by_id.get(chunk_id)
-            if source is None:
-                continue
-            selected.append(source)
-            if len(selected) >= self.limit:
-                break
+        query_variants = build_query_variants(course_id, query)
+        lexical_lists = [
+            [
+                chunk_id
+                for score, chunk_id in bm25f_index.score(variant)
+                if score >= self.min_score
+            ][:50]
+            for variant in query_variants
+        ]
+        lexical_ranked = (
+            reciprocal_rank_fusion(lexical_lists, top_n=50)
+            if len(lexical_lists) > 1
+            else lexical_lists[0]
+        )
+        protected_ids = bm25f_index.exact_match_ids(query)
+        if self.embedding is not None:
+            dense_ranked = self._dense_chunk_ids(
+                course_id, corpus_version, query_variants
+            )
+            selected_ids = rule_rerank(
+                lexical_ranked,
+                dense_ranked,
+                protected_ids=protected_ids,
+                limit=self.limit,
+            )
+        else:
+            selected_ids = rule_rerank(
+                lexical_ranked,
+                (),
+                protected_ids=protected_ids,
+                limit=self.limit,
+            )
+        selected = [
+            source_by_id[chunk_id]
+            for chunk_id in selected_ids
+            if chunk_id in source_by_id
+        ]
         return RetrievalBatch(
             tuple(selected),
             corpus_version,
             course_pack_version,
         )
+
+    def _dense_chunk_ids(
+        self, course_id: str, corpus_version: str, query_variants: tuple[str, ...]
+    ) -> list[str]:
+        """Return the dense leg's top-50 chunk ids for the course, or ``[]`` to
+        degrade to lexical-only (no dense vectors built for this corpus)."""
+        assert self.embedding is not None
+        candidate = _candidate_directory(self.store_root, corpus_version)
+        metadata = _read_json(candidate / "metadata.json")
+        expected = metadata.get("embedding_model_id")
+        if expected is None:
+            # Lexical-only corpus: it must not silently adopt dense vectors.
+            return []
+        if expected != self.embedding.model_id:
+            raise ValueError(
+                "dense leg model mismatch: corpus "
+                f"{corpus_version!r} was built with embedding {expected!r} but "
+                f"the configured provider is {self.embedding.model_id!r}"
+            )
+        vector_file = candidate / "vectors" / f"{course_id}.db"
+        if not vector_file.exists():
+            return []
+        store = VectorStore(
+            vector_file,
+            dimensions=self.embedding.dimensions,
+            model_id=self.embedding.model_id,
+        )
+        try:
+            dense_lists = []
+            for query in query_variants:
+                query_vector = self.embedding.embed([query])[0]
+                dense_lists.append(
+                    [
+                        chunk_id
+                        for _, chunk_id in store.search(
+                            query_vector, k=50, course_ids=[course_id]
+                        )
+                    ]
+                )
+            return (
+                reciprocal_rank_fusion(dense_lists, top_n=50)
+                if len(dense_lists) > 1
+                else dense_lists[0]
+            )
+        finally:
+            store.close()
 
     def _load_index(
         self,

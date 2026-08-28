@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "network_management",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "题型主要讲什么？",
+      "expected_chunk_ids": [
+        "network-management-001:h-网络管理考试~题型:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习复习题涉及知识点，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "network-management-001:h-网络管理考试~复习题涉及知识点:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习选择题 10 * 2时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "network-management-001:h-网络管理考试~考试题目-2026回忆版~选择题-10-2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "简答题 4*10里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "network-management-001:h-网络管理考试~考试题目-2026回忆版~简答题-4-10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习综合题时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "network-management-001:h-网络管理考试~考试题目-2026回忆版~综合题-5-8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考复习题-2026？",
+      "expected_chunk_ids": [
+        "network-management-002:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这张图主要讲什么？",
+      "expected_chunk_ids": [
+        "network-management-003:h-1781600428002:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习这张图，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "network-management-004:h-1781600842993:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习实验大纲-2026时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "network-management-005:h-实验大纲-2026:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "实验大纲-2026里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "network-management-005:h-实验大纲-2026:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习实验大纲-2026时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "network-management-005:h-实验大纲-2026:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考实验大纲-2026？",
+      "expected_chunk_ids": [
+        "network-management-005:h-实验大纲-2026:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "实验大纲-2026主要讲什么？",
+      "expected_chunk_ids": [
+        "network-management-005:h-实验大纲-2026:c05"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习题型，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "network-management-001:h-网络管理考试~题型:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习复习题涉及知识点时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "network-management-001:h-网络管理考试~复习题涉及知识点:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "选择题 10 * 2里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "network-management-001:h-网络管理考试~考试题目-2026回忆版~选择题-10-2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习简答题 4*10时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "network-management-001:h-网络管理考试~考试题目-2026回忆版~简答题-4-10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考综合题？",
+      "expected_chunk_ids": [
+        "network-management-001:h-网络管理考试~考试题目-2026回忆版~综合题-5-8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习题-2026主要讲什么？",
+      "expected_chunk_ids": [
+        "network-management-002:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习这张图，应该从哪里开始？，第20条",
+      "expected_chunk_ids": [
+        "network-management-003:h-1781600428002:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习这张图时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "network-management-004:h-1781600842993:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "实验大纲-2026里的方法或结论怎么理解？，第22条",
+      "expected_chunk_ids": [
+        "network-management-005:h-实验大纲-2026:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习实验大纲-2026时哪些概念容易混淆？，第23条",
+      "expected_chunk_ids": [
+        "network-management-005:h-实验大纲-2026:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考实验大纲-2026？，第24条",
+      "expected_chunk_ids": [
+        "network-management-005:h-实验大纲-2026:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "实验大纲-2026主要讲什么？，第25条",
+      "expected_chunk_ids": [
+        "network-management-005:h-实验大纲-2026:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习实验大纲-2026，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "network-management-005:h-实验大纲-2026:c05"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习题型时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "network-management-001:h-网络管理考试~题型:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习题涉及知识点里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "network-management-001:h-网络管理考试~复习题涉及知识点:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习选择题 10 * 2时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "network-management-001:h-网络管理考试~考试题目-2026回忆版~选择题-10-2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考简答题 4*10？",
+      "expected_chunk_ids": [
+        "network-management-001:h-网络管理考试~考试题目-2026回忆版~简答题-4-10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

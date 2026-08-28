@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "computer_organization",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "课后习题答案主要讲什么？",
+      "expected_chunk_ids": [
+        "computer-organization-001:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习课后习题答案，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "computer-organization-001:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习课后习题答案时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "computer-organization-001:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "课后习题答案里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "computer-organization-001:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习课后习题答案时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "computer-organization-001:p5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考课后习题答案？",
+      "expected_chunk_ids": [
+        "computer-organization-001:p6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "课后习题答案主要讲什么？，见第7页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习课后习题答案，应该从哪里开始？，见第8页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习课后习题答案时哪些内容最重要？，见第9页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "课后习题答案里的方法或结论怎么理解？，见第10页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习课后习题答案时哪些概念容易混淆？，见第11页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考课后习题答案？，见第12页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p12:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "课后习题答案主要讲什么？，见第13页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p13:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习课后习题答案，应该从哪里开始？，见第14页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p14:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习课后习题答案时哪些内容最重要？，见第15页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p15:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "课后习题答案里的方法或结论怎么理解？，见第16页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p16:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习课后习题答案时哪些概念容易混淆？，见第17页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p17:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考课后习题答案？，见第18页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p18:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "课后习题答案主要讲什么？，见第19页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p19:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习课后习题答案，应该从哪里开始？，见第20页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p20:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习课后习题答案时哪些内容最重要？，见第21页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p21:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "课后习题答案里的方法或结论怎么理解？，见第22页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p22:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习课后习题答案时哪些概念容易混淆？，见第23页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p23:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考课后习题答案？，见第24页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p24:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "课后习题答案主要讲什么？，见第25页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p25:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习课后习题答案，应该从哪里开始？，见第26页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p26:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习课后习题答案时哪些内容最重要？，见第27页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p27:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "课后习题答案里的方法或结论怎么理解？，见第28页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p28:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习课后习题答案时哪些概念容易混淆？，见第29页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p29:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考课后习题答案？，见第30页",
+      "expected_chunk_ids": [
+        "computer-organization-001:p30:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

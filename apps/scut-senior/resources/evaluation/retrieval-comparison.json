@@ -1,0 +1,30 @@
+{
+  "schema_version": "retrieval-comparison-v1",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "golden_set": "retrieval-golden-v1",
+  "entry_count": {
+    "bm25f": 1380,
+    "hybrid": 1380
+  },
+  "metrics": {
+    "bm25f": {
+      "recall_at_5": 0.605072,
+      "recall_at_20": 0.791304,
+      "mrr": 0.439231,
+      "noise_rate": 0.863231
+    },
+    "hybrid": {
+      "recall_at_5": 0.638406,
+      "recall_at_20": 0.86087,
+      "mrr": 0.462348,
+      "noise_rate": 0.928617
+    }
+  },
+  "delta_hybrid_minus_bm25f": {
+    "recall_at_5": 0.033334,
+    "recall_at_20": 0.069566,
+    "mrr": 0.023117,
+    "noise_rate": 0.065386
+  },
+  "interpretation": "Hybrid improves recall@5, recall@20 and MRR on the current approved P0 set; its higher top-20 noise proxy is retained for later threshold/rerank calibration."
+}

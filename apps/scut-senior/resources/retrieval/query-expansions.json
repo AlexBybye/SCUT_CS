@@ -1,0 +1,15 @@
+{
+  "schema_version": "query-expansions-v1",
+  "courses": {
+    "information_security_intro": {
+      "对称加密": ["symmetric encryption"],
+      "密钥管理": ["key management"],
+      "访问控制": ["access control", "least privilege"]
+    },
+    "linear_algebra": {
+      "特征值": ["eigenvalue", "eigenvalues"],
+      "特征向量": ["eigenvector", "eigenvectors"],
+      "线性无关": ["linear independence"]
+    }
+  }
+}

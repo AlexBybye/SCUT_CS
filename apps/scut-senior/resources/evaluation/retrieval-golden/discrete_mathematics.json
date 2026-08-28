@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "discrete_mathematics",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "华南理工大学2021-2022学年第一学期期末试卷主要讲什么？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-002:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习华南理工大学2021-2022学年第一学期期末试卷，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-002:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习华南理工大学2021-2022学年第一学期期末试卷时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-002:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "华南理工大学2021-2022学年第一学期期末试卷里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-002:p4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习华南理工大学2021-2022学年第一学期期末试卷时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-002:p5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考试卷 中文？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "试卷 中文主要讲什么？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习试卷 中文，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习试卷 中文时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "试卷 中文里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习试卷 中文时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考试卷 中文？，对应第4题",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "求合式公式xP(x)→xQ(x,y)的前束范式________________。怎么做？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做设集合A={a, b, {a,b}, }, B = {{a,b}, }，求B-A=_____________． _____________ ________ ( 密 封 线 内 不 答 题 )时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "设p 与q 的真值为0, ,r s 的真值为1 则命题 ( ( ( ))) ( ) s q r p r p       的 真值是__________.的答案怎么判断？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把设R 是在正整数集合Z 上如下定义的二元关系   , ( , ) ( 10) R x y x y Z x y        ， 则它一共有 个有序对，且有自反性、对称性、传递性、反自反 性和反对称性的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做公式x(P(x)→Q(x,y))→S(x)中的自由变元为________________，约束变元为 ________________。时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用设有命题T(x): x 是火车，C(x): x 是汽车，Q(x, y): x 跑得比y 快，那么命题 “有的汽车比一些火车跑得快”的逻辑表达式是______________________.举例说明吗？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "设G 是n 阶m 条边的无向图，若G 连通且m=__________则G 是无向树.怎么做？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做设X={1，2，3}，f：X→X，g：X→X，f={<1, 2>,<2,3>,<3,1>}, g={<1,2>,<2,3>,<3,3>}，则f-1 g=________________，gf=时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q12:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "不能再分解的命题称为________________，至少包含一个联结词的命题称为 试卷A 第 1 页 共 6 页的答案怎么判断？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p3:q-discrete-mathematics-003-q13:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把．的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q13:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做连通无向图G 含有欧拉回路的充分必要条件是 . 11．设集合A={,{a}}，则A 的幂集P = ， |P |=_____________________________。时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q14:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用设G = <V, E>, G’ = <V’, E’>为两个图(同为无向图或有向图), 若E’ Í E 且 _______________, 则称G’是G 的子图, 若E’ Í E 且_______________, 则称举例说明吗？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q15:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "单选题 (本大题共12 小题，每小题，共怎么做？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q16:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做下列命题公式为重言式的是 b时应该先从哪里入手？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q17:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "下列语句中为命题的是( d)的答案怎么判断？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q18:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "能把集合A＝{a，b，c}上的下列关系矩阵中符合偏序关系条件的是( d )             1 0 1 0 0 1 1 0 0 0 1 1 1 1 0 1         的解题步骤写出来吗？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q19:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "做设A={1，2，3}，A 上二元关系S={<1，1>，<1，2>，<3，2>，<3，3>}，则S 是 b时哪些概念最容易混淆？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p4:q-discrete-mathematics-003-q20:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "这类题一般怎么考？能用以下非负整数列可简单图化为一个欧拉图的是( d )举例说明吗？",
+      "expected_chunk_ids": [
+        "discrete-mathematics-003:p5:q-discrete-mathematics-003-q21:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

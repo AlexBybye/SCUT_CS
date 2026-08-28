@@ -1,0 +1,1404 @@
+{
+  "chunks": [
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-001:p1:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "2021年电工学复习资料"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-001",
+      "source_title": "2021年电工学复习资料",
+      "text": "![page-001.jpg](assets/electrical-engineering-001/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-001:p2:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "2021年电工学复习资料"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-001",
+      "source_title": "2021年电工学复习资料",
+      "text": "![page-002.jpg](assets/electrical-engineering-001/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-001:p3:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "2021年电工学复习资料"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-001",
+      "source_title": "2021年电工学复习资料",
+      "text": "![page-003.jpg](assets/electrical-engineering-001/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-001:p4:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "2021年电工学复习资料"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-001",
+      "source_title": "2021年电工学复习资料",
+      "text": "![page-004.jpg](assets/electrical-engineering-001/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-001:p5:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "2021年电工学复习资料"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-001",
+      "source_title": "2021年电工学复习资料",
+      "text": "![page-005.jpg](assets/electrical-engineering-001/page-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-001:p6:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "2021年电工学复习资料"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-001",
+      "source_title": "2021年电工学复习资料",
+      "text": "![page-006.jpg](assets/electrical-engineering-001/page-006.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-001:p7:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "2021年电工学复习资料"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-001",
+      "source_title": "2021年电工学复习资料",
+      "text": "![page-007.jpg](assets/electrical-engineering-001/page-007.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p1:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-001.jpg](assets/electrical-engineering-002/page-001.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p2:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-002.jpg](assets/electrical-engineering-002/page-002.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p3:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-003.jpg](assets/electrical-engineering-002/page-003.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p4:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-004.jpg](assets/electrical-engineering-002/page-004.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p5:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-005.jpg](assets/electrical-engineering-002/page-005.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p6:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 6,
+      "locator_start": 6,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-006.jpg](assets/electrical-engineering-002/page-006.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p7:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 7,
+      "locator_start": 7,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-007.jpg](assets/electrical-engineering-002/page-007.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p8:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 8,
+      "locator_start": 8,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-008.jpg](assets/electrical-engineering-002/page-008.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p9:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 9,
+      "locator_start": 9,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-009.jpg](assets/electrical-engineering-002/page-009.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p10:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 10,
+      "locator_start": 10,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-010.jpg](assets/electrical-engineering-002/page-010.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p11:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 11,
+      "locator_start": 11,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-011.jpg](assets/electrical-engineering-002/page-011.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p12:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 12,
+      "locator_start": 12,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-012.jpg](assets/electrical-engineering-002/page-012.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p13:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 13,
+      "locator_start": 13,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-013.jpg](assets/electrical-engineering-002/page-013.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p14:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 14,
+      "locator_start": 14,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-014.jpg](assets/electrical-engineering-002/page-014.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p15:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 15,
+      "locator_start": 15,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-015.jpg](assets/electrical-engineering-002/page-015.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p16:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 16,
+      "locator_start": 16,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-016.jpg](assets/electrical-engineering-002/page-016.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p17:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 17,
+      "locator_start": 17,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-017.jpg](assets/electrical-engineering-002/page-017.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p18:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 18,
+      "locator_start": 18,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-018.jpg](assets/electrical-engineering-002/page-018.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p19:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 19,
+      "locator_start": 19,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-019.jpg](assets/electrical-engineering-002/page-019.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p20:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 20,
+      "locator_start": 20,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-020.jpg](assets/electrical-engineering-002/page-020.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p21:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 21,
+      "locator_start": 21,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-021.jpg](assets/electrical-engineering-002/page-021.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p22:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 22,
+      "locator_start": 22,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-022.jpg](assets/electrical-engineering-002/page-022.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p23:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 23,
+      "locator_start": 23,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-023.jpg](assets/electrical-engineering-002/page-023.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p24:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 24,
+      "locator_start": 24,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-024.jpg](assets/electrical-engineering-002/page-024.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p25:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 25,
+      "locator_start": 25,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-025.jpg](assets/electrical-engineering-002/page-025.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p26:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 26,
+      "locator_start": 26,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-026.jpg](assets/electrical-engineering-002/page-026.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p27:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 27,
+      "locator_start": 27,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-027.jpg](assets/electrical-engineering-002/page-027.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p28:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 28,
+      "locator_start": 28,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-028.jpg](assets/electrical-engineering-002/page-028.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p29:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 29,
+      "locator_start": 29,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-029.jpg](assets/electrical-engineering-002/page-029.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p30:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 30,
+      "locator_start": 30,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-030.jpg](assets/electrical-engineering-002/page-030.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p31:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 31,
+      "locator_start": 31,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-031.jpg](assets/electrical-engineering-002/page-031.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p32:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 32,
+      "locator_start": 32,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-032.jpg](assets/electrical-engineering-002/page-032.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p33:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 33,
+      "locator_start": 33,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-033.jpg](assets/electrical-engineering-002/page-033.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p34:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 34,
+      "locator_start": 34,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-034.jpg](assets/electrical-engineering-002/page-034.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p35:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 35,
+      "locator_start": 35,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-035.jpg](assets/electrical-engineering-002/page-035.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p36:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 36,
+      "locator_start": 36,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-036.jpg](assets/electrical-engineering-002/page-036.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p37:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 37,
+      "locator_start": 37,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-037.jpg](assets/electrical-engineering-002/page-037.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p38:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 38,
+      "locator_start": 38,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-038.jpg](assets/electrical-engineering-002/page-038.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p39:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 39,
+      "locator_start": 39,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-039.jpg](assets/electrical-engineering-002/page-039.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p40:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 40,
+      "locator_start": 40,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-040.jpg](assets/electrical-engineering-002/page-040.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p41:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 41,
+      "locator_start": 41,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-041.jpg](assets/electrical-engineering-002/page-041.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p42:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 42,
+      "locator_start": 42,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-042.jpg](assets/electrical-engineering-002/page-042.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p43:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 43,
+      "locator_start": 43,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-043.jpg](assets/electrical-engineering-002/page-043.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p44:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 44,
+      "locator_start": 44,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-044.jpg](assets/electrical-engineering-002/page-044.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p45:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 45,
+      "locator_start": 45,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-045.jpg](assets/electrical-engineering-002/page-045.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p46:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 46,
+      "locator_start": 46,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-046.jpg](assets/electrical-engineering-002/page-046.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p47:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 47,
+      "locator_start": 47,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-047.jpg](assets/electrical-engineering-002/page-047.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p48:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 48,
+      "locator_start": 48,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-048.jpg](assets/electrical-engineering-002/page-048.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p49:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 49,
+      "locator_start": 49,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-049.jpg](assets/electrical-engineering-002/page-049.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p50:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 50,
+      "locator_start": 50,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-050.jpg](assets/electrical-engineering-002/page-050.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p51:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 51,
+      "locator_start": 51,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-051.jpg](assets/electrical-engineering-002/page-051.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p52:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 52,
+      "locator_start": 52,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-052.jpg](assets/electrical-engineering-002/page-052.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p53:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 53,
+      "locator_start": 53,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-053.jpg](assets/electrical-engineering-002/page-053.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p54:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 54,
+      "locator_start": 54,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-054.jpg](assets/electrical-engineering-002/page-054.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p55:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 55,
+      "locator_start": 55,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-055.jpg](assets/electrical-engineering-002/page-055.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p56:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 56,
+      "locator_start": 56,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-056.jpg](assets/electrical-engineering-002/page-056.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p57:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 57,
+      "locator_start": 57,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-057.jpg](assets/electrical-engineering-002/page-057.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p58:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 58,
+      "locator_start": 58,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-058.jpg](assets/electrical-engineering-002/page-058.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p59:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 59,
+      "locator_start": 59,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-059.jpg](assets/electrical-engineering-002/page-059.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p60:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 60,
+      "locator_start": 60,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-060.jpg](assets/electrical-engineering-002/page-060.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p61:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 61,
+      "locator_start": 61,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-061.jpg](assets/electrical-engineering-002/page-061.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p62:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 62,
+      "locator_start": 62,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-062.jpg](assets/electrical-engineering-002/page-062.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p63:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 63,
+      "locator_start": 63,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-063.jpg](assets/electrical-engineering-002/page-063.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p64:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 64,
+      "locator_start": 64,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-064.jpg](assets/electrical-engineering-002/page-064.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p65:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 65,
+      "locator_start": 65,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-065.jpg](assets/electrical-engineering-002/page-065.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-002:p66:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "第七版下册"
+      ],
+      "locator_end": 66,
+      "locator_start": 66,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-002",
+      "source_title": "第七版下册",
+      "text": "![page-066.jpg](assets/electrical-engineering-002/page-066.jpg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-003:p1:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "2020电工学a卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-003",
+      "source_title": "2020电工学a卷",
+      "text": ":\n\n2020-2021-1\n(\nS7R)\nA#\n#**A 1. #O##N\nMBHIA:\nESUKE;\n2.i\n3. $\nt: #\n4. *\n#K #100,\n120.\n\n:\n\n:\n\n-,AA0:#10, #2 , #20t.\n1.1iRB ,WÉL TAR(\n(A)\nKA\n(B) A\n\n).\n(C)\niAM\nSA\n\n(D) EÃI\nEA\n\n:\n\n492\n\n1A\n\n4V\n\n2.nATATHRE\n(\n(A)K,\n(B) (2E\n(C)J\n\n(D)\ni\n3.NI4*AA-\nF EH12V, 3A. 1\n4QR,t\n\n(A)\n1A\n(B)\n2A\n(C) 1.5A\n(D) 3A\n\nSsin(or+53.1)A\n(B) 5/2sin(cart36.9)A\n(A)\n\nsV2sin(ar+53.1)A\n(C)\n(D) 10/2sin(ott36.9)A\n\n5.92 Ar\n, HR,Rp»CayRgi BÌỂIRB\n\nRea\nR\n\nT\n\nR\nR\n\n2\n\nCreated with Scanner Mini\n\n![image](assets/electrical-engineering-003/image-001.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-003:p2:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "2020电工学a卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-003",
+      "source_title": "2020电工学a卷",
+      "text": "(B)\nR#KAAA\n(D)\niEARA\n\n(A)\nÆ#ARS\n(C)i\niR\n\n6. tn3 iR, #\n–BD EAE#AEMEEAH, WMHkuo\n(A)\n+12V\n(B)\n+6V\n(C)\n+2V\n(D)\n4V\n\n-o +Uc\n\n+12V\n\n10KS2\nR\nR J20k3 TU.\n\nD\n\nU;=12\nV\n\n2v\n\n3\n4\n\n7.\nn\n4\n,"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-003:p2:c02",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "NI#"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-003",
+      "source_title": "2020电工学a卷",
+      "text": "h(\n).\n(A) t #\nB) * *\n(D) I\n*EtKN\n\n(A) 5]\n(B) 5#J\n(C) AIT\n(D) tii\n\n&\n\nA\n\n>1\n\n9.\ntn 6\niT, A-B=“1\", CĐxhEJEDÅdA\n\n).\n\n(\n(D)\n\"1\"\n(A)\nAAtDiË\n(B) RARE\n\n(C) o\"\n\nB\nD\n\n6\n\n(A)\n-\nEE\n(C)\n-ŻM\nE3A\n\n(B)\n#Ek9TASHEBA\n(D) #İi ASAE\n\nCreated with Scanner Mini\n\n![image](assets/electrical-engineering-003/image-002.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-003:p3:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "NI#"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-003",
+      "source_title": "2020电工学a卷",
+      "text": "=, +: #6, #56}.\nLA\nIIRN7\nARSÅ.(8)\n\n22\n42\n\n6V\nYI=1A\n\nR\n4v)\n||62\n|IA\n\n2.8BB\nLEŻ, FO B#HAS WA. BA: R-R,-1k2,C=10uF,U,=10v. itHE\nK**S\nAMu-()li (1).(8+)\n\nR,\n\nC\n\n8\n3.tn 9 BrT. AZ =(12+j8)Q, Z,=(8+j8)2TỦ=220/Z0'V\nMAEI{F.\n\nu,, u,: (2)AH\nP, EJHJ)\nQ BIH\nA, i\nt? (10\n*: (1)Z,,Z,EM\n4)\n\n+\n\nU\n\nU,\n\n9\n4.\n10Pr, BI U=12V,R-80k2,R-2kS2,R-2ks2.i\nNB=40.Uạg=0.6V,\nWR:(1)C,,, 5 WEEA B$}?(2) HAGN%: ()t\nAzthi: (4)\nit EK#MA,. (10+)\n\nUec\n\n+\n\nR,\n\nR\n\n10\n( TtR) tA3\n#5\n\nCreated with Scanner Mini\n\n![image](assets/electrical-engineering-003/image-003.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-003:p4:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "NI#"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-003",
+      "source_title": "2020电工学a卷",
+      "text": "S.BMn 11 7, *i, 5u, $i. (10+)\n\nIks2\n\n2kS2\n\n4 2mA\n2k2\n\n6. *hMA Mtn R12BiR, –R\nNA,\nB1UC=\n500_f.A2RBHR,=10002.\n3TiARRV, AS 20V, R:\n(1)ĦAS,Ht,S,iF. İAAK A,\n* V,%A;\n(2)*S,BH,S,WAHMAAKA, AK\nV, ;\n(3)F*S, S,\nt,\nH\nhKA, H\nK#V,HRK. (KAMAEHR,\nARI\nFAE)\n\nu,\n\n12\n\nE,\n, #2U.#14\n\n1.2##MA,\nB,C IAKMA 13Brk,\nt#o\n#AR (OMDAARS} \"o\").(8)\n\nB\n\nB\n\n13\n\n(\nTR)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-003:p4:c02",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "A# 4A # 5"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-003",
+      "source_title": "2020电工学a卷",
+      "text": "Created with Scanner Mini\n\n![image](assets/electrical-engineering-003/image-004.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-003:p5:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "A# 4A # 5"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-003",
+      "source_title": "2020电工学a卷",
+      "text": "2.R#- i-\n+#*0#74LS290\n#MTHAEUE14(a)BiF. A\nLIMEA. (64)\n\n14\n(b) R BAN)\n\n74LS290\nshh\n\nCP\nitA\nCP,\n2\nQ3\n\nRo\n\nS10\n10\n0\n\nRo2\n\n1\n\n0\n\nX\nX\n9\nit\nit\n\n74LS290\n\n1\n\nCi Ro RozSg1 S2\n\n0\nX\n0\n\nX\n\n0\n0\n\n(a)\n(b)\n14\n\n29.\n(10)\nE#U 15(a)M,\nGHAEMREt.\\Ë-\nA.\n#EIS (b) EEHANNE. (10+)\n\n74LS151E\n\n74LS151T\n\nA\n\nsA, A, A\n\nY\n1X X x0\n0\n0\nD,\nD,\n\n1\n0\n\nD,\nD.\n\n1\n1\n\n1\n(a)\n\n(b)\n15\n\n(\nR)A#5\n5\n\nCreated with Scanner Mini\n\n![image](assets/electrical-engineering-003/image-005.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-004:h-2022级电工回忆版:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "2022级电工回忆版"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "electrical-engineering-004",
+      "source_title": "2022级电工回忆版",
+      "text": "2022级电工回忆版\n\n前言：考完已经一段时间了，凭记忆写了一些感想，只是起到“给一些经验，提醒要学什么知识点“的作用\n\n回忆了86分，今年的有点比以前的要难，题型分布大概是2*10+10+8+8+12+8+8+8*3，明天要考离散了，已经回忆半个小时了，不想回忆选择题了\n\n选择题不想细说，很难想，前几题都是第二章的那些基础\n\n第十七章就是来考选择题的，考负反馈，串并联电压流四个排列组合，考了一道。\n\n结点电压法考了一道。\n\n考了一道给出电路然后写逻辑表达式的很简单，数字逻辑的老底了。\n\n第一道大题是戴维宁定理，求最右边那条支路的电压\n\n![image](assets/electrical-engineering-004/image-001.png)\n\n第二道刚开始是闭合稳定的，然后断开，求u（t）\n\n![image](assets/electrical-engineering-004/image-002.png)\n\n第三道求各支路电流和U处的P、Q\n\n![image](assets/electrical-engineering-004/image-003.png)\n\n第四道大题是这样的图，数据近似\n\n![image](assets/electrical-engineering-004/image-004.png)\n\n第五题\n\n![image](assets/electrical-engineering-004/image-005.png)\n\n第六题考这个图，问法类似\n\n![image](assets/electrical-engineering-004/image-006.png)\n\n设计与分析\n\n第一道考74LS151型8选1数据选择器，取D2,D3,D6,D7，没有一点难度\n\n![image](assets/electrical-engineering-004/image-007.png)\n\n第二题考七进制，类似于这种，让你写JK表达式和3个Q的值\n\n![image](assets/electrical-engineering-004/image-008.png)\n\n![image](assets/electrical-engineering-004/image-009.png)\n\n第三题是置零、清零，类似这个器件，不过是连在Q3、Q2上面\n\n![image](assets/electrical-engineering-004/image-010.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-005:p1:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "2023电工学a卷"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-005",
+      "source_title": "2023电工学a卷",
+      "text": "I *|4k\n2023-2024-1W\n(B\nT) A#\n1. #\n#NANM\nNSM\n2.\n*WHE\nE:\n3.$BA: :\n4.*\n(3) *,\n100+,\ntA1209.\n-, iN\n(2t.\n#204)\nņ:\n\na3V-aVt+d\n= 0\n\nt3A\n29||\n\n2V\nJ24\n\nIA-3A\n,l-1\n\n1\n2\nA. RAMH 2WH*,\nhAH 4WT).\nB.BRARH2Wh, ANRH2W .\n\nC. #RARH6W h,\nİA%\n4WH*.\nD.R\nH6W,\nAA 2WTH.\n(2)a\n2PMF, $=( D\n).\nA. lA\n\nB. 3A\n\nC. -1.25 A\n\nE\n\n-,5+4%-&1.\n\nL\na o\nn\n2\n\nR1\n\nsv(D\n\nl29\no\n3\nA. 1.26A\n\n22\n\nbo\n\n4\n\nB. 1.4A\n\nD. -0.6A\n\nC. 1.45 A\n\n4.\n04\nBi,\nR-12, R=1S,L=10+H,C-200/4F,w=10ʻrad/s,DJSASiZab\n\n-obj\n(H\n\nB. 1.54j1.52\n1.24j0.692\nA\n\nC.\n1.2+jl.52:;\nD. 1.5+j0.692\n\n).\n\n2-j4x\no.11) 40.4]\n\n:\n\nCreated with Scanner Mini\n\n![image](assets/electrical-engineering-005/image-001.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-005:p2:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "2023电工学a卷"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-005",
+      "source_title": "2023电工学a卷",
+      "text": "A\n4V\nB\n\n5V\n\n-2\n\n6\nA.\n1V\n\n4V\n\nB.\n\nD.\n9V\n\nC.\nSV\n\nB.\nKARA\nD.\nf*fR\n\nA. K#ËfARA\nC. iKÁR\n\n0\n\n7.M\nhEE\n7 BiR,#+C=100uF,\n10V, F\nMFĀ,\nKMUK(\n*S A, ËKENtKA\n).\n(2BKIMHFAESK)\n10 V\nA.\n\nA\n\nB.\n12 V\n\nD.\n28.2 V\n\nC.\n14.1 v\n\nB\nS\n) -AB\n\n8\n\n7\n8. 8 RLA\nt(\nA.\nY= (A + B) + (ĀOB)\n\n49\n\nB. Y= (AB)(A+B)\n\nC. Y= (A+ B) + (ĀB)\n\nD.\nY = (AB) (ĀDB)\n\n.\n\n9.\n-4\n16 % 1#M\nH\nh ti40A ŽA(\nA.3\nC.5\n\nB. 4\n\nD. 6\n\n).\n\nA.jnt\n\nB.JREt\nC.B\nD.Bit2\n\nCreated with Scanner Mini\n\n![image](assets/electrical-engineering-005/image-002.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-005:p3:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "2023电工学a卷"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-005",
+      "source_title": "2023电工学a卷",
+      "text": "81,-8+ &1,+b*o\n\n81, -81,tb\n0\n=, it\n(Ę6B, #S6)\n1.(10)KA\nt\n10\n62 FA3\nER U.\n\ni+,-Iy=0\n\n321At\n82\n|\n8Q\n\n-1,tl,\n\n6 67-3(\n6-24+3=\n10\n2.(8 ) Ni1 i\nANEA,\nFoBt%\ns ,\n*sFAMu().(8#)\n\n2a1\n42\n0+6t\n2-7V\n\n32H\n\n|11\n3. (10 >> B12 BMFAM,\nU220V, R-2002, Xe=2052. X, =10/32, R=102,\nttR\n\n+\n\nR2\n\n- jXc\n\nR\n\n12\n4.(12 #)#$\n*A\n13Pr5,#\nUcc=12V,\nRa1=60k2, Ra2-20ks2, Rɛ=3002.,\nRe-2.7k2,Re-4k2..R6KS. 40.Uae-0.7V,i: (1)RAMo 0I#\n(2)\ni\nA$\n: (3)it EKHMA,0AAr,00H ro.\n\nUcc\n\nCi\n\nRs\n\n13\n(E5TR) tA#3\n#S\n\nCreated with Scanner Mini\n\n![image](assets/electrical-engineering-005/image-003.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-005:p4:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "2023电工学a卷"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-005",
+      "source_title": "2023电工学a卷",
+      "text": "R= R=R,=Ry=10ks2, u2V,\nRi FEEuo\nnNJ4MR, B\nDp\n\n5.\n(8#)\n\nR\n>00\n\n+\n\nB(1 -|)\n\n30\n\n14\n\n, C=20uF, R =3ks2, R=1 k2,\n6.(8+)1sPi\n, –\n_\nUz = 6 V, Izmin=5 mA, zmx =20mA,\nENU,\n=1SV, R: (1) Ä\n\n1\n+\n\n15\n\nE t51itA(A3, #24).\n1.(84)t 16 , #IJT8RABATNRA-LR NER.L\n5-4839\n,#\nER9. +N0 İÊHAGH000, 7\n\n74LS151\nR,\n.TAHA\n74LSI51\nA(D, -D,\nS).\n\nS\n\nA;\nA\n\nA\n\nY\n\nX\n\nX\n\n1\n\n0\n12\n3 4\n5\n67\nDo\n\n0\n1\n\nD,\n\n1\n\nD,\n\n0\n\n1\n\nD3\n\n0\n\n0\n\n1\n\nD4\n\n0\n\n0\n\nD,\n\n1\n\n1\n\n0\n\nD\nD\n\n1\n\n1\n\n(TI)\n(XT)\n(FR)\n16. #LÜ5\n#\n\n(T)\n\n1\n\n74LSIS1RA\n\nCreated with Scanner Mini\n\n![image](assets/electrical-engineering-005/image-004.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-005:p5:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "2023电工学a卷"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-005",
+      "source_title": "2023电工学a卷",
+      "text": "H GND\n\nUcc\n\n(RAS)E)|\n\nfS2\n\n74LS151\n\nA.\nA\n\nD, D, D, D, D, D, D, D,\nTTTTTIL\n\n{t\n5\n86\nfE7\n\n2. (8 ) S\ntn\n17 PR,\nBHEAHR2%\nJ, K #ZMt, UHARS\n(t\n\nQ\nQ\nJ\n\nC\nCoo\n\nC,\n\nK\nK,\n3\n\nK\n\nC\n\n6\n\n7\n\nP17\n\n74LS161A\nnF\nloo\n\nRD\nEPET\n\nCP D, D,\nD,\nD,Q,\na,\na, Q,\n\n\"1\"\nET\n|EP ,\nopc\n\nX\n\nX\nx\nX\nx\nx\nX\n\n0\n0\n0\n|do\nd,\nd\nd\nit\n\n74LS161 LD\"1\nCP\nDCP\n\n1\n0\n\n1\nX\nX X\n\n×\nX\nX\nX\nX\nX\nX\n0\n×\n>X\nX\nX\nX\n\n1\n0\nX\n\n1\n\n1\n\n18\n\nCreated with Scanner Mini\n\n![image](assets/electrical-engineering-005/image-005.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-008:p1:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "电工与电子技术II 复习大纲 修改"
+      ],
+      "locator_end": 1,
+      "locator_start": 1,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-008",
+      "source_title": "电工与电子技术II 复习大纲 修改",
+      "text": "电工与电子技术II 复习大纲\n\n一、电路原理\n\n1.电路的基本概念与基本定律\n\n要求：了解电路模型的概念；理解电压、电流参考方向的概念，掌握功率平衡的概念与\n\n功率的计算；理解电阻、独立电源和受控电源等电路元件的工作特性；掌握电位的概念与计\n\n算；掌握基尔霍夫定律。\n\n重点：电压、电流的参考方向设定，功率计算；电阻、电压源和电流源的电压－电流关\n\n系；电位的计算。\n\n难点：负载、电源的判断；电位的计算；基尔霍夫定律。\n\n2. 电路的基本定律和分析方法\n\n要求：了解支路电流法，了解实际电源的两种模型的等效变换，掌握用叠加原理和戴维\n\n南定理分析电路的方法，掌握结点电压法。了解受控源模型。\n\n重点：叠加原理；戴维南定理；结点电压法。\n\n难点：戴维南定理的应用；受控电源模型的物理意义。\n\n3. 正弦交流电路\n\n要求：理解正弦交流电的三要素、相位差、有效值及相量表示法。理解电路基本定律的\n\n相量形式、复阻抗和相量图，掌握用相量法计算简单正弦交流电路的方法。理解和掌握有功\n\n功率、无功功率、视在功率、功率因数的概念和计算，了解提高功率因数的方法及其经济意\n\n义。了解正弦交流电路串联谐振和并联谐振的条件及特征。\n\n重点：正弦量的有效值和相量表示；正弦稳态电路的相量模型；用相量法计算简单的正\n\n弦交流电路。\n\n难点：正弦交流电相位差；正弦稳态电路的相量模型及相量分析法。\n\n4. 三相交流电路\n\n要求：掌握三相四线制电路中电源及三相负载的正确联接，了解中线的作用，掌握负载\n\n星形、三角形接法时的线、相电流、电压关系；掌握对称负载三相交流电路电压、电流和功\n\n率的计算。\n\n重点：负载星形、三角形接法时的线、相电流、电压关系；对称负载三相交流电路电压、\n\n电流和功率的计算。\n\n难点：负载星形、三角形接法时的线、相电流、电压关系；三相四线制不对称负载星形\n\n接法电路分析。\n\n5. 电路的暂态分析\n\n要求：掌握电感、电容的电压－电流关系，储能公式的计算；理解电路的暂态、换路定\n\n理和时间常数的基本概念，掌握一阶电路暂态分析的三要素法。\n\n重点：换路定理；一阶线性电路暂态过程的三要素分析法。\n\n难点：换路定律；换路初始值、时间常数的计算。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-008:p2:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "电工与电子技术II 复习大纲 修改"
+      ],
+      "locator_end": 2,
+      "locator_start": 2,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-008",
+      "source_title": "电工与电子技术II 复习大纲 修改",
+      "text": "（二）“电气控制”模块\n\n1. 磁路与铁心线圈电路\n\n要求：了解磁路的基本概念；了解交流铁心线圈电路的基本电磁关系。了解变压器的基\n\n本结构、工作原理、额定值的意义、外特性及电压、电流、阻抗变换的功能。\n\n重点：变压器的电压、电流、阻抗变换的功能。\n\n2. 异步电动机\n\n教学要求：了解三相异步电动机的基本结构、工作原理、机械特性；理解三相异步电动\n\n机铭牌数据的意义；掌握起动和反转的方法，了解调速方法及其发展。\n\n重点：三相异步电动机的工作原理、电磁转矩和机械特性；三相异步电动机的起动和反\n\n转的方法；三相异步电动机铭牌数据。\n\n难点：三相异步电动机的转矩和机械特性。\n\n4. 继电接触控制系统\n\n要求：了解常用控制电器（断路器、组合开关、按钮、行程开关、交流接触器、热继电\n\n器、中间继电器、时间继电器）；了解继电接触器控制系统的基本控制电路（直接起动、正\n\n反转、顺序控制、时间控制等电路）。\n\n重点：交流接触器、热继电器等常用控制电器的工作原理与使用；三相异步电动机直接\n\n起动控制、正反转控制、顺序控制等电路的设计；\n\n难点：控制电路中“自锁”、“互锁”环节的作用和使用；\n\n（三）“模拟电子技术”模块\n\n1. 半导体器件\n\n要求：了解二极管、稳压管和三极管的基本构造、工作原理和特性曲线，理解主要参数\n\n的意义；理解PN 结的单向导电性，三极管的电流分配和电流放大作用；会分析含有二极管\n\n的电路；三极管三个工作状态的判别。\n\n重点：会分析含有二极管的电路；三极管三个工作状态的判别。\n\n2. 三极管和基本放大电路\n\n要求：理解共射极、共集电极单管放大电路静态工作点的作用和简化小信号模型的分析\n\n方法。了解多级放大的概念及多级放大电路的输入阻抗、输出阻抗和放大倍数的计算。了解\n\n差动放大电路的工作原理。\n\n重点：固定偏置放大电路、分压式偏置电路、射极输出器等基本放大电路的静态分析和\n\n动态分析。\n\n难点：放大电路的简化小信号模型的分析方法；\n\n3. 集成运放电路\n\n要求：了解集成运算放大器的基本概念、电压传输特性。掌握理想运算放大器的基本分\n\n析方法。理解用集成运算放大器组成的比例、加、减、积分和微分运算电路的工作原理。\n\n重点：集成运算放大器组成的比例、加、减运算电路的工作原理。\n\n难点：集成运算放大器的电压传输特性；多级线性运算电路的分析。"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-008:p3:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "电工与电子技术II 复习大纲 修改"
+      ],
+      "locator_end": 3,
+      "locator_start": 3,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-008",
+      "source_title": "电工与电子技术II 复习大纲 修改",
+      "text": "4.电子电路中的反馈\n\n要求：理解反馈的概念，了解反馈类型和负反馈对放大电路性能的影响。\n\n重点：反馈类型的判别和负反馈对放大电路性能的影响。\n\n难点：负反馈及其类型的判别。\n\n5.直流稳压电源\n\n要求：掌握半波、单相桥式整流电路、电容滤波电路的工作原理。了解稳压管的工作原\n\n理及主要参数。掌握由稳压管组成的简单稳压电路的工作原理。\n\n重点：半波、单相桥式整流电路、电容滤波电路、由硅稳压管组成的简单稳压电源电路\n\n的工作原理及主要参数。\n\n难点：二极管的选择原则，硅稳压管稳压电路中限流电阻R 的选择原则。\n\n平时作业和课堂表现：30%\n期末考试（闭卷）：70%"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-008:p4:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "电工与电子技术II 复习大纲 修改"
+      ],
+      "locator_end": 4,
+      "locator_start": 4,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-008",
+      "source_title": "电工与电子技术II 复习大纲 修改",
+      "text": "![image](assets/electrical-engineering-008/image-001.png)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-008:p5:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "电工与电子技术II 复习大纲 修改"
+      ],
+      "locator_end": 5,
+      "locator_start": 5,
+      "locator_type": "page",
+      "question_id": null,
+      "source_id": "electrical-engineering-008",
+      "source_title": "电工与电子技术II 复习大纲 修改",
+      "text": "![image](assets/electrical-engineering-008/image-002.jpeg)"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-009:h-电路与电子技术-复习大纲:c01",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "电路与电子技术 复习大纲"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "electrical-engineering-009",
+      "source_title": "电路与电子技术 复习大纲",
+      "text": "**电路与电子技术 复习大纲**\n\n**一、电路原理**\n\n1.电路的基本概念与基本定律\n\n要求：了解电路模型的概念；理解电压、电流参考方向的概念，掌握功率平衡的概念与功率的计算；理解电阻、电容、电感、独立电源和受控电源等电路元件的工作特性；掌握电位的概念与计算；掌握基尔霍夫定律。\n\n重点：电压、电流的参考方向设定；功率计算，负载、电源的判断；电阻、电感与电容的电压－电流关系，储能公式的计算；电压源和电流源的电压－电流关系；基尔霍夫定律；电位的计算。\n\n2.  电路的基本定律和分析方法\n\n要求：了解支路电流法，了解实际电源的两种模型的等效变换，掌握用叠加原理和戴维南定理分析电路的方法，掌握结点电压法。了解受控源模型。\n\n重点：电阻串并联化简；电源的等效变换；叠加原理；戴维南定理；结点电压法。\n\n3.  电路的暂态分析\n\n要求：理解电路的暂态、换路定理和时间常数的基本概念，掌握一阶电路暂态分析的三要素法。\n\n重点：换路定理；一阶线性电路暂态过程的三要素分析法（初始值、稳态值、时间常数的计算）。\n\n4.  正弦交流电路\n\n要求：理解正弦交流电的三要素、相位差、有效值及相量表示法。理解电路基本定律的相量形式、复阻抗和相量图，掌握用相量法计算简单正弦交流电路的方法。理解和掌握有功功率、无功功率、视在功率、功率因数的概念和计算，了解提高功率因数的方法及其经济意义。了解正弦交流电路串联谐振和并联谐振的条件及特征。\n\n重点：正弦量的有效值和相量表示；正弦交流电相位差；正弦稳态电路的相量模型；用相量法、相量图计算简单的正弦交流电路。\n\n**（二）“模拟电子技术”模块**\n\n1.  半导体器件\n\n要求：了解二极管、稳压管和三极管的基本构造、工作原理和特性曲线，理解主要参数的意义；理解PN结的单向导电性，三极管的电流分配和电流放大作用；会分析含有二极管的电路；三极管三个工作状态的判别。\n\n重点：会分析含有二极管的电路；三极管三个工作状态的判别。\n\n2.基本放大电路\n\n要求：理解共射极、共集电极单管放大电路静态工作点的作用和简化小信号模型的分析方法。了解多级放大的概念及多级放大电路的输入阻抗、输出阻抗和放大倍数的计算。了解差动放大电路的工作原理。\n\n重点：固定偏置放大电路、分压式偏置电路、射极输出器等基本放大电路的静态分析和动态分析。\n\n3.  集成运放电路\n\n要求：了解集成运算放大器的基本概念、电压传输特性。掌握理想运算放大器的基本分析方法。 理解用集成运算放大器组成的比例、加、减、积分和微分运算电路的工作原理。\n\n重点：集成运算放大器的电压传输特性；集成运算放大器组成的比例、加、减运算电路的分析计算；电压比较器。\n\n4.电子电路中的反馈\n\n要求：理解反馈的概念，了解反馈类型和负反馈对放大电路性能的影响。\n\n重点：反馈类型的判别和负反馈对放大电路性能的影响。\n\n5.直流稳压电源"
+    },
+    {
+      "assets": [],
+      "chunk_id": "electrical-engineering-009:h-电路与电子技术-复习大纲:c02",
+      "course_id": "electrical_engineering",
+      "heading_path": [
+        "电路与电子技术 复习大纲"
+      ],
+      "locator_end": null,
+      "locator_start": null,
+      "locator_type": "heading",
+      "question_id": null,
+      "source_id": "electrical-engineering-009",
+      "source_title": "电路与电子技术 复习大纲",
+      "text": "要求：掌握半波、单相桥式整流电路、电容滤波电路的工作原理。了解稳压管的工作原理及主要参数。掌握由稳压管组成的简单稳压电路的工作原理。\n\n重点：半波、单相桥式整流电路、电容滤波电路、由硅稳压管组成的简单稳压电源电路的工作原理及主要参数计算；二极管的选择原则，硅稳压管稳压电路中限流电阻R的选择原则。\n\n**（三）数字电路：**\n\n1.门电路和组合逻辑电路\n\n要求：掌握与门、或门、非门、与非门、或非门、异或门和同或门的逻辑功能。掌握逻辑代数的基本运算法则和应用逻辑函数化简简单的逻辑函数式；理解卡诺图的构成原则和特点，掌握利用卡诺图来化简逻辑函数式。掌握较简单组合逻辑电路的分析和设计方法。了解加法器、8421编码器和二进制译码器的工作原理，理解LED七段显示译码驱动器的功能。\n\n重点：逻辑代数的基本运算，逻辑函数式的化简。简单组合逻辑电路的分析和设计（包括门电路、加法器、译码器、数据选择器）。\n\n2.触发器和时序逻辑电路\n\n要求掌握:a.基本RS触发器、可控RS触发器、JK触发器、D触发器和T触发器逻辑符号、逻辑功能；b.同步、异步计数器（二进制、十进制、任意进制）电路的分析与设计（包括用触发器、集成芯片组成的电路）；c.555定时器组成的单稳态触发器和无稳态触发器。\n\n重点： 基本R—S触发器，J—K触发器、D触发器的外部逻辑功能及符号表示。由触发器构成计数器的工作原理及分析方法；集成芯片组成的计数器的设计。\n\n我认为第二点中1：输出波形 2：触发器功能（保持，计数，置值）3：次态 4：计数器进制的判断 5：清零法和置数法组合不同进制计数器\n\n平时作业和课堂表现：30%\n\n期末考试（闭卷）：70%"
+    }
+  ],
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "electrical_engineering",
+  "questions": [],
+  "schema_version": "course-index-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e"
+}

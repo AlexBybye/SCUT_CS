@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "compiler_principles",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "复习课 2025主要讲什么？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习第一章 编译程序概论小结，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习第三章 文法和语言时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "第三章 文法和语言里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习上下文无关文法时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考上下文无关文法？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "上下文无关文法主要讲什么？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习如何写出产生特定语言的文法，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习写一个文法，使其语言是奇数集，且每个奇数不以0开头。时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "给出下面语言的相应文法里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习第四章 词法分析时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考第四章 词法分析？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s12:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "关系图主要讲什么？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s13:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习要点，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s14:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习构造下列正规式相应的DFA时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s15:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "确定化的过程里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s16:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习确定化时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s17:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考确定化？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s18:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "最小化：对状态集进行划分主要讲什么？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s19:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习最小化：对状态集进行划分，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s19:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习最小化时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s20:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "构造一个DFA，它接受＝{0,1}上所有满足如下条件的字符串：每个1都有0直接跟在右边。里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s21:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习小结时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s22:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考第四章 语法分析—自上而下分析？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s23:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "第四章 语法分析—自上而下分析主要讲什么？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s24:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习语法分析的方法，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s25:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习考虑下面文法G1时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s26:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "G1里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s27:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习LL文法的判别时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s28:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考G’1？",
+      "expected_chunk_ids": [
+        "compiler-principles-001:s29:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

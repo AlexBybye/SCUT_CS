@@ -11,6 +11,8 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import sqlite3
+import struct
 import os
 import re
 import shutil
@@ -130,8 +132,15 @@ def derive_corpus_version(
     max_chunk_chars: int,
     workflow_version: str,
     outline_version: str,
+    embedding_model_id: str | None = None,
 ) -> str:
-    """Return a readable version bound to all deterministic build inputs."""
+    """Return a readable version bound to all deterministic build inputs.
+
+    ``embedding_model_id`` (PLAN-2 阶段一 步骤 3) appends the dense-leg model
+    identity as a trailing ``-e{id}`` segment. Changing the embedding model
+    therefore changes the version and forces a rebuild + re-activation gate.
+    ``None`` (lexical-only corpus) keeps the pre-dense version format exactly.
+    """
 
     commit = _require_commit(source_commit)
     workflow = _require_version(workflow_version, "workflow_version")
@@ -139,10 +148,14 @@ def derive_corpus_version(
     if max_chunk_chars < 200:
         raise CorpusBuildError("max_chunk_chars must be at least 200")
     builder = BUILDER_VERSION.replace(".", "_")
-    return (
+    version = (
         f"corpus-{commit[:12]}-b{builder}-m{max_chunk_chars}"
         f"-w{workflow}-o{outline}"
     )
+    if embedding_model_id is not None:
+        embedding = _require_version(embedding_model_id, "embedding_model_id")
+        version += f"-e{embedding}"
+    return version
 
 
 def _verify_fixed_checkout(
@@ -727,12 +740,24 @@ def build_candidate(
     max_chunk_chars: int = 1200,
     workflow_version: str = "workflow-contract-v1",
     outline_version: str = "outline-none-v1",
+    embedding_model_id: str | None = None,
 ) -> BuildResult:
-    """Build one validated immutable candidate without activating it."""
+    """Build one validated immutable candidate without activating it.
+
+    ``embedding_model_id`` (PLAN-2 阶段一 步骤 3 / decision D1) appends the
+    dense-leg model identity to the corpus version and metadata so a model
+    change forces a rebuild + re-activation gate. ``None`` keeps the
+    lexical-only corpus contract unchanged.
+    """
 
     commit = _require_commit(source_commit)
     workflow = _require_version(workflow_version, "workflow_version")
     outline = _require_version(outline_version, "outline_version")
+    embedding = (
+        _require_version(embedding_model_id, "embedding_model_id")
+        if embedding_model_id is not None
+        else None
+    )
     root = knowledge_root.resolve()
     manifest = manifest_path.resolve()
     _safe_relative_path(root, manifest, "manifest")
@@ -753,6 +778,7 @@ def build_candidate(
         max_chunk_chars=max_chunk_chars,
         workflow_version=workflow,
         outline_version=outline,
+        embedding_model_id=embedding,
     )
     final_path = _candidate_directory(store_root.resolve(), corpus_version)
     if final_path.exists():
@@ -869,6 +895,8 @@ def build_candidate(
             "status": "validated",
             "workflow_version": workflow,
         }
+        if embedding is not None:
+            metadata["embedding_model_id"] = embedding
         _write_json(temporary / "metadata.json", metadata)
         validation = validate_candidate(temporary)
         _write_json(temporary / "validation.json", validation)
@@ -879,7 +907,9 @@ def build_candidate(
         raise
 
 
-def _validate_candidate_payload(candidate_path: Path) -> dict[str, Any]:
+def _validate_candidate_payload(
+    candidate_path: Path, *, check_vectors: bool = True
+) -> dict[str, Any]:
     """Validate generated references and version bindings before activation."""
 
     candidate = candidate_path.resolve()
@@ -905,8 +935,16 @@ def _validate_candidate_payload(candidate_path: Path) -> dict[str, Any]:
         "status",
         "workflow_version",
     }
-    if set(metadata) != required_metadata:
+    optional_metadata = {"embedding_model_id"}
+    if set(metadata) - required_metadata - optional_metadata:
+        errors.append("metadata has fields outside candidate-v1 contract")
+    if not required_metadata.issubset(set(metadata)):
         errors.append("metadata fields do not match candidate-v1 contract")
+    if "embedding_model_id" in metadata and (
+        not isinstance(metadata["embedding_model_id"], str)
+        or not _VERSION_RE.fullmatch(metadata["embedding_model_id"])
+    ):
+        errors.append("embedding_model_id must be a version string")
     if metadata.get("schema_version") != CANDIDATE_SCHEMA_VERSION:
         errors.append("candidate schema_version is invalid")
     if metadata.get("status") != "validated":
@@ -985,6 +1023,7 @@ def _validate_candidate_payload(candidate_path: Path) -> dict[str, Any]:
         max_chunk_chars = 200
 
     seen_chunks: set[str] = set()
+    chunk_ids_by_course: dict[str, set[str]] = {}
     counted_sources: set[str] = set()
     referenced_assets: set[str] = set()
     oversize_fenced_chunk_count = 0
@@ -1141,6 +1180,7 @@ def _validate_candidate_payload(candidate_path: Path) -> dict[str, Any]:
                 errors.append(f"{chunk_id}: asset is absent from source payload")
             else:
                 referenced_assets.update(chunk["assets"])
+        chunk_ids_by_course[course_id] = course_chunk_ids
         for source_id, source in source_map.items():
             expected = source.get("chunk_ids")
             actual = [
@@ -1174,6 +1214,17 @@ def _validate_candidate_payload(candidate_path: Path) -> dict[str, Any]:
         errors.append("candidate copied assets do not match referenced assets")
     if errors:
         raise CorpusBuildError("candidate validation failed:\n- " + "\n- ".join(errors))
+    embedding_model_id = metadata.get("embedding_model_id")
+    if check_vectors and embedding_model_id is not None:
+        _validate_candidate_vectors(
+            candidate,
+            courses,
+            chunk_ids_by_course,
+            embedding_model_id,
+            errors,
+        )
+    if errors:
+        raise CorpusBuildError("candidate validation failed:\n- " + "\n- ".join(errors))
     return {
         "chunk_count": len(seen_chunks),
         "course_count": len(courses),
@@ -1183,11 +1234,68 @@ def _validate_candidate_payload(candidate_path: Path) -> dict[str, Any]:
     }
 
 
-def validate_candidate(candidate_path: Path) -> dict[str, Any]:
+def _validate_candidate_vectors(
+    candidate: Path,
+    courses: list[str],
+    chunk_ids_by_course: dict[str, set[str]],
+    embedding_model_id: str,
+    errors: list[str],
+) -> None:
+    """Check dense files when generated; an absent index remains lexical-only."""
+    vectors_root = candidate / "vectors"
+    if not vectors_root.is_dir():
+        # Vector generation is a separate local build step. Retrieval degrades
+        # to BM25F until that step creates the directory.
+        return
+    expected_files = {f"{course}.db" for course in courses}
+    actual_files = {path.name for path in vectors_root.glob("*.db")}
+    if actual_files != expected_files:
+        errors.append(
+            "dense candidate vector files do not match available courses"
+        )
+    for course in courses:
+        vector_path = vectors_root / f"{course}.db"
+        if not vector_path.is_file():
+            continue
+        connection: sqlite3.Connection | None = None
+        try:
+            connection = sqlite3.connect(str(vector_path))
+            meta = dict(
+                connection.execute("SELECT key, value FROM meta").fetchall()
+            )
+            if meta.get("model_id") != embedding_model_id:
+                errors.append(f"{course}: vector model_id does not match candidate metadata")
+            dimensions = int(meta.get("dimensions", "0"))
+            if dimensions < 1:
+                errors.append(f"{course}: vector dimensions metadata is invalid")
+                continue
+            rows = connection.execute(
+                "SELECT chunk_id, course_id, vector FROM vectors"
+            ).fetchall()
+            expected_ids = chunk_ids_by_course.get(course, set())
+            actual_ids = {row[0] for row in rows}
+            if actual_ids != expected_ids:
+                errors.append(f"{course}: vector chunk ids do not match course chunks")
+            for chunk_id, course_id, payload in rows:
+                if course_id != course:
+                    errors.append(f"{course}: vector course_id mismatch for {chunk_id}")
+                    continue
+                if not isinstance(payload, (bytes, bytearray)) or len(payload) != dimensions * 4:
+                    errors.append(f"{course}: vector dimension mismatch for {chunk_id}")
+        except (OSError, sqlite3.Error, TypeError, ValueError, struct.error) as exc:
+            errors.append(f"{course}: vector file is malformed: {exc}")
+        finally:
+            if connection is not None:
+                connection.close()
+
+
+def validate_candidate(
+    candidate_path: Path, *, check_vectors: bool = True
+) -> dict[str, Any]:
     """Fail closed for both contract errors and malformed nested JSON values."""
 
     try:
-        return _validate_candidate_payload(candidate_path)
+        return _validate_candidate_payload(candidate_path, check_vectors=check_vectors)
     except CorpusBuildError:
         raise
     except (AttributeError, KeyError, OSError, TypeError, ValueError) as exc:
@@ -1385,6 +1493,7 @@ def _parser() -> argparse.ArgumentParser:
     build.add_argument("--max-chunk-chars", type=int, default=1200)
     build.add_argument("--workflow-version", default="workflow-contract-v1")
     build.add_argument("--outline-version", default="outline-none-v1")
+    build.add_argument("--embedding-model-id")
     activate = subparsers.add_parser("activate")
     activate.add_argument("--store-root", required=True, type=Path)
     activate.add_argument("--corpus-version", required=True)
@@ -1416,6 +1525,7 @@ def main(argv: Iterable[str] | None = None) -> int:
                 max_chunk_chars=args.max_chunk_chars,
                 workflow_version=args.workflow_version,
                 outline_version=args.outline_version,
+                embedding_model_id=args.embedding_model_id,
             ).to_dict()
         elif args.command == "activate":
             payload = {

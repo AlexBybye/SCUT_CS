@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "university_physics_lab_1",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "人体脉搏波测量主要讲什么？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-001:h-人体脉搏波测量:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习人体脉搏波测量，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-001:h-人体脉搏波测量:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习人体脉搏波测量时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-001:h-人体脉搏波测量:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "人体脉搏波测量里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-001:h-人体脉搏波测量:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习人体脉搏波测量时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-001:h-人体脉搏波测量:c05"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考人体脉搏波测量？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-001:h-人体脉搏波测量:c06"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "人体脉搏波测量主要讲什么？，第7条",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-001:h-人体脉搏波测量:c07"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习光的等厚干涉测量，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-002:h-光的等厚干涉测量:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习光的等厚干涉测量时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-002:h-光的等厚干涉测量:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "光的等厚干涉测量里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-002:h-光的等厚干涉测量:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习光的等厚干涉测量时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-002:h-光的等厚干涉测量:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考分光计的调整与使用？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-003:h-分光计的调整与使用:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "分光计的调整与使用主要讲什么？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-003:h-分光计的调整与使用:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习分光计的调整与使用，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-003:h-分光计的调整与使用:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习分光计的调整与使用时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-003:h-分光计的调整与使用:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "奥式黏度计测定液体动力黏度里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-004:h-奥式黏度计测定液体动力黏度:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习实验报告模板&实验报告评分标准时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-005:h-实验报告模板-实验报告评分标准:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考用惠斯登电桥测电阻？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-006:h-用惠斯登电桥测电阻:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "用惠斯登电桥测电阻主要讲什么？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-006:h-用惠斯登电桥测电阻:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习用惠斯登电桥测电阻，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-006:h-用惠斯登电桥测电阻:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习用惠斯登电桥测电阻时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-006:h-用惠斯登电桥测电阻:c04"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "用惠斯登电桥测电阻里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-006:h-用惠斯登电桥测电阻:c05"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习用惠斯登电桥测电阻时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-006:h-用惠斯登电桥测电阻:c06"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考用惠斯登电桥测电阻？，第24条",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-006:h-用惠斯登电桥测电阻:c07"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "实验三、超声波探测及复摆测量重力加速度主要讲什么？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-007:h-超声波在介质的传播~实验三-超声波探测及复摆测量重力加速度:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习实验三、超声波探测及复摆测量重力加速度，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-007:h-超声波在介质的传播~实验三-超声波探测及复摆测量重力加速度:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习实验三、超声波探测及复摆测量重力加速度时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-007:h-超声波在介质的传播~实验三-超声波探测及复摆测量重力加速度:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "非平衡电桥电压输出特性研究里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-008:h-非平衡电桥电压输出特性研究:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习非平衡电桥电压输出特性研究时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-008:h-非平衡电桥电压输出特性研究:c02"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考非平衡电桥电压输出特性研究？",
+      "expected_chunk_ids": [
+        "university-physics-lab-1-008:h-非平衡电桥电压输出特性研究:c03"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

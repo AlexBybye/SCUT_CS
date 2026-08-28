@@ -1,0 +1,217 @@
+{
+  "schema_version": "retrieval-golden-v1",
+  "course_id": "marxist_basic_principles",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "entries": [
+    {
+      "query": "演讲观点主要讲什么？",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-001:h-演讲观点:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习科技发展与社会变革：生产力与生产关系视角，应该从哪里开始？",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习科技发展与社会变革：生产力与生产关系视角时哪些内容最重要？",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "科技发展与社会变革：生产力与生产关系视角里的方法或结论怎么理解？",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习科技发展与社会变革：生产力与生产关系视角时哪些概念容易混淆？",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考科技发展与社会变革：生产力与生产关系视角？",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "科技发展与社会变革：生产力与生产关系视角主要讲什么？",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习科技发展与社会变革：生产力与生产关系视角，应该从哪里开始？，见第7页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s7:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习科技发展与社会变革：生产力与生产关系视角时哪些内容最重要？，见第8页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s8:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "科技发展与社会变革：生产力与生产关系视角里的方法或结论怎么理解？，见第9页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s9:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习科技发展与社会变革：生产力与生产关系视角时哪些概念容易混淆？，见第10页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s10:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考科技发展与社会变革：生产力与生产关系视角？，见第11页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s11:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "科技发展与社会变革：生产力与生产关系视角主要讲什么？，见第12页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s12:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习科技发展与社会变革：生产力与生产关系视角，应该从哪里开始？，见第13页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s13:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习科技发展与社会变革：生产力与生产关系视角时哪些内容最重要？，见第14页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s14:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "科技发展与社会变革：生产力与生产关系视角里的方法或结论怎么理解？，见第15页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s15:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习科技发展与社会变革：生产力与生产关系视角时哪些概念容易混淆？，见第16页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s16:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考科技发展与社会变革：生产力与生产关系视角？，见第17页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s17:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "科技发展与社会变革：生产力与生产关系视角主要讲什么？，见第18页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s18:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习科技发展与社会变革：生产力与生产关系视角，应该从哪里开始？，见第19页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s19:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习科技发展与社会变革：生产力与生产关系视角时哪些内容最重要？，见第20页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s20:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "科技发展与社会变革：生产力与生产关系视角里的方法或结论怎么理解？，见第21页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s21:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习科技发展与社会变革：生产力与生产关系视角时哪些概念容易混淆？，见第22页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s22:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考演讲观点？",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-001:h-演讲观点:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "科技发展与社会变革：生产力与生产关系视角主要讲什么？，见第1页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s1:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "我想先复习科技发展与社会变革：生产力与生产关系视角，应该从哪里开始？，见第2页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s2:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "复习科技发展与社会变革：生产力与生产关系视角时哪些内容最重要？，见第3页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s3:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "科技发展与社会变革：生产力与生产关系视角里的方法或结论怎么理解？，见第4页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s4:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "学习科技发展与社会变革：生产力与生产关系视角时哪些概念容易混淆？，见第5页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s5:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    },
+    {
+      "query": "考试会怎么考科技发展与社会变革：生产力与生产关系视角？，见第6页",
+      "expected_chunk_ids": [
+        "marxist-basic-principles-002:s6:c01"
+      ],
+      "note": "学生复习提问 -> 真实课程 chunk"
+    }
+  ]
+}

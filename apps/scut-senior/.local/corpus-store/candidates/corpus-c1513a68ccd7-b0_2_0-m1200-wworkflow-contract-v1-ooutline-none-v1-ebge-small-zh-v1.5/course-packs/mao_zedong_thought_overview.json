@@ -1,0 +1,153 @@
+{
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "course_id": "mao_zedong_thought_overview",
+  "course_pack_version": "course-pack-mao_zedong_thought_overview-c1513a68ccd7-b0_2_0-wworkflow-contract-v1-ooutline-none-v1",
+  "heading_index": [
+    {
+      "chunk_ids": [
+        "mao-zedong-thought-overview-001:s1:c01",
+        "mao-zedong-thought-overview-001:s2:c01",
+        "mao-zedong-thought-overview-001:s3:c01",
+        "mao-zedong-thought-overview-001:s4:c01",
+        "mao-zedong-thought-overview-001:s5:c01",
+        "mao-zedong-thought-overview-001:s6:c01",
+        "mao-zedong-thought-overview-001:s7:c01",
+        "mao-zedong-thought-overview-001:s8:c01",
+        "mao-zedong-thought-overview-001:s9:c01",
+        "mao-zedong-thought-overview-001:s10:c01",
+        "mao-zedong-thought-overview-001:s11:c01",
+        "mao-zedong-thought-overview-001:s12:c01",
+        "mao-zedong-thought-overview-001:s13:c01",
+        "mao-zedong-thought-overview-001:s14:c01",
+        "mao-zedong-thought-overview-001:s15:c01",
+        "mao-zedong-thought-overview-001:s16:c01",
+        "mao-zedong-thought-overview-001:s17:c01",
+        "mao-zedong-thought-overview-001:s18:c01",
+        "mao-zedong-thought-overview-001:s19:c01",
+        "mao-zedong-thought-overview-001:s20:c01",
+        "mao-zedong-thought-overview-001:s21:c01",
+        "mao-zedong-thought-overview-001:s22:c01",
+        "mao-zedong-thought-overview-001:s23:c01",
+        "mao-zedong-thought-overview-001:s24:c01",
+        "mao-zedong-thought-overview-001:s25:c01",
+        "mao-zedong-thought-overview-001:s26:c01",
+        "mao-zedong-thought-overview-001:s27:c01",
+        "mao-zedong-thought-overview-001:s28:c01",
+        "mao-zedong-thought-overview-001:s29:c01",
+        "mao-zedong-thought-overview-001:s30:c01",
+        "mao-zedong-thought-overview-001:s31:c01",
+        "mao-zedong-thought-overview-001:s32:c01",
+        "mao-zedong-thought-overview-001:s33:c01",
+        "mao-zedong-thought-overview-001:s34:c01",
+        "mao-zedong-thought-overview-001:s35:c01",
+        "mao-zedong-thought-overview-001:s36:c01",
+        "mao-zedong-thought-overview-001:s37:c01",
+        "mao-zedong-thought-overview-001:s38:c01",
+        "mao-zedong-thought-overview-001:s39:c01",
+        "mao-zedong-thought-overview-001:s40:c01",
+        "mao-zedong-thought-overview-001:s41:c01",
+        "mao-zedong-thought-overview-001:s42:c01",
+        "mao-zedong-thought-overview-001:s43:c01"
+      ],
+      "heading_path": [
+        "党的自我革命历史沿革及当代价值"
+      ],
+      "source_ids": [
+        "mao-zedong-thought-overview-001"
+      ]
+    },
+    {
+      "chunk_ids": [
+        "mao-zedong-thought-overview-002:h-演讲大纲:c01",
+        "mao-zedong-thought-overview-002:h-演讲大纲:c02"
+      ],
+      "heading_path": [
+        "演讲大纲"
+      ],
+      "source_ids": [
+        "mao-zedong-thought-overview-002"
+      ]
+    }
+  ],
+  "outline_version": "outline-none-v1",
+  "questions": [],
+  "schema_version": "course-pack-v1",
+  "source_commit": "c1513a68ccd749f94cef53662120d36077d5fd8e",
+  "sources": [
+    {
+      "assets": [],
+      "chunk_ids": [
+        "mao-zedong-thought-overview-001:s1:c01",
+        "mao-zedong-thought-overview-001:s2:c01",
+        "mao-zedong-thought-overview-001:s3:c01",
+        "mao-zedong-thought-overview-001:s4:c01",
+        "mao-zedong-thought-overview-001:s5:c01",
+        "mao-zedong-thought-overview-001:s6:c01",
+        "mao-zedong-thought-overview-001:s7:c01",
+        "mao-zedong-thought-overview-001:s8:c01",
+        "mao-zedong-thought-overview-001:s9:c01",
+        "mao-zedong-thought-overview-001:s10:c01",
+        "mao-zedong-thought-overview-001:s11:c01",
+        "mao-zedong-thought-overview-001:s12:c01",
+        "mao-zedong-thought-overview-001:s13:c01",
+        "mao-zedong-thought-overview-001:s14:c01",
+        "mao-zedong-thought-overview-001:s15:c01",
+        "mao-zedong-thought-overview-001:s16:c01",
+        "mao-zedong-thought-overview-001:s17:c01",
+        "mao-zedong-thought-overview-001:s18:c01",
+        "mao-zedong-thought-overview-001:s19:c01",
+        "mao-zedong-thought-overview-001:s20:c01",
+        "mao-zedong-thought-overview-001:s21:c01",
+        "mao-zedong-thought-overview-001:s22:c01",
+        "mao-zedong-thought-overview-001:s23:c01",
+        "mao-zedong-thought-overview-001:s24:c01",
+        "mao-zedong-thought-overview-001:s25:c01",
+        "mao-zedong-thought-overview-001:s26:c01",
+        "mao-zedong-thought-overview-001:s27:c01",
+        "mao-zedong-thought-overview-001:s28:c01",
+        "mao-zedong-thought-overview-001:s29:c01",
+        "mao-zedong-thought-overview-001:s30:c01",
+        "mao-zedong-thought-overview-001:s31:c01",
+        "mao-zedong-thought-overview-001:s32:c01",
+        "mao-zedong-thought-overview-001:s33:c01",
+        "mao-zedong-thought-overview-001:s34:c01",
+        "mao-zedong-thought-overview-001:s35:c01",
+        "mao-zedong-thought-overview-001:s36:c01",
+        "mao-zedong-thought-overview-001:s37:c01",
+        "mao-zedong-thought-overview-001:s38:c01",
+        "mao-zedong-thought-overview-001:s39:c01",
+        "mao-zedong-thought-overview-001:s40:c01",
+        "mao-zedong-thought-overview-001:s41:c01",
+        "mao-zedong-thought-overview-001:s42:c01",
+        "mao-zedong-thought-overview-001:s43:c01"
+      ],
+      "course_id": "mao_zedong_thought_overview",
+      "document_role": "note",
+      "locator_type": "slide",
+      "output_md": "mao_zedong_thought_overview/mao-zedong-thought-overview-001.md",
+      "source_id": "mao-zedong-thought-overview-001",
+      "source_title": "党的自我革命历史沿革及当代价值",
+      "year": null
+    },
+    {
+      "assets": [],
+      "chunk_ids": [
+        "mao-zedong-thought-overview-002:h-演讲大纲:c01",
+        "mao-zedong-thought-overview-002:h-演讲大纲:c02"
+      ],
+      "course_id": "mao_zedong_thought_overview",
+      "document_role": "note",
+      "locator_type": "none",
+      "output_md": "mao_zedong_thought_overview/mao-zedong-thought-overview-002.md",
+      "source_id": "mao-zedong-thought-overview-002",
+      "source_title": "演讲大纲",
+      "year": null
+    }
+  ],
+  "statistics": {
+    "chunk_count": 45,
+    "question_count": 0,
+    "source_count": 2
+  },
+  "workflow_version": "workflow-contract-v1"
+}
