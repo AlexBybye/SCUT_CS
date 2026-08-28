@@ -98,11 +98,13 @@ def parse_model_action(raw: str, *, workflow_type: str) -> ActionKind | None:
         "generate_answer": "generate_answer",
         "finish": "finish",
     }
-    for token in normalized.replace("\n", " ").split():
-        action = aliases.get(token.strip(" .,;:："))
-        if action is not None:
-            return action if action_allowed_for_workflow(workflow_type, action) else None
-    return None
+    # Fail closed: accept a single token only. Explanatory model prose must
+    # never accidentally turn a mention of an Action into an executable one.
+    token = normalized.strip(" .,;:：")
+    action = aliases.get(token)
+    if action is None:
+        return None
+    return action if action_allowed_for_workflow(workflow_type, action) else None
 
 
 class ModelAgentDecision:

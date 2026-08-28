@@ -23,6 +23,7 @@ def test_workflow_is_hard_boundary_for_agent_actions() -> None:
 
 def test_model_action_parser_is_fail_closed_at_workflow_boundary() -> None:
     assert parse_model_action("retrieve", workflow_type="knowledge_qa") == "retrieve"
+    assert parse_model_action("I choose retrieve", workflow_type="knowledge_qa") is None
     assert parse_model_action("retrieve_with_query_rewrite", workflow_type="temporary_material_reading") is None
     assert parse_model_action("switch_workflow", workflow_type="knowledge_qa") is None
 
