@@ -24,7 +24,9 @@ _JSON_FENCE_RE = re.compile(
     r"^\s*```(?:json)?\s*\n(?P<body>[\s\S]*?)\n?```\s*$",
     re.IGNORECASE,
 )
-_CITATION_RE = re.compile(r"(?<![A-Za-z0-9_])\[S([1-9][0-9]*)\]")
+_CITATION_RE = re.compile(
+    r"(?<![A-Za-z0-9_])(?:\[|【)S([1-9][0-9]*)(?:\]|】)"
+)
 _SCUT_META_COMMENT_RE = re.compile(
     r"\s*<!--\s*scut-meta\s*:\s*(?P<body>\{[\s\S]*?\})\s*-->\s*$",
     re.IGNORECASE,
@@ -186,6 +188,7 @@ def _from_mapping(value: Mapping[object, object]) -> GeneratedAnswer:
         "text",
     )
     repository_answer, comment_metadata = _extract_scut_metadata(repository_answer)
+    repository_answer = _normalize_inline_citations(repository_answer)
     general_supplement = _text(value.get("general_supplement"))
     user_material_answer = _text(value.get("user_material_answer"))
     personalized_analysis = _text(value.get("personalized_analysis"))
@@ -228,6 +231,7 @@ def _from_mapping(value: Mapping[object, object]) -> GeneratedAnswer:
 
 def _plain_text_answer_with_metadata(text: str) -> GeneratedAnswer:
     repository_answer, comment_metadata = _extract_scut_metadata(text)
+    repository_answer = _normalize_inline_citations(repository_answer)
     return GeneratedAnswer(
         repository_answer=repository_answer,
         citation_ids=_inline_citation_ids(repository_answer),
@@ -273,6 +277,12 @@ def _string_items(value: object) -> tuple[str, ...]:
 
 def _inline_citation_ids(text: str) -> tuple[str, ...]:
     return _ordered_unique(f"S{number}" for number in _CITATION_RE.findall(text))
+
+
+def _normalize_inline_citations(text: str) -> str:
+    """Normalize common full-width citation brackets to the canonical form."""
+
+    return _CITATION_RE.sub(lambda match: f"[S{match.group(1)}]", text)
 
 
 def _ordered_unique(values: Iterable[str]) -> tuple[str, ...]:

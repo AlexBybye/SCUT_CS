@@ -68,27 +68,27 @@ WORKFLOW_FOCUS_EXPECTATIONS: dict[str, dict[str, object]] = {
     "knowledge_qa": {
         "strategy": "question_concept",
         "topics": ["矩阵", "线性方程组"],
-        "keywords": ["矩阵的秩", "初等行变换"],
+        "keywords": ["线性代数", "矩阵的秩", "初等行变换"],
     },
     "exam_review": {
         "strategy": "syllabus_weak_topics",
         "topics": ["复习大纲", "初等行变换"],
-        "keywords": ["初等行变换复习", "矩阵复习"],
+        "keywords": ["线性代数", "初等行变换复习", "矩阵复习"],
     },
     "problem_tutor": {
         "strategy": "problem_main_topic",
         "topics": ["矩阵题主知识点"],
-        "keywords": ["矩阵秩题目"],
+        "keywords": ["线性代数", "矩阵秩题目", "矩阵题主知识点"],
     },
     "mistake_review": {
         "strategy": "mistake_root_cause",
         "topics": ["矩阵概念错误根因"],
-        "keywords": ["矩阵秩错误原因"],
+        "keywords": ["线性代数", "矩阵秩错误原因", "矩阵概念错误根因"],
     },
     "temporary_material_reading": {
         "strategy": "material_title_main_topics",
         "topics": ["临时材料主要知识点"],
-        "keywords": ["矩阵材料精读"],
+        "keywords": ["线性代数", "矩阵材料精读", "临时材料主要知识点"],
     },
 }
 

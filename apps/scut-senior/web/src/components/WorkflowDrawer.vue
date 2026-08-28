@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { ANSWER_MODES, HELP_LEVELS, TONES } from "../contracts";
+import { WORKFLOW_TYPES, HELP_LEVELS } from "../contracts";
 import {
-  answerModeLabels,
   availabilityLabel,
   billingLabel,
   helpLevelLabels,
-  toneLabels,
+  workflowCopy,
 } from "../appConfig";
 import { useAppStore } from "../composables/useAppStore";
 import MaterialContributionPanel from "./MaterialContributionPanel.vue";
@@ -15,6 +14,22 @@ const store = useAppStore();
 
 <template>
   <div id="composer-drawer" class="drawer">
+    <section class="route-summary" aria-label="自动路由结果">
+      <div>
+        <span class="drawer-sub">{{ store.workflowRouteIsManual ? "手动纠正" : "自动识别" }}</span>
+        <strong>{{ store.activeWorkflow.label }}</strong>
+        <p class="field-hint">{{ store.routeDecision.reason }}</p>
+      </div>
+      <label class="field route-correction">
+        <span>任务类型</span>
+        <select v-model="store.workflowType" :disabled="store.isRunning">
+          <option v-for="type in WORKFLOW_TYPES" :key="type" :value="type">
+            {{ workflowCopy[type].label }}
+          </option>
+        </select>
+      </label>
+    </section>
+
     <section
       v-if="store.workflowType === 'exam_review'"
       class="drawer-grid"
@@ -137,22 +152,6 @@ const store = useAppStore();
     </section>
 
     <div class="drawer-grid">
-      <div class="field">
-        <label for="answer-mode">回答方式</label>
-        <select id="answer-mode" v-model="store.answerMode">
-          <option v-for="mode in ANSWER_MODES" :key="mode" :value="mode">
-            {{ answerModeLabels[mode] }}
-          </option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="tone">表达风格</label>
-        <select id="tone" v-model="store.tone">
-          <option v-for="item in TONES" :key="item" :value="item">
-            {{ toneLabels[item] }}
-          </option>
-        </select>
-      </div>
       <fieldset class="field drawer-span">
         <legend>知识范围</legend>
         <div class="seg">
@@ -198,7 +197,7 @@ const store = useAppStore();
 </template>
 
 <style>
-/* 抽屉：Workflow 专属字段与输出偏好，默认收起。
+/* 抽屉：路由结果与 Workflow 专属字段，默认收起。
    高度封顶并内部滚动：内容再长也只压缩自己，
    不把下方输入框的发送区挤出可视范围。 */
 .drawer {
@@ -225,6 +224,31 @@ const store = useAppStore();
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 10px;
+}
+
+.route-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(160px, 220px);
+  gap: 12px;
+  align-items: end;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.route-summary strong {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--fs-sm);
+}
+
+.route-correction {
+  margin: 0;
+}
+
+@media (max-width: 639px) {
+  .route-summary {
+    grid-template-columns: 1fr;
+  }
 }
 
 .drawer-span {

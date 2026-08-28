@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { ANSWER_MODES, TONES } from "../contracts";
+import { answerModeLabels, toneLabels } from "../appConfig";
 import {
   ACCENT_LABELS,
   THEME_MODE_LABELS,
@@ -91,6 +93,28 @@ function onKeydown(event: KeyboardEvent): void {
 
 <template>
   <section class="account-section" aria-label="助手设置">
+    <div class="account-section-head">
+      <h3>回答偏好</h3>
+    </div>
+    <div class="assistant-preference-grid">
+      <label class="field">
+        <span>讲解形式</span>
+        <select v-model="store.answerMode">
+          <option v-for="mode in ANSWER_MODES" :key="mode" :value="mode">
+            {{ answerModeLabels[mode] }}
+          </option>
+        </select>
+      </label>
+      <label class="field">
+        <span>输出风格</span>
+        <select v-model="store.tone">
+          <option v-for="item in TONES" :key="item" :value="item">
+            {{ toneLabels[item] }}
+          </option>
+        </select>
+      </label>
+    </div>
+
     <div class="account-section-head">
       <h3>外观主题</h3>
       <span class="chip chip-accent">{{ ariaValueText }}</span>
@@ -184,6 +208,19 @@ function onKeydown(event: KeyboardEvent): void {
 .theme-picker {
   display: grid;
   gap: 6px;
+}
+
+.assistant-preference-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 520px) {
+  .assistant-preference-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* 轨道：整条可拖、可点、可聚焦；44px 满足触屏命中。 */

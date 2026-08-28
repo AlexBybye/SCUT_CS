@@ -23,6 +23,9 @@ _EXAMPLE_PREFIX_RE = re.compile(
     r"^(?:并且|并|再|以及)?(?:给出|举(?:一个|个)?例(?:说明)?|提供)"
     r"(?:一个|一[个种])?\s*"
 )
+_GENERIC_SEARCH_PART_RE = re.compile(
+    r"^(?:我还有[^，,。；;]*考试|这(?:门|科)目怎么学|这科怎么学|帮我安排复习)$"
+)
 
 
 class BilibiliLinkDiscoveryAdapter:
@@ -128,8 +131,14 @@ def derive_question_keywords(question: str) -> tuple[str, ...]:
                 break
             part = stripped
         part = _EXAMPLE_PREFIX_RE.sub("", part)
+        part = re.sub(r"^(?:比如|例如|譬如)\s*", "", part)
+        part = re.sub(r"(?:之类的)?考纲$", "", part).strip()
         part = part.strip()
-        if not part or contains_url_like_text(part):
+        if (
+            not part
+            or _GENERIC_SEARCH_PART_RE.fullmatch(part)
+            or contains_url_like_text(part)
+        ):
             continue
         separator = " " if parts else ""
         if len(" ".join(parts)) + len(separator) + len(part) > MAX_KEYWORD_LENGTH:

@@ -112,6 +112,18 @@ def test_course_only_never_accepts_a_general_answer_block() -> None:
         )
 
 
+def test_citation_guard_accepts_full_width_model_markers() -> None:
+    guarded = build_guarded_answer(
+        request=_validated_request(),
+        answer=GeneratedAnswer("根据资料可知【S1】。", citation_ids=("S1",)),
+        sources=[_source()],
+        course_ids={"linear_algebra"},
+    )
+
+    assert guarded.citation_ids == ("S1",)
+    assert guarded.blocks[0].type == AnswerBlockType.REPOSITORY
+
+
 def test_course_only_drops_uncited_repository_text_instead_of_showing_it() -> None:
     guarded = build_guarded_answer(
         request=_validated_request("course_only"),

@@ -18,7 +18,9 @@ from .ports import GeneratedAnswer, RetrievedSource
 from .url_safety import contains_url_like_text
 
 
-_CITATION_RE = re.compile(r"(?<![A-Za-z0-9_])\[S(\d+)\]")
+_CITATION_RE = re.compile(
+    r"(?<![A-Za-z0-9_])(?:\[|【)S(\d+)(?:\]|】)"
+)
 _NUMBER_RE = re.compile(
     r"(?<![A-Za-z0-9_])[-+]?(?:\d+(?:\.\d+)?|\.\d+)"
     r"(?:[eE][-+]?\d+)?(?:%|[a-zA-Z]+)?"

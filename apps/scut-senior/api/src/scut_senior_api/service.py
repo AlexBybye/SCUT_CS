@@ -2014,7 +2014,7 @@ def _select_bilibili_keywords(
     course_title: str,
     course_id: str,
 ) -> tuple[tuple[str, ...], str, int]:
-    """Choose one safe search query while preserving an explicit fallback order.
+    """Choose one safe, course-scoped search query with explicit fallbacks.
 
     The provider may return ordinary Markdown, in which case it has no
     machine-readable topic fields.  When it does return them, an explicit
@@ -2058,7 +2058,13 @@ def _select_bilibili_keywords(
     )
     for source, candidate_count, keywords in candidates:
         if keywords:
-            return keywords, source, candidate_count
+            # Bilibili is an external, unreviewed search surface. Keep the
+            # course title and the model's focused terms together so a generic
+            # topic does not lose the selected course context.
+            scoped_keywords = normalize_keywords(
+                (course_title, *keywords, *normalize_keywords(related_topics))
+            )
+            return scoped_keywords, source, candidate_count
     return (), "no_focused_topic", 0
 
 

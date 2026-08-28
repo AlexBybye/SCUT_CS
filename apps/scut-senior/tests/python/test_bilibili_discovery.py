@@ -45,6 +45,12 @@ def test_question_keywords_are_a_bounded_combination_from_the_current_question()
     ) == ("初等行变换不改变矩阵的秩 三行三列矩阵的计算示例",)
 
 
+def test_question_keywords_drop_exam_planning_filler_and_keep_subject_terms() -> None:
+    assert derive_question_keywords(
+        "我还有三天考试，这科目怎么学？比如进程和线程区别之类的考纲？"
+    ) == ("进程和线程区别",)
+
+
 def test_valid_keywords_always_produce_one_anonymous_live_search_link() -> None:
     generated_at = datetime(2026, 8, 15, 12, 0, tzinfo=timezone.utc)
     resources = BilibiliLinkDiscoveryAdapter(clock=lambda: generated_at).discover(

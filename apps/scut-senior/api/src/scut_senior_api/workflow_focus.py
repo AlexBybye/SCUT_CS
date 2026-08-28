@@ -111,9 +111,9 @@ _GENERATION_STYLE_DIRECTIVE = """【生成表达约束】
 - Markdown 标题、列表、公式和引用必须保持可渲染、可复制的语义，不用转义或解释文字破坏它们。"""
 
 _BILIBILI_METADATA_DIRECTIVE = """【B站延伸学习元数据】
-本次已选择 B站延伸学习。完成学生可读的 Markdown 正文后，在最后另起一行附加且只附加一个不可见的 HTML 注释，严格采用下面的 JSON 形状：
+本次已选择 B站延伸学习。完成学生可读的 Markdown 正文后，必须在最后另起一行附加且只附加一个不可见的 HTML 注释，严格采用下面的 JSON 形状：
 <!-- scut-meta: {"related_topics":["本题核心知识点"],"bilibili_search_keywords":["可用于搜索的关键词组合"]} -->
-其中 `related_topics` 必须是本题的 1～3 个核心知识点；`bilibili_search_keywords` 是可选的 1～3 个搜索词组合。不要在正文中解释这段注释，不要填 URL、视频标题或推荐理由。系统会剥离它，并只把安全关键词用于 B站匿名搜索入口。"""
+其中 `related_topics` 必须是本题的 1～3 个核心知识点；`bilibili_search_keywords` 必须是 1～3 个适合搜索的关键词组合。不要在正文中解释这段注释，不要填 URL、视频标题或推荐理由。系统会剥离它，并只把安全关键词用于 B站匿名搜索入口。"""
 
 _TONE_VISIBLE_CALLOUTS = {
     Tone.TEACHING_ASSISTANT: (

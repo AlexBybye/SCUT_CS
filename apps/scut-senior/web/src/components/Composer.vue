@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { WORKFLOW_TYPES } from "../contracts";
 import { courseAvailabilitySummary } from "../courseAvailability";
 import { modelKey } from "../modelSelection";
-import { availabilityLabel, billingLabel, workflowCopy } from "../appConfig";
+import { availabilityLabel, billingLabel } from "../appConfig";
 import WorkflowDrawer from "./WorkflowDrawer.vue";
 import OptionPicker, { type OptionItem } from "./OptionPicker.vue";
 import { useAppStore } from "../composables/useAppStore";
@@ -57,15 +56,6 @@ const modelPlaceholder = computed(() => {
   return "请选择模型";
 });
 
-// Workflow：固定五种，无需搜索。
-const workflowOptions = computed<OptionItem[]>(() =>
-  WORKFLOW_TYPES.map((type) => ({
-    value: type,
-    label: workflowCopy[type].label,
-    hint: workflowCopy[type].description,
-    dot: "",
-  })),
-);
 </script>
 
 <template>
@@ -79,7 +69,7 @@ const workflowOptions = computed<OptionItem[]>(() =>
         </p>
       </div>
 
-      <!-- 配置条：课程、模型、Workflow 收在输入框上沿。 -->
+      <!-- 配置条只保留运行前必须显式选择的课程和模型。 -->
       <div class="composer-bar">
         <OptionPicker
           v-model="store.selectedCourseId"
@@ -101,17 +91,9 @@ const workflowOptions = computed<OptionItem[]>(() =>
           aria-label="模型"
         />
 
-        <span class="composer-bar-sep" aria-hidden="true"></span>
-
-        <OptionPicker
-          v-model="store.workflowType"
-          :options="workflowOptions"
-          :disabled="store.isRunning"
-          placeholder="选择 Workflow"
-          :searchable="false"
-          placement="up"
-          aria-label="Workflow"
-        />
+        <span class="route-status" :class="{ 'is-manual': store.workflowRouteIsManual }">
+          {{ store.workflowRouteIsManual ? "已纠正" : "自动识别" }} · {{ store.activeWorkflow.label }}
+        </span>
 
         <button
           type="button"
@@ -120,22 +102,22 @@ const workflowOptions = computed<OptionItem[]>(() =>
           aria-controls="composer-drawer"
           @click="store.drawerOpen = !store.drawerOpen"
         >
-          {{ store.drawerOpen ? "收起选项" : store.workflowHasExtraFields ? "更多选项与字段" : "更多选项" }}
+          {{ store.drawerOpen ? "收起字段" : store.workflowHasExtraFields ? "补充字段" : "查看识别" }}
         </button>
       </div>
 
-      <!-- 抽屉：Workflow 专属字段 + 输出偏好，默认收起以保住记录区高度。 -->
+      <!-- 抽屉：自动路由结果、纠正入口和 Workflow 专属字段。 -->
       <Transition name="drawer-pop">
         <WorkflowDrawer v-if="store.drawerOpen" />
       </Transition>
 
       <div class="composer-box">
-        <label class="visually-hidden" for="user-input">{{ store.activeWorkflow.inputLabel }}</label>
+        <label class="visually-hidden" for="user-input">统一任务输入</label>
         <textarea
           id="user-input"
           v-model="store.userInput"
           rows="3"
-          :placeholder="store.activeWorkflow.placeholder"
+          placeholder="输入课程问题、题目、错题、复习需求，或粘贴临时材料。"
           :disabled="store.isRunning"
           @keydown="store.onComposerKeydown"
         ></textarea>
@@ -239,6 +221,25 @@ const workflowOptions = computed<OptionItem[]>(() =>
   width: 1px;
   height: 16px;
   background: var(--line);
+}
+
+.route-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-xs);
+  color: var(--text-soft);
+  background: var(--sunken);
+  font-size: var(--fs-2xs);
+  white-space: nowrap;
+}
+
+.route-status.is-manual {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-wash);
 }
 
 .composer-box {

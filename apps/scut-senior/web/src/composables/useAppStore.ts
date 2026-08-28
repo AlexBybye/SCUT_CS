@@ -23,6 +23,12 @@ import {
   mergeByokProvidersForDisplay,
 } from "../byokCatalog";
 import { canManageByokCredentials } from "../byokSession";
+import {
+  readStoredAnswerMode,
+  readStoredTone,
+  writeStoredAnswerMode,
+  writeStoredTone,
+} from "../assistantPreference";
 import type {
   AnswerMode,
   AuthUser,
@@ -65,6 +71,7 @@ import {
   type ThemeMode,
 } from "../themePreference";
 import { buildWorkflowRequest } from "../workflowRequest";
+import { buildRoutedWorkflowPayload, routeWorkflow } from "../workflowRouter";
 import { selectConversationAttempt } from "../workflowResultValidation";
 import {
   createInitialWorkflowStreamState,
@@ -90,9 +97,8 @@ function createAppStore() {
   const modelCatalogLoadSucceeded = ref(false);
   const selectedCourseId = ref("");
   const selectedModelKey = ref("");
-  const workflowType = ref<WorkflowType>("knowledge_qa");
-  const answerMode = ref<AnswerMode>("detailed");
-  const tone = ref<Tone>("study_partner");
+  const answerMode = ref<AnswerMode>(readStoredAnswerMode());
+  const tone = ref<Tone>(readStoredTone());
   const knowledgeScope = ref<KnowledgeScope>("course_first");
   const includeBilibiliResources = ref(true);
   const userInput = ref("");
@@ -110,6 +116,16 @@ function createAppStore() {
   const reviewFocus = ref("");
   const materialTitle = ref("");
   const readingGoal = ref("");
+
+  const lastWorkflowType = ref<WorkflowType>("knowledge_qa");
+  const workflowOverride = ref<WorkflowType | null>(null);
+  const routeDecision = computed(() => routeWorkflow(userInput.value, lastWorkflowType.value));
+  const workflowType = computed<WorkflowType>({
+    get: () => workflowOverride.value ?? routeDecision.value.workflowType,
+    set: (value) => {
+      workflowOverride.value = value;
+    },
+  });
 
   const railOpen = ref(
     typeof window === "undefined" || window.innerWidth >= 1024,
@@ -165,6 +181,7 @@ function createAppStore() {
   );
   const hasSelectableCourse = computed(() => courses.value.some((course) => course.selectable));
   const activeWorkflow = computed(() => workflowCopy[workflowType.value]);
+  const workflowRouteIsManual = computed(() => workflowOverride.value !== null);
   const byokCatalogIsCurrent = computed(
     () =>
       modelCatalogLoadSucceeded.value &&
@@ -241,6 +258,14 @@ function createAppStore() {
   watch(accentTheme, (accent) => {
     writeStoredAccent(accent);
     applyAccent(accent);
+  });
+
+  watch(answerMode, (mode) => writeStoredAnswerMode(mode));
+  watch(tone, (nextTone) => writeStoredTone(nextTone));
+
+  // 一次手动纠正只作用于当前草稿；发送后输入下一条内容时重新启用自动路由。
+  watch(userInput, (value, previous) => {
+    if (!previous.trim() && value.trim()) workflowOverride.value = null;
   });
 
   function folderIsOpen(courseId: string): boolean {
@@ -636,58 +661,26 @@ function createAppStore() {
       modelId: selectedModel.value.model_id,
     };
 
-    switch (workflowType.value) {
-      case "knowledge_qa":
-        return buildWorkflowRequest({
-          ...common,
-          workflowType: "knowledge_qa",
-          workflowPayload: { question: userInput.value },
-        });
-      case "exam_review":
-        return buildWorkflowRequest({
-          ...common,
-          workflowType: "exam_review",
-          workflowPayload: {
-            syllabus: syllabus.value,
-            exam_date: examDate.value,
-            available_hours: availableHours.value,
-            goals: splitList(goalsText.value),
-            weak_topics: splitList(weakTopicsText.value),
-          },
-        });
-      case "problem_tutor":
-        return buildWorkflowRequest({
-          ...common,
-          workflowType: "problem_tutor",
-          workflowPayload: {
-            problem: userInput.value,
-            user_answer: userAnswer.value,
-            help_level: helpLevel.value,
-            problem_source: problemSource.value,
-          },
-        });
-      case "mistake_review":
-        return buildWorkflowRequest({
-          ...common,
-          workflowType: "mistake_review",
-          workflowPayload: {
-            problem: userInput.value,
-            original_answer: originalAnswer.value,
-            reference_answer: referenceAnswer.value,
-            review_focus: reviewFocus.value,
-          },
-        });
-      case "temporary_material_reading":
-        return buildWorkflowRequest({
-          ...common,
-          workflowType: "temporary_material_reading",
-          workflowPayload: {
-            material_title: materialTitle.value,
-            material_text: userInput.value,
-            reading_goal: readingGoal.value,
-          },
-        });
-    }
+    const selectedWorkflow = workflowType.value;
+    return buildWorkflowRequest({
+      ...common,
+      workflowType: selectedWorkflow,
+      workflowPayload: buildRoutedWorkflowPayload(selectedWorkflow, userInput.value, {
+        syllabus: syllabus.value,
+        examDate: examDate.value,
+        availableHours: availableHours.value,
+        goals: splitList(goalsText.value),
+        weakTopics: splitList(weakTopicsText.value),
+        userAnswer: userAnswer.value,
+        helpLevel: helpLevel.value,
+        problemSource: problemSource.value,
+        originalAnswer: originalAnswer.value,
+        referenceAnswer: referenceAnswer.value,
+        reviewFocus: reviewFocus.value,
+        materialTitle: materialTitle.value,
+        readingGoal: readingGoal.value,
+      }),
+    });
   }
 
   function validateForm(): string | null {
@@ -1134,6 +1127,7 @@ function createAppStore() {
       }
 
       const request = makeRequest(activeConversationId);
+      lastWorkflowType.value = request.workflow_type;
       // 请求已构建完成即视为发送受理：清空主输入框，
       // 「更多选项」等抽屉配置保持不变，方便连发不同问题。
       userInput.value = "";
@@ -1275,6 +1269,8 @@ function createAppStore() {
     selectedCourseId,
     selectedModelKey,
     workflowType,
+    routeDecision,
+    workflowRouteIsManual,
     answerMode,
     tone,
     knowledgeScope,

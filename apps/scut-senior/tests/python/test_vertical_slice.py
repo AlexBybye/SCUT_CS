@@ -73,7 +73,7 @@ def test_mock_vertical_slice_persists_answer_sources_and_trace(
     search_resource = result["external_resources"][0]
     assert search_resource["resource_id"] is None
     assert search_resource["review_status"] == "unreviewed_live_search"
-    assert search_resource["query_keywords"] == ["矩阵的秩", "初等行变换"]
+    assert search_resource["query_keywords"] == ["线性代数", "矩阵的秩", "初等行变换"]
     assert search_resource["url"].startswith(
         "https://search.bilibili.com/all?keyword="
     )

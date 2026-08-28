@@ -73,6 +73,15 @@ def test_parser_ignores_unknown_fields_and_malformed_auxiliary_fields() -> None:
     assert answer.bilibili_search_keywords == ()
 
 
+def test_parser_normalizes_full_width_citation_brackets() -> None:
+    answer = parse_chat_completion_answer(
+        _chat_completion_body("根据候选资料可知【S1】【S2】。")
+    )
+
+    assert answer.repository_answer == "根据候选资料可知[S1][S2]。"
+    assert answer.citation_ids == ("S1", "S2")
+
+
 def test_parser_extracts_and_hides_markdown_bilibili_metadata_sidecar() -> None:
     content = (
         "## 结论\n\n"

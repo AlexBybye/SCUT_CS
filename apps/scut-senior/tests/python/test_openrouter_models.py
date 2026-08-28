@@ -553,7 +553,7 @@ def test_openrouter_model_search_keywords_take_precedence_for_bilibili_without_a
     result = response.json()
     search = result["external_resources"][-1]
     assert search["resource_type"] == "search"
-    assert search["query_keywords"] == ["矩阵的秩", "初等行变换"]
+    assert search["query_keywords"] == ["线性代数", "矩阵的秩", "初等行变换"]
     assert search["review_status"] == "unreviewed_live_search"
     event = next(
         item for item in result["trace"] if item["node"] == "bilibili_link_discovery"
@@ -593,7 +593,7 @@ def test_missing_or_invalid_bilibili_keywords_fall_back_to_model_core_topics(
         "> **助教提示：** 定义、前提、符号先摆齐，少一步都不给分。"
     ) == 1
     search = result["external_resources"][-1]
-    assert search["query_keywords"] == ["矩阵的秩"]
+    assert search["query_keywords"] == ["线性代数", "矩阵的秩"]
     event = next(
         item for item in result["trace"] if item["node"] == "bilibili_link_discovery"
     )
@@ -623,7 +623,7 @@ def test_missing_model_keywords_and_topics_fall_back_to_current_question_search(
     assert response.status_code == 201, response.text
     result = response.json()
     search = result["external_resources"][-1]
-    assert search["query_keywords"] == ["矩阵的秩"]
+    assert search["query_keywords"] == ["线性代数", "矩阵的秩"]
     event = next(
         item for item in result["trace"] if item["node"] == "bilibili_link_discovery"
     )
