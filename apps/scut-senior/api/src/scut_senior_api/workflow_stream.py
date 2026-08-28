@@ -5,6 +5,7 @@ from threading import Lock
 from uuid import UUID, uuid4
 
 from .contracts import (
+    AgentStreamEvent,
     AnswerBlock,
     AnswerDelta,
     TraceEvent,
@@ -102,6 +103,33 @@ class WorkflowStreamSession:
                         ),
                     )
                 )
+
+    def emit_agent_event(
+        self,
+        event_kind: str,
+        *,
+        action: str | None = None,
+        status: str | None = None,
+        reason: str | None = None,
+        step_count: int | None = None,
+        observation_count: int | None = None,
+    ) -> None:
+        """Emit optional phase-two progress without exposing private evidence."""
+        self._emit(
+            WorkflowStreamEvent(
+                kind="agent",
+                workflow_run_id=self.workflow_run_id,
+                sequence=self._take_sequence(),
+                agent_event=AgentStreamEvent(
+                    event_kind=event_kind,
+                    action=action,
+                    status=status,
+                    reason=reason,
+                    step_count=step_count,
+                    observation_count=observation_count,
+                ),
+            )
+        )
 
     def emit_result(self, result: WorkflowResult) -> None:
         if result.workflow_run_id != self.workflow_run_id:

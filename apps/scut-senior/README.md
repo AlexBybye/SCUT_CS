@@ -182,6 +182,8 @@ export SCUT_SENIOR_MODEL_MODE=openrouter_platform
 export SCUT_SENIOR_OPENROUTER_API_KEY='<服务端项目 Key>'
 # 可选：智谱 bigmodel 免费模型（GLM-4.7-Flash / GLM-4-Flash-250414 / GLM-4.6V-Flash）
 export SCUT_SENIOR_ZHIPU_API_KEY='<智谱免费 Key>'
+# 可选：发布阶段二决策/动作/观察事件；默认关闭以兼容旧客户端
+export SCUT_SENIOR_AGENT_EVENT_STREAM_ENABLED=true
 ```
 
 BYOK 真实调用另需稳定的 32 字节 AES 主密钥（见上文“本地验证 BYOK”）。`SCUT_SENIOR_APP_ENV=production` 仍拒绝启动；迭代 4 验收与实网联调使用 `development`。

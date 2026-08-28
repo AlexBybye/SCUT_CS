@@ -9,8 +9,7 @@ from .auth import AuthRequired, AuthenticatedPrincipal, utc_now
 from .agent_loop import (
     AgentBudget,
     AgentState,
-    record_action_result,
-    record_guard_retry,
+    choose_next_action,
     reduce_agent_event,
 )
 from .adapters.bilibili import derive_question_keywords, normalize_keywords
@@ -92,6 +91,7 @@ from .ports import (
     ModelGateway,
     RetrievalBatch,
     RetrievalGateway,
+    RetrievedSource,
     UserKeyModelGateway,
     UserIdentity,
     WorkflowRepository,
@@ -178,6 +178,31 @@ class IterationZeroService:
         return self.repository.create_conversation(
             str(user.user_id), course.course_id, course.display_name
         )
+
+    def preview_exam_review_plan(
+        self, user: RequestIdentity, request: WorkflowRunRequest
+    ) -> dict[str, object]:
+        """Build a user-owned deterministic plan before spending model budget."""
+        if request.workflow_type is not WorkflowType.EXAM_REVIEW:
+            raise ContractConflict("exam review plan preview requires exam_review workflow")
+        conversation = self.repository.get_conversation(
+            str(user.user_id), request.conversation_id
+        )
+        if conversation is None:
+            raise ResourceNotFound("conversation not found")
+        course = self.registry.get(request.course_id or "")
+        if conversation.course_id != course.course_id:
+            raise ContractConflict("workflow course does not match the bound conversation course")
+        if not self._course_available(course.course_id):
+            raise CapabilityUnavailable("course", "course is unavailable")
+        context = self._plan_exam_review(request, course, [])
+        if context is None:
+            raise CapabilityUnavailable("exam_review_plan", "exam review plan is unavailable")
+        return {
+            "confirmation_required": True,
+            "plan": context.plan.to_output_dict(),
+            "retrieval_query": context.retrieval_query,
+        }
 
     def load_course_plugin(
         self, user: RequestIdentity, course_id_or_alias: str
@@ -842,6 +867,7 @@ class IterationZeroService:
         # the action/observation stream is introduced incrementally.
         agent_budget = AgentBudget()
         agent_state = AgentState()
+        agent_started = perf_counter()
 
         def reduce_agent(kind: str, **payload: object) -> None:
             nonlocal agent_state
@@ -850,20 +876,29 @@ class IterationZeroService:
                 {"kind": kind, **payload},
                 budget=agent_budget,
             )
+            append_event = getattr(self.repository, "append_agent_event", None)
+            if append_event is not None:
+                append_event(
+                    run_id,
+                    {"kind": kind, **payload},
+                    agent_state.to_dict(),
+                )
+            if stream_session is not None and self.settings.agent_event_stream_enabled:
+                stream_session.emit_agent_event(
+                    kind,
+                    action=payload.get("action") if isinstance(payload.get("action"), str) else None,
+                    status=payload.get("status") if isinstance(payload.get("status"), str) else None,
+                    reason=payload.get("reason") if isinstance(payload.get("reason"), str) else agent_state.budget_reason,
+                    step_count=agent_state.step_count,
+                    observation_count=agent_state.observation_count,
+                )
             if agent_state.status != "running" and kind != "run_finished":
                 raise ContractConflict(
                     f"agent loop budget crossed: {agent_state.budget_reason or agent_state.status}"
                 )
 
         def record_agent_action(action: str) -> None:
-            nonlocal agent_state
-            agent_state = record_action_result(
-                agent_state, action, budget=agent_budget  # type: ignore[arg-type]
-            )
-            if agent_state.status != "running":
-                raise ContractConflict(
-                    f"agent loop budget crossed: {agent_state.budget_reason or agent_state.status}"
-                )
+            reduce_agent("action_executed", action=action)
 
         run_id = (
             stream_session.workflow_run_id
@@ -927,6 +962,8 @@ class IterationZeroService:
         )
 
         def finish_interrupted() -> WorkflowResult | None:
+            if stream_session is not None and stream_session.cancelled:
+                mark_agent_terminal("interrupted")
             return self._finish_interrupted_if_requested(
                 stream_session=stream_session,
                 user=user,
@@ -948,6 +985,10 @@ class IterationZeroService:
             )
 
         def interrupt_if_step_not_claimed() -> WorkflowResult | None:
+            if perf_counter() - agent_started > agent_budget.max_runtime_seconds:
+                if agent_state.status == "running":
+                    reduce_agent("budget_crossed", reason="max_runtime_seconds")
+                raise ContractConflict("agent loop budget crossed: max_runtime_seconds")
             if (
                 stream_session is None
                 or stream_session.try_claim_step_start()
@@ -959,6 +1000,10 @@ class IterationZeroService:
                     "workflow step admission failed without cancellation"
                 )
             return interrupted_result
+
+        def mark_agent_terminal(status: str) -> None:
+            if agent_state.status == "running":
+                reduce_agent("run_finished", status=status)
 
         def persist_failed_or_interrupted(
             *, failure_node: str, duration_ms: int
@@ -976,6 +1021,7 @@ class IterationZeroService:
                 raise RuntimeError(
                     "workflow failure terminal claim was already consumed"
                 )
+            mark_agent_terminal("failed")
             self._persist_failed_attempt(
                 user=user,
                 request=request,
@@ -1013,7 +1059,9 @@ class IterationZeroService:
             if exam_plan is not None
             else workflow_focus.authoritative_query
         )
-        reduce_agent("decision_produced", action="retrieve")
+        reduce_agent(
+            "decision_produced", action=choose_next_action(agent_state, phase="retrieve")
+        )
         interrupted = interrupt_if_step_not_claimed()
         if interrupted is not None:
             return interrupted
@@ -1045,7 +1093,9 @@ class IterationZeroService:
                     ):
                         reduce_agent(
                             "decision_produced",
-                            action="retrieve_with_query_rewrite",
+                            action=choose_next_action(
+                                agent_state, phase="retrieve_with_query_rewrite"
+                            ),
                         )
                         record_agent_action("retrieve_with_query_rewrite")
                         retrieval_batch = context_batch
@@ -1101,6 +1151,7 @@ class IterationZeroService:
                 raise ContractConflict(
                     "source authorization guard rejected a source outside the conversation course"
                 )
+            sources = _dedupe_sources(sources)
             record_agent_action("retrieve")
         except Exception:
             interrupted = persist_failed_or_interrupted(
@@ -1134,9 +1185,7 @@ class IterationZeroService:
                 ],
             },
         )
-        agent_state = reduce_agent_event(
-            agent_state, {"kind": "observation_recorded"}, budget=agent_budget
-        )
+        reduce_agent("observation_recorded")
         _append_trace(
             trace,
             node="source_authorization_guard",
@@ -1183,7 +1232,10 @@ class IterationZeroService:
                 # Admission and cancellation share a short lifecycle lock. A
                 # claim that wins is considered in flight; cancel never waits
                 # for the synchronous provider call and wins at the next node.
-                reduce_agent("decision_produced", action="generate_answer")
+                reduce_agent(
+                    "decision_produced",
+                    action=choose_next_action(agent_state, phase="generate"),
+                )
                 interrupted = interrupt_if_step_not_claimed()
                 if interrupted is not None:
                     return interrupted
@@ -1273,13 +1325,7 @@ class IterationZeroService:
                         if interrupted is not None:
                             return interrupted
                         raise
-                    agent_state = record_guard_retry(
-                        agent_state, budget=agent_budget
-                    )
-                    if agent_state.status != "running":
-                        raise ContractConflict(
-                            f"agent loop budget crossed: {agent_state.budget_reason or agent_state.status}"
-                        )
+                    reduce_agent("guard_retry_recorded")
                     retry_count += 1
                     _append_trace(
                         trace,
@@ -1563,7 +1609,7 @@ class IterationZeroService:
                 "workflow completion terminal claim was already consumed"
             )
 
-        reduce_agent("run_finished", status="finished")
+        mark_agent_terminal("finished")
         machine.transition(RunStatus.COMPLETED)
         repository_answer = _answer_block_content(
             answer_blocks, AnswerBlockType.REPOSITORY
@@ -2115,6 +2161,22 @@ def _emit_confirmed_persistence_trace(
 ) -> None:
     if isinstance(trace, StreamingTrace):
         trace.emit_appended(event)
+
+
+def _dedupe_sources(sources: list[RetrievedSource]) -> list[RetrievedSource]:
+    """Keep the first occurrence of each chunk in the evidence ledger."""
+    seen: set[str] = set()
+    unique: list[RetrievedSource] = []
+    for source in sources:
+        chunk_id = getattr(source, "chunk_id", None)
+        if not isinstance(chunk_id, str) or not chunk_id:
+            unique.append(source)
+            continue
+        if chunk_id in seen:
+            continue
+        seen.add(chunk_id)
+        unique.append(source)
+    return unique
 
 
 def _answer_block_content(

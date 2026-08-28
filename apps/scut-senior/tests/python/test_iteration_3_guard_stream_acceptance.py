@@ -1028,6 +1028,35 @@ def test_stream_endpoint_uses_one_run_and_restores_the_terminal_history(
     assert restored.json() == terminal_result
 
 
+def test_phase_two_agent_events_are_opt_in_and_ordered(tmp_path: Path) -> None:
+    app = create_app(
+        Settings(
+            app_env="test",
+            database_path=tmp_path / "agent-stream.db",
+            agent_event_stream_enabled=True,
+        )
+    )
+    client = TestClient(app)
+    conversation = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    ).json()
+    response = client.post(
+        "/api/v1/workflow-runs/stream",
+        json=_request_dict(conversation["conversation_id"]),
+    )
+    assert response.status_code == 200, response.text
+    events = _ndjson_events(response.text)
+    agent_events = [event for event in events if event["kind"] == "agent"]
+    assert agent_events
+    assert {event["agent_event"]["event_kind"] for event in agent_events} >= {
+        "decision_produced",
+        "action_executed",
+        "observation_recorded",
+        "run_finished",
+    }
+    assert [event["sequence"] for event in events] == list(range(len(events)))
+
+
 @pytest.mark.parametrize("invalid_result", ["empty", "multiple", "malformed"])
 def test_invalid_bilibili_adapter_output_degrades_without_blocking_the_answer(
     tmp_path: Path,

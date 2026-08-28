@@ -456,6 +456,27 @@ def test_exam_review_run_carries_plan_appendix_and_safe_trace(tmp_path: Path) ->
     assert result["evidence_status"] in {"sufficient", "partial"}
 
 
+def test_exam_review_plan_preview_requires_explicit_confirmation_before_run(
+    tmp_path: Path,
+) -> None:
+    app = create_app(Settings(app_env="test", database_path=tmp_path / "preview.db"))
+    client = TestClient(app)
+    conversation = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    ).json()
+    response = client.post(
+        "/api/v1/exam-review/plan/preview",
+        json=_exam_request(conversation["conversation_id"], syllabus="矩阵与线性方程组"),
+    )
+    assert response.status_code == 200, response.text
+    payload = response.json()
+    assert payload["confirmation_required"] is True
+    assert payload["plan"]["plan_version"] == "exam-review-plan-v1"
+    assert client.get(
+        f"/api/v1/conversations/{conversation['conversation_id']}"
+    ).json()["runs"] == []
+
+
 def test_without_syllabus_run_declares_non_official_scope(tmp_path: Path) -> None:
     client = _client(tmp_path)
     conversation = client.post(

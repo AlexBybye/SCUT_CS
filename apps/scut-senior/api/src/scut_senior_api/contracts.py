@@ -496,16 +496,32 @@ class WorkflowStreamError(ContractModel):
     detail: Annotated[str, Field(min_length=1, max_length=500)]
 
 
+class AgentStreamEvent(ContractModel):
+    """Safe, non-authoritative progress payload for phase-two clients."""
+
+    event_kind: TraceCode
+    action: TraceCode | None = None
+    status: TraceCode | None = None
+    reason: TraceCode | None = None
+    step_count: Annotated[int | None, Field(ge=0)] = None
+    observation_count: Annotated[int | None, Field(ge=0)] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_only_present_fields(self, handler: Any) -> dict[str, Any]:
+        return {key: value for key, value in handler(self).items() if value is not None}
+
+
 class WorkflowStreamEvent(ContractModel):
     """One ordered NDJSON event from a single Workflow Runtime execution."""
 
-    kind: Literal["trace", "answer_delta", "result", "error"]
+    kind: Literal["trace", "answer_delta", "result", "error", "agent"]
     workflow_run_id: UUID | None
     sequence: Annotated[int, Field(ge=0)]
     trace_event: TraceEvent | None = None
     answer_delta: AnswerDelta | None = None
     result: WorkflowResult | None = None
     error: WorkflowStreamError | None = None
+    agent_event: AgentStreamEvent | None = None
 
     @model_validator(mode="after")
     def enforce_exact_event_payload(self) -> "WorkflowStreamEvent":
@@ -514,6 +530,7 @@ class WorkflowStreamEvent(ContractModel):
             "answer_delta": self.answer_delta,
             "result": self.result,
             "error": self.error,
+            "agent": self.agent_event,
         }
         if payloads[self.kind] is None or any(
             value is not None for key, value in payloads.items() if key != self.kind

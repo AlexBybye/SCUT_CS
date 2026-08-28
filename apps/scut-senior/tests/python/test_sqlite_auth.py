@@ -67,8 +67,9 @@ def test_auth_migrations_are_ledgered_and_sqlite_runtime_pragmas_are_enabled(
             "0007_course_plugin_states.sql",
             "0008_temporary_materials_contributions.sql",
             "0009_contributions_repo_path.sql",
-            "0010_platform_quota_shared.sql",
-            "0011_account_lifecycle.sql",
+        "0010_platform_quota_shared.sql",
+        "0011_account_lifecycle.sql",
+        "0012_agent_events.sql",
         ]
         assert connection.execute("PRAGMA foreign_keys").fetchone()[0] == 1
         assert connection.execute("PRAGMA journal_mode").fetchone()[0] == "wal"
@@ -76,6 +77,54 @@ def test_auth_migrations_are_ledgered_and_sqlite_runtime_pragmas_are_enabled(
         assert connection.execute("PRAGMA synchronous").fetchone()[0] == 1
 
     assert SQLiteMockWorkflowRepository is SQLiteWorkflowRepository
+
+
+def test_agent_events_are_append_only_and_snapshot_is_replayable(tmp_path: Path) -> None:
+    from scut_senior_api.agent_loop import replay_agent_events
+
+    repository = SQLiteWorkflowRepository(tmp_path / "agent.db")
+    conversation_id = UUID("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa")
+    run_id = UUID("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb")
+    now = datetime.now(UTC).isoformat()
+    with repository.connect() as connection:
+        connection.execute(
+            "INSERT INTO conversations "
+            "(conversation_id, user_id, course_id, title, created_at, updated_at, expires_at) "
+            "VALUES (?, ?, ?, ?, ?, ?, ?)",
+            (str(conversation_id), "user", "linear_algebra", "test", now, now, now),
+        )
+        connection.execute(
+            "INSERT INTO workflow_runs "
+            "(workflow_run_id, conversation_id, user_id, run_status, answer_status, "
+            "workflow_type, request_json, result_json, created_at, updated_at, "
+            "attempt_group_id, regenerated_from_run_id, expires_at) "
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            (str(run_id), str(conversation_id), "user", "running", "answered", "knowledge_qa", "{}", "{}", now, now, str(run_id), None, now),
+        )
+
+    events = [
+        {"kind": "decision_produced", "action": "retrieve"},
+        {"kind": "action_executed", "action": "retrieve"},
+        {"kind": "observation_recorded"},
+        {"kind": "run_finished", "status": "finished"},
+    ]
+    from scut_senior_api.agent_loop import AgentState, reduce_agent_event
+
+    state = AgentState()
+    for event in events:
+        state = reduce_agent_event(state, event)
+        repository.append_agent_event(run_id, event, state.to_dict())
+
+    assert repository.list_agent_events(run_id) == events
+    snapshot = repository.get_agent_snapshot(run_id)
+    assert snapshot is not None
+    assert snapshot == replay_agent_events(repository.list_agent_events(run_id)).to_dict()
+    with pytest.raises(ValueError, match="terminal"):
+        repository.append_agent_event(
+            run_id,
+            {"kind": "observation_recorded"},
+            snapshot,
+        )
 
 
 def test_legacy_0004_schema_is_rebuilt_without_removed_providers_or_extra_columns(

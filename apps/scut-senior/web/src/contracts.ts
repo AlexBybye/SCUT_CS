@@ -406,7 +406,16 @@ export interface WorkflowStreamError {
   detail: string;
 }
 
-export type WorkflowStreamKind = "trace" | "answer_delta" | "result" | "error";
+export interface AgentStreamEvent {
+  event_kind: string;
+  action?: string;
+  status?: string;
+  reason?: string;
+  step_count?: number;
+  observation_count?: number;
+}
+
+export type WorkflowStreamKind = "trace" | "answer_delta" | "result" | "error" | "agent";
 
 export interface WorkflowStreamEvent {
   kind: WorkflowStreamKind;
@@ -416,6 +425,7 @@ export interface WorkflowStreamEvent {
   answer_delta?: AnswerDelta;
   result?: WorkflowRunResult;
   error?: WorkflowStreamError;
+  agent_event?: AgentStreamEvent;
 }
 
 export interface WorkflowRunResult {

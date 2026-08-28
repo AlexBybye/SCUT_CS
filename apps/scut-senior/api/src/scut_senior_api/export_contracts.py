@@ -41,6 +41,7 @@ STREAM_EVENT_PAYLOAD_DEFS = {
     "answer_delta": ("answer_delta", "AnswerDelta"),
     "result": ("result", "WorkflowResult"),
     "error": ("error", "WorkflowStreamError"),
+    "agent": ("agent_event", "AgentStreamEvent"),
 }
 
 TERMINAL_RUN_STATUSES = [

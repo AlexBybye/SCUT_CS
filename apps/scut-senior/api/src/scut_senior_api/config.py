@@ -44,6 +44,8 @@ class Settings:
     # only gates the plan node, appendix and past-exam-first retrieval query;
     # turning it off restores the pre-iteration-5 exam_review behaviour.
     exam_review_plan_enabled: bool = True
+    # Phase-two agent progress events are opt-in for old NDJSON clients.
+    agent_event_stream_enabled: bool = False
     # Iteration 7.5 (SOP §12A Group B): in-process periodic cleanup scheduler.
     # Decision gate confirmed form = in-process daemon thread for single-host
     # deployment; disabling restores startup/access-triggered cleanup only.
@@ -104,6 +106,9 @@ class Settings:
             ),
             exam_review_plan_enabled=_env_bool(
                 "SCUT_SENIOR_EXAM_REVIEW_PLAN_ENABLED", True
+            ),
+            agent_event_stream_enabled=_env_bool(
+                "SCUT_SENIOR_AGENT_EVENT_STREAM_ENABLED", False
             ),
             maintenance_scheduler_enabled=_env_bool(
                 "SCUT_SENIOR_MAINTENANCE_SCHEDULER_ENABLED", True
@@ -185,6 +190,10 @@ class Settings:
         if isinstance(self.dense_retrieval_enabled, bool) is False:
             raise UnsafeRuntimeConfiguration(
                 "SCUT_SENIOR_DENSE_RETRIEVAL_ENABLED must be boolean"
+            )
+        if isinstance(self.agent_event_stream_enabled, bool) is False:
+            raise UnsafeRuntimeConfiguration(
+                "SCUT_SENIOR_AGENT_EVENT_STREAM_ENABLED must be boolean"
             )
         if self.dense_retrieval_enabled and self.retrieval_mode == "local_corpus":
             if self.onnx_embedding_model_path is None:

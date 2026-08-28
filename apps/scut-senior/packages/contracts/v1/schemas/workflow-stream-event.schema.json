@@ -1,5 +1,86 @@
 {
   "$defs": {
+    "AgentStreamEvent": {
+      "additionalProperties": false,
+      "description": "Safe, non-authoritative progress payload for phase-two clients.",
+      "properties": {
+        "action": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z][a-z0-9_]{0,99}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Action"
+        },
+        "event_kind": {
+          "pattern": "^[a-z][a-z0-9_]{0,99}$",
+          "title": "Event Kind",
+          "type": "string"
+        },
+        "observation_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Observation Count"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z][a-z0-9_]{0,99}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z][a-z0-9_]{0,99}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Status"
+        },
+        "step_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Step Count"
+        }
+      },
+      "required": [
+        "event_kind"
+      ],
+      "title": "AgentStreamEvent",
+      "type": "object"
+    },
     "AnswerBlock": {
       "additionalProperties": false,
       "properties": {
@@ -1133,6 +1214,9 @@
       },
       "then": {
         "properties": {
+          "agent_event": {
+            "type": "null"
+          },
           "answer_delta": {
             "type": "null"
           },
@@ -1169,6 +1253,9 @@
       },
       "then": {
         "properties": {
+          "agent_event": {
+            "type": "null"
+          },
           "answer_delta": {
             "$ref": "#/$defs/AnswerDelta"
           },
@@ -1205,6 +1292,9 @@
       },
       "then": {
         "properties": {
+          "agent_event": {
+            "type": "null"
+          },
           "answer_delta": {
             "type": "null"
           },
@@ -1260,6 +1350,9 @@
       },
       "then": {
         "properties": {
+          "agent_event": {
+            "type": "null"
+          },
           "answer_delta": {
             "type": "null"
           },
@@ -1277,10 +1370,60 @@
           "error"
         ]
       }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "agent"
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "agent_event": {
+            "$ref": "#/$defs/AgentStreamEvent"
+          },
+          "answer_delta": {
+            "type": "null"
+          },
+          "error": {
+            "type": "null"
+          },
+          "result": {
+            "type": "null"
+          },
+          "trace_event": {
+            "type": "null"
+          },
+          "workflow_run_id": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "agent_event",
+          "workflow_run_id"
+        ]
+      }
     }
   ],
   "description": "One ordered NDJSON event from a single Workflow Runtime execution.",
   "properties": {
+    "agent_event": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AgentStreamEvent"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
     "answer_delta": {
       "anyOf": [
         {
@@ -1308,7 +1451,8 @@
         "trace",
         "answer_delta",
         "result",
-        "error"
+        "error",
+        "agent"
       ],
       "title": "Kind",
       "type": "string"

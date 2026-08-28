@@ -5,8 +5,10 @@ import pytest
 from scut_senior_api.agent_loop import (
     AgentBudget,
     AgentState,
+    choose_next_action,
     record_action_result,
     record_guard_retry,
+    replay_agent_events,
     reduce_agent_event,
 )
 
@@ -24,6 +26,14 @@ def test_reducer_counts_decisions_and_observations() -> None:
     assert state.step_count == 1
     assert state.retrieval_rounds == 1
     assert state.observation_count == 1
+
+
+def test_compatibility_policy_is_single_step_and_allowlisted() -> None:
+    assert choose_next_action(AgentState(), phase="retrieve") == "retrieve"
+    state = AgentState(retrieval_rounds=1)
+    assert choose_next_action(state, phase="generate") == "generate_answer"
+    with pytest.raises(ValueError, match="unknown"):
+        choose_next_action(AgentState(), phase="planner")
 
 
 def test_reducer_rejects_unknown_actions_and_late_events() -> None:
@@ -77,3 +87,32 @@ def test_guard_retry_budget_is_explicit() -> None:
     state = record_guard_retry(state, budget=budget)
     assert state.status == "budget_exhausted"
     assert state.budget_reason == "max_guard_retries"
+
+
+def test_replay_reconstructs_action_and_terminal_state() -> None:
+    events = [
+        event("decision_produced", action="retrieve"),
+        event("action_executed", action="retrieve"),
+        event("observation_recorded"),
+        event("decision_produced", action="generate_answer"),
+        event("action_executed", action="generate_answer"),
+        event("run_finished", status="finished"),
+    ]
+    state = replay_agent_events(events)
+    assert state == AgentState(
+        status="finished",
+        step_count=2,
+        retrieval_rounds=1,
+        observation_count=1,
+        last_action="generate_answer",
+    )
+
+
+def test_agent_state_round_trips_through_json_shape() -> None:
+    state = AgentState(
+        step_count=1,
+        retrieval_rounds=1,
+        last_action="retrieve",
+        budget_reason=None,
+    )
+    assert AgentState.from_dict(state.to_dict()) == state

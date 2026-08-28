@@ -26,6 +26,7 @@ from ..auth import (
     secure_token,
     utc_now,
 )
+from ..agent_loop import replay_agent_events
 from ..contracts import (
     ContributionRecord,
     ContributionState,
@@ -1798,6 +1799,74 @@ class SQLiteWorkflowRepository:
                 (str(run_id), user_id),
             )
         return cursor.rowcount == 1
+
+    def append_agent_event(
+        self,
+        run_id: UUID,
+        event: dict[str, object],
+        state: dict[str, object],
+    ) -> int:
+        """Append one reducer event and its derived snapshot atomically."""
+        if not isinstance(event, dict) or not isinstance(state, dict):
+            raise TypeError("agent event and state must be objects")
+        payload = json.dumps(event, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+        state_payload = json.dumps(state, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+        now = self._now().isoformat()
+        normalized_run_id = str(run_id)
+        with self._connect() as connection:
+            owner = connection.execute(
+                "SELECT 1 FROM workflow_runs WHERE workflow_run_id = ?",
+                (normalized_run_id,),
+            ).fetchone()
+            if owner is None:
+                raise LookupError("workflow run does not exist")
+            row = connection.execute(
+                "SELECT COALESCE(MAX(sequence), -1) + 1 AS next_sequence "
+                "FROM agent_events WHERE workflow_run_id = ?",
+                (normalized_run_id,),
+            ).fetchone()
+            sequence = int(row["next_sequence"])
+            existing = connection.execute(
+                "SELECT payload_json FROM agent_events "
+                "WHERE workflow_run_id = ? ORDER BY sequence ASC",
+                (normalized_run_id,),
+            ).fetchall()
+            replayed = replay_agent_events(
+                [json.loads(item["payload_json"]) for item in existing] + [event]
+            )
+            if replayed.to_dict() != state:
+                raise ValueError("agent snapshot does not match event replay")
+            connection.execute(
+                "INSERT INTO agent_events "
+                "(workflow_run_id, sequence, event_id, payload_json, created_at) "
+                "VALUES (?, ?, ?, ?, ?)",
+                (normalized_run_id, sequence, str(uuid4()), payload, now),
+            )
+            connection.execute(
+                "INSERT INTO agent_state_snapshots "
+                "(workflow_run_id, state_json, updated_at) VALUES (?, ?, ?) "
+                "ON CONFLICT(workflow_run_id) DO UPDATE SET "
+                "state_json = excluded.state_json, updated_at = excluded.updated_at",
+                (normalized_run_id, state_payload, now),
+            )
+        return sequence
+
+    def list_agent_events(self, run_id: UUID) -> list[dict[str, object]]:
+        with self._connect() as connection:
+            rows = connection.execute(
+                "SELECT payload_json FROM agent_events "
+                "WHERE workflow_run_id = ? ORDER BY sequence ASC",
+                (str(run_id),),
+            ).fetchall()
+        return [json.loads(row["payload_json"]) for row in rows]
+
+    def get_agent_snapshot(self, run_id: UUID) -> dict[str, object] | None:
+        with self._connect() as connection:
+            row = connection.execute(
+                "SELECT state_json FROM agent_state_snapshots WHERE workflow_run_id = ?",
+                (str(run_id),),
+            ).fetchone()
+        return json.loads(row["state_json"]) if row is not None else None
 
     def get_attempt(self, user_id: str, run_id: UUID) -> WorkflowAttempt | None:
         self.cleanup_history_records()

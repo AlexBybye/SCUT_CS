@@ -947,6 +947,28 @@ def create_app(
     ) -> WorkflowResult:
         return service.run(user, payload)
 
+    @app.post("/api/v1/exam-review/plan/preview")
+    def preview_exam_review_plan(
+        payload: WorkflowRunRequest,
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> dict[str, object]:
+        return service.preview_exam_review_plan(user, payload)
+
+    @app.post(
+        "/api/v1/exam-review/plan/confirm",
+        response_model=WorkflowResult,
+        status_code=201,
+    )
+    def confirm_exam_review_plan(
+        payload: WorkflowRunRequest,
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> WorkflowResult:
+        # The preview is intentionally read-only. Calling confirm is the
+        # explicit user approval that starts the normal EventStream runtime.
+        if payload.workflow_type.value != "exam_review":
+            raise HTTPException(status_code=409, detail="exam review plan confirmation requires exam_review workflow")
+        return service.run(user, payload)
+
     @app.post("/api/v1/workflow-runs/stream")
     async def stream_workflow(
         payload: WorkflowRunRequest,
@@ -999,6 +1021,7 @@ def create_app(
                         "answer_delta",
                         "result",
                         "error",
+                        "agent_event",
                     ):
                         if event_payload.get(sibling) is None:
                             event_payload.pop(sibling, None)

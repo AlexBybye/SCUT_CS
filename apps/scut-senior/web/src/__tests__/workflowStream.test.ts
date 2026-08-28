@@ -243,6 +243,23 @@ describe("parseWorkflowNdjson", () => {
 });
 
 describe("reduceWorkflowStreamEvent", () => {
+  it("accepts optional phase-two agent progress events", () => {
+    const state = reduceWorkflowStreamEvent(createInitialWorkflowStreamState(), {
+      kind: "agent",
+      workflow_run_id: "run-001",
+      sequence: 0,
+      agent_event: {
+        event_kind: "decision_produced",
+        action: "retrieve",
+        step_count: 1,
+        observation_count: 0,
+      },
+    });
+    expect(state.phase).toBe("running");
+    expect(state.agentEvents).toHaveLength(1);
+    expect(state.agentEvents[0]?.action).toBe("retrieve");
+  });
+
   it("accumulates same-run Trace and answer deltas with contiguous sequences", () => {
     let state = createInitialWorkflowStreamState();
     state = reduceWorkflowStreamEvent(state, traceEvent(0));

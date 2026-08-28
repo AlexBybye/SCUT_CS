@@ -2,6 +2,7 @@ import type {
   AnswerBlock,
   AnswerBlockType,
   TraceEvent,
+  AgentStreamEvent,
   WorkflowRunResult,
   WorkflowStreamError,
   WorkflowStreamEvent,
@@ -14,7 +15,7 @@ import {
 
 export { WorkflowStreamProtocolError } from "./workflowResultValidation";
 
-const STREAM_KINDS = new Set(["trace", "answer_delta", "result", "error"]);
+const STREAM_KINDS = new Set(["trace", "answer_delta", "result", "error", "agent"]);
 const ANSWER_BLOCK_TYPES = new Set<AnswerBlockType>([
   "repository",
   "user_material",
@@ -30,6 +31,7 @@ const EVENT_FIELDS = new Set([
   "answer_delta",
   "result",
   "error",
+  "agent_event",
 ]);
 const ANSWER_DELTA_FIELDS = new Set(["block_index", "type", "delta"]);
 const STREAM_ERROR_FIELDS = new Set(["code", "detail"]);
@@ -62,13 +64,13 @@ function validateEvent(value: unknown, expectedConversationId?: string): Workflo
   if (value.kind === "error" && runId !== null && typeof runId !== "string") {
     throw new WorkflowStreamProtocolError("error workflow_run_id must be a string or null");
   }
-  const payloadKeys = ["trace_event", "answer_delta", "result", "error"] as const;
+  const payloadKeys = ["trace_event", "answer_delta", "result", "error", "agent_event"] as const;
   const present = payloadKeys.filter((key) => value[key] !== undefined);
   const expected = value.kind === "trace"
     ? "trace_event"
     : value.kind === "answer_delta"
       ? "answer_delta"
-      : value.kind;
+      : value.kind === "agent" ? "agent_event" : value.kind;
   if (present.length !== 1 || present[0] !== expected) {
     throw new WorkflowStreamProtocolError("stream event payload does not match kind");
   }
@@ -89,6 +91,24 @@ function validateEvent(value: unknown, expectedConversationId?: string): Workflo
     if (typeof value.error.code !== "string" || !ERROR_CODE_PATTERN.test(value.error.code)
       || typeof value.error.detail !== "string" || !value.error.detail || value.error.detail.length > 500) {
       throw new WorkflowStreamProtocolError("invalid stream error");
+    }
+  } else if (value.kind === "agent") {
+    const agent = value.agent_event;
+    if (!isRecord(agent)) throw new WorkflowStreamProtocolError("invalid agent event");
+    const allowed = new Set(["event_kind", "action", "status", "reason", "step_count", "observation_count"]);
+    assertOnlyKeys(agent, allowed, "agent event");
+    if (typeof agent.event_kind !== "string" || !ERROR_CODE_PATTERN.test(agent.event_kind)) {
+      throw new WorkflowStreamProtocolError("invalid agent event kind");
+    }
+    for (const key of ["action", "status", "reason"] as const) {
+      if (agent[key] !== undefined && (typeof agent[key] !== "string" || !ERROR_CODE_PATTERN.test(agent[key]))) {
+        throw new WorkflowStreamProtocolError("invalid agent event field");
+      }
+    }
+    for (const key of ["step_count", "observation_count"] as const) {
+      if (agent[key] !== undefined && (typeof agent[key] !== "number" || !Number.isInteger(agent[key]) || agent[key] < 0)) {
+        throw new WorkflowStreamProtocolError("invalid agent event counter");
+      }
     }
   } else {
     validateWorkflowRunResult(value.result, {
@@ -155,6 +175,7 @@ export interface WorkflowStreamState {
   lastSequence: number;
   traceEvents: TraceEvent[];
   answerBlocks: AnswerBlock[];
+  agentEvents: AgentStreamEvent[];
   result: WorkflowRunResult | null;
   error: WorkflowStreamError | null;
 }
@@ -166,6 +187,7 @@ export function createInitialWorkflowStreamState(): WorkflowStreamState {
     lastSequence: -1,
     traceEvents: [],
     answerBlocks: [],
+    agentEvents: [],
     result: null,
     error: null,
   };
@@ -206,6 +228,7 @@ export function reduceWorkflowStreamEvent(
     lastSequence: event.sequence,
     traceEvents: [...state.traceEvents],
     answerBlocks: state.answerBlocks.map((block) => ({ ...block })),
+    agentEvents: [...state.agentEvents],
   };
   if (event.kind === "trace" && event.trace_event) {
     if (event.trace_event.sequence !== next.traceEvents.length) {
@@ -225,6 +248,8 @@ export function reduceWorkflowStreamEvent(
       throw new WorkflowStreamProtocolError("answer delta changed block type");
     }
     next.answerBlocks[index]!.content += delta;
+  } else if (event.kind === "agent" && event.agent_event) {
+    next.agentEvents.push(event.agent_event);
   } else if (event.kind === "result" && event.result) {
     if (JSON.stringify(next.answerBlocks) !== JSON.stringify(event.result.answer_blocks)) {
       throw new WorkflowStreamProtocolError(
