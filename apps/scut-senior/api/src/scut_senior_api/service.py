@@ -6,6 +6,7 @@ from time import perf_counter
 from uuid import UUID, uuid4
 
 from .auth import AuthRequired, AuthenticatedPrincipal, utc_now
+from .agent_loop import AgentBudget, AgentState, reduce_agent_event
 from .adapters.bilibili import derive_question_keywords, normalize_keywords
 from .adapters.exam_facts import ExamFactsUnavailable
 from .byok_catalog import (
@@ -830,6 +831,24 @@ class IterationZeroService:
         machine = RunStateMachine()
         machine.transition(RunStatus.RUNNING)
         trace: list[TraceEvent] = StreamingTrace(stream_session)
+        # Phase two reducer is request-local and deliberately has no wire
+        # contract of its own yet. It governs the existing one-shot path while
+        # the action/observation stream is introduced incrementally.
+        agent_budget = AgentBudget()
+        agent_state = AgentState()
+
+        def reduce_agent(kind: str, **payload: object) -> None:
+            nonlocal agent_state
+            agent_state = reduce_agent_event(
+                agent_state,
+                {"kind": kind, **payload},
+                budget=agent_budget,
+            )
+            if agent_state.status != "running" and kind != "run_finished":
+                raise ContractConflict(
+                    f"agent loop budget crossed: {agent_state.budget_reason or agent_state.status}"
+                )
+
         run_id = (
             stream_session.workflow_run_id
             if stream_session is not None
@@ -978,6 +997,7 @@ class IterationZeroService:
             if exam_plan is not None
             else workflow_focus.authoritative_query
         )
+        reduce_agent("decision_produced", action="retrieve")
         interrupted = interrupt_if_step_not_claimed()
         if interrupted is not None:
             return interrupted
@@ -1092,6 +1112,9 @@ class IterationZeroService:
                 ],
             },
         )
+        agent_state = reduce_agent_event(
+            agent_state, {"kind": "observation_recorded"}, budget=agent_budget
+        )
         _append_trace(
             trace,
             node="source_authorization_guard",
@@ -1138,6 +1161,7 @@ class IterationZeroService:
                 # Admission and cancellation share a short lifecycle lock. A
                 # claim that wins is considered in flight; cancel never waits
                 # for the synchronous provider call and wins at the next node.
+                reduce_agent("decision_produced", action="generate_answer")
                 interrupted = interrupt_if_step_not_claimed()
                 if interrupted is not None:
                     return interrupted
@@ -1510,6 +1534,7 @@ class IterationZeroService:
                 "workflow completion terminal claim was already consumed"
             )
 
+        reduce_agent("run_finished", status="finished")
         machine.transition(RunStatus.COMPLETED)
         repository_answer = _answer_block_content(
             answer_blocks, AnswerBlockType.REPOSITORY

@@ -43,9 +43,10 @@ PLAN-2.md 仍是唯一基准文档；本文件只登记**用户直接决策**，
 
 ## D5 · 阶段二先落地受限单步决策内核
 
-- **决策**：阶段二第一切片先实现纯 Python 的 AgentState reducer、动作白名单和
-  死循环预算；现有一次性检索→生成链路继续作为兼容运行路径，待 reducer 验收后
-  再接入模型决策，不引入独立 Planner、ReAct 框架或第二套事件承载机制。
+- **决策**：阶段二第一切片实现纯 Python 的 AgentState reducer、动作白名单和
+  死循环预算，并以内核方式接入现有一次性检索→生成链路；该链路继续作为兼容
+  降级路径，不引入独立 Planner、ReAct 框架或第二套事件承载机制。
 - **原因**：当前已有 EventStream、取消和终态持久化，但尚未具备
-  `decision_produced → action → observation_recorded` 的闭环。先固定可测试的状态
-  合同，能把阶段二拆成低风险增量而不改变一期本地运行边界。
+  `decision_produced → action → observation_recorded` 的闭环。当前运行已在检索前、
+  模型尝试前和成功终态处使用 reducer，后续再逐步把模型决策结果接入动作协议，
+  不改变一期本地运行边界。
