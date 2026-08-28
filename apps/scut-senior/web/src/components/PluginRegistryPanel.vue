@@ -16,8 +16,8 @@ const loading = ref(true);
 const errorMessage = ref("");
 const busyCourseId = ref("");
 
-// 分组开合：课程插件默认展开（但限高内滚 + 搜索），预置与工具默认收起。
-const coursesOpen = ref(true);
+// 分组开合：课程插件默认收起，避免进入个人中心时一次渲染全部课程插件。
+const coursesOpen = ref(false);
 const presetsOpen = ref(false);
 const toolsOpen = ref(false);
 const courseQuery = ref("");
@@ -33,6 +33,25 @@ const pluginStateChip: Record<string, string> = {
   fixture_only: "chip-warn",
   registered: "",
 };
+
+const PLUGIN_TELEMETRY_KEY = "scut-senior.plugin-management-events";
+
+function recordPluginTelemetry(course: CoursePluginEntry, loaded: boolean): void {
+  const event = {
+    event: "course_plugin_state_changed",
+    course_id: course.course_id,
+    loaded,
+    recorded_at: new Date().toISOString(),
+  };
+  try {
+    const previous = JSON.parse(localStorage.getItem(PLUGIN_TELEMETRY_KEY) || "[]");
+    const events = Array.isArray(previous) ? previous.slice(-99) : [];
+    events.push(event);
+    localStorage.setItem(PLUGIN_TELEMETRY_KEY, JSON.stringify(events));
+  } catch {
+    // 埋点失败不影响插件状态操作。
+  }
+}
 
 onMounted(async () => {
   try {
@@ -91,10 +110,25 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
   busyCourseId.value = course.course_id;
   errorMessage.value = "";
   try {
+    const nextLoaded = !course.loaded;
     await (course.loaded
       ? unloadCoursePlugin(course.course_id)
       : loadCoursePlugin(course.course_id));
-    registry.value = await getPluginRegistry();
+    if (registry.value) {
+      registry.value = {
+        ...registry.value,
+        courses: registry.value.courses.map((item) =>
+          item.course_id === course.course_id
+            ? {
+                ...item,
+                loaded: nextLoaded,
+                enabled_workflows: nextLoaded ? item.enabled_workflows : [],
+              }
+            : item,
+        ),
+      };
+    }
+    recordPluginTelemetry(course, nextLoaded);
     emit("changed");
   } catch (error) {
     errorMessage.value =
@@ -121,7 +155,7 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
         </button>
       </p>
 
-      <!-- 课程插件：默认展开，但限高内滚 + 搜索，压掉 55 项的无限长度。 -->
+      <!-- 课程插件：默认收起；用户展开后再渲染课程列表。 -->
       <section class="plugin-group" aria-labelledby="courses-heading">
         <button
           type="button"

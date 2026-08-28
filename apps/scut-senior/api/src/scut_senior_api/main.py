@@ -954,6 +954,24 @@ def create_app(
     ) -> dict[str, object]:
         return service.preview_exam_review_plan(user, payload)
 
+    @app.post("/api/v1/exam-review/plan/decision", status_code=204)
+    def record_exam_review_plan_decision(
+        payload: dict[str, object],
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> Response:
+        decision = payload.get("decision")
+        conversation_id = payload.get("conversation_id")
+        plan = payload.get("plan")
+        if decision not in {"confirmed", "edited", "rejected"} or not isinstance(conversation_id, str) or not isinstance(plan, dict):
+            raise HTTPException(status_code=422, detail="invalid exam plan decision")
+        try:
+            service.repository.record_exam_plan_decision(
+                str(user.user_id), UUID(conversation_id), decision, plan
+            )
+        except (ValueError, LookupError) as exc:
+            raise HTTPException(status_code=422, detail=str(exc)) from exc
+        return Response(status_code=204)
+
     @app.post(
         "/api/v1/exam-review/plan/confirm",
         response_model=WorkflowResult,

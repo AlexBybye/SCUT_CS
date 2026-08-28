@@ -1860,6 +1860,20 @@ class SQLiteWorkflowRepository:
             ).fetchall()
         return [json.loads(row["payload_json"]) for row in rows]
 
+    def record_exam_plan_decision(
+        self, user_id: str, conversation_id: UUID, decision: str, plan: dict[str, object]
+    ) -> None:
+        if decision not in {"confirmed", "edited", "rejected"}:
+            raise ValueError("invalid exam plan decision")
+        with self._connect() as connection:
+            connection.execute(
+                "INSERT INTO exam_plan_decisions "
+                "(decision_id, conversation_id, user_id, decision, plan_json, created_at) "
+                "VALUES (?, ?, ?, ?, ?, ?)",
+                (str(uuid4()), str(conversation_id), user_id, decision,
+                 json.dumps(plan, ensure_ascii=False, separators=(",", ":")), self._now().isoformat()),
+            )
+
     def get_agent_snapshot(self, run_id: UUID) -> dict[str, object] | None:
         with self._connect() as connection:
             row = connection.execute(

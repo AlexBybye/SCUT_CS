@@ -6,6 +6,7 @@ import { availabilityLabel, billingLabel } from "../appConfig";
 import WorkflowDrawer from "./WorkflowDrawer.vue";
 import OptionPicker, { type OptionItem } from "./OptionPicker.vue";
 import { useAppStore } from "../composables/useAppStore";
+import { parseExamReviewPlan } from "../examReviewPlan";
 
 const store = useAppStore();
 
@@ -55,6 +56,9 @@ const modelPlaceholder = computed(() => {
   if (!store.modelCatalogLoadSucceeded) return "模型待选择";
   return "请选择模型";
 });
+const pendingExamPlan = computed(() =>
+  parseExamReviewPlan(store.pendingExamPlan?.plan ?? null),
+);
 
 </script>
 
@@ -111,6 +115,27 @@ const modelPlaceholder = computed(() => {
         <WorkflowDrawer v-if="store.drawerOpen" />
       </Transition>
 
+      <section v-if="pendingExamPlan" class="exam-plan-preview" aria-live="polite">
+        <div class="exam-plan-preview-head">
+          <strong>复习计划预览</strong>
+          <span>{{ pendingExamPlan.path === "with_syllabus" ? "按大纲安排" : "按历年题安排" }}</span>
+        </div>
+        <p>{{ pendingExamPlan.scope_statement }}</p>
+        <ul>
+          <li v-for="point in pendingExamPlan.knowledge_points.slice(0, 6)" :key="point.topic">
+            {{ point.topic }}
+          </li>
+        </ul>
+        <div class="exam-plan-preview-actions">
+          <button type="button" class="btn btn-primary" :disabled="store.isRunning" @click="store.submitWorkflow">
+            确认并开始
+          </button>
+          <button type="button" class="btn btn-quiet" :disabled="store.isRunning" @click="store.rejectExamPlan">
+            放弃计划
+          </button>
+        </div>
+      </section>
+
       <div class="composer-box">
         <label class="visually-hidden" for="user-input">统一任务输入</label>
         <textarea
@@ -149,7 +174,7 @@ const modelPlaceholder = computed(() => {
               :disabled="!store.canSubmitWorkflow"
               @click="store.submitWorkflow"
             >
-              {{ store.isRunning ? "正在运行" : store.selectedModelIsMock ? "运行 Mock" : "运行" }}
+              {{ store.isPreviewingExamPlan ? "正在生成计划" : store.pendingExamPlan ? "已生成计划" : store.isRunning ? "正在运行" : store.selectedModelIsMock ? "运行 Mock" : "运行" }}
             </button>
           </div>
         </div>
@@ -176,6 +201,26 @@ const modelPlaceholder = computed(() => {
   display: grid;
   gap: 5px;
 }
+
+.exam-plan-preview {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  background: var(--panel-muted, var(--panel));
+}
+
+.exam-plan-preview-head,
+.exam-plan-preview-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.exam-plan-preview-head {
+  justify-content: space-between;
+}
+
+.exam-plan-preview p { margin: 6px 0; }
+.exam-plan-preview ul { margin: 6px 0 10px; padding-left: 20px; }
 
 /* 抽屉展开：高度 + 淡入。高度过渡需测量，这里退化为不透明度 + 位移。 */
 .drawer-pop-enter-active,

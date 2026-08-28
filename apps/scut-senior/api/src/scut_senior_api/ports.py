@@ -198,6 +198,7 @@ class WorkflowRepository(Protocol):
 
     def is_course_plugin_loaded(self, course_id: str) -> bool: ...
 
+
     def set_course_plugin_loaded(
         self,
         course_id: str,

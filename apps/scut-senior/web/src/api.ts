@@ -18,6 +18,12 @@ import type {
   WorkflowRunRequest,
   WorkflowRunResult,
 } from "./contracts";
+
+export interface ExamReviewPlanPreview {
+  confirmation_required: true;
+  plan: Record<string, unknown>;
+  retrieval_query: string;
+}
 import {
   startWorkflowStreamRequest,
   type WorkflowStreamHandle,
@@ -168,6 +174,26 @@ export async function runWorkflow(
   });
   return validateWorkflowRunResult(result, {
     expectedConversationId: request.conversation_id,
+  });
+}
+
+export async function previewExamReviewPlan(
+  request: WorkflowRunRequest,
+): Promise<ExamReviewPlanPreview> {
+  return apiRequest<ExamReviewPlanPreview>("/api/v1/exam-review/plan/preview", {
+    method: "POST",
+    body: JSON.stringify(request),
+  });
+}
+
+export async function recordExamReviewPlanDecision(
+  conversationId: string,
+  decision: "confirmed" | "edited" | "rejected",
+  plan: Record<string, unknown>,
+): Promise<void> {
+  await apiRequest<void>("/api/v1/exam-review/plan/decision", {
+    method: "POST",
+    body: JSON.stringify({ conversation_id: conversationId, decision, plan }),
   });
 }
 

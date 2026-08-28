@@ -17,6 +17,9 @@ import {
   saveByokCredential,
   startWorkflowRunStream,
   cancelWorkflowRun,
+  previewExamReviewPlan,
+  recordExamReviewPlanDecision,
+  type ExamReviewPlanPreview,
 } from "../api";
 import {
   isCurrentByokCatalogVersion,
@@ -116,6 +119,8 @@ function createAppStore() {
   const reviewFocus = ref("");
   const materialTitle = ref("");
   const readingGoal = ref("");
+  const pendingExamPlan = ref<ExamReviewPlanPreview | null>(null);
+  const isPreviewingExamPlan = ref(false);
 
   const lastWorkflowType = ref<WorkflowType>("knowledge_qa");
   const workflowOverride = ref<WorkflowType | null>(null);
@@ -1128,6 +1133,24 @@ function createAppStore() {
 
       const request = makeRequest(activeConversationId);
       lastWorkflowType.value = request.workflow_type;
+      if (request.workflow_type === "exam_review" && !pendingExamPlan.value) {
+        isPreviewingExamPlan.value = true;
+        try {
+          pendingExamPlan.value = await previewExamReviewPlan(request);
+          noticeMessage.value = "复习计划已生成，请确认后开始运行。";
+        } finally {
+          isPreviewingExamPlan.value = false;
+          isRunning.value = false;
+        }
+        return;
+      }
+      if (request.workflow_type === "exam_review" && pendingExamPlan.value) {
+        await recordExamReviewPlanDecision(
+          activeConversationId,
+          "confirmed",
+          pendingExamPlan.value.plan,
+        );
+      }
       // 请求已构建完成即视为发送受理：清空主输入框，
       // 「更多选项」等抽屉配置保持不变，方便连发不同问题。
       userInput.value = "";
@@ -1180,6 +1203,7 @@ function createAppStore() {
       }
 
       result.value = workflowResult;
+      pendingExamPlan.value = null;
       selectedAttemptId.value = workflowResult.workflow_run_id;
       const restoredConversation = await getConversation(activeConversationId);
       if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
@@ -1317,6 +1341,14 @@ function createAppStore() {
     deletingConversationId,
     isRegenerating,
     isRunning,
+    pendingExamPlan,
+    isPreviewingExamPlan,
+    rejectExamPlan: async () => {
+      if (!pendingExamPlan.value || !conversationId.value) return;
+      await recordExamReviewPlanDecision(conversationId.value, "rejected", pendingExamPlan.value.plan);
+      pendingExamPlan.value = null;
+      noticeMessage.value = "已放弃本次复习计划。";
+    },
     canCancelWorkflow,
     workflowStreamState,
     isReloading,

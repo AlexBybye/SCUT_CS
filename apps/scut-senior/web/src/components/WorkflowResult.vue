@@ -235,6 +235,21 @@ const visibleFlowTrace = computed(() =>
   props.isRunning ? flowTrace.value.slice(0, flowStep.value + 1) : flowTrace.value,
 );
 
+function traceStepHint(event: { node: string; status: string }): string {
+  const text = `${event.node} ${event.status}`.toLowerCase();
+  if (text.includes("retriev") || text.includes("检索")) {
+    return event.status === "completed" ? "检索完成" : "正在检索";
+  }
+  if (text.includes("guard") || text.includes("evidence") || text.includes("证据")) {
+    return text.includes("retry") || text.includes("重试") ? "发现证据不足，正在补充" : "正在检查证据";
+  }
+  if (text.includes("generat") || text.includes("answer") || text.includes("回答")) {
+    return event.status === "completed" ? "回答完成" : "正在生成回答";
+  }
+  if (text.includes("finish") || text.includes("完成")) return "步骤完成";
+  return event.status === "completed" ? "已完成" : "处理中";
+}
+
 const answerBlocks = computed<AnswerBlock[]>(() => {
   if (props.result?.answer_blocks.length) return props.result.answer_blocks;
   if (props.streamState?.answerBlocks.length) {
@@ -350,7 +365,7 @@ function citationLocator(citation: Citation): string {
           :class="{ 'flow-step-on': isRunning && index === flowStep }"
         >
           <div class="flow-step-row">
-            <strong>{{ event.node }}</strong>
+            <strong>{{ event.node }} · {{ traceStepHint(event) }}</strong>
             <span>{{ isRunning && index === flowStep ? "运行中" : event.status }}</span>
             <details v-if="event.result && Object.keys(event.result).length" class="flow-result">
               <summary>查看安全结果</summary>
