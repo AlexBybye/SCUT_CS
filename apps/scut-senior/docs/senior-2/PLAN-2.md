@@ -1,8 +1,8 @@
 # SCUT 老学长二期迭代 PLAN-2：三阶段 SOP（Agent 化与混合检索）
 
-版本：1.0（三阶段 SOP 定型，建议稿）
+版本：1.1（三阶段 SOP 定型，口径已按落地实现对齐，建议稿）
 
-状态：**PLAN-1 定义的一期已开发完成**——五类固定 Workflow、HARNESS_REGISTRY 受控工具注册表、确定性词法 RAG、引用/来源 Guard、配额与 BYOK 目录、NDJSON 流式前端均已落地并有测试覆盖。本文是**老学长二期迭代计划**，按三阶段 SOP 落地：地基（统一输入 + 混合检索）、内核（EventStream Agent Loop）、出口（工具服务化与上线标定）。它不替代 PLAN-1 的任何冻结决策；与 PLAN-1 冲突时以 PLAN-1 为准。
+状态：**PLAN-1 定义的一期已开发完成**——五类固定 Workflow、HARNESS_REGISTRY 受控工具注册表、确定性词法 RAG、引用/来源 Guard、配额与 BYOK 目录、NDJSON 流式前端均已落地并有测试覆盖。**PLAN-2 阶段一（统一输入 + 混合检索）与阶段二内核（受限单步决策）已落地**：BM25F 词法腿、本地 ONNX dense 腿 + RRF(k=60)、规则重排、P0 评测基线（46 门 × 30 条）、统一 Composer 自动路由、EventStream Agent 内核（reducer + 动作白名单 + 死循环预算）均已实现并有测试。本文按三阶段 SOP 落地：地基（统一输入 + 混合检索）、内核（EventStream Agent Loop）、出口（工具服务化与上线标定）。执行中由用户拍板的补充/覆盖决策登记在 `DECISIONS.md`（D1–D9），本文 v1.1 已将其并入正文口径。它不替代 PLAN-1 的任何冻结决策；与 PLAN-1 冲突时以 PLAN-1 为准。
 
 > **替代说明**：本文整体替换原 v0.1《检索升级与最小部署配置 PLAN-2（建议稿）》：检索分级改造并入 §3（阶段一），最小部署规格并入 §6，待确认事项并入 §7。
 >
@@ -11,6 +11,8 @@
 > **v0.3 → v0.4 预算重构**：Agent 预算只防死循环，不管自然输入输出——删除全部 per-call / 累计 Token 限额；输入由请求合同管（question ≤2 万字符、problem ≤4 万字符、材料 ≤10 万字符），输出由生成参数管。平台免费档三模型的配额限制独立成层，在 ModelGateway 配额层执行（对齐 PLAN-1 §1.6）；BYOK 只保留死循环防线。
 >
 > **v0.5 → v1.0 三阶段 SOP 重组**：原 Phase 1~5 重排为三个阶段——阶段一（统一输入 + 混合检索）、阶段二（EventStream Agent Loop + exam_review 确定性计划）、阶段三（工具服务化 + 上线标定）；每阶段按「目标 / 前置依赖 / 实施步骤 / 验收 DoD / 止损回滚点」SOP 模板展开。新增一条贯穿不变量：**二期全程仍不部署服务器**。
+>
+> **v1.0 → v1.1 口径对齐落地实现**：按 `DECISIONS.md` D1–D9 并入正文——embedding 改用本地 ONNX `bge-small-zh-v1.5`（512 维）而非 API、最终排序改为确定性规则重排（无模型 reranker）；P0 基线固定为 46 门 × 30 条 = 1380 条已审核；阶段一只保留 active Hybrid candidate（`previous_corpus_version=null`，本地即时回滚不承诺）；阶段二事件词表实为 8 种（含 `action_executed` / `guard_retry_recorded`），NDJSON `agent` 事件默认关闭（`SCUT_SENIOR_AGENT_EVENT_STREAM_ENABLED` 开启后旧客户端仍兼容）；统一输入自动路由以确定性正则落地，`讲解形式`/`输出风格`移入助手设置；min_score 重定标为 1.0；模型输出预算默认 max_tokens=16384。
 >
 > **写作动机**：一期已交付的价值重心在"可验证"一侧——locator 定位合同、引用 Guard、min_score 地板、契约评测全部闭环；已知短板同样明确：召回只有单课程词法加权打分（无 IDF、无语义通道），执行是一次性链路（证据缺口无法驱动下一步动作）。二期据此立两条主线：混合检索补"召回聪明"，EventStream Agent Loop 补"证据驱动的动态决策"，全程保持一期 harness 边界不动摇。
 
@@ -60,53 +62,55 @@
 
 **步骤 1 —— P0 检索评测基线（一切改造的前置）**
 
-- Golden set：`(course_id, query) → 必须命中的 chunk_id 列表`，来源用历年题题干 → 题目 chunk、知识点名词 → 定义标题 chunk，每门首批课程 ≥30 条，人工核对；存放 `resources/evaluation/retrieval-golden/`，随 Corpus CI 校验引用真实存在；
+- Golden set：`(course_id, query) → 必须命中的 chunk_id 列表`，来源用历年题题干 → 题目 chunk、知识点名词 → 定义标题 chunk，**已落地：46 门课程 × 每门 30 条 = 1380 条，已由维护者审核固定为阶段一评测基线（DECISIONS D2）**；存放 `resources/evaluation/retrieval-golden/`，随 Corpus CI 校验引用真实存在（引用缺失 fail-closed）；
 - 指标：recall@5、recall@20、MRR、噪声率（返回但未被回答引用的占比，用于重定标 min_score）；
-- 落点：eval_runner 增加 `--retrieval-only` 模式与逐课程报告。
+- 落点：eval_runner 增加 `--retrieval-only` 模式与逐课程报告（**已实现**，另产出 `resources/evaluation/retrieval-baseline.json` / `retrieval-comparison.json` 实测报告）。
 
 **步骤 2 —— 词法腿升级为 BM25F**
 
-- 纯算法替换：字段权重 title > heading/question > text，映射现有 ×4/×3/×3/×1 的意图，加饱和抑制；
-- 43 门课约 24k chunks 规模纯 Python 倒排毫秒级；
+- 纯算法替换：字段权重 title 4.0 > heading 3.0 / question 3.0 > text 1.0（映射现有 ×4/×3/×3/×1 的意图），k1=1.5 / b=0.75 饱和抑制，整句精确命中加固定小 bonus（`EXACT_MATCH_BONUS=1.0`，只打破近邻平局，不主导排序）；
+- 46 门课约 24.6k chunks 规模纯 Python 倒排毫秒级；
 - 接口保持 `RetrievalGateway.search(course_ids, query)` 对 service 层透明；
-- `min_score` 阈值由步骤 1 的 P0 数据重定标，不沿用旧值 6。
+- `min_score` 阈值由步骤 1 的 P0 数据重定标，**不沿用旧值 6，落地值为 1.0**。
 
 **步骤 3 —— 密集腿（embedding）+ RRF 融合**
 
-- 中文 embedding 二选一：本地 bge-m3 或 API（硅基流动/智谱均有接口，目录加第五类条目）；**推荐 API，不本地推理**（见 §6）；
-- 存储：**sqlite-vec 或 lance 单文件，不用 Qdrant**；向量文件放进 candidate 目录随 activate/rollback 天然获得版本门与回退；validate 校验行数与维度；
+- embedding：**本地 ONNX `bge-small-zh-v1.5`（512 维，CPUExecutionProvider，mean-pool + L2 归一化），非 API、非本地大模型推理（DECISIONS D1）**；缺模型文件时回退 BM25F，不发起网络请求；
+- 存储：**单文件 SQLite 向量库（stdlib `sqlite3` + 暴力余弦，每课程一个 `.db`，candidate 目录下随 activate 获得版本门）**，不用 Qdrant；`sqlite-vec`/`lance` 是文档化的升级路径，非当前实现；validate 校验行数与维度（`embedding_model_id` 与 provider 不一致 fail-closed）；
 - 融合：两腿各取 top50，**RRF(k=60)** 后取 top-N——只用排名不用分值，无需归一化，保持确定性排序（同输入同输出）；两路召回并行执行，T_retrieval ≈ max(词法, 向量) + 合并；
-- 版本绑定：`corpus_version` 追加 embedding 模型 id 段，换模型 = 重建 candidate = 重走激活门；RetrievalBatch 校验向量版本与 course_pack_version 同源，不一致按 `ContractConflict` 处理；
-- 元数据过滤：course_id、审核状态、corpus_version 为确定性过滤，绝不交给相似度。
+- 版本绑定：`corpus_version` 追加 embedding 模型 id 段（`-e{model_id}`），换模型 = 重建 candidate = 重走激活门；RetrievalBatch 校验向量版本与 course_pack_version 同源，不一致按 `ContractConflict` 处理；
+- 元数据过滤：course_id、审核状态、corpus_version 为确定性过滤，绝不交给相似度；
+- 阶段一资产口径（DECISIONS D3/D4）：只保留 active Hybrid candidate，`previous_corpus_version = null`，本地即时 rollback 不再承诺——需要回退时用 Git 版本回退或从课程资料重建；向量与 ONNX 模型按普通 Git 文件随仓库版本化，不使用 Git LFS；运行 Secret/数据库/日志仍不进 Git。
 
 **步骤 4 —— Query 变体与词表增强**
 
-- exam_review 已有确定性检索词合成；其余 workflow 从 `workflow_payload` 锚点生成 1～3 个规则查询变体，同一轮 RRF；
-- 新增每课程**确定性同义词/缩写展开表**（人工维护、可审计），不用 LLM 改写：省一趟调用、不碰"检索词不改课程范围语义"红线；LLM 改写仅作可选开关默认关。
+- exam_review 已有确定性检索词合成；其余 workflow 从 `workflow_payload` 锚点生成 1～3 个规则查询变体，同一轮 RRF（**已实现 `query_variants.py`：原 query + ≤2 个确定性展开，`resources/retrieval/query-expansions.json` 按课程维护，`MAX_QUERY_VARIANTS=3`**）；
+- 新增每课程**确定性同义词/缩写展开表**（人工维护、可审计），不用 LLM 改写：省一趟调用、不碰"检索词不改课程范围语义"红线；LLM 改写仅作可选开关默认关（当前实现不调 LLM 改写）。
 
-**步骤 5 —— 重排（可选增强）**
+**步骤 5 —— 重排（已落地为确定性规则重排）**
 
-- 召回 top20～50 → reranker → top5 进 prompt；本地 bge-reranker-v2-m3 或 API 二选一，**推荐 API**；
-- API 失败时降级回 RRF 顺序继续 run（rerank 是增强不是依赖）；
-- Trace 记录两腿命中数、融合顺序、rerank 前后顺序；数值只用于候选排序，不解释为概率。
+- 最终排序**不使用模型 reranker，改为确定性规则重排（DECISIONS D1，`rule_rerank.py`）**：BM25F 整句精确命中受保护置前 → 其余词法候选 → dense 仅补位填充未用槽位，不允许 dense 无条件推翻明确的词法命中；
+- dense 腿缺失时降级回词法单腿继续 run（重排是增强不是依赖）；
+- Trace 记录两腿命中数、融合顺序、重排前后顺序；数值只用于候选排序，不解释为概率。
 
 **步骤 6 —— 统一输入与自动路由**
 
-- 增加统一 Composer，Router 输出 `workflow_type + typed_payload + confidence`；
-- 置信度低时向用户澄清，路由失败时允许手动纠正；
-- 五类 Workflow 保留为受控 Skill（能力入口），复用现有 `WorkflowType` 合同与 payload schema。
+- 增加统一 Composer，Router 输出 `workflow_type + typed_payload + confidence`（**已实现前端 `workflowRouter.ts`：确定性正则识别五类 Workflow，输出 confidence 与原因**）；
+- 置信度低时回退知识答疑并向用户提示，路由失败时允许在字段抽屉手动纠正（DECISIONS D6）；
+- 五类 Workflow 保留为受控 Skill（能力入口），复用现有 `WorkflowType` 合同与 payload schema；
+- `讲解形式` 与 `输出风格` 移入个人中心助手设置，持久化在本机浏览器（DECISIONS D6）。
 
 ### 3.2 验收（DoD）
 
-- recall@K 与 MRR 提升；题号/公式/函数名精确命中率不回退；语义改写命中率提升；
-- 课程越权候选数 = 0；索引版本切换与回滚可用；
+- recall@K 与 MRR 提升；题号/公式/函数名精确命中率不回退；语义改写命中率提升（**实测：hybrid recall@5 0.638 / recall@20 0.861 / MRR 0.462，均高于 BM25F 单腿，见 `resources/evaluation/retrieval-comparison.json`**）；
+- 课程越权候选数 = 0；索引版本切换与回滚可用（**阶段一只保留 active candidate，回滚走 Git/重建，见 DECISIONS D3/D4**）；
 - 路由分类准确率、payload schema 通过率、低置信度误执行率、用户纠正率达标；
 - **不部署服务器核对**：无新增常驻进程、无新增独立存储服务，向量文件为单文件随 candidate 版本门管理。
 
 ### 3.3 止损/回滚点
 
 - BM25F 若精确命中率回退 → 回退纯词法加权打分，保留评测基线继续调权；
-- 向量腿若引入越权候选或 ContractConflict 频发 → 关闭 dense 腿，降级回单腿；
+- 向量腿若引入越权候选或 ContractConflict 频发 → 关闭 dense 腿，降级回单腿（**缺 ONNX 模型文件/向量时自动回退 BM25F，见 DECISIONS D1**）；
 - 路由误执行率超阈值 → 恢复手动选 Workflow 入口，统一 Composer 转可选。
 
 ---
@@ -126,20 +130,20 @@
   → observation_recorded → 回到 reducer
 ```
 
-1. 扩充 NDJSON 事件词表：`decision_produced / action_rejected / observation_recorded / budget_crossed / clarification_requested / run_finished`；
-2. 服务端纯 reducer：`state = reduce_agent_event(state, event)`，与前端 `reduceWorkflowStreamEvent` 同构；测试方法为喂事件序列断言终态；
-3. 事件追加式写入 SQLite 事件日志，**终态快照必须等于事件重放结果**；
+1. 扩充 NDJSON 事件词表：`decision_produced / action_rejected / observation_recorded / budget_crossed / clarification_requested / run_finished / action_executed / guard_retry_recorded`（**落地 8 种，见 `agent_loop.py` `EventKind`**；终态集合 `running / finished / budget_exhausted / rejected / interrupted / timed_out / failed`）；
+2. 服务端纯 reducer：`state = reduce_agent_event(state, event)`，与前端 `reduceWorkflowStreamEvent` 同构；测试方法为喂事件序列断言终态（**已落地并有测试覆盖**）；
+3. 事件追加式写入 SQLite 事件日志，**终态快照必须等于事件重放结果**（**已落地：`append_agent_event` 原子写入事件 + 派生快照，重放校验不一致即报错，见 DECISIONS D9**）；
 4. 取消实现为注入的取消事件，由 reducer 在节点边界收敛为 `interrupted`；
 5. 同会话请求串行排队，复用 `try_claim_step_start / try_claim_terminal` 单飞语义；
-6. 新增事件 kind 走协议版本协商或特性开关，保证旧客户端兼容；
-7. 动作白名单首批：`retrieve / retrieve_with_query_rewrite / ask_clarification / generate_answer / finish`；
+6. 新增事件 kind 走协议版本协商或特性开关，保证旧客户端兼容（**已落地：对外 NDJSON 的 `agent` 事件默认关闭，`SCUT_SENIOR_AGENT_EVENT_STREAM_ENABLED` 开启后旧客户端仍消费 `trace / answer_delta / result / error`，见 DECISIONS D9**）；
+7. 动作白名单首批：`retrieve / retrieve_with_query_rewrite / ask_clarification / generate_answer / finish`（**已落地 `ACTION_KINDS`，非法动作在 reducer 内 fail-closed**）；
 8. 不过度事件溯源：事件只在单个 run 生命周期内是真相源，对外查询以终态快照为准。
 
 ### 4.2 预算：防死循环是本职，配额另层管
 
 **原则**：Agent 预算只防循环失控。自然输入输出不由 Agent 限额——输入由请求合同管（question ≤2 万字符、problem ≤4 万字符、材料 ≤10 万字符），输出由供应商调用参数（max_tokens）管。
 
-**死循环防线**（所有模型一致，Agent Runtime 执行）：
+**死循环防线**（所有模型一致，Agent Runtime 执行；**数值已落地为 `AgentBudget` 默认值**）：
 
 ```text
 max_steps                = 4      # 每次模型交互都算一步，含 Final 与 Guard 重试
@@ -161,7 +165,7 @@ max_runtime_seconds      = 120    # 进程级防悬挂兜底，不是成本控�
 额度耗尽                      = 明确报错，不自动切换（PLAN-1 §1.6 冻结）
 ```
 
-**BYOK / 其他模型**：只有死循环防线；输入输出不设 Agent 限额。
+**BYOK / 其他模型**：只有死循环防线；输入输出不设 Agent 限额。模型输出预算由供应商调用参数管：OpenRouter 结构化请求与 BYOK 目录 DeepSeek 默认 `max_tokens=16384`（推理模型把部分预算用于 reasoning，需为正文留出空间）。
 
 终止条件：证据覆盖达标；已生成通过 Guard 的回答；模型输出 Final；触达步数或运行时限；同动作重复失败；Guard 重试达上限；用户取消；检测到越权动作。预算到达返回有边界的降级结果（如 `insufficient_evidence`）。
 
@@ -172,11 +176,11 @@ max_runtime_seconds      = 120    # 进程级防悬挂兜底，不是成本控�
 
 ### 4.4 exam_review 确定性计划确认
 
-- `exam_review` 由代码根据大纲、薄弱点和历年题事实生成短计划，零额外模型调用；
-- 计划先展示给用户确认，再进入同一个 EventStream Agent Loop；
+- `exam_review` 由代码根据大纲、薄弱点和历年题事实生成短计划，零额外模型调用（**已落地 `exam_review.py`，plan_version=`exam-review-plan-v1`，含计划预览接口与决策记录接口**）；
+- 计划先展示给用户确认，再进入同一个 EventStream Agent Loop（**已落地：`/api/v1/exam-review/plan/preview` 预览、`/plan/decision` 记录 confirmed/edited/rejected、`/plan/confirm` 执行，DB 迁移 0013 建表**）；
 - 计划只影响检索顺序和覆盖目标，不新增工具，不改变 Agent Runtime；
 - Observation 只更新覆盖率与缺失主题，后续动作仍受本阶段单步决策和死循环防线限制；
-- Hook 延伸：`observation_recorded` 后自动更新覆盖率，`action_rejected` 自动埋 rejection 指标。
+- Hook 延伸：`observation_recorded` 后自动更新覆盖率，`action_rejected` 自动埋 rejection 指标（**reducer 已计数 rejection_count / observation_count**）。
 
 ### 4.5 成本与延迟预估（估算口径，上线前压测标定）
 
@@ -195,7 +199,7 @@ max_runtime_seconds      = 120    # 进程级防悬挂兜底，不是成本控�
 - 证据不足能补一次检索、充分不空转；普通问题模型调用通常 1～2 次、最坏 ≤3 次；
 - 非法工具/跨课程参数全部拒绝并留 `action_rejected` 事件；
 - 取消/超时/预算进入终态且事件日志完整；终态快照与事件重放一致；旧客户端在新事件流下不崩溃；
-- exam_review 计划生成零额外模型调用；用户确认/修改/拒绝路径可审计；计划主题有课程证据或明确标记未覆盖；
+- exam_review 计划生成零额外模型调用；用户确认/修改/拒绝路径可审计；计划主题有课程证据或明确标记未覆盖（**预览 + 决策记录已落地，见 §4.4**）；
 - **不部署服务器核对**：EventStream 为进程内事件 + SQLite 追加写，不新增常驻服务或消息队列。
 
 ### 4.7 止损/回滚点
@@ -246,21 +250,21 @@ max_runtime_seconds      = 120    # 进程级防悬挂兜底，不是成本控�
 二期全程坚持"小机器只编排、不推理"边界，部署面不变：
 
 - **一期形态维持 1C2G / 40GB / 1–2Mbps 基线**（Makefile `serve-online` 单机单进程路径）；
-- 完成阶段一推荐组合 **API embedding + API rerank + sqlite-vec**：增量约 2 vCPU / 内存维持 2GB（24k × 1024 维 fp32 mmap 约 100MB 级）/ 磁盘量级不变 / 外部依赖两个 API 配额；
-- 本地跑 bge-m3 + reranker 需 4C8G 起步，**不推荐**——ECS 不承担 embedding/索引构建/重排推理；
+- 阶段一已落地组合 **本地 ONNX bge-small-zh-v1.5（512 维）+ 规则重排 + SQLite 单文件向量库**：CPUExecutionProvider 推理（24k × 512 维 fp32 约 50MB 级），内存维持 2GB 量级，磁盘量级不变，无新增外部 API 配额依赖（DECISIONS D1）；`sqlite-vec`/`lance` 为升级路径，非当前部署依赖；
+- 本地跑 bge-m3 + reranker 需 4C8G 起步，**不推荐**——ECS 不承担大模型 embedding/索引构建/重排推理；
 - 面向真实学生开放时带宽先于 CPU 成为瓶颈：建议 5Mbps 起或将 SPA 静态资源 CDN 前置；
 - 阶段二的 EventStream 为进程内事件与 SQLite 追加写，不改变部署形态；
-- **明确不因二期引入**：PostgreSQL、Qdrant 独立服务、对象存储、任务队列、MCP 常驻服务、本地推理节点——升级后部署面仍是"一台小机器 + 一组文件"。
+- **明确不因二期引入**：PostgreSQL、Qdrant 独立服务、对象存储、任务队列、MCP 常驻服务、本地大模型推理节点——升级后部署面仍是"一台小机器 + 一组文件"。
 
 ## 7. 待确认事项
 
-1. Golden set 人工标注的人力归属（资料 A/B 还是开发组）；
-2. embedding/rerank 走 API 时挂靠哪家供应商、并入 BYOK 目录还是平台目录新增分类；
-3. 阶段一起 corpus-active-v1 是否升版为 v2，旧 store 只允许重建还是提供迁移工具；
-4. rerank 降级是否学生端可见（建议仅 Trace 可见）；
-5. 阶段二流事件协议版本号方案与旧客户端兼容窗口；
-6. 澄清（clarification）交互形态与滚动摘要的字段边界；
-7. §4.2 运行时限与平台配额数值、§4.5 成本表在上线前经压测标定，当前值为设计上限。
+1. Golden set 人工标注的人力归属（资料 A/B 还是开发组）——**已定（D2）**：46 门 × 30 条已由维护者审核固定为基线；
+2. embedding/rerank 走 API 时挂靠哪家供应商、并入 BYOK 目录还是平台目录新增分类——**已定（D1）**：不走 API，本地 ONNX bge-small-zh-v1.5 + 规则重排；
+3. 阶段一起 corpus-active-v1 是否升版为 v2，旧 store 只允许重建还是提供迁移工具——**已定（D3/D4）**：只保留 active Hybrid candidate，`previous_corpus_version=null`，回退走 Git/重建；
+4. rerank 降级是否学生端可见（建议仅 Trace 可见）——**已定（D1）**：最终排序为确定性规则重排，dense 缺失时静默回退词法单腿；
+5. 阶段二流事件协议版本号方案与旧客户端兼容窗口——**已定（D9）**：NDJSON `agent` 事件默认关闭，`SCUT_SENIOR_AGENT_EVENT_STREAM_ENABLED` 开启后旧客户端仍兼容；
+6. 澄清（clarification）交互形态与滚动摘要的字段边界——**部分已定（D6）**：路由失败在字段抽屉手动纠正；滚动摘要字段边界随阶段二后段推进；
+7. §4.2 运行时限与平台配额数值、§4.5 成本表在上线前经压测标定，当前值为设计上限（**未变，仍待阶段三压测**）。
 
 ## 8. 借鉴取舍总览
 
@@ -277,8 +281,8 @@ max_runtime_seconds      = 120    # 进程级防悬挂兜底，不是成本控�
 | Agent Loop | 见 §4 EventStream Agent Loop | Observe/Decide/Act ↔ observation_recorded / decision_produced / 受控执行 | 独立 ReAct 框架、全局 Planner |
 | Compaction | 字段级长度上限 | 证据账本去重、候选降级、轮次滚入摘要 | 语义压缩模型 |
 
-**P0（挂阶段一/二）**：RRF 融合；embedding 身份入索引版本；证据账本去重 + 候选降级摘要；结构化滚动摘要。
-**P1（挂阶段二）**：exam_review 计划确认；同义词展开表；Hook 延伸埋 rejection 指标。
+**P0（挂阶段一/二）**：RRF 融合（✅）；embedding 身份入索引版本（✅）；证据账本去重 + 候选降级摘要（✅）；结构化滚动摘要（阶段二后段）。
+**P1（挂阶段二）**：exam_review 计划确认（✅）；同义词展开表（✅）；Hook 延伸埋 rejection 指标（✅ reducer 计数）。
 **明确不借**：独立 LLM Planner、ReAct 框架、Replan 循环、Subagent、运行时审批弹窗、MCP（现阶段）、向量库存对话、语义压缩模型、自动模型路由；继承冻结：agent 自主多跳检索、语义缓存、跨课程检索开放。
 
 来源标注：DSH（goal/budget 边界、spill 文件、结构化 todo）、Claude Code（auto-compact、plan mode）、Codex（AGENTS.md 约定、沙箱 fail-closed）均取公开资料口径的机制思想，不冒称了解各家内部实现细节。
