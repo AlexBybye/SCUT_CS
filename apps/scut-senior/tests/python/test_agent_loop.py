@@ -6,6 +6,7 @@ from scut_senior_api.agent_loop import (
     AgentBudget,
     AgentState,
     record_action_result,
+    record_guard_retry,
     reduce_agent_event,
 )
 
@@ -67,3 +68,12 @@ def test_retrieve_rewrite_budget_is_separate_from_step_budget() -> None:
     state = record_action_result(state, "retrieve_with_query_rewrite", budget=budget)
     assert state.status == "budget_exhausted"
     assert state.budget_reason == "max_query_rewrite"
+
+
+def test_guard_retry_budget_is_explicit() -> None:
+    budget = AgentBudget(max_guard_retries=1)
+    state = record_guard_retry(AgentState(), budget=budget)
+    assert state.guard_retries == 1
+    state = record_guard_retry(state, budget=budget)
+    assert state.status == "budget_exhausted"
+    assert state.budget_reason == "max_guard_retries"

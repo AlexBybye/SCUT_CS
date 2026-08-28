@@ -173,3 +173,17 @@ def record_action_result(
             return replace(state, status="budget_exhausted", budget_reason="max_query_rewrite")
         return replace(state, retrieval_rounds=rounds, query_rewrites=rewrites)
     return state
+
+
+def record_guard_retry(
+    state: AgentState, *, budget: AgentBudget | None = None
+) -> AgentState:
+    """Count one citation/output guard retry without consuming a new action."""
+
+    if state.status != "running":
+        raise ValueError("cannot retry a guard after termination")
+    limits = budget or AgentBudget()
+    retries = state.guard_retries + 1
+    if retries > limits.max_guard_retries:
+        return replace(state, status="budget_exhausted", budget_reason="max_guard_retries")
+    return replace(state, guard_retries=retries)

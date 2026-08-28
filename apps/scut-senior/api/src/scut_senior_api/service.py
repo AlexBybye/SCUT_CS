@@ -6,7 +6,13 @@ from time import perf_counter
 from uuid import UUID, uuid4
 
 from .auth import AuthRequired, AuthenticatedPrincipal, utc_now
-from .agent_loop import AgentBudget, AgentState, reduce_agent_event
+from .agent_loop import (
+    AgentBudget,
+    AgentState,
+    record_action_result,
+    record_guard_retry,
+    reduce_agent_event,
+)
 from .adapters.bilibili import derive_question_keywords, normalize_keywords
 from .adapters.exam_facts import ExamFactsUnavailable
 from .byok_catalog import (
@@ -849,6 +855,16 @@ class IterationZeroService:
                     f"agent loop budget crossed: {agent_state.budget_reason or agent_state.status}"
                 )
 
+        def record_agent_action(action: str) -> None:
+            nonlocal agent_state
+            agent_state = record_action_result(
+                agent_state, action, budget=agent_budget  # type: ignore[arg-type]
+            )
+            if agent_state.status != "running":
+                raise ContractConflict(
+                    f"agent loop budget crossed: {agent_state.budget_reason or agent_state.status}"
+                )
+
         run_id = (
             stream_session.workflow_run_id
             if stream_session is not None
@@ -1027,6 +1043,11 @@ class IterationZeroService:
                     if isinstance(context_batch, RetrievalBatch) and (
                         context_batch.sources
                     ):
+                        reduce_agent(
+                            "decision_produced",
+                            action="retrieve_with_query_rewrite",
+                        )
+                        record_agent_action("retrieve_with_query_rewrite")
                         retrieval_batch = context_batch
                         _append_trace(
                             trace,
@@ -1080,6 +1101,7 @@ class IterationZeroService:
                 raise ContractConflict(
                     "source authorization guard rejected a source outside the conversation course"
                 )
+            record_agent_action("retrieve")
         except Exception:
             interrupted = persist_failed_or_interrupted(
                 failure_node=retrieval_node,
@@ -1251,6 +1273,13 @@ class IterationZeroService:
                         if interrupted is not None:
                             return interrupted
                         raise
+                    agent_state = record_guard_retry(
+                        agent_state, budget=agent_budget
+                    )
+                    if agent_state.status != "running":
+                        raise ContractConflict(
+                            f"agent loop budget crossed: {agent_state.budget_reason or agent_state.status}"
+                        )
                     retry_count += 1
                     _append_trace(
                         trace,
