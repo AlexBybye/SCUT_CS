@@ -54,6 +54,7 @@ apps/scut-senior/**/*.db
 apps/scut-senior/**/*.sqlite
 apps/scut-senior/**/*.sqlite3
 apps/scut-senior/**/:memory:.ses
+:memory:.ses
 apps/scut-senior/**/uploads/
 apps/scut-senior/**/indexes/
 

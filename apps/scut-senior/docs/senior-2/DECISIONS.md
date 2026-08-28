@@ -40,3 +40,12 @@ PLAN-2.md 仍是唯一基准文档；本文件只登记**用户直接决策**，
   不再承诺。需要回退时使用 Git 版本回退，或从课程资料重新构建 candidate。
 - **边界**：active candidate 的完整校验、课程开关、版本绑定和 fail-closed 行为
   保持不变；运行数据库、环境文件、日志和缓存仍不提交。
+
+## D5 · 阶段二先落地受限单步决策内核
+
+- **决策**：阶段二第一切片先实现纯 Python 的 AgentState reducer、动作白名单和
+  死循环预算；现有一次性检索→生成链路继续作为兼容运行路径，待 reducer 验收后
+  再接入模型决策，不引入独立 Planner、ReAct 框架或第二套事件承载机制。
+- **原因**：当前已有 EventStream、取消和终态持久化，但尚未具备
+  `decision_produced → action → observation_recorded` 的闭环。先固定可测试的状态
+  合同，能把阶段二拆成低风险增量而不改变一期本地运行边界。
