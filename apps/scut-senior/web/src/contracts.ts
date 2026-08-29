@@ -96,6 +96,9 @@ export type LocatorType = "page" | "slide" | "heading" | "question" | "none";
 export const COURSE_PLUGIN_STATES = ["active", "fixture_only", "registered"] as const;
 export type CoursePluginState = (typeof COURSE_PLUGIN_STATES)[number];
 
+export const COURSE_CATEGORIES = ["enabled", "not_enabled", "no_data"] as const;
+export type CourseCategory = (typeof COURSE_CATEGORIES)[number];
+
 export const RETRIEVAL_MODES = ["fixture", "local_corpus"] as const;
 export const RETRIEVAL_AVAILABILITIES = [
   "fixture",
@@ -138,6 +141,8 @@ export interface CoursePluginEntry {
   display_name: string;
   state: CoursePluginState;
   loaded: boolean;
+  usable: boolean;
+  category: CourseCategory;
   enabled_workflows: WorkflowType[];
 }
 
@@ -174,6 +179,8 @@ export interface Course {
   retrieval_available: boolean;
   plugin_loaded: boolean;
   selectable: boolean;
+  usable: boolean;
+  category: CourseCategory;
 }
 
 export interface CourseCatalog {

@@ -71,6 +71,8 @@ def test_auth_migrations_are_ledgered_and_sqlite_runtime_pragmas_are_enabled(
             "0011_account_lifecycle.sql",
             "0012_agent_events.sql",
             "0013_exam_plan_decisions.sql",
+            "0014_byok_cross_device.sql",
+            "0015_user_preferences.sql",
         ]
         assert connection.execute("PRAGMA foreign_keys").fetchone()[0] == 1
         assert connection.execute("PRAGMA journal_mode").fetchone()[0] == "wal"
@@ -241,16 +243,42 @@ def test_legacy_0004_schema_is_rebuilt_without_removed_providers_or_extra_column
 
         assert "legacy_unused" not in columns
         assert "retired_provider" not in table_sql
-        assert providers == ["deepseek", "openrouter"]
+        # Migration 0013 resets credentials: the AES-GCM AAD changed from
+        # session-bound to user-bound, so any legacy ciphertext is undecryptable
+        # and the table is rebuilt empty (users re-enter their key once).
+        assert providers == []
         assert "0005_finalize_model_credentials.sql" in migrations
+        assert "0014_byok_cross_device.sql" in migrations
 
+        # Cross-device BYOK: credentials are per-account, not per-session, so
+        # revoking one session must NOT delete the user's saved keys.
+        connection.execute(
+            """
+            INSERT INTO model_credentials (
+                user_id, provider_id, ciphertext, nonce, algorithm,
+                key_version, created_at, updated_at, expires_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                str(user_id),
+                "deepseek",
+                sqlite3.Binary(bytes([1]) * 17),
+                sqlite3.Binary(bytes([1]) * 12),
+                "AES-256-GCM",
+                1,
+                now,
+                now,
+                "2099-01-01T00:00:00+00:00",
+            ),
+        )
         connection.execute(
             "UPDATE auth_sessions SET revoked_at = ? WHERE auth_session_id = ?",
             (now, str(principal.auth_session_id)),
         )
-        assert connection.execute(
-            "SELECT COUNT(*) FROM model_credentials"
-        ).fetchone()[0] == 0
+        assert (
+            connection.execute("SELECT COUNT(*) FROM model_credentials").fetchone()[0]
+            == 1
+        )
 
 
 def test_oauth_state_is_digest_only_ten_minute_and_one_time(tmp_path: Path) -> None:

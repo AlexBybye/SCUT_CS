@@ -160,7 +160,6 @@ def seed_account_data(app, client: TestClient, *, with_credential: bool) -> None
         session = repository.issue_session(UUID(alice_user_id))
         repository.upsert_model_credential(
             user_id=UUID(alice_user_id),
-            auth_session_id=session.auth_session_id,
             provider_id="openrouter",
             ciphertext=b"0123456789abcdef0123456789abcdef",  # 模拟密文
             nonce=b"0123456789ab",

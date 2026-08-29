@@ -131,6 +131,19 @@ export async function unloadCoursePlugin(courseId: string): Promise<{ course_id:
   );
 }
 
+export async function getAccountPreferences(): Promise<{ preferences: Record<string, string> }> {
+  return apiRequest<{ preferences: Record<string, string> }>("/api/v1/account/preferences");
+}
+
+export async function saveAccountPreferences(
+  preferences: Record<string, string>,
+): Promise<{ preferences: Record<string, string> }> {
+  return apiRequest<{ preferences: Record<string, string> }>("/api/v1/account/preferences", {
+    method: "PUT",
+    body: JSON.stringify({ preferences }),
+  });
+}
+
 export async function getByokCredentials(): Promise<ByokCredentialStatus[]> {
   return apiRequest<ByokCredentialStatus[]>("/api/v1/model-credentials");
 }

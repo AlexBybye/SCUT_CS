@@ -48,7 +48,13 @@ class EncryptedCredential:
 
 
 class CredentialCipher:
-    """AES-256-GCM bound to one user, login session, and provider."""
+    """AES-256-GCM bound to one user and provider, not to a login session.
+
+    Cross-device support means the authenticated identity (user_id) is the
+    binding scope, so a BYOK key saved on one device decrypts on another device
+    of the same GitHub account. Session activity is still required to *use* the
+    key; it is no longer part of the ciphertext scope.
+    """
 
     def __init__(self, master_key: bytes, key_version: int):
         if len(master_key) != AES_256_KEY_BYTES:
@@ -63,7 +69,6 @@ class CredentialCipher:
         plaintext: str,
         *,
         user_id: UUID,
-        auth_session_id: UUID,
         provider_id: str,
     ) -> EncryptedCredential:
         if not plaintext:
@@ -72,7 +77,7 @@ class CredentialCipher:
         ciphertext = self._aead.encrypt(
             nonce,
             plaintext.encode("utf-8"),
-            _credential_aad(user_id, auth_session_id, provider_id),
+            _credential_aad(user_id, provider_id),
         )
         return EncryptedCredential(ciphertext, nonce, self.key_version)
 
@@ -81,7 +86,6 @@ class CredentialCipher:
         encrypted: EncryptedCredential,
         *,
         user_id: UUID,
-        auth_session_id: UUID,
         provider_id: str,
     ) -> str:
         if encrypted.key_version != self.key_version:
@@ -94,7 +98,7 @@ class CredentialCipher:
             plaintext = self._aead.decrypt(
                 encrypted.nonce,
                 encrypted.ciphertext,
-                _credential_aad(user_id, auth_session_id, provider_id),
+                _credential_aad(user_id, provider_id),
             )
             decoded = plaintext.decode("utf-8")
         except (InvalidTag, UnicodeDecodeError):
@@ -106,11 +110,9 @@ class CredentialCipher:
         return decoded
 
 
-def _credential_aad(
-    user_id: UUID, auth_session_id: UUID, provider_id: str
-) -> bytes:
+def _credential_aad(user_id: UUID, provider_id: str) -> bytes:
     if not provider_id or "\x1f" in provider_id:
         raise ValueError("provider_id is invalid for credential AAD")
     return (
-        f"scut-senior-byok-v1\x1f{user_id}\x1f{auth_session_id}\x1f{provider_id}"
+        f"scut-senior-byok-v2\x1f{user_id}\x1f{provider_id}"
     ).encode("utf-8")

@@ -45,14 +45,19 @@ class ModelCredentialManager:
         self, principal: AuthenticatedPrincipal
     ) -> list[ModelCredentialStatus]:
         self._require_active_session(principal)
+        session_active = self._repository.session_is_active(
+            principal.user_id, principal.auth_session_id
+        )
         configured = {
             record.provider_id: record
-            for record in self._repository.list_model_credentials(
-                principal.user_id, principal.auth_session_id
-            )
+            for record in self._repository.list_model_credentials(principal.user_id)
         }
         return [
-            self._status(entry.provider_id.value, configured.get(entry.provider_id.value))
+            self._status(
+                entry.provider_id.value,
+                configured.get(entry.provider_id.value),
+                session_active,
+            )
             for entry in self._catalog.entries
         ]
 
@@ -83,21 +88,20 @@ class ModelCredentialManager:
         encrypted = cipher.encrypt(
             api_key,
             user_id=principal.user_id,
-            auth_session_id=principal.auth_session_id,
             provider_id=provider_id,
         )
         record = self._repository.upsert_model_credential(
             user_id=principal.user_id,
-            auth_session_id=principal.auth_session_id,
             provider_id=provider_id,
             ciphertext=encrypted.ciphertext,
             nonce=encrypted.nonce,
             algorithm=encrypted.algorithm,
             key_version=encrypted.key_version,
         )
-        # The repository derives expiry from the still-active session inside
-        # the same write transaction, so a stale request cannot extend a key.
-        return self._status(entry.provider_id.value, record)
+        # The credential is scoped to the user, not the session, so it persists
+        # across re-login on another device. The active-session check above is
+        # what authorizes this write.
+        return self._status(entry.provider_id.value, record, True)
 
     def delete(
         self, principal: AuthenticatedPrincipal, provider_id: str
@@ -105,7 +109,7 @@ class ModelCredentialManager:
         self._resolve_provider(provider_id)
         self._require_active_session(principal)
         deleted = self._repository.delete_model_credential(
-            principal.user_id, principal.auth_session_id, provider_id
+            principal.user_id, provider_id
         )
         if not deleted and not self._repository.session_is_active(
             principal.user_id, principal.auth_session_id
@@ -124,7 +128,7 @@ class ModelCredentialManager:
                 detail="用户 API Key 加密服务未配置。",
             )
         record = self._repository.get_model_credential(
-            principal.user_id, principal.auth_session_id, provider_id
+            principal.user_id, provider_id
         )
         if record is None:
             if not self._repository.session_is_active(
@@ -134,7 +138,7 @@ class ModelCredentialManager:
             raise ModelCredentialError(
                 status_code=409,
                 code="model_credential_not_configured",
-                detail="当前登录会话尚未保存该供应商的 API Key。",
+                detail="当前账号尚未保存该供应商的 API Key。",
             )
         try:
             api_key = cipher.decrypt(
@@ -145,7 +149,6 @@ class ModelCredentialManager:
                     algorithm=record.algorithm,
                 ),
                 user_id=principal.user_id,
-                auth_session_id=principal.auth_session_id,
                 provider_id=provider_id,
             )
         except CredentialDecryptionError:
@@ -192,7 +195,10 @@ class ModelCredentialManager:
             ) from None
 
     def _status(
-        self, provider_id: str, record: StoredModelCredential | None
+        self,
+        provider_id: str,
+        record: StoredModelCredential | None,
+        session_active: bool,
     ) -> ModelCredentialStatus:
         entry = self._catalog.resolve_provider(provider_id)
         model_id = entry.models[0].model_id
@@ -213,9 +219,7 @@ class ModelCredentialManager:
             configured=True,
             masked_key=MASKED_MODEL_KEY,
             expires_at=record.expires_at,
-            writable=self._cipher is not None and self._repository.session_is_active(
-                record.user_id, record.auth_session_id
-            ),
+            writable=self._cipher is not None and session_active,
             source="user_key",
             updated_at=record.updated_at,
         )

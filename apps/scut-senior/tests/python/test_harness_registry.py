@@ -343,12 +343,16 @@ def test_courses_endpoint_exposes_runtime_selection_gates(tmp_path: Path) -> Non
         "retrieval_available": True,
         "plugin_loaded": True,
         "selectable": True,
+        "usable": True,
+        "category": "enabled",
     }
     assert courses["cpp"]["mock_available"] is False
     assert courses["cpp"]["retrieval_availability"] == "unavailable"
     assert courses["cpp"]["retrieval_available"] is False
     assert courses["cpp"]["plugin_loaded"] is True
     assert courses["cpp"]["selectable"] is False
+    assert courses["cpp"]["usable"] is False
+    assert courses["cpp"]["category"] == "no_data"
 
     app.state.repository.set_course_plugin_loaded("linear_algebra", False)
     after_unload = client.get("/api/v1/courses").json()
@@ -360,6 +364,8 @@ def test_courses_endpoint_exposes_runtime_selection_gates(tmp_path: Path) -> Non
     assert linear_algebra["retrieval_available"] is True
     assert linear_algebra["plugin_loaded"] is False
     assert linear_algebra["selectable"] is False
+    assert linear_algebra["usable"] is False
+    assert linear_algebra["category"] == "not_enabled"
 
 
 def test_plugin_registry_endpoint_reports_honest_metadata(tmp_path: Path) -> None:
@@ -396,8 +402,14 @@ def test_plugin_registry_endpoint_reports_honest_metadata(tmp_path: Path) -> Non
     assert len(courses) == 55
     assert courses["linear_algebra"]["state"] == "fixture_only"
     assert courses["linear_algebra"]["enabled_workflows"] == []
+    # fixture profile: fixture_only is the data-backed state; with the plugin
+    # loaded by default the category collapses to "enabled".
+    assert courses["linear_algebra"]["usable"] is True
+    assert courses["linear_algebra"]["category"] == "enabled"
     assert courses["cpp"]["state"] == "registered"
     assert courses["cpp"]["enabled_workflows"] == []
+    assert courses["cpp"]["usable"] is False
+    assert courses["cpp"]["category"] == "no_data"
 
     serialized = json.dumps(body)
     for forbidden in ("prompt", "directive", "authoritative_query", "anchor_context"):
@@ -606,3 +618,10 @@ def test_course_plugin_load_unload_persists_and_gates_runtime(tmp_path: Path) ->
     unknown = client.post("/api/v1/plugin-registry/courses/not-a-course/load")
     assert unknown.status_code == 422
     assert unknown.json()["error"]["code"] == "unknown_course"
+
+    # Loading a course with no retrieval data fails closed instead of creating
+    # the "loaded but unusable" fork between the plugin panel and course list.
+    no_data = client.post("/api/v1/plugin-registry/courses/cpp/load")
+    assert no_data.status_code == 503
+    assert no_data.json()["error"]["code"] == "capability_unavailable"
+    assert no_data.json()["error"]["capability"] == "course"

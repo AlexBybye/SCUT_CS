@@ -1,4 +1,18 @@
-import type { Course, RetrievalMode } from "./contracts";
+import type { Course, CourseCategory, RetrievalMode } from "./contracts";
+
+// Single shared vocabulary for the course list and the plugin panel. Both
+// surfaces render the same three categories, so they cannot drift apart.
+export const COURSE_CATEGORY_LABEL: Record<CourseCategory, string> = {
+  enabled: "已启用",
+  not_enabled: "未启用",
+  no_data: "无数据",
+};
+
+export const COURSE_CATEGORY_RANK: Record<CourseCategory, number> = {
+  enabled: 0,
+  not_enabled: 1,
+  no_data: 2,
+};
 
 export function selectSelectableCourseId(
   courses: readonly Course[],
@@ -21,10 +35,14 @@ export function retrievalAvailabilityLabel(course: Pick<Course, "retrieval_avail
 }
 
 export function courseAvailabilitySummary(course: Course): string {
-  const retrieval = retrievalAvailabilityLabel(course);
-  if (!course.retrieval_available) return retrieval;
-  if (!course.plugin_loaded) return `${retrieval} · 课程插件未加载`;
-  return `${retrieval} · 当前可用`;
+  switch (course.category) {
+    case "enabled":
+      return `${retrievalAvailabilityLabel(course)} · 当前可用`;
+    case "not_enabled":
+      return `${retrievalAvailabilityLabel(course)} · 插件未装载`;
+    case "no_data":
+      return "无本地语料数据";
+  }
 }
 
 export function courseOptionLabel(course: Course): string {

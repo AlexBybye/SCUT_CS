@@ -49,6 +49,10 @@ from ..ports import StoredModelCredential
 
 
 HISTORY_TTL = timedelta(days=30)
+# User-scoped BYOK credentials are independent of any login session, so they
+# survive re-login on another device. Give them a fixed lifetime rather than a
+# session-bound one; a user re-saves / rotates before it lapses.
+BYOK_CREDENTIAL_LIFETIME_DAYS = 365
 PRIVATE_DIRECTORY_MODE = 0o700
 PRIVATE_FILE_MODE = 0o600
 
@@ -678,6 +682,44 @@ class SQLiteWorkflowRepository:
             connection.close()
         return counts
 
+    def get_user_preferences(self, user_id: str) -> dict[str, str]:
+        normalized_user_id = str(UUID(str(user_id)))
+        with self._connect() as connection:
+            rows = connection.execute(
+                """
+                SELECT preference_key, preference_value
+                FROM user_preferences
+                WHERE user_id = ?
+                ORDER BY preference_key
+                """,
+                (normalized_user_id,),
+            ).fetchall()
+        return {row["preference_key"]: row["preference_value"] for row in rows}
+
+    def set_user_preference(self, user_id: str, key: str, value: str) -> None:
+        normalized_user_id = str(UUID(str(user_id)))
+        now = self._now().isoformat()
+        with self._connect() as connection:
+            connection.execute(
+                """
+                INSERT INTO user_preferences (
+                    user_id, preference_key, preference_value, updated_at
+                ) VALUES (?, ?, ?, ?)
+                ON CONFLICT(user_id, preference_key) DO UPDATE SET
+                    preference_value = excluded.preference_value,
+                    updated_at = excluded.updated_at
+                """,
+                (normalized_user_id, key, value, now),
+            )
+
+    def delete_user_preference(self, user_id: str, key: str) -> None:
+        normalized_user_id = str(UUID(str(user_id)))
+        with self._connect() as connection:
+            connection.execute(
+                "DELETE FROM user_preferences WHERE user_id = ? AND preference_key = ?",
+                (normalized_user_id, key),
+            )
+
     def export_account_data(self, user_id: str) -> dict[str, object]:
         """导出本人数据：历史、贡献与临时材料元数据。
 
@@ -1157,7 +1199,6 @@ class SQLiteWorkflowRepository:
     def _stored_model_credential(row: sqlite3.Row) -> StoredModelCredential:
         return StoredModelCredential(
             user_id=UUID(row["user_id"]),
-            auth_session_id=UUID(row["auth_session_id"]),
             provider_id=row["provider_id"],
             ciphertext=bytes(row["ciphertext"]),
             nonce=bytes(row["nonce"]),
@@ -1167,56 +1208,36 @@ class SQLiteWorkflowRepository:
             updated_at=datetime.fromisoformat(row["updated_at"]),
         )
 
-    def list_model_credentials(
-        self, user_id: UUID, auth_session_id: UUID
-    ) -> list[StoredModelCredential]:
+    def list_model_credentials(self, user_id: UUID) -> list[StoredModelCredential]:
         self.cleanup_auth_records()
         now = self._now().isoformat()
         with self._connect() as connection:
             rows = connection.execute(
                 """
-                SELECT c.user_id, c.auth_session_id, c.provider_id,
-                       c.ciphertext, c.nonce, c.algorithm, c.key_version,
-                       c.expires_at, c.updated_at
-                FROM model_credentials AS c
-                JOIN auth_sessions AS s
-                  ON s.auth_session_id = c.auth_session_id
-                 AND s.user_id = c.user_id
-                WHERE c.user_id = ? AND c.auth_session_id = ?
-                  AND c.expires_at > ?
-                  AND s.revoked_at IS NULL AND s.expires_at > ?
-                ORDER BY c.provider_id
+                SELECT user_id, provider_id, ciphertext, nonce, algorithm,
+                       key_version, expires_at, updated_at
+                FROM model_credentials
+                WHERE user_id = ? AND expires_at > ?
+                ORDER BY provider_id
                 """,
-                (str(user_id), str(auth_session_id), now, now),
+                (str(user_id), now),
             ).fetchall()
         return [self._stored_model_credential(row) for row in rows]
 
     def get_model_credential(
-        self, user_id: UUID, auth_session_id: UUID, provider_id: str
+        self, user_id: UUID, provider_id: str
     ) -> StoredModelCredential | None:
         self.cleanup_auth_records()
         now = self._now().isoformat()
         with self._connect() as connection:
             row = connection.execute(
                 """
-                SELECT c.user_id, c.auth_session_id, c.provider_id,
-                       c.ciphertext, c.nonce, c.algorithm, c.key_version,
-                       c.expires_at, c.updated_at
-                FROM model_credentials AS c
-                JOIN auth_sessions AS s
-                  ON s.auth_session_id = c.auth_session_id
-                 AND s.user_id = c.user_id
-                WHERE c.user_id = ? AND c.auth_session_id = ?
-                  AND c.provider_id = ? AND c.expires_at > ?
-                  AND s.revoked_at IS NULL AND s.expires_at > ?
+                SELECT user_id, provider_id, ciphertext, nonce, algorithm,
+                       key_version, expires_at, updated_at
+                FROM model_credentials
+                WHERE user_id = ? AND provider_id = ? AND expires_at > ?
                 """,
-                (
-                    str(user_id),
-                    str(auth_session_id),
-                    provider_id,
-                    now,
-                    now,
-                ),
+                (str(user_id), provider_id, now),
             ).fetchone()
         return self._stored_model_credential(row) if row is not None else None
 
@@ -1224,7 +1245,6 @@ class SQLiteWorkflowRepository:
         self,
         *,
         user_id: UUID,
-        auth_session_id: UUID,
         provider_id: str,
         ciphertext: bytes,
         nonce: bytes,
@@ -1239,32 +1259,19 @@ class SQLiteWorkflowRepository:
             raise ValueError("invalid credential key version")
         now_value = self._now()
         now = now_value.isoformat()
+        # Per-user credentials live for a year from the write; they are no
+        # longer bound to a (7-day) login session, so they survive re-login on
+        # another device. The active-session check lives in the credential
+        # manager, not here.
+        expires_at = (now_value + timedelta(days=BYOK_CREDENTIAL_LIFETIME_DAYS)).isoformat()
         with self._connect() as connection:
-            # Serialize the active-session check with credential replacement.
-            # If replacement wins, a later revoke trigger deletes the row; if
-            # revoke wins, this check fails and no late ciphertext is written.
-            connection.execute("BEGIN IMMEDIATE")
-            session = connection.execute(
-                """
-                SELECT expires_at FROM auth_sessions
-                WHERE auth_session_id = ? AND user_id = ?
-                  AND revoked_at IS NULL AND expires_at > ?
-                """,
-                (str(auth_session_id), str(user_id), now),
-            ).fetchone()
-            if session is None:
-                raise AuthRequired()
-            expires_at = datetime.fromisoformat(session["expires_at"])
-            if expires_at <= now_value:
-                raise AuthRequired()
             connection.execute(
                 """
                 INSERT INTO model_credentials (
-                    auth_session_id, user_id, provider_id, ciphertext, nonce,
-                    algorithm, key_version,
-                    created_at, updated_at, expires_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                ON CONFLICT(auth_session_id, provider_id) DO UPDATE SET
+                    user_id, provider_id, ciphertext, nonce, algorithm,
+                    key_version, created_at, updated_at, expires_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(user_id, provider_id) DO UPDATE SET
                     ciphertext = excluded.ciphertext,
                     nonce = excluded.nonce,
                     algorithm = excluded.algorithm,
@@ -1273,7 +1280,6 @@ class SQLiteWorkflowRepository:
                     expires_at = excluded.expires_at
                 """,
                 (
-                    str(auth_session_id),
                     str(user_id),
                     provider_id,
                     sqlite3.Binary(ciphertext),
@@ -1282,43 +1288,32 @@ class SQLiteWorkflowRepository:
                     key_version,
                     now,
                     now,
-                    expires_at.isoformat(),
+                    expires_at,
                 ),
             )
             row = connection.execute(
                 """
-                SELECT user_id, auth_session_id, provider_id, ciphertext,
-                       nonce, algorithm, key_version, expires_at, updated_at
+                SELECT user_id, provider_id, ciphertext, nonce, algorithm,
+                       key_version, expires_at, updated_at
                 FROM model_credentials
-                WHERE auth_session_id = ? AND provider_id = ?
+                WHERE user_id = ? AND provider_id = ?
                 """,
-                (str(auth_session_id), provider_id),
+                (str(user_id), provider_id),
             ).fetchone()
         if row is None:
             raise RuntimeError("model credential was not persisted")
         return self._stored_model_credential(row)
 
     def delete_model_credential(
-        self, user_id: UUID, auth_session_id: UUID, provider_id: str
+        self, user_id: UUID, provider_id: str
     ) -> bool:
-        now = self._now().isoformat()
         with self._connect() as connection:
-            active = connection.execute(
-                """
-                SELECT 1 FROM auth_sessions
-                WHERE auth_session_id = ? AND user_id = ?
-                  AND revoked_at IS NULL AND expires_at > ?
-                """,
-                (str(auth_session_id), str(user_id), now),
-            ).fetchone()
-            if active is None:
-                raise AuthRequired()
             cursor = connection.execute(
                 """
                 DELETE FROM model_credentials
-                WHERE auth_session_id = ? AND user_id = ? AND provider_id = ?
+                WHERE user_id = ? AND provider_id = ?
                 """,
-                (str(auth_session_id), str(user_id), provider_id),
+                (str(user_id), provider_id),
             )
         return cursor.rowcount == 1
 
@@ -1538,7 +1533,7 @@ class SQLiteWorkflowRepository:
                 FROM workflow_runs
                 WHERE conversation_id = ? AND user_id = ?
                   AND run_status NOT IN ('created', 'running')
-                ORDER BY created_at DESC, workflow_run_id DESC
+                ORDER BY created_at ASC, workflow_run_id ASC
                 """,
                 (str(conversation_id), user_id),
             ).fetchall()

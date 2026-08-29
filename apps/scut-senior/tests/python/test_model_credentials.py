@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import base64
 import sqlite3
-import threading
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
@@ -82,23 +81,20 @@ def test_master_key_is_strict_aes256_base64_and_never_appears_in_repr(
         ).assert_safe()
 
 
-def test_aesgcm_detects_tampering_and_binds_user_session_and_provider() -> None:
+def test_aesgcm_detects_tampering_and_binds_user_and_provider() -> None:
     from uuid import uuid4
 
     cipher = CredentialCipher(MASTER_KEY_BYTES, 7)
     user_id = uuid4()
-    session_id = uuid4()
     encrypted = cipher.encrypt(
         "sk-private",
         user_id=user_id,
-        auth_session_id=session_id,
         provider_id="openrouter",
     )
 
     assert cipher.decrypt(
         encrypted,
         user_id=user_id,
-        auth_session_id=session_id,
         provider_id="openrouter",
     ) == "sk-private"
     assert "sk-private" not in repr(encrypted)
@@ -122,21 +118,19 @@ def test_aesgcm_detects_tampering_and_binds_user_session_and_provider() -> None:
             cipher.decrypt(
                 candidate,
                 user_id=user_id,
-                auth_session_id=session_id,
                 provider_id="openrouter",
             )
+    # Cross-device: the AAD binds user_id + provider_id, not a login session.
     with pytest.raises(CredentialDecryptionError):
         cipher.decrypt(
             encrypted,
-            user_id=user_id,
-            auth_session_id=uuid4(),
+            user_id=uuid4(),
             provider_id="openrouter",
         )
     with pytest.raises(CredentialDecryptionError):
         cipher.decrypt(
             encrypted,
             user_id=user_id,
-            auth_session_id=session_id,
             provider_id="deepseek",
         )
 
@@ -223,7 +217,9 @@ def test_crud_returns_only_masked_metadata_and_database_contains_only_aead(
     assert len(bytes(row["nonce"])) == 12
     assert row["algorithm"] == CREDENTIAL_ALGORITHM
     assert row["key_version"] == 7
-    assert row["expires_at"] == session_expiry
+    # Per-user credentials expire on a fixed long horizon, not with the session.
+    assert row["expires_at"] != session_expiry
+    assert datetime.fromisoformat(row["expires_at"]) > datetime.now(UTC)
     assert secret.encode() not in database_path.read_bytes()
 
 
@@ -260,10 +256,12 @@ def test_replace_restart_same_session_and_new_session_isolation(tmp_path: Path) 
     new_session = restarted.state.repository.issue_session(user_id)
     other_tab = TestClient(restarted, base_url="https://testserver")
     other_tab.cookies.set(SESSION_COOKIE_NAME, new_session.token, path="/")
-    assert all(
-        item["configured"] is False
+    # Cross-device: a different session of the same GitHub account sees the key.
+    assert next(
+        item
         for item in other_tab.get("/api/v1/model-credentials").json()
-    )
+        if item["provider_id"] == "deepseek"
+    )["configured"] is True
 
 
 def test_logout_delete_expiry_and_restore_physically_remove_credentials(
@@ -286,9 +284,10 @@ def test_logout_delete_expiry_and_restore_physically_remove_credentials(
     ).status_code == 200
     assert client.post("/api/v1/auth/logout").status_code == 200
     with sqlite3.connect(database_path) as connection:
+        # Cross-device: the key belongs to the account and survives one logout.
         assert connection.execute(
             "SELECT COUNT(*) FROM model_credentials"
-        ).fetchone()[0] == 0
+        ).fetchone()[0] == 1
 
     expiring, _ = authenticated_client(app, github_id=202, login="expiring")
     assert expiring.put(
@@ -297,9 +296,10 @@ def test_logout_delete_expiry_and_restore_physically_remove_credentials(
     clock.advance(timedelta(days=7))
     assert expiring.get("/api/v1/model-credentials").status_code == 401
     with sqlite3.connect(database_path) as connection:
+        # Credentials persist per-account even after the session expires.
         assert connection.execute(
             "SELECT COUNT(*) FROM model_credentials"
-        ).fetchone()[0] == 0
+        ).fetchone()[0] == 2
 
     fresh, _ = authenticated_client(app, github_id=303, login="backup")
     assert fresh.put(
@@ -318,7 +318,7 @@ def test_logout_delete_expiry_and_restore_physically_remove_credentials(
         ).fetchone()[0] == 0
         assert connection.execute(
             "SELECT COUNT(*) FROM model_credentials"
-        ).fetchone()[0] == 0
+        ).fetchone()[0] == 3
 
 
 def test_provider_and_base_url_contract_rejects_secret_without_reflection(
@@ -364,53 +364,26 @@ def test_stale_principal_is_revalidated_before_credential_write(tmp_path: Path) 
         ).fetchone()[0] == 0
 
 
-def test_revoke_racing_credential_replace_always_leaves_no_ciphertext(
-    tmp_path: Path,
-) -> None:
+def test_revoke_after_replace_persists_per_user_credential(tmp_path: Path) -> None:
     app = create_app(byok_settings(tmp_path / "replace-race.db"))
     repository = app.state.repository
 
-    for ordinal in range(12):
-        user_id = repository.upsert_github_user(
-            GitHubUserProfile(7000 + ordinal, f"race-{ordinal}")
-        )
-        session = repository.issue_session(user_id)
-        principal = repository.authenticate_session(session.token)
-        assert principal is not None
-        barrier = threading.Barrier(2)
-        unexpected: list[BaseException] = []
+    user_id = repository.upsert_github_user(GitHubUserProfile(7000, "race"))
+    session = repository.issue_session(user_id)
+    principal = repository.authenticate_session(session.token)
+    assert principal is not None
 
-        def replace() -> None:
-            barrier.wait()
-            try:
-                app.state.credential_manager.replace(
-                    principal,
-                    "openrouter",
-                    ModelCredentialUpsert(api_key=f"sk-race-{ordinal}"),
-                )
-            except AuthRequired:
-                pass
-            except BaseException as exc:  # pragma: no cover - diagnostic capture
-                unexpected.append(exc)
-
-        def revoke() -> None:
-            barrier.wait()
-            try:
-                repository.revoke_session(session.token)
-            except BaseException as exc:  # pragma: no cover - diagnostic capture
-                unexpected.append(exc)
-
-        writer = threading.Thread(target=replace)
-        revoker = threading.Thread(target=revoke)
-        writer.start()
-        revoker.start()
-        writer.join(timeout=10)
-        revoker.join(timeout=10)
-        assert not writer.is_alive() and not revoker.is_alive()
-        assert unexpected == []
-
-        with sqlite3.connect(app.state.settings.database_path) as connection:
-            assert connection.execute(
-                "SELECT COUNT(*) FROM model_credentials WHERE auth_session_id = ?",
-                (str(session.auth_session_id),),
-            ).fetchone()[0] == 0
+    status = app.state.credential_manager.replace(
+        principal,
+        "openrouter",
+        ModelCredentialUpsert(api_key="sk-race"),
+    )
+    assert status.configured is True
+    # Cross-device: revoking the session that wrote the key must not clear the
+    # account's credential (it is not session-bound anymore).
+    assert repository.revoke_session(session.token) is True
+    with sqlite3.connect(app.state.settings.database_path) as connection:
+        assert connection.execute(
+            "SELECT COUNT(*) FROM model_credentials WHERE user_id = ? AND provider_id = ?",
+            (str(user_id), "openrouter"),
+        ).fetchone()[0] == 1

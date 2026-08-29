@@ -208,6 +208,13 @@ class IterationZeroService:
         self, user: RequestIdentity, course_id_or_alias: str
     ) -> str:
         course = self.registry.resolve(course_id_or_alias)
+        # A course the retrieval adapter cannot serve must not become "loaded":
+        # that is exactly the fork that made the plugin panel and the course
+        # list disagree (loaded but no data). Fail closed instead.
+        if not self._retrieval_course_available(course.course_id):
+            raise CapabilityUnavailable(
+                "course", "该课程无本地语料数据，无法装载。"
+            )
         self.repository.set_course_plugin_loaded(
             course.course_id, True, str(user.user_id)
         )
