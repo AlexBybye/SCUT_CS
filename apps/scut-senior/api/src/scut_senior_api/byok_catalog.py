@@ -97,7 +97,7 @@ _BYOK_PROVIDER_ENTRIES = (
                 # DeepSeek is a reasoning model: its thinking consumes part of
                 # the token budget, so a small max_tokens can return an empty
                 # final ``content``. Keep headroom for reasoning + answer.
-                default_max_tokens=8192,
+                default_max_tokens=16384,
             ),
         ),
     ),
@@ -112,7 +112,7 @@ _BYOK_PROVIDER_ENTRIES = (
                 company="DeepSeek",
                 display_name="DeepSeek V4 Flash",
                 # Same reasoning-model note as the OpenRouter DeepSeek route.
-                default_max_tokens=8192,
+                default_max_tokens=16384,
             ),
         ),
     ),

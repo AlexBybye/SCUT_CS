@@ -19,6 +19,8 @@ const fixtureCourse: Course = {
   retrieval_available: true,
   plugin_loaded: true,
   selectable: true,
+  usable: true,
+  category: "enabled",
 };
 
 const localCorpusCourse: Course = {
@@ -31,6 +33,8 @@ const localCorpusCourse: Course = {
   retrieval_available: true,
   plugin_loaded: true,
   selectable: true,
+  usable: true,
+  category: "enabled",
 };
 
 const unavailableCourse: Course = {
@@ -43,6 +47,8 @@ const unavailableCourse: Course = {
   retrieval_available: false,
   plugin_loaded: true,
   selectable: false,
+  usable: false,
+  category: "no_data",
 };
 
 describe("course runtime availability", () => {
@@ -65,7 +71,7 @@ describe("course runtime availability", () => {
   it("区分 Fixture、已激活本地语料和不可用课程", () => {
     expect(courseAvailabilitySummary(fixtureCourse)).toBe("合成 Fixture · 当前可用");
     expect(courseAvailabilitySummary(localCorpusCourse)).toBe("已激活本地课程语料 · 当前可用");
-    expect(courseAvailabilitySummary(unavailableCourse)).toBe("课程资料未激活或不可用");
+    expect(courseAvailabilitySummary(unavailableCourse)).toBe("无本地语料数据");
     expect(courseOptionLabel(localCorpusCourse)).toContain("已激活本地课程语料");
     expect(courseSelectionError(unavailableCourse)).toBe("该课程资料当前未激活或不可用。");
   });

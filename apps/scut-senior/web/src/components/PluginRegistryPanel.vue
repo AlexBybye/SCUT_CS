@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import { getPluginRegistry, loadCoursePlugin, unloadCoursePlugin } from "../api";
-import type { CoursePluginEntry, PluginRegistry } from "../contracts";
+import {
+  COURSE_CATEGORY_LABEL,
+  COURSE_CATEGORY_RANK,
+} from "../courseAvailability";
+import type { CourseCategory, CoursePluginEntry, PluginRegistry } from "../contracts";
 
 const props = defineProps<{
   canManagePlugins: boolean;
@@ -22,17 +26,23 @@ const presetsOpen = ref(false);
 const toolsOpen = ref(false);
 const courseQuery = ref("");
 
-const stateLabel: Record<string, string> = {
-  active: "可用",
-  fixture_only: "仅 Fixture",
-  registered: "已登记",
+const categoryChip: Record<CourseCategory, string> = {
+  enabled: "chip-ok",
+  not_enabled: "chip-warn",
+  no_data: "",
 };
 
-const pluginStateChip: Record<string, string> = {
-  active: "chip-ok",
-  fixture_only: "chip-warn",
-  registered: "",
-};
+// 单一一套分类：与 Composer 课程列表共用同一真值（服务端同源推导），
+// 面板与列表不再对同一门课给出不同结论。
+function courseCategory(course: CoursePluginEntry): CourseCategory {
+  const mode = registry.value?.retrieval_mode ?? "fixture";
+  const dataBacked =
+    mode === "local_corpus"
+      ? course.state === "active"
+      : course.state === "fixture_only";
+  if (!dataBacked) return "no_data";
+  return course.loaded ? "enabled" : "not_enabled";
+}
 
 const PLUGIN_TELEMETRY_KEY = "scut-senior.plugin-management-events";
 
@@ -84,7 +94,10 @@ const visibleCourses = computed<CoursePluginEntry[]>(() => {
       );
     })
     .sort((a, b) => {
-      if (a.loaded !== b.loaded) return a.loaded ? -1 : 1;
+      const rankDiff =
+        (COURSE_CATEGORY_RANK[courseCategory(a)] ?? 9) -
+        (COURSE_CATEGORY_RANK[courseCategory(b)] ?? 9);
+      if (rankDiff !== 0) return rankDiff;
       return a.display_name.localeCompare(b.display_name, "zh-Hans");
     });
 });
@@ -107,6 +120,10 @@ function toggleAllGroups(): void {
 
 async function togglePlugin(course: CoursePluginEntry): Promise<void> {
   if (!props.canManagePlugins || busyCourseId.value) return;
+  if (courseCategory(course) === "no_data") {
+    errorMessage.value = "该课程无本地语料数据，无法装载。";
+    return;
+  }
   busyCourseId.value = course.course_id;
   errorMessage.value = "";
   try {
@@ -209,20 +226,22 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
                 <strong>{{ course.display_name }}</strong>
                 <span
                   class="chip"
-                  :class="course.loaded ? pluginStateChip[course.state] : ''"
+                  :class="categoryChip[courseCategory(course)]"
                 >
-                  {{ course.loaded ? stateLabel[course.state] : "已卸载" }}
+                  {{ COURSE_CATEGORY_LABEL[courseCategory(course)] }}
                 </span>
               </div>
               <div class="plugin-row-meta">
                 <code>{{ course.course_id }}</code>
                 <span>
                   {{
-                    course.loaded
-                      ? course.enabled_workflows.length
-                        ? `支持 ${course.enabled_workflows.length} 个 Workflow`
-                        : "未启用 Workflow"
-                      : "插件未装载"
+                    courseCategory(course) === "no_data"
+                      ? "无本地语料数据，无法装载"
+                      : course.loaded
+                        ? course.enabled_workflows.length
+                          ? `支持 ${course.enabled_workflows.length} 个 Workflow`
+                          : "未启用 Workflow"
+                        : "插件未装载"
                   }}
                 </span>
               </div>
@@ -230,10 +249,19 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
                 <button
                   type="button"
                   class="btn btn-quiet"
-                  :disabled="busyCourseId !== ''"
+                  :disabled="busyCourseId !== '' || courseCategory(course) === 'no_data'"
+                  :title="courseCategory(course) === 'no_data' ? '无本地语料数据，无法装载' : undefined"
                   @click="togglePlugin(course)"
                 >
-                  {{ busyCourseId === course.course_id ? "处理中" : course.loaded ? "卸载" : "装载" }}
+                  {{
+                    busyCourseId === course.course_id
+                      ? "处理中"
+                      : courseCategory(course) === "no_data"
+                        ? "不可装载"
+                        : course.loaded
+                          ? "卸载"
+                          : "装载"
+                  }}
                 </button>
               </div>
             </article>

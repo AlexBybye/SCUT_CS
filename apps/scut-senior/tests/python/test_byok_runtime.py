@@ -564,9 +564,11 @@ def test_logout_during_provider_call_prevents_late_success_or_failed_history(
         assert connection.execute(
             "SELECT COUNT(*) FROM workflow_runs"
         ).fetchone()[0] == 0
+        # Cross-device BYOK: the key is per-account, so revoking this session
+        # must NOT clear the user's saved credential.
         assert connection.execute(
             "SELECT COUNT(*) FROM model_credentials"
-        ).fetchone()[0] == 0
+        ).fetchone()[0] == 1
 
 
 def test_test_profile_without_injected_byok_transport_fails_closed(

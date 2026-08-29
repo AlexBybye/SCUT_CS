@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { courseAvailabilitySummary } from "../courseAvailability";
+import {
+  COURSE_CATEGORY_LABEL,
+  COURSE_CATEGORY_RANK,
+  courseAvailabilitySummary,
+} from "../courseAvailability";
 import { modelKey } from "../modelSelection";
 import { availabilityLabel, billingLabel } from "../appConfig";
 import WorkflowDrawer from "./WorkflowDrawer.vue";
@@ -10,21 +14,30 @@ import { parseExamReviewPlan } from "../examReviewPlan";
 
 const store = useAppStore();
 
-// 课程：可搜索、按可用性分组、带状态点，避免原生 select 的 55 行超长又超宽。
+// 课程：可搜索、按统一分类分组、带状态点，避免原生 select 的 55 行超长又超宽。
+// 分类与个人中心插件面板共用同一套真值（course.category），二者不再分叉。
+const rankByLabel: Record<string, number> = {
+  [COURSE_CATEGORY_LABEL.enabled]: COURSE_CATEGORY_RANK.enabled,
+  [COURSE_CATEGORY_LABEL.not_enabled]: COURSE_CATEGORY_RANK.not_enabled,
+  [COURSE_CATEGORY_LABEL.no_data]: COURSE_CATEGORY_RANK.no_data,
+};
 const courseOptions = computed<OptionItem[]>(() => {
   const options: OptionItem[] = store.courses.map((course) => {
-    const available = course.retrieval_available && course.plugin_loaded;
+    const category = course.category;
     return {
       value: course.course_id,
       label: course.display_name,
       hint: courseAvailabilitySummary(course),
-      disabled: !course.selectable,
-      dot: available ? "ok" : course.retrieval_availability === "fixture" ? "warn" : "",
-      group: course.selectable ? "可选用" : "暂不可用",
+      disabled: category !== "enabled",
+      dot: category === "enabled" ? "ok" : category === "not_enabled" ? "warn" : "",
+      group: COURSE_CATEGORY_LABEL[category],
     };
   });
-  // 暂不可用统一沉底：可选用在前、暂不可用在后；稳定排序保证组内保持 API 顺序。
-  return options.sort((a, b) => (a.group === b.group ? 0 : a.group === "可选用" ? -1 : 1));
+  // 稳定排序：已启用 → 未启用 → 无数据；组内保持 API 顺序。
+  return options.sort(
+    (a, b) =>
+      (rankByLabel[a.group ?? ""] ?? 9) - (rankByLabel[b.group ?? ""] ?? 9),
+  );
 });
 
 const courseDisabled = computed(

@@ -92,7 +92,6 @@ class HumanizerGateway(Protocol):
 @dataclass(frozen=True, slots=True)
 class StoredModelCredential:
     user_id: UUID
-    auth_session_id: UUID
     provider_id: str
     ciphertext: bytes = field(repr=False)
     nonce: bytes = field(repr=False)
@@ -208,19 +207,16 @@ class WorkflowRepository(Protocol):
 
 
 class ModelCredentialRepository(Protocol):
-    def list_model_credentials(
-        self, user_id: UUID, auth_session_id: UUID
-    ) -> list[StoredModelCredential]: ...
+    def list_model_credentials(self, user_id: UUID) -> list[StoredModelCredential]: ...
 
     def get_model_credential(
-        self, user_id: UUID, auth_session_id: UUID, provider_id: str
+        self, user_id: UUID, provider_id: str
     ) -> StoredModelCredential | None: ...
 
     def upsert_model_credential(
         self,
         *,
         user_id: UUID,
-        auth_session_id: UUID,
         provider_id: str,
         ciphertext: bytes,
         nonce: bytes,
@@ -228,9 +224,7 @@ class ModelCredentialRepository(Protocol):
         key_version: int,
     ) -> StoredModelCredential: ...
 
-    def delete_model_credential(
-        self, user_id: UUID, auth_session_id: UUID, provider_id: str
-    ) -> bool: ...
+    def delete_model_credential(self, user_id: UUID, provider_id: str) -> bool: ...
 
     def session_is_active(self, user_id: UUID, auth_session_id: UUID) -> bool: ...
 

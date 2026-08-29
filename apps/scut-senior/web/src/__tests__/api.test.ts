@@ -438,6 +438,8 @@ describe("plugin registry API", () => {
           display_name: "C++（上及下）",
           state: "registered",
           loaded: true,
+          usable: false,
+          category: "no_data",
           enabled_workflows: [],
         },
       ],

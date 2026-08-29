@@ -65,9 +65,14 @@ from .auth import (
 from .config import Settings
 
 LOGGER = logging.getLogger("scut_senior.api")
-from .course_availability import derive_course_runtime_availability
+from .course_availability import (
+    course_category,
+    course_plugin_data_backed,
+    derive_course_runtime_availability,
+)
 from .contracts import (
     AccountDeletionSummary,
+    AccountPreferencesUpdate,
     ContributionDraftSubmit,
     ContributionPreview,
     ContributionPreviewRequest,
@@ -770,6 +775,28 @@ def create_app(
         response.headers["Cache-Control"] = "private, no-store"
         return response
 
+    @app.get("/api/v1/account/preferences")
+    def get_account_preferences(
+        user: AuthenticatedPrincipal = Depends(require_github_user),
+    ) -> dict[str, object]:
+        """读取当前 GitHub 账号的个人中心偏好（跨设备同步）。"""
+        response: dict[str, object] = {
+            "preferences": repository.get_user_preferences(str(user.user_id))
+        }
+        return response
+
+    @app.put("/api/v1/account/preferences")
+    def set_account_preferences(
+        payload: AccountPreferencesUpdate,
+        user: AuthenticatedPrincipal = Depends(require_github_user),
+    ) -> dict[str, object]:
+        """保存当前 GitHub 账号的个人中心偏好；键值 upsert，随账号维护。"""
+        for key, value in payload.preferences.items():
+            repository.set_user_preference(str(user.user_id), key, value)
+        return {
+            "preferences": repository.get_user_preferences(str(user.user_id))
+        }
+
     @app.get("/api/v1/me")
     def me(
         user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
@@ -865,13 +892,25 @@ def create_app(
                     "course_id": state.course_id,
                     "display_name": state.display_name,
                     "state": state.state.value,
-                    "loaded": repository.is_course_plugin_loaded(state.course_id),
+                    "loaded": (
+                        loaded := repository.is_course_plugin_loaded(state.course_id)
+                    ),
+                    "usable": course_plugin_data_backed(
+                        active_settings.retrieval_mode, state.state.value
+                    )
+                    and loaded,
+                    "category": course_category(
+                        course_plugin_data_backed(
+                            active_settings.retrieval_mode, state.state.value
+                        ),
+                        loaded,
+                    ),
                     "enabled_workflows": (
                         [
                             workflow.value
                             for workflow in state.enabled_workflows
                         ]
-                        if repository.is_course_plugin_loaded(state.course_id)
+                        if loaded
                         else []
                     ),
                 }

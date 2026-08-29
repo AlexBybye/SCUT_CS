@@ -6,6 +6,8 @@ import {
   deleteConversation,
   getByokCredentials,
   getMe,
+  getAccountPreferences,
+  saveAccountPreferences,
   getConversation,
   getCourses,
   getModels,
@@ -27,6 +29,8 @@ import {
 } from "../byokCatalog";
 import { canManageByokCredentials } from "../byokSession";
 import {
+  parseAnswerMode,
+  parseTone,
   readStoredAnswerMode,
   readStoredTone,
   writeStoredAnswerMode,
@@ -255,6 +259,7 @@ function createAppStore() {
   watch(themeMode, (mode) => {
     writeStoredThemeMode(mode);
     applyThemeMode(mode);
+    persistAccountPreferences();
   });
 
   // 强调色（品牌色）偏好：靛青 / 朱砂。设备级设置，登出不清除。
@@ -263,10 +268,63 @@ function createAppStore() {
   watch(accentTheme, (accent) => {
     writeStoredAccent(accent);
     applyAccent(accent);
+    persistAccountPreferences();
   });
 
-  watch(answerMode, (mode) => writeStoredAnswerMode(mode));
-  watch(tone, (nextTone) => writeStoredTone(nextTone));
+  watch(answerMode, (mode) => {
+    writeStoredAnswerMode(mode);
+    persistAccountPreferences();
+  });
+  watch(tone, (nextTone) => {
+    writeStoredTone(nextTone);
+    persistAccountPreferences();
+  });
+
+  // 个人中心偏好：随 GitHub 账号跨设备同步（服务端 user_preferences）。
+  // 主题在本地仍作为即时缓存（登出/未登录可用），登录后再与账号同步。
+  let suppressPreferenceSave = false;
+  const PREFERENCE_KEYS = {
+    themeMode: "theme_mode",
+    accentTheme: "accent_theme",
+    answerMode: "answer_mode",
+    tone: "tone",
+  } as const;
+
+  function persistAccountPreferences(): void {
+    if (suppressPreferenceSave) return;
+    const user = currentUser.value;
+    if (!user || user.is_mock) return;
+    void saveAccountPreferences({
+      [PREFERENCE_KEYS.themeMode]: String(themeMode.value),
+      [PREFERENCE_KEYS.accentTheme]: accentTheme.value,
+      [PREFERENCE_KEYS.answerMode]: answerMode.value,
+      [PREFERENCE_KEYS.tone]: tone.value,
+    }).catch(() => {
+      // 保存失败不阻断本地改动；下次改动自然会重试。
+    });
+  }
+
+  async function loadAccountPreferences(): Promise<void> {
+    const user = currentUser.value;
+    if (!user || user.is_mock) return;
+    try {
+      const { preferences } = await getAccountPreferences();
+      suppressPreferenceSave = true;
+      if (preferences[PREFERENCE_KEYS.themeMode] !== undefined) {
+        const parsed = Number(preferences[PREFERENCE_KEYS.themeMode]);
+        if (Number.isFinite(parsed)) setThemeMode(parsed);
+      }
+      if (preferences[PREFERENCE_KEYS.accentTheme] !== undefined) {
+        setAccentTheme(preferences[PREFERENCE_KEYS.accentTheme]);
+      }
+      const answer = preferences[PREFERENCE_KEYS.answerMode];
+      if (answer !== undefined) answerMode.value = parseAnswerMode(answer);
+      const storedTone = preferences[PREFERENCE_KEYS.tone];
+      if (storedTone !== undefined) tone.value = parseTone(storedTone);
+    } finally {
+      suppressPreferenceSave = false;
+    }
+  }
 
   // 一次手动纠正只作用于当前草稿；发送后输入下一条内容时重新启用自动路由。
   watch(userInput, (value, previous) => {
@@ -711,6 +769,7 @@ function createAppStore() {
       await Promise.all([
         loadHistory(true),
         canManageByokCredentials(user) ? loadByokCredentials() : Promise.resolve(),
+        loadAccountPreferences(),
       ]);
     } catch (error) {
       if (!privateRequestEpoch.isCurrent(authEpoch)) return;

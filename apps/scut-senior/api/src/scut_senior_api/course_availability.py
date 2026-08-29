@@ -8,6 +8,33 @@ from .registry import CourseRecord, CourseRegistry
 
 
 RetrievalAvailability = Literal["fixture", "local_corpus", "unavailable"]
+CourseCategory = Literal["enabled", "not_enabled", "no_data"]
+
+
+def course_category(data_backed: bool, enabled: bool) -> CourseCategory:
+    """Single canonical category shared by the course list and the plugin panel.
+
+    ``no_data`` when the configured retrieval adapter cannot serve the course
+    right now (no active local-corpus data, no fixture coverage). Otherwise
+    ``enabled`` when the user has its plugin loaded, else ``not_enabled``.
+    Keeping one derivation here is what stops the two surfaces from drifting.
+    """
+    if not data_backed:
+        return "no_data"
+    return "enabled" if enabled else "not_enabled"
+
+
+def course_plugin_data_backed(retrieval_mode: str, state: str) -> bool:
+    """Whether a plugin-registry ``state`` implies the retrieval adapter has data.
+
+    ``derive_course_plugin_states`` only reports ``active`` for a served
+    local-corpus course and ``fixture_only`` for fixture coverage, so the data
+    fact is mode-dependent: local_corpus sees ``active`` as backed, while the
+    fixture profile sees ``fixture_only`` as backed.
+    """
+    if retrieval_mode == "local_corpus":
+        return state == "active"
+    return state == "fixture_only"
 
 
 @dataclass(frozen=True, slots=True)
@@ -39,6 +66,10 @@ class CourseRuntimeAvailability:
             "retrieval_available": self.retrieval_available,
             "plugin_loaded": self.plugin_loaded,
             "selectable": self.selectable,
+            # Single collapsed truth for the UI: ``selectable`` PLUS the
+            # category both surfaces (course picker and plugin panel) render.
+            "usable": self.selectable,
+            "category": course_category(self.retrieval_available, self.plugin_loaded),
         }
 
 

@@ -814,6 +814,15 @@ class AccountDeletionSummary(ContractModel):
     deleted_at: datetime
 
 
+class AccountPreferencesUpdate(ContractModel):
+    """个人中心偏好：键值对，随 GitHub 账号跨设备同步。
+
+    键为 theme_mode / accent_theme / answer_mode / tone 等；值为字符串。
+    """
+
+    preferences: dict[str, str]
+
+
 class AccountExportContribution(ContractModel):
     contribution_id: UUID
     course_id: str
