@@ -82,3 +82,6 @@ apps/scut-senior/.local/corpus-store/candidates/*
 # material converter scratch (auxiliary)
 apps/tools/material_converter/.work/
 apps/tools/material_converter/.ai_jobs/
+
+#private docs
+apps/scut-senior/doc/*
