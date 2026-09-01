@@ -51,6 +51,8 @@ from .contracts import (
     ModelMetadata,
     ModelSource,
     RunStatus,
+    PrivateKnowledgeCreate,
+    PrivateKnowledgeRecord,
     TemporaryMaterialCreate,
     TemporaryMaterialDetail,
     TemporaryMaterialRecord,
@@ -363,6 +365,18 @@ class IterationZeroService:
         )
         assert isinstance(material, TemporaryMaterialDetail)
         return material
+
+    def save_private_knowledge(
+        self, user: RequestIdentity, payload: PrivateKnowledgeCreate
+    ) -> PrivateKnowledgeRecord:
+        course = self._resolve_material_course(payload.course_id)
+        if not self._course_available(course.course_id):
+            raise CapabilityUnavailable("course", "course is unavailable")
+        repository = self._require_contribution_capable_repository()
+        return repository.save_private_knowledge(
+            user_id=str(user.user_id), course_id=course.course_id,
+            title=payload.title, content=payload.content,
+        )
 
     def list_temporary_materials(
         self, user: RequestIdentity
@@ -1190,6 +1204,11 @@ class IterationZeroService:
                     raise ContractConflict(
                         "local corpus retrieval returned no course pack version"
                     )
+            private_search = getattr(self.repository, "list_private_knowledge_sources", None)
+            if callable(private_search):
+                sources.extend(
+                    private_search(user_id=str(user.user_id), course_ids=course_ids)
+                )
             invalid_source_ids = [
                 source.chunk_id
                 for source in sources

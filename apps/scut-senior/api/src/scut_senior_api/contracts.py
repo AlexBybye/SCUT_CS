@@ -646,6 +646,27 @@ class TemporaryMaterialCreate(ContractModel):
         return value
 
 
+class PrivateKnowledgeCreate(ContractModel):
+    course_id: Annotated[str, Field(min_length=1, max_length=100)]
+    title: Annotated[str | None, Field(max_length=200)] = None
+    content: Annotated[str, Field(min_length=1, max_length=100_000)]
+
+    @field_validator("title")
+    @classmethod
+    def normalize_title(cls, value: str | None) -> str | None:
+        return value.strip() or None if value is not None else None
+
+
+class PrivateKnowledgeRecord(ContractModel):
+    knowledge_id: UUID
+    course_id: str
+    title: str | None
+    char_count: int
+    content_sha256: str
+    created_at: datetime
+    expires_at: datetime
+
+
 class TemporaryMaterialRecord(ContractModel):
     material_id: UUID
     conversation_id: UUID

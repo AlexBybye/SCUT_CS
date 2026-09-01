@@ -8,6 +8,7 @@ import {
   getMe,
   getAccountPreferences,
   saveAccountPreferences,
+  savePrivateKnowledge,
   getConversation,
   getCourses,
   getModels,
@@ -78,6 +79,7 @@ import {
   type ThemeMode,
 } from "../themePreference";
 import { buildWorkflowRequest } from "../workflowRequest";
+import { formatWorkflowOutputForCopy } from "../workflowOutputCopy";
 import { buildRoutedWorkflowPayload, routeWorkflow } from "../workflowRouter";
 import { selectConversationAttempt } from "../workflowResultValidation";
 import {
@@ -695,6 +697,70 @@ function createAppStore() {
     } else {
       selectedAttemptId.value = "";
       result.value = null;
+    }
+  }
+
+  async function saveWorkflowOutputToPrivateKnowledge(
+    workflowResult: WorkflowRunResult,
+  ): Promise<void> {
+    const content = workflowResult.answer_blocks
+      .map((block) => block.content.trim())
+      .filter(Boolean)
+      .join("\n\n");
+    if (!content) {
+      errorMessage.value = "本次没有可保存的回答内容。";
+      return;
+    }
+    try {
+      await savePrivateKnowledge({
+        course_id: selectedCourseId.value,
+        title: `回答：${content.slice(0, 40)}`,
+        content,
+      });
+      noticeMessage.value = "本轮回答已加入私人知识库，7 天后自动删除。";
+    } catch (error) {
+      errorMessage.value = toMessage(error);
+    }
+  }
+
+  async function migrateWorkflowOutputToNewConversation(
+    workflowResult: WorkflowRunResult,
+  ): Promise<void> {
+    const output = formatWorkflowOutputForCopy(
+      workflowResult.answer_blocks,
+      workflowResult.citations,
+    );
+    if (!output) {
+      errorMessage.value = "本次没有可迁出的回答内容。";
+      return;
+    }
+    const requestEpoch = privateRequestEpoch.snapshot();
+    const requestUserId = currentUser.value?.user_id;
+    if (!requestUserId) {
+      errorMessage.value = "请先登录后再迁出回答。";
+      return;
+    }
+    // The result stays intact until the new conversation is successfully
+    // created. Cross-course results retain their current conversation's anchor
+    // course for history-folder compatibility.
+    try {
+      const conversation = await createConversation(selectedCourseId.value);
+      if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+      conversationLoadSequence += 1;
+      conversationId.value = conversation.conversation_id;
+      conversationSnapshot.value = { ...conversation, runs: [] };
+      upsertConversationSummary(conversation);
+      selectedAttemptId.value = "";
+      result.value = null;
+      workflowStreamState.value = null;
+      userInput.value = output;
+      pendingExamPlan.value = null;
+      noticeMessage.value = workflowResult.course_scope === "cross"
+        ? "已迁出为新对话草稿（综合检索回答，以当前主课程归档）。"
+        : "已迁出为新对话草稿，可编辑后继续提问。";
+    } catch (error) {
+      if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+      errorMessage.value = toMessage(error);
     }
   }
 
@@ -1511,6 +1577,8 @@ function createAppStore() {
     openInspector,
     onComposerKeydown,
     startNewConversation,
+    migrateWorkflowOutputToNewConversation,
+    saveWorkflowOutputToPrivateKnowledge,
     beginRename,
     cancelRename,
     beginDelete,

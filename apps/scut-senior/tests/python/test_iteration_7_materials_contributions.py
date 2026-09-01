@@ -64,6 +64,7 @@ def oauth_settings(database_path: Path) -> Settings:
         github_client_secret="test-client-secret",
         github_callback_url="https://testserver/api/v1/auth/github/callback",
         post_login_redirect_url="https://testserver/",
+        maintainer_github_logins=("maintainer",),
     )
 
 
@@ -481,6 +482,13 @@ def test_private_materials_and_contributions_are_user_scoped(tmp_path: Path) -> 
 # ---------------------------------------------------------------------------
 # 维护者队列（oauth 登录）：人工推进、固定 PR 形态、无自动合并
 # ---------------------------------------------------------------------------
+
+
+def test_non_allowlisted_github_user_cannot_access_maintainer_queue(tmp_path: Path) -> None:
+    app = create_app(oauth_settings(tmp_path / "allowlist.db"))
+    ordinary_user = authenticated_client(app, 2003, "ordinary-user")
+    response = ordinary_user.get("/api/v1/maintainer/contributions")
+    assert response.status_code == 403
 
 
 def test_maintainer_queue_manual_progression_without_auto_merge(

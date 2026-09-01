@@ -61,6 +61,8 @@ class Settings:
     github_client_secret: str | None = field(default=None, repr=False)
     github_callback_url: str | None = None
     post_login_redirect_url: str | None = None
+    maintainer_github_user_ids: tuple[int, ...] = ()
+    maintainer_github_logins: tuple[str, ...] = ()
 
     @classmethod
     def from_env(cls) -> "Settings":
@@ -132,6 +134,16 @@ class Settings:
             github_callback_url=os.getenv("SCUT_SENIOR_GITHUB_CALLBACK_URL"),
             post_login_redirect_url=os.getenv(
                 "SCUT_SENIOR_POST_LOGIN_REDIRECT_URL"
+            ),
+            maintainer_github_user_ids=tuple(
+                int(value.strip())
+                for value in os.getenv("SCUT_SENIOR_MAINTAINER_GITHUB_USER_IDS", "").split(",")
+                if value.strip().isdigit()
+            ),
+            maintainer_github_logins=tuple(
+                value.strip()
+                for value in os.getenv("SCUT_SENIOR_MAINTAINER_GITHUB_LOGINS", "").split(",")
+                if value.strip()
             ),
         )
 

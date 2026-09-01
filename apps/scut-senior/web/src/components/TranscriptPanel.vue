@@ -174,6 +174,8 @@ onBeforeUnmount(() => {
           :stream-state="turn.live ? store.workflowStreamState : null"
           :answer-mode="turn.answerMode"
           :tone="turn.tone"
+          @migrate="store.migrateWorkflowOutputToNewConversation"
+          @save-private="store.saveWorkflowOutputToPrivateKnowledge"
         />
       </article>
     </div>

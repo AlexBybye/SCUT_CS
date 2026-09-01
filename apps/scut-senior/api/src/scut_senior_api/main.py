@@ -89,6 +89,8 @@ from .contracts import (
     MaintainerContributionTransition,
     ModelCredentialStatus,
     ModelCredentialUpsert,
+    PrivateKnowledgeCreate,
+    PrivateKnowledgeRecord,
     TemporaryMaterialCreate,
     TemporaryMaterialDetail,
     TemporaryMaterialRecord,
@@ -678,6 +680,17 @@ def create_app(
             raise AuthRequired()
         return user
 
+    def require_maintainer(
+        user: AuthenticatedPrincipal = Depends(require_github_user),
+    ) -> AuthenticatedPrincipal:
+        allowed_ids = active_settings.maintainer_github_user_ids
+        allowed_logins = {
+            login.casefold() for login in active_settings.maintainer_github_logins
+        }
+        if user.github_user_id not in allowed_ids and user.github_login.casefold() not in allowed_logins:
+            raise HTTPException(status_code=403, detail="维护者权限不足。")
+        return user
+
     @app.get("/api/v1/auth/github/start")
     def github_login_start():
         if active_settings.identity_mode != "github_oauth" or oauth_adapter is None:
@@ -1216,6 +1229,17 @@ def create_app(
     ) -> TemporaryMaterialRecord:
         return service.save_temporary_material(user, payload)
 
+    @app.post(
+        "/api/v1/private-knowledge",
+        response_model=PrivateKnowledgeRecord,
+        status_code=201,
+    )
+    def save_private_knowledge(
+        payload: PrivateKnowledgeCreate,
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> PrivateKnowledgeRecord:
+        return service.save_private_knowledge(user, payload)
+
     @app.get(
         "/api/v1/temporary-materials",
         response_model=list[TemporaryMaterialRecord],
@@ -1300,7 +1324,7 @@ def create_app(
     )
     def maintainer_contribution_queue(
         state: str | None = None,
-        user: AuthenticatedPrincipal = Depends(require_github_user),
+        user: AuthenticatedPrincipal = Depends(require_maintainer),
     ) -> list[ContributionRecord]:
         parsed_state: ContributionState | None = None
         if state is not None:
@@ -1318,7 +1342,7 @@ def create_app(
     )
     def maintainer_export_contribution(
         contribution_id: UUID,
-        user: AuthenticatedPrincipal = Depends(require_github_user),
+        user: AuthenticatedPrincipal = Depends(require_maintainer),
     ) -> MaintainerContributionExport:
         return service.maintainer_export_contribution(contribution_id)
 
@@ -1329,7 +1353,7 @@ def create_app(
     def maintainer_transition_contribution(
         contribution_id: UUID,
         payload: MaintainerContributionTransition,
-        user: AuthenticatedPrincipal = Depends(require_github_user),
+        user: AuthenticatedPrincipal = Depends(require_maintainer),
     ) -> ContributionRecord:
         return service.maintainer_transition_contribution(
             contribution_id, payload

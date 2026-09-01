@@ -21,8 +21,8 @@ const store = useAppStore();
 
 // 贡献提交通道暂时对 UI 封闭（后端契约、队列与 TTL 保持原样）：
 // 上线时把 CONTRIBUTION_SUBMIT_CLOSED 改回 false 即可整体恢复。
-const CONTRIBUTION_SUBMIT_CLOSED = true;
-const SUBMIT_CLOSED_TIP = "本功能正在开发中！敬请期待！";
+const CONTRIBUTION_SUBMIT_CLOSED = false;
+const SUBMIT_CLOSED_TIP = "提交前请完成全部确认。";
 
 // 封闭入口的点击反馈：toast 比原生 title 即时且在触屏上也可用。
 const toastMessage = ref("");

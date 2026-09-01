@@ -327,6 +327,39 @@ export async function getTemporaryMaterial(
   );
 }
 
+export async function listMaintainerContributions(): Promise<ContributionRecord[]> {
+  return apiRequest<ContributionRecord[]>("/api/v1/maintainer/contributions");
+}
+
+export async function transitionMaintainerContribution(
+  contributionId: string,
+  action: "mark_pr_open" | "merge" | "reject",
+  note?: string,
+  prUrl?: string,
+): Promise<ContributionRecord> {
+  return apiRequest<ContributionRecord>(
+    `/api/v1/maintainer/contributions/${encodeURIComponent(contributionId)}/transition`,
+    { method: "POST", body: JSON.stringify({ action, note: note || null, pr_url: prUrl || null }) },
+  );
+}
+
+export async function exportMaintainerContribution(contributionId: string): Promise<unknown> {
+  return apiRequest<unknown>(
+    `/api/v1/maintainer/contributions/${encodeURIComponent(contributionId)}/export`,
+  );
+}
+
+export async function savePrivateKnowledge(payload: {
+  course_id: string;
+  title?: string | null;
+  content: string;
+}): Promise<unknown> {
+  return apiRequest<unknown>("/api/v1/private-knowledge", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
 export async function deleteTemporaryMaterial(materialId: string): Promise<void> {
   await apiRequest<void>(
     `/api/v1/temporary-materials/${encodeURIComponent(materialId)}`,
