@@ -133,9 +133,20 @@ class LocalCorpusRetrievalGateway:
             )
         if len(course_ids) > 1:
             batches = [self.search([course_id], query) for course_id in course_ids]
-            sources = tuple(source for batch in batches for source in batch.sources)
+            # Do not let the first course consume the global limit. Round-robin
+            # preserves each course's independently thresholded candidates so a
+            # cross-course run is visibly and fairly represented downstream.
+            merged: list[RetrievedSource] = []
+            for index in range(max((len(batch.sources) for batch in batches), default=0)):
+                for batch in batches:
+                    if index < len(batch.sources):
+                        merged.append(batch.sources[index])
+                        if len(merged) >= self.limit:
+                            break
+                if len(merged) >= self.limit:
+                    break
             return RetrievalBatch(
-                sources[: self.limit],
+                tuple(merged),
                 batches[0].corpus_version,
                 batches[0].course_pack_version,
             )

@@ -69,7 +69,10 @@ class Settings:
             identity_mode=os.getenv("SCUT_SENIOR_IDENTITY_MODE", "mock"),
             model_mode=os.getenv("SCUT_SENIOR_MODEL_MODE", "mock"),
             storage_mode=os.getenv("SCUT_SENIOR_STORAGE_MODE", "sqlite_mock"),
-            retrieval_mode=os.getenv("SCUT_SENIOR_RETRIEVAL_MODE", "fixture"),
+            # The running application uses the activated corpus by default;
+            # fixture retrieval remains available for isolated tests via an
+            # explicit Settings(retrieval_mode="fixture") or environment override.
+            retrieval_mode=os.getenv("SCUT_SENIOR_RETRIEVAL_MODE", "local_corpus"),
             retrieval_min_score=_env_positive_float(
                 "SCUT_SENIOR_RETRIEVAL_MIN_SCORE", 1.0
             ),
