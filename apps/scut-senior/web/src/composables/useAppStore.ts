@@ -8,6 +8,7 @@ import {
   getMe,
   getAccountPreferences,
   saveAccountPreferences,
+  savePrivateKnowledge,
   getConversation,
   getCourses,
   getModels,
@@ -78,6 +79,7 @@ import {
   type ThemeMode,
 } from "../themePreference";
 import { buildWorkflowRequest } from "../workflowRequest";
+import { formatWorkflowOutputForCopy } from "../workflowOutputCopy";
 import { buildRoutedWorkflowPayload, routeWorkflow } from "../workflowRouter";
 import { selectConversationAttempt } from "../workflowResultValidation";
 import {
@@ -104,6 +106,8 @@ function createAppStore() {
   const modelCatalog = ref<ModelCatalog>(FAIL_CLOSED_MODEL_CATALOG);
   const modelCatalogLoadSucceeded = ref(false);
   const selectedCourseId = ref("");
+  const selectedCourseIds = ref<string[]>([]);
+  const crossCourseSearchEnabled = ref(false);
   const selectedModelKey = ref("");
   const answerMode = ref<AnswerMode>(readStoredAnswerMode());
   const tone = ref<Tone>(readStoredTone());
@@ -274,6 +278,10 @@ function createAppStore() {
     persistAccountPreferences();
   });
 
+  watch(crossCourseSearchEnabled, () => {
+    persistAccountPreferences();
+  });
+
   watch(answerMode, (mode) => {
     writeStoredAnswerMode(mode);
     persistAccountPreferences();
@@ -288,6 +296,7 @@ function createAppStore() {
   let suppressPreferenceSave = false;
   const PREFERENCE_KEYS = {
     themeMode: "theme_mode",
+    crossCourseSearchEnabled: "cross_course_search_enabled",
     accentTheme: "accent_theme",
     answerMode: "answer_mode",
     tone: "tone",
@@ -295,6 +304,7 @@ function createAppStore() {
 
   function buildPreferenceSnapshot(): Record<string, string> {
     return {
+      [PREFERENCE_KEYS.crossCourseSearchEnabled]: String(crossCourseSearchEnabled.value),
       [PREFERENCE_KEYS.themeMode]: String(themeMode.value),
       [PREFERENCE_KEYS.accentTheme]: accentTheme.value,
       [PREFERENCE_KEYS.answerMode]: answerMode.value,
@@ -319,6 +329,9 @@ function createAppStore() {
     try {
       const { preferences } = await getAccountPreferences();
       suppressPreferenceSave = true;
+       if (preferences[PREFERENCE_KEYS.crossCourseSearchEnabled] !== undefined) {
+         crossCourseSearchEnabled.value = preferences[PREFERENCE_KEYS.crossCourseSearchEnabled] === "true";
+       }
       if (preferences[PREFERENCE_KEYS.themeMode] !== undefined) {
         const parsed = Number(preferences[PREFERENCE_KEYS.themeMode]);
         if (Number.isFinite(parsed)) setThemeMode(parsed);
@@ -356,11 +369,16 @@ function createAppStore() {
     }
   }
 
-  function startNewConversationInCourse(courseId: string): void {
+  function selectCourseFolder(courseId: string): void {
     isApplyingHistoryCourse = true;
     selectedCourseId.value = courseId;
+    selectedCourseIds.value = courseId ? [courseId] : [];
     isApplyingHistoryCourse = false;
     revealFolderFor(courseId);
+  }
+
+  function startNewConversationInCourse(courseId: string): void {
+    selectCourseFolder(courseId);
     startNewConversation();
   }
 
@@ -668,19 +686,112 @@ function createAppStore() {
   ): void {
     const attempt = selectConversationAttempt(conversation, preferredAttemptId);
 
-    isApplyingHistoryCourse = true;
-    selectedCourseId.value = conversation.course_id;
-    isApplyingHistoryCourse = false;
+    selectCourseFolder(conversation.course_id);
     conversationId.value = conversation.conversation_id;
     conversationSnapshot.value = conversation;
     upsertConversationSummary(conversationSummary(conversation));
     revealFolderFor(conversation.course_id);
+
+    // 历史详情中的 request 是本次运行范围的权威快照。恢复 cross run 时，
+    // 不能只使用会话的主课程，否则用户继续提问会悄悄退化为单课程检索。
+    if (attempt?.request.course_scope === "cross") {
+      const restoredCourseIds = [...new Set(attempt.request.allowed_course_ids)];
+      if (restoredCourseIds.length >= 2) {
+        crossCourseSearchEnabled.value = true;
+        selectedCourseIds.value = restoredCourseIds;
+      }
+    } else if (attempt) {
+      crossCourseSearchEnabled.value = false;
+      selectedCourseIds.value = conversation.course_id ? [conversation.course_id] : [];
+    }
 
     if (attempt) {
       showAttempt(attempt);
     } else {
       selectedAttemptId.value = "";
       result.value = null;
+    }
+  }
+
+  function prepareWorkflowOutputForContribution(
+    workflowResult: WorkflowRunResult,
+  ): void {
+    const output = formatWorkflowOutputForCopy(
+      workflowResult.answer_blocks,
+      workflowResult.citations,
+    );
+    if (!output) {
+      errorMessage.value = "本次没有可贡献的回答内容。";
+      return;
+    }
+    userInput.value = output;
+    materialTitle.value = "本轮回答贡献";
+    workflowOverride.value = "temporary_material_reading";
+    drawerOpen.value = true;
+    noticeMessage.value = "回答已填入贡献入口。请先保存为临时材料，再预览并完成公开分享确认。";
+  }
+
+  async function saveWorkflowOutputToPrivateKnowledge(
+    workflowResult: WorkflowRunResult,
+  ): Promise<void> {
+    const content = workflowResult.answer_blocks
+      .map((block) => block.content.trim())
+      .filter(Boolean)
+      .join("\n\n");
+    if (!content) {
+      errorMessage.value = "本次没有可保存的回答内容。";
+      return;
+    }
+    try {
+      await savePrivateKnowledge({
+        course_id: selectedCourseId.value,
+        title: `回答：${content.slice(0, 40)}`,
+        content,
+      });
+      noticeMessage.value = "本轮回答已加入私人知识库，7 天后自动删除。";
+    } catch (error) {
+      errorMessage.value = toMessage(error);
+    }
+  }
+
+  async function migrateWorkflowOutputToNewConversation(
+    workflowResult: WorkflowRunResult,
+  ): Promise<void> {
+    const output = formatWorkflowOutputForCopy(
+      workflowResult.answer_blocks,
+      workflowResult.citations,
+    );
+    if (!output) {
+      errorMessage.value = "本次没有可迁出的回答内容。";
+      return;
+    }
+    const requestEpoch = privateRequestEpoch.snapshot();
+    const requestUserId = currentUser.value?.user_id;
+    if (!requestUserId) {
+      errorMessage.value = "请先登录后再迁出回答。";
+      return;
+    }
+    // The result stays intact until the new conversation is successfully
+    // created. Cross-course results retain their current conversation's anchor
+    // course for history-folder compatibility.
+    try {
+      const conversation = await createConversation(selectedCourseId.value);
+      if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+      conversationLoadSequence += 1;
+      conversationId.value = conversation.conversation_id;
+      conversationSnapshot.value = { ...conversation, runs: [] };
+      upsertConversationSummary(conversation);
+      selectedAttemptId.value = "";
+      result.value = null;
+      workflowStreamState.value = null;
+      userInput.value = output;
+      pendingExamPlan.value = null;
+      noticeMessage.value = workflowResult.course_scope === "cross"
+        ? "已迁出为新对话草稿（综合检索回答，以当前主课程归档）。"
+        : "已迁出为新对话草稿，可编辑后继续提问。";
+    } catch (error) {
+      if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
+      errorMessage.value = toMessage(error);
     }
   }
 
@@ -722,6 +833,7 @@ function createAppStore() {
 
     const common = {
       courseId: selectedCourseId.value,
+      courseIds: crossCourseSearchEnabled.value ? selectedCourseIds.value : [selectedCourseId.value],
       conversationId: activeConversationId,
       userInput: userInput.value,
       answerMode: answerMode.value,
@@ -972,9 +1084,14 @@ function createAppStore() {
       courses.value = catalog.courses;
       retrievalMode.value = catalog.retrieval_mode;
       selectedCourseId.value = selectSelectableCourseId(
-        courses.value,
-        selectedCourseId.value,
-      );
+      courses.value,
+      selectedCourseId.value,
+    );
+    const selectableIds = new Set(courses.value.filter((course) => course.selectable).map((course) => course.course_id));
+    selectedCourseIds.value = selectedCourseIds.value.filter((id) => selectableIds.has(id));
+    if (!selectedCourseIds.value.length && selectedCourseId.value) {
+      selectedCourseIds.value = [selectedCourseId.value];
+    }
     } catch (error) {
       applyAuthFailure(error);
       errorMessage.value = toMessage(error);
@@ -1343,7 +1460,15 @@ function createAppStore() {
   watch(
     selectedCourseId,
     () => {
-      if (isApplyingHistoryCourse) return;
+      // 切换左侧课程文件夹时，跨学科草稿不能把上一组课程带过来；
+      // 新对话从当前文件夹课程开始，之后用户仍可在本次运行中追加课程。
+      if (isApplyingHistoryCourse) {
+        selectedCourseIds.value = selectedCourseId.value ? [selectedCourseId.value] : [];
+        return;
+      }
+      if (!crossCourseSearchEnabled.value || !selectedCourseIds.value.length) {
+        selectedCourseIds.value = selectedCourseId.value ? [selectedCourseId.value] : [];
+      }
       conversationLoadSequence += 1;
       clearActiveConversation();
       editingConversationId.value = "";
@@ -1359,6 +1484,8 @@ function createAppStore() {
     modelCatalog,
     modelCatalogLoadSucceeded,
     selectedCourseId,
+    selectedCourseIds,
+    crossCourseSearchEnabled,
     selectedModelKey,
     workflowType,
     routeDecision,
@@ -1481,6 +1608,9 @@ function createAppStore() {
     openInspector,
     onComposerKeydown,
     startNewConversation,
+    migrateWorkflowOutputToNewConversation,
+    saveWorkflowOutputToPrivateKnowledge,
+    prepareWorkflowOutputForContribution,
     beginRename,
     cancelRename,
     beginDelete,

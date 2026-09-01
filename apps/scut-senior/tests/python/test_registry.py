@@ -9,7 +9,7 @@ def test_registry_freezes_fifty_five_course_units() -> None:
     assert len(registry.records) == 55
     assert all(course.is_open is False for course in registry.records)
     assert [course.course_id for course in registry.records if course.fixture_available] == [
-        "linear_algebra"
+        "linear_algebra",
     ]
 
 

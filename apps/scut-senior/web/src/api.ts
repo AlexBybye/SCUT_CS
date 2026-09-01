@@ -5,6 +5,7 @@ import type {
   ContributionConfirmations,
   ContributionPreview,
   ContributionRecord,
+  MaintainerContributionDetail,
   ConversationDetail,
   ConversationSummary,
   CourseCatalog,
@@ -325,6 +326,47 @@ export async function getTemporaryMaterial(
   return apiRequest<TemporaryMaterialDetail>(
     `/api/v1/temporary-materials/${encodeURIComponent(materialId)}`,
   );
+}
+
+export async function listMaintainerContributions(): Promise<ContributionRecord[]> {
+  return apiRequest<ContributionRecord[]>("/api/v1/maintainer/contributions");
+}
+
+export async function getMaintainerContribution(contributionId: string): Promise<MaintainerContributionDetail> {
+  return apiRequest<MaintainerContributionDetail>(`/api/v1/maintainer/contributions/${encodeURIComponent(contributionId)}`);
+}
+
+export async function listMaintainerFeedback(): Promise<FeedbackRecord[]> {
+  return apiRequest<FeedbackRecord[]>("/api/v1/maintainer/feedback");
+}
+
+export async function transitionMaintainerContribution(
+  contributionId: string,
+  action: "mark_pr_open" | "merge" | "reject",
+  note?: string,
+  prUrl?: string,
+): Promise<ContributionRecord> {
+  return apiRequest<ContributionRecord>(
+    `/api/v1/maintainer/contributions/${encodeURIComponent(contributionId)}/transition`,
+    { method: "POST", body: JSON.stringify({ action, note: note || null, pr_url: prUrl || null }) },
+  );
+}
+
+export async function exportMaintainerContribution(contributionId: string): Promise<unknown> {
+  return apiRequest<unknown>(
+    `/api/v1/maintainer/contributions/${encodeURIComponent(contributionId)}/export`,
+  );
+}
+
+export async function savePrivateKnowledge(payload: {
+  course_id: string;
+  title?: string | null;
+  content: string;
+}): Promise<unknown> {
+  return apiRequest<unknown>("/api/v1/private-knowledge", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
 }
 
 export async function deleteTemporaryMaterial(materialId: string): Promise<void> {

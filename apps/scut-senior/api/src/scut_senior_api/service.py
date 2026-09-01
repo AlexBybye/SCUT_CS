@@ -31,6 +31,7 @@ from .contracts import (
     AnswerBlockType,
     AnswerStatus,
     Citation,
+    ContributionAttachmentRecord,
     ContributionDraftSubmit,
     ContributionPreview,
     ContributionPreviewRequest,
@@ -46,11 +47,14 @@ from .contracts import (
     FeedbackCreate,
     FeedbackRecord,
     KnowledgeScope,
+    MaintainerContributionDetail,
     MaintainerContributionExport,
     MaintainerContributionTransition,
     ModelMetadata,
     ModelSource,
     RunStatus,
+    PrivateKnowledgeCreate,
+    PrivateKnowledgeRecord,
     TemporaryMaterialCreate,
     TemporaryMaterialDetail,
     TemporaryMaterialRecord,
@@ -308,6 +312,9 @@ class IterationZeroService:
     def list_feedback(self, user: RequestIdentity) -> list[FeedbackRecord]:
         return self.repository.list_feedback(str(user.user_id))
 
+    def list_maintainer_feedback(self) -> list[FeedbackRecord]:
+        return self.repository.list_all_feedback()
+
     # ------------------------------------------------------------------
     # 迭代 7（SOP §12）：临时材料精读治理与贡献待处理队列。
     # 临时材料只属于当前用户、只在会话内联合检索，默认不进入公共索引、
@@ -363,6 +370,18 @@ class IterationZeroService:
         )
         assert isinstance(material, TemporaryMaterialDetail)
         return material
+
+    def save_private_knowledge(
+        self, user: RequestIdentity, payload: PrivateKnowledgeCreate
+    ) -> PrivateKnowledgeRecord:
+        course = self._resolve_material_course(payload.course_id)
+        if not self._course_available(course.course_id):
+            raise CapabilityUnavailable("course", "course is unavailable")
+        repository = self._require_contribution_capable_repository()
+        return repository.save_private_knowledge(
+            user_id=str(user.user_id), course_id=course.course_id,
+            title=payload.title, content=payload.content,
+        )
 
     def list_temporary_materials(
         self, user: RequestIdentity
@@ -470,6 +489,12 @@ class IterationZeroService:
             title=title[:200],
             content_snapshot=material.content,
             state=state,
+            github_email=payload.github_email,
+            workflow_type=payload.workflow_type.value if payload.workflow_type else None,
+            run_id=payload.run_id,
+            supplementary_text=payload.supplementary_text,
+            citation_metadata=payload.citation_metadata,
+            corpus_metadata=payload.corpus_metadata,
         )
 
     def submit_contribution_draft(
@@ -505,6 +530,15 @@ class IterationZeroService:
         if record is None:
             raise ResourceNotFound("contribution not found")
         return record
+
+    def maintainer_contribution_detail(self, contribution_id: UUID) -> MaintainerContributionDetail:
+        repository = self._require_contribution_capable_repository()
+        fetched = repository.get_contribution_with_payload(contribution_id)
+        if fetched is None:
+            raise ResourceNotFound("contribution not found")
+        record, content = fetched
+        attachments = repository.list_contribution_attachments(contribution_id)
+        return MaintainerContributionDetail.model_validate({**record.model_dump(), "content_snapshot": content, "attachments": attachments})
 
     def maintainer_transition_contribution(
         self,
@@ -748,15 +782,39 @@ class IterationZeroService:
         stream_session: WorkflowStreamSession | None = None,
     ) -> WorkflowResult:
         if request.course_scope == CourseScope.CROSS:
-            if not self.settings.cross_course_enabled:
+            local_fixture_profile = (
+                user.is_mock
+                and self.settings.app_env in {"development", "test"}
+                and self.settings.identity_mode == "mock"
+            )
+            if not self.settings.cross_course_enabled and not local_fixture_profile:
                 raise CapabilityUnavailable(
                     "cross_course",
                     "cross-course execution is disabled pending its decision gate",
                 )
-            raise CapabilityUnavailable(
-                "cross_course",
-                "iteration 0 freezes the contract but has no cross-course runtime",
+            if not user.is_mock and not isinstance(user, AuthenticatedPrincipal):
+                raise AuthRequired()
+            # The development fixture identity has no account-preference
+            # endpoint/session, so it is allowed to exercise the feature. Real
+            # GitHub users still need the explicit account preference below.
+            preferences = (
+                self.repository.get_user_preferences(str(user.user_id))
+                if not user.is_mock
+                else {}
             )
+            if not user.is_mock and preferences.get("cross_course_search_enabled") != "true":
+                raise CapabilityUnavailable(
+                    "cross_course",
+                    "请先在助手设置中开启跨课程检索。",
+                )
+            if request.workflow_type not in {
+                WorkflowType.KNOWLEDGE_QA,
+                WorkflowType.PROBLEM_TUTOR,
+            }:
+                raise CapabilityUnavailable(
+                    "cross_course",
+                    "当前仅知识问答和题目辅导支持跨课程检索。",
+                )
         # Every run is bound to exactly one Agent Preset, resolved 1:1 from the
         # validated workflow_type. The immutable registry covers WorkflowType
         # exactly, so this cannot fail for a contract-valid request.
@@ -848,21 +906,38 @@ class IterationZeroService:
         if conversation is None:
             raise ResourceNotFound("conversation not found")
 
+        selected_course_ids = (
+            list(request.allowed_course_ids)
+            if request.course_scope == CourseScope.CROSS
+            else [request.course_id or ""]
+        )
         try:
-            course = self.registry.get(request.course_id or "")
+            selected_courses = tuple(self.registry.get(course_id) for course_id in selected_course_ids)
         except UnknownCourseError as exc:
             raise ContractConflict(str(exc)) from exc
-        if request.course_id != course.course_id:
-            raise ContractConflict("workflow request must use the canonical course_id")
-        if conversation.course_id != course.course_id:
-            raise ContractConflict(
-                "workflow course does not match the bound conversation course"
+        if any(course.course_id != requested_id for course, requested_id in zip(selected_courses, selected_course_ids)):
+            raise ContractConflict("workflow request must use canonical course_ids")
+        if request.course_scope == CourseScope.SINGLE:
+            course = selected_courses[0]
+            if conversation.course_id != course.course_id:
+                raise ContractConflict(
+                    "workflow course does not match the bound conversation course"
+                )
+        else:
+            # The conversation course remains the presentation/legacy anchor, but
+            # cross-course scope is explicitly request-local and may contain any
+            # validated selectable courses.
+            course = next(
+                (course for course in selected_courses if course.course_id == conversation.course_id),
+                selected_courses[0],
             )
-        if not self._course_available(course.course_id):
+        unavailable = [course.course_id for course in selected_courses if not self._course_available(course.course_id)]
+        if unavailable:
             raise CapabilityUnavailable(
                 "course",
-                f"{course.course_id} is not enabled for the configured retrieval mode",
+                f"courses are unavailable: {', '.join(unavailable)}",
             )
+        course_ids = [course.course_id for course in selected_courses]
 
         history = _build_conversation_history(conversation)
 
@@ -921,7 +996,7 @@ class IterationZeroService:
             result={
                 "workflow_type": request.workflow_type.value,
                 "course_scope": request.course_scope.value,
-                "course_ids": [course.course_id],
+                "course_ids": course_ids,
                 "knowledge_scope": request.knowledge_scope.value,
                 "agent_preset_id": preset.preset_id,
                 "agent_preset_version": preset.preset_version,
@@ -1075,7 +1150,7 @@ class IterationZeroService:
         started = perf_counter()
         try:
             retrieval_batch = self.retrieval.search(
-                [course.course_id], retrieval_query
+                course_ids, retrieval_query
             )
             if (
                 isinstance(retrieval_batch, RetrievalBatch)
@@ -1093,7 +1168,7 @@ class IterationZeroService:
                 if context_query:
                     retry_started = perf_counter()
                     context_batch = self.retrieval.search(
-                        [course.course_id], context_query
+                        course_ids, context_query
                     )
                     if isinstance(context_batch, RetrievalBatch) and (
                         context_batch.sources
@@ -1149,14 +1224,19 @@ class IterationZeroService:
                     raise ContractConflict(
                         "local corpus retrieval returned no course pack version"
                     )
+            private_search = getattr(self.repository, "list_private_knowledge_sources", None)
+            if callable(private_search):
+                sources.extend(
+                    private_search(user_id=str(user.user_id), course_ids=course_ids)
+                )
             invalid_source_ids = [
                 source.chunk_id
                 for source in sources
-                if source.course_id != course.course_id
+                if source.course_id not in course_ids
             ]
             if invalid_source_ids:
                 raise ContractConflict(
-                    "source authorization guard rejected a source outside the conversation course"
+                    "source authorization guard rejected a source outside the selected courses"
                 )
             sources = _dedupe_sources(sources)
             record_agent_action("retrieve")
@@ -1310,7 +1390,7 @@ class IterationZeroService:
                         request=request,
                         answer=generated,
                         sources=sources,
-                        course_ids={course.course_id},
+                        course_ids=set(course_ids),
                     )
                 except RuntimeGuardError:
                     interrupted = finish_interrupted()
@@ -1636,7 +1716,7 @@ class IterationZeroService:
             answer_status=guarded.answer_status,
             workflow_type=request.workflow_type,
             course_scope=request.course_scope,
-            course_ids=[course.course_id],
+            course_ids=course_ids,
             repository_answer=repository_answer,
             general_supplement=general_supplement,
             answer_blocks=answer_blocks,

@@ -11,6 +11,7 @@ import type {
 export interface BuildWorkflowRequestInput<T extends WorkflowType> {
   workflowType: T;
   courseId: string;
+  courseIds?: string[];
   conversationId: string;
   userInput: string;
   answerMode: AnswerMode;
@@ -105,14 +106,19 @@ export function buildWorkflowRequest<T extends WorkflowType>(
   input: BuildWorkflowRequestInput<T>,
 ): WorkflowRunRequest<T> {
   const courseId = input.courseId.trim();
+  const courseIds = normalizeList(input.courseIds ?? [courseId]);
   const conversationId = input.conversationId.trim();
   const userInput = input.userInput.trim();
   const providerId = input.providerId.trim();
   const modelId = input.modelId.trim();
 
-  if (!courseId || !conversationId || !userInput || !providerId || !modelId) {
+  if (!courseId || !courseIds.length || !conversationId || !userInput || !providerId || !modelId) {
     throw new Error("课程、会话、请求内容和模型不能为空");
   }
+  if (courseIds.length > 1 && input.workflowType !== "knowledge_qa" && input.workflowType !== "problem_tutor") {
+    throw new Error("当前仅知识问答和题目辅导支持跨课程检索");
+  }
+  const isCross = courseIds.length > 1;
 
   const normalizedPayload = normalizeWorkflowPayload(
     input.workflowType,
@@ -121,9 +127,9 @@ export function buildWorkflowRequest<T extends WorkflowType>(
 
   return {
     workflow_type: input.workflowType,
-    course_scope: "single",
-    course_id: courseId,
-    allowed_course_ids: [],
+    course_scope: isCross ? "cross" : "single",
+    course_id: isCross ? null : courseIds[0]!,
+    allowed_course_ids: isCross ? courseIds : [],
     conversation_id: conversationId,
     model_source: input.modelSource,
     provider_id: providerId,
