@@ -331,6 +331,10 @@ export async function listMaintainerContributions(): Promise<ContributionRecord[
   return apiRequest<ContributionRecord[]>("/api/v1/maintainer/contributions");
 }
 
+export async function listMaintainerFeedback(): Promise<FeedbackRecord[]> {
+  return apiRequest<FeedbackRecord[]>("/api/v1/maintainer/feedback");
+}
+
 export async function transitionMaintainerContribution(
   contributionId: string,
   action: "mark_pr_open" | "merge" | "reject",

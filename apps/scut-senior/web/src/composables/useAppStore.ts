@@ -692,12 +692,43 @@ function createAppStore() {
     upsertConversationSummary(conversationSummary(conversation));
     revealFolderFor(conversation.course_id);
 
+    // 历史详情中的 request 是本次运行范围的权威快照。恢复 cross run 时，
+    // 不能只使用会话的主课程，否则用户继续提问会悄悄退化为单课程检索。
+    if (attempt?.request.course_scope === "cross") {
+      const restoredCourseIds = [...new Set(attempt.request.allowed_course_ids)];
+      if (restoredCourseIds.length >= 2) {
+        crossCourseSearchEnabled.value = true;
+        selectedCourseIds.value = restoredCourseIds;
+      }
+    } else if (attempt) {
+      crossCourseSearchEnabled.value = false;
+      selectedCourseIds.value = conversation.course_id ? [conversation.course_id] : [];
+    }
+
     if (attempt) {
       showAttempt(attempt);
     } else {
       selectedAttemptId.value = "";
       result.value = null;
     }
+  }
+
+  function prepareWorkflowOutputForContribution(
+    workflowResult: WorkflowRunResult,
+  ): void {
+    const output = formatWorkflowOutputForCopy(
+      workflowResult.answer_blocks,
+      workflowResult.citations,
+    );
+    if (!output) {
+      errorMessage.value = "本次没有可贡献的回答内容。";
+      return;
+    }
+    userInput.value = output;
+    materialTitle.value = "本轮回答贡献";
+    workflowOverride.value = "temporary_material_reading";
+    drawerOpen.value = true;
+    noticeMessage.value = "回答已填入贡献入口。请先保存为临时材料，再预览并完成公开分享确认。";
   }
 
   async function saveWorkflowOutputToPrivateKnowledge(
@@ -1579,6 +1610,7 @@ function createAppStore() {
     startNewConversation,
     migrateWorkflowOutputToNewConversation,
     saveWorkflowOutputToPrivateKnowledge,
+    prepareWorkflowOutputForContribution,
     beginRename,
     cancelRename,
     beginDelete,

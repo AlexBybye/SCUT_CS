@@ -1,22 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { ANSWER_MODES, TONES } from "../contracts";
-import { answerModeLabels, toneLabels } from "../appConfig";
-import {
-  ACCENT_LABELS,
-  THEME_MODE_LABELS,
-  type AccentTheme,
-  type ThemeMode,
-} from "../themePreference";
+import { THEME_MODE_LABELS, type ThemeMode } from "../themePreference";
 import { useAppStore } from "../composables/useAppStore";
 
 const store = useAppStore();
-
-// 两套可选品牌色：靛青（默认）/ 朱砂。与明暗模式相互独立。
-const ACCENT_OPTIONS: { accent: AccentTheme; label: string; swatch: string }[] = [
-  { accent: "indigo", label: ACCENT_LABELS.indigo, swatch: "#3a5a8c" },
-  { accent: "vermilion", label: ACCENT_LABELS.vermilion, swatch: "#a83b22" },
-];
 
 // 三档停靠点：0 Auto（跟随系统）· 1 太阳恒亮 · 2 月亮恒暗。
 const STOPS: { mode: ThemeMode; label: string }[] = [
@@ -123,23 +110,23 @@ function onKeydown(event: KeyboardEvent): void {
           {{ searchModeHelp }}
         </small>
       </div>
-      <label class="field">
-        <span>讲解形式</span>
-        <select v-model="store.answerMode">
-          <option v-for="mode in ANSWER_MODES" :key="mode" :value="mode">
-            {{ answerModeLabels[mode] }}
-          </option>
-        </select>
-      </label>
-      <label class="field">
-        <span>输出风格</span>
-        <select v-model="store.tone">
-          <option v-for="item in TONES" :key="item" :value="item">
-            {{ toneLabels[item] }}
-          </option>
-        </select>
-      </label>
     </div>
+
+    <fieldset class="knowledge-settings">
+      <legend>知识范围</legend>
+      <label class="knowledge-option">
+        <input v-model="store.knowledgeScope" type="radio" value="course_first" />
+        <span>资料优先，允许标记的通用补充</span>
+      </label>
+      <label class="knowledge-option">
+        <input v-model="store.knowledgeScope" type="radio" value="course_only" />
+        <span>仅课程资料，证据不足即停</span>
+      </label>
+      <label class="knowledge-option knowledge-option-check">
+        <input v-model="store.includeBilibiliResources" type="checkbox" :disabled="store.knowledgeScope === 'course_only'" />
+        <span><strong>返回 B站延伸学习</strong><small>模型给出聚焦词后只返回匿名搜索链接，不返回具体视频直链。仅课程资料模式强制关闭。</small></span>
+      </label>
+    </fieldset>
 
     <div class="account-section-head">
       <h3>外观主题</h3>
@@ -203,24 +190,27 @@ function onKeydown(event: KeyboardEvent): void {
       </div>
     </div>
 
-    <div class="accent-picker" role="radiogroup" aria-label="品牌色">
-      <span class="accent-picker-label">品牌色</span>
-      <div class="accent-swatches">
-        <label
-          v-for="option in ACCENT_OPTIONS"
-          :key="option.accent"
-          class="accent-swatch"
-          :class="{ 'is-active': store.accentTheme === option.accent }"
-        >
-          <input
-            v-model="store.accentTheme"
-            type="radio"
-            name="accent"
-            :value="option.accent"
-          />
-          <span class="accent-dot" :style="{ background: option.swatch }" aria-hidden="true"></span>
-          <span class="accent-name">{{ option.label }}</span>
-        </label>
+    <div class="accent-picker">
+      <div class="account-section-head">
+        <h3>品牌色</h3>
+        <span class="chip chip-accent">{{ store.accentTheme === 'indigo' ? '靛青' : '朱砂' }}</span>
+      </div>
+      <div class="accent-slider-wrap">
+        <input
+          class="accent-slider"
+          type="range"
+          min="0"
+          max="1"
+          step="1"
+          :value="store.accentTheme === 'indigo' ? 0 : 1"
+          aria-label="品牌色"
+          aria-valuemin="0"
+          aria-valuemax="1"
+          :aria-valuenow="store.accentTheme === 'indigo' ? 0 : 1"
+          :aria-valuetext="store.accentTheme === 'indigo' ? '靛青' : '朱砂'"
+          @input="store.setAccentTheme(($event.target as HTMLInputElement).value === '0' ? 'indigo' : 'vermilion')"
+        />
+        <div class="accent-slider-labels"><span>靛青</span><span>朱砂</span></div>
       </div>
     </div>
 
@@ -231,6 +221,29 @@ function onKeydown(event: KeyboardEvent): void {
 </template>
 
 <style>
+.knowledge-settings {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0 20px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+}
+.knowledge-settings legend { padding: 0 4px; font-weight: 700; }
+.knowledge-option { display: flex; gap: 8px; align-items: flex-start; }
+.knowledge-option span { display: grid; gap: 3px; }
+.knowledge-option small { color: var(--muted); line-height: 1.5; }
+.accent-slider-wrap { display: grid; gap: 6px; }
+.accent-slider {
+  width: 100%;
+  height: 10px;
+  accent-color: var(--accent);
+  cursor: grab;
+  background: linear-gradient(90deg, #3a5a8c, #a83b22);
+}
+.accent-slider:active { cursor: grabbing; }
+.accent-slider-labels { display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; }
+
 .theme-picker {
   display: grid;
   gap: 6px;

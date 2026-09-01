@@ -6,7 +6,8 @@ import {
   courseAvailabilitySummary,
 } from "../courseAvailability";
 import { modelKey } from "../modelSelection";
-import { availabilityLabel, billingLabel } from "../appConfig";
+import { availabilityLabel, billingLabel, answerModeLabels, toneLabels } from "../appConfig";
+import { ANSWER_MODES, TONES } from "../contracts";
 import WorkflowDrawer from "./WorkflowDrawer.vue";
 import OptionPicker, { type OptionItem } from "./OptionPicker.vue";
 import { useAppStore } from "../composables/useAppStore";
@@ -69,6 +70,8 @@ const modelPlaceholder = computed(() => {
   if (!store.modelCatalogLoadSucceeded) return "模型待选择";
   return "请选择模型";
 });
+const answerModeOptions = computed<OptionItem[]>(() => ANSWER_MODES.map((mode) => ({ value: mode, label: answerModeLabels[mode] })));
+const toneOptions = computed<OptionItem[]>(() => TONES.map((item) => ({ value: item, label: toneLabels[item] })));
 const pendingExamPlan = computed(() =>
   parseExamReviewPlan(store.pendingExamPlan?.plan ?? null),
 );
@@ -108,6 +111,23 @@ const pendingExamPlan = computed(() =>
           searchable
           placement="up"
           aria-label="本次检索课程（可多选）"
+        />
+
+        <OptionPicker
+          v-model="store.answerMode"
+          :options="answerModeOptions"
+          :disabled="store.isRunning"
+          :searchable="false"
+          placement="up"
+          aria-label="讲解形式"
+        />
+        <OptionPicker
+          v-model="store.tone"
+          :options="toneOptions"
+          :disabled="store.isRunning"
+          :searchable="false"
+          placement="up"
+          aria-label="输出风格"
         />
 
         <OptionPicker
@@ -276,6 +296,26 @@ const pendingExamPlan = computed(() =>
   gap: 5px;
 }
 
+.composer-select {
+  display: inline-flex;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+.composer-select select {
+  box-sizing: border-box;
+  width: 132px;
+  min-height: 34px;
+  max-width: 200px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 0 28px 0 10px;
+  color: var(--text);
+  background: var(--sunken);
+  font-size: var(--fs-2xs);
+  cursor: pointer;
+}
+.composer-select select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
 /* OptionPicker 在配置条里的收窄：只显示当前值，绝不撑宽。 */
 .composer-bar .op {
   flex: 0 1 auto;
@@ -364,8 +404,14 @@ const pendingExamPlan = computed(() =>
     padding-inline: 11px;
   }
 
-  .composer-bar .op {
+  .composer-bar .op,
+  .composer-select {
     flex: 1 1 120px;
+  }
+
+  .composer-select select {
+    width: 100%;
+    max-width: none;
   }
 
   .composer-bar .op-trigger {

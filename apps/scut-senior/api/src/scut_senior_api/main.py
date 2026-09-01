@@ -1359,6 +1359,15 @@ def create_app(
             contribution_id, payload
         )
 
+    @app.get(
+        "/api/v1/maintainer/feedback",
+        response_model=list[FeedbackRecord],
+    )
+    def maintainer_feedback_queue(
+        user: AuthenticatedPrincipal = Depends(require_maintainer),
+    ) -> list[FeedbackRecord]:
+        return service.list_maintainer_feedback()
+
     static_root = APP_ROOT / "web" / "dist"
     if static_root.is_dir():
         app.mount("/", StaticFiles(directory=static_root, html=True), name="web")

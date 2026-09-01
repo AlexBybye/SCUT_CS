@@ -151,35 +151,6 @@ const store = useAppStore();
       <MaterialContributionPanel />
     </section>
 
-    <div class="drawer-grid">
-      <fieldset class="field drawer-span">
-        <legend>知识范围</legend>
-        <div class="seg">
-          <label class="seg-item">
-            <input v-model="store.knowledgeScope" type="radio" value="course_first" />
-            <span>资料优先，允许标记的通用补充</span>
-          </label>
-          <label class="seg-item">
-            <input v-model="store.knowledgeScope" type="radio" value="course_only" />
-            <span>仅课程资料，证据不足即停</span>
-          </label>
-        </div>
-      </fieldset>
-      <label class="check drawer-span">
-        <input
-          v-model="store.includeBilibiliResources"
-          type="checkbox"
-          :disabled="store.knowledgeScope === 'course_only'"
-        />
-        <span>
-          <strong>返回 B站延伸学习</strong>
-          <small>
-            模型给出聚焦词后只返回匿名搜索链接，不返回具体视频直链。仅课程资料模式强制关闭。
-          </small>
-        </span>
-      </label>
-    </div>
-
     <div v-if="store.selectedModel" class="field">
       <span class="drawer-sub">当前模型</span>
       <p class="field-hint">

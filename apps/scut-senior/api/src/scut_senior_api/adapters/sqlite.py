@@ -1547,6 +1547,17 @@ class SQLiteWorkflowRepository:
                 ),
             )
 
+    def list_all_feedback(self) -> list[FeedbackRecord]:
+        self.cleanup_history_records()
+        with self._connect() as connection:
+            rows = connection.execute(
+                """SELECT feedback_id, user_id, run_id, conversation_id, course_id,
+                          workflow_type, feedback_type, note, answer_status,
+                          created_at, expires_at
+                   FROM feedback ORDER BY created_at DESC, feedback_id DESC"""
+            ).fetchall()
+        return [_feedback_record(row) for row in rows]
+
     def list_feedback(self, user_id: str) -> list[FeedbackRecord]:
         self.cleanup_history_records()
         with self._connect() as connection:

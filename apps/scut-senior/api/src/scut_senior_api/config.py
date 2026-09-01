@@ -62,7 +62,11 @@ class Settings:
     github_callback_url: str | None = None
     post_login_redirect_url: str | None = None
     maintainer_github_user_ids: tuple[int, ...] = ()
-    maintainer_github_logins: tuple[str, ...] = ()
+    maintainer_github_logins: tuple[str, ...] = (
+        "AlexBybye",
+        "DevilSean",
+    )
+    # 维护者在上方添加，再在下方补充
 
     @classmethod
     def from_env(cls) -> "Settings":
@@ -107,7 +111,7 @@ class Settings:
                     str(APP_ROOT / ".local" / "corpus-store"),
                 )
             ),
-            cross_course_enabled=_env_bool("SCUT_SENIOR_CROSS_COURSE_ENABLED", True),
+            cross_course_enabled=_env_bool("SCUT_SENIOR_CROSS_COURSE_ENABLED", False),
             bilibili_resources_enabled=_env_bool(
                 "SCUT_SENIOR_BILIBILI_RESOURCES_ENABLED", True
             ),
@@ -142,10 +146,14 @@ class Settings:
             ),
             maintainer_github_logins=tuple(
                 value.strip()
-                for value in os.getenv("SCUT_SENIOR_MAINTAINER_GITHUB_LOGINS", "").split(",")
+                for value in os.getenv(
+                    "SCUT_SENIOR_MAINTAINER_GITHUB_LOGINS",
+                    "AlexBybye,DevilSean",
+                ).split(",")
                 if value.strip()
             ),
         )
+    # 就是上方这里补充
 
     def assert_safe(self) -> None:
         if self.app_env not in {"development", "test", "production"}:

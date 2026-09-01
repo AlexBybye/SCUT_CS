@@ -310,6 +310,9 @@ class IterationZeroService:
     def list_feedback(self, user: RequestIdentity) -> list[FeedbackRecord]:
         return self.repository.list_feedback(str(user.user_id))
 
+    def list_maintainer_feedback(self) -> list[FeedbackRecord]:
+        return self.repository.list_all_feedback()
+
     # ------------------------------------------------------------------
     # 迭代 7（SOP §12）：临时材料精读治理与贡献待处理队列。
     # 临时材料只属于当前用户、只在会话内联合检索，默认不进入公共索引、

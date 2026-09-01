@@ -27,11 +27,13 @@ const props = defineProps<{
   streamState: WorkflowStreamState | null;
   answerMode?: AnswerMode | null;
   tone?: Tone | null;
+  courseNames?: Record<string, string>;
 }>();
 
 const emit = defineEmits<{
   (event: "migrate", result: WorkflowRunResult): void;
   (event: "save-private", result: WorkflowRunResult): void;
+  (event: "contribute", result: WorkflowRunResult): void;
 }>();
 
 const feedbackType = ref<FeedbackType | null>(null);
@@ -322,6 +324,19 @@ const toneLabel = computed(() => (
   props.tone ? toneLabels[props.tone] : null
 ));
 
+const selectedCourseIds = computed(() => props.result?.trace
+  ?.flatMap((event) => {
+    const value = event.result?.course_ids;
+    return Array.isArray(value) ? value.filter((id): id is string => typeof id === "string") : [];
+  })
+  .filter((id, index, all) => all.indexOf(id) === index) ?? []);
+const citedCourseIds = computed(() => citations.value
+  .map((citation) => citation.course_id)
+  .filter((id, index, all) => all.indexOf(id) === index));
+function courseLabel(courseId: string): string {
+  return props.courseNames?.[courseId] ?? courseId;
+}
+
 const answerBlockNotes: Record<AnswerBlockType, string> = {
   repository: "结论受仓库引用与证据状态约束",
   user_material: "仅基于你在本次 Workflow 提供的材料",
@@ -447,9 +462,14 @@ function citationLocator(citation: Citation): string {
         {{ isRunning ? "Workflow 已开始，正在等待回答内容。" : "本次没有返回回答内容。" }}
       </p>
 
+      <p v-if="result && selectedCourseIds.length" class="course-coverage" aria-label="本次检索课程范围">
+        本次检索：{{ selectedCourseIds.map(courseLabel).join("、") }}；实际引用：{{ citedCourseIds.length ? citedCourseIds.map(courseLabel).join("、") : "暂无" }}
+      </p>
+
       <div v-if="result && !isRunning && answerBlocks.length" class="result-actions" aria-label="本轮回答操作">
         <button type="button" class="btn btn-quiet" @click="copyCurrentOutput">复制本轮输出</button>
         <button type="button" class="btn btn-quiet" @click="emit('migrate', result)">迁出到新对话</button>
+        <button type="button" class="btn btn-quiet" @click="emit('contribute', result)">我要贡献</button>
         <button type="button" class="btn btn-quiet" @click="emit('save-private', result)">加入私人知识库</button>
         <span v-if="copyMessage" class="note note-ok" role="status">{{ copyMessage }}</span>
         <span v-if="copyError" class="note note-bad" role="alert">{{ copyError }}</span>

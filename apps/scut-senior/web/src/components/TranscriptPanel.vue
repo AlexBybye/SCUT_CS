@@ -174,8 +174,10 @@ onBeforeUnmount(() => {
           :stream-state="turn.live ? store.workflowStreamState : null"
           :answer-mode="turn.answerMode"
           :tone="turn.tone"
+          :course-names="Object.fromEntries(store.courses.map((course) => [course.course_id, course.display_name]))"
           @migrate="store.migrateWorkflowOutputToNewConversation"
           @save-private="store.saveWorkflowOutputToPrivateKnowledge"
+          @contribute="store.prepareWorkflowOutputForContribution"
         />
       </article>
     </div>
