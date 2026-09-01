@@ -38,7 +38,9 @@ class Settings:
     onnx_embedding_max_length: int = 512
     database_path: Path = APP_ROOT / ".local" / "iteration-zero.db"
     corpus_store_path: Path = APP_ROOT / ".local" / "corpus-store"
-    cross_course_enabled: bool = False
+    # Enabled for the local fixture profile so the shipped cross-course UI is
+    # immediately testable; production deployments can explicitly disable it.
+    cross_course_enabled: bool = True
     bilibili_resources_enabled: bool = True
     # Iteration 5 (SOP §10): deterministic exam-review planning. The flag
     # only gates the plan node, appendix and past-exam-first retrieval query;
@@ -62,6 +64,12 @@ class Settings:
     github_client_secret: str | None = field(default=None, repr=False)
     github_callback_url: str | None = None
     post_login_redirect_url: str | None = None
+    maintainer_github_user_ids: tuple[int, ...] = ()
+    maintainer_github_logins: tuple[str, ...] = (
+        "AlexBybye",
+        "DevilSean",
+    )
+    # 维护者在上方添加，再在下方补充
 
     @classmethod
     def from_env(cls) -> "Settings":
@@ -70,7 +78,10 @@ class Settings:
             identity_mode=os.getenv("SCUT_SENIOR_IDENTITY_MODE", "mock"),
             model_mode=os.getenv("SCUT_SENIOR_MODEL_MODE", "mock"),
             storage_mode=os.getenv("SCUT_SENIOR_STORAGE_MODE", "sqlite_mock"),
-            retrieval_mode=os.getenv("SCUT_SENIOR_RETRIEVAL_MODE", "fixture"),
+            # The running application uses the activated corpus by default;
+            # fixture retrieval remains available for isolated tests via an
+            # explicit Settings(retrieval_mode="fixture") or environment override.
+            retrieval_mode=os.getenv("SCUT_SENIOR_RETRIEVAL_MODE", "local_corpus"),
             retrieval_min_score=_env_positive_float(
                 "SCUT_SENIOR_RETRIEVAL_MIN_SCORE", 1.0
             ),
@@ -132,7 +143,21 @@ class Settings:
             post_login_redirect_url=os.getenv(
                 "SCUT_SENIOR_POST_LOGIN_REDIRECT_URL"
             ),
+            maintainer_github_user_ids=tuple(
+                int(value.strip())
+                for value in os.getenv("SCUT_SENIOR_MAINTAINER_GITHUB_USER_IDS", "").split(",")
+                if value.strip().isdigit()
+            ),
+            maintainer_github_logins=tuple(
+                value.strip()
+                for value in os.getenv(
+                    "SCUT_SENIOR_MAINTAINER_GITHUB_LOGINS",
+                    "AlexBybye,DevilSean",
+                ).split(",")
+                if value.strip()
+            ),
         )
+    # 就是上方这里补充
 
     def assert_safe(self) -> None:
         if self.app_env not in {"development", "test", "production"}:

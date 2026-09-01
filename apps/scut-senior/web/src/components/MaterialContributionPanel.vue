@@ -21,8 +21,8 @@ const store = useAppStore();
 
 // 贡献提交通道暂时对 UI 封闭（后端契约、队列与 TTL 保持原样）：
 // 上线时把 CONTRIBUTION_SUBMIT_CLOSED 改回 false 即可整体恢复。
-const CONTRIBUTION_SUBMIT_CLOSED = true;
-const SUBMIT_CLOSED_TIP = "本功能正在开发中！敬请期待！";
+const CONTRIBUTION_SUBMIT_CLOSED = false;
+const SUBMIT_CLOSED_TIP = "提交前请完成全部确认。";
 
 // 封闭入口的点击反馈：toast 比原生 title 即时且在触屏上也可用。
 const toastMessage = ref("");
@@ -57,7 +57,7 @@ const allConfirmed = computed(() =>
 
 const stateLabels: Record<ContributionState, string> = {
   draft: "草稿",
-  submitted: "待审核（维护者队列）",
+  submitted: "待审核",
   pr_open: "PR 已创建",
   merged: "已合并",
   rejected: "已拒绝",
@@ -182,84 +182,81 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
 <template>
   <div class="material-panel" aria-label="临时材料保存与贡献">
     <div v-if="toastMessage" class="panel-toast" role="status">{{ toastMessage }}</div>
-    <p class="drawer-hint drawer-span">
-      粘贴的材料只属于你，默认不进入公共索引或课程包；普通材料 7
-      天后由服务端实际删除。贡献需人工审核通过后才会进入公共知识库。
-    </p>
-    <div class="drawer-span material-actions">
-      <button
-        type="button"
-        class="btn"
-        :disabled="busy"
-        @click="onSaveMaterial"
-      >
-        把当前输入保存为临时材料
-      </button>
+
+    <div class="material-save">
+      <p class="material-hint">
+        粘贴的材料只属于你，默认不进入公共索引或课程包；普通材料 7 天后由服务端实际删除，贡献需人工审核通过后才会进入公共知识库。
+      </p>
+      <div class="material-actions">
+        <button type="button" class="btn btn-primary" :disabled="busy" @click="onSaveMaterial">
+          保存当前输入为临时材料
+        </button>
+      </div>
+      <p v-if="panelMessage" class="material-message" role="status">{{ panelMessage }}</p>
     </div>
 
-    <p v-if="panelMessage" class="drawer-span field-hint">{{ panelMessage }}</p>
-
-    <ul v-if="materials.length" class="drawer-span material-list">
-      <li v-for="item in materials" :key="item.material_id" class="material-item">
-        <div class="material-meta">
-          <strong>{{ item.title || "未命名材料" }}</strong>
-          <small>{{ item.char_count }} 字 · 过期于 {{ formatDate(item.expires_at) }}</small>
-        </div>
-        <div class="material-buttons">
-          <button type="button" class="btn btn-quiet" :disabled="busy" @click="onPreview(item.material_id)">
-            预览转换结果
-          </button>
-          <span
-            class="hover-tip"
-            :class="{ closed: CONTRIBUTION_SUBMIT_CLOSED }"
-            @click="CONTRIBUTION_SUBMIT_CLOSED && showToast(SUBMIT_CLOSED_TIP)"
-          >
-            <button
-              type="button"
-              class="btn btn-quiet"
-              :disabled="CONTRIBUTION_SUBMIT_CLOSED || busy"
-              @click="onSubmit(item.material_id, true)"
-            >
-              存为贡献草稿
+    <section v-if="materials.length" class="material-section" aria-label="你的临时材料">
+      <h4 class="material-heading">
+        你的临时材料
+        <span class="chip">{{ materials.length }}</span>
+      </h4>
+      <ul class="material-list">
+        <li v-for="item in materials" :key="item.material_id" class="material-item">
+          <div class="material-meta">
+            <strong>{{ item.title || "未命名材料" }}</strong>
+            <small>{{ item.char_count }} 字 · 过期于 {{ formatDate(item.expires_at) }}</small>
+          </div>
+          <div class="material-buttons">
+            <button type="button" class="btn btn-quiet" :disabled="busy" @click="onPreview(item.material_id)">
+              预览转换
             </button>
-            <span v-if="CONTRIBUTION_SUBMIT_CLOSED" class="hover-bubble" aria-hidden="true">
-              {{ SUBMIT_CLOSED_TIP }}
+            <span
+              class="hover-tip"
+              :class="{ closed: CONTRIBUTION_SUBMIT_CLOSED }"
+              @click="CONTRIBUTION_SUBMIT_CLOSED && showToast(SUBMIT_CLOSED_TIP)"
+            >
+              <button
+                type="button"
+                class="btn btn-quiet"
+                :disabled="CONTRIBUTION_SUBMIT_CLOSED || busy"
+                @click="onSubmit(item.material_id, true)"
+              >
+                存为草稿
+              </button>
+              <span v-if="CONTRIBUTION_SUBMIT_CLOSED" class="hover-bubble" aria-hidden="true">
+                {{ SUBMIT_CLOSED_TIP }}
+              </span>
             </span>
-          </span>
-          <button type="button" class="btn btn-danger" :disabled="busy" @click="onDeleteMaterial(item.material_id)">
-            删除
-          </button>
-        </div>
-      </li>
-    </ul>
+            <button type="button" class="btn btn-danger btn-quiet" :disabled="busy" @click="onDeleteMaterial(item.material_id)">
+              删除
+            </button>
+          </div>
+        </li>
+      </ul>
+    </section>
 
-    <section
-      v-if="preview"
-      class="drawer-span material-preview"
-      aria-label="贡献预览"
-    >
-      <h4>转换结果预览（确定性规范化，不改写语义）</h4>
-      <p class="field-hint">
-        提交落点：<code>{{ preview.proposed_repo_path || "（由维护者导出时确定）" }}</code>
-        · 提议来源编号：<code>{{ preview.proposed_source_id }}</code>
-        （最终编号以人工审核为准）
-        · 题目标记 {{ preview.question_marker_count }} 处
-      </p>
-      <ul v-if="preview.warnings.length" class="material-warnings">
+    <section v-if="preview" class="material-section material-preview" aria-label="贡献预览">
+      <h4 class="material-heading">转换结果预览</h4>
+      <div class="preview-facts">
+        <span class="chip chip-mono">落点 {{ preview.proposed_repo_path || "由维护者导出时确定" }}</span>
+        <span class="chip chip-mono">来源 {{ preview.proposed_source_id }}</span>
+        <span class="chip">题目标记 {{ preview.question_marker_count }} 处</span>
+      </div>
+      <ul v-if="preview.warnings.length" class="note note-warn material-warnings">
         <li v-for="warning in preview.warnings" :key="warning">{{ warning }}</li>
       </ul>
-      <pre>{{ preview.normalized_content.slice(0, 2000) }}{{ preview.normalized_content.length > 2000 ? "\n…（预览截断）" : "" }}</pre>
+      <pre class="material-preview-body">{{ preview.normalized_content.slice(0, 1200) }}{{ preview.normalized_content.length > 1200 ? "\n…（预览截断）" : "" }}</pre>
 
       <fieldset class="material-confirm">
         <legend>提交前确认（公开 PR 可能长期公开）</legend>
-        <label><input v-model="confirmations.course_confirmed" type="checkbox" /> 我确认归属课程正确。</label>
-        <label><input v-model="confirmations.source_confirmed" type="checkbox" /> 我确认材料来源真实、未篡改。</label>
-        <label><input v-model="confirmations.public_share_rights_confirmed" type="checkbox" /> 我拥有公开分享该材料的权利。</label>
-        <label><input v-model="confirmations.no_sensitive_info_confirmed" type="checkbox" /> 材料不含个人隐私或敏感信息。</label>
-        <label><input v-model="confirmations.public_pr_visibility_acknowledged" type="checkbox" /> 我了解公开仓库中的 PR 可能长期可见。</label>
+        <label><input v-model="confirmations.course_confirmed" type="checkbox" /> 我确认归属课程正确</label>
+        <label><input v-model="confirmations.source_confirmed" type="checkbox" /> 我确认来源真实、未篡改</label>
+        <label><input v-model="confirmations.public_share_rights_confirmed" type="checkbox" /> 我拥有公开分享的权利</label>
+        <label><input v-model="confirmations.no_sensitive_info_confirmed" type="checkbox" /> 材料不含隐私或敏感信息</label>
+        <label><input v-model="confirmations.public_pr_visibility_acknowledged" type="checkbox" /> 我了解 PR 可能长期可见</label>
       </fieldset>
 
-      <div class="material-buttons">
+      <div class="material-actions">
         <span
           class="hover-tip"
           :class="{ closed: CONTRIBUTION_SUBMIT_CLOSED }"
@@ -267,10 +264,8 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
         >
           <button
             type="button"
-            class="btn"
-            :disabled="
-              CONTRIBUTION_SUBMIT_CLOSED || busy || !allConfirmed || !previewMaterialId
-            "
+            class="btn btn-primary"
+            :disabled="CONTRIBUTION_SUBMIT_CLOSED || busy || !allConfirmed || !previewMaterialId"
             @click="previewMaterialId && onSubmit(previewMaterialId, false)"
           >
             提交到待审队列
@@ -282,19 +277,20 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
       </div>
     </section>
 
-    <section v-if="contributions.length" class="drawer-span" aria-label="我的贡献">
-      <h4>我的贡献</h4>
+    <section v-if="contributions.length" class="material-section" aria-label="我的贡献">
+      <h4 class="material-heading">
+        我的贡献
+        <span class="chip">{{ contributions.length }}</span>
+      </h4>
       <ul class="material-list">
         <li v-for="item in contributions" :key="item.contribution_id" class="material-item">
           <div class="material-meta">
             <strong>{{ item.title }}</strong>
             <small>
-              {{ stateLabels[item.state] }}
-              <template v-if="item.proposed_repo_path"> · 目标 <code>{{ item.proposed_repo_path }}</code></template>
-              <template v-if="item.pr_url"> ·
-                <a :href="item.pr_url" target="_blank" rel="noreferrer">查看 PR</a>
-              </template>
-              <template v-if="item.maintainer_note"> · 备注：{{ item.maintainer_note }}</template>
+              <span class="chip chip-mono">{{ stateLabels[item.state] }}</span>
+              <span v-if="item.proposed_repo_path">目标 <code>{{ item.proposed_repo_path }}</code></span>
+              <a v-if="item.pr_url" :href="item.pr_url" target="_blank" rel="noreferrer">查看 PR</a>
+              <span v-if="item.maintainer_note">备注：{{ item.maintainer_note }}</span>
             </small>
           </div>
         </li>
@@ -306,11 +302,55 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
 <style>
 .material-panel {
   display: grid;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--raised);
+}
+
+.material-save {
+  display: grid;
   gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.material-hint {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--fs-2xs);
+  line-height: 1.55;
+}
+
+.material-message {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+}
+
+.material-section {
+  display: grid;
+  gap: 8px;
+}
+
+.material-section + .material-section {
+  padding-top: 4px;
+  border-top: 1px solid var(--line);
+}
+
+.material-heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: var(--fs-xs);
+  font-weight: 700;
 }
 
 .material-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
@@ -327,20 +367,29 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 6px;
-  padding: 7px 9px;
+  gap: 8px;
+  padding: 8px 10px;
   border: 1px solid var(--line);
   border-radius: var(--r-sm);
-  background: var(--raised);
+  background: var(--sunken);
 }
 
 .material-meta {
   display: grid;
-  gap: 1px;
+  gap: 2px;
   min-width: 0;
 }
 
+.material-meta strong {
+  font-size: var(--fs-xs);
+  font-weight: 650;
+}
+
 .material-meta small {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
   color: var(--text-muted);
   font-size: var(--fs-2xs);
 }
@@ -349,6 +398,77 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+}
+
+.material-buttons .btn-quiet {
+  height: 24px;
+  padding: 0 8px;
+  font-size: var(--fs-2xs);
+}
+
+/* 提交前确认：两列排布，减少纵向占用。 */
+.material-confirm {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 14px;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.material-confirm legend {
+  grid-column: 1 / -1;
+  padding: 0;
+  margin-bottom: 2px;
+  font-size: var(--fs-2xs);
+  font-weight: 650;
+  color: var(--text-muted);
+}
+
+.material-confirm label {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  font-size: var(--fs-2xs);
+  line-height: 1.4;
+}
+
+.material-confirm input {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  accent-color: var(--accent);
+}
+
+/* 预览区 */
+.material-preview {
+  gap: 9px;
+}
+
+.preview-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.material-warnings {
+  display: grid;
+  gap: 3px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.material-preview-body {
+  max-height: 220px;
+  overflow: auto;
+  margin: 0;
+  padding: 8px;
+  border-radius: var(--r-sm);
+  background: var(--sunken);
+  color: var(--text-muted);
+  font-size: var(--fs-2xs);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 /* 封闭中的入口：悬停立即显示气泡，点击弹 toast。
@@ -406,56 +526,9 @@ async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
-.material-preview {
-  display: grid;
-  gap: 7px;
-  padding: 9px;
-  border: 1px dashed var(--line);
-  border-radius: var(--r-sm);
-}
-
-.material-preview h4 {
-  margin: 0;
-  font-size: var(--fs-xs);
-}
-
-.material-preview pre {
-  max-height: 220px;
-  overflow: auto;
-  padding: 8px;
-  border-radius: var(--r-sm);
-  background: var(--sunken);
-  font-size: var(--fs-2xs);
-  line-height: 1.5;
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-.material-warnings {
-  margin: 0;
-  padding-left: 18px;
-  color: var(--warn-text);
-  font-size: var(--fs-2xs);
-}
-
-.material-confirm {
-  display: grid;
-  gap: 4px;
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-
-.material-confirm legend {
-  font-size: var(--fs-2xs);
-  font-weight: 650;
-  color: var(--text-muted);
-}
-
-.material-confirm label {
-  display: flex;
-  gap: 6px;
-  align-items: baseline;
-  font-size: var(--fs-xs);
+@media (max-width: 520px) {
+  .material-confirm {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

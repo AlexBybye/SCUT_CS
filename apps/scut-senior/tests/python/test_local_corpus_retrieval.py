@@ -186,7 +186,7 @@ def test_local_gateway_ranks_chinese_and_english_deterministically(
     )
 
 
-def test_local_gateway_hard_filters_one_course_and_fails_closed(
+def test_local_gateway_fails_closed_for_unavailable_selected_courses(
     tmp_path: Path,
 ) -> None:
     store, _, _ = _build_store(tmp_path, enabled=False)
@@ -195,7 +195,7 @@ def test_local_gateway_hard_filters_one_course_and_fails_closed(
     assert gateway.is_course_available(COURSE_ID) is False
     with pytest.raises(CapabilityUnavailable):
         gateway.search([COURSE_ID], "密码学")
-    with pytest.raises(CapabilityUnavailable, match="exactly one"):
+    with pytest.raises(CapabilityUnavailable):
         gateway.search([COURSE_ID, "cpp"], "密码学")
 
     (store / "active.json").write_text("{}\n", encoding="utf-8")

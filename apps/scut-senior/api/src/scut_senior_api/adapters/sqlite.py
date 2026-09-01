@@ -28,11 +28,13 @@ from ..auth import (
 )
 from ..agent_loop import replay_agent_events
 from ..contracts import (
+    ContributionAttachmentRecord,
     ContributionRecord,
     ContributionState,
     ConversationDetail,
     ConversationSummary,
     FeedbackRecord,
+    PrivateKnowledgeRecord,
     TemporaryMaterialDetail,
     TemporaryMaterialRecord,
     WorkflowAttempt,
@@ -45,7 +47,7 @@ from ..contributions import (
 )
 from ..credentials import CREDENTIAL_ALGORITHM
 from ..paths import MIGRATION_ROOT
-from ..ports import StoredModelCredential
+from ..ports import RetrievedSource, StoredModelCredential
 
 
 HISTORY_TTL = timedelta(days=30)
@@ -474,12 +476,21 @@ class SQLiteWorkflowRepository:
                     "SELECT name FROM sqlite_master WHERE type = 'table'"
                 )
             }
-            if "temporary_materials" not in tables:
+            if "temporary_materials" not in tables and "contributions" not in tables and "private_knowledge_items" not in tables:
                 return MaterialCleanupCounts(0, 0)
-            materials = connection.execute(
-                "DELETE FROM temporary_materials WHERE expires_at <= ?",
-                (now,),
-            ).rowcount
+            materials = 0
+            if "temporary_materials" in tables:
+                materials = connection.execute(
+                    "DELETE FROM temporary_materials WHERE expires_at <= ?",
+                    (now,),
+                ).rowcount
+            if "private_knowledge_items" in tables:
+                # Private knowledge has the same physical TTL guarantee but is
+                # deliberately not counted as temporary conversation material.
+                connection.execute(
+                    "DELETE FROM private_knowledge_items WHERE expires_at <= ?",
+                    (now,),
+                )
             cleared = connection.execute(
                 """
                 UPDATE contributions
@@ -967,6 +978,50 @@ class SQLiteWorkflowRepository:
             ).rowcount
         return deleted > 0
 
+    def save_private_knowledge(
+        self, *, user_id: str, course_id: str, title: str | None, content: str
+    ) -> PrivateKnowledgeRecord:
+        now = self._now()
+        knowledge_id = uuid4()
+        expires_at = now + timedelta(days=TEMPORARY_MATERIAL_TTL_DAYS)
+        digest = hashlib.sha256(content.encode("utf-8")).hexdigest()
+        with self._connect() as connection:
+            connection.execute(
+                """
+                INSERT INTO private_knowledge_items (
+                    knowledge_id, user_id, course_id, title, content, content_sha256,
+                    char_count, visibility, created_at, expires_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, 'private', ?, ?)
+                """,
+                (str(knowledge_id), user_id, course_id, title, content, digest, len(content), now.isoformat(), expires_at.isoformat()),
+            )
+        return PrivateKnowledgeRecord(
+            knowledge_id=knowledge_id, course_id=course_id, title=title,
+            char_count=len(content), content_sha256=digest, created_at=now, expires_at=expires_at,
+        )
+
+    def list_private_knowledge_sources(
+        self, *, user_id: str, course_ids: list[str]
+    ) -> list[RetrievedSource]:
+        if not course_ids or len(course_ids) != len(set(course_ids)):
+            return []
+        placeholders = ", ".join("?" for _ in course_ids)
+        with self._connect() as connection:
+            rows = connection.execute(
+                f"""SELECT * FROM private_knowledge_items
+                    WHERE user_id = ? AND visibility = 'private' AND expires_at > ?
+                    AND course_id IN ({placeholders}) ORDER BY created_at DESC""",
+                (user_id, self._now().isoformat(), *course_ids),
+            ).fetchall()
+        return [
+            RetrievedSource(
+                chunk_id=f"private:{row['knowledge_id']}", course_id=row["course_id"],
+                source_id=f"private:{row['knowledge_id']}", source_title=row["title"] or "私人知识",
+                text=row["content"], locator_type="private_knowledge", locator_start=None,
+                locator_end=None, question_id=None, heading_path=(),
+            ) for row in rows
+        ]
+
     @staticmethod
     def _contribution_record(row: sqlite3.Row) -> ContributionRecord:
         pr_url = row["pr_url"]
@@ -991,6 +1046,13 @@ class SQLiteWorkflowRepository:
             created_at=datetime.fromisoformat(row["created_at"]),
             updated_at=datetime.fromisoformat(row["updated_at"]),
             expires_at=datetime.fromisoformat(row["expires_at"]),
+            github_email=row["github_email"] if "github_email" in keys else None,
+            workflow_type=row["workflow_type"] if "workflow_type" in keys else None,
+            run_id=UUID(row["run_id"]) if "run_id" in keys and row["run_id"] else None,
+            supplementary_text=row["supplementary_text"] if "supplementary_text" in keys else None,
+            citation_metadata=json.loads(row["citation_metadata_json"] or "[]") if "citation_metadata_json" in keys else [],
+            corpus_metadata=json.loads(row["corpus_metadata_json"] or "{}") if "corpus_metadata_json" in keys else {},
+            has_attachments=False,
         )
 
     def create_contribution(
@@ -1004,6 +1066,12 @@ class SQLiteWorkflowRepository:
         content_snapshot: str,
         state: ContributionState,
         proposed_repo_path: str = "",
+        github_email: str | None = None,
+        workflow_type: str | None = None,
+        run_id: UUID | None = None,
+        supplementary_text: str | None = None,
+        citation_metadata: list[dict[str, object]] | None = None,
+        corpus_metadata: dict[str, object] | None = None,
     ) -> ContributionRecord:
         """创建贡献记录。
 
@@ -1029,8 +1097,10 @@ class SQLiteWorkflowRepository:
                     proposed_source_id, proposed_repo_path, title,
                     content_snapshot, state,
                     pr_url, maintainer_note, char_count,
-                    created_at, updated_at, expires_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL, ?, ?, ?, ?)
+                    created_at, updated_at, expires_at,
+                    github_email, workflow_type, run_id, supplementary_text,
+                    citation_metadata_json, corpus_metadata_json
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     str(contribution_id),
@@ -1046,6 +1116,12 @@ class SQLiteWorkflowRepository:
                     created_at,
                     updated_at,
                     expires_at,
+                    github_email,
+                    workflow_type,
+                    str(run_id) if run_id is not None else None,
+                    supplementary_text,
+                    json.dumps(citation_metadata or [], ensure_ascii=False),
+                    json.dumps(corpus_metadata or {}, ensure_ascii=False),
                 ),
             )
         record = self.get_contribution(user_id, contribution_id)
@@ -1074,6 +1150,27 @@ class SQLiteWorkflowRepository:
                 (user_id,),
             ).fetchall()
         return [self._contribution_record(row) for row in rows]
+
+    def create_contribution_attachment(
+        self, contribution_id: UUID, original_filename: str, content_type: str, payload: bytes
+    ) -> ContributionAttachmentRecord:
+        now = self._now(); attachment_id = uuid4(); expires_at = now + timedelta(days=CONTRIBUTION_REVIEW_COPY_TTL_DAYS)
+        digest = hashlib.sha256(payload).hexdigest()
+        with self._connect() as connection:
+            connection.execute("INSERT INTO contribution_attachments (attachment_id, contribution_id, original_filename, content_type, byte_size, sha256, payload, created_at, expires_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (str(attachment_id), str(contribution_id), original_filename, content_type, len(payload), digest, payload, now.isoformat(), expires_at.isoformat()))
+        return ContributionAttachmentRecord(attachment_id=attachment_id, contribution_id=contribution_id, original_filename=original_filename, content_type=content_type, byte_size=len(payload), sha256=digest, created_at=now, expires_at=expires_at)
+
+    def list_contribution_attachments(self, contribution_id: UUID) -> list[ContributionAttachmentRecord]:
+        with self._connect() as connection:
+            rows = connection.execute("SELECT attachment_id, contribution_id, original_filename, content_type, byte_size, sha256, created_at, expires_at FROM contribution_attachments WHERE contribution_id = ? AND expires_at > ? ORDER BY created_at", (str(contribution_id), self._now().isoformat())).fetchall()
+        return [ContributionAttachmentRecord(attachment_id=UUID(row["attachment_id"]), contribution_id=UUID(row["contribution_id"]), original_filename=row["original_filename"], content_type=row["content_type"], byte_size=int(row["byte_size"]), sha256=row["sha256"], created_at=datetime.fromisoformat(row["created_at"]), expires_at=datetime.fromisoformat(row["expires_at"])) for row in rows]
+
+    def get_contribution_attachment(self, contribution_id: UUID, attachment_id: UUID) -> tuple[ContributionAttachmentRecord, bytes] | None:
+        with self._connect() as connection:
+            row = connection.execute("SELECT * FROM contribution_attachments WHERE contribution_id = ? AND attachment_id = ? AND expires_at > ?", (str(contribution_id), str(attachment_id), self._now().isoformat())).fetchone()
+        if row is None: return None
+        record = ContributionAttachmentRecord(attachment_id=attachment_id, contribution_id=contribution_id, original_filename=row["original_filename"], content_type=row["content_type"], byte_size=int(row["byte_size"]), sha256=row["sha256"], created_at=datetime.fromisoformat(row["created_at"]), expires_at=datetime.fromisoformat(row["expires_at"]))
+        return record, bytes(row["payload"])
 
     def get_contribution_with_payload(
         self, contribution_id: UUID
@@ -1492,6 +1589,17 @@ class SQLiteWorkflowRepository:
                     record.expires_at.isoformat(),
                 ),
             )
+
+    def list_all_feedback(self) -> list[FeedbackRecord]:
+        self.cleanup_history_records()
+        with self._connect() as connection:
+            rows = connection.execute(
+                """SELECT feedback_id, user_id, run_id, conversation_id, course_id,
+                          workflow_type, feedback_type, note, answer_status,
+                          created_at, expires_at
+                   FROM feedback ORDER BY created_at DESC, feedback_id DESC"""
+            ).fetchall()
+        return [_feedback_record(row) for row in rows]
 
     def list_feedback(self, user_id: str) -> list[FeedbackRecord]:
         self.cleanup_history_records()

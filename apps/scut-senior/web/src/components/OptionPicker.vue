@@ -25,8 +25,9 @@ export interface OptionItem {
 
 const props = withDefaults(
   defineProps<{
-    modelValue: string;
+    modelValue: string | string[];
     options: OptionItem[];
+    multiple?: boolean;
     placeholder?: string;
     searchable?: boolean;
     maxVisible?: number;
@@ -38,14 +39,15 @@ const props = withDefaults(
     placeholder: "请选择",
     searchable: true,
     maxVisible: 8,
+    multiple: false,
     placement: "down",
     disabled: false,
   },
 );
 
 const emit = defineEmits<{
-  (e: "update:modelValue", value: string): void;
-  (e: "change", value: string): void;
+  (e: "update:modelValue", value: string | string[]): void;
+  (e: "change", value: string | string[]): void;
 }>();
 
 const root = ref<HTMLElement | null>(null);
@@ -60,9 +62,20 @@ const activeIndex = ref(-1);
 const panelStyle = ref<Record<string, string>>({});
 const panelReady = ref(false);
 
-const selected = computed(() =>
-  props.options.find((option) => option.value === props.modelValue),
+const selectedValues = computed<string[]>(() =>
+  Array.isArray(props.modelValue) ? props.modelValue : props.modelValue ? [props.modelValue] : [],
 );
+const selected = computed(() =>
+  props.options.find((option) => option.value === selectedValues.value[0]),
+);
+const selectedLabel = computed(() => {
+  if (!props.multiple) return selected.value?.label ?? props.placeholder;
+  const labels = props.options
+    .filter((option) => selectedValues.value.includes(option.value))
+    .map((option) => option.label);
+  if (!labels.length) return props.placeholder;
+  return labels.length === 1 ? labels[0] : `${labels[0]} 等 ${labels.length} 门`;
+});
 
 const filtered = computed(() => {
   const q = query.value.trim().toLowerCase();
@@ -129,6 +142,14 @@ function toggle(): void {
 
 function selectOption(option: OptionItem): void {
   if (option.disabled) return;
+  if (props.multiple) {
+    const next = selectedValues.value.includes(option.value)
+      ? selectedValues.value.filter((value) => value !== option.value)
+      : [...selectedValues.value, option.value];
+    emit("update:modelValue", next);
+    emit("change", next);
+    return;
+  }
   emit("update:modelValue", option.value);
   emit("change", option.value);
   closePanel();
@@ -297,7 +318,7 @@ onBeforeUnmount(() => {
       @keydown="onTriggerKeydown"
     >
       <span v-if="selected?.dot" class="op-dot" :class="`is-${selected.dot}`" aria-hidden="true"></span>
-      <span class="op-trigger-label truncate">{{ selected?.label ?? placeholder }}</span>
+      <span class="op-trigger-label truncate">{{ selectedLabel }}</span>
       <svg class="op-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path :d="open ? 'm6 15 6-6 6 6' : 'm6 9 6 6 6-6'" />
       </svg>
@@ -346,7 +367,7 @@ onBeforeUnmount(() => {
                 :data-row-index="index"
                 :class="{ 'is-active': activeIndex === index, 'is-disabled': row.option.disabled }"
                 role="option"
-                :aria-selected="props.modelValue === row.option.value ? 'true' : 'false'"
+                :aria-selected="selectedValues.includes(row.option.value) ? 'true' : 'false'"
                 :aria-disabled="row.option.disabled ? 'true' : undefined"
                 @click="selectOption(row.option)"
                 @mouseenter="activeIndex = index"
@@ -357,7 +378,7 @@ onBeforeUnmount(() => {
                   <span v-if="row.option.hint" class="op-option-hint truncate">{{ row.option.hint }}</span>
                 </span>
                 <svg
-                  v-if="props.modelValue === row.option.value"
+                  v-if="selectedValues.includes(row.option.value)"
                   class="op-check"
                   viewBox="0 0 24 24"
                   fill="none"
@@ -460,6 +481,8 @@ onBeforeUnmount(() => {
 /* 面板：fixed 定位，JS 钳制在视口内，向下弹出默认、本组件多用向上。 */
 .op-panel {
   position: fixed;
+  display: flex;
+  flex-direction: column;
   z-index: 70;
   overflow: hidden;
   border: 1px solid var(--line-strong);
@@ -510,6 +533,8 @@ onBeforeUnmount(() => {
 }
 
 .op-list {
+  flex: 1 1 auto;
+  min-height: 0;
   max-height: calc(var(--max-visible, 8) * 34px);
   overflow-y: auto;
   padding: 5px;

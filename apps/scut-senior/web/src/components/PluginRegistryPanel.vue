@@ -103,7 +103,15 @@ const visibleCourses = computed<CoursePluginEntry[]>(() => {
 });
 
 const loadedCourseCount = computed(
-  () => registry.value?.courses.filter((course) => course.loaded).length ?? 0,
+  () =>
+    registry.value?.courses.filter((course) => courseCategory(course) === "enabled").length ?? 0,
+);
+const noDataCourseCount = computed(
+  () =>
+    registry.value?.courses.filter((course) => courseCategory(course) === "no_data").length ?? 0,
+);
+const availableCourseCount = computed(
+  () => (registry.value?.courses.length ?? 0) - noDataCourseCount.value,
 );
 
 // 「全部展开 / 全部收起」的联动状态与开关。
@@ -184,7 +192,8 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
           <span class="group-toggle-title">
             课程插件
             <span class="chip">{{ registry.courses.length }} 门</span>
-            <span v-if="loadedCourseCount" class="chip chip-ok">已装载 {{ loadedCourseCount }}</span>
+            <span class="chip chip-ok">已装载 {{ loadedCourseCount }} / 可用 {{ availableCourseCount }}</span>
+            <span v-if="noDataCourseCount" class="chip">无语料 {{ noDataCourseCount }}</span>
           </span>
           <svg
             class="group-caret"
@@ -404,7 +413,9 @@ async function togglePlugin(course: CoursePluginEntry): Promise<void> {
    （.plugin-group 不再 overflow:hidden，否则 sticky 会失效。） */
 .group-toggle {
   position: sticky;
-  top: 0;
+  /* .account-scroll has 12px top padding; offset into that padding so the
+     floating group title seals against the panel edge instead of leaving a gap. */
+  top: -12px;
   z-index: 1;
   display: flex;
   align-items: center;

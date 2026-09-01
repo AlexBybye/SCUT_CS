@@ -10,6 +10,7 @@ import type {
   WorkflowRunResult,
 } from "../contracts";
 import { submitFeedback } from "../api";
+import { copyWorkflowOutput, formatWorkflowOutputForCopy } from "../workflowOutputCopy";
 import {
   examReviewPathLabel,
   locatorLabel as examLocatorLabel,
@@ -26,6 +27,13 @@ const props = defineProps<{
   streamState: WorkflowStreamState | null;
   answerMode?: AnswerMode | null;
   tone?: Tone | null;
+  courseNames?: Record<string, string>;
+}>();
+
+const emit = defineEmits<{
+  (event: "migrate", result: WorkflowRunResult): void;
+  (event: "save-private", result: WorkflowRunResult): void;
+  (event: "contribute", result: WorkflowRunResult): void;
 }>();
 
 const feedbackType = ref<FeedbackType | null>(null);
@@ -33,6 +41,26 @@ const feedbackNote = ref("");
 const feedbackSubmitted = ref(false);
 const feedbackError = ref("");
 const feedbackBusy = ref(false);
+const copyMessage = ref("");
+const copyError = ref("");
+let copyMessageTimer: number | null = null;
+
+async function copyCurrentOutput(): Promise<void> {
+  const text = formatWorkflowOutputForCopy(answerBlocks.value, citations.value);
+  copyError.value = "";
+  copyMessage.value = "";
+  try {
+    await copyWorkflowOutput(text);
+    copyMessage.value = "已复制";
+    if (copyMessageTimer !== null) window.clearTimeout(copyMessageTimer);
+    copyMessageTimer = window.setTimeout(() => {
+      copyMessage.value = "";
+      copyMessageTimer = null;
+    }, 1800);
+  } catch (error) {
+    copyError.value = error instanceof Error ? error.message : "复制失败，请手动选择回答文本。";
+  }
+}
 
 async function sendFeedback(): Promise<void> {
   if (!props.result || !feedbackType.value) return;
@@ -146,7 +174,10 @@ watch(
   { immediate: true },
 );
 
-onBeforeUnmount(stopTypeTimer);
+onBeforeUnmount(() => {
+  stopTypeTimer();
+  if (copyMessageTimer !== null) window.clearTimeout(copyMessageTimer);
+});
 
 // 流动 trace：运行中真实事件逐步展示（每步随机停留 ≤2s、不跳步）；
 // 运行一结束就停止逐条揭示，立刻完整展示全部 trace（见 visibleFlowTrace）。
@@ -293,6 +324,19 @@ const toneLabel = computed(() => (
   props.tone ? toneLabels[props.tone] : null
 ));
 
+const selectedCourseIds = computed(() => props.result?.trace
+  ?.flatMap((event) => {
+    const value = event.result?.course_ids;
+    return Array.isArray(value) ? value.filter((id): id is string => typeof id === "string") : [];
+  })
+  .filter((id, index, all) => all.indexOf(id) === index) ?? []);
+const citedCourseIds = computed(() => citations.value
+  .map((citation) => citation.course_id)
+  .filter((id, index, all) => all.indexOf(id) === index));
+function courseLabel(courseId: string): string {
+  return props.courseNames?.[courseId] ?? courseId;
+}
+
 const answerBlockNotes: Record<AnswerBlockType, string> = {
   repository: "结论受仓库引用与证据状态约束",
   user_material: "仅基于你在本次 Workflow 提供的材料",
@@ -417,6 +461,19 @@ function citationLocator(citation: Citation): string {
       <p v-if="!answerBlocks.length" class="empty-line">
         {{ isRunning ? "Workflow 已开始，正在等待回答内容。" : "本次没有返回回答内容。" }}
       </p>
+
+      <p v-if="result && selectedCourseIds.length" class="course-coverage" aria-label="本次检索课程范围">
+        本次检索：{{ selectedCourseIds.map(courseLabel).join("、") }}；实际引用：{{ citedCourseIds.length ? citedCourseIds.map(courseLabel).join("、") : "暂无" }}
+      </p>
+
+      <div v-if="result && !isRunning && answerBlocks.length" class="result-actions" aria-label="本轮回答操作">
+        <button type="button" class="btn btn-quiet" @click="copyCurrentOutput">复制本轮输出</button>
+        <button type="button" class="btn btn-quiet" @click="emit('migrate', result)">迁出到新对话</button>
+        <button type="button" class="btn btn-quiet" @click="emit('contribute', result)">我要贡献</button>
+        <button type="button" class="btn btn-quiet" @click="emit('save-private', result)">加入私人知识库</button>
+        <span v-if="copyMessage" class="note note-ok" role="status">{{ copyMessage }}</span>
+        <span v-if="copyError" class="note note-bad" role="alert">{{ copyError }}</span>
+      </div>
 
       <section
         v-if="coverageGaps.length"
@@ -615,6 +672,19 @@ function citationLocator(citation: Citation): string {
 .run {
   display: grid;
   gap: 10px;
+}
+
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.result-actions .note {
+  margin: 0;
+  padding: 4px 8px;
+  font-size: var(--fs-2xs);
 }
 
 .run-head {

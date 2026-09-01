@@ -31,7 +31,12 @@ class MutableClock:
 
 
 class CountingRepository:
-    """只统计 sweep 调用次数的假仓储；用于启停时序验证。"""
+    """只统计 sweep 调用次数的假仓储；用于启停时序验证。
+
+    计数字段与真实仓储契约一致（oauth_states / auth_sessions /
+    workflow_runs / conversations / feedback / materials /
+    contributions_cleared），便于直接检查 sweep 结果。
+    """
 
     def __init__(self):
         self.sweeps = 0
@@ -40,8 +45,8 @@ class CountingRepository:
         self.sweeps += 1
 
         class _Counts:
-            states = 0
-            sessions = 0
+            oauth_states = 0
+            auth_sessions = 0
 
         return _Counts()
 
@@ -59,6 +64,45 @@ class CountingRepository:
             contributions_cleared = 0
 
         return _Counts()
+
+
+class StepFailingRepository:
+    """按步骤注入失败的假仓储；用于验证清理步骤异常隔离（PLAN-3 §8.1）。"""
+
+    def __init__(self, fail_step: str | None = None):
+        self.fail_step = fail_step
+        self.calls: list[str] = []
+
+    def _run(self, step_name: str, value):
+        self.calls.append(step_name)
+        if step_name == self.fail_step:
+            raise RuntimeError(f"simulated failure in {step_name}")
+        return value
+
+    def cleanup_auth_records(self):
+        class _Counts:
+            oauth_states = 3
+            auth_sessions = 2
+
+        return self._run("cleanup_auth_records", _Counts())
+
+    def cleanup_history_records(self):
+        class _Counts:
+            workflow_runs = 5
+            conversations = 4
+            feedback = 1
+
+        return self._run("cleanup_history_records", _Counts())
+
+    def cleanup_material_records(self):
+        class _Counts:
+            materials = 2
+            contributions_cleared = 0
+
+        return self._run("cleanup_material_records", _Counts())
+
+    def cleanup_platform_quota_records(self):
+        return self._run("cleanup_platform_quota_records", 9)
 
 
 def make_repository(tmp_path: Path, clock: MutableClock) -> SQLiteWorkflowRepository:
@@ -177,6 +221,60 @@ def test_start_is_idempotent():
 def test_invalid_interval_rejected(bad_interval):
     with pytest.raises(ValueError):
         MaintenanceScheduler(CountingRepository(), interval_seconds=bad_interval)
+
+
+def test_sweep_isolates_failed_step_and_continues(caplog):
+    """PLAN-3 §8.1：单个清理步骤失败只归零该步骤，后续步骤继续执行。"""
+
+    repository = StepFailingRepository(fail_step="cleanup_history_records")
+    scheduler = MaintenanceScheduler(repository, interval_seconds=3600)
+    result = scheduler.sweep()
+
+    # 失败步骤计数按 0 处理，其余步骤正常计入。
+    assert result.auth_states == 3
+    assert result.auth_sessions == 2
+    assert result.history_runs == 0
+    assert result.history_conversations == 0
+    assert result.history_feedback == 0
+    assert result.materials == 2
+    assert result.contributions_cleared == 0
+    assert result.platform_rate_events == 9
+    # 所有步骤仍按顺序执行，失败步骤留下日志。
+    assert repository.calls == [
+        "cleanup_auth_records",
+        "cleanup_history_records",
+        "cleanup_material_records",
+        "cleanup_platform_quota_records",
+    ]
+    assert "cleanup_history_records" in caplog.text
+
+
+def test_sweep_failure_of_first_step_zeros_only_that_step():
+    """PLAN-3 §8.1：首个步骤失败也不阻断后续步骤。"""
+
+    repository = StepFailingRepository(fail_step="cleanup_auth_records")
+    scheduler = MaintenanceScheduler(repository, interval_seconds=3600)
+    result = scheduler.sweep()
+
+    assert result.auth_states == 0
+    assert result.auth_sessions == 0
+    assert result.history_runs == 5
+    assert result.history_conversations == 4
+    assert result.history_feedback == 1
+    assert result.materials == 2
+    assert result.platform_rate_events == 9
+
+
+def test_sweep_without_quota_step_keeps_zero_count():
+    """仓储未提供额度清理时，quota 计数保持 0 且不报错。"""
+
+    repository = CountingRepository()
+    scheduler = MaintenanceScheduler(repository, interval_seconds=3600)
+    result = scheduler.sweep()
+
+    assert result.platform_rate_events == 0
+    assert result.auth_states == 0
+    assert result.history_runs == 0
 
 
 def test_settings_reject_non_positive_interval():

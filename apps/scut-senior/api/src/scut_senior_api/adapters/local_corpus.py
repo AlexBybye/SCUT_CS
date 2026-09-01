@@ -126,10 +126,29 @@ class LocalCorpusRetrievalGateway:
         return True
 
     def search(self, course_ids: list[str], query: str) -> RetrievalBatch:
-        if len(course_ids) != 1 or not course_ids[0]:
+        if not course_ids or len(course_ids) != len(set(course_ids)) or any(not course_id for course_id in course_ids):
             raise CapabilityUnavailable(
                 "retrieval",
-                "local corpus retrieval requires exactly one explicit course",
+                "local corpus retrieval requires a non-empty unique course set",
+            )
+        if len(course_ids) > 1:
+            batches = [self.search([course_id], query) for course_id in course_ids]
+            # Do not let the first course consume the global limit. Round-robin
+            # preserves each course's independently thresholded candidates so a
+            # cross-course run is visibly and fairly represented downstream.
+            merged: list[RetrievedSource] = []
+            for index in range(max((len(batch.sources) for batch in batches), default=0)):
+                for batch in batches:
+                    if index < len(batch.sources):
+                        merged.append(batch.sources[index])
+                        if len(merged) >= self.limit:
+                            break
+                if len(merged) >= self.limit:
+                    break
+            return RetrievalBatch(
+                tuple(merged),
+                batches[0].corpus_version,
+                batches[0].course_pack_version,
             )
         course_id = course_ids[0]
         try:

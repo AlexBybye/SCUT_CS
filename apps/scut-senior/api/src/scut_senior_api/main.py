@@ -3,13 +3,14 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import threading
 from contextlib import asynccontextmanager
 from hmac import compare_digest
 from uuid import UUID
 
-from fastapi import Depends, FastAPI, HTTPException, Request
+from fastapi import Depends, FastAPI, File, HTTPException, Request, UploadFile
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse, RedirectResponse, StreamingResponse
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import Response
 
@@ -85,10 +86,14 @@ from .contracts import (
     ConversationSummary,
     FeedbackCreate,
     FeedbackRecord,
+    MaintainerContributionDetail,
     MaintainerContributionExport,
+    ContributionAttachmentRecord,
     MaintainerContributionTransition,
     ModelCredentialStatus,
     ModelCredentialUpsert,
+    PrivateKnowledgeCreate,
+    PrivateKnowledgeRecord,
     TemporaryMaterialCreate,
     TemporaryMaterialDetail,
     TemporaryMaterialRecord,
@@ -124,7 +129,34 @@ from .workflow_stream import WorkflowStreamSession
 
 # 活跃流式会话登记：run_id → (user_id, session)。
 # 静默断线不再取消运行（见 stream_workflow），显式取消端点靠这里定位会话。
+# 该 registry 在事件循环协程、asyncio.to_thread 后台线程与取消端点之间共享，
+# 因此所有字典操作与用户校验都在 _STREAMS_LOCK 内完成；session.cancel() 在锁外执行。
 _ACTIVE_STREAMS: dict[str, tuple[str, WorkflowStreamSession]] = {}
+_STREAMS_LOCK = threading.Lock()
+
+
+def _register_stream(
+    run_key: str, user_id: str, session: WorkflowStreamSession
+) -> None:
+    with _STREAMS_LOCK:
+        _ACTIVE_STREAMS[run_key] = (user_id, session)
+
+
+def _unregister_stream(run_key: str) -> None:
+    with _STREAMS_LOCK:
+        _ACTIVE_STREAMS.pop(run_key, None)
+
+
+def _find_stream_session(
+    run_key: str, user_id: str
+) -> WorkflowStreamSession | None:
+    """锁内只做字典查找与用户校验；取消调用由调用方在锁外执行。"""
+
+    with _STREAMS_LOCK:
+        entry = _ACTIVE_STREAMS.get(run_key)
+        if entry is None or entry[0] != user_id:
+            return None
+        return entry[1]
 
 
 OAUTH_STATE_COOKIE_NAME = "__Host-scut_senior_oauth_state"
@@ -657,6 +689,17 @@ def create_app(
             raise AuthRequired()
         return user
 
+    def require_maintainer(
+        user: AuthenticatedPrincipal = Depends(require_github_user),
+    ) -> AuthenticatedPrincipal:
+        allowed_ids = active_settings.maintainer_github_user_ids
+        allowed_logins = {
+            login.casefold() for login in active_settings.maintainer_github_logins
+        }
+        if user.github_user_id not in allowed_ids and user.github_login.casefold() not in allowed_logins:
+            raise HTTPException(status_code=403, detail="维护者权限不足。")
+        return user
+
     @app.get("/api/v1/auth/github/start")
     def github_login_start():
         if active_settings.identity_mode != "github_oauth" or oauth_adapter is None:
@@ -1052,7 +1095,7 @@ def create_app(
         session = WorkflowStreamSession(enqueue_event)
         run_key = str(session.workflow_run_id)
         # 显式取消端点需要按 run_id 找到会话；静默断线不再等价于取消。
-        _ACTIVE_STREAMS[run_key] = (str(user.user_id), session)
+        _register_stream(run_key, str(user.user_id), session)
 
         def execute() -> None:
             try:
@@ -1110,7 +1153,7 @@ def create_app(
                 )
                 raise
             finally:
-                _ACTIVE_STREAMS.pop(run_key, None)
+                _unregister_stream(run_key)
                 if task.done() and not task.cancelled():
                     task.exception()
 
@@ -1128,13 +1171,14 @@ def create_app(
         run_id: UUID,
         user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
     ) -> dict[str, bool]:
-        entry = _ACTIVE_STREAMS.get(str(run_id))
-        if entry is None or entry[0] != str(user.user_id):
+        # 锁内只完成查找与用户校验；session.cancel() 在锁外调用。
+        session = _find_stream_session(str(run_id), str(user.user_id))
+        if session is None:
             raise HTTPException(
                 status_code=404,
                 detail="没有正在运行的该工作流（可能已完成、已取消或不属于当前用户）。",
             )
-        entry[1].cancel()
+        session.cancel()
         return {"cancel_requested": True}
 
     @app.post(
@@ -1193,6 +1237,17 @@ def create_app(
         user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
     ) -> TemporaryMaterialRecord:
         return service.save_temporary_material(user, payload)
+
+    @app.post(
+        "/api/v1/private-knowledge",
+        response_model=PrivateKnowledgeRecord,
+        status_code=201,
+    )
+    def save_private_knowledge(
+        payload: PrivateKnowledgeCreate,
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> PrivateKnowledgeRecord:
+        return service.save_private_knowledge(user, payload)
 
     @app.get(
         "/api/v1/temporary-materials",
@@ -1278,7 +1333,7 @@ def create_app(
     )
     def maintainer_contribution_queue(
         state: str | None = None,
-        user: AuthenticatedPrincipal = Depends(require_github_user),
+        user: AuthenticatedPrincipal = Depends(require_maintainer),
     ) -> list[ContributionRecord]:
         parsed_state: ContributionState | None = None
         if state is not None:
@@ -1291,12 +1346,59 @@ def create_app(
         return service.list_maintainer_queue(parsed_state)
 
     @app.get(
+        "/api/v1/maintainer/contributions/{contribution_id}",
+        response_model=MaintainerContributionDetail,
+    )
+    def maintainer_contribution_detail(
+        contribution_id: UUID,
+        user: AuthenticatedPrincipal = Depends(require_maintainer),
+    ) -> MaintainerContributionDetail:
+        return service.maintainer_contribution_detail(contribution_id)
+
+    @app.post(
+        "/api/v1/maintainer/contributions/{contribution_id}/attachments",
+        response_model=ContributionAttachmentRecord,
+    )
+    async def upload_contribution_attachment(
+        contribution_id: UUID,
+        file: UploadFile = File(...),
+        user: AuthenticatedPrincipal = Depends(require_maintainer),
+    ) -> ContributionAttachmentRecord:
+        allowed = {".pdf", ".png", ".jpg", ".jpeg", ".webp", ".doc", ".docx", ".ppt", ".pptx", ".xls", ".xlsx", ".csv", ".md", ".txt"}
+        filename = (file.filename or "attachment").strip()
+        suffix = "." + filename.rsplit(".", 1)[-1].lower() if "." in filename else ""
+        if suffix not in allowed or "/" in filename or "\\" in filename:
+            raise HTTPException(status_code=422, detail="unsupported attachment filename")
+        payload = await file.read(10 * 1024 * 1024 + 1)
+        if len(payload) > 10 * 1024 * 1024:
+            raise HTTPException(status_code=413, detail="attachment exceeds 10 MiB")
+        repository = service._require_contribution_capable_repository()
+        if repository.get_contribution_with_payload(contribution_id) is None:
+            raise HTTPException(status_code=404, detail="contribution not found")
+        return repository.create_contribution_attachment(contribution_id, filename, file.content_type or "application/octet-stream", payload)
+
+    @app.get("/api/v1/maintainer/contributions/{contribution_id}/attachments/{attachment_id}")
+    def download_contribution_attachment(
+        contribution_id: UUID,
+        attachment_id: UUID,
+        user: AuthenticatedPrincipal = Depends(require_maintainer),
+    ) -> Response:
+        fetched = service._require_contribution_capable_repository().get_contribution_attachment(contribution_id, attachment_id)
+        if fetched is None:
+            raise HTTPException(status_code=404, detail="attachment not found")
+        metadata, payload = fetched
+        safe_name = "".join(
+            ch for ch in metadata.original_filename if ch.isprintable() and ch not in '"\\\r\n'
+        ).strip() or "attachment"
+        return Response(content=payload, media_type=metadata.content_type, headers={"Content-Disposition": f'attachment; filename="{safe_name}"', "Cache-Control": "private, no-store"})
+
+    @app.get(
         "/api/v1/maintainer/contributions/{contribution_id}/export",
         response_model=MaintainerContributionExport,
     )
     def maintainer_export_contribution(
         contribution_id: UUID,
-        user: AuthenticatedPrincipal = Depends(require_github_user),
+        user: AuthenticatedPrincipal = Depends(require_maintainer),
     ) -> MaintainerContributionExport:
         return service.maintainer_export_contribution(contribution_id)
 
@@ -1307,15 +1409,46 @@ def create_app(
     def maintainer_transition_contribution(
         contribution_id: UUID,
         payload: MaintainerContributionTransition,
-        user: AuthenticatedPrincipal = Depends(require_github_user),
+        user: AuthenticatedPrincipal = Depends(require_maintainer),
     ) -> ContributionRecord:
         return service.maintainer_transition_contribution(
             contribution_id, payload
         )
 
+    @app.get(
+        "/api/v1/maintainer/feedback",
+        response_model=list[FeedbackRecord],
+    )
+    def maintainer_feedback_queue(
+        user: AuthenticatedPrincipal = Depends(require_maintainer),
+    ) -> list[FeedbackRecord]:
+        return service.list_maintainer_feedback()
+
     static_root = APP_ROOT / "web" / "dist"
     if static_root.is_dir():
-        app.mount("/", StaticFiles(directory=static_root, html=True), name="web")
+        assets_root = static_root / "assets"
+        if assets_root.is_dir():
+            app.mount("/assets", StaticFiles(directory=assets_root), name="web-assets")
+
+        index_file = static_root / "index.html"
+
+        @app.get("/{full_path:path}", include_in_schema=False)
+        def serve_spa(full_path: str) -> Response:
+            # SPA 回退：API 路由在上方已匹配，此处只服务静态资源与前端路由。
+            # /maintainer 等前端路由由 index.html 承载，避免直达时得到 404。
+            if full_path == "api" or full_path.startswith("api/"):
+                raise HTTPException(status_code=404, detail="Not Found")
+            if full_path:
+                candidate = (static_root / full_path).resolve()
+                try:
+                    candidate.relative_to(static_root.resolve())
+                except ValueError:
+                    raise HTTPException(status_code=404, detail="Not Found") from None
+                if candidate.is_file():
+                    return FileResponse(candidate)
+            if index_file.is_file():
+                return FileResponse(index_file)
+            raise HTTPException(status_code=404, detail="Not Found")
     return app
 
 

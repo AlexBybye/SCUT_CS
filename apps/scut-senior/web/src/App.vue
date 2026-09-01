@@ -5,8 +5,10 @@ import ConversationRail from "./components/ConversationRail.vue";
 import TranscriptPanel from "./components/TranscriptPanel.vue";
 import Composer from "./components/Composer.vue";
 import { useAppStore } from "./composables/useAppStore";
+import MaintainerPanel from "./components/MaintainerPanel.vue";
 
 const store = useAppStore();
+const isMaintainerRoute = window.location.pathname === "/maintainer";
 
 // 浮层态的左轨与检查器需要 Escape 退出，否则窄屏下只能靠再次点按钮。
 function onGlobalKeydown(event: KeyboardEvent): void {
@@ -39,7 +41,8 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="shell">
+  <MaintainerPanel v-if="isMaintainerRoute" />
+  <div v-else class="shell">
     <a href="#transcript" class="skip-link">跳到运行记录</a>
 
     <AppTopBar />

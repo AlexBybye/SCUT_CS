@@ -6,7 +6,8 @@
 - 调度器随应用进程启停；进程停止期间不发生任何清理。
 - 线程启动后立即补扫一次（覆盖停机窗口内到期的数据），随后按固定间隔扫描，
   因此"到期数据物理清理"的最坏延迟为「停机时长 + 一个扫描间隔」。
-- 单次扫描内部异常只记录日志并继续下一轮，不让一个坏表拖垮整个循环；
+- 每个清理步骤独立捕获异常：单一步骤失败只记录步骤名与堆栈、该步骤计数按 0
+  处理，后续步骤继续执行，不让一个坏表拖垮整轮清理；
   清理语句本身是幂等的 ``DELETE ... WHERE expires_at <= now``，多 worker
   并发重复执行不会双重删除或误删未到期数据（SQLite 写串行化保证）。
 - 时钟与间隔可注入，便于测试用受控时钟验证"停机重启后到期数据仍被清理"。
@@ -20,6 +21,7 @@ from __future__ import annotations
 import logging
 import threading
 from dataclasses import dataclass
+from types import SimpleNamespace
 from typing import Any
 
 from .auth import Clock, utc_now
@@ -75,18 +77,39 @@ class MaintenanceScheduler:
         return bool(self._thread and self._thread.is_alive())
 
     def sweep(self) -> MaintenanceSweepResult:
-        """执行一次完整清理；由后台线程与启动补扫共用。"""
+        """执行一次完整清理；由后台线程与启动补扫共用。
 
-        auth = self._repository.cleanup_auth_records()
-        history = self._repository.cleanup_history_records()
-        materials = self._repository.cleanup_material_records()
-        # 迭代 7.5：共享额度锁存的窗口流水／过期闩锁一并周期清理。
-        quota_events = 0
-        cleanup_quota = getattr(
-            self._repository, "cleanup_platform_quota_records", None
+        每个清理步骤独立捕获异常：失败步骤只记录日志、计数按 0 处理，
+        后续步骤继续执行；结果结构、SQL 与调度间隔保持不变。
+        """
+
+        auth = self._run_cleanup_step(
+            "cleanup_auth_records",
+            lambda: self._repository.cleanup_auth_records(),
+            SimpleNamespace(oauth_states=0, auth_sessions=0),
         )
-        if callable(cleanup_quota):
-            quota_events = cleanup_quota()
+        history = self._run_cleanup_step(
+            "cleanup_history_records",
+            lambda: self._repository.cleanup_history_records(),
+            SimpleNamespace(workflow_runs=0, conversations=0, feedback=0),
+        )
+        materials = self._run_cleanup_step(
+            "cleanup_material_records",
+            lambda: self._repository.cleanup_material_records(),
+            SimpleNamespace(materials=0, contributions_cleared=0),
+        )
+        # 迭代 7.5：共享额度锁存的窗口流水／过期闩锁一并周期清理。
+        quota_events = self._run_cleanup_step(
+            "cleanup_platform_quota_records",
+            lambda: (
+                self._repository.cleanup_platform_quota_records()
+                if callable(
+                    getattr(self._repository, "cleanup_platform_quota_records", None)
+                )
+                else 0
+            ),
+            0,
+        )
         result = MaintenanceSweepResult(
             auth_states=auth.oauth_states,
             auth_sessions=auth.auth_sessions,
@@ -114,6 +137,21 @@ class MaintenanceScheduler:
                 result,
             )
         return result
+
+    def _run_cleanup_step(self, step_name: str, fn: Any, zero: Any) -> Any:
+        """执行单个清理步骤；异常只记录步骤名与堆栈，不阻断后续步骤。
+
+        ``zero`` 是该步骤失败时的零计数回退（属性对象或整数），
+        保证 ``MaintenanceSweepResult`` 结构与成功路径完全一致。
+        """
+
+        try:
+            return fn()
+        except Exception:  # noqa: BLE001 - 单步骤失败不得拖垮整轮清理
+            LOGGER.exception(
+                "maintenance step %s failed; continuing schedule", step_name
+            )
+            return zero
 
     def start(self) -> None:
         """启动后台线程；幂等——已在运行时是 no-op。"""
