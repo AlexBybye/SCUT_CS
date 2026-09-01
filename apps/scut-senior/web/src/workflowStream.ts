@@ -344,6 +344,19 @@ export function startWorkflowStreamRequest(
         state = reduceWorkflowStreamEvent(state, event);
         options.onEvent?.(event, state);
       }
+      // 正常 EOF 前必须已收到 result 或 error 终态事件；缺少终态说明服务端
+      // 提前关闭了流，视为协议异常。用户主动 abort 走上面的 catch 分支返回
+      // client_interrupted；真实网络异常仍保留 stream_request_failed 语义。
+      if (state.result === null && state.error === null) {
+        return {
+          ...state,
+          phase: "failed",
+          error: {
+            code: "stream_protocol_error",
+            detail: "流在收到终态事件前结束，请重新读取本次运行。",
+          },
+        };
+      }
       return finalizeWorkflowStream(state);
     } catch (error) {
       if (controller.signal.aborted || (error instanceof DOMException && error.name === "AbortError")) {

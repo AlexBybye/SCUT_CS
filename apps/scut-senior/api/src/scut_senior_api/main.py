@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import threading
 from contextlib import asynccontextmanager
 from hmac import compare_digest
 from uuid import UUID
@@ -123,7 +124,34 @@ from .workflow_stream import WorkflowStreamSession
 
 # 活跃流式会话登记：run_id → (user_id, session)。
 # 静默断线不再取消运行（见 stream_workflow），显式取消端点靠这里定位会话。
+# 该 registry 在事件循环协程、asyncio.to_thread 后台线程与取消端点之间共享，
+# 因此所有字典操作与用户校验都在 _STREAMS_LOCK 内完成；session.cancel() 在锁外执行。
 _ACTIVE_STREAMS: dict[str, tuple[str, WorkflowStreamSession]] = {}
+_STREAMS_LOCK = threading.Lock()
+
+
+def _register_stream(
+    run_key: str, user_id: str, session: WorkflowStreamSession
+) -> None:
+    with _STREAMS_LOCK:
+        _ACTIVE_STREAMS[run_key] = (user_id, session)
+
+
+def _unregister_stream(run_key: str) -> None:
+    with _STREAMS_LOCK:
+        _ACTIVE_STREAMS.pop(run_key, None)
+
+
+def _find_stream_session(
+    run_key: str, user_id: str
+) -> WorkflowStreamSession | None:
+    """锁内只做字典查找与用户校验；取消调用由调用方在锁外执行。"""
+
+    with _STREAMS_LOCK:
+        entry = _ACTIVE_STREAMS.get(run_key)
+        if entry is None or entry[0] != user_id:
+            return None
+        return entry[1]
 
 
 OAUTH_STATE_COOKIE_NAME = "__Host-scut_senior_oauth_state"
@@ -1045,7 +1073,7 @@ def create_app(
         session = WorkflowStreamSession(enqueue_event)
         run_key = str(session.workflow_run_id)
         # 显式取消端点需要按 run_id 找到会话；静默断线不再等价于取消。
-        _ACTIVE_STREAMS[run_key] = (str(user.user_id), session)
+        _register_stream(run_key, str(user.user_id), session)
 
         def execute() -> None:
             try:
@@ -1103,7 +1131,7 @@ def create_app(
                 )
                 raise
             finally:
-                _ACTIVE_STREAMS.pop(run_key, None)
+                _unregister_stream(run_key)
                 if task.done() and not task.cancelled():
                     task.exception()
 
@@ -1121,13 +1149,14 @@ def create_app(
         run_id: UUID,
         user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
     ) -> dict[str, bool]:
-        entry = _ACTIVE_STREAMS.get(str(run_id))
-        if entry is None or entry[0] != str(user.user_id):
+        # 锁内只完成查找与用户校验；session.cancel() 在锁外调用。
+        session = _find_stream_session(str(run_id), str(user.user_id))
+        if session is None:
             raise HTTPException(
                 status_code=404,
                 detail="没有正在运行的该工作流（可能已完成、已取消或不属于当前用户）。",
             )
-        entry[1].cancel()
+        session.cancel()
         return {"cancel_requested": True}
 
     @app.post(

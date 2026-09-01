@@ -559,4 +559,78 @@ describe("startWorkflowStreamRequest", () => {
     expect(state.error?.detail).toContain("网络连接中断");
     expect(state.error?.detail).toContain("重新读取");
   });
+
+  it("reports a protocol error when the stream closes before a terminal event", async () => {
+    const events: WorkflowStreamEvent[] = [
+      traceEvent(0),
+      {
+        kind: "answer_delta",
+        workflow_run_id: "run-001",
+        sequence: 1,
+        answer_delta: { block_index: 0, type: "repository", delta: "矩阵的秩。" },
+      },
+    ];
+    const body = events.map((event) => JSON.stringify(event)).join("\n") + "\n";
+    const fetchImpl = vi.fn().mockResolvedValue(new Response(body, {
+      status: 200,
+      headers: { "Content-Type": "application/x-ndjson" },
+    }));
+
+    const state = await startWorkflowStreamRequest(
+      "/api/v1/workflow-runs/stream",
+      { method: "POST" },
+      { fetchImpl },
+    ).done;
+
+    // 正常 EOF 前未收到 result/error：报告协议异常，而不是伪装成中断。
+    expect(state).toMatchObject({
+      phase: "failed",
+      error: { code: "stream_protocol_error" },
+    });
+    expect(state.answerBlocks).toEqual([{ type: "repository", content: "矩阵的秩。" }]);
+  });
+
+  it("reports a protocol error for an empty 200 stream body", async () => {
+    const fetchImpl = vi.fn().mockResolvedValue(new Response("", { status: 200 }));
+
+    const state = await startWorkflowStreamRequest(
+      "/api/v1/workflow-runs/stream",
+      { method: "POST" },
+      { fetchImpl },
+    ).done;
+
+    expect(state).toMatchObject({
+      phase: "failed",
+      error: { code: "stream_protocol_error" },
+    });
+  });
+
+  it("keeps the server-sent terminal error when the stream ends after an error event", async () => {
+    const events: WorkflowStreamEvent[] = [
+      traceEvent(0),
+      {
+        kind: "error",
+        workflow_run_id: "run-001",
+        sequence: 1,
+        error: { code: "model_provider_error", detail: "上游模型暂时不可用。" },
+      },
+    ];
+    const body = events.map((event) => JSON.stringify(event)).join("\n") + "\n";
+    const fetchImpl = vi.fn().mockResolvedValue(new Response(body, {
+      status: 200,
+      headers: { "Content-Type": "application/x-ndjson" },
+    }));
+
+    const state = await startWorkflowStreamRequest(
+      "/api/v1/workflow-runs/stream",
+      { method: "POST" },
+      { fetchImpl },
+    ).done;
+
+    // 服务端已发出 error 终态：保留该错误语义，不覆盖为协议异常。
+    expect(state).toMatchObject({
+      phase: "failed",
+      error: { code: "model_provider_error" },
+    });
+  });
 });

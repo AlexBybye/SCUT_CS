@@ -93,6 +93,7 @@ import {
   toMessage,
   workflowCopy,
 } from "../appConfig";
+import { createLatestSaveQueue } from "../latestSaveQueue";
 
 export type InspectorTab = "attempts" | "credentials" | "plugins";
 export type AccountTab = "credentials" | "plugins" | "assistant";
@@ -184,6 +185,8 @@ function createAppStore() {
   let conversationLoadSequence = 0;
   let isApplyingHistoryCourse = false;
   let activeWorkflowStream: WorkflowStreamHandle | null = null;
+  // 账户偏好保存请求串行化并合并：多个 watcher 连续触发时只关心最新快照。
+  const preferenceSaveQueue = createLatestSaveQueue();
 
   const selectedCourse = computed(() =>
     courses.value.find((course) => course.course_id === selectedCourseId.value),
@@ -290,17 +293,23 @@ function createAppStore() {
     tone: "tone",
   } as const;
 
-  function persistAccountPreferences(): void {
-    if (suppressPreferenceSave) return;
-    const user = currentUser.value;
-    if (!user || user.is_mock) return;
-    void saveAccountPreferences({
+  function buildPreferenceSnapshot(): Record<string, string> {
+    return {
       [PREFERENCE_KEYS.themeMode]: String(themeMode.value),
       [PREFERENCE_KEYS.accentTheme]: accentTheme.value,
       [PREFERENCE_KEYS.answerMode]: answerMode.value,
       [PREFERENCE_KEYS.tone]: tone.value,
-    }).catch(() => {
-      // 保存失败不阻断本地改动；下次改动自然会重试。
+    };
+  }
+
+  function persistAccountPreferences(): void {
+    if (suppressPreferenceSave) return;
+    const user = currentUser.value;
+    if (!user || user.is_mock) return;
+    // 保存请求串行化并合并：只提交最新快照；旧请求完成后发现序号过期会补发
+    // 最新快照，保证服务端收敛。失败非阻断，保留 localStorage 即时体验。
+    preferenceSaveQueue.submit(async () => {
+      await saveAccountPreferences(buildPreferenceSnapshot());
     });
   }
 
