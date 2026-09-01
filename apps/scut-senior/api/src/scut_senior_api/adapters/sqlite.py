@@ -28,6 +28,7 @@ from ..auth import (
 )
 from ..agent_loop import replay_agent_events
 from ..contracts import (
+    ContributionAttachmentRecord,
     ContributionRecord,
     ContributionState,
     ConversationDetail,
@@ -1045,6 +1046,13 @@ class SQLiteWorkflowRepository:
             created_at=datetime.fromisoformat(row["created_at"]),
             updated_at=datetime.fromisoformat(row["updated_at"]),
             expires_at=datetime.fromisoformat(row["expires_at"]),
+            github_email=row["github_email"] if "github_email" in keys else None,
+            workflow_type=row["workflow_type"] if "workflow_type" in keys else None,
+            run_id=UUID(row["run_id"]) if "run_id" in keys and row["run_id"] else None,
+            supplementary_text=row["supplementary_text"] if "supplementary_text" in keys else None,
+            citation_metadata=json.loads(row["citation_metadata_json"] or "[]") if "citation_metadata_json" in keys else [],
+            corpus_metadata=json.loads(row["corpus_metadata_json"] or "{}") if "corpus_metadata_json" in keys else {},
+            has_attachments=False,
         )
 
     def create_contribution(
@@ -1058,6 +1066,12 @@ class SQLiteWorkflowRepository:
         content_snapshot: str,
         state: ContributionState,
         proposed_repo_path: str = "",
+        github_email: str | None = None,
+        workflow_type: str | None = None,
+        run_id: UUID | None = None,
+        supplementary_text: str | None = None,
+        citation_metadata: list[dict[str, object]] | None = None,
+        corpus_metadata: dict[str, object] | None = None,
     ) -> ContributionRecord:
         """创建贡献记录。
 
@@ -1083,8 +1097,10 @@ class SQLiteWorkflowRepository:
                     proposed_source_id, proposed_repo_path, title,
                     content_snapshot, state,
                     pr_url, maintainer_note, char_count,
-                    created_at, updated_at, expires_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL, ?, ?, ?, ?)
+                    created_at, updated_at, expires_at,
+                    github_email, workflow_type, run_id, supplementary_text,
+                    citation_metadata_json, corpus_metadata_json
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     str(contribution_id),
@@ -1100,6 +1116,12 @@ class SQLiteWorkflowRepository:
                     created_at,
                     updated_at,
                     expires_at,
+                    github_email,
+                    workflow_type,
+                    str(run_id) if run_id is not None else None,
+                    supplementary_text,
+                    json.dumps(citation_metadata or [], ensure_ascii=False),
+                    json.dumps(corpus_metadata or {}, ensure_ascii=False),
                 ),
             )
         record = self.get_contribution(user_id, contribution_id)
@@ -1128,6 +1150,27 @@ class SQLiteWorkflowRepository:
                 (user_id,),
             ).fetchall()
         return [self._contribution_record(row) for row in rows]
+
+    def create_contribution_attachment(
+        self, contribution_id: UUID, original_filename: str, content_type: str, payload: bytes
+    ) -> ContributionAttachmentRecord:
+        now = self._now(); attachment_id = uuid4(); expires_at = now + timedelta(days=CONTRIBUTION_REVIEW_COPY_TTL_DAYS)
+        digest = hashlib.sha256(payload).hexdigest()
+        with self._connect() as connection:
+            connection.execute("INSERT INTO contribution_attachments (attachment_id, contribution_id, original_filename, content_type, byte_size, sha256, payload, created_at, expires_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (str(attachment_id), str(contribution_id), original_filename, content_type, len(payload), digest, payload, now.isoformat(), expires_at.isoformat()))
+        return ContributionAttachmentRecord(attachment_id=attachment_id, contribution_id=contribution_id, original_filename=original_filename, content_type=content_type, byte_size=len(payload), sha256=digest, created_at=now, expires_at=expires_at)
+
+    def list_contribution_attachments(self, contribution_id: UUID) -> list[ContributionAttachmentRecord]:
+        with self._connect() as connection:
+            rows = connection.execute("SELECT attachment_id, contribution_id, original_filename, content_type, byte_size, sha256, created_at, expires_at FROM contribution_attachments WHERE contribution_id = ? AND expires_at > ? ORDER BY created_at", (str(contribution_id), self._now().isoformat())).fetchall()
+        return [ContributionAttachmentRecord(attachment_id=UUID(row["attachment_id"]), contribution_id=UUID(row["contribution_id"]), original_filename=row["original_filename"], content_type=row["content_type"], byte_size=int(row["byte_size"]), sha256=row["sha256"], created_at=datetime.fromisoformat(row["created_at"]), expires_at=datetime.fromisoformat(row["expires_at"])) for row in rows]
+
+    def get_contribution_attachment(self, contribution_id: UUID, attachment_id: UUID) -> tuple[ContributionAttachmentRecord, bytes] | None:
+        with self._connect() as connection:
+            row = connection.execute("SELECT * FROM contribution_attachments WHERE contribution_id = ? AND attachment_id = ? AND expires_at > ?", (str(contribution_id), str(attachment_id), self._now().isoformat())).fetchone()
+        if row is None: return None
+        record = ContributionAttachmentRecord(attachment_id=attachment_id, contribution_id=contribution_id, original_filename=row["original_filename"], content_type=row["content_type"], byte_size=int(row["byte_size"]), sha256=row["sha256"], created_at=datetime.fromisoformat(row["created_at"]), expires_at=datetime.fromisoformat(row["expires_at"]))
+        return record, bytes(row["payload"])
 
     def get_contribution_with_payload(
         self, contribution_id: UUID

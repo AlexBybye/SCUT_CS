@@ -5,6 +5,7 @@ import type {
   ContributionConfirmations,
   ContributionPreview,
   ContributionRecord,
+  MaintainerContributionDetail,
   ConversationDetail,
   ConversationSummary,
   CourseCatalog,
@@ -329,6 +330,10 @@ export async function getTemporaryMaterial(
 
 export async function listMaintainerContributions(): Promise<ContributionRecord[]> {
   return apiRequest<ContributionRecord[]>("/api/v1/maintainer/contributions");
+}
+
+export async function getMaintainerContribution(contributionId: string): Promise<MaintainerContributionDetail> {
+  return apiRequest<MaintainerContributionDetail>(`/api/v1/maintainer/contributions/${encodeURIComponent(contributionId)}`);
 }
 
 export async function listMaintainerFeedback(): Promise<FeedbackRecord[]> {

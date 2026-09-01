@@ -148,7 +148,7 @@ const store = useAppStore();
           placeholder="例如：提取考试范围并指出与课程资料的冲突"
         />
       </div>
-      <MaterialContributionPanel />
+      <MaterialContributionPanel class="drawer-span" />
     </section>
 
     <div v-if="store.selectedModel" class="field">

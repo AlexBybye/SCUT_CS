@@ -755,3 +755,176 @@ def test_maintainer_export_package_returns_path_content_and_commands(
         ).status_code
         == 401
     )
+
+
+# ---------------------------------------------------------------------------
+# PLAN-3 C-1：贡献元数据、维护者详情与附件受控下载。
+# ---------------------------------------------------------------------------
+
+
+def test_contribution_metadata_is_persisted_and_surface_on_detail(
+    tmp_path: Path,
+) -> None:
+    app = create_app(oauth_settings(tmp_path / "metadata.db"))
+    maintainer = authenticated_client(app, 5001, "maintainer")
+    author = authenticated_client(app, 5002, "author")
+
+    conversation = create_conversation(author)
+    material = save_material(author, conversation["conversation_id"])
+    contribution = author.post(
+        "/api/v1/contributions",
+        json={
+            "material_id": material["material_id"],
+            "course_id": "linear_algebra",
+            "confirmations": FULL_CONFIRMATIONS,
+            "github_email": "author@example.com",
+            "workflow_type": "knowledge_qa",
+            "supplementary_text": "补充说明文字。",
+            "citation_metadata": [{"course_id": "linear_algebra", "chunk_id": "c1"}],
+            "corpus_metadata": {"corpus_version": "corpus-test"},
+        },
+    )
+    assert contribution.status_code == 201, contribution.text
+    record = contribution.json()
+    assert record["github_email"] == "author@example.com"
+    assert record["workflow_type"] == "knowledge_qa"
+    assert record["supplementary_text"] == "补充说明文字。"
+
+    detail = maintainer.get(
+        f"/api/v1/maintainer/contributions/{record['contribution_id']}"
+    )
+    assert detail.status_code == 200
+    body = detail.json()
+    assert body["github_email"] == "author@example.com"
+    assert body["workflow_type"] == "knowledge_qa"
+    assert body["citation_metadata"] == [{"course_id": "linear_algebra", "chunk_id": "c1"}]
+    assert body["corpus_metadata"] == {"corpus_version": "corpus-test"}
+    assert "矩阵对角化要点" in body["content_snapshot"]
+    assert body["attachments"] == []
+
+    # 队列视图不回传正文，但可暴露元数据与附件标记。
+    queue = maintainer.get("/api/v1/maintainer/contributions").json()
+    assert "content_snapshot" not in queue[0]
+
+
+def test_contribution_detail_is_maintainer_only(tmp_path: Path) -> None:
+    app = create_app(oauth_settings(tmp_path / "detail-authz.db"))
+    maintainer = authenticated_client(app, 6001, "maintainer")
+    author = authenticated_client(app, 6002, "author")
+    outsider = authenticated_client(app, 6003, "outsider")
+
+    conversation = create_conversation(author)
+    material = save_material(author, conversation["conversation_id"])
+    contribution_id = author.post(
+        "/api/v1/contributions",
+        json={
+            "material_id": material["material_id"],
+            "course_id": "linear_algebra",
+            "confirmations": FULL_CONFIRMATIONS,
+        },
+    ).json()["contribution_id"]
+
+    assert (
+        maintainer.get(f"/api/v1/maintainer/contributions/{contribution_id}").status_code
+        == 200
+    )
+    # 普通用户通过维护者详情端点无权查看他人贡献全文。
+    assert (
+        outsider.get(f"/api/v1/maintainer/contributions/{contribution_id}").status_code
+        == 403
+    )
+
+
+def test_attachment_upload_download_is_controlled(tmp_path: Path) -> None:
+    app = create_app(oauth_settings(tmp_path / "attachments.db"))
+    maintainer = authenticated_client(app, 7001, "maintainer")
+    author = authenticated_client(app, 7002, "author")
+    outsider = authenticated_client(app, 7003, "outsider")
+
+    conversation = create_conversation(author)
+    material = save_material(author, conversation["conversation_id"])
+    contribution_id = author.post(
+        "/api/v1/contributions",
+        json={
+            "material_id": material["material_id"],
+            "course_id": "linear_algebra",
+            "confirmations": FULL_CONFIRMATIONS,
+        },
+    ).json()["contribution_id"]
+
+    # 允许的扩展名 + multipart 上传。
+    multipart = (
+        b'--BOUNDARY\r\n'
+        b'Content-Disposition: form-data; name="file"; filename="notes.md"\r\n'
+        b'Content-Type: text/markdown\r\n\r\n'
+        b'# attachment body\n'
+        b'\r\n--BOUNDARY--\r\n'
+    )
+    uploaded = maintainer.post(
+        f"/api/v1/maintainer/contributions/{contribution_id}/attachments",
+        content=multipart,
+        headers={"Content-Type": "multipart/form-data; boundary=BOUNDARY"},
+    )
+    assert uploaded.status_code == 200, uploaded.text
+    attachment = uploaded.json()
+    assert attachment["original_filename"] == "notes.md"
+    assert attachment["byte_size"] == len(b"# attachment body\n")
+    assert attachment["sha256"]
+
+    # 受控下载：固定维护者身份 + Content-Disposition: attachment。
+    downloaded = maintainer.get(
+        f"/api/v1/maintainer/contributions/{contribution_id}/attachments/{attachment['attachment_id']}"
+    )
+    assert downloaded.status_code == 200
+    assert downloaded.headers["content-disposition"].startswith("attachment")
+    assert downloaded.content == b"# attachment body\n"
+
+    # 详情端点展示附件元数据，不直接回传 BLOB。
+    detail = maintainer.get(f"/api/v1/maintainer/contributions/{contribution_id}").json()
+    assert [a["attachment_id"] for a in detail["attachments"]] == [attachment["attachment_id"]]
+    assert "payload" not in detail["attachments"][0]
+
+    # 普通用户无权上传或下载。
+    assert (
+        outsider.post(
+            f"/api/v1/maintainer/contributions/{contribution_id}/attachments",
+            content=multipart,
+            headers={"Content-Type": "multipart/form-data; boundary=BOUNDARY"},
+        ).status_code
+        == 403
+    )
+    assert (
+        outsider.get(
+            f"/api/v1/maintainer/contributions/{contribution_id}/attachments/{attachment['attachment_id']}"
+        ).status_code
+        == 403
+    )
+
+
+def test_attachment_rejects_disallowed_extension(tmp_path: Path) -> None:
+    app = create_app(oauth_settings(tmp_path / "attachment-ext.db"))
+    maintainer = authenticated_client(app, 8001, "maintainer")
+    author = authenticated_client(app, 8002, "author")
+
+    conversation = create_conversation(author)
+    material = save_material(author, conversation["conversation_id"])
+    contribution_id = author.post(
+        "/api/v1/contributions",
+        json={
+            "material_id": material["material_id"],
+            "course_id": "linear_algebra",
+            "confirmations": FULL_CONFIRMATIONS,
+        },
+    ).json()["contribution_id"]
+
+    # 压缩包不在第一版 allowlist。
+    zip_part = (
+        b'--B\r\nContent-Disposition: form-data; name="file"; filename="archive.zip"\r\n'
+        b'Content-Type: application/zip\r\n\r\nPK\x03\x04\r\n--B--\r\n'
+    )
+    response = maintainer.post(
+        f"/api/v1/maintainer/contributions/{contribution_id}/attachments",
+        content=zip_part,
+        headers={"Content-Type": "multipart/form-data; boundary=B"},
+    )
+    assert response.status_code == 422

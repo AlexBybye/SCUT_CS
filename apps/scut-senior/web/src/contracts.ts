@@ -567,6 +567,22 @@ export interface ContributionRecord {
   mock_only: boolean;
 }
 
+export interface ContributionAttachmentRecord {
+  attachment_id: string;
+  contribution_id: string;
+  original_filename: string;
+  content_type: string;
+  byte_size: number;
+  sha256: string;
+  created_at: string;
+  expires_at: string;
+}
+
+export interface MaintainerContributionDetail extends ContributionRecord {
+  content_snapshot: string;
+  attachments: ContributionAttachmentRecord[];
+}
+
 export interface ContributionConfirmations {
   course_confirmed: boolean;
   source_confirmed: boolean;

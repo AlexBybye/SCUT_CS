@@ -59,18 +59,6 @@ const store = useAppStore();
       </section>
     </div>
 
-    <a
-      v-if="store.currentUser && !store.currentUser.is_mock"
-      class="maintainer-entry"
-      href="/maintainer"
-    >
-      <span>
-        <strong>维护中台（beta）</strong>
-        <small>查看反馈与课程资料贡献</small>
-      </span>
-      <span class="beta-mark">beta</span>
-    </a>
-
     <button
       v-if="store.currentUser && !store.currentUser.is_mock"
       type="button"
@@ -150,31 +138,6 @@ const store = useAppStore();
 .account-section-head h3 {
   margin: 0;
   font-size: var(--fs-md);
-}
-
-.maintainer-entry {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin: 0 16px 12px;
-  padding: 12px 14px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-  color: var(--ink);
-  text-decoration: none;
-  background: color-mix(in srgb, var(--accent) 8%, var(--panel));
-}
-.maintainer-entry:hover { border-color: var(--accent); }
-.maintainer-entry span:first-child { display: grid; gap: 3px; }
-.maintainer-entry small { color: var(--muted); }
-.beta-mark {
-  border-radius: 999px;
-  padding: 3px 7px;
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 14%, transparent);
-  font-size: 11px;
-  font-weight: 700;
 }
 
 .account-signout {

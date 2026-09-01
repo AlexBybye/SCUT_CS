@@ -8,9 +8,9 @@ from contextlib import asynccontextmanager
 from hmac import compare_digest
 from uuid import UUID
 
-from fastapi import Depends, FastAPI, HTTPException, Request
+from fastapi import Depends, FastAPI, File, HTTPException, Request, UploadFile
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse, RedirectResponse, StreamingResponse
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import Response
 
@@ -85,7 +85,9 @@ from .contracts import (
     ConversationSummary,
     FeedbackCreate,
     FeedbackRecord,
+    MaintainerContributionDetail,
     MaintainerContributionExport,
+    ContributionAttachmentRecord,
     MaintainerContributionTransition,
     ModelCredentialStatus,
     ModelCredentialUpsert,
@@ -1337,6 +1339,53 @@ def create_app(
         return service.list_maintainer_queue(parsed_state)
 
     @app.get(
+        "/api/v1/maintainer/contributions/{contribution_id}",
+        response_model=MaintainerContributionDetail,
+    )
+    def maintainer_contribution_detail(
+        contribution_id: UUID,
+        user: AuthenticatedPrincipal = Depends(require_maintainer),
+    ) -> MaintainerContributionDetail:
+        return service.maintainer_contribution_detail(contribution_id)
+
+    @app.post(
+        "/api/v1/maintainer/contributions/{contribution_id}/attachments",
+        response_model=ContributionAttachmentRecord,
+    )
+    async def upload_contribution_attachment(
+        contribution_id: UUID,
+        file: UploadFile = File(...),
+        user: AuthenticatedPrincipal = Depends(require_maintainer),
+    ) -> ContributionAttachmentRecord:
+        allowed = {".pdf", ".png", ".jpg", ".jpeg", ".webp", ".doc", ".docx", ".ppt", ".pptx", ".xls", ".xlsx", ".csv", ".md", ".txt"}
+        filename = (file.filename or "attachment").strip()
+        suffix = "." + filename.rsplit(".", 1)[-1].lower() if "." in filename else ""
+        if suffix not in allowed or "/" in filename or "\\" in filename:
+            raise HTTPException(status_code=422, detail="unsupported attachment filename")
+        payload = await file.read(10 * 1024 * 1024 + 1)
+        if len(payload) > 10 * 1024 * 1024:
+            raise HTTPException(status_code=413, detail="attachment exceeds 10 MiB")
+        repository = service._require_contribution_capable_repository()
+        if repository.get_contribution_with_payload(contribution_id) is None:
+            raise HTTPException(status_code=404, detail="contribution not found")
+        return repository.create_contribution_attachment(contribution_id, filename, file.content_type or "application/octet-stream", payload)
+
+    @app.get("/api/v1/maintainer/contributions/{contribution_id}/attachments/{attachment_id}")
+    def download_contribution_attachment(
+        contribution_id: UUID,
+        attachment_id: UUID,
+        user: AuthenticatedPrincipal = Depends(require_maintainer),
+    ) -> Response:
+        fetched = service._require_contribution_capable_repository().get_contribution_attachment(contribution_id, attachment_id)
+        if fetched is None:
+            raise HTTPException(status_code=404, detail="attachment not found")
+        metadata, payload = fetched
+        safe_name = "".join(
+            ch for ch in metadata.original_filename if ch.isprintable() and ch not in '"\\\r\n'
+        ).strip() or "attachment"
+        return Response(content=payload, media_type=metadata.content_type, headers={"Content-Disposition": f'attachment; filename="{safe_name}"', "Cache-Control": "private, no-store"})
+
+    @app.get(
         "/api/v1/maintainer/contributions/{contribution_id}/export",
         response_model=MaintainerContributionExport,
     )
@@ -1370,7 +1419,29 @@ def create_app(
 
     static_root = APP_ROOT / "web" / "dist"
     if static_root.is_dir():
-        app.mount("/", StaticFiles(directory=static_root, html=True), name="web")
+        assets_root = static_root / "assets"
+        if assets_root.is_dir():
+            app.mount("/assets", StaticFiles(directory=assets_root), name="web-assets")
+
+        index_file = static_root / "index.html"
+
+        @app.get("/{full_path:path}", include_in_schema=False)
+        def serve_spa(full_path: str) -> Response:
+            # SPA 回退：API 路由在上方已匹配，此处只服务静态资源与前端路由。
+            # /maintainer 等前端路由由 index.html 承载，避免直达时得到 404。
+            if full_path == "api" or full_path.startswith("api/"):
+                raise HTTPException(status_code=404, detail="Not Found")
+            if full_path:
+                candidate = (static_root / full_path).resolve()
+                try:
+                    candidate.relative_to(static_root.resolve())
+                except ValueError:
+                    raise HTTPException(status_code=404, detail="Not Found") from None
+                if candidate.is_file():
+                    return FileResponse(candidate)
+            if index_file.is_file():
+                return FileResponse(index_file)
+            raise HTTPException(status_code=404, detail="Not Found")
     return app
 
 

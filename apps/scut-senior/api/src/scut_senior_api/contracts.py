@@ -742,7 +742,29 @@ class ContributionSubmit(ContractModel):
     course_id: Annotated[str, Field(min_length=1, max_length=100)]
     title: Annotated[str | None, Field(max_length=200)] = None
     as_draft: bool = False
+    # PLAN-3 C-1 metadata. Optional keeps existing temporary-material clients compatible.
+    github_email: Annotated[str | None, Field(max_length=320)] = None
+    workflow_type: WorkflowType | None = None
+    run_id: UUID | None = None
+    supplementary_text: Annotated[str | None, Field(max_length=20_000)] = None
+    citation_metadata: list[dict[str, Any]] = Field(default_factory=list)
+    corpus_metadata: dict[str, Any] = Field(default_factory=dict)
     confirmations: ContributionConfirmations
+
+    @field_validator("github_email", "supplementary_text")
+    @classmethod
+    def strip_optional_text(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        normalized = value.strip()
+        return normalized or None
+
+    @field_validator("github_email")
+    @classmethod
+    def validate_email_shape(cls, value: str | None) -> str | None:
+        if value is not None and ("@" not in value or value.startswith("@") or value.endswith("@")):
+            raise ValueError("github_email must be a valid email address")
+        return value
 
     @field_validator("title")
     @classmethod
@@ -774,6 +796,13 @@ class ContributionRecord(ContractModel):
     updated_at: datetime
     expires_at: datetime
     mock_only: Literal[True] = True
+    github_email: str | None = None
+    workflow_type: WorkflowType | None = None
+    run_id: UUID | None = None
+    supplementary_text: str | None = None
+    citation_metadata: list[dict[str, Any]] = Field(default_factory=list)
+    corpus_metadata: dict[str, Any] = Field(default_factory=dict)
+    has_attachments: bool = False
 
     @model_validator(mode="after")
     def enforce_terminal_payload_rules(self) -> "ContributionRecord":
@@ -782,6 +811,22 @@ class ContributionRecord(ContractModel):
         if self.state != ContributionState.PR_OPEN and self.pr_url is not None:
             raise ValueError("only pr_open contributions expose a PR link")
         return self
+
+
+class ContributionAttachmentRecord(ContractModel):
+    attachment_id: UUID
+    contribution_id: UUID
+    original_filename: str
+    content_type: str
+    byte_size: int
+    sha256: str
+    created_at: datetime
+    expires_at: datetime
+
+
+class MaintainerContributionDetail(ContributionRecord):
+    content_snapshot: str
+    attachments: list[ContributionAttachmentRecord] = Field(default_factory=list)
 
 
 class MaintainerContributionTransition(ContractModel):

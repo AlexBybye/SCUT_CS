@@ -31,6 +31,7 @@ from .contracts import (
     AnswerBlockType,
     AnswerStatus,
     Citation,
+    ContributionAttachmentRecord,
     ContributionDraftSubmit,
     ContributionPreview,
     ContributionPreviewRequest,
@@ -46,6 +47,7 @@ from .contracts import (
     FeedbackCreate,
     FeedbackRecord,
     KnowledgeScope,
+    MaintainerContributionDetail,
     MaintainerContributionExport,
     MaintainerContributionTransition,
     ModelMetadata,
@@ -487,6 +489,12 @@ class IterationZeroService:
             title=title[:200],
             content_snapshot=material.content,
             state=state,
+            github_email=payload.github_email,
+            workflow_type=payload.workflow_type.value if payload.workflow_type else None,
+            run_id=payload.run_id,
+            supplementary_text=payload.supplementary_text,
+            citation_metadata=payload.citation_metadata,
+            corpus_metadata=payload.corpus_metadata,
         )
 
     def submit_contribution_draft(
@@ -522,6 +530,15 @@ class IterationZeroService:
         if record is None:
             raise ResourceNotFound("contribution not found")
         return record
+
+    def maintainer_contribution_detail(self, contribution_id: UUID) -> MaintainerContributionDetail:
+        repository = self._require_contribution_capable_repository()
+        fetched = repository.get_contribution_with_payload(contribution_id)
+        if fetched is None:
+            raise ResourceNotFound("contribution not found")
+        record, content = fetched
+        attachments = repository.list_contribution_attachments(contribution_id)
+        return MaintainerContributionDetail.model_validate({**record.model_dump(), "content_snapshot": content, "attachments": attachments})
 
     def maintainer_transition_contribution(
         self,
