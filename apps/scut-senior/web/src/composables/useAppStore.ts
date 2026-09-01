@@ -104,6 +104,8 @@ function createAppStore() {
   const modelCatalog = ref<ModelCatalog>(FAIL_CLOSED_MODEL_CATALOG);
   const modelCatalogLoadSucceeded = ref(false);
   const selectedCourseId = ref("");
+  const selectedCourseIds = ref<string[]>([]);
+  const crossCourseSearchEnabled = ref(false);
   const selectedModelKey = ref("");
   const answerMode = ref<AnswerMode>(readStoredAnswerMode());
   const tone = ref<Tone>(readStoredTone());
@@ -274,6 +276,10 @@ function createAppStore() {
     persistAccountPreferences();
   });
 
+  watch(crossCourseSearchEnabled, () => {
+    persistAccountPreferences();
+  });
+
   watch(answerMode, (mode) => {
     writeStoredAnswerMode(mode);
     persistAccountPreferences();
@@ -288,6 +294,7 @@ function createAppStore() {
   let suppressPreferenceSave = false;
   const PREFERENCE_KEYS = {
     themeMode: "theme_mode",
+    crossCourseSearchEnabled: "cross_course_search_enabled",
     accentTheme: "accent_theme",
     answerMode: "answer_mode",
     tone: "tone",
@@ -295,6 +302,7 @@ function createAppStore() {
 
   function buildPreferenceSnapshot(): Record<string, string> {
     return {
+      [PREFERENCE_KEYS.crossCourseSearchEnabled]: String(crossCourseSearchEnabled.value),
       [PREFERENCE_KEYS.themeMode]: String(themeMode.value),
       [PREFERENCE_KEYS.accentTheme]: accentTheme.value,
       [PREFERENCE_KEYS.answerMode]: answerMode.value,
@@ -319,6 +327,9 @@ function createAppStore() {
     try {
       const { preferences } = await getAccountPreferences();
       suppressPreferenceSave = true;
+       if (preferences[PREFERENCE_KEYS.crossCourseSearchEnabled] !== undefined) {
+         crossCourseSearchEnabled.value = preferences[PREFERENCE_KEYS.crossCourseSearchEnabled] === "true";
+       }
       if (preferences[PREFERENCE_KEYS.themeMode] !== undefined) {
         const parsed = Number(preferences[PREFERENCE_KEYS.themeMode]);
         if (Number.isFinite(parsed)) setThemeMode(parsed);
@@ -356,11 +367,16 @@ function createAppStore() {
     }
   }
 
-  function startNewConversationInCourse(courseId: string): void {
+  function selectCourseFolder(courseId: string): void {
     isApplyingHistoryCourse = true;
     selectedCourseId.value = courseId;
+    selectedCourseIds.value = courseId ? [courseId] : [];
     isApplyingHistoryCourse = false;
     revealFolderFor(courseId);
+  }
+
+  function startNewConversationInCourse(courseId: string): void {
+    selectCourseFolder(courseId);
     startNewConversation();
   }
 
@@ -668,9 +684,7 @@ function createAppStore() {
   ): void {
     const attempt = selectConversationAttempt(conversation, preferredAttemptId);
 
-    isApplyingHistoryCourse = true;
-    selectedCourseId.value = conversation.course_id;
-    isApplyingHistoryCourse = false;
+    selectCourseFolder(conversation.course_id);
     conversationId.value = conversation.conversation_id;
     conversationSnapshot.value = conversation;
     upsertConversationSummary(conversationSummary(conversation));
@@ -722,6 +736,7 @@ function createAppStore() {
 
     const common = {
       courseId: selectedCourseId.value,
+      courseIds: crossCourseSearchEnabled.value ? selectedCourseIds.value : [selectedCourseId.value],
       conversationId: activeConversationId,
       userInput: userInput.value,
       answerMode: answerMode.value,
@@ -972,9 +987,14 @@ function createAppStore() {
       courses.value = catalog.courses;
       retrievalMode.value = catalog.retrieval_mode;
       selectedCourseId.value = selectSelectableCourseId(
-        courses.value,
-        selectedCourseId.value,
-      );
+      courses.value,
+      selectedCourseId.value,
+    );
+    const selectableIds = new Set(courses.value.filter((course) => course.selectable).map((course) => course.course_id));
+    selectedCourseIds.value = selectedCourseIds.value.filter((id) => selectableIds.has(id));
+    if (!selectedCourseIds.value.length && selectedCourseId.value) {
+      selectedCourseIds.value = [selectedCourseId.value];
+    }
     } catch (error) {
       applyAuthFailure(error);
       errorMessage.value = toMessage(error);
@@ -1343,7 +1363,15 @@ function createAppStore() {
   watch(
     selectedCourseId,
     () => {
-      if (isApplyingHistoryCourse) return;
+      // 切换左侧课程文件夹时，跨学科草稿不能把上一组课程带过来；
+      // 新对话从当前文件夹课程开始，之后用户仍可在本次运行中追加课程。
+      if (isApplyingHistoryCourse) {
+        selectedCourseIds.value = selectedCourseId.value ? [selectedCourseId.value] : [];
+        return;
+      }
+      if (!crossCourseSearchEnabled.value || !selectedCourseIds.value.length) {
+        selectedCourseIds.value = selectedCourseId.value ? [selectedCourseId.value] : [];
+      }
       conversationLoadSequence += 1;
       clearActiveConversation();
       editingConversationId.value = "";
@@ -1359,6 +1387,8 @@ function createAppStore() {
     modelCatalog,
     modelCatalogLoadSucceeded,
     selectedCourseId,
+    selectedCourseIds,
+    crossCourseSearchEnabled,
     selectedModelKey,
     workflowType,
     routeDecision,

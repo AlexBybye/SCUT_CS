@@ -85,10 +85,10 @@ class FixtureRetrievalGateway:
         return self.registry.get(course_id).fixture_available
 
     def search(self, course_ids: list[str], query: str) -> RetrievalBatch:
-        del query  # Iteration 0 proves filtering/contracts, not retrieval quality.
-        if len(course_ids) != 1:
+        del query  # Fixture retrieval proves filtering/contracts, not ranking quality.
+        if not course_ids or len(course_ids) != len(set(course_ids)):
             raise FixtureContractViolation(
-                "synthetic fixture retrieval requires exactly one course"
+                "synthetic fixture retrieval requires a non-empty unique course set"
             )
         if not self.manifest_path.exists():
             return RetrievalBatch((), "fixture-corpus-v1")

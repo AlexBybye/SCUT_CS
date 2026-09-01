@@ -164,6 +164,40 @@ describe("buildWorkflowRequest", () => {
     });
   });
 
+  it("跨课程请求只提交去重后的显式课程集合", () => {
+    const request = buildWorkflowRequest({
+      ...common,
+      courseIds: [" linear_algebra ", "probability_theory", "linear_algebra"],
+      workflowType: "knowledge_qa",
+      workflowPayload: { question: "矩阵与概率" },
+    });
+
+    expect(request.course_scope).toBe("cross");
+    expect(request.course_id).toBeNull();
+    expect(request.allowed_course_ids).toEqual(["linear_algebra", "probability_theory"]);
+  });
+
+  it("跨课程只允许 knowledge_qa 和 problem_tutor", () => {
+    expect(() => buildWorkflowRequest({
+      ...common,
+      courseIds: ["linear_algebra", "probability_theory"],
+      workflowType: "exam_review",
+      workflowPayload: { goals: [], weak_topics: [] },
+    })).toThrow("当前仅知识问答和题目辅导支持跨课程检索");
+  });
+
+  it("单门集合自动保持单课程请求语义", () => {
+    const request = buildWorkflowRequest({
+      ...common,
+      courseIds: ["linear_algebra", "linear_algebra"],
+      workflowType: "knowledge_qa",
+      workflowPayload: { question: "秩" },
+    });
+    expect(request.course_scope).toBe("single");
+    expect(request.course_id).toBe("linear_algebra");
+    expect(request.allowed_course_ids).toEqual([]);
+  });
+
   it("构造 temporary_material_reading payload", () => {
     const request = buildWorkflowRequest({
       ...common,

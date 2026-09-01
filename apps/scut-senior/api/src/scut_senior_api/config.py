@@ -38,7 +38,9 @@ class Settings:
     onnx_embedding_max_length: int = 512
     database_path: Path = APP_ROOT / ".local" / "iteration-zero.db"
     corpus_store_path: Path = APP_ROOT / ".local" / "corpus-store"
-    cross_course_enabled: bool = False
+    # Enabled for the local fixture profile so the shipped cross-course UI is
+    # immediately testable; production deployments can explicitly disable it.
+    cross_course_enabled: bool = True
     bilibili_resources_enabled: bool = True
     # Iteration 5 (SOP §10): deterministic exam-review planning. The flag
     # only gates the plan node, appendix and past-exam-first retrieval query;
@@ -100,7 +102,7 @@ class Settings:
                     str(APP_ROOT / ".local" / "corpus-store"),
                 )
             ),
-            cross_course_enabled=_env_bool("SCUT_SENIOR_CROSS_COURSE_ENABLED", False),
+            cross_course_enabled=_env_bool("SCUT_SENIOR_CROSS_COURSE_ENABLED", True),
             bilibili_resources_enabled=_env_bool(
                 "SCUT_SENIOR_BILIBILI_RESOURCES_ENABLED", True
             ),

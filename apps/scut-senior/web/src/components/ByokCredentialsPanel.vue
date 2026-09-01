@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { canManageByokCredentials } from "../byokSession";
-import { formatHistoryTime } from "../appConfig";
+import { formatCredentialExpiry } from "../appConfig";
 import { useAppStore } from "../composables/useAppStore";
 
 const store = useAppStore();
@@ -52,7 +52,7 @@ const store = useAppStore();
           <strong>当前会话已配置</strong>
           <span>{{ store.byokCredentialStatus(provider.provider_id)?.masked_key || "Key 已脱敏" }}</span>
           <span v-if="store.byokCredentialStatus(provider.provider_id)?.expires_at">
-            到期 {{ formatHistoryTime(store.byokCredentialStatus(provider.provider_id)?.expires_at || "") }}
+            到期 {{ formatCredentialExpiry(store.byokCredentialStatus(provider.provider_id)?.expires_at || "") }}
           </span>
           <span v-if="!store.byokCredentialWritable(provider.provider_id)">只读：当前会话不可替换或删除</span>
         </div>

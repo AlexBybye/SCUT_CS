@@ -36,6 +36,11 @@ const thumbPosition = computed(() => {
 });
 
 const ariaValueText = computed(() => THEME_MODE_LABELS[store.themeMode]);
+const searchModeHelp = computed(() =>
+  store.crossCourseSearchEnabled
+    ? "可在当前对话中选择多个课程插件进行检索。私人知识库材料较多时，跨课程检索可能明显变慢。"
+    : "仅检索当前对话所属课程，范围更集中、响应更稳定；如需联合多个课程，请切换到跨学科检索。",
+);
 
 function clamp01(value: number): number {
   return Math.min(1, Math.max(0, value));
@@ -97,6 +102,27 @@ function onKeydown(event: KeyboardEvent): void {
       <h3>回答偏好</h3>
     </div>
     <div class="assistant-preference-grid">
+      <div class="search-mode-field">
+        <span class="field-label">检索方式</span>
+        <div
+          class="search-mode-slider"
+          :class="{ 'is-cross': store.crossCourseSearchEnabled }"
+          role="switch"
+          tabindex="0"
+          :aria-checked="store.crossCourseSearchEnabled ? 'true' : 'false'"
+          aria-label="检索方式"
+          @click="store.crossCourseSearchEnabled = !store.crossCourseSearchEnabled"
+          @keydown.space.prevent="store.crossCourseSearchEnabled = !store.crossCourseSearchEnabled"
+          @keydown.enter.prevent="store.crossCourseSearchEnabled = !store.crossCourseSearchEnabled"
+        >
+          <span class="search-mode-thumb" aria-hidden="true"></span>
+          <span class="search-mode-stop" :class="{ 'is-active': !store.crossCourseSearchEnabled }">单学科检索</span>
+          <span class="search-mode-stop" :class="{ 'is-active': store.crossCourseSearchEnabled }">跨学科检索</span>
+        </div>
+        <small class="search-mode-help">
+          {{ searchModeHelp }}
+        </small>
+      </div>
       <label class="field">
         <span>讲解形式</span>
         <select v-model="store.answerMode">
@@ -208,6 +234,69 @@ function onKeydown(event: KeyboardEvent): void {
 .theme-picker {
   display: grid;
   gap: 6px;
+}
+
+.search-mode-field {
+  display: grid;
+  gap: 6px;
+  grid-column: 1 / -1;
+}
+
+.field-label {
+  color: var(--text-soft);
+  font-size: var(--fs-xs);
+  font-weight: 650;
+}
+
+.search-mode-slider {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 42px;
+  padding: 3px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--sunken);
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.search-mode-thumb {
+  position: absolute;
+  z-index: 0;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
+  border-radius: 999px;
+  background: var(--raised);
+  box-shadow: var(--shadow-sm);
+  transition: transform 180ms ease;
+}
+
+.search-mode-slider.is-cross .search-mode-thumb {
+  transform: translateX(100%);
+}
+
+.search-mode-stop {
+  z-index: 1;
+  padding: 7px 10px;
+  color: var(--text-soft);
+  font-size: var(--fs-xs);
+  text-align: center;
+  transition: color 180ms ease;
+}
+
+.search-mode-stop.is-active {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.search-mode-help {
+  color: var(--text-soft);
+  font-size: var(--fs-2xs);
+  line-height: 1.5;
 }
 
 .assistant-preference-grid {

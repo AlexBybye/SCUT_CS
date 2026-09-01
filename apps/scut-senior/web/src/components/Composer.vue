@@ -89,6 +89,7 @@ const pendingExamPlan = computed(() =>
       <!-- 配置条只保留运行前必须显式选择的课程和模型。 -->
       <div class="composer-bar">
         <OptionPicker
+          v-if="!store.crossCourseSearchEnabled"
           v-model="store.selectedCourseId"
           :options="courseOptions"
           :disabled="courseDisabled"
@@ -96,6 +97,17 @@ const pendingExamPlan = computed(() =>
           searchable
           placement="up"
           aria-label="课程"
+        />
+        <OptionPicker
+          v-else
+          v-model="store.selectedCourseIds"
+          :options="courseOptions"
+          :disabled="courseDisabled"
+          :placeholder="coursePlaceholder"
+          :multiple="true"
+          searchable
+          placement="up"
+          aria-label="本次检索课程（可多选）"
         />
 
         <OptionPicker
