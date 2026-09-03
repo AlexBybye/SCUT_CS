@@ -189,6 +189,52 @@ class OpenRouterModelGateway:
 
         return _parse_generated_answer(response.body)
 
+    def decide_action(
+        self,
+        request: WorkflowRunRequest,
+        state: object,
+        phase: str,
+        *,
+        sources: tuple[RetrievedSource, ...] = (),
+        history: tuple[ConversationTurn, ...] = (),
+    ) -> str:
+        """Run the AB Action decision with a compact, bounded completion.
+
+        This is deliberately not the answer-generation prompt: the provider
+        receives only routing facts and source titles, and can emit at most a
+        single short action token.
+        """
+
+        del state, history
+        if (
+            request.provider_id != self.provider_id
+            or request.model_id not in self._allowed_model_ids
+        ):
+            raise OpenRouterGatewayError(
+                status_code=422,
+                code="model_not_registered",
+                detail="所选模型未在当前可用的平台目录中登记。",
+            )
+        self._reserve_platform_request()
+        payload = _build_action_request(request, phase, sources)
+        try:
+            response = self._post_upstream(payload, None)
+        except OSError as exc:
+            if is_timeout_transport_error(exc):
+                raise OpenRouterGatewayError(
+                    status_code=503,
+                    code="platform_model_timeout",
+                    detail="平台模型响应超时，请稍后重试。",
+                ) from None
+            raise OpenRouterGatewayError(
+                status_code=503,
+                code="platform_model_unavailable",
+                detail="平台模型服务暂时不可用，请稍后重试。",
+            ) from None
+        if response.status_code < 200 or response.status_code >= 300:
+            raise _safe_upstream_error(response.status_code)
+        return _parse_action_text(response.body)
+
     def _post_upstream(
         self,
         payload: Mapping[str, object],
@@ -245,6 +291,44 @@ class OpenRouterModelGateway:
         self._quota_store.latch_daily_exhaustion(exhausted_until=until)
 
 
+def _build_action_request(
+    request: WorkflowRunRequest,
+    phase: str,
+    sources: tuple[RetrievedSource, ...],
+) -> dict[str, object]:
+    return {
+        "model": request.model_id,
+        "messages": [
+            {
+                "role": "system",
+                "content": (
+                    "你是受限检索路由器。只输出 generate_answer 或 "
+                    "retrieve_with_query_rewrite，不要解释。已有证据足以回答时"
+                    "选择 generate_answer；证据明显不足或主题覆盖过窄时选择"
+                    " retrieve_with_query_rewrite。"
+                ),
+            },
+            {
+                "role": "user",
+                "content": json.dumps(
+                    {
+                        "workflow": request.workflow_type.value,
+                        "phase": phase,
+                        "question": request.user_input[:500],
+                        "evidence_count": len(sources),
+                        "evidence_titles": [
+                            source.source_title[:120] for source in sources[:8]
+                        ],
+                    },
+                    ensure_ascii=False,
+                ),
+            },
+        ],
+        "max_tokens": 16,
+        "temperature": 0,
+    }
+
+
 def _build_structured_request(
     request: WorkflowRunRequest,
     sources: list[RetrievedSource],
@@ -299,6 +383,24 @@ def _build_structured_request(
         "max_tokens": 16384,
         "temperature": 0.2,
     }
+
+
+def _parse_action_text(body: bytes) -> str:
+    try:
+        payload = json.loads(body.decode("utf-8"))
+        content = payload["choices"][0]["message"]["content"]
+    except (
+        AttributeError,
+        UnicodeDecodeError,
+        json.JSONDecodeError,
+        KeyError,
+        IndexError,
+        TypeError,
+    ):
+        raise ModelAnswerParseError("action completion has no assistant content") from None
+    if not isinstance(content, str) or not content.strip():
+        raise ModelAnswerParseError("action completion assistant content is empty")
+    return content
 
 
 def _rate_limit_error(response: HttpResponse) -> OpenRouterGatewayError:

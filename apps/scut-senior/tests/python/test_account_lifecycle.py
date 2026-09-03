@@ -161,6 +161,10 @@ def seed_account_data(app, client: TestClient, *, with_credential: bool) -> None
         repository.upsert_model_credential(
             user_id=UUID(alice_user_id),
             provider_id="openrouter",
+            display_name="OpenRouter",
+            base_url="https://openrouter.ai/api/v1",
+            model_id="deepseek/deepseek-v4-flash-0731",
+            protocol="openai_chat_completions",
             ciphertext=b"0123456789abcdef0123456789abcdef",  # 模拟密文
             nonce=b"0123456789ab",
             algorithm="AES-256-GCM",

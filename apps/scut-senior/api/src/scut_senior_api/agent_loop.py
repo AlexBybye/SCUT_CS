@@ -126,23 +126,38 @@ class ModelAgentDecision:
 
     def decide(self, request, state, phase, *, sources=(), history=()) -> ActionKind:
         self.last_used_fallback = False
+        allowed = (
+            "retrieve_with_query_rewrite, generate_answer"
+            if phase == "post_retrieval"
+            else "retrieve, retrieve_with_query_rewrite, generate_answer"
+        )
         decision_request = request.model_copy(
             update={
                 "user_input": (
                     "只输出一个允许的 Action 名称，不要解释。"
-                    "允许值：retrieve, retrieve_with_query_rewrite, "
-                    "generate_answer。"
+                    f"允许值：{allowed}。"
                     f"当前 Workflow={request.workflow_type.value}，阶段={phase}，"
                     f"已检索轮次={state.retrieval_rounds}，已有证据数={len(sources)}。"
                 )
             }
         )
         try:
-            generated: GeneratedAnswer = self.model.generate(
-                decision_request, list(sources), history
-            )
+            compact_decision = getattr(self.model, "decide_action", None)
+            if callable(compact_decision):
+                raw = compact_decision(
+                    request,
+                    state,
+                    phase,
+                    sources=tuple(sources),
+                    history=history,
+                )
+            else:
+                generated: GeneratedAnswer = self.model.generate(
+                    decision_request, list(sources), history
+                )
+                raw = generated.repository_answer
             parsed = parse_model_action(
-                generated.repository_answer, workflow_type=request.workflow_type.value
+                raw, workflow_type=request.workflow_type.value
             )
             if parsed is not None:
                 return parsed
@@ -177,12 +192,17 @@ def choose_next_action(
         if not action_allowed_for_workflow(workflow_type, action):
             raise ValueError("workflow does not allow answer generation")
         return action
+    if phase == "post_retrieval":
+        action = "generate_answer"
+        if not action_allowed_for_workflow(workflow_type, action):
+            raise ValueError("workflow does not allow answer generation")
+        return action
     raise ValueError("unknown agent compatibility phase")
 
 
 @dataclass(frozen=True, slots=True)
 class AgentBudget:
-    max_steps: int = 4
+    max_steps: int = 5
     max_retrieval_rounds: int = 2
     max_query_rewrite: int = 1
     max_same_action_retries: int = 1

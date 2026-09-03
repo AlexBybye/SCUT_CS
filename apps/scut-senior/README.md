@@ -25,7 +25,7 @@ PLAN-1 建立了课程学习助手的基础能力和边界：
 - 面向首批 10 门课程组织经过校验的课程资料与历年题，回答可以关联具体资料、页码、幻灯片或题号；
 - 提供 `knowledge_qa`、`exam_review`、`problem_tutor`、`mistake_review` 和 `temporary_material_reading` 五类固定 Workflow，覆盖知识答疑、备考、题目讲解、错题复盘和临时材料精读；
 - 所有问答绑定 GitHub 登录身份，并保存可追溯的会话、运行记录、真实执行 Trace、反馈和错题历史；
-- 平台每日免费额度模型与用户自带 Key（BYOK）分为独立通道，模型、供应商和调用路由均由服务端受控；
+- 平台每日免费额度模型与用户自带 Key（BYOK）分为独立通道；平台目录由服务端维护，BYOK 可保存用户自己的 OpenAI-compatible 供应商连接；
 - 模型输出必须经过课程范围、来源、引用和安全回答块校验，资料不足时明确标记证据边界，不将通用知识伪装为课程资料结论。
 
 ### PLAN-2：统一输入、混合检索与受限 Agent Runtime
@@ -212,9 +212,9 @@ make dev-api
 
 ## 真实身份与模型通道
 
-真实 GitHub OAuth 使用 HTTPS 回调地址、服务端 SQLite 和安全 Cookie。平台模型和 BYOK 凭据由服务端固定目录管理；用户 Key 使用服务端 AES-256-GCM 主密钥加密，前端只接收脱敏状态。凭据、OAuth Secret、数据库、附件和日志不进入 Git、前端构建产物或 Docker 镜像。
+真实 GitHub OAuth 使用 HTTPS 回调地址、服务端 SQLite 和安全 Cookie。平台模型由服务端目录管理；BYOK 由登录用户填写连接 ID、显示名称、HTTPS Base URL、模型 ID 和 API Key，目前支持 OpenAI Chat Completions 协议。用户 Key 使用服务端 AES-256-GCM 主密钥加密，前端只接收脱敏连接状态。凭据、OAuth Secret、数据库、附件和日志不进入 Git、前端构建产物或 Docker 镜像。
 
-本地测试仍推荐使用 Mock 配置。真实平台模型调用必须启用 GitHub OAuth 和正式 SQLite 身份存储，并通过环境变量提供服务端 Secret。模型供应商适配遵循 `ModelGateway` 与 `UserKeyModelGateway` 接口，新增 Terra 等供应商时只需接入固定目录和对应适配器，不改变课程、引用、权限和流式协议边界。
+本地测试仍推荐使用 Mock 配置。真实平台模型调用必须启用 GitHub OAuth 和正式 SQLite 身份存储，并通过环境变量提供服务端 Secret。BYOK Base URL 只接受 HTTPS，拒绝账号密码、查询参数、localhost 和明显私网地址，且调用不跟随重定向；当前尚未实现模型自动发现，也不能把这些基础校验描述为完整的 DNS rebinding/SSRF 防护。
 
 
 ## 在线部署：本地运行 + HTTPS 隧道（当前启用路径）
@@ -283,7 +283,7 @@ BYOK 真实调用另需稳定的 32 字节 AES 主密钥（见上文“本地验
 
 - [ ] `https://<隧道域名>/` 能打开 SPA；
 - [ ] GitHub 登录回调完成（`/api/v1/auth/github/callback` 302 到首页）；
-- [ ] 登录后 `/api/v1/models` 显示平台三模型或已保存 Key 的 BYOK；
+- [ ] 登录后 `/api/v1/models` 显示平台模型，`/api/v1/model-credentials` 显示当前账号已保存的脱敏 BYOK 连接；
 - [ ] 一次真实模型 Workflow run 返回 `run_status=completed`；
 - [ ] `/api/v1/feedback` 提交与列表可用。
 

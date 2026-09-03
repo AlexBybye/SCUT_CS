@@ -221,18 +221,22 @@ class ConversationRename(ContractModel):
 
 class ModelCredentialUpsert(ContractModel):
     api_key: Annotated[SecretStr, Field(min_length=1, max_length=8192)]
+    display_name: Annotated[str, Field(min_length=1, max_length=100)]
+    base_url: Annotated[str, Field(min_length=1, max_length=2048)]
+    model_id: Annotated[str, Field(min_length=1, max_length=100)]
+    protocol: Literal["openai_chat_completions"] = "openai_chat_completions"
 
 
 class ModelCredentialStatus(ContractModel):
-    provider_id: Literal["openrouter", "deepseek", "siliconflow", "zhipu"]
-    model_id: Literal[
-        "deepseek/deepseek-v4-flash-0731",
-        "deepseek-v4-flash",
-        "Pro/zai-org/GLM-4.7",
-        "glm-5.2",
-    ]
-    configured: bool
-    masked_key: Literal["••••••••"] | None
+    # Kept as provider_id on the wire for Workflow compatibility. It is now a
+    # user-chosen connection id rather than a server-owned vendor enum.
+    provider_id: Annotated[str, Field(min_length=1, max_length=64)]
+    display_name: Annotated[str, Field(min_length=1, max_length=100)]
+    base_url: Annotated[str, Field(min_length=1, max_length=2048)]
+    model_id: Annotated[str, Field(min_length=1, max_length=100)]
+    protocol: Literal["openai_chat_completions"]
+    configured: Literal[True]
+    masked_key: Literal["••••••••"]
     expires_at: datetime | None
     # DSH credential-seam describe semantics: safe status fields that never
     # expose the secret value. ``writable`` is whether a replacement could be
@@ -243,28 +247,9 @@ class ModelCredentialStatus(ContractModel):
 
     @model_validator(mode="after")
     def enforce_configuration_metadata(self) -> "ModelCredentialStatus":
-        expected_model = {
-            "openrouter": "deepseek/deepseek-v4-flash-0731",
-            "deepseek": "deepseek-v4-flash",
-            "siliconflow": "Pro/zai-org/GLM-4.7",
-            "zhipu": "glm-5.2",
-        }[self.provider_id]
-        if self.model_id != expected_model:
-            raise ValueError("credential provider and model must match the fixed catalog")
-        if self.configured and (
-            self.masked_key is None or self.expires_at is None or self.updated_at is None
-        ):
+        if self.expires_at is None or self.updated_at is None:
             raise ValueError(
                 "configured credentials require masked_key, expires_at and updated_at"
-            )
-        if not self.configured and (
-            self.masked_key is not None
-            or self.expires_at is not None
-            or self.updated_at is not None
-            or self.writable
-        ):
-            raise ValueError(
-                "unconfigured credentials cannot expose key metadata"
             )
         return self
 
@@ -420,6 +405,7 @@ class TraceSafeResult(ContractModel):
     # AB runtime diagnostics. These are aggregate counters only; raw model
     # prompts and private payloads never enter the student-visible Trace.
     decision_call_count: Annotated[int | None, Field(ge=0)] = None
+    model_action_accepted_count: Annotated[int | None, Field(ge=0)] = None
     answer_call_count: Annotated[int | None, Field(ge=0)] = None
     provider_retry_count: Annotated[int | None, Field(ge=0)] = None
     guard_retry_count: Annotated[int | None, Field(ge=0)] = None

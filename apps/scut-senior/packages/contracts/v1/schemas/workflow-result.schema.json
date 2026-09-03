@@ -835,6 +835,19 @@
           "default": null,
           "title": "Mode"
         },
+        "model_action_accepted_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model Action Accepted Count"
+        },
         "model_id": {
           "anyOf": [
             {

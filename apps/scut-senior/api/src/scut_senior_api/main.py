@@ -18,7 +18,7 @@ from .adapters.bilibili import BilibiliLinkDiscoveryAdapter
 from .adapters.byok import (
     ByokGatewayError,
     FailClosedJsonHttpClient,
-    FixedByokModelGateway,
+    OpenAICompatibleByokGateway,
 )
 from .adapters.github import (
     FailClosedHttpTransport,
@@ -396,10 +396,7 @@ def create_app(
     )
     if active_settings.app_env == "test" and byok_http_client is None:
         byok_http_client = FailClosedJsonHttpClient()
-    byok_model = FixedByokModelGateway(
-        http_client=byok_http_client,
-        catalog=model_catalog.byok_catalog,
-    )
+    byok_model = OpenAICompatibleByokGateway(http_client=byok_http_client)
     oauth_adapter = github_oauth_adapter
     if active_settings.identity_mode == "github_oauth" and oauth_adapter is None:
         oauth_adapter = GitHubOAuthAdapter(

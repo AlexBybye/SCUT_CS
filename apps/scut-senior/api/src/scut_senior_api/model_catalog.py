@@ -159,7 +159,7 @@ class ModelCatalogResponse(BaseModel):
     real_platform_default_available: bool
     health_checked_at: datetime | None
     byok_available: bool
-    byok_catalog_version: Literal["byok-models-v4"]
+    byok_catalog_version: Literal["byok-connections-v1"]
     byok_providers: list[PublicByokProviderEntry]
     quota_notice: str
     quota_exhausted_message: str

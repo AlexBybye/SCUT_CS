@@ -220,7 +220,7 @@
       "type": "boolean"
     },
     "byok_catalog_version": {
-      "const": "byok-models-v4",
+      "const": "byok-connections-v1",
       "title": "Byok Catalog Version",
       "type": "string"
     },

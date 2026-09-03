@@ -42,7 +42,10 @@ def test_model_credential_schemas_never_expose_ciphertext_or_plaintext_status() 
     status_entry = status["$defs"]["ModelCredentialStatus"]
     assert set(status_entry["required"]) == {
         "provider_id",
+        "display_name",
+        "base_url",
         "model_id",
+        "protocol",
         "configured",
         "masked_key",
         "expires_at",
@@ -55,7 +58,13 @@ def test_model_credential_schemas_never_expose_ciphertext_or_plaintext_status() 
     assert "nonce" not in serialized
     assert upsert["properties"]["api_key"]["format"] == "password"
     assert upsert["properties"]["api_key"]["writeOnly"] is True
-    assert set(upsert["properties"]) == {"api_key"}
+    assert set(upsert["properties"]) == {
+        "api_key",
+        "display_name",
+        "base_url",
+        "model_id",
+        "protocol",
+    }
 
 
 def test_conversation_schema_exposes_linked_attempts_instead_of_bare_results() -> None:

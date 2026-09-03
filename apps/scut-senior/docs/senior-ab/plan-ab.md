@@ -1,7 +1,7 @@
 # SCUT 老学长 AB 分支优化计划
 
 版本：0.1（基于最新 AB 实跑后的收敛方案）
-状态：**P0/P1 最小实现已完成；真实模型合并门槛及两项运行修复尚未完成**。
+状态：**P0/P1 最小实现及本轮两项修复已完成本地回归；真实模型合并门槛尚未验证**。
 
 本文只针对 `ab-test/agent-action-shadow`。它不是 PLAN-2 的替代文档，也不是
 把系统扩展成通用 Agent 平台的方案。目标是解释当前 AB 分支到底做了什么，保留
@@ -11,11 +11,11 @@
 
 ### 1.1 当前结论
 
-当前 AB 分支是“模型决策适配器 + 原有单链路运行时”的影子实验：
+当前 AB 分支是“受限模型决策适配器 + 原有同步运行时”的 post-retrieval 实验：
 
 ```text
-请求校验 → 确定性计划/检索 → 模型决策询问 → 固定检索或固定生成
-       → 引用 Guard → 结果附录/外部搜索 → 持久化
+请求校验 → 确定性计划/首轮检索 → post_retrieval 模型决策
+       → 直接生成，或一次查询改写检索 → 引用 Guard → 收尾与持久化
 ```
 
 它借鉴了 EventStream 的事件账本、Reducer 和 Observe → Decide → Act 形式，
@@ -23,14 +23,15 @@
 
 - `decision_produced` 会记录模型选择的动作；
 - 服务端仍按既定代码路径执行检索和生成；
-- 固定检索和回答阶段由服务端预期动作直接执行；
-- 可选查询改写先通过 Action Guard，再执行第二次检索；
+- 固定首轮检索和最终回答阶段由服务端预期动作执行，不额外询问模型；
+- 首轮检索后，模型只在 `generate_answer` 与
+  `retrieve_with_query_rewrite` 之间选择；后者通过 Action Guard 后才执行第二次检索；
 - `finish`、`ask_clarification` 暂未暴露给模型，避免出现无执行语义的动作；
 - 不合规模型动作会记录 `action_rejected` 并显式回退到服务端动作。
 
-因此，当前实跑可以证明 AB 的额外模型调用成本，但不能把引用数量提升直接归因
-给 Agent 决策机制。引用收益还可能来自已有的混合检索、exam_review 确定性计划、
-模型输出差异或回答重试。
+因此，旧实跑仍不能把引用数量提升归因给 Agent 决策；当时成功样本的
+`decision_call_count=0`。本轮改造后的归因必须同时看到决策调用、被接受的模型动作
+以及对应执行事件，不能再由最终引用数倒推。
 
 ### 1.2 版本目标
 
@@ -97,8 +98,9 @@
 3. `exam_review` 时先生成确定性复习计划；
 4. 服务端确定性执行一次检索，不调用完整模型询问 `retrieve`；
 5. 执行课程检索、私有知识合并、课程授权校验和来源去重；
-6. 只有在本地检索空结果且满足条件时，才在第二次检索前询问一次可选决策；
-7. 直接进入回答模型；固定阶段不重复调用完整模型询问 `generate_answer`；
+6. `model` 模式在首轮检索后询问一次轻量决策；选择改写时执行一次有界二次检索，
+   选择生成时直接继续；`rule` 模式保留原有空结果追问补锚；
+7. 进入回答模型；固定阶段不重复调用完整模型询问 `generate_answer`；
 8. 调用 OpenRouter、智谱、BYOK 或 Mock 模型生成回答；
 9. 解析 Markdown/JSON、全角引用和 `scut-meta`；
 10. 执行引用、课程范围、URL 和 AnswerBlock Guard；
@@ -190,20 +192,21 @@ decision_produced
 
 ### P0-2 移除完整模型的重复决策调用
 
-当前 `ModelAgentDecision` 复用回答模型和完整请求构造，仍可能携带历史和课程
-候选，且使用回答级 `max_tokens=16384`。这使一次 Action 判断接近一次完整回答的
-成本。
+旧实现复用回答模型和完整请求构造，曾让一次 Action 判断接近一次完整回答的成本。
+本轮已把 OpenRouter 决策调用拆为独立紧凑请求：只传问题摘要、证据数量和来源标题，
+使用 `max_tokens=16`、`temperature=0`，不发送来源正文和完整历史。它仍复用平台
+模型身份和额度，不是新的常驻决策服务。
 
-首选做法：
+已采用的做法：
 
 - 第一次检索固定由服务端执行，不调用模型决定 `retrieve`；
-- 证据是否需要补检索，先由确定性条件判断；
-- 证据满足要求后直接进入一次回答生成；
-- 只有确实存在“是否补检索”这类不确定节点时，才调用一个轻量决策器。
+- 首轮证据返回后，只调用一次轻量决策器判断直接生成还是补检索；
+- 选择生成后直接进入回答，选择改写时最多补一次检索。
 
-若要保留模型决策实验，则至少做到：
+模型决策实验保持以下边界：
 
-- 决策模型与回答模型配置分离；
+- 决策请求路径、token 预算和调用计数与回答请求分离；
+- 当前仍复用所选平台模型身份，是否另选小模型留给实测后决定；
 - 决策请求只传结构化观察量，不传完整 source 正文；
 - `max_tokens` 使用很小的控制预算；
 - temperature 设为 0；
@@ -218,6 +221,7 @@ P0 不要求引入新的模型供应商，也不要求建立新的服务。
 
 ```text
 decision_call_count
+model_action_accepted_count
 answer_call_count
 provider_retry_count
 guard_retry_count
@@ -225,7 +229,9 @@ decision_fallback_count
 action_rejection_count
 ```
 
-这些字段只用于 Trace、评测和服务端诊断，不需要变成学生侧复杂 UI。
+其中 `decision_call_count` 只表示尝试过模型决策；只有
+`model_action_accepted_count` 才表示一个合法、阶段适配的模型 Action 被执行。这些
+字段只用于 Trace、评测和服务端诊断，不需要变成学生侧复杂 UI。
 
 同时修正预算口径：如果文档继续声明“Guard 重试计入 max_steps”，就让
 `guard_retry_recorded` 同步增加 `step_count`；否则修改文档，明确它是独立计数。
@@ -427,19 +433,20 @@ P0-1 先统一 Action 与实际执行
 
 - 固定检索/生成阶段不再调用完整模型询问 Action；
 - 查询改写在第二次检索前决策，错误 Action 会记录拒绝并回退；
-- `decision_call_count`、`answer_call_count`、供应商/Guard 重试及 fallback/rejection
-  已进入安全 Trace；
+- `decision_call_count`、`model_action_accepted_count`、`answer_call_count`、
+  供应商/Guard 重试及 fallback/rejection 已进入安全 Trace；
 - Guard 重试携带服务端内部修复原因，并计入统一步骤预算；
 - `exam_review` 的未覆盖内容已压缩为数量与短名称，完整结构化明细仍可追溯；
 - 评测 runner 支持 `--agent-decision-mode rule|model`，每条用例输出受限运行指标，
   可复用同一请求集做成对比较；
-- AB 专项测试与后端全量测试均通过（当前为 662 passed，1 warning；警告来自现有
+- AB 专项测试与后端全量测试均通过（当前为 673 passed，1 warning；警告来自现有
   Starlette/httpx 依赖兼容提示）。
 
-同一 fixture 用例集的本地 rule/model 对照也已执行：两组均为 5 passed、6 failed、
-1 skipped；11 个实际运行用例的 `decision_call_count` 均为 0。这是预期结果——用例
-没有触发“空检索且有多轮上下文”的可选改写节点，不能据此宣称模型决策有收益，后续
-需要用真实多轮稀疏检索样本单独测量该节点。
+新增注入式回归已经覆盖正常 `generate_answer`、正常查询改写、阶段不兼容 Action、
+解析失败 fallback 和 3/4 软水位跳过。正常可达样本可稳定得到
+`decision_call_count=1` 与 `model_action_accepted_count=1`；选择直接生成时只有一次
+检索，选择改写时恰好两次检索。这里证明的是代码路径和归因口径，不是供应商真实
+延迟或引用收益。
 
 P1 的最小范围已完成：有限执行边界、一次查询改写上限和输出责任收敛均复用现有
 同步运行时；不继续扩展为通用 Action 平台。当前实现已足够支撑下一轮对照实验。
@@ -536,23 +543,50 @@ DeepSeek 对照后不修改既有错误分类，预算按以下最小规则收�
 - 控制权回到运行时且已超过软水位后，不再启动可选查询改写、供应商重试、引用修复
   或 Humanizer，直接使用已有结果继续收尾；
 - 单个 Workflow 最多两次回答调用，避免供应商重试后再叠加 Guard 修复成为第三次调用；
-- DeepSeek V4 Flash 使用官方支持的 `reasoning_effort=low`，单次 `max_tokens` 从
-  16384 收敛到 12288；当前非流式接口不能在调用中实时观察“已使用 3/4 token”，
-  因此用调用前硬上限和推理强度控制替代伪实时判断；
-- DeepSeek BYOK 请求的总墙钟上限为 120 秒，不收紧为 60 秒。
+- BYOK 单次 `max_tokens` 从 16384 收敛到 12288；通用 OpenAI-compatible 请求不再
+  发送并非所有供应商都支持的 `reasoning_effort`。当前非流式接口不能在调用中实时
+  观察“已使用 3/4 token”，因此使用调用前硬上限替代伪实时判断；
+- BYOK 请求的总墙钟上限保持 120 秒，不收紧为 60 秒。
 
-`decision_call_count=0` 不是计数错误。当前固定检索和固定生成阶段有意使用服务端
-决策，只有以下条件同时满足时才允许模型选择 Action：本地语料首轮检索为空、同一
-会话已有历史、没有 `exam_review` 确定性计划，并且尚未进入软水位。线性代数复习
-大纲会生成 `exam_plan`，所以该节点结构上不可达；回答中的 5 条引用由回答模型选择、
-引用 Guard 校验，与 Action 决策不是同一指标。
+旧成功样本的 `decision_call_count=0` 不是统计错误，而是旧节点只允许在“首检为空、
+有历史、无 exam_plan”时触发，正常 `exam_review` 结构上不可达。本轮把真正存在选择
+意义的节点放在首轮检索之后：模型只决定“直接生成”还是“补一次改写检索”。这使
+正常复习样本可达，但不会让模型接管首轮检索、课程范围、工具参数或最终终态。
 
-后续对照应拆成两类，不为了让计数非零而给正常 `exam_review` 强塞一次 Planner：
+后续对照仍需拆开看：
 
-1. `exam_review` 样本继续比较回答、引用和附录质量；
-2. 使用“先问具体知识点，再用缺少词面锚点的追问触发首检为空”的多轮样本，比较
-   rule/model 是否选择并实际执行 `retrieve_with_query_rewrite`。
+1. `decision_call_count=1`：确实发起过模型决策；
+2. `model_action_accepted_count=1`：返回值合法且适合当前阶段；
+3. `decision_source=model` 与后续 `action_executed` 一致：模型 Action 确实驱动执行；
+4. 只有第 3 项成立后，引用候选或引用接受率变化才有资格进入因果比较。
 
-只有第二类样本中出现 `decision_call_count > 0`，且
-`decision_produced → action_executed → observation_recorded` 一致，才能讨论模型
-Action 对检索结果和引用覆盖的因果收益。
+解析失败、上游失败或非法 Action 都回退 `generate_answer`，并分别记录 fallback 或
+rejection；这种成功回答不能记作模型 Action 成功。进入 90 秒软水位后不再发起该
+可选决策，120 秒硬上限保持不变。
+
+## 13. 自定义 BYOK 连接
+
+BYOK 已从四组固定供应商/模型改为用户私有的 OpenAI-compatible 连接。用户保存：
+
+```text
+连接 ID + 显示名称 + HTTPS Base URL + 模型 ID + API Key
+```
+
+服务端继续加密保存 Key；前端和查询接口只拿到脱敏状态。Workflow 仍以
+`provider_id + model_id` 选择连接，其中 `provider_id` 为兼容现有协议保留的字段名，
+语义已经变为用户自定义连接 ID。旧四家凭据通过 `0018` 迁移补齐原 endpoint 和模型
+信息，密文、nonce、版本和到期时间保持不变。
+
+P0 只支持 `openai_chat_completions`，调用路径为
+`<base_url>/chat/completions`。服务端要求 HTTPS，拒绝 URL 账号密码、query、fragment、
+localhost、明显的私网/链路本地字面地址，并继续禁止重定向。`/api/v1/models` 不发布
+用户私有连接；登录后通过 `/api/v1/model-credentials` 获取自己的脱敏连接列表。
+
+当前边界需要如实保留：尚未实现 `/models` 自动发现，也没有在传输层完成可抵御 DNS
+rebinding 的 IP 固定，因此不能宣称任意 Base URL 已具备完整 SSRF 防护；面向不可信
+公网用户开放前仍需补齐。Agent Action 决策当前使用平台决策模型，用户 BYOK 只负责
+回答生成，二者的调用次数和成本不能混为一谈。
+
+本轮没有追加真实供应商调用：先前获准的 DeepSeek 实网轮次已经用完。自定义连接、
+迁移保密性、动态模型选择和 Agent Action 可达性均由注入 HTTP 与本地回归验证，不能
+冒充新的线上稳定性或回答质量证据。

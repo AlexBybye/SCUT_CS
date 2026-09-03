@@ -9,7 +9,6 @@ from fastapi.testclient import TestClient
 from scut_senior_api.adapters.byok import _build_byok_request
 from scut_senior_api.adapters.mock import MockModelGateway
 from scut_senior_api.adapters.openrouter import _build_structured_request
-from scut_senior_api.byok_catalog import ByokProviderCatalog
 from scut_senior_api.config import Settings
 from scut_senior_api.contracts import WorkflowRunRequest
 from scut_senior_api.main import create_app
@@ -143,17 +142,13 @@ def test_openrouter_and_byok_share_the_same_workflow_focus_directive(
     request = _request(workflow_type, payload, user_input=user_input)
     focus = build_workflow_focus(request)
 
-    byok_entry = ByokProviderCatalog().resolve_model(
-        "openrouter", "deepseek/deepseek-v4-flash-0731"
-    )
     for provider_payload in (
         _build_structured_request(request, []),
         _build_byok_request(
             request,
             [],
-            max_tokens=byok_entry.default_max_tokens,
-            temperature=byok_entry.default_temperature,
-            reasoning_effort=byok_entry.reasoning_effort,
+            max_tokens=12288,
+            temperature=0.2,
         ),
     ):
         messages = provider_payload["messages"]
@@ -182,12 +177,9 @@ def test_answer_mode_and_tone_change_both_provider_prompts_and_mock_output() -> 
         tone="senior_student",
     )
 
-    byok_entry = ByokProviderCatalog().resolve_model(
-        "openrouter", "deepseek/deepseek-v4-flash-0731"
-    )
     byok_args = {
-        "max_tokens": byok_entry.default_max_tokens,
-        "temperature": byok_entry.default_temperature,
+        "max_tokens": 12288,
+        "temperature": 0.2,
     }
     for builder in (_build_structured_request, _build_byok_request):
         concise_payload = (

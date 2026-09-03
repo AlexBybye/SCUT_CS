@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type {
   ByokCredentialStatus,
-  ByokProviderCatalogItem,
   ModelCatalogItem,
 } from "../contracts";
 import {
@@ -101,45 +100,13 @@ describe("modelsForRuntime", () => {
   });
 });
 
-const byokProviders: ByokProviderCatalogItem[] = [
-  {
-    provider_id: "openrouter",
-    company: "OpenRouter",
-    display_name: "OpenRouter",
-    enabled: true,
-    models_confirmed: true,
-    models: [
-      {
-        model_id: "deepseek/deepseek-v4-flash-0731",
-        company: "DeepSeek",
-        display_name: "DeepSeek V4 Flash",
-      },
-    ],
-    custom_base_url_allowed: false,
-    endpoint_policy: "fixed_provider_endpoint",
-  },
-  {
-    provider_id: "siliconflow",
-    company: "SiliconFlow",
-    display_name: "硅基流动",
-    enabled: false,
-    models_confirmed: true,
-    models: [
-      {
-        model_id: "Pro/zai-org/GLM-4.7",
-        company: "Z.ai",
-        display_name: "GLM-4.7 Pro",
-      },
-    ],
-    custom_base_url_allowed: false,
-    endpoint_policy: "fixed_provider_endpoint",
-  },
-];
-
 const byokStatuses: ByokCredentialStatus[] = [
   {
     provider_id: "openrouter",
+    display_name: "OpenRouter DeepSeek",
+    base_url: "https://openrouter.ai/api/v1",
     model_id: "deepseek/deepseek-v4-flash-0731",
+    protocol: "openai_chat_completions",
     configured: true,
     masked_key: "sk-or-****1234",
     expires_at: "2026-08-20T08:00:00Z",
@@ -149,7 +116,10 @@ const byokStatuses: ByokCredentialStatus[] = [
   },
   {
     provider_id: "siliconflow",
+    display_name: "硅基流动",
+    base_url: "https://api.siliconflow.cn/v1",
     model_id: "Pro/zai-org/GLM-4.7",
+    protocol: "openai_chat_completions",
     configured: true,
     masked_key: "sk-****5678",
     expires_at: "2026-08-20T08:00:00Z",
@@ -160,33 +130,33 @@ const byokStatuses: ByokCredentialStatus[] = [
 ];
 
 describe("configuredByokModelOptions", () => {
-  it("仅为 enabled 且本会话已配置的供应商生成固定 user_key 模型", () => {
-    expect(configuredByokModelOptions(byokProviders, byokStatuses)).toEqual([
+  it("把账号已保存的自定义连接映射成 user_key 模型", () => {
+    expect(configuredByokModelOptions(byokStatuses)).toEqual([
       expect.objectContaining({
         provider_id: "openrouter",
         model_id: "deepseek/deepseek-v4-flash-0731",
         model_source: "user_key",
-        company: "OpenRouter",
-        display_name: "DeepSeek · DeepSeek V4 Flash",
+        company: "OpenRouter DeepSeek",
+        display_name: "deepseek/deepseek-v4-flash-0731",
         user_selectable: true,
+      }),
+      expect.objectContaining({
+        provider_id: "siliconflow",
+        model_id: "Pro/zai-org/GLM-4.7",
+        company: "硅基流动",
       }),
     ]);
   });
 
-  it("供应商关闭时即使状态声称已配置也不生成模型选项", () => {
-    expect(
-      configuredByokModelOptions(
-        byokProviders.filter((provider) => provider.provider_id === "siliconflow"),
-        byokStatuses,
-      ),
-    ).toEqual([]);
+  it("没有保存连接时不生成 BYOK 模型", () => {
+    expect(configuredByokModelOptions([])).toEqual([]);
   });
 
-  it("凭据状态的模型 ID 与固定目录不一致时保持关闭", () => {
-    expect(
-      configuredByokModelOptions(byokProviders, [
-        { ...byokStatuses[0]!, model_id: "user-supplied-model" },
-      ]),
-    ).toEqual([]);
+  it("接受连接自身保存的自定义模型 ID", () => {
+    const [model] = configuredByokModelOptions([
+      { ...byokStatuses[0]!, model_id: "vendor/custom-model" },
+    ]);
+    expect(model?.model_id).toBe("vendor/custom-model");
+    expect(model?.provider_id).toBe("openrouter");
   });
 });

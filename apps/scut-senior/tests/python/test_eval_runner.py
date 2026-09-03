@@ -85,7 +85,11 @@ def test_eval_runner_can_select_model_decision_group(tmp_path: Path) -> None:
     assert report["agent_decision_mode"] == "model"
     measured = [line for line in report["cases"] if "runtime_metrics" in line]
     assert measured
-    assert measured[0]["runtime_metrics"]["decision_call_count"] == 0
+    assert measured[0]["runtime_metrics"]["decision_call_count"] == 1
+    # The fixture model returns an answer-shaped payload, not an Action token,
+    # so the decision is correctly attributed to the deterministic fallback.
+    assert measured[0]["runtime_metrics"]["model_action_accepted_count"] == 0
+    assert measured[0]["runtime_metrics"]["decision_fallback_count"] == 1
 
 
 def test_eval_runner_cli_writes_report_and_exit_code_reflects_failures(

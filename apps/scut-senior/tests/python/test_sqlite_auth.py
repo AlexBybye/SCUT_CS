@@ -75,6 +75,7 @@ def test_auth_migrations_are_ledgered_and_sqlite_runtime_pragmas_are_enabled(
             "0015_user_preferences.sql",
             "0016_private_knowledge.sql",
             "0017_contribution_metadata_attachments.sql",
+            "0018_custom_byok_connections.sql",
         ]
         assert connection.execute("PRAGMA foreign_keys").fetchone()[0] == 1
         assert connection.execute("PRAGMA journal_mode").fetchone()[0] == "wal"
@@ -257,13 +258,18 @@ def test_legacy_0004_schema_is_rebuilt_without_removed_providers_or_extra_column
         connection.execute(
             """
             INSERT INTO model_credentials (
-                user_id, provider_id, ciphertext, nonce, algorithm,
+                user_id, provider_id, display_name, base_url, model_id, protocol,
+                ciphertext, nonce, algorithm,
                 key_version, created_at, updated_at, expires_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 str(user_id),
                 "deepseek",
+                "DeepSeek",
+                "https://api.deepseek.com",
+                "deepseek-v4-flash",
+                "openai_chat_completions",
                 sqlite3.Binary(bytes([1]) * 17),
                 sqlite3.Binary(bytes([1]) * 12),
                 "AES-256-GCM",

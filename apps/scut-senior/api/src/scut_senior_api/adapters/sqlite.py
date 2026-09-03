@@ -1297,6 +1297,10 @@ class SQLiteWorkflowRepository:
         return StoredModelCredential(
             user_id=UUID(row["user_id"]),
             provider_id=row["provider_id"],
+            display_name=row["display_name"],
+            base_url=row["base_url"],
+            model_id=row["model_id"],
+            protocol=row["protocol"],
             ciphertext=bytes(row["ciphertext"]),
             nonce=bytes(row["nonce"]),
             algorithm=row["algorithm"],
@@ -1311,8 +1315,9 @@ class SQLiteWorkflowRepository:
         with self._connect() as connection:
             rows = connection.execute(
                 """
-                SELECT user_id, provider_id, ciphertext, nonce, algorithm,
-                       key_version, expires_at, updated_at
+                SELECT user_id, provider_id, display_name, base_url, model_id,
+                       protocol, ciphertext, nonce, algorithm, key_version,
+                       expires_at, updated_at
                 FROM model_credentials
                 WHERE user_id = ? AND expires_at > ?
                 ORDER BY provider_id
@@ -1329,8 +1334,9 @@ class SQLiteWorkflowRepository:
         with self._connect() as connection:
             row = connection.execute(
                 """
-                SELECT user_id, provider_id, ciphertext, nonce, algorithm,
-                       key_version, expires_at, updated_at
+                SELECT user_id, provider_id, display_name, base_url, model_id,
+                       protocol, ciphertext, nonce, algorithm, key_version,
+                       expires_at, updated_at
                 FROM model_credentials
                 WHERE user_id = ? AND provider_id = ? AND expires_at > ?
                 """,
@@ -1343,6 +1349,10 @@ class SQLiteWorkflowRepository:
         *,
         user_id: UUID,
         provider_id: str,
+        display_name: str,
+        base_url: str,
+        model_id: str,
+        protocol: str,
         ciphertext: bytes,
         nonce: bytes,
         algorithm: str,
@@ -1365,10 +1375,15 @@ class SQLiteWorkflowRepository:
             connection.execute(
                 """
                 INSERT INTO model_credentials (
-                    user_id, provider_id, ciphertext, nonce, algorithm,
-                    key_version, created_at, updated_at, expires_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    user_id, provider_id, display_name, base_url, model_id,
+                    protocol, ciphertext, nonce, algorithm, key_version,
+                    created_at, updated_at, expires_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT(user_id, provider_id) DO UPDATE SET
+                    display_name = excluded.display_name,
+                    base_url = excluded.base_url,
+                    model_id = excluded.model_id,
+                    protocol = excluded.protocol,
                     ciphertext = excluded.ciphertext,
                     nonce = excluded.nonce,
                     algorithm = excluded.algorithm,
@@ -1379,6 +1394,10 @@ class SQLiteWorkflowRepository:
                 (
                     str(user_id),
                     provider_id,
+                    display_name,
+                    base_url,
+                    model_id,
+                    protocol,
                     sqlite3.Binary(ciphertext),
                     sqlite3.Binary(nonce),
                     algorithm,
@@ -1390,8 +1409,9 @@ class SQLiteWorkflowRepository:
             )
             row = connection.execute(
                 """
-                SELECT user_id, provider_id, ciphertext, nonce, algorithm,
-                       key_version, expires_at, updated_at
+                SELECT user_id, provider_id, display_name, base_url, model_id,
+                       protocol, ciphertext, nonce, algorithm, key_version,
+                       expires_at, updated_at
                 FROM model_credentials
                 WHERE user_id = ? AND provider_id = ?
                 """,

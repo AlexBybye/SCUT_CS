@@ -1,5 +1,6 @@
 import type {
   AuthUser,
+  ByokConnectionInput,
   ByokCredentialStatus,
   ByokProviderId,
   ContributionConfirmations,
@@ -151,13 +152,13 @@ export async function getByokCredentials(): Promise<ByokCredentialStatus[]> {
 
 export async function saveByokCredential(
   providerId: ByokProviderId,
-  apiKey: string,
+  input: ByokConnectionInput,
 ): Promise<ByokCredentialStatus> {
   return apiRequest<ByokCredentialStatus>(
     `/api/v1/model-credentials/${encodeURIComponent(providerId)}`,
     {
       method: "PUT",
-      body: JSON.stringify({ api_key: apiKey }),
+      body: JSON.stringify(input),
     },
   );
 }

@@ -12,9 +12,11 @@ from fastapi.testclient import TestClient
 from scut_senior_api.adapters.openrouter import (
     OPENROUTER_CHAT_COMPLETIONS_URL,
     HttpResponse,
+    OpenRouterModelGateway,
     _quota_reset_at,
 )
 from scut_senior_api.config import Settings, UnsafeRuntimeConfiguration
+from scut_senior_api.contracts import WorkflowRunRequest
 from scut_senior_api.byok_catalog import BYOK_CATALOG_VERSION
 from scut_senior_api.main import create_app
 from scut_senior_api.model_catalog import (
@@ -22,6 +24,7 @@ from scut_senior_api.model_catalog import (
     ModelHealthResult,
     PLATFORM_DAILY_QUOTA_EXHAUSTED_MESSAGE,
 )
+from scut_senior_api.ports import RetrievedSource
 
 
 MODEL_FIXTURES = [
@@ -242,7 +245,7 @@ def _client_with_conversation(
     return client, conversation.json()["conversation_id"]
 
 
-def test_model_catalog_returns_fixed_openrouter_and_zhipu_entries(
+def test_model_catalog_returns_platform_models_without_private_byok_connections(
     tmp_path: Path,
 ) -> None:
     client = TestClient(
@@ -271,23 +274,7 @@ def test_model_catalog_returns_fixed_openrouter_and_zhipu_entries(
     assert body["health_checked_at"] is None
     assert body["byok_available"] is False
     assert body["byok_catalog_version"] == BYOK_CATALOG_VERSION
-    assert [item["provider_id"] for item in body["byok_providers"]] == [
-        "openrouter",
-        "deepseek",
-        "siliconflow",
-        "zhipu",
-    ]
-    assert all(item["enabled"] is False for item in body["byok_providers"])
-    assert all(
-        item["models_confirmed"] is True for item in body["byok_providers"]
-    )
-    assert [item["models"][0]["model_id"] for item in body["byok_providers"]] == [
-        "deepseek/deepseek-v4-flash-0731",
-        "deepseek-v4-flash",
-        "Pro/zai-org/GLM-4.7",
-        "glm-5.2",
-    ]
-    assert all(len(item["models"]) == 1 for item in body["byok_providers"])
+    assert body["byok_providers"] == []
     assert body["quota_notice"]
     assert body["quota_exhausted_message"] == PLATFORM_DAILY_QUOTA_EXHAUSTED_MESSAGE
     assert len(body["models"]) == 6
@@ -521,6 +508,52 @@ def test_openrouter_uses_one_exact_model_without_a_structured_output_contract(
         event for event in result["trace"] if event["node"] == "openrouter_model"
     )
     assert model_event["result"]["real_model_called"] is True
+
+
+def test_openrouter_action_decision_uses_compact_bounded_prompt() -> None:
+    selected_model = "google/gemma-4-26b-a4b-it:free"
+    http_client = RecordingHttpClient(
+        _chat_completion_response("retrieve_with_query_rewrite")
+    )
+    gateway = OpenRouterModelGateway(
+        api_key="server-only-secret",
+        allowed_model_ids={selected_model},
+        http_client=http_client,
+    )
+    request = WorkflowRunRequest.model_validate(
+        _workflow_request(
+            "11111111-1111-1111-1111-111111111111", selected_model
+        )
+    )
+    source = RetrievedSource(
+        chunk_id="linear_algebra:compact:p1",
+        course_id="linear_algebra",
+        source_id="compact-source",
+        source_title="线性代数历年卷",
+        text="不应进入决策请求的完整私有证据正文",
+        locator_type="page",
+        locator_start=1,
+        locator_end=1,
+        question_id=None,
+        heading_path=(),
+    )
+
+    action = gateway.decide_action(
+        request,
+        object(),
+        "post_retrieval",
+        sources=(source,),
+    )
+
+    assert action == "retrieve_with_query_rewrite"
+    assert len(http_client.calls) == 1
+    payload = http_client.calls[0]["payload"]
+    assert payload["max_tokens"] == 16
+    assert payload["temperature"] == 0
+    serialized = json.dumps(payload, ensure_ascii=False)
+    assert "请解释矩阵的秩" in serialized
+    assert "线性代数历年卷" in serialized
+    assert "不应进入决策请求的完整私有证据正文" not in serialized
 
 
 def test_openrouter_accepts_a_plain_text_complex_answer_without_retry(

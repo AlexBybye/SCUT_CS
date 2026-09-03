@@ -214,6 +214,7 @@ def _extract_runtime_metrics(result: Any) -> dict[str, object]:
     keys = (
         "duration_ms",
         "decision_call_count",
+        "model_action_accepted_count",
         "answer_call_count",
         "provider_retry_count",
         "guard_retry_count",
