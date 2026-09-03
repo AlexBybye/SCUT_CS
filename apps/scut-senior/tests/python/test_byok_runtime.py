@@ -208,10 +208,16 @@ def test_custom_byok_connections_use_the_saved_endpoint_and_model(
     assert call["url"] == endpoint
     assert call["headers"]["Authorization"] == f"Bearer {api_key}"
     assert call["payload"]["model"] == model_id
-    assert call["timeout_seconds"] == 120.0
-    assert call["payload"]["max_tokens"] == 12288
+    assert 0 < call["timeout_seconds"] <= 120.0
+    direct_deepseek = provider_id == "deepseek"
+    assert call["payload"]["max_tokens"] == (
+        8192 if direct_deepseek else 12288
+    )
     assert call["payload"]["temperature"] == 0.2
-    assert "reasoning_effort" not in call["payload"]
+    if direct_deepseek:
+        assert call["payload"]["reasoning_effort"] == "low"
+    else:
+        assert "reasoning_effort" not in call["payload"]
     assert "models" not in call["payload"]
     assert "fallbacks" not in call["payload"]
     assert "base_url" not in call["payload"]
@@ -286,14 +292,16 @@ def test_byok_model_mode_uses_one_compact_action_call_then_one_answer_call(
     assert len(http.calls) == 2
     action_call, answer_call = http.calls
     assert action_call["url"] == "https://api.deepseek.com/chat/completions"
-    assert action_call["payload"]["max_tokens"] == 16
+    assert action_call["payload"]["max_tokens"] == 256
     assert action_call["payload"]["temperature"] == 0
     assert action_call["payload"]["model"] == "deepseek-v4-flash"
+    assert action_call["payload"]["reasoning_effort"] == "low"
     action_body = json.dumps(action_call["payload"], ensure_ascii=False)
     assert "课程资料候选" not in action_body
     assert key not in action_body
-    assert answer_call["payload"]["max_tokens"] == 12288
+    assert answer_call["payload"]["max_tokens"] == 8192
     assert answer_call["payload"]["temperature"] == 0.2
+    assert answer_call["payload"]["reasoning_effort"] == "low"
 
     result = response.json()
     metrics = next(
@@ -306,6 +314,49 @@ def test_byok_model_mode_uses_one_compact_action_call_then_one_answer_call(
     assert metrics["decision_fallback_count"] == 0
     assert metrics["action_rejection_count"] == 0
     assert metrics["answer_call_count"] == 1
+    assert key not in response.text
+
+
+def test_openrouter_hosted_deepseek_does_not_receive_direct_deepseek_profile(
+    tmp_path: Path,
+) -> None:
+    responses = [
+        HttpResponse(
+            200,
+            json.dumps(
+                {"choices": [{"message": {"content": "generate_answer"}}]}
+            ).encode(),
+        ),
+        success_response(),
+    ]
+    http = RecordingHttpClient(callback=lambda: responses.pop(0))
+    _, client, _, conversation_id = authenticated_app(
+        tmp_path,
+        http,
+        agent_decision_mode="model",
+    )
+    key = "sk-openrouter-action-private"
+    assert client.put(
+        "/api/v1/model-credentials/openrouter",
+        json=credential_payload("openrouter", key),
+    ).status_code == 200
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(
+            conversation_id,
+            "openrouter",
+            "deepseek/deepseek-v4-flash-0731",
+        ),
+    )
+
+    assert response.status_code == 201, response.text
+    assert len(http.calls) == 2
+    action_call, answer_call = http.calls
+    assert action_call["payload"]["max_tokens"] == 512
+    assert answer_call["payload"]["max_tokens"] == 12288
+    assert "reasoning_effort" not in action_call["payload"]
+    assert "reasoning_effort" not in answer_call["payload"]
     assert key not in response.text
 
 
@@ -437,6 +488,38 @@ def test_byok_accepts_a_plain_text_complex_answer_without_retry(tmp_path: Path) 
     assert result["citations"] == []
     assert all(event["node"] != "model_output_retry" for event in result["trace"])
     assert key not in response.text
+
+
+def test_byok_provider_timeout_is_capped_by_remaining_agent_runtime(
+    tmp_path: Path,
+) -> None:
+    from scut_senior_api.adapters.byok import OpenAICompatibleByokGateway
+
+    http = RecordingHttpClient()
+    app, client, token, conversation_id = authenticated_app(tmp_path, http)
+    key = "sk-deepseek-runtime-cap"
+    assert client.put(
+        "/api/v1/model-credentials/deepseek",
+        json=credential_payload("deepseek", key),
+    ).status_code == 200
+    principal = app.state.repository.authenticate_session(token)
+    assert principal is not None
+    connection = app.state.service.credential_manager.get_connection(
+        principal, "deepseek", "deepseek-v4-flash"
+    )
+    request = WorkflowRunRequest.model_validate(
+        workflow_request(conversation_id, "deepseek", "deepseek-v4-flash")
+    )
+
+    OpenAICompatibleByokGateway(http_client=http).generate(
+        api_key=key,
+        connection=connection,
+        request=request,
+        sources=[],
+        timeout_seconds=37.5,
+    )
+
+    assert http.calls[-1]["timeout_seconds"] == 37.5
 
 
 def test_cancel_during_key_load_prevents_the_first_byok_provider_call(
@@ -610,6 +693,8 @@ def test_missing_key_and_upstream_failure_persist_sanitized_failed_attempts(
             event for event in result["trace"] if event["status"] == "failed"
         )
         assert failed_event["result"]["failure_code"] == "workflow_execution_failed"
+        assert failed_event["result"]["decision_call_count"] == 0
+        assert failed_event["result"]["answer_call_count"] == 1
     serialized = json.dumps(history, ensure_ascii=False)
     assert api_key not in serialized
     assert private_body not in serialized

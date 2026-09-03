@@ -295,6 +295,8 @@ def _build_action_request(
     request: WorkflowRunRequest,
     phase: str,
     sources: tuple[RetrievedSource, ...],
+    *,
+    max_tokens: int = 16,
 ) -> dict[str, object]:
     return {
         "model": request.model_id,
@@ -324,7 +326,7 @@ def _build_action_request(
                 ),
             },
         ],
-        "max_tokens": 16,
+        "max_tokens": max_tokens,
         "temperature": 0,
     }
 

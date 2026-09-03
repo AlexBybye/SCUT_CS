@@ -141,6 +141,7 @@ class UserKeyModelGateway(Protocol):
         sources: tuple[RetrievedSource, ...] = (),
         history: tuple[ConversationTurn, ...] = (),
         cancel_check: Callable[[], bool] | None = None,
+        timeout_seconds: float | None = None,
     ) -> str: ...
 
     def generate(
@@ -152,6 +153,7 @@ class UserKeyModelGateway(Protocol):
         sources: list[RetrievedSource],
         history: tuple[ConversationTurn, ...] = (),
         cancel_check: Callable[[], bool] | None = None,
+        timeout_seconds: float | None = None,
     ) -> GeneratedAnswer: ...
 
 

@@ -141,7 +141,13 @@ class ExamReviewPlanContext:
 class _BoundUserKeyDecisionModel:
     """Request-local adapter that keeps BYOK secrets out of Agent state/events."""
 
-    __slots__ = ("_gateway", "_api_key", "_connection", "_cancel_check")
+    __slots__ = (
+        "_gateway",
+        "_api_key",
+        "_connection",
+        "_cancel_check",
+        "_timeout_seconds",
+    )
 
     def __init__(
         self,
@@ -149,11 +155,13 @@ class _BoundUserKeyDecisionModel:
         api_key: str,
         connection: StoredModelCredential,
         cancel_check,
+        timeout_seconds: float,
     ) -> None:
         self._gateway = gateway
         self._api_key: str | None = api_key
         self._connection = connection
         self._cancel_check = cancel_check
+        self._timeout_seconds = timeout_seconds
 
     def decide_action(
         self,
@@ -175,6 +183,7 @@ class _BoundUserKeyDecisionModel:
             sources=sources,
             history=history,
             cancel_check=self._cancel_check,
+            timeout_seconds=self._timeout_seconds,
         )
 
     def clear(self) -> None:
@@ -992,6 +1001,13 @@ class IterationZeroService:
                 )
             )
 
+        def remaining_runtime_seconds() -> float:
+            return max(
+                0.0,
+                agent_budget.max_runtime_seconds
+                - (perf_counter() - agent_started),
+            )
+
         def reduce_agent(kind: str, **payload: object) -> None:
             nonlocal agent_state
             agent_state = reduce_agent_event(
@@ -1224,6 +1240,7 @@ class IterationZeroService:
                 course_pack_version=course_pack_version,
                 attempt_group_id=attempt_group_id,
                 regenerated_from_run_id=regenerated_from_run_id,
+                agent_metrics=agent_metrics,
             )
             return None
 
@@ -1381,10 +1398,11 @@ class IterationZeroService:
                             api_key,
                             byok_connection,
                             (
-                                stream_session.cancelled
+                                (lambda: stream_session.cancelled)
                                 if stream_session is not None
                                 else None
                             ),
+                            remaining_runtime_seconds(),
                         )
                         decision_gateway = ModelAgentDecision(bound_byok_decision)
                     try:
@@ -1564,7 +1582,7 @@ class IterationZeroService:
                         # 迭代 7.5：断开/取消时尽力中止上游等待（cancel_check
                         # 由可取消 transport 周期检查；结果被弃置不落库）。
                         cancel_check = (
-                            stream_session.cancelled
+                            (lambda: stream_session.cancelled)
                             if stream_session is not None
                             else None
                         )
@@ -1575,6 +1593,7 @@ class IterationZeroService:
                             sources=sources,
                             history=history,
                             cancel_check=cancel_check,
+                            timeout_seconds=remaining_runtime_seconds(),
                         )
                     else:
                         platform_model = (
@@ -1588,7 +1607,7 @@ class IterationZeroService:
                             sources,
                             history=history,
                             cancel_check=(
-                                stream_session.cancelled
+                                (lambda: stream_session.cancelled)
                                 if stream_session is not None
                                 else None
                             ),
@@ -2361,6 +2380,7 @@ class IterationZeroService:
         course_pack_version: str | None,
         attempt_group_id: UUID | None,
         regenerated_from_run_id: UUID | None,
+        agent_metrics: dict[str, int],
     ) -> None:
         machine.transition(RunStatus.FAILED)
         _append_trace(
@@ -2375,6 +2395,7 @@ class IterationZeroService:
                 "model_id": model_id,
                 "billing_label": billing_label,
                 "availability_status": "execution_failed",
+                **agent_metrics,
             },
         )
         persistence_event = _append_pending_persistence_trace(
