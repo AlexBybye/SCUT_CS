@@ -117,6 +117,7 @@ from .model_catalog import (
     ModelHealthChecker,
     ModelHealthResult,
     ModelNotRegistered,
+    ModelTemporarilyUnavailable,
 )
 from .model_credentials import ModelCredentialError, ModelCredentialManager
 from .paths import APP_ROOT
@@ -553,6 +554,12 @@ def create_app(
     @app.exception_handler(ModelNotRegistered)
     async def model_not_registered_handler(_, exc: ModelNotRegistered):
         return _error_response(422, "model_not_registered", str(exc))
+
+    @app.exception_handler(ModelTemporarilyUnavailable)
+    async def model_temporarily_unavailable_handler(
+        _, exc: ModelTemporarilyUnavailable
+    ):
+        return _error_response(503, "platform_model_unavailable", str(exc))
 
     @app.exception_handler(OpenRouterGatewayError)
     async def openrouter_gateway_error_handler(_, exc: OpenRouterGatewayError):
@@ -1522,6 +1529,8 @@ def _safe_stream_error(exc: Exception) -> tuple[str, str]:
         return "capability_unavailable", exc.detail
     if isinstance(exc, ModelNotRegistered):
         return "model_not_registered", "所选模型未登记。"
+    if isinstance(exc, ModelTemporarilyUnavailable):
+        return "platform_model_unavailable", str(exc)
     if isinstance(exc, ResourceNotFound):
         return "not_found", "请求的资源不存在。"
     if isinstance(exc, ContractConflict | UnknownCourseError):

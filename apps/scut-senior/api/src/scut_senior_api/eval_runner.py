@@ -164,9 +164,9 @@ def _run_case(
     *,
     provider_id: str = "mock",
     model_id: str = "deterministic-fixture-v1",
-) -> tuple[str, list[str]]:
+) -> tuple[str, list[str], dict[str, object]]:
     if case["course_scope"] == "cross":
-        return "skipped", ["cross_course_disabled_by_feature_flag"]
+        return "skipped", ["cross_course_disabled_by_feature_flag"], {}
     conversation = app.state.service.create_conversation(
         _MOCK_USER, str(case["course_id"])
     )
@@ -186,13 +186,67 @@ def _run_case(
         )
         last_run = app.state.service.run(_MOCK_USER, request)
     if last_run is None:
-        return "failed", ["用例没有 user 轮次"]
+        return "failed", ["用例没有 user 轮次"], {}
     reasons = _check_expected(last_run, case["expected"])
-    return ("passed" if not reasons else "failed"), reasons
+    metrics = _extract_runtime_metrics(last_run)
+    return ("passed" if not reasons else "failed"), reasons, metrics
 
 
-def _report_line(case: dict[str, object], outcome: str, reasons: list[str]) -> dict[str, object]:
-    return {
+def _extract_runtime_metrics(result: Any) -> dict[str, object]:
+    """Expose bounded, comparable runtime counters in evaluation reports.
+
+    The model/provider trace is already a safe aggregate contract. Copy only
+    those counters and citation counts here so an evaluation can compare the
+    four decision groups without persisting prompts or source text.
+    """
+
+    model_event = next(
+        (
+            event
+            for event in reversed(result.trace)
+            if event.node in {"mock_model", "openrouter_model", "zhipu_model", "byok_model"}
+        ),
+        None,
+    )
+    if model_event is None:
+        return {}
+    payload = model_event.result.model_dump(exclude_none=True)
+    keys = (
+        "duration_ms",
+        "decision_call_count",
+        "answer_call_count",
+        "provider_retry_count",
+        "guard_retry_count",
+        "decision_fallback_count",
+        "action_rejection_count",
+        "retry_count",
+    )
+    metrics = {key: payload[key] for key in keys if key in payload}
+    metrics["duration_ms"] = model_event.duration_ms
+    retrieval_event = next(
+        (event for event in result.trace if event.node in {"fixture_retrieval", "local_corpus_retrieval"}),
+        None,
+    )
+    if retrieval_event is not None:
+        retrieval_payload = retrieval_event.result.model_dump(exclude_none=True)
+        if "hit_count" in retrieval_payload:
+            metrics["candidate_count"] = retrieval_payload["hit_count"]
+    metrics.update(
+        {
+            "accepted_citation_count": len(result.citations),
+            "answer_char_count": len(result.repository_answer),
+        }
+    )
+    return metrics
+
+
+def _report_line(
+    case: dict[str, object],
+    outcome: str,
+    reasons: list[str],
+    metrics: dict[str, object] | None = None,
+) -> dict[str, object]:
+    line = {
         "case_id": case["case_id"],
         "category": case["category"],
         "course_id": case.get("course_id"),
@@ -200,6 +254,9 @@ def _report_line(case: dict[str, object], outcome: str, reasons: list[str]) -> d
         "outcome": outcome,
         "reasons": reasons,
     }
+    if metrics:
+        line["runtime_metrics"] = metrics
+    return line
 
 
 def run_evaluation(
@@ -212,7 +269,10 @@ def run_evaluation(
     local_corpus: bool = False,
     pace_seconds: float = 0.0,
     case_retries: int = 0,
+    agent_decision_mode: str = "rule",
 ) -> dict[str, object]:
+    if agent_decision_mode not in {"rule", "model"}:
+        raise ValueError("agent_decision_mode must be 'rule' or 'model'")
     cases = json.loads(cases_path.read_text(encoding="utf-8"))
     runner = (
         json.loads(runner_path.read_text(encoding="utf-8"))
@@ -240,6 +300,7 @@ def run_evaluation(
             retrieval_mode=(
                 "local_corpus" if (local_corpus or real_model) else "fixture"
             ),
+            agent_decision_mode=agent_decision_mode,
             openrouter_api_key=os.getenv("SCUT_SENIOR_OPENROUTER_API_KEY"),
             zhipu_api_key=os.getenv("SCUT_SENIOR_ZHIPU_API_KEY"),
         )
@@ -263,8 +324,9 @@ def run_evaluation(
                 # free-tier platform channels throttle per-account bursts;
                 # pacing keeps a real-model sweep under the RPM ceiling
                 time.sleep(pace_seconds)
+            metrics: dict[str, object] = {}
             try:
-                outcome, reasons = _run_case(
+                outcome, reasons, metrics = _run_case(
                     app, case, provider_id=provider_id, model_id=model_id
                 )
                 attempt = 0
@@ -278,12 +340,12 @@ def run_evaluation(
                 ):
                     attempt += 1
                     time.sleep(max(pace_seconds, 20.0))
-                    outcome, reasons = _run_case(
+                    outcome, reasons, metrics = _run_case(
                         app, case, provider_id=provider_id, model_id=model_id
                     )
             except Exception as exc:  # noqa: BLE001 - report any pipeline failure
                 outcome, reasons = "failed", [f"{type(exc).__name__}: {exc}"]
-            lines.append(_report_line(case, outcome, reasons))
+            lines.append(_report_line(case, outcome, reasons, metrics))
 
     by_course: dict[str, Counter[str]] = {}
     for line in lines:
@@ -299,6 +361,7 @@ def run_evaluation(
         "provider_id": provider_id if not fixture_only else "mock",
         "model_id": model_id if not fixture_only else "deterministic-fixture-v1",
         "retrieval_mode": "local_corpus" if (local_corpus or real_model) else "fixture",
+        "agent_decision_mode": agent_decision_mode,
         "executed_at": datetime.now(UTC).isoformat(),
         "summary": {
             "total": len(lines),
@@ -398,6 +461,12 @@ def _parser() -> argparse.ArgumentParser:
         help="sleep between cases (real-model sweeps on free-tier channels "
         "should use 10-20s to stay under per-account RPM limits)",
     )
+    parser.add_argument(
+        "--agent-decision-mode",
+        choices=("rule", "model"),
+        default="rule",
+        help="bounded Action decision mode for AB comparisons; default rule",
+    )
     return parser
 
 
@@ -461,6 +530,7 @@ def main(argv: Iterable[str] | None = None) -> int:
         local_corpus=not args.fixture_corpus if args.provider != "mock" else False,
         pace_seconds=args.pace_seconds,
         case_retries=2 if args.provider != "mock" else 0,
+        agent_decision_mode=args.agent_decision_mode,
     )
     summary = report["summary"]
     print(

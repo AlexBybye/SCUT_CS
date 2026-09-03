@@ -15,6 +15,7 @@ def test_eval_runner_executes_all_cases_and_reports_per_course(tmp_path: Path) -
 
     assert report["runner_id"] == "scut-senior-eval-v1"
     assert report["contract_version"] == "v1"
+    assert report["agent_decision_mode"] == "rule"
     summary = report["summary"]
     assert summary["total"] == 12
     assert summary["passed"] + summary["failed"] + summary["skipped"] == 12
@@ -32,6 +33,16 @@ def test_eval_runner_executes_all_cases_and_reports_per_course(tmp_path: Path) -
     assert "cross_course" in report["by_course"]
     assert report["by_course"]["linear_algebra"]["total"] == 11
     assert report_path.read_text(encoding="utf-8").strip()
+
+    # Runtime counters are emitted as bounded aggregates for AB attribution;
+    # they must not contain prompts or raw source payloads.
+    measured = [line for line in report["cases"] if "runtime_metrics" in line]
+    assert measured
+    metrics = measured[0]["runtime_metrics"]
+    assert metrics["answer_call_count"] == 1
+    assert metrics["decision_call_count"] == 0
+    assert metrics["answer_char_count"] > 0
+    assert "user_input" not in metrics
 
     persisted = json.loads(report_path.read_text(encoding="utf-8"))
     assert persisted["cases"] == report["cases"]
@@ -62,6 +73,19 @@ def test_eval_fixture_covers_all_five_workflows_and_passes_the_fixture_contract(
     ):
         line = next(item for item in report["cases"] if item["case_id"] == case_id)
         assert line["outcome"] == "passed", line
+
+
+def test_eval_runner_can_select_model_decision_group(tmp_path: Path) -> None:
+    report = run_evaluation(
+        CASES,
+        RUNNER,
+        tmp_path / "model-mode.json",
+        agent_decision_mode="model",
+    )
+    assert report["agent_decision_mode"] == "model"
+    measured = [line for line in report["cases"] if "runtime_metrics" in line]
+    assert measured
+    assert measured[0]["runtime_metrics"]["decision_call_count"] == 0
 
 
 def test_eval_runner_cli_writes_report_and_exit_code_reflects_failures(

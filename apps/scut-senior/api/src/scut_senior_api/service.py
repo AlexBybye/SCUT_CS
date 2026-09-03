@@ -10,6 +10,7 @@ from .agent_loop import (
     AgentDecisionGateway,
     AgentBudget,
     AgentState,
+    ModelAgentDecision,
     RuleBasedAgentDecision,
     choose_next_action,
     reduce_agent_event,
@@ -954,6 +955,14 @@ class IterationZeroService:
         agent_budget = AgentBudget()
         agent_state = AgentState()
         agent_started = perf_counter()
+        agent_metrics = {
+            "decision_call_count": 0,
+            "answer_call_count": 0,
+            "provider_retry_count": 0,
+            "guard_retry_count": 0,
+            "decision_fallback_count": 0,
+            "action_rejection_count": 0,
+        }
 
         def reduce_agent(kind: str, **payload: object) -> None:
             nonlocal agent_state
@@ -985,6 +994,48 @@ class IterationZeroService:
 
         def record_agent_action(action: str) -> None:
             reduce_agent("action_executed", action=action)
+
+        def decide_for_phase(
+            phase: str,
+            expected_action: str,
+            *,
+            sources: list[RetrievedSource] | tuple[RetrievedSource, ...] = (),
+            allow_model: bool = False,
+        ) -> str:
+            """Record one bounded decision and ensure it matches execution.
+
+            Fixed phases use the deterministic policy. The model decision
+            experiment is retained only for genuinely optional query rewrite;
+            any invalid, unavailable, or phase-incompatible result falls back
+            to the expected server-owned action and leaves an audit event.
+            """
+            action = expected_action
+            if allow_model and self.settings.agent_decision_mode == "model":
+                agent_metrics["decision_call_count"] += 1
+                action = self.agent_decision.decide(
+                    request,
+                    agent_state,
+                    phase,
+                    sources=sources,
+                    history=history,
+                )
+                if isinstance(self.agent_decision, ModelAgentDecision) and self.agent_decision.last_used_fallback:
+                    agent_metrics["decision_fallback_count"] += 1
+                if action != expected_action:
+                    agent_metrics["action_rejection_count"] += 1
+                    reduce_agent(
+                        "action_rejected",
+                        requested_action=action,
+                        expected_action=expected_action,
+                    )
+                    action = expected_action
+            reduce_agent(
+                "decision_produced",
+                action=action,
+                phase=phase,
+                expected_action=expected_action,
+            )
+            return action
 
         run_id = (
             stream_session.workflow_run_id
@@ -1145,11 +1196,7 @@ class IterationZeroService:
             if exam_plan is not None
             else workflow_focus.authoritative_query
         )
-        reduce_agent(
-            "decision_produced", action=self.agent_decision.decide(
-                request, agent_state, "retrieve", history=history
-            )
-        )
+        decide_for_phase("retrieve", "retrieve")
         interrupted = interrupt_if_step_not_claimed()
         if interrupted is not None:
             return interrupted
@@ -1172,35 +1219,44 @@ class IterationZeroService:
                     retrieval_query, history
                 )
                 if context_query:
-                    retry_started = perf_counter()
-                    context_batch = self.retrieval.search(
-                        course_ids, context_query
+                    # Decide before invoking the second retrieval.  A model
+                    # mismatch is recorded and replaced with the server-owned
+                    # expected action before any retrieval side effect.
+                    rewrite_action = decide_for_phase(
+                        "retrieve_with_query_rewrite",
+                        "retrieve_with_query_rewrite",
+                        sources=retrieval_batch.sources,
+                        allow_model=True,
                     )
-                    if isinstance(context_batch, RetrievalBatch) and (
-                        context_batch.sources
-                    ):
-                        reduce_agent(
-                            "decision_produced",
-                            action=self.agent_decision.decide(
-                                request,
-                                agent_state,
-                                "retrieve_with_query_rewrite",
-                                sources=retrieval_batch.sources,
-                                history=history,
-                            ),
+                    if rewrite_action == "retrieve_with_query_rewrite":
+                        retry_started = perf_counter()
+                        context_batch = self.retrieval.search(
+                            course_ids, context_query
                         )
                         record_agent_action("retrieve_with_query_rewrite")
-                        retrieval_batch = context_batch
-                        _append_trace(
-                            trace,
-                            node="retrieval_context_carry",
-                            result={
-                                "hit_count": 0,
-                                "candidate_count": len(retrieval_batch.sources),
-                                "rewritten_query": context_query[:200],
-                            },
-                            duration_ms=_elapsed_ms(retry_started),
-                        )
+                        if isinstance(context_batch, RetrievalBatch) and context_batch.sources:
+                            retrieval_batch = context_batch
+                            _append_trace(
+                                trace,
+                                node="retrieval_context_carry",
+                                result={
+                                    "hit_count": 0,
+                                    "candidate_count": len(retrieval_batch.sources),
+                                    "rewritten_query": context_query[:200],
+                                },
+                                duration_ms=_elapsed_ms(retry_started),
+                            )
+                        else:
+                            _append_trace(
+                                trace,
+                                node="retrieval_context_carry",
+                                result={
+                                    "hit_count": 0,
+                                    "candidate_count": 0,
+                                    "rewritten_query": context_query[:200],
+                                },
+                                duration_ms=_elapsed_ms(retry_started),
+                            )
             if not isinstance(retrieval_batch, RetrievalBatch):
                 # Keep injected iteration-1 test doubles compatible, but never
                 # accept an unversioned result in explicit local-corpus mode.
@@ -1307,7 +1363,9 @@ class IterationZeroService:
 
         started = perf_counter()
         api_key: str | None = None
-        retry_count = 0
+        provider_retry_count = 0
+        guard_retry_count = 0
+        guard_retry_context: str | None = None
         model_node = (
             "byok_model"
             if use_user_key
@@ -1329,20 +1387,23 @@ class IterationZeroService:
                 # Admission and cancellation share a short lifecycle lock. A
                 # claim that wins is considered in flight; cancel never waits
                 # for the synchronous provider call and wins at the next node.
-                reduce_agent(
-                    "decision_produced",
-                    action=self.agent_decision.decide(
-                        request,
-                        agent_state,
-                        "generate",
-                        sources=retrieval_batch.sources,
-                        history=history,
-                    ),
-                )
+                decide_for_phase("generate", "generate_answer")
                 interrupted = interrupt_if_step_not_claimed()
                 if interrupted is not None:
                     return interrupted
                 try:
+                    agent_metrics["answer_call_count"] += 1
+                    generation_request = request
+                    if guard_retry_context:
+                        generation_request = request.model_copy(
+                            update={
+                                "user_input": (
+                                    f"{request.user_input}\n\n"
+                                    "[内部引用校验修复提示] 上一次回答未通过引用校验，"
+                                    f"请只修复以下问题：{guard_retry_context}"
+                                )
+                            }
+                        )
                     if use_user_key:
                         assert api_key is not None
                         # 迭代 7.5：断开/取消时尽力中止上游等待（cancel_check
@@ -1354,7 +1415,7 @@ class IterationZeroService:
                         )
                         generated = self.byok_model.generate(
                             api_key=api_key,
-                            request=request,
+                            request=generation_request,
                             sources=sources,
                             history=history,
                             cancel_check=cancel_check,
@@ -1367,7 +1428,7 @@ class IterationZeroService:
                             else self.model
                         )
                         generated = platform_model.generate(
-                            request,
+                            generation_request,
                             sources,
                             history=history,
                             cancel_check=(
@@ -1381,16 +1442,17 @@ class IterationZeroService:
                     if interrupted is not None:
                         return interrupted
                     if (
-                        retry_count >= 1
+                        provider_retry_count >= 1
                         or not _is_retryable_model_output_error(model_error)
                     ):
                         raise
-                    retry_count += 1
+                    provider_retry_count += 1
+                    agent_metrics["provider_retry_count"] = provider_retry_count
                     _append_trace(
                         trace,
                         node="model_output_retry",
                         result={
-                            "retry_count": retry_count,
+                            "retry_count": provider_retry_count,
                             "failure_code": "model_output_retryable_failure",
                         },
                     )
@@ -1401,6 +1463,10 @@ class IterationZeroService:
                 interrupted = finish_interrupted()
                 if interrupted is not None:
                     return interrupted
+                # The provider call completed, so the generation action has
+                # genuinely executed even if its output is rejected by the
+                # downstream Guard and needs one bounded repair attempt.
+                record_agent_action("generate_answer")
                 try:
                     guarded = build_guarded_answer(
                         request=request,
@@ -1408,7 +1474,8 @@ class IterationZeroService:
                         sources=sources,
                         course_ids=set(course_ids),
                     )
-                except RuntimeGuardError:
+                except RuntimeGuardError as guard_error:
+                    reduce_agent("observation_recorded")
                     interrupted = finish_interrupted()
                     if interrupted is not None:
                         return interrupted
@@ -1420,7 +1487,7 @@ class IterationZeroService:
                         # failing the run after a long model call.
                         guarded = _empty_candidate_insufficient_evidence()
                         break
-                    if retry_count >= 1:
+                    if guard_retry_count >= 1:
                         interrupted = persist_failed_or_interrupted(
                             failure_node="citation_guard",
                             duration_ms=_elapsed_ms(started),
@@ -1429,13 +1496,51 @@ class IterationZeroService:
                             return interrupted
                         raise
                     reduce_agent("guard_retry_recorded")
-                    retry_count += 1
+                    guard_retry_count += 1
+                    agent_metrics["guard_retry_count"] = guard_retry_count
+                    guard_retry_context = str(guard_error).strip()[:500] or "引用或回答结构未通过校验"
                     _append_trace(
                         trace,
                         node="model_output_retry",
                         result={
-                            "retry_count": retry_count,
+                            "retry_count": guard_retry_count,
                             "failure_code": "model_output_guard_rejected",
+                        },
+                    )
+                    interrupted = finish_interrupted()
+                    if interrupted is not None:
+                        return interrupted
+                    continue
+                reduce_agent("observation_recorded")
+                if (
+                    request.workflow_type == WorkflowType.EXAM_REVIEW
+                    and sources
+                    and not guarded.citation_ids
+                    and guard_retry_count < 1
+                ):
+                    # An exam-review request with retrieved past-paper
+                    # candidates has not met its evidence contract when the
+                    # model emits no [S#] markers. Give it one explicit repair
+                    # attempt; if it still refuses, retain the existing honest
+                    # partial/insufficient result instead of looping or
+                    # fabricating citations server-side.
+                    reduce_agent("guard_retry_recorded")
+                    guard_retry_count += 1
+                    agent_metrics["guard_retry_count"] = guard_retry_count
+                    allowed_ids = ", ".join(
+                        f"[S{index}]" for index in range(1, len(sources) + 1)
+                    )
+                    guard_retry_context = (
+                        "当前复习回答检索到了历年卷课程资料，但没有任何可回查引用。"
+                        f"请仅使用确实支持对应说法的候选编号 {allowed_ids}，"
+                        "在相关句子后至少加入一条 [S#]；不要编造编号。"
+                    )
+                    _append_trace(
+                        trace,
+                        node="model_output_retry",
+                        result={
+                            "retry_count": guard_retry_count,
+                            "failure_code": "exam_review_citation_missing",
                         },
                     )
                     interrupted = finish_interrupted()
@@ -1469,7 +1574,8 @@ class IterationZeroService:
                 "billing_label": billing_label,
                 "availability_status": availability_status,
                 "real_model_called": not mock_only,
-                "retry_count": retry_count,
+                "retry_count": provider_retry_count + guard_retry_count,
+                **agent_metrics,
             },
         )
 

@@ -26,11 +26,15 @@ ActionKind = Literal[
 # Workflow is the hard boundary. Agent may choose a next step only from the
 # actions the selected workflow exposes; it never chooses a new workflow.
 WORKFLOW_ACTIONS: dict[str, frozenset[ActionKind]] = {
-    "knowledge_qa": frozenset({"retrieve", "retrieve_with_query_rewrite", "generate_answer", "finish"}),
-    "exam_review": frozenset({"retrieve", "retrieve_with_query_rewrite", "generate_answer", "finish"}),
-    "problem_tutor": frozenset({"retrieve", "retrieve_with_query_rewrite", "generate_answer", "finish"}),
-    "mistake_review": frozenset({"retrieve", "retrieve_with_query_rewrite", "generate_answer", "finish"}),
-    "temporary_material_reading": frozenset({"retrieve", "generate_answer", "finish"}),
+    # The compatibility runtime has real execution semantics only for these
+    # three actions.  ``finish`` and ``ask_clarification`` remain part of the
+    # historical event vocabulary, but are intentionally not exposed to the
+    # model until a corresponding executor and persistence contract exist.
+    "knowledge_qa": frozenset({"retrieve", "retrieve_with_query_rewrite", "generate_answer"}),
+    "exam_review": frozenset({"retrieve", "retrieve_with_query_rewrite", "generate_answer"}),
+    "problem_tutor": frozenset({"retrieve", "retrieve_with_query_rewrite", "generate_answer"}),
+    "mistake_review": frozenset({"retrieve", "retrieve_with_query_rewrite", "generate_answer"}),
+    "temporary_material_reading": frozenset({"retrieve", "generate_answer"}),
 }
 EventKind = Literal[
     "decision_produced",
@@ -118,14 +122,16 @@ class ModelAgentDecision:
     def __init__(self, model: ModelGateway, fallback: AgentDecisionGateway | None = None):
         self.model = model
         self.fallback = fallback or RuleBasedAgentDecision()
+        self.last_used_fallback = False
 
     def decide(self, request, state, phase, *, sources=(), history=()) -> ActionKind:
+        self.last_used_fallback = False
         decision_request = request.model_copy(
             update={
                 "user_input": (
                     "只输出一个允许的 Action 名称，不要解释。"
                     "允许值：retrieve, retrieve_with_query_rewrite, "
-                    "ask_clarification, generate_answer, finish。"
+                    "generate_answer。"
                     f"当前 Workflow={request.workflow_type.value}，阶段={phase}，"
                     f"已检索轮次={state.retrieval_rounds}，已有证据数={len(sources)}。"
                 )
@@ -141,7 +147,9 @@ class ModelAgentDecision:
             if parsed is not None:
                 return parsed
         except Exception:
-            pass
+            self.last_used_fallback = True
+        else:
+            self.last_used_fallback = True
         return self.fallback.decide(request, state, phase, sources=sources, history=history)
 
 
@@ -400,4 +408,7 @@ def _record_guard_retry(state: AgentState, limits: AgentBudget) -> AgentState:
     retries = state.guard_retries + 1
     if retries > limits.max_guard_retries:
         return replace(state, status="budget_exhausted", budget_reason="max_guard_retries")
-    return replace(state, guard_retries=retries)
+    next_steps = state.step_count + 1
+    if next_steps > limits.max_steps:
+        return replace(state, status="budget_exhausted", budget_reason="max_steps")
+    return replace(state, guard_retries=retries, step_count=next_steps)

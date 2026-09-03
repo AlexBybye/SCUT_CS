@@ -99,6 +99,14 @@ class ModelNotRegistered(ValueError):
     pass
 
 
+class ModelTemporarilyUnavailable(RuntimeError):
+    """A known catalog entry that failed its current availability gate."""
+
+    def __init__(self, availability_status: ModelAvailabilityStatus):
+        super().__init__("所选模型当前暂时不可用，请稍后重试。")
+        self.availability_status = availability_status
+
+
 class PublicModelCatalogEntry(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -441,8 +449,10 @@ class ModelCatalog:
     ) -> ModelCatalogEntry:
         self.refresh_health()
         entry = self._by_key.get((provider_id, model_id, model_source))
-        if entry is None or not entry.user_selectable:
+        if entry is None:
             raise ModelNotRegistered("所选模型未在当前可用的平台目录中登记。")
+        if not entry.user_selectable:
+            raise ModelTemporarilyUnavailable(entry.availability_status)
         return entry
 
     def public_payload(self) -> dict[str, object]:

@@ -417,6 +417,14 @@ class TraceSafeResult(ContractModel):
     real_model_called: bool | None = None
     cache_hit: bool | None = None
     retry_count: Annotated[int | None, Field(ge=0)] = None
+    # AB runtime diagnostics. These are aggregate counters only; raw model
+    # prompts and private payloads never enter the student-visible Trace.
+    decision_call_count: Annotated[int | None, Field(ge=0)] = None
+    answer_call_count: Annotated[int | None, Field(ge=0)] = None
+    provider_retry_count: Annotated[int | None, Field(ge=0)] = None
+    guard_retry_count: Annotated[int | None, Field(ge=0)] = None
+    decision_fallback_count: Annotated[int | None, Field(ge=0)] = None
+    action_rejection_count: Annotated[int | None, Field(ge=0)] = None
     failure_code: TraceCode | None = None
     degradation_code: TraceCode | None = None
     catalog_version: str | None = None

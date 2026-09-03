@@ -507,6 +507,19 @@
           "default": null,
           "title": "Accepted Count"
         },
+        "action_rejection_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Action Rejection Count"
+        },
         "adapter": {
           "anyOf": [
             {
@@ -548,6 +561,19 @@
           ],
           "default": null,
           "title": "Agent Preset Version"
+        },
+        "answer_call_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Answer Call Count"
         },
         "auth_mode": {
           "anyOf": [
@@ -669,6 +695,32 @@
           ],
           "default": null
         },
+        "decision_call_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Decision Call Count"
+        },
+        "decision_fallback_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Decision Fallback Count"
+        },
         "degradation_code": {
           "anyOf": [
             {
@@ -729,6 +781,19 @@
           ],
           "default": null,
           "title": "Fixture Only"
+        },
+        "guard_retry_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Guard Retry Count"
         },
         "hit_count": {
           "anyOf": [
@@ -819,6 +884,19 @@
           ],
           "default": null,
           "title": "Provider Id"
+        },
+        "provider_retry_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Provider Retry Count"
         },
         "real_model_called": {
           "anyOf": [

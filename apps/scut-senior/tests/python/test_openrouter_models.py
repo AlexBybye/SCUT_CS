@@ -168,6 +168,16 @@ class HealthyCatalogChecker:
         }
 
 
+class UnavailableCatalogChecker:
+    checked_at = datetime(2026, 8, 16, 0, 0, tzinfo=UTC)
+
+    def check(self, model_ids):
+        return {
+            model_id: ModelHealthResult("health_check_failed", self.checked_at)
+            for model_id in model_ids
+        }
+
+
 def _settings(tmp_path: Path, *, api_key: str = "server-only-secret") -> Settings:
     return Settings(
         app_env="test",
@@ -438,6 +448,37 @@ def test_unregistered_model_is_rejected_before_any_upstream_call(tmp_path: Path)
 
     assert response.status_code == 422
     assert response.json()["error"]["code"] == "model_not_registered"
+    assert http_client.calls == []
+
+
+def test_registered_model_with_failed_health_is_temporarily_unavailable(
+    tmp_path: Path,
+) -> None:
+    http_client = RecordingHttpClient(_success_response())
+    client = TestClient(
+        create_app(
+            _settings(tmp_path),
+            model_http_client=http_client,
+            model_health_checker=UnavailableCatalogChecker(),
+        )
+    )
+    conversation = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    ).json()
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=_workflow_request(
+            conversation["conversation_id"],
+            "nvidia/nemotron-3-super-120b-a12b:free",
+        ),
+    )
+
+    assert response.status_code == 503
+    assert response.json()["error"] == {
+        "code": "platform_model_unavailable",
+        "detail": "所选模型当前暂时不可用，请稍后重试。",
+    }
     assert http_client.calls == []
 
 

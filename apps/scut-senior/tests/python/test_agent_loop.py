@@ -99,9 +99,20 @@ def test_guard_retry_budget_is_explicit() -> None:
     budget = AgentBudget(max_guard_retries=1)
     state = record_guard_retry(AgentState(), budget=budget)
     assert state.guard_retries == 1
+    assert state.step_count == 1
     state = record_guard_retry(state, budget=budget)
     assert state.status == "budget_exhausted"
     assert state.budget_reason == "max_guard_retries"
+
+
+def test_guard_retry_also_consumes_step_budget() -> None:
+    budget = AgentBudget(max_steps=1, max_guard_retries=2)
+    state = record_guard_retry(AgentState(), budget=budget)
+    assert state.guard_retries == 1
+    assert state.step_count == 1
+    state = record_guard_retry(state, budget=budget)
+    assert state.status == "budget_exhausted"
+    assert state.budget_reason == "max_steps"
 
 
 def test_replay_reconstructs_action_and_terminal_state() -> None:

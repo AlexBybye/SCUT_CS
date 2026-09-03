@@ -386,9 +386,10 @@ def render_exam_review_appendix(plan: ExamReviewPlan) -> str:
             lines.append("")
             lines.append("### 历年题题组")
             lines.append("")
-            for group in groups:
+            for group in groups[:4]:
                 ids = "、".join(
-                    str(q["question_id"]) for q in group.get("questions") or []
+                    str(q["question_id"])
+                    for q in (group.get("questions") or [])[:3]
                 )
                 year = group.get("year") or "年份未标注"
                 count = group.get("question_count") or len(group.get("questions") or [])
@@ -396,19 +397,38 @@ def render_exam_review_appendix(plan: ExamReviewPlan) -> str:
                 if ids:
                     line += f"；代表题号：{ids}"
                 lines.append(line)
+            if len(groups) > 4:
+                lines.append(
+                    f"- 其余 {len(groups) - 4} 组保留在结构化复习计划中，可按需展开回查。"
+                )
     lines.append("")
 
     lines.append("### 复习建议")
     lines.append("")
-    for suggestion in plan.review_suggestions:
+    for suggestion in plan.review_suggestions[:4]:
         lines.append(f"- {suggestion}")
     lines.append("")
 
     if plan.uncovered_items:
         lines.append("### 未覆盖内容")
         lines.append("")
-        for item in plan.uncovered_items:
-            lines.append(f"- {item}")
+        # Keep the student-visible appendix actionable without echoing the
+        # full syllabus. The complete derived tuple remains available in the
+        # structured workflow_output for audit/export.
+        preview_items = []
+        for item in plan.uncovered_items[:3]:
+            shortened = _clean_text(item, 28)
+            if len(_clean_text(item, 10_000)) > len(shortened):
+                shortened += "…"
+            if shortened:
+                preview_items.append(shortened)
+        preview = "、".join(preview_items)
+        if len(plan.uncovered_items) > 3:
+            preview += "等"
+        lines.append(
+            f"- 共 {len(plan.uncovered_items)} 项"
+            + (f"：{preview}" if preview else "；完整明细见复习计划。")
+        )
         lines.append("")
 
     return "\n".join(lines).strip()
