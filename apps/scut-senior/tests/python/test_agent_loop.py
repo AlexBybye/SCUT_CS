@@ -115,6 +115,22 @@ def test_guard_retry_also_consumes_step_budget() -> None:
     assert state.budget_reason == "max_steps"
 
 
+def test_optional_model_call_must_fit_before_soft_runtime_cutoff() -> None:
+    budget = AgentBudget(
+        max_runtime_seconds=120,
+        soft_runtime_ratio=0.75,
+    )
+
+    assert budget.soft_runtime_seconds == 90
+    assert budget.allows_optional_call(89.999)
+    assert not budget.allows_optional_call(90)
+
+    with pytest.raises(ValueError, match="soft_runtime_ratio"):
+        AgentBudget(soft_runtime_ratio=1)
+    with pytest.raises(ValueError, match="max_answer_calls"):
+        AgentBudget(max_answer_calls=0)
+
+
 def test_replay_reconstructs_action_and_terminal_state() -> None:
     events = [
         event("decision_produced", action="retrieve"),

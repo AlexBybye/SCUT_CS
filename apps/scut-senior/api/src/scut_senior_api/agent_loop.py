@@ -187,7 +187,9 @@ class AgentBudget:
     max_query_rewrite: int = 1
     max_same_action_retries: int = 1
     max_guard_retries: int = 1
+    max_answer_calls: int = 2
     max_runtime_seconds: int = 120
+    soft_runtime_ratio: float = 0.75
 
     def __post_init__(self) -> None:
         if any(
@@ -198,14 +200,34 @@ class AgentBudget:
                 self.max_query_rewrite,
                 self.max_same_action_retries,
                 self.max_guard_retries,
+                self.max_answer_calls,
                 self.max_runtime_seconds,
             )
         ):
             raise ValueError("agent budget values must be non-negative integers")
         if self.max_steps < 1:
             raise ValueError("agent max_steps must be positive")
+        if self.max_answer_calls < 1:
+            raise ValueError("agent max_answer_calls must be positive")
         if self.max_runtime_seconds < 1:
             raise ValueError("agent max_runtime_seconds must be positive")
+        if not 0 < self.soft_runtime_ratio < 1:
+            raise ValueError("agent soft_runtime_ratio must be between zero and one")
+
+    @property
+    def soft_runtime_seconds(self) -> float:
+        return self.max_runtime_seconds * self.soft_runtime_ratio
+
+    def allows_optional_call(self, elapsed_seconds: float) -> bool:
+        """Admit optional model work only when it can finish before soft cutoff.
+
+        Provider responses are not streamed through the Agent reducer, so the
+        loop cannot observe an in-flight 75% token/time crossing. Once control
+        returns after the 75% mark, optional follow-up work is no longer
+        admitted; the 120-second hard limit remains unchanged.
+        """
+
+        return 0 <= elapsed_seconds < self.soft_runtime_seconds
 
 
 @dataclass(frozen=True, slots=True)

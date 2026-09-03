@@ -56,11 +56,11 @@ class CancellableJsonHttpClient:
         timeout_seconds: float,
         cancel_check: CancelCheck | None = None,
     ) -> HttpResponse:
-        if cancel_check is None or cancel_check():
-            # 无取消语义时直连；已取消的调用直接拒绝，不再发起。
-            if cancel_check is not None:
-                raise UpstreamRequestCancelled
-            return self._post_inner(url, headers, payload, timeout_seconds)
+        if cancel_check is not None and cancel_check():
+            # 已取消的调用直接拒绝，不再发起。即使没有取消标记也进入下方
+            # 受监督线程，从而让 timeout_seconds 成为总墙钟上限，而不是
+            # urllib 套接字单次读等待上限。
+            raise UpstreamRequestCancelled
 
         result: list[HttpResponse] = []
         error: list[BaseException] = []
@@ -84,7 +84,7 @@ class CancellableJsonHttpClient:
         worker.start()
         deadline = monotonic() + max(timeout_seconds, 0.0)
         while not done.wait(self._poll_interval_seconds):
-            if cancel_check():
+            if cancel_check is not None and cancel_check():
                 # 尽力取消：放弃等待。worker 是 daemon，套接字按自身超时回收，
                 # 其结果永远不会被本调用采用或落库。
                 raise UpstreamRequestCancelled

@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 from fastapi.testclient import TestClient
 
+from scut_senior_api.agent_loop import AgentBudget
 from scut_senior_api.config import Settings
 from scut_senior_api.contracts import (
     AnswerBlock,
@@ -286,6 +287,59 @@ def test_exam_review_retries_once_when_retrieved_sources_are_left_uncited(
         if event["kind"] == "action_executed"
     ] == ["retrieve", "generate_answer", "generate_answer"]
     assert sum(event["kind"] == "observation_recorded" for event in agent_events) == 3
+
+
+def test_exam_review_keeps_partial_answer_when_soft_budget_blocks_citation_repair(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    app = create_app(
+        Settings(app_env="test", database_path=tmp_path / "exam-soft-budget.db")
+    )
+    client = TestClient(app)
+    conversation = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    ).json()
+
+    class UncitedExamModel:
+        def __init__(self) -> None:
+            self.calls = 0
+
+        def generate(self, request, sources, history=(), *, cancel_check=None):
+            del request, sources, history, cancel_check
+            self.calls += 1
+            return GeneratedAnswer(repository_answer="按秩与方程组主线复习。")
+
+    model = UncitedExamModel()
+    app.state.service.model = model
+    monkeypatch.setattr(
+        AgentBudget,
+        "allows_optional_call",
+        lambda self, elapsed_seconds: False,
+    )
+    payload = _request(conversation["conversation_id"])
+    payload.update(
+        {
+            "workflow_type": "exam_review",
+            "user_input": "结合历年卷给我复习大纲",
+            "workflow_payload": {
+                "syllabus": "矩阵的秩与线性方程组",
+                "exam_date": None,
+                "available_hours": 6,
+                "goals": ["通过考试"],
+                "weak_topics": ["矩阵的秩"],
+            },
+        }
+    )
+
+    response = client.post("/api/v1/workflow-runs", json=payload)
+
+    assert response.status_code == 201, response.text
+    result = response.json()
+    assert model.calls == 1
+    assert result["answer_status"] == "partial"
+    assert result["evidence_status"] == "insufficient"
+    assert result["citations"] == []
+    assert all(event["node"] != "model_output_retry" for event in result["trace"])
 
 
 def test_zero_candidates_degrades_to_insufficient_evidence_without_retry(

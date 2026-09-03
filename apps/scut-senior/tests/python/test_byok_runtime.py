@@ -19,6 +19,7 @@ from scut_senior_api.adapters.byok import (
     ZHIPU_BYOK_ENDPOINT,
 )
 from scut_senior_api.adapters.openrouter import HttpResponse
+from scut_senior_api.agent_loop import AgentBudget
 from scut_senior_api.auth import GitHubUserProfile, SESSION_COOKIE_NAME
 from scut_senior_api.byok_catalog import ByokProviderCatalog
 from scut_senior_api.config import Settings
@@ -166,12 +167,18 @@ def test_four_byok_routes_use_one_fixed_endpoint_model_without_response_schema(
     assert call["url"] == endpoint
     assert call["headers"]["Authorization"] == f"Bearer {api_key}"
     assert call["payload"]["model"] == model_id
+    assert call["timeout_seconds"] == 120.0
     # Call defaults are declared on the fixed catalog entry, not hard-coded
     # in the request builder; assert against the catalog so a provider-specific
     # default (e.g. a larger budget for reasoning models) stays correct.
     catalog_entry = ByokProviderCatalog().resolve_model(provider_id, model_id)
     assert call["payload"]["max_tokens"] == catalog_entry.default_max_tokens
     assert call["payload"]["temperature"] == catalog_entry.default_temperature
+    if provider_id in {"openrouter", "deepseek"}:
+        assert call["payload"]["max_tokens"] == 12288
+        assert call["payload"]["reasoning_effort"] == "low"
+    else:
+        assert "reasoning_effort" not in call["payload"]
     assert "models" not in call["payload"]
     assert "fallbacks" not in call["payload"]
     assert "base_url" not in call["payload"]
@@ -535,6 +542,34 @@ def test_byok_invalid_response_retries_the_same_route_and_key_once(
     assert {call["headers"]["Authorization"] for call in http.calls} == {
         f"Bearer {key}"
     }
+    assert key not in response.text
+
+
+def test_byok_invalid_response_does_not_retry_past_soft_runtime_budget(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    http = RecordingHttpClient(HttpResponse(200, b"{invalid-json"))
+    _, client, _, conversation_id = authenticated_app(tmp_path, http)
+    key = "sk-private-soft-runtime"
+    assert client.put(
+        "/api/v1/model-credentials/deepseek", json={"api_key": key}
+    ).status_code == 200
+    monkeypatch.setattr(
+        AgentBudget,
+        "allows_optional_call",
+        lambda self, elapsed_seconds: False,
+    )
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(
+            conversation_id, "deepseek", "deepseek-v4-flash"
+        ),
+    )
+
+    assert response.status_code == 502
+    assert response.json()["error"]["code"] == "byok_provider_invalid_response"
+    assert len(http.calls) == 1
     assert key not in response.text
 
 

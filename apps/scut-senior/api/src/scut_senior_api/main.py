@@ -41,6 +41,7 @@ from .adapters.openrouter import (
     JsonHttpClient,
     OpenRouterGatewayError,
     OpenRouterModelGateway,
+    UrllibJsonHttpClient,
 )
 from .adapters.openrouter_health import OpenRouterCatalogHealthChecker
 from .adapters.zhipu import ZhipuPlatformGatewayError, ZhipuPlatformModelGateway
@@ -64,6 +65,7 @@ from .auth import (
     utc_now,
 )
 from .config import Settings
+from .cancellable_http import CancellableJsonHttpClient
 
 LOGGER = logging.getLogger("scut_senior.api")
 from .course_availability import (
@@ -272,6 +274,11 @@ def create_app(
 ) -> FastAPI:
     active_settings = settings or Settings.from_env()
     active_settings.assert_safe()
+    if active_settings.app_env != "test" and byok_http_client is None:
+        # BYOK reasoning models may keep a socket active beyond urllib's
+        # per-read timeout. Supervise the full request so the existing
+        # 120-second runtime limit is also the provider-call wall clock limit.
+        byok_http_client = CancellableJsonHttpClient(UrllibJsonHttpClient())
     registry = CourseRegistry.load()
     mock_identity = MockIdentityProvider().current_user()
     embedding = None

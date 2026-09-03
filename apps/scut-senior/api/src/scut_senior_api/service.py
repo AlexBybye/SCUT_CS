@@ -964,6 +964,15 @@ class IterationZeroService:
             "action_rejection_count": 0,
         }
 
+        def optional_model_work_allowed() -> bool:
+            return (
+                agent_metrics["answer_call_count"]
+                < agent_budget.max_answer_calls
+                and agent_budget.allows_optional_call(
+                    perf_counter() - agent_started
+                )
+            )
+
         def reduce_agent(kind: str, **payload: object) -> None:
             nonlocal agent_state
             agent_state = reduce_agent_event(
@@ -1219,44 +1228,62 @@ class IterationZeroService:
                     retrieval_query, history
                 )
                 if context_query:
-                    # Decide before invoking the second retrieval.  A model
-                    # mismatch is recorded and replaced with the server-owned
-                    # expected action before any retrieval side effect.
-                    rewrite_action = decide_for_phase(
-                        "retrieve_with_query_rewrite",
-                        "retrieve_with_query_rewrite",
-                        sources=retrieval_batch.sources,
-                        allow_model=True,
-                    )
-                    if rewrite_action == "retrieve_with_query_rewrite":
-                        retry_started = perf_counter()
-                        context_batch = self.retrieval.search(
-                            course_ids, context_query
+                    if not optional_model_work_allowed():
+                        _append_trace(
+                            trace,
+                            node="retrieval_context_carry",
+                            status=TraceEventStatus.SKIPPED,
+                            result={
+                                "hit_count": 0,
+                                "candidate_count": 0,
+                                "reason_code": "runtime_soft_limit",
+                            },
                         )
-                        record_agent_action("retrieve_with_query_rewrite")
-                        if isinstance(context_batch, RetrievalBatch) and context_batch.sources:
-                            retrieval_batch = context_batch
-                            _append_trace(
-                                trace,
-                                node="retrieval_context_carry",
-                                result={
-                                    "hit_count": 0,
-                                    "candidate_count": len(retrieval_batch.sources),
-                                    "rewritten_query": context_query[:200],
-                                },
-                                duration_ms=_elapsed_ms(retry_started),
+                    else:
+                        # Decide before invoking the second retrieval. A model
+                        # mismatch is recorded and replaced with the
+                        # server-owned expected action before any retrieval
+                        # side effect.
+                        rewrite_action = decide_for_phase(
+                            "retrieve_with_query_rewrite",
+                            "retrieve_with_query_rewrite",
+                            sources=retrieval_batch.sources,
+                            allow_model=True,
+                        )
+                        if rewrite_action == "retrieve_with_query_rewrite":
+                            retry_started = perf_counter()
+                            context_batch = self.retrieval.search(
+                                course_ids, context_query
                             )
-                        else:
-                            _append_trace(
-                                trace,
-                                node="retrieval_context_carry",
-                                result={
-                                    "hit_count": 0,
-                                    "candidate_count": 0,
-                                    "rewritten_query": context_query[:200],
-                                },
-                                duration_ms=_elapsed_ms(retry_started),
-                            )
+                            record_agent_action("retrieve_with_query_rewrite")
+                            if (
+                                isinstance(context_batch, RetrievalBatch)
+                                and context_batch.sources
+                            ):
+                                retrieval_batch = context_batch
+                                _append_trace(
+                                    trace,
+                                    node="retrieval_context_carry",
+                                    result={
+                                        "hit_count": 0,
+                                        "candidate_count": len(
+                                            retrieval_batch.sources
+                                        ),
+                                        "rewritten_query": context_query[:200],
+                                    },
+                                    duration_ms=_elapsed_ms(retry_started),
+                                )
+                            else:
+                                _append_trace(
+                                    trace,
+                                    node="retrieval_context_carry",
+                                    result={
+                                        "hit_count": 0,
+                                        "candidate_count": 0,
+                                        "rewritten_query": context_query[:200],
+                                    },
+                                    duration_ms=_elapsed_ms(retry_started),
+                                )
             if not isinstance(retrieval_batch, RetrievalBatch):
                 # Keep injected iteration-1 test doubles compatible, but never
                 # accept an unversioned result in explicit local-corpus mode.
@@ -1443,6 +1470,7 @@ class IterationZeroService:
                         return interrupted
                     if (
                         provider_retry_count >= 1
+                        or not optional_model_work_allowed()
                         or not _is_retryable_model_output_error(model_error)
                     ):
                         raise
@@ -1487,7 +1515,10 @@ class IterationZeroService:
                         # failing the run after a long model call.
                         guarded = _empty_candidate_insufficient_evidence()
                         break
-                    if guard_retry_count >= 1:
+                    if (
+                        guard_retry_count >= 1
+                        or not optional_model_work_allowed()
+                    ):
                         interrupted = persist_failed_or_interrupted(
                             failure_node="citation_guard",
                             duration_ms=_elapsed_ms(started),
@@ -1517,6 +1548,7 @@ class IterationZeroService:
                     and sources
                     and not guarded.citation_ids
                     and guard_retry_count < 1
+                    and optional_model_work_allowed()
                 ):
                     # An exam-review request with retrieved past-paper
                     # candidates has not met its evidence contract when the
@@ -1637,7 +1669,7 @@ class IterationZeroService:
             max_items=32,
         )
         original_blocks = [block.model_copy(deep=True) for block in guarded.blocks]
-        if self.humanizer is None:
+        if self.humanizer is None or not optional_model_work_allowed():
             interrupted = finish_interrupted()
             if interrupted is not None:
                 return interrupted
@@ -1645,7 +1677,13 @@ class IterationZeroService:
             _append_trace(
                 trace,
                 node="response_style_control",
-                result={"reason_code": "single_pass_model_prompt"},
+                result={
+                    "reason_code": (
+                        "single_pass_model_prompt"
+                        if self.humanizer is None
+                        else "runtime_soft_limit"
+                    )
+                },
             )
         else:
             interrupted = interrupt_if_step_not_claimed()

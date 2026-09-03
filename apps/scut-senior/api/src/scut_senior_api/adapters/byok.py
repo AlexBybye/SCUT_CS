@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import inspect
 import json
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -72,7 +73,7 @@ class FixedByokModelGateway:
         self,
         *,
         http_client: JsonHttpClient | None = None,
-        timeout_seconds: float = 60.0,
+        timeout_seconds: float = 120.0,
         catalog: ByokProviderCatalog | None = None,
     ):
         self._http_client = http_client or UrllibJsonHttpClient()
@@ -80,6 +81,10 @@ class FixedByokModelGateway:
         # Call defaults (max_tokens / temperature) come from the fixed catalog
         # so the request builder never hard-codes provider defaults.
         self._catalog = catalog or ByokProviderCatalog()
+        self._transport_accepts_cancel_check = (
+            "cancel_check"
+            in inspect.signature(self._http_client.post_json).parameters
+        )
 
     def generate(
         self,
@@ -114,17 +119,23 @@ class FixedByokModelGateway:
             history,
             max_tokens=model_entry.default_max_tokens,
             temperature=model_entry.default_temperature,
+            reasoning_effort=model_entry.reasoning_effort,
         )
         try:
-            response = self._http_client.post_json(
-                route.endpoint,
-                headers={
+            request_options = {
+                "headers": {
                     "Authorization": f"Bearer {api_key}",
                     "Content-Type": "application/json",
                     "Accept": "application/json",
                 },
-                payload=payload,
-                timeout_seconds=self._timeout_seconds,
+                "payload": payload,
+                "timeout_seconds": self._timeout_seconds,
+            }
+            if self._transport_accepts_cancel_check:
+                request_options["cancel_check"] = cancel_check
+            response = self._http_client.post_json(
+                route.endpoint,
+                **request_options,
             )
         except Exception as exc:
             if is_timeout_transport_error(exc):
@@ -150,6 +161,7 @@ def _build_byok_request(
     *,
     max_tokens: int,
     temperature: float,
+    reasoning_effort: str | None = None,
 ) -> dict[str, object]:
     workflow_focus = build_workflow_focus(request)
     response_controls = build_response_control_directive(request)
@@ -193,6 +205,8 @@ def _build_byok_request(
         "max_tokens": max_tokens,
         "temperature": temperature,
     }
+    if reasoning_effort is not None:
+        payload["reasoning_effort"] = reasoning_effort
     return payload
 
 

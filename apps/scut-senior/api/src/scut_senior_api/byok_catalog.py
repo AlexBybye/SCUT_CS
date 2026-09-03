@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, replace
 from enum import StrEnum
+from typing import Literal
 
 
 BYOK_CATALOG_VERSION = "byok-models-v4"
@@ -48,6 +49,7 @@ class ByokModelEntry:
     supports_structured_outputs: bool = True
     default_max_tokens: int = 2048
     default_temperature: float = 0.2
+    reasoning_effort: Literal["low", "high", "max"] | None = None
 
     def as_public_dict(self) -> dict[str, str]:
         return {
@@ -97,7 +99,8 @@ _BYOK_PROVIDER_ENTRIES = (
                 # DeepSeek is a reasoning model: its thinking consumes part of
                 # the token budget, so a small max_tokens can return an empty
                 # final ``content``. Keep headroom for reasoning + answer.
-                default_max_tokens=16384,
+                default_max_tokens=12288,
+                reasoning_effort="low",
             ),
         ),
     ),
@@ -112,7 +115,8 @@ _BYOK_PROVIDER_ENTRIES = (
                 company="DeepSeek",
                 display_name="DeepSeek V4 Flash",
                 # Same reasoning-model note as the OpenRouter DeepSeek route.
-                default_max_tokens=16384,
+                default_max_tokens=12288,
+                reasoning_effort="low",
             ),
         ),
     ),

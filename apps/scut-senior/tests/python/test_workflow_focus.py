@@ -153,6 +153,7 @@ def test_openrouter_and_byok_share_the_same_workflow_focus_directive(
             [],
             max_tokens=byok_entry.default_max_tokens,
             temperature=byok_entry.default_temperature,
+            reasoning_effort=byok_entry.reasoning_effort,
         ),
     ):
         messages = provider_payload["messages"]
