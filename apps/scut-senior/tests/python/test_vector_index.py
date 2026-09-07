@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import pytest
+
 from scut_senior_api.vector_index import build_candidate_vectors
 from scut_senior_api.vector_store import VectorStore
 from scut_senior_worker.corpus_builder import _candidate_directory
@@ -17,6 +19,7 @@ class _FakeEmbedder:
 def test_build_candidate_vectors_writes_course_scoped_sqlite_files(tmp_path: Path) -> None:
     store, version, _ = _build_store(tmp_path, embedding_model_id="bge-small-zh-v1.5")
     candidate = _candidate_directory(store.resolve(), version)
+    (store / "active.json").unlink()
 
     count = build_candidate_vectors(candidate, _FakeEmbedder(), batch_size=1)
 
@@ -32,3 +35,38 @@ def test_build_candidate_vectors_writes_course_scoped_sqlite_files(tmp_path: Pat
         )
     finally:
         vector_store.close()
+
+
+class _FailingSecondBatchEmbedder(_FakeEmbedder):
+    def __init__(self) -> None:
+        self.calls = 0
+
+    def embed(self, texts):
+        self.calls += 1
+        if self.calls == 2:
+            raise RuntimeError("simulated embedding interruption")
+        return super().embed(texts)
+
+
+def test_vector_build_leaves_no_partial_files_when_embedding_fails(tmp_path: Path) -> None:
+    store, version, _ = _build_store(tmp_path, embedding_model_id="bge-small-zh-v1.5")
+    candidate = _candidate_directory(store.resolve(), version)
+    (store / "active.json").unlink()
+
+    with pytest.raises(RuntimeError, match="simulated embedding interruption"):
+        build_candidate_vectors(candidate, _FailingSecondBatchEmbedder(), batch_size=1)
+
+    assert not (candidate / "vectors").exists()
+    assert not list(candidate.glob(".vectors-*"))
+
+
+def test_vector_build_rejects_active_candidate(tmp_path: Path) -> None:
+    store, version, _ = _build_store(tmp_path, embedding_model_id="bge-small-zh-v1.5")
+    candidate = _candidate_directory(store.resolve(), version)
+    (store / "active.json").unlink()
+    (store / "active.json").write_text(
+        '{"active_corpus_version": "' + version + '"}', encoding="utf-8"
+    )
+
+    with pytest.raises(ValueError, match="active corpus"):
+        build_candidate_vectors(candidate, _FakeEmbedder())

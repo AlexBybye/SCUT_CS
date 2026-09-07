@@ -464,7 +464,18 @@ function createAppStore() {
       !isLoadingModels.value &&
       Boolean(currentUser.value) &&
       Boolean(selectedCourse.value?.selectable) &&
-      Boolean(selectedModel.value?.user_selectable),
+      Boolean(selectedModel.value?.user_selectable) &&
+      Boolean(userInput.value.trim()) &&
+      (workflowType.value !== "mistake_review" || Boolean(originalAnswer.value.trim())) &&
+      (!crossCourseSearchEnabled.value || (
+        ["knowledge_qa", "problem_tutor"].includes(workflowType.value) &&
+        new Set(selectedCourseIds.value).size >= 2 &&
+        selectedCourseIds.value.every((courseId) =>
+          courses.value.some(
+            (course) => course.course_id === courseId && course.selectable,
+          ),
+        )
+      )),
   );
   const runtimeNoticeTitle = computed(() =>
     selectedModelIsMock.value
@@ -873,6 +884,18 @@ function createAppStore() {
     if (!selectedCourse.value?.selectable) return courseSelectionError(selectedCourse.value);
     if (!selectedModel.value?.user_selectable) return "请选择一个当前可用的模型。";
     if (!userInput.value.trim()) return `请填写${activeWorkflow.value.inputLabel}。`;
+    if (crossCourseSearchEnabled.value) {
+      if (!["knowledge_qa", "problem_tutor"].includes(workflowType.value)) {
+        return "当前仅知识问答和题目辅导支持跨课程检索。";
+      }
+      const selectedIds = [...new Set(selectedCourseIds.value)];
+      if (selectedIds.length < 2) return "跨课程检索请至少选择两门课程。";
+      if (selectedIds.some((courseId) => !courses.value.some(
+        (course) => course.course_id === courseId && course.selectable,
+      ))) {
+        return "跨课程检索中包含不可用课程，请重新选择。";
+      }
+    }
     if (workflowType.value === "mistake_review" && !originalAnswer.value.trim()) {
       return "错题复盘需要填写原答案。";
     }

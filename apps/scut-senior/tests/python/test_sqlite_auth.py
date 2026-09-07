@@ -454,6 +454,34 @@ def test_cleanup_removes_dead_auth_records_but_preserves_users(tmp_path: Path) -
     assert repository.authenticate_session(expired_session.token) is None
 
 
+def test_auth_cleanup_physically_removes_expired_byok_credentials(tmp_path: Path) -> None:
+    clock = MutableClock(datetime(2026, 8, 15, 10, 0, tzinfo=UTC))
+    repository = SQLiteWorkflowRepository(tmp_path / "expired-byok.db", clock=clock)
+    user_id = repository.upsert_github_user(
+        GitHubUserProfile(111112, "expired-byok-user", None)
+    )
+    repository.upsert_model_credential(
+        user_id=user_id,
+        provider_id="openrouter",
+        display_name="OpenRouter",
+        base_url="https://openrouter.ai/api/v1",
+        model_id="deepseek/deepseek-v4-flash-0731",
+        protocol="openai_chat_completions",
+        ciphertext=b"x" * 32,
+        nonce=b"y" * 12,
+        algorithm="AES-256-GCM",
+        key_version=1,
+    )
+    clock.advance(timedelta(days=366))
+
+    repository.cleanup_auth_records()
+
+    with connect(repository.database_path) as connection:
+        assert connection.execute(
+            "SELECT COUNT(*) FROM model_credentials"
+        ).fetchone()[0] == 0
+
+
 def test_auth_cleanup_runs_on_startup_and_before_new_state_or_session(
     tmp_path: Path,
 ) -> None:

@@ -92,8 +92,22 @@ class VectorStore:
         self._connection.commit()
 
     def bulk_upsert(self, records: Iterable[tuple[str, str, Sequence[float]]]) -> None:
+        prepared: list[tuple[str, str, bytes]] = []
         for chunk_id, course_id, vector in records:
-            self.upsert(chunk_id, course_id, vector)
+            values = list(vector)
+            if len(values) != self.dimensions:
+                raise ValueError(
+                    f"vector dimension {len(values)} != store dimension {self.dimensions}"
+                )
+            prepared.append(
+                (chunk_id, course_id, struct.pack(f"{self.dimensions}f", *values))
+            )
+        with self._connection:
+            self._connection.executemany(
+                "INSERT OR REPLACE INTO vectors (chunk_id, course_id, vector) "
+                "VALUES (?, ?, ?)",
+                prepared,
+            )
 
     def search(
         self,
