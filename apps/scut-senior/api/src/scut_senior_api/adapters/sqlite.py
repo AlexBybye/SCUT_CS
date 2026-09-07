@@ -425,6 +425,20 @@ class SQLiteWorkflowRepository:
                 "DELETE FROM auth_sessions WHERE revoked_at IS NOT NULL OR expires_at <= ?",
                 (now,),
             ).rowcount
+            tables = {
+                row["name"]
+                for row in connection.execute(
+                    "SELECT name FROM sqlite_master WHERE type = 'table'"
+                )
+            }
+            if "model_credentials" in tables:
+                # BYOK credentials are account-bound, so session cleanup cannot
+                # cascade to them.  Remove expired ciphertext on the same
+                # scheduled path instead of merely hiding it at read time.
+                connection.execute(
+                    "DELETE FROM model_credentials WHERE expires_at <= ?",
+                    (now,),
+                )
         return AuthCleanupCounts(states, sessions)
 
     def cleanup_history_records(self) -> HistoryCleanupCounts:
@@ -505,6 +519,13 @@ class SQLiteWorkflowRepository:
                 """,
                 (now, now),
             ).rowcount
+            if "contribution_attachments" in tables:
+                # Attachment payloads have their own TTL and are not covered
+                # by clearing a contribution's text snapshot.
+                connection.execute(
+                    "DELETE FROM contribution_attachments WHERE expires_at <= ?",
+                    (now,),
+                )
         return MaterialCleanupCounts(materials, cleared)
 
     # ------------------------------------------------------------------
@@ -647,6 +668,10 @@ class SQLiteWorkflowRepository:
             counts = {
                 "temporary_materials": connection.execute(
                     "DELETE FROM temporary_materials WHERE user_id = ?",
+                    (normalized_user_id,),
+                ).rowcount,
+                "private_knowledge_items": connection.execute(
+                    "DELETE FROM private_knowledge_items WHERE user_id = ?",
                     (normalized_user_id,),
                 ).rowcount,
                 "contributions": connection.execute(
@@ -1989,6 +2014,12 @@ class SQLiteWorkflowRepository:
         if decision not in {"confirmed", "edited", "rejected"}:
             raise ValueError("invalid exam plan decision")
         with self._connect() as connection:
+            owner = connection.execute(
+                "SELECT 1 FROM conversations WHERE conversation_id = ? AND user_id = ?",
+                (str(conversation_id), user_id),
+            ).fetchone()
+            if owner is None:
+                raise LookupError("conversation not found")
             connection.execute(
                 "INSERT INTO exam_plan_decisions "
                 "(decision_id, conversation_id, user_id, decision, plan_json, created_at) "

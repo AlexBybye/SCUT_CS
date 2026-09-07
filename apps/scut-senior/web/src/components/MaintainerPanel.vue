@@ -7,8 +7,9 @@ import {
   listMaintainerContributions,
   listMaintainerFeedback,
   transitionMaintainerContribution,
+  uploadMaintainerContributionAttachment,
 } from "../api";
-import type { ContributionRecord, FeedbackRecord } from "../contracts";
+import type { ContributionRecord, FeedbackRecord, MaintainerContributionDetail } from "../contracts";
 
 const items = ref<ContributionRecord[]>([]);
 const feedback = ref<FeedbackRecord[]>([]);
@@ -16,11 +17,13 @@ const courseNames = ref<Record<string, string>>({});
 const activeQueue = ref<"contributions" | "feedback">("contributions");
 const selectedFeedbackType = ref<string | null>(null);
 const selectedContribution = ref<ContributionRecord | null>(null);
-const detail = ref<ContributionRecord | null>(null);
+const detail = ref<MaintainerContributionDetail | null>(null);
 const loading = ref(true);
 const detailLoading = ref(false);
 const error = ref("");
 const busyId = ref("");
+const attachmentInput = ref<HTMLInputElement | null>(null);
+const attachmentExtensions = ".pdf,.png,.jpg,.jpeg,.webp,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.csv,.md,.txt";
 const feedbackLabels: Record<string, string> = {
   helpful: "有帮助",
   not_helpful: "没帮助",
@@ -80,6 +83,33 @@ async function exportItem(id: string): Promise<void> {
   } catch (cause) { error.value = cause instanceof Error ? cause.message : "导出失败。"; }
   finally { busyId.value = ""; }
 }
+async function uploadAttachments(event: Event): Promise<void> {
+  const input = event.target as HTMLInputElement;
+  const files = [...(input.files ?? [])];
+  const contribution = selectedContribution.value;
+  input.value = "";
+  if (!contribution || !files.length) return;
+  const invalid = files.find((file) => file.size > 10 * 1024 * 1024);
+  if (invalid) {
+    error.value = `“${invalid.name}”超过 10 MiB 限制。`;
+    return;
+  }
+  busyId.value = contribution.contribution_id;
+  error.value = "";
+  try {
+    const uploaded = [];
+    for (const file of files) {
+      uploaded.push(await uploadMaintainerContributionAttachment(contribution.contribution_id, file));
+    }
+    if (detail.value?.contribution_id === contribution.contribution_id) {
+      detail.value = { ...detail.value, attachments: [...detail.value.attachments, ...uploaded] };
+    }
+  } catch (cause) {
+    error.value = cause instanceof Error ? cause.message : "附件上传失败。";
+  } finally {
+    busyId.value = "";
+  }
+}
 onMounted(async () => {
   try {
     const [contributions, reports, courses] = await Promise.all([listMaintainerContributions(), listMaintainerFeedback(), getCourses()]);
@@ -115,6 +145,27 @@ onMounted(async () => {
       <section class="report-list" aria-label="题目反馈报告"><div class="section-heading"><h2>{{ selectedFeedbackType ? feedbackLabels[selectedFeedbackType] : '全部反馈' }}</h2><span>{{ filteredFeedback.length }} 条</span></div><p v-if="!filteredFeedback.length" class="empty">当前筛选下没有反馈。</p><article v-for="item in filteredFeedback" :key="item.feedback_id" class="report-card"><div class="report-card-head"><strong>{{ feedbackLabels[item.feedback_type] || item.feedback_type }}</strong><span>{{ courseName(item.course_id) }}</span></div><p>{{ item.note || "用户没有补充文字，但这条反馈仍值得结合原回答复核。" }}</p><dl><div><dt>回答类型</dt><dd>{{ item.workflow_type }}</dd></div><div><dt>回答状态</dt><dd>{{ item.answer_status }}</dd></div><div><dt>提交时间</dt><dd>{{ new Date(item.created_at).toLocaleString('zh-CN') }}</dd></div></dl></article></section>
     </template>
     <template v-else>
+      <input
+        ref="attachmentInput"
+        class="attachment-input"
+        type="file"
+        :accept="attachmentExtensions"
+        multiple
+        @change="uploadAttachments"
+      />
+      <div v-if="selectedContribution" class="attachment-upload-bar">
+        <span>
+          可为当前贡献补充审核附件：PDF、图片、Office、CSV、Markdown 或文本；单个文件最多 10 MiB。
+          <template v-if="detail?.attachments.length">已上传 {{ detail.attachments.length }} 个附件。</template>
+        </span>
+        <button
+          type="button"
+          :disabled="busyId === selectedContribution.contribution_id"
+          @click="attachmentInput?.click()"
+        >
+          选择并上传附件
+        </button>
+      </div>
       <section class="content-grid"><div class="contribution-list"><div class="section-heading"><h2>资料贡献</h2><span>{{ items.length }} 条记录</span></div><p v-if="!items.length" class="empty">还没有待处理的资料贡献。</p><button v-for="item in items" :key="item.contribution_id" type="button" class="contribution-row" :class="{ selected: selectedContribution?.contribution_id === item.contribution_id }" @click="selectContribution(item)"><span><strong>{{ item.title }}</strong><small>{{ courseName(item.course_id) }} · {{ item.state }}</small></span><small>{{ new Date(item.created_at).toLocaleDateString('zh-CN') }}</small></button></div><aside class="detail-panel" aria-label="贡献详情"><p v-if="!detail && !selectedContribution" class="empty">选择左侧一条贡献，查看正文和审核信息。</p><template v-else><div class="detail-head"><div><p class="eyebrow">贡献详情</p><h2>{{ (detail || selectedContribution)?.title }}</h2></div><span class="status">{{ (detail || selectedContribution)?.state }}</span></div><dl class="detail-facts"><div><dt>课程</dt><dd>{{ courseName((detail || selectedContribution)!.course_id) }}</dd></div><div><dt>字数</dt><dd>{{ (detail || selectedContribution)?.char_count }}</dd></div><div><dt>创建时间</dt><dd>{{ new Date((detail || selectedContribution)!.created_at).toLocaleString('zh-CN') }}</dd></div></dl><p v-if="detailLoading" class="state">正在读取详情...</p><p class="detail-copy">当前列表只返回审核所需的基本信息。正文请通过“导出审核包”下载后核对，避免在队列页面误展示未审核内容。</p><div class="actions"><button type="button" :disabled="busyId === selectedContribution?.contribution_id" @click="exportItem(selectedContribution!.contribution_id)">导出审核包</button><button v-if="selectedContribution?.state === 'submitted'" type="button" :disabled="busyId === selectedContribution?.contribution_id" @click="review(selectedContribution!.contribution_id, 'reject')">拒绝</button><button v-if="selectedContribution?.state === 'submitted'" type="button" :disabled="busyId === selectedContribution?.contribution_id" @click="review(selectedContribution!.contribution_id, 'mark_pr_open')">标记 PR</button><button v-if="selectedContribution?.state === 'pr_open'" type="button" :disabled="busyId === selectedContribution?.contribution_id" @click="review(selectedContribution!.contribution_id, 'merge')">标记采纳</button></div></template></aside></section>
     </template>
   </main>
@@ -382,6 +433,39 @@ onMounted(async () => {
 .content-grid {
   grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
   align-items: start;
+}
+
+.attachment-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+.attachment-upload-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1180px;
+  margin: 0 auto 16px;
+  padding: 12px 14px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-sm);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.attachment-upload-bar button {
+  flex: 0 0 auto;
+  padding: 8px 11px;
+  border: 1px solid var(--accent);
+  border-radius: var(--r-sm);
+  color: var(--accent);
+  background: var(--raised);
+  cursor: pointer;
 }
 
 .contribution-row {

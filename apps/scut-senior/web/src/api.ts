@@ -3,6 +3,7 @@ import type {
   ByokConnectionInput,
   ByokCredentialStatus,
   ByokProviderId,
+  ContributionAttachmentRecord,
   ContributionConfirmations,
   ContributionPreview,
   ContributionRecord,
@@ -53,7 +54,9 @@ export class ApiError extends Error {
 async function apiRequest<T>(path: string, init?: RequestInit): Promise<T> {
   const headers = new Headers(init?.headers);
   headers.set("Accept", "application/json");
-  if (init?.body) headers.set("Content-Type", "application/json");
+  if (init?.body && !(init.body instanceof FormData)) {
+    headers.set("Content-Type", "application/json");
+  }
 
   let response: Response;
   try {
@@ -335,6 +338,18 @@ export async function listMaintainerContributions(): Promise<ContributionRecord[
 
 export async function getMaintainerContribution(contributionId: string): Promise<MaintainerContributionDetail> {
   return apiRequest<MaintainerContributionDetail>(`/api/v1/maintainer/contributions/${encodeURIComponent(contributionId)}`);
+}
+
+export async function uploadMaintainerContributionAttachment(
+  contributionId: string,
+  file: File,
+): Promise<ContributionAttachmentRecord> {
+  const form = new FormData();
+  form.append("file", file, file.name);
+  return apiRequest<ContributionAttachmentRecord>(
+    `/api/v1/maintainer/contributions/${encodeURIComponent(contributionId)}/attachments`,
+    { method: "POST", body: form },
+  );
 }
 
 export async function listMaintainerFeedback(): Promise<FeedbackRecord[]> {

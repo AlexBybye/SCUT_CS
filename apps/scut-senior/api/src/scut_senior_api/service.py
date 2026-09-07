@@ -692,6 +692,7 @@ class IterationZeroService:
             workflow_runs=counts["workflow_runs"],
             feedback=counts["feedback"],
             temporary_materials=counts["temporary_materials"],
+            private_knowledge_items=counts["private_knowledge_items"],
             contributions=counts["contributions"],
             model_credentials=counts["model_credentials"],
             auth_sessions=counts["auth_sessions"],

@@ -4,8 +4,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+import shutil
 from collections import defaultdict
 from pathlib import Path
+from tempfile import mkdtemp
 from typing import Iterable
 
 from .adapters.onnx import OnnxEmbeddingProvider
@@ -19,13 +22,18 @@ def build_candidate_vectors(
     *,
     batch_size: int = 32,
 ) -> int:
-    """Write one vector SQLite file per course and return vector count."""
+    """Atomically publish one vector SQLite file per inactive candidate course."""
     if isinstance(batch_size, bool) or batch_size < 1:
         raise ValueError("vector batch_size must be positive")
     candidate = candidate_path.resolve()
     metadata = json.loads((candidate / "metadata.json").read_text(encoding="utf-8"))
     if metadata.get("embedding_model_id") != embedding.model_id:
         raise ValueError("candidate embedding_model_id does not match provider")
+    active_path = candidate.parent.parent / "active.json"
+    if active_path.is_file():
+        active = json.loads(active_path.read_text(encoding="utf-8"))
+        if active.get("active_corpus_version") == metadata.get("corpus_version"):
+            raise ValueError("cannot build vectors for the active corpus candidate")
     total = 0
     by_course: dict[str, list[dict[str, object]]] = defaultdict(list)
     for course_file in sorted((candidate / "courses").glob("*.json")):
@@ -35,30 +43,37 @@ def build_candidate_vectors(
         if not isinstance(course_id, str) or not isinstance(chunks, list):
             raise ValueError(f"invalid course payload: {course_file.name}")
         by_course[course_id].extend(chunk for chunk in chunks if isinstance(chunk, dict))
-    for course_id, chunks in by_course.items():
-        vector_path = candidate / "vectors" / f"{course_id}.db"
-        vector_path.parent.mkdir(parents=True, exist_ok=True)
-        store = VectorStore(
-            vector_path, dimensions=embedding.dimensions, model_id=embedding.model_id
-        )
-        try:
-            for offset in range(0, len(chunks), batch_size):
-                batch = chunks[offset : offset + batch_size]
-                texts = [_chunk_text(chunk) for chunk in batch]
-                vectors = embedding.embed(texts)
-                if len(vectors) != len(batch):
-                    raise ValueError("embedding provider returned an unexpected batch size")
-                store.bulk_upsert(
-                    (
-                        str(chunk["chunk_id"]),
-                        course_id,
-                        vector,
+    staging = Path(mkdtemp(prefix=".vectors-", dir=candidate))
+    try:
+        for course_id, chunks in by_course.items():
+            vector_path = staging / f"{course_id}.db"
+            store = VectorStore(
+                vector_path, dimensions=embedding.dimensions, model_id=embedding.model_id
+            )
+            try:
+                for offset in range(0, len(chunks), batch_size):
+                    batch = chunks[offset : offset + batch_size]
+                    texts = [_chunk_text(chunk) for chunk in batch]
+                    vectors = embedding.embed(texts)
+                    if len(vectors) != len(batch):
+                        raise ValueError("embedding provider returned an unexpected batch size")
+                    store.bulk_upsert(
+                        (
+                            str(chunk["chunk_id"]),
+                            course_id,
+                            vector,
+                        )
+                        for chunk, vector in zip(batch, vectors)
                     )
-                    for chunk, vector in zip(batch, vectors)
-                )
-                total += len(batch)
-        finally:
-            store.close()
+                    total += len(batch)
+            finally:
+                store.close()
+        vectors_root = candidate / "vectors"
+        vectors_root.mkdir(parents=True, exist_ok=True)
+        for vector_path in staging.glob("*.db"):
+            os.replace(vector_path, vectors_root / vector_path.name)
+    finally:
+        shutil.rmtree(staging, ignore_errors=True)
     return total
 
 

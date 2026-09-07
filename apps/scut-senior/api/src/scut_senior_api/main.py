@@ -163,7 +163,9 @@ def _find_stream_session(
 
 
 OAUTH_STATE_COOKIE_NAME = "__Host-scut_senior_oauth_state"
-MAX_REQUEST_BODY_BYTES = 2 * 1024 * 1024
+# Attachments are capped at 10 MiB.  Leave room for multipart boundaries and
+# headers so a valid maximum-size upload reaches the endpoint's own check.
+MAX_REQUEST_BODY_BYTES = 11 * 1024 * 1024
 MAX_BUFFERED_REQUEST_MESSAGES = 4096
 
 
