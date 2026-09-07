@@ -186,6 +186,25 @@ cd apps/scut-senior/web
 npm run dev
 ```
 
+Windows 两进程调试可直接运行（只加载 `.local/env.online`，不使用 `.ps1`）：
+
+```cmd
+cd apps\scut-senior
+scripts\debug-windows.cmd
+```
+
+一键启动 API、Vite、Funnel 并打开公网页面：
+
+```cmd
+scripts\start-all-windows.cmd
+```
+
+需要同时启用 Tailscale Funnel 时，请从管理员终端运行：
+
+```cmd
+scripts\debug-windows.cmd --funnel
+```
+
 默认 API 为 `http://127.0.0.1:8000`，Vite 开发服务器代理 `/api`。本地 SQLite、上传附件、日志和缓存写入 `apps/scut-senior/.local/`，不会提交到 Git。
 
 ## 常用命令
