@@ -23,6 +23,10 @@ from .openrouter import HttpResponse, JsonHttpClient, UrllibJsonHttpClient
 
 DEFAULT_BYOK_MAX_TOKENS = 12_288
 DEFAULT_BYOK_TEMPERATURE = 0.2
+DEEPSEEK_DIRECT_BASE_URL = "https://api.deepseek.com"
+DEEPSEEK_DIRECT_MODEL_ID = "deepseek-v4-flash"
+DEEPSEEK_ANSWER_MAX_TOKENS = 8_192
+DEEPSEEK_REASONING_EFFORT = "low"
 
 
 class FailClosedJsonHttpClient:
@@ -47,7 +51,7 @@ class OpenAICompatibleByokGateway:
         self,
         *,
         http_client: JsonHttpClient | None = None,
-        timeout_seconds: float = 120.0,
+        timeout_seconds: float = 180.0,
     ):
         self._http_client = http_client or UrllibJsonHttpClient()
         self._timeout_seconds = timeout_seconds
@@ -65,6 +69,7 @@ class OpenAICompatibleByokGateway:
         sources: list[RetrievedSource],
         history: tuple[ConversationTurn, ...] = (),
         cancel_check: Callable[[], bool] | None = None,
+        timeout_seconds: float | None = None,
     ) -> GeneratedAnswer:
         if (
             request.provider_id != connection.provider_id
@@ -84,13 +89,6 @@ class OpenAICompatibleByokGateway:
                 code="invalid_model_credential",
                 detail="已保存的 API Key 无效，请重新保存。",
             ) from None
-        payload = _build_byok_request(
-            request,
-            sources,
-            history,
-            max_tokens=DEFAULT_BYOK_MAX_TOKENS,
-            temperature=DEFAULT_BYOK_TEMPERATURE,
-        )
         try:
             base_url = normalize_base_url(connection.base_url)
         except ModelCredentialError:
@@ -99,7 +97,25 @@ class OpenAICompatibleByokGateway:
                 code="invalid_byok_base_url",
                 detail="已保存的 API 地址无效，请重新保存该连接。",
             ) from None
+        direct_deepseek = _is_direct_deepseek(connection, base_url=base_url)
+        payload = _build_byok_request(
+            request,
+            sources,
+            history,
+            max_tokens=(
+                DEEPSEEK_ANSWER_MAX_TOKENS
+                if direct_deepseek
+                else DEFAULT_BYOK_MAX_TOKENS
+            ),
+            temperature=DEFAULT_BYOK_TEMPERATURE,
+            reasoning_effort=(
+                DEEPSEEK_REASONING_EFFORT if direct_deepseek else None
+            ),
+        )
         endpoint = f"{base_url}/chat/completions"
+        effective_timeout = _effective_timeout(
+            self._timeout_seconds, timeout_seconds
+        )
         try:
             request_options = {
                 "headers": {
@@ -108,7 +124,7 @@ class OpenAICompatibleByokGateway:
                     "Accept": "application/json",
                 },
                 "payload": payload,
-                "timeout_seconds": self._timeout_seconds,
+                "timeout_seconds": effective_timeout,
             }
             if self._transport_accepts_cancel_check:
                 request_options["cancel_check"] = cancel_check
@@ -186,6 +202,32 @@ def _build_byok_request(
     if reasoning_effort is not None:
         payload["reasoning_effort"] = reasoning_effort
     return payload
+
+
+def _effective_timeout(configured: float, remaining: float | None) -> float:
+    if remaining is None:
+        return configured
+    if remaining <= 0:
+        raise ByokGatewayError(
+            status_code=504,
+            code="byok_provider_timeout",
+            detail="模型供应商响应超时，请稍后重试。",
+        )
+    return min(configured, remaining)
+
+
+def _is_direct_deepseek(
+    connection: StoredModelCredential,
+    *,
+    base_url: str,
+) -> bool:
+    """Detect the server-owned DeepSeek capability independent of connection ID."""
+
+    return (
+        base_url == DEEPSEEK_DIRECT_BASE_URL
+        and connection.model_id == DEEPSEEK_DIRECT_MODEL_ID
+        and connection.protocol == "openai_chat_completions"
+    )
 
 
 def _safe_byok_upstream_error(status_code: int) -> ByokGatewayError:

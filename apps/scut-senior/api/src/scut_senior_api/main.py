@@ -40,6 +40,7 @@ from .adapters.openrouter import (
     JsonHttpClient,
     OpenRouterGatewayError,
     OpenRouterModelGateway,
+    UrllibJsonHttpClient,
 )
 from .adapters.openrouter_health import OpenRouterCatalogHealthChecker
 from .adapters.zhipu import ZhipuPlatformGatewayError, ZhipuPlatformModelGateway
@@ -63,6 +64,7 @@ from .auth import (
     utc_now,
 )
 from .config import Settings
+from .cancellable_http import CancellableJsonHttpClient
 
 LOGGER = logging.getLogger("scut_senior.api")
 from .course_availability import (
@@ -272,6 +274,10 @@ def create_app(
 ) -> FastAPI:
     active_settings = settings or Settings.from_env()
     active_settings.assert_safe()
+    if active_settings.app_env != "test" and byok_http_client is None:
+        # Enforce the complete provider-call wall clock even when no client
+        # cancellation callback is present. The run-level ceiling is 180s.
+        byok_http_client = CancellableJsonHttpClient(UrllibJsonHttpClient())
     registry = CourseRegistry.load()
     mock_identity = MockIdentityProvider().current_user()
     embedding = None

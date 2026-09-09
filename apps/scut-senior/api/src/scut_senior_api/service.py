@@ -925,6 +925,22 @@ class IterationZeroService:
         agent_budget = AgentBudget()
         agent_state = AgentState()
         agent_started = perf_counter()
+        answer_call_count = 0
+
+        def optional_model_work_allowed() -> bool:
+            return (
+                answer_call_count < agent_budget.max_answer_calls
+                and agent_budget.allows_optional_call(
+                    perf_counter() - agent_started
+                )
+            )
+
+        def remaining_runtime_seconds() -> float:
+            return max(
+                0.0,
+                agent_budget.max_runtime_seconds
+                - (perf_counter() - agent_started),
+            )
 
         def reduce_agent(kind: str, **payload: object) -> None:
             nonlocal agent_state
@@ -1302,12 +1318,13 @@ class IterationZeroService:
                 if interrupted is not None:
                     return interrupted
                 try:
+                    answer_call_count += 1
                     if use_user_key:
                         assert api_key is not None
                         # 迭代 7.5：断开/取消时尽力中止上游等待（cancel_check
                         # 由可取消 transport 周期检查；结果被弃置不落库）。
                         cancel_check = (
-                            stream_session.cancelled
+                            (lambda: stream_session.cancelled)
                             if stream_session is not None
                             else None
                         )
@@ -1318,6 +1335,7 @@ class IterationZeroService:
                             sources=sources,
                             history=history,
                             cancel_check=cancel_check,
+                            timeout_seconds=remaining_runtime_seconds(),
                         )
                     else:
                         platform_model = (
@@ -1331,7 +1349,7 @@ class IterationZeroService:
                             sources,
                             history=history,
                             cancel_check=(
-                                stream_session.cancelled
+                                (lambda: stream_session.cancelled)
                                 if stream_session is not None
                                 else None
                             ),
@@ -1342,6 +1360,7 @@ class IterationZeroService:
                         return interrupted
                     if (
                         retry_count >= 1
+                        or not optional_model_work_allowed()
                         or not _is_retryable_model_output_error(model_error)
                     ):
                         raise
@@ -1380,7 +1399,7 @@ class IterationZeroService:
                         # failing the run after a long model call.
                         guarded = _empty_candidate_insufficient_evidence()
                         break
-                    if retry_count >= 1:
+                    if retry_count >= 1 or not optional_model_work_allowed():
                         interrupted = persist_failed_or_interrupted(
                             failure_node="citation_guard",
                             duration_ms=_elapsed_ms(started),
@@ -1491,7 +1510,7 @@ class IterationZeroService:
             max_items=32,
         )
         original_blocks = [block.model_copy(deep=True) for block in guarded.blocks]
-        if self.humanizer is None:
+        if self.humanizer is None or not optional_model_work_allowed():
             interrupted = finish_interrupted()
             if interrupted is not None:
                 return interrupted
@@ -1499,7 +1518,13 @@ class IterationZeroService:
             _append_trace(
                 trace,
                 node="response_style_control",
-                result={"reason_code": "single_pass_model_prompt"},
+                result={
+                    "reason_code": (
+                        "single_pass_model_prompt"
+                        if self.humanizer is None
+                        else "runtime_soft_limit"
+                    )
+                },
             )
         else:
             interrupted = interrupt_if_step_not_claimed()

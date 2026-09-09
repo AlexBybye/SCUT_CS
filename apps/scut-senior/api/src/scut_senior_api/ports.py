@@ -139,6 +139,7 @@ class UserKeyModelGateway(Protocol):
         sources: list[RetrievedSource],
         history: tuple[ConversationTurn, ...] = (),
         cancel_check: Callable[[], bool] | None = None,
+        timeout_seconds: float | None = None,
     ) -> GeneratedAnswer: ...
 
 

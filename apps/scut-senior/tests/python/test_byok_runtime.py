@@ -199,10 +199,15 @@ def test_custom_byok_connections_use_the_saved_endpoint_and_model(
     assert call["url"] == endpoint
     assert call["headers"]["Authorization"] == f"Bearer {api_key}"
     assert call["payload"]["model"] == model_id
-    assert call["timeout_seconds"] == 120.0
-    assert call["payload"]["max_tokens"] == 12288
+    assert call["timeout_seconds"] <= 180.0
+    assert call["timeout_seconds"] > 0
+    if endpoint == "https://api.deepseek.com/chat/completions":
+        assert call["payload"]["max_tokens"] == 8192
+        assert call["payload"]["reasoning_effort"] == "low"
+    else:
+        assert call["payload"]["max_tokens"] == 12288
+        assert "reasoning_effort" not in call["payload"]
     assert call["payload"]["temperature"] == 0.2
-    assert "reasoning_effort" not in call["payload"]
     assert "models" not in call["payload"]
     assert "fallbacks" not in call["payload"]
     assert "base_url" not in call["payload"]
@@ -229,6 +234,37 @@ def test_custom_byok_connections_use_the_saved_endpoint_and_model(
             for value in row
         )
     assert api_key not in persisted
+
+
+def test_deepseek_direct_profile_does_not_depend_on_connection_id(
+    tmp_path: Path,
+) -> None:
+    http = RecordingHttpClient()
+    _, client, _, conversation_id = authenticated_app(tmp_path, http)
+    connection_id = "my-deepseek"
+    model_id = "deepseek-v4-flash"
+    assert client.put(
+        f"/api/v1/model-credentials/{connection_id}",
+        json=credential_payload(
+            connection_id,
+            "sk-deepseek-alias",
+            model_id=model_id,
+            base_url="https://api.deepseek.com",
+        ),
+    ).status_code == 200
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(conversation_id, connection_id, model_id),
+    )
+
+    assert response.status_code == 201, response.text
+    assert len(http.calls) == 1
+    call = http.calls[0]
+    assert call["url"] == "https://api.deepseek.com/chat/completions"
+    assert call["payload"]["max_tokens"] == 8192
+    assert call["payload"]["reasoning_effort"] == "low"
+    assert 0 < call["timeout_seconds"] <= 180
 
 
 def test_byok_accepts_a_plain_text_complex_answer_without_retry(tmp_path: Path) -> None:
