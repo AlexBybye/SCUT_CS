@@ -3,28 +3,30 @@
 > **覆盖专业**：计算机类、计算机科学与技术、网络工程、信息安全等。 
  
 >**关键词**：SCUT, 华南理工大学, 计院, 历年卷, 期末复习, 实验报告, 课设, 华为智能基座。
+
 <img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=/SCUTCSWeaver/SCUT_CS">
 
 [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 ![index](resources_for_repo/index.png)
 
 ## 项目概览
-欢迎来到华南理工大学计算机科学与工程学院学习资料汇总仓库！这里是专属于 SCUTCSer 的全新’‘鲤工包打听’‘，旨在为同学们提供丰富、实用的学习资料 。**本仓库亦作为华南理工华为智能基座内部开源资料及2026-2027年度试维护项目（即第三期仓库）。欢迎加入SCUT华为智能基座的“特工组”，享受全部免费的资料！**
+欢迎来到华南理工大学计算机科学与工程学院学习方仓！这里是专属于 SCUTCSer 的’‘鲤工包打听’‘，旨在为同学们提供丰富、实用的学习资料 。**本仓库亦作为华南理工华为智能基座内部开源资料及2026-2027年度试维护项目（即第三期仓库）。欢迎加入SCUT华为智能基座的“特工组”，享受全部免费的资料！**
 ## 项目目的 
 #### 本人遍览Github所有相关项目，发现基本存在以下痛点：
 - 更新时间古早，不具有时效性
 - 并非计院仓库，不具有针对性
 - 备考资料收费，不具有开源性
 
-## 📚 课程资源概览 (务必查看使用攻略)
+##  课程资源概览 (务必查看仓库使用攻略)
 
-> **💡 搜索指南**：本仓库已覆盖华南理工大学计算机学院核心课程及公共课，支持通过 `Ctrl+F` 快速检索学科关键词。
-> **项目阶段**：第三期试维护阶段（目标规模 15G），资源持续扩充中。
+> **搜索指南**：本仓库已覆盖华南理工大学计算机学院核心课程及公共课，支持通过 `Ctrl+F` 快速检索学科关键词。
+
+> **项目阶段**：第三期维护阶段（仓库规模约20G+），资源持续扩充中。
 
 <details>
-<summary><b>🚀 点击展开:查看已覆盖的 50+ 门学科列表 (含历年卷/笔记/实验)</b></summary>
+<summary><b> 点击展开:查看已覆盖的 50+ 门学科列表 (含历年卷/笔记/实验)</b></summary>
 
-### 🖥️ 专业核心课 (Core CS Courses)
+###  专业核心课 (Core CS Courses)
 > *涵盖计院本科阶段重难点，包含大量实验报告及代码实现*
 
 - `计算机网络（全英 & 普通）` `数据结构` `数据结构课程设计` `计算机组成原理` 
@@ -35,7 +37,7 @@
 
 ---
 
-### 💻 编程与开发 (Programming & Tech)
+###  编程与开发 (Programming & Tech)
 > *从零基础入门到高阶智能算法*
 
 - `C++（上及下）` `Java` `Python 程序设计` `Android 开发` `IT 前沿技术` 
@@ -43,7 +45,7 @@
 
 ---
 
-### 📐 数学与物理 (Math & Physics)
+###  数学与物理 (Math & Physics)
 > *SCUTCSer 挂科重灾区，提供详尽的刷题记录与实验合辑*
 
 - `工科数学分析 I & II` `线性代数` `概率论` `离散数学` `信息安全数学基础` 
@@ -51,7 +53,7 @@
 
 ---
 
-### 🚩 公共基础与素质课 (General Education)
+###  公共基础与素质课 (General Education)
 > *打破信息差，助力绩点提升*
 
 - **思政类**：`习概` `国史` `思想道德与法治` `毛概` `近代史` `马原`
@@ -60,12 +62,13 @@
 
 ---
 
-### 🔄 持续更新中
+###  持续更新中
 > 更多学科资料正在由诸多学长逐步录入。如果你有珍贵的资料愿意分享，欢迎提交 PR 或联系组织成员加入“特工组”！
 
 </details>
+<br/>
 <details>
-<summary><b>📂 点击展开:仓库使用攻略(⚠ ⚠ ⚠ 请务必查看此条)</b></summary>
+<summary><b> 点击展开:仓库使用攻略(⚠ ⚠ ⚠ 请务必查看此条)</b></summary>
 
 ## 使用攻略
 #### 1.仓库内容（主干位于学科资料文件夹下）
@@ -79,7 +82,7 @@
 ##### III.学科作业（平时/实验报告/课程设计）/考试高度总结笔记（加密）
 **加密原因:**
  - 1：避免平时作业出现大量重复情况，以至于**院方**可能对此采取措施，节外生枝
- - 2：高度总结笔记一般每科平均2-4面，可以节省大量的知识点复习时间，高效复习，但存在破坏复习平衡的可能，可以去看KK学长的语雀笔记代替哦！
+ - 2：高度总结笔记一般每科平均2-4面，可以节省大量的知识点复习时间，高效复习，但存在破坏复习平衡的可能，为避免不必要的麻烦而加密，大家可以去看KK学长的语雀笔记代替哦！
  - 3：作业有开源人的信息，此部分未毕业前加密。
  - 4：介于git-lfs限额问题，加密资料现开放通过**付费**获取⬇️，金额将全部用于git-lfs期末月的限额拓展...
  - 1科 - 1USD - 7
@@ -126,8 +129,9 @@ SCUT 老学长已完成 PLAN-3：在单课程问答、考试复习、错题讲�
 - 整体download下载具有不实时性，且会占用大量的git-lfs限额。在本仓库资源并未稳定的情况下，至少2027年前不建议整体下载本地。
 
 </details>
+<br/>
 <details>
-<summary><b>📅 点击展开:项目开发计划书</b></summary>
+<summary><b> 点击展开:项目开发计划书</b></summary>
 
 ## 项目开发阶段概览
 ##### 一期仓库初期规模5.73G，最终在12.9G时发觉现有方式难以满足需求，进行迭代。此期内容为1-4学期，此阶段加密采用统一字符，并未开源上机考试，并未涵盖高度复习笔记
@@ -150,22 +154,39 @@ SCUT 老学长已完成 PLAN-3：在单课程问答、考试复习、错题讲�
 <a href="https://github.com/AlexBybye/How_Git-">
   <img align="center" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=alexbybye&repo=How_Git-&theme=slateorange" />
 </a>
+<br/>
+<br/>
 
 **注意：校内查重以及维普查重一般公共课较多，本仓库虽然可以节省你的时间，但是也请为自己的行为负责，不如站在前人的肩膀上**
 
 # 请 诚 信 学 习 ！
 
-## 支持我们
-如果觉得仓库内容有帮助，可通过 *buy us a coffee*,**如果有相关自愿捐赠，将全额用于此仓库git-lfs限额期末月拓展、RAG后续迭代开发以及服务器筹备搭建**，你的支持会让我们更有动力完善资料～ 
+## 支持我们⬇️
+如果觉得仓库内容有帮助，可通过 **buy us a coffee**, 如果有相关自愿捐赠，**将全额用于此仓库git-lfs限额期末月拓展、RAG后续迭代开发以及服务器筹备搭建，你的支持会让我们更有动力完善资料～** 
+<details>
+<summary><b> 点击展开：支持方式</b></summary>
+
 
 **By wechat（通过与相关负责人联系，一般为现任主席）:**
-- 注意：此方式需要人工联系我们开发组；
 <a href="https://github.com/SCUTCSWeaver/SCUT_CS/blob/master/resources_for_repo/sponsorship.jpg">
-<img src= "https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png">
+<img src= "https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" width="160px" align="right">
 </a>
+<br/>
+
+- 注意：此方式需要人工联系我们开发组；
+
+<tr>
+
 
 **如果有Visa等，你也可以通过github渠道来自愿捐赠，这可以额外让你获取sponsor徽章！**
-- 注意：此方式需要查看你的github关联邮箱！接收我们自动化邮件并按指引回复；
-[![GitHub Sponsors](https://img.shields.io/badge/Sponsor-AlexBybye-ea4aaa?style=for-the-badge&logo=github-sponsors&logoColor=white)](https://github.com/sponsors/AlexBybye)
+<a href="https://github.com/sponsors/AlexBybye">
+<img src= "https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" width="160px" align="right">
+</a>
+<br/>
 
-若使用中遇问题或有建议，欢迎随时反馈，期待你我共同完善这份学习资料宝库！
+- 注意：此方式需要查看你的github关联邮箱！接收我们自动化邮件并按指引回复；
+
+</details>
+<br/>
+
+若使用中遇问题或有建议，欢迎随时反馈，期待你我共同完善这份学习资料宝库！♥️ 
