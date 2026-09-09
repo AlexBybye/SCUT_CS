@@ -94,6 +94,10 @@ class HumanizerGateway(Protocol):
 class StoredModelCredential:
     user_id: UUID
     provider_id: str
+    display_name: str
+    base_url: str
+    model_id: str
+    protocol: str
     ciphertext: bytes = field(repr=False)
     nonce: bytes = field(repr=False)
     algorithm: str
@@ -130,6 +134,7 @@ class UserKeyModelGateway(Protocol):
         self,
         *,
         api_key: str,
+        connection: StoredModelCredential,
         request: WorkflowRunRequest,
         sources: list[RetrievedSource],
         history: tuple[ConversationTurn, ...] = (),
@@ -228,6 +233,10 @@ class ModelCredentialRepository(Protocol):
         *,
         user_id: UUID,
         provider_id: str,
+        display_name: str,
+        base_url: str,
+        model_id: str,
+        protocol: str,
         ciphertext: bytes,
         nonce: bytes,
         algorithm: str,

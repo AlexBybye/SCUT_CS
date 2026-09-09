@@ -1,8 +1,6 @@
 import { ApiError } from "./api";
-import { FROZEN_BYOK_PROVIDERS } from "./byokCatalog";
 import type {
   AnswerMode,
-  ByokProviderId,
   HelpLevel,
   ModelCatalog,
   ModelCatalogItem,
@@ -32,16 +30,16 @@ export const FAIL_CLOSED_MODEL_CATALOG: ModelCatalog = {
   real_platform_default_available: false,
   health_checked_at: null,
   byok_available: false,
-  byok_catalog_version: "byok-models-v4-fail-closed",
-  byok_providers: FROZEN_BYOK_PROVIDERS,
+  byok_catalog_version: "byok-connections-unavailable",
+  byok_providers: [],
   quota_notice: "模型目录尚未加载；平台与 BYOK 模型请求均保持关闭。",
   quota_exhausted_message:
     "今日平台免费额度已用完，第二天再来重试吧！着急请使用你自己的 API Key。",
   models: [],
 };
 
-export function emptyByokKeyDrafts(): Record<ByokProviderId, string> {
-  return { openrouter: "", deepseek: "", siliconflow: "", zhipu: "" };
+export function emptyByokKeyDrafts(): Record<string, string> {
+  return {};
 }
 
 export const workflowCopy: Record<

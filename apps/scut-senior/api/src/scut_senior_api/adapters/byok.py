@@ -1,14 +1,17 @@
 from __future__ import annotations
 
+import inspect
 import json
 from collections.abc import Callable
-from dataclasses import dataclass
-from typing import Mapping
-
-from ..byok_catalog import ByokProviderCatalog
 from ..contracts import WorkflowRunRequest
 from ..credentials import validate_user_api_key
-from ..ports import ConversationTurn, GeneratedAnswer, RetrievedSource
+from ..model_credentials import ModelCredentialError, normalize_base_url
+from ..ports import (
+    ConversationTurn,
+    GeneratedAnswer,
+    RetrievedSource,
+    StoredModelCredential,
+)
 from ..workflow_focus import (
     build_response_control_directive,
     build_workflow_focus,
@@ -18,36 +21,8 @@ from .http_security import is_timeout_transport_error
 from .openrouter import HttpResponse, JsonHttpClient, UrllibJsonHttpClient
 
 
-OPENROUTER_BYOK_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
-DEEPSEEK_BYOK_ENDPOINT = "https://api.deepseek.com/chat/completions"
-SILICONFLOW_BYOK_ENDPOINT = "https://api.siliconflow.cn/v1/chat/completions"
-ZHIPU_BYOK_ENDPOINT = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
-
-
-@dataclass(frozen=True, slots=True)
-class FixedByokRoute:
-    endpoint: str
-    model_id: str
-
-
-FIXED_BYOK_ROUTES: Mapping[str, FixedByokRoute] = {
-    "openrouter": FixedByokRoute(
-        OPENROUTER_BYOK_ENDPOINT,
-        "deepseek/deepseek-v4-flash-0731",
-    ),
-    "deepseek": FixedByokRoute(
-        DEEPSEEK_BYOK_ENDPOINT,
-        "deepseek-v4-flash",
-    ),
-    "siliconflow": FixedByokRoute(
-        SILICONFLOW_BYOK_ENDPOINT,
-        "Pro/zai-org/GLM-4.7",
-    ),
-    "zhipu": FixedByokRoute(
-        ZHIPU_BYOK_ENDPOINT,
-        "glm-5.2",
-    ),
-}
+DEFAULT_BYOK_MAX_TOKENS = 12_288
+DEFAULT_BYOK_TEMPERATURE = 0.2
 
 
 class FailClosedJsonHttpClient:
@@ -65,37 +40,41 @@ class ByokGatewayError(RuntimeError):
         self.detail = detail
 
 
-class FixedByokModelGateway:
-    """One fixed model and endpoint per enabled provider, with no fallback."""
+class OpenAICompatibleByokGateway:
+    """Call one user-defined OpenAI Chat Completions connection."""
 
     def __init__(
         self,
         *,
         http_client: JsonHttpClient | None = None,
-        timeout_seconds: float = 60.0,
-        catalog: ByokProviderCatalog | None = None,
+        timeout_seconds: float = 120.0,
     ):
         self._http_client = http_client or UrllibJsonHttpClient()
         self._timeout_seconds = timeout_seconds
-        # Call defaults (max_tokens / temperature) come from the fixed catalog
-        # so the request builder never hard-codes provider defaults.
-        self._catalog = catalog or ByokProviderCatalog()
+        self._transport_accepts_cancel_check = (
+            "cancel_check"
+            in inspect.signature(self._http_client.post_json).parameters
+        )
 
     def generate(
         self,
         *,
         api_key: str,
+        connection: StoredModelCredential,
         request: WorkflowRunRequest,
         sources: list[RetrievedSource],
         history: tuple[ConversationTurn, ...] = (),
         cancel_check: Callable[[], bool] | None = None,
     ) -> GeneratedAnswer:
-        route = FIXED_BYOK_ROUTES.get(request.provider_id)
-        if route is None or request.model_id != route.model_id:
+        if (
+            request.provider_id != connection.provider_id
+            or request.model_id != connection.model_id
+            or connection.protocol != "openai_chat_completions"
+        ):
             raise ByokGatewayError(
                 status_code=422,
                 code="byok_route_not_registered",
-                detail="所选 BYOK 供应商或模型未登记。",
+                detail="所选模型与已保存连接不一致。",
             )
         try:
             validate_user_api_key(api_key)
@@ -105,26 +84,37 @@ class FixedByokModelGateway:
                 code="invalid_model_credential",
                 detail="已保存的 API Key 无效，请重新保存。",
             ) from None
-        model_entry = self._catalog.resolve_model(
-            request.provider_id, request.model_id
-        )
         payload = _build_byok_request(
             request,
             sources,
             history,
-            max_tokens=model_entry.default_max_tokens,
-            temperature=model_entry.default_temperature,
+            max_tokens=DEFAULT_BYOK_MAX_TOKENS,
+            temperature=DEFAULT_BYOK_TEMPERATURE,
         )
         try:
-            response = self._http_client.post_json(
-                route.endpoint,
-                headers={
+            base_url = normalize_base_url(connection.base_url)
+        except ModelCredentialError:
+            raise ByokGatewayError(
+                status_code=422,
+                code="invalid_byok_base_url",
+                detail="已保存的 API 地址无效，请重新保存该连接。",
+            ) from None
+        endpoint = f"{base_url}/chat/completions"
+        try:
+            request_options = {
+                "headers": {
                     "Authorization": f"Bearer {api_key}",
                     "Content-Type": "application/json",
                     "Accept": "application/json",
                 },
-                payload=payload,
-                timeout_seconds=self._timeout_seconds,
+                "payload": payload,
+                "timeout_seconds": self._timeout_seconds,
+            }
+            if self._transport_accepts_cancel_check:
+                request_options["cancel_check"] = cancel_check
+            response = self._http_client.post_json(
+                endpoint,
+                **request_options,
             )
         except Exception as exc:
             if is_timeout_transport_error(exc):
@@ -142,7 +132,6 @@ class FixedByokModelGateway:
             raise _safe_byok_upstream_error(response.status_code)
         return _parse_byok_answer(response)
 
-
 def _build_byok_request(
     request: WorkflowRunRequest,
     sources: list[RetrievedSource],
@@ -150,6 +139,7 @@ def _build_byok_request(
     *,
     max_tokens: int,
     temperature: float,
+    reasoning_effort: str | None = None,
 ) -> dict[str, object]:
     workflow_focus = build_workflow_focus(request)
     response_controls = build_response_control_directive(request)
@@ -193,6 +183,8 @@ def _build_byok_request(
         "max_tokens": max_tokens,
         "temperature": temperature,
     }
+    if reasoning_effort is not None:
+        payload["reasoning_effort"] = reasoning_effort
     return payload
 
 

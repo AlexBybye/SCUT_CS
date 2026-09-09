@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import base64
+import shutil
 import sqlite3
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -15,13 +16,35 @@ from scut_senior_api.credentials import (
     CREDENTIAL_ALGORITHM,
     CredentialCipher,
     CredentialDecryptionError,
+    EncryptedCredential,
 )
+from scut_senior_api.adapters.sqlite import SQLiteWorkflowRepository
 from scut_senior_api.main import create_app
+from scut_senior_api.paths import MIGRATION_ROOT
 
 
 MASTER_KEY_BYTES = bytes(range(32))
 MASTER_KEY_B64 = base64.b64encode(MASTER_KEY_BYTES).decode("ascii")
-PROVIDERS = ("openrouter", "deepseek", "siliconflow", "zhipu")
+
+
+def connection_payload(
+    api_key: str,
+    *,
+    display_name: str = "DeepSeek",
+    base_url: str = "https://api.deepseek.com",
+    model_id: str = "deepseek-v4-flash",
+) -> dict[str, str]:
+    return {
+        "api_key": api_key,
+        "display_name": display_name,
+        "base_url": base_url,
+        "model_id": model_id,
+        "protocol": "openai_chat_completions",
+    }
+
+
+def credential_upsert(api_key: str) -> ModelCredentialUpsert:
+    return ModelCredentialUpsert.model_validate(connection_payload(api_key))
 
 
 class MutableClock:
@@ -152,7 +175,11 @@ def test_mock_identity_cannot_manage_credentials_even_with_a_test_master_key(
     assert all(item["enabled"] is False for item in models["byok_providers"])
     for method, url, payload in (
         ("get", "/api/v1/model-credentials", None),
-        ("put", "/api/v1/model-credentials/openrouter", {"api_key": "secret"}),
+        (
+            "put",
+            "/api/v1/model-credentials/openrouter",
+            connection_payload("secret"),
+        ),
         ("delete", "/api/v1/model-credentials/openrouter", None),
     ):
         response = getattr(client, method)(url, json=payload) if payload else getattr(client, method)(url)
@@ -170,27 +197,32 @@ def test_crud_returns_only_masked_metadata_and_database_contains_only_aead(
 
     catalog = client.get("/api/v1/models").json()
     assert catalog["byok_available"] is True
-    assert [item["provider_id"] for item in catalog["byok_providers"]] == list(PROVIDERS)
-    assert all(item["enabled"] is True for item in catalog["byok_providers"])
+    # User-defined connections are private account data and are not published
+    # through the global model catalog.
+    assert catalog["byok_providers"] == []
 
     initial = client.get("/api/v1/model-credentials")
     assert initial.status_code == 200
     assert initial.headers["cache-control"] == "private, no-store"
-    assert [item["provider_id"] for item in initial.json()] == list(PROVIDERS)
-    assert all(item["configured"] is False for item in initial.json())
-    assert all(item["writable"] is False for item in initial.json())
-    assert all(item["source"] == "user_key" for item in initial.json())
-    assert all(item["updated_at"] is None for item in initial.json())
+    assert initial.json() == []
 
     saved = client.put(
         "/api/v1/model-credentials/openrouter",
-        json={"api_key": secret},
+        json=connection_payload(
+            secret,
+            display_name="OpenRouter DeepSeek",
+            base_url="https://openrouter.ai/api/v1/",
+            model_id="deepseek/deepseek-v4-flash-0731",
+        ),
     )
     assert saved.status_code == 200, saved.text
     assert saved.headers["cache-control"] == "private, no-store"
     assert saved.json() == {
         "provider_id": "openrouter",
+        "display_name": "OpenRouter DeepSeek",
+        "base_url": "https://openrouter.ai/api/v1",
         "model_id": "deepseek/deepseek-v4-flash-0731",
+        "protocol": "openai_chat_completions",
         "configured": True,
         "masked_key": "••••••••",
         "expires_at": saved.json()["expires_at"],
@@ -231,7 +263,8 @@ def test_replace_restart_same_session_and_new_session_isolation(tmp_path: Path) 
 
     for secret in ("sk-old", "sk-new"):
         response = client.put(
-            "/api/v1/model-credentials/deepseek", json={"api_key": secret}
+            "/api/v1/model-credentials/deepseek",
+            json=connection_payload(secret),
         )
         assert response.status_code == 200
     with sqlite3.connect(database_path) as connection:
@@ -264,6 +297,98 @@ def test_replace_restart_same_session_and_new_session_isolation(tmp_path: Path) 
     )["configured"] is True
 
 
+def test_0018_preserves_existing_ciphertext_and_adds_connection_profile(
+    tmp_path: Path,
+) -> None:
+    migration_root = tmp_path / "migrations-through-0017"
+    migration_root.mkdir()
+    for migration in sorted(MIGRATION_ROOT.glob("*.sql")):
+        if migration.name >= "0018_custom_byok_connections.sql":
+            break
+        shutil.copy2(migration, migration_root / migration.name)
+
+    database_path = tmp_path / "upgrade.db"
+    legacy = SQLiteWorkflowRepository(
+        database_path, migration_root=migration_root
+    )
+    user_id = legacy.upsert_github_user(
+        GitHubUserProfile(404, "upgrade-user")
+    )
+    session = legacy.issue_session(user_id)
+    cipher = CredentialCipher(MASTER_KEY_BYTES, 7)
+    encrypted = cipher.encrypt(
+        "sk-preserved",
+        user_id=user_id,
+        provider_id="deepseek",
+    )
+    now = datetime.now(UTC)
+    with legacy.connect() as connection:
+        connection.execute(
+            """
+            INSERT INTO model_credentials (
+                user_id, provider_id, ciphertext, nonce, algorithm,
+                key_version, created_at, updated_at, expires_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                str(user_id),
+                "deepseek",
+                sqlite3.Binary(encrypted.ciphertext),
+                sqlite3.Binary(encrypted.nonce),
+                encrypted.algorithm,
+                encrypted.key_version,
+                now.isoformat(),
+                now.isoformat(),
+                session.expires_at.isoformat(),
+            ),
+        )
+
+    upgraded = SQLiteWorkflowRepository(database_path)
+    record = upgraded.get_model_credential(user_id, "deepseek")
+    assert record is not None
+    assert record.display_name == "DeepSeek"
+    assert record.base_url == "https://api.deepseek.com"
+    assert record.model_id == "deepseek-v4-flash"
+    assert record.protocol == "openai_chat_completions"
+    assert record.ciphertext == encrypted.ciphertext
+    assert record.nonce == encrypted.nonce
+    assert cipher.decrypt(
+        EncryptedCredential(
+            ciphertext=record.ciphertext,
+            nonce=record.nonce,
+            key_version=record.key_version,
+            algorithm=record.algorithm,
+        ),
+        user_id=user_id,
+        provider_id="deepseek",
+    ) == "sk-preserved"
+
+    with upgraded.connect() as connection:
+        with pytest.raises(sqlite3.IntegrityError):
+            connection.execute(
+                """
+                INSERT INTO model_credentials (
+                    user_id, provider_id, display_name, base_url, model_id,
+                    protocol, ciphertext, nonce, algorithm, key_version,
+                    created_at, updated_at, expires_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    str(user_id),
+                    "bad--id",
+                    "Bad",
+                    "https://models.example.com/v1",
+                    "model",
+                    "openai_chat_completions",
+                    sqlite3.Binary(b"x" * 17),
+                    sqlite3.Binary(b"n" * 12),
+                    "AES-256-GCM",
+                    1,
+                    now.isoformat(),
+                    now.isoformat(),
+                    session.expires_at.isoformat(),
+                ),
+            )
 def test_logout_delete_expiry_and_restore_physically_remove_credentials(
     tmp_path: Path,
 ) -> None:
@@ -274,13 +399,25 @@ def test_logout_delete_expiry_and_restore_physically_remove_credentials(
     client, _ = authenticated_client(app)
 
     assert client.put(
-        "/api/v1/model-credentials/siliconflow", json={"api_key": "sk-life"}
+        "/api/v1/model-credentials/siliconflow",
+        json=connection_payload(
+            "sk-life",
+            display_name="SiliconFlow",
+            base_url="https://api.siliconflow.cn/v1",
+            model_id="Pro/zai-org/GLM-4.7",
+        ),
     ).status_code == 200
     deleted = client.delete("/api/v1/model-credentials/siliconflow")
     assert deleted.status_code == 204
     assert deleted.headers["cache-control"] == "private, no-store"
     assert client.put(
-        "/api/v1/model-credentials/zhipu", json={"api_key": "sk-life-2"}
+        "/api/v1/model-credentials/zhipu",
+        json=connection_payload(
+            "sk-life-2",
+            display_name="Zhipu",
+            base_url="https://open.bigmodel.cn/api/paas/v4",
+            model_id="glm-5.2",
+        ),
     ).status_code == 200
     assert client.post("/api/v1/auth/logout").status_code == 200
     with sqlite3.connect(database_path) as connection:
@@ -291,7 +428,13 @@ def test_logout_delete_expiry_and_restore_physically_remove_credentials(
 
     expiring, _ = authenticated_client(app, github_id=202, login="expiring")
     assert expiring.put(
-        "/api/v1/model-credentials/openrouter", json={"api_key": "sk-expire"}
+        "/api/v1/model-credentials/openrouter",
+        json=connection_payload(
+            "sk-expire",
+            display_name="OpenRouter",
+            base_url="https://openrouter.ai/api/v1",
+            model_id="deepseek/deepseek-v4-flash-0731",
+        ),
     ).status_code == 200
     clock.advance(timedelta(days=7))
     assert expiring.get("/api/v1/model-credentials").status_code == 401
@@ -303,7 +446,8 @@ def test_logout_delete_expiry_and_restore_physically_remove_credentials(
 
     fresh, _ = authenticated_client(app, github_id=303, login="backup")
     assert fresh.put(
-        "/api/v1/model-credentials/deepseek", json={"api_key": "sk-backup"}
+        "/api/v1/model-credentials/deepseek",
+        json=connection_payload("sk-backup"),
     ).status_code == 200
     backup_path = tmp_path / "backup.db"
     app.state.repository.backup_to(backup_path)
@@ -321,24 +465,25 @@ def test_logout_delete_expiry_and_restore_physically_remove_credentials(
         ).fetchone()[0] == 3
 
 
-def test_provider_and_base_url_contract_rejects_secret_without_reflection(
+def test_connection_id_and_base_url_contract_rejects_secret_without_reflection(
     tmp_path: Path,
 ) -> None:
     app = create_app(byok_settings(tmp_path / "whitelist.db"))
     client, _ = authenticated_client(app)
     secret = "sk-never-reflect"
 
-    unknown = client.put(
-        "/api/v1/model-credentials/not-a-provider", json={"api_key": secret}
+    invalid_id = client.put(
+        "/api/v1/model-credentials/Not_Allowed",
+        json=connection_payload(secret),
     )
-    assert unknown.status_code == 422
-    assert secret not in unknown.text
-    extra = client.put(
+    assert invalid_id.status_code == 422
+    assert secret not in invalid_id.text
+    invalid_url = client.put(
         "/api/v1/model-credentials/openrouter",
-        json={"api_key": secret, "base_url": "https://evil.invalid/v1"},
+        json=connection_payload(secret, base_url="http://127.0.0.1/v1"),
     )
-    assert extra.status_code == 422
-    assert secret not in extra.text
+    assert invalid_url.status_code == 422
+    assert secret not in invalid_url.text
     with sqlite3.connect(app.state.settings.database_path) as connection:
         assert connection.execute(
             "SELECT COUNT(*) FROM model_credentials"
@@ -356,7 +501,7 @@ def test_stale_principal_is_revalidated_before_credential_write(tmp_path: Path) 
         app.state.credential_manager.replace(
             principal,
             "openrouter",
-            ModelCredentialUpsert(api_key="sk-too-late"),
+            credential_upsert("sk-too-late"),
         )
     with sqlite3.connect(app.state.settings.database_path) as connection:
         assert connection.execute(
@@ -376,7 +521,7 @@ def test_revoke_after_replace_persists_per_user_credential(tmp_path: Path) -> No
     status = app.state.credential_manager.replace(
         principal,
         "openrouter",
-        ModelCredentialUpsert(api_key="sk-race"),
+        credential_upsert("sk-race"),
     )
     assert status.configured is True
     # Cross-device: revoking the session that wrote the key must not clear the
