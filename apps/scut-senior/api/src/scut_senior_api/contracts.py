@@ -921,6 +921,7 @@ class AccountDeletionSummary(ContractModel):
     workflow_runs: int
     feedback: int
     temporary_materials: int
+    private_knowledge_items: int
     contributions: int
     model_credentials: int
     auth_sessions: int

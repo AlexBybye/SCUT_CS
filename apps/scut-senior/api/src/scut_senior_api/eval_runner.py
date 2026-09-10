@@ -277,6 +277,11 @@ def run_evaluation(
         raise ValueError(
             "agent_decision_mode must be 'rule', 'model', 'shadow' or 'deterministic'"
         )
+    # Keep documented POSIX-style temporary report paths usable from the
+    # Windows development launcher, where ``/tmp`` maps to a protected drive
+    # root rather than the system temporary directory.
+    if os.name == "nt" and report_path.as_posix().startswith("/tmp/"):
+        report_path = Path(tempfile.gettempdir()) / report_path.name
     cases = json.loads(cases_path.read_text(encoding="utf-8"))
     runner = (
         json.loads(runner_path.read_text(encoding="utf-8"))

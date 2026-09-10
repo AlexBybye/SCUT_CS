@@ -29,6 +29,7 @@ from .adapters.exam_facts import (
     FixtureExamFactsProvider,
     LocalCorpusExamFactsProvider,
 )
+from .agent_loop import ModelAgentDecision, RuleBasedAgentDecision
 from .adapters.local_corpus import LocalCorpusRetrievalGateway
 from .adapters.onnx import OnnxEmbeddingProvider
 from .adapters.mock import (
@@ -120,6 +121,7 @@ from .model_catalog import (
     ModelHealthChecker,
     ModelHealthResult,
     ModelNotRegistered,
+    ModelTemporarilyUnavailable,
 )
 from .model_credentials import (
     ByokDiscoveryHttpClient,
@@ -283,7 +285,7 @@ def create_app(
     active_settings.assert_safe()
     if active_settings.app_env != "test" and byok_http_client is None:
         # Enforce the complete provider-call wall clock even when no client
-        # cancellation callback is present. The run-level ceiling is 180s.
+        # cancellation callback is present. The AB run-level ceiling is 120s.
         byok_http_client = CancellableJsonHttpClient(UrllibJsonHttpClient())
     registry = CourseRegistry.load()
     mock_identity = MockIdentityProvider().current_user()
@@ -416,6 +418,11 @@ def create_app(
                 else None
             ),
         )
+    agent_decision = (
+        ModelAgentDecision(model)
+        if active_settings.agent_decision_mode in {"model", "shadow"}
+        else RuleBasedAgentDecision()
+    )
     service = IterationZeroService(
         settings=active_settings,
         registry=registry,
@@ -433,6 +440,7 @@ def create_app(
             if active_settings.retrieval_mode == "local_corpus"
             else FixtureExamFactsProvider()
         ),
+        agent_decision=agent_decision,
     )
 
     maintenance_scheduler: MaintenanceScheduler | None = None
@@ -559,6 +567,12 @@ def create_app(
     @app.exception_handler(ModelNotRegistered)
     async def model_not_registered_handler(_, exc: ModelNotRegistered):
         return _error_response(422, "model_not_registered", str(exc))
+
+    @app.exception_handler(ModelTemporarilyUnavailable)
+    async def model_temporarily_unavailable_handler(
+        _, exc: ModelTemporarilyUnavailable
+    ):
+        return _error_response(503, "platform_model_unavailable", str(exc))
 
     @app.exception_handler(OpenRouterGatewayError)
     async def openrouter_gateway_error_handler(_, exc: OpenRouterGatewayError):
@@ -1538,6 +1552,8 @@ def _safe_stream_error(exc: Exception) -> tuple[str, str]:
         return "capability_unavailable", exc.detail
     if isinstance(exc, ModelNotRegistered):
         return "model_not_registered", "所选模型未登记。"
+    if isinstance(exc, ModelTemporarilyUnavailable):
+        return "platform_model_unavailable", str(exc)
     if isinstance(exc, ResourceNotFound):
         return "not_found", "请求的资源不存在。"
     if isinstance(exc, ContractConflict | UnknownCourseError):

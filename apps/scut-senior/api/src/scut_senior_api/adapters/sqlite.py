@@ -59,6 +59,16 @@ PRIVATE_DIRECTORY_MODE = 0o700
 PRIVATE_FILE_MODE = 0o600
 
 
+class _ClosingSQLiteConnection(sqlite3.Connection):
+    """Make ``with repository.connect()`` release Windows file handles too."""
+
+    def __exit__(self, exc_type, exc_value, traceback):  # type: ignore[no-untyped-def]
+        try:
+            return super().__exit__(exc_type, exc_value, traceback)
+        finally:
+            self.close()
+
+
 @dataclass(frozen=True, slots=True)
 class MaterialCleanupCounts:
     """迭代 7 清理结果：物理删除的材料数与载荷清空的贡献数。"""
@@ -200,7 +210,11 @@ class SQLiteWorkflowRepository:
 
     def connect(self) -> sqlite3.Connection:
         expected_identity = _protect_database_bundle(self.database_path)
-        connection = sqlite3.connect(self.database_path, timeout=5.0)
+        connection = sqlite3.connect(
+            self.database_path,
+            timeout=5.0,
+            factory=_ClosingSQLiteConnection,
+        )
         try:
             opened_identity = _protect_database_bundle(self.database_path)
             if (
@@ -725,7 +739,7 @@ class SQLiteWorkflowRepository:
         """物理删除该账号的全部私有数据并封锁其 GitHub 身份。
 
         注销语义（§16 待确认项 3 决议）：会话立即失效、历史／反馈／临时材料/
-        贡献副本/模型凭据密文全部物理删除、users 行删除；deleted_accounts 仅
+        贡献副本/私人知识/模型凭据密文全部物理删除、users 行删除；deleted_accounts 仅
         保留 github_user_id 用于登录封锁。导出请先于注销调用。
         """
 
@@ -743,6 +757,10 @@ class SQLiteWorkflowRepository:
                 raise LookupError("account not found")
             github_user_id = int(row["github_user_id"])
             counts = {
+                "private_knowledge_items": connection.execute(
+                    "DELETE FROM private_knowledge_items WHERE user_id = ?",
+                    (normalized_user_id,),
+                ).rowcount,
                 "temporary_materials": connection.execute(
                     "DELETE FROM temporary_materials WHERE user_id = ?",
                     (normalized_user_id,),
