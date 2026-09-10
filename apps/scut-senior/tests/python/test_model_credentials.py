@@ -209,8 +209,6 @@ def test_crud_returns_only_masked_metadata_and_database_contains_only_aead(
 
     catalog = client.get("/api/v1/models").json()
     assert catalog["byok_available"] is True
-    # User-defined connections are private account data and are not published
-    # through the global model catalog.
     assert catalog["byok_providers"] == []
 
     initial = client.get("/api/v1/model-credentials")
@@ -342,8 +340,31 @@ def test_discover_models_reads_openai_listing_without_persisting_the_key(
         "headers": {"Accept": "application/json", "Authorization": "Bearer sk-discovery-secret"},
         "timeout_seconds": 20.0,
     }]
-    assert client.get("/api/v1/model-credentials").json() == []
+    statuses = client.get("/api/v1/model-credentials").json()
+    assert statuses == []
     assert "sk-discovery-secret" not in response.text
+
+    assert client.put(
+        "/api/v1/model-credentials/gateway",
+        json=connection_payload(
+            "sk-saved-discovery-secret",
+            base_url="https://gateway.example/v1/",
+            model_id="model-a",
+        ),
+    ).status_code == 200
+    saved_key_response = client.post(
+        "/api/v1/model-credentials/discover",
+        json={
+            "provider_id": "gateway",
+            "base_url": "https://gateway.example/v1/",
+        },
+    )
+    assert saved_key_response.status_code == 200, saved_key_response.text
+    assert discovery.calls[-1]["headers"] == {
+        "Accept": "application/json",
+        "Authorization": "Bearer sk-saved-discovery-secret",
+    }
+    assert "sk-saved-discovery-secret" not in saved_key_response.text
 
 
 def test_existing_connection_can_change_model_catalog_without_resending_key(

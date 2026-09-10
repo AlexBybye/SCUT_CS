@@ -128,6 +128,18 @@ describe("parseWorkflowNdjson", () => {
     );
   });
 
+  it("accepts legacy BYOK aggregate counters in stored Trace events", async () => {
+    const legacy = JSON.stringify({
+      ...traceEvent(1),
+      trace_event: {
+        ...traceEvent(1).trace_event,
+        result: { decision_call_count: 0, answer_call_count: 1 },
+      },
+    });
+
+    await expect(collect(ndjsonStream([`${legacy}\n`]))).resolves.toHaveLength(1);
+  });
+
   it("rejects unknown nested Trace fields and invalid values under otherwise safe keys", async () => {
     const nestedUnsafe = {
       ...traceEvent(0),

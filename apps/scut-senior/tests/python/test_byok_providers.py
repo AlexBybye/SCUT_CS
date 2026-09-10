@@ -12,13 +12,14 @@ def test_byok_catalog_advertises_dynamic_connections_without_global_entries() ->
     disabled = ByokProviderCatalog().public_payload()
     enabled = ByokProviderCatalog(runtime_enabled=True).public_payload()
 
+    assert disabled["catalog_version"] == BYOK_CATALOG_VERSION
     assert disabled == {
         "catalog_version": BYOK_CATALOG_VERSION,
         "enabled": False,
         "providers": [],
     }
     assert enabled == {
-        "catalog_version": "byok-connections-v1",
+        "catalog_version": BYOK_CATALOG_VERSION,
         "enabled": True,
         "providers": [],
     }

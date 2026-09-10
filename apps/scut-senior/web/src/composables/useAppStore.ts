@@ -520,7 +520,7 @@ function createAppStore() {
     return Boolean(
       byokRuntimeAvailable.value &&
         canManageByokCredentials(currentUser.value) &&
-        status.writable &&
+        (!status.configured || status.writable) &&
         byokKeyDrafts.value[status.provider_id]?.trim() &&
         !byokIsBusy.value,
     );

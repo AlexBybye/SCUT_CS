@@ -202,8 +202,10 @@ class ModelCredentialManager:
             )
         self._require_active_session(principal)
         connection_id = normalize_connection_id(provider_id)
-        display_name = payload.display_name.strip()
-        model_id = payload.model_id.strip()
+        supplied_display_name = payload.display_name.strip()
+        supplied_model_id = payload.model_id.strip()
+        display_name = supplied_display_name
+        model_id = supplied_model_id
         if not display_name or not model_id or any(ord(char) < 32 for char in display_name + model_id):
             raise ModelCredentialError(
                 status_code=422,
@@ -321,6 +323,24 @@ class ModelCredentialManager:
             )
         base_url = normalize_base_url(payload.base_url)
         api_key = payload.api_key.get_secret_value() if payload.api_key is not None else None
+        if api_key is None and payload.provider_id is not None:
+            connection_id = normalize_connection_id(payload.provider_id)
+            record = self._repository.get_model_credential(
+                principal.user_id, connection_id
+            )
+            if record is None:
+                raise ModelCredentialError(
+                    status_code=409,
+                    code="model_credential_not_configured",
+                    detail="当前账号尚未保存该模型连接。",
+                )
+            if record.base_url != base_url:
+                raise ModelCredentialError(
+                    status_code=422,
+                    code="byok_discovery_key_required",
+                    detail="修改 API 地址后，请填写新的 API Key 再读取模型目录。",
+                )
+            api_key = self.load_api_key(principal, connection_id)
         if api_key is not None:
             try:
                 validate_user_api_key(api_key)
@@ -344,7 +364,7 @@ class ModelCredentialManager:
             )
         if status_code < 200 or status_code >= 300:
             code = "byok_discovery_auth_failed" if status_code in {401, 403} else "byok_discovery_failed"
-            detail = "模型供应商拒绝了模型目录请求，请检查 API Key。" if code.endswith("auth_failed") else "模型供应商暂时无法提供模型目录。"
+            detail = "模型供应商拒绝了模型目录请求。可直接手动填写模型 ID 并保存连接；若需自动读取，请检查 API Key 或供应商是否支持 /models。" if code.endswith("auth_failed") else "模型供应商暂时无法提供模型目录。可直接手动填写模型 ID 并保存连接。"
             raise ModelCredentialError(status_code=422 if code.endswith("auth_failed") else 502, code=code, detail=detail)
         try:
             listing = json.loads(body.decode("utf-8"))

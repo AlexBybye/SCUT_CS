@@ -244,8 +244,8 @@ export interface ByokCredentialStatus {
   model_id: string;
   models?: ByokModel[];
   protocol: "openai_chat_completions";
-  configured: true;
-  masked_key: string;
+  configured: boolean;
+  masked_key: string | null;
   expires_at: string | null;
   writable: boolean;
   source: "user_key";
@@ -270,6 +270,7 @@ export interface ByokConnectionInput {
 
 export interface ByokDiscoveryInput {
   base_url: string;
+  provider_id?: string;
   protocol: "openai_chat_completions";
   api_key?: string;
 }
@@ -403,6 +404,14 @@ export interface TraceSafeResult {
   real_model_called?: boolean | null;
   cache_hit?: boolean | null;
   retry_count?: number | null;
+  decision_call_count?: number | null;
+  model_action_accepted_count?: number | null;
+  model_action_shadow_count?: number | null;
+  answer_call_count?: number | null;
+  provider_retry_count?: number | null;
+  guard_retry_count?: number | null;
+  decision_fallback_count?: number | null;
+  action_rejection_count?: number | null;
   failure_code?: string | null;
   degradation_code?: string | null;
   catalog_version?: string | null;

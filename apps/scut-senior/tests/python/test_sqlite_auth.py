@@ -76,6 +76,7 @@ def test_auth_migrations_are_ledgered_and_sqlite_runtime_pragmas_are_enabled(
             "0016_private_knowledge.sql",
             "0017_contribution_metadata_attachments.sql",
             "0018_custom_byok_connections.sql",
+            "0019_byok_model_catalog.sql",
         ]
         assert connection.execute("PRAGMA foreign_keys").fetchone()[0] == 1
         assert connection.execute("PRAGMA journal_mode").fetchone()[0] == "wal"

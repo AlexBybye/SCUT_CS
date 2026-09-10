@@ -199,6 +199,18 @@ scripts\debug-windows.cmd
 scripts\start-all-windows.cmd
 ```
 
+切换分支后重启全部服务（自动结束本项目占用的 8000 和 5173 端口，再重新启动）：
+
+```cmd
+scripts\restart-all-windows.cmd
+```
+
+在 PowerShell 中运行时需加 `./`：
+
+```powershell
+.\scripts\restart-all-windows.cmd
+```
+
 需要同时启用 Tailscale Funnel 时，请从管理员终端运行：
 
 ```cmd

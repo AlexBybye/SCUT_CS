@@ -52,7 +52,7 @@ export function configuredByokModelOptions(
   statuses: readonly ByokCredentialStatus[],
 ): ModelCatalogItem[] {
   return statuses.flatMap((status) =>
-    (status.models ?? [{
+    !status.configured ? [] : (status.models ?? [{
       model_id: status.model_id,
       display_name: status.model_id,
       context_length: 0,

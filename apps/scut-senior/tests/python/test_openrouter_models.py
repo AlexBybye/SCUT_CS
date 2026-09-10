@@ -261,23 +261,7 @@ def test_model_catalog_returns_fixed_openrouter_and_zhipu_entries(
     assert body["health_checked_at"] is None
     assert body["byok_available"] is False
     assert body["byok_catalog_version"] == BYOK_CATALOG_VERSION
-    assert [item["provider_id"] for item in body["byok_providers"]] == [
-        "openrouter",
-        "deepseek",
-        "siliconflow",
-        "zhipu",
-    ]
-    assert all(item["enabled"] is False for item in body["byok_providers"])
-    assert all(
-        item["models_confirmed"] is True for item in body["byok_providers"]
-    )
-    assert [item["models"][0]["model_id"] for item in body["byok_providers"]] == [
-        "deepseek/deepseek-v4-flash-0731",
-        "deepseek-v4-flash",
-        "Pro/zai-org/GLM-4.7",
-        "glm-5.2",
-    ]
-    assert all(len(item["models"]) == 1 for item in body["byok_providers"])
+    assert body["byok_providers"] == []
     assert body["quota_notice"]
     assert body["quota_exhausted_message"] == PLATFORM_DAILY_QUOTA_EXHAUSTED_MESSAGE
     assert len(body["models"]) == 6

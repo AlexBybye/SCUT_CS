@@ -266,6 +266,7 @@ class ModelCredentialUpsert(ContractModel):
 
 class ModelCredentialDiscovery(ContractModel):
     base_url: Annotated[str, Field(min_length=1, max_length=2048)]
+    provider_id: Annotated[str | None, Field(min_length=1, max_length=64)] = None
     api_key: Annotated[SecretStr | None, Field(max_length=8192)] = None
     protocol: Literal["openai_chat_completions"] = "openai_chat_completions"
 
@@ -279,8 +280,8 @@ class ModelCredentialStatus(ContractModel):
     model_id: Annotated[str, Field(min_length=1, max_length=100)]
     models: list[ByokModel] = Field(min_length=1)
     protocol: Literal["openai_chat_completions"]
-    configured: Literal[True]
-    masked_key: Literal["••••••••"]
+    configured: bool
+    masked_key: Literal["••••••••"] | None
     expires_at: datetime | None
     # DSH credential-seam describe semantics: safe status fields that never
     # expose the secret value. ``writable`` is whether a replacement could be
@@ -291,10 +292,16 @@ class ModelCredentialStatus(ContractModel):
 
     @model_validator(mode="after")
     def enforce_configuration_metadata(self) -> "ModelCredentialStatus":
-        if self.expires_at is None or self.updated_at is None:
+        if self.configured and (
+            self.masked_key is None or self.expires_at is None or self.updated_at is None
+        ):
             raise ValueError(
                 "configured credentials require masked_key, expires_at and updated_at"
             )
+        if not self.configured and (
+            self.masked_key is not None or self.expires_at is not None or self.updated_at is not None
+        ):
+            raise ValueError("unconfigured credentials cannot expose key metadata")
         return self
 
 
@@ -446,6 +453,17 @@ class TraceSafeResult(ContractModel):
     real_model_called: bool | None = None
     cache_hit: bool | None = None
     retry_count: Annotated[int | None, Field(ge=0)] = None
+    # Counters were emitted by the earlier BYOK runtime. They are safe,
+    # aggregate execution metadata and must remain readable so stored
+    # conversations do not become unreadable after a runtime upgrade.
+    decision_call_count: Annotated[int | None, Field(ge=0)] = None
+    model_action_accepted_count: Annotated[int | None, Field(ge=0)] = None
+    model_action_shadow_count: Annotated[int | None, Field(ge=0)] = None
+    answer_call_count: Annotated[int | None, Field(ge=0)] = None
+    provider_retry_count: Annotated[int | None, Field(ge=0)] = None
+    guard_retry_count: Annotated[int | None, Field(ge=0)] = None
+    decision_fallback_count: Annotated[int | None, Field(ge=0)] = None
+    action_rejection_count: Annotated[int | None, Field(ge=0)] = None
     failure_code: TraceCode | None = None
     degradation_code: TraceCode | None = None
     catalog_version: str | None = None
