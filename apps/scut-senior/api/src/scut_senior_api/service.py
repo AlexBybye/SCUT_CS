@@ -14,11 +14,6 @@ from .agent_loop import (
 )
 from .adapters.bilibili import derive_question_keywords, normalize_keywords
 from .adapters.exam_facts import ExamFactsUnavailable
-from .byok_catalog import (
-    ByokModelNotRegistered,
-    ByokProviderDisabled,
-    ByokProviderNotRegistered,
-)
 from .config import Settings
 from .contracts import (
     AccountDeletionSummary,
@@ -821,6 +816,7 @@ class IterationZeroService:
         # exactly, so this cannot fail for a contract-valid request.
         preset = HARNESS_REGISTRY.resolve_preset(request.workflow_type)
         model_entry: ModelCatalogEntry | None = None
+        byok_connection = None
         use_user_key = request.model_source == ModelSource.USER_KEY
         if not use_user_key:
             if self.settings.model_mode == "mock":
@@ -861,42 +857,20 @@ class IterationZeroService:
         else:
             if not isinstance(user, AuthenticatedPrincipal) or user.is_mock:
                 raise AuthRequired()
-            try:
-                provider = self.model_catalog.byok_catalog.require_enabled(
-                    request.provider_id
-                )
-                selected_model = self.model_catalog.byok_catalog.resolve_model(
-                    request.provider_id, request.model_id
-                )
-            except ByokProviderNotRegistered:
-                raise ModelCredentialError(
-                    status_code=422,
-                    code="byok_provider_not_registered",
-                    detail="该 BYOK 供应商未登记。",
-                ) from None
-            except ByokProviderDisabled:
-                raise ModelCredentialError(
-                    status_code=503,
-                    code="byok_provider_disabled",
-                    detail="该 BYOK 供应商当前未启用。",
-                ) from None
-            except ByokModelNotRegistered:
-                raise ModelCredentialError(
-                    status_code=422,
-                    code="byok_model_not_registered",
-                    detail="该 BYOK 模型未登记。",
-                ) from None
-            model_provider_id = provider.provider_id.value
-            model_id = selected_model.model_id
+            byok_connection = self.credential_manager.get_connection(
+                user, request.provider_id, request.model_id
+            )
+            model_provider_id = byok_connection.provider_id
+            model_id = byok_connection.model_id
             billing_label = "user_provider_billing"
             availability_status = "user_key_enabled"
             mock_only = False
-            # Apply the same input-modality compatibility check to BYOK. Its
-            # structured-output metadata remains descriptive for the current
-            # text-capable presets.
+            # Custom BYOK connections currently advertise the text-only,
+            # OpenAI-compatible contract. Provider-specific capabilities will
+            # be declared explicitly before optional controls are exposed.
             compatibility_reason = preset.check_model_compatibility(
-                input_modalities=selected_model.input_modalities,
-                supports_structured_outputs=selected_model.supports_structured_outputs,
+                input_modalities=("text",),
+                supports_structured_outputs=True,
             )
             if compatibility_reason is not None:
                 raise CapabilityUnavailable("model", compatibility_reason)
@@ -951,6 +925,22 @@ class IterationZeroService:
         agent_budget = AgentBudget()
         agent_state = AgentState()
         agent_started = perf_counter()
+        answer_call_count = 0
+
+        def optional_model_work_allowed() -> bool:
+            return (
+                answer_call_count < agent_budget.max_answer_calls
+                and agent_budget.allows_optional_call(
+                    perf_counter() - agent_started
+                )
+            )
+
+        def remaining_runtime_seconds() -> float:
+            return max(
+                0.0,
+                agent_budget.max_runtime_seconds
+                - (perf_counter() - agent_started),
+            )
 
         def reduce_agent(kind: str, **payload: object) -> None:
             nonlocal agent_state
@@ -1328,21 +1318,24 @@ class IterationZeroService:
                 if interrupted is not None:
                     return interrupted
                 try:
+                    answer_call_count += 1
                     if use_user_key:
                         assert api_key is not None
                         # 迭代 7.5：断开/取消时尽力中止上游等待（cancel_check
                         # 由可取消 transport 周期检查；结果被弃置不落库）。
                         cancel_check = (
-                            stream_session.cancelled
+                            (lambda: stream_session.cancelled)
                             if stream_session is not None
                             else None
                         )
                         generated = self.byok_model.generate(
                             api_key=api_key,
+                            connection=byok_connection,
                             request=request,
                             sources=sources,
                             history=history,
                             cancel_check=cancel_check,
+                            timeout_seconds=remaining_runtime_seconds(),
                         )
                     else:
                         platform_model = (
@@ -1356,7 +1349,7 @@ class IterationZeroService:
                             sources,
                             history=history,
                             cancel_check=(
-                                stream_session.cancelled
+                                (lambda: stream_session.cancelled)
                                 if stream_session is not None
                                 else None
                             ),
@@ -1367,6 +1360,7 @@ class IterationZeroService:
                         return interrupted
                     if (
                         retry_count >= 1
+                        or not optional_model_work_allowed()
                         or not _is_retryable_model_output_error(model_error)
                     ):
                         raise
@@ -1405,7 +1399,7 @@ class IterationZeroService:
                         # failing the run after a long model call.
                         guarded = _empty_candidate_insufficient_evidence()
                         break
-                    if retry_count >= 1:
+                    if retry_count >= 1 or not optional_model_work_allowed():
                         interrupted = persist_failed_or_interrupted(
                             failure_node="citation_guard",
                             duration_ms=_elapsed_ms(started),
@@ -1516,7 +1510,7 @@ class IterationZeroService:
             max_items=32,
         )
         original_blocks = [block.model_copy(deep=True) for block in guarded.blocks]
-        if self.humanizer is None:
+        if self.humanizer is None or not optional_model_work_allowed():
             interrupted = finish_interrupted()
             if interrupted is not None:
                 return interrupted
@@ -1524,7 +1518,13 @@ class IterationZeroService:
             _append_trace(
                 trace,
                 node="response_style_control",
-                result={"reason_code": "single_pass_model_prompt"},
+                result={
+                    "reason_code": (
+                        "single_pass_model_prompt"
+                        if self.humanizer is None
+                        else "runtime_soft_limit"
+                    )
+                },
             )
         else:
             interrupted = interrupt_if_step_not_claimed()

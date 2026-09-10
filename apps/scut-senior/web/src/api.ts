@@ -1,5 +1,8 @@
 import type {
   AuthUser,
+  ByokDiscoveryInput,
+  ByokModel,
+  ByokConnectionInput,
   ByokCredentialStatus,
   ByokProviderId,
   ContributionAttachmentRecord,
@@ -154,13 +157,13 @@ export async function getByokCredentials(): Promise<ByokCredentialStatus[]> {
 
 export async function saveByokCredential(
   providerId: ByokProviderId,
-  apiKey: string,
+  input: ByokConnectionInput,
 ): Promise<ByokCredentialStatus> {
   return apiRequest<ByokCredentialStatus>(
     `/api/v1/model-credentials/${encodeURIComponent(providerId)}`,
     {
       method: "PUT",
-      body: JSON.stringify({ api_key: apiKey }),
+      body: JSON.stringify(input),
     },
   );
 }
@@ -168,6 +171,15 @@ export async function saveByokCredential(
 export async function deleteByokCredential(providerId: ByokProviderId): Promise<void> {
   await apiRequest<void>(`/api/v1/model-credentials/${encodeURIComponent(providerId)}`, {
     method: "DELETE",
+  });
+}
+
+export async function discoverByokModels(
+  input: ByokDiscoveryInput,
+): Promise<ByokModel[]> {
+  return apiRequest<ByokModel[]>("/api/v1/model-credentials/discover", {
+    method: "POST",
+    body: JSON.stringify(input),
   });
 }
 

@@ -12,19 +12,12 @@ from urllib.error import URLError
 import pytest
 from fastapi.testclient import TestClient
 
-from scut_senior_api.adapters.byok import (
-    DEEPSEEK_BYOK_ENDPOINT,
-    OPENROUTER_BYOK_ENDPOINT,
-    SILICONFLOW_BYOK_ENDPOINT,
-    ZHIPU_BYOK_ENDPOINT,
-)
 from scut_senior_api.adapters.openrouter import HttpResponse
 from scut_senior_api.auth import GitHubUserProfile, SESSION_COOKIE_NAME
-from scut_senior_api.byok_catalog import ByokProviderCatalog
 from scut_senior_api.config import Settings
 from scut_senior_api.contracts import RunStatus, WorkflowRunRequest
 from scut_senior_api.main import create_app
-from scut_senior_api.ports import GeneratedAnswer
+from scut_senior_api.ports import GeneratedAnswer, RetrievalBatch, RetrievedSource
 from scut_senior_api.workflow_stream import WorkflowStreamSession
 
 
@@ -33,16 +26,55 @@ ROUTES = (
     (
         "openrouter",
         "deepseek/deepseek-v4-flash-0731",
-        OPENROUTER_BYOK_ENDPOINT,
+        "https://openrouter.ai/api/v1",
+        "https://openrouter.ai/api/v1/chat/completions",
     ),
-    ("deepseek", "deepseek-v4-flash", DEEPSEEK_BYOK_ENDPOINT),
+    (
+        "deepseek",
+        "deepseek-v4-flash",
+        "https://api.deepseek.com",
+        "https://api.deepseek.com/chat/completions",
+    ),
     (
         "siliconflow",
         "Pro/zai-org/GLM-4.7",
-        SILICONFLOW_BYOK_ENDPOINT,
+        "https://api.siliconflow.cn/v1",
+        "https://api.siliconflow.cn/v1/chat/completions",
     ),
-    ("zhipu", "glm-5.2", ZHIPU_BYOK_ENDPOINT),
+    (
+        "zhipu",
+        "glm-5.2",
+        "https://open.bigmodel.cn/api/paas/v4",
+        "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+    ),
 )
+ROUTE_CONFIG = {
+    provider_id: (model_id, base_url)
+    for provider_id, model_id, base_url, _ in ROUTES
+}
+
+
+def credential_payload(
+    provider_id: str,
+    api_key: str,
+    *,
+    model_id: str | None = None,
+    base_url: str | None = None,
+    models: list[dict[str, object]] | None = None,
+) -> dict[str, str]:
+    default_model, default_base_url = ROUTE_CONFIG.get(
+        provider_id, ("custom-model", "https://models.example.com/v1")
+    )
+    payload: dict[str, object] = {
+        "display_name": provider_id.replace("-", " ").title(),
+        "base_url": base_url or default_base_url,
+        "model_id": model_id or default_model,
+        "protocol": "openai_chat_completions",
+        "api_key": api_key,
+    }
+    if models is not None:
+        payload["models"] = models
+    return payload  # type: ignore[return-value]
 
 
 class RecordingHttpClient:
@@ -98,7 +130,8 @@ def settings(database_path: Path) -> Settings:
 
 
 def authenticated_app(
-    tmp_path: Path, http_client: RecordingHttpClient | None
+    tmp_path: Path,
+    http_client: RecordingHttpClient | None,
 ) -> tuple[object, TestClient, str, str]:
     app = create_app(
         settings(tmp_path / "byok-runtime.db"),
@@ -140,19 +173,23 @@ def workflow_request(
 
 
 @pytest.mark.parametrize(
-    ("provider_id", "model_id", "endpoint"), ROUTES
+    ("provider_id", "model_id", "base_url", "endpoint"), ROUTES
 )
-def test_four_byok_routes_use_one_fixed_endpoint_model_without_response_schema(
+def test_custom_byok_connections_use_the_saved_endpoint_and_model(
     tmp_path: Path,
     provider_id: str,
     model_id: str,
+    base_url: str,
     endpoint: str,
 ) -> None:
     http = RecordingHttpClient()
     app, client, _, conversation_id = authenticated_app(tmp_path, http)
     api_key = f"sk-{provider_id}-private"
     assert client.put(
-        f"/api/v1/model-credentials/{provider_id}", json={"api_key": api_key}
+        f"/api/v1/model-credentials/{provider_id}",
+        json=credential_payload(
+            provider_id, api_key, model_id=model_id, base_url=base_url
+        ),
     ).status_code == 200
 
     response = client.post(
@@ -166,12 +203,15 @@ def test_four_byok_routes_use_one_fixed_endpoint_model_without_response_schema(
     assert call["url"] == endpoint
     assert call["headers"]["Authorization"] == f"Bearer {api_key}"
     assert call["payload"]["model"] == model_id
-    # Call defaults are declared on the fixed catalog entry, not hard-coded
-    # in the request builder; assert against the catalog so a provider-specific
-    # default (e.g. a larger budget for reasoning models) stays correct.
-    catalog_entry = ByokProviderCatalog().resolve_model(provider_id, model_id)
-    assert call["payload"]["max_tokens"] == catalog_entry.default_max_tokens
-    assert call["payload"]["temperature"] == catalog_entry.default_temperature
+    assert call["timeout_seconds"] <= 180.0
+    assert call["timeout_seconds"] > 0
+    if endpoint == "https://api.deepseek.com/chat/completions":
+        assert call["payload"]["max_tokens"] == 8192
+        assert call["payload"]["reasoning_effort"] == "low"
+    else:
+        assert call["payload"]["max_tokens"] == 12288
+        assert "reasoning_effort" not in call["payload"]
+    assert call["payload"]["temperature"] == 0.2
     assert "models" not in call["payload"]
     assert "fallbacks" not in call["payload"]
     assert "base_url" not in call["payload"]
@@ -200,6 +240,63 @@ def test_four_byok_routes_use_one_fixed_endpoint_model_without_response_schema(
     assert api_key not in persisted
 
 
+def test_one_byok_connection_can_register_and_run_multiple_models(
+    tmp_path: Path,
+) -> None:
+    http = RecordingHttpClient()
+    app, client, _, conversation_id = authenticated_app(tmp_path, http)
+    models = [
+        {"model_id": "model-a", "display_name": "Model A", "max_tokens": 1024},
+        {"model_id": "model-b", "display_name": "Model B", "max_tokens": 4096},
+    ]
+    saved = client.put(
+        "/api/v1/model-credentials/acme",
+        json=credential_payload("acme", "sk-acme", model_id="model-a", models=models),
+    )
+    assert saved.status_code == 200, saved.text
+    assert [model["model_id"] for model in saved.json()["models"]] == ["model-a", "model-b"]
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(conversation_id, "acme", "model-b"),
+    )
+
+    assert response.status_code == 201, response.text
+    assert http.calls[0]["payload"]["model"] == "model-b"
+    assert http.calls[0]["payload"]["max_tokens"] == 4096
+
+
+def test_deepseek_direct_profile_does_not_depend_on_connection_id(
+    tmp_path: Path,
+) -> None:
+    http = RecordingHttpClient()
+    _, client, _, conversation_id = authenticated_app(tmp_path, http)
+    connection_id = "my-deepseek"
+    model_id = "deepseek-v4-flash"
+    assert client.put(
+        f"/api/v1/model-credentials/{connection_id}",
+        json=credential_payload(
+            connection_id,
+            "sk-deepseek-alias",
+            model_id=model_id,
+            base_url="https://api.deepseek.com",
+        ),
+    ).status_code == 200
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(conversation_id, connection_id, model_id),
+    )
+
+    assert response.status_code == 201, response.text
+    assert len(http.calls) == 1
+    call = http.calls[0]
+    assert call["url"] == "https://api.deepseek.com/chat/completions"
+    assert call["payload"]["max_tokens"] == 8192
+    assert call["payload"]["reasoning_effort"] == "low"
+    assert 0 < call["timeout_seconds"] <= 180
+
+
 def test_byok_accepts_a_plain_text_complex_answer_without_retry(tmp_path: Path) -> None:
     plain_text = (
         "先通过初等行变换把矩阵化为阶梯形，再数每一行的首个非零元。"
@@ -217,7 +314,8 @@ def test_byok_accepts_a_plain_text_complex_answer_without_retry(tmp_path: Path) 
     _, client, _, conversation_id = authenticated_app(tmp_path, http)
     key = "sk-deepseek-plain-text"
     assert client.put(
-        "/api/v1/model-credentials/deepseek", json={"api_key": key}
+        "/api/v1/model-credentials/deepseek",
+        json=credential_payload("deepseek", key),
     ).status_code == 200
 
     response = client.post(
@@ -249,6 +347,9 @@ def test_cancel_during_key_load_prevents_the_first_byok_provider_call(
     release_key_load = Event()
 
     class BlockingCredentialManager:
+        def __init__(self, delegate):
+            self.get_connection = delegate.get_connection
+
         def load_api_key(self, principal, provider_id):
             del principal, provider_id
             key_load_entered.set()
@@ -260,16 +361,22 @@ def test_cancel_during_key_load_prevents_the_first_byok_provider_call(
         def __init__(self) -> None:
             self.calls = 0
 
-        def generate(self, *, api_key, request, sources, history=()):
-            del api_key, request, sources, history
+        def generate(self, *, api_key, connection, request, sources, history=(), cancel_check=None):
+            del api_key, connection, request, sources, history, cancel_check
             self.calls += 1
             return GeneratedAnswer(repository_answer="不得调用供应商。")
 
     app, client, token, conversation_id = authenticated_app(tmp_path, None)
+    assert client.put(
+        "/api/v1/model-credentials/openrouter",
+        json=credential_payload("openrouter", "sk-blocking"),
+    ).status_code == 200
     principal = app.state.repository.authenticate_session(token)
     assert principal is not None
     model = RecordingByokModel()
-    app.state.service.credential_manager = BlockingCredentialManager()
+    app.state.service.credential_manager = BlockingCredentialManager(
+        app.state.service.credential_manager
+    )
     app.state.service.byok_model = model
     request = WorkflowRunRequest.model_validate(
         workflow_request(
@@ -307,7 +414,8 @@ def test_arbitrary_byok_model_is_rejected_before_decryption_or_http(
     http = RecordingHttpClient()
     app, client, _, conversation_id = authenticated_app(tmp_path, http)
     assert client.put(
-        "/api/v1/model-credentials/zhipu", json={"api_key": "sk-zhipu"}
+        "/api/v1/model-credentials/zhipu",
+        json=credential_payload("zhipu", "sk-zhipu"),
     ).status_code == 200
     payload = workflow_request(conversation_id, "zhipu", "glm-5.3")
     response = client.post("/api/v1/workflow-runs", json=payload)
@@ -337,7 +445,8 @@ def test_control_characters_are_rejected_before_storage_or_provider_http(
     app, client, _, conversation_id = authenticated_app(tmp_path, http)
 
     saved = client.put(
-        "/api/v1/model-credentials/openrouter", json={"api_key": api_key}
+        "/api/v1/model-credentials/openrouter",
+        json=credential_payload("openrouter", api_key),
     )
 
     assert saved.status_code == 422
@@ -377,7 +486,8 @@ def test_missing_key_and_upstream_failure_persist_sanitized_failed_attempts(
 
     api_key = "sk-upstream-secret"
     assert client.put(
-        "/api/v1/model-credentials/openrouter", json={"api_key": api_key}
+        "/api/v1/model-credentials/openrouter",
+        json=credential_payload("openrouter", api_key),
     ).status_code == 200
     failed = client.post("/api/v1/workflow-runs", json=request)
     assert failed.status_code == 502
@@ -387,7 +497,9 @@ def test_missing_key_and_upstream_failure_persist_sanitized_failed_attempts(
     assert api_key not in failed.text
 
     history = client.get(f"/api/v1/conversations/{conversation_id}").json()
-    assert len(history["runs"]) == 2
+    # A missing connection is rejected before a workflow run is created. Only
+    # the actual upstream attempt is persisted as a failed run.
+    assert len(history["runs"]) == 1
     for attempt in history["runs"]:
         result = attempt["result"]
         assert result["run_status"] == "failed"
@@ -435,7 +547,8 @@ def test_user_key_permission_credit_and_rate_errors_are_safe(
     http = RecordingHttpClient(HttpResponse(upstream_status, private_body.encode()))
     _, client, _, conversation_id = authenticated_app(tmp_path, http)
     assert client.put(
-        "/api/v1/model-credentials/zhipu", json={"api_key": key}
+        "/api/v1/model-credentials/zhipu",
+        json=credential_payload("zhipu", key),
     ).status_code == 200
 
     response = client.post(
@@ -475,7 +588,8 @@ def test_byok_transport_timeout_retries_the_same_route_and_key_once(
     _, client, _, conversation_id = authenticated_app(tmp_path, http)
     key = "sk-private-retry"
     assert client.put(
-        "/api/v1/model-credentials/deepseek", json={"api_key": key}
+        "/api/v1/model-credentials/deepseek",
+        json=credential_payload("deepseek", key),
     ).status_code == 200
 
     response = client.post(
@@ -485,7 +599,9 @@ def test_byok_transport_timeout_retries_the_same_route_and_key_once(
 
     assert response.status_code == 201, response.text
     assert len(http.calls) == 2
-    assert {call["url"] for call in http.calls} == {DEEPSEEK_BYOK_ENDPOINT}
+    assert {call["url"] for call in http.calls} == {
+        "https://api.deepseek.com/chat/completions"
+    }
     assert {call["payload"]["model"] for call in http.calls} == {
         "deepseek-v4-flash"
     }
@@ -520,7 +636,8 @@ def test_byok_invalid_response_retries_the_same_route_and_key_once(
     _, client, _, conversation_id = authenticated_app(tmp_path, http)
     key = "sk-private-invalid-retry"
     assert client.put(
-        "/api/v1/model-credentials/zhipu", json={"api_key": key}
+        "/api/v1/model-credentials/zhipu",
+        json=credential_payload("zhipu", key),
     ).status_code == 200
 
     response = client.post(
@@ -530,7 +647,9 @@ def test_byok_invalid_response_retries_the_same_route_and_key_once(
 
     assert response.status_code == 201, response.text
     assert len(http.calls) == 2
-    assert {call["url"] for call in http.calls} == {ZHIPU_BYOK_ENDPOINT}
+    assert {call["url"] for call in http.calls} == {
+        "https://open.bigmodel.cn/api/paas/v4/chat/completions"
+    }
     assert {call["payload"]["model"] for call in http.calls} == {"glm-5.2"}
     assert {call["headers"]["Authorization"] for call in http.calls} == {
         f"Bearer {key}"
@@ -545,7 +664,8 @@ def test_logout_during_provider_call_prevents_late_success_or_failed_history(
     http = RecordingHttpClient()
     app, client, token, conversation_id = authenticated_app(tmp_path, http)
     assert client.put(
-        "/api/v1/model-credentials/deepseek", json={"api_key": "sk-race"}
+        "/api/v1/model-credentials/deepseek",
+        json=credential_payload("deepseek", "sk-race"),
     ).status_code == 200
 
     def revoke_during_call() -> HttpResponse:
@@ -577,7 +697,8 @@ def test_test_profile_without_injected_byok_transport_fails_closed(
     app, client, _, conversation_id = authenticated_app(tmp_path, None)
     key = "sk-no-network"
     assert client.put(
-        "/api/v1/model-credentials/openrouter", json={"api_key": key}
+        "/api/v1/model-credentials/openrouter",
+        json=credential_payload("openrouter", key),
     ).status_code == 200
 
     response = client.post(
@@ -595,7 +716,7 @@ def test_test_profile_without_injected_byok_transport_fails_closed(
 
 def test_padded_key_is_rejected_consistently_on_save_and_generate(tmp_path: Path) -> None:
     """The shared validator must reject a padded paste on both paths."""
-    from scut_senior_api.adapters.byok import ByokGatewayError, FixedByokModelGateway
+    from scut_senior_api.adapters.byok import ByokGatewayError, OpenAICompatibleByokGateway
     from scut_senior_api.credentials import validate_user_api_key
 
     for padded in ("  sk-padded", "sk-padded  ", "sk pa dded", "\tsk-tab"):
@@ -606,18 +727,38 @@ def test_padded_key_is_rejected_consistently_on_save_and_generate(tmp_path: Path
     app, client, _, conversation_id = authenticated_app(tmp_path, http)
 
     saved = client.put(
-        "/api/v1/model-credentials/openrouter", json={"api_key": "  sk-padded"}
+        "/api/v1/model-credentials/openrouter",
+        json=credential_payload("openrouter", "  sk-padded"),
     )
     assert saved.status_code == 422
     assert saved.json()["error"]["code"] == "invalid_model_credential"
 
-    gateway = FixedByokModelGateway(http_client=http)
+    gateway = OpenAICompatibleByokGateway(http_client=http)
     request = WorkflowRunRequest.model_validate(
         workflow_request(conversation_id, "openrouter", "deepseek/deepseek-v4-flash-0731")
     )
     with pytest.raises(ByokGatewayError) as exc_info:
+        from scut_senior_api.ports import StoredModelCredential
+        from datetime import UTC, datetime
+        from uuid import uuid4
+
+        connection = StoredModelCredential(
+            user_id=uuid4(),
+            provider_id="openrouter",
+            display_name="OpenRouter",
+            base_url="https://openrouter.ai/api/v1",
+            model_id="deepseek/deepseek-v4-flash-0731",
+            protocol="openai_chat_completions",
+            ciphertext=b"x" * 17,
+            nonce=b"x" * 12,
+            algorithm="AES-256-GCM",
+            key_version=1,
+            expires_at=datetime.now(UTC),
+            updated_at=datetime.now(UTC),
+        )
         gateway.generate(
             api_key="sk-padded ",
+            connection=connection,
             request=request,
             sources=[],
         )

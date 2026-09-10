@@ -219,18 +219,67 @@ class ConversationRename(ContractModel):
         return normalized
 
 
+class ByokModel(ContractModel):
+    model_id: Annotated[str, Field(min_length=1, max_length=100)]
+    display_name: Annotated[str, Field(min_length=1, max_length=200)]
+    context_length: Annotated[int, Field(ge=0, le=10_000_000)] = 0
+    max_tokens: Annotated[int | None, Field(gt=0, le=10_000_000)] = None
+
+
 class ModelCredentialUpsert(ContractModel):
-    api_key: Annotated[SecretStr, Field(min_length=1, max_length=8192)]
+    # A missing key is allowed when an existing connection is being edited;
+    # the manager keeps the encrypted key already stored for that connection.
+    api_key: Annotated[SecretStr | None, Field(max_length=8192)] = None
+    display_name: Annotated[str, Field(min_length=1, max_length=100)]
+    base_url: Annotated[str, Field(min_length=1, max_length=2048)]
+    model_id: Annotated[str, Field(min_length=1, max_length=100)]
+    protocol: Literal["openai_chat_completions"] = "openai_chat_completions"
+    models: list[ByokModel] | None = None
+
+    @model_validator(mode="after")
+    def validate_models(self) -> "ModelCredentialUpsert":
+        self.model_id = self.model_id.strip()
+        models = self.models if self.models is not None else [
+            ByokModel(model_id=self.model_id, display_name=self.model_id)
+        ]
+        if not models:
+            raise ValueError("at least one BYOK model is required")
+        normalized: list[ByokModel] = []
+        for model in models:
+            model_id = model.model_id.strip()
+            display_name = model.display_name.strip() or model_id
+            if not model_id or len(model_id) > 100:
+                raise ValueError("BYOK model IDs must be non-empty and at most 100 characters")
+            normalized.append(
+                model.model_copy(
+                    update={"model_id": model_id, "display_name": display_name}
+                )
+            )
+        ids = [model.model_id for model in normalized]
+        if len(set(ids)) != len(ids):
+            raise ValueError("BYOK model IDs must be unique")
+        if self.model_id not in ids:
+            raise ValueError("model_id must be one of models")
+        self.models = normalized
+        return self
+
+
+class ModelCredentialDiscovery(ContractModel):
+    base_url: Annotated[str, Field(min_length=1, max_length=2048)]
+    provider_id: Annotated[str | None, Field(min_length=1, max_length=64)] = None
+    api_key: Annotated[SecretStr | None, Field(max_length=8192)] = None
+    protocol: Literal["openai_chat_completions"] = "openai_chat_completions"
 
 
 class ModelCredentialStatus(ContractModel):
-    provider_id: Literal["openrouter", "deepseek", "siliconflow", "zhipu"]
-    model_id: Literal[
-        "deepseek/deepseek-v4-flash-0731",
-        "deepseek-v4-flash",
-        "Pro/zai-org/GLM-4.7",
-        "glm-5.2",
-    ]
+    # Kept as provider_id on the wire for Workflow compatibility. It is now a
+    # user-chosen connection id rather than a server-owned vendor enum.
+    provider_id: Annotated[str, Field(min_length=1, max_length=64)]
+    display_name: Annotated[str, Field(min_length=1, max_length=100)]
+    base_url: Annotated[str, Field(min_length=1, max_length=2048)]
+    model_id: Annotated[str, Field(min_length=1, max_length=100)]
+    models: list[ByokModel] = Field(min_length=1)
+    protocol: Literal["openai_chat_completions"]
     configured: bool
     masked_key: Literal["••••••••"] | None
     expires_at: datetime | None
@@ -243,14 +292,6 @@ class ModelCredentialStatus(ContractModel):
 
     @model_validator(mode="after")
     def enforce_configuration_metadata(self) -> "ModelCredentialStatus":
-        expected_model = {
-            "openrouter": "deepseek/deepseek-v4-flash-0731",
-            "deepseek": "deepseek-v4-flash",
-            "siliconflow": "Pro/zai-org/GLM-4.7",
-            "zhipu": "glm-5.2",
-        }[self.provider_id]
-        if self.model_id != expected_model:
-            raise ValueError("credential provider and model must match the fixed catalog")
         if self.configured and (
             self.masked_key is None or self.expires_at is None or self.updated_at is None
         ):
@@ -258,14 +299,9 @@ class ModelCredentialStatus(ContractModel):
                 "configured credentials require masked_key, expires_at and updated_at"
             )
         if not self.configured and (
-            self.masked_key is not None
-            or self.expires_at is not None
-            or self.updated_at is not None
-            or self.writable
+            self.masked_key is not None or self.expires_at is not None or self.updated_at is not None
         ):
-            raise ValueError(
-                "unconfigured credentials cannot expose key metadata"
-            )
+            raise ValueError("unconfigured credentials cannot expose key metadata")
         return self
 
 
@@ -417,6 +453,17 @@ class TraceSafeResult(ContractModel):
     real_model_called: bool | None = None
     cache_hit: bool | None = None
     retry_count: Annotated[int | None, Field(ge=0)] = None
+    # Counters were emitted by the earlier BYOK runtime. They are safe,
+    # aggregate execution metadata and must remain readable so stored
+    # conversations do not become unreadable after a runtime upgrade.
+    decision_call_count: Annotated[int | None, Field(ge=0)] = None
+    model_action_accepted_count: Annotated[int | None, Field(ge=0)] = None
+    model_action_shadow_count: Annotated[int | None, Field(ge=0)] = None
+    answer_call_count: Annotated[int | None, Field(ge=0)] = None
+    provider_retry_count: Annotated[int | None, Field(ge=0)] = None
+    guard_retry_count: Annotated[int | None, Field(ge=0)] = None
+    decision_fallback_count: Annotated[int | None, Field(ge=0)] = None
+    action_rejection_count: Annotated[int | None, Field(ge=0)] = None
     failure_code: TraceCode | None = None
     degradation_code: TraceCode | None = None
     catalog_version: str | None = None
@@ -873,7 +920,6 @@ class AccountDeletionSummary(ContractModel):
     workflow_runs: int
     feedback: int
     temporary_materials: int
-    private_knowledge_items: int
     contributions: int
     model_credentials: int
     auth_sessions: int

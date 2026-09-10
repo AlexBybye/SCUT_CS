@@ -60,7 +60,7 @@ const sectors = computed(() => {
 async function selectContribution(item: ContributionRecord): Promise<void> {
   selectedContribution.value = item; detail.value = null; detailLoading.value = true;
   try { detail.value = await getMaintainerContribution(item.contribution_id); }
-  catch { detail.value = item; }
+  catch { error.value = "未能读取该贡献的完整详情，请稍后重试。"; }
   finally { detailLoading.value = false; }
 }
 async function review(id: string, action: "mark_pr_open" | "merge" | "reject"): Promise<void> {

@@ -91,15 +91,28 @@ class HumanizerGateway(Protocol):
 
 
 @dataclass(frozen=True, slots=True)
+class StoredByokModel:
+    model_id: str
+    display_name: str
+    context_length: int = 0
+    max_tokens: int | None = None
+
+
+@dataclass(frozen=True, slots=True)
 class StoredModelCredential:
     user_id: UUID
     provider_id: str
+    display_name: str
+    base_url: str
+    model_id: str
+    protocol: str
     ciphertext: bytes = field(repr=False)
     nonce: bytes = field(repr=False)
     algorithm: str
     key_version: int
     expires_at: datetime
     updated_at: datetime
+    models: tuple[StoredByokModel, ...] = ()
 
 
 class IdentityProvider(Protocol):
@@ -130,10 +143,12 @@ class UserKeyModelGateway(Protocol):
         self,
         *,
         api_key: str,
+        connection: StoredModelCredential,
         request: WorkflowRunRequest,
         sources: list[RetrievedSource],
         history: tuple[ConversationTurn, ...] = (),
         cancel_check: Callable[[], bool] | None = None,
+        timeout_seconds: float | None = None,
     ) -> GeneratedAnswer: ...
 
 
@@ -228,6 +243,10 @@ class ModelCredentialRepository(Protocol):
         *,
         user_id: UUID,
         provider_id: str,
+        display_name: str,
+        base_url: str,
+        model_id: str,
+        protocol: str,
         ciphertext: bytes,
         nonce: bytes,
         algorithm: str,

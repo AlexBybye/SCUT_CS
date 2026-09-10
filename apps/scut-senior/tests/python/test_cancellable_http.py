@@ -118,6 +118,34 @@ def test_cancel_during_blocked_call_abandons_wait_promptly() -> None:
     release_inner.set()
 
 
+def test_wall_clock_timeout_is_enforced_without_cancel_check() -> None:
+    inner_entered = Event()
+    release_inner = Event()
+
+    class BlockedInner:
+        def post_json(self, url, *, headers, payload, timeout_seconds):
+            inner_entered.set()
+            release_inner.wait(timeout=2)
+            return HttpResponse(status_code=200, body=b"{}")
+
+    client = CancellableJsonHttpClient(
+        BlockedInner(), poll_interval_seconds=0.01
+    )
+    started = monotonic()
+    try:
+        with pytest.raises(TimeoutError, match="supervised"):
+            client.post_json(
+                "https://example.test",
+                headers={},
+                payload={},
+                timeout_seconds=0.05,
+            )
+        assert inner_entered.is_set()
+        assert monotonic() - started < 1.0
+    finally:
+        release_inner.set()
+
+
 def test_openrouter_gateway_passes_cancel_check_to_capable_transport() -> None:
     seen: dict[str, object] = {}
 

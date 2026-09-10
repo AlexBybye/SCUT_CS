@@ -18,7 +18,7 @@ from .adapters.bilibili import BilibiliLinkDiscoveryAdapter
 from .adapters.byok import (
     ByokGatewayError,
     FailClosedJsonHttpClient,
-    FixedByokModelGateway,
+    OpenAICompatibleByokGateway,
 )
 from .adapters.github import (
     FailClosedHttpTransport,
@@ -40,6 +40,7 @@ from .adapters.openrouter import (
     JsonHttpClient,
     OpenRouterGatewayError,
     OpenRouterModelGateway,
+    UrllibJsonHttpClient,
 )
 from .adapters.openrouter_health import OpenRouterCatalogHealthChecker
 from .adapters.zhipu import ZhipuPlatformGatewayError, ZhipuPlatformModelGateway
@@ -63,6 +64,7 @@ from .auth import (
     utc_now,
 )
 from .config import Settings
+from .cancellable_http import CancellableJsonHttpClient
 
 LOGGER = logging.getLogger("scut_senior.api")
 from .course_availability import (
@@ -91,6 +93,8 @@ from .contracts import (
     MaintainerContributionTransition,
     ModelCredentialStatus,
     ModelCredentialUpsert,
+    ModelCredentialDiscovery,
+    ByokModel,
     PrivateKnowledgeCreate,
     PrivateKnowledgeRecord,
     TemporaryMaterialCreate,
@@ -117,7 +121,11 @@ from .model_catalog import (
     ModelHealthResult,
     ModelNotRegistered,
 )
-from .model_credentials import ModelCredentialError, ModelCredentialManager
+from .model_credentials import (
+    ByokDiscoveryHttpClient,
+    ModelCredentialError,
+    ModelCredentialManager,
+)
 from .paths import APP_ROOT
 from .ports import CapabilityUnavailable, DisabledCapability, HumanizerGateway
 from .ports import ModelGateway, UserIdentity
@@ -262,6 +270,7 @@ def create_app(
     model_http_client: JsonHttpClient | None = None,
     zhipu_http_client: JsonHttpClient | None = None,
     byok_http_client: JsonHttpClient | None = None,
+    byok_discovery_http_client: ByokDiscoveryHttpClient | None = None,
     model_health_checker: ModelHealthChecker | None = None,
     zhipu_health_checker: ModelHealthChecker | None = None,
     github_oauth_adapter: GitHubOAuthAdapter | None = None,
@@ -272,6 +281,10 @@ def create_app(
 ) -> FastAPI:
     active_settings = settings or Settings.from_env()
     active_settings.assert_safe()
+    if active_settings.app_env != "test" and byok_http_client is None:
+        # Enforce the complete provider-call wall clock even when no client
+        # cancellation callback is present. The run-level ceiling is 180s.
+        byok_http_client = CancellableJsonHttpClient(UrllibJsonHttpClient())
     registry = CourseRegistry.load()
     mock_identity = MockIdentityProvider().current_user()
     embedding = None
@@ -386,13 +399,11 @@ def create_app(
             if byok_master_key is not None
             else None
         ),
+        discovery_http_client=byok_discovery_http_client,
     )
     if active_settings.app_env == "test" and byok_http_client is None:
         byok_http_client = FailClosedJsonHttpClient()
-    byok_model = FixedByokModelGateway(
-        http_client=byok_http_client,
-        catalog=model_catalog.byok_catalog,
-    )
+    byok_model = OpenAICompatibleByokGateway(http_client=byok_http_client)
     oauth_adapter = github_oauth_adapter
     if active_settings.identity_mode == "github_oauth" and oauth_adapter is None:
         oauth_adapter = GitHubOAuthAdapter(
@@ -886,6 +897,16 @@ def create_app(
     ) -> Response:
         credential_manager.delete(user, provider_id)
         return Response(status_code=204)
+
+    @app.post(
+        "/api/v1/model-credentials/discover",
+        response_model=list[ByokModel],
+    )
+    def discover_model_credentials(
+        payload: ModelCredentialDiscovery,
+        user: AuthenticatedPrincipal = Depends(require_github_user),
+    ) -> list[ByokModel]:
+        return credential_manager.discover(user, payload)
 
     @app.get("/api/v1/courses")
     def courses() -> dict[str, object]:
