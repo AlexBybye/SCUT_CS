@@ -6,7 +6,7 @@
 
 <img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=/SCUTCSWeaver/SCUT_CS">
 
-[![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
+[![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/AlexBybye/SCUT_CS/blob/master/LICENSE)
 ![index](resources_for_repo/index.png)
 
 ## 项目概览
