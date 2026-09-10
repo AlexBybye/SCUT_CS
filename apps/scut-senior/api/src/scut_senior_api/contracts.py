@@ -219,11 +219,54 @@ class ConversationRename(ContractModel):
         return normalized
 
 
+class ByokModel(ContractModel):
+    model_id: Annotated[str, Field(min_length=1, max_length=100)]
+    display_name: Annotated[str, Field(min_length=1, max_length=200)]
+    context_length: Annotated[int, Field(ge=0, le=10_000_000)] = 0
+    max_tokens: Annotated[int | None, Field(gt=0, le=10_000_000)] = None
+
+
 class ModelCredentialUpsert(ContractModel):
-    api_key: Annotated[SecretStr, Field(min_length=1, max_length=8192)]
+    # A missing key is allowed when an existing connection is being edited;
+    # the manager keeps the encrypted key already stored for that connection.
+    api_key: Annotated[SecretStr | None, Field(max_length=8192)] = None
     display_name: Annotated[str, Field(min_length=1, max_length=100)]
     base_url: Annotated[str, Field(min_length=1, max_length=2048)]
     model_id: Annotated[str, Field(min_length=1, max_length=100)]
+    protocol: Literal["openai_chat_completions"] = "openai_chat_completions"
+    models: list[ByokModel] | None = None
+
+    @model_validator(mode="after")
+    def validate_models(self) -> "ModelCredentialUpsert":
+        self.model_id = self.model_id.strip()
+        models = self.models if self.models is not None else [
+            ByokModel(model_id=self.model_id, display_name=self.model_id)
+        ]
+        if not models:
+            raise ValueError("at least one BYOK model is required")
+        normalized: list[ByokModel] = []
+        for model in models:
+            model_id = model.model_id.strip()
+            display_name = model.display_name.strip() or model_id
+            if not model_id or len(model_id) > 100:
+                raise ValueError("BYOK model IDs must be non-empty and at most 100 characters")
+            normalized.append(
+                model.model_copy(
+                    update={"model_id": model_id, "display_name": display_name}
+                )
+            )
+        ids = [model.model_id for model in normalized]
+        if len(set(ids)) != len(ids):
+            raise ValueError("BYOK model IDs must be unique")
+        if self.model_id not in ids:
+            raise ValueError("model_id must be one of models")
+        self.models = normalized
+        return self
+
+
+class ModelCredentialDiscovery(ContractModel):
+    base_url: Annotated[str, Field(min_length=1, max_length=2048)]
+    api_key: Annotated[SecretStr | None, Field(max_length=8192)] = None
     protocol: Literal["openai_chat_completions"] = "openai_chat_completions"
 
 
@@ -234,6 +277,7 @@ class ModelCredentialStatus(ContractModel):
     display_name: Annotated[str, Field(min_length=1, max_length=100)]
     base_url: Annotated[str, Field(min_length=1, max_length=2048)]
     model_id: Annotated[str, Field(min_length=1, max_length=100)]
+    models: list[ByokModel] = Field(min_length=1)
     protocol: Literal["openai_chat_completions"]
     configured: Literal[True]
     masked_key: Literal["••••••••"]

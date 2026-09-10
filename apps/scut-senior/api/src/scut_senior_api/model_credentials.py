@@ -1,26 +1,61 @@
 from __future__ import annotations
 
 import ipaddress
+import json
 import re
+from collections.abc import Mapping
+from dataclasses import replace
 from urllib.parse import urlsplit, urlunsplit
+from urllib.error import HTTPError, URLError
+from urllib.request import Request
 
 import idna
 
 from .auth import AuthRequired, AuthenticatedPrincipal
+from .adapters.http_security import build_no_redirect_opener
 from .byok_catalog import ByokProviderCatalog
-from .contracts import ModelCredentialStatus, ModelCredentialUpsert
+from .contracts import (
+    ByokModel,
+    ModelCredentialDiscovery,
+    ModelCredentialStatus,
+    ModelCredentialUpsert,
+)
 from .credentials import (
     CredentialCipher,
     CredentialDecryptionError,
     EncryptedCredential,
     validate_user_api_key,
 )
-from .ports import ModelCredentialRepository, StoredModelCredential
+from .ports import ModelCredentialRepository, StoredByokModel, StoredModelCredential
 
 
 MASKED_MODEL_KEY = "••••••••"
 CONNECTION_ID_PATTERN = re.compile(r"^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$")
+MAX_DISCOVERY_RESPONSE_BYTES = 4 * 1024 * 1024
 
+
+class ByokDiscoveryHttpClient:
+    def get_json(
+        self,
+        url: str,
+        *,
+        headers: Mapping[str, str],
+        timeout_seconds: float,
+    ) -> tuple[int, bytes]:
+        request = Request(url, headers=dict(headers), method="GET")
+        try:
+            with build_no_redirect_opener().open(request, timeout=timeout_seconds) as response:
+                body = response.read(MAX_DISCOVERY_RESPONSE_BYTES + 1)
+                return response.status, body
+        except HTTPError as exc:
+            body = exc.read(MAX_DISCOVERY_RESPONSE_BYTES + 1)
+            return exc.code, body
+        except (OSError, URLError):
+            raise ModelCredentialError(
+                status_code=503,
+                code="byok_discovery_unavailable",
+                detail="无法连接模型供应商的模型目录。",
+            ) from None
 
 class ModelCredentialError(RuntimeError):
     def __init__(self, *, status_code: int, code: str, detail: str):
@@ -131,10 +166,12 @@ class ModelCredentialManager:
         repository: ModelCredentialRepository,
         catalog: ByokProviderCatalog,
         cipher: CredentialCipher | None,
+        discovery_http_client: ByokDiscoveryHttpClient | None = None,
     ):
         self._repository = repository
         self._catalog = catalog
         self._cipher = cipher
+        self._discovery_http_client = discovery_http_client or ByokDiscoveryHttpClient()
 
     def list_statuses(
         self, principal: AuthenticatedPrincipal
@@ -174,20 +211,37 @@ class ModelCredentialManager:
                 detail="连接名称和模型 ID 不能为空或包含控制字符。",
             )
         base_url = normalize_base_url(payload.base_url)
-        api_key = payload.api_key.get_secret_value()
-        try:
-            validate_user_api_key(api_key)
-        except ValueError:
-            raise ModelCredentialError(
-                status_code=422,
-                code="invalid_model_credential",
-                detail="API Key 格式无效。",
-            ) from None
-        encrypted = cipher.encrypt(
-            api_key,
-            user_id=principal.user_id,
-            provider_id=connection_id,
+        existing = self._repository.get_model_credential(
+            principal.user_id, connection_id
         )
+        api_key = payload.api_key.get_secret_value() if payload.api_key is not None else None
+        if api_key is None:
+            if existing is None:
+                raise ModelCredentialError(
+                    status_code=422,
+                    code="byok_api_key_required",
+                    detail="首次添加连接时必须提供 API Key。",
+                )
+            encrypted = EncryptedCredential(
+                ciphertext=existing.ciphertext,
+                nonce=existing.nonce,
+                algorithm=existing.algorithm,
+                key_version=existing.key_version,
+            )
+        else:
+            try:
+                validate_user_api_key(api_key)
+            except ValueError:
+                raise ModelCredentialError(
+                    status_code=422,
+                    code="invalid_model_credential",
+                    detail="API Key 格式无效。",
+                ) from None
+            encrypted = cipher.encrypt(
+                api_key,
+                user_id=principal.user_id,
+                provider_id=connection_id,
+            )
         record = self._repository.upsert_model_credential(
             user_id=principal.user_id,
             provider_id=connection_id,
@@ -199,6 +253,15 @@ class ModelCredentialManager:
             nonce=encrypted.nonce,
             algorithm=encrypted.algorithm,
             key_version=encrypted.key_version,
+            models=tuple(
+                StoredByokModel(
+                    model_id=model.model_id.strip(),
+                    display_name=model.display_name.strip(),
+                    context_length=model.context_length,
+                    max_tokens=model.max_tokens,
+                )
+                for model in payload.models or ()
+            ),
         )
         return self._status(record, True)
 
@@ -234,13 +297,91 @@ class ModelCredentialManager:
                 code="model_credential_not_configured",
                 detail="当前账号尚未保存该模型连接。",
             )
-        if record.model_id != model_id:
+        model = next((item for item in record.models if item.model_id == model_id), None)
+        if model is None and model_id != record.model_id:
             raise ModelCredentialError(
                 status_code=422,
                 code="byok_model_not_registered",
                 detail="所选模型与已保存连接不一致。",
             )
-        return record
+        return record if model_id == record.model_id else replace(record, model_id=model_id)
+
+    def discover(
+        self,
+        principal: AuthenticatedPrincipal,
+        payload: ModelCredentialDiscovery,
+    ) -> list[ByokModel]:
+        self._require_runtime()
+        self._require_active_session(principal)
+        if payload.protocol != "openai_chat_completions":
+            raise ModelCredentialError(
+                status_code=422,
+                code="byok_discovery_unsupported",
+                detail="当前仅支持 OpenAI Chat Completions 的模型发现。",
+            )
+        base_url = normalize_base_url(payload.base_url)
+        api_key = payload.api_key.get_secret_value() if payload.api_key is not None else None
+        if api_key is not None:
+            try:
+                validate_user_api_key(api_key)
+            except ValueError:
+                raise ModelCredentialError(
+                    status_code=422,
+                    code="invalid_model_credential",
+                    detail="API Key 格式无效。",
+                ) from None
+        headers = {"Accept": "application/json"}
+        if api_key:
+            headers["Authorization"] = f"Bearer {api_key}"
+        status_code, body = self._discovery_http_client.get_json(
+            f"{base_url}/models", headers=headers, timeout_seconds=20.0
+        )
+        if len(body) > MAX_DISCOVERY_RESPONSE_BYTES:
+            raise ModelCredentialError(
+                status_code=422,
+                code="byok_discovery_response_too_large",
+                detail="模型目录响应过大，无法读取。",
+            )
+        if status_code < 200 or status_code >= 300:
+            code = "byok_discovery_auth_failed" if status_code in {401, 403} else "byok_discovery_failed"
+            detail = "模型供应商拒绝了模型目录请求，请检查 API Key。" if code.endswith("auth_failed") else "模型供应商暂时无法提供模型目录。"
+            raise ModelCredentialError(status_code=422 if code.endswith("auth_failed") else 502, code=code, detail=detail)
+        try:
+            listing = json.loads(body.decode("utf-8"))
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            raise ModelCredentialError(
+                status_code=502,
+                code="byok_discovery_invalid_response",
+                detail="模型供应商返回的模型目录不是有效 JSON。",
+            ) from None
+        rows: object
+        if isinstance(listing, dict) and isinstance(listing.get("data"), list):
+            rows = listing["data"]
+        elif isinstance(listing, dict) and isinstance(listing.get("models"), dict):
+            rows = [dict(value, id=key) for key, value in listing["models"].items() if isinstance(value, dict)]
+        else:
+            raise ModelCredentialError(
+                status_code=502,
+                code="byok_discovery_invalid_response",
+                detail='模型目录必须包含 "data" 数组或 "models" 对象。',
+            )
+        models: list[ByokModel] = []
+        seen: set[str] = set()
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            model_id = next((row.get(key) for key in ("id", "model_id") if isinstance(row.get(key), str) and row[key].strip()), None)
+            if not isinstance(model_id, str):
+                continue
+            model_id = model_id.strip()[:100]
+            if model_id in seen:
+                continue
+            seen.add(model_id)
+            display_name = next((row.get(key) for key in ("name", "display_name", "displayName") if isinstance(row.get(key), str) and row[key].strip()), model_id)
+            context = next((row.get(key) for key in ("context_length", "contextWindow", "context_window", "max_input_tokens") if isinstance(row.get(key), int) and row[key] >= 0), 0)
+            output = next((row.get(key) for key in ("max_tokens", "max_output_tokens", "maxOutputTokens", "maxTokens") if isinstance(row.get(key), int) and row[key] > 0), None)
+            models.append(ByokModel(model_id=model_id, display_name=str(display_name).strip()[:200], context_length=context, max_tokens=output))
+        return models
 
     def load_api_key(
         self, principal: AuthenticatedPrincipal, provider_id: str
@@ -318,4 +459,13 @@ class ModelCredentialManager:
             writable=self._cipher is not None and session_active,
             source="user_key",
             updated_at=record.updated_at,
+            models=[
+                ByokModel(
+                    model_id=model.model_id,
+                    display_name=model.display_name,
+                    context_length=model.context_length,
+                    max_tokens=model.max_tokens,
+                )
+                for model in (record.models or (StoredByokModel(record.model_id, record.model_id),))
+            ],
         )

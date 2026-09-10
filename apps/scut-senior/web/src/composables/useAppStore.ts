@@ -2,6 +2,7 @@ import { computed, reactive, ref, watch } from "vue";
 import {
   ApiError,
   createConversation,
+  discoverByokModels,
   deleteByokCredential,
   deleteConversation,
   getByokCredentials,
@@ -40,6 +41,7 @@ import type {
   AnswerMode,
   AuthUser,
   ByokConnectionInput,
+  ByokDiscoveryInput,
   ByokCredentialStatus,
   ConversationDetail,
   ConversationSummary,
@@ -1029,7 +1031,7 @@ function createAppStore() {
       if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return false;
       upsertByokCredentialStatus(status);
       setByokMessage(
-        `${status.display_name} 连接已保存；模型仍需由你显式选择。`,
+        `${status.display_name} 连接已保存，已登记 ${(status.models ?? []).length || 1} 个模型。`,
       );
       return true;
     } catch (error) {
@@ -1055,8 +1057,26 @@ function createAppStore() {
       model_id: status.model_id,
       protocol: status.protocol,
       api_key: apiKey,
+      models: status.models,
     });
     if (saved) byokKeyDrafts.value[status.provider_id] = "";
+  }
+
+  async function discoverByokConnectionModels(
+    input: ByokDiscoveryInput,
+  ) {
+    if (
+      !currentUser.value ||
+      !canManageByokCredentials(currentUser.value) ||
+      !byokRuntimeAvailable.value ||
+      byokIsBusy.value
+    ) return [];
+    try {
+      return await discoverByokModels(input);
+    } catch (error) {
+      setByokMessage(toMessage(error), true);
+      return [];
+    }
   }
 
   async function removeByokCredential(status: ByokCredentialStatus): Promise<void> {
@@ -1653,6 +1673,7 @@ function createAppStore() {
     reloadConversation,
     submitByokCredential,
     saveByokConnection,
+    discoverByokConnectionModels,
     removeByokCredential,
     startGithubLogin,
     signOut,

@@ -159,4 +159,20 @@ describe("configuredByokModelOptions", () => {
     expect(model?.model_id).toBe("vendor/custom-model");
     expect(model?.provider_id).toBe("openrouter");
   });
+
+  it("把一个连接下的多个模型全部暴露给选择器", () => {
+    const options = configuredByokModelOptions([
+      {
+        ...byokStatuses[0]!,
+        models: [
+          { model_id: "model-a", display_name: "Model A", context_length: 8192, max_tokens: 1024 },
+          { model_id: "model-b", display_name: "Model B", context_length: 32768, max_tokens: 4096 },
+        ],
+      },
+    ]);
+    expect(options.map((model) => [model.model_id, model.display_name, model.context_length])).toEqual([
+      ["model-a", "Model A", 8192],
+      ["model-b", "Model B", 32768],
+    ]);
+  });
 });

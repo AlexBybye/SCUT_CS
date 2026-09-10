@@ -60,17 +60,21 @@ def credential_payload(
     *,
     model_id: str | None = None,
     base_url: str | None = None,
+    models: list[dict[str, object]] | None = None,
 ) -> dict[str, str]:
     default_model, default_base_url = ROUTE_CONFIG.get(
         provider_id, ("custom-model", "https://models.example.com/v1")
     )
-    return {
+    payload: dict[str, object] = {
         "display_name": provider_id.replace("-", " ").title(),
         "base_url": base_url or default_base_url,
         "model_id": model_id or default_model,
         "protocol": "openai_chat_completions",
         "api_key": api_key,
     }
+    if models is not None:
+        payload["models"] = models
+    return payload  # type: ignore[return-value]
 
 
 class RecordingHttpClient:
@@ -234,6 +238,32 @@ def test_custom_byok_connections_use_the_saved_endpoint_and_model(
             for value in row
         )
     assert api_key not in persisted
+
+
+def test_one_byok_connection_can_register_and_run_multiple_models(
+    tmp_path: Path,
+) -> None:
+    http = RecordingHttpClient()
+    app, client, _, conversation_id = authenticated_app(tmp_path, http)
+    models = [
+        {"model_id": "model-a", "display_name": "Model A", "max_tokens": 1024},
+        {"model_id": "model-b", "display_name": "Model B", "max_tokens": 4096},
+    ]
+    saved = client.put(
+        "/api/v1/model-credentials/acme",
+        json=credential_payload("acme", "sk-acme", model_id="model-a", models=models),
+    )
+    assert saved.status_code == 200, saved.text
+    assert [model["model_id"] for model in saved.json()["models"]] == ["model-a", "model-b"]
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(conversation_id, "acme", "model-b"),
+    )
+
+    assert response.status_code == 201, response.text
+    assert http.calls[0]["payload"]["model"] == "model-b"
+    assert http.calls[0]["payload"]["max_tokens"] == 4096
 
 
 def test_deepseek_direct_profile_does_not_depend_on_connection_id(

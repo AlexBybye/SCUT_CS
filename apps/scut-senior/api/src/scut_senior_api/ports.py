@@ -91,6 +91,14 @@ class HumanizerGateway(Protocol):
 
 
 @dataclass(frozen=True, slots=True)
+class StoredByokModel:
+    model_id: str
+    display_name: str
+    context_length: int = 0
+    max_tokens: int | None = None
+
+
+@dataclass(frozen=True, slots=True)
 class StoredModelCredential:
     user_id: UUID
     provider_id: str
@@ -104,6 +112,7 @@ class StoredModelCredential:
     key_version: int
     expires_at: datetime
     updated_at: datetime
+    models: tuple[StoredByokModel, ...] = ()
 
 
 class IdentityProvider(Protocol):

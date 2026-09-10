@@ -51,19 +51,26 @@ export function initialModelSelectionKey(
 export function configuredByokModelOptions(
   statuses: readonly ByokCredentialStatus[],
 ): ModelCatalogItem[] {
-  return statuses.map((status) => ({
-        provider_id: status.provider_id,
-        model_id: status.model_id,
-        company: status.display_name,
-        display_name: status.model_id,
-        model_source: "user_key" as const,
-        billing_label: "user_key",
-        availability_status: "available",
-        context_length: 0,
-        input_modalities: ["text"],
-        supports_structured_outputs: true,
-        is_preview: false,
-        user_selectable: true,
-        last_checked_at: null,
-      }));
+  return statuses.flatMap((status) =>
+    (status.models ?? [{
+      model_id: status.model_id,
+      display_name: status.model_id,
+      context_length: 0,
+      max_tokens: null,
+    }]).map((model) => ({
+      provider_id: status.provider_id,
+      model_id: model.model_id,
+      company: status.display_name,
+      display_name: model.display_name,
+      model_source: "user_key" as const,
+      billing_label: "user_key",
+      availability_status: "available",
+      context_length: model.context_length,
+      input_modalities: ["text"],
+      supports_structured_outputs: true,
+      is_preview: false,
+      user_selectable: true,
+      last_checked_at: null,
+    })),
+  );
 }

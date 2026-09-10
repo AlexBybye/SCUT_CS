@@ -242,6 +242,7 @@ export interface ByokCredentialStatus {
   display_name: string;
   base_url: string;
   model_id: string;
+  models?: ByokModel[];
   protocol: "openai_chat_completions";
   configured: true;
   masked_key: string;
@@ -251,12 +252,26 @@ export interface ByokCredentialStatus {
   updated_at: string | null;
 }
 
+export interface ByokModel {
+  model_id: string;
+  display_name: string;
+  context_length: number;
+  max_tokens: number | null;
+}
+
 export interface ByokConnectionInput {
   display_name: string;
   base_url: string;
   model_id: string;
   protocol: "openai_chat_completions";
-  api_key: string;
+  api_key?: string;
+  models?: ByokModel[];
+}
+
+export interface ByokDiscoveryInput {
+  base_url: string;
+  protocol: "openai_chat_completions";
+  api_key?: string;
 }
 
 export interface AuthUser {

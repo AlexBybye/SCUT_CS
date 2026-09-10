@@ -98,6 +98,10 @@ class OpenAICompatibleByokGateway:
                 detail="已保存的 API 地址无效，请重新保存该连接。",
             ) from None
         direct_deepseek = _is_direct_deepseek(connection, base_url=base_url)
+        selected_model = next(
+            (model for model in connection.models if model.model_id == request.model_id),
+            None,
+        )
         payload = _build_byok_request(
             request,
             sources,
@@ -105,7 +109,7 @@ class OpenAICompatibleByokGateway:
             max_tokens=(
                 DEEPSEEK_ANSWER_MAX_TOKENS
                 if direct_deepseek
-                else DEFAULT_BYOK_MAX_TOKENS
+                else (selected_model.max_tokens if selected_model and selected_model.max_tokens else DEFAULT_BYOK_MAX_TOKENS)
             ),
             temperature=DEFAULT_BYOK_TEMPERATURE,
             reasoning_effort=(

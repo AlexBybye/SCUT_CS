@@ -93,6 +93,8 @@ from .contracts import (
     MaintainerContributionTransition,
     ModelCredentialStatus,
     ModelCredentialUpsert,
+    ModelCredentialDiscovery,
+    ByokModel,
     PrivateKnowledgeCreate,
     PrivateKnowledgeRecord,
     TemporaryMaterialCreate,
@@ -119,7 +121,11 @@ from .model_catalog import (
     ModelHealthResult,
     ModelNotRegistered,
 )
-from .model_credentials import ModelCredentialError, ModelCredentialManager
+from .model_credentials import (
+    ByokDiscoveryHttpClient,
+    ModelCredentialError,
+    ModelCredentialManager,
+)
 from .paths import APP_ROOT
 from .ports import CapabilityUnavailable, DisabledCapability, HumanizerGateway
 from .ports import ModelGateway, UserIdentity
@@ -264,6 +270,7 @@ def create_app(
     model_http_client: JsonHttpClient | None = None,
     zhipu_http_client: JsonHttpClient | None = None,
     byok_http_client: JsonHttpClient | None = None,
+    byok_discovery_http_client: ByokDiscoveryHttpClient | None = None,
     model_health_checker: ModelHealthChecker | None = None,
     zhipu_health_checker: ModelHealthChecker | None = None,
     github_oauth_adapter: GitHubOAuthAdapter | None = None,
@@ -392,6 +399,7 @@ def create_app(
             if byok_master_key is not None
             else None
         ),
+        discovery_http_client=byok_discovery_http_client,
     )
     if active_settings.app_env == "test" and byok_http_client is None:
         byok_http_client = FailClosedJsonHttpClient()
@@ -889,6 +897,16 @@ def create_app(
     ) -> Response:
         credential_manager.delete(user, provider_id)
         return Response(status_code=204)
+
+    @app.post(
+        "/api/v1/model-credentials/discover",
+        response_model=list[ByokModel],
+    )
+    def discover_model_credentials(
+        payload: ModelCredentialDiscovery,
+        user: AuthenticatedPrincipal = Depends(require_github_user),
+    ) -> list[ByokModel]:
+        return credential_manager.discover(user, payload)
 
     @app.get("/api/v1/courses")
     def courses() -> dict[str, object]:

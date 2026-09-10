@@ -20,6 +20,7 @@ from scut_senior_api.credentials import (
 )
 from scut_senior_api.adapters.sqlite import SQLiteWorkflowRepository
 from scut_senior_api.main import create_app
+from scut_senior_api.model_credentials import ByokDiscoveryHttpClient
 from scut_senior_api.paths import MIGRATION_ROOT
 
 
@@ -82,6 +83,17 @@ def authenticated_client(
     client = TestClient(app, base_url="https://testserver")
     client.cookies.set(SESSION_COOKIE_NAME, session.token, path="/")
     return client, session.token
+
+
+class DiscoveryClient(ByokDiscoveryHttpClient):
+    def __init__(self, status_code: int = 200, body: bytes | None = None):
+        self.status_code = status_code
+        self.body = body or b'{"data":[{"id":"model-a","name":"Model A","context_length":8192,"max_tokens":2048},{"id":"model-b"}]}'
+        self.calls: list[dict[str, object]] = []
+
+    def get_json(self, url, *, headers, timeout_seconds):
+        self.calls.append({"url": url, "headers": dict(headers), "timeout_seconds": timeout_seconds})
+        return self.status_code, self.body
 
 
 def test_master_key_is_strict_aes256_base64_and_never_appears_in_repr(
@@ -222,6 +234,14 @@ def test_crud_returns_only_masked_metadata_and_database_contains_only_aead(
         "display_name": "OpenRouter DeepSeek",
         "base_url": "https://openrouter.ai/api/v1",
         "model_id": "deepseek/deepseek-v4-flash-0731",
+        "models": [
+            {
+                "model_id": "deepseek/deepseek-v4-flash-0731",
+                "display_name": "deepseek/deepseek-v4-flash-0731",
+                "context_length": 0,
+                "max_tokens": None,
+            }
+        ],
         "protocol": "openai_chat_completions",
         "configured": True,
         "masked_key": "••••••••",
@@ -297,6 +317,63 @@ def test_replace_restart_same_session_and_new_session_isolation(tmp_path: Path) 
     )["configured"] is True
 
 
+def test_discover_models_reads_openai_listing_without_persisting_the_key(
+    tmp_path: Path,
+) -> None:
+    discovery = DiscoveryClient()
+    app = create_app(byok_settings(tmp_path / "discover.db"), byok_discovery_http_client=discovery)
+    client, _ = authenticated_client(app)
+
+    response = client.post(
+        "/api/v1/model-credentials/discover",
+        json={
+            "base_url": "https://gateway.example/v1/",
+            "api_key": "sk-discovery-secret",
+        },
+    )
+
+    assert response.status_code == 200, response.text
+    assert response.json() == [
+        {"model_id": "model-a", "display_name": "Model A", "context_length": 8192, "max_tokens": 2048},
+        {"model_id": "model-b", "display_name": "model-b", "context_length": 0, "max_tokens": None},
+    ]
+    assert discovery.calls == [{
+        "url": "https://gateway.example/v1/models",
+        "headers": {"Accept": "application/json", "Authorization": "Bearer sk-discovery-secret"},
+        "timeout_seconds": 20.0,
+    }]
+    assert client.get("/api/v1/model-credentials").json() == []
+    assert "sk-discovery-secret" not in response.text
+
+
+def test_existing_connection_can_change_model_catalog_without_resending_key(
+    tmp_path: Path,
+) -> None:
+    app = create_app(byok_settings(tmp_path / "edit.db"))
+    client, _ = authenticated_client(app)
+    assert client.put(
+        "/api/v1/model-credentials/acme",
+        json=connection_payload("sk-stays-encrypted", model_id="model-a"),
+    ).status_code == 200
+
+    updated = client.put(
+        "/api/v1/model-credentials/acme",
+        json={
+            "display_name": "Acme Gateway v2",
+            "base_url": "https://gateway.example/v2",
+            "model_id": "model-b",
+            "models": [
+                {"model_id": "model-a", "display_name": "Model A"},
+                {"model_id": "model-b", "display_name": "Model B"},
+            ],
+        },
+    )
+
+    assert updated.status_code == 200, updated.text
+    assert updated.json()["model_id"] == "model-b"
+    principal = app.state.repository.authenticate_session(client.cookies[SESSION_COOKIE_NAME])
+    assert principal is not None
+    assert app.state.credential_manager.load_api_key(principal, "acme") == "sk-stays-encrypted"
 def test_0018_preserves_existing_ciphertext_and_adds_connection_profile(
     tmp_path: Path,
 ) -> None:

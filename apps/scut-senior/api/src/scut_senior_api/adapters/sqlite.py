@@ -47,7 +47,7 @@ from ..contributions import (
 )
 from ..credentials import CREDENTIAL_ALGORITHM
 from ..paths import MIGRATION_ROOT
-from ..ports import RetrievedSource, StoredModelCredential
+from ..ports import RetrievedSource, StoredByokModel, StoredModelCredential
 
 
 HISTORY_TTL = timedelta(days=30)
@@ -1319,6 +1319,24 @@ class SQLiteWorkflowRepository:
 
     @staticmethod
     def _stored_model_credential(row: sqlite3.Row) -> StoredModelCredential:
+        try:
+            raw_models = json.loads(row["models_json"] or "[]")
+        except (TypeError, json.JSONDecodeError):
+            raw_models = []
+        models = tuple(
+            StoredByokModel(
+                model_id=item["model_id"],
+                display_name=item.get("display_name", item["model_id"]),
+                context_length=item.get("context_length", 0),
+                max_tokens=item.get("max_tokens"),
+            )
+            for item in raw_models
+            if isinstance(item, dict)
+            and isinstance(item.get("model_id"), str)
+            and item["model_id"]
+        )
+        if not models:
+            models = (StoredByokModel(row["model_id"], row["model_id"]),)
         return StoredModelCredential(
             user_id=UUID(row["user_id"]),
             provider_id=row["provider_id"],
@@ -1332,6 +1350,7 @@ class SQLiteWorkflowRepository:
             key_version=row["key_version"],
             expires_at=datetime.fromisoformat(row["expires_at"]),
             updated_at=datetime.fromisoformat(row["updated_at"]),
+            models=models,
         )
 
     def list_model_credentials(self, user_id: UUID) -> list[StoredModelCredential]:
@@ -1342,7 +1361,7 @@ class SQLiteWorkflowRepository:
                 """
                 SELECT user_id, provider_id, display_name, base_url, model_id,
                        protocol, ciphertext, nonce, algorithm, key_version,
-                       expires_at, updated_at
+                       expires_at, updated_at, models_json
                 FROM model_credentials
                 WHERE user_id = ? AND expires_at > ?
                 ORDER BY provider_id
@@ -1361,7 +1380,7 @@ class SQLiteWorkflowRepository:
                 """
                 SELECT user_id, provider_id, display_name, base_url, model_id,
                        protocol, ciphertext, nonce, algorithm, key_version,
-                       expires_at, updated_at
+                       expires_at, updated_at, models_json
                 FROM model_credentials
                 WHERE user_id = ? AND provider_id = ? AND expires_at > ?
                 """,
@@ -1382,6 +1401,7 @@ class SQLiteWorkflowRepository:
         nonce: bytes,
         algorithm: str,
         key_version: int,
+        models: tuple[StoredByokModel, ...] = (),
     ) -> StoredModelCredential:
         if algorithm != CREDENTIAL_ALGORITHM:
             raise ValueError("unsupported credential algorithm")
@@ -1402,13 +1422,14 @@ class SQLiteWorkflowRepository:
                 INSERT INTO model_credentials (
                     user_id, provider_id, display_name, base_url, model_id,
                     protocol, ciphertext, nonce, algorithm, key_version,
-                    created_at, updated_at, expires_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    created_at, updated_at, expires_at, models_json
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT(user_id, provider_id) DO UPDATE SET
                     display_name = excluded.display_name,
                     base_url = excluded.base_url,
                     model_id = excluded.model_id,
                     protocol = excluded.protocol,
+                    models_json = excluded.models_json,
                     ciphertext = excluded.ciphertext,
                     nonce = excluded.nonce,
                     algorithm = excluded.algorithm,
@@ -1430,13 +1451,26 @@ class SQLiteWorkflowRepository:
                     now,
                     now,
                     expires_at,
+                    json.dumps(
+                        [
+                            {
+                                "model_id": model.model_id,
+                                "display_name": model.display_name,
+                                "context_length": model.context_length,
+                                "max_tokens": model.max_tokens,
+                            }
+                            for model in models
+                        ],
+                        ensure_ascii=False,
+                        separators=(",", ":"),
+                    ),
                 ),
             )
             row = connection.execute(
                 """
                 SELECT user_id, provider_id, display_name, base_url, model_id,
                        protocol, ciphertext, nonce, algorithm, key_version,
-                       expires_at, updated_at
+                       expires_at, updated_at, models_json
                 FROM model_credentials
                 WHERE user_id = ? AND provider_id = ?
                 """,

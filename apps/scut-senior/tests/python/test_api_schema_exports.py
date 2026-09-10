@@ -45,6 +45,7 @@ def test_model_credential_schemas_never_expose_ciphertext_or_plaintext_status() 
         "display_name",
         "base_url",
         "model_id",
+        "models",
         "protocol",
         "configured",
         "masked_key",
@@ -56,14 +57,16 @@ def test_model_credential_schemas_never_expose_ciphertext_or_plaintext_status() 
     serialized = json.dumps(status, ensure_ascii=False)
     assert "ciphertext" not in serialized
     assert "nonce" not in serialized
-    assert upsert["properties"]["api_key"]["format"] == "password"
-    assert upsert["properties"]["api_key"]["writeOnly"] is True
+    api_key_schema = upsert["properties"]["api_key"]["anyOf"][0]
+    assert api_key_schema["format"] == "password"
+    assert api_key_schema["writeOnly"] is True
     assert set(upsert["properties"]) == {
         "api_key",
         "display_name",
         "base_url",
         "model_id",
         "protocol",
+        "models",
     }
 
 
