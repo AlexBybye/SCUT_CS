@@ -17,11 +17,6 @@ from .agent_loop import (
 )
 from .adapters.bilibili import derive_question_keywords, normalize_keywords
 from .adapters.exam_facts import ExamFactsUnavailable
-from .byok_catalog import (
-    ByokModelNotRegistered,
-    ByokProviderDisabled,
-    ByokProviderNotRegistered,
-)
 from .config import Settings
 from .contracts import (
     AccountDeletionSummary,
@@ -826,6 +821,7 @@ class IterationZeroService:
         # exactly, so this cannot fail for a contract-valid request.
         preset = HARNESS_REGISTRY.resolve_preset(request.workflow_type)
         model_entry: ModelCatalogEntry | None = None
+        byok_connection = None
         use_user_key = request.model_source == ModelSource.USER_KEY
         if not use_user_key:
             if self.settings.model_mode == "mock":
@@ -866,42 +862,18 @@ class IterationZeroService:
         else:
             if not isinstance(user, AuthenticatedPrincipal) or user.is_mock:
                 raise AuthRequired()
-            try:
-                provider = self.model_catalog.byok_catalog.require_enabled(
-                    request.provider_id
-                )
-                selected_model = self.model_catalog.byok_catalog.resolve_model(
-                    request.provider_id, request.model_id
-                )
-            except ByokProviderNotRegistered:
-                raise ModelCredentialError(
-                    status_code=422,
-                    code="byok_provider_not_registered",
-                    detail="该 BYOK 供应商未登记。",
-                ) from None
-            except ByokProviderDisabled:
-                raise ModelCredentialError(
-                    status_code=503,
-                    code="byok_provider_disabled",
-                    detail="该 BYOK 供应商当前未启用。",
-                ) from None
-            except ByokModelNotRegistered:
-                raise ModelCredentialError(
-                    status_code=422,
-                    code="byok_model_not_registered",
-                    detail="该 BYOK 模型未登记。",
-                ) from None
-            model_provider_id = provider.provider_id.value
-            model_id = selected_model.model_id
+            byok_connection = self.credential_manager.get_connection(
+                user, request.provider_id, request.model_id
+            )
+            model_provider_id = byok_connection.provider_id
+            model_id = byok_connection.model_id
             billing_label = "user_provider_billing"
             availability_status = "user_key_enabled"
             mock_only = False
-            # Apply the same input-modality compatibility check to BYOK. Its
-            # structured-output metadata remains descriptive for the current
-            # text-capable presets.
+            # Custom OpenAI-compatible BYOK connections advertise text inputs.
             compatibility_reason = preset.check_model_compatibility(
-                input_modalities=selected_model.input_modalities,
-                supports_structured_outputs=selected_model.supports_structured_outputs,
+                input_modalities=("text",),
+                supports_structured_outputs=True,
             )
             if compatibility_reason is not None:
                 raise CapabilityUnavailable("model", compatibility_reason)
@@ -1538,6 +1510,7 @@ class IterationZeroService:
                         )
                     if use_user_key:
                         assert api_key is not None
+                        assert byok_connection is not None
                         # 迭代 7.5：断开/取消时尽力中止上游等待（cancel_check
                         # 由可取消 transport 周期检查；结果被弃置不落库）。
                         cancel_check = (
@@ -1547,6 +1520,7 @@ class IterationZeroService:
                         )
                         generated = self.byok_model.generate(
                             api_key=api_key,
+                            connection=byok_connection,
                             request=generation_request,
                             sources=sources,
                             history=history,

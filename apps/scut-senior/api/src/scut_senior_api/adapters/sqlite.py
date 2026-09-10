@@ -47,7 +47,7 @@ from ..contributions import (
 )
 from ..credentials import CREDENTIAL_ALGORITHM
 from ..paths import MIGRATION_ROOT
-from ..ports import RetrievedSource, StoredModelCredential
+from ..ports import RetrievedSource, StoredByokModel, StoredModelCredential
 
 
 HISTORY_TTL = timedelta(days=30)
@@ -262,6 +262,104 @@ class SQLiteWorkflowRepository:
                 except Exception:
                     connection.rollback()
                     raise
+            self._repair_legacy_fixed_byok_schema(connection)
+
+    @staticmethod
+    def _repair_legacy_fixed_byok_schema(connection: sqlite3.Connection) -> None:
+        """Repair the short-lived fixed-schema rollback without losing keys.
+
+        Some local installations recorded an experimental
+        ``0018_restore_fixed_byok_credentials.sql`` migration which restored
+        the old narrow table but is not part of this branch.  The migration
+        ledger therefore prevents 0018 from running again, while the runtime
+        expects the custom-connection columns.  Rebuild only that obsolete
+        shape and retain every encrypted fixed-provider credential.
+        """
+        columns = {
+            row["name"]
+            for row in connection.execute("PRAGMA table_info(model_credentials)")
+        }
+        required = {"display_name", "base_url", "model_id", "protocol", "models_json"}
+        if not columns or required.issubset(columns):
+            return
+        rollback_marker = connection.execute(
+            "SELECT 1 FROM schema_migrations WHERE version = ?",
+            ("0018_restore_fixed_byok_credentials.sql",),
+        ).fetchone()
+        if rollback_marker is None:
+            return
+        legacy_rows = connection.execute(
+            """
+            SELECT user_id, provider_id, ciphertext, nonce, algorithm,
+                   key_version, created_at, updated_at, expires_at
+            FROM model_credentials
+            """
+        ).fetchall()
+        profiles = {
+            "openrouter": ("OpenRouter", "https://openrouter.ai/api/v1", "deepseek/deepseek-v4-flash-0731", "DeepSeek V4 Flash 0731"),
+            "deepseek": ("DeepSeek", "https://api.deepseek.com", "deepseek-v4-flash", "DeepSeek V4 Flash"),
+            "siliconflow": ("硅基流动", "https://api.siliconflow.cn/v1", "Pro/zai-org/GLM-4.7", "GLM-4.7 Pro"),
+            "zhipu": ("智谱 AI", "https://open.bigmodel.cn/api/paas/v4", "glm-5.2", "GLM-5.2"),
+        }
+        connection.execute("BEGIN IMMEDIATE")
+        try:
+            connection.execute("DROP INDEX IF EXISTS idx_model_credentials_expiry")
+            connection.execute("ALTER TABLE model_credentials RENAME TO model_credentials_legacy_fixed")
+            connection.execute(
+                """
+                CREATE TABLE model_credentials (
+                    user_id TEXT NOT NULL,
+                    provider_id TEXT NOT NULL CHECK (length(provider_id) BETWEEN 1 AND 64),
+                    display_name TEXT NOT NULL CHECK (length(display_name) BETWEEN 1 AND 100),
+                    base_url TEXT NOT NULL CHECK (length(base_url) BETWEEN 1 AND 2048),
+                    model_id TEXT NOT NULL CHECK (length(model_id) BETWEEN 1 AND 100),
+                    protocol TEXT NOT NULL CHECK (protocol = 'openai_chat_completions'),
+                    ciphertext BLOB NOT NULL CHECK (length(ciphertext) > 16),
+                    nonce BLOB NOT NULL CHECK (length(nonce) = 12),
+                    algorithm TEXT NOT NULL CHECK (algorithm = 'AES-256-GCM'),
+                    key_version INTEGER NOT NULL CHECK (key_version > 0),
+                    created_at TEXT NOT NULL,
+                    updated_at TEXT NOT NULL,
+                    expires_at TEXT NOT NULL,
+                    models_json TEXT NOT NULL DEFAULT '[]' CHECK (json_valid(models_json)),
+                    PRIMARY KEY (user_id, provider_id),
+                    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+                );
+                """
+            )
+            connection.execute(
+                "CREATE INDEX idx_model_credentials_expiry ON model_credentials (expires_at)"
+            )
+            for row in legacy_rows:
+                profile = profiles.get(row["provider_id"])
+                if profile is None:
+                    continue
+                display_name, base_url, model_id, model_display_name = profile
+                models_json = json.dumps(
+                    [{"model_id": model_id, "display_name": model_display_name, "context_length": 0, "max_tokens": None}],
+                    ensure_ascii=False,
+                    separators=(",", ":"),
+                )
+                connection.execute(
+                    """
+                    INSERT INTO model_credentials (
+                        user_id, provider_id, display_name, base_url, model_id, protocol,
+                        ciphertext, nonce, algorithm, key_version, created_at, updated_at,
+                        expires_at, models_json
+                    ) VALUES (?, ?, ?, ?, ?, 'openai_chat_completions', ?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        row["user_id"], row["provider_id"], display_name,
+                        base_url, model_id, row["ciphertext"], row["nonce"],
+                        row["algorithm"], row["key_version"], row["created_at"],
+                        row["updated_at"], row["expires_at"], models_json,
+                    ),
+                )
+            connection.execute("DROP TABLE model_credentials_legacy_fixed")
+            connection.commit()
+        except Exception:
+            connection.rollback()
+            raise
 
     @staticmethod
     def _digest(raw_token: str) -> str:
@@ -1294,15 +1392,39 @@ class SQLiteWorkflowRepository:
 
     @staticmethod
     def _stored_model_credential(row: sqlite3.Row) -> StoredModelCredential:
+        try:
+            raw_models = json.loads(row["models_json"] or "[]")
+        except (TypeError, json.JSONDecodeError):
+            raw_models = []
+        models = tuple(
+            StoredByokModel(
+                model_id=item["model_id"],
+                display_name=item.get("display_name", item["model_id"]),
+                context_length=item.get("context_length", 0),
+                max_tokens=item.get("max_tokens"),
+                reasoning_effort=item.get("reasoning_effort"),
+            )
+            for item in raw_models
+            if isinstance(item, dict)
+            and isinstance(item.get("model_id"), str)
+            and item["model_id"]
+        )
+        if not models:
+            models = (StoredByokModel(row["model_id"], row["model_id"]),)
         return StoredModelCredential(
             user_id=UUID(row["user_id"]),
             provider_id=row["provider_id"],
+            display_name=row["display_name"],
+            base_url=row["base_url"],
+            model_id=row["model_id"],
+            protocol=row["protocol"],
             ciphertext=bytes(row["ciphertext"]),
             nonce=bytes(row["nonce"]),
             algorithm=row["algorithm"],
             key_version=row["key_version"],
             expires_at=datetime.fromisoformat(row["expires_at"]),
             updated_at=datetime.fromisoformat(row["updated_at"]),
+            models=models,
         )
 
     def list_model_credentials(self, user_id: UUID) -> list[StoredModelCredential]:
@@ -1311,8 +1433,9 @@ class SQLiteWorkflowRepository:
         with self._connect() as connection:
             rows = connection.execute(
                 """
-                SELECT user_id, provider_id, ciphertext, nonce, algorithm,
-                       key_version, expires_at, updated_at
+                SELECT user_id, provider_id, display_name, base_url, model_id,
+                       protocol, ciphertext, nonce, algorithm, key_version,
+                       expires_at, updated_at, models_json
                 FROM model_credentials
                 WHERE user_id = ? AND expires_at > ?
                 ORDER BY provider_id
@@ -1329,8 +1452,9 @@ class SQLiteWorkflowRepository:
         with self._connect() as connection:
             row = connection.execute(
                 """
-                SELECT user_id, provider_id, ciphertext, nonce, algorithm,
-                       key_version, expires_at, updated_at
+                SELECT user_id, provider_id, display_name, base_url, model_id,
+                       protocol, ciphertext, nonce, algorithm, key_version,
+                       expires_at, updated_at, models_json
                 FROM model_credentials
                 WHERE user_id = ? AND provider_id = ? AND expires_at > ?
                 """,
@@ -1343,10 +1467,15 @@ class SQLiteWorkflowRepository:
         *,
         user_id: UUID,
         provider_id: str,
+        display_name: str,
+        base_url: str,
+        model_id: str,
+        protocol: str,
         ciphertext: bytes,
         nonce: bytes,
         algorithm: str,
         key_version: int,
+        models: tuple[StoredByokModel, ...] = (),
     ) -> StoredModelCredential:
         if algorithm != CREDENTIAL_ALGORITHM:
             raise ValueError("unsupported credential algorithm")
@@ -1365,10 +1494,16 @@ class SQLiteWorkflowRepository:
             connection.execute(
                 """
                 INSERT INTO model_credentials (
-                    user_id, provider_id, ciphertext, nonce, algorithm,
-                    key_version, created_at, updated_at, expires_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    user_id, provider_id, display_name, base_url, model_id,
+                    protocol, ciphertext, nonce, algorithm, key_version,
+                    created_at, updated_at, expires_at, models_json
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT(user_id, provider_id) DO UPDATE SET
+                    display_name = excluded.display_name,
+                    base_url = excluded.base_url,
+                    model_id = excluded.model_id,
+                    protocol = excluded.protocol,
+                    models_json = excluded.models_json,
                     ciphertext = excluded.ciphertext,
                     nonce = excluded.nonce,
                     algorithm = excluded.algorithm,
@@ -1379,6 +1514,10 @@ class SQLiteWorkflowRepository:
                 (
                     str(user_id),
                     provider_id,
+                    display_name,
+                    base_url,
+                    model_id,
+                    protocol,
                     sqlite3.Binary(ciphertext),
                     sqlite3.Binary(nonce),
                     algorithm,
@@ -1386,12 +1525,27 @@ class SQLiteWorkflowRepository:
                     now,
                     now,
                     expires_at,
+                    json.dumps(
+                        [
+                            {
+                                "model_id": model.model_id,
+                                "display_name": model.display_name,
+                                "context_length": model.context_length,
+                                "max_tokens": model.max_tokens,
+                                "reasoning_effort": model.reasoning_effort,
+                            }
+                            for model in models
+                        ],
+                        ensure_ascii=False,
+                        separators=(",", ":"),
+                    ),
                 ),
             )
             row = connection.execute(
                 """
-                SELECT user_id, provider_id, ciphertext, nonce, algorithm,
-                       key_version, expires_at, updated_at
+                SELECT user_id, provider_id, display_name, base_url, model_id,
+                       protocol, ciphertext, nonce, algorithm, key_version,
+                       expires_at, updated_at, models_json
                 FROM model_credentials
                 WHERE user_id = ? AND provider_id = ?
                 """,

@@ -224,7 +224,7 @@ export interface ByokModelCatalogItem {
   display_name: string;
 }
 
-export type ByokProviderId = "openrouter" | "deepseek" | "siliconflow" | "zhipu";
+export type ByokProviderId = string;
 
 export interface ByokProviderCatalogItem {
   provider_id: ByokProviderId;
@@ -239,13 +239,41 @@ export interface ByokProviderCatalogItem {
 
 export interface ByokCredentialStatus {
   provider_id: ByokProviderId;
+  display_name: string;
+  base_url: string;
   model_id: string;
+  models?: ByokModel[];
+  protocol: "openai_chat_completions";
   configured: boolean;
   masked_key: string | null;
   expires_at: string | null;
   writable: boolean;
   source: "user_key";
   updated_at: string | null;
+}
+
+export interface ByokModel {
+  model_id: string;
+  display_name: string;
+  context_length: number;
+  max_tokens: number | null;
+  reasoning_effort?: "low" | "high" | "max" | null;
+}
+
+export interface ByokConnectionInput {
+  display_name: string;
+  base_url: string;
+  model_id: string;
+  protocol: "openai_chat_completions";
+  api_key?: string;
+  models?: ByokModel[];
+}
+
+export interface ByokDiscoveryInput {
+  base_url: string;
+  provider_id?: string;
+  protocol: "openai_chat_completions";
+  api_key?: string;
 }
 
 export interface AuthUser {

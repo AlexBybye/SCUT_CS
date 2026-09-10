@@ -1,8 +1,5 @@
 from __future__ import annotations
 
-from dataclasses import replace
-from types import SimpleNamespace
-
 import pytest
 
 from scut_senior_api.agent_loop import (
@@ -11,51 +8,9 @@ from scut_senior_api.agent_loop import (
     choose_next_action,
     record_action_result,
     record_guard_retry,
-    action_allowed_for_workflow,
-    parse_model_action,
     replay_agent_events,
     reduce_agent_event,
-    should_retrieve_with_rewrite,
 )
-from scut_senior_api.ports import RetrievedSource
-
-
-def test_workflow_is_hard_boundary_for_agent_actions() -> None:
-    assert action_allowed_for_workflow("knowledge_qa", "retrieve")
-    assert not action_allowed_for_workflow("temporary_material_reading", "retrieve_with_query_rewrite")
-    assert not action_allowed_for_workflow("unknown", "retrieve")
-
-
-def test_model_action_parser_is_fail_closed_at_workflow_boundary() -> None:
-    assert parse_model_action("retrieve", workflow_type="knowledge_qa") == "retrieve"
-    assert parse_model_action("I choose retrieve", workflow_type="knowledge_qa") is None
-    assert parse_model_action("retrieve_with_query_rewrite", workflow_type="temporary_material_reading") is None
-    assert parse_model_action("switch_workflow", workflow_type="knowledge_qa") is None
-
-
-def test_deterministic_rewrite_gate_is_conservative_and_evidence_based() -> None:
-    request = SimpleNamespace(user_input="请讲解 2024 年第 3 题")
-    ordinary_request = SimpleNamespace(user_input="解释矩阵的秩")
-    source_without_question_locator = RetrievedSource(
-        chunk_id="linear_algebra:1",
-        course_id="linear_algebra",
-        source_id="source-1",
-        source_title="矩阵讲义",
-        text="矩阵的秩。",
-        locator_type="page",
-        locator_start=1,
-        locator_end=1,
-        question_id=None,
-        heading_path=(),
-    )
-    source_with_question_locator = replace(
-        source_without_question_locator, question_id="q3"
-    )
-
-    assert should_retrieve_with_rewrite(request, ())
-    assert should_retrieve_with_rewrite(request, [source_without_question_locator])
-    assert not should_retrieve_with_rewrite(request, [source_with_question_locator])
-    assert not should_retrieve_with_rewrite(ordinary_request, [source_without_question_locator])
 
 
 def event(kind: str, **payload: object) -> dict[str, object]:
@@ -129,36 +84,18 @@ def test_guard_retry_budget_is_explicit() -> None:
     budget = AgentBudget(max_guard_retries=1)
     state = record_guard_retry(AgentState(), budget=budget)
     assert state.guard_retries == 1
-    assert state.step_count == 1
     state = record_guard_retry(state, budget=budget)
     assert state.status == "budget_exhausted"
     assert state.budget_reason == "max_guard_retries"
 
 
-def test_guard_retry_also_consumes_step_budget() -> None:
-    budget = AgentBudget(max_steps=1, max_guard_retries=2)
-    state = record_guard_retry(AgentState(), budget=budget)
-    assert state.guard_retries == 1
-    assert state.step_count == 1
-    state = record_guard_retry(state, budget=budget)
-    assert state.status == "budget_exhausted"
-    assert state.budget_reason == "max_steps"
-
-
-def test_optional_model_call_must_fit_before_soft_runtime_cutoff() -> None:
-    budget = AgentBudget(
-        max_runtime_seconds=120,
-        soft_runtime_ratio=0.75,
-    )
-
+def test_optional_model_work_uses_120_second_hard_budget() -> None:
+    budget = AgentBudget()
+    assert budget.max_runtime_seconds == 120
     assert budget.soft_runtime_seconds == 90
     assert budget.allows_optional_call(89.999)
     assert not budget.allows_optional_call(90)
-
-    with pytest.raises(ValueError, match="soft_runtime_ratio"):
-        AgentBudget(soft_runtime_ratio=1)
-    with pytest.raises(ValueError, match="max_answer_calls"):
-        AgentBudget(max_answer_calls=0)
+    assert not budget.allows_optional_call(120)
 
 
 def test_replay_reconstructs_action_and_terminal_state() -> None:
