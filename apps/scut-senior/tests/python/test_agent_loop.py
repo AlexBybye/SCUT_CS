@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+from dataclasses import replace
+from types import SimpleNamespace
+
 import pytest
 
 from scut_senior_api.agent_loop import (
@@ -12,7 +15,9 @@ from scut_senior_api.agent_loop import (
     parse_model_action,
     replay_agent_events,
     reduce_agent_event,
+    should_retrieve_with_rewrite,
 )
+from scut_senior_api.ports import RetrievedSource
 
 
 def test_workflow_is_hard_boundary_for_agent_actions() -> None:
@@ -26,6 +31,31 @@ def test_model_action_parser_is_fail_closed_at_workflow_boundary() -> None:
     assert parse_model_action("I choose retrieve", workflow_type="knowledge_qa") is None
     assert parse_model_action("retrieve_with_query_rewrite", workflow_type="temporary_material_reading") is None
     assert parse_model_action("switch_workflow", workflow_type="knowledge_qa") is None
+
+
+def test_deterministic_rewrite_gate_is_conservative_and_evidence_based() -> None:
+    request = SimpleNamespace(user_input="请讲解 2024 年第 3 题")
+    ordinary_request = SimpleNamespace(user_input="解释矩阵的秩")
+    source_without_question_locator = RetrievedSource(
+        chunk_id="linear_algebra:1",
+        course_id="linear_algebra",
+        source_id="source-1",
+        source_title="矩阵讲义",
+        text="矩阵的秩。",
+        locator_type="page",
+        locator_start=1,
+        locator_end=1,
+        question_id=None,
+        heading_path=(),
+    )
+    source_with_question_locator = replace(
+        source_without_question_locator, question_id="q3"
+    )
+
+    assert should_retrieve_with_rewrite(request, ())
+    assert should_retrieve_with_rewrite(request, [source_without_question_locator])
+    assert not should_retrieve_with_rewrite(request, [source_with_question_locator])
+    assert not should_retrieve_with_rewrite(ordinary_request, [source_without_question_locator])
 
 
 def event(kind: str, **payload: object) -> dict[str, object]:

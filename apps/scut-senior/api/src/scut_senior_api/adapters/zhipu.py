@@ -26,6 +26,10 @@ PLATFORM_RATE_LIMITED_MESSAGE = "平台免费通道请求过于频繁，请稍�
 # https://docs.bigmodel.cn/cn/api-reference/错误码 and remain stable.
 ZHIPU_ERROR_CODE_THROTTLED = "1305"
 ZHIPU_ERROR_MESSAGE_THROTTLED = "该模型当前访问量过大，请稍后再试。"
+ZHIPU_ERROR_CODE_USER_RATE_LIMITED = "1302"
+ZHIPU_ERROR_MESSAGE_USER_RATE_LIMITED = "智谱账号请求过于频繁，请稍后再试。"
+ZHIPU_ERROR_CODE_DAILY_LIMIT_REACHED = "1304"
+ZHIPU_ERROR_MESSAGE_DAILY_LIMIT_REACHED = "智谱账号今日调用次数已达上限，请明日再试。"
 
 
 class ZhipuPlatformGatewayError(RuntimeError):
@@ -148,6 +152,18 @@ def _rate_limit_error(response: HttpResponse) -> ZhipuPlatformGatewayError:
     """
 
     code = _safe_error_code(response.body)
+    if code == ZHIPU_ERROR_CODE_USER_RATE_LIMITED:
+        return ZhipuPlatformGatewayError(
+            status_code=429,
+            code="platform_rate_limited",
+            detail=ZHIPU_ERROR_MESSAGE_USER_RATE_LIMITED,
+        )
+    if code == ZHIPU_ERROR_CODE_DAILY_LIMIT_REACHED:
+        return ZhipuPlatformGatewayError(
+            status_code=429,
+            code="platform_daily_quota_exhausted",
+            detail=ZHIPU_ERROR_MESSAGE_DAILY_LIMIT_REACHED,
+        )
     if code == ZHIPU_ERROR_CODE_THROTTLED:
         return ZhipuPlatformGatewayError(
             status_code=429,

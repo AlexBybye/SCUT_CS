@@ -50,7 +50,7 @@ class Settings:
     agent_event_stream_enabled: bool = False
     # AB test only: model asks for the next bounded Action; invalid/unclear
     # output falls back to the deterministic policy.
-    agent_decision_mode: Literal["rule", "model"] = "rule"
+    agent_decision_mode: Literal["rule", "model", "shadow", "deterministic"] = "rule"
     # Iteration 7.5 (SOP §12A Group B): in-process periodic cleanup scheduler.
     # Decision gate confirmed form = in-process daemon thread for single-host
     # deployment; disabling restores startup/access-triggered cleanup only.
@@ -224,9 +224,9 @@ class Settings:
             raise UnsafeRuntimeConfiguration(
                 "SCUT_SENIOR_AGENT_EVENT_STREAM_ENABLED must be boolean"
             )
-        if self.agent_decision_mode not in {"rule", "model"}:
+        if self.agent_decision_mode not in {"rule", "model", "shadow", "deterministic"}:
             raise UnsafeRuntimeConfiguration(
-                "SCUT_SENIOR_AGENT_DECISION_MODE must be rule or model"
+                "SCUT_SENIOR_AGENT_DECISION_MODE must be rule, model, shadow or deterministic"
             )
         if self.dense_retrieval_enabled and self.retrieval_mode == "local_corpus":
             if self.onnx_embedding_model_path is None:

@@ -267,6 +267,46 @@ def test_zhipu_429_throttle_surfaces_model_overload_message(tmp_path: Path) -> N
     assert len(http_client.calls) == 1
 
 
+def test_zhipu_429_user_rate_limit_is_not_reported_as_unavailable(
+    tmp_path: Path,
+) -> None:
+    http_client = RecordingHttpClient(
+        HttpResponse(429, b'{"error":{"code":"1302"}}')
+    )
+    client, conversation_id = _client_with_conversation(tmp_path, http_client)
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=_workflow_request(conversation_id),
+    )
+
+    assert response.status_code == 429
+    assert response.json()["error"] == {
+        "code": "platform_rate_limited",
+        "detail": "智谱账号请求过于频繁，请稍后再试。",
+    }
+
+
+def test_zhipu_429_daily_limit_is_not_reported_as_unavailable(
+    tmp_path: Path,
+) -> None:
+    http_client = RecordingHttpClient(
+        HttpResponse(429, b'{"error":{"code":"1304"}}')
+    )
+    client, conversation_id = _client_with_conversation(tmp_path, http_client)
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=_workflow_request(conversation_id),
+    )
+
+    assert response.status_code == 429
+    assert response.json()["error"] == {
+        "code": "platform_daily_quota_exhausted",
+        "detail": "智谱账号今日调用次数已达上限，请明日再试。",
+    }
+
+
 def test_zhipu_generic_429_keeps_channel_message_and_hides_body(
     tmp_path: Path,
 ) -> None:

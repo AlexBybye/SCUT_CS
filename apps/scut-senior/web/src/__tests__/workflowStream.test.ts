@@ -128,6 +128,27 @@ describe("parseWorkflowNdjson", () => {
     );
   });
 
+  it("accepts the safe aggregate A/B runtime counters in Trace", async () => {
+    const event = {
+      ...traceEvent(1),
+      trace_event: {
+        ...traceEvent(1).trace_event,
+        result: {
+          decision_call_count: 1,
+          model_action_accepted_count: 1,
+          model_action_shadow_count: 0,
+          answer_call_count: 1,
+          provider_retry_count: 0,
+          guard_retry_count: 0,
+          decision_fallback_count: 0,
+          action_rejection_count: 0,
+        },
+      },
+    };
+
+    await expect(collect(ndjsonStream([`${JSON.stringify(event)}\n`]))).resolves.toHaveLength(1);
+  });
+
   it("rejects unknown nested Trace fields and invalid values under otherwise safe keys", async () => {
     const nestedUnsafe = {
       ...traceEvent(0),

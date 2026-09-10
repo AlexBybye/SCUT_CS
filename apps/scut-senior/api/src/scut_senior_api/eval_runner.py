@@ -215,6 +215,7 @@ def _extract_runtime_metrics(result: Any) -> dict[str, object]:
         "duration_ms",
         "decision_call_count",
         "model_action_accepted_count",
+        "model_action_shadow_count",
         "answer_call_count",
         "provider_retry_count",
         "guard_retry_count",
@@ -272,8 +273,10 @@ def run_evaluation(
     case_retries: int = 0,
     agent_decision_mode: str = "rule",
 ) -> dict[str, object]:
-    if agent_decision_mode not in {"rule", "model"}:
-        raise ValueError("agent_decision_mode must be 'rule' or 'model'")
+    if agent_decision_mode not in {"rule", "model", "shadow", "deterministic"}:
+        raise ValueError(
+            "agent_decision_mode must be 'rule', 'model', 'shadow' or 'deterministic'"
+        )
     cases = json.loads(cases_path.read_text(encoding="utf-8"))
     runner = (
         json.loads(runner_path.read_text(encoding="utf-8"))
@@ -464,7 +467,7 @@ def _parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--agent-decision-mode",
-        choices=("rule", "model"),
+        choices=("rule", "model", "shadow", "deterministic"),
         default="rule",
         help="bounded Action decision mode for AB comparisons; default rule",
     )

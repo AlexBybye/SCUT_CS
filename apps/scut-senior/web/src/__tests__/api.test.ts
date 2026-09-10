@@ -535,10 +535,7 @@ describe("BYOK credential API", () => {
   it("查询、保存和删除只走固定凭据路由并携带会话 Cookie", async () => {
     const configured = {
       provider_id: "openrouter",
-      display_name: "OpenRouter DeepSeek",
-      base_url: "https://openrouter.ai/api/v1",
       model_id: "deepseek/deepseek-v4-flash-0731",
-      protocol: "openai_chat_completions" as const,
       configured: true,
       masked_key: "sk-or-****1234",
       expires_at: "2026-08-20T08:00:00Z",
@@ -547,13 +544,6 @@ describe("BYOK credential API", () => {
       updated_at: "2026-08-17T08:00:00Z",
     };
     const dummyKey = "test-only-openrouter-key";
-    const connectionInput = {
-      api_key: dummyKey,
-      display_name: configured.display_name,
-      base_url: configured.base_url,
-      model_id: configured.model_id,
-      protocol: configured.protocol,
-    };
     const fetchMock = vi
       .fn()
       .mockResolvedValueOnce(
@@ -572,9 +562,7 @@ describe("BYOK credential API", () => {
     vi.stubGlobal("fetch", fetchMock);
 
     await expect(getByokCredentials()).resolves.toEqual([configured]);
-    await expect(
-      saveByokCredential("openrouter", connectionInput),
-    ).resolves.toEqual(configured);
+    await expect(saveByokCredential("openrouter", dummyKey)).resolves.toEqual(configured);
     await expect(deleteByokCredential("openrouter")).resolves.toBeUndefined();
 
     expect(fetchMock).toHaveBeenNthCalledWith(
@@ -588,7 +576,7 @@ describe("BYOK credential API", () => {
       expect.objectContaining({
         method: "PUT",
         credentials: "include",
-        body: JSON.stringify(connectionInput),
+        body: JSON.stringify({ api_key: dummyKey }),
       }),
     );
     expect(fetchMock).toHaveBeenNthCalledWith(

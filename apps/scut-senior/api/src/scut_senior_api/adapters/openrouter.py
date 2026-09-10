@@ -25,7 +25,10 @@ from ..workflow_focus import (
     build_workflow_focus,
 )
 from .answer_parsing import ModelAnswerParseError, parse_chat_completion_answer
-from .http_security import build_no_redirect_opener, is_timeout_transport_error
+from .http_security import (
+    build_direct_no_redirect_opener,
+    is_timeout_transport_error,
+)
 
 
 OPENROUTER_CHAT_COMPLETIONS_URL = "https://openrouter.ai/api/v1/chat/completions"
@@ -66,7 +69,7 @@ class JsonHttpClient(Protocol):
 
 class UrllibJsonHttpClient:
     def __init__(self) -> None:
-        self._opener = build_no_redirect_opener()
+        self._opener = build_direct_no_redirect_opener()
 
     def post_json(
         self,

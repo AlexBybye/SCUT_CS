@@ -848,6 +848,19 @@
           "default": null,
           "title": "Model Action Accepted Count"
         },
+        "model_action_shadow_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model Action Shadow Count"
+        },
         "model_id": {
           "anyOf": [
             {

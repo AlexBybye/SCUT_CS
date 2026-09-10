@@ -3,44 +3,52 @@ from __future__ import annotations
 import inspect
 import json
 from collections.abc import Callable
+from dataclasses import dataclass
+from typing import Mapping
+
+from ..byok_catalog import ByokProviderCatalog
 from ..contracts import WorkflowRunRequest
 from ..credentials import validate_user_api_key
-from ..model_credentials import ModelCredentialError, normalize_base_url
-from ..ports import (
-    ConversationTurn,
-    GeneratedAnswer,
-    RetrievedSource,
-    StoredModelCredential,
-)
+from ..ports import ConversationTurn, GeneratedAnswer, RetrievedSource
 from ..workflow_focus import (
     build_response_control_directive,
     build_workflow_focus,
 )
 from .answer_parsing import ModelAnswerParseError, parse_chat_completion_answer
 from .http_security import is_timeout_transport_error
-from .openrouter import (
-    HttpResponse,
-    JsonHttpClient,
-    UrllibJsonHttpClient,
-    _build_action_request,
-    _parse_action_text,
-)
+from .openrouter import HttpResponse, JsonHttpClient, UrllibJsonHttpClient
 
 
-DEFAULT_BYOK_MAX_TOKENS = 12_288
-DEFAULT_BYOK_TEMPERATURE = 0.2
-# Some OpenAI-compatible reasoning models spend completion tokens before
-# emitting the action token. This remains only ~4% of the answer ceiling while
-# avoiding the observed empty-content result at 16 tokens.
-DEFAULT_BYOK_ACTION_MAX_TOKENS = 512
-DEEPSEEK_DIRECT_BASE_URL = "https://api.deepseek.com"
-DEEPSEEK_DIRECT_MODEL_ID = "deepseek-v4-flash"
-# Calibrated from one low-reasoning direct run: Action stopped at 26 completion
-# tokens and the answer at 2265, both with finish_reason=stop. These caps keep
-# substantial headroom without retaining the temporary 256k probe ceiling.
-DEEPSEEK_ACTION_MAX_TOKENS = 256
-DEEPSEEK_ANSWER_MAX_TOKENS = 8_192
-DEEPSEEK_REASONING_EFFORT = "low"
+OPENROUTER_BYOK_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
+DEEPSEEK_BYOK_ENDPOINT = "https://api.deepseek.com/chat/completions"
+SILICONFLOW_BYOK_ENDPOINT = "https://api.siliconflow.cn/v1/chat/completions"
+ZHIPU_BYOK_ENDPOINT = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
+
+
+@dataclass(frozen=True, slots=True)
+class FixedByokRoute:
+    endpoint: str
+    model_id: str
+
+
+FIXED_BYOK_ROUTES: Mapping[str, FixedByokRoute] = {
+    "openrouter": FixedByokRoute(
+        OPENROUTER_BYOK_ENDPOINT,
+        "deepseek/deepseek-v4-flash-0731",
+    ),
+    "deepseek": FixedByokRoute(
+        DEEPSEEK_BYOK_ENDPOINT,
+        "deepseek-v4-flash",
+    ),
+    "siliconflow": FixedByokRoute(
+        SILICONFLOW_BYOK_ENDPOINT,
+        "Pro/zai-org/GLM-4.7",
+    ),
+    "zhipu": FixedByokRoute(
+        ZHIPU_BYOK_ENDPOINT,
+        "glm-5.2",
+    ),
+}
 
 
 class FailClosedJsonHttpClient:
@@ -58,17 +66,21 @@ class ByokGatewayError(RuntimeError):
         self.detail = detail
 
 
-class OpenAICompatibleByokGateway:
-    """Call one user-defined OpenAI Chat Completions connection."""
+class FixedByokModelGateway:
+    """One fixed model and endpoint per enabled provider, with no fallback."""
 
     def __init__(
         self,
         *,
         http_client: JsonHttpClient | None = None,
         timeout_seconds: float = 120.0,
+        catalog: ByokProviderCatalog | None = None,
     ):
         self._http_client = http_client or UrllibJsonHttpClient()
         self._timeout_seconds = timeout_seconds
+        # Call defaults (max_tokens / temperature) come from the fixed catalog
+        # so the request builder never hard-codes provider defaults.
+        self._catalog = catalog or ByokProviderCatalog()
         self._transport_accepts_cancel_check = (
             "cancel_check"
             in inspect.signature(self._http_client.post_json).parameters
@@ -78,26 +90,18 @@ class OpenAICompatibleByokGateway:
         self,
         *,
         api_key: str,
-        connection: StoredModelCredential,
         request: WorkflowRunRequest,
         sources: list[RetrievedSource],
         history: tuple[ConversationTurn, ...] = (),
         cancel_check: Callable[[], bool] | None = None,
-        timeout_seconds: float | None = None,
     ) -> GeneratedAnswer:
-        if (
-            request.provider_id != connection.provider_id
-            or request.model_id != connection.model_id
-            or connection.protocol != "openai_chat_completions"
-        ):
+        route = FIXED_BYOK_ROUTES.get(request.provider_id)
+        if route is None or request.model_id != route.model_id:
             raise ByokGatewayError(
                 status_code=422,
                 code="byok_route_not_registered",
-                detail="所选模型与已保存连接不一致。",
+                detail="所选 BYOK 供应商或模型未登记。",
             )
-        effective_timeout = _effective_timeout(
-            self._timeout_seconds, timeout_seconds
-        )
         try:
             validate_user_api_key(api_key)
         except ValueError:
@@ -106,30 +110,17 @@ class OpenAICompatibleByokGateway:
                 code="invalid_model_credential",
                 detail="已保存的 API Key 无效，请重新保存。",
             ) from None
-        direct_deepseek = _is_direct_deepseek(connection, base_url=None)
+        model_entry = self._catalog.resolve_model(
+            request.provider_id, request.model_id
+        )
         payload = _build_byok_request(
             request,
             sources,
             history,
-            max_tokens=(
-                DEEPSEEK_ANSWER_MAX_TOKENS
-                if direct_deepseek
-                else DEFAULT_BYOK_MAX_TOKENS
-            ),
-            temperature=DEFAULT_BYOK_TEMPERATURE,
-            reasoning_effort=(
-                DEEPSEEK_REASONING_EFFORT if direct_deepseek else None
-            ),
+            max_tokens=model_entry.default_max_tokens,
+            temperature=model_entry.default_temperature,
+            reasoning_effort=model_entry.reasoning_effort,
         )
-        try:
-            base_url = normalize_base_url(connection.base_url)
-        except ModelCredentialError:
-            raise ByokGatewayError(
-                status_code=422,
-                code="invalid_byok_base_url",
-                detail="已保存的 API 地址无效，请重新保存该连接。",
-            ) from None
-        endpoint = f"{base_url}/chat/completions"
         try:
             request_options = {
                 "headers": {
@@ -138,12 +129,12 @@ class OpenAICompatibleByokGateway:
                     "Accept": "application/json",
                 },
                 "payload": payload,
-                "timeout_seconds": effective_timeout,
+                "timeout_seconds": self._timeout_seconds,
             }
             if self._transport_accepts_cancel_check:
                 request_options["cancel_check"] = cancel_check
             response = self._http_client.post_json(
-                endpoint,
+                route.endpoint,
                 **request_options,
             )
         except Exception as exc:
@@ -161,101 +152,6 @@ class OpenAICompatibleByokGateway:
         if response.status_code < 200 or response.status_code >= 300:
             raise _safe_byok_upstream_error(response.status_code)
         return _parse_byok_answer(response)
-
-    def decide_action(
-        self,
-        *,
-        api_key: str,
-        connection: StoredModelCredential,
-        request: WorkflowRunRequest,
-        state: object,
-        phase: str,
-        sources: tuple[RetrievedSource, ...] = (),
-        history: tuple[ConversationTurn, ...] = (),
-        cancel_check: Callable[[], bool] | None = None,
-        timeout_seconds: float | None = None,
-    ) -> str:
-        """Ask the selected BYOK connection for one bounded Workflow action."""
-
-        del state, history
-        if (
-            request.provider_id != connection.provider_id
-            or request.model_id != connection.model_id
-            or connection.protocol != "openai_chat_completions"
-        ):
-            raise ByokGatewayError(
-                status_code=422,
-                code="byok_route_not_registered",
-                detail="所选模型与已保存连接不一致。",
-            )
-        effective_timeout = _effective_timeout(
-            self._timeout_seconds, timeout_seconds
-        )
-        try:
-            validate_user_api_key(api_key)
-            base_url = normalize_base_url(connection.base_url)
-        except ValueError:
-            raise ByokGatewayError(
-                status_code=422,
-                code="invalid_model_credential",
-                detail="已保存的 API Key 无效，请重新保存。",
-            ) from None
-        except ModelCredentialError:
-            raise ByokGatewayError(
-                status_code=422,
-                code="invalid_byok_base_url",
-                detail="已保存的 API 地址无效，请重新保存该连接。",
-            ) from None
-
-        endpoint = f"{base_url}/chat/completions"
-        direct_deepseek = _is_direct_deepseek(connection, base_url=base_url)
-        payload = _build_action_request(
-            request,
-            phase,
-            sources,
-            max_tokens=(
-                DEEPSEEK_ACTION_MAX_TOKENS
-                if direct_deepseek
-                else DEFAULT_BYOK_ACTION_MAX_TOKENS
-            ),
-        )
-        if direct_deepseek:
-            payload["reasoning_effort"] = DEEPSEEK_REASONING_EFFORT
-        try:
-            request_options = {
-                "headers": {
-                    "Authorization": f"Bearer {api_key}",
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                },
-                "payload": payload,
-                "timeout_seconds": effective_timeout,
-            }
-            if self._transport_accepts_cancel_check:
-                request_options["cancel_check"] = cancel_check
-            response = self._http_client.post_json(endpoint, **request_options)
-        except Exception as exc:
-            if is_timeout_transport_error(exc):
-                raise ByokGatewayError(
-                    status_code=504,
-                    code="byok_provider_timeout",
-                    detail="模型供应商响应超时，请稍后重试。",
-                ) from None
-            raise ByokGatewayError(
-                status_code=503,
-                code="byok_provider_unavailable",
-                detail="模型供应商暂时不可用，请稍后重试。",
-            ) from None
-        if response.status_code < 200 or response.status_code >= 300:
-            raise _safe_byok_upstream_error(response.status_code)
-        try:
-            return _parse_action_text(response.body)
-        except ModelAnswerParseError:
-            raise ByokGatewayError(
-                status_code=502,
-                code="byok_provider_invalid_response",
-                detail="模型供应商返回了无法处理的结果，请稍后重试。",
-            ) from None
 
 
 def _build_byok_request(
@@ -312,37 +208,6 @@ def _build_byok_request(
     if reasoning_effort is not None:
         payload["reasoning_effort"] = reasoning_effort
     return payload
-
-
-def _effective_timeout(configured: float, remaining: float | None) -> float:
-    if remaining is None:
-        return configured
-    if remaining <= 0:
-        raise ByokGatewayError(
-            status_code=504,
-            code="byok_provider_timeout",
-            detail="模型供应商响应超时，请稍后重试。",
-        )
-    return min(configured, remaining)
-
-
-def _is_direct_deepseek(
-    connection: StoredModelCredential,
-    *,
-    base_url: str | None,
-) -> bool:
-    normalized_base_url = base_url
-    if normalized_base_url is None:
-        try:
-            normalized_base_url = normalize_base_url(connection.base_url)
-        except ModelCredentialError:
-            return False
-    return (
-        connection.provider_id == "deepseek"
-        and normalized_base_url == DEEPSEEK_DIRECT_BASE_URL
-        and connection.model_id == DEEPSEEK_DIRECT_MODEL_ID
-        and connection.protocol == "openai_chat_completions"
-    )
 
 
 def _safe_byok_upstream_error(status_code: int) -> ByokGatewayError:

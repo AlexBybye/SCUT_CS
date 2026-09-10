@@ -26,6 +26,7 @@ import {
 } from "../api";
 import {
   isCurrentByokCatalogVersion,
+  mergeByokProvidersForDisplay,
 } from "../byokCatalog";
 import { canManageByokCredentials } from "../byokSession";
 import {
@@ -39,8 +40,9 @@ import {
 import type {
   AnswerMode,
   AuthUser,
-  ByokConnectionInput,
   ByokCredentialStatus,
+  ByokProviderCatalogItem,
+  ByokProviderId,
   ConversationDetail,
   ConversationSummary,
   Course,
@@ -177,10 +179,10 @@ function createAppStore() {
   const historyMessage = ref("");
   const historyMessageIsError = ref(false);
   const byokCredentialStatuses = ref<ByokCredentialStatus[]>([]);
-  const byokKeyDrafts = ref<Record<string, string>>(emptyByokKeyDrafts());
+  const byokKeyDrafts = ref<Record<ByokProviderId, string>>(emptyByokKeyDrafts());
   const isLoadingByokCredentials = ref(false);
-  const savingByokProviderId = ref("");
-  const deletingByokProviderId = ref("");
+  const savingByokProviderId = ref<ByokProviderId | "">("");
+  const deletingByokProviderId = ref<ByokProviderId | "">("");
   const byokMessage = ref("");
   const byokMessageIsError = ref(false);
   const privateRequestEpoch = createRequestEpoch();
@@ -202,6 +204,11 @@ function createAppStore() {
       isCurrentByokCatalogVersion(modelCatalog.value.byok_catalog_version) &&
       Array.isArray(modelCatalog.value.byok_providers),
   );
+  const byokProvidersForDisplay = computed<ByokProviderCatalogItem[]>(() =>
+    mergeByokProvidersForDisplay(
+      byokCatalogIsCurrent.value ? modelCatalog.value.byok_providers : [],
+    ),
+  );
   const byokRuntimeAvailable = computed(
     () => byokCatalogIsCurrent.value && modelCatalog.value.byok_available,
   );
@@ -213,7 +220,8 @@ function createAppStore() {
       modelCatalogLoadSucceeded.value,
     ),
     ...configuredByokModelOptions(
-      byokRuntimeAvailable.value ? byokCredentialStatuses.value : [],
+      byokRuntimeAvailable.value ? byokProvidersForDisplay.value : [],
+      byokCredentialStatuses.value,
     ),
   ]);
   const selectedModel = computed(() =>
@@ -456,18 +464,7 @@ function createAppStore() {
       !isLoadingModels.value &&
       Boolean(currentUser.value) &&
       Boolean(selectedCourse.value?.selectable) &&
-      Boolean(selectedModel.value?.user_selectable) &&
-      Boolean(userInput.value.trim()) &&
-      (workflowType.value !== "mistake_review" || Boolean(originalAnswer.value.trim())) &&
-      (!crossCourseSearchEnabled.value || (
-        ["knowledge_qa", "problem_tutor"].includes(workflowType.value) &&
-        new Set(selectedCourseIds.value).size >= 2 &&
-        selectedCourseIds.value.every((courseId) =>
-          courses.value.some(
-            (course) => course.course_id === courseId && course.selectable,
-          ),
-        )
-      )),
+      Boolean(selectedModel.value?.user_selectable),
   );
   const runtimeNoticeTitle = computed(() =>
     selectedModelIsMock.value
@@ -491,13 +488,13 @@ function createAppStore() {
     return courses.value.find((course) => course.course_id === courseId)?.display_name ?? courseId;
   }
 
-  function byokCredentialStatus(providerId: string): ByokCredentialStatus | null {
+  function byokCredentialStatus(providerId: ByokProviderId): ByokCredentialStatus | null {
     return (
       byokCredentialStatuses.value.find((status) => status.provider_id === providerId) ?? null
     );
   }
 
-  function byokProviderDisabledReason(): string {
+  function byokProviderDisabledReason(provider: ByokProviderCatalogItem): string {
     if (!modelCatalogLoadSucceeded.value) {
       return "模型目录未加载成功，凭据保存保持关闭。";
     }
@@ -507,24 +504,29 @@ function createAppStore() {
     if (currentUser.value?.is_mock) {
       return "BYOK 需要真实 GitHub 登录；Mock 身份只保留入口展示。";
     }
-    if (!byokRuntimeAvailable.value) {
-      return "当前服务端未开启；需先满足凭据加密主密钥等安全运行条件。";
+    if (!byokRuntimeAvailable.value || !provider.enabled) {
+      return "当前服务端未开启；需先满足会话级加密主密钥等安全运行条件。";
     }
     if (!currentUser.value) return "使用真实 GitHub 身份登录后可管理当前会话凭据。";
     return "";
   }
 
-  function canSaveByokCredential(status: ByokCredentialStatus): boolean {
+  function canSaveByokCredential(provider: ByokProviderCatalogItem): boolean {
+    const status = byokCredentialStatus(provider.provider_id);
+    // 后端契约：未配置的供应商 writable=false（没有可管理的既有凭据），
+    // 但此时恰恰允许首次保存。因此只有「已配置且当前会话只读」才禁止保存。
+    const writableForSave = status === null || !status.configured || status.writable;
     return Boolean(
       byokRuntimeAvailable.value &&
         canManageByokCredentials(currentUser.value) &&
-        status.writable &&
-        byokKeyDrafts.value[status.provider_id]?.trim() &&
+        provider.enabled &&
+        writableForSave &&
+        byokKeyDrafts.value[provider.provider_id].trim() &&
         !byokIsBusy.value,
     );
   }
 
-  function canDeleteByokCredential(providerId: string): boolean {
+  function canDeleteByokCredential(providerId: ByokProviderId): boolean {
     return Boolean(
       canManageByokCredentials(currentUser.value) &&
         byokCredentialStatus(providerId)?.configured &&
@@ -533,7 +535,7 @@ function createAppStore() {
     );
   }
 
-  function byokCredentialWritable(providerId: string): boolean {
+  function byokCredentialWritable(providerId: ByokProviderId): boolean {
     const status = byokCredentialStatus(providerId);
     return Boolean(status && status.configured && status.writable);
   }
@@ -871,18 +873,6 @@ function createAppStore() {
     if (!selectedCourse.value?.selectable) return courseSelectionError(selectedCourse.value);
     if (!selectedModel.value?.user_selectable) return "请选择一个当前可用的模型。";
     if (!userInput.value.trim()) return `请填写${activeWorkflow.value.inputLabel}。`;
-    if (crossCourseSearchEnabled.value) {
-      if (!["knowledge_qa", "problem_tutor"].includes(workflowType.value)) {
-        return "当前仅知识问答和题目辅导支持跨课程检索。";
-      }
-      const selectedIds = [...new Set(selectedCourseIds.value)];
-      if (selectedIds.length < 2) return "跨课程检索请至少选择两门课程。";
-      if (selectedIds.some((courseId) => !courses.value.some(
-        (course) => course.course_id === courseId && course.selectable,
-      ))) {
-        return "跨课程检索中包含不可用课程，请重新选择。";
-      }
-    }
     if (workflowType.value === "mistake_review" && !originalAnswer.value.trim()) {
       return "错题复盘需要填写原答案。";
     }
@@ -1009,59 +999,39 @@ function createAppStore() {
     }
   }
 
-  async function saveByokConnection(
-    providerId: string,
-    input: ByokConnectionInput,
-  ): Promise<boolean> {
+  async function submitByokCredential(provider: ByokProviderCatalogItem): Promise<void> {
     const requestUserId = currentUser.value?.user_id;
-    if (
-      !requestUserId ||
-      !canManageByokCredentials(currentUser.value) ||
-      !byokRuntimeAvailable.value ||
-      byokIsBusy.value
-    ) return false;
+    if (!requestUserId || !canSaveByokCredential(provider)) return;
     const requestEpoch = privateRequestEpoch.snapshot();
+    const providerId = provider.provider_id;
+    const apiKey = byokKeyDrafts.value[providerId].trim();
     savingByokProviderId.value = providerId;
     setByokMessage("");
 
     try {
-      const status = await saveByokCredential(providerId, input);
-      if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return false;
+      const status = await saveByokCredential(providerId, apiKey);
+      if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
       upsertByokCredentialStatus(status);
       setByokMessage(
-        `${status.display_name} 连接已保存；模型仍需由你显式选择。`,
+        `${provider.display_name} 凭据状态已更新；模型仍需由你显式选择。`,
       );
-      return true;
     } catch (error) {
-      if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return false;
+      if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
       applyAuthFailure(error);
       if (currentUser.value?.user_id === requestUserId) {
         setByokMessage(toMessage(error), true);
       }
-      return false;
     } finally {
       if (privateRequestIsCurrent(requestEpoch, requestUserId)) {
+        byokKeyDrafts.value[providerId] = "";
         if (savingByokProviderId.value === providerId) savingByokProviderId.value = "";
       }
     }
   }
 
-  async function submitByokCredential(status: ByokCredentialStatus): Promise<void> {
-    if (!canSaveByokCredential(status)) return;
-    const apiKey = byokKeyDrafts.value[status.provider_id]?.trim() ?? "";
-    const saved = await saveByokConnection(status.provider_id, {
-      display_name: status.display_name,
-      base_url: status.base_url,
-      model_id: status.model_id,
-      protocol: status.protocol,
-      api_key: apiKey,
-    });
-    if (saved) byokKeyDrafts.value[status.provider_id] = "";
-  }
-
-  async function removeByokCredential(status: ByokCredentialStatus): Promise<void> {
+  async function removeByokCredential(provider: ByokProviderCatalogItem): Promise<void> {
     const requestUserId = currentUser.value?.user_id;
-    const providerId = status.provider_id;
+    const providerId = provider.provider_id;
     if (!requestUserId || !canDeleteByokCredential(providerId)) return;
     const requestEpoch = privateRequestEpoch.snapshot();
     deletingByokProviderId.value = providerId;
@@ -1074,7 +1044,7 @@ function createAppStore() {
         (status) => status.provider_id !== providerId,
       );
       clearUnavailableByokSelection();
-      setByokMessage(`${status.display_name} 连接与凭据已删除。`);
+      setByokMessage(`${provider.display_name} 凭据已从当前登录会话删除。`);
     } catch (error) {
       if (!privateRequestIsCurrent(requestEpoch, requestUserId)) return;
       applyAuthFailure(error);
@@ -1598,6 +1568,7 @@ function createAppStore() {
     hasSelectableCourse,
     activeWorkflow,
     byokCatalogIsCurrent,
+    byokProvidersForDisplay,
     byokRuntimeAvailable,
     modelsForSelection,
     selectedModel,
@@ -1652,7 +1623,6 @@ function createAppStore() {
     cancelWorkflow,
     reloadConversation,
     submitByokCredential,
-    saveByokConnection,
     removeByokCredential,
     startGithubLogin,
     signOut,

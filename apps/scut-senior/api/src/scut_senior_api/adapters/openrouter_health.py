@@ -9,7 +9,7 @@ from urllib.error import HTTPError
 from urllib.request import Request
 
 from ..model_catalog import ModelAvailabilityStatus, ModelHealthResult
-from .http_security import build_no_redirect_opener
+from .http_security import build_direct_no_redirect_opener
 from .openrouter import HttpResponse
 
 
@@ -30,7 +30,7 @@ class JsonHttpReadClient(Protocol):
 
 class UrllibJsonHttpReadClient:
     def __init__(self) -> None:
-        self._opener = build_no_redirect_opener()
+        self._opener = build_direct_no_redirect_opener()
 
     def get_json(
         self,
@@ -78,7 +78,7 @@ class OpenRouterCatalogHealthChecker:
         api_key: str,
         http_client: JsonHttpReadClient | None = None,
         clock: Clock = utc_now,
-        timeout_seconds: float = 10.0,
+        timeout_seconds: float = 20.0,
     ) -> None:
         if not api_key.strip():
             raise ValueError("OpenRouter API key is required for credential health")

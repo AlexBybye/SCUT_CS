@@ -1,6 +1,11 @@
 from __future__ import annotations
 
-from urllib.request import HTTPRedirectHandler, OpenerDirector, build_opener
+from urllib.request import (
+    HTTPRedirectHandler,
+    OpenerDirector,
+    ProxyHandler,
+    build_opener,
+)
 
 
 class RejectRedirectHandler(HTTPRedirectHandler):
@@ -12,6 +17,19 @@ class RejectRedirectHandler(HTTPRedirectHandler):
 
 def build_no_redirect_opener() -> OpenerDirector:
     return build_opener(RejectRedirectHandler())
+
+
+def build_direct_no_redirect_opener() -> OpenerDirector:
+    """Build a provider transport that ignores inherited proxy settings.
+
+    Model keys are sent only to fixed first-party/API-gateway origins. An
+    accidentally inherited local proxy can make a TCP health check succeed
+    while every HTTPS request stalls or fails. Provider traffic therefore uses
+    an explicit empty proxy handler; GitHub OAuth keeps the normal system
+    transport because its deployment may intentionally require a proxy.
+    """
+
+    return build_opener(ProxyHandler({}), RejectRedirectHandler())
 
 
 def is_timeout_transport_error(error: BaseException) -> bool:

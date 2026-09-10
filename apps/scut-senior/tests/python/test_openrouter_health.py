@@ -116,12 +116,12 @@ def test_health_checker_requires_model_presence_zero_price_and_structured_output
                 "Accept": "application/json",
                 "Authorization": "Bearer server-health-secret",
             },
-            "timeout_seconds": 10.0,
+            "timeout_seconds": 20.0,
         },
         {
             "url": OPENROUTER_MODELS_URL,
             "headers": {"Accept": "application/json"},
-            "timeout_seconds": 10.0,
+            "timeout_seconds": 20.0,
         }
     ]
 

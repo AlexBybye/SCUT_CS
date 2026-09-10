@@ -1,5 +1,6 @@
 import type {
   ByokCredentialStatus,
+  ByokProviderCatalogItem,
   ModelCatalog,
   ModelCatalogItem,
 } from "./contracts";
@@ -49,13 +50,26 @@ export function initialModelSelectionKey(
 }
 
 export function configuredByokModelOptions(
+  providers: readonly ByokProviderCatalogItem[],
   statuses: readonly ByokCredentialStatus[],
 ): ModelCatalogItem[] {
-  return statuses.map((status) => ({
-        provider_id: status.provider_id,
-        model_id: status.model_id,
-        company: status.display_name,
-        display_name: status.model_id,
+  return providers.flatMap((provider) => {
+    const model = provider.models[0];
+    const credentialMatchesFixedModel = statuses.some(
+      (status) =>
+        status.configured &&
+        status.provider_id === provider.provider_id &&
+        status.model_id === model?.model_id,
+    );
+    if (!provider.enabled || !model || !credentialMatchesFixedModel) {
+      return [];
+    }
+    return [
+      {
+        provider_id: provider.provider_id,
+        model_id: model.model_id,
+        company: provider.display_name,
+        display_name: `${model.company} · ${model.display_name}`,
         model_source: "user_key" as const,
         billing_label: "user_key",
         availability_status: "available",
@@ -65,5 +79,7 @@ export function configuredByokModelOptions(
         is_preview: false,
         user_selectable: true,
         last_checked_at: null,
-      }));
+      },
+    ];
+  });
 }

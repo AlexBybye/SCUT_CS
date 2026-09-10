@@ -7,16 +7,21 @@ from uuid import UUID, uuid4
 
 from .auth import AuthRequired, AuthenticatedPrincipal, utc_now
 from .agent_loop import (
-    AgentDecisionGateway,
     AgentBudget,
     AgentState,
     ModelAgentDecision,
     RuleBasedAgentDecision,
     action_allowed_for_workflow,
     reduce_agent_event,
+    should_retrieve_with_rewrite,
 )
 from .adapters.bilibili import derive_question_keywords, normalize_keywords
 from .adapters.exam_facts import ExamFactsUnavailable
+from .byok_catalog import (
+    ByokModelNotRegistered,
+    ByokProviderDisabled,
+    ByokProviderNotRegistered,
+)
 from .config import Settings
 from .contracts import (
     AccountDeletionSummary,
@@ -94,7 +99,6 @@ from .ports import (
     RetrievalBatch,
     RetrievalGateway,
     RetrievedSource,
-    StoredModelCredential,
     UserKeyModelGateway,
     UserIdentity,
     WorkflowRepository,
@@ -136,58 +140,6 @@ class ExamReviewPlanContext:
 
     plan: "ExamReviewPlan"
     retrieval_query: str
-
-
-class _BoundUserKeyDecisionModel:
-    """Request-local adapter that keeps BYOK secrets out of Agent state/events."""
-
-    __slots__ = (
-        "_gateway",
-        "_api_key",
-        "_connection",
-        "_cancel_check",
-        "_timeout_seconds",
-    )
-
-    def __init__(
-        self,
-        gateway: UserKeyModelGateway,
-        api_key: str,
-        connection: StoredModelCredential,
-        cancel_check,
-        timeout_seconds: float,
-    ) -> None:
-        self._gateway = gateway
-        self._api_key: str | None = api_key
-        self._connection = connection
-        self._cancel_check = cancel_check
-        self._timeout_seconds = timeout_seconds
-
-    def decide_action(
-        self,
-        request: WorkflowRunRequest,
-        state: object,
-        phase: str,
-        *,
-        sources: tuple[RetrievedSource, ...] = (),
-        history: tuple[ConversationTurn, ...] = (),
-    ) -> str:
-        if self._api_key is None:
-            raise RuntimeError("BYOK decision credential was already cleared")
-        return self._gateway.decide_action(
-            api_key=self._api_key,
-            connection=self._connection,
-            request=request,
-            state=state,
-            phase=phase,
-            sources=sources,
-            history=history,
-            cancel_check=self._cancel_check,
-            timeout_seconds=self._timeout_seconds,
-        )
-
-    def clear(self) -> None:
-        self._api_key = None
 
 
 class IterationZeroService:
@@ -874,7 +826,6 @@ class IterationZeroService:
         # exactly, so this cannot fail for a contract-valid request.
         preset = HARNESS_REGISTRY.resolve_preset(request.workflow_type)
         model_entry: ModelCatalogEntry | None = None
-        byok_connection = None
         use_user_key = request.model_source == ModelSource.USER_KEY
         if not use_user_key:
             if self.settings.model_mode == "mock":
@@ -915,11 +866,33 @@ class IterationZeroService:
         else:
             if not isinstance(user, AuthenticatedPrincipal) or user.is_mock:
                 raise AuthRequired()
-            byok_connection = self.credential_manager.get_connection(
-                user, request.provider_id, request.model_id
-            )
-            model_provider_id = byok_connection.provider_id
-            model_id = byok_connection.model_id
+            try:
+                provider = self.model_catalog.byok_catalog.require_enabled(
+                    request.provider_id
+                )
+                selected_model = self.model_catalog.byok_catalog.resolve_model(
+                    request.provider_id, request.model_id
+                )
+            except ByokProviderNotRegistered:
+                raise ModelCredentialError(
+                    status_code=422,
+                    code="byok_provider_not_registered",
+                    detail="该 BYOK 供应商未登记。",
+                ) from None
+            except ByokProviderDisabled:
+                raise ModelCredentialError(
+                    status_code=503,
+                    code="byok_provider_disabled",
+                    detail="该 BYOK 供应商当前未启用。",
+                ) from None
+            except ByokModelNotRegistered:
+                raise ModelCredentialError(
+                    status_code=422,
+                    code="byok_model_not_registered",
+                    detail="该 BYOK 模型未登记。",
+                ) from None
+            model_provider_id = provider.provider_id.value
+            model_id = selected_model.model_id
             billing_label = "user_provider_billing"
             availability_status = "user_key_enabled"
             mock_only = False
@@ -927,8 +900,8 @@ class IterationZeroService:
             # structured-output metadata remains descriptive for the current
             # text-capable presets.
             compatibility_reason = preset.check_model_compatibility(
-                input_modalities=("text",),
-                supports_structured_outputs=True,
+                input_modalities=selected_model.input_modalities,
+                supports_structured_outputs=selected_model.supports_structured_outputs,
             )
             if compatibility_reason is not None:
                 raise CapabilityUnavailable("model", compatibility_reason)
@@ -986,6 +959,7 @@ class IterationZeroService:
         agent_metrics = {
             "decision_call_count": 0,
             "model_action_accepted_count": 0,
+            "model_action_shadow_count": 0,
             "answer_call_count": 0,
             "provider_retry_count": 0,
             "guard_retry_count": 0,
@@ -1000,13 +974,6 @@ class IterationZeroService:
                 and agent_budget.allows_optional_call(
                     perf_counter() - agent_started
                 )
-            )
-
-        def remaining_runtime_seconds() -> float:
-            return max(
-                0.0,
-                agent_budget.max_runtime_seconds
-                - (perf_counter() - agent_started),
             )
 
         def reduce_agent(kind: str, **payload: object) -> None:
@@ -1047,7 +1014,6 @@ class IterationZeroService:
             sources: list[RetrievedSource] | tuple[RetrievedSource, ...] = (),
             allow_model: bool = False,
             accepted_actions: frozenset[str] | None = None,
-            decision_gateway: AgentDecisionGateway | None = None,
         ) -> str:
             """Record one bounded decision and ensure it matches execution.
 
@@ -1058,9 +1024,17 @@ class IterationZeroService:
             """
             action = expected_action
             used_fallback = False
-            model_action_accepted = False
-            active_decision = decision_gateway or self.agent_decision
-            if allow_model and self.settings.agent_decision_mode == "model":
+            active_decision = self.agent_decision
+            decision_source = "rule"
+            mode = self.settings.agent_decision_mode
+            if allow_model and mode == "deterministic":
+                action = (
+                    "retrieve_with_query_rewrite"
+                    if should_retrieve_with_rewrite(request, sources)
+                    else expected_action
+                )
+                decision_source = "deterministic"
+            elif allow_model and mode in {"model", "shadow"}:
                 agent_metrics["decision_call_count"] += 1
                 action = active_decision.decide(
                     request,
@@ -1085,18 +1059,27 @@ class IterationZeroService:
                     )
                     action = expected_action
                 elif not used_fallback:
+                    if mode == "shadow":
+                        agent_metrics["model_action_shadow_count"] += 1
+                        # Shadow mode records a valid model decision but never
+                        # lets it alter the server-owned execution path.
+                        reduce_agent(
+                            "decision_produced",
+                            action=expected_action,
+                            requested_action=action,
+                            phase=phase,
+                            expected_action=expected_action,
+                            decision_source="model_shadow",
+                        )
+                        return expected_action
                     agent_metrics["model_action_accepted_count"] += 1
-                    model_action_accepted = True
+                    decision_source = "model"
             reduce_agent(
                 "decision_produced",
                 action=action,
                 phase=phase,
                 expected_action=expected_action,
-                decision_source=(
-                    "model"
-                    if model_action_accepted
-                    else "rule"
-                ),
+                decision_source=decision_source,
             )
             return action
 
@@ -1275,7 +1258,7 @@ class IterationZeroService:
                 course_ids, retrieval_query
             )
             if (
-                self.settings.agent_decision_mode != "model"
+                self.settings.agent_decision_mode == "rule"
                 and isinstance(retrieval_batch, RetrievalBatch)
                 and not retrieval_batch.sources
                 and history
@@ -1377,49 +1360,24 @@ class IterationZeroService:
             record_agent_action("retrieve")
             reduce_agent("observation_recorded")
             if (
-                self.settings.agent_decision_mode == "model"
+                not use_user_key
+                and self.settings.agent_decision_mode
+                in {"model", "shadow", "deterministic"}
                 and action_allowed_for_workflow(
                     request.workflow_type.value,
                     "retrieve_with_query_rewrite",
                 )
             ):
                 if optional_model_work_allowed():
-                    decision_gateway: AgentDecisionGateway | None = None
-                    bound_byok_decision: _BoundUserKeyDecisionModel | None = None
-                    if use_user_key:
-                        assert isinstance(user, AuthenticatedPrincipal)
-                        interrupted = interrupt_if_step_not_claimed()
-                        if interrupted is not None:
-                            return interrupted
-                        api_key = self.credential_manager.load_api_key(
-                            user, request.provider_id
-                        )
-                        bound_byok_decision = _BoundUserKeyDecisionModel(
-                            self.byok_model,
-                            api_key,
-                            byok_connection,
-                            (
-                                (lambda: stream_session.cancelled)
-                                if stream_session is not None
-                                else None
-                            ),
-                            remaining_runtime_seconds(),
-                        )
-                        decision_gateway = ModelAgentDecision(bound_byok_decision)
-                    try:
-                        next_action = decide_for_phase(
-                            "post_retrieval",
-                            "generate_answer",
-                            sources=sources,
-                            allow_model=True,
-                            accepted_actions=frozenset(
-                                {"generate_answer", "retrieve_with_query_rewrite"}
-                            ),
-                            decision_gateway=decision_gateway,
-                        )
-                    finally:
-                        if bound_byok_decision is not None:
-                            bound_byok_decision.clear()
+                    next_action = decide_for_phase(
+                        "post_retrieval",
+                        "generate_answer",
+                        sources=sources,
+                        allow_model=True,
+                        accepted_actions=frozenset(
+                            {"generate_answer", "retrieve_with_query_rewrite"}
+                        ),
+                    )
                     generation_decision_ready = next_action == "generate_answer"
                     if next_action == "retrieve_with_query_rewrite":
                         rewritten_query = _compose_agent_rewrite_query(
@@ -1589,12 +1547,10 @@ class IterationZeroService:
                         )
                         generated = self.byok_model.generate(
                             api_key=api_key,
-                            connection=byok_connection,
                             request=generation_request,
                             sources=sources,
                             history=history,
                             cancel_check=cancel_check,
-                            timeout_seconds=remaining_runtime_seconds(),
                         )
                     else:
                         platform_model = (

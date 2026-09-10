@@ -137,12 +137,6 @@ def seed_account_data(app, client: TestClient, *, with_credential: bool) -> None
             "SELECT user_id FROM users WHERE github_user_id = 123456"
         ).fetchone()
     alice_user_id = row["user_id"]
-    repository.save_private_knowledge(
-        user_id=alice_user_id,
-        course_id="linear_algebra",
-        title="注销测试私有知识",
-        content="该内容必须与账户一起物理删除。",
-    )
 
     # 贡献待审副本：直接按迁移 schema 插入一行 submitted 记录。
     now = datetime.now(UTC)
@@ -167,10 +161,6 @@ def seed_account_data(app, client: TestClient, *, with_credential: bool) -> None
         repository.upsert_model_credential(
             user_id=UUID(alice_user_id),
             provider_id="openrouter",
-            display_name="OpenRouter",
-            base_url="https://openrouter.ai/api/v1",
-            model_id="deepseek/deepseek-v4-flash-0731",
-            protocol="openai_chat_completions",
             ciphertext=b"0123456789abcdef0123456789abcdef",  # 模拟密文
             nonce=b"0123456789ab",
             algorithm="AES-256-GCM",
@@ -221,7 +211,6 @@ def test_delete_account_wipes_data_blocks_relogin(tmp_path: Path) -> None:
                 "workflow_runs",
                 "feedback",
                 "temporary_materials",
-                "private_knowledge_items",
                 "contributions",
                 "model_credentials",
                 "auth_sessions",
@@ -231,7 +220,6 @@ def test_delete_account_wipes_data_blocks_relogin(tmp_path: Path) -> None:
     assert before["workflow_runs"] >= 1
     assert before["contributions"] >= 1
     assert before["temporary_materials"] >= 1
-    assert before["private_knowledge_items"] >= 1
     assert before["model_credentials"] >= 1
 
     old_cookie = client.cookies.get(SESSION_COOKIE_NAME)
@@ -241,7 +229,6 @@ def test_delete_account_wipes_data_blocks_relogin(tmp_path: Path) -> None:
     assert summary["conversations"] >= 1
     assert summary["workflow_runs"] >= 1
     assert summary["auth_sessions"] >= 1
-    assert summary["private_knowledge_items"] >= 1
     assert summary["login_blocked"] is True
 
     with sqlite3.connect(database_path) as connection:
@@ -255,7 +242,6 @@ def test_delete_account_wipes_data_blocks_relogin(tmp_path: Path) -> None:
                 "workflow_runs",
                 "feedback",
                 "temporary_materials",
-                "private_knowledge_items",
                 "contributions",
                 "model_credentials",
                 "auth_sessions",
@@ -267,7 +253,6 @@ def test_delete_account_wipes_data_blocks_relogin(tmp_path: Path) -> None:
     assert after["workflow_runs"] == 0
     assert after["feedback"] == 0
     assert after["temporary_materials"] == 0
-    assert after["private_knowledge_items"] == 0
     assert after["contributions"] == 0
     assert after["model_credentials"] == 0
     assert after["auth_sessions"] == 0

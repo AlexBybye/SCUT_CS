@@ -93,12 +93,12 @@ class _ActionModel:
         return self.action
 
 
-def _model_mode_app(tmp_path: Path, name: str):
+def _model_mode_app(tmp_path: Path, name: str, *, mode: str = "model"):
     app = create_app(
         Settings(
             app_env="test",
             database_path=tmp_path / name,
-            agent_decision_mode="model",
+            agent_decision_mode=mode,
         )
     )
     retrieval = _SequenceRetrieval()
@@ -305,3 +305,65 @@ def test_soft_runtime_watermark_skips_optional_model_decision(
     )
     assert skipped["status"] == "skipped"
     assert skipped["result"]["reason_code"] == "runtime_soft_limit"
+
+
+def test_shadow_mode_records_valid_model_choice_without_driving_retrieval(
+    tmp_path: Path,
+) -> None:
+    app, client, conversation_id, retrieval = _model_mode_app(
+        tmp_path, "ab-shadow.db", mode="shadow"
+    )
+    action_model = _ActionModel("retrieve_with_query_rewrite")
+    app.state.service.agent_decision = ModelAgentDecision(action_model)
+
+    response = client.post("/api/v1/workflow-runs", json=_request(conversation_id))
+
+    assert response.status_code == 201, response.text
+    result = response.json()
+    assert len(retrieval.calls) == 1
+    metrics = _metrics(result)
+    assert metrics["decision_call_count"] == 1
+    assert metrics["model_action_accepted_count"] == 0
+    assert metrics["model_action_shadow_count"] == 1
+    decision = next(
+        event
+        for event in app.state.repository.list_agent_events(
+            result["workflow_run_id"]
+        )
+        if event.get("phase") == "post_retrieval"
+    )
+    assert decision["decision_source"] == "model_shadow"
+    assert decision["requested_action"] == "retrieve_with_query_rewrite"
+    assert decision["action"] == "generate_answer"
+
+
+def test_deterministic_mode_rewrites_only_for_missing_exact_question_evidence(
+    tmp_path: Path,
+) -> None:
+    app, client, conversation_id, retrieval = _model_mode_app(
+        tmp_path, "ab-deterministic.db", mode="deterministic"
+    )
+    payload = _request(conversation_id)
+    payload["user_input"] = "请讲解 2024 年第 3 题"
+    payload["workflow_payload"] = {"question": "请讲解 2024 年第 3 题"}
+
+    response = client.post("/api/v1/workflow-runs", json=payload)
+
+    assert response.status_code == 201, response.text
+    result = response.json()
+    assert len(retrieval.calls) == 2
+    metrics = _metrics(result)
+    assert metrics["decision_call_count"] == 0
+    rewrite = next(
+        event for event in result["trace"] if event["node"] == "agent_query_rewrite"
+    )
+    assert rewrite["status"] == "completed"
+    decision = next(
+        event
+        for event in app.state.repository.list_agent_events(
+            result["workflow_run_id"]
+        )
+        if event.get("phase") == "post_retrieval"
+    )
+    assert decision["decision_source"] == "deterministic"
+    assert decision["action"] == "retrieve_with_query_rewrite"

@@ -9,6 +9,7 @@ introduced incrementally.
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
+import re
 from typing import Literal, Protocol
 
 from .ports import ConversationTurn, GeneratedAnswer, ModelGateway, RetrievedSource
@@ -89,6 +90,31 @@ class RuleBasedAgentDecision:
 
     def decide(self, request, state, phase, *, sources=(), history=()) -> ActionKind:
         return choose_next_action(state, phase=phase, workflow_type=request.workflow_type.value)
+
+
+_EXACT_RETRIEVAL_MARKER = re.compile(
+    r"(?:第\s*\d+\s*题|\b20\d{2}\b|\d{4}\s*年)", re.IGNORECASE
+)
+
+
+def should_retrieve_with_rewrite(
+    request: WorkflowRunRequest,
+    sources: list[RetrievedSource] | tuple[RetrievedSource, ...],
+) -> bool:
+    """Small deterministic baseline for the optional second retrieval.
+
+    This intentionally uses only evidence visible to the service: no candidate
+    is always insufficient; an explicitly year/question-shaped request also
+    retries when none of the returned chunks carries a question locator.  It
+    is deliberately conservative so the baseline does not manufacture an
+    agent-like planner or spend a second retrieval on ordinary concept queries.
+    """
+    if not sources:
+        return True
+    question = request.user_input
+    if not _EXACT_RETRIEVAL_MARKER.search(question):
+        return False
+    return not any(source.question_id for source in sources)
 
 
 def parse_model_action(raw: str, *, workflow_type: str) -> ActionKind | None:

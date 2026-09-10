@@ -35,7 +35,7 @@ if /I "%~1"=="--check" (
 )
 
 start "SCUT Senior API" /D "%APP_ROOT%" "%BASH_EXE%" -lc "set -a; source .local/env.online; set +a; export SCUT_SENIOR_RETRIEVAL_MODE=local_corpus; exec ./api/.venv/Scripts/python.exe -m uvicorn scut_senior_api.main:app --reload --host 127.0.0.1 --port 8000"
-start "SCUT Senior Web" /D "%APP_ROOT%\web" "%BASH_EXE%" -lc "exec ./node_modules/.bin/vite.cmd --host 0.0.0.0 --port 5173"
+start "SCUT Senior Web" /D "%APP_ROOT%\web" "%BASH_EXE%" -lc "exec ./node_modules/.bin/vite.cmd --host 0.0.0.0 --port 5173 --strictPort"
 
 if /I "%~1"=="--funnel" (
   "C:\Program Files\Tailscale\tailscale.exe" funnel --bg 5173

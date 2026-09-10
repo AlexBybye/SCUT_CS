@@ -75,7 +75,6 @@ def test_auth_migrations_are_ledgered_and_sqlite_runtime_pragmas_are_enabled(
             "0015_user_preferences.sql",
             "0016_private_knowledge.sql",
             "0017_contribution_metadata_attachments.sql",
-            "0018_custom_byok_connections.sql",
         ]
         assert connection.execute("PRAGMA foreign_keys").fetchone()[0] == 1
         assert connection.execute("PRAGMA journal_mode").fetchone()[0] == "wal"
@@ -258,18 +257,13 @@ def test_legacy_0004_schema_is_rebuilt_without_removed_providers_or_extra_column
         connection.execute(
             """
             INSERT INTO model_credentials (
-                user_id, provider_id, display_name, base_url, model_id, protocol,
-                ciphertext, nonce, algorithm,
+                user_id, provider_id, ciphertext, nonce, algorithm,
                 key_version, created_at, updated_at, expires_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 str(user_id),
                 "deepseek",
-                "DeepSeek",
-                "https://api.deepseek.com",
-                "deepseek-v4-flash",
-                "openai_chat_completions",
                 sqlite3.Binary(bytes([1]) * 17),
                 sqlite3.Binary(bytes([1]) * 12),
                 "AES-256-GCM",
@@ -458,34 +452,6 @@ def test_cleanup_removes_dead_auth_records_but_preserves_users(tmp_path: Path) -
         assert user is not None
         assert user["display_name"] == "cleanup-user"
     assert repository.authenticate_session(expired_session.token) is None
-
-
-def test_auth_cleanup_physically_removes_expired_byok_credentials(tmp_path: Path) -> None:
-    clock = MutableClock(datetime(2026, 8, 15, 10, 0, tzinfo=UTC))
-    repository = SQLiteWorkflowRepository(tmp_path / "expired-byok.db", clock=clock)
-    user_id = repository.upsert_github_user(
-        GitHubUserProfile(111112, "expired-byok-user", None)
-    )
-    repository.upsert_model_credential(
-        user_id=user_id,
-        provider_id="openrouter",
-        display_name="OpenRouter",
-        base_url="https://openrouter.ai/api/v1",
-        model_id="deepseek/deepseek-v4-flash-0731",
-        protocol="openai_chat_completions",
-        ciphertext=b"x" * 32,
-        nonce=b"y" * 12,
-        algorithm="AES-256-GCM",
-        key_version=1,
-    )
-    clock.advance(timedelta(days=366))
-
-    repository.cleanup_auth_records()
-
-    with connect(repository.database_path) as connection:
-        assert connection.execute(
-            "SELECT COUNT(*) FROM model_credentials"
-        ).fetchone()[0] == 0
 
 
 def test_auth_cleanup_runs_on_startup_and_before_new_state_or_session(
