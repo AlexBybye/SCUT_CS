@@ -1,0 +1,212 @@
+{
+  "reviewer": "Codex",
+  "review_date": "2026-09-12",
+  "review_method": "Read the identified active-corpus passages, restrict claims to legible content, independently reason through answers; explicit source-error cases use external primary references. These are authored scenarios, not collected student logs or independently double-reviewed labels.",
+  "topics": [
+    {
+      "id": "la-diagonalization", "course_id": "linear_algebra", "scenario": "concept",
+      "queries": ["矩阵可对角化的充要条件是什么？为什么特征值互不相同只是充分条件？", "有重根就一定不能化成对角矩阵吗？请用单位矩阵说明。"],
+      "groups": [{"need": "可对角化的充要条件", "chunk_ids": ["linear-algebra-012:p2:q-linear-algebra-012-q10:c01"]}],
+      "answer": "在讨论的数域内，n阶矩阵可对角化当且仅当有n个线性无关特征向量；n个不同特征值是充分条件而非必要条件。单位矩阵只有一个不同特征值但本身为对角矩阵。",
+      "verification": "原文选择题第4题的B项给出条件；单位矩阵作为独立反例。内部q10不是试卷第10题。",
+      "pitfalls": ["有重根必不可对角化", "n个互不相同的特征向量就足够，无需线性无关"]
+    },
+    {
+      "id": "prob-t-symmetry", "course_id": "probability_theory", "scenario": "problem",
+      "queries": ["T服从t分布，若P(T>λ)=α，P(T<−λ)是多少？", "t分布右边尾巴的面积是α，关于0对称的左边尾巴也是α，还是α/2？"],
+      "groups": [{"need": "t分布双尾对称题", "chunk_ids": ["probability-theory-010:q-probability-theory-010-q1:c01"]}],
+      "answer": "P(T<−λ)=P(T>λ)=α，利用t密度关于0对称；不是α/2。",
+      "verification": "可读题干与选项完整；独立通过对称性积分变量替换验证，不把前一道题的答案B错配到本题。",
+      "pitfalls": ["把单侧概率再次除以2", "把chunk开头上一题的B当作本题答案"]
+    },
+    {
+      "id": "prob-unbiased", "course_id": "probability_theory", "scenario": "problem",
+      "queries": ["独立同分布样本方差σ²>0，用权重(1/2,1/3,1/6)、(1/2,1/4,1/4)、(1/3,1/3,1/3)、(1/5,2/5,2/5)估计均值，哪个方差最小？", "四种加权平均都无偏时，为什么平均分配三个样本的权重更有效？假定样本独立同分布且方差为正。"],
+      "groups": [{"need": "四种均值估计量的题目与解答", "chunk_ids": ["probability-theory-010:q-probability-theory-010-q3:c01"]}],
+      "answer": "均无偏，因为权重和为1。方差分别为7σ²/18、3σ²/8、σ²/3、9σ²/25；第三种最小。",
+      "verification": "按独立变量方差公式逐项平方求和复算；σ²>0避免零方差时无严格优劣。",
+      "pitfalls": ["权重和相同所以方差相同", "漏掉独立性条件"]
+    },
+    {
+      "id": "algo-knapsack", "course_id": "algorithm_design_and_analysis", "scenario": "problem",
+      "queries": ["2023-2024 B卷容量22、体积3/5/7/8/9、价值4/6/7/9/10的0-1背包题怎么做？", "背包最多装22，每件只能拿一次，五件物品重量3、5、7、8、9，价值4、6、7、9、10。最大价值和选择是什么？"],
+      "groups": [{"need": "容量22的完整背包题干", "chunk_ids": ["algorithm-design-and-analysis-001:p3:q-algorithm-design-and-analysis-001-q13:c01"]}],
+      "answer": "最大价值25，选择第2、4、5件，体积5+8+9=22，价值6+9+10=25。第1、2、3、4件体积为23，不可行。",
+      "verification": "已独立穷举32个子集复核；题干提供实例，不提供现成答案。",
+      "verified_values": {"maximum_value": 25, "selected_items": [2, 4, 5]},
+      "pitfalls": ["拿总体积23的组合", "把0-1背包按分数背包贪心求解"]
+    },
+    {
+      "id": "ds-inorder", "course_id": "data_structure", "scenario": "concept",
+      "queries": ["不用递归，怎样用栈完成二叉树中序遍历？", "遍历二叉树时一路压左孩子，弹出后什么时候访问右子树？"],
+      "groups": [{"need": "显式栈中序遍历实现", "chunk_ids": ["data-structure-023:h-作业及分析:c01"]}],
+      "answer": "沿左链压栈；到空节点时弹栈并访问；转向弹出节点的右子树；栈为空且当前节点为空才结束。时间O(n)，栈空间O(h)。",
+      "verification": "逐句检查代码的循环、压栈、弹栈、访问、转右顺序；复杂度为独立推导，不采纳材料中未经验证的性能测量。",
+      "pitfalls": ["栈一空就结束，遗漏当前右子树", "弹栈前先访问导致先序遍历"]
+    },
+    {
+      "id": "db-projection", "course_id": "database", "scenario": "concept",
+      "queries": ["关系代数中选择和投影有什么区别？哪一个是按列切分？", "只保留学生表的学号和姓名，应该用选择还是投影？"],
+      "groups": [{"need": "投影按属性选列的解释", "chunk_ids": ["database-005:s15:c01"]}],
+      "answer": "投影选列，选择按谓词筛行；只保留学号和姓名是投影。",
+      "verification": "讲义给出垂直分割题及B项解析，按关系代数定义复核。",
+      "pitfalls": ["把选择说成选列", "把投影说成筛选满足条件的行"]
+    },
+    {
+      "id": "db-having", "course_id": "database", "scenario": "concept",
+      "queries": ["SQL中HAVING筛选的是行还是分组？", "按学生分组算平均成绩后，只留下均分至少85的组，该在哪里写条件？"],
+      "groups": [{"need": "HAVING分组过滤", "chunk_ids": ["database-005:s19:c01", "database-004:p3:q-database-004-q27:c01", "database-001:q-database-001-q2:c01"]}],
+      "answer": "HAVING对分组聚合结果过滤，如GROUP BY 学号 HAVING AVG(成绩)>=85；不是要求每科成绩均达到85。",
+      "verification": "讲义解析、选择题、完整AVG查询相互对照；三种证据是可替代项，不要求全部命中。",
+      "pitfalls": ["每科都必须达到85", "HAVING只用于筛原始单行"]
+    },
+    {
+      "id": "db-null", "course_id": "database", "scenario": "mistake",
+      "queries": ["我写WHERE AGE = NULL查缺失年龄，为什么不对？", "筛出没有填写年龄的学生，应该写等于NULL还是IS NULL？"],
+      "groups": [{"need": "NULL比较的讲义解释", "chunk_ids": ["database-005:s19:c01"]}],
+      "answer": "使用AGE IS NULL；普通等号与NULL比较得到UNKNOWN，WHERE不会保留该结果。",
+      "verification": "讲义明确指出AGE=NULL错误；用SQL三值逻辑复核。",
+      "pitfalls": ["AGE=NULL可以正确筛出缺失值", "用AGE=0替代缺失值判断"]
+    },
+    {
+      "id": "os-states", "course_id": "operating_systems", "scenario": "concept",
+      "queries": ["进程就绪和阻塞有什么区别？I/O完成后会直接运行吗？", "一个进程只是没拿到CPU，另一个在等磁盘读完，它们是同一种状态吗？"],
+      "groups": [{"need": "就绪、阻塞及转换", "chunk_ids": ["operating-systems-028:h-os复习指导:c03"]}],
+      "answer": "就绪具备运行条件但等待CPU，阻塞等待外部事件；I/O完成后通常阻塞转就绪，再由调度选中进入运行。",
+      "verification": "讲义列出三个状态和转换；修正明显排字错误“单位分到CPU”为“未分到CPU”。",
+      "pitfalls": ["阻塞等同于等待CPU", "I/O完成必然立即获得CPU"]
+    },
+    {
+      "id": "os-producer", "course_id": "operating_systems", "scenario": "mistake",
+      "queries": ["有界缓冲区生产者能先P(mutex)再P(empty)吗？", "缓冲区满时，生产者拿着互斥锁等空位，消费者还能取走数据吗？"],
+      "groups": [{"need": "生产者消费者信号量顺序", "chunk_ids": ["operating-systems-001:h-第-20-题-缺-异常-page-fault~第-69-题-生产者-消费者问题~3-参考答案与解析:c01"]}],
+      "answer": "应先P(empty)再P(mutex)。满缓冲区时，反过来会让生产者持锁等空位，消费者拿不到锁无法腾空位，造成死锁。",
+      "verification": "原文代码给出正确顺序；构造满缓冲区的执行交错验证错误顺序。标题路径串入Page Fault，按正文而非上级标题判断相关性。",
+      "pitfalls": ["PV操作可以任意交换", "只要有互斥锁就不会死锁"]
+    },
+    {
+      "id": "os-deadlock", "course_id": "operating_systems", "scenario": "concept",
+      "queries": ["死锁的四个必要条件是什么？统一资源申请顺序破坏了哪一个？", "所有线程都先拿A锁再拿B锁，为什么能避免这两把锁形成循环等待？"],
+      "groups": [{"need": "死锁条件", "chunk_ids": ["operating-systems-005:p1:c01"]}],
+      "answer": "互斥、请求并保持、不可剥夺、循环等待；对这组锁统一全局获取顺序破坏循环等待。",
+      "verification": "只采用该页清晰的死锁定义段；顺序获取的结论通过有向等待环不可能严格递增复核，不采纳该页其他未经核验说法。",
+      "pitfalls": ["统一顺序破坏互斥条件", "两把锁有顺序就能防止系统中的所有其他死锁"]
+    },
+    {
+      "id": "compiler-left-recursion", "course_id": "compiler_principles", "scenario": "problem",
+      "queries": ["T→T,S | S 如何消除直接左递归？", "递归下降遇到T先调用自己再读逗号的文法会卡住，怎么改写？原式T→T,S | S。"],
+      "groups": [{"need": "该文法左递归消除结果", "chunk_ids": ["compiler-principles-001:s27:c01"]}],
+      "answer": "T→S T′，T′→,S T′ | ε。以S开头，再接零次或多次逗号加S。",
+      "verification": "原文给出转换；通过两种文法都生成S(,S)*复核，问题不使用原文中含义不明确的∧符号。",
+      "pitfalls": ["忘记ε产生式", "改写后仍然T→T开头"]
+    },
+    {
+      "id": "compiler-plan", "course_id": "compiler_principles", "scenario": "review",
+      "queries": ["复习课里那道S→a | ∧ | (T)、T→T,S | S的预测分析题，应该按什么步骤做？这里只要步骤。", "面对需要改写文法并构造LL(1)分析表的大题，先算FIRST还是先消除左递归？"],
+      "groups": [{"need": "预测分析题的解题流程", "chunk_ids": ["compiler-principles-001:s26:c01"]}],
+      "answer": "先消除左递归、提取左公共因子，再计算FIRST和FOLLOW，检查LL(1)条件，最后构造预测分析表或递归子程序；不能保证任意文法这样处理后都成为LL(1)。",
+      "verification": "讲义列出流程；任务限定步骤，不要求从存在字体歧义的∧推导具体集合。",
+      "pitfalls": ["保证任意文法都可变为LL(1)", "在改写之前算好集合后直接沿用"]
+    },
+    {
+      "id": "network-ack", "course_id": "computer_networks", "scenario": "concept",
+      "queries": ["TCP确认号为n到底表示收到了n，还是接下来想收到n？", "接收方回复ACK=501，发送方能理解为500之前的字节都确认了吗？"],
+      "groups": [{"need": "TCP累计确认号含义", "chunk_ids": ["computer-networks-051:h-笔记:c10"]}],
+      "answer": "确认号n表示期望下一个字节序号为n，至n−1的字节已累计确认；确认号501包括对序号500的确认。ACK标志为1时确认字段有效。",
+      "verification": "原文给出n−1与n的明确关系；只评这一关系，不扩展为所有TCP细节。",
+      "pitfalls": ["确认号是最后收到的字节序号", "按报文个数而不是字节编号解释"]
+    },
+    {
+      "id": "network-napt", "course_id": "computer_networks", "scenario": "evidence_bundle",
+      "queries": ["网络层大题中192.168.1.10:5000映射到202.1.1.1:8000，回包怎么还原？去8.8.8.8该选哪条路由？", "请找到NAPT网关那道题的题干和答案，解释回程端口还原以及/8为什么优先于默认路由。"],
+      "groups": [
+        {"need": "NAPT映射及两条路由题干", "chunk_ids": ["computer-networks-025:h-网络层大题~大题一-综合寻址-子网划分与-icmp-模型一-二-三~大题二-nat-转换与路由查表-模型三-四:c01"]},
+        {"need": "还原与路由选择答案", "chunk_ids": ["computer-networks-025:h-网络层大题~大题一-综合寻址-子网划分与-icmp-模型一-二-三~大题二-nat-转换与路由查表-模型三-四~大题二-参考答案:c01"]}
+      ],
+      "answer": "服务器回包在公网侧目的为202.1.1.1:8000，转换后为192.168.1.10:5000；去8.8.8.8的出站包按/8选202.1.1.5，不选默认202.1.1.254。",
+      "verification": "题干与答案成对读取；原题背景把去服务器的包称作回包，按第3小问明确区分出站路由与回程NAPT，不能照抄方向混乱。",
+      "pitfalls": ["把回到内网的包继续发往8.8.8.8", "以路由表出现先后代替最长前缀"]
+    },
+    {
+      "id": "testing-boundary", "course_id": "software_testing", "scenario": "problem",
+      "queries": ["三个独立输入变量，健壮最坏情况边界值测试需要多少组？和健壮边界值有什么不同？", "每个输入都取七个含越界的代表值，再组合三个输入，是19组还是343组？"],
+      "groups": [{"need": "边界值四种计数模型", "chunk_ids": ["software-testing-040:h-unit~第二章-软件测试方法~一-黑盒测试-重点:c01"]}],
+      "answer": "经典每变量七个互异代表值且无额外约束的模型下，健壮最坏情况为7³=343；健壮单故障假设边界值为6×3+1=19。",
+      "verification": "原文列出7^n与6n+1；按笛卡尔积和单变量变化两种构造独立复算。",
+      "pitfalls": ["把7^n写成7n", "忽略跨变量约束仍断言任何实际系统必需343条"]
+    },
+    {
+      "id": "testing-insurance", "course_id": "software_testing", "scenario": "problem",
+      "queries": ["保险年龄1–18收费100，19–60收费200，61–150收费300，非整数或越界非法，怎么选等价类和边界测试？", "测保险系统只用年龄1、80、150够吗？1–18、19–60、61–150三档收费，输入必须是整数。"],
+      "groups": [{"need": "保险年龄分段规则", "chunk_ids": ["software-testing-040:h-unit~题目-1-等价类划分-边界值分析-综合题~题目:c01"]}],
+      "answer": "覆盖三个有效类及小于1、大于150、非整数的无效类；重点取0/1/2、17/18/19/20、59/60/61/62、149/150/151与非整数，允许不同等效测试设计，不强制唯一列表。",
+      "verification": "按题干逐段检查闭区间端点及预期收费，边界用例由规则推导。",
+      "pitfalls": ["年龄18与19收费相同", "只测总区间两端遗漏内部收费分界", "把非整数作为有效输入"]
+    },
+    {
+      "id": "testing-branch", "course_id": "software_testing", "scenario": "concept",
+      "queries": ["判定覆盖能保证复合条件里的每个条件都独立影响结果吗？", "if里有三个布尔条件，真假分支各走一次就算MC/DC了吗？"],
+      "groups": [{"need": "分支覆盖与MC/DC的差异", "chunk_ids": ["software-testing-045:h-unit~第八章-软件质量度量~三-软件度量方法~2.-覆盖率度量-测试充分性指标:c01"]}],
+      "answer": "不是。分支覆盖要求判定的各出口被执行；MC/DC还要求展示每个条件可独立影响判定结果。分支覆盖不能保证这一点。",
+      "verification": "对照表的定义；用复合判定各出口均执行但某条件始终固定的反例验证。",
+      "pitfalls": ["分支覆盖等同于MC/DC", "分支覆盖保证所有条件组合"]
+    },
+    {
+      "id": "ai-prepruning", "course_id": "artificial_intelligence_intro", "scenario": "concept",
+      "queries": ["决策树预剪枝为什么既能减少过拟合，又可能欠拟合？", "某次分裂当下没提高验证表现就停止，会不会错过后续更好的树？"],
+      "groups": [{"need": "预剪枝的收益及贪心局限", "chunk_ids": ["artificial-intelligence-intro-017:s27:c01"]}],
+      "answer": "提前停止可降低过拟合风险和训练测试开销；当前无收益的分裂可能为后续有效划分创造条件，贪心停止会错过它而欠拟合。",
+      "verification": "讲义直接解释因果链；措辞使用可能，避免把风险说成必然。",
+      "pitfalls": ["预剪枝一定提高泛化", "预剪枝只能导致过拟合"]
+    },
+    {
+      "id": "ai-consistent", "course_id": "artificial_intelligence_intro", "scenario": "concept",
+      "queries": ["一致启发为什么能让A*像Dijkstra一样工作？请解释重赋权。", "如果h(n)≤c(n,n′)+h(n′)，为什么c′=c−h(n)+h(n′)不会是负数？"],
+      "groups": [{"need": "一致启发与非负重赋权证明", "chunk_ids": ["artificial-intelligence-intro-008:h-第3章-搜索探寻与问题求解:c04"]}],
+      "answer": "由一致性移项得c′≥0；路径代价相消为g′(n)=g(n)−h(s)+h(n)，故f(n)=g′(n)+h(s)，排序差常数。在标准最短路搜索条件下对应非负边上的Dijkstra。",
+      "verification": "逐项代数相消；同一目标比较路径，不把可容性无条件等同于图搜索不重开节点时的最优性。",
+      "pitfalls": ["一致性允许负的重赋权边", "只要可容就无需考虑CLOSED节点重开"]
+    },
+    {
+      "id": "org-cache", "course_id": "computer_organization", "scenario": "concept",
+      "queries": ["Cache为什么能缓解CPU与主存速度不匹配？", "只加一小块高速缓存为什么有用？它利用程序访问的什么特点？"],
+      "groups": [{"need": "Cache作用与时间空间局部性", "chunk_ids": ["computer-organization-026:s76:c01"]}],
+      "answer": "Cache位于CPU与主存之间，利用时间局部性和空间局部性，让重复或邻近访问有机会由更快存储满足；效果取决于命中率，不能保证所有访问变快。",
+      "verification": "讲义给出层次、速度及局部性；命中条件为基本原理推导。",
+      "pitfalls": ["Cache越小越快所以任意小容量都足够", "所有程序都必然有同样收益"]
+    },
+    {
+      "id": "web-margin", "course_id": "web_frontend_fundamentals", "scenario": "concept",
+      "queries": ["CSS只想增加元素下面的外边距，应该改哪个属性？", "不想动上左右间距，只想让一个块和下一个块离远一点，margin还是margin-bottom？"],
+      "groups": [{"need": "margin各方向属性", "chunk_ids": ["web-frontend-fundamentals-014:s32:c01"]}],
+      "answer": "用margin-bottom指定下外边距；margin是四方向简写。实际块间距离还可能涉及外边距折叠，不要求在此简单问题展开全部布局规则。",
+      "verification": "属性表清晰；只核验方向语义，不采纳同一讲义其他页有误的选择器规则。",
+      "pitfalls": ["用padding-bottom等同于外边距", "margin只影响底部"]
+    },
+    {
+      "id": "discrete-partition", "course_id": "discrete_mathematics", "scenario": "problem",
+      "queries": ["A={a,b,c,d}，等价关系R={(a,b),(b,a),(c,d),(d,c)}∪I_A，对应什么划分？", "a和b等价，c和d等价，每个元素也与自己等价，为什么不是四个单独的等价类？"],
+      "groups": [{"need": "等价关系与划分实例", "chunk_ids": ["discrete-mathematics-003:p4:q-discrete-mathematics-003-q20:c01"]}],
+      "answer": "划分为{{a,b},{c,d}}；[a]=[b]={a,b}，[c]=[d]={c,d}。",
+      "verification": "题干与D项可读；逐对检查关系并独立列出等价类。",
+      "pitfalls": ["四个单元素集合", "把所有四个元素放入同一类"]
+    },
+    {
+      "id": "electrical-plan", "course_id": "electrical_engineering", "scenario": "review",
+      "queries": ["电路复习大纲里一阶暂态分析要掌握哪三个量？我想先按它们安排练习。", "复习RC/RL一阶暂态时，初始值、最终值和变化快慢分别对应大纲中的什么？"],
+      "groups": [{"need": "一阶暂态三要素要求", "chunk_ids": ["electrical-engineering-009:h-电路与电子技术-复习大纲:c01"]}],
+      "answer": "初始值、稳态值、时间常数；先练换路初始值，再练稳态电路与时间常数，最后组合一阶响应。顺序是教学建议，不是声称大纲指定了唯一顺序。",
+      "verification": "仅使用该长段中第3项明确列举的三要素；不假定其他年份考核分值或必考题。",
+      "pitfalls": ["把电压电流电阻当成三要素", "断言这道题今年必考"]
+    },
+    {
+      "id": "ds-source-error", "course_id": "data_structure", "scenario": "source_correction",
+      "queries": ["资料说切换到std::sort就确保排序稳定，这句话对吗？", "相同分数的学生必须保留原先先后顺序，笔记建议用std::sort，我能直接照做吗？"],
+      "groups": [{"need": "待纠正的原始说法", "chunk_ids": ["data-structure-001:h-关于二分双数组-冒泡排序算法的研究:c03"]}],
+      "answer": "该说法不成立。std::sort不保证等价元素相对顺序；std::stable_sort提供稳定性保证。资料的速度波动稳定与排序算法的稳定性不是一个概念。",
+      "verification": "读到原文错误陈述后查C++工作草案，stable_sort明确标为Stable，sort没有该保证；错误片段只作纠错对象。",
+      "external_reference": "https://eel.is/c++draft/alg.sort",
+      "pitfalls": ["因为有引用所以照抄std::sort稳定", "将耗时稳定当作等键顺序稳定"]
+    }
+  ]
+}

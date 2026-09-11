@@ -36,7 +36,6 @@ from .paths import APP_ROOT
 from .ports import UserIdentity
 from .retrieval_eval import (
     DEFAULT_CORPUS_STORE,
-    DEFAULT_GOLDEN_ROOT,
     run_retrieval_evaluation,
 )
 
@@ -51,6 +50,13 @@ _WORKFLOW_NAMES = {workflow.value for workflow in WorkflowType}
 def _payload_for(
     workflow_type: str, content: str, case: dict[str, object]
 ) -> dict[str, object]:
+    # Authored scenarios must preserve the student's actual answer/material and
+    # time budget. The request contract validates this payload before execution.
+    if "workflow_payload" in case:
+        payload = case["workflow_payload"]
+        if not isinstance(payload, dict):
+            raise ValueError("workflow_payload must be an object")
+        return dict(payload)
     if workflow_type == "knowledge_qa":
         return {"question": content}
     if workflow_type == "exam_review":
@@ -130,10 +136,10 @@ def _check_expected(
     for block_type in expected.get("required_answer_block_types") or []:
         if block_type not in block_types:
             reasons.append(f"缺少回答块 {block_type}")
-    requires_citation = bool(expected.get("requires_citation"))
-    if requires_citation and not result.citations:
+    requires_citation = expected.get("requires_citation")
+    if requires_citation is True and not result.citations:
         reasons.append("requires_citation 但没有任何仓库引用")
-    if not requires_citation and result.citations:
+    if requires_citation is False and result.citations:
         reasons.append("不应有仓库引用但返回了引用")
     allows_general = expected.get("allows_general", True)
     if not allows_general and "general" in block_types:
@@ -165,10 +171,16 @@ def _run_case(
     provider_id: str = "mock",
     model_id: str = "deterministic-fixture-v1",
 ) -> tuple[str, list[str], dict[str, object]]:
-    if case["course_scope"] == "cross":
+    if case["course_scope"] == "cross" and not app.state.service.settings.cross_course_enabled:
         return "skipped", ["cross_course_disabled_by_feature_flag"], {}
+    conversation_course = case.get("course_id")
+    if case["course_scope"] == "cross":
+        selected = list(case.get("allowed_course_ids") or [])
+        if not selected:
+            raise ValueError("cross-course case must name selected courses")
+        conversation_course = selected[0]
     conversation = app.state.service.create_conversation(
-        _MOCK_USER, str(case["course_id"])
+        _MOCK_USER, str(conversation_course)
     )
     last_run = None
     for turn in case["turns"]:
@@ -189,6 +201,15 @@ def _run_case(
         return "failed", ["用例没有 user 轮次"], {}
     reasons = _check_expected(last_run, case["expected"])
     metrics = _extract_runtime_metrics(last_run)
+    if case.get("quality_rubric"):
+        metrics["review_material"] = {
+            "repository_answer": last_run.repository_answer,
+            "general_supplement": last_run.general_supplement,
+            "citations": [citation.model_dump(mode="json") for citation in last_run.citations],
+            "workflow_output": last_run.workflow_output,
+            "answer_status": last_run.answer_status.value,
+            "evidence_status": last_run.evidence_status.value,
+        }
     return ("passed" if not reasons else "failed"), reasons, metrics
 
 
@@ -257,7 +278,12 @@ def _report_line(
         "reasons": reasons,
     }
     if metrics:
-        line["runtime_metrics"] = metrics
+        line["runtime_metrics"] = {key: value for key, value in metrics.items() if key != "review_material"}
+    if case.get("quality_rubric"):
+        line["quality_outcome"] = "not_reviewed"
+        line["quality_rubric"] = case["quality_rubric"]
+        if metrics and "review_material" in metrics:
+            line["review_material"] = metrics["review_material"]
     return line
 
 
@@ -366,6 +392,7 @@ def run_evaluation(
     report: dict[str, object] = {
         "runner_id": RUNNER_ID,
         "contract_version": CONTRACT_VERSION,
+        "evaluation_scope": "pipeline_contracts_only; semantic quality requires separate review",
         "fixture_only": fixture_only,
         "provider_id": provider_id if not fixture_only else "mock",
         "model_id": model_id if not fixture_only else "deterministic-fixture-v1",
@@ -419,9 +446,8 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--golden",
         type=Path,
-        default=DEFAULT_GOLDEN_ROOT,
-        help="golden set directory for --retrieval-only "
-        "(default resources/evaluation/retrieval-golden)",
+        default=None,
+        help="explicit legacy/v1 golden directory; omitted uses source-reviewed v2",
     )
     parser.add_argument(
         "--corpus-store",
@@ -458,6 +484,11 @@ def _parser() -> argparse.ArgumentParser:
         help="platform model id for real-model runs (e.g. glm-4.7-flash)",
     )
     parser.add_argument(
+        "--local-corpus",
+        action="store_true",
+        help="use active local corpus even with the Mock model (mechanics only)",
+    )
+    parser.add_argument(
         "--fixture-corpus",
         action="store_true",
         help="force fixture retrieval even when a real model is selected; "
@@ -487,6 +518,13 @@ def _run_retrieval_only(args: argparse.Namespace) -> int:
                 APP_ROOT / ".local" / "models" / "bge-small-zh-v1.5"
             )
             embedding = OnnxEmbeddingProvider(model_dir)
+        if args.golden is None:
+            from .learning_eval import DEFAULT_SUITE, run_suite
+            report = run_suite(DEFAULT_SUITE, args.corpus_store, embedding=embedding, min_score=args.min_score)
+            args.report.parent.mkdir(parents=True, exist_ok=True)
+            args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            print("source-reviewed retrieval (known evidence, not answer accuracy): " + json.dumps(report["summary"]))
+            return 0
         report = run_retrieval_evaluation(
             args.golden,
             args.report,
@@ -515,6 +553,9 @@ def _run_retrieval_only(args: argparse.Namespace) -> int:
 
 def main(argv: Iterable[str] | None = None) -> int:
     args = _parser().parse_args(argv)
+    if args.local_corpus and args.fixture_corpus:
+        print("--local-corpus and --fixture-corpus cannot be combined", file=sys.stderr)
+        return 2
     if args.retrieval_only:
         return _run_retrieval_only(args)
     if args.cases is None:
@@ -536,7 +577,7 @@ def main(argv: Iterable[str] | None = None) -> int:
         args.report,
         provider_id=args.provider,
         model_id=args.model,
-        local_corpus=not args.fixture_corpus if args.provider != "mock" else False,
+        local_corpus=args.local_corpus or (args.provider != "mock" and not args.fixture_corpus),
         pace_seconds=args.pace_seconds,
         case_retries=2 if args.provider != "mock" else 0,
         agent_decision_mode=args.agent_decision_mode,

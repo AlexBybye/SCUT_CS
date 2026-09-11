@@ -31,8 +31,8 @@ top-N candidates for the single query):
 - ``recall@20`` : |expected ∩ top-20| / |expected|
 - ``mrr``       : 1 / rank of the first expected hit, 0 when none hits
 - ``noise_rate``: |top-N \\ expected| / |top-N|  (retrieval-only proxy for the
-  full-pipeline "returned but never cited" share; a high value is the signal
-  to raise ``min_score``)
+  legacy unlabelled share; unlabelled does NOT mean irrelevant and this value
+  must not by itself justify raising ``min_score``)
 
 Reference validation fails closed: an expected chunk_id that is absent from
 the active course index aborts the evaluation, because a golden set whose
@@ -311,6 +311,13 @@ def run_retrieval_evaluation(
             )
         )
     report = _build_report(results, gateway, top_n)
+    if golden_root.resolve() == DEFAULT_GOLDEN_ROOT.resolve():
+        report["annotation_status"] = "legacy_not_semantically_certified"
+        report["annotation_warning"] = (
+            "2026-09-12 audit found ambiguous labels and image-only evidence; "
+            "use learning_eval with resources/evaluation/reviewed-v2 for new experiments. "
+            "These legacy metrics reproduce historical targets, not answer quality."
+        )
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(
         json.dumps(report, ensure_ascii=False, indent=2) + "\n",

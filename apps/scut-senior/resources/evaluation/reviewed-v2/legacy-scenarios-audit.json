@@ -1,0 +1,1009 @@
+{
+  "reviewer": "Codex",
+  "review_date": "2026-09-12",
+  "summary": {
+    "real_cases": 12,
+    "sweep_cases": 20
+  },
+  "entries": [
+    {
+      "file": "scut-real-corpus-cases.json",
+      "case_id": "course-knowledge-001R",
+      "disposition": "replace",
+      "reason": "整卷覆盖任务没有逐知识点预期；单个page引用不能证明整卷概括完整，2019卷部分公式文本损坏。",
+      "original_case": {
+        "case_id": "course-knowledge-001R",
+        "category": "course_knowledge",
+        "course_id": "linear_algebra",
+        "workflow_type": "knowledge_qa",
+        "knowledge_scope": "course_only",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请根据仓库里的线性代数资料，介绍 2019-2020年度线性代数期末卷A 这份试卷整体考查了哪些内容。"
+          }
+        ],
+        "expected": {
+          "answer_status": "answered",
+          "evidence_status": "sufficient",
+          "required_answer_block_types": [
+            "repository"
+          ],
+          "requires_citation": true,
+          "allows_general": false,
+          "required_locator_types": [
+            "page"
+          ]
+        }
+      }
+    },
+    {
+      "file": "scut-real-corpus-cases.json",
+      "case_id": "past-paper-question-001R",
+      "disposition": "replace",
+      "reason": "第1题矩阵在当前文本中失去二维结构，未提供可复核的题干与答案；不能预设sufficient。",
+      "original_case": {
+        "case_id": "past-paper-question-001R",
+        "category": "past_paper_question",
+        "course_id": "linear_algebra",
+        "workflow_type": "problem_tutor",
+        "knowledge_scope": "course_only",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "讲解 2019-2020年度线性代数期末卷A 的第 1 题。"
+          }
+        ],
+        "expected": {
+          "answer_status": "answered",
+          "evidence_status": "sufficient",
+          "required_answer_block_types": [
+            "repository"
+          ],
+          "requires_citation": true,
+          "allows_general": false,
+          "required_locator_types": [
+            "page"
+          ]
+        }
+      }
+    },
+    {
+      "file": "scut-real-corpus-cases.json",
+      "case_id": "sparse-general-supplement-001R",
+      "disposition": "rewrite",
+      "reason": "对角化是合理场景，但缺具体可核对结论；历史注释根据某模型输出改answered，不能据此确认标签。",
+      "original_case": {
+        "case_id": "sparse-general-supplement-001R",
+        "category": "sparse_general_supplement",
+        "course_id": "linear_algebra",
+        "workflow_type": "knowledge_qa",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "结合仓库的历年卷资料谈谈矩阵对角化在考试中的应用；资料没有覆盖到的部分，请明确标记为通用补充。"
+          }
+        ],
+        "expected": {
+          "answer_status": "answered",
+          "evidence_status": "sufficient",
+          "required_answer_block_types": [
+            "repository"
+          ],
+          "requires_citation": true,
+          "allows_general": true
+        }
+      }
+    },
+    {
+      "file": "scut-real-corpus-cases.json",
+      "case_id": "multi-turn-followup-001R",
+      "disposition": "replace",
+      "reason": "沿用未核验的第1题且无答案标准。runner实际只执行user轮，JSON中的assistant占位不是经过确认的历史答案。",
+      "original_case": {
+        "case_id": "multi-turn-followup-001R",
+        "category": "multi_turn_followup",
+        "course_id": "linear_algebra",
+        "workflow_type": "knowledge_qa",
+        "knowledge_scope": "course_only",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "解释 2019-2020年度线性代数期末卷A 的第 1 题。"
+          },
+          {
+            "role": "assistant",
+            "content": "已根据仓库资料引用该卷第 1 题作答。"
+          },
+          {
+            "role": "user",
+            "content": "再用分步骤的方式把这道题重新讲一遍。"
+          }
+        ],
+        "expected": {
+          "answer_status": "answered",
+          "evidence_status": "sufficient",
+          "required_answer_block_types": [
+            "repository"
+          ],
+          "requires_citation": true,
+          "allows_general": false,
+          "required_locator_types": [
+            "page"
+          ]
+        }
+      }
+    },
+    {
+      "file": "scut-real-corpus-cases.json",
+      "case_id": "source-marking-001R",
+      "disposition": "replace",
+      "reason": "要求比较两道题却仅检查是否有page引用；未断言两个证据都命中，也没有题意及比较结论。",
+      "original_case": {
+        "case_id": "source-marking-001R",
+        "category": "source_marking",
+        "course_id": "linear_algebra",
+        "workflow_type": "knowledge_qa",
+        "knowledge_scope": "course_only",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "讲解 2018-2019年度线性代数期末卷B 的第 1 题。"
+          },
+          {
+            "role": "assistant",
+            "content": "已根据仓库资料引用该卷第 1 题作答。"
+          },
+          {
+            "role": "user",
+            "content": "再对比 2019-2020年度线性代数期末卷A 第 1 题和它有什么不同。"
+          }
+        ],
+        "expected": {
+          "answer_status": "answered",
+          "evidence_status": "sufficient",
+          "required_answer_block_types": [
+            "repository"
+          ],
+          "requires_citation": true,
+          "allows_general": false,
+          "required_locator_types": [
+            "page"
+          ],
+          "notes": "source_title 必须来自 manifest.title"
+        }
+      }
+    },
+    {
+      "file": "scut-real-corpus-cases.json",
+      "case_id": "cross-course-scope-001",
+      "disposition": "replace",
+      "reason": "合成对比没有学习问题或比较对象；旧runner无条件跳过所有cross场景，不能据此测跨课程质量。",
+      "original_case": {
+        "case_id": "cross-course-scope-001",
+        "category": "cross_course_scope",
+        "course_id": null,
+        "workflow_type": "knowledge_qa",
+        "knowledge_scope": "course_first",
+        "course_scope": "cross",
+        "allowed_course_ids": [
+          "linear_algebra",
+          "probability_theory"
+        ],
+        "turns": [
+          {
+            "role": "user",
+            "content": "只在显式选择的两个课程范围内做合成对比。"
+          }
+        ],
+        "expected": {
+          "answer_status": "partial",
+          "evidence_status": "partial",
+          "required_answer_block_types": [
+            "repository"
+          ],
+          "requires_citation": true,
+          "allows_general": true,
+          "required_locator_types": [
+            "page"
+          ]
+        }
+      }
+    },
+    {
+      "file": "scut-real-corpus-cases.json",
+      "case_id": "exam-review-fixture-001",
+      "disposition": "rewrite",
+      "reason": "合理备考意图，但没有时间、目标和主题覆盖准则；单个引用不能证明复习重点正确。",
+      "original_case": {
+        "case_id": "exam-review-fixture-001",
+        "category": "course_knowledge",
+        "course_id": "linear_algebra",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_only",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请根据仓库资料，按 2019-2020年度线性代数期末卷A 整理考前复习重点。"
+          }
+        ],
+        "expected": {
+          "answer_status": "answered",
+          "evidence_status": "sufficient",
+          "required_answer_block_types": [
+            "repository"
+          ],
+          "requires_citation": true,
+          "allows_general": false,
+          "required_locator_types": [
+            "page"
+          ]
+        }
+      }
+    },
+    {
+      "file": "scut-real-corpus-cases.json",
+      "case_id": "mistake-review-fixture-001",
+      "disposition": "replace",
+      "reason": "未给矩阵与原答案；旧runner注入“用例未提供原答案”仍要求充分作答，没有可判断的具体错因。",
+      "original_case": {
+        "case_id": "mistake-review-fixture-001",
+        "category": "course_knowledge",
+        "course_id": "linear_algebra",
+        "workflow_type": "mistake_review",
+        "knowledge_scope": "course_only",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "复盘我在求秩时的错误答案。"
+          }
+        ],
+        "expected": {
+          "answer_status": "answered",
+          "evidence_status": "sufficient",
+          "required_answer_block_types": [
+            "repository"
+          ],
+          "requires_citation": true,
+          "allows_general": false,
+          "required_locator_types": [
+            "page"
+          ]
+        }
+      }
+    },
+    {
+      "file": "scut-real-corpus-cases.json",
+      "case_id": "temporary-material-fixture-001",
+      "disposition": "replace",
+      "reason": "秩应为最大线性无关行数；原材料“线性无关行的数量”不够精确，并错误地要求外部page引用来证明理解用户文本。",
+      "original_case": {
+        "case_id": "temporary-material-fixture-001",
+        "category": "course_knowledge",
+        "course_id": "linear_algebra",
+        "workflow_type": "temporary_material_reading",
+        "knowledge_scope": "course_only",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "精读这段临时材料：# 秩\n矩阵的秩是线性无关行的数量。"
+          }
+        ],
+        "expected": {
+          "answer_status": "answered",
+          "evidence_status": "sufficient",
+          "required_answer_block_types": [
+            "repository"
+          ],
+          "requires_citation": true,
+          "allows_general": false,
+          "required_locator_types": [
+            "page"
+          ]
+        }
+      }
+    },
+    {
+      "file": "scut-real-corpus-cases.json",
+      "case_id": "exam-review-with-syllabus-001",
+      "disposition": "rewrite",
+      "reason": "矩阵秩、酉空间与单份试卷之间没有逐项支持记录，强设sufficient不能度量大纲覆盖；增加卷名是检索优化，不能替代标注核验。",
+      "original_case": {
+        "case_id": "exam-review-with-syllabus-001",
+        "category": "exam_review_with_syllabus",
+        "course_id": "linear_algebra",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": "矩阵的秩、酉空间",
+        "weak_topics": [
+          "矩阵的秩"
+        ],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请结合 2019-2020年度线性代数期末卷A 的真题，按我的大纲（矩阵的秩、酉空间）整理考前复习重点。"
+          }
+        ],
+        "expected": {
+          "answer_status": "answered",
+          "evidence_status": "sufficient",
+          "required_answer_block_types": [
+            "repository"
+          ],
+          "requires_citation": true,
+          "allows_general": true,
+          "required_locator_types": [
+            "page"
+          ],
+          "requires_exam_review_plan": true,
+          "review_path": "with_syllabus"
+        }
+      }
+    },
+    {
+      "file": "scut-real-corpus-cases.json",
+      "case_id": "exam-review-past-exam-first-001",
+      "disposition": "rewrite",
+      "reason": "无大纲复习合理，但没有代表题、主题覆盖、时间分配的质量准则，只检查计划路径与引用。",
+      "original_case": {
+        "case_id": "exam-review-past-exam-first-001",
+        "category": "exam_review_without_syllabus",
+        "course_id": "linear_algebra",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": null,
+        "weak_topics": [
+          "初等行变换"
+        ],
+        "turns": [
+          {
+            "role": "user",
+            "content": "没有大纲，按历年题带我复习。"
+          }
+        ],
+        "expected": {
+          "answer_status": "answered",
+          "evidence_status": "sufficient",
+          "required_answer_block_types": [
+            "repository"
+          ],
+          "requires_citation": true,
+          "allows_general": true,
+          "required_locator_types": [
+            "page"
+          ],
+          "requires_exam_review_plan": true,
+          "review_path": "without_syllabus"
+        }
+      }
+    },
+    {
+      "file": "scut-real-corpus-cases.json",
+      "case_id": "insufficient-evidence-001",
+      "disposition": "replace",
+      "reason": "合成泛函分析第25题不是自然场景；零词面重叠或候选为空不能证明语义无证据，改成已核查未收录的指定试卷。",
+      "original_case": {
+        "case_id": "insufficient-evidence-001",
+        "workflow_type": "knowledge_qa",
+        "course_scope": "single",
+        "course_id": "linear_algebra",
+        "allowed_course_ids": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "讲解合成语料中'泛函分析'章节的第 25 题。"
+          }
+        ],
+        "expected": {
+          "answer_status": "insufficient_evidence",
+          "evidence_status": "insufficient",
+          "requires_citation": false,
+          "allows_general": false
+        },
+        "category": "insufficient_evidence",
+        "knowledge_scope": "course_only"
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-digital_system_creative_design-with_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-digital_system_creative_design-with_syllabus",
+        "category": "exam_review_with_syllabus",
+        "course_id": "digital_system_creative_design",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+        "weak_topics": [
+          "核心概念"
+        ],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "with_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-digital_system_creative_design-without_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-digital_system_creative_design-without_syllabus",
+        "category": "exam_review_without_syllabus",
+        "course_id": "digital_system_creative_design",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": null,
+        "weak_topics": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "without_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-computer_networks-with_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-computer_networks-with_syllabus",
+        "category": "exam_review_with_syllabus",
+        "course_id": "computer_networks",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+        "weak_topics": [
+          "核心概念"
+        ],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "with_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-computer_networks-without_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-computer_networks-without_syllabus",
+        "category": "exam_review_without_syllabus",
+        "course_id": "computer_networks",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": null,
+        "weak_topics": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "without_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-computer_organization-with_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-computer_organization-with_syllabus",
+        "category": "exam_review_with_syllabus",
+        "course_id": "computer_organization",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+        "weak_topics": [
+          "核心概念"
+        ],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "with_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-computer_organization-without_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-computer_organization-without_syllabus",
+        "category": "exam_review_without_syllabus",
+        "course_id": "computer_organization",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": null,
+        "weak_topics": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "without_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-software_testing-with_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-software_testing-with_syllabus",
+        "category": "exam_review_with_syllabus",
+        "course_id": "software_testing",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+        "weak_topics": [
+          "核心概念"
+        ],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "with_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-software_testing-without_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-software_testing-without_syllabus",
+        "category": "exam_review_without_syllabus",
+        "course_id": "software_testing",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": null,
+        "weak_topics": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "without_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-artificial_intelligence_intro-with_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-artificial_intelligence_intro-with_syllabus",
+        "category": "exam_review_with_syllabus",
+        "course_id": "artificial_intelligence_intro",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+        "weak_topics": [
+          "核心概念"
+        ],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "with_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-artificial_intelligence_intro-without_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-artificial_intelligence_intro-without_syllabus",
+        "category": "exam_review_without_syllabus",
+        "course_id": "artificial_intelligence_intro",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": null,
+        "weak_topics": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "without_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-compiler_principles-with_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-compiler_principles-with_syllabus",
+        "category": "exam_review_with_syllabus",
+        "course_id": "compiler_principles",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+        "weak_topics": [
+          "核心概念"
+        ],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "with_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-compiler_principles-without_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-compiler_principles-without_syllabus",
+        "category": "exam_review_without_syllabus",
+        "course_id": "compiler_principles",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": null,
+        "weak_topics": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "without_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-computing_methods-with_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-computing_methods-with_syllabus",
+        "category": "exam_review_with_syllabus",
+        "course_id": "computing_methods",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+        "weak_topics": [
+          "核心概念"
+        ],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "with_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-computing_methods-without_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-computing_methods-without_syllabus",
+        "category": "exam_review_without_syllabus",
+        "course_id": "computing_methods",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": null,
+        "weak_topics": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "without_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-mathematical_modeling-with_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-mathematical_modeling-with_syllabus",
+        "category": "exam_review_with_syllabus",
+        "course_id": "mathematical_modeling",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+        "weak_topics": [
+          "核心概念"
+        ],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "with_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-mathematical_modeling-without_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-mathematical_modeling-without_syllabus",
+        "category": "exam_review_without_syllabus",
+        "course_id": "mathematical_modeling",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": null,
+        "weak_topics": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "without_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-operating_systems-with_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-operating_systems-with_syllabus",
+        "category": "exam_review_with_syllabus",
+        "course_id": "operating_systems",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+        "weak_topics": [
+          "核心概念"
+        ],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "with_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-operating_systems-without_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-operating_systems-without_syllabus",
+        "category": "exam_review_without_syllabus",
+        "course_id": "operating_systems",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": null,
+        "weak_topics": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "without_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-engineering_math_analysis_2-with_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-engineering_math_analysis_2-with_syllabus",
+        "category": "exam_review_with_syllabus",
+        "course_id": "engineering_math_analysis_2",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": "本科期末复习大纲（用户自拟）：核心概念梳理、重点章节回顾、典型题型练习。",
+        "weak_topics": [
+          "核心概念"
+        ],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "with_syllabus",
+          "requires_citation": true
+        }
+      }
+    },
+    {
+      "file": "exam-review-sweep.cases.json",
+      "case_id": "exam-review-sweep-engineering_math_analysis_2-without_syllabus",
+      "disposition": "smoke_only",
+      "reason": "可保留为有/无大纲的流程冒烟；提问/大纲为通用模板，没有课程具体知识目标、参考答案或支持证据，不能认定教学内容正确。",
+      "original_case": {
+        "case_id": "exam-review-sweep-engineering_math_analysis_2-without_syllabus",
+        "category": "exam_review_without_syllabus",
+        "course_id": "engineering_math_analysis_2",
+        "workflow_type": "exam_review",
+        "knowledge_scope": "course_first",
+        "course_scope": "single",
+        "allowed_course_ids": [],
+        "syllabus": null,
+        "weak_topics": [],
+        "turns": [
+          {
+            "role": "user",
+            "content": "请帮我备考这门课的期末考试。"
+          }
+        ],
+        "expected": {
+          "requires_exam_review_plan": true,
+          "review_path": "without_syllabus",
+          "requires_citation": true
+        }
+      }
+    }
+  ]
+}

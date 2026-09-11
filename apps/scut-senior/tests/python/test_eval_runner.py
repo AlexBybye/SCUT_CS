@@ -25,11 +25,12 @@ def test_eval_runner_executes_all_cases_and_reports_per_course(tmp_path: Path) -
         "failed",
         "skipped",
     }
-    # cross-course is disabled by its feature flag; it must be skipped, not run.
+    # Cross-course support is enabled in Settings; the runner must actually run
+    # it, rather than silently skipping all cross-course quality measurements.
     cross = next(
         line for line in report["cases"] if line["case_id"] == "cross-course-scope-001"
     )
-    assert cross["outcome"] == "skipped"
+    assert cross["outcome"] != "skipped"
     assert "cross_course" in report["by_course"]
     assert report["by_course"]["linear_algebra"]["total"] == 11
     assert report_path.read_text(encoding="utf-8").strip()
