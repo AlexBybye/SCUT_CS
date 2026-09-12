@@ -196,3 +196,15 @@ def test_visual_v2_keeps_image_hashes_and_is_not_silently_scored_as_text():
         for evidence in entry["image_evidence"]:
             path = Path(__file__).parents[2] / evidence["path"]
             assert hashlib.sha256(path.read_bytes()).hexdigest().upper() == evidence["sha256"]
+
+
+def test_student_scenario_expansion_preserves_anchor_clusters_and_all_courses():
+    root = DEFAULT_SUITE.parent
+    suite = json.loads((root / "student-scenarios.json").read_text(encoding="utf-8"))
+    cases = suite["cases"]
+    assert len(cases) == 330
+    assert len({case["course_id"] for case in cases}) == 46
+    text_cases = [case for case in cases if case["student_profile"]["source"] == "simulated_from_reviewed_anchor"]
+    assert len(text_cases) == 324
+    assert len({case["anchor_topic_id"] for case in text_cases}) == 54
+    assert all(case["quality_rubric"]["reference_answer"] for case in cases)

@@ -141,3 +141,17 @@ def test_eval_runner_fails_when_runner_references_a_missing_case(tmp_path: Path)
         assert "does-not-exist-001" in str(exc)
     else:
         raise AssertionError("missing case must fail the evaluation")
+
+
+def test_eval_runner_groups_scenario_variants_by_anchor_topic(tmp_path: Path) -> None:
+    cases = json.loads(CASES.read_text(encoding="utf-8"))
+    cases["cases"] = [
+        {**cases["cases"][0], "case_id": "anchor-a", "anchor_topic_id": "same-topic"},
+        {**cases["cases"][1], "case_id": "anchor-b", "anchor_topic_id": "same-topic"},
+    ]
+    path = tmp_path / "anchored-cases.json"
+    path.write_text(json.dumps(cases), encoding="utf-8")
+    report = run_evaluation(path, None, tmp_path / "report.json")
+    assert report["summary"]["anchor_topic_count"] == 1
+    assert report["by_anchor_topic"]["same-topic"]["total"] == 2
+    assert all(line["anchor_topic_id"] == "same-topic" for line in report["cases"])

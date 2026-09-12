@@ -277,6 +277,8 @@ def _report_line(
         "outcome": outcome,
         "reasons": reasons,
     }
+    if case.get("anchor_topic_id"):
+        line["anchor_topic_id"] = case["anchor_topic_id"]
     if metrics:
         line["runtime_metrics"] = {key: value for key, value in metrics.items() if key != "review_material"}
     if case.get("quality_rubric"):
@@ -383,10 +385,15 @@ def run_evaluation(
             lines.append(_report_line(case, outcome, reasons, metrics))
 
     by_course: dict[str, Counter[str]] = {}
+    by_anchor: dict[str, Counter[str]] = {}
     for line in lines:
         key = str(line["course_id"] or "cross_course")
         by_course.setdefault(key, Counter())["total"] += 1
         by_course[key][str(line["outcome"])] += 1
+        anchor = line.get("anchor_topic_id")
+        if anchor:
+            by_anchor.setdefault(str(anchor), Counter())["total"] += 1
+            by_anchor[str(anchor)][str(line["outcome"])] += 1
     summary = Counter(line["outcome"] for line in lines)
     fixture_only = not real_model and not local_corpus
     report: dict[str, object] = {
@@ -404,10 +411,15 @@ def run_evaluation(
             "passed": summary["passed"],
             "failed": summary["failed"],
             "skipped": summary["skipped"],
+            "anchor_topic_count": len(by_anchor),
         },
         "by_course": {
             course: dict(counts)
             for course, counts in sorted(by_course.items())
+        },
+        "by_anchor_topic": {
+            topic: dict(counts)
+            for topic, counts in sorted(by_anchor.items())
         },
         "cases": lines,
     }
