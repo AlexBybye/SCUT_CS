@@ -5,6 +5,7 @@ from pathlib import Path
 import pytest
 
 from scut_senior_api.adapters.local_corpus import LocalCorpusRetrievalGateway
+from scut_senior_api.query_variants import build_query_variants
 from scut_senior_api.vector_store import VectorStore
 from scut_senior_worker.corpus_builder import _candidate_directory
 from test_local_corpus_retrieval import COURSE_ID, _build_store
@@ -24,6 +25,16 @@ class _ControlledEmbedder:
 
     def embed(self, texts):
         return [list(self._query_vector) for _ in texts]
+
+
+class _CountingEmbedder(_ControlledEmbedder):
+    def __init__(self, query_vector: list[float]):
+        super().__init__(query_vector)
+        self.calls: list[tuple[str, ...]] = []
+
+    def embed(self, texts):
+        self.calls.append(tuple(texts))
+        return super().embed(texts)
 
 
 def _write_vectors(store: Path, version: str, *, model_id: str) -> None:
@@ -68,6 +79,35 @@ def test_dense_leg_supplements_but_cannot_displace_exact_lexical_match(
         CHUNK_PASSWORD,
         CHUNK_ACCESS,
     ]
+
+
+def test_matrix_search_batches_query_variants_and_matches_scalar_fallback(
+    tmp_path: Path,
+) -> None:
+    store, version, _ = _build_store(
+        tmp_path, embedding_model_id=EMBEDDING_MODEL
+    )
+    _write_vectors(store, version, model_id=EMBEDDING_MODEL)
+    query = "访问控制"
+    expected_variants = build_query_variants(COURSE_ID, query)
+    assert len(expected_variants) > 1
+    embedder = _CountingEmbedder([0.0, 1.0])
+    matrix = LocalCorpusRetrievalGateway(store, embedding=embedder, limit=2)
+    scalar = LocalCorpusRetrievalGateway(
+        store,
+        embedding=_ControlledEmbedder([0.0, 1.0]),
+        limit=2,
+        vector_search_engine="scalar",
+    )
+
+    matrix_batch = matrix.search([COURSE_ID], query)
+    scalar_batch = scalar.search([COURSE_ID], query)
+
+    assert embedder.calls == [expected_variants]
+    assert [source.chunk_id for source in matrix_batch.sources] == [
+        source.chunk_id for source in scalar_batch.sources
+    ]
+    assert matrix._vector_snapshots.size_bytes > 0
 
 
 def test_dense_leg_degrades_to_lexical_when_corpus_has_no_embedding_segment(

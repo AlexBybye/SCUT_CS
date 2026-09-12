@@ -36,6 +36,9 @@ class Settings:
     onnx_embedding_model_id: str = "bge-small-zh-v1.5"
     onnx_embedding_dimensions: int = 512
     onnx_embedding_max_length: int = 512
+    vector_search_engine: Literal["scalar", "matrix"] = "matrix"
+    vector_snapshot_cache_bytes: int = 256 * 1024 * 1024
+    retrieval_ranking_strategy: Literal["lexical_first_v1", "protected_rrf_v1"] = "lexical_first_v1"
     database_path: Path = APP_ROOT / ".local" / "iteration-zero.db"
     corpus_store_path: Path = APP_ROOT / ".local" / "corpus-store"
     # Enabled for the local fixture profile so the shipped cross-course UI is
@@ -101,6 +104,15 @@ class Settings:
             ),
             onnx_embedding_max_length=_env_positive_int(
                 "SCUT_SENIOR_ONNX_MAX_LENGTH", 512
+            ),
+            vector_search_engine=os.getenv(
+                "SCUT_SENIOR_VECTOR_SEARCH_ENGINE", "matrix"
+            ),
+            vector_snapshot_cache_bytes=_env_non_negative_int(
+                "SCUT_SENIOR_VECTOR_SNAPSHOT_CACHE_BYTES", 256 * 1024 * 1024
+            ),
+            retrieval_ranking_strategy=os.getenv(
+                "SCUT_SENIOR_RETRIEVAL_RANKING_STRATEGY", "lexical_first_v1"
             ),
             database_path=Path(
                 os.getenv(
@@ -245,6 +257,23 @@ class Settings:
             raise UnsafeRuntimeConfiguration(
                 "SCUT_SENIOR_ONNX_MAX_LENGTH must be an integer >= 8"
             )
+        if self.vector_search_engine not in {"scalar", "matrix"}:
+            raise UnsafeRuntimeConfiguration(
+                "SCUT_SENIOR_VECTOR_SEARCH_ENGINE must be scalar or matrix"
+            )
+        if isinstance(self.vector_snapshot_cache_bytes, bool) or (
+            self.vector_snapshot_cache_bytes < 0
+        ):
+            raise UnsafeRuntimeConfiguration(
+                "SCUT_SENIOR_VECTOR_SNAPSHOT_CACHE_BYTES must be a non-negative integer"
+            )
+        if self.retrieval_ranking_strategy not in {
+            "lexical_first_v1",
+            "protected_rrf_v1",
+        }:
+            raise UnsafeRuntimeConfiguration(
+                "SCUT_SENIOR_RETRIEVAL_RANKING_STRATEGY must be lexical_first_v1 or protected_rrf_v1"
+            )
         if isinstance(self.retrieval_min_score, bool) or not (
             isinstance(self.retrieval_min_score, (int, float))
             and self.retrieval_min_score >= 0
@@ -339,6 +368,19 @@ def _env_positive_int(name: str, default: int) -> int:
         raise UnsafeRuntimeConfiguration(f"{name} must be a positive integer") from None
     if parsed < 1:
         raise UnsafeRuntimeConfiguration(f"{name} must be a positive integer")
+    return parsed
+
+
+def _env_non_negative_int(name: str, default: int) -> int:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    try:
+        parsed = int(value)
+    except ValueError:
+        raise UnsafeRuntimeConfiguration(f"{name} must be a non-negative integer") from None
+    if parsed < 0:
+        raise UnsafeRuntimeConfiguration(f"{name} must be a non-negative integer")
     return parsed
 
 

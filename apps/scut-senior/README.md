@@ -84,7 +84,9 @@ PLAN-3 将一期、二期已建立的课程边界、检索与运行时能力扩�
 
 ### 检索与回答
 
-本地语料模式使用 BM25F 与本地 CPU ONNX `bge-small-zh-v1.5` 的 Hybrid Retrieval，并使用确定性规则重排。dense 模型文件或向量资产缺失时，检索自动退回 BM25F，不发起网络请求。
+本地语料模式使用 BM25F 与本地 CPU ONNX `bge-small-zh-v1.5` 的 Hybrid Retrieval。dense 向量保留在版本绑定的 SQLite 文件中，在线查询默认使用只读 float32 矩阵缓存做精确余弦搜索；可用 `SCUT_SENIOR_VECTOR_SEARCH_ENGINE=scalar` 回退到历史逐向量扫描。dense 模型文件或向量资产缺失时，检索自动退回 BM25F，不发起网络请求。
+
+默认排序仍为 `lexical_first_v1`：整句词法命中保护、其余词法优先、dense 补位。`protected_rrf_v1` 是待评测的可选策略：只保护唯一题号或完整非泛化标题，其他候选按加权 RRF 竞争。可通过 `SCUT_SENIOR_RETRIEVAL_RANKING_STRATEGY=protected_rrf_v1` 离线或灰度启用；在未完成对照评测前，不应将其设为默认。
 
 回答输出经过兼容解析、来源 Guard、引用 Guard 和安全回答块处理后，才通过 NDJSON 流发送到前端。流式事件包括 Trace、回答增量、Agent 进度、终态结果和错误事件。运行中的取消、断线、预算耗尽和上游错误都有明确终态，并保存可恢复的运行记录。
 

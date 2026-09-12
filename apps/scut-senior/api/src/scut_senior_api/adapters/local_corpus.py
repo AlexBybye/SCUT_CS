@@ -3,8 +3,9 @@ from __future__ import annotations
 import hashlib
 import json
 import threading
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal, Sequence
 
 from scut_senior_worker.corpus_builder import (
     CorpusBuildError,
@@ -21,8 +22,10 @@ from ..embedding import EmbeddingProvider
 from ..fusion import reciprocal_rank_fusion
 from ..ports import CapabilityUnavailable, RetrievalBatch, RetrievedSource
 from ..query_variants import build_query_variants
-from ..rule_rerank import rule_rerank
+from ..retrieval_anchors import find_exact_anchor_matches
+from ..rule_rerank import protected_rrf_rerank, rule_rerank
 from ..vector_store import VectorStore
+from ..vector_search import VectorSnapshotCache, VectorSnapshotKey
 
 
 _DISABLED_PREFIX = "course is disabled or unavailable:"
@@ -31,6 +34,14 @@ _DISABLED_PREFIX = "course is disabled or unavailable:"
 # result -> honest insufficient_evidence. Recalibrated from the P0 golden set
 # (see retrieval_eval.py), no longer the iteration-1 integer weighted-overlap 6.
 _DEFAULT_MIN_SCORE = 1.0
+
+
+@dataclass(frozen=True, slots=True)
+class _CourseSearchInput:
+    course_id: str
+    corpus_version: str
+    course_pack_version: str
+    sources: tuple[RetrievedSource, ...]
 
 
 class LocalCorpusRetrievalGateway:
@@ -43,6 +54,11 @@ class LocalCorpusRetrievalGateway:
         limit: int = 5,
         min_score: float = _DEFAULT_MIN_SCORE,
         embedding: EmbeddingProvider | None = None,
+        vector_search_engine: Literal["scalar", "matrix"] = "matrix",
+        vector_snapshot_cache_bytes: int = 256 * 1024 * 1024,
+        ranking_strategy: Literal["lexical_first_v1", "protected_rrf_v1"] = (
+            "lexical_first_v1"
+        ),
     ):
         if isinstance(limit, bool) or not 1 <= limit <= 20:
             raise ValueError("local corpus retrieval limit must be between 1 and 20")
@@ -50,6 +66,12 @@ class LocalCorpusRetrievalGateway:
             raise ValueError("local corpus retrieval min score must be a number")
         if min_score < 0:
             raise ValueError("local corpus retrieval min score must be >= 0")
+        if vector_search_engine not in {"scalar", "matrix"}:
+            raise ValueError("vector search engine must be scalar or matrix")
+        if ranking_strategy not in {"lexical_first_v1", "protected_rrf_v1"}:
+            raise ValueError(
+                "ranking strategy must be lexical_first_v1 or protected_rrf_v1"
+            )
         self.store_root = store_root.resolve()
         self.limit = limit
         self.min_score = float(min_score)
@@ -57,6 +79,11 @@ class LocalCorpusRetrievalGateway:
         # lexical-only; the dense leg is only exercised when a provider is wired
         # AND the corpus carries a matching ``-e{model}`` version segment.
         self.embedding = embedding
+        self.vector_search_engine = vector_search_engine
+        self.ranking_strategy = ranking_strategy
+        self._vector_snapshots = VectorSnapshotCache(
+            max_bytes=vector_snapshot_cache_bytes
+        )
         # Full-candidate validation is memoized per active-pointer value (see
         # _load_active_course); these slots are guarded for the FastAPI
         # threadpool, where availability checks run concurrently.
@@ -68,7 +95,9 @@ class LocalCorpusRetrievalGateway:
         # moves the pointer to a different version).
         self._index_cache: dict[str, tuple[str, BM25FIndex]] = {}
 
-    def _load_active_course(self, course_id: str) -> dict[str, Any]:
+    def _load_active_course(
+        self, course_id: str, *, pointer: dict[str, Any] | None = None
+    ) -> dict[str, Any]:
         """``load_active_course`` semantics, amortizing full validation.
 
         The activated candidate directory is immutable by contract (activation
@@ -83,15 +112,13 @@ class LocalCorpusRetrievalGateway:
         or missing pointer state keeps failing closed on every call.
         """
         course = _require_version(course_id, "course_id")
-        pointer = _load_active(self.store_root)
+        pointer = pointer if pointer is not None else _load_active(self.store_root)
         if pointer["course_switches"].get(course) is not True:
             raise CorpusBuildError(f"course is disabled or unavailable: {course}")
         candidate = _candidate_directory(
             self.store_root.resolve(), pointer["active_corpus_version"]
         )
-        pointer_key = hashlib.sha256(
-            json.dumps(pointer, sort_keys=True, ensure_ascii=False).encode("utf-8")
-        ).digest()
+        pointer_key = _active_pointer_key(pointer)
         with self._cache_lock:
             validated = (
                 self._validated_candidate
@@ -126,51 +153,110 @@ class LocalCorpusRetrievalGateway:
         return True
 
     def search(self, course_ids: list[str], query: str) -> RetrievalBatch:
-        if not course_ids or len(course_ids) != len(set(course_ids)) or any(not course_id for course_id in course_ids):
+        if (
+            not course_ids
+            or len(course_ids) != len(set(course_ids))
+            or any(not course_id for course_id in course_ids)
+        ):
             raise CapabilityUnavailable(
                 "retrieval",
                 "local corpus retrieval requires a non-empty unique course set",
             )
-        if len(course_ids) > 1:
-            batches = [self.search([course_id], query) for course_id in course_ids]
-            # Do not let the first course consume the global limit. Round-robin
-            # preserves each course's independently thresholded candidates so a
-            # cross-course run is visibly and fairly represented downstream.
-            merged: list[RetrievedSource] = []
-            for index in range(max((len(batch.sources) for batch in batches), default=0)):
-                for batch in batches:
-                    if index < len(batch.sources):
-                        merged.append(batch.sources[index])
-                        if len(merged) >= self.limit:
-                            break
-                if len(merged) >= self.limit:
-                    break
-            return RetrievalBatch(
-                tuple(merged),
-                batches[0].corpus_version,
-                batches[0].course_pack_version,
-            )
-        course_id = course_ids[0]
         try:
-            course_index = self._load_active_course(course_id)
-            corpus_version = course_index["corpus_version"]
-            raw_chunks = course_index["chunks"]
-            if not isinstance(corpus_version, str) or not corpus_version:
-                raise ValueError("invalid corpus version")
-            if not isinstance(raw_chunks, list):
-                raise ValueError("invalid chunk collection")
-            sources = [_source_from_chunk(chunk, course_id) for chunk in raw_chunks]
-            course_pack_version = _load_course_pack_version(
-                self.store_root, corpus_version, course_id
-            )
+            pointer = _load_active(self.store_root)
+            pointer_key = _active_pointer_key(pointer)
+            inputs = [
+                self._prepare_course_input(course_id, pointer=pointer)
+                for course_id in course_ids
+            ]
         except CorpusBuildError:
             raise _unavailable() from None
         except (json.JSONDecodeError, KeyError, OSError, TypeError, ValueError):
             raise _unavailable() from None
 
-        bm25f_index = self._load_index(course_id, corpus_version, sources)
+        corpus_versions = {item.corpus_version for item in inputs}
+        if len(corpus_versions) != 1:
+            raise _unavailable()
+        variants_by_course = {
+            item.course_id: build_query_variants(item.course_id, query)
+            for item in inputs
+        }
+        vectors_by_query = self._embed_request_variants(variants_by_course.values())
+        batches = [
+            self._search_course(
+                item,
+                query,
+                variants_by_course[item.course_id],
+                vectors_by_query,
+            )
+            for item in inputs
+        ]
+        # A result must never combine chunks from before and after an activation
+        # or course-switch update. Cached vector matrices remain safe because
+        # this pointer check still occurs on every request.
+        if _active_pointer_key(_load_active(self.store_root)) != pointer_key:
+            raise CapabilityUnavailable(
+                "retrieval", "active corpus changed while retrieval was running"
+            )
+        merged = _round_robin_sources(batches, limit=self.limit)
+        return RetrievalBatch(
+            tuple(merged),
+            inputs[0].corpus_version,
+            inputs[0].course_pack_version,
+        )
+
+    def _prepare_course_input(
+        self, course_id: str, *, pointer: dict[str, Any]
+    ) -> _CourseSearchInput:
+        course_index = self._load_active_course(course_id, pointer=pointer)
+        corpus_version = course_index["corpus_version"]
+        raw_chunks = course_index["chunks"]
+        if not isinstance(corpus_version, str) or not corpus_version:
+            raise ValueError("invalid corpus version")
+        if not isinstance(raw_chunks, list):
+            raise ValueError("invalid chunk collection")
+        sources = tuple(_source_from_chunk(chunk, course_id) for chunk in raw_chunks)
+        return _CourseSearchInput(
+            course_id=course_id,
+            corpus_version=corpus_version,
+            course_pack_version=_load_course_pack_version(
+                self.store_root, corpus_version, course_id
+            ),
+            sources=sources,
+        )
+
+    def _embed_request_variants(
+        self, variants_by_course: Sequence[tuple[str, ...]]
+    ) -> dict[str, list[float]]:
+        if self.embedding is None:
+            return {}
+        unique_queries = tuple(
+            dict.fromkeys(
+                variant for variants in variants_by_course for variant in variants
+            )
+        )
+        if not unique_queries:
+            return {}
+        vectors = self.embedding.embed(unique_queries)
+        if len(vectors) != len(unique_queries):
+            raise ValueError("embedding provider returned an unexpected query batch")
+        normalized: dict[str, list[float]] = {}
+        for query, vector in zip(unique_queries, vectors):
+            if len(vector) != self.embedding.dimensions:
+                raise ValueError("embedding provider returned an invalid query vector")
+            normalized[query] = list(vector)
+        return normalized
+
+    def _search_course(
+        self,
+        item: _CourseSearchInput,
+        query: str,
+        query_variants: tuple[str, ...],
+        vectors_by_query: dict[str, list[float]],
+    ) -> list[RetrievedSource]:
+        sources = list(item.sources)
+        bm25f_index = self._load_index(item.course_id, item.corpus_version, sources)
         source_by_id = {source.chunk_id: source for source in sources}
-        query_variants = build_query_variants(course_id, query)
         lexical_lists = [
             [
                 chunk_id
@@ -184,12 +270,20 @@ class LocalCorpusRetrievalGateway:
             if len(lexical_lists) > 1
             else lexical_lists[0]
         )
-        protected_ids = bm25f_index.exact_match_ids(query)
-        if self.embedding is not None:
-            dense_ranked = self._dense_chunk_ids(
-                course_id, corpus_version, query_variants
+        dense_ranked = (
+            self._dense_chunk_ids(
+                item.course_id,
+                item.corpus_version,
+                [vectors_by_query[variant] for variant in query_variants],
             )
-            selected_ids = rule_rerank(
+            if self.embedding is not None
+            else []
+        )
+        if self.ranking_strategy == "protected_rrf_v1":
+            protected_ids = {
+                match.chunk_id for match in find_exact_anchor_matches(query, sources)
+            }
+            selected_ids = protected_rrf_rerank(
                 lexical_ranked,
                 dense_ranked,
                 protected_ids=protected_ids,
@@ -198,23 +292,21 @@ class LocalCorpusRetrievalGateway:
         else:
             selected_ids = rule_rerank(
                 lexical_ranked,
-                (),
-                protected_ids=protected_ids,
+                dense_ranked,
+                protected_ids=bm25f_index.exact_match_ids(query),
                 limit=self.limit,
             )
-        selected = [
+        return [
             source_by_id[chunk_id]
             for chunk_id in selected_ids
             if chunk_id in source_by_id
         ]
-        return RetrievalBatch(
-            tuple(selected),
-            corpus_version,
-            course_pack_version,
-        )
 
     def _dense_chunk_ids(
-        self, course_id: str, corpus_version: str, query_variants: tuple[str, ...]
+        self,
+        course_id: str,
+        corpus_version: str,
+        query_vectors: Sequence[Sequence[float]],
     ) -> list[str]:
         """Return the dense leg's top-50 chunk ids for the course, or ``[]`` to
         degrade to lexical-only (no dense vectors built for this corpus)."""
@@ -234,30 +326,44 @@ class LocalCorpusRetrievalGateway:
         vector_file = candidate / "vectors" / f"{course_id}.db"
         if not vector_file.exists():
             return []
-        store = VectorStore(
-            vector_file,
-            dimensions=self.embedding.dimensions,
-            model_id=self.embedding.model_id,
-        )
-        try:
-            dense_lists = []
-            for query in query_variants:
-                query_vector = self.embedding.embed([query])[0]
-                dense_lists.append(
+        if self.vector_search_engine == "scalar":
+            store = VectorStore(
+                vector_file,
+                dimensions=self.embedding.dimensions,
+                model_id=self.embedding.model_id,
+            )
+            try:
+                dense_lists = [
                     [
                         chunk_id
                         for _, chunk_id in store.search(
                             query_vector, k=50, course_ids=[course_id]
                         )
                     ]
-                )
-            return (
-                reciprocal_rank_fusion(dense_lists, top_n=50)
-                if len(dense_lists) > 1
-                else dense_lists[0]
+                    for query_vector in query_vectors
+                ]
+            finally:
+                store.close()
+        else:
+            snapshot = self._vector_snapshots.get_or_load(
+                VectorSnapshotKey(
+                    store_root=self.store_root,
+                    corpus_version=corpus_version,
+                    course_id=course_id,
+                    model_id=self.embedding.model_id,
+                    dimensions=self.embedding.dimensions,
+                ),
+                vector_file,
             )
-        finally:
-            store.close()
+            dense_lists = [
+                [chunk_id for _, chunk_id in ranked]
+                for ranked in snapshot.search_many(query_vectors, k=50)
+            ]
+        return (
+            reciprocal_rank_fusion(dense_lists, top_n=50)
+            if len(dense_lists) > 1
+            else dense_lists[0]
+        )
 
     def _load_index(
         self,
@@ -282,6 +388,27 @@ class LocalCorpusRetrievalGateway:
         with self._cache_lock:
             self._index_cache[course_id] = (corpus_version, index)
         return index
+
+
+def _active_pointer_key(pointer: dict[str, Any]) -> bytes:
+    return hashlib.sha256(
+        json.dumps(pointer, sort_keys=True, ensure_ascii=False).encode("utf-8")
+    ).digest()
+
+
+def _round_robin_sources(
+    batches: Sequence[Sequence[RetrievedSource]], *, limit: int
+) -> list[RetrievedSource]:
+    """Preserve the existing cross-course fairness rule after shared encoding."""
+
+    merged: list[RetrievedSource] = []
+    for index in range(max((len(batch) for batch in batches), default=0)):
+        for batch in batches:
+            if index < len(batch):
+                merged.append(batch[index])
+                if len(merged) >= limit:
+                    return merged
+    return merged
 
 
 def _source_from_chunk(chunk: Any, expected_course_id: str) -> RetrievedSource:

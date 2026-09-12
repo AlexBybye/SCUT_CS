@@ -309,6 +309,9 @@ def create_app(
             active_settings.corpus_store_path,
             min_score=active_settings.retrieval_min_score,
             embedding=embedding,
+            vector_search_engine=active_settings.vector_search_engine,
+            vector_snapshot_cache_bytes=active_settings.vector_snapshot_cache_bytes,
+            ranking_strategy=active_settings.retrieval_ranking_strategy,
         )
         if active_settings.retrieval_mode == "local_corpus"
         else FixtureRetrievalGateway(registry)
