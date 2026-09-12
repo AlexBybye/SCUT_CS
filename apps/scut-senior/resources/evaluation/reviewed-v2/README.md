@@ -6,8 +6,10 @@
 
 | 文件 | 用途 |
 | --- | --- |
-| annotations.json | 25个主题的两种问法、证据组、参考答案、核验理由、典型错误；主要维护入口 |
-| retrieval.json | 50条检索问题，14门课、27个原始证据片段；含来源路径、原文及指纹 |
+| annotations.json / annotations-expanded.json | 54个逐题编写主题的两种问法、证据组、参考答案、核验理由、典型错误；主要维护入口 |
+| retrieval.json | 108条文本检索问题，43门课、59个原始证据片段；含来源路径、原文及指纹 |
+| visual-reviewed.json | 3门纯图片课程的6条人工视觉核验题；有图像指纹和答案，但不混入当前文本检索成绩 |
+| coverage-harness.json | 46门课的135条冻结来源压力题；仅用于发现检索回归，不是v2语义金标，也不能拿来替代本表的人工题 |
 | scenarios.json | 22条端到端场景：五类Workflow、真实错答、临时材料、时间预算、多轮、精确查题、跨课、资料缺失、输入不足 |
 | legacy-audit.json | 旧1,380条问题逐条引用存在性、文本形态与指纹检查；不是自动语义认证 |
 | legacy-scenarios-audit.json | 旧12条真实语料场景和20条备考扫描的逐条处置理由 |
@@ -42,17 +44,17 @@ python -m scut_senior_api.learning_eval --embedding-model-dir .local/models/bge-
 
 报告中的`outcome`仅表示管线检查结果，`quality_outcome=not_reviewed`表示尚未按rubric核验。报告附最终正文、引用及Workflow结果，便于逐题审阅。跨课程在功能开启时真实执行；关闭时明确skipped。临时材料或资料缺失任务未指定引用要求时，评测器不额外要求“必须引用”或“禁止引用”。
 
-修改annotations后，运行`python scripts/build_reviewed_evaluation.py`重新生成数据；更新旧集检查用`python scripts/audit_evaluation_sets.py`。改动证据或答案须说明原因，不用生成脚本自动创造审核结论。语料版本或来源变更时，先核对受影响题目再重新生成指纹。
+修改annotations后，运行`python scripts/build_reviewed_evaluation.py`重新生成数据；更新旧集检查用`python scripts/audit_evaluation_sets.py`。改动证据或答案须说明原因，不用生成脚本自动创造审核结论。语料版本或来源变更时，先核对受影响题目再重新生成指纹。视觉题的图像哈希也须重新核验；只有OCR或多模态检索链路接入后，才单独报告其结果。
 
 ## 本轮结果
 
 | 策略 | 已知证据组覆盖@5 | @20 | known-positive MRR |
 | --- | ---: | ---: | ---: |
-| BM25F | 0.660000 | 0.860000 | 0.511547 |
-| 旧Hybrid | 0.660000 | 0.860000 | 0.511547 |
+| BM25F | 0.722222 | 0.861111 | 0.549264 |
+| Hybrid | 0.731481 | 0.898148 | 0.554625 |
 
-min_score=1.0，top20，50题。单轮耗时包含首次载入，不作为稳定P95或线上时延结论。新旧集不可直接比较绝对分数。没有执行新的在线回答实验。
+min_score=1.0，top20，108题。难度分层为9条基础、69条中等、30条困难；BM25F的已知证据覆盖@5分别为0.777778、0.710145、0.733333。难度用于观察方案在哪类真实学习任务退化，不能替代人工答案质量复核。单轮耗时包含首次载入，不作为稳定P95或线上时延结论。新旧集不可直接比较绝对分数。没有执行新的在线回答实验。
 
-14门课的向量资产均存在且有数据。两组有5题的top20列表不同，只是已知正例指标相同，不能称两种检索完全等价。
+43门文本课程的向量资产均存在且有数据。Hybrid在此来源已知正例上优于BM25F，但该差异只描述非穷尽标注下的定位能力，不能直接当作回答正确率或上线结论。电路与电子技术实验、电工实验、机器学习三门课已按图像逐题核验，但当前文本索引没有可检索正文，故其6题不进入BM25F或Hybrid分数；这是链路能力缺口，不是将其降格为无答案资料。
 
-评测相关回归32 passed。22条新场景已在真实语料+Mock模型下做运行检查：20条管线通过、2条失败、0条跳过；跨课程已实际执行。失败为`reviewed-os-states`与`reviewed-network-ack-followup`触发现有URL Guard，保留失败记录，没有为使其变绿改题。全部22条语义质量仍标记not_reviewed；Mock输出不代表真实模型能力。本地报告为`.local/evaluation/reviewed-v2-mock-smoke.json`（相对应用根目录）。
+评测相关回归36 passed。22条新场景已在真实语料+Mock模型下做运行检查：20条管线通过、2条失败、0条跳过；跨课程已实际执行。失败为`reviewed-os-states`与`reviewed-network-ack-followup`触发现有URL Guard，保留失败记录，没有为使其变绿改题。全部22条语义质量仍标记not_reviewed；Mock输出不代表真实模型能力。本地报告为`.local/evaluation/reviewed-v2-mock-smoke.json`（相对应用根目录）。

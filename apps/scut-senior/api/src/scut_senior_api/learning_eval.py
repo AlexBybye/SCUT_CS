@@ -25,8 +25,10 @@ def read_json(path: Path) -> dict[str, Any]:
 
 
 def validate_suite(suite: dict[str, Any], store_root: Path) -> dict[str, int]:
-    if suite.get("schema_version") != "reviewed-retrieval-v2":
+    schema = suite.get("schema_version")
+    if schema not in {"reviewed-retrieval-v2", "coverage-harness-v2"}:
         raise ValueError("unsupported learning evaluation schema")
+    coverage_harness = schema == "coverage-harness-v2"
     pointer = read_json(store_root / "active.json")
     if suite["corpus_version"] != pointer["active_corpus_version"]:
         raise ValueError("annotation corpus version differs from active corpus")
@@ -54,14 +56,22 @@ def validate_suite(suite: dict[str, Any], store_root: Path) -> dict[str, int]:
         if entry["case_id"] in seen or not entry["query"].strip():
             raise ValueError("duplicate case id or blank query")
         seen.add(entry["case_id"])
-        if entry["split"] not in {"dev", "validation"}:
+        allowed_splits = {"dev", "validation"}
+        if coverage_harness:
+            allowed_splits.add("coverage")
+        if entry["split"] not in allowed_splits:
             raise ValueError("unknown split")
-        if not entry["reference_answer"] or not entry["verification"] or not entry["evidence_groups"]:
+        groups = entry["evidence_groups"]
+        if not entry["reference_answer"] or not entry["verification"]:
             raise ValueError(f"missing review rationale: {entry['case_id']}")
+        if not groups:
+            if not (coverage_harness and entry.get("scenario") == "evidence_boundary"):
+                raise ValueError(f"missing positive evidence: {entry['case_id']}")
+            continue
         previous_topic = topic_splits.setdefault(entry["topic_id"], entry["split"])
         if previous_topic != entry["split"]:
             raise ValueError("paraphrase family crosses splits")
-        for group in entry["evidence_groups"]:
+        for group in groups:
             ids = group["chunk_ids"]
             if not group["need"] or not ids or len(ids) != len(set(ids)):
                 raise ValueError("invalid evidence group")
@@ -72,7 +82,13 @@ def validate_suite(suite: dict[str, Any], store_root: Path) -> dict[str, int]:
                 previous = source_splits.setdefault(source, entry["split"])
                 if previous != entry["split"]:
                     raise ValueError(f"source family crosses splits: {source}")
-    return {"queries": len(entries), "topics": len(topic_splits), "courses": len(indexes), "evidence_chunks": len(evidence)}
+    return {
+        "queries": len(entries), "topics": len(topic_splits),
+        "courses": len({entry["course_id"] for entry in entries}),
+        "source_backed_courses": len(indexes),
+        "evidence_chunks": len(evidence),
+        "evidence_boundary_cases": sum(not entry["evidence_groups"] for entry in entries),
+    }
 
 
 def score_ranking(groups: list[dict[str, Any]], ranked: list[str]) -> dict[str, Any]:
@@ -111,16 +127,35 @@ def run_suite(suite_path: Path, store_root: Path, *, embedding=None, min_score=1
         start = time.perf_counter()
         batch = gateway.search([entry["course_id"]], entry["query"])
         ids = [s.chunk_id for s in batch.sources]
+        groups = entry["evidence_groups"]
+        metrics = (
+            score_ranking(groups, ids)
+            if groups
+            else {
+                "known_evidence_coverage_at_5": None,
+                "known_evidence_coverage_at_20": None,
+                "all_evidence_groups_at_5": None,
+                "all_evidence_groups_at_20": None,
+                "known_positive_mrr": None,
+                "unjudged_chunk_ids": ids,
+            }
+        )
         rows.append({
             **{k: entry[k] for k in ("case_id", "topic_id", "course_id", "scenario", "split")},
+            "difficulty": entry.get("difficulty", "unspecified"),
             "query": entry["query"], "top_chunk_ids": ids,
             "duration_ms": round((time.perf_counter() - start) * 1000, 3),
-            **score_ranking(entry["evidence_groups"], ids),
+            "scoring_status": "scored" if groups else "evidence_boundary_unscored",
+            **metrics,
         })
     metric_keys = ("known_evidence_coverage_at_5", "known_evidence_coverage_at_20", "all_evidence_groups_at_5", "all_evidence_groups_at_20", "known_positive_mrr")
 
     def summary(values):
-        return {"queries": len(values), **{k: round(sum(v[k] for v in values) / len(values), 6) for k in metric_keys}}
+        scored = [value for value in values if value["scoring_status"] == "scored"]
+        result = {"queries": len(values), "scored_queries": len(scored), "unscored_evidence_boundary_queries": len(values) - len(scored)}
+        if scored:
+            result.update({key: round(sum(v[key] for v in scored) / len(scored), 6) for key in metric_keys})
+        return result
 
     if not rows:
         raise ValueError("selected split has no queries")
@@ -132,7 +167,7 @@ def run_suite(suite_path: Path, store_root: Path, *, embedding=None, min_score=1
         "interpretation": "Known-positive lower bounds; unjudged candidates require review, never automatic negative labels. No generation or answer-quality score. Timing includes first-load overhead.",
         "entries": rows,
     }
-    for key in ("course_id", "scenario", "split"):
+    for key in ("course_id", "scenario", "split", "difficulty"):
         groups = defaultdict(list)
         for row in rows:
             groups[row[key]].append(row)
@@ -148,7 +183,7 @@ def main(argv=None):
     parser.add_argument("--report", type=Path)
     parser.add_argument("--embedding-model-dir", type=Path)
     parser.add_argument("--min-score", type=float, default=1.0)
-    parser.add_argument("--split", choices=("all", "dev", "validation"), default="all")
+    parser.add_argument("--split", choices=("all", "dev", "validation", "coverage"), default="all")
     args = parser.parse_args(argv)
     if args.validate_only:
         print(json.dumps(validate_suite(read_json(args.suite), args.corpus_store)))

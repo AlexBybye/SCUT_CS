@@ -23,7 +23,9 @@ def write(name, value):
 
 def main():
     annotations = read(OUT / "annotations.json")
-    topics = annotations["topics"]
+    expansion_path = OUT / "annotations-expanded.json"
+    expansions = read(expansion_path) if expansion_path.exists() else {"topics": []}
+    topics = [*annotations["topics"], *expansions["topics"]]
     store = APP / ".local/corpus-store"
     version = read(store / "active.json")["active_corpus_version"]
     root = store / "candidates" / version / "courses"
@@ -60,10 +62,12 @@ def main():
     for topic, family in zip(topics, families):
         key = "+".join(sorted(family))
         split = "validation" if int(hashlib.sha256(key.encode()).hexdigest(), 16) % 4 == 0 else "dev"
-        for i, query in enumerate(topic["queries"], 1):
+        for i, query_spec in enumerate(topic["queries"], 1):
+            query = query_spec["text"] if isinstance(query_spec, dict) else query_spec
             entries.append({
                 "case_id": f"{topic['id']}-{i}", "topic_id": topic["id"], "course_id": topic["course_id"],
                 "scenario": topic["scenario"], "query": query, "split": split, "source_family": key,
+                "difficulty": query_spec.get("difficulty", topic.get("difficulty", "medium")) if isinstance(query_spec, dict) else topic.get("difficulty", "medium"),
                 "evidence_groups": topic["groups"], "reference_answer": topic["answer"],
                 "verification": topic["verification"], "pitfalls": topic["pitfalls"],
                 "external_reference": topic.get("external_reference"),
@@ -80,7 +84,8 @@ def main():
 
     def add(topic_id, workflow="knowledge_qa", *, query=None, payload=None, suffix="", turns=None):
         t = by_id[topic_id]
-        question = query or t["queries"][0]
+        first_query = t["queries"][0]
+        question = query or (first_query["text"] if isinstance(first_query, dict) else first_query)
         case = {
             "case_id": f"reviewed-{topic_id}{suffix}", "category": t["scenario"],
             "course_id": t["course_id"], "course_scope": "single", "allowed_course_ids": [],

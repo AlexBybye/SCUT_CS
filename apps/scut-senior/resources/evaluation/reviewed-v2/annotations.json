@@ -5,7 +5,7 @@
   "topics": [
     {
       "id": "la-diagonalization", "course_id": "linear_algebra", "scenario": "concept",
-      "queries": ["矩阵可对角化的充要条件是什么？为什么特征值互不相同只是充分条件？", "有重根就一定不能化成对角矩阵吗？请用单位矩阵说明。"],
+      "queries": [{"text":"矩阵可对角化的充要条件是什么？为什么特征值互不相同只是充分条件？","difficulty":"medium"}, {"text":"有重根就一定不能化成对角矩阵吗？请用单位矩阵说明。","difficulty":"hard"}],
       "groups": [{"need": "可对角化的充要条件", "chunk_ids": ["linear-algebra-012:p2:q-linear-algebra-012-q10:c01"]}],
       "answer": "在讨论的数域内，n阶矩阵可对角化当且仅当有n个线性无关特征向量；n个不同特征值是充分条件而非必要条件。单位矩阵只有一个不同特征值但本身为对角矩阵。",
       "verification": "原文选择题第4题的B项给出条件；单位矩阵作为独立反例。内部q10不是试卷第10题。",
@@ -46,7 +46,7 @@
     },
     {
       "id": "db-projection", "course_id": "database", "scenario": "concept",
-      "queries": ["关系代数中选择和投影有什么区别？哪一个是按列切分？", "只保留学生表的学号和姓名，应该用选择还是投影？"],
+      "queries": [{"text":"关系代数中选择和投影有什么区别？哪一个是按列切分？","difficulty":"easy"}, {"text":"只保留学生表的学号和姓名，应该用选择还是投影？","difficulty":"easy"}],
       "groups": [{"need": "投影按属性选列的解释", "chunk_ids": ["database-005:s15:c01"]}],
       "answer": "投影选列，选择按谓词筛行；只保留学号和姓名是投影。",
       "verification": "讲义给出垂直分割题及B项解析，按关系代数定义复核。",
@@ -54,7 +54,7 @@
     },
     {
       "id": "db-having", "course_id": "database", "scenario": "concept",
-      "queries": ["SQL中HAVING筛选的是行还是分组？", "按学生分组算平均成绩后，只留下均分至少85的组，该在哪里写条件？"],
+      "queries": [{"text":"SQL中HAVING筛选的是行还是分组？","difficulty":"easy"}, {"text":"按学生分组算平均成绩后，只留下均分至少85的组，该在哪里写条件？","difficulty":"medium"}],
       "groups": [{"need": "HAVING分组过滤", "chunk_ids": ["database-005:s19:c01", "database-004:p3:q-database-004-q27:c01", "database-001:q-database-001-q2:c01"]}],
       "answer": "HAVING对分组聚合结果过滤，如GROUP BY 学号 HAVING AVG(成绩)>=85；不是要求每科成绩均达到85。",
       "verification": "讲义解析、选择题、完整AVG查询相互对照；三种证据是可替代项，不要求全部命中。",
@@ -62,7 +62,7 @@
     },
     {
       "id": "db-null", "course_id": "database", "scenario": "mistake",
-      "queries": ["我写WHERE AGE = NULL查缺失年龄，为什么不对？", "筛出没有填写年龄的学生，应该写等于NULL还是IS NULL？"],
+      "queries": [{"text":"我写WHERE AGE = NULL查缺失年龄，为什么不对？","difficulty":"easy"}, {"text":"筛出没有填写年龄的学生，应该写等于NULL还是IS NULL？","difficulty":"easy"}],
       "groups": [{"need": "NULL比较的讲义解释", "chunk_ids": ["database-005:s19:c01"]}],
       "answer": "使用AGE IS NULL；普通等号与NULL比较得到UNKNOWN，WHERE不会保留该结果。",
       "verification": "讲义明确指出AGE=NULL错误；用SQL三值逻辑复核。",
@@ -110,7 +110,7 @@
     },
     {
       "id": "network-ack", "course_id": "computer_networks", "scenario": "concept",
-      "queries": ["TCP确认号为n到底表示收到了n，还是接下来想收到n？", "接收方回复ACK=501，发送方能理解为500之前的字节都确认了吗？"],
+      "queries": [{"text":"TCP确认号为n到底表示收到了n，还是接下来想收到n？","difficulty":"easy"}, {"text":"接收方回复ACK=501，发送方能理解为500之前的字节都确认了吗？","difficulty":"medium"}],
       "groups": [{"need": "TCP累计确认号含义", "chunk_ids": ["computer-networks-051:h-笔记:c10"]}],
       "answer": "确认号n表示期望下一个字节序号为n，至n−1的字节已累计确认；确认号501包括对序号500的确认。ACK标志为1时确认字段有效。",
       "verification": "原文给出n−1与n的明确关系；只评这一关系，不扩展为所有TCP细节。",
@@ -169,7 +169,7 @@
     },
     {
       "id": "org-cache", "course_id": "computer_organization", "scenario": "concept",
-      "queries": ["Cache为什么能缓解CPU与主存速度不匹配？", "只加一小块高速缓存为什么有用？它利用程序访问的什么特点？"],
+      "queries": [{"text":"Cache为什么能缓解CPU与主存速度不匹配？","difficulty":"easy"}, {"text":"只加一小块高速缓存为什么有用？它利用程序访问的什么特点？","difficulty":"medium"}],
       "groups": [{"need": "Cache作用与时间空间局部性", "chunk_ids": ["computer-organization-026:s76:c01"]}],
       "answer": "Cache位于CPU与主存之间，利用时间局部性和空间局部性，让重复或邻近访问有机会由更快存储满足；效果取决于命中率，不能保证所有访问变快。",
       "verification": "讲义给出层次、速度及局部性；命中条件为基本原理推导。",
@@ -177,7 +177,7 @@
     },
     {
       "id": "web-margin", "course_id": "web_frontend_fundamentals", "scenario": "concept",
-      "queries": ["CSS只想增加元素下面的外边距，应该改哪个属性？", "不想动上左右间距，只想让一个块和下一个块离远一点，margin还是margin-bottom？"],
+      "queries": [{"text":"CSS只想增加元素下面的外边距，应该改哪个属性？","difficulty":"easy"}, {"text":"不想动上左右间距，只想让一个块和下一个块离远一点，margin还是margin-bottom？","difficulty":"easy"}],
       "groups": [{"need": "margin各方向属性", "chunk_ids": ["web-frontend-fundamentals-014:s32:c01"]}],
       "answer": "用margin-bottom指定下外边距；margin是四方向简写。实际块间距离还可能涉及外边距折叠，不要求在此简单问题展开全部布局规则。",
       "verification": "属性表清晰；只核验方向语义，不采纳同一讲义其他页有误的选择器规则。",

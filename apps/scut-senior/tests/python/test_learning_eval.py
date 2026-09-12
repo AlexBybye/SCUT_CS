@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import itertools
 import json
+import hashlib
+from pathlib import Path
 import sqlite3
 from fractions import Fraction
 from types import SimpleNamespace
@@ -11,7 +13,7 @@ import pytest
 
 from scut_senior_api.contracts import WorkflowRunRequest
 from scut_senior_api.eval_runner import _check_expected, _report_line, _request_for_case, _run_case, main
-from scut_senior_api.learning_eval import DEFAULT_SUITE, score_ranking
+from scut_senior_api.learning_eval import DEFAULT_SUITE, run_suite, score_ranking, validate_suite
 
 
 def test_alternative_chunks_do_not_require_redundant_retrieval():
@@ -142,3 +144,55 @@ def test_default_cli_uses_reviewed_suite_not_legacy_targets(tmp_path, monkeypatc
 
 def test_conflicting_corpus_flags_are_rejected_before_execution(tmp_path):
     assert main(["--report", str(tmp_path / "report.json"), "--local-corpus", "--fixture-corpus"]) == 2
+
+
+def test_coverage_harness_covers_every_active_course_and_has_three_difficulties():
+    root = DEFAULT_SUITE.parent
+    suite = json.loads((root / "coverage-harness.json").read_text(encoding="utf-8"))
+    matrix = json.loads((root / "coverage-matrix.json").read_text(encoding="utf-8"))
+    store = Path(__file__).parents[2] / ".local" / "corpus-store"
+    validated = validate_suite(suite, store)
+    assert matrix["summary"]["courses"] == 46
+    assert validated["courses"] == 46
+    assert {entry["difficulty"] for entry in suite["entries"]} == {"easy", "medium", "hard"}
+    for row in matrix["courses"]:
+        course_entries = [entry for entry in suite["entries"] if entry["course_id"] == row["course_id"]]
+        if row["coverage_status"] == "source_snapshot_ready":
+            assert {entry["difficulty"] for entry in course_entries} == {"easy", "medium", "hard"}
+        else:
+            assert all(entry["scenario"] == "evidence_boundary" for entry in course_entries)
+
+
+def test_coverage_harness_reports_visual_boundary_without_a_fake_score(tmp_path):
+    report = run_suite(
+        DEFAULT_SUITE.parent / "coverage-harness.json",
+        Path(__file__).parents[2] / ".local" / "corpus-store",
+    )
+    assert report["summary"]["queries"] == 135
+    assert report["summary"]["unscored_evidence_boundary_queries"] == 6
+    visual = next(row for row in report["entries"] if row["scoring_status"] == "evidence_boundary_unscored")
+    assert visual["known_evidence_coverage_at_5"] is None
+    assert "noise_rate" not in visual
+
+
+def test_semantic_v2_expansion_is_course_specific_and_stratified():
+    suite = json.loads(DEFAULT_SUITE.read_text(encoding="utf-8"))
+    validated = validate_suite(suite, Path(__file__).parents[2] / ".local" / "corpus-store")
+    assert validated["courses"] == 43
+    assert validated["topics"] == 54
+    assert validated["queries"] == 108
+    assert {entry["difficulty"] for entry in suite["entries"]} == {"easy", "medium", "hard"}
+    assert all(entry["reference_answer"] and entry["verification"] and entry["pitfalls"] for entry in suite["entries"])
+
+
+def test_visual_v2_keeps_image_hashes_and_is_not_silently_scored_as_text():
+    root = DEFAULT_SUITE.parent
+    suite = json.loads((root / "visual-reviewed.json").read_text(encoding="utf-8"))
+    assert len(suite["entries"]) == 6
+    assert {entry["course_id"] for entry in suite["entries"]} == {
+        "circuit_and_electronics_lab", "electrical_engineering_lab", "machine_learning",
+    }
+    for entry in suite["entries"]:
+        for evidence in entry["image_evidence"]:
+            path = Path(__file__).parents[2] / evidence["path"]
+            assert hashlib.sha256(path.read_bytes()).hexdigest().upper() == evidence["sha256"]

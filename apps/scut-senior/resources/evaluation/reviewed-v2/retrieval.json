@@ -458,6 +458,525 @@
       "knowledge_path": "knowledge/data_structure/data-structure-001.md",
       "text_sha256": "dcb5e4e88885d819868e9aab1d66501407b4fc4756ddb6940520a7086e64fc73",
       "knowledge_sha256": "54fd3ebcf93617fcceea6c788aa1f1f4259323c36bba966efe2fea8d534ad80f"
+    },
+    "computer-graphics-009:p29:c01": {
+      "course_id": "computer_graphics",
+      "source_id": "computer-graphics-009",
+      "source_title": "7- Geometric representations （Chap 11-13）",
+      "locator_type": "page",
+      "locator_start": 29,
+      "locator_end": 29,
+      "question_id": null,
+      "heading_path": [
+        "Polygonal face element (see below)"
+      ],
+      "text": "创建半边结构伪代码\n\nmap< pair<unsigned int, unsigned int>, HalfEdge* > Edges;\n1.遍历网格模型的所有面F{\n2.      遍历F的每条边(u,v){\n//创建节点\n3.            Edges[pair(u,v)] = new HalfEdge();\n4.            Edges[pair(u,v)]→face = F;\n5.            Edges[pair(u,v)]→vert = v;\n6.       }\n\nv5\n\nv2\n\ne3,1 e3,2\ne4,1\ne5,1\n\nf2\nf3\ne1,1\n\ne7,1\n\nf1\n\ne4,2\n\nv4\n\ne6,1\n\nv3\n\ne2,1\n\nv1\n\n7.\n遍历F的每条边(u,v) {\n//完善节点信息\n8.            Edges[pair(u,v)] →nextHalfEdge = next half-edge in F;\n9.            if ( Edges.find(pair(v,u))!= Edges.end() ) {\n10.               Edges[pair(u,v)] →oppoHalfEdge = Edges[pair(v,u)];\n11.               Edges[pair(v,u)] →oppoHalfEdge = Edges[pair(u,v)];\n12            }\n13.     }\n14. }\n\n29",
+      "knowledge_path": "knowledge/computer_graphics/computer-graphics-009.md",
+      "text_sha256": "6baf3cdc20a20b5aded2e10fd5649e7b631664e221da128e8b02078f2469917c",
+      "knowledge_sha256": "e8b0e3535420754a95bbaf5d6eb6795489a10af03b3615e3d39c2ab8cb2301ad"
+    },
+    "computer-science-intro-003:p3:q-computer-science-intro-003-q9:c01": {
+      "course_id": "computer_science_intro",
+      "source_id": "computer-science-intro-003",
+      "source_title": "Final Exam A_2021V1",
+      "locator_type": "page",
+      "locator_start": 3,
+      "locator_end": 3,
+      "question_id": "computer-science-intro-003-Q9",
+      "heading_path": [
+        "Final Exam A_2021V1"
+      ],
+      "text": "(10) Which of the following manages the fetch-execute cycle?\n\nA)  control unit\nB)  arithmetic/logic unit\n\nC)  auxiliary storage device\nD)  RAM\n\n(11) Which language is actually executed by the central processing unit of\n\na computer?\n\nA)  high-level language\nB)  assembly language\n\nC)  machine language\nD)  virtual language\n\n(12) Which of the following represents a set of unambiguous instructions\n\nfor solving a problem in a finite amount of time using a finite set of data?\n\nA)  algorithm\nB)  pseudocode\n\nC)  program construct\nD)  problem specification\n\n(13) Pseudocode uses a mixture of English and indentation to express the\n\nprocessing steps of an algorithm.\n\nA) True\nB) False\n\n(14) The code-coverage testing approach eliminates the need to test some\n\nof the code by covering it with a theoretical “black box.”\n\nA) True\nB) False",
+      "knowledge_path": "knowledge/computer_science_intro/computer-science-intro-003.md",
+      "text_sha256": "aec3836c832ab91470a09f3116efbb3f01fd33bd2ea3e77e4b810b2314d8ff49",
+      "knowledge_sha256": "705e3ee8d98dc7face92c22a8905e46e3db81369071c7749540b04b64b065f3c"
+    },
+    "computing-methods-002:p92:c01": {
+      "course_id": "computing_methods",
+      "source_id": "computing-methods-002",
+      "source_title": "数值分析（电子版教材-仅供学生参考-勿对外分享）",
+      "locator_type": "page",
+      "locator_start": 92,
+      "locator_end": 92,
+      "question_id": null,
+      "heading_path": [
+        "数值分析（电子版教材-仅供学生参考-勿对外分享）"
+      ],
+      "text": "５\n８\n４　数值积分\n\n量的函数F０（h）近似代替它，并设F\n\n倡与h 无关，且给定F\n\n倡与F０（h）的误差估计为\n\np k ＋…\n（４畅２５）\n\n倡－F０（h）＝a１h\n\np１＋a２h\n\np２＋… ＋akh\n\nF\n\n其中０＜p１＜p２＜… ＜pk ＜…；ak≠０（k ＝１，２，…）是与h 无关的常数．\n\n从误差估计式（４畅２５）可以看到，当h 适当小时，第一项a１h\n\np１的绝对值远比后\n\n面的项的绝对值大．而第一项中的h\n\np１是最主要的，它对误差的影响最大，通常称为\n\n倡与函数F０（h）的误差的阶．显然，当h 适当小时，误差的阶h\n\np１中的幂p１越大，\n\nF\n\n倡与函数F０（h）的误差的绝对值就会越小．能否从函数F０（h）出发构造一个新的\n\nF\n\n倡，使F\n\n倡与函数F０（h）的误差的\n\n倡与这个函数的误差的阶的幂比F\n\n函数近似代替F\n\n阶的幂更高一些？答案是肯定的．\n\n为了构造出一个新函数F２（h）近似代替F\n\n倡，使F\n\n倡与这个函数的误差的阶的\n\n倡与函数F０（h）的误差的阶的幂更高一些，可以采用下面的做法．\n\n幂比F\n\n首先把（４畅２５）式中的h 用qh 代替，得\n\np k ＋…\n（４畅２６）\n\nF\n\n倡－F０（qh）＝a１（qh）\n\np１＋a２（qh）\n\np２＋… ＋ak（qh）\n\n其中q 为常数，并满足１－q\n\np１≠０．再用q\n\np１乘（４畅２５）式两边，得\n\np k ＋…\n（４畅２７）\n\nq\n\n倡－q\n\np１F０（h）＝a１（qh）\n\np１＋a２q\n\np２＋… ＋akq\n\np１F\n\np１h\n\np１h\n\n（４畅２６）式减（４畅２７）式并整理后得\n\n（１－q\n\np１）F\n\n倡－［F０（qh）－q\n\np１F０（h）］\n\np k －q\n\np k ＋…\n（４畅２８）\n\n＝a２（q\n\np２－q\n\np１）h\n\np２＋a３（q\n\np３－q\n\np１）h\n\np３＋… ＋ak（q\n\np１）h\n\n用１－q\n\np１除（４畅２８）式两边得\n\n倡－F０（qh）－q\n\np１F０（h）\n\nF\n\n１－q\n\np１\n\np k －q\n\n＝a２（q\n\np２－q\n\np１\n＋a３（q\n\np１）h\n\np３－q\n\np１\n＋… ＋ak（q\n\np１）h\n\np１）h\n\np２\n\np３\n\np k\n\np１\n＋…\n（４畅２９）\n\n１－q\n\n１－q\n\n１－q\n\np k －q\n\n若记F１（h）＝F０（qh）－q\n\np１F０（h）\n\n（１）\nk\n＝ak（q\n\np１）\n\np１\n，k ＝２，３，…，则由（４畅２９）式\n\np１\n和a\n\n１－q\n\n１－q\n\n有\n\np k ＋…\n（４畅３０）\n\n倡－F１（h）＝a\n\np２＋a\n\np３＋… ＋a\n\n（１）\n２\nh\n\n（１）\n３\nh\n\n（１）\nk\nh\n\nF\n\n（１）\nk\n是与h 无关的常数．\n\n其中a\n\n从（４畅３０）式可以看到，若用函数F１（h）近似代替F",
+      "knowledge_path": "knowledge/computing_methods/computing-methods-002.md",
+      "text_sha256": "1cd1b0e616fa2f502ac66a5e48a2e3f7aee61225f093cb5b65d439b7120aaac7",
+      "knowledge_sha256": "cdebe5785ae13cf44bfcf068714738e21e95bf1910fcdb746279d30719229370"
+    },
+    "cpp-007:h-题目:c01": {
+      "course_id": "cpp",
+      "source_id": "cpp-007",
+      "source_title": "题目",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": null,
+      "heading_path": [
+        "题目"
+      ],
+      "text": "```text\n题目描述\n构造一个类层次结构，用来对影片的制作进行跟踪管理，这些影片包括一些特殊的影片，如外国影片、导演的影片剪辑(directors cut, 表示因剪辑而产生的不同影片版本)。由于所有的影片都具有标题、导演、时间和等级(0星到4星)等共同属性，需要设计一个基类Film，该类包含所有影片共同的属性及存取这些属性的成员函数，同时需要专门设计一个输出信息的成员函数。\n从基类Film派生出一个DirectorCut类，并为其添加一些数据成员用来存储影片修订时间、影片变更内容等信息，再添加一些成员函数以对这些新增数据成员进行访问，同时DirectorCut类也设计一个用来输出信息的成员函数。\n从基类Film派生出一个ForeignFilm类，并为其添加数据成员来存储影片的不同语言版本，再添加一些成员函数以对这些新增数据成员进行访问，同时ForeignFilm类也设计一个用来输出信息的成员函数。\n我们给出类Film的四个私有数据成员定义：\n数据成员\t数据类型\t目的\ntitle\tstring\t影片标题\ndirector\tstring\t导演姓名\ntime\tint\t影片播放时间(精确到分钟)\nquality\tint\t影片等级: 0-4\n提示：例如store_title函数具有一个const string&类型的参数设置数据成员title，此外还有一个参数类型const char*的重载版本，同样可以设置数据成员title。\n用如下主函数进行测试：\nint main()\n{\n\n    string title, director, changes ,language;\n    int time, quality, rev_time;\n    Film f;\n    getline(cin, title);\n    f.store_title(title);\n    getline(cin, director);\n    f.store_director(director);\n    cin >> time;\n    f.store_time(time);\n    cin >> quality;\n    f.store_quality(quality);\n    cout << \"Film--\" << endl;\n    f.output();\n    cout << endl;\n    cin.ignore();\n\n    DirectorCut d;\n    getline(cin, title);\n    d.store_title(title);\n    getline(cin, director);\n    d.store_director(director);\n    cin >> time;\n    d.store_time(time);\n    cin >> quality;\n    d.store_quality(quality);\n    cin >> rev_time;\n    d.store_rev_time(rev_time); // 修订时间\n    cin.ignore();\n    getline(cin, changes);\n    d.store_changes(changes); // 影片变更内容\n    cout << \"DirectorCut--\" << endl;\n    d.output();\n    cout << endl;\n\n    ForeignFilm ff;\n    getline(cin, title);\n    ff.store_title(title);\n    getline(cin, director);\n    ff.store_director(director);\n    cin >> time;\n    ff.store_time(time);\n    cin >> quality;\n    ff.store_quality(quality);\n    cin.ignore();\n    getline(cin, language);\n    ff.store_language(language);\n    cout << \"ForeignFilm--\" << endl;\n    ff.output();\n    cout << endl;\n\n    return 0;\n}\n\n输出\n\n必须使用的关键字\nclass \n样例输入 Copy\nRear Window\nAlfred Hitchcock\n112\n4\nJail Bait\nEd Wood\n70\n2\n72\nExtra footage not in original included\nJules and Jim\nFrancois Truffaut\n104\n4\nFrench\n样例输出 Copy\nFilm--\nTitle: Rear Window\nDirector: Alfred Hitchcock\nTime: 112 mins\nQuality: ****\n\nDirectorCut--\nTitle: Jail Bait\nDirector: Ed Wood\nTime: 70 mins\nQuality: **\nRevised time: 72 mins\nChanges: Extra footage not in original included\n\nForeignFilm--\nTitle: Jules and Jim\nDirector: Francois Truffaut\nTime: 104 mins\nQuality: ****\nLanguage: French\n提示\n不用循环输入\n\n题目描述\n对于之前题目：影片管理的类进行修改：\n\n1.提供一个多态的成员函数input，用于读取输入Film、DirectoCut和ForeignFilm的具体信息，输入的具体信息详见样例输入。\n\n2.根据输入的信息动态的创建Film类层次对象。(在read_input 函数中实现)\n\n3.将Film类层次中的input函数设计为虚函数，使其具有多态性，动态创建的对象通过input函数可以从我们的输入中得到正确数据。\n\n4.将Film类层次中的output函数设计为虚函数，使其具有多态性，动态创建的对象通过output函数可以将信息正确的输出。\n\n根据以下测试函数进行测试：\n\nint main()\n{\n    int n = 5;\n    Film* films[n];\n    for(int i=0; i<n; i++){\n        cout << \"Input class name:\" << endl;\n        string class_name;\n        cin >> class_name;\n        cin.ignore(); //可以去除输入流中的换行符\n        films[i] = read_input(class_name);\n        cout << class_name << \"--\" << endl;\n        films[i]->output();\n        cout << endl;\n    }\n}\n输入\n具体影片的信息，对于不同类型所输入信息是不同的。\nFilm 依次顺序\nInput class name:\nInput title:\nInput director:\nInput time:\nInput quality:\n\nDirectoCut类input依次顺序\nInput class name:\nInput title:\nInput director:\nInput time:\nInput quality:\nInput rev_time:\nInput changes:\n\nForeignFilm类input依次顺序\nInput class name:\nInput title:\nInput director:\nInput time:\nInput quality:\nInput language:\n\n输出\n输出类中的信息\n必须使用的关键字\nvirtual class \n样例输入 Copy\nDirectorCut\nA Passage To India\nDavid Lean\n197\n3\n180\nCave scene twice as long; more local color\nFilm\nMean Streets\nMartin Scorsese\n168\n4\nFilm\nThe Best Years of Our Lives\nWilliam Wyler\n172\n4\nForeignFilm\nDiva\nJean-Jacques Beineix\n123\n3\nFrench\nFilm\nOrlando\nSally Potter\n97\n3\n样例输出 Copy\nInput class name:\nInput title:\nInput director:\nInput time:\nInput quality:\nInput rev_time:\nInput changes:\nDirectorCut--\nTitle: A Passage To India\nDirector: David Lean\nTime: 197 mins\nQuality: ***\nRevised time: 180 mins\nChanges: Cave scene twice as long; more local color\n\nInput class name:\nInput title:\nInput director:\nInput time:\nInput quality:\nFilm--\nTitle: Mean Streets\nDirector: Martin Scorsese\nTime: 168 mins\nQuality: ****\n\nInput class name:\nInput title:\nInput director:\nInput time:\nInput quality:\nFilm--\nTitle: The Best Years of Our Lives\nDirector: William Wyler\nTime: 172 mins\nQuality: ****\n\nInput class name:\nInput title:\nInput director:\nInput time:\nInput quality:\nInput language:\nForeignFilm--\nTitle: Diva\nDirector: Jean-Jacques Beineix\nTime: 123 mins\nQuality: ***\nLanguage: French\n\nInput class name:\nInput title:\nInput director:\nInput time:\nInput quality:\nFilm--\nTitle: Orlando\nDirector: Sally Potter\nTime: 97 mins\nQuality: ***\n提示\ninput(){\ncout << \"Input title:\" <<endl;\n...\n}\n\n题目描述\n为Complex类重载 == 、 != 、一元减(-)、>>操作符，复数的判等操作定义为：复数z1=a+bi等于z2=c+di，当且仅当a等于c且b等于d。复数求负的操作定义为：如果z=a+bi是一个复数, -z为-a-bi。为Complex类重载右移操作符>>以输出数据。\nclass Complex\n{ public:\n    // TODO: 重载 ==\n    // TODO: 重载 !=\n    // TODO: 重载 -\n    // TODO: 重载 >>\n\n  private:\n      double  Real, Image ;\n};\n\n测试函数：\nint main()\n{\n    double r, i;\n    cin >> r >> i;\n    Complex c1(r, i);\n    Complex c;\n    c = -c1;\n    cout >> c << endl;\n    cout << (c1 != c) << endl;\n    cout << (c1 == c) << endl;\n}\n\n输入\n复数的实部和虚部\n输出\n详见测试函数\n必须使用的关键字\nclass operator \n样例输入 Copy\n2.1 3.4\n样例输出 Copy\n(-2.1 + -3.4i)\n1\n0\n提示\n不需要循环输入\n\n题目描述\n编写一个程序，已知某个学生数据，包括学号、姓名、平时作业成绩、期中考试成绩、期末考试成绩。设计成员函数求该学生的总成绩并显示，设计一个 disp 函数显示该学生的信息及成绩单。\n已给出了 main () 函数。成员函数 couscore的功能是求某学生的总成绩并显示，disp 函数功能是显示学生的姓名、学号和成绩单。\n要求按照 main () 函数及对应的输出完成 Student 类的设计，要求 Student 类中包含学号、姓名、平时作业成绩、期中考试成绩、期末考试成绩等数据成员，包含总成绩的静态数据成员，另外包含构造函数（参数为学号、姓名、平时作业成绩、期中考试成绩、期末考试成绩）、计算总成绩的成员函数 (couscore) 以及显示成绩的成员函数 (disp)。\n注：总成绩 = 平时作业成绩 * 20% + 期中考试成绩 * 30% + 期末考试成绩*50%\nint main() {\n    int id;\n    string name;\n    double hw, midterm, final;\n    char continue_input = 'y'; // 控制是否继续输入的标志\n\n    while (continue_input == 'y') {\n        cout << \"请输入学生学号: \";\n        cin >> id;\n        cout << \"请输入学生姓名: \";\n        cin >> name;\n        cout << \"请输入平时作业成绩: \";\n        cin >> hw;\n        cout << \"请输入期中考试成绩: \";\n        cin >> midterm;\n        cout << \"请输入期末考试成绩: \";\n        cin >> final;\n\n        Student student(id, name, hw, midterm, final);\n        student.couscore();\n        student.disp();\n\n        cout << \"是否继续输入学生信息？(y/n): \";\n        cin >> continue_input;\n    }\n\n    return 0;\n}\n输入\n输入多个学生的学号、姓名和各项成绩\n输出\n参考如下：\n见图片\n注意上面类的成员函数里，冒号使用的英文，且后面需要有一个空格；不对最后输出的所有double型数据做任何处理，比如保留几位小数。\n必须使用的关键字\nclass private public \n禁止使用的关键字\nscanf printf \n样例输入 Copy\n11\n小汪\n70\n75\n72\ny\n12\nxiaoxiao\n86\n90\n100\ny\n15\n毛毛\n99\n98\n99\nn\n样例输出 Copy\n请输入学生学号: 请输入学生姓名: 请输入平时作业成绩: 请输入期中考试成绩: 请输入期末考试成绩: 总成绩: 72.5\n学生姓名: 小汪\n学生学号: 11\n平时作业成绩: 70\n期中考试成绩: 75\n期末考试成绩: 72\n\n是否继续输入学生信息？(y/n): 请输入学生学号: 请输入学生姓名: 请输入平时作业成绩: 请输入期中考试成绩: 请输入期末考试成绩: 总成绩: 94.2\n学生姓名: xiaoxiao\n学生学号: 12\n平时作业成绩: 86\n期中考试成绩: 90\n期末考试成绩: 100\n\n是否继续输入学生信息？(y/n): 请输入学生学号: 请输入学生姓名: 请输入平时作业成绩: 请输入期中考试成绩: 请输入期末考试成绩: 总成绩: 98.7\n学生姓名: 毛毛\n学生学号: 15\n平时作业成绩: 99\n期中考试成绩: 98\n期末考试成绩: 99\n\n是否继续输入学生信息？(y/n): \n\n题目描述\n编写程序，在上一题的基础上，设计一个学生类student，包括学号、姓名和平时作业成绩、期中考试成绩、期末考试成绩，利用重载运算符“*”计算该学生各项成绩加权后的成绩，利用重载运算符“<<”输出该学生的成绩单。\n给出main函数，要求自己设计类和函数，实现功能：\n\nint main() {\n    int id;\n    string name;\n    double hw, midterm, final;\n    char continue_input = 'y'; // 控制是否继续输入的标志\n\n    while (continue_input == 'y') {\n        cout << \"请输入学生学号: \";\n        cin >> id;\n        cout << \"请输入学生姓名: \";\n        cin >> name;\n        cout << \"请输入平时作业成绩: \";\n        cin >> hw;\n        cout << \"请输入期中考试成绩: \";\n        cin >> midterm;\n        cout << \"请输入期末考试成绩: \";\n        cin >> final;\n\n        Student student(id, name, hw, midterm, final);\n\n        // 调用重载的乘法运算符进行加权成绩的计算\n        student.operator*();\n\n        cout << \"学生信息及成绩单：\" << endl;\n        cout << student << endl;\n\n        cout << \"是否继续输入学生信息？(y/n): \";\n        cin >> continue_input;\n    }\n\n    return 0;\n}\n输入\n多个学生姓名、各成绩。\n输出\n参考如下：\n\n必须使用的关键字\nclass operator* \n禁止使用的关键字\nscanf printf \n样例输入 Copy\n1\nxiaohuahua\n80\n90\n85\ny\n2\nnike\n95\n96\n98\nn\n样例输出 Copy\n请输入学生学号: 请输入学生姓名: 请输入平时作业成绩: 请输入期中考试成绩: 请输入期末考试成绩: 学生信息及成绩单：\n学生姓名: xiaohuahua\n学生学号: 1\n平时作业成绩加权: 16\n期中考试成绩加权: 27\n期末考试成绩加权: 42.5\n总成绩: 85.5\n\n是否继续输入学生信息？(y/n): 请输入学生学号: 请输入学生姓名: 请输入平时作业成绩: 请输入期中考试成绩: 请输入期末考试成绩: 学生信息及成绩单：\n学生姓名: nike\n学生学号: 2\n平时作业成绩加权: 19\n期中考试成绩加权: 28.8\n期末考试成绩加权: 49\n总成绩: 96.8\n\n是否继续输入学生信息？(y/n): \n\n题目描述\n\n在大学期间，学生的学分由实践学分和课程学分组成，担任校级组织、院级组织、班级的学生干部可以增加一定的实践学分。\n设计一个层次类实现计算学生的总学分并显示。首先定义一个Student的抽象类，提供有共同操作界面的纯虚函数，由此类派生出SchoolStuLeader类、FacultiesStuLeader类、ClassStuLeader类和RegStudent类。\n每一种类中学分计算方式如下： \n校级组织学生干部：实践学分 = （任职时长（天数） * 0.01 + 2）/ 5\n院级组织学生干部：实践学分 = （任职时长（天数） * 0.01 + 1）/ 5\n班级学生干部：实践学分 = （任职时长（天数） * 0.01 + 0.8）/ 5\n无任职学生：实践学分 = 课外实践时长（小时） * 0.005\n总学分 = 实践学分（其中任职时长和实践时长均键盘输入） + 课程学分（键盘输入）\n已知某个学生数据，包括学号、姓名、实践学分、课程学分。设计函数求该学生的总学分并显示，设计一个disp显示该学生的信息和总学分。定义以上所有类，在第二层类中提供全部函数的实现。在测试函数中使用基类指针实现不同派生类对象的操作。\nmain函数如下：\nint main() {\n    Student* student;\n    cout << \"请输入校级学生干部的信息，包括学号，名字，任职天数，课程学分：\" << endl;\n    int id;\n    string n;\n    double days;\n    double course;\n    cin >> id >> n >> days >> course;\n    student = new SchoolStuLeader(id, n, days, course);\n    student->calculateCredits(); // 计算所获得的实践学分\n    student->getTotalCredit(); // 计算总学分\n    student->disp(); // 显示信息\n\n    cout << \"请输入院级学生干部的信息，包括学号，名字，任职天数，课程学分：\" << endl;\n    cin >> id >> n >> days >> course;\n    student = new FacultiesStuLeader(id, n, days, course);\n    student->calculateCredits();\n    student->getTotalCredit();\n    student->disp();\n\n    cout << \"请输入班级学生干部的信息，包括学号，名字，任职天数，课程学分：\" << endl;\n    cin >> id >> n >> days >> course;\n    student = new ClassStuLeader(id, n, days, course);\n    student->calculateCredits();\n    student->getTotalCredit();\n    student->disp();\n\n    cout << \"请输入非学生干部的信息，包括学号，名字，课外实践时长，课程学分：\" << endl;\n    double hours;\n    cin >> id >> n >> hours >> course;\n\n    student = new RegStudent(id, n, hours, course);\n    student->calculateCredits();\n    student->getTotalCredit();\n    student->disp();\n\n    return 0;\n\n}\n\n输入\n学号、名字、任职天数（实践时长）、课程学分\n输出\n学生的担任职务2、学号、姓名、总学分，参考如下\n\n必须使用的关键字\nclass public protected \n禁止使用的关键字\nprintf scanf \n样例输入 Copy\n1 LL 500 45\n2 HH 300 40\n3 KK 300 45\n4 LI 40 30\n样例输出 Copy\n请输入校级学生干部的信息，包括学号，名字，任职天数，课程学分：\n校级学生干部：\n学号：1，姓名：LL\n总学分：46.4\n请输入院级学生干部的信息，包括学号，名字，任职天数，课程学分：\n院级学生干部：\n学号：2，姓名：HH\n总学分：40.8\n请输入班级学生干部的信息，包括学号，名字，任职天数，课程学分：\n班级学生干部：\n学号：3，姓名：KK\n总学分：45.76\n请输入非学生干部的信息，包括学号，名字，课外实践时长，课程学分：\n普通学生：\n学号：4，姓名：LI\n总学分：30.2\n```",
+      "knowledge_path": "knowledge/cpp/cpp-007.md",
+      "text_sha256": "a60167293cd792699161907266a10e21eb737fad34cc56e2d9e1672f5b60455b",
+      "knowledge_sha256": "04931a40525326c6d3bda979be5ccbf5b300fde6e529baefde24c53b90dfa9fa"
+    },
+    "cpp-008:h-a:c01": {
+      "course_id": "cpp",
+      "source_id": "cpp-008",
+      "source_title": "A",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": null,
+      "heading_path": [
+        "A"
+      ],
+      "text": "```text\n#include<iostream>\n#include<string>\nusing namespace std;\nclass Film\n{\npublic:\n    void store_title(const string& t) { title = t; }\n    void store_director(const string& d) { director = d; }\n    void store_time(int t) { time = t; }\n    void store_quality(int q) { quality = q; }\n\n    void output() const {\n        cout << \"Title: \" << title << endl;\n        cout << \"Director: \" << director << endl;\n        cout << \"Time: \" << time << \" mins\" << endl;\n        cout << \"Quality: \" ;\n        for (int i = 0; i < quality; ++i)\n        {\n            cout << \"*\";\n        }\n        cout << endl;\n    }\n\nprotected:\n\tstring title;\n\tstring director;\n\tint time;//影片播放时间(精确到分钟)\n\tint quality;//影片等级: 0-4\n\t\n};\nclass DirectorCut :public Film\n{\nprivate:\n\tint rev_time;\n\tstring changes;\npublic:\n    void store_rev_time(int t) { rev_time = t; }\n    void store_changes(const string& c) { changes = c; }\n\n    void output() const {\n        Film::output();\n        cout << \"Revised time: \" << rev_time <<\" mins\"<< endl;\n        cout << \"Changes: \" << changes << endl;\n    }\n};\nclass ForeignFilm :public Film\n{\nprivate:\n\tstring language;\npublic:\n    void store_language(const string& l) { language = l; }\n\n    void output() const {\n        Film::output();\n        cout << \"Language: \" << language << endl;\n    }\n};\nint main() {\n    string title, director, changes, language;\n    int time, quality, rev_time;\n\n    Film f;\n    getline(cin, title);\n    f.store_title(title);\n    getline(cin, director);\n    f.store_director(director);\n    cin >> time;\n    f.store_time(time);\n    cin >> quality;\n    f.store_quality(quality);\n    cout << \"Film--\" << endl;\n    f.output();\n    cout << endl;\n    cin.ignore();\n\n    DirectorCut d;\n    getline(cin, title);\n    d.store_title(title);\n    getline(cin, director);\n    d.store_director(director);\n    cin >> time;\n    d.store_time(time);\n    cin >> quality;\n    d.store_quality(quality);\n    cin >> rev_time;\n    d.store_rev_time(rev_time); // 修订时间\n    cin.ignore();\n    getline(cin, changes);\n    d.store_changes(changes); // 影片变更内容\n    cout << \"DirectorCut--\" << endl;\n    d.output();\n    cout << endl;\n\n    ForeignFilm ff;\n    getline(cin, title);\n    ff.store_title(title);\n    getline(cin, director);\n    ff.store_director(director);\n    cin >> time;\n    ff.store_time(time);\n    cin >> quality;\n    ff.store_quality(quality);\n    cin.ignore();\n    getline(cin, language);\n    ff.store_language(language);\n    cout << \"ForeignFilm--\" << endl;\n    ff.output();\n    cout << endl;\n\n    return 0;\n}\n```",
+      "knowledge_path": "knowledge/cpp/cpp-008.md",
+      "text_sha256": "6d3c917d9cfc432717e221d4ebcf3dcf591f5272431171fe04ad6fc6b918675d",
+      "knowledge_sha256": "01887636eae68964dfc1159405b60cd5db5e27ace37d3c58b9b89d21add130f1"
+    },
+    "digital-logic-003:q-digital-logic-003-q2:c01": {
+      "course_id": "digital_logic",
+      "source_id": "digital-logic-003",
+      "source_title": "2012级计算机学院数字逻辑试卷 B卷题目",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": "digital-logic-003-Q2",
+      "heading_path": [
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "text": "3.在下列电路中，不是典型组合电路的是（      ）。\n\nA.译码器        B.全加器        C.计数器        D.数据选择器\n\n4.设B1、B0为四选一数据选择器的地址码，X0~X3为数据输入，Y为数据输出，则输出Y与Xi和Bi之间的逻辑表达式为(      )\n\nA.  $\\overline {{B}_{1}}{B}_{0}{X}_{0}+\\overline {{B}_{1}}\\overline {{B}_{0}}{X}_{1}+{B}_{1}{B}_{0}{X}_{2}+{B}_{1}\\overline {{B}_{0}}{X}_{3}$\n\nB.${B}_{1}{B}_{0}{X}_{0}+{B}_{1}\\overline {{B}_{0}}{X}_{1}+\\overline {{B}_{1}}{B}_{0}{X}_{2}+\\overline {{B}_{1}}\\overline {{B}_{0}}{X}_{3}$\n\nC. $\\overline {{B}_{1}}\\overline {{B}_{0}}{X}_{0}+\\overline {{B}_{1}}{B}_{0}{X}_{1}+{B}_{1}\\overline {{B}_{0}}{X}_{2}+{B}_{1}{B}_{0}{X}_{3}$\n\nD. ${B}_{1}\\overline {{B}_{0}}{X}_{0}+{B}_{1}{B}_{0}{X}_{1}+\\overline {{B}_{1}}\\overline {{B}_{0}}{X}_{2}+\\overline {{B}_{1}}{B}_{0}{X}_{3}$",
+      "knowledge_path": "knowledge/digital_logic/digital-logic-003.md",
+      "text_sha256": "a7391f01e475ab911feacdd0afdb6cd6e53ad00632beb0725ade291f75dccdd3",
+      "knowledge_sha256": "dc85b59b4a8de543115761c67e3b63856092d4afc4614af6bd5c15cd8452d698"
+    },
+    "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c11": {
+      "course_id": "digital_system_creative_design",
+      "source_id": "digital-system-creative-design-003",
+      "source_title": "Mindspore口罩检测（yolov3）",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": null,
+      "heading_path": [
+        "Mindspore口罩检测（yolov3）"
+      ],
+      "text": "range(num_classes):         class_boxes = np.reshape(boxes, [-1, 4])[np.reshape(mask[:, c], [-1])]         class_box_scores = np.reshape(box_scores[:, c], [-1])[np.reshape(mask[:, c], [-1])]         nms_index = apply_nms(class_boxes, class_box_scores, config.nms_threshold, max_boxes)         #nms_index = apply_nms(class_boxes, class_box_scores, 0.5, max_boxes)         class_boxes = class_boxes[nms_index]         class_box_scores = class_box_scores[nms_index]         classes = np.ones_like(class_box_scores, 'int32') * c         boxes_.append(class_boxes)         scores_.append(class_box_scores)         classes_.append(classes)      boxes = np.concatenate(boxes_, axis=0)     classes = np.concatenate(classes_, axis=0)     scores = np.concatenate(scores_, axis=0)      return boxes, classes, scores #加载训练模型并利用验证网络YoloWithEval进行验证 def yolo_eval(cfg):     \"\"\"Yolov3 evaluation.\"\"\"     ds = create_yolo_dataset(cfg.mindrecord_file, batch_size=1, is_training=False)     config = ConfigYOLOV3ResNet18()     net = yolov3_resnet18(config)     eval_net = YoloWithEval(net, config)     print(\"Load Checkpoint!\")     param_dict = load_checkpoint(cfg.ckpt_path)     load_param_into_net(net, param_dict)",
+      "knowledge_path": "knowledge/digital_system_creative_design/digital-system-creative-design-003.md",
+      "text_sha256": "b5e94eb3c314826a2ea0af40fd58a805c4ea848789bb7714725b29ea732e107e",
+      "knowledge_sha256": "3ffa56a74ef50f96041824d48490865c0ef0ea3b2d2357ed68c5fe9278a876d7"
+    },
+    "embedded-systems-018:p8:q-embedded-systems-018-q39:c01": {
+      "course_id": "embedded_systems",
+      "source_id": "embedded-systems-018",
+      "source_title": "嵌入式期末真题回忆版有答案",
+      "locator_type": "page",
+      "locator_start": 8,
+      "locator_end": 8,
+      "question_id": "embedded-systems-018-Q39",
+      "heading_path": [
+        "嵌入式期末真题回忆版有答案"
+      ],
+      "text": "嵌入式期末真题回忆版复原（答案与解析版）\n\nUART4 初始化代码：\n\nvoid UART4_Init(void)\n\n{\n\nGPIO_InitTypeDef GPIO_InitStructure;\n\nUSART_InitTypeDef USART_InitStructure;\n\nRCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);\n\nRCC_APB1PeriphClockCmd(RCC_APB1Periph_UART4, ENABLE);\n\nGPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;\n\nGPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;\n\nGPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;\n\nGPIO_Init(GPIOC, &GPIO_InitStructure);\n\nGPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;\n\nGPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;\n\nGPIO_Init(GPIOC, &GPIO_InitStructure);\n\nUSART_InitStructure.USART_BaudRate = 115200;\n\nUSART_InitStructure.USART_WordLength = USART_WordLength_8b;\n\nUSART_InitStructure.USART_StopBits = USART_StopBits_1;\n\nUSART_InitStructure.USART_Parity = USART_Parity_No;\n\nUSART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;\n\nUSART_InitStructure.USART_Mode = USART_Mode_Tx | USART_Mode_Rx;\n\nUSART_Init(UART4, &USART_InitStructure);\n\nUSART_Cmd(UART4, ENABLE);\n\n}\n\n解. UART4 挂在 APB1 总线上，所以要使能 RCC_APB1Periph_UART4。PC10 配置为复用推挽输出\n\n作为 TX，PC11 配置为浮空输入作为 RX。串口参数应与串口助手保持一致，如 115200 波特率、8 位\n\n数据位、1 位停止位、无校验、无硬件流控。\n\n— 由回忆版整理，答案以课堂与教材要求为准 —",
+      "knowledge_path": "knowledge/embedded_systems/embedded-systems-018.md",
+      "text_sha256": "cf20b4890480ad2e31756e0b7799203050b203174d82dad554376a70f6c6e82f",
+      "knowledge_sha256": "b0a305a92fc6c0807a52691e4424127417d1774a288f99fa3c3abf7a972c0181"
+    },
+    "engineering-mathematical-analysis-1-011:p7:q-engineering-mathematical-analysis-1-011-q18:c01": {
+      "course_id": "engineering_math_analysis_1",
+      "source_id": "engineering-mathematical-analysis-1-011",
+      "source_title": "2017软件工科数学分析上A卷及答案",
+      "locator_type": "page",
+      "locator_start": 7,
+      "locator_end": 7,
+      "question_id": "engineering-mathematical-analysis-1-011-Q18",
+      "heading_path": [
+        "2017软件工科数学分析上A卷及答案"
+      ],
+      "text": "四、证明题（2 小题，每小题10 分，共20 分）\n\n1. 设f(x) 在[a, b] 上满⾜李普希兹条件：|f(x) −f(y)| ⩽L|x −y|(∀x, y ∈[a, b])，其中L 为常数。\n\n证明：f(x) 在[a, b] 上⼀致连续。\n\n证明：∀ε > 0, ∃δ = ε\n\nL，使得当x1, x2 ∈[a, b] 且满⾜|x1 −x2| < δ 时，\n\n|f(x1) −f(x2)| ⩽L|x1 −x2| < Lδ = ε.\n\n因此，f(x) 在[a, b] ⼀致连续。\n\n2. 设函数f(x) 在[−1, 1] 上有三阶连续导数，且f(−1) = 0, f(1) = 1, f ′(0) = 0，证明：⾄少存在\nξ ∈(−1, 1), 使得f ′′′(ξ) = 3。\n\n解：考虑f(x) 在x = 0 处带Lagrange 余项的三阶Taylor 公式。存在ξ1 ∈(−1, 0) 使得\n\nf(−1) = f(0) + f ′(0)(−1) + f ′′(0)\n\n2!\n(−1)2 + f ′′′(ξ1)\n\n3!\n(−1)3.\n\n即，\n\n0 = f(0) + f ′′(0)\n2!\n−1\n\n6f ′′′(ξ1).\n\n同理，存在ξ2 ∈(0, 1) 使得\n\nf(1) = f(0) + f ′(0)1 + f ′′(0)\n\n2!\n12 + f ′′′(ξ2)\n3!\n13.\n\n即，\n\n1 = f(0) + f ′′(0)\n2!\n+ 1\n\n6f ′′′(ξ2).\n\n因此，\n\nf ′′′(ξ1) + f ′′′(ξ2)\n\n2\n= 3.\n\n由于f ′′′(x) 在[−1, 1] 连续，由介值定理，存在ξ ∈(ξ1, ξ2) ⊂(−1, 1)，使得\n\nf ′′′(ξ) = f ′′′(ξ1) + f ′′′(ξ2)\n\n2\n= 3.\n\n《⼯科数学分析》试卷\n第5 页共6 页",
+      "knowledge_path": "knowledge/engineering_math_analysis_1/engineering-mathematical-analysis-1-011.md",
+      "text_sha256": "68dbabad269166f924bab3e4235c3ff22674400beb30d50525ed28b16c56938b",
+      "knowledge_sha256": "f865e5f78ee4722a9015b5fdc15e40eb4c2b5b175f2792ef899f781f006088bc"
+    },
+    "engineering-mathematical-analysis-2-017:q-engineering-mathematical-analysis-2-017-q6:c01": {
+      "course_id": "engineering_math_analysis_2",
+      "source_id": "engineering-mathematical-analysis-2-017",
+      "source_title": "2013级软件 工科数学分析下A附解答",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": "engineering-mathematical-analysis-2-017-Q6",
+      "heading_path": [
+        "2013级软件 工科数学分析下A附解答"
+      ],
+      "text": "五、**应用题**（本题10分）\n\n7.      在第一象限内作椭球面$\\frac{x^2}{a^2}+\\frac{y^2}{b^2}+\\frac{z^2}{c^2}=1$的切平面，使切平面与三个坐标面所围成的四面体的体积最小，求切点的坐标。\n\n解：设$\\left ( {{x}_{0},{y}_{0},{z}_{0}}\\right )$为椭球面上在第一象限的一点，过此点的切平面方程为\n\n$$\n\\frac {2{x}_{0}} {{a}^{2}}\\left ( {x-{x}_{0}}\\right )+\\frac {2{y}_{0}} {{b}^{2}}\\left ( {y-{y}_{0}}\\right )+\\frac {2{z}_{0}} {{c}^{2}}\\left ( {z-{z}_{0}}\\right )=0\n$$\n\n化成截距式方程\n\n$$\n\\frac {x} {\\frac {{a}^{2}} {{x}_{0}}}+\\frac {y} {\\frac {{b}^{2}} {{y}_{0}}}+\\frac {z} {\\frac {{c}^{2}} {{z}_{0}}}=\\frac {{x}_{0}^{2}} {{a}^{2}}+\\frac {{y}_{0}^{2}} {{b}^{2}}+\\frac {{z}_{0}^{2}} {{c}^{2}}=1\n$$\n\n此切平面与坐标面围成四面体的体积为$V=\\frac {1} {6}\\frac {{\\left ( {abc}\\right )}^{2}} {{x}_{0}{y}_{0}{z}_{0}}$    3分\n\n要求$V=\\frac {1} {6}\\frac {{\\left ( {abc}\\right )}^{2}} {xyz}$满足条件$\\frac {{x}^{2}} {{a}^{2}}+\\frac {{y}^{2}} {{b}^{2}}+\\frac {{z}^{2}} {{c}^{2}}=1\\left ( {x>0,y>0,z>0}\\right )$的最小值，只需求$f\\left ( {x,y,z}\\right )=xyz$满足条件$\\frac {{x}^{2}} {{a}^{2}}+\\frac {{y}^{2}} {{b}^{2}}+\\frac {{z}^{2}} {{c}^{2}}=1\\left ( {x>0,y>0,z>0}\\right )$的最大值。\n\n由拉格朗日乘数法，只需求以下函数的驻点\n\n$F\\left ( {x,y,z,\\lambda }\\right )=xyz+\\lambda \\left ( {\\frac {{x}^{2}} {{a}^{2}}+\\frac {{y}^{2}} {{b}^{2}}+\\frac {{z}^{2}} {{c}^{2}}-1}\\right )$        6分",
+      "knowledge_path": "knowledge/engineering_math_analysis_2/engineering-mathematical-analysis-2-017.md",
+      "text_sha256": "b193f8ab5b86a10aca5ad8b6fe447a35b9882abecf37bb7c5aa55637a57d3ef2",
+      "knowledge_sha256": "5fe3b49d3842d2e0d0c8f4047fa8fafa31f250ccbec43c9dc37fa0198f5d0f6d"
+    },
+    "english-006:h-英语summary:c01": {
+      "course_id": "english",
+      "source_id": "english-006",
+      "source_title": "英语SUMMARY",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": null,
+      "heading_path": [
+        "英语SUMMARY"
+      ],
+      "text": "Unit 7,text A\n\nThe passage illustrates that children need physical education more than before .And it can be divided into three parts.\n\nIn the first part,the passage says about nowadays most students’  attitudes to PE are negative. It also says that physical exercises have two advantages . It can help you to own a healthy body and mind ,and it can also help you take up good exercises’  habits, which can influence you to be healthier than others even when you are an adult.\n\nIn the second part , it use three steps to prove its opinion is right. At the beginning, it tells physical exercises’  two advantages more specifically. Then the author emphasizes the schools’  terrible behaviors which stray away students’  ideas to doing physical exercises. And he hopes Belize’s children will doing more physical exercises so that they can make a name for themselves ,and also the country.At the end of this part, the author shows some kind of exercises, and illustrates the importance of doing more physical exercises again.",
+      "knowledge_path": "knowledge/english/english-006.md",
+      "text_sha256": "10bc6f072e58b7544ba9101d7e13fc237d59686524961f2b0173e22a802bba6c",
+      "knowledge_sha256": "36901fe184edd33bdd2aaae25375489e361f4f74ddbfff56ce7947fdd9bc3f35"
+    },
+    "ideology-morality-and-rule-of-law-002:h-思政题目2024级回忆:c01": {
+      "course_id": "ideology_morality_and_rule_of_law",
+      "source_id": "ideology-morality-and-rule-of-law-002",
+      "source_title": "思政题目2024级回忆",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": null,
+      "heading_path": [
+        "思政题目2024级回忆"
+      ],
+      "text": "名词解释：世界观，社会公德，国家安全\n\n答案：P20，P167，P94\n\n辨析题:\n\n1、分析以下观点：“人生就在于满足感官的需求和快乐”\n\n2、19岁小明往游戏里充值了2万元，小明的父亲可以向游戏公司要回这2万元吗\n\n分析题:\n1. 爱国主义的基本内涵\n\n答案：P79\n1. 社会主义核心价值观和社会主义核心价值体系之间的关系\n\n答案：P110\n\n材料题：\n\n材料内容：来广州打工后成为广东省高级人民法院一名保安的许霆，来到广州市天河区黄埔大道某银行的ATM取款机取款。结果取出1000元后，他发现银行卡账户里只被扣了1元。经过反复操作多次，许霆先后取款171笔，合计17.5万元。\n1. 辨析许某的行为是否违反道德和法律\n1. 根据法律和道德的知识，分析法律和道德之间的联系和区别",
+      "knowledge_path": "knowledge/ideology_morality_and_rule_of_law/ideology-morality-and-rule-of-law-002.md",
+      "text_sha256": "05fa0082242fcc889387a2b79c44a17ac4eb3b31d3913fff13fe16ae38197cec",
+      "knowledge_sha256": "687a7ee31f35578585bfce7ffdadfa7055afebe968f37634fa686b873f99e882"
+    },
+    "information-security-intro-003:h-信安导论-复习提纲-v1-精简版:c02": {
+      "course_id": "information_security_intro",
+      "source_id": "information-security-intro-003",
+      "source_title": "《信安导论》复习提纲 v1 (精简版)",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": null,
+      "heading_path": [
+        "《信安导论》复习提纲 v1 (精简版)"
+      ],
+      "text": "2.4 公开密钥密码\n- 公钥密码提出的标志：1976年的Diffie-Hellman密钥交换算法（p33）\n- 公开密钥密码与对称密钥密码的不同：不是基于代替和置换，而是基于数学函数；非对称/双密钥； 六要素；支持不可抵赖性（不可否认性）（p32）\n- 公开密钥密码与对称密钥密码相比，其优缺点：\n  - 优点：解决了密钥分发到的难题，密钥管理简单容易，便于实现数字签名。\n  - 缺点：计算开销大、加密和解密速度慢、要求密钥位数更多、密文长度往往大于明文长度。\n- 公钥密码通信的安全性保障：私钥的保密性\n- 公钥密码体系的特点：公、私钥成对生成，公钥和算法对外公开，私钥保密。\n- 公钥密码体系的应用场合：（1）加密信息（机密性）；（2）身份认证（可认证性）；\n- 公钥密码的核心思想：单向陷门函数的三个条件、单向性、陷门性、陷门信息（p33）；\n- Diffie-Hellman密钥交换算法：原根、离散对数、算法过程（p34）\n- 公开密钥算法数学基础：欧拉函数的概念、欧拉定理的使用、算法时间复杂度的表示方式（p35）\n- RSA密码算法：大整数因子分解问题、分组密码、密钥生成步骤、辗转相除法求逆元（p35-36）\n- 椭圆曲线密码体制（Elliptic Curve Cryptosystems，ECC）相比RSA的优势（p37）\n\n2.5 消息认证\n- 认证的目的：（1）验证收发双方；（2）验证消息的完整性；（p38）\n- 认证的手段：消息认证、数字签名、实体认证、摘要函数（Hash 函数）（p38）\n- 消息认证的目的：证明消息的信源、信宿真实性；消息内容没有受到篡改、消息序号和时间性正确。\n- 消息认证的手段：消息加密；消息认证码（MAC）； （p38）\n- 主要的消息摘要算法：MD5， SHA-1， SHA-256等\n- 散列函数的健壮性：弱无碰撞、强无碰撞、单向性（p40-41）\n- 散列函数的安全长度：生日悖论、生日攻击、消息摘要长度下限…(p41)\n- 数字签名作用：防止抵赖\n- 数字签名原理：用私钥对散列值进行加密，用公钥做验证。（p45）\n\n第四章\n\n4.1\n- 身份认证的依据：三个方面：用户所知道的、所拥有的、所具有的…（p57）\n- 身份认证的技术：口令认证、密码学认证、生物特征认证，各自的优缺点（p57）\n- （补充）基于令牌的认证：用户持有的用于进行认证的一种物品，比如：银行卡（磁条卡、智能卡，……）、电子身份证；\n- 单因子认证与双因子认证；",
+      "knowledge_path": "knowledge/information_security_intro/information-security-intro-003.md",
+      "text_sha256": "dd66a6cc5737ebf4659d10057e6768a7d1f12b55732632f91014ceffafd20dbb",
+      "knowledge_sha256": "53e103a7b7817114cb6fac75e27dd055993866ff06e46998bdc756a2aa578d59"
+    },
+    "information-security-mathematics-007:q-information-security-mathematics-007-q3:c01": {
+      "course_id": "information_security_mathematics",
+      "source_id": "information-security-mathematics-007",
+      "source_title": "信息安全数学基础期末试卷",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": "information-security-mathematics-007-Q3",
+      "heading_path": [
+        "信息安全数学基础期末试卷"
+      ],
+      "text": "(1)    *F*对于运算“＋”和运算“  · ”都构成群，运算“  · ”对于“＋”满足分配律。\n\n(2)    *F*对于运算  “＋”构成交换群，单位元是*e*；*F*\\{*e*}对于运算“  · ”构成交换群，运算“  · ”对于“＋”满足分配律。\n\n(3)    *F*对于运算  “＋”和  “  · ”构成交换环，运算“＋”的单位元是*e*，运算“＋”对于“  · ”满足分配律。\n\n(4)    *F*对于运算“＋”构成交换群，单位元是*e*；*F*\\{*e*}对于运算“  · ”构成交换环，运算“＋”对于“  · ”满足分配律。\n\n**二．** 填空题(将正确答案填在        上)：（每题2分，共20分）\n\n**1．**设*a*＝1520，*b*＝162，根据欧几里得除法，对整数*c*＝－100，存在唯一一对整数*q*＝            ，*r*＝            ，使得*a*＝*bq* ＋  *r*，*c*  *r*  <  *b*＋*c*。\n\n**2．**如果整数*a*，*b*满足(*a*,  *b*)=1，那么(*a*＋*b*,  *a*－*b*)＝            。\n\n**3．** *n*＝1764的欧拉函数值 **(*n*)＝______________。\n\n**4．**模11的平方剩余是            ，模11的平方非剩余是              。\n\n**5．**[12, 15, 21, 35]的最小公倍数是                 。\n\n**6.** 模10的最小非负完全剩余系是                                   ，最小非负简化剩余系是                                   。\n\n**7.** 一次同余式234*x* ≡ 72（mod 198）的解数是             。\n\n**8.** *Q*为有理数集合，定义*Q*上的运算⊙为：对任意*a*，*b*Î*Q*，*a*⊙*b*＝(*a*＋*b*)－*a*×*b*。*Q*关于运算⊙的单位元为         ，4关于运算⊙的逆元是         。\n\n**9.** *F*13  *＝*Z*/13*Z* \\{0}＝{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}关于运算：(*a*,  *b*)  (*a*×*b*)mod13构成群。则元素5生成的循环子群为                           ，元素5的阶为____________。\n\n**10.** 设 *m* 是一个正整数，*a*是满足              的整数，则存在整数*a*¢，1≤*a*¢＜*m* ，使得*aa*¢≡1 (mod  *m*)。",
+      "knowledge_path": "knowledge/information_security_mathematics/information-security-mathematics-007.md",
+      "text_sha256": "f01ad6ae25a2c025f825dac84f0e6c9f5d3b76a49023b3465b49ac08ea40db01",
+      "knowledge_sha256": "27a9e85e00f55d62befa82db269208d363856d6fa383c94091a1dcbcc0b1f5df"
+    },
+    "intelligent-algorithms-025:h-sa算法适合应用场景~在解空间复杂-存在多个局部最优解的情况下表现出色~优点~全局搜索能力-能够跳出局部最优-具有较强的全局优化能力~参数选择敏感-算法的性能对参数-如初始温度-降温系数等-的选择较为敏感:c01": {
+      "course_id": "intelligent_algorithms",
+      "source_id": "intelligent-algorithms-025",
+      "source_title": "模拟退火SA",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": null,
+      "heading_path": [
+        "SA算法适合应用场景",
+        "在解空间复杂、存在多个局部最优解的情况下表现出色",
+        "**优点**",
+        "-**全局搜索能力**：能够跳出局部最优，具有较强的全局优化能力。",
+        "- **参数选择敏感**：算法的性能对参数（如初始温度、降温系数等）的选择较为敏感。"
+      ],
+      "text": "``` python\nimport random\nimport math\n\n# 问题参数\nc = 15  # 背包容量\nw = [7, 3, 12, 5, 14]  # 物品重量\nv = [10, 4, 15, 6, 9]  # 物品价值\nn = len(w)  # 物品数量\n\n# SA算法参数\nT0 = 1000  # 初始温度\nTk = 1e-5  # 结束温度\nL = 100  # 每个温度下的迭代次数\nalpha = 0.95  # 降温系数\n\n# 初始化解\ndef initial_solution():\n    x = [0] * n\n    while True:\n        for i in range(n):\n            x[i] = random.randint(0, 1)\n        if is_feasible(x):\n            return x\n\n# 判断解是否合法\ndef is_feasible(x):\n    total_weight = sum(w[i] * x[i] for i in range(n))\n    return total_weight <= c\n\n# 计算目标函数值\ndef calculate_value(x):\n    return sum(v[i] * x[i] for i in range(n))\n\n# 生成邻近解\ndef generate_neighbor(x):\n    neighbor = x.copy()\n    # 随机选择两个不同的物品，交换它们的选取状态\n    i, j = random.sample(range(n), 2)\n    neighbor[i] = 1 - neighbor[i]\n    neighbor[j] = 1 - neighbor[j]\n    # 如果邻近解不合法，尝试修复\n    if not is_feasible(neighbor):\n        # 找到重量超过的部分，尝试移除一些物品\n        while not is_feasible(neighbor):\n            # 随机选择一个选中的物品并移除\n            selected = [k for k in range(n) if neighbor[k] == 1]\n            if not selected:\n                break\n            remove = random.choice(selected)\n            neighbor[remove] = 0\n    return neighbor\n\n# SA算法主循环\ndef simulated_annealing():\n    x_current = initial_solution()\n    x_best = x_current.copy()\n    value_best = calculate_value(x_best)\n    T = T0\n    k = 0\n    while T > Tk:\n        for _ in range(L):\n            x_neighbor = generate_neighbor(x_current)\n            value_current = calculate_value(x_current)\n            value_neighbor = calculate_value(x_neighbor)\n            if value_neighbor >= value_current:\n                x_current = x_neighbor\n                if calculate_value(x_current) > value_best:\n                    x_best = x_current.copy()\n                    value_best = calculate_value(x_best)\n            else:\n                # 根据Metropolis准则接受较差解\n                delta = value_neighbor - value_current\n                if random.random() < math.exp(delta / T):\n                    x_current = x_neighbor\n        # 降温\n        T *= alpha\n        k += 1\n    return x_best, value_best\n\n# 执行算法\nbest_solution, best_value = simulated_annealing()\n\n# 输出结果\nprint(\"最优解为：\", best_solution)\nprint(\"最大价值为：\", best_value)\n```",
+      "knowledge_path": "knowledge/intelligent_algorithms/intelligent-algorithms-025.md",
+      "text_sha256": "7610180647b66a7c61cf527989c03368deda7439419c97b4cbd052e37973b257",
+      "knowledge_sha256": "09a6fecde81fd671377265932d6573128a0fce4c17ae0ac0dcf95d701732a174"
+    },
+    "mao-zedong-thought-overview-002:h-演讲大纲:c01": {
+      "course_id": "mao_zedong_thought_overview",
+      "source_id": "mao-zedong-thought-overview-002",
+      "source_title": "演讲大纲",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": null,
+      "heading_path": [
+        "演讲大纲"
+      ],
+      "text": "**优化版 15 分钟演讲思路**\n\n**一、引言（2分钟）**\n- 开场白：引用  “路漫漫其修远兮，吾将上下而求索”，强调自我革命的长期性和探索性。\n- 提出问题：为什么中国共产党能长期保持活力？自我革命如何成为党执政的“密码”？\n- 过渡：中国的治理模式有其  独特国情，相比西方模式，它更能确保  长期稳定与持续改革。\n\n**二、党的自我革命历史沿革及其国情特点（10分钟）**\n\n**1. 建党初期（1921-1949）：农村包围城市与生存之战**\n- 自我革命体现：八七会议、古田会议、遵义会议，使党摆脱旧有模式，确立人民军队的基本原则。\n- 结合国情分析：\n  - 为什么不是“苏联模式”或“西方革命模式”？\n    - 苏联模式：依靠城市工人起义，中国没有这样的产业工人基础。\n    - 西方式民主斗争：国民党已掌握政权，无法进行和平演变。\n  - 对比美国：\n    - 美国早期独立战争是由富裕精英推动，而中国革命则是  自下而上的农民运动，符合当时中国社会状况。\n\n参考民国：军队要把握自己手中：袁世凯窃取革命果实\n- 当代价值：\n  - 坚持实事求是、因地制宜，比如新型城镇化  和  乡村振兴战略，延续了“农村包围城市”的思维。\n\n**2. 党的政权巩固与曲折探索（1949-1976）：制度建设与极左教训**\n- 自我革命体现：\n  - 土地改革、社会主义改造确立制度基础。\n  - 反思“大跃进”与“文化大革命”中的错误，并最终在1976年拨乱反正。\n- 结合国情分析：\n  - 为什么中国不能直接实行资本主义？\n    - 1950年代，中国  缺乏工业基础，如果实行自由市场经济，只会被国际资本吞噬。\n  - 为什么中国没有采取西方式民主？\n    - 美国是自下而上的“仰视监督”，中国是自上而下的“俯视考核”，后者在经济发展初期更具效率。\n- 当代价值：\n  - 文革教训推动了改革开放，同时也促使当代党加强党内监督，如全面从严治党、反腐败斗争。\n\n**3. 改革开放与市场经济建设（1978-2002）：思想解放与经济突破**\n- 自我革命体现：\n  - 真理标准问题大讨论破除了教条主义束缚，恢复党的纪律检查机关加强党内监督。\n  - 1992年确立社会主义市场经济体制，实现经济腾飞。\n- 结合国情分析：\n  - 为什么中国不是资本主义国家？\n    - 与美国对比：\n      - 美国“市场决定一切”，中国采用  政府调控 + 市场经济  的混合模式，保证  社会稳定  和  共同富裕。\n    - 与苏联对比：\n      - 苏联80年代激进私有化导致经济崩溃，而中国的渐进式改革让国家  稳步增长。\n- 当代价值：\n  - 中国经济改革的核心经验：政府既要支持市场，也要调控市场，避免资本主义放任自流的问题。",
+      "knowledge_path": "knowledge/mao_zedong_thought_overview/mao-zedong-thought-overview-002.md",
+      "text_sha256": "e3690a3334c6b2bac1e0742f3c5c3a7d20a46bbdf2047b0e71fa29e85d83d68c",
+      "knowledge_sha256": "7219c410c979f1227ae4becb7eece04a7bdb7e26099f400ccf57118645916785"
+    },
+    "marxist-basic-principles-002:s17:c01": {
+      "course_id": "marxist_basic_principles",
+      "source_id": "marxist-basic-principles-002",
+      "source_title": "科技发展与社会变革：生产力与生产关系视角",
+      "locator_type": "slide",
+      "locator_start": 17,
+      "locator_end": 17,
+      "question_id": null,
+      "heading_path": [
+        "科技发展与社会变革：生产力与生产关系视角"
+      ],
+      "text": "![image](assets/marxist-basic-principles-002/image-033.jpg)\n- 启示\n- 自动驾驶的普及像一面镜子，照出了技术进步与社会规则之间的深刻裂痕。当汽车不再需要人类驾驶时，我们突然发现：工厂能三个月造出自动驾驶卡车，但社会需要三十年才能消化被淘汰的三百万司机；算法每秒处理百万条道路数据，但法律还在争论事故责任该由车主还是程序员承担；科技公司掌握着每辆车的行驶轨迹，但普通人对自己产生的数据毫无话语权。这不仅是机器替代人的问题，更暴露了工业时代建立的产权制度、职业体系、法律框架在数字浪潮前的全面过时。就像两百年前蒸汽机冲垮了马车时代，今天的数据洪流正在重塑\"谁拥有资源、如何分配价值\"的根本规则——只不过这次变革的赌注更大：如果我们不能及时建立数据时代的\"交通规则\"，那么掌握算法的巨头可能成为新时代的\"道路领主\"，而普通人将在自己创造的数据高速公路上失去方向。正是这些不断堆积的矛盾，逼迫着人类拆解旧制度的齿轮，锻造新社会的轴承，在阵痛中完成文明升级。历史从来不是直线前进，而是在生产力与生产关系的碰撞中，迸发出改变世界的火花。",
+      "knowledge_path": "knowledge/marxist_basic_principles/marxist-basic-principles-002.md",
+      "text_sha256": "6207aa3675e9d6296a1d484db9dec4088cf8b3fe1e8deafff355f437eabeccca",
+      "knowledge_sha256": "92d7fdfac083aae48d728d6ae725f8669aa5bd092cecd9b5a64e42ad001127d5"
+    },
+    "mathematical-modeling-001:p106:c01": {
+      "course_id": "mathematical_modeling",
+      "source_id": "mathematical-modeling-001",
+      "source_title": "数模大全",
+      "locator_type": "page",
+      "locator_start": 106,
+      "locator_end": 106,
+      "question_id": null,
+      "heading_path": [
+        "数模大全"
+      ],
+      "text": "m=5 8  8  3 4 0 15 16 22 30 0 16 12;\nc=0 700 400 450 0 0 0 600 300 500 0 500 400;\nd=49;\nenddata\nmin=@sum(operate:c*y);\n@for(operate(i,j):x(j)-x(i)+y(i,j)>t(i,j));\nn=@size(events);\nx(n)-x(1)<d;\n@for(operate:@bnd(0,y,t-m));\nend\n\n作业\n)\n)(\n3,1(\nB ）压缩1 天的工期，作业\n)\n)(\n8,6\n(\nK 压缩1 天工期，这样可以在49 天\n完工，需要多花费1200 元。\n\n如果需要知道压缩工期后的关键路径，则需要稍复杂一点的计算。\n例24 （续例23） 用LINGO 软件求解例23，并求出相应的关键路径、各作业的\n最早开工时间和最迟开工时间。\n\n解  为了得到作业的最早开工时间，仍在目标函数中加入∑\n\nix ，记\niz 表示事件i\n\n∈V\ni\n\n的最迟开工时间，其它处理方法与前面相同。\n\n写出相应的LINGO 程序如下：\nmodel:\nsets:\nevents/1..8/:x,z;\noperate(events,events)/1 2,1 3,1 4,2 5,3 4,3 5,4 6,5 6,\n5 7,5 8,6 7,6 8,7 8/:s,t,m,c,y;\nendsets\ndata:\nt=5 10 11 4 4 0 15 21 25 35 0 20 15;\nm=5 8  8  3 4 0 15 16 22 30 0 16 12;\nc=0 700 400 450 0 0 0 600 300 500 0 500 400;\nd=49;\n@text(txt2.txt)=x,z;\nenddata\nmin=mincost+sumx;\nmincost=@sum(operate:c*y);\nsumx=@sum(events:x);\n@for(operate(i,j):s(i,j)=x(j)-x(i)+y(i,j)-t(i,j));\nn=@size(events);\nx(1)=0;\nx(n)<d;\n@for(operate:@bnd(0,y,t-m));\nz(n)=x(n);\n@for(events(i)|i#lt#n:z(i)=@min(operate(i,j):z(j)-t(i,j)+y(i,j)));\nend\n\n计算出所有作业的最早开工时间和最迟开工时间，见表12。\n\n表12  作业数据\n\n作业\n)\n,\n(\nj\ni\n   开工时间   实际完成时间（天）作业\n)\n,\n(\nj\ni\n  开工时间   实际完成时间（天）\n)\n2,1(\nA\n       [0,0]           5\n)\n6,5\n(\nG\n      [9,9]         21",
+      "knowledge_path": "knowledge/mathematical_modeling/mathematical-modeling-001.md",
+      "text_sha256": "ba20c2bf8e5ed25ae10bd8d089f292cd63acda7099911ce4e401b3824b301b2c",
+      "knowledge_sha256": "4c0237d70e7645ab5d8ab0d67e591dfc282a1259249635c207d0e10f578c2165"
+    },
+    "mobile-application-development-003:h-课程设计要求及报告模板:c01": {
+      "course_id": "mobile_application_development",
+      "source_id": "mobile-application-development-003",
+      "source_title": "课程设计要求及报告模板",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": null,
+      "heading_path": [
+        "课程设计要求及报告模板"
+      ],
+      "text": "**移动应用开发（Android** **）课程大作业及报告要求**\n\n教师：张晶\n\n一、目的\n\n本课程培养综合性 Android 手机移动应用设计和开发能力以及小组成员的协作开发能力。\n\n二、设计要求\n\n1 、大作业以小组为单位进行开发，可单人成组。\n\n2 、大作业开发主题可从如下几项目中选择：\n\n1） （有基础代码，基础功能完成难度较小 ，高分不易）从本课程的五个项目 GeoQuiz /NewsApp / Sunﬂower /CriminalIntent /HandwrittenRecognition 中选择一个作为大作业的基础进行开发。\n\n要求从零开始实现，并对项目的功能或界面做改造。例如：在GeoQuiz或者  NewsApp 项目中增加数据库存储等功能；在各项目中提供点赞、地图、社交分享等功能。对项目进行的界面或者功能改造，将有加分。\n\n功能方面 ，APP  必须实现的功能包括：i）基本的注册功能、登陆功能，和某些数据的增删改查功能。ii）要求  APP  提供适当的人机交互界面。\n\n2）（全新从零开发，综合性强，项目跑通难度较大 ，高分不难）为本课程开发一款 Android移动端的 APP，供教师端或者学生端使用均可（类似于为课程网站ecourse.scut.edu.cn 开发一款 Android平台的 APP）。\n\n项目要求提供前端和后端，其中，前端为 Android  平台上的APP，后端为Web应用程序，提供数据查询、存储等。后端可使用开源代码，例如，使用 Ruoyi  开源代码（https://www.ruoyi.vip/），或者其它开源代码，或者自行设计完成项目的后端Web应用程序。\n\n功能方面 ，i）APP  必须实现的功能为用户登陆功能。考虑到本任务综合性强，难度较大 ，APP的其它功能可由小组自行设计，如用户管理、讨论区管理、教案管理、作业管理、课堂管理等，均可。ii）要求  APP  提供适当的人机交互界面。\n\n3） 自选命题：需跟指导老师通过QQ或者面谈，讨论之后确定选题。\n\n3、技术方面，开发中要求使用 ROOM  操作数据库。 如果使用 Repository  层，有加分。\n\n三、以小组为单位提交如下文件（每组提交一份即可）\n\n1、大作业报告，文件名：  AppName_leaderStudentID.pdf. eg. scutTourMap_ 202235221111.pdf\n\n2、展示  APP  运行情况的视频文件\n\n3 、zip  文件，包括：\n\na) .apk，命名：AppName_leaderStudentID.apk\n\nb)  源代码，命名：AppName_leaderStudentID.zip\n\n4、2026/07/01 23:59:59  前提交到：ecourse.scut.edu.cn",
+      "knowledge_path": "knowledge/mobile_application_development/mobile-application-development-003.md",
+      "text_sha256": "a8a454b7b6ff0040553a82565e4e6f517bac67151ac5c952f738e97509a24e9c",
+      "knowledge_sha256": "1e39b4262c35e341e7f73c2e03d186629bb4818fb396fb3e533fefc73cd0517f"
+    },
+    "network-application-architecture-001:p2:c01": {
+      "course_id": "network_application_architecture",
+      "source_id": "network-application-architecture-001",
+      "source_title": "《网络应用开发》复习指南",
+      "locator_type": "page",
+      "locator_start": 2,
+      "locator_end": 2,
+      "question_id": null,
+      "heading_path": [
+        "《网络应用开发》复习指南"
+      ],
+      "text": "Servlet 的生命周期\n\nFilter 过滤器\n\nListener 监听器\n\nJSP\n\nJSP 基本概念\n\nJSP 的语法\n\nJSP 的执行过程\n\n与Servlet 的区别\n\nJSP 指令\n\nJSP 的内置对象\n\nJSP 动作\n\nJSP 隐含对象\n\ninclude 与forward\n\nEL 和 JSTL\n\nJavaBean 的基本概念\n\nEL 的基本概念，标识符，保留字，变量，常量，运算符\n\nJSTL 的基本概念，标签\n\nJDBC\n\nJDBC 的基本概念\n\nJDBC 的常用API\n\nJDBC 的程序实现\n\nMVC 设计模式\n\nMVC 设计模式的基本概念\n\n两种常用的设计模式\n\nSpring\n\nSpring 的基本概念\n\n依赖注入\n\n面向切面的编程，\n\n备注：\n\n以上所列考试范围仅供参考；\n\n为了确保考试的公平，考前将不回答任何与考题相关内容的提问，敬请谅解。",
+      "knowledge_path": "knowledge/network_application_architecture/network-application-architecture-001.md",
+      "text_sha256": "97de09e1eefb656f292d0aed700b31dcd9210c3235419c2b29cb4687e5aabb3d",
+      "knowledge_sha256": "abecbb19cad64df47eb4b1d721c13842a644d58c42187b6865457fa79d502d51"
+    },
+    "network-management-005:h-实验大纲-2026:c03": {
+      "course_id": "network_management",
+      "source_id": "network-management-005",
+      "source_title": "实验大纲-2026",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": null,
+      "heading_path": [
+        "实验大纲-2026"
+      ],
+      "text": "（7）用抓包程序抓包，MIB Browser使用表格方式浏览ifTable，请问表格方式主要使用了什么SNMP操作来完成数据的读取?  表格方式与GetNext的读取方式相同吗？\n\n（8）用抓包程序抓包，MIB Browser  使用Get操作读取sysName,其PDU的字段有哪些?\n\n（9）用抓包程序抓包，MIB Browser  切换成SNMPv2c,使用GetBulk操作读取sysName,其PDU的字段有哪些?\n\n（10）  GET、GETNEX和SET报文分别由哪些部分组成?\n1. **通过编程和使用SNMP协议，获取MIB信息库信息**\n\n使用SNMP第三方API或工具，编写简单程序，获取MIB信息库信息（RFC 1213）。\n\n**实验二  网络管理系统实例、使用及开发**\n\n实验目的：\n1. 学习使用网管系统软件，使学生基本掌握网络管理软件的安装、配置和使用方法。\n1. 学习编写一个简单的网络管理系统；或学习基于P4的简单自定义网络转发功能开发。\n1. 通过实验加深学生对于网络管理软件的认识。\n1. 学习使用Linux网络管理命令对网络检测\n    1. 网络配置相关命令。\n    1. 网络测试相关命令。\n    1. 网络监控相关命令。\n\n实验要求：\n\n**1.选择一款成熟的网络管理软件，如openNMS，了解网管系统安装、配置和使用方法**\n\n1.1  安装网络管理软件。\n\n1.2  使用网络管理软件，对网络进行管理\n\n查看并记录本组路由器、服务器的各种信息（如设备信息、端口信息、告警信息等）；对组内网段进行拓扑发现。\n\n1.3  查看并回答如下问题：\n- 一般网管系统有什么主要功能？该网管系统有什么主要功能？\n- 拓扑自动发现的途径有哪些？分析该系统可能采用哪种方法进行拓扑发现？（可选）\n\n**2.使用Linux网络管理命令对网络检测**\n\n利用Virtualbox或其他虚拟化软件，安装Linux虚拟机，并进行配置，使其能够连接互联网。\n\n2.1使用ifconfig、arp、netstat命令获取系统的相关配置信息\n\n2.1.1  请问你所在主机的主机名、MAC地址、IP地址、网关、DNS server分别是什么?  通过什么命令获得?\n\n2.1.2  通过什么命令有可能获得你所在主机的网关MAC地址?  如果有，请问网关对应的MAC地址是什么？\n\n2.1.3  察看你所在主机的路由表。写出你使用的命令。\n\n2.2.  使用ping、traceroute、nslookup命令检测网络\n\n2.2.1  监测你所在主机是否与其网关连通。\n\n2.2.2  请问用你所在的主机访问www.baidu.com要经过哪些路由器，共多少跳？并写出你使用的命令。",
+      "knowledge_path": "knowledge/network_management/network-management-005.md",
+      "text_sha256": "ad319b8703bd58a4fc069c382d0d5d6882cbb9577e73c5490b84743de3216c17",
+      "knowledge_sha256": "2d60e43f11fa5b15e32cbbb54d2ac76dbc502d1a15708b5ef65b13ca4e4c2599"
+    },
+    "next-generation-network-architecture-001:s18:c01": {
+      "course_id": "next_generation_network_architecture",
+      "source_id": "next-generation-network-architecture-001",
+      "source_title": "天地一体化网络最终版2",
+      "locator_type": "slide",
+      "locator_start": 18,
+      "locator_end": 18,
+      "question_id": null,
+      "heading_path": [
+        "天地一体化网络最终版2",
+        "天地一体化架构主要应用场景"
+      ],
+      "text": "- 2、空天地一体化内容分发网络\n- 相比于传统以连接为中心的网络，以信息为中心的网络(ICN)采用发布和订阅的模式，可以实现更有效的内容感知路由策略。ICN两个重要的特点是网内缓存以及命名路由。在无线侧，基于无线边缘缓存的内容共享技术被提出，其通过用户对流行内容的偏好程度进行分析，将流行程度高的内容提前缓存在距离请求用户更近的边缘无线节点。当终端用户发起请求时，若请求的内容已经提前存在于边缘缓存节点，可以直接从边缘缓存的无线节点获取而无须通过核心网获取内容。因此，系统可以减少流行程度高的内容通过回程链路的重复性传输，进一步降低传输时延，提高用户服务质量，降低网络负载的压力。深入了解",
+      "knowledge_path": "knowledge/next_generation_network_architecture/next-generation-network-architecture-001.md",
+      "text_sha256": "106d785cbff47727c0ce003862828cceb5283440980df3814dd0902c173be17b",
+      "knowledge_sha256": "e6f8594f06687398ade0ba59940c1b20ca98b5adca27ca6e88de65bcf289c493"
+    },
+    "next-generation-network-architecture-001:s24:c01": {
+      "course_id": "next_generation_network_architecture",
+      "source_id": "next-generation-network-architecture-001",
+      "source_title": "天地一体化网络最终版2",
+      "locator_type": "slide",
+      "locator_start": 24,
+      "locator_end": 24,
+      "question_id": null,
+      "heading_path": [
+        "天地一体化网络最终版2",
+        "网络安全问题"
+      ],
+      "text": "- 1. 复杂的安全威胁：天地一体化网络面临通信信号的拦截、网络设施的物理攻击、以及针对网络协议和软件的网络攻击等多重威胁,需要构建多层次的网络安全防护体系以保障数据传输的安全和稳定。\n- 2. 数据保护：为防止敏感信息泄露，需要强大的加密技术和访问控制机制，但同时需保证加密措施不会对网络性能产生过大影响。\n![image](assets/next-generation-network-architecture-001/image-032.jpg)\n- 参考文献：\n- 蒋长林,李清等.天地一体化网络关键技术研究综述[J].软件学报 ISSN 1000-9825,2024,35(1):266−287",
+      "knowledge_path": "knowledge/next_generation_network_architecture/next-generation-network-architecture-001.md",
+      "text_sha256": "b7f1d3495027dc26ab058f78b6c7d5433ff607ddfc69eb3872c4335e4494eabc",
+      "knowledge_sha256": "e6f8594f06687398ade0ba59940c1b20ca98b5adca27ca6e88de65bcf289c493"
+    },
+    "signals-and-communication-014:s58:c01": {
+      "course_id": "signals_and_communication",
+      "source_id": "signals-and-communication-014",
+      "source_title": "第3章 离散傅里叶变换",
+      "locator_type": "slide",
+      "locator_start": 58,
+      "locator_end": 58,
+      "question_id": null,
+      "heading_path": [
+        "第3章 离散傅里叶变换",
+        "【例3-5】已知x(n)=cos(nπ/6)是一个长度N=12的有限长序列，求它的N点DFT。"
+      ],
+      "text": "- 3.6 MATLAB应用实例\n- 【例题3-14】信号的Fourier分解与合成\n- MATLAB代码如下：\n- clear all;N = 256; dt = 0.05; % data numbers and sampling intervel,sampling frequence is 20Hz\n- n=0:N-1;t=n*dt; % 序号序列和时间序列\n- x1=sin(2*pi*t);x2=0.5*sin(2*pi*5*t);x=sin(2*pi*t)+0.5*sin(2*pi*5*t); %signals add\n- m=floor(N/2)+1; %down for integer\n- a=zeros(1,m);b=zeros(1,m);\n- for k=0:m-1\n- for ii=0:N-1\n- a(k+1)=a(k+1)+2/N*x(ii+1)*cos(2*pi*k*ii/N);%matlab's array index must be increase from 1\n- b(k+1)=b(k+1)+2/N*x(ii+1)*sin(2*pi*k*ii/N);\n- end\n- c(k+1)=sqrt(a(k+1).^2+b(k+1).^2);\n- end\n- if(mod(N,2)~=1)a(m)=a(m)/2;end\n- for ii=0:N-1\n- xx(ii+1)=a(1)/2;\n- for k=1:m-1;\n- xx(ii+1)=xx(ii+1)+a(k+1)*cos(2*pi*k*ii/N)+b(k+1)*sin(2*pi*k* ii/N);\n- end\n- end\n- DFT\n- IDFT",
+      "knowledge_path": "knowledge/signals_and_communication/signals-and-communication-014.md",
+      "text_sha256": "e06c3300180e1a3343239ad0124b71afa1cde78e0ee9326612179199302526a3",
+      "knowledge_sha256": "e2ddca205a0bfcdad880022d97100262d46689fe2fdfa4a947bb5127a6f05db7"
+    },
+    "software-engineering-035:h-华南理工大学-软件工程-样例含答案:c12": {
+      "course_id": "software_engineering",
+      "source_id": "software-engineering-035",
+      "source_title": "华南理工大学《软件工程》样例含答案",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": null,
+      "heading_path": [
+        "华南理工大学《软件工程》样例含答案"
+      ],
+      "text": "1.软件生存周期是从软件开始开发到开发结束的整个时期。（×    ）\n\n2.系统流程图是一个典型的描述逻辑系统的传统工具。（  ×    ）\n\n3.数据流图和数据字典共同构成系统的逻辑模型。（    √      ）\n\n4.扇出是一个模块直接调用的模块数目，一般推荐的扇出为3或4。（    √      ）\n\n5.耦合用于衡量一个模块内部的各个元素彼此结合的紧密程度。（      ×）\n\n6.程序运行过程中出现错误叫做容错。                               （    ×  ）\n\n7.软件测试的目的是证明程序没有错误。                             （      × ）\n\n8.白盒测试法是将程序看成一个透明的盒子，不需要了解程序的内部结构和处理过程。\n\n（      × ）\n\n五、问答题\n\n1．什么是软件生存周期。\n\n答：一个软件从定义到开发、使用和维护，直到最终被废弃，要经历一个漫长的时期，通常把软件经历的这个漫长的时期称为生存周期。软件生存周期就是从提出软件产品开始，直到该软件产品被淘汰的全过程。\n\n2．在需求分析阶段，建立目标系统的逻辑模型的具体做法是什么。\n\n答：系统流程图是描述物理系统的传统工具。它的基本思想是用图形符号以黑盒子形式描绘系统里的每个部件（程序、文件、数据库、表格、人工过程等）。系统流程图表达的是部件的信息流程，而不表示对信息进行加工处理的控制过程。\n\n3．为什么数据流图要分层？\n\n答：这了表达数据处理过程的数据加工情况，用一个数据流图是不够的。为表达稍为复杂的实际问题，需要按照问题的层次结构进行逐步分解，并以分层的数据流图反映这种结构关系。\n\n4．软件的质量反应为哪些方面的问题？\n\n答：软件需求是度量软件质量的基础，不符合需求的软件就不具备质量。\n\n在各种标准中定义了一些开发准则，用来指导软件人员用工程化的方法来开发软件。\n\n如果不遵守这些开发准则，软件质量就得不到保证。\n\n往往会有一些隐含的需求没有明确地提出来。如果软件只满足那些精确定义了的需求而没有满足这些隐含的需求，软件质量也不能保证。\n\n软件质量是各种特性的复杂组合。它随着应用的不同而不同，随着用户提出的质量要求不同而不同。\n\n**软件工程期末试卷（六）**\n\n软件工程导论试题\n\n一．选择\n\n1、瀑布模型把软件生命周期划分为八个阶段：问题的定义、可行性研究、软件需求分析、系统总体设计、详细设计、编码、测试和运行、维护。八个阶段又可归纳为三个大的阶段：计划阶段、开发阶段和(  C)。    A、详细计划  B、可行性分析\n\nC、 运行阶段  D、 测试与排错      2、从结构化的瀑布模型看，在它的生命周期中的八个阶段中，下面的几个选项中哪个环节出错，对软件的影响最大(C  )。    A、详细设计阶段  B、概要设计阶段",
+      "knowledge_path": "knowledge/software_engineering/software-engineering-035.md",
+      "text_sha256": "5d4c6ab38fe9598bb4ae637c8d87e33cbf7d5245ce3e1871a87b518f616d7007",
+      "knowledge_sha256": "fb3271615d0a814bdc6b6acd3c3832b67780c696ecccda5af92704c1ea3c010c"
+    },
+    "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c13": {
+      "course_id": "swarm_intelligence",
+      "source_id": "swarm-intelligence-001",
+      "source_title": "群体智能大作业题目-2024下学期",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": null,
+      "heading_path": [
+        "群体智能大作业题目-2024下学期"
+      ],
+      "text": "最后是有时传值一直在报错，软件包我也不太清楚在anaconda下载、在终端pip install和在python软件包搜寻下载到底有什么区别......\n\n但总而总之这个项目虽然过程很苦，在梳理掉所有的error终于跑得动的时候成就感溢出了。\n\n言归正传，根据上面的excel图表我们可以看出训练初期依旧和大多数一样，总可以很快的找到更高的奖赏，但是在后面我们可以看出应该是接近真实最大奖赏，趋于平缓，耗时更多。\n\n二、文献研读\n\n多智能体强化学习与大语言模型Agent的探讨\n\n引言：\n\n在人工智能的快速发展中，多智能体强化学习和大语言模型Agent成为了研究的热点。本文通过文献阅读，对这两个领域的挑战等进行综述。\n\n1、多智能体强化学习（MARL）中针对训练效率、不稳定性以及信用分配三个主要挑战的详细解决方案：\n\n训练效率问题\n\n多智能体强化学习（MARL）中的训练效率问题主要源于**智能体之间的相互作用和学习过程中的复杂性。**在文献中提到，**集中式方法和分散式方法**是解决这一问题的两种主要途径。集中式方法通过一个全局控制中心来承担学习任务，可以利用全部状态信息进行训练，学习最优的协作机制。然而，这种方法在实际应用中可能面临通信和计算的挑战。分散式方法则允许智能体仅根据局部信息进行学习和决策，这可以提高训练效率，但可能难以捕捉全局最优解。[1]\n\n环境非平稳性问题：\n\n想象一下，你和朋友们在玩一个游戏，游戏规则会随着你们怎么玩而变化。这就是所谓的“环境非平稳性”。为了不让这种变化搞得大家手忙脚乱，我们可以调整学习的速度，就像是调整游戏难度，让每个人都能跟上节奏。或者，我们可以用一些高级的控制技巧，**比如模型预测控制，来预测接下来的变化，并提前做好准备。**\n\n非完全观测问题：\n\n在多智能体学习中，每个智能体就像是一个玩家，只能看到自己周围的一小部分地图。这就像是在玩一个迷宫游戏，你只能看到眼前的几步路。为了解决这个问题，我们可以用一些数学模型，**比如部分可观测马尔可夫决策过程**，来帮助我们猜测那些看不见的地方可能有什么。再加上深度学习，就像是用一个超级强大的地图，来帮助我们更好地理解整个迷宫。[5]\n\n多智能体环境训练模式问题：\n\n这个就像是团队合作时，大家先一起讨论过去的经验，然后再各自去执行任务。这种**集中式训练分散式执行的模式**，就像是大家一起看过去的录像，学习怎么合作得更好，然后再各自去实践。这样，我们既能从过去的经验中学到东西，又能保持每个人行动的灵活性。\n\n不稳定性问题\n\nMARL中的不稳定性问题通常与智能体间的信用分配和策略更新有关。(这里有些难，我主要选择的是论文内容)\n\nReinforced Inter-Agent Learning 和 Differentiable Inter-Agent Learning算法：",
+      "knowledge_path": "knowledge/swarm_intelligence/swarm-intelligence-001.md",
+      "text_sha256": "215eb77cc7d454d8963c96f7f882d5c970474d7b35c38691dc8ec6df215ff095",
+      "knowledge_sha256": "e85706bf1d7543f9eeda8259483b4b292776b512ced0142332c7e4167d1b150a"
+    },
+    "university-physics-3-1-006:q-university-physics-3-1-006-q8:c01": {
+      "course_id": "university_physics_3_1",
+      "source_id": "university-physics-3-1-006",
+      "source_title": "2013级大学物理（I）期末试卷解答（A卷）",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": "university-physics-3-1-006-Q8",
+      "heading_path": [
+        "2013级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "text": "24．解：光栅方程       $d\\sin\\varphi=k\\lambda$      2分\n\n$dsin{\\phi }_{1}={k}_{1}{\\lambda }_{1}$\n\n$dsin{\\phi }_{2}={k}_{2}{\\lambda }_{2}$\n\n$\\frac {sin{\\phi }_{1}} {sin{\\phi }_{2}}=\\frac {{k}_{1}{\\lambda }_{1}} {{k}_{2}{\\lambda }_{2}}=\\frac {{k}_{1}\\times 440} {{k}_{2}\\times 660}=\\frac {2{k}_{1}} {3{k}_{2}}$         2分\n\n当两谱线重合时有  ${\\phi }_{1}={\\phi }_{2}$\n\n即       $\\frac {{k}_{1}} {{k}_{2}}=\\frac {3} {2}=\\frac {6} {4}=\\frac {9} {6}=\\cdots$        2分\n\n两谱线第二次重合即是\n\n$\\frac {{k}_{1}} {{k}_{2}}=\\frac {6} {4}$，       ${k}_{1}=6$，${k}_{2}=4$            2分\n\n由光栅公式可知$dsin60^{\\circ} =6{\\lambda }_{1}$\n\n$d=\\frac{6\\lambda_1}{\\sin60^\\circ}=3.05\\times10^{-6}m=3050nm$          2分",
+      "knowledge_path": "knowledge/university_physics_3_1/university-physics-3-1-006.md",
+      "text_sha256": "cef76f0f33588d7080829a57b141cdf5bf16d00a24a3c499dc1446d1f232104f",
+      "knowledge_sha256": "cf46060c9d3d4bc18a4d7fdf7d614c3d45bafbf3bb90c0b4322b360354f077c6"
+    },
+    "university-physics-3-2-007:q-university-physics-3-2-007-q3:c01": {
+      "course_id": "university_physics_3_2",
+      "source_id": "university-physics-3-2-007",
+      "source_title": "2021级大学物理（二）期末试卷解答简版（B卷）",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": "university-physics-3-2-007-Q3",
+      "heading_path": [
+        "2021级大学物理（二）期末试卷解答简版（B卷）"
+      ],
+      "text": "三、计算题\n\n21（10分）．\n\n解法1：\n\n由高斯定理可知空腔内*E*＝0，故带电球层的空腔是等势区，各点电势均为*U* *.*\n\n在球层内取半径为*r*→*r*＋d*r*的薄球层．其电荷为\n\nd*q*  =  **  4*r*2d*r*        3分\n\n该薄层电荷在球心处产生的电势为\n\n$dU=dq/\\left ( {4{\\pi \\varepsilon }_{0}r}\\right )=\\rho rdr/{\\varepsilon }_{0}$                  3分\n\n整个带电球层在球心处产生的电势为\n\n${U}_{0}=\\int {dU}_{0}=\\frac {\\rho } {{\\varepsilon }_{0}}\\int rdr=\\frac {\\rho } {2{\\varepsilon }_{0}}\\left ( {{R}_{2}^{2}-{R}_{1}^{2}}\\right )$           2分\n\n因为空腔内为等势区所以空腔内任一点的电势*U*为\n\n$U={U}_{0}=\\frac {\\rho } {2{\\varepsilon }_{0}}\\left ( {{R}_{2}^{2}-{R}_{1}^{2}}\\right )$                          2分\n\n22（10分）．\n\n解：选坐标如图．无限长半圆筒形载流金属薄片可看作许多平行的无限长载流直导线组成．宽为d*l*的无限长窄条直导线中的电流为\n\n$dI=\\frac {I} {\\pi R}dl$$=\\frac {I} {\\pi R}Rd\\theta$$=\\frac {I} {\\pi }d\\theta$           2分\n\n它在*O*点产生的磁感强度\n\n$dB=\\frac {{\\mu }_{0}dI} {2\\pi R}$$=\\frac{\\mu_0I}{2\\pi^2R}d\\theta$              2分\n\n${dB}_{x}=-dBsin\\theta$$=-\\frac{\\mu_0I}{2\\pi^2R}\\sin\\theta\\,d\\theta$\n\n${B}_{x}=-\\int _{0} ^{\\pi } \\frac {{\\mu }_{0}I} {2{\\pi }^{2}R}sin\\theta d\\theta$ $=\\frac {{\\mu }_{0}I} {2{\\pi }^{2}R}cos\\theta {|}_{0}^{\\pi }$$=-\\frac {{\\mu }_{0}I} {{\\pi }^{2}R}$           2分\n\n${dB}_{y}=dBcos\\theta$$=\\frac {{\\mu }_{0}} {2{\\pi }^{2}R}cos\\theta d\\theta$",
+      "knowledge_path": "knowledge/university_physics_3_2/university-physics-3-2-007.md",
+      "text_sha256": "36dbc531e9a35a9dfbba144817aae6a6fba68821dbcecb83aba154399b7dd57d",
+      "knowledge_sha256": "c87f6b16f2498a839c4ac32425317d61bb56226eada4e9607644a735e8ed0518"
+    },
+    "university-physics-lab-1-001:h-人体脉搏波测量:c04": {
+      "course_id": "university_physics_lab_1",
+      "source_id": "university-physics-lab-1-001",
+      "source_title": "人体脉搏波测量",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": null,
+      "heading_path": [
+        "人体脉搏波测量"
+      ],
+      "text": "实验使用的数字示波器型号为固纬GDS-1102B型数字示波器（参照数字示波器操作简介部分）。数字示波器操作上仍然类同模拟示波器，显示和测量实际上是以模拟示波器的内容为基础加以改进和扩展的。观测波形依然是以“TIME/DIV”旋钮来调节显示多少个波形，同样调节电平“LEVEL”旋钮使波形稳定。但是原来模拟示波器只能标示在操作面板“TIME/DIV ”旋钮上的挡位示值，现在可随着调节对应显示在屏幕的下方，在屏幕上还有与之对应的采样率显示。Y轴每格电压选择“VOLTS/DIV”等也一样。\n\n数字示波器能将信号以一定的时间间隔进行采集并进行数字化处理，所有示波器显示的波形都是在满足一定触发条件下产生的。触发电平（LEVEL）的调节决定了数字示波器何时开始采集数据和显示波形，一旦触发被正确设定，就可以将不稳定的波形变成有意义的波形。数字示波器的Y轴和X轴扫描信号可源自同一地址，因而同步性能非常好，显示的波形十分稳定，而且可以做到任意选择扫描开始和结束的位置，只要能保持每次扫描开始的位置和结束的位置都相同，波形就是稳定的。\n\n数字示波器与普通模拟示波器相比，它具有如下几大特点：\n1. 用液晶显示屏取代了普通模拟示波器的电子射线示波管，因而实验仪器小巧精致。\n\n用对比度按键取代了模拟示波器的亮度和聚焦两个调节旋钮，并且设置了对比度自动调节，打开电源后，仪器便会根据环境光线的明暗，自动调节液晶显示屏的明暗对比度。如有需要，对比度也可进行手动调节。\n1. 可通过外部控制系统（通常是计算机）进行远程控制操作。\n1. 设有内存和USB输出接口，既可显示波形，也可将波形、各种设置以及测量数据储存，或者以其它的形式保存。\n1. 设有自动设置功能。信号输入后，按下面板上的“AUTOSET”（自动设置）键，示波器可以自动设置Y轴、X轴和触发条件，并且显示输入信号的波形。如果进行其他操作，自动设置功能将自动取消。按下“AUTOSET”键的时间不小于1时，可以进行其他面板功能设置。\n1. 设有帮助功能。按下仪器面板上的“HELP”（帮助）键，可以了解和掌握仪器的使用方法。\n1. **脉搏波的测量**\n\n光电容积传感器测量示意图如图8所示。当一定波长的光束照射到指端皮肤表面，每次心跳时，血管的收缩和扩张都会影响光的透射  (例如在透射PPG中，通过指尖的光线)  或是光的反射  (例如在反射PPG中，来自手腕表面附近的光线)。当光线透过皮肤组织然后再反射到光敏传感器时，光照会有一定的衰减。像肌肉、骨骼、静脉和其他连接组织对光的吸收是基本不变的  (前提是测量部位没有大幅度的运动)，但是动脉会不同，由于动脉里有血液的脉动，那么对光的吸收自然也会有所变化。",
+      "knowledge_path": "knowledge/university_physics_lab_1/university-physics-lab-1-001.md",
+      "text_sha256": "735fef06b2307bb8ccf4b77224befb181637bd2273ff9192d46648aec46b48df",
+      "knowledge_sha256": "9b5a3e8f8bb32cf6b4f8898f13a821189fa0b1de939b14926ded50fc0d22adba"
+    },
+    "university-physics-lab-2-015:h-4.8-交流电桥综合设计性实验:c03": {
+      "course_id": "university_physics_lab_2",
+      "source_id": "university-physics-lab-2-015",
+      "source_title": "4.8 交流电桥综合设计性实验",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": null,
+      "heading_path": [
+        "4.8 交流电桥综合设计性实验"
+      ],
+      "text": "| 序号 | R1(Ω) | R2(Ω) | R3(Ω) | R4(Ω) | Cs(μF) | Lx’(H) | Rx’(Ω) |\n|---|---|---|---|---|---|---|---|\n| 1 | 300 | 300 | 300 | 280.0 | 0.1442 | 0.01298 | 21.4 |\n| 2 | 300 | 400 | 400 | 499.0 | 0.0777 | 0.01243 | 20.6 |\n| 3 | 300 | 200 | 200 | 124.3 | 0.3300 | 0.0132 | 21.8 |\n\n电感值Lx(H)=    0.01287    ；损耗电阻值Rx(Ω)=    21.3    ；\n\n电感的品质因数Q=    5.7    。\n\n表二  交流电桥测电容 交流信号源频率(Hz)=1500.0\n\n| 序号 | R1(Ω) | R2(Ω) | R3(Ω) | R4(Ω) | Cs(μF) | Cx’(H) | Rx’(Ω) |\n|---|---|---|---|---|---|---|---|\n| 1 | 300 | 300 | 300 | 312.0 | 0.6100 | 0.6100 | 12.0 |\n| 2 | 400 | 400 | 300 | 311.0 | 0.6100 | 0.6100 | 11.0 |\n| 3 | 200 | 200 | 300 | 312.0 | 0.6100 | 0.6100 | 12.0 |\n\n电感值Cx(μF)=    0.6100    ；损耗电阻值Rx(Ω)=    11.7    。\n\n电感第一组数据处理：\n\nLx’=  R2R3Cs=300×300×0.1442×10-6H=0.01298H\n\nR=  R2R3/R4=300×300÷280.0Ω≈321.4Ω\n\nRx=R-R1=321.4-300Ω=21.4Ω\n\n电感第二组数据处理：\n\nLx’=400×400×0.0777×10-6H=0.01243H\n\nR=  R2R3/R4=400×400÷499.0Ω≈320.6Ω\n\nRx=R-R1=320.6-300Ω=20.6Ω\n\n电感第三组数据处理：\n\nLx’=200×200×0.3300×10-6H=0.0132H\n\nR=  R2R3/R4=200×200÷124.3Ω=321.8Ω\n\nRx=R-R1=321.8-300Ω=21.8Ω\n\n∴Lx=0.01287H，Rx=21.3Ω\n\nQ=ωLx/Rx=2×π×1500.0×0.01287÷21.3=5.7\n\n电容第一组数据处理：\n\nCx=(R2/R1)Cs=300÷300×0.6100μF=0.6100μF\n\nRx=(R1/R2)R4-R3=300÷300×312.0-300Ω=12.0Ω\n\n电容第二组数据处理：",
+      "knowledge_path": "knowledge/university_physics_lab_2/university-physics-lab-2-015.md",
+      "text_sha256": "375d7845ad30615f9581febf583f39f62622a468079f178f0f273449b2a4749e",
+      "knowledge_sha256": "8b8332fcefb399658e179377d1311af178d873c0f3fcd929c0e5884969e81bea"
+    },
+    "xi-thought-overview-001:h-主题七-人才计划的广东实践:c01": {
+      "course_id": "xi_thought_overview",
+      "source_id": "xi-thought-overview-001",
+      "source_title": "主题七：人才计划的广东实践",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": null,
+      "heading_path": [
+        "主题七：人才计划的广东实践"
+      ],
+      "text": "广东省千百十工程\n\n广东省“千百十工程”人才计划是广东省政府为了吸引和培养高层次人才而实施的一项重要举措。该计划于2009年启动，旨在引进和培养一批千人计划、百人计划和十人计划的高层次人才，以推动广东省经济社会的快速发展。2008年：千百十人才计划工程启动。广东省政府提出了引进和培养千名海外高层次人才、吸引百名国内高层次人才、支持十个团队的目标。2009年：广东省政府出台了相关政策文件，明确了千百十人才计划工程的具体内容和实施办法。政府开始组织选拔和引进高层次人才，并提供相应的资金和政策支持。2010年-2015年：广东省政府陆续引进了大量的高层次人才，包括海外归国人才、国内知名专家学者、优秀青年人才等。这些人才涉及多个领域，如信息技术、生物医药、新材料等。\n\n2016年：广东省政府进一步完善了千百十人才计划工程的政策和管理机制。政府加大了对高层次人才的培养和支持力度，鼓励他们在广东省创新创业，并提供相应的资金、场地和政策支持。2017年-2020年：千百十人才计划工程取得了显著成效。引进的高层次人才在广东省的科技创新、产业发展和社会服务等方面发挥了重要作用。一些团队和个人取得了重要的科研成果和创新成果，推动了广东省的经济转型和升级。2021年至今：广东省政府继续推进千百十人才计划工程。政府进一步加强了对高层次人才的培养和管理，提供更多的支持和保障。同时，政府还加大了对科技创新和产业发展的投入，为高层次人才的发展提供更好的环境和条件。该工程的进行为分批次，目前已经进行到第四五批次。\n- 国内外背景：\n\n千百十人才计划工程是中国广东省政府为了吸引和培养高层次人才而实施的一项重要举措。该计划的实施与国内外背景密切相关：\n\n1.在国内，中国作为一个发展中国家，面临着人口众多、资源有限、科技水平相对较低等挑战。为了应对这些问题，中国政府开始加大对人才的引进和培养力度。2008年，中国启动了“千人计划”，旨在引进国际一流的领军人才。随后，各地纷纷推出类似的人才计划，包括广东省的千百十人才计划。该人才计划为国内引进了大量人才，为国家基础学科，工业等各方面的发展都提供了强大的推动力。\n\n2.在国际上，全球化的发展使得各国之间的竞争越来越激烈，高层次人才的角色变得愈发重要。为了提升自身的科技创新能力和产业竞争力，许多国家都制定了吸引和培养高层次人才的政策。美国的“千人计划”、新加坡的“人才计划”、日本的“世界招聘计划”等都是各国为了吸引和培养高层次人才而设立的计划。\n\n3.在地方层面，广东省作为中国经济最发达的地区之一，面临着转型升级、产业结构调整等新的挑战。为了应对这些挑战，广东省政府开始加大对人才的引进和培养力度。千百十人才计划是广东省政府为了应对这些挑战而推出的一项重要举措，旨在吸引和培养高层次人才，提升广东省的科技创新能力和产业竞争力。",
+      "knowledge_path": "knowledge/xi_thought_overview/xi-thought-overview-001.md",
+      "text_sha256": "3084f5f894988a48720768d9170a917eac8f9696fad52384161dba240670b3e4",
+      "knowledge_sha256": "48cf67f4fb597f33eb5ae5004c4525fe60790192550e50c39d7b3dda2d702e15"
+    },
+    "xi-thought-overview-001:h-主题七-人才计划的广东实践:c02": {
+      "course_id": "xi_thought_overview",
+      "source_id": "xi-thought-overview-001",
+      "source_title": "主题七：人才计划的广东实践",
+      "locator_type": "heading",
+      "locator_start": null,
+      "locator_end": null,
+      "question_id": null,
+      "heading_path": [
+        "主题七：人才计划的广东实践"
+      ],
+      "text": "综上所述，千百十人才计划工程是中国广东省政府为了吸引和培养高层次人才而实施的一项重要举措。该计划的实施与国内外背景密切相关，反映了中国政府和广东省政府在高层次人才引进和培养方面的重视和努力。\n\n二、该案例的具体内容：\n\n广东省“千百十工程”人才计划主要分为三个层次：\n\n1.首先是千人计划，该计划的引进对象是国内外知名高校、科研机构、企业等领域内有突出贡献和影响力的专家学者和技术骨干。千人计划是千百十工程中的核心项目，旨在引进世界一流的领军人才。千人计划的引进对象通常是在其所在领域享有较高声誉和影响力的专家学者和技术骨干。他们应当具备以下条件之一：在国际上享有较高声誉，已经在相关领域取得重要的学术成果或技术突破。\n\n2.其次是百人计划，该计划的引进对象是国内外知名高校、科研机构、企业等领域内有突出贡献和影响力的青年才俊和中青年骨干。百人计划是千百十工程中的重要项目，旨在引进优秀的青年才俊和中青年骨干。百人计划的引进对象通常是在其所在领域有突出贡献和影响力的青年才俊和中青年骨干。他们应当具备以下条件之一：在国内外知名高校、科研机构、企业等担任重要职务，具备较高的学术地位和技术能力；在所在领域内取得了重要的学术成果或技术突破；获得过国内外重要学术奖项、科技创新奖项或专利奖项等荣誉。\n\n3.最后是十人计划，该计划的培养对象是广东省内优秀的青年才俊和中青年骨干。十人计划是千百十工程中的基础项目，旨在培养本土高层次人才。十人计划的培养对象通常是广东省内优秀的青年才俊和中青年骨干。他们应当具备以下条件之一：在国内外知名高校、科研机构、企业等有突出表现；在所在领域内取得了一定的学术成果或技术突破；具备较高的学术水平和技术能力，并有一定的团队管理经验。\n\n千百十人才计划工程为高层次人才的科技创新和产业发展提供了支持。政府通过设立科研项目、提供资金支持和场地等方式，帮助高层次人才开展前沿科研和技术创新，并促进其成果转化为实际生产力，推动产业的升级和转型。政府通过组织选拔、提供资金支持和优厚待遇等方式，吸引了许多在海外有突出成就的中国人才回国发展，并为他们提供了良好的研究和创新环境；鼓励国内知名专家学者和优秀青年人才在广东省从事科研和创新工作，推动他们的职业发展和成长。工程还致力于建立国内外高层次人才的交流合作平台。政府通过组织学术研讨会、举办创新创业大赛等方式，促进高层次人才之间的交流和合作，激发创新创业的活力。千百十工程的实施，对于推动广东省经济社会的快速发展起到了积极的作用。通过引进和培养高层次人才，广东省得以吸纳更多的先进技术和管理经验，提升了整个省份的创新能力和竞争力。同时，该计划也为广东省内的本土高层次人才提供了更多的发展机会和平台，激励他们在自己的领域上不断探索和创新。\n\n三、千百人才工程的理论及实践价值：",
+      "knowledge_path": "knowledge/xi_thought_overview/xi-thought-overview-001.md",
+      "text_sha256": "fb9cb713093e48a905bdd44bdadde4ff0208aaf03761526ec4c433e55ba06ff9",
+      "knowledge_sha256": "48cf67f4fb597f33eb5ae5004c4525fe60790192550e50c39d7b3dda2d702e15"
     }
   },
   "entries": [
@@ -469,6 +988,7 @@
       "query": "矩阵可对角化的充要条件是什么？为什么特征值互不相同只是充分条件？",
       "split": "validation",
       "source_family": "linear-algebra-012",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "可对角化的充要条件",
@@ -494,6 +1014,7 @@
       "query": "有重根就一定不能化成对角矩阵吗？请用单位矩阵说明。",
       "split": "validation",
       "source_family": "linear-algebra-012",
+      "difficulty": "hard",
       "evidence_groups": [
         {
           "need": "可对角化的充要条件",
@@ -519,6 +1040,7 @@
       "query": "T服从t分布，若P(T>λ)=α，P(T<−λ)是多少？",
       "split": "validation",
       "source_family": "probability-theory-010",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "t分布双尾对称题",
@@ -544,6 +1066,7 @@
       "query": "t分布右边尾巴的面积是α，关于0对称的左边尾巴也是α，还是α/2？",
       "split": "validation",
       "source_family": "probability-theory-010",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "t分布双尾对称题",
@@ -569,6 +1092,7 @@
       "query": "独立同分布样本方差σ²>0，用权重(1/2,1/3,1/6)、(1/2,1/4,1/4)、(1/3,1/3,1/3)、(1/5,2/5,2/5)估计均值，哪个方差最小？",
       "split": "validation",
       "source_family": "probability-theory-010",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "四种均值估计量的题目与解答",
@@ -594,6 +1118,7 @@
       "query": "四种加权平均都无偏时，为什么平均分配三个样本的权重更有效？假定样本独立同分布且方差为正。",
       "split": "validation",
       "source_family": "probability-theory-010",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "四种均值估计量的题目与解答",
@@ -619,6 +1144,7 @@
       "query": "2023-2024 B卷容量22、体积3/5/7/8/9、价值4/6/7/9/10的0-1背包题怎么做？",
       "split": "validation",
       "source_family": "algorithm-design-and-analysis-001",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "容量22的完整背包题干",
@@ -651,6 +1177,7 @@
       "query": "背包最多装22，每件只能拿一次，五件物品重量3、5、7、8、9，价值4、6、7、9、10。最大价值和选择是什么？",
       "split": "validation",
       "source_family": "algorithm-design-and-analysis-001",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "容量22的完整背包题干",
@@ -683,6 +1210,7 @@
       "query": "不用递归，怎样用栈完成二叉树中序遍历？",
       "split": "dev",
       "source_family": "data-structure-023",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "显式栈中序遍历实现",
@@ -708,6 +1236,7 @@
       "query": "遍历二叉树时一路压左孩子，弹出后什么时候访问右子树？",
       "split": "dev",
       "source_family": "data-structure-023",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "显式栈中序遍历实现",
@@ -733,6 +1262,7 @@
       "query": "关系代数中选择和投影有什么区别？哪一个是按列切分？",
       "split": "dev",
       "source_family": "database-001+database-004+database-005",
+      "difficulty": "easy",
       "evidence_groups": [
         {
           "need": "投影按属性选列的解释",
@@ -758,6 +1288,7 @@
       "query": "只保留学生表的学号和姓名，应该用选择还是投影？",
       "split": "dev",
       "source_family": "database-001+database-004+database-005",
+      "difficulty": "easy",
       "evidence_groups": [
         {
           "need": "投影按属性选列的解释",
@@ -783,6 +1314,7 @@
       "query": "SQL中HAVING筛选的是行还是分组？",
       "split": "dev",
       "source_family": "database-001+database-004+database-005",
+      "difficulty": "easy",
       "evidence_groups": [
         {
           "need": "HAVING分组过滤",
@@ -810,6 +1342,7 @@
       "query": "按学生分组算平均成绩后，只留下均分至少85的组，该在哪里写条件？",
       "split": "dev",
       "source_family": "database-001+database-004+database-005",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "HAVING分组过滤",
@@ -837,6 +1370,7 @@
       "query": "我写WHERE AGE = NULL查缺失年龄，为什么不对？",
       "split": "dev",
       "source_family": "database-001+database-004+database-005",
+      "difficulty": "easy",
       "evidence_groups": [
         {
           "need": "NULL比较的讲义解释",
@@ -862,6 +1396,7 @@
       "query": "筛出没有填写年龄的学生，应该写等于NULL还是IS NULL？",
       "split": "dev",
       "source_family": "database-001+database-004+database-005",
+      "difficulty": "easy",
       "evidence_groups": [
         {
           "need": "NULL比较的讲义解释",
@@ -887,6 +1422,7 @@
       "query": "进程就绪和阻塞有什么区别？I/O完成后会直接运行吗？",
       "split": "validation",
       "source_family": "operating-systems-028",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "就绪、阻塞及转换",
@@ -912,6 +1448,7 @@
       "query": "一个进程只是没拿到CPU，另一个在等磁盘读完，它们是同一种状态吗？",
       "split": "validation",
       "source_family": "operating-systems-028",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "就绪、阻塞及转换",
@@ -937,6 +1474,7 @@
       "query": "有界缓冲区生产者能先P(mutex)再P(empty)吗？",
       "split": "validation",
       "source_family": "operating-systems-001",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "生产者消费者信号量顺序",
@@ -962,6 +1500,7 @@
       "query": "缓冲区满时，生产者拿着互斥锁等空位，消费者还能取走数据吗？",
       "split": "validation",
       "source_family": "operating-systems-001",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "生产者消费者信号量顺序",
@@ -987,6 +1526,7 @@
       "query": "死锁的四个必要条件是什么？统一资源申请顺序破坏了哪一个？",
       "split": "dev",
       "source_family": "operating-systems-005",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "死锁条件",
@@ -1012,6 +1552,7 @@
       "query": "所有线程都先拿A锁再拿B锁，为什么能避免这两把锁形成循环等待？",
       "split": "dev",
       "source_family": "operating-systems-005",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "死锁条件",
@@ -1037,6 +1578,7 @@
       "query": "T→T,S | S 如何消除直接左递归？",
       "split": "validation",
       "source_family": "compiler-principles-001",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "该文法左递归消除结果",
@@ -1062,6 +1604,7 @@
       "query": "递归下降遇到T先调用自己再读逗号的文法会卡住，怎么改写？原式T→T,S | S。",
       "split": "validation",
       "source_family": "compiler-principles-001",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "该文法左递归消除结果",
@@ -1087,6 +1630,7 @@
       "query": "复习课里那道S→a | ∧ | (T)、T→T,S | S的预测分析题，应该按什么步骤做？这里只要步骤。",
       "split": "validation",
       "source_family": "compiler-principles-001",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "预测分析题的解题流程",
@@ -1112,6 +1656,7 @@
       "query": "面对需要改写文法并构造LL(1)分析表的大题，先算FIRST还是先消除左递归？",
       "split": "validation",
       "source_family": "compiler-principles-001",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "预测分析题的解题流程",
@@ -1137,6 +1682,7 @@
       "query": "TCP确认号为n到底表示收到了n，还是接下来想收到n？",
       "split": "dev",
       "source_family": "computer-networks-051",
+      "difficulty": "easy",
       "evidence_groups": [
         {
           "need": "TCP累计确认号含义",
@@ -1162,6 +1708,7 @@
       "query": "接收方回复ACK=501，发送方能理解为500之前的字节都确认了吗？",
       "split": "dev",
       "source_family": "computer-networks-051",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "TCP累计确认号含义",
@@ -1187,6 +1734,7 @@
       "query": "网络层大题中192.168.1.10:5000映射到202.1.1.1:8000，回包怎么还原？去8.8.8.8该选哪条路由？",
       "split": "dev",
       "source_family": "computer-networks-025",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "NAPT映射及两条路由题干",
@@ -1218,6 +1766,7 @@
       "query": "请找到NAPT网关那道题的题干和答案，解释回程端口还原以及/8为什么优先于默认路由。",
       "split": "dev",
       "source_family": "computer-networks-025",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "NAPT映射及两条路由题干",
@@ -1249,6 +1798,7 @@
       "query": "三个独立输入变量，健壮最坏情况边界值测试需要多少组？和健壮边界值有什么不同？",
       "split": "dev",
       "source_family": "software-testing-040",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "边界值四种计数模型",
@@ -1274,6 +1824,7 @@
       "query": "每个输入都取七个含越界的代表值，再组合三个输入，是19组还是343组？",
       "split": "dev",
       "source_family": "software-testing-040",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "边界值四种计数模型",
@@ -1299,6 +1850,7 @@
       "query": "保险年龄1–18收费100，19–60收费200，61–150收费300，非整数或越界非法，怎么选等价类和边界测试？",
       "split": "dev",
       "source_family": "software-testing-040",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "保险年龄分段规则",
@@ -1325,6 +1877,7 @@
       "query": "测保险系统只用年龄1、80、150够吗？1–18、19–60、61–150三档收费，输入必须是整数。",
       "split": "dev",
       "source_family": "software-testing-040",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "保险年龄分段规则",
@@ -1351,6 +1904,7 @@
       "query": "判定覆盖能保证复合条件里的每个条件都独立影响结果吗？",
       "split": "validation",
       "source_family": "software-testing-045",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "分支覆盖与MC/DC的差异",
@@ -1376,6 +1930,7 @@
       "query": "if里有三个布尔条件，真假分支各走一次就算MC/DC了吗？",
       "split": "validation",
       "source_family": "software-testing-045",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "分支覆盖与MC/DC的差异",
@@ -1401,6 +1956,7 @@
       "query": "决策树预剪枝为什么既能减少过拟合，又可能欠拟合？",
       "split": "validation",
       "source_family": "artificial-intelligence-intro-017",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "预剪枝的收益及贪心局限",
@@ -1426,6 +1982,7 @@
       "query": "某次分裂当下没提高验证表现就停止，会不会错过后续更好的树？",
       "split": "validation",
       "source_family": "artificial-intelligence-intro-017",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "预剪枝的收益及贪心局限",
@@ -1451,6 +2008,7 @@
       "query": "一致启发为什么能让A*像Dijkstra一样工作？请解释重赋权。",
       "split": "validation",
       "source_family": "artificial-intelligence-intro-008",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "一致启发与非负重赋权证明",
@@ -1476,6 +2034,7 @@
       "query": "如果h(n)≤c(n,n′)+h(n′)，为什么c′=c−h(n)+h(n′)不会是负数？",
       "split": "validation",
       "source_family": "artificial-intelligence-intro-008",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "一致启发与非负重赋权证明",
@@ -1501,6 +2060,7 @@
       "query": "Cache为什么能缓解CPU与主存速度不匹配？",
       "split": "dev",
       "source_family": "computer-organization-026",
+      "difficulty": "easy",
       "evidence_groups": [
         {
           "need": "Cache作用与时间空间局部性",
@@ -1526,6 +2086,7 @@
       "query": "只加一小块高速缓存为什么有用？它利用程序访问的什么特点？",
       "split": "dev",
       "source_family": "computer-organization-026",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "Cache作用与时间空间局部性",
@@ -1551,6 +2112,7 @@
       "query": "CSS只想增加元素下面的外边距，应该改哪个属性？",
       "split": "validation",
       "source_family": "web-frontend-fundamentals-014",
+      "difficulty": "easy",
       "evidence_groups": [
         {
           "need": "margin各方向属性",
@@ -1576,6 +2138,7 @@
       "query": "不想动上左右间距，只想让一个块和下一个块离远一点，margin还是margin-bottom？",
       "split": "validation",
       "source_family": "web-frontend-fundamentals-014",
+      "difficulty": "easy",
       "evidence_groups": [
         {
           "need": "margin各方向属性",
@@ -1601,6 +2164,7 @@
       "query": "A={a,b,c,d}，等价关系R={(a,b),(b,a),(c,d),(d,c)}∪I_A，对应什么划分？",
       "split": "dev",
       "source_family": "discrete-mathematics-003",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "等价关系与划分实例",
@@ -1626,6 +2190,7 @@
       "query": "a和b等价，c和d等价，每个元素也与自己等价，为什么不是四个单独的等价类？",
       "split": "dev",
       "source_family": "discrete-mathematics-003",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "等价关系与划分实例",
@@ -1651,6 +2216,7 @@
       "query": "电路复习大纲里一阶暂态分析要掌握哪三个量？我想先按它们安排练习。",
       "split": "dev",
       "source_family": "electrical-engineering-009",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "一阶暂态三要素要求",
@@ -1676,6 +2242,7 @@
       "query": "复习RC/RL一阶暂态时，初始值、最终值和变化快慢分别对应大纲中的什么？",
       "split": "dev",
       "source_family": "electrical-engineering-009",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "一阶暂态三要素要求",
@@ -1701,6 +2268,7 @@
       "query": "资料说切换到std::sort就确保排序稳定，这句话对吗？",
       "split": "dev",
       "source_family": "data-structure-001",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "待纠正的原始说法",
@@ -1726,6 +2294,7 @@
       "query": "相同分数的学生必须保留原先先后顺序，笔记建议用std::sort，我能直接照做吗？",
       "split": "dev",
       "source_family": "data-structure-001",
+      "difficulty": "medium",
       "evidence_groups": [
         {
           "need": "待纠正的原始说法",
@@ -1741,6 +2310,1520 @@
         "将耗时稳定当作等键顺序稳定"
       ],
       "external_reference": "https://eel.is/c++draft/alg.sort",
+      "verified_values": null
+    },
+    {
+      "case_id": "graphics-halfedge-1",
+      "topic_id": "graphics-halfedge",
+      "course_id": "computer_graphics",
+      "scenario": "code_reasoning",
+      "query": "半边结构建模时，遍历一条有向边(u,v)，怎样把它与反向半边(v,u)连起来？",
+      "split": "dev",
+      "source_family": "computer-graphics-009",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "半边结构的反向边链接伪代码",
+          "chunk_ids": [
+            "computer-graphics-009:p29:c01"
+          ]
+        }
+      ],
+      "reference_answer": "为(u,v)创建半边并记录其所属面和终点v；若映射中已有(v,u)，令两者互为oppoHalfEdge。nextHalfEdge只描述同一面的环，oppoHalfEdge才提供跨共享边到相邻面的直接通路。",
+      "verification": "逐行核对伪代码第3至11行的map键、face、vert、next和双向oppo赋值；不把图中未展示的边界处理当成已给定功能。",
+      "pitfalls": [
+        "把(u,v)和(v,u)当成同一个有向半边",
+        "认为nextHalfEdge可以替代跨面的oppoHalfEdge"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "graphics-halfedge-2",
+      "topic_id": "graphics-halfedge",
+      "course_id": "computer_graphics",
+      "scenario": "code_reasoning",
+      "query": "网格相邻两个面共享一条无向边。若只建立nextHalfEdge而不建立oppoHalfEdge，沿面走一圈仍可行；哪一类跨面操作会失去直接邻接信息，为什么？",
+      "split": "dev",
+      "source_family": "computer-graphics-009",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "半边结构的反向边链接伪代码",
+          "chunk_ids": [
+            "computer-graphics-009:p29:c01"
+          ]
+        }
+      ],
+      "reference_answer": "为(u,v)创建半边并记录其所属面和终点v；若映射中已有(v,u)，令两者互为oppoHalfEdge。nextHalfEdge只描述同一面的环，oppoHalfEdge才提供跨共享边到相邻面的直接通路。",
+      "verification": "逐行核对伪代码第3至11行的map键、face、vert、next和双向oppo赋值；不把图中未展示的边界处理当成已给定功能。",
+      "pitfalls": [
+        "把(u,v)和(v,u)当成同一个有向半边",
+        "认为nextHalfEdge可以替代跨面的oppoHalfEdge"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "cs-intro-machine-language-1",
+      "topic_id": "cs-intro-machine-language",
+      "course_id": "computer_science_intro",
+      "scenario": "concept",
+      "query": "CPU实际执行的是高级语言、汇编语言还是机器语言？为什么编译或汇编步骤不能省略？",
+      "split": "validation",
+      "source_family": "computer-science-intro-003",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "CPU实际执行语言的试题",
+          "chunk_ids": [
+            "computer-science-intro-003:p3:q-computer-science-intro-003-q9:c01"
+          ]
+        }
+      ],
+      "reference_answer": "CPU执行的是机器语言指令编码。汇编语言是人可读的符号表示，必须由汇编器翻译；高级语言还需经编译或解释等实现路径产生可执行指令，不能把源文本当成CPU直接取指对象。",
+      "verification": "试题第11题明确给出machine language；结合取指—执行针对指令编码这一层次作定义性复核。",
+      "pitfalls": [
+        "把汇编源文件等同于机器指令",
+        "把“接近硬件”误解为无需翻译"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "cs-intro-machine-language-2",
+      "topic_id": "cs-intro-machine-language",
+      "course_id": "computer_science_intro",
+      "scenario": "concept",
+      "query": "有人说“汇编语言最接近机器，所以CPU直接执行汇编文本”。请用取指—执行和翻译层次解释这句话哪里不严谨。",
+      "split": "validation",
+      "source_family": "computer-science-intro-003",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "CPU实际执行语言的试题",
+          "chunk_ids": [
+            "computer-science-intro-003:p3:q-computer-science-intro-003-q9:c01"
+          ]
+        }
+      ],
+      "reference_answer": "CPU执行的是机器语言指令编码。汇编语言是人可读的符号表示，必须由汇编器翻译；高级语言还需经编译或解释等实现路径产生可执行指令，不能把源文本当成CPU直接取指对象。",
+      "verification": "试题第11题明确给出machine language；结合取指—执行针对指令编码这一层次作定义性复核。",
+      "pitfalls": [
+        "把汇编源文件等同于机器指令",
+        "把“接近硬件”误解为无需翻译"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "numerical-richardson-1",
+      "topic_id": "numerical-richardson",
+      "course_id": "computing_methods",
+      "scenario": "derivation",
+      "query": "若F-F0(h)=a1 h^p1+高阶项，h足够小时为什么说p1是误差阶？",
+      "split": "dev",
+      "source_family": "computing-methods-002",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "Richardson外推误差展开",
+          "chunk_ids": [
+            "computing-methods-002:p92:c01"
+          ]
+        }
+      ],
+      "reference_answer": "当h趋于0时，最小正幂p1对应的首项支配误差量级。由两式相减可构造F1(h)=[F0(qh)-q^p1 F0(h)]/(1-q^p1)，首项相消；必须q不为0且1-q^p1不为0。该结论是在所给渐近展开成立时使用。",
+      "verification": "将F0(h)=F-a1h^p1-…和F0(qh)=F-a1q^p1h^p1-…代入组合式，直接验算首项系数为0。",
+      "pitfalls": [
+        "把误差阶说成误差的精确值",
+        "未检查分母1-q^p1是否为零"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "numerical-richardson-2",
+      "topic_id": "numerical-richardson",
+      "course_id": "computing_methods",
+      "scenario": "derivation",
+      "query": "已知F0(h)和F0(qh)具有同一首项误差，怎样组合它们消去a1h^p1？请写出组合式并说明q的限制。",
+      "split": "dev",
+      "source_family": "computing-methods-002",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "Richardson外推误差展开",
+          "chunk_ids": [
+            "computing-methods-002:p92:c01"
+          ]
+        }
+      ],
+      "reference_answer": "当h趋于0时，最小正幂p1对应的首项支配误差量级。由两式相减可构造F1(h)=[F0(qh)-q^p1 F0(h)]/(1-q^p1)，首项相消；必须q不为0且1-q^p1不为0。该结论是在所给渐近展开成立时使用。",
+      "verification": "将F0(h)=F-a1h^p1-…和F0(qh)=F-a1q^p1h^p1-…代入组合式，直接验算首项系数为0。",
+      "pitfalls": [
+        "把误差阶说成误差的精确值",
+        "未检查分母1-q^p1是否为零"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "cpp-film-polymorphism-1",
+      "topic_id": "cpp-film-polymorphism",
+      "course_id": "cpp",
+      "scenario": "code_review",
+      "query": "Film、DirectorCut和ForeignFilm这道题中，哪些属性应放在基类，哪些应留给派生类？",
+      "split": "dev",
+      "source_family": "cpp-007+cpp-008",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "Film继承题目与实现",
+          "chunk_ids": [
+            "cpp-007:h-题目:c01",
+            "cpp-008:h-a:c01"
+          ]
+        }
+      ],
+      "reference_answer": "标题、导演、时长和评级是所有影片共有状态，应在Film；修订时长/内容属于DirectorCut，语言版本属于ForeignFilm。若要经Film引用实现动态分派，Film::output应为virtual，派生类以override重写；protected只解决派生类访问成员，不能产生运行时多态。",
+      "verification": "题目明确列出共同属性与两个派生类新增属性；对照实现中两个同名output，按C++动态绑定规则核验virtual需求。",
+      "pitfalls": [
+        "把所有新增属性放入Film",
+        "认为protected会自动启用多态"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "cpp-film-polymorphism-2",
+      "topic_id": "cpp-film-polymorphism",
+      "course_id": "cpp",
+      "scenario": "code_review",
+      "query": "若通过Film&指向DirectorCut并调用output，希望输出修订信息，基类和派生类的output还缺什么设计？同时说明为什么只改成员访问权限不够。",
+      "split": "dev",
+      "source_family": "cpp-007+cpp-008",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "Film继承题目与实现",
+          "chunk_ids": [
+            "cpp-007:h-题目:c01",
+            "cpp-008:h-a:c01"
+          ]
+        }
+      ],
+      "reference_answer": "标题、导演、时长和评级是所有影片共有状态，应在Film；修订时长/内容属于DirectorCut，语言版本属于ForeignFilm。若要经Film引用实现动态分派，Film::output应为virtual，派生类以override重写；protected只解决派生类访问成员，不能产生运行时多态。",
+      "verification": "题目明确列出共同属性与两个派生类新增属性；对照实现中两个同名output，按C++动态绑定规则核验virtual需求。",
+      "pitfalls": [
+        "把所有新增属性放入Film",
+        "认为protected会自动启用多态"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "digital-mux-selection-1",
+      "topic_id": "digital-mux-selection",
+      "course_id": "digital_logic",
+      "scenario": "problem",
+      "query": "四选一数据选择器B1B0为地址、X0到X3为输入时，00、01、10、11分别该选择哪个Xi？",
+      "split": "validation",
+      "source_family": "digital-logic-003",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "四选一数据选择器试题",
+          "chunk_ids": [
+            "digital-logic-003:q-digital-logic-003-q2:c01"
+          ]
+        }
+      ],
+      "reference_answer": "Y=¬B1¬B0X0+¬B1B0X1+B1¬B0X2+B1B0X3，对应选项C。每项由唯一地址最小项门控相应数据输入。",
+      "verification": "逐一代入四种B1B0组合，只有相应Xi的系数为1；由此反查C项。",
+      "pitfalls": [
+        "把B1B0的位序颠倒",
+        "只凭选项外观不代入地址码"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "digital-mux-selection-2",
+      "topic_id": "digital-mux-selection",
+      "course_id": "digital_logic",
+      "scenario": "problem",
+      "query": "请从地址码的最小项推导四选一选择器输出式，并判断试卷中哪一项与00→X0、01→X1、10→X2、11→X3一致。",
+      "split": "validation",
+      "source_family": "digital-logic-003",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "四选一数据选择器试题",
+          "chunk_ids": [
+            "digital-logic-003:q-digital-logic-003-q2:c01"
+          ]
+        }
+      ],
+      "reference_answer": "Y=¬B1¬B0X0+¬B1B0X1+B1¬B0X2+B1B0X3，对应选项C。每项由唯一地址最小项门控相应数据输入。",
+      "verification": "逐一代入四种B1B0组合，只有相应Xi的系数为1；由此反查C项。",
+      "pitfalls": [
+        "把B1B0的位序颠倒",
+        "只凭选项外观不代入地址码"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "digital-yolo-eval-1",
+      "topic_id": "digital-yolo-eval",
+      "course_id": "digital_system_creative_design",
+      "scenario": "code_reasoning",
+      "query": "YOLO评估代码为什么先按类别取boxes和scores，再调用NMS？NMS输出的索引用于什么？",
+      "split": "dev",
+      "source_family": "digital-system-creative-design-003",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "YOLO按类别NMS评估代码",
+          "chunk_ids": [
+            "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c11"
+          ]
+        }
+      ],
+      "reference_answer": "代码先取类别c对应的候选框和分数，再以该类数据调用apply_nms；返回索引用来筛出保留框，随后把保留框、类别c和分数汇总。跨类别一起抑制可能错误删除重叠但类别不同的目标；当前实现的意图是类内抑制。",
+      "verification": "沿range(num_classes)、mask[:,c]、apply_nms和append/concatenate的数据流逐项检查。",
+      "pitfalls": [
+        "认为NMS本身负责分类",
+        "用某一类的索引去筛另一类数组"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "digital-yolo-eval-2",
+      "topic_id": "digital-yolo-eval",
+      "course_id": "digital_system_creative_design",
+      "scenario": "code_reasoning",
+      "query": "一张图同时含两类目标，若把所有类别的候选框一起做NMS会有什么风险？请依据当前代码的按类循环说明。",
+      "split": "dev",
+      "source_family": "digital-system-creative-design-003",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "YOLO按类别NMS评估代码",
+          "chunk_ids": [
+            "digital-system-creative-design-003:h-mindspore口罩检测-yolov3:c11"
+          ]
+        }
+      ],
+      "reference_answer": "代码先取类别c对应的候选框和分数，再以该类数据调用apply_nms；返回索引用来筛出保留框，随后把保留框、类别c和分数汇总。跨类别一起抑制可能错误删除重叠但类别不同的目标；当前实现的意图是类内抑制。",
+      "verification": "沿range(num_classes)、mask[:,c]、apply_nms和append/concatenate的数据流逐项检查。",
+      "pitfalls": [
+        "认为NMS本身负责分类",
+        "用某一类的索引去筛另一类数组"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "embedded-uart4-pins-1",
+      "topic_id": "embedded-uart4-pins",
+      "course_id": "embedded_systems",
+      "scenario": "code_review",
+      "query": "UART4初始化中PC10和PC11分别承担什么角色，GPIO模式为何不同？",
+      "split": "validation",
+      "source_family": "embedded-systems-018",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "UART4初始化代码",
+          "chunk_ids": [
+            "embedded-systems-018:p8:q-embedded-systems-018-q39:c01"
+          ]
+        }
+      ],
+      "reference_answer": "PC10配置为复用推挽，配合UART4的Tx；PC11配置为浮空输入，配合Rx。把PC11改为输出会使接收引脚不再作为输入采样外部串口信号，因而破坏接收路径。",
+      "verification": "读取GPIOC时钟、Pin10/Pin11的两段GPIO_Init和USART_Mode_Tx|USART_Mode_Rx；不额外假定具体板级连线。",
+      "pitfalls": [
+        "把PC10和PC11的收发方向互换",
+        "以为Tx和Rx必须使用相同GPIO模式"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "embedded-uart4-pins-2",
+      "topic_id": "embedded-uart4-pins",
+      "course_id": "embedded_systems",
+      "scenario": "code_review",
+      "query": "把PC11也配成复用推挽输出后再做串口收发，最可能破坏哪一方向的数据路径？请从代码的Tx/Rx配置解释。",
+      "split": "validation",
+      "source_family": "embedded-systems-018",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "UART4初始化代码",
+          "chunk_ids": [
+            "embedded-systems-018:p8:q-embedded-systems-018-q39:c01"
+          ]
+        }
+      ],
+      "reference_answer": "PC10配置为复用推挽，配合UART4的Tx；PC11配置为浮空输入，配合Rx。把PC11改为输出会使接收引脚不再作为输入采样外部串口信号，因而破坏接收路径。",
+      "verification": "读取GPIOC时钟、Pin10/Pin11的两段GPIO_Init和USART_Mode_Tx|USART_Mode_Rx；不额外假定具体板级连线。",
+      "pitfalls": [
+        "把PC10和PC11的收发方向互换",
+        "以为Tx和Rx必须使用相同GPIO模式"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "analysis1-lipschitz-1",
+      "topic_id": "analysis1-lipschitz",
+      "course_id": "engineering_math_analysis_1",
+      "scenario": "proof",
+      "query": "在闭区间上满足Lipschitz条件|f(x)-f(y)|≤L|x-y|，怎样证明f一致连续？",
+      "split": "dev",
+      "source_family": "engineering-mathematical-analysis-1-011",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "Lipschitz推出一致连续的证明",
+          "chunk_ids": [
+            "engineering-mathematical-analysis-1-011:p7:q-engineering-mathematical-analysis-1-011-q18:c01"
+          ]
+        }
+      ],
+      "reference_answer": "当L>0取δ=ε/L，则|x-y|<δ推出|f(x)-f(y)|<ε，δ与点无关，故一致连续。L=0时不等式给出f(x)=f(y)，函数为常值，任取正δ即可。",
+      "verification": "逐行检查题解中的Lipschitz不等式和ε—δ定义，并补上除以L时遗漏的L=0分支。",
+      "pitfalls": [
+        "把连续性误当作自动一致连续",
+        "在L=0时仍写ε/L"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "analysis1-lipschitz-2",
+      "topic_id": "analysis1-lipschitz",
+      "course_id": "engineering_math_analysis_1",
+      "scenario": "proof",
+      "query": "证明里直接取δ=ε/L有什么隐含前提？L=0时如何补全论证，为什么结论仍成立？",
+      "split": "dev",
+      "source_family": "engineering-mathematical-analysis-1-011",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "Lipschitz推出一致连续的证明",
+          "chunk_ids": [
+            "engineering-mathematical-analysis-1-011:p7:q-engineering-mathematical-analysis-1-011-q18:c01"
+          ]
+        }
+      ],
+      "reference_answer": "当L>0取δ=ε/L，则|x-y|<δ推出|f(x)-f(y)|<ε，δ与点无关，故一致连续。L=0时不等式给出f(x)=f(y)，函数为常值，任取正δ即可。",
+      "verification": "逐行检查题解中的Lipschitz不等式和ε—δ定义，并补上除以L时遗漏的L=0分支。",
+      "pitfalls": [
+        "把连续性误当作自动一致连续",
+        "在L=0时仍写ε/L"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "analysis2-ellipsoid-1",
+      "topic_id": "analysis2-ellipsoid",
+      "course_id": "engineering_math_analysis_2",
+      "scenario": "optimization",
+      "query": "第一卦限椭球x²/a²+y²/b²+z²/c²=1的切平面围成四面体，怎样把体积最小化化为一个受约束的乘积问题？",
+      "split": "dev",
+      "source_family": "engineering-mathematical-analysis-2-017",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "椭球切平面体积题解",
+          "chunk_ids": [
+            "engineering-mathematical-analysis-2-017:q-engineering-mathematical-analysis-2-017-q6:c01"
+          ]
+        }
+      ],
+      "reference_answer": "切平面截距给出V=(abc)²/(6xyz)，故在x,y,z>0和约束下应最大化xyz。令X=x/a、Y=y/b、Z=z/c，则X²+Y²+Z²=1；由AM-GM，XYZ≤(1/3)^(3/2)，等号在X=Y=Z=1/√3。切点为(a/√3,b/√3,c/√3)，Vmin=√3abc/2。",
+      "verification": "从材料列出的截距式和体积式出发，独立用AM-GM复算。",
+      "pitfalls": [
+        "直接最小化xyz",
+        "遗漏第一卦限和正性条件"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "analysis2-ellipsoid-2",
+      "topic_id": "analysis2-ellipsoid",
+      "course_id": "engineering_math_analysis_2",
+      "scenario": "optimization",
+      "query": "求使该体积最小的切点，并给出最小体积。请说明为何是最大化xyz而非最小化xyz。",
+      "split": "dev",
+      "source_family": "engineering-mathematical-analysis-2-017",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "椭球切平面体积题解",
+          "chunk_ids": [
+            "engineering-mathematical-analysis-2-017:q-engineering-mathematical-analysis-2-017-q6:c01"
+          ]
+        }
+      ],
+      "reference_answer": "切平面截距给出V=(abc)²/(6xyz)，故在x,y,z>0和约束下应最大化xyz。令X=x/a、Y=y/b、Z=z/c，则X²+Y²+Z²=1；由AM-GM，XYZ≤(1/3)^(3/2)，等号在X=Y=Z=1/√3。切点为(a/√3,b/√3,c/√3)，Vmin=√3abc/2。",
+      "verification": "从材料列出的截距式和体积式出发，独立用AM-GM复算。",
+      "pitfalls": [
+        "直接最小化xyz",
+        "遗漏第一卦限和正性条件"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "english-summary-revision-1",
+      "topic_id": "english-summary-revision",
+      "course_id": "english",
+      "scenario": "writing_review",
+      "query": "给定这篇体育教育摘要，怎样保留中心论点并删去没有被原文支持的夸张细节？",
+      "split": "dev",
+      "source_family": "english-006",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "英语摘要原稿",
+          "chunk_ids": [
+            "english-006:h-英语summary:c01"
+          ]
+        }
+      ],
+      "reference_answer": "合格摘要应以“the passage argues/suggests”归因，概括儿童体育教育的重要性、身心和习惯方面的理由以及学校应支持体育活动的结论；删除原稿中无来源支撑的具体国家、名望或绝对化说法。评分看信息忠实、结构和语言清晰，而非凭空补充细节。",
+      "verification": "只对原摘要中的可见论点作压缩；对不能回溯到给定材料的具体细节标注为不可核验。",
+      "pitfalls": [
+        "把摘要作者的推测写成原文事实",
+        "把改语法变成编造论据"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "english-summary-revision-2",
+      "topic_id": "english-summary-revision",
+      "course_id": "english",
+      "scenario": "writing_review",
+      "query": "请把摘要改成三句英文：观点、两条支撑、结论。哪些原句需要用更谨慎的表达，不能把“作者认为”写成事实？",
+      "split": "dev",
+      "source_family": "english-006",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "英语摘要原稿",
+          "chunk_ids": [
+            "english-006:h-英语summary:c01"
+          ]
+        }
+      ],
+      "reference_answer": "合格摘要应以“the passage argues/suggests”归因，概括儿童体育教育的重要性、身心和习惯方面的理由以及学校应支持体育活动的结论；删除原稿中无来源支撑的具体国家、名望或绝对化说法。评分看信息忠实、结构和语言清晰，而非凭空补充细节。",
+      "verification": "只对原摘要中的可见论点作压缩；对不能回溯到给定材料的具体细节标注为不可核验。",
+      "pitfalls": [
+        "把摘要作者的推测写成原文事实",
+        "把改语法变成编造论据"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "ideology-law-morality-1",
+      "topic_id": "ideology-law-morality",
+      "course_id": "ideology_morality_and_rule_of_law",
+      "scenario": "case_analysis",
+      "query": "许霆ATM异常取款材料题要求从道德与法律的关系作答。回答时至少要分开哪些层次？",
+      "split": "validation",
+      "source_family": "ideology-morality-and-rule-of-law-002",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "道德法律关系案例题",
+          "chunk_ids": [
+            "ideology-morality-and-rule-of-law-002:h-思政题目2024级回忆:c01"
+          ]
+        }
+      ],
+      "reference_answer": "应先基于事实分析行为及其对他人、公共秩序和权利的影响，再分别说明道德评价与法律评价的规范来源、强制力和调整范围，并讨论两者相互联系。不能仅以一个结论替代论证，也不应在材料未给足法律要件时虚构具体罪名或责任比例。",
+      "verification": "题干明确要求辨析行为并分析法律和道德的联系与区别；答案只提供课程型论证框架，不替代个案法律裁判。",
+      "pitfalls": [
+        "把道德和法律说成完全相同",
+        "在缺少完整案情时断言具体刑民责任"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "ideology-law-morality-2",
+      "topic_id": "ideology-law-morality",
+      "course_id": "ideology_morality_and_rule_of_law",
+      "scenario": "case_analysis",
+      "query": "若只写“违法所以不道德”，为什么不足以完成这道辨析题？请给出不替代具体法条结论的分析框架。",
+      "split": "validation",
+      "source_family": "ideology-morality-and-rule-of-law-002",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "道德法律关系案例题",
+          "chunk_ids": [
+            "ideology-morality-and-rule-of-law-002:h-思政题目2024级回忆:c01"
+          ]
+        }
+      ],
+      "reference_answer": "应先基于事实分析行为及其对他人、公共秩序和权利的影响，再分别说明道德评价与法律评价的规范来源、强制力和调整范围，并讨论两者相互联系。不能仅以一个结论替代论证，也不应在材料未给足法律要件时虚构具体罪名或责任比例。",
+      "verification": "题干明确要求辨析行为并分析法律和道德的联系与区别；答案只提供课程型论证框架，不替代个案法律裁判。",
+      "pitfalls": [
+        "把道德和法律说成完全相同",
+        "在缺少完整案情时断言具体刑民责任"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "security-publickey-tradeoff-1",
+      "topic_id": "security-publickey-tradeoff",
+      "course_id": "information_security_intro",
+      "scenario": "concept",
+      "query": "公开密钥密码相较对称密码解决了什么问题，又付出哪些代价？",
+      "split": "dev",
+      "source_family": "information-security-intro-003",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "公开密钥密码复习提纲",
+          "chunk_ids": [
+            "information-security-intro-003:h-信安导论-复习提纲-v1-精简版:c02"
+          ]
+        }
+      ],
+      "reference_answer": "公开密钥体制用成对公私钥缓解密钥分发并便于数字签名，但通常计算开销更大、速度更慢且密钥或密文长度要求更高。公开的是公钥和算法，私钥须保密；保密通信和签名验证使用的密钥方向不同，不能因公钥公开推出私钥可得。",
+      "verification": "逐项对照提纲的优缺点、公私钥属性和签名描述；不扩展到特定算法的未给定参数。",
+      "pitfalls": [
+        "认为公开密钥可反推出私钥",
+        "把数字签名等同于保密加密"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "security-publickey-tradeoff-2",
+      "topic_id": "security-publickey-tradeoff",
+      "course_id": "information_security_intro",
+      "scenario": "concept",
+      "query": "“公钥公开，所以别人也能解密我的密文”错在哪里？请区分加密、私钥保密和数字签名验证。",
+      "split": "dev",
+      "source_family": "information-security-intro-003",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "公开密钥密码复习提纲",
+          "chunk_ids": [
+            "information-security-intro-003:h-信安导论-复习提纲-v1-精简版:c02"
+          ]
+        }
+      ],
+      "reference_answer": "公开密钥体制用成对公私钥缓解密钥分发并便于数字签名，但通常计算开销更大、速度更慢且密钥或密文长度要求更高。公开的是公钥和算法，私钥须保密；保密通信和签名验证使用的密钥方向不同，不能因公钥公开推出私钥可得。",
+      "verification": "逐项对照提纲的优缺点、公私钥属性和签名描述；不扩展到特定算法的未给定参数。",
+      "pitfalls": [
+        "认为公开密钥可反推出私钥",
+        "把数字签名等同于保密加密"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "securitymath-euler-1764-1",
+      "topic_id": "securitymath-euler-1764",
+      "course_id": "information_security_mathematics",
+      "scenario": "calculation",
+      "query": "计算φ(1764)。应先怎样分解1764，欧拉函数的乘法公式怎样用？",
+      "split": "dev",
+      "source_family": "information-security-mathematics-007",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "欧拉函数试题",
+          "chunk_ids": [
+            "information-security-mathematics-007:q-information-security-mathematics-007-q3:c01"
+          ]
+        }
+      ],
+      "reference_answer": "1764=2²·3²·7²，因此φ(1764)=1764(1-1/2)(1-1/3)(1-1/7)=504。φ(n)=n-1只在n为素数时成立，1764为合数。",
+      "verification": "独立质因数分解并用φ(n)=n∏(1-1/p)计算；题干给出n=1764但不依赖不可靠答案表。",
+      "pitfalls": [
+        "把合数也套φ(n)=n-1",
+        "遗漏一个不同素因子"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "securitymath-euler-1764-2",
+      "topic_id": "securitymath-euler-1764",
+      "course_id": "information_security_mathematics",
+      "scenario": "calculation",
+      "query": "有人直接把φ(1764)写成1763，为什么不对？请给出完整分解和数值。",
+      "split": "dev",
+      "source_family": "information-security-mathematics-007",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "欧拉函数试题",
+          "chunk_ids": [
+            "information-security-mathematics-007:q-information-security-mathematics-007-q3:c01"
+          ]
+        }
+      ],
+      "reference_answer": "1764=2²·3²·7²，因此φ(1764)=1764(1-1/2)(1-1/3)(1-1/7)=504。φ(n)=n-1只在n为素数时成立，1764为合数。",
+      "verification": "独立质因数分解并用φ(n)=n∏(1-1/p)计算；题干给出n=1764但不依赖不可靠答案表。",
+      "pitfalls": [
+        "把合数也套φ(n)=n-1",
+        "遗漏一个不同素因子"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "intelligent-sa-localoptimum-1",
+      "topic_id": "intelligent-sa-localoptimum",
+      "course_id": "intelligent_algorithms",
+      "scenario": "algorithm_choice",
+      "query": "为什么模拟退火适合存在多个局部最优的复杂解空间？它的主要调参风险是什么？",
+      "split": "validation",
+      "source_family": "intelligent-algorithms-025",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "模拟退火优缺点与背包代码",
+          "chunk_ids": [
+            "intelligent-algorithms-025:h-sa算法适合应用场景~在解空间复杂-存在多个局部最优解的情况下表现出色~优点~全局搜索能力-能够跳出局部最优-具有较强的全局优化能力~参数选择敏感-算法的性能对参数-如初始温度-降温系数等-的选择较为敏感:c01"
+          ]
+        }
+      ],
+      "reference_answer": "模拟退火通过温度控制下以一定概率接受较差解，因而有跳出局部最优的机会；初温、降温系数等参数敏感。背包邻域仍必须满足容量约束，可重采样、修复或用明确的惩罚策略；材料代码采用移除已选物品直到可行的修复思路。",
+      "verification": "核对材料的全局搜索、参数敏感描述和is_feasible/修复循环；不宣称任意参数一定获得全局最优。",
+      "pitfalls": [
+        "把随机接受差解当成无约束接受",
+        "宣称模拟退火必然全局最优"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "intelligent-sa-localoptimum-2",
+      "topic_id": "intelligent-sa-localoptimum",
+      "course_id": "intelligent_algorithms",
+      "scenario": "algorithm_choice",
+      "query": "将模拟退火用于0-1背包时，邻域解超容量该怎样处理？为什么“允许跳出局部最优”不等于允许保留不可行解？",
+      "split": "validation",
+      "source_family": "intelligent-algorithms-025",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "模拟退火优缺点与背包代码",
+          "chunk_ids": [
+            "intelligent-algorithms-025:h-sa算法适合应用场景~在解空间复杂-存在多个局部最优解的情况下表现出色~优点~全局搜索能力-能够跳出局部最优-具有较强的全局优化能力~参数选择敏感-算法的性能对参数-如初始温度-降温系数等-的选择较为敏感:c01"
+          ]
+        }
+      ],
+      "reference_answer": "模拟退火通过温度控制下以一定概率接受较差解，因而有跳出局部最优的机会；初温、降温系数等参数敏感。背包邻域仍必须满足容量约束，可重采样、修复或用明确的惩罚策略；材料代码采用移除已选物品直到可行的修复思路。",
+      "verification": "核对材料的全局搜索、参数敏感描述和is_feasible/修复循环；不宣称任意参数一定获得全局最优。",
+      "pitfalls": [
+        "把随机接受差解当成无约束接受",
+        "宣称模拟退火必然全局最优"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "mao-selfrevolution-structure-1",
+      "topic_id": "mao-selfrevolution-structure",
+      "course_id": "mao_zedong_thought_overview",
+      "scenario": "argument_structure",
+      "query": "以“党的自我革命”为主题做15分钟演讲，材料给出的时间分配与论证主线是什么？",
+      "split": "validation",
+      "source_family": "mao-zedong-thought-overview-002",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "自我革命演讲大纲",
+          "chunk_ids": [
+            "mao-zedong-thought-overview-002:h-演讲大纲:c01"
+          ]
+        }
+      ],
+      "reference_answer": "材料安排引言约2分钟、历史沿革及国情特点约10分钟，并以自我革命为何保持活力为问题线索。可按“提出问题—用历史阶段说明机制—回到当代治理价值与限制”组织；每段只使用材料实际列出的阶段或观点，不把演讲提纲当作历史事实全集。",
+      "verification": "核对大纲中的时长、问题和章节标题；评价结构是否形成因果论证而非记忆清单。",
+      "pitfalls": [
+        "把演讲大纲中的修辞当成可证实史实",
+        "只堆砌阶段名称不说明关联"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "mao-selfrevolution-structure-2",
+      "topic_id": "mao-selfrevolution-structure",
+      "course_id": "mao_zedong_thought_overview",
+      "scenario": "argument_structure",
+      "query": "如何把历史沿革、国情特点和当代价值连成论证，而不是逐段罗列口号？请给出可核验的三段式结构。",
+      "split": "validation",
+      "source_family": "mao-zedong-thought-overview-002",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "自我革命演讲大纲",
+          "chunk_ids": [
+            "mao-zedong-thought-overview-002:h-演讲大纲:c01"
+          ]
+        }
+      ],
+      "reference_answer": "材料安排引言约2分钟、历史沿革及国情特点约10分钟，并以自我革命为何保持活力为问题线索。可按“提出问题—用历史阶段说明机制—回到当代治理价值与限制”组织；每段只使用材料实际列出的阶段或观点，不把演讲提纲当作历史事实全集。",
+      "verification": "核对大纲中的时长、问题和章节标题；评价结构是否形成因果论证而非记忆清单。",
+      "pitfalls": [
+        "把演讲大纲中的修辞当成可证实史实",
+        "只堆砌阶段名称不说明关联"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "marx-production-relations-1",
+      "topic_id": "marx-production-relations",
+      "course_id": "marxist_basic_principles",
+      "scenario": "applied_analysis",
+      "query": "用生产力与生产关系的矛盾分析自动驾驶普及，材料列出的三个制度性问题是什么？",
+      "split": "dev",
+      "source_family": "marxist-basic-principles-002",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "自动驾驶与生产关系分析",
+          "chunk_ids": [
+            "marxist-basic-principles-002:s17:c01"
+          ]
+        }
+      ],
+      "reference_answer": "材料以岗位替代与职业体系、事故责任与法律规则、行驶数据与数据权利为例，说明技术能力变化会与既有分配、制度和权利安排发生张力。技术进步提供条件，不会自动决定制度调整；论证应说明需通过相应社会规则回应这些矛盾。",
+      "verification": "逐项回读材料对三类矛盾的描述；不把材料的比喻性语言扩展为确定的数量预测。",
+      "pitfalls": [
+        "认为生产力发展必然自动解决分配问题",
+        "把材料的示例数字当作统计事实"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "marx-production-relations-2",
+      "topic_id": "marx-production-relations",
+      "course_id": "marxist_basic_principles",
+      "scenario": "applied_analysis",
+      "query": "为什么不能把“技术进步”直接等同于“社会问题自动解决”？请按材料把数据、就业和责任分别接入分析链。",
+      "split": "dev",
+      "source_family": "marxist-basic-principles-002",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "自动驾驶与生产关系分析",
+          "chunk_ids": [
+            "marxist-basic-principles-002:s17:c01"
+          ]
+        }
+      ],
+      "reference_answer": "材料以岗位替代与职业体系、事故责任与法律规则、行驶数据与数据权利为例，说明技术能力变化会与既有分配、制度和权利安排发生张力。技术进步提供条件，不会自动决定制度调整；论证应说明需通过相应社会规则回应这些矛盾。",
+      "verification": "逐项回读材料对三类矛盾的描述；不把材料的比喻性语言扩展为确定的数量预测。",
+      "pitfalls": [
+        "认为生产力发展必然自动解决分配问题",
+        "把材料的示例数字当作统计事实"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "modeling-project-crash-1",
+      "topic_id": "modeling-project-crash",
+      "course_id": "mathematical_modeling",
+      "scenario": "optimization",
+      "query": "工期压缩模型中，为什么变量y(i,j)要有上下界，目标函数为什么是额外成本而不是任意缩短？",
+      "split": "dev",
+      "source_family": "mathematical-modeling-001",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "工期压缩LINGO模型",
+          "chunk_ids": [
+            "mathematical-modeling-001:p106:c01"
+          ]
+        }
+      ],
+      "reference_answer": "y表示可压缩工期，必须受0到(t-m)的界限制；弧约束把前后事件时间、原工期和压缩量关联，目标最小化∑c·y。A、K各压一天的方案需满足全部 precedence 约束及49天上限；只有在同一模型上求得最小目标并核对约束后，才能称1200为最优成本。",
+      "verification": "读取模型中的min、事件/作业约束、x(n)<d和@bnd；不把示例求解输出误作任何项目的通用答案。",
+      "pitfalls": [
+        "压缩量无上限",
+        "有一个满足49天的方案就断言成本最小"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "modeling-project-crash-2",
+      "topic_id": "modeling-project-crash",
+      "course_id": "mathematical_modeling",
+      "scenario": "optimization",
+      "query": "给定工期上限49天，怎样解释“压缩A和K各一天、多花1200元”这一解的可行性，还需要检查什么才能声称它最优？",
+      "split": "dev",
+      "source_family": "mathematical-modeling-001",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "工期压缩LINGO模型",
+          "chunk_ids": [
+            "mathematical-modeling-001:p106:c01"
+          ]
+        }
+      ],
+      "reference_answer": "y表示可压缩工期，必须受0到(t-m)的界限制；弧约束把前后事件时间、原工期和压缩量关联，目标最小化∑c·y。A、K各压一天的方案需满足全部 precedence 约束及49天上限；只有在同一模型上求得最小目标并核对约束后，才能称1200为最优成本。",
+      "verification": "读取模型中的min、事件/作业约束、x(n)<d和@bnd；不把示例求解输出误作任何项目的通用答案。",
+      "pitfalls": [
+        "压缩量无上限",
+        "有一个满足49天的方案就断言成本最小"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "mobile-course-project-1",
+      "topic_id": "mobile-course-project",
+      "course_id": "mobile_application_development",
+      "scenario": "requirements_analysis",
+      "query": "基于GeoQuiz做Android课程大作业，哪些是基础必做功能，哪些改造可能加分？",
+      "split": "dev",
+      "source_family": "mobile-application-development-003",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "Android课程设计要求",
+          "chunk_ids": [
+            "mobile-application-development-003:h-课程设计要求及报告模板:c01"
+          ]
+        }
+      ],
+      "reference_answer": "基于给定项目须从零实现并做界面或功能改造，必做包括注册、登录、一定的增删改查和适当交互；数据库、点赞、地图或分享等可构成改造。全新App需Android前端与Web后端支持查询存储，至少登录和适当交互，并按要求使用ROOM；提交报告、演示视频、APK和源代码压缩包。",
+      "verification": "逐项对照课程要求中的两条路径、技术要求和提交清单。",
+      "pitfalls": [
+        "把现成基础代码直接提交",
+        "把Repository加分项误说成唯一必做项"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "mobile-course-project-2",
+      "topic_id": "mobile-course-project",
+      "course_id": "mobile_application_development",
+      "scenario": "requirements_analysis",
+      "query": "如果小组改做全新教师端App，为什么“能登录”还不够？请按前后端、数据和交付物列出最低可验收清单。",
+      "split": "dev",
+      "source_family": "mobile-application-development-003",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "Android课程设计要求",
+          "chunk_ids": [
+            "mobile-application-development-003:h-课程设计要求及报告模板:c01"
+          ]
+        }
+      ],
+      "reference_answer": "基于给定项目须从零实现并做界面或功能改造，必做包括注册、登录、一定的增删改查和适当交互；数据库、点赞、地图或分享等可构成改造。全新App需Android前端与Web后端支持查询存储，至少登录和适当交互，并按要求使用ROOM；提交报告、演示视频、APK和源代码压缩包。",
+      "verification": "逐项对照课程要求中的两条路径、技术要求和提交清单。",
+      "pitfalls": [
+        "把现成基础代码直接提交",
+        "把Repository加分项误说成唯一必做项"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "webapp-servlet-lifecycle-1",
+      "topic_id": "webapp-servlet-lifecycle",
+      "course_id": "network_application_architecture",
+      "scenario": "exam_review",
+      "query": "网络应用开发复习中，Servlet相关内容应按哪些知识链条组织，而不是只背类名？",
+      "split": "validation",
+      "source_family": "network-application-architecture-001",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "网络应用开发复习范围",
+          "chunk_ids": [
+            "network-application-architecture-001:p2:c01"
+          ]
+        }
+      ],
+      "reference_answer": "应围绕Servlet生命周期、请求/响应对象、doGet/doPost、转发与会话，再连接Filter/Listener、JSP与Servlet职责、JDBC和MVC。请求流程中Servlet处理控制与业务入口，Filter在链路上做通用处理，JSP侧重视图，JDBC负责数据访问，MVC协调职责；具体顺序取决于应用配置，不能把所有组件说成每次必经。",
+      "verification": "以复习指南列出的范围为边界，按组件职责构成一条可用于编程题的解释链。",
+      "pitfalls": [
+        "把JSP等同于数据库访问层",
+        "认为所有组件在每次请求中必然按同一固定顺序出现"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "webapp-servlet-lifecycle-2",
+      "topic_id": "webapp-servlet-lifecycle",
+      "course_id": "network_application_architecture",
+      "scenario": "exam_review",
+      "query": "把Servlet、Filter、Listener、JSP、JDBC和MVC都列进答案，仍可能答不好编程题。请按一次请求处理流程说明它们各自应关注什么。",
+      "split": "validation",
+      "source_family": "network-application-architecture-001",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "网络应用开发复习范围",
+          "chunk_ids": [
+            "network-application-architecture-001:p2:c01"
+          ]
+        }
+      ],
+      "reference_answer": "应围绕Servlet生命周期、请求/响应对象、doGet/doPost、转发与会话，再连接Filter/Listener、JSP与Servlet职责、JDBC和MVC。请求流程中Servlet处理控制与业务入口，Filter在链路上做通用处理，JSP侧重视图，JDBC负责数据访问，MVC协调职责；具体顺序取决于应用配置，不能把所有组件说成每次必经。",
+      "verification": "以复习指南列出的范围为边界，按组件职责构成一条可用于编程题的解释链。",
+      "pitfalls": [
+        "把JSP等同于数据库访问层",
+        "认为所有组件在每次请求中必然按同一固定顺序出现"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "netmgmt-snmp-bulk-1",
+      "topic_id": "netmgmt-snmp-bulk",
+      "course_id": "network_management",
+      "scenario": "protocol_analysis",
+      "query": "MIB Browser以表格浏览ifTable时，为什么需要关注GetNext或GetBulk，而不是只读一个Get响应？",
+      "split": "dev",
+      "source_family": "network-management-005",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "SNMP实验问题",
+          "chunk_ids": [
+            "network-management-005:h-实验大纲-2026:c03"
+          ]
+        }
+      ],
+      "reference_answer": "表项是一组按OID词典序可连续取得的对象，单次Get通常针对指定OID；GetNext可逐步走到后继对象，GetBulk用于批量取得后续绑定以减少往返。二者都服务于遍历，但GetBulk的请求/响应字段与次数应以实际抓包为准，不能凭题目猜字段值。",
+      "verification": "材料明确要求比较表格读取与GetNext并抓取v2c GetBulk的PDU；结论只覆盖操作目的和实验核验要求。",
+      "pitfalls": [
+        "把GetBulk说成与GetNext字节级完全相同",
+        "未抓包就断言具体request-id或变量绑定值"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "netmgmt-snmp-bulk-2",
+      "topic_id": "netmgmt-snmp-bulk",
+      "course_id": "network_management",
+      "scenario": "protocol_analysis",
+      "query": "比较SNMPv2c的GetBulk与反复GetNext：答题时应区分哪些共同点和哪些仍需抓包核实的PDU字段？",
+      "split": "dev",
+      "source_family": "network-management-005",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "SNMP实验问题",
+          "chunk_ids": [
+            "network-management-005:h-实验大纲-2026:c03"
+          ]
+        }
+      ],
+      "reference_answer": "表项是一组按OID词典序可连续取得的对象，单次Get通常针对指定OID；GetNext可逐步走到后继对象，GetBulk用于批量取得后续绑定以减少往返。二者都服务于遍历，但GetBulk的请求/响应字段与次数应以实际抓包为准，不能凭题目猜字段值。",
+      "verification": "材料明确要求比较表格读取与GetNext并抓取v2c GetBulk的PDU；结论只覆盖操作目的和实验核验要求。",
+      "pitfalls": [
+        "把GetBulk说成与GetNext字节级完全相同",
+        "未抓包就断言具体request-id或变量绑定值"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "ngn-scenario-security-1",
+      "topic_id": "ngn-scenario-security",
+      "course_id": "next_generation_network_architecture",
+      "scenario": "synthesis",
+      "query": "天地一体化网络的应用场景讨论与网络安全问题讨论，应如何分开回答？",
+      "split": "dev",
+      "source_family": "next-generation-network-architecture-001",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "天地一体化网络应用与安全章节",
+          "chunk_ids": [
+            "next-generation-network-architecture-001:s18:c01",
+            "next-generation-network-architecture-001:s24:c01"
+          ]
+        }
+      ],
+      "reference_answer": "应用场景回答服务对象、覆盖或业务需求；安全问题回答由开放连接、链路和管理带来的威胁与需要的保护机制。推导应先界定场景中的资产和通信路径，再识别威胁/信任边界，最后提出与之匹配的认证、保密、完整性或可用性要求；架构存在不等于这些要求已实现。",
+      "verification": "将两个章节作为不同证据组阅读；只抽取它们明确支持的场景和安全主题，具体协议方案需材料另有依据。",
+      "pitfalls": [
+        "把应用场景名称当成安全机制",
+        "只列技术名词而不连接资产和威胁"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "ngn-scenario-security-2",
+      "topic_id": "ngn-scenario-security",
+      "course_id": "next_generation_network_architecture",
+      "scenario": "synthesis",
+      "query": "若题目要求从应用需求推导安全要求，怎样避免把“有卫星/地面协同”直接当成“已经安全”？请给出论证步骤。",
+      "split": "dev",
+      "source_family": "next-generation-network-architecture-001",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "天地一体化网络应用与安全章节",
+          "chunk_ids": [
+            "next-generation-network-architecture-001:s18:c01",
+            "next-generation-network-architecture-001:s24:c01"
+          ]
+        }
+      ],
+      "reference_answer": "应用场景回答服务对象、覆盖或业务需求；安全问题回答由开放连接、链路和管理带来的威胁与需要的保护机制。推导应先界定场景中的资产和通信路径，再识别威胁/信任边界，最后提出与之匹配的认证、保密、完整性或可用性要求；架构存在不等于这些要求已实现。",
+      "verification": "将两个章节作为不同证据组阅读；只抽取它们明确支持的场景和安全主题，具体协议方案需材料另有依据。",
+      "pitfalls": [
+        "把应用场景名称当成安全机制",
+        "只列技术名词而不连接资产和威胁"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "signals-dft-cosine-1",
+      "topic_id": "signals-dft-cosine",
+      "course_id": "signals_and_communication",
+      "scenario": "derivation",
+      "query": "x(n)=cos(nπ/6)、N=12时，为什么它恰好落在12点DFT的频点上？",
+      "split": "dev",
+      "source_family": "signals-and-communication-014",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "12点DFT余弦例题",
+          "chunk_ids": [
+            "signals-and-communication-014:s58:c01"
+          ]
+        }
+      ],
+      "reference_answer": "cos(nπ/6)=cos(2πn/12)，对应k=1的离散频率；cos=(e^{j2πn/12}+e^{-j2πn/12})/2，因此在常用未归一化DFT定义下X[1]=X[11]=N/2=6，其余为0。若课程采用不同归一化，数值需随定义调整。",
+      "verification": "将角频率与2πk/N匹配，再用复指数和等比和验证；题干明确N=12。",
+      "pitfalls": [
+        "只保留正频率k=1",
+        "把k=11误写成负索引而不映射到DFT索引"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "signals-dft-cosine-2",
+      "topic_id": "signals-dft-cosine",
+      "course_id": "signals_and_communication",
+      "scenario": "derivation",
+      "query": "不用逐项硬算，推导该12点DFT的非零频率索引和幅度；怎样处理cos的正负频率两项？",
+      "split": "dev",
+      "source_family": "signals-and-communication-014",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "12点DFT余弦例题",
+          "chunk_ids": [
+            "signals-and-communication-014:s58:c01"
+          ]
+        }
+      ],
+      "reference_answer": "cos(nπ/6)=cos(2πn/12)，对应k=1的离散频率；cos=(e^{j2πn/12}+e^{-j2πn/12})/2，因此在常用未归一化DFT定义下X[1]=X[11]=N/2=6，其余为0。若课程采用不同归一化，数值需随定义调整。",
+      "verification": "将角频率与2πk/N匹配，再用复指数和等比和验证；题干明确N=12。",
+      "pitfalls": [
+        "只保留正频率k=1",
+        "把k=11误写成负索引而不映射到DFT索引"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "softwareeng-fanout-coupling-1",
+      "topic_id": "softwareeng-fanout-coupling",
+      "course_id": "software_engineering",
+      "scenario": "mistake_review",
+      "query": "样例说推荐扇出为3或4；它与耦合分别衡量什么，为什么不能混用？",
+      "split": "dev",
+      "source_family": "software-engineering-035",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "软件工程样例判断题",
+          "chunk_ids": [
+            "software-engineering-035:h-华南理工大学-软件工程-样例含答案:c12"
+          ]
+        }
+      ],
+      "reference_answer": "扇出是一个模块直接调用的模块数，描述模块间调用扩散；耦合衡量模块之间依赖程度，内聚才衡量模块内部元素结合紧密程度。故原句把扇出、耦合和内聚混为一谈；评审应分别检查调用数量、接口依赖和模块内部职责一致性。",
+      "verification": "材料明确给出扇出定义，并把“耦合衡量内部紧密程度”判为错；按标准术语补正为内聚。",
+      "pitfalls": [
+        "把耦合与内聚互换",
+        "只凭扇出大小断言模块一定低内聚"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "softwareeng-fanout-coupling-2",
+      "topic_id": "softwareeng-fanout-coupling",
+      "course_id": "software_engineering",
+      "scenario": "mistake_review",
+      "query": "“一个模块调用很多模块，所以它内部元素结合不紧密”这句话混淆了哪两个度量？请给出改正后的评审意见。",
+      "split": "dev",
+      "source_family": "software-engineering-035",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "软件工程样例判断题",
+          "chunk_ids": [
+            "software-engineering-035:h-华南理工大学-软件工程-样例含答案:c12"
+          ]
+        }
+      ],
+      "reference_answer": "扇出是一个模块直接调用的模块数，描述模块间调用扩散；耦合衡量模块之间依赖程度，内聚才衡量模块内部元素结合紧密程度。故原句把扇出、耦合和内聚混为一谈；评审应分别检查调用数量、接口依赖和模块内部职责一致性。",
+      "verification": "材料明确给出扇出定义，并把“耦合衡量内部紧密程度”判为错；按标准术语补正为内聚。",
+      "pitfalls": [
+        "把耦合与内聚互换",
+        "只凭扇出大小断言模块一定低内聚"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "swarm-reward-diagnosis-1",
+      "topic_id": "swarm-reward-diagnosis",
+      "course_id": "swarm_intelligence",
+      "scenario": "experiment_analysis",
+      "query": "强化学习训练奖励在前期波动、后期趋于平缓时，能说明什么，不能说明什么？",
+      "split": "validation",
+      "source_family": "swarm-intelligence-001",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "群体智能作业的奖励曲线说明",
+          "chunk_ids": [
+            "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c13"
+          ]
+        }
+      ],
+      "reference_answer": "曲线可提示当前训练回报改善后趋稳，但单次轨迹不能证明真实全局最优或泛化。应检查多随机种子和方差、独立评估回报与训练回报、环境终止/奖励实现、足够训练长度及与基线比较；若回报量级异常还应复核日志和奖励定义。",
+      "verification": "材料将曲线描述为“接近真实最大奖赏”的观察而非证明；把该表述降格为待验证假设，并列出可复现实验检查。",
+      "pitfalls": [
+        "平台期必然等于全局最优",
+        "只看训练曲线就宣称算法优越"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "swarm-reward-diagnosis-2",
+      "topic_id": "swarm-reward-diagnosis",
+      "course_id": "swarm_intelligence",
+      "scenario": "experiment_analysis",
+      "query": "怎样区分“接近局部稳定”“达到真实最大回报”和“记录/实现有误”？请给出至少三项需要补充的实验检查。",
+      "split": "validation",
+      "source_family": "swarm-intelligence-001",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "群体智能作业的奖励曲线说明",
+          "chunk_ids": [
+            "swarm-intelligence-001:h-群体智能大作业题目-2024下学期:c13"
+          ]
+        }
+      ],
+      "reference_answer": "曲线可提示当前训练回报改善后趋稳，但单次轨迹不能证明真实全局最优或泛化。应检查多随机种子和方差、独立评估回报与训练回报、环境终止/奖励实现、足够训练长度及与基线比较；若回报量级异常还应复核日志和奖励定义。",
+      "verification": "材料将曲线描述为“接近真实最大奖赏”的观察而非证明；把该表述降格为待验证假设，并列出可复现实验检查。",
+      "pitfalls": [
+        "平台期必然等于全局最优",
+        "只看训练曲线就宣称算法优越"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "physics31-grating-overlap-1",
+      "topic_id": "physics31-grating-overlap",
+      "course_id": "university_physics_3_1",
+      "scenario": "calculation",
+      "query": "光栅方程d sinφ=kλ中，两条谱线重合时应满足什么等式？",
+      "split": "dev",
+      "source_family": "university-physics-3-1-006",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "光栅谱线重合题解",
+          "chunk_ids": [
+            "university-physics-3-1-006:q-university-physics-3-1-006-q8:c01"
+          ]
+        }
+      ],
+      "reference_answer": "同一φ和同一d下有k1λ1=k2λ2。代入440、660得到k1/k2=660/440=3/2，最小正整数为k1=3、k2=2。",
+      "verification": "从材料的两条光栅方程相除；不把截图中可能的级次记号顺序颠倒。",
+      "pitfalls": [
+        "把比例写成2:3",
+        "以为两条不同波长只能在同一级重合"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "physics31-grating-overlap-2",
+      "topic_id": "physics31-grating-overlap",
+      "course_id": "university_physics_3_1",
+      "scenario": "calculation",
+      "query": "440nm与660nm两条线在同一角度重合，级次k1、k2的最简整数比是什么？",
+      "split": "dev",
+      "source_family": "university-physics-3-1-006",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "光栅谱线重合题解",
+          "chunk_ids": [
+            "university-physics-3-1-006:q-university-physics-3-1-006-q8:c01"
+          ]
+        }
+      ],
+      "reference_answer": "同一φ和同一d下有k1λ1=k2λ2。代入440、660得到k1/k2=660/440=3/2，最小正整数为k1=3、k2=2。",
+      "verification": "从材料的两条光栅方程相除；不把截图中可能的级次记号顺序颠倒。",
+      "pitfalls": [
+        "把比例写成2:3",
+        "以为两条不同波长只能在同一级重合"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "physics32-cavity-potential-1",
+      "topic_id": "physics32-cavity-potential",
+      "course_id": "university_physics_3_2",
+      "scenario": "concept",
+      "query": "带电球层的空腔内E=0，能直接推出空腔内电势也为0吗？",
+      "split": "validation",
+      "source_family": "university-physics-3-2-007",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "带电球层空腔电势题解",
+          "chunk_ids": [
+            "university-physics-3-2-007:q-university-physics-3-2-007-q3:c01"
+          ]
+        }
+      ],
+      "reference_answer": "E=0说明电势梯度为零，因此空腔各点电势相同，但常数值由参考零点和外部电荷分布决定，未必为0。材料把球层分解为薄球层，积分各薄层对球心的dU来得到该常数。",
+      "verification": "核对题解中“E=0、等势区”和dU积分两段；以E=-∇U区分等势与零电势。",
+      "pitfalls": [
+        "E=0必然U=0",
+        "把等势误解为没有电荷贡献"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "physics32-cavity-potential-2",
+      "topic_id": "physics32-cavity-potential",
+      "course_id": "university_physics_3_2",
+      "scenario": "concept",
+      "query": "为什么“电场为零”只说明空腔是等势区，而不能单独确定电势数值？材料中的积分在计算什么。",
+      "split": "validation",
+      "source_family": "university-physics-3-2-007",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "带电球层空腔电势题解",
+          "chunk_ids": [
+            "university-physics-3-2-007:q-university-physics-3-2-007-q3:c01"
+          ]
+        }
+      ],
+      "reference_answer": "E=0说明电势梯度为零，因此空腔各点电势相同，但常数值由参考零点和外部电荷分布决定，未必为0。材料把球层分解为薄球层，积分各薄层对球心的dU来得到该常数。",
+      "verification": "核对题解中“E=0、等势区”和dU积分两段；以E=-∇U区分等势与零电势。",
+      "pitfalls": [
+        "E=0必然U=0",
+        "把等势误解为没有电荷贡献"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "physlab1-oscilloscope-trigger-1",
+      "topic_id": "physlab1-oscilloscope-trigger",
+      "course_id": "university_physics_lab_1",
+      "scenario": "lab_reasoning",
+      "query": "数字示波器上TIME/DIV、VOLTS/DIV和LEVEL分别影响什么？为什么只调TIME/DIV不能让波形稳定？",
+      "split": "dev",
+      "source_family": "university-physics-lab-1-001",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "人体脉搏波与数字示波器操作",
+          "chunk_ids": [
+            "university-physics-lab-1-001:h-人体脉搏波测量:c04"
+          ]
+        }
+      ],
+      "reference_answer": "TIME/DIV调时间尺度，VOLTS/DIV调垂直电压尺度，LEVEL设触发电平并决定满足何种触发条件时开始显示。波形漂移应先检查触发源/模式与LEVEL，使触发点稳定；采样率影响数字化质量但不替代触发同步。",
+      "verification": "材料明确区分时间格、电压格、采样率和触发电平；结论不延伸到仪器菜单中未出现的设置。",
+      "pitfalls": [
+        "把LEVEL当成幅度旋钮",
+        "以为提高采样率必然消除横向漂移"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "physlab1-oscilloscope-trigger-2",
+      "topic_id": "physlab1-oscilloscope-trigger",
+      "course_id": "university_physics_lab_1",
+      "scenario": "lab_reasoning",
+      "query": "同一脉搏波信号在屏幕上左右漂移，如何按资料的触发概念排查，而不是先改采样率？",
+      "split": "dev",
+      "source_family": "university-physics-lab-1-001",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "人体脉搏波与数字示波器操作",
+          "chunk_ids": [
+            "university-physics-lab-1-001:h-人体脉搏波测量:c04"
+          ]
+        }
+      ],
+      "reference_answer": "TIME/DIV调时间尺度，VOLTS/DIV调垂直电压尺度，LEVEL设触发电平并决定满足何种触发条件时开始显示。波形漂移应先检查触发源/模式与LEVEL，使触发点稳定；采样率影响数字化质量但不替代触发同步。",
+      "verification": "材料明确区分时间格、电压格、采样率和触发电平；结论不延伸到仪器菜单中未出现的设置。",
+      "pitfalls": [
+        "把LEVEL当成幅度旋钮",
+        "以为提高采样率必然消除横向漂移"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "physlab2-acbridge-average-1",
+      "topic_id": "physlab2-acbridge-average",
+      "course_id": "university_physics_lab_2",
+      "scenario": "data_analysis",
+      "query": "交流电桥三次测得Lx′为0.01298、0.01243、0.0132H，报告的0.01287H是怎样得到的？",
+      "split": "dev",
+      "source_family": "university-physics-lab-2-015",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "交流电桥实验数据表",
+          "chunk_ids": [
+            "university-physics-lab-2-015:h-4.8-交流电桥综合设计性实验:c03"
+          ]
+        }
+      ],
+      "reference_answer": "Lx′算术平均为(0.01298+0.01243+0.0132)/3≈0.01287H；Rx′平均为21.27Ω，按表中保留位数为21.3Ω。平均值不能单独代表可靠性，还应给离散性/不确定度、仪器条件、异常值处理和重复测量条件。",
+      "verification": "独立按表中三行相加除3并与报告值比对。",
+      "pitfalls": [
+        "把三次结果直接相加当平均",
+        "有平均值就不需要不确定度或重复性"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "physlab2-acbridge-average-2",
+      "topic_id": "physlab2-acbridge-average",
+      "course_id": "university_physics_lab_2",
+      "scenario": "data_analysis",
+      "query": "三次Rx′为21.4、20.6、21.8Ω。只报告平均21.3Ω是否足以说明测量可靠？还应报告或检查什么。",
+      "split": "dev",
+      "source_family": "university-physics-lab-2-015",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "交流电桥实验数据表",
+          "chunk_ids": [
+            "university-physics-lab-2-015:h-4.8-交流电桥综合设计性实验:c03"
+          ]
+        }
+      ],
+      "reference_answer": "Lx′算术平均为(0.01298+0.01243+0.0132)/3≈0.01287H；Rx′平均为21.27Ω，按表中保留位数为21.3Ω。平均值不能单独代表可靠性，还应给离散性/不确定度、仪器条件、异常值处理和重复测量条件。",
+      "verification": "独立按表中三行相加除3并与报告值比对。",
+      "pitfalls": [
+        "把三次结果直接相加当平均",
+        "有平均值就不需要不确定度或重复性"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "xi-talent-plan-source-limits-1",
+      "topic_id": "xi-talent-plan-source-limits",
+      "course_id": "xi_thought_overview",
+      "scenario": "source_critique",
+      "query": "“千百十工程”材料将计划分为哪三个层次？回答时怎样区分材料的叙述与已外部核验的政策事实？",
+      "split": "dev",
+      "source_family": "xi-thought-overview-001",
+      "difficulty": "medium",
+      "evidence_groups": [
+        {
+          "need": "人才计划案例材料",
+          "chunk_ids": [
+            "xi-thought-overview-001:h-主题七-人才计划的广东实践:c01",
+            "xi-thought-overview-001:h-主题七-人才计划的广东实践:c02"
+          ]
+        }
+      ],
+      "reference_answer": "材料按千人、百人、十个团队三个层次叙述，并强调引进培养高层次人才。它对启动时间的表述存在2008与2009并列，回答应明确材料内部不一致：可报告“材料称2008提出/启动、2009出台实施文件”，并建议查政策原文后再下精确时间结论，不能任选一个年份断言。",
+      "verification": "对照同一材料的时间段和三层条目，记录冲突而非自动消除。",
+      "pitfalls": [
+        "忽略文本内部年份冲突",
+        "把课程案例材料直接当作已核验政策档案"
+      ],
+      "external_reference": null,
+      "verified_values": null
+    },
+    {
+      "case_id": "xi-talent-plan-source-limits-2",
+      "topic_id": "xi-talent-plan-source-limits",
+      "course_id": "xi_thought_overview",
+      "scenario": "source_critique",
+      "query": "材料同时出现2008启动和2009启动表述。面对这种时间冲突，怎样给出有用但不自相矛盾的回答？",
+      "split": "dev",
+      "source_family": "xi-thought-overview-001",
+      "difficulty": "hard",
+      "evidence_groups": [
+        {
+          "need": "人才计划案例材料",
+          "chunk_ids": [
+            "xi-thought-overview-001:h-主题七-人才计划的广东实践:c01",
+            "xi-thought-overview-001:h-主题七-人才计划的广东实践:c02"
+          ]
+        }
+      ],
+      "reference_answer": "材料按千人、百人、十个团队三个层次叙述，并强调引进培养高层次人才。它对启动时间的表述存在2008与2009并列，回答应明确材料内部不一致：可报告“材料称2008提出/启动、2009出台实施文件”，并建议查政策原文后再下精确时间结论，不能任选一个年份断言。",
+      "verification": "对照同一材料的时间段和三层条目，记录冲突而非自动消除。",
+      "pitfalls": [
+        "忽略文本内部年份冲突",
+        "把课程案例材料直接当作已核验政策档案"
+      ],
+      "external_reference": null,
       "verified_values": null
     }
   ]
