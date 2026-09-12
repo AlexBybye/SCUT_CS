@@ -1,6 +1,7 @@
 # SCUT 老学长
 
 SCUT 老学长是面向华南理工大学计算机相关课程的学习对话助手。应用源码、API、语料校验工具、前端、契约和测试均位于本目录。PLAN-3 已完成，应用现在同时提供单课程问答、按本次运行生效的跨课程检索、回答结果操作、公共资料贡献、用户绑定的私人知识沉淀和独立维护者审核平台。
+<img width="1536" height="1024" alt="new" src="https://github.com/user-attachments/assets/b8dadcef-1cf4-4adc-a43e-a289a2594b32" />
 
 ## 核心流程
 
