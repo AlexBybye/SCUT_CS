@@ -8,11 +8,9 @@ from uuid import UUID, uuid4
 from .auth import AuthRequired, AuthenticatedPrincipal, utc_now
 from .agent_loop import (
     AgentBudget,
-    AgentState,
+    AgentDecisionGateway,
     ModelAgentDecision,
     RuleBasedAgentDecision,
-    action_allowed_for_workflow,
-    reduce_agent_event,
     should_retrieve_with_rewrite,
 )
 from .adapters.bilibili import derive_question_keywords, normalize_keywords
@@ -91,7 +89,6 @@ from .ports import (
     GeneratedAnswer,
     HumanizerGateway,
     ModelGateway,
-    RetrievalBatch,
     RetrievalGateway,
     RetrievedSource,
     UserKeyModelGateway,
@@ -99,6 +96,12 @@ from .ports import (
     WorkflowRepository,
 )
 from .registry import CourseRegistry, UnknownCourseError
+from .runtime.lifecycle import RunLifecycle
+from .runtime.persistence import RunPersistence
+from .runtime.retrieval import RetrievalCoordinator
+from .runtime.errors import ContractConflict
+from .runtime.answer import AnswerGenerator
+from .runtime.runner import WorkflowRunner
 from .runtime_guards import (
     GuardedAnswer,
     RuntimeGuardError,
@@ -120,10 +123,6 @@ def _parse_iso(value: str) -> datetime:
     if parsed.tzinfo is None:
         raise ValueError("stored timestamps must be timezone-aware")
     return parsed
-
-
-class ContractConflict(ValueError):
-    pass
 
 
 RequestIdentity = UserIdentity | AuthenticatedPrincipal
@@ -169,6 +168,7 @@ class IterationZeroService:
         # corpus). ``None`` keeps the pre-iteration-5 behaviour exactly.
         self.exam_facts = exam_facts
         self.agent_decision = agent_decision or RuleBasedAgentDecision()
+        self._run_persistence = RunPersistence(repository)
 
     def create_conversation(
         self, user: RequestIdentity, course_id_or_alias: str
@@ -740,7 +740,7 @@ class IterationZeroService:
         return utc_now()
 
     def run(self, user: RequestIdentity, request: WorkflowRunRequest) -> WorkflowResult:
-        return self._run(user, request)
+        return WorkflowRunner(self._run).run(user, request)
 
     def run_stream(
         self,
@@ -748,7 +748,9 @@ class IterationZeroService:
         request: WorkflowRunRequest,
         session: WorkflowStreamSession,
     ) -> WorkflowResult:
-        result = self._run(user, request, stream_session=session)
+        result = WorkflowRunner(self._run).run(
+            user, request, stream_session=session
+        )
         if result.run_status == RunStatus.COMPLETED:
             session.emit_answer_blocks(result.answer_blocks)
         session.emit_result(result)
@@ -760,7 +762,7 @@ class IterationZeroService:
         previous = self.repository.get_attempt(str(user.user_id), run_id)
         if previous is None:
             raise ResourceNotFound("workflow run not found")
-        result = self._run(
+        result = WorkflowRunner(self._run).run(
             user,
             previous.request.model_copy(deep=True),
             attempt_group_id=previous.attempt_group_id,
@@ -922,55 +924,33 @@ class IterationZeroService:
         machine = RunStateMachine()
         machine.transition(RunStatus.RUNNING)
         trace: list[TraceEvent] = StreamingTrace(stream_session)
+        run_id = (
+            stream_session.workflow_run_id
+            if stream_session is not None
+            else uuid4()
+        )
+        message_id = uuid4()
+        answer_id = uuid4()
         # Phase two reducer is request-local and deliberately has no wire
         # contract of its own yet. It governs the existing one-shot path while
         # the action/observation stream is introduced incrementally.
-        agent_budget = AgentBudget()
-        agent_state = AgentState()
-        agent_started = perf_counter()
-        agent_metrics = {
-            "decision_call_count": 0,
-            "model_action_accepted_count": 0,
-            "model_action_shadow_count": 0,
-            "answer_call_count": 0,
-            "provider_retry_count": 0,
-            "guard_retry_count": 0,
-            "decision_fallback_count": 0,
-            "action_rejection_count": 0,
-        }
+        lifecycle = RunLifecycle(
+            repository=self.repository,
+            run_id=run_id,
+            stream_session=stream_session,
+            agent_events_enabled=self.settings.agent_event_stream_enabled,
+            budget=AgentBudget(),
+        )
+        agent_budget = lifecycle.budget
+        agent_state = lifecycle.state
+        agent_metrics = lifecycle.metrics
 
         def optional_model_work_allowed() -> bool:
-            return (
-                agent_metrics["answer_call_count"]
-                < agent_budget.max_answer_calls
-                and agent_budget.allows_optional_call(
-                    perf_counter() - agent_started
-                )
-            )
+            return lifecycle.optional_model_work_allowed()
 
         def reduce_agent(kind: str, **payload: object) -> None:
             nonlocal agent_state
-            agent_state = reduce_agent_event(
-                agent_state,
-                {"kind": kind, **payload},
-                budget=agent_budget,
-            )
-            append_event = getattr(self.repository, "append_agent_event", None)
-            if append_event is not None:
-                append_event(
-                    run_id,
-                    {"kind": kind, **payload},
-                    agent_state.to_dict(),
-                )
-            if stream_session is not None and self.settings.agent_event_stream_enabled:
-                stream_session.emit_agent_event(
-                    kind,
-                    action=payload.get("action") if isinstance(payload.get("action"), str) else None,
-                    status=payload.get("status") if isinstance(payload.get("status"), str) else None,
-                    reason=payload.get("reason") if isinstance(payload.get("reason"), str) else agent_state.budget_reason,
-                    step_count=agent_state.step_count,
-                    observation_count=agent_state.observation_count,
-                )
+            agent_state = lifecycle.reduce(kind, **payload)
             if agent_state.status != "running" and kind != "run_finished":
                 raise ContractConflict(
                     f"agent loop budget crossed: {agent_state.budget_reason or agent_state.status}"
@@ -1055,14 +1035,6 @@ class IterationZeroService:
             )
             return action
 
-        run_id = (
-            stream_session.workflow_run_id
-            if stream_session is not None
-            else uuid4()
-        )
-        message_id = uuid4()
-        answer_id = uuid4()
-
         _append_trace(
             trace,
             node="request_validation",
@@ -1140,7 +1112,7 @@ class IterationZeroService:
             )
 
         def interrupt_if_step_not_claimed() -> WorkflowResult | None:
-            if perf_counter() - agent_started > agent_budget.max_runtime_seconds:
+            if lifecycle.elapsed_seconds > agent_budget.max_runtime_seconds:
                 if agent_state.status == "running":
                     reduce_agent("budget_crossed", reason="max_runtime_seconds")
                 raise ContractConflict("agent loop budget crossed: max_runtime_seconds")
@@ -1226,189 +1198,31 @@ class IterationZeroService:
         started = perf_counter()
         generation_decision_ready = False
         try:
-            retrieval_batch = self.retrieval.search(
-                course_ids, retrieval_query
+            retrieval_outcome = RetrievalCoordinator(
+                settings=self.settings,
+                retrieval=self.retrieval,
+                repository=self.repository,
+                trace=lambda **event: _append_trace(trace, **event),
+            ).retrieve(
+                user_id=str(user.user_id),
+                request=request,
+                course_ids=course_ids,
+                course_display_name=course.display_name,
+                retrieval_query=retrieval_query,
+                history=history,
+                has_exam_plan=exam_plan is not None,
+                use_user_key=use_user_key,
+                initial_corpus_version=corpus_version,
+                initial_course_pack_version=course_pack_version,
+                decide=decide_for_phase,
+                record_action=record_agent_action,
+                record_observation=lambda: reduce_agent("observation_recorded"),
+                optional_work_allowed=optional_model_work_allowed,
             )
-            if (
-                self.settings.agent_decision_mode == "rule"
-                and isinstance(retrieval_batch, RetrievalBatch)
-                and not retrieval_batch.sources
-                and history
-                and exam_plan is None
-                and self.settings.retrieval_mode == "local_corpus"
-            ):
-                # Keep the proven deterministic follow-up recovery in rule
-                # mode. Model mode owns the same optional choice at the
-                # post_retrieval decision node below.
-                context_query = _compose_context_carry_query(
-                    retrieval_query, history
-                )
-                if context_query:
-                    if not optional_model_work_allowed():
-                        _append_trace(
-                            trace,
-                            node="retrieval_context_carry",
-                            status=TraceEventStatus.SKIPPED,
-                            result={
-                                "hit_count": 0,
-                                "candidate_count": 0,
-                                "reason_code": "runtime_soft_limit",
-                            },
-                        )
-                    else:
-                        retry_started = perf_counter()
-                        context_batch = self.retrieval.search(
-                            course_ids, context_query
-                        )
-                        record_agent_action("retrieve_with_query_rewrite")
-                        if (
-                            isinstance(context_batch, RetrievalBatch)
-                            and context_batch.sources
-                        ):
-                            retrieval_batch = context_batch
-                        candidate_count = (
-                            len(context_batch.sources)
-                            if isinstance(context_batch, RetrievalBatch)
-                            else len(context_batch)
-                        )
-                        _append_trace(
-                            trace,
-                            node="retrieval_context_carry",
-                            result={
-                                "hit_count": 0,
-                                "candidate_count": candidate_count,
-                                "rewritten_query": context_query[:200],
-                            },
-                            duration_ms=_elapsed_ms(retry_started),
-                        )
-            if not isinstance(retrieval_batch, RetrievalBatch):
-                # Keep injected iteration-1 test doubles compatible, but never
-                # accept an unversioned result in explicit local-corpus mode.
-                if self.settings.retrieval_mode == "local_corpus":
-                    raise ContractConflict(
-                        "local corpus retrieval returned an unversioned candidate set"
-                    )
-                sources = list(retrieval_batch)
-            else:
-                sources = list(retrieval_batch.sources)
-                corpus_version = retrieval_batch.corpus_version
-                course_pack_version = retrieval_batch.course_pack_version
-                if (
-                    not isinstance(corpus_version, str)
-                    or not corpus_version.strip()
-                    or (
-                        course_pack_version is not None
-                        and (
-                            not isinstance(course_pack_version, str)
-                            or not course_pack_version.strip()
-                        )
-                    )
-                ):
-                    raise ContractConflict(
-                        "retrieval returned an invalid corpus version binding"
-                    )
-                if (
-                    self.settings.retrieval_mode == "local_corpus"
-                    and course_pack_version is None
-                ):
-                    raise ContractConflict(
-                        "local corpus retrieval returned no course pack version"
-                    )
-            private_search = getattr(self.repository, "list_private_knowledge_sources", None)
-            if callable(private_search):
-                sources.extend(
-                    private_search(user_id=str(user.user_id), course_ids=course_ids)
-                )
-            invalid_source_ids = [
-                source.chunk_id
-                for source in sources
-                if source.course_id not in course_ids
-            ]
-            if invalid_source_ids:
-                raise ContractConflict(
-                    "source authorization guard rejected a source outside the selected courses"
-                )
-            sources = _dedupe_sources(sources)
-            record_agent_action("retrieve")
-            reduce_agent("observation_recorded")
-            if (
-                not use_user_key
-                and self.settings.agent_decision_mode
-                in {"model", "shadow", "deterministic"}
-                and action_allowed_for_workflow(
-                    request.workflow_type.value,
-                    "retrieve_with_query_rewrite",
-                )
-            ):
-                if optional_model_work_allowed():
-                    next_action = decide_for_phase(
-                        "post_retrieval",
-                        "generate_answer",
-                        sources=sources,
-                        allow_model=True,
-                        accepted_actions=frozenset(
-                            {"generate_answer", "retrieve_with_query_rewrite"}
-                        ),
-                    )
-                    generation_decision_ready = next_action == "generate_answer"
-                    if next_action == "retrieve_with_query_rewrite":
-                        rewritten_query = _compose_agent_rewrite_query(
-                            retrieval_query,
-                            history,
-                            course.display_name,
-                        )
-                        rewrite_started = perf_counter()
-                        rewritten_batch = self.retrieval.search(
-                            course_ids, rewritten_query
-                        )
-                        if isinstance(rewritten_batch, RetrievalBatch):
-                            if (
-                                rewritten_batch.corpus_version != corpus_version
-                                or rewritten_batch.course_pack_version
-                                != course_pack_version
-                            ):
-                                raise ContractConflict(
-                                    "query rewrite retrieval changed corpus version"
-                                )
-                            rewritten_sources = list(rewritten_batch.sources)
-                        elif self.settings.retrieval_mode == "local_corpus":
-                            raise ContractConflict(
-                                "local corpus query rewrite returned an unversioned candidate set"
-                            )
-                        else:
-                            rewritten_sources = list(rewritten_batch)
-                        if any(
-                            source.course_id not in course_ids
-                            for source in rewritten_sources
-                        ):
-                            raise ContractConflict(
-                                "query rewrite returned a source outside the selected courses"
-                            )
-                        sources = _dedupe_sources(
-                            [*sources, *rewritten_sources]
-                        )[:8]
-                        record_agent_action("retrieve_with_query_rewrite")
-                        reduce_agent("observation_recorded")
-                        _append_trace(
-                            trace,
-                            node="agent_query_rewrite",
-                            duration_ms=_elapsed_ms(rewrite_started),
-                            result={
-                                "hit_count": len(rewritten_sources),
-                                "candidate_count": len(sources),
-                                "rewritten_query": rewritten_query[:200],
-                            },
-                        )
-                else:
-                    _append_trace(
-                        trace,
-                        node="agent_query_rewrite",
-                        status=TraceEventStatus.SKIPPED,
-                        result={
-                            "candidate_count": len(sources),
-                            "reason_code": "runtime_soft_limit",
-                        },
-                    )
+            sources = list(retrieval_outcome.sources)
+            corpus_version = retrieval_outcome.corpus_version
+            course_pack_version = retrieval_outcome.course_pack_version
+            generation_decision_ready = retrieval_outcome.generation_decision_ready
         except Exception:
             interrupted = persist_failed_or_interrupted(
                 failure_node=retrieval_node,
@@ -1417,47 +1231,6 @@ class IterationZeroService:
             if interrupted is not None:
                 return interrupted
             raise
-        _append_trace(
-            trace,
-            node=retrieval_node,
-            duration_ms=_elapsed_ms(started),
-            result={
-                **(
-                    {"mode": "synthetic_fixture_only"}
-                    if self.settings.retrieval_mode == "fixture"
-                    else {}
-                ),
-                "hit_count": len(sources),
-                "candidate_order": [
-                    f"S{index}" for index in range(1, len(sources) + 1)
-                ],
-                "sources": [
-                    {
-                        "course_id": source.course_id,
-                        "title": source.source_title,
-                        "locator": source.locator_start,
-                    }
-                    for source in sources
-                ],
-            },
-        )
-        _append_trace(
-            trace,
-            node="source_authorization_guard",
-            result={
-                "candidate_count": len(sources),
-                "accepted_count": len(sources),
-            },
-        )
-        _append_trace(
-            trace,
-            node="cache_policy",
-            status=TraceEventStatus.SKIPPED,
-            result={
-                "cache_hit": False,
-                "reason_code": "runtime_cache_not_configured",
-            },
-        )
 
         interrupted = finish_interrupted()
         if interrupted is not None:
@@ -1497,52 +1270,25 @@ class IterationZeroService:
                     return interrupted
                 try:
                     agent_metrics["answer_call_count"] += 1
-                    generation_request = request
-                    if guard_retry_context:
-                        generation_request = request.model_copy(
-                            update={
-                                "user_input": (
-                                    f"{request.user_input}\n\n"
-                                    "[内部引用校验修复提示] 上一次回答未通过引用校验，"
-                                    f"请只修复以下问题：{guard_retry_context}"
-                                )
-                            }
-                        )
-                    if use_user_key:
-                        assert api_key is not None
-                        assert byok_connection is not None
-                        # 迭代 7.5：断开/取消时尽力中止上游等待（cancel_check
-                        # 由可取消 transport 周期检查；结果被弃置不落库）。
-                        cancel_check = (
+                    generated = AnswerGenerator(
+                        platform_model=self.model,
+                        byok_model=self.byok_model,
+                        zhipu_model=self.zhipu_model,
+                    ).generate(
+                        request=request,
+                        sources=sources,
+                        history=history,
+                        use_user_key=use_user_key,
+                        api_key=api_key,
+                        connection=byok_connection,
+                        provider_id=model_provider_id,
+                        repair_context=guard_retry_context,
+                        cancel_check=(
                             (lambda: stream_session.cancelled)
                             if stream_session is not None
                             else None
-                        )
-                        generated = self.byok_model.generate(
-                            api_key=api_key,
-                            connection=byok_connection,
-                            request=generation_request,
-                            sources=sources,
-                            history=history,
-                            cancel_check=cancel_check,
-                        )
-                    else:
-                        platform_model = (
-                            self.zhipu_model
-                            if model_provider_id == "zhipu"
-                            and self.zhipu_model is not None
-                            else self.model
-                        )
-                        generated = platform_model.generate(
-                            generation_request,
-                            sources,
-                            history=history,
-                            cancel_check=(
-                                (lambda: stream_session.cancelled)
-                                if stream_session is not None
-                                else None
-                            ),
-                        )
+                        ),
+                    )
                 except Exception as model_error:
                     interrupted = finish_interrupted()
                     if interrupted is not None:
@@ -2152,24 +1898,18 @@ class IterationZeroService:
         attempt_group_id: UUID | None,
         regenerated_from_run_id: UUID | None,
     ) -> None:
-        try:
-            self.repository.save_run(
-                str(user.user_id),
-                request,
-                result,
-                attempt_group_id=attempt_group_id,
-                regenerated_from_run_id=regenerated_from_run_id,
-                auth_session_id=(
-                    user.auth_session_id
-                    if isinstance(user, AuthenticatedPrincipal)
-                    else None
-                ),
-            )
-        except AuthRequired:
-            self.repository.discard_nonterminal_run(
-                str(user.user_id), result.workflow_run_id
-            )
-            raise
+        self._run_persistence.save(
+            user_id=str(user.user_id),
+            auth_session_id=(
+                user.auth_session_id
+                if isinstance(user, AuthenticatedPrincipal)
+                else None
+            ),
+            request=request,
+            result=result,
+            attempt_group_id=attempt_group_id,
+            regenerated_from_run_id=regenerated_from_run_id,
+        )
 
     def _finish_interrupted_if_requested(
         self,

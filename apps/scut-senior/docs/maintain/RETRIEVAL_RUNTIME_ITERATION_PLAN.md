@@ -1,6 +1,6 @@
 # 检索排序、向量执行与运行时拆分迭代方案
 
-日期：2026-09-13。代码基线：`7d5c030b`。状态：待实施；本文不代表功能或性能验收已完成。
+日期：2026-09-13。代码基线：`7d5c030b`。实施状态：P1 与 P2 已完成；下方保留原始验收目标和实际验证记录。
 
 ## 1. 范围与实施原则
 
@@ -214,3 +214,10 @@ npm --prefix web run build
 dense 基准在实际安装 ONNX/NumPy 依赖且有本地模型与合法向量资产的环境执行；缺失时标记该项未验证，不把 mock 编码性能当真实结果。新增离线入口的具体命令随实现确定并写入运行说明。
 
 所有报告明确：实施内容、配置、语料/数据版本、通过与未通过项、性能绝对值和相对变化、默认是否切换、剩余风险。人工评测延期不会阻止等价性能优化和模块拆分；排序收益证据不足时保留旧默认即可。
+
+## 9. 本轮实施记录（2026-09-13）
+
+- P1-A：`vector_search.py` 提供只读 SQLite 向量快照、按 corpus/course/model/dimension 键控的进程内 LRU 和 NumPy 矩阵精确检索；`local_corpus.py` 在单次多课程请求中批量编码并去重 query variants。`vector_search_engine=scalar` 保留为独立回滚开关。
+- P1-B：`retrieval_anchors.py` 只保护唯一题号和完整非泛化标题；`protected_rrf_v1` 以加权 RRF 融合 lexical 与 dense 候选。默认仍为 `lexical_first_v1`，没有把尚未获得人工质量证据的策略强制切成线上默认。
+- P2：保留 `IterationZeroService` 的构造方式和公共入口，拆出 `runtime/` 的 lifecycle、retrieval、answer、persistence 和 runner 边界。运行状态、取消准入和 Agent 事件由 `RunLifecycle` 管理；检索协调器负责版本绑定和来源授权；回答协调器只接收短生命周期凭据。
+- 验证：API 全量 `708 passed, 3 skipped`（Windows 不支持 POSIX 权限位的既有跳过）；Web `124 passed`、类型检查、生产构建及合同导出检查均通过。真实本地语料的冷暖态性能数字和人工排序质量评测仍未执行，因此不宣称达到文中建议的 p95 或质量切换阈值。
