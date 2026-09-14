@@ -429,6 +429,29 @@
       "title": "ModelSource",
       "type": "string"
     },
+    "PersonaEnhancement": {
+      "enum": [
+        "standard",
+        "humanized"
+      ],
+      "title": "PersonaEnhancement",
+      "type": "string"
+    },
+    "PersonaEnhancementOutcome": {
+      "enum": [
+        "not_requested",
+        "applied",
+        "skipped_unavailable",
+        "skipped_budget",
+        "skipped_ineligible",
+        "no_change",
+        "fallback_timeout",
+        "fallback_provider",
+        "fallback_guard"
+      ],
+      "title": "PersonaEnhancementOutcome",
+      "type": "string"
+    },
     "RunStatus": {
       "enum": [
         "created",
@@ -438,6 +461,15 @@
         "failed"
       ],
       "title": "RunStatus",
+      "type": "string"
+    },
+    "Tone": {
+      "enum": [
+        "teaching_assistant",
+        "study_partner",
+        "senior_student"
+      ],
+      "title": "Tone",
       "type": "string"
     },
     "TraceEvent": {
@@ -899,6 +931,28 @@
           "default": null,
           "title": "Normalized Topics"
         },
+        "persona_enhancement": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PersonaEnhancement"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "persona_enhancement_outcome": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PersonaEnhancementOutcome"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
         "provider_id": {
           "anyOf": [
             {
@@ -1045,6 +1099,17 @@
           ],
           "default": null,
           "title": "Stored"
+        },
+        "tone": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Tone"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         },
         "unreviewed_search_returned": {
           "anyOf": [
@@ -1230,6 +1295,14 @@
     },
     "model_source": {
       "$ref": "#/$defs/ModelSource"
+    },
+    "persona_enhancement_effective": {
+      "$ref": "#/$defs/PersonaEnhancement",
+      "default": "standard"
+    },
+    "persona_enhancement_outcome": {
+      "$ref": "#/$defs/PersonaEnhancementOutcome",
+      "default": "not_requested"
     },
     "related_questions": {
       "items": {

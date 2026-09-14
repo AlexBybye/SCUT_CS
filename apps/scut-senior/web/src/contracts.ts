@@ -19,6 +19,20 @@ export const TONES = [
   "senior_student",
 ] as const;
 
+export const PERSONA_ENHANCEMENTS = ["standard", "humanized"] as const;
+
+export const PERSONA_ENHANCEMENT_OUTCOMES = [
+  "not_requested",
+  "applied",
+  "skipped_unavailable",
+  "skipped_budget",
+  "skipped_ineligible",
+  "no_change",
+  "fallback_timeout",
+  "fallback_provider",
+  "fallback_guard",
+] as const;
+
 export const KNOWLEDGE_SCOPES = ["course_only", "course_first"] as const;
 
 export const COURSE_SCOPES = ["single", "cross"] as const;
@@ -81,6 +95,8 @@ export const HELP_LEVELS = [
 export type WorkflowType = (typeof WORKFLOW_TYPES)[number];
 export type AnswerMode = (typeof ANSWER_MODES)[number];
 export type Tone = (typeof TONES)[number];
+export type PersonaEnhancement = (typeof PERSONA_ENHANCEMENTS)[number];
+export type PersonaEnhancementOutcome = (typeof PERSONA_ENHANCEMENT_OUTCOMES)[number];
 export type KnowledgeScope = (typeof KNOWLEDGE_SCOPES)[number];
 export type HelpLevel = (typeof HELP_LEVELS)[number];
 export type RunStatus = (typeof RUN_STATUSES)[number];
@@ -339,6 +355,7 @@ export interface WorkflowRunRequest<T extends WorkflowType = WorkflowType> {
   user_input: string;
   answer_mode: AnswerMode;
   tone: Tone;
+  persona_enhancement?: PersonaEnhancement;
   knowledge_scope: KnowledgeScope;
   include_bilibili_resources: boolean;
   context_refs: string[];
@@ -386,6 +403,9 @@ export interface TraceSafeResult {
   course_scope?: CourseScope | null;
   course_ids?: string[] | null;
   knowledge_scope?: KnowledgeScope | null;
+  tone?: Tone | null;
+  persona_enhancement?: PersonaEnhancement | null;
+  persona_enhancement_outcome?: PersonaEnhancementOutcome | null;
   auth_mode?: "mock" | "github_oauth" | null;
   agent_preset_id?: string | null;
   agent_preset_version?: string | null;
@@ -498,6 +518,8 @@ export interface WorkflowRunResult {
   model_source: ModelSource;
   model: ModelMetadata;
   availability_status: string;
+  persona_enhancement_effective?: PersonaEnhancement;
+  persona_enhancement_outcome?: PersonaEnhancementOutcome;
 }
 
 export interface AnswerBlock {

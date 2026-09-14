@@ -1,9 +1,11 @@
-import { ANSWER_MODES, TONES, type AnswerMode, type Tone } from "./contracts";
+import { ANSWER_MODES, PERSONA_ENHANCEMENTS, TONES, type AnswerMode, type PersonaEnhancement, type Tone } from "./contracts";
 
 export const DEFAULT_ANSWER_MODE: AnswerMode = "detailed";
 export const DEFAULT_TONE: Tone = "study_partner";
 export const ANSWER_MODE_STORAGE_KEY = "scut_senior_assistant_answer_mode";
 export const TONE_STORAGE_KEY = "scut_senior_assistant_tone";
+export const DEFAULT_PERSONA_ENHANCEMENT: PersonaEnhancement = "standard";
+export const PERSONA_ENHANCEMENT_STORAGE_KEY = "scut_senior_persona_enhancement";
 
 type StorageLike = Pick<Storage, "getItem" | "setItem">;
 
@@ -27,6 +29,12 @@ export function parseTone(value: unknown): Tone {
     : DEFAULT_TONE;
 }
 
+export function parsePersonaEnhancement(value: unknown): PersonaEnhancement {
+  return typeof value === "string" && PERSONA_ENHANCEMENTS.includes(value as PersonaEnhancement)
+    ? (value as PersonaEnhancement)
+    : DEFAULT_PERSONA_ENHANCEMENT;
+}
+
 export function readStoredAnswerMode(
   storage: StorageLike | null = defaultStorage(),
 ): AnswerMode {
@@ -47,6 +55,17 @@ export function readStoredTone(storage: StorageLike | null = defaultStorage()): 
   }
 }
 
+export function readStoredPersonaEnhancement(
+  storage: StorageLike | null = defaultStorage(),
+): PersonaEnhancement {
+  if (!storage) return DEFAULT_PERSONA_ENHANCEMENT;
+  try {
+    return parsePersonaEnhancement(storage.getItem(PERSONA_ENHANCEMENT_STORAGE_KEY));
+  } catch {
+    return DEFAULT_PERSONA_ENHANCEMENT;
+  }
+}
+
 export function writeStoredAnswerMode(
   mode: AnswerMode,
   storage: StorageLike | null = defaultStorage(),
@@ -64,6 +83,17 @@ export function writeStoredTone(
 ): void {
   try {
     storage?.setItem(TONE_STORAGE_KEY, tone);
+  } catch {
+    // 浏览器拒绝持久化时保留当前会话内设置。
+  }
+}
+
+export function writeStoredPersonaEnhancement(
+  value: PersonaEnhancement,
+  storage: StorageLike | null = defaultStorage(),
+): void {
+  try {
+    storage?.setItem(PERSONA_ENHANCEMENT_STORAGE_KEY, value);
   } catch {
     // 浏览器拒绝持久化时保留当前会话内设置。
   }

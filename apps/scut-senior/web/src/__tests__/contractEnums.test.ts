@@ -9,6 +9,8 @@ import {
   HELP_LEVELS,
   KNOWLEDGE_SCOPES,
   MODEL_SOURCES,
+  PERSONA_ENHANCEMENTS,
+  PERSONA_ENHANCEMENT_OUTCOMES,
   RUN_STATUSES,
   TONES,
   TRACE_EVENT_STATUSES,
@@ -20,6 +22,8 @@ describe("shared V1 enums", () => {
     expect([...WORKFLOW_TYPES]).toEqual(sharedEnums.workflow_type);
     expect([...ANSWER_MODES]).toEqual(sharedEnums.answer_mode);
     expect([...TONES]).toEqual(sharedEnums.tone);
+    expect([...PERSONA_ENHANCEMENTS]).toEqual(sharedEnums.persona_enhancement);
+    expect([...PERSONA_ENHANCEMENT_OUTCOMES]).toEqual(sharedEnums.persona_enhancement_outcome);
     expect([...KNOWLEDGE_SCOPES]).toEqual(sharedEnums.knowledge_scope);
     expect([...COURSE_SCOPES]).toEqual(sharedEnums.course_scope);
     expect([...MODEL_SOURCES]).toEqual(sharedEnums.model_source);

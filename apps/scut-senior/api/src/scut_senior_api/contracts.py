@@ -45,6 +45,23 @@ class Tone(StrEnum):
     SENIOR_STUDENT = "senior_student"
 
 
+class PersonaEnhancement(StrEnum):
+    STANDARD = "standard"
+    HUMANIZED = "humanized"
+
+
+class PersonaEnhancementOutcome(StrEnum):
+    NOT_REQUESTED = "not_requested"
+    APPLIED = "applied"
+    SKIPPED_UNAVAILABLE = "skipped_unavailable"
+    SKIPPED_BUDGET = "skipped_budget"
+    SKIPPED_INELIGIBLE = "skipped_ineligible"
+    NO_CHANGE = "no_change"
+    FALLBACK_TIMEOUT = "fallback_timeout"
+    FALLBACK_PROVIDER = "fallback_provider"
+    FALLBACK_GUARD = "fallback_guard"
+
+
 class KnowledgeScope(StrEnum):
     COURSE_ONLY = "course_only"
     COURSE_FIRST = "course_first"
@@ -165,6 +182,7 @@ class WorkflowRunRequest(ContractModel):
     user_input: Annotated[str, Field(min_length=1, max_length=100_000)]
     answer_mode: AnswerMode
     tone: Tone
+    persona_enhancement: PersonaEnhancement = PersonaEnhancement.STANDARD
     knowledge_scope: KnowledgeScope
     include_bilibili_resources: bool
     context_refs: list[str]
@@ -436,6 +454,9 @@ class TraceSafeResult(ContractModel):
     course_scope: CourseScope | None = None
     course_ids: list[str] | None = None
     knowledge_scope: KnowledgeScope | None = None
+    tone: Tone | None = None
+    persona_enhancement: PersonaEnhancement | None = None
+    persona_enhancement_outcome: PersonaEnhancementOutcome | None = None
     agent_preset_id: TraceCode | None = None
     agent_preset_version: TraceCode | None = None
     auth_mode: Literal["mock", "github_oauth"] | None = None
@@ -532,6 +553,10 @@ class WorkflowResult(ContractModel):
     model_source: ModelSource
     model: ModelMetadata
     availability_status: str
+    persona_enhancement_effective: PersonaEnhancement = PersonaEnhancement.STANDARD
+    persona_enhancement_outcome: PersonaEnhancementOutcome = (
+        PersonaEnhancementOutcome.NOT_REQUESTED
+    )
 
 
 class AnswerDelta(ContractModel):

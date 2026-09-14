@@ -18,6 +18,13 @@ const WORKFLOW_TYPES = new Set([
 ]);
 const COURSE_SCOPES = new Set(["single", "cross"]);
 const KNOWLEDGE_SCOPES = new Set(["course_only", "course_first"]);
+const TONES = new Set(["teaching_assistant", "study_partner", "senior_student"]);
+const PERSONA_ENHANCEMENTS = new Set(["standard", "humanized"]);
+const PERSONA_ENHANCEMENT_OUTCOMES = new Set([
+  "not_requested", "applied", "skipped_unavailable", "skipped_budget",
+  "skipped_ineligible", "no_change", "fallback_timeout", "fallback_provider",
+  "fallback_guard",
+]);
 const MODEL_SOURCES = new Set(["platform_default", "user_key"]);
 const ANSWER_STATUSES = new Set([
   "answered",
@@ -48,6 +55,9 @@ const TRACE_RESULT_FIELDS = new Set<keyof TraceSafeResult>([
   "course_scope",
   "course_ids",
   "knowledge_scope",
+  "tone",
+  "persona_enhancement",
+  "persona_enhancement_outcome",
   "auth_mode",
   "agent_preset_id",
   "agent_preset_version",
@@ -155,6 +165,8 @@ const WORKFLOW_RESULT_FIELDS = new Set([
   "model_source",
   "model",
   "availability_status",
+  "persona_enhancement_effective",
+  "persona_enhancement_outcome",
 ]);
 const WORKFLOW_ATTEMPT_FIELDS = new Set([
   "workflow_run_id",
@@ -263,6 +275,9 @@ function assertTraceResult(value: unknown): asserts value is TraceSafeResult {
     ["workflow_type", WORKFLOW_TYPES],
     ["course_scope", COURSE_SCOPES],
     ["knowledge_scope", KNOWLEDGE_SCOPES],
+    ["tone", TONES],
+    ["persona_enhancement", PERSONA_ENHANCEMENTS],
+    ["persona_enhancement_outcome", PERSONA_ENHANCEMENT_OUTCOMES],
     ["auth_mode", new Set(["mock", "github_oauth"])],
     ["mode", new Set(["mock", "synthetic_fixture_only"])],
     ["evidence_status", EVIDENCE_STATUSES],
@@ -556,7 +571,15 @@ export function validateWorkflowRunResult(
 ): WorkflowRunResult {
   if (!isRecord(value)) throw new WorkflowStreamProtocolError("invalid Workflow result");
   assertOnlyKeys(value, WORKFLOW_RESULT_FIELDS, "Workflow result");
-  assertRequiredKeys(value, WORKFLOW_RESULT_FIELDS, "Workflow result");
+  assertRequiredKeys(
+    value,
+    new Set(
+      [...WORKFLOW_RESULT_FIELDS].filter(
+        (field) => field !== "persona_enhancement_effective" && field !== "persona_enhancement_outcome",
+      ),
+    ),
+    "Workflow result",
+  );
 
   for (const field of [
     "workflow_run_id",
@@ -590,6 +613,12 @@ export function validateWorkflowRunResult(
   }
   assertEnum(value.evidence_status, EVIDENCE_STATUSES, "Workflow result evidence_status");
   assertEnum(value.model_source, MODEL_SOURCES, "Workflow result model_source");
+  if (hasOwn(value, "persona_enhancement_effective")) {
+    assertEnum(value.persona_enhancement_effective, PERSONA_ENHANCEMENTS, "Workflow result persona_enhancement_effective");
+  }
+  if (hasOwn(value, "persona_enhancement_outcome")) {
+    assertEnum(value.persona_enhancement_outcome, PERSONA_ENHANCEMENT_OUTCOMES, "Workflow result persona_enhancement_outcome");
+  }
 
   const courseIds = new Set(value.course_ids);
   if (!Array.isArray(value.citations)) {

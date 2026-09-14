@@ -120,6 +120,14 @@ export async function getModels(): Promise<ModelCatalog> {
   return apiRequest<ModelCatalog>("/api/v1/models");
 }
 
+export interface RuntimeHealth {
+  capabilities?: { humanizer_configured?: boolean };
+}
+
+export async function getRuntimeHealth(): Promise<RuntimeHealth> {
+  return apiRequest<RuntimeHealth>("/api/v1/health");
+}
+
 export async function getPluginRegistry(): Promise<PluginRegistry> {
   return apiRequest<PluginRegistry>("/api/v1/plugin-registry");
 }

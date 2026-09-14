@@ -45,6 +45,12 @@ class RunLifecycle:
             and self.budget.allows_optional_call(self.elapsed_seconds)
         )
 
+    def optional_model_timeout_seconds(self, *, cap: float = 20.0) -> float:
+        """Bound optional work to a short slice before the soft runtime limit."""
+
+        remaining = self.budget.soft_runtime_seconds - self.elapsed_seconds
+        return max(0.0, min(cap, remaining))
+
     @property
     def elapsed_seconds(self) -> float:
         return self.clock() - self.started_at

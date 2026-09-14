@@ -2,6 +2,7 @@ import type {
   AnswerMode,
   KnowledgeScope,
   ModelSource,
+  PersonaEnhancement,
   Tone,
   WorkflowPayloadMap,
   WorkflowRunRequest,
@@ -16,6 +17,7 @@ export interface BuildWorkflowRequestInput<T extends WorkflowType> {
   userInput: string;
   answerMode: AnswerMode;
   tone: Tone;
+  personaEnhancement?: PersonaEnhancement;
   knowledgeScope: KnowledgeScope;
   includeBilibiliResources: boolean;
   modelSource: ModelSource;
@@ -139,6 +141,7 @@ export function buildWorkflowRequest<T extends WorkflowType>(
     user_input: userInput,
     answer_mode: input.answerMode,
     tone: input.tone,
+    persona_enhancement: input.personaEnhancement ?? "standard",
     knowledge_scope: input.knowledgeScope,
     include_bilibili_resources:
       input.knowledgeScope === "course_first" && input.includeBilibiliResources,

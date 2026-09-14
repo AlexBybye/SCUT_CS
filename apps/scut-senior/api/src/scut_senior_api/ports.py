@@ -17,6 +17,7 @@ from .contracts import (
     WorkflowAttempt,
     WorkflowResult,
     WorkflowRunRequest,
+    Tone,
 )
 
 
@@ -88,6 +89,10 @@ class HumanizerGateway(Protocol):
         *,
         blocks: list[AnswerBlock],
         protected_terms: tuple[str, ...],
+        tone: Tone,
+        instructions: str,
+        cancel_check: Callable[[], bool] | None = None,
+        timeout_seconds: float | None = None,
     ) -> list[AnswerBlock]: ...
 
 

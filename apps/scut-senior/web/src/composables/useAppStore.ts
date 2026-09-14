@@ -13,6 +13,7 @@ import {
   getConversation,
   getCourses,
   getModels,
+  getRuntimeHealth,
   githubLoginUrl,
   listConversations,
   logout,
@@ -31,10 +32,13 @@ import {
 import { canManageByokCredentials } from "../byokSession";
 import {
   parseAnswerMode,
+  parsePersonaEnhancement,
   parseTone,
   readStoredAnswerMode,
+  readStoredPersonaEnhancement,
   readStoredTone,
   writeStoredAnswerMode,
+  writeStoredPersonaEnhancement,
   writeStoredTone,
 } from "../assistantPreference";
 import type {
@@ -50,6 +54,7 @@ import type {
   KnowledgeScope,
   ModelCatalog,
   ModelCatalogItem,
+  PersonaEnhancement,
   RetrievalMode,
   Tone,
   WorkflowAttempt,
@@ -113,6 +118,8 @@ function createAppStore() {
   const selectedModelKey = ref("");
   const answerMode = ref<AnswerMode>(readStoredAnswerMode());
   const tone = ref<Tone>(readStoredTone());
+  const personaEnhancement = ref<PersonaEnhancement>(readStoredPersonaEnhancement());
+  const humanizerConfigured = ref(false);
   const knowledgeScope = ref<KnowledgeScope>("course_first");
   const includeBilibiliResources = ref(true);
   const userInput = ref("");
@@ -286,6 +293,10 @@ function createAppStore() {
     writeStoredTone(nextTone);
     persistAccountPreferences();
   });
+  watch(personaEnhancement, (value) => {
+    writeStoredPersonaEnhancement(value);
+    persistAccountPreferences();
+  });
 
   // 个人中心偏好：随 GitHub 账号跨设备同步（服务端 user_preferences）。
   // 主题在本地仍作为即时缓存（登出/未登录可用），登录后再与账号同步。
@@ -296,6 +307,7 @@ function createAppStore() {
     accentTheme: "accent_theme",
     answerMode: "answer_mode",
     tone: "tone",
+    personaEnhancement: "persona_enhancement",
   } as const;
 
   function buildPreferenceSnapshot(): Record<string, string> {
@@ -305,6 +317,7 @@ function createAppStore() {
       [PREFERENCE_KEYS.accentTheme]: accentTheme.value,
       [PREFERENCE_KEYS.answerMode]: answerMode.value,
       [PREFERENCE_KEYS.tone]: tone.value,
+      [PREFERENCE_KEYS.personaEnhancement]: personaEnhancement.value,
     };
   }
 
@@ -339,6 +352,10 @@ function createAppStore() {
       if (answer !== undefined) answerMode.value = parseAnswerMode(answer);
       const storedTone = preferences[PREFERENCE_KEYS.tone];
       if (storedTone !== undefined) tone.value = parseTone(storedTone);
+      const storedEnhancement = preferences[PREFERENCE_KEYS.personaEnhancement];
+      if (storedEnhancement !== undefined) {
+        personaEnhancement.value = parsePersonaEnhancement(storedEnhancement);
+      }
     } finally {
       suppressPreferenceSave = false;
     }
@@ -840,6 +857,7 @@ function createAppStore() {
       userInput: userInput.value,
       answerMode: answerMode.value,
       tone: tone.value,
+      personaEnhancement: humanizerConfigured.value ? personaEnhancement.value : "standard",
       knowledgeScope: knowledgeScope.value,
       includeBilibiliResources: includeBilibiliResources.value,
       modelSource: selectedModel.value.model_source,
@@ -1165,6 +1183,15 @@ function createAppStore() {
           )
         : "";
       isLoadingModels.value = false;
+    }
+  }
+
+  async function loadRuntimeHealth(): Promise<void> {
+    try {
+      const health = await getRuntimeHealth();
+      humanizerConfigured.value = health.capabilities?.humanizer_configured === true;
+    } catch {
+      humanizerConfigured.value = false;
     }
   }
 
@@ -1532,6 +1559,8 @@ function createAppStore() {
     workflowRouteIsManual,
     answerMode,
     tone,
+    personaEnhancement,
+    humanizerConfigured,
     knowledgeScope,
     includeBilibiliResources,
     userInput,
@@ -1671,6 +1700,7 @@ function createAppStore() {
     loadCourses,
     onPluginChanged,
     loadModels,
+    loadRuntimeHealth,
     abortActiveWorkflow,
   });
 }

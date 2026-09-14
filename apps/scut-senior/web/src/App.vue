@@ -34,6 +34,7 @@ onMounted(() => {
   void store.loadAuth();
   void store.loadCourses();
   void store.loadModels();
+  void store.loadRuntimeHealth();
   window.addEventListener("keydown", onGlobalKeydown);
   window.addEventListener("resize", onWindowResize);
   window.addEventListener("popstate", syncPersonalLocation);

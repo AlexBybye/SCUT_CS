@@ -18,6 +18,21 @@
     "study_partner",
     "senior_student"
   ],
+  "persona_enhancement": [
+    "standard",
+    "humanized"
+  ],
+  "persona_enhancement_outcome": [
+    "not_requested",
+    "applied",
+    "skipped_unavailable",
+    "skipped_budget",
+    "skipped_ineligible",
+    "no_change",
+    "fallback_timeout",
+    "fallback_provider",
+    "fallback_guard"
+  ],
   "knowledge_scope": [
     "course_only",
     "course_first"

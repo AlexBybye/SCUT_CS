@@ -119,6 +119,12 @@ def test_shared_enums_are_exact() -> None:
     ]
     assert payload["answer_mode"] == ["concise", "detailed", "example", "step_by_step"]
     assert payload["tone"] == ["teaching_assistant", "study_partner", "senior_student"]
+    assert payload["persona_enhancement"] == ["standard", "humanized"]
+    assert payload["persona_enhancement_outcome"] == [
+        "not_requested", "applied", "skipped_unavailable", "skipped_budget",
+        "skipped_ineligible", "no_change", "fallback_timeout",
+        "fallback_provider", "fallback_guard",
+    ]
     assert payload["knowledge_scope"] == ["course_only", "course_first"]
     assert payload["course_scope"] == ["single", "cross"]
     assert payload["model_source"] == ["platform_default", "user_key"]

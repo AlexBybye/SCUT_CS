@@ -123,6 +123,15 @@ function toggleCrossCourse(): void {
   store.crossCourseSearchEnabled = !store.crossCourseSearchEnabled;
 }
 
+const enhancementEnabled = computed(
+  () => store.humanizerConfigured && store.personaEnhancement === "humanized",
+);
+
+function togglePersonaEnhancement(): void {
+  if (!store.humanizerConfigured) return;
+  store.personaEnhancement = enhancementEnabled.value ? "standard" : "humanized";
+}
+
 // ── 品牌色滑块（两档渐变色，可拖拽） ─────────────────────────
 const accentTrackEl = ref<HTMLDivElement | null>(null);
 const accentDragRatio = ref<number | null>(null);
@@ -203,6 +212,29 @@ function onAccentKeydown(event: KeyboardEvent): void {
       </div>
       <small class="search-mode-help">
         {{ searchModeHelp }}
+      </small>
+    </div>
+
+    <div class="enhancement-field" :class="{ 'is-disabled': !store.humanizerConfigured }">
+      <span class="field-label">自然表达增强</span>
+      <button
+        type="button"
+        class="enhancement-switch"
+        :class="{ 'is-on': enhancementEnabled }"
+        role="switch"
+        :aria-checked="enhancementEnabled ? 'true' : 'false'"
+        :disabled="!store.humanizerConfigured"
+        @click="togglePersonaEnhancement"
+      >
+        <span class="enhancement-progress" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="enhancement-thumb" aria-hidden="true"></span>
+        <span>{{ enhancementEnabled ? "已开启" : "未开启" }}</span>
+      </button>
+      <small v-if="!store.humanizerConfigured" class="search-mode-help">
+        当前部署暂未配置自然表达增强
+      </small>
+      <small v-else-if="enhancementEnabled" class="search-mode-help">
+        使用当前人格对回答进行二次润色，表达会更自然，但会增加等待时间和模型用量。
       </small>
     </div>
 
@@ -427,6 +459,92 @@ function onAccentKeydown(event: KeyboardEvent): void {
   color: var(--text-soft);
   font-size: var(--fs-2xs);
   line-height: 1.5;
+}
+
+.enhancement-field {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 18px;
+}
+
+.enhancement-field.is-disabled { opacity: 0.66; }
+
+.enhancement-switch {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 42px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--sunken);
+  color: var(--text-soft);
+  font: inherit;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.enhancement-switch:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--focus) 34%, transparent);
+  outline-offset: 2px;
+}
+
+.enhancement-switch:disabled { cursor: not-allowed; }
+.enhancement-switch > span:last-child { position: relative; z-index: 2; }
+
+.enhancement-thumb {
+  position: absolute;
+  z-index: 1;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
+  border-radius: 999px;
+  background: var(--raised);
+  box-shadow: var(--shadow-panel);
+  transition: transform 220ms var(--ease-out);
+}
+
+.enhancement-switch.is-on .enhancement-thumb {
+  transform: translateX(100%);
+  background: color-mix(in srgb, var(--accent) 20%, var(--raised));
+}
+
+.enhancement-progress {
+  position: absolute;
+  inset: 0 50% 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 140ms ease 80ms;
+}
+
+.enhancement-switch.is-on .enhancement-progress { opacity: 1; }
+
+.enhancement-progress i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: enhancement-bubble 900ms ease-in-out infinite alternate;
+}
+
+.enhancement-progress i:nth-child(2) { animation-delay: 140ms; }
+.enhancement-progress i:nth-child(3) { animation-delay: 280ms; }
+
+@keyframes enhancement-bubble {
+  from { transform: translateX(-2px) scale(.7); opacity: .35; }
+  to { transform: translateX(2px) scale(1); opacity: .9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enhancement-thumb,
+  .enhancement-progress { transition: none; }
+  .enhancement-progress i { animation: none; }
 }
 
 /* ── 知识范围 ───────────────────────────────────────────── */

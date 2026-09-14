@@ -48,6 +48,8 @@ from .contracts import (
     MaintainerContributionTransition,
     ModelMetadata,
     ModelSource,
+    PersonaEnhancement,
+    PersonaEnhancementOutcome,
     RunStatus,
     PrivateKnowledgeCreate,
     PrivateKnowledgeRecord,
@@ -82,6 +84,11 @@ from .exam_review import (
 from .harness_registry import HARNESS_REGISTRY
 from .model_catalog import ModelCatalog, ModelCatalogEntry
 from .model_credentials import ModelCredentialError, ModelCredentialManager
+from .persona_humanizer import (
+    compose_persona_humanizer_prompt,
+    has_humanizable_chinese,
+    prepare_humanizer_input,
+)
 from .ports import (
     CapabilityUnavailable,
     ConversationTurn,
@@ -1505,20 +1512,44 @@ class IterationZeroService:
             max_items=32,
         )
         original_blocks = [block.model_copy(deep=True) for block in guarded.blocks]
-        if self.humanizer is None or not optional_model_work_allowed():
-            interrupted = finish_interrupted()
-            if interrupted is not None:
-                return interrupted
+        enhancement_outcome = PersonaEnhancementOutcome.NOT_REQUESTED
+        enhancement_effective = PersonaEnhancement.STANDARD
+        if request.persona_enhancement == PersonaEnhancement.STANDARD:
             answer_blocks = original_blocks
             _append_trace(
                 trace,
                 node="response_style_control",
+                result={"reason_code": "single_pass_model_prompt"},
+            )
+        elif self.humanizer is None:
+            answer_blocks = original_blocks
+            enhancement_outcome = PersonaEnhancementOutcome.SKIPPED_UNAVAILABLE
+            _append_trace(
+                trace,
+                node="persona_enhancement",
+                status=TraceEventStatus.SKIPPED,
                 result={
-                    "reason_code": (
-                        "single_pass_model_prompt"
-                        if self.humanizer is None
-                        else "runtime_soft_limit"
-                    )
+                    "tone": request.tone,
+                    "persona_enhancement": request.persona_enhancement,
+                    "persona_enhancement_outcome": enhancement_outcome,
+                    "reason_code": "skipped_unavailable",
+                },
+            )
+        elif not optional_model_work_allowed():
+            interrupted = finish_interrupted()
+            if interrupted is not None:
+                return interrupted
+            answer_blocks = original_blocks
+            enhancement_outcome = PersonaEnhancementOutcome.SKIPPED_BUDGET
+            _append_trace(
+                trace,
+                node="persona_enhancement",
+                status=TraceEventStatus.SKIPPED,
+                result={
+                    "tone": request.tone,
+                    "persona_enhancement": request.persona_enhancement,
+                    "persona_enhancement_outcome": enhancement_outcome,
+                    "reason_code": "skipped_budget",
                 },
             )
         else:
@@ -1526,50 +1557,111 @@ class IterationZeroService:
             if interrupted is not None:
                 return interrupted
             try:
-                candidate_blocks = self.humanizer.humanize(
-                    blocks=[block.model_copy(deep=True) for block in original_blocks],
-                    protected_terms=protected_terms,
-                )
-                humanizer_outcome = protect_humanizer_output(
-                    original=original_blocks,
-                    candidate=list(candidate_blocks),
-                    protected_terms=protected_terms,
-                )
-            except Exception:
+                prepared = prepare_humanizer_input(original_blocks, protected_terms)
+            except ValueError:
                 answer_blocks = original_blocks
+                enhancement_outcome = PersonaEnhancementOutcome.FALLBACK_GUARD
                 _append_trace(
                     trace,
-                    node="humanizer",
+                    node="persona_enhancement",
                     status=TraceEventStatus.FAILED,
-                    result={"degradation_code": "humanizer_gateway_fallback"},
-                )
-            else:
-                answer_blocks = list(humanizer_outcome.blocks)
-                _append_trace(
-                    trace,
-                    node="humanizer",
                     result={
-                        "reason_code": (
-                            "humanizer_applied"
-                            if humanizer_outcome.applied
-                            else (
-                                "humanizer_protected_fallback"
-                                if humanizer_outcome.fallback
-                                else "humanizer_no_change"
-                            )
-                        ),
-                        **(
-                            {
-                                "degradation_code": (
-                                    "humanizer_"
-                                    + (humanizer_outcome.reason or "fallback")
-                                )
-                            }
-                            if humanizer_outcome.fallback
-                            else {}
-                        ),
+                        "tone": request.tone,
+                        "persona_enhancement": request.persona_enhancement,
+                        "persona_enhancement_outcome": enhancement_outcome,
+                        "reason_code": "fallback_guard",
                     },
                 )
+            else:
+                if not has_humanizable_chinese(prepared.blocks):
+                    answer_blocks = original_blocks
+                    enhancement_outcome = PersonaEnhancementOutcome.SKIPPED_INELIGIBLE
+                    _append_trace(
+                        trace,
+                        node="persona_enhancement",
+                        status=TraceEventStatus.SKIPPED,
+                        result={
+                            "tone": request.tone,
+                            "persona_enhancement": request.persona_enhancement,
+                            "persona_enhancement_outcome": enhancement_outcome,
+                            "reason_code": "skipped_ineligible",
+                        },
+                    )
+                else:
+                    _append_trace(
+                        trace,
+                        node="persona_enhancement",
+                        status=TraceEventStatus.STARTED,
+                        result={
+                            "tone": request.tone,
+                            "persona_enhancement": request.persona_enhancement,
+                            "reason_code": "humanizer_running",
+                        },
+                    )
+                    started = perf_counter()
+                    humanizer_outcome = None
+                    try:
+                        candidate_blocks = self.humanizer.humanize(
+                            blocks=[block.model_copy(deep=True) for block in prepared.blocks],
+                            protected_terms=protected_terms,
+                            tone=request.tone,
+                            instructions=compose_persona_humanizer_prompt(request.tone),
+                            cancel_check=(
+                                (lambda: stream_session.cancelled)
+                                if stream_session is not None
+                                else None
+                            ),
+                            timeout_seconds=lifecycle.optional_model_timeout_seconds(),
+                        )
+                    except TimeoutError:
+                        answer_blocks = original_blocks
+                        enhancement_outcome = PersonaEnhancementOutcome.FALLBACK_TIMEOUT
+                    except Exception:
+                        answer_blocks = original_blocks
+                        enhancement_outcome = PersonaEnhancementOutcome.FALLBACK_PROVIDER
+                    else:
+                        try:
+                            restored_blocks = prepared.restore(list(candidate_blocks))
+                            humanizer_outcome = protect_humanizer_output(
+                                original=original_blocks,
+                                candidate=restored_blocks,
+                                protected_terms=protected_terms,
+                            )
+                        except (TypeError, ValueError):
+                            answer_blocks = original_blocks
+                            enhancement_outcome = PersonaEnhancementOutcome.FALLBACK_GUARD
+                        else:
+                            answer_blocks = list(humanizer_outcome.blocks)
+                            if humanizer_outcome.fallback:
+                                enhancement_outcome = PersonaEnhancementOutcome.FALLBACK_GUARD
+                            elif humanizer_outcome.applied:
+                                enhancement_outcome = PersonaEnhancementOutcome.APPLIED
+                                enhancement_effective = PersonaEnhancement.HUMANIZED
+                            else:
+                                enhancement_outcome = PersonaEnhancementOutcome.NO_CHANGE
+                                enhancement_effective = PersonaEnhancement.HUMANIZED
+                    _append_trace(
+                        trace,
+                        node="persona_enhancement",
+                        status=(
+                            TraceEventStatus.FAILED
+                            if enhancement_outcome.value.startswith("fallback_")
+                            else TraceEventStatus.COMPLETED
+                        ),
+                        duration_ms=_elapsed_ms(started),
+                        result={
+                            "tone": request.tone,
+                            "persona_enhancement": request.persona_enhancement,
+                            "persona_enhancement_outcome": enhancement_outcome,
+                            "reason_code": enhancement_outcome.value,
+                            **(
+                                {"degradation_code": humanizer_outcome.reason or "guard_rejected"}
+                                if enhancement_outcome == PersonaEnhancementOutcome.FALLBACK_GUARD
+                                and humanizer_outcome is not None
+                                else {}
+                            ),
+                        },
+                    )
 
         answer_blocks = _enforce_primary_answer_tone(answer_blocks, request)
 
@@ -1745,6 +1837,8 @@ class IterationZeroService:
                 mock_only=mock_only,
             ),
             availability_status=availability_status,
+            persona_enhancement_effective=enhancement_effective,
+            persona_enhancement_outcome=enhancement_outcome,
         )
 
         self._save_run_state(
