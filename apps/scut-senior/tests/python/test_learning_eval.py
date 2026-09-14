@@ -37,6 +37,15 @@ def test_unjudged_is_not_noise_or_answer_failure():
 
 def test_reviewed_scenarios_preserve_real_workflow_inputs():
     cases = json.loads((DEFAULT_SUITE.parent / "scenarios.json").read_text(encoding="utf-8"))["cases"]
+    workflow_counts = {
+        workflow: sum(case["workflow_type"] == workflow for case in cases)
+        for workflow in {case["workflow_type"] for case in cases}
+    }
+    assert len(cases) == 47
+    assert workflow_counts == {
+        "knowledge_qa": 11, "problem_tutor": 9, "mistake_review": 9,
+        "exam_review": 9, "temporary_material_reading": 9,
+    }
     assert {case["workflow_type"] for case in cases} == {
         "knowledge_qa", "problem_tutor", "mistake_review", "exam_review", "temporary_material_reading",
     }

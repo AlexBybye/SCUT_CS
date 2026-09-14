@@ -13,6 +13,7 @@ from .agent_loop import (
     RuleBasedAgentDecision,
     should_retrieve_with_rewrite,
 )
+from .action_registry import ACTION_REGISTRY
 from .adapters.bilibili import derive_question_keywords, normalize_keywords
 from .adapters.exam_facts import ExamFactsUnavailable
 from .config import Settings
@@ -28,7 +29,6 @@ from .contracts import (
     AnswerStatus,
     Citation,
     ContributionAttachmentRecord,
-    ContributionDraftSubmit,
     ContributionPreview,
     ContributionPreviewRequest,
     ContributionRecord,
@@ -51,6 +51,7 @@ from .contracts import (
     RunStatus,
     PrivateKnowledgeCreate,
     PrivateKnowledgeRecord,
+    PrivateKnowledgeDetail,
     TemporaryMaterialCreate,
     TemporaryMaterialDetail,
     TemporaryMaterialRecord,
@@ -69,7 +70,6 @@ from .contributions import (
     normalize_contribution_markdown,
     resolve_transition_target,
     states_allowed_for_target,
-    validate_contribution_transition,
     validate_github_pr_url,
     ContributionTransitionError,
 )
@@ -383,6 +383,27 @@ class IterationZeroService:
             title=payload.title, content=payload.content,
         )
 
+    def list_private_knowledge(self, user: RequestIdentity, *, limit: int = 30,
+                               offset: int = 0, course_id: str | None = None) -> list[PrivateKnowledgeRecord]:
+        repository = self._require_contribution_capable_repository()
+        return repository.list_private_knowledge(str(user.user_id), limit=limit, offset=offset, course_id=course_id)
+
+    def get_private_knowledge(self, user: RequestIdentity, knowledge_id: UUID) -> PrivateKnowledgeDetail:
+        record = self._require_contribution_capable_repository().get_private_knowledge(str(user.user_id), knowledge_id)
+        if record is None:
+            raise ResourceNotFound("私人知识不存在或已到期。")
+        return record
+
+    def delete_private_knowledge(self, user: RequestIdentity, knowledge_id: UUID) -> None:
+        if not self._require_contribution_capable_repository().delete_private_knowledge(str(user.user_id), knowledge_id):
+            raise ResourceNotFound("私人知识不存在或已删除。")
+
+    def renew_private_knowledge(self, user: RequestIdentity, knowledge_id: UUID) -> PrivateKnowledgeRecord:
+        record = self._require_contribution_capable_repository().renew_private_knowledge(str(user.user_id), knowledge_id)
+        if record is None:
+            raise ResourceNotFound("私人知识不存在或已到期，无法续期。")
+        return record
+
     def list_temporary_materials(
         self, user: RequestIdentity
     ) -> list[TemporaryMaterialRecord]:
@@ -441,54 +462,52 @@ class IterationZeroService:
         user: RequestIdentity,
         payload: ContributionSubmit,
     ) -> ContributionRecord:
-        """从已保存的临时材料创建贡献（add file 语义，落点为学科资料）。
-
-        GitHub App 未确认：`as_draft=False` 直接进入维护者待处理队列
-        （submitted），绝不创建 PR，也不使用用户 OAuth token 冒充自动 PR。
-        """
+        """已确认的正文或本人临时材料直接进入待审队列。"""
 
         course = self._resolve_material_course(payload.course_id)
         repository = self._require_contribution_capable_repository()
-        material = repository.get_temporary_material(
-            str(user.user_id), payload.material_id, include_content=True
-        )
-        if material is None or not isinstance(material, TemporaryMaterialDetail):
-            raise ResourceNotFound("temporary material not found")
-        if material.course_id != payload.course_id:
-            raise ContractConflict(
-                "contribution course must match the temporary material course"
+        content = payload.content
+        material_title = None
+        if payload.material_id is not None:
+            material = repository.get_temporary_material(
+                str(user.user_id), payload.material_id, include_content=True
             )
+            if material is None or not isinstance(material, TemporaryMaterialDetail):
+                raise ResourceNotFound("temporary material not found")
+            if material.course_id != payload.course_id:
+                raise ContractConflict("contribution course must match the temporary material course")
+            content, material_title = material.content, material.title
+        assert content is not None
+        if payload.run_id is not None and repository.get_attempt(str(user.user_id), payload.run_id) is None:
+            raise ResourceNotFound("workflow run not found")
         title = (
             payload.title
-            or material.title
+            or material_title
             or (
-                normalize_contribution_markdown(material.content)
+                normalize_contribution_markdown(content)
                 .split("\n", 1)[0]
                 .lstrip("#")
                 .strip()
                 or f"{course.display_name} 贡献"
             )
         )
-        state = (
-            ContributionState.DRAFT if payload.as_draft else ContributionState.SUBMITTED
-        )
         return repository.create_contribution(
             user_id=str(user.user_id),
             material_id=payload.material_id,
-            course_id=material.course_id,
+            course_id=course.course_id,
             proposed_source_id=derive_proposed_source_id(
-                material.course_id,
-                normalize_contribution_markdown(material.content),
+                course.course_id,
+                normalize_contribution_markdown(content),
             ),
             proposed_repo_path=derive_proposed_repo_path(
                 course.repository_paths,
                 course_id=course.course_id,
                 title=title,
-                content=material.content,
+                content=content,
             ),
             title=title[:200],
-            content_snapshot=material.content,
-            state=state,
+            content_snapshot=content,
+            state=ContributionState.SUBMITTED,
             github_email=payload.github_email,
             workflow_type=payload.workflow_type.value if payload.workflow_type else None,
             run_id=payload.run_id,
@@ -496,27 +515,6 @@ class IterationZeroService:
             citation_metadata=payload.citation_metadata,
             corpus_metadata=payload.corpus_metadata,
         )
-
-    def submit_contribution_draft(
-        self,
-        user: RequestIdentity,
-        contribution_id: UUID,
-        payload: ContributionDraftSubmit,
-    ) -> ContributionRecord:
-        """把草稿推进到 submitted（进入待处理队列），需要完整确认。"""
-
-        repository = self._require_contribution_capable_repository()
-        current = repository.get_contribution(str(user.user_id), contribution_id)
-        if current is None:
-            raise ResourceNotFound("contribution not found")
-        validate_contribution_transition(current.state, action="submit")
-        return repository.transition_contribution(
-            contribution_id,
-            from_states=frozenset({ContributionState.DRAFT}),
-            target_state=ContributionState.SUBMITTED,
-            pr_url=None,
-            note=None,
-        )  # type: ignore[return-value]
 
     def list_contributions(self, user: RequestIdentity) -> list[ContributionRecord]:
         self._require_contribution_capable_repository()
@@ -539,6 +537,11 @@ class IterationZeroService:
         record, content = fetched
         attachments = repository.list_contribution_attachments(contribution_id)
         return MaintainerContributionDetail.model_validate({**record.model_dump(), "content_snapshot": content, "attachments": attachments})
+
+    def personal_contribution_detail(self, user: RequestIdentity, contribution_id: UUID) -> MaintainerContributionDetail:
+        # Ownership must be checked before the privileged payload accessor.
+        self.get_contribution(user, contribution_id)
+        return self.maintainer_contribution_detail(contribution_id)
 
     def maintainer_transition_contribution(
         self,
@@ -604,6 +607,9 @@ class IterationZeroService:
         filename = repo_path.rsplit("/", 1)[-1]
         branch = f"contribution-{record.contribution_id.hex[:8]}"
         directory = repo_path.rsplit("/", 1)[0]
+        login = repository.contributor_login(record.user_id)
+        safe_name = " ".join(login.replace("<", "").replace(">", "").split()) or "SCUT_CS Contributor"
+        coauthor = f"Co-authored-by: {safe_name} <{record.github_email}>" if record.github_email else None
         suggested_commands = [
             f"git checkout -b {branch}",
             f"mkdir -p '{directory}'",
@@ -624,6 +630,8 @@ class IterationZeroService:
             char_count=len(content),
             suggested_branch=branch,
             suggested_commands=suggested_commands,
+            github_email=record.github_email,
+            coauthor_trailer=coauthor,
         )
 
     def delete_account(self, user: AuthenticatedPrincipal) -> AccountDeletionSummary:
@@ -793,7 +801,7 @@ class IterationZeroService:
             if not self.settings.cross_course_enabled and not local_fixture_profile:
                 raise CapabilityUnavailable(
                     "cross_course",
-                    "cross-course execution is disabled pending its decision gate",
+                    "跨课程检索已由服务端配置关闭。",
                 )
             if not user.is_mock and not isinstance(user, AuthenticatedPrincipal):
                 raise AuthRequired()
@@ -1001,7 +1009,10 @@ class IterationZeroService:
                 )
                 if used_fallback:
                     agent_metrics["decision_fallback_count"] += 1
-                allowed = accepted_actions or frozenset({expected_action})
+                registry_allowed = frozenset(ACTION_REGISTRY.allowed_actions(
+                    request.workflow_type.value, phase
+                ))
+                allowed = (accepted_actions or frozenset({expected_action})) & registry_allowed
                 if action not in allowed:
                     agent_metrics["action_rejection_count"] += 1
                     reduce_agent(

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import date, datetime
 from enum import StrEnum
+import re
 from typing import Annotated, Any, Literal
 from urllib.parse import parse_qs, urlsplit
 from uuid import UUID
@@ -699,6 +700,13 @@ class PrivateKnowledgeCreate(ContractModel):
     title: Annotated[str | None, Field(max_length=200)] = None
     content: Annotated[str, Field(min_length=1, max_length=100_000)]
 
+    @field_validator("content")
+    @classmethod
+    def reject_blank(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("private knowledge content must not be blank")
+        return value
+
     @field_validator("title")
     @classmethod
     def normalize_title(cls, value: str | None) -> str | None:
@@ -713,6 +721,10 @@ class PrivateKnowledgeRecord(ContractModel):
     content_sha256: str
     created_at: datetime
     expires_at: datetime
+
+
+class PrivateKnowledgeDetail(PrivateKnowledgeRecord):
+    content: str
 
 
 class TemporaryMaterialRecord(ContractModel):
@@ -732,6 +744,7 @@ class TemporaryMaterialDetail(TemporaryMaterialRecord):
 
 
 class ContributionState(StrEnum):
+    # Read-only historical value. New submissions cannot create drafts.
     DRAFT = "draft"
     SUBMITTED = "submitted"
     PR_OPEN = "pr_open"
@@ -786,18 +799,25 @@ class ContributionPreview(ContractModel):
 
 
 class ContributionSubmit(ContractModel):
-    material_id: UUID
+    material_id: UUID | None = None
+    content: Annotated[str | None, Field(min_length=1, max_length=100_000)] = None
     course_id: Annotated[str, Field(min_length=1, max_length=100)]
     title: Annotated[str | None, Field(max_length=200)] = None
-    as_draft: bool = False
-    # PLAN-3 C-1 metadata. Optional keeps existing temporary-material clients compatible.
-    github_email: Annotated[str | None, Field(max_length=320)] = None
+    github_email: Annotated[str, Field(min_length=3, max_length=320)]
     workflow_type: WorkflowType | None = None
     run_id: UUID | None = None
     supplementary_text: Annotated[str | None, Field(max_length=20_000)] = None
     citation_metadata: list[dict[str, Any]] = Field(default_factory=list)
     corpus_metadata: dict[str, Any] = Field(default_factory=dict)
     confirmations: ContributionConfirmations
+
+    @model_validator(mode="after")
+    def require_one_source(self) -> "ContributionSubmit":
+        if (self.material_id is None) == (self.content is None):
+            raise ValueError("provide exactly one of material_id or content")
+        if self.content is not None and not self.content.strip():
+            raise ValueError("contribution content must not be blank")
+        return self
 
     @field_validator("github_email", "supplementary_text")
     @classmethod
@@ -810,7 +830,7 @@ class ContributionSubmit(ContractModel):
     @field_validator("github_email")
     @classmethod
     def validate_email_shape(cls, value: str | None) -> str | None:
-        if value is not None and ("@" not in value or value.startswith("@") or value.endswith("@")):
+        if value is None or not re.fullmatch(r"[^\s<>@\x00-\x1f\x7f]+@[^\s<>@\x00-\x1f\x7f]+\.[^\s<>@\x00-\x1f\x7f]+", value):
             raise ValueError("github_email must be a valid email address")
         return value
 
@@ -821,10 +841,6 @@ class ContributionSubmit(ContractModel):
             return None
         normalized = value.strip()
         return normalized or None
-
-
-class ContributionDraftSubmit(ContractModel):
-    confirmations: ContributionConfirmations
 
 
 class ContributionRecord(ContractModel):
@@ -907,6 +923,8 @@ class MaintainerContributionExport(ContractModel):
     char_count: int
     suggested_branch: str
     suggested_commands: list[str] = Field(default_factory=list)
+    github_email: str | None = None
+    coauthor_trailer: str | None = None
 
 
 # ---------------------------------------------------------------------------

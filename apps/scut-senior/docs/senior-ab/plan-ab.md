@@ -69,12 +69,14 @@
 
 `agent_loop.py` 包含：
 
-- `WORKFLOW_ACTIONS`：按 Workflow 的动作白名单（当前仅暴露有执行语义的三类动作）；
+- `ACTION_REGISTRY`：动作名、Workflow、显式阶段和是否可执行的唯一白名单来源；
 - `ModelAgentDecision`：用同一个 `ModelGateway` 询问下一个 Action；
 - `RuleBasedAgentDecision`：模型决策关闭或解析失败时的确定性 fallback；
 - `AgentState` 与 `reduce_agent_event()`：不可变状态折叠；
 - `AgentBudget`：步骤、检索轮次、查询改写、同动作重试、Guard 重试和运行时限；
 - `parse_model_action()`：只接受单个动作 token，解析失败时 fail-closed。
+
+2026-09-14 起不再单独维护 `ActionKind`、Workflow 映射和 prompt 允许值。模型可见动作直接由 `ACTION_REGISTRY.allowed_actions(workflow, phase)` 派生，运行时再与调用点声明的 `accepted_actions` 取交集。注册表只承担声明式准入，不从配置动态加载代码；executor 与 observation serializer 继续留在受审查的运行时代码中。新增动作必须同时补齐代码执行语义、参数合同、权限与预算校验、观察序列化和测试后，才能把 registry 的 `executable` 打开。未知动作、未知 Workflow、阶段不匹配或非单 token 输出都拒绝并回退到服务端预期动作。
 
 当前 `agent_decision_mode` 由环境变量
 `SCUT_SENIOR_AGENT_DECISION_MODE` 控制，默认值仍为 `rule`。本轮可用四组对照：

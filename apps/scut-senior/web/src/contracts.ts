@@ -601,6 +601,13 @@ export interface ContributionRecord {
   updated_at: string;
   expires_at: string;
   mock_only: boolean;
+  github_email?: string | null;
+  workflow_type?: WorkflowType | null;
+  run_id?: string | null;
+  supplementary_text?: string | null;
+  citation_metadata?: Record<string, unknown>[];
+  corpus_metadata?: Record<string, unknown>;
+  has_attachments?: boolean;
 }
 
 export interface ContributionAttachmentRecord {

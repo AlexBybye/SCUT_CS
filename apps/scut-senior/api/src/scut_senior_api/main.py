@@ -8,7 +8,7 @@ from contextlib import asynccontextmanager
 from hmac import compare_digest
 from uuid import UUID
 
-from fastapi import Depends, FastAPI, File, HTTPException, Request, UploadFile
+from fastapi import Depends, FastAPI, File, HTTPException, Query, Request, UploadFile
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
@@ -76,7 +76,6 @@ from .course_availability import (
 from .contracts import (
     AccountDeletionSummary,
     AccountPreferencesUpdate,
-    ContributionDraftSubmit,
     ContributionPreview,
     ContributionPreviewRequest,
     ContributionRecord,
@@ -98,6 +97,7 @@ from .contracts import (
     ByokModel,
     PrivateKnowledgeCreate,
     PrivateKnowledgeRecord,
+    PrivateKnowledgeDetail,
     TemporaryMaterialCreate,
     TemporaryMaterialDetail,
     TemporaryMaterialRecord,
@@ -1282,6 +1282,35 @@ def create_app(
     ) -> PrivateKnowledgeRecord:
         return service.save_private_knowledge(user, payload)
 
+    @app.get("/api/v1/private-knowledge", response_model=list[PrivateKnowledgeRecord])
+    def list_private_knowledge(
+        limit: int = Query(30, ge=1, le=100), offset: int = Query(0, ge=0),
+        course_id: str | None = None,
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> list[PrivateKnowledgeRecord]:
+        return service.list_private_knowledge(user, limit=limit, offset=offset, course_id=course_id)
+
+    @app.get("/api/v1/private-knowledge/{knowledge_id}", response_model=PrivateKnowledgeDetail)
+    def get_private_knowledge(knowledge_id: UUID, user: UserIdentity | AuthenticatedPrincipal = Depends(require_user)) -> PrivateKnowledgeDetail:
+        return service.get_private_knowledge(user, knowledge_id)
+
+    @app.get("/api/v1/private-knowledge/{knowledge_id}/export", response_model=PrivateKnowledgeDetail)
+    def export_private_knowledge(knowledge_id: UUID, user: UserIdentity | AuthenticatedPrincipal = Depends(require_user)) -> Response:
+        record = service.get_private_knowledge(user, knowledge_id)
+        return Response(record.model_dump_json(), media_type="application/json", headers={
+            "Content-Disposition": f'attachment; filename="private-knowledge-{knowledge_id}.json"',
+            "Cache-Control": "no-store",
+        })
+
+    @app.delete("/api/v1/private-knowledge/{knowledge_id}", status_code=204)
+    def delete_private_knowledge(knowledge_id: UUID, user: UserIdentity | AuthenticatedPrincipal = Depends(require_user)) -> Response:
+        service.delete_private_knowledge(user, knowledge_id)
+        return Response(status_code=204)
+
+    @app.post("/api/v1/private-knowledge/{knowledge_id}/renew", response_model=PrivateKnowledgeRecord)
+    def renew_private_knowledge(knowledge_id: UUID, user: UserIdentity | AuthenticatedPrincipal = Depends(require_user)) -> PrivateKnowledgeRecord:
+        return service.renew_private_knowledge(user, knowledge_id)
+
     @app.get(
         "/api/v1/temporary-materials",
         response_model=list[TemporaryMaterialRecord],
@@ -1349,16 +1378,20 @@ def create_app(
     ) -> ContributionRecord:
         return service.get_contribution(user, contribution_id)
 
-    @app.post(
-        "/api/v1/contributions/{contribution_id}/submit",
-        response_model=ContributionRecord,
-    )
-    def submit_contribution_draft(
+    @app.get("/api/v1/contributions/{contribution_id}/detail", response_model=MaintainerContributionDetail)
+    def personal_contribution_detail(
         contribution_id: UUID,
-        payload: ContributionDraftSubmit,
         user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
-    ) -> ContributionRecord:
-        return service.submit_contribution_draft(user, contribution_id, payload)
+    ) -> MaintainerContributionDetail:
+        return service.personal_contribution_detail(user, contribution_id)
+
+    @app.get("/api/v1/contributions/{contribution_id}/export", response_model=MaintainerContributionDetail)
+    def personal_contribution_export(contribution_id: UUID, user: UserIdentity | AuthenticatedPrincipal = Depends(require_user)) -> Response:
+        detail = service.personal_contribution_detail(user, contribution_id)
+        return Response(detail.model_dump_json(), media_type="application/json", headers={
+            "Content-Disposition": f'attachment; filename="contribution-{contribution_id}.json"',
+            "Cache-Control": "no-store",
+        })
 
     @app.get(
         "/api/v1/maintainer/contributions",
@@ -1514,6 +1547,7 @@ def _is_protected_api_path(path: str) -> bool:
         "/api/v1/model-credentials",
         "/api/v1/feedback",
         "/api/v1/plugin-registry",
+        "/api/v1/private-knowledge",
         "/api/v1/temporary-materials",
         "/api/v1/contributions",
         "/api/v1/maintainer",

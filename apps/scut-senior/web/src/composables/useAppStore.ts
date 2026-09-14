@@ -68,6 +68,8 @@ import {
   modelsForRuntime,
 } from "../modelSelection";
 import { createRequestEpoch } from "../requestEpoch";
+import { writeContentHandoff, clearContentHandoff } from "../personalContentSession";
+import { openPersonalContent } from "../personalNavigation";
 import {
   applyAccent,
   applyThemeMode,
@@ -601,6 +603,7 @@ function createAppStore() {
   }
 
   function clearPrivateState(): void {
+    clearContentHandoff();
     conversationLoadSequence += 1;
     clearActiveConversation();
     conversationHistory.value = [];
@@ -713,11 +716,21 @@ function createAppStore() {
       errorMessage.value = "本次没有可贡献的回答内容。";
       return;
     }
-    userInput.value = output;
-    materialTitle.value = "本轮回答贡献";
-    workflowOverride.value = "temporary_material_reading";
-    drawerOpen.value = true;
-    noticeMessage.value = "回答已填入贡献入口。请先保存为临时材料，再预览并完成公开分享确认。";
+    if (!currentUser.value) {
+      errorMessage.value = "请先登录后再提交贡献。";
+      return;
+    }
+    writeContentHandoff({
+      user_id: currentUser.value.user_id,
+      course_id: workflowResult.course_ids?.[0] || selectedCourseId.value,
+      title: "本轮回答贡献", content: output,
+      run_id: workflowResult.workflow_run_id,
+      workflow_type: workflowResult.workflow_type,
+      citation_metadata: workflowResult.citations.map((citation) => ({ ...citation })),
+      corpus_metadata: { course_ids: workflowResult.course_ids },
+    });
+    accountMenuOpen.value = false;
+    openPersonalContent("contributions");
   }
 
   async function saveWorkflowOutputToPrivateKnowledge(
@@ -733,11 +746,11 @@ function createAppStore() {
     }
     try {
       await savePrivateKnowledge({
-        course_id: selectedCourseId.value,
+        course_id: workflowResult.course_ids?.[0] || selectedCourseId.value,
         title: `回答：${content.slice(0, 40)}`,
         content,
       });
-      noticeMessage.value = "本轮回答已加入私人知识库，7 天后自动删除。";
+      noticeMessage.value = "本轮回答已加入私人知识库。可在助手设置的「个人知识平台」查看、续期、导出或删除，默认保留 7 天。";
     } catch (error) {
       errorMessage.value = toMessage(error);
     }

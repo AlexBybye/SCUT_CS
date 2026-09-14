@@ -14,29 +14,9 @@ from typing import Literal, Protocol
 
 from .ports import ConversationTurn, GeneratedAnswer, ModelGateway, RetrievedSource
 from .contracts import WorkflowRunRequest
+from .action_registry import ACTION_REGISTRY, ActionKind
 
 
-ActionKind = Literal[
-    "retrieve",
-    "retrieve_with_query_rewrite",
-    "ask_clarification",
-    "generate_answer",
-    "finish",
-]
-
-# Workflow is the hard boundary. Agent may choose a next step only from the
-# actions the selected workflow exposes; it never chooses a new workflow.
-WORKFLOW_ACTIONS: dict[str, frozenset[ActionKind]] = {
-    # The compatibility runtime has real execution semantics only for these
-    # three actions.  ``finish`` and ``ask_clarification`` remain part of the
-    # historical event vocabulary, but are intentionally not exposed to the
-    # model until a corresponding executor and persistence contract exist.
-    "knowledge_qa": frozenset({"retrieve", "retrieve_with_query_rewrite", "generate_answer"}),
-    "exam_review": frozenset({"retrieve", "retrieve_with_query_rewrite", "generate_answer"}),
-    "problem_tutor": frozenset({"retrieve", "retrieve_with_query_rewrite", "generate_answer"}),
-    "mistake_review": frozenset({"retrieve", "retrieve_with_query_rewrite", "generate_answer"}),
-    "temporary_material_reading": frozenset({"retrieve", "generate_answer"}),
-}
 EventKind = Literal[
     "decision_produced",
     "action_rejected",
@@ -57,20 +37,12 @@ TerminalStatus = Literal[
     "failed",
 ]
 
-ACTION_KINDS: frozenset[ActionKind] = frozenset(
-    {
-        "retrieve",
-        "retrieve_with_query_rewrite",
-        "ask_clarification",
-        "generate_answer",
-        "finish",
-    }
-)
+ACTION_KINDS = ACTION_REGISTRY.action_kinds
 
 
 def action_allowed_for_workflow(workflow_type: str, action: ActionKind) -> bool:
     """Return whether an Agent action stays inside the selected Workflow."""
-    return action in WORKFLOW_ACTIONS.get(workflow_type, frozenset())
+    return ACTION_REGISTRY.admits(workflow_type, action)
 
 
 class AgentDecisionGateway(Protocol):
@@ -117,7 +89,7 @@ def should_retrieve_with_rewrite(
     return not any(source.question_id for source in sources)
 
 
-def parse_model_action(raw: str, *, workflow_type: str) -> ActionKind | None:
+def parse_model_action(raw: str, *, workflow_type: str, phase: str | None = None) -> ActionKind | None:
     """Parse a model's single-action response and apply the Workflow allowlist."""
     normalized = raw.strip().lower().replace("`", "")
     aliases: dict[str, ActionKind] = {
@@ -134,7 +106,7 @@ def parse_model_action(raw: str, *, workflow_type: str) -> ActionKind | None:
     action = aliases.get(token)
     if action is None:
         return None
-    return action if action_allowed_for_workflow(workflow_type, action) else None
+    return action if ACTION_REGISTRY.admits(workflow_type, action, phase) else None
 
 
 class ModelAgentDecision:
@@ -152,11 +124,11 @@ class ModelAgentDecision:
 
     def decide(self, request, state, phase, *, sources=(), history=()) -> ActionKind:
         self.last_used_fallback = False
-        allowed = (
-            "retrieve_with_query_rewrite, generate_answer"
-            if phase == "post_retrieval"
-            else "retrieve, retrieve_with_query_rewrite, generate_answer"
-        )
+        allowed_actions = ACTION_REGISTRY.allowed_actions(request.workflow_type.value, phase)
+        if not allowed_actions:
+            self.last_used_fallback = True
+            return self.fallback.decide(request, state, phase, sources=sources, history=history)
+        allowed = ", ".join(allowed_actions)
         decision_request = request.model_copy(
             update={
                 "user_input": (

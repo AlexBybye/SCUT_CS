@@ -35,6 +35,7 @@ from ..contracts import (
     ConversationSummary,
     FeedbackRecord,
     PrivateKnowledgeRecord,
+    PrivateKnowledgeDetail,
     TemporaryMaterialDetail,
     TemporaryMaterialRecord,
     WorkflowAttempt,
@@ -1126,7 +1127,7 @@ class SQLiteWorkflowRepository:
             rows = connection.execute(
                 f"""SELECT * FROM private_knowledge_items
                     WHERE user_id = ? AND visibility = 'private' AND expires_at > ?
-                    AND course_id IN ({placeholders}) ORDER BY created_at DESC""",
+                    AND course_id IN ({placeholders}) ORDER BY created_at DESC LIMIT 20""",
                 (user_id, self._now().isoformat(), *course_ids),
             ).fetchall()
         return [
@@ -1137,6 +1138,68 @@ class SQLiteWorkflowRepository:
                 locator_end=None, question_id=None, heading_path=(),
             ) for row in rows
         ]
+
+    @staticmethod
+    def _private_record(row: sqlite3.Row) -> PrivateKnowledgeRecord:
+        return PrivateKnowledgeRecord.model_validate({
+            key: row[key] for key in PrivateKnowledgeRecord.model_fields
+        })
+
+    def list_private_knowledge(
+        self, user_id: str, *, limit: int = 30, offset: int = 0,
+        course_id: str | None = None,
+    ) -> list[PrivateKnowledgeRecord]:
+        fields = ", ".join(PrivateKnowledgeRecord.model_fields)
+        with self._connect() as connection:
+            rows = connection.execute(
+                f"SELECT {fields} FROM private_knowledge_items "
+                "WHERE user_id = ? AND visibility = 'private' AND expires_at > ? "
+                + ("AND course_id = ? " if course_id else "")
+                + "ORDER BY created_at DESC, knowledge_id DESC LIMIT ? OFFSET ?",
+                (user_id, self._now().isoformat(), *([course_id] if course_id else []),
+                 min(max(limit, 1), 100), max(offset, 0)),
+            ).fetchall()
+        return [self._private_record(row) for row in rows]
+
+    def get_private_knowledge(self, user_id: str, knowledge_id: UUID) -> PrivateKnowledgeDetail | None:
+        with self._connect() as connection:
+            row = connection.execute(
+                "SELECT * FROM private_knowledge_items WHERE knowledge_id = ? AND user_id = ? "
+                "AND visibility = 'private' AND expires_at > ?",
+                (str(knowledge_id), user_id, self._now().isoformat()),
+            ).fetchone()
+        if row is None:
+            return None
+        return PrivateKnowledgeDetail(**self._private_record(row).model_dump(), content=row["content"])
+
+    def delete_private_knowledge(self, user_id: str, knowledge_id: UUID) -> bool:
+        with self._connect() as connection:
+            return connection.execute(
+                "DELETE FROM private_knowledge_items WHERE knowledge_id = ? AND user_id = ?",
+                (str(knowledge_id), user_id),
+            ).rowcount > 0
+
+    def renew_private_knowledge(self, user_id: str, knowledge_id: UUID) -> PrivateKnowledgeRecord | None:
+        now = self._now()
+        with self._connect() as connection:
+            updated = connection.execute(
+                "UPDATE private_knowledge_items SET expires_at = ? "
+                "WHERE knowledge_id = ? AND user_id = ? AND visibility = 'private' AND expires_at > ?",
+                ((now + timedelta(days=TEMPORARY_MATERIAL_TTL_DAYS)).isoformat(),
+                 str(knowledge_id), user_id, now.isoformat()),
+            ).rowcount
+            if not updated:
+                return None
+            row = connection.execute(
+                "SELECT * FROM private_knowledge_items WHERE knowledge_id = ? AND user_id = ?",
+                (str(knowledge_id), user_id),
+            ).fetchone()
+        return self._private_record(row)
+
+    def contributor_login(self, user_id: str) -> str:
+        with self._connect() as connection:
+            row = connection.execute("SELECT github_login FROM users WHERE user_id = ?", (user_id,)).fetchone()
+        return row["github_login"] if row else "SCUT contributor"
 
     @staticmethod
     def _contribution_record(row: sqlite3.Row) -> ContributionRecord:
@@ -1189,19 +1252,14 @@ class SQLiteWorkflowRepository:
         citation_metadata: list[dict[str, object]] | None = None,
         corpus_metadata: dict[str, object] | None = None,
     ) -> ContributionRecord:
-        """创建贡献记录。
+        """创建已确认的贡献，待审副本保留 30 天。"""
 
-        draft 继承临时材料 7 天期限（随材料一起过期）；
-        submitted/pr_open 及终态使用“必要待审副本”30 天上限。
-        """
+        if state == ContributionState.DRAFT:
+            raise ValueError("contribution drafts are no longer supported")
 
         now = self._now()
         contribution_id = uuid4()
-        ttl_days = (
-            TEMPORARY_MATERIAL_TTL_DAYS
-            if state == ContributionState.DRAFT
-            else CONTRIBUTION_REVIEW_COPY_TTL_DAYS
-        )
+        ttl_days = CONTRIBUTION_REVIEW_COPY_TTL_DAYS
         created_at = now.isoformat()
         updated_at = created_at
         expires_at = (now + timedelta(days=ttl_days)).isoformat()

@@ -126,7 +126,7 @@ class Settings:
                     str(APP_ROOT / ".local" / "corpus-store"),
                 )
             ),
-            cross_course_enabled=_env_bool("SCUT_SENIOR_CROSS_COURSE_ENABLED", False),
+            cross_course_enabled=_env_bool("SCUT_SENIOR_CROSS_COURSE_ENABLED", True),
             bilibili_resources_enabled=_env_bool(
                 "SCUT_SENIOR_BILIBILI_RESOURCES_ENABLED", True
             ),

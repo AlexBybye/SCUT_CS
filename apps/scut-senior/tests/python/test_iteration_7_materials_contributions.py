@@ -134,7 +134,7 @@ def test_preview_reports_missing_title_question_markers_short_body_and_html() ->
     )
     assert preview.has_h1_title is False
     assert any("标题" in warning for warning in preview.warnings)
-    assert any("题目标记" in warning for warning in preview.warnings)
+    assert not any("题目" in warning for warning in preview.warnings)
     assert any("过短" in warning for warning in preview.warnings)
     assert any("HTML" in warning for warning in preview.warnings)
 
@@ -156,7 +156,8 @@ def test_normalize_markdown_keeps_semantic_content() -> None:
 
 
 def test_state_machine_rejects_invalid_transitions() -> None:
-    validate_contribution_transition(ContributionState.DRAFT, action="submit")
+    with pytest.raises(ContributionTransitionError):
+        validate_contribution_transition(ContributionState.DRAFT, action="submit")
     validate_contribution_transition(ContributionState.SUBMITTED, action="mark_pr_open")
     validate_contribution_transition(ContributionState.SUBMITTED, action="reject")
     validate_contribution_transition(ContributionState.PR_OPEN, action="merge")
@@ -279,21 +280,15 @@ def test_submitted_contribution_copy_is_cleared_after_thirty_days(
     assert row[0] == ""
 
 
-def test_draft_contribution_inherits_seven_day_horizon(tmp_path: Path) -> None:
+def test_repository_rejects_new_contribution_drafts(tmp_path: Path) -> None:
     clock = MutableClock(datetime(2026, 8, 23, tzinfo=UTC))
     repository = material_repository(clock, tmp_path)
-    draft = repository.create_contribution(
-        user_id="user-a",
-        material_id=None,
-        course_id="linear_algebra",
-        proposed_source_id="linear_algebra-contribution-00000001",
-        title="草稿",
-        content_snapshot="# 草稿\n内容。\n" * 5,
-        state=ContributionState.DRAFT,
-    )
-    assert draft.expires_at == datetime(2026, 8, 23, tzinfo=UTC) + timedelta(
-        days=TEMPORARY_MATERIAL_TTL_DAYS
-    )
+    with pytest.raises(ValueError, match="drafts"):
+        repository.create_contribution(
+            user_id="user-a", material_id=None, course_id="linear_algebra",
+            proposed_source_id="legacy", title="草稿", content_snapshot="内容",
+            state=ContributionState.DRAFT,
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -336,6 +331,7 @@ def test_material_lifecycle_and_contribution_flow_via_api(tmp_path: Path) -> Non
         "/api/v1/contributions",
         json={
             "material_id": material["material_id"],
+            "github_email": "student@example.com",
             "course_id": "linear_algebra",
             "confirmations": {
                 **FULL_CONFIRMATIONS,
@@ -350,6 +346,7 @@ def test_material_lifecycle_and_contribution_flow_via_api(tmp_path: Path) -> Non
         "/api/v1/contributions",
         json={
             "material_id": material["material_id"],
+            "github_email": "student@example.com",
             "course_id": "linear_algebra",
             "confirmations": FULL_CONFIRMATIONS,
         },
@@ -372,36 +369,19 @@ def test_material_lifecycle_and_contribution_flow_via_api(tmp_path: Path) -> Non
     )
 
 
-def test_draft_submission_requires_full_confirmations(tmp_path: Path) -> None:
+def test_draft_submission_is_removed(tmp_path: Path) -> None:
     client = mock_app(tmp_path, "draft.db")
     conversation = create_conversation(client)
     material = save_material(client, conversation["conversation_id"])
-
-    draft = client.post(
-        "/api/v1/contributions",
-        json={
-            "material_id": material["material_id"],
-            "course_id": "linear_algebra",
-            "as_draft": True,
-            "confirmations": FULL_CONFIRMATIONS,
-        },
-    )
-    assert draft.status_code == 201
-    assert draft.json()["state"] == "draft"
-
-    submitted = client.post(
-        f"/api/v1/contributions/{draft.json()['contribution_id']}/submit",
-        json={"confirmations": FULL_CONFIRMATIONS},
-    )
-    assert submitted.status_code == 200
-    assert submitted.json()["state"] == "submitted"
-
-    # 已提交后不能再重复 submit。
-    repeat = client.post(
-        f"/api/v1/contributions/{draft.json()['contribution_id']}/submit",
-        json={"confirmations": FULL_CONFIRMATIONS},
-    )
-    assert repeat.status_code == 409
+    rejected = client.post("/api/v1/contributions", json={
+        "material_id": material["material_id"], "course_id": "linear_algebra",
+        "github_email": "student@example.com", "as_draft": True,
+        "confirmations": FULL_CONFIRMATIONS,
+    })
+    assert rejected.status_code == 422
+    assert client.get("/api/v1/contributions").json() == []
+    assert client.post(f"/api/v1/contributions/{uuid4()}/submit",
+                       json={"confirmations": FULL_CONFIRMATIONS}).status_code in (404, 405)
 
 
 def test_unauthenticated_requests_are_rejected(tmp_path: Path) -> None:
@@ -460,6 +440,7 @@ def test_private_materials_and_contributions_are_user_scoped(tmp_path: Path) -> 
         "/api/v1/contributions",
         json={
             "material_id": material["material_id"],
+            "github_email": "student@example.com",
             "course_id": "linear_algebra",
             "confirmations": FULL_CONFIRMATIONS,
         },
@@ -504,6 +485,7 @@ def test_maintainer_queue_manual_progression_without_auto_merge(
         "/api/v1/contributions",
         json={
             "material_id": material["material_id"],
+            "github_email": "student@example.com",
             "course_id": "linear_algebra",
             "confirmations": FULL_CONFIRMATIONS,
         },
@@ -572,6 +554,7 @@ def test_maintainer_can_reject_from_queue(tmp_path: Path) -> None:
         "/api/v1/contributions",
         json={
             "material_id": material["material_id"],
+            "github_email": "student@example.com",
             "course_id": "linear_algebra",
             "confirmations": FULL_CONFIRMATIONS,
         },
@@ -610,6 +593,7 @@ def test_contribution_records_never_expose_payload_or_credentials(
         "/api/v1/contributions",
         json={
             "material_id": material["material_id"],
+            "github_email": "student@example.com",
             "course_id": "linear_algebra",
             "confirmations": FULL_CONFIRMATIONS,
         },
@@ -691,6 +675,7 @@ def test_proposed_repo_path_uses_course_registry_mapping(tmp_path: Path) -> None
         "/api/v1/contributions",
         json={
             "material_id": material["material_id"],
+            "github_email": "student@example.com",
             "course_id": "linear_algebra",
             "confirmations": FULL_CONFIRMATIONS,
         },
@@ -731,6 +716,7 @@ def test_maintainer_export_package_returns_path_content_and_commands(
         "/api/v1/contributions",
         json={
             "material_id": material["material_id"],
+            "github_email": "student@example.com",
             "course_id": "linear_algebra",
             "confirmations": FULL_CONFIRMATIONS,
         },
@@ -775,7 +761,7 @@ def test_contribution_metadata_is_persisted_and_surface_on_detail(
         "/api/v1/contributions",
         json={
             "material_id": material["material_id"],
-            "course_id": "linear_algebra",
+                        "course_id": "linear_algebra",
             "confirmations": FULL_CONFIRMATIONS,
             "github_email": "author@example.com",
             "workflow_type": "knowledge_qa",
@@ -819,6 +805,7 @@ def test_contribution_detail_is_maintainer_only(tmp_path: Path) -> None:
         "/api/v1/contributions",
         json={
             "material_id": material["material_id"],
+            "github_email": "student@example.com",
             "course_id": "linear_algebra",
             "confirmations": FULL_CONFIRMATIONS,
         },
@@ -847,6 +834,7 @@ def test_attachment_upload_download_is_controlled(tmp_path: Path) -> None:
         "/api/v1/contributions",
         json={
             "material_id": material["material_id"],
+            "github_email": "student@example.com",
             "course_id": "linear_algebra",
             "confirmations": FULL_CONFIRMATIONS,
         },
@@ -912,6 +900,7 @@ def test_attachment_rejects_disallowed_extension(tmp_path: Path) -> None:
         "/api/v1/contributions",
         json={
             "material_id": material["material_id"],
+            "github_email": "student@example.com",
             "course_id": "linear_algebra",
             "confirmations": FULL_CONFIRMATIONS,
         },

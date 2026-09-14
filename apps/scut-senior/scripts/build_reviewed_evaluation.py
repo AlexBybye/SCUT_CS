@@ -169,6 +169,73 @@ def main():
         "evidence_groups": [], "verification": "当前输入没有矩阵也没有计算过程，无法推断具体哪一步出错。允许简短通用建议，不要求拒答模板。",
         "must_not_claim": ["虚构用户矩阵", "虚构具体错误步骤"],
     }
+
+    # Quality scoring needs enough cases in every workflow to avoid drawing a
+    # conclusion from one or two high-variance answers. These additions reuse
+    # reviewed topic anchors, but exercise genuinely different task contracts.
+    for topic_id, query in (
+        ("ds-inorder", "请按提示式教学带我推导非递归中序遍历，不要一开始就贴完整代码。"),
+        ("compiler-left-recursion", "请一步步带我消除T→T,S|S的直接左递归，并解释新文法为何表示同一种列表。"),
+    ):
+        case = add(topic_id, "problem_tutor", suffix="-guided", query=query)
+        case["quality_rubric"]["task_requirements"] = ["采用分步提示而非只给结论", "说明关键不变量或等价性", "最终答案与审阅锚点一致"]
+
+    mistake_specs = (
+        ("db-projection", "只保留学生的学号和姓名。", "我用选择运算，因为选择就是挑出需要的字段。", "区分按行筛选与按列投影"),
+        ("os-deadlock", "判断死锁条件并提出一种预防办法。", "只要系统里出现互斥，就一定会死锁；取消互斥即可。", "区分必要条件与充分条件，并给出可实施的破坏条件方法"),
+        ("testing-boundary", "三个独立变量的健壮最坏情况边界值测试需要多少组？", "6×3+1=19组，因为每个变量有六个边界值。", "识别把单故障边界法与最坏情况组合混用的问题"),
+        ("digital-mux-selection", "写出四选一数据选择器的地址与输入映射。", "地址10时选X1，所以Y中这一项应是B1非B0X1。", "检查二进制地址映射和对应最小项"),
+        ("analysis1-lipschitz", "证明Lipschitz函数一致连续。", "对每个x单独找一个δ(x)，于是它一致连续。", "指出一致连续要求δ不依赖于点，并处理L=0"),
+        ("securitymath-euler-1764", "计算φ(1764)。", "1764是偶数，所以φ(1764)=1764/2=882。", "完成质因数分解并正确使用欧拉函数公式"),
+        ("physics32-cavity-potential", "带电球层空腔内电场为零，判断电势。", "E=0，所以空腔内每一点的电势都是0。", "区分电势为常量与电势为零"),
+    )
+    for topic_id, problem, original, focus in mistake_specs:
+        case = add(topic_id, "mistake_review", suffix="-diagnosis", payload={
+            "problem": problem, "original_answer": original,
+            "reference_answer": None, "review_focus": focus,
+        })
+        case["quality_rubric"]["task_requirements"] = ["先定位原答案的具体错误", "解释错误原因", "给出可复用的修正方法和正确结论"]
+
+    exam_specs = (
+        ("compiler-plan", "LL(1)文法分析：文法改写、FIRST/FOLLOW、预测分析表", ["左递归消除", "LL(1)条件"]),
+        ("mobile-course-project", "Android课程项目：必做功能、可选改造、提交物", ["功能边界", "交付清单"]),
+        ("webapp-servlet-lifecycle", "Servlet复习：生命周期、请求链、JSP/JDBC/MVC职责", ["组件职责", "请求流程"]),
+        ("mao-selfrevolution-structure", "党的自我革命15分钟演讲：时间分配与论证主线", ["时间控制", "材料事实边界"]),
+        ("security-publickey-tradeoff", "公开密钥密码：密钥分发、签名、性能代价", ["密钥使用方向", "公私钥边界"]),
+        ("signals-dft-cosine", "12点DFT：余弦频点、谱线位置与幅值", ["频点映射", "归一化约定"]),
+        ("softwareeng-fanout-coupling", "软件设计度量：扇出、耦合、内聚", ["概念区分", "评审应用"]),
+        ("physlab1-oscilloscope-trigger", "示波器操作：时基、电压档位、触发电平", ["触发稳定", "参数职责"]),
+    )
+    for topic_id, syllabus, weak_topics in exam_specs:
+        case = add(topic_id, "exam_review", suffix="-plan", payload={
+            "syllabus": syllabus, "exam_date": None, "available_hours": 2,
+            "goals": ["两小时内形成可执行复习闭环"], "weak_topics": weak_topics,
+        })
+        case["expected"].update({"requires_exam_review_plan": True, "review_path": "with_syllabus"})
+        case["quality_rubric"]["task_requirements"] = ["总时长不超过2小时", "优先照顾两个薄弱点", "包含学习、练习与检查环节", "不捏造考试权重或必考结论"]
+
+    temporary_specs = (
+        ("web-margin", "CSS外边距速记", "margin-bottom只设置下外边距；margin是四个方向的简写。相邻块的外边距还可能发生折叠。", "给初学者解释该用哪个属性，并提醒一个常见布局陷阱。"),
+        ("cs-intro-machine-language", "程序翻译链", "CPU取指并执行机器指令。汇编语言要经汇编器翻译；高级语言要经编译、解释等实现路径转成可执行动作。", "画清高级语言、汇编语言和机器语言的关系，不把源代码说成CPU直接执行。"),
+        ("netmgmt-snmp-bulk", "SNMP表遍历笔记", "单次Get读取指定OID；GetNext取得词典序后继对象；GetBulk可批量取得后续变量绑定，减少遍历表格的往返。", "比较三种操作，并说明浏览ifTable时为何后两者更合适。"),
+        ("swarm-reward-diagnosis", "训练曲线检查单", "奖励后期趋稳只说明当前训练回报趋于稳定，不能单独证明全局最优或泛化。还要看多随机种子、独立评估、奖励实现和基线。", "把材料整理成判断、不能判断、下一步检查三栏。"),
+        ("physics31-grating-overlap", "光栅谱线重合", "同一衍射角下，两条谱线重合满足k1λ1=k2λ2。若波长为440和660，则最小正整数级次比为3比2。", "解释等式来源并复算最小级次，不跳过整数比。"),
+        ("physlab2-acbridge-average", "交流电桥记录", "三次Lx读数为0.01298、0.01243、0.01320 H，算术平均约0.01287 H。平均值之外还应报告离散性或不确定度。", "核算平均值，并指出仅给平均数遗漏了什么。"),
+        ("digital-mux-selection", "四选一MUX映射", "地址B1B0按00、01、10、11依次选择X0、X1、X2、X3。每个输入由对应地址最小项门控。", "把映射改写成布尔表达式，并用地址10做一次自检。"),
+        ("analysis1-lipschitz", "Lipschitz与一致连续", "若L大于0，取δ=ε/L即可让|x-y|<δ推出|f(x)-f(y)|<ε；δ与具体点无关。L=0时函数为常值。", "按L大于0和L等于0分情况讲解，突出δ为何是统一的。"),
+    )
+    for topic_id, title, material_text, reading_goal in temporary_specs:
+        case = add(topic_id, "temporary_material_reading", suffix="-temporary", query="请只基于我贴的材料精读并完成目标。", payload={
+            "material_title": title, "material_text": material_text, "reading_goal": reading_goal,
+        })
+        case["expected"] = {"answer_status": "answered", "allows_general": True}
+        case["quality_rubric"].update({
+            "reference_answer": material_text, "evidence_groups": [],
+            "verification": "输入材料自身完整；评分只检查忠实理解、目标完成和是否越过材料边界。",
+            "must_not_claim": ["把输入材料中没有的信息说成已给事实"],
+            "task_requirements": ["直接完成reading_goal", "关键结论可从输入材料逐项核对", "不强制公共仓库引用"],
+        })
+
     write("scenarios.json", {
         "contract_version": "v1", "dataset_status": "source_reviewed_authored_scenarios",
         "corpus_version": version, "quality_requires_review": True,

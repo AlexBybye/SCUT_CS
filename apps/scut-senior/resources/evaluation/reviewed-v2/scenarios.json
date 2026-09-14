@@ -3,7 +3,7 @@
   "dataset_status": "source_reviewed_authored_scenarios",
   "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
   "quality_requires_review": true,
-  "notes": "22 authored cases, not student logs. Multiturn executes actual first responses. Expected fields check mechanics only; no model output was used to tune labels.",
+  "notes": "47 authored cases, not student logs. Multiturn executes actual first responses. Expected fields check mechanics only; no model output was used to tune labels.",
   "cases": [
     {
       "case_id": "reviewed-la-diagonalization",
@@ -904,6 +904,1236 @@
           "虚构用户矩阵",
           "虚构具体错误步骤"
         ]
+      }
+    },
+    {
+      "case_id": "reviewed-ds-inorder-guided",
+      "category": "concept",
+      "course_id": "data_structure",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "problem_tutor",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "请按提示式教学带我推导非递归中序遍历，不要一开始就贴完整代码。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "ds-inorder",
+        "reference_answer": "沿左链压栈；到空节点时弹栈并访问；转向弹出节点的右子树；栈为空且当前节点为空才结束。时间O(n)，栈空间O(h)。",
+        "evidence_groups": [
+          {
+            "need": "显式栈中序遍历实现",
+            "chunk_ids": [
+              "data-structure-023:h-作业及分析:c01"
+            ]
+          }
+        ],
+        "verification": "逐句检查代码的循环、压栈、弹栈、访问、转右顺序；复杂度为独立推导，不采纳材料中未经验证的性能测量。",
+        "must_not_claim": [
+          "栈一空就结束，遗漏当前右子树",
+          "弹栈前先访问导致先序遍历"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "采用分步提示而非只给结论",
+          "说明关键不变量或等价性",
+          "最终答案与审阅锚点一致"
+        ]
+      }
+    },
+    {
+      "case_id": "reviewed-compiler-left-recursion-guided",
+      "category": "problem",
+      "course_id": "compiler_principles",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "problem_tutor",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "请一步步带我消除T→T,S|S的直接左递归，并解释新文法为何表示同一种列表。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "compiler-left-recursion",
+        "reference_answer": "T→S T′，T′→,S T′ | ε。以S开头，再接零次或多次逗号加S。",
+        "evidence_groups": [
+          {
+            "need": "该文法左递归消除结果",
+            "chunk_ids": [
+              "compiler-principles-001:s27:c01"
+            ]
+          }
+        ],
+        "verification": "原文给出转换；通过两种文法都生成S(,S)*复核，问题不使用原文中含义不明确的∧符号。",
+        "must_not_claim": [
+          "忘记ε产生式",
+          "改写后仍然T→T开头"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "采用分步提示而非只给结论",
+          "说明关键不变量或等价性",
+          "最终答案与审阅锚点一致"
+        ]
+      }
+    },
+    {
+      "case_id": "reviewed-db-projection-diagnosis",
+      "category": "concept",
+      "course_id": "database",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "mistake_review",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "关系代数中选择和投影有什么区别？哪一个是按列切分？"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "db-projection",
+        "reference_answer": "投影选列，选择按谓词筛行；只保留学号和姓名是投影。",
+        "evidence_groups": [
+          {
+            "need": "投影按属性选列的解释",
+            "chunk_ids": [
+              "database-005:s15:c01"
+            ]
+          }
+        ],
+        "verification": "讲义给出垂直分割题及B项解析，按关系代数定义复核。",
+        "must_not_claim": [
+          "把选择说成选列",
+          "把投影说成筛选满足条件的行"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "先定位原答案的具体错误",
+          "解释错误原因",
+          "给出可复用的修正方法和正确结论"
+        ]
+      },
+      "workflow_payload": {
+        "problem": "只保留学生的学号和姓名。",
+        "original_answer": "我用选择运算，因为选择就是挑出需要的字段。",
+        "reference_answer": null,
+        "review_focus": "区分按行筛选与按列投影"
+      }
+    },
+    {
+      "case_id": "reviewed-os-deadlock-diagnosis",
+      "category": "concept",
+      "course_id": "operating_systems",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "mistake_review",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "死锁的四个必要条件是什么？统一资源申请顺序破坏了哪一个？"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "os-deadlock",
+        "reference_answer": "互斥、请求并保持、不可剥夺、循环等待；对这组锁统一全局获取顺序破坏循环等待。",
+        "evidence_groups": [
+          {
+            "need": "死锁条件",
+            "chunk_ids": [
+              "operating-systems-005:p1:c01"
+            ]
+          }
+        ],
+        "verification": "只采用该页清晰的死锁定义段；顺序获取的结论通过有向等待环不可能严格递增复核，不采纳该页其他未经核验说法。",
+        "must_not_claim": [
+          "统一顺序破坏互斥条件",
+          "两把锁有顺序就能防止系统中的所有其他死锁"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "先定位原答案的具体错误",
+          "解释错误原因",
+          "给出可复用的修正方法和正确结论"
+        ]
+      },
+      "workflow_payload": {
+        "problem": "判断死锁条件并提出一种预防办法。",
+        "original_answer": "只要系统里出现互斥，就一定会死锁；取消互斥即可。",
+        "reference_answer": null,
+        "review_focus": "区分必要条件与充分条件，并给出可实施的破坏条件方法"
+      }
+    },
+    {
+      "case_id": "reviewed-testing-boundary-diagnosis",
+      "category": "problem",
+      "course_id": "software_testing",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "mistake_review",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "三个独立输入变量，健壮最坏情况边界值测试需要多少组？和健壮边界值有什么不同？"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "testing-boundary",
+        "reference_answer": "经典每变量七个互异代表值且无额外约束的模型下，健壮最坏情况为7³=343；健壮单故障假设边界值为6×3+1=19。",
+        "evidence_groups": [
+          {
+            "need": "边界值四种计数模型",
+            "chunk_ids": [
+              "software-testing-040:h-unit~第二章-软件测试方法~一-黑盒测试-重点:c01"
+            ]
+          }
+        ],
+        "verification": "原文列出7^n与6n+1；按笛卡尔积和单变量变化两种构造独立复算。",
+        "must_not_claim": [
+          "把7^n写成7n",
+          "忽略跨变量约束仍断言任何实际系统必需343条"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "先定位原答案的具体错误",
+          "解释错误原因",
+          "给出可复用的修正方法和正确结论"
+        ]
+      },
+      "workflow_payload": {
+        "problem": "三个独立变量的健壮最坏情况边界值测试需要多少组？",
+        "original_answer": "6×3+1=19组，因为每个变量有六个边界值。",
+        "reference_answer": null,
+        "review_focus": "识别把单故障边界法与最坏情况组合混用的问题"
+      }
+    },
+    {
+      "case_id": "reviewed-digital-mux-selection-diagnosis",
+      "category": "problem",
+      "course_id": "digital_logic",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "mistake_review",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "四选一数据选择器B1B0为地址、X0到X3为输入时，00、01、10、11分别该选择哪个Xi？"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "digital-mux-selection",
+        "reference_answer": "Y=¬B1¬B0X0+¬B1B0X1+B1¬B0X2+B1B0X3，对应选项C。每项由唯一地址最小项门控相应数据输入。",
+        "evidence_groups": [
+          {
+            "need": "四选一数据选择器试题",
+            "chunk_ids": [
+              "digital-logic-003:q-digital-logic-003-q2:c01"
+            ]
+          }
+        ],
+        "verification": "逐一代入四种B1B0组合，只有相应Xi的系数为1；由此反查C项。",
+        "must_not_claim": [
+          "把B1B0的位序颠倒",
+          "只凭选项外观不代入地址码"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "先定位原答案的具体错误",
+          "解释错误原因",
+          "给出可复用的修正方法和正确结论"
+        ]
+      },
+      "workflow_payload": {
+        "problem": "写出四选一数据选择器的地址与输入映射。",
+        "original_answer": "地址10时选X1，所以Y中这一项应是B1非B0X1。",
+        "reference_answer": null,
+        "review_focus": "检查二进制地址映射和对应最小项"
+      }
+    },
+    {
+      "case_id": "reviewed-analysis1-lipschitz-diagnosis",
+      "category": "proof",
+      "course_id": "engineering_math_analysis_1",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "mistake_review",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "在闭区间上满足Lipschitz条件|f(x)-f(y)|≤L|x-y|，怎样证明f一致连续？"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "analysis1-lipschitz",
+        "reference_answer": "当L>0取δ=ε/L，则|x-y|<δ推出|f(x)-f(y)|<ε，δ与点无关，故一致连续。L=0时不等式给出f(x)=f(y)，函数为常值，任取正δ即可。",
+        "evidence_groups": [
+          {
+            "need": "Lipschitz推出一致连续的证明",
+            "chunk_ids": [
+              "engineering-mathematical-analysis-1-011:p7:q-engineering-mathematical-analysis-1-011-q18:c01"
+            ]
+          }
+        ],
+        "verification": "逐行检查题解中的Lipschitz不等式和ε—δ定义，并补上除以L时遗漏的L=0分支。",
+        "must_not_claim": [
+          "把连续性误当作自动一致连续",
+          "在L=0时仍写ε/L"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "先定位原答案的具体错误",
+          "解释错误原因",
+          "给出可复用的修正方法和正确结论"
+        ]
+      },
+      "workflow_payload": {
+        "problem": "证明Lipschitz函数一致连续。",
+        "original_answer": "对每个x单独找一个δ(x)，于是它一致连续。",
+        "reference_answer": null,
+        "review_focus": "指出一致连续要求δ不依赖于点，并处理L=0"
+      }
+    },
+    {
+      "case_id": "reviewed-securitymath-euler-1764-diagnosis",
+      "category": "calculation",
+      "course_id": "information_security_mathematics",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "mistake_review",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "计算φ(1764)。应先怎样分解1764，欧拉函数的乘法公式怎样用？"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "securitymath-euler-1764",
+        "reference_answer": "1764=2²·3²·7²，因此φ(1764)=1764(1-1/2)(1-1/3)(1-1/7)=504。φ(n)=n-1只在n为素数时成立，1764为合数。",
+        "evidence_groups": [
+          {
+            "need": "欧拉函数试题",
+            "chunk_ids": [
+              "information-security-mathematics-007:q-information-security-mathematics-007-q3:c01"
+            ]
+          }
+        ],
+        "verification": "独立质因数分解并用φ(n)=n∏(1-1/p)计算；题干给出n=1764但不依赖不可靠答案表。",
+        "must_not_claim": [
+          "把合数也套φ(n)=n-1",
+          "遗漏一个不同素因子"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "先定位原答案的具体错误",
+          "解释错误原因",
+          "给出可复用的修正方法和正确结论"
+        ]
+      },
+      "workflow_payload": {
+        "problem": "计算φ(1764)。",
+        "original_answer": "1764是偶数，所以φ(1764)=1764/2=882。",
+        "reference_answer": null,
+        "review_focus": "完成质因数分解并正确使用欧拉函数公式"
+      }
+    },
+    {
+      "case_id": "reviewed-physics32-cavity-potential-diagnosis",
+      "category": "concept",
+      "course_id": "university_physics_3_2",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "mistake_review",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "带电球层的空腔内E=0，能直接推出空腔内电势也为0吗？"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "physics32-cavity-potential",
+        "reference_answer": "E=0说明电势梯度为零，因此空腔各点电势相同，但常数值由参考零点和外部电荷分布决定，未必为0。材料把球层分解为薄球层，积分各薄层对球心的dU来得到该常数。",
+        "evidence_groups": [
+          {
+            "need": "带电球层空腔电势题解",
+            "chunk_ids": [
+              "university-physics-3-2-007:q-university-physics-3-2-007-q3:c01"
+            ]
+          }
+        ],
+        "verification": "核对题解中“E=0、等势区”和dU积分两段；以E=-∇U区分等势与零电势。",
+        "must_not_claim": [
+          "E=0必然U=0",
+          "把等势误解为没有电荷贡献"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "先定位原答案的具体错误",
+          "解释错误原因",
+          "给出可复用的修正方法和正确结论"
+        ]
+      },
+      "workflow_payload": {
+        "problem": "带电球层空腔内电场为零，判断电势。",
+        "original_answer": "E=0，所以空腔内每一点的电势都是0。",
+        "reference_answer": null,
+        "review_focus": "区分电势为常量与电势为零"
+      }
+    },
+    {
+      "case_id": "reviewed-compiler-plan-plan",
+      "category": "review",
+      "course_id": "compiler_principles",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "复习课里那道S→a | ∧ | (T)、T→T,S | S的预测分析题，应该按什么步骤做？这里只要步骤。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true,
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus"
+      },
+      "quality_rubric": {
+        "topic_id": "compiler-plan",
+        "reference_answer": "先消除左递归、提取左公共因子，再计算FIRST和FOLLOW，检查LL(1)条件，最后构造预测分析表或递归子程序；不能保证任意文法这样处理后都成为LL(1)。",
+        "evidence_groups": [
+          {
+            "need": "预测分析题的解题流程",
+            "chunk_ids": [
+              "compiler-principles-001:s26:c01"
+            ]
+          }
+        ],
+        "verification": "讲义列出流程；任务限定步骤，不要求从存在字体歧义的∧推导具体集合。",
+        "must_not_claim": [
+          "保证任意文法都可变为LL(1)",
+          "在改写之前算好集合后直接沿用"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "总时长不超过2小时",
+          "优先照顾两个薄弱点",
+          "包含学习、练习与检查环节",
+          "不捏造考试权重或必考结论"
+        ]
+      },
+      "workflow_payload": {
+        "syllabus": "LL(1)文法分析：文法改写、FIRST/FOLLOW、预测分析表",
+        "exam_date": null,
+        "available_hours": 2,
+        "goals": [
+          "两小时内形成可执行复习闭环"
+        ],
+        "weak_topics": [
+          "左递归消除",
+          "LL(1)条件"
+        ]
+      }
+    },
+    {
+      "case_id": "reviewed-mobile-course-project-plan",
+      "category": "requirements_analysis",
+      "course_id": "mobile_application_development",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "基于GeoQuiz做Android课程大作业，哪些是基础必做功能，哪些改造可能加分？"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true,
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus"
+      },
+      "quality_rubric": {
+        "topic_id": "mobile-course-project",
+        "reference_answer": "基于给定项目须从零实现并做界面或功能改造，必做包括注册、登录、一定的增删改查和适当交互；数据库、点赞、地图或分享等可构成改造。全新App需Android前端与Web后端支持查询存储，至少登录和适当交互，并按要求使用ROOM；提交报告、演示视频、APK和源代码压缩包。",
+        "evidence_groups": [
+          {
+            "need": "Android课程设计要求",
+            "chunk_ids": [
+              "mobile-application-development-003:h-课程设计要求及报告模板:c01"
+            ]
+          }
+        ],
+        "verification": "逐项对照课程要求中的两条路径、技术要求和提交清单。",
+        "must_not_claim": [
+          "把现成基础代码直接提交",
+          "把Repository加分项误说成唯一必做项"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "总时长不超过2小时",
+          "优先照顾两个薄弱点",
+          "包含学习、练习与检查环节",
+          "不捏造考试权重或必考结论"
+        ]
+      },
+      "workflow_payload": {
+        "syllabus": "Android课程项目：必做功能、可选改造、提交物",
+        "exam_date": null,
+        "available_hours": 2,
+        "goals": [
+          "两小时内形成可执行复习闭环"
+        ],
+        "weak_topics": [
+          "功能边界",
+          "交付清单"
+        ]
+      }
+    },
+    {
+      "case_id": "reviewed-webapp-servlet-lifecycle-plan",
+      "category": "exam_review",
+      "course_id": "network_application_architecture",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "网络应用开发复习中，Servlet相关内容应按哪些知识链条组织，而不是只背类名？"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true,
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus"
+      },
+      "quality_rubric": {
+        "topic_id": "webapp-servlet-lifecycle",
+        "reference_answer": "应围绕Servlet生命周期、请求/响应对象、doGet/doPost、转发与会话，再连接Filter/Listener、JSP与Servlet职责、JDBC和MVC。请求流程中Servlet处理控制与业务入口，Filter在链路上做通用处理，JSP侧重视图，JDBC负责数据访问，MVC协调职责；具体顺序取决于应用配置，不能把所有组件说成每次必经。",
+        "evidence_groups": [
+          {
+            "need": "网络应用开发复习范围",
+            "chunk_ids": [
+              "network-application-architecture-001:p2:c01"
+            ]
+          }
+        ],
+        "verification": "以复习指南列出的范围为边界，按组件职责构成一条可用于编程题的解释链。",
+        "must_not_claim": [
+          "把JSP等同于数据库访问层",
+          "认为所有组件在每次请求中必然按同一固定顺序出现"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "总时长不超过2小时",
+          "优先照顾两个薄弱点",
+          "包含学习、练习与检查环节",
+          "不捏造考试权重或必考结论"
+        ]
+      },
+      "workflow_payload": {
+        "syllabus": "Servlet复习：生命周期、请求链、JSP/JDBC/MVC职责",
+        "exam_date": null,
+        "available_hours": 2,
+        "goals": [
+          "两小时内形成可执行复习闭环"
+        ],
+        "weak_topics": [
+          "组件职责",
+          "请求流程"
+        ]
+      }
+    },
+    {
+      "case_id": "reviewed-mao-selfrevolution-structure-plan",
+      "category": "argument_structure",
+      "course_id": "mao_zedong_thought_overview",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "以“党的自我革命”为主题做15分钟演讲，材料给出的时间分配与论证主线是什么？"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true,
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus"
+      },
+      "quality_rubric": {
+        "topic_id": "mao-selfrevolution-structure",
+        "reference_answer": "材料安排引言约2分钟、历史沿革及国情特点约10分钟，并以自我革命为何保持活力为问题线索。可按“提出问题—用历史阶段说明机制—回到当代治理价值与限制”组织；每段只使用材料实际列出的阶段或观点，不把演讲提纲当作历史事实全集。",
+        "evidence_groups": [
+          {
+            "need": "自我革命演讲大纲",
+            "chunk_ids": [
+              "mao-zedong-thought-overview-002:h-演讲大纲:c01"
+            ]
+          }
+        ],
+        "verification": "核对大纲中的时长、问题和章节标题；评价结构是否形成因果论证而非记忆清单。",
+        "must_not_claim": [
+          "把演讲大纲中的修辞当成可证实史实",
+          "只堆砌阶段名称不说明关联"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "总时长不超过2小时",
+          "优先照顾两个薄弱点",
+          "包含学习、练习与检查环节",
+          "不捏造考试权重或必考结论"
+        ]
+      },
+      "workflow_payload": {
+        "syllabus": "党的自我革命15分钟演讲：时间分配与论证主线",
+        "exam_date": null,
+        "available_hours": 2,
+        "goals": [
+          "两小时内形成可执行复习闭环"
+        ],
+        "weak_topics": [
+          "时间控制",
+          "材料事实边界"
+        ]
+      }
+    },
+    {
+      "case_id": "reviewed-security-publickey-tradeoff-plan",
+      "category": "concept",
+      "course_id": "information_security_intro",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "公开密钥密码相较对称密码解决了什么问题，又付出哪些代价？"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true,
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus"
+      },
+      "quality_rubric": {
+        "topic_id": "security-publickey-tradeoff",
+        "reference_answer": "公开密钥体制用成对公私钥缓解密钥分发并便于数字签名，但通常计算开销更大、速度更慢且密钥或密文长度要求更高。公开的是公钥和算法，私钥须保密；保密通信和签名验证使用的密钥方向不同，不能因公钥公开推出私钥可得。",
+        "evidence_groups": [
+          {
+            "need": "公开密钥密码复习提纲",
+            "chunk_ids": [
+              "information-security-intro-003:h-信安导论-复习提纲-v1-精简版:c02"
+            ]
+          }
+        ],
+        "verification": "逐项对照提纲的优缺点、公私钥属性和签名描述；不扩展到特定算法的未给定参数。",
+        "must_not_claim": [
+          "认为公开密钥可反推出私钥",
+          "把数字签名等同于保密加密"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "总时长不超过2小时",
+          "优先照顾两个薄弱点",
+          "包含学习、练习与检查环节",
+          "不捏造考试权重或必考结论"
+        ]
+      },
+      "workflow_payload": {
+        "syllabus": "公开密钥密码：密钥分发、签名、性能代价",
+        "exam_date": null,
+        "available_hours": 2,
+        "goals": [
+          "两小时内形成可执行复习闭环"
+        ],
+        "weak_topics": [
+          "密钥使用方向",
+          "公私钥边界"
+        ]
+      }
+    },
+    {
+      "case_id": "reviewed-signals-dft-cosine-plan",
+      "category": "derivation",
+      "course_id": "signals_and_communication",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "x(n)=cos(nπ/6)、N=12时，为什么它恰好落在12点DFT的频点上？"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true,
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus"
+      },
+      "quality_rubric": {
+        "topic_id": "signals-dft-cosine",
+        "reference_answer": "cos(nπ/6)=cos(2πn/12)，对应k=1的离散频率；cos=(e^{j2πn/12}+e^{-j2πn/12})/2，因此在常用未归一化DFT定义下X[1]=X[11]=N/2=6，其余为0。若课程采用不同归一化，数值需随定义调整。",
+        "evidence_groups": [
+          {
+            "need": "12点DFT余弦例题",
+            "chunk_ids": [
+              "signals-and-communication-014:s58:c01"
+            ]
+          }
+        ],
+        "verification": "将角频率与2πk/N匹配，再用复指数和等比和验证；题干明确N=12。",
+        "must_not_claim": [
+          "只保留正频率k=1",
+          "把k=11误写成负索引而不映射到DFT索引"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "总时长不超过2小时",
+          "优先照顾两个薄弱点",
+          "包含学习、练习与检查环节",
+          "不捏造考试权重或必考结论"
+        ]
+      },
+      "workflow_payload": {
+        "syllabus": "12点DFT：余弦频点、谱线位置与幅值",
+        "exam_date": null,
+        "available_hours": 2,
+        "goals": [
+          "两小时内形成可执行复习闭环"
+        ],
+        "weak_topics": [
+          "频点映射",
+          "归一化约定"
+        ]
+      }
+    },
+    {
+      "case_id": "reviewed-softwareeng-fanout-coupling-plan",
+      "category": "mistake_review",
+      "course_id": "software_engineering",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "样例说推荐扇出为3或4；它与耦合分别衡量什么，为什么不能混用？"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true,
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus"
+      },
+      "quality_rubric": {
+        "topic_id": "softwareeng-fanout-coupling",
+        "reference_answer": "扇出是一个模块直接调用的模块数，描述模块间调用扩散；耦合衡量模块之间依赖程度，内聚才衡量模块内部元素结合紧密程度。故原句把扇出、耦合和内聚混为一谈；评审应分别检查调用数量、接口依赖和模块内部职责一致性。",
+        "evidence_groups": [
+          {
+            "need": "软件工程样例判断题",
+            "chunk_ids": [
+              "software-engineering-035:h-华南理工大学-软件工程-样例含答案:c12"
+            ]
+          }
+        ],
+        "verification": "材料明确给出扇出定义，并把“耦合衡量内部紧密程度”判为错；按标准术语补正为内聚。",
+        "must_not_claim": [
+          "把耦合与内聚互换",
+          "只凭扇出大小断言模块一定低内聚"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "总时长不超过2小时",
+          "优先照顾两个薄弱点",
+          "包含学习、练习与检查环节",
+          "不捏造考试权重或必考结论"
+        ]
+      },
+      "workflow_payload": {
+        "syllabus": "软件设计度量：扇出、耦合、内聚",
+        "exam_date": null,
+        "available_hours": 2,
+        "goals": [
+          "两小时内形成可执行复习闭环"
+        ],
+        "weak_topics": [
+          "概念区分",
+          "评审应用"
+        ]
+      }
+    },
+    {
+      "case_id": "reviewed-physlab1-oscilloscope-trigger-plan",
+      "category": "lab_reasoning",
+      "course_id": "university_physics_lab_1",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "exam_review",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "数字示波器上TIME/DIV、VOLTS/DIV和LEVEL分别影响什么？为什么只调TIME/DIV不能让波形稳定？"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "requires_citation": true,
+        "allows_general": true,
+        "requires_exam_review_plan": true,
+        "review_path": "with_syllabus"
+      },
+      "quality_rubric": {
+        "topic_id": "physlab1-oscilloscope-trigger",
+        "reference_answer": "TIME/DIV调时间尺度，VOLTS/DIV调垂直电压尺度，LEVEL设触发电平并决定满足何种触发条件时开始显示。波形漂移应先检查触发源/模式与LEVEL，使触发点稳定；采样率影响数字化质量但不替代触发同步。",
+        "evidence_groups": [
+          {
+            "need": "人体脉搏波与数字示波器操作",
+            "chunk_ids": [
+              "university-physics-lab-1-001:h-人体脉搏波测量:c04"
+            ]
+          }
+        ],
+        "verification": "材料明确区分时间格、电压格、采样率和触发电平；结论不延伸到仪器菜单中未出现的设置。",
+        "must_not_claim": [
+          "把LEVEL当成幅度旋钮",
+          "以为提高采样率必然消除横向漂移"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "总时长不超过2小时",
+          "优先照顾两个薄弱点",
+          "包含学习、练习与检查环节",
+          "不捏造考试权重或必考结论"
+        ]
+      },
+      "workflow_payload": {
+        "syllabus": "示波器操作：时基、电压档位、触发电平",
+        "exam_date": null,
+        "available_hours": 2,
+        "goals": [
+          "两小时内形成可执行复习闭环"
+        ],
+        "weak_topics": [
+          "触发稳定",
+          "参数职责"
+        ]
+      }
+    },
+    {
+      "case_id": "reviewed-web-margin-temporary",
+      "category": "concept",
+      "course_id": "web_frontend_fundamentals",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "temporary_material_reading",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "请只基于我贴的材料精读并完成目标。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "web-margin",
+        "reference_answer": "margin-bottom只设置下外边距；margin是四个方向的简写。相邻块的外边距还可能发生折叠。",
+        "evidence_groups": [],
+        "verification": "输入材料自身完整；评分只检查忠实理解、目标完成和是否越过材料边界。",
+        "must_not_claim": [
+          "把输入材料中没有的信息说成已给事实"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "直接完成reading_goal",
+          "关键结论可从输入材料逐项核对",
+          "不强制公共仓库引用"
+        ]
+      },
+      "workflow_payload": {
+        "material_title": "CSS外边距速记",
+        "material_text": "margin-bottom只设置下外边距；margin是四个方向的简写。相邻块的外边距还可能发生折叠。",
+        "reading_goal": "给初学者解释该用哪个属性，并提醒一个常见布局陷阱。"
+      }
+    },
+    {
+      "case_id": "reviewed-cs-intro-machine-language-temporary",
+      "category": "concept",
+      "course_id": "computer_science_intro",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "temporary_material_reading",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "请只基于我贴的材料精读并完成目标。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "cs-intro-machine-language",
+        "reference_answer": "CPU取指并执行机器指令。汇编语言要经汇编器翻译；高级语言要经编译、解释等实现路径转成可执行动作。",
+        "evidence_groups": [],
+        "verification": "输入材料自身完整；评分只检查忠实理解、目标完成和是否越过材料边界。",
+        "must_not_claim": [
+          "把输入材料中没有的信息说成已给事实"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "直接完成reading_goal",
+          "关键结论可从输入材料逐项核对",
+          "不强制公共仓库引用"
+        ]
+      },
+      "workflow_payload": {
+        "material_title": "程序翻译链",
+        "material_text": "CPU取指并执行机器指令。汇编语言要经汇编器翻译；高级语言要经编译、解释等实现路径转成可执行动作。",
+        "reading_goal": "画清高级语言、汇编语言和机器语言的关系，不把源代码说成CPU直接执行。"
+      }
+    },
+    {
+      "case_id": "reviewed-netmgmt-snmp-bulk-temporary",
+      "category": "protocol_analysis",
+      "course_id": "network_management",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "temporary_material_reading",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "请只基于我贴的材料精读并完成目标。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "netmgmt-snmp-bulk",
+        "reference_answer": "单次Get读取指定OID；GetNext取得词典序后继对象；GetBulk可批量取得后续变量绑定，减少遍历表格的往返。",
+        "evidence_groups": [],
+        "verification": "输入材料自身完整；评分只检查忠实理解、目标完成和是否越过材料边界。",
+        "must_not_claim": [
+          "把输入材料中没有的信息说成已给事实"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "直接完成reading_goal",
+          "关键结论可从输入材料逐项核对",
+          "不强制公共仓库引用"
+        ]
+      },
+      "workflow_payload": {
+        "material_title": "SNMP表遍历笔记",
+        "material_text": "单次Get读取指定OID；GetNext取得词典序后继对象；GetBulk可批量取得后续变量绑定，减少遍历表格的往返。",
+        "reading_goal": "比较三种操作，并说明浏览ifTable时为何后两者更合适。"
+      }
+    },
+    {
+      "case_id": "reviewed-swarm-reward-diagnosis-temporary",
+      "category": "experiment_analysis",
+      "course_id": "swarm_intelligence",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "temporary_material_reading",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "请只基于我贴的材料精读并完成目标。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "swarm-reward-diagnosis",
+        "reference_answer": "奖励后期趋稳只说明当前训练回报趋于稳定，不能单独证明全局最优或泛化。还要看多随机种子、独立评估、奖励实现和基线。",
+        "evidence_groups": [],
+        "verification": "输入材料自身完整；评分只检查忠实理解、目标完成和是否越过材料边界。",
+        "must_not_claim": [
+          "把输入材料中没有的信息说成已给事实"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "直接完成reading_goal",
+          "关键结论可从输入材料逐项核对",
+          "不强制公共仓库引用"
+        ]
+      },
+      "workflow_payload": {
+        "material_title": "训练曲线检查单",
+        "material_text": "奖励后期趋稳只说明当前训练回报趋于稳定，不能单独证明全局最优或泛化。还要看多随机种子、独立评估、奖励实现和基线。",
+        "reading_goal": "把材料整理成判断、不能判断、下一步检查三栏。"
+      }
+    },
+    {
+      "case_id": "reviewed-physics31-grating-overlap-temporary",
+      "category": "calculation",
+      "course_id": "university_physics_3_1",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "temporary_material_reading",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "请只基于我贴的材料精读并完成目标。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "physics31-grating-overlap",
+        "reference_answer": "同一衍射角下，两条谱线重合满足k1λ1=k2λ2。若波长为440和660，则最小正整数级次比为3比2。",
+        "evidence_groups": [],
+        "verification": "输入材料自身完整；评分只检查忠实理解、目标完成和是否越过材料边界。",
+        "must_not_claim": [
+          "把输入材料中没有的信息说成已给事实"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "直接完成reading_goal",
+          "关键结论可从输入材料逐项核对",
+          "不强制公共仓库引用"
+        ]
+      },
+      "workflow_payload": {
+        "material_title": "光栅谱线重合",
+        "material_text": "同一衍射角下，两条谱线重合满足k1λ1=k2λ2。若波长为440和660，则最小正整数级次比为3比2。",
+        "reading_goal": "解释等式来源并复算最小级次，不跳过整数比。"
+      }
+    },
+    {
+      "case_id": "reviewed-physlab2-acbridge-average-temporary",
+      "category": "data_analysis",
+      "course_id": "university_physics_lab_2",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "temporary_material_reading",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "请只基于我贴的材料精读并完成目标。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "physlab2-acbridge-average",
+        "reference_answer": "三次Lx读数为0.01298、0.01243、0.01320 H，算术平均约0.01287 H。平均值之外还应报告离散性或不确定度。",
+        "evidence_groups": [],
+        "verification": "输入材料自身完整；评分只检查忠实理解、目标完成和是否越过材料边界。",
+        "must_not_claim": [
+          "把输入材料中没有的信息说成已给事实"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "直接完成reading_goal",
+          "关键结论可从输入材料逐项核对",
+          "不强制公共仓库引用"
+        ]
+      },
+      "workflow_payload": {
+        "material_title": "交流电桥记录",
+        "material_text": "三次Lx读数为0.01298、0.01243、0.01320 H，算术平均约0.01287 H。平均值之外还应报告离散性或不确定度。",
+        "reading_goal": "核算平均值，并指出仅给平均数遗漏了什么。"
+      }
+    },
+    {
+      "case_id": "reviewed-digital-mux-selection-temporary",
+      "category": "problem",
+      "course_id": "digital_logic",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "temporary_material_reading",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "请只基于我贴的材料精读并完成目标。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "digital-mux-selection",
+        "reference_answer": "地址B1B0按00、01、10、11依次选择X0、X1、X2、X3。每个输入由对应地址最小项门控。",
+        "evidence_groups": [],
+        "verification": "输入材料自身完整；评分只检查忠实理解、目标完成和是否越过材料边界。",
+        "must_not_claim": [
+          "把输入材料中没有的信息说成已给事实"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "直接完成reading_goal",
+          "关键结论可从输入材料逐项核对",
+          "不强制公共仓库引用"
+        ]
+      },
+      "workflow_payload": {
+        "material_title": "四选一MUX映射",
+        "material_text": "地址B1B0按00、01、10、11依次选择X0、X1、X2、X3。每个输入由对应地址最小项门控。",
+        "reading_goal": "把映射改写成布尔表达式，并用地址10做一次自检。"
+      }
+    },
+    {
+      "case_id": "reviewed-analysis1-lipschitz-temporary",
+      "category": "proof",
+      "course_id": "engineering_math_analysis_1",
+      "course_scope": "single",
+      "allowed_course_ids": [],
+      "workflow_type": "temporary_material_reading",
+      "knowledge_scope": "course_first",
+      "turns": [
+        {
+          "role": "user",
+          "content": "请只基于我贴的材料精读并完成目标。"
+        }
+      ],
+      "expected": {
+        "answer_status": "answered",
+        "allows_general": true
+      },
+      "quality_rubric": {
+        "topic_id": "analysis1-lipschitz",
+        "reference_answer": "若L大于0，取δ=ε/L即可让|x-y|<δ推出|f(x)-f(y)|<ε；δ与具体点无关。L=0时函数为常值。",
+        "evidence_groups": [],
+        "verification": "输入材料自身完整；评分只检查忠实理解、目标完成和是否越过材料边界。",
+        "must_not_claim": [
+          "把输入材料中没有的信息说成已给事实"
+        ],
+        "external_reference": null,
+        "grading": "Review correctness, requested help level, evidence support and task completion separately. Contract pass is not a quality pass; equivalent reasoning is acceptable.",
+        "task_requirements": [
+          "直接完成reading_goal",
+          "关键结论可从输入材料逐项核对",
+          "不强制公共仓库引用"
+        ]
+      },
+      "workflow_payload": {
+        "material_title": "Lipschitz与一致连续",
+        "material_text": "若L大于0，取δ=ε/L即可让|x-y|<δ推出|f(x)-f(y)|<ε；δ与具体点无关。L=0时函数为常值。",
+        "reading_goal": "按L大于0和L等于0分情况讲解，突出δ为何是统一的。"
       }
     }
   ]

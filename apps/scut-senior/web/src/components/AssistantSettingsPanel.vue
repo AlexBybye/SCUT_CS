@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { openPersonalContent } from "../personalNavigation";
 import { computed, ref } from "vue";
 import { THEME_MODE_LABELS, type ThemeMode } from "../themePreference";
 import { useAppStore } from "../composables/useAppStore";
@@ -335,6 +336,17 @@ function onAccentKeydown(event: KeyboardEvent): void {
       </span>
       <span class="beta-mark">beta</span>
     </a>
+
+    <button
+      type="button"
+      class="maintainer-entry personal-platform-entry"
+      @click="store.accountMenuOpen = false; openPersonalContent()"
+    >
+      <span>
+        <strong>个人知识平台</strong>
+        <small>贡献记录与私人知识库</small>
+      </span>
+    </button>
   </section>
 </template>
 
@@ -665,7 +677,7 @@ function onAccentKeydown(event: KeyboardEvent): void {
   font-size: var(--fs-2xs);
 }
 
-/* ── 维护中台入口（助手设置底部） ────────────────────────── */
+/* ── 平台入口（助手设置底部） ────────────────────────────── */
 .maintainer-entry {
   display: flex;
   align-items: center;
@@ -695,6 +707,14 @@ function onAccentKeydown(event: KeyboardEvent): void {
 
 .maintainer-entry small {
   color: var(--text-muted);
+}
+
+.personal-platform-entry {
+  width: 100%;
+  margin-bottom: 0;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
 .beta-mark {

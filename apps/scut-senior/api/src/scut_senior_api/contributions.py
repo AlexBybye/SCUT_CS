@@ -17,11 +17,11 @@ from .contracts import ContributionState, ContributionPreview
 TEMPORARY_MATERIAL_TTL_DAYS = 7
 CONTRIBUTION_REVIEW_COPY_TTL_DAYS = 30
 
-# 状态机：draft 只能提交；submitted/pr_open 可被维护者推进或拒绝；
+# 历史 draft 只读；submitted/pr_open 可被维护者推进或拒绝；
 # merged/rejected/expired 是终态。合并永远只能由人工在仓库侧完成，
 # 应用内没有任何“自动合并”路径。
 _CONTRIBUTION_TRANSITIONS: dict[ContributionState, frozenset[ContributionState]] = {
-    ContributionState.DRAFT: frozenset({ContributionState.SUBMITTED}),
+    ContributionState.DRAFT: frozenset(),
     ContributionState.SUBMITTED: frozenset(
         {ContributionState.PR_OPEN, ContributionState.REJECTED}
     ),
@@ -35,9 +35,7 @@ _CONTRIBUTION_TRANSITIONS: dict[ContributionState, frozenset[ContributionState]]
 
 # 维护者动作 → 目标状态。merge 只能从 pr_open 进入：
 # 没有 PR 就没有可合并对象，待处理队列本身永远不会“被合并”。
-# “submit”是用户把自己的 draft 推进到 submitted 的动作，不属于维护者动作集。
 _ACTION_TARGET: dict[str, ContributionState] = {
-    "submit": ContributionState.SUBMITTED,
     "mark_pr_open": ContributionState.PR_OPEN,
     "merge": ContributionState.MERGED,
     "reject": ContributionState.REJECTED,
@@ -46,7 +44,9 @@ _ACTION_TARGET: dict[str, ContributionState] = {
 _GITHUB_PR_URL_RE = re.compile(r"^/[^/\s]+/[^/\s]+/pull/[1-9][0-9]*$")
 
 _QUESTION_MARKER_RE = re.compile(
-    r"^\s*(?:#{1,6}\s*)?(?:question|题目?)[ \t]*\d*[::]",
+    r"^[ \t]*(?:<!--\s*question\s*:\s*\S+.*?-->|"
+    r"(?:#{1,6}[ \t]+)?(?:question|题目?|第\s*\d+\s*题)[ \t]*\d*[ \t]*[:：.]|"
+    r"#{1,6}[ \t]+(?:\d+[.、．)）]|[（(]\d+[)）]))",
     re.MULTILINE | re.IGNORECASE,
 )
 
@@ -191,8 +191,8 @@ def build_contribution_preview(
     if not has_h1_title and not effective_title:
         warnings.append("材料缺少一级标题且未提供标题：审核时将无法回查资料名。")
     question_marker_count = len(_QUESTION_MARKER_RE.findall(normalized))
-    if question_marker_count == 0:
-        warnings.append("未检测到题目标记：如为试卷类资料，请确认题目边界供人工复核。")
+    if question_marker_count == 0 and re.search(r"试卷|试题|考试|exam", effective_title, re.IGNORECASE):
+        warnings.append("本次提交的正文未识别出题目边界，请在预览中核对题号；这不代表课程索引缺失。")
     if len(normalized.strip()) < MIN_CONTRIBUTION_CHARS:
         warnings.append("材料过短：贡献应提供可直接人工审核的完整内容。")
     if _HTML_TAG_RE.search(normalized):

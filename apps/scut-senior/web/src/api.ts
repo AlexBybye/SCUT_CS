@@ -53,7 +53,7 @@ export class ApiError extends Error {
   }
 }
 
-async function apiRequest<T>(path: string, init?: RequestInit): Promise<T> {
+export async function apiRequest<T>(path: string, init?: RequestInit): Promise<T> {
   const headers = new Headers(init?.headers);
   headers.set("Accept", "application/json");
   if (init?.body && !(init.body instanceof FormData)) {
@@ -422,7 +422,7 @@ export async function submitContribution(payload: {
   material_id: string;
   course_id: string;
   title?: string | null;
-  as_draft?: boolean;
+  github_email: string;
   confirmations: ContributionConfirmations;
 }): Promise<ContributionRecord> {
   return apiRequest<ContributionRecord>("/api/v1/contributions", {
@@ -431,20 +431,10 @@ export async function submitContribution(payload: {
       material_id: payload.material_id,
       course_id: payload.course_id,
       title: payload.title || null,
-      as_draft: payload.as_draft ?? false,
+      github_email: payload.github_email,
       confirmations: payload.confirmations,
     }),
   });
-}
-
-export async function submitContributionDraft(
-  contributionId: string,
-  confirmations: ContributionConfirmations,
-): Promise<ContributionRecord> {
-  return apiRequest<ContributionRecord>(
-    `/api/v1/contributions/${encodeURIComponent(contributionId)}/submit`,
-    { method: "POST", body: JSON.stringify({ confirmations }) },
-  );
 }
 
 export async function listContributions(): Promise<ContributionRecord[]> {

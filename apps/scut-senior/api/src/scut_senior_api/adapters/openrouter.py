@@ -301,14 +301,16 @@ def _build_action_request(
     *,
     max_tokens: int = 16,
 ) -> dict[str, object]:
+    from ..action_registry import ACTION_REGISTRY
+    allowed = ACTION_REGISTRY.allowed_actions(request.workflow_type.value, phase)
+    allowed_text = " 或 ".join(allowed)
     return {
         "model": request.model_id,
         "messages": [
             {
                 "role": "system",
                 "content": (
-                    "你是受限检索路由器。只输出 generate_answer 或 "
-                    "retrieve_with_query_rewrite，不要解释。已有证据足以回答时"
+                    f"你是受限检索路由器。只输出 {allowed_text}，不要解释。已有证据足以回答时"
                     "选择 generate_answer；证据明显不足或主题覆盖过窄时选择"
                     " retrieve_with_query_rewrite。"
                 ),

@@ -12,6 +12,7 @@ from .contracts import (
     ConversationSummary,
     ExternalResource,
     FeedbackRecord,
+    PrivateKnowledgeDetail,
     PrivateKnowledgeRecord,
     WorkflowAttempt,
     WorkflowResult,
@@ -223,6 +224,21 @@ class WorkflowRepository(Protocol):
     def list_private_knowledge_sources(
         self, *, user_id: str, course_ids: list[str]
     ) -> list[RetrievedSource]: ...
+
+    def list_private_knowledge(
+        self, user_id: str, *, limit: int, offset: int,
+        course_id: str | None = None,
+    ) -> list[PrivateKnowledgeRecord]: ...
+
+    def get_private_knowledge(
+        self, user_id: str, knowledge_id: UUID,
+    ) -> PrivateKnowledgeDetail | None: ...
+
+    def delete_private_knowledge(self, user_id: str, knowledge_id: UUID) -> bool: ...
+
+    def renew_private_knowledge(
+        self, user_id: str, knowledge_id: UUID,
+    ) -> PrivateKnowledgeRecord | None: ...
 
     def set_course_plugin_loaded(
         self,

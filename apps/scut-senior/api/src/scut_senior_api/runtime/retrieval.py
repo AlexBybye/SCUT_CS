@@ -12,7 +12,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from time import perf_counter
 
-from ..agent_loop import action_allowed_for_workflow
+from ..action_registry import ACTION_REGISTRY
 from ..config import Settings
 from ..contracts import TraceEvent, TraceEventStatus, WorkflowRunRequest
 from ..ports import ConversationTurn, RetrievedSource, RetrievalBatch, RetrievalGateway, WorkflowRepository
@@ -125,9 +125,7 @@ class RetrievalCoordinator:
         if (
             not use_user_key
             and self.settings.agent_decision_mode in {"model", "shadow", "deterministic"}
-            and action_allowed_for_workflow(
-                request.workflow_type.value, "retrieve_with_query_rewrite"
-            )
+            and ACTION_REGISTRY.admits(request.workflow_type.value, "retrieve_with_query_rewrite", "post_retrieval")
         ):
             if optional_work_allowed():
                 next_action = decide(
@@ -135,9 +133,9 @@ class RetrievalCoordinator:
                     "generate_answer",
                     sources=sources,
                     allow_model=True,
-                    accepted_actions=frozenset(
-                        {"generate_answer", "retrieve_with_query_rewrite"}
-                    ),
+                    accepted_actions=frozenset(ACTION_REGISTRY.allowed_actions(
+                        request.workflow_type.value, "post_retrieval"
+                    )),
                 )
                 generation_decision_ready = next_action == "generate_answer"
                 if next_action == "retrieve_with_query_rewrite":
