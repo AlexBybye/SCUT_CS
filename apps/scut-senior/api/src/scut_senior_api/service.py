@@ -16,6 +16,7 @@ from .agent_loop import (
 from .action_registry import ACTION_REGISTRY
 from .adapters.bilibili import derive_question_keywords, normalize_keywords
 from .adapters.exam_facts import ExamFactsUnavailable
+from .adapters.humanizer import SelectedModelHumanizer
 from .config import Settings
 from .contracts import (
     AccountDeletionSummary,
@@ -1512,6 +1513,18 @@ class IterationZeroService:
             max_items=32,
         )
         original_blocks = [block.model_copy(deep=True) for block in guarded.blocks]
+        active_humanizer = self.humanizer
+        if active_humanizer is None and not mock_only and request.persona_enhancement == PersonaEnhancement.HUMANIZED:
+            selected_gateway = self.byok_model if use_user_key else (
+                self.zhipu_model if model_provider_id == "zhipu" else self.model
+            )
+            if selected_gateway is not None:
+                active_humanizer = SelectedModelHumanizer(
+                    generate=selected_gateway.generate,
+                    request=request,
+                    load_key=(lambda: self.credential_manager.load_api_key(user, request.provider_id)) if use_user_key else None,
+                    connection=byok_connection,
+                )
         enhancement_outcome = PersonaEnhancementOutcome.NOT_REQUESTED
         enhancement_effective = PersonaEnhancement.STANDARD
         if request.persona_enhancement == PersonaEnhancement.STANDARD:
@@ -1521,7 +1534,7 @@ class IterationZeroService:
                 node="response_style_control",
                 result={"reason_code": "single_pass_model_prompt"},
             )
-        elif self.humanizer is None:
+        elif active_humanizer is None:
             answer_blocks = original_blocks
             enhancement_outcome = PersonaEnhancementOutcome.SKIPPED_UNAVAILABLE
             _append_trace(
@@ -1601,7 +1614,7 @@ class IterationZeroService:
                     started = perf_counter()
                     humanizer_outcome = None
                     try:
-                        candidate_blocks = self.humanizer.humanize(
+                        candidate_blocks = active_humanizer.humanize(
                             blocks=[block.model_copy(deep=True) for block in prepared.blocks],
                             protected_terms=protected_terms,
                             tone=request.tone,
@@ -1616,9 +1629,13 @@ class IterationZeroService:
                     except TimeoutError:
                         answer_blocks = original_blocks
                         enhancement_outcome = PersonaEnhancementOutcome.FALLBACK_TIMEOUT
-                    except Exception:
+                    except Exception as exc:
                         answer_blocks = original_blocks
-                        enhancement_outcome = PersonaEnhancementOutcome.FALLBACK_PROVIDER
+                        enhancement_outcome = (
+                            PersonaEnhancementOutcome.FALLBACK_TIMEOUT
+                            if "timeout" in str(getattr(exc, "code", ""))
+                            else PersonaEnhancementOutcome.FALLBACK_PROVIDER
+                        )
                     else:
                         try:
                             restored_blocks = prepared.restore(list(candidate_blocks))

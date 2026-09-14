@@ -283,6 +283,11 @@ def create_app(
 ) -> FastAPI:
     active_settings = settings or Settings.from_env()
     active_settings.assert_safe()
+    if active_settings.app_env != "test":
+        if model_http_client is None:
+            model_http_client = CancellableJsonHttpClient(UrllibJsonHttpClient())
+        if zhipu_http_client is None:
+            zhipu_http_client = CancellableJsonHttpClient(UrllibJsonHttpClient())
     if active_settings.app_env != "test" and byok_http_client is None:
         # Enforce the complete provider-call wall clock even when no client
         # cancellation callback is present. The AB run-level ceiling is 120s.
@@ -673,7 +678,10 @@ def create_app(
                 "citation_guard": True,
                 "response_style_control": True,
                 "humanizer_guard": True,
-                "humanizer_configured": humanizer is not None,
+                "humanizer_configured": (
+                    humanizer is not None or byok_runtime_enabled
+                    or (platform_credential_configured and (openrouter_configured or zhipu_configured))
+                ),
                 "active_corpus_configured": active_corpus_configured,
                 "production_retrieval": False,
                 "local_corpus_retrieval": active_corpus_configured,

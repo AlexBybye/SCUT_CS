@@ -17,6 +17,8 @@ from scut_senior_api.auth import GitHubUserProfile, SESSION_COOKIE_NAME
 from scut_senior_api.config import Settings
 from scut_senior_api.contracts import RunStatus, WorkflowRunRequest
 from scut_senior_api.main import create_app
+from scut_senior_api.contracts import Tone
+from scut_senior_api.workflow_focus import build_tone_visible_callout
 from scut_senior_api.ports import GeneratedAnswer, RetrievalBatch, RetrievedSource
 from scut_senior_api.workflow_stream import WorkflowStreamSession
 
@@ -362,7 +364,7 @@ def test_byok_accepts_a_plain_text_complex_answer_without_retry(tmp_path: Path) 
     general_supplement = result["general_supplement"]
     assert general_supplement.startswith(plain_text)
     assert general_supplement.count(
-        "> **助教提示：** 定义、前提、符号先摆齐，少一步都不给分。"
+        build_tone_visible_callout(Tone.TEACHING_ASSISTANT)
     ) == 1
     assert result["answer_blocks"] == [
         {"type": "general", "content": general_supplement}

@@ -11,7 +11,8 @@ from typing import Collection, Mapping, Protocol
 from urllib.error import HTTPError
 from urllib.request import Request
 
-from ..contracts import WorkflowRunRequest
+from ..contracts import AnswerBlock, WorkflowRunRequest
+from .humanizer import RewriteTask
 from ..model_catalog import PLATFORM_DAILY_QUOTA_EXHAUSTED_MESSAGE
 from ..ports import ConversationTurn, GeneratedAnswer, RetrievedSource
 from ..quota import (
@@ -154,7 +155,9 @@ class OpenRouterModelGateway:
         history: tuple[ConversationTurn, ...] = (),
         *,
         cancel_check: Callable[[], bool] | None = None,
-    ) -> GeneratedAnswer:
+        timeout_seconds: float | None = None,
+        rewrite: RewriteTask | None = None,
+    ) -> GeneratedAnswer | list[AnswerBlock]:
         if (
             request.provider_id != self.provider_id
             or request.model_id not in self._allowed_model_ids
@@ -167,8 +170,10 @@ class OpenRouterModelGateway:
 
         self._reserve_platform_request()
         payload = _build_structured_request(request, sources, history)
+        if rewrite is not None:
+            payload = rewrite.payload(payload)
         try:
-            response = self._post_upstream(payload, cancel_check)
+            response = self._post_upstream(payload, cancel_check, timeout_seconds)
         except OSError as exc:
             if is_timeout_transport_error(exc):
                 raise OpenRouterGatewayError(
@@ -190,7 +195,7 @@ class OpenRouterModelGateway:
         if response.status_code < 200 or response.status_code >= 300:
             raise _safe_upstream_error(response.status_code)
 
-        return _parse_generated_answer(response.body)
+        return rewrite.parse(response.body) if rewrite is not None else _parse_generated_answer(response.body)
 
     def decide_action(
         self,
@@ -242,7 +247,11 @@ class OpenRouterModelGateway:
         self,
         payload: Mapping[str, object],
         cancel_check: Callable[[], bool] | None,
+        timeout_seconds: float | None = None,
     ) -> HttpResponse:
+        effective_timeout = min(self._timeout_seconds, timeout_seconds) if timeout_seconds is not None else self._timeout_seconds
+        if effective_timeout <= 0:
+            raise TimeoutError("humanizer_budget_exhausted")
         headers = {
             "Authorization": f"Bearer {self._api_key}",
             "Content-Type": "application/json",
@@ -253,14 +262,14 @@ class OpenRouterModelGateway:
                 OPENROUTER_CHAT_COMPLETIONS_URL,
                 headers=headers,
                 payload=payload,
-                timeout_seconds=self._timeout_seconds,
+                timeout_seconds=effective_timeout,
                 cancel_check=cancel_check,
             )
         return self._http_client.post_json(
             OPENROUTER_CHAT_COMPLETIONS_URL,
             headers=headers,
             payload=payload,
-            timeout_seconds=self._timeout_seconds,
+            timeout_seconds=effective_timeout,
         )
 
     def _now(self) -> datetime:

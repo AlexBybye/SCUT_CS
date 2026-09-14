@@ -4,7 +4,8 @@ import inspect
 import json
 from collections.abc import Callable, Collection
 
-from ..contracts import WorkflowRunRequest
+from ..contracts import AnswerBlock, WorkflowRunRequest
+from .humanizer import RewriteTask
 from ..ports import ConversationTurn, GeneratedAnswer, RetrievedSource
 from .answer_parsing import ModelAnswerParseError, parse_chat_completion_answer
 from .http_security import is_timeout_transport_error
@@ -80,7 +81,9 @@ class ZhipuPlatformModelGateway:
         history: tuple[ConversationTurn, ...] = (),
         *,
         cancel_check: Callable[[], bool] | None = None,
-    ) -> GeneratedAnswer:
+        timeout_seconds: float | None = None,
+        rewrite: RewriteTask | None = None,
+    ) -> GeneratedAnswer | list[AnswerBlock]:
         if (
             request.provider_id != self.provider_id
             or request.model_id not in self._allowed_model_ids
@@ -92,6 +95,11 @@ class ZhipuPlatformModelGateway:
             )
 
         payload = _build_structured_request(request, sources, history)
+        if rewrite is not None:
+            payload = rewrite.payload(payload)
+        effective_timeout = min(self._timeout_seconds, timeout_seconds) if timeout_seconds is not None else self._timeout_seconds
+        if effective_timeout <= 0:
+            raise TimeoutError("humanizer_budget_exhausted")
         headers = {
             "Authorization": f"Bearer {self._api_key}",
             "Content-Type": "application/json",
@@ -103,7 +111,7 @@ class ZhipuPlatformModelGateway:
                     ZHIPU_CHAT_COMPLETIONS_URL,
                     headers=headers,
                     payload=payload,
-                    timeout_seconds=self._timeout_seconds,
+                    timeout_seconds=effective_timeout,
                     cancel_check=cancel_check,
                 )
             else:
@@ -111,7 +119,7 @@ class ZhipuPlatformModelGateway:
                     ZHIPU_CHAT_COMPLETIONS_URL,
                     headers=headers,
                     payload=payload,
-                    timeout_seconds=self._timeout_seconds,
+                    timeout_seconds=effective_timeout,
                 )
         except OSError as exc:
             if is_timeout_transport_error(exc):
@@ -132,6 +140,8 @@ class ZhipuPlatformModelGateway:
             raise _safe_upstream_error(response.status_code)
 
         try:
+            if rewrite is not None:
+                return rewrite.parse(response.body)
             return parse_chat_completion_answer(response.body)
         except ModelAnswerParseError:
             raise ZhipuPlatformGatewayError(

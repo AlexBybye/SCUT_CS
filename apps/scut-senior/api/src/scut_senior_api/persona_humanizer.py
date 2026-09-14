@@ -20,7 +20,10 @@ _PROTECTED_RE = re.compile(
     r"(?:[eE][-+]?\d+)?(?:%|[a-zA-Z\u4e00-\u9fff]+)?"
 )
 
-_CORE = """你负责保留知识内容，并按当前人格润色下方中文回答。
+_CORE = """【humanizer-zh 忠实润色内核】
+你负责保留知识内容，并按当前人格润色下方中文回答。
+- 按整段语境调整不自然的从句顺序、重复主语、名词化和空泛套语，不机械替换词语，不抹平作者声音。
+- 原文的主张、归因、立场、条件、例外、因果关系和引文归属全部保留；若自然表达会改变含义，保留原表达。
 - 知识正文不摘要、不扩写、不补充知识、不做事实核查，不改变结论和不确定程度。
 - 用户允许鲜明、跳脱和损人的角色表达：保留原文的挖苦与挑衅，可以替换僵硬的性格话术，不要把它们洗成中性客服语气。已有角色感时少改，角色感弱时优先重写连接句，避免额外追加一轮吐槽。
 - 不能为了角色效果新增个人经历、课程轶事、用户行为、成绩或来源。仅看得到当前回答时，不能从例句推断用户做错题、跳步或漏条件。
@@ -34,7 +37,7 @@ _OVERLAYS = PERSONA_PROFILES
 
 
 def compose_persona_humanizer_prompt(tone: Tone) -> str:
-    return f"{PERSONA_PLAY_RULES}\n\n{_OVERLAYS[tone]}\n\n{_CORE}"
+    return f"{_CORE}\n\n{PERSONA_PLAY_RULES}\n\n{_OVERLAYS[tone]}\n\n人格只调整声音，忠实润色与受保护内容规则始终优先。"
 
 
 @dataclass(frozen=True, slots=True)

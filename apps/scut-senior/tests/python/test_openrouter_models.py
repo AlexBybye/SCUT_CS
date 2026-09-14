@@ -17,6 +17,8 @@ from scut_senior_api.adapters.openrouter import (
 from scut_senior_api.config import Settings, UnsafeRuntimeConfiguration
 from scut_senior_api.byok_catalog import BYOK_CATALOG_VERSION
 from scut_senior_api.main import create_app
+from scut_senior_api.contracts import Tone
+from scut_senior_api.workflow_focus import build_tone_visible_callout
 from scut_senior_api.model_catalog import (
     CATALOG_VERSION,
     ModelHealthResult,
@@ -529,7 +531,7 @@ def test_openrouter_accepts_a_plain_text_complex_answer_without_retry(
     general_supplement = result["general_supplement"]
     assert general_supplement.startswith(plain_text)
     assert general_supplement.count(
-        "> **助教提示：** 定义、前提、符号先摆齐，少一步都不给分。"
+        build_tone_visible_callout(Tone.TEACHING_ASSISTANT)
     ) == 1
     assert result["answer_blocks"] == [
         {"type": "general", "content": general_supplement}
@@ -615,7 +617,7 @@ def test_missing_or_invalid_bilibili_keywords_fall_back_to_model_core_topics(
     result = response.json()
     assert result["repository_answer"].startswith("矩阵秩的说明。[S1]")
     assert result["repository_answer"].count(
-        "> **助教提示：** 定义、前提、符号先摆齐，少一步都不给分。"
+        build_tone_visible_callout(Tone.TEACHING_ASSISTANT)
     ) == 1
     search = result["external_resources"][-1]
     assert search["query_keywords"] == ["线性代数", "矩阵的秩"]

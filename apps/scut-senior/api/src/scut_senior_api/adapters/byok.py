@@ -3,7 +3,8 @@ from __future__ import annotations
 import inspect
 import json
 from collections.abc import Callable
-from ..contracts import WorkflowRunRequest
+from ..contracts import AnswerBlock, WorkflowRunRequest
+from .humanizer import RewriteTask
 from ..credentials import validate_user_api_key
 from ..model_credentials import ModelCredentialError, normalize_base_url
 from ..ports import (
@@ -70,7 +71,8 @@ class OpenAICompatibleByokGateway:
         history: tuple[ConversationTurn, ...] = (),
         cancel_check: Callable[[], bool] | None = None,
         timeout_seconds: float | None = None,
-    ) -> GeneratedAnswer:
+        rewrite: RewriteTask | None = None,
+    ) -> GeneratedAnswer | list[AnswerBlock]:
         if (
             request.provider_id != connection.provider_id
             or request.model_id != connection.model_id
@@ -123,6 +125,8 @@ class OpenAICompatibleByokGateway:
             ),
         )
         endpoint = f"{base_url}/chat/completions"
+        if rewrite is not None:
+            payload = rewrite.payload(payload)
         effective_timeout = _effective_timeout(
             self._timeout_seconds, timeout_seconds
         )
@@ -156,7 +160,7 @@ class OpenAICompatibleByokGateway:
             ) from None
         if response.status_code < 200 or response.status_code >= 300:
             raise _safe_byok_upstream_error(response.status_code)
-        return _parse_byok_answer(response)
+        return rewrite.parse(response.body) if rewrite is not None else _parse_byok_answer(response)
 
 def _build_byok_request(
     request: WorkflowRunRequest,
