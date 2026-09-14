@@ -13,6 +13,10 @@ from scut_senior_api.persona_humanizer import (
     prepare_humanizer_input,
 )
 from scut_senior_api.runtime_guards import protect_humanizer_output
+from scut_senior_api.workflow_focus import (
+    build_response_control_directive,
+    build_tone_visible_callout,
+)
 
 
 def _request_payload() -> dict[str, object]:
@@ -96,3 +100,34 @@ def test_low_risk_chinese_rewrite_is_applied() -> None:
     assert outcome.applied is True
     assert outcome.fallback is False
     assert list(outcome.blocks) == candidate
+
+
+@pytest.mark.parametrize("tone", list(Tone))
+def test_persona_callout_is_masked_and_shared_voice_reaches_both_prompts(tone: Tone) -> None:
+    request = WorkflowRunRequest.model_validate({**_request_payload(), "tone": tone})
+    generation = build_response_control_directive(request)
+    rewrite = compose_persona_humanizer_prompt(tone)
+    from scut_senior_api.persona_style import PERSONA_PROFILES
+
+    assert PERSONA_PROFILES[tone] in generation
+    assert PERSONA_PROFILES[tone] in rewrite
+    callout = build_tone_visible_callout(tone)
+    blocks = [AnswerBlock(type=AnswerBlockType.GENERAL, content=f"解释正文。\n\n{callout}")]
+    prepared = prepare_humanizer_input(blocks, ())
+    assert callout not in prepared.blocks[0].content
+    assert prepared.restore(list(prepared.blocks)) == blocks
+
+
+@pytest.mark.parametrize("banter", [
+    "杂鱼学长，思路还在门口罚站呢？咱们把线索理清楚。",
+    "哥们，你这脑子开省电模式了？咱们给思路接上电。",
+    "脑子到岗。气势收好，依据摆齐。",
+])
+def test_persona_banter_can_replace_neutral_transition_without_losing_evidence(banter: str) -> None:
+    knowledge = "矩阵的秩为 3，计算见 $A^3=I$，参考 [S1]。"
+    original = [AnswerBlock(type=AnswerBlockType.REPOSITORY, content=f"接下来整理思路。\n\n{knowledge}")]
+    candidate = [AnswerBlock(type=AnswerBlockType.REPOSITORY, content=f"{banter}\n\n{knowledge}")]
+    outcome = protect_humanizer_output(original=original, candidate=candidate, protected_terms=("矩阵",))
+    assert outcome.applied
+    changed_fact = [candidate[0].model_copy(update={"content": candidate[0].content.replace("为 3", "为 4")})]
+    assert protect_humanizer_output(original=original, candidate=changed_fact, protected_terms=("矩阵",)).fallback
