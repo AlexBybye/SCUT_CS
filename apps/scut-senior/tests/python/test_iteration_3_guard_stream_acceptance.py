@@ -493,7 +493,7 @@ def test_stream_applies_requested_persona_enhancement_before_answer_delta(
             assert tone == Tone.SENIOR_STUDENT
             assert "当前人格：学长" in instructions
             assert cancel_check is not None
-            assert 0 < timeout_seconds <= 20
+            assert 0 < timeout_seconds <= 45
             assert "[S1]" not in blocks[0].content
             blocks[0].content = blocks[0].content.replace(
                 "这句话的表达有一点绕", "这句话说得有点绕"

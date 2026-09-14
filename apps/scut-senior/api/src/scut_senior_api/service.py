@@ -99,6 +99,7 @@ from .ports import (
     ModelGateway,
     RetrievalGateway,
     RetrievedSource,
+    StoredModelCredential,
     UserKeyModelGateway,
     UserIdentity,
     WorkflowRepository,
@@ -142,6 +143,43 @@ class ExamReviewPlanContext:
 
     plan: "ExamReviewPlan"
     retrieval_query: str
+
+
+class BoundByokActionGateway:
+    """Bind one decrypted BYOK credential to a compact Agent action call.
+
+    The binding exists only for the lifetime of one workflow run. It keeps
+    the key out of Agent state, trace events and persistence while ensuring
+    the selected BYOK model—not a platform model—owns its optional decision.
+    """
+
+    def __init__(
+        self,
+        model: UserKeyModelGateway,
+        *,
+        api_key: str,
+        connection: StoredModelCredential,
+        timeout_seconds: float,
+    ):
+        self._model = model
+        self._api_key = api_key
+        self._connection = connection
+        self._timeout_seconds = timeout_seconds
+
+    def decide_action(self, request, state, phase, *, sources=(), history=()) -> str:
+        method = getattr(self._model, "decide_action", None)
+        if not callable(method):
+            raise RuntimeError("BYOK model does not support Agent decisions")
+        return method(
+            api_key=self._api_key,
+            connection=self._connection,
+            request=request,
+            state=state,
+            phase=phase,
+            sources=tuple(sources),
+            history=history,
+            timeout_seconds=self._timeout_seconds,
+        )
 
 
 class IterationZeroService:
@@ -960,6 +998,10 @@ class IterationZeroService:
         agent_budget = lifecycle.budget
         agent_state = lifecycle.state
         agent_metrics = lifecycle.metrics
+        # Resolve a BYOK secret only if the optional model decision is
+        # enabled. The same value is then reused for answer generation and is
+        # cleared in the existing ``finally`` block below.
+        api_key: str | None = None
 
         def optional_model_work_allowed() -> bool:
             return lifecycle.optional_model_work_allowed()
@@ -990,6 +1032,7 @@ class IterationZeroService:
             any invalid, unavailable, or phase-incompatible result falls back
             to the expected server-owned action and leaves an audit event.
             """
+            nonlocal api_key
             action = expected_action
             used_fallback = False
             active_decision = self.agent_decision
@@ -1004,6 +1047,21 @@ class IterationZeroService:
                 decision_source = "deterministic"
             elif allow_model and mode in {"model", "shadow"}:
                 agent_metrics["decision_call_count"] += 1
+                if use_user_key:
+                    if api_key is None:
+                        assert isinstance(user, AuthenticatedPrincipal)
+                        api_key = self.credential_manager.load_api_key(
+                            user, request.provider_id
+                        )
+                    assert byok_connection is not None
+                    active_decision = ModelAgentDecision(
+                        BoundByokActionGateway(
+                            self.byok_model,
+                            api_key=api_key,
+                            connection=byok_connection,
+                            timeout_seconds=lifecycle.optional_model_timeout_seconds(),
+                        )
+                    )
                 action = active_decision.decide(
                     request,
                     agent_state,
@@ -1206,10 +1264,6 @@ class IterationZeroService:
             if exam_plan is not None
             else workflow_focus.authoritative_query
         )
-        # In BYOK model-decision mode the same request-local decrypted key is
-        # reused for the compact Action call and answer generation. It is never
-        # copied into Agent state, Trace data, persistence, or exceptions.
-        api_key: str | None = None
         decide_for_phase("retrieve", "retrieve")
         interrupted = interrupt_if_step_not_claimed()
         if interrupted is not None:
@@ -1613,6 +1667,7 @@ class IterationZeroService:
                     )
                     started = perf_counter()
                     humanizer_outcome = None
+                    humanizer_failure: dict[str, object] = {}
                     try:
                         candidate_blocks = active_humanizer.humanize(
                             blocks=[block.model_copy(deep=True) for block in prepared.blocks],
@@ -1629,11 +1684,13 @@ class IterationZeroService:
                     except TimeoutError:
                         answer_blocks = original_blocks
                         enhancement_outcome = PersonaEnhancementOutcome.FALLBACK_TIMEOUT
+                        humanizer_failure = {"provider_failure_code": "humanizer_timeout"}
                     except Exception as exc:
                         answer_blocks = original_blocks
+                        humanizer_failure = _humanizer_failure_metadata(exc)
                         enhancement_outcome = (
                             PersonaEnhancementOutcome.FALLBACK_TIMEOUT
-                            if "timeout" in str(getattr(exc, "code", ""))
+                            if humanizer_failure.get("failure_code", "").endswith("timeout")
                             else PersonaEnhancementOutcome.FALLBACK_PROVIDER
                         )
                     else:
@@ -1671,6 +1728,7 @@ class IterationZeroService:
                             "persona_enhancement": request.persona_enhancement,
                             "persona_enhancement_outcome": enhancement_outcome,
                             "reason_code": enhancement_outcome.value,
+                            **humanizer_failure,
                             **(
                                 {"degradation_code": humanizer_outcome.reason or "guard_rejected"}
                                 if enhancement_outcome == PersonaEnhancementOutcome.FALLBACK_GUARD
@@ -2445,6 +2503,26 @@ def _is_retryable_model_output_error(error: Exception) -> bool:
         "byok_provider_invalid_response",
         "byok_provider_timeout",
     }
+
+
+def _humanizer_failure_metadata(error: Exception) -> dict[str, object]:
+    """Return trace-safe diagnostics for the optional rewrite call.
+
+    Provider response bodies and exception text are deliberately excluded:
+    they can contain user content or provider-specific implementation details.
+    The stable code and status are enough to distinguish availability,
+    authentication, quota and invalid-response failures.
+    """
+
+    code = getattr(error, "code", None)
+    if isinstance(code, str) and code:
+        metadata: dict[str, object] = {"failure_code": code[:80]}
+    else:
+        metadata = {"failure_code": "humanizer_provider_error"}
+    status_code = getattr(error, "status_code", None)
+    if isinstance(status_code, int) and 100 <= status_code <= 599:
+        metadata["provider_status_code"] = status_code
+    return metadata
 
 
 _MAX_HISTORY_TURNS = 6

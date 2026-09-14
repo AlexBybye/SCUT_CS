@@ -123,8 +123,7 @@ class RetrievalCoordinator:
         record_observation()
 
         if (
-            not use_user_key
-            and self.settings.agent_decision_mode in {"model", "shadow", "deterministic"}
+            self.settings.agent_decision_mode in {"model", "shadow", "deterministic"}
             and ACTION_REGISTRY.admits(request.workflow_type.value, "retrieve_with_query_rewrite", "post_retrieval")
         ):
             if optional_work_allowed():

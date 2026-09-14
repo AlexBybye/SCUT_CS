@@ -19,7 +19,13 @@ from ..workflow_focus import (
 )
 from .answer_parsing import ModelAnswerParseError, parse_chat_completion_answer
 from .http_security import is_timeout_transport_error
-from .openrouter import HttpResponse, JsonHttpClient, UrllibJsonHttpClient
+from .openrouter import (
+    HttpResponse,
+    JsonHttpClient,
+    UrllibJsonHttpClient,
+    _build_action_request,
+    _parse_action_text,
+)
 
 
 DEFAULT_BYOK_MAX_TOKENS = 12_288
@@ -161,6 +167,124 @@ class OpenAICompatibleByokGateway:
         if response.status_code < 200 or response.status_code >= 300:
             raise _safe_byok_upstream_error(response.status_code)
         return rewrite.parse(response.body) if rewrite is not None else _parse_byok_answer(response)
+
+    def decide_action(
+        self,
+        *,
+        api_key: str,
+        connection: StoredModelCredential,
+        request: WorkflowRunRequest,
+        state: object,
+        phase: str,
+        sources: tuple[RetrievedSource, ...] = (),
+        history: tuple[ConversationTurn, ...] = (),
+        timeout_seconds: float | None = None,
+    ) -> str:
+        """Ask the selected BYOK model for one bounded Agent action.
+
+        This uses the same registered connection and decrypted key as answer
+        generation, but sends only routing facts and source titles.  It never
+        serializes credentials or provider text into the Agent event stream.
+        """
+
+        del state, history
+        self._validate_connection(
+            api_key=api_key,
+            connection=connection,
+            request=request,
+        )
+        try:
+            base_url = normalize_base_url(connection.base_url)
+        except ModelCredentialError:
+            raise ByokGatewayError(
+                status_code=422,
+                code="invalid_byok_base_url",
+                detail="已保存的 API 地址无效，请重新保存该连接。",
+            ) from None
+        payload = _build_action_request(request, phase, sources)
+        try:
+            response = self._post(
+                base_url=base_url,
+                api_key=api_key,
+                payload=payload,
+                timeout_seconds=_effective_timeout(
+                    self._timeout_seconds, timeout_seconds
+                ),
+                cancel_check=None,
+            )
+        except Exception as exc:
+            if is_timeout_transport_error(exc):
+                raise ByokGatewayError(
+                    status_code=504,
+                    code="byok_provider_timeout",
+                    detail="模型供应商响应超时，请稍后重试。",
+                ) from None
+            raise ByokGatewayError(
+                status_code=503,
+                code="byok_provider_unavailable",
+                detail="模型供应商暂时不可用，请稍后重试。",
+            ) from None
+        if response.status_code < 200 or response.status_code >= 300:
+            raise _safe_byok_upstream_error(response.status_code)
+        try:
+            return _parse_action_text(response.body)
+        except ModelAnswerParseError:
+            raise ByokGatewayError(
+                status_code=502,
+                code="byok_provider_invalid_response",
+                detail="模型供应商返回了无法处理的结果，请稍后重试。",
+            ) from None
+
+    def _validate_connection(
+        self,
+        *,
+        api_key: str,
+        connection: StoredModelCredential,
+        request: WorkflowRunRequest,
+    ) -> None:
+        if (
+            request.provider_id != connection.provider_id
+            or request.model_id != connection.model_id
+            or connection.protocol != "openai_chat_completions"
+        ):
+            raise ByokGatewayError(
+                status_code=422,
+                code="byok_route_not_registered",
+                detail="所选模型与已保存连接不一致。",
+            )
+        try:
+            validate_user_api_key(api_key)
+        except ValueError:
+            raise ByokGatewayError(
+                status_code=422,
+                code="invalid_model_credential",
+                detail="已保存的 API Key 无效，请重新保存。",
+            ) from None
+
+    def _post(
+        self,
+        *,
+        base_url: str,
+        api_key: str,
+        payload: dict[str, object],
+        timeout_seconds: float,
+        cancel_check: Callable[[], bool] | None,
+    ) -> HttpResponse:
+        request_options: dict[str, object] = {
+            "headers": {
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+            "payload": payload,
+            "timeout_seconds": timeout_seconds,
+        }
+        if self._transport_accepts_cancel_check:
+            request_options["cancel_check"] = cancel_check
+        return self._http_client.post_json(
+            f"{base_url}/chat/completions",
+            **request_options,
+        )
 
 def _build_byok_request(
     request: WorkflowRunRequest,

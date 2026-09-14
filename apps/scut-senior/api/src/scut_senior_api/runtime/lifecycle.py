@@ -45,8 +45,14 @@ class RunLifecycle:
             and self.budget.allows_optional_call(self.elapsed_seconds)
         )
 
-    def optional_model_timeout_seconds(self, *, cap: float = 20.0) -> float:
-        """Bound optional work to a short slice before the soft runtime limit."""
+    def optional_model_timeout_seconds(self, *, cap: float = 45.0) -> float:
+        """Bound optional work while leaving the 90s soft ceiling intact.
+
+        Reusing a large free model for persona rewriting commonly takes more
+        than 20 seconds even when the primary answer completed normally.  The
+        cap remains below half of the 120-second hard run budget and is always
+        reduced to the actual time remaining before the soft cutoff.
+        """
 
         remaining = self.budget.soft_runtime_seconds - self.elapsed_seconds
         return max(0.0, min(cap, remaining))

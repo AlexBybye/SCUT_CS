@@ -488,6 +488,9 @@ class TraceSafeResult(ContractModel):
     decision_fallback_count: Annotated[int | None, Field(ge=0)] = None
     action_rejection_count: Annotated[int | None, Field(ge=0)] = None
     failure_code: TraceCode | None = None
+    # Sanitized upstream status for optional calls.  Response text is never
+    # retained because it may contain provider diagnostics or user content.
+    provider_status_code: Annotated[int | None, Field(ge=100, le=599)] = None
     degradation_code: TraceCode | None = None
     catalog_version: str | None = None
     fixture_only: bool | None = None

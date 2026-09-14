@@ -12,6 +12,22 @@ def test_committed_workflow_schemas_match_executable_pydantic_contracts() -> Non
     assert check_schema_files() == []
 
 
+def test_trace_schema_accepts_sanitized_provider_status_code() -> None:
+    for filename in (
+        "workflow-result.schema.json",
+        "workflow-stream-event.schema.json",
+        "conversation-detail.schema.json",
+    ):
+        schema = json.loads(render_schema_files()[filename])
+        status = schema["$defs"]["TraceSafeResult"]["properties"][
+            "provider_status_code"
+        ]
+        assert status["anyOf"] == [
+            {"maximum": 599, "minimum": 100, "type": "integer"},
+            {"type": "null"},
+        ]
+
+
 def test_model_catalog_schema_freezes_health_and_credential_fields() -> None:
     schema = json.loads(render_schema_files()["model-catalog.schema.json"])
 

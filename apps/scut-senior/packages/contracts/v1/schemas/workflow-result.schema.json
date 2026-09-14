@@ -978,6 +978,20 @@
           "default": null,
           "title": "Provider Retry Count"
         },
+        "provider_status_code": {
+          "anyOf": [
+            {
+              "maximum": 599,
+              "minimum": 100,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Provider Status Code"
+        },
         "real_model_called": {
           "anyOf": [
             {

@@ -5,6 +5,7 @@ import json
 import sqlite3
 from collections.abc import Callable
 from concurrent.futures import ThreadPoolExecutor
+from dataclasses import replace
 from pathlib import Path
 from threading import Event
 from urllib.error import URLError
@@ -134,9 +135,14 @@ def settings(database_path: Path) -> Settings:
 def authenticated_app(
     tmp_path: Path,
     http_client: RecordingHttpClient | None,
+    *,
+    agent_decision_mode: str = "rule",
 ) -> tuple[object, TestClient, str, str]:
     app = create_app(
-        settings(tmp_path / "byok-runtime.db"),
+        replace(
+            settings(tmp_path / "byok-runtime.db"),
+            agent_decision_mode=agent_decision_mode,
+        ),
         byok_http_client=http_client,
     )
     repository = app.state.repository
@@ -240,6 +246,59 @@ def test_custom_byok_connections_use_the_saved_endpoint_and_model(
             for value in row
         )
     assert api_key not in persisted
+
+
+def test_byok_model_owns_optional_agent_decision_and_reports_real_counts(
+    tmp_path: Path,
+) -> None:
+    action_response = HttpResponse(
+        200,
+        json.dumps(
+            {"choices": [{"message": {"content": "generate_answer"}}]}
+        ).encode(),
+    )
+    http = RecordingHttpClient()
+    http.callback = lambda: (
+        action_response if len(http.calls) == 1 else success_response()
+    )
+    app, client, _, conversation_id = authenticated_app(
+        tmp_path,
+        http,
+        agent_decision_mode="model",
+    )
+    api_key = "sk-byok-agent-loop"
+    assert client.put(
+        "/api/v1/model-credentials/deepseek",
+        json=credential_payload("deepseek", api_key),
+    ).status_code == 200
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(
+            conversation_id,
+            "deepseek",
+            "deepseek-v4-flash",
+        ),
+    )
+
+    assert response.status_code == 201, response.text
+    assert len(http.calls) == 2
+    decision_call, answer_call = http.calls
+    assert decision_call["headers"]["Authorization"] == f"Bearer {api_key}"
+    assert decision_call["payload"]["model"] == "deepseek-v4-flash"
+    assert decision_call["payload"]["max_tokens"] == 16
+    assert decision_call["payload"]["temperature"] == 0
+    assert answer_call["payload"]["max_tokens"] == 8192
+
+    model_trace = next(
+        event["result"]
+        for event in response.json()["trace"]
+        if event["node"] == "byok_model"
+    )
+    assert model_trace["decision_call_count"] == 1
+    assert model_trace["model_action_accepted_count"] == 1
+    assert model_trace["decision_fallback_count"] == 0
+    assert api_key not in response.text
 
 
 def test_one_byok_connection_can_register_and_run_multiple_models(
