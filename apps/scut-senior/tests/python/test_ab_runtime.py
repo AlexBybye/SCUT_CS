@@ -221,6 +221,39 @@ def test_normal_success_executes_model_selected_query_rewrite(tmp_path: Path) ->
     ]
 
 
+def test_failed_query_rewrite_retains_first_authorized_evidence(tmp_path: Path) -> None:
+    app, client, conversation_id, _ = _model_mode_app(
+        tmp_path, "ab-rewrite-fallback.db"
+    )
+
+    class FailingRewriteRetrieval(_SequenceRetrieval):
+        def search(self, course_ids: list[str], query: str) -> RetrievalBatch:
+            if self.calls:
+                raise TimeoutError("rewrite retrieval timed out")
+            return super().search(course_ids, query)
+
+    retrieval = FailingRewriteRetrieval()
+    app.state.service.retrieval = retrieval
+    app.state.service.agent_decision = ModelAgentDecision(
+        _ActionModel("retrieve_with_query_rewrite")
+    )
+
+    response = client.post("/api/v1/workflow-runs", json=_request(conversation_id))
+
+    assert response.status_code == 201, response.text
+    result = response.json()
+    assert len(retrieval.calls) == 1
+    assert [citation["citation_id"] for citation in result["citations"]] == ["S1"]
+    rewrite = next(
+        event for event in result["trace"] if event["node"] == "agent_query_rewrite"
+    )
+    assert rewrite["status"] == "failed"
+    assert rewrite["result"] == {
+        "candidate_count": 1,
+        "failure_code": "retrieval_augmentation_failed",
+    }
+
+
 def test_phase_incompatible_model_action_is_rejected_and_not_attributed(
     tmp_path: Path,
 ) -> None:
@@ -307,7 +340,7 @@ def test_soft_runtime_watermark_skips_optional_model_decision(
     assert skipped["result"]["reason_code"] == "runtime_soft_limit"
 
 
-def test_shadow_mode_records_valid_model_choice_without_driving_retrieval(
+def test_shadow_mode_skips_unisolated_model_decision_and_keeps_rule_baseline(
     tmp_path: Path,
 ) -> None:
     app, client, conversation_id, retrieval = _model_mode_app(
@@ -322,9 +355,10 @@ def test_shadow_mode_records_valid_model_choice_without_driving_retrieval(
     result = response.json()
     assert len(retrieval.calls) == 1
     metrics = _metrics(result)
-    assert metrics["decision_call_count"] == 1
+    assert action_model.calls == []
+    assert metrics["decision_call_count"] == 0
     assert metrics["model_action_accepted_count"] == 0
-    assert metrics["model_action_shadow_count"] == 1
+    assert metrics["model_action_shadow_count"] == 0
     decision = next(
         event
         for event in app.state.repository.list_agent_events(
@@ -332,9 +366,13 @@ def test_shadow_mode_records_valid_model_choice_without_driving_retrieval(
         )
         if event.get("phase") == "post_retrieval"
     )
-    assert decision["decision_source"] == "model_shadow"
-    assert decision["requested_action"] == "retrieve_with_query_rewrite"
+    assert decision["decision_source"] == "rule"
     assert decision["action"] == "generate_answer"
+    skipped = next(
+        event for event in result["trace"] if event["node"] == "agent_shadow_decision"
+    )
+    assert skipped["status"] == "skipped"
+    assert skipped["result"]["reason_code"] == "online_shadow_not_isolated"
 
 
 def test_deterministic_mode_rewrites_only_for_missing_exact_question_evidence(

@@ -83,6 +83,7 @@ class ZhipuPlatformModelGateway:
         cancel_check: Callable[[], bool] | None = None,
         timeout_seconds: float | None = None,
         rewrite: RewriteTask | None = None,
+        repair_context: str | None = None,
     ) -> GeneratedAnswer | list[AnswerBlock]:
         if (
             request.provider_id != self.provider_id
@@ -94,7 +95,9 @@ class ZhipuPlatformModelGateway:
                 detail="所选模型未在当前可用的平台目录中登记。",
             )
 
-        payload = _build_structured_request(request, sources, history)
+        payload = _build_structured_request(
+            request, sources, history, repair_context=repair_context
+        )
         if rewrite is not None:
             payload = rewrite.payload(payload)
         effective_timeout = min(self._timeout_seconds, timeout_seconds) if timeout_seconds is not None else self._timeout_seconds

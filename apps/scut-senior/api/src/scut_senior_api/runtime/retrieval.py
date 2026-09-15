@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
+import re
 from time import perf_counter
 
 from ..action_registry import ACTION_REGISTRY
@@ -68,10 +69,15 @@ class RetrievalCoordinator:
         generation_decision_ready = False
         started = perf_counter()
         retrieval_batch = self.retrieval.search(course_ids, retrieval_query)
+        sources, corpus_version, course_pack_version = self._resolve_batch(
+            retrieval_batch,
+            corpus_version=corpus_version,
+            course_pack_version=course_pack_version,
+        )
+        record_action("retrieve")
         if (
-            self.settings.agent_decision_mode == "rule"
-            and isinstance(retrieval_batch, RetrievalBatch)
-            and not retrieval_batch.sources
+            self.settings.agent_decision_mode in {"rule", "shadow"}
+            and (not sources or is_followup_reference_query(retrieval_query))
             and history
             and not has_exam_plan
             and self.settings.retrieval_mode == "local_corpus"
@@ -90,36 +96,48 @@ class RetrievalCoordinator:
                     )
                 else:
                     retry_started = perf_counter()
-                    context_batch = self.retrieval.search(course_ids, context_query)
-                    record_action("retrieve_with_query_rewrite")
-                    if isinstance(context_batch, RetrievalBatch) and context_batch.sources:
-                        retrieval_batch = context_batch
-                    candidate_count = (
-                        len(context_batch.sources)
-                        if isinstance(context_batch, RetrievalBatch)
-                        else len(context_batch)
-                    )
-                    self.trace(
-                        node="retrieval_context_carry",
-                        result={
-                            "hit_count": 0,
-                            "candidate_count": candidate_count,
-                            "rewritten_query": context_query[:200],
-                        },
-                        duration_ms=_elapsed_ms(retry_started),
-                    )
+                    try:
+                        context_batch = self.retrieval.search(course_ids, context_query)
+                        context_sources = self._resolve_rewrite_batch(
+                            context_batch,
+                            corpus_version=corpus_version,
+                            course_pack_version=course_pack_version,
+                        )
+                        _assert_authorized_sources(context_sources, course_ids)
+                    except Exception:
+                        # With legal primary evidence, historical anchoring is
+                        # optional: retain the first version-bound batch rather
+                        # than making a short follow-up fail wholesale.
+                        if not sources:
+                            raise
+                        self.trace(
+                            node="retrieval_context_carry",
+                            status=TraceEventStatus.FAILED,
+                            duration_ms=_elapsed_ms(retry_started),
+                            result={
+                                "candidate_count": len(sources),
+                                "failure_code": "retrieval_augmentation_failed",
+                            },
+                        )
+                    else:
+                        sources = dedupe_sources([*sources, *context_sources])[:8]
+                        record_action("retrieve_with_query_rewrite")
+                        self.trace(
+                            node="retrieval_context_carry",
+                            result={
+                                "hit_count": len(context_sources),
+                                "candidate_count": len(sources),
+                                "rewritten_query": context_query[:200],
+                            },
+                            duration_ms=_elapsed_ms(retry_started),
+                        )
 
-        sources, corpus_version, course_pack_version = self._resolve_batch(
-            retrieval_batch,
-            corpus_version=corpus_version,
-            course_pack_version=course_pack_version,
-        )
         private_search = getattr(self.repository, "list_private_knowledge_sources", None)
         if callable(private_search):
-            sources.extend(private_search(user_id=user_id, course_ids=course_ids))
+            private_sources = private_search(user_id=user_id, course_ids=course_ids)
+            sources.extend(_select_relevant_private_sources(retrieval_query, private_sources))
         _assert_authorized_sources(sources, course_ids)
-        sources = dedupe_sources(sources)
-        record_action("retrieve")
+        sources = dedupe_sources(sources)[:8]
         record_observation()
 
         if (
@@ -142,25 +160,44 @@ class RetrievalCoordinator:
                         retrieval_query, history, course_display_name
                     )
                     rewrite_started = perf_counter()
-                    rewritten_batch = self.retrieval.search(course_ids, rewritten_query)
-                    rewritten_sources = self._resolve_rewrite_batch(
-                        rewritten_batch,
-                        corpus_version=corpus_version,
-                        course_pack_version=course_pack_version,
-                    )
-                    _assert_authorized_sources(rewritten_sources, course_ids)
-                    sources = dedupe_sources([*sources, *rewritten_sources])[:8]
-                    record_action("retrieve_with_query_rewrite")
-                    record_observation()
-                    self.trace(
-                        node="agent_query_rewrite",
-                        duration_ms=_elapsed_ms(rewrite_started),
-                        result={
-                            "hit_count": len(rewritten_sources),
-                            "candidate_count": len(sources),
-                            "rewritten_query": rewritten_query[:200],
-                        },
-                    )
+                    try:
+                        rewritten_batch = self.retrieval.search(course_ids, rewritten_query)
+                        rewritten_sources = self._resolve_rewrite_batch(
+                            rewritten_batch,
+                            corpus_version=corpus_version,
+                            course_pack_version=course_pack_version,
+                        )
+                        _assert_authorized_sources(rewritten_sources, course_ids)
+                    except Exception:
+                        # A second search is an enhancement only when the
+                        # first search already produced authorized evidence.
+                        # Retain that ledger on timeout, provider failure, or
+                        # corpus-version drift; never combine uncertain new
+                        # candidates with the first version-bound batch.
+                        if not sources:
+                            raise
+                        self.trace(
+                            node="agent_query_rewrite",
+                            status=TraceEventStatus.FAILED,
+                            duration_ms=_elapsed_ms(rewrite_started),
+                            result={
+                                "candidate_count": len(sources),
+                                "failure_code": "retrieval_augmentation_failed",
+                            },
+                        )
+                    else:
+                        sources = dedupe_sources([*sources, *rewritten_sources])[:8]
+                        record_action("retrieve_with_query_rewrite")
+                        record_observation()
+                        self.trace(
+                            node="agent_query_rewrite",
+                            duration_ms=_elapsed_ms(rewrite_started),
+                            result={
+                                "hit_count": len(rewritten_sources),
+                                "candidate_count": len(sources),
+                                "rewritten_query": rewritten_query[:200],
+                            },
+                        )
             else:
                 self.trace(
                     node="agent_query_rewrite",
@@ -316,8 +353,50 @@ def dedupe_sources(sources: list[RetrievedSource]) -> list[RetrievedSource]:
     return unique
 
 
+def _select_relevant_private_sources(
+    query: str, sources: list[RetrievedSource], *, limit: int = 3
+) -> list[RetrievedSource]:
+    """Keep private notes within the shared evidence budget by lexical overlap.
+
+    Private notes remain user-owned, non-authoritative evidence.  This small
+    deterministic filter is intentionally separate from the course-corpus
+    ranker and never indexes conversation history or other users' material.
+    """
+
+    query_pairs = _meaningful_pairs(query)
+    if not query_pairs:
+        return []
+    scored: list[tuple[int, int, RetrievedSource]] = []
+    for index, source in enumerate(sources):
+        source_pairs = _meaningful_pairs(f"{source.source_title} {source.text}")
+        overlap = len(query_pairs & source_pairs)
+        if overlap:
+            scored.append((overlap, -index, source))
+    scored.sort(reverse=True, key=lambda item: (item[0], item[1]))
+    return [source for _, _, source in scored[:limit]]
+
+
+def _meaningful_pairs(text: str) -> set[str]:
+    compact = re.sub(r"\s+", "", text.casefold())
+    return {
+        compact[index : index + 2]
+        for index in range(len(compact) - 1)
+        if compact[index : index + 2].strip()
+    }
+
+
 _CONTEXT_CARRY_QUERY_CHARS = 1_200
 _CONTEXT_CARRY_USER_TURNS = 2
+_FOLLOWUP_REFERENCE_RE = re.compile(
+    r"(?:这道题|上一题|上题|这一步|上一步|第二步|第[一二三四五六七八九十0-9]+步|"
+    r"这个条件|上述条件|继续讲|重新讲|接着讲|第二种情况)"
+)
+
+
+def is_followup_reference_query(query: str) -> bool:
+    """Identify explicit references that benefit from the prior question anchor."""
+
+    return bool(_FOLLOWUP_REFERENCE_RE.search(query))
 
 
 def compose_context_carry_query(

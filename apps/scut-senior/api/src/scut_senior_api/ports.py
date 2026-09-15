@@ -142,6 +142,8 @@ class ModelGateway(Protocol):
         # 迭代 7.5：可取消 transport。实现方应在阻塞等待上游期间周期检查该
         # 标记，置位即放弃等待并抛出取消异常；不支持的实现可以忽略。
         cancel_check: Callable[[], bool] | None = None,
+        timeout_seconds: float | None = None,
+        repair_context: str | None = None,
     ) -> GeneratedAnswer: ...
 
 
@@ -156,6 +158,7 @@ class UserKeyModelGateway(Protocol):
         history: tuple[ConversationTurn, ...] = (),
         cancel_check: Callable[[], bool] | None = None,
         timeout_seconds: float | None = None,
+        repair_context: str | None = None,
     ) -> GeneratedAnswer: ...
 
 

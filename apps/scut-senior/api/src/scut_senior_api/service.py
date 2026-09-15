@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime, timedelta
+import re
 from time import perf_counter
 from uuid import UUID, uuid4
 
@@ -1045,7 +1046,18 @@ class IterationZeroService:
                     else expected_action
                 )
                 decision_source = "deterministic"
-            elif allow_model and mode in {"model", "shadow"}:
+            elif allow_model and mode == "shadow":
+                # Shadow must not consume the answer provider's shared quota
+                # or extend the student-visible critical path. Until replay is
+                # run independently, keep the deterministic baseline and make
+                # the skipped experiment observable in Trace.
+                _append_trace(
+                    trace,
+                    node="agent_shadow_decision",
+                    status=TraceEventStatus.SKIPPED,
+                    result={"reason_code": "online_shadow_not_isolated"},
+                )
+            elif allow_model and mode == "model":
                 agent_metrics["decision_call_count"] += 1
                 if use_user_key:
                     if api_key is None:
@@ -1088,19 +1100,6 @@ class IterationZeroService:
                     )
                     action = expected_action
                 elif not used_fallback:
-                    if mode == "shadow":
-                        agent_metrics["model_action_shadow_count"] += 1
-                        # Shadow mode records a valid model decision but never
-                        # lets it alter the server-owned execution path.
-                        reduce_agent(
-                            "decision_produced",
-                            action=expected_action,
-                            requested_action=action,
-                            phase=phase,
-                            expected_action=expected_action,
-                            decision_source="model_shadow",
-                        )
-                        return expected_action
                     agent_metrics["model_action_accepted_count"] += 1
                     decision_source = "model"
             reduce_agent(
@@ -1313,6 +1312,7 @@ class IterationZeroService:
         provider_retry_count = 0
         guard_retry_count = 0
         guard_retry_context: str | None = None
+        citation_repair_fallback: tuple[GeneratedAnswer, GuardedAnswer] | None = None
         model_node = (
             "byok_model"
             if use_user_key
@@ -1356,6 +1356,7 @@ class IterationZeroService:
                         connection=byok_connection,
                         provider_id=model_provider_id,
                         repair_context=guard_retry_context,
+                        timeout_seconds=lifecycle.primary_model_timeout_seconds(),
                         cancel_check=(
                             (lambda: stream_session.cancelled)
                             if stream_session is not None
@@ -1366,6 +1367,22 @@ class IterationZeroService:
                     interrupted = finish_interrupted()
                     if interrupted is not None:
                         return interrupted
+                    if (
+                        citation_repair_fallback is not None
+                        and not _is_authorization_error(model_error)
+                    ):
+                        generated, guarded = citation_repair_fallback
+                        _append_trace(
+                            trace,
+                            node="model_output_retry",
+                            status=TraceEventStatus.FAILED,
+                            result={
+                                "retry_count": guard_retry_count,
+                                "failure_code": "exam_review_citation_repair_failed",
+                                "degradation_code": _safe_repair_failure_code(model_error),
+                            },
+                        )
+                        break
                     if (
                         provider_retry_count >= 1
                         or not optional_model_work_allowed()
@@ -1413,6 +1430,19 @@ class IterationZeroService:
                         # failing the run after a long model call.
                         guarded = _empty_candidate_insufficient_evidence()
                         break
+                    if citation_repair_fallback is not None:
+                        generated, guarded = citation_repair_fallback
+                        _append_trace(
+                            trace,
+                            node="model_output_retry",
+                            status=TraceEventStatus.FAILED,
+                            result={
+                                "retry_count": guard_retry_count,
+                                "failure_code": "exam_review_citation_repair_failed",
+                                "degradation_code": "citation_guard_rejected",
+                            },
+                        )
+                        break
                     if (
                         guard_retry_count >= 1
                         or not optional_model_work_allowed()
@@ -1457,6 +1487,7 @@ class IterationZeroService:
                     reduce_agent("guard_retry_recorded")
                     guard_retry_count += 1
                     agent_metrics["guard_retry_count"] = guard_retry_count
+                    citation_repair_fallback = (generated, guarded)
                     allowed_ids = ", ".join(
                         f"[S{index}]" for index in range(1, len(sources) + 1)
                     )
@@ -1477,6 +1508,23 @@ class IterationZeroService:
                     if interrupted is not None:
                         return interrupted
                     continue
+                if (
+                    request.workflow_type == WorkflowType.EXAM_REVIEW
+                    and sources
+                    and not guarded.citation_ids
+                    and citation_repair_fallback is not None
+                ):
+                    generated, guarded = citation_repair_fallback
+                    _append_trace(
+                        trace,
+                        node="model_output_retry",
+                        status=TraceEventStatus.FAILED,
+                        result={
+                            "retry_count": guard_retry_count,
+                            "failure_code": "exam_review_citation_repair_failed",
+                            "degradation_code": "citation_still_missing",
+                        },
+                    )
                 break
         except AuthRequired:
             self.repository.discard_nonterminal_run(str(user.user_id), run_id)
@@ -1684,7 +1732,7 @@ class IterationZeroService:
                     except TimeoutError:
                         answer_blocks = original_blocks
                         enhancement_outcome = PersonaEnhancementOutcome.FALLBACK_TIMEOUT
-                        humanizer_failure = {"provider_failure_code": "humanizer_timeout"}
+                        humanizer_failure = {"failure_code": "humanizer_timeout"}
                     except Exception as exc:
                         answer_blocks = original_blocks
                         humanizer_failure = _humanizer_failure_metadata(exc)
@@ -2441,6 +2489,10 @@ def _enforce_primary_answer_tone(
 ) -> list[AnswerBlock]:
     """Apply the visible tone contract once to the first student-facing block."""
 
+    if request.answer_mode.value == "concise":
+        # The selected persona remains in the provider instruction, but short
+        # follow-ups should not gain a boilerplate blockquote after generation.
+        return blocks
     for index, block in enumerate(blocks):
         if not block.content.strip():
             continue
@@ -2503,6 +2555,27 @@ def _is_retryable_model_output_error(error: Exception) -> bool:
         "byok_provider_invalid_response",
         "byok_provider_timeout",
     }
+
+
+def _is_authorization_error(error: Exception) -> bool:
+    """Keep revoked authentication ahead of a best-effort answer fallback."""
+
+    return isinstance(error, AuthRequired) or getattr(error, "code", None) in {
+        "byok_provider_authentication_failed",
+        "invalid_model_credential",
+        "byok_route_not_registered",
+    }
+
+
+def _safe_repair_failure_code(error: Exception) -> str:
+    """Map a repair failure to a trace-safe, contract-valid degradation code."""
+
+    if isinstance(error, TimeoutError):
+        return "model_timeout"
+    code = getattr(error, "code", None)
+    if isinstance(code, str) and re.fullmatch(r"[a-z][a-z0-9_]{0,99}", code):
+        return code
+    return "model_repair_failed"
 
 
 def _humanizer_failure_metadata(error: Exception) -> dict[str, object]:

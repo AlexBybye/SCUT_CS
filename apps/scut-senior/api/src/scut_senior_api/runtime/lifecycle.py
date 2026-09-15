@@ -46,16 +46,21 @@ class RunLifecycle:
         )
 
     def optional_model_timeout_seconds(self, *, cap: float = 45.0) -> float:
-        """Bound optional work while leaving the 90s soft ceiling intact.
+        """Bound optional work while leaving the 135s soft ceiling intact.
 
         Reusing a large free model for persona rewriting commonly takes more
         than 20 seconds even when the primary answer completed normally.  The
-        cap remains below half of the 120-second hard run budget and is always
+        cap remains below half of the 180-second hard run budget and is always
         reduced to the actual time remaining before the soft cutoff.
         """
 
         remaining = self.budget.soft_runtime_seconds - self.elapsed_seconds
         return max(0.0, min(cap, remaining))
+
+    def primary_model_timeout_seconds(self) -> float:
+        """Return the real hard-deadline remainder for the main answer call."""
+
+        return max(0.0, self.budget.max_runtime_seconds - self.elapsed_seconds)
 
     @property
     def elapsed_seconds(self) -> float:

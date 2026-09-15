@@ -12,12 +12,15 @@ from fastapi.testclient import TestClient
 from scut_senior_api.adapters.openrouter import (
     OPENROUTER_CHAT_COMPLETIONS_URL,
     HttpResponse,
+    _build_structured_request,
     _quota_reset_at,
 )
+from scut_senior_api.adapters.byok import _build_byok_request
 from scut_senior_api.config import Settings, UnsafeRuntimeConfiguration
 from scut_senior_api.byok_catalog import BYOK_CATALOG_VERSION
 from scut_senior_api.main import create_app
-from scut_senior_api.contracts import Tone
+from scut_senior_api.contracts import Tone, WorkflowRunRequest
+from scut_senior_api.ports import RetrievedSource
 from scut_senior_api.workflow_focus import build_tone_visible_callout
 from scut_senior_api.model_catalog import (
     CATALOG_VERSION,
@@ -242,6 +245,56 @@ def _client_with_conversation(
     )
     assert conversation.status_code == 201
     return client, conversation.json()["conversation_id"]
+
+
+def test_provider_prompts_keep_repair_separate_from_authoritative_user_input() -> None:
+    """OpenRouter/Zhipu share one builder; BYOK has its own payload builder."""
+
+    request = WorkflowRunRequest.model_validate(
+        {
+            **_workflow_request("00000000-0000-0000-0000-000000000001", MODEL_FIXTURES[0]["model_id"]),
+            "workflow_type": "exam_review",
+            "user_input": "结合历年卷给我复习大纲",
+            "workflow_payload": {
+                "syllabus": "矩阵的秩",
+                "exam_date": None,
+                "available_hours": 4,
+                "goals": ["通过考试"],
+                "weak_topics": [],
+            },
+        }
+    )
+    sources = [
+        RetrievedSource(
+            chunk_id="linear_algebra:repair:1",
+            course_id="linear_algebra",
+            source_id="repair-source",
+            source_title="历年卷",
+            text="矩阵秩考查重点。",
+            locator_type="page",
+            locator_start=1,
+            locator_end=1,
+            question_id=None,
+            heading_path=(),
+        )
+    ]
+    repair = "请只使用 [S1]，在可支持的说法后加入引用。"
+    payloads = (
+        _build_structured_request(request, sources, repair_context=repair),
+        _build_byok_request(
+            request,
+            sources,
+            max_tokens=1024,
+            temperature=0.2,
+            repair_context=repair,
+        ),
+    )
+
+    for payload in payloads:
+        content = payload["messages"][-1]["content"]
+        assert "结合历年卷给我复习大纲" in content
+        assert "系统引用校验修复要求（服务端生成，非用户问题；仅修复此项）" in content
+        assert repair in content
 
 
 def test_model_catalog_returns_fixed_openrouter_and_zhipu_entries(

@@ -62,12 +62,8 @@ _ANSWER_MODE_DIRECTIVES = {
     AnswerMode.CONCISE: """【回答方式：简短】
 直接输出学生可读的 Markdown 正文，不使用 JSON 包裹正文，不输出格式说明或思考过程。
 
-## 结论
-用 1～2 句话直接回答问题。
-
-## 要点
-- 仅列出 1～3 条支撑结论所必需的依据、条件或判断。
-- 不展开完整推导、第二个例子或无关背景；但问题本身要求计算时，保留得出结论不可省略的计算步骤。""",
+用 1～4 句话直接回答当前问题或所问步骤；只有确实能帮助理解时才补充至多 3 个要点。
+不要强制使用标题、完整推导、第二个例子、固定人格提醒或无关背景；但问题本身要求计算时，保留得出结论不可省略的计算步骤。""",
     AnswerMode.DETAILED: """【回答方式：详细】
 直接输出学生可读的 Markdown 正文，不使用 JSON 包裹正文，不输出格式说明或思考过程。
 
@@ -108,6 +104,7 @@ _GENERATION_STYLE_DIRECTIVE = """【生成表达约束】
 
 - 使用自然、清晰的中文，保留专业术语、数字、条件、结论强度和不确定性。
 - 每个数学公式都必须独占一个 Markdown 段落，并用 `$$...$$` 包裹；矩阵、推导和短等式也不例外。不要输出裸 LaTeX、`\\(...\\)`、`\\[...\\]`、单个 `$...$`，也不要把公式或矩阵包进行内代码或代码块。
+- 简短回答的短等式例外：若不含矩阵或推导，可用行内 `$...$`；这条例外优先于上一条的公式段落规则。
 - 课程资料引用只使用本次候选中可用的 `[S#]` 标记；保留已有引用标记，不编造来源、链接或页码。
 - Markdown 标题、列表、公式和引用必须保持可渲染、可复制的语义，不用转义或解释文字破坏它们。"""
 
@@ -170,16 +167,15 @@ def enforce_tone_visible_callout(markdown: str, tone: Tone) -> str:
     return f"{without_callouts}\n\n{callout}"
 
 
-def _build_tone_directive(tone: Tone) -> str:
-    return "\n\n".join(
-        (
-            PERSONA_PLAY_RULES,
-            _TONE_DIRECTIVES[tone],
+def _build_tone_directive(tone: Tone, *, include_visible_callout: bool) -> str:
+    directives = [PERSONA_PLAY_RULES, _TONE_DIRECTIVES[tone]]
+    if include_visible_callout:
+        directives.append(
             _VISIBLE_TONE_CALLOUT_DIRECTIVE.format(
                 callout=build_tone_visible_callout(tone)
-            ),
+            )
         )
-    )
+    return "\n\n".join(directives)
 
 
 @dataclass(frozen=True, slots=True)
@@ -207,7 +203,10 @@ def build_response_control_directive(request: WorkflowRunRequest) -> str:
         (
             _GENERATION_STYLE_DIRECTIVE,
             _ANSWER_MODE_DIRECTIVES[request.answer_mode],
-            _build_tone_directive(request.tone),
+            _build_tone_directive(
+                request.tone,
+                include_visible_callout=request.answer_mode != AnswerMode.CONCISE,
+            ),
             *(
                 (_BILIBILI_METADATA_DIRECTIVE,)
                 if request.include_bilibili_resources

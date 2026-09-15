@@ -206,7 +206,7 @@ class AgentBudget:
     max_same_action_retries: int = 1
     max_guard_retries: int = 1
     max_answer_calls: int = 2
-    max_runtime_seconds: int = 120
+    max_runtime_seconds: int = 180
     soft_runtime_ratio: float = 0.75
 
     def __post_init__(self) -> None:
@@ -242,7 +242,7 @@ class AgentBudget:
         Provider responses are not streamed through the Agent reducer, so the
         loop cannot observe an in-flight 75% token/time crossing. Once control
         returns after the 75% mark, optional follow-up work is no longer
-        admitted; the 120-second hard limit remains unchanged.
+        admitted; the 180-second hard limit remains unchanged.
         """
 
         return 0 <= elapsed_seconds < self.soft_runtime_seconds

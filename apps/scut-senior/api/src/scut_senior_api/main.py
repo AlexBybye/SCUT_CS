@@ -290,7 +290,7 @@ def create_app(
             zhipu_http_client = CancellableJsonHttpClient(UrllibJsonHttpClient())
     if active_settings.app_env != "test" and byok_http_client is None:
         # Enforce the complete provider-call wall clock even when no client
-        # cancellation callback is present. The AB run-level ceiling is 120s.
+        # cancellation callback is present. The run-level ceiling is 180s.
         byok_http_client = CancellableJsonHttpClient(UrllibJsonHttpClient())
     registry = CourseRegistry.load()
     mock_identity = MockIdentityProvider().current_user()

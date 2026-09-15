@@ -89,13 +89,13 @@ def test_guard_retry_budget_is_explicit() -> None:
     assert state.budget_reason == "max_guard_retries"
 
 
-def test_optional_model_work_uses_120_second_hard_budget() -> None:
+def test_optional_model_work_uses_180_second_hard_budget() -> None:
     budget = AgentBudget()
-    assert budget.max_runtime_seconds == 120
-    assert budget.soft_runtime_seconds == 90
-    assert budget.allows_optional_call(89.999)
-    assert not budget.allows_optional_call(90)
-    assert not budget.allows_optional_call(120)
+    assert budget.max_runtime_seconds == 180
+    assert budget.soft_runtime_seconds == 135
+    assert budget.allows_optional_call(134.999)
+    assert not budget.allows_optional_call(135)
+    assert not budget.allows_optional_call(180)
 
 
 def test_replay_reconstructs_action_and_terminal_state() -> None:

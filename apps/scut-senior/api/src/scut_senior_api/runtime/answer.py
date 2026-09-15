@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
+import inspect
 
 from ..contracts import WorkflowRunRequest
 from ..ports import ConversationTurn, GeneratedAnswer, ModelGateway, RetrievedSource, UserKeyModelGateway
@@ -33,28 +34,21 @@ class AnswerGenerator:
         connection: object | None,
         provider_id: str,
         repair_context: str | None,
+        timeout_seconds: float | None,
         cancel_check: Callable[[], bool] | None,
     ) -> GeneratedAnswer:
-        generation_request = request
-        if repair_context:
-            generation_request = request.model_copy(
-                update={
-                    "user_input": (
-                        f"{request.user_input}\n\n"
-                        "[内部引用校验修复提示] 上一次回答未通过引用校验，"
-                        f"请只修复以下问题：{repair_context}"
-                    )
-                }
-            )
         if use_user_key:
             if api_key is None or connection is None:
                 raise RuntimeError("BYOK generation requires an active credential")
-            return self.byok_model.generate(
+            return _generate_with_optional_repair(
+                self.byok_model.generate,
                 api_key=api_key,
                 connection=connection,
-                request=generation_request,
+                request=request,
                 sources=sources,
                 history=history,
+                repair_context=repair_context,
+                timeout_seconds=timeout_seconds,
                 cancel_check=cancel_check,
             )
         active_model = (
@@ -62,9 +56,48 @@ class AnswerGenerator:
             if provider_id == "zhipu" and self.zhipu_model is not None
             else self.platform_model
         )
-        return active_model.generate(
-            generation_request,
+        return _generate_with_optional_repair(
+            active_model.generate,
+            request,
             sources,
             history=history,
+            repair_context=repair_context,
+            timeout_seconds=timeout_seconds,
             cancel_check=cancel_check,
         )
+
+
+def _generate_with_optional_repair(
+    generate: Callable[..., GeneratedAnswer],
+    *args: object,
+    repair_context: str | None,
+    timeout_seconds: float | None,
+    **kwargs: object,
+) -> GeneratedAnswer:
+    """Pass server-owned repair instructions without changing user input.
+
+    Gateways that predate this optional argument (notably deterministic test
+    doubles and third-party implementations) retain their existing call
+    contract. Provider adapters that accept it place the instruction in a
+    separately labelled, server-owned prompt section.
+    """
+
+    parameters = inspect.signature(generate).parameters
+    supports_keyword = "repair_context" in parameters or any(
+        parameter.kind is inspect.Parameter.VAR_KEYWORD
+        for parameter in parameters.values()
+    )
+    if repair_context and supports_keyword:
+        kwargs["repair_context"] = repair_context
+    if timeout_seconds is not None and _supports_keyword(parameters, "timeout_seconds"):
+        kwargs["timeout_seconds"] = timeout_seconds
+    return generate(*args, **kwargs)
+
+
+def _supports_keyword(
+    parameters: dict[str, inspect.Parameter], keyword: str
+) -> bool:
+    return keyword in parameters or any(
+        parameter.kind is inspect.Parameter.VAR_KEYWORD
+        for parameter in parameters.values()
+    )
