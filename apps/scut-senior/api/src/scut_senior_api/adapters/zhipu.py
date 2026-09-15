@@ -4,7 +4,8 @@ import inspect
 import json
 from collections.abc import Callable, Collection
 
-from ..contracts import WorkflowRunRequest
+from ..contracts import AnswerBlock, WorkflowRunRequest
+from .humanizer import RewriteTask
 from ..ports import ConversationTurn, GeneratedAnswer, RetrievedSource
 from .answer_parsing import ModelAnswerParseError, parse_chat_completion_answer
 from .http_security import is_timeout_transport_error
@@ -26,6 +27,10 @@ PLATFORM_RATE_LIMITED_MESSAGE = "平台免费通道请求过于频繁，请稍�
 # https://docs.bigmodel.cn/cn/api-reference/错误码 and remain stable.
 ZHIPU_ERROR_CODE_THROTTLED = "1305"
 ZHIPU_ERROR_MESSAGE_THROTTLED = "该模型当前访问量过大，请稍后再试。"
+ZHIPU_ERROR_CODE_USER_RATE_LIMITED = "1302"
+ZHIPU_ERROR_MESSAGE_USER_RATE_LIMITED = "智谱账号请求过于频繁，请稍后再试。"
+ZHIPU_ERROR_CODE_DAILY_LIMIT_REACHED = "1304"
+ZHIPU_ERROR_MESSAGE_DAILY_LIMIT_REACHED = "智谱账号今日调用次数已达上限，请明日再试。"
 
 
 class ZhipuPlatformGatewayError(RuntimeError):
@@ -76,7 +81,10 @@ class ZhipuPlatformModelGateway:
         history: tuple[ConversationTurn, ...] = (),
         *,
         cancel_check: Callable[[], bool] | None = None,
-    ) -> GeneratedAnswer:
+        timeout_seconds: float | None = None,
+        rewrite: RewriteTask | None = None,
+        repair_context: str | None = None,
+    ) -> GeneratedAnswer | list[AnswerBlock]:
         if (
             request.provider_id != self.provider_id
             or request.model_id not in self._allowed_model_ids
@@ -87,7 +95,14 @@ class ZhipuPlatformModelGateway:
                 detail="所选模型未在当前可用的平台目录中登记。",
             )
 
-        payload = _build_structured_request(request, sources, history)
+        payload = _build_structured_request(
+            request, sources, history, repair_context=repair_context
+        )
+        if rewrite is not None:
+            payload = rewrite.payload(payload)
+        effective_timeout = min(self._timeout_seconds, timeout_seconds) if timeout_seconds is not None else self._timeout_seconds
+        if effective_timeout <= 0:
+            raise TimeoutError("humanizer_budget_exhausted")
         headers = {
             "Authorization": f"Bearer {self._api_key}",
             "Content-Type": "application/json",
@@ -99,7 +114,7 @@ class ZhipuPlatformModelGateway:
                     ZHIPU_CHAT_COMPLETIONS_URL,
                     headers=headers,
                     payload=payload,
-                    timeout_seconds=self._timeout_seconds,
+                    timeout_seconds=effective_timeout,
                     cancel_check=cancel_check,
                 )
             else:
@@ -107,7 +122,7 @@ class ZhipuPlatformModelGateway:
                     ZHIPU_CHAT_COMPLETIONS_URL,
                     headers=headers,
                     payload=payload,
-                    timeout_seconds=self._timeout_seconds,
+                    timeout_seconds=effective_timeout,
                 )
         except OSError as exc:
             if is_timeout_transport_error(exc):
@@ -128,6 +143,8 @@ class ZhipuPlatformModelGateway:
             raise _safe_upstream_error(response.status_code)
 
         try:
+            if rewrite is not None:
+                return rewrite.parse(response.body)
             return parse_chat_completion_answer(response.body)
         except ModelAnswerParseError:
             raise ZhipuPlatformGatewayError(
@@ -148,6 +165,18 @@ def _rate_limit_error(response: HttpResponse) -> ZhipuPlatformGatewayError:
     """
 
     code = _safe_error_code(response.body)
+    if code == ZHIPU_ERROR_CODE_USER_RATE_LIMITED:
+        return ZhipuPlatformGatewayError(
+            status_code=429,
+            code="platform_rate_limited",
+            detail=ZHIPU_ERROR_MESSAGE_USER_RATE_LIMITED,
+        )
+    if code == ZHIPU_ERROR_CODE_DAILY_LIMIT_REACHED:
+        return ZhipuPlatformGatewayError(
+            status_code=429,
+            code="platform_daily_quota_exhausted",
+            detail=ZHIPU_ERROR_MESSAGE_DAILY_LIMIT_REACHED,
+        )
     if code == ZHIPU_ERROR_CODE_THROTTLED:
         return ZhipuPlatformGatewayError(
             status_code=429,

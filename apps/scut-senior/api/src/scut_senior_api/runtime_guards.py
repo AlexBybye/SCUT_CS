@@ -30,6 +30,14 @@ _FORMULA_RE = re.compile(
     r"\\\([^\n]+?\\\)|\\\[[\s\S]+?\\\]|"
     r"\\begin\{[^{}]+\}[\s\S]*?\\end\{[^{}]+\})"
 )
+_PLAIN_EXPRESSION_RE = re.compile(
+    r"(?<![A-Za-z0-9_])[A-Za-z][A-Za-z0-9_]*(?:\s*[-+*/=^]\s*[A-Za-z0-9_.]+)+"
+)
+_INDENTED_CODE_RE = re.compile(r"(?m)^(?: {4}|\t).+$")
+_RISK_TERM_RE = re.compile(
+    r"不得|禁止|不能|不会|并非|不是|没有|无需|无须|未|不|"
+    r"必须|应当|应该|应|可以|可|可能|或许|一定|必然|仅|只"
+)
 
 
 class RuntimeGuardError(ValueError):
@@ -248,10 +256,30 @@ def _protected_fingerprint(text: str, protected_terms: tuple[str, ...]) -> tuple
     values.extend(match.group(0) for match in _FORMULA_RE.finditer(text))
     values.extend(match.group(0) for match in _CITATION_RE.finditer(text))
     values.extend(match.group(0) for match in _NUMBER_RE.finditer(text))
+    values.extend(match.group(0) for match in _PLAIN_EXPRESSION_RE.finditer(text))
+    values.extend(match.group(0) for match in _INDENTED_CODE_RE.finditer(text))
     for term in protected_terms:
         if term:
             values.extend(f"term:{term}" for _ in range(text.count(term)))
     return tuple(values)
+
+
+def _markdown_structure(text: str) -> tuple[str, ...]:
+    structure: list[str] = []
+    for line in text.splitlines():
+        if match := re.match(r"^(#{1,6})\s+", line):
+            structure.append(f"heading:{len(match.group(1))}")
+        elif match := re.match(r"^(\s*)[-+*]\s+", line):
+            structure.append(f"unordered:{len(match.group(1))}")
+        elif match := re.match(r"^(\s*)\d+[.)]\s+", line):
+            structure.append(f"ordered:{len(match.group(1))}")
+        elif line.startswith(">"):
+            structure.append("quote")
+    return tuple(structure)
+
+
+def _risk_fingerprint(text: str) -> tuple[str, ...]:
+    return tuple(match.group(0) for match in _RISK_TERM_RE.finditer(text))
 
 
 def protect_humanizer_output(
@@ -273,11 +301,18 @@ def protect_humanizer_output(
             return HumanizerOutcome(
                 tuple(original), False, True, "protected_content_changed"
             )
-        # This iteration has no semantic-equivalence verifier. Fail closed on
-        # every remaining rewrite instead of treating an undetected fact or
-        # negation change as safe humanization.
-        if before.content != after.content:
+        if _markdown_structure(before.content) != _markdown_structure(after.content):
             return HumanizerOutcome(
-                tuple(original), False, True, "unverified_text_change"
+                tuple(original), False, True, "markdown_structure_changed"
             )
-    return HumanizerOutcome(tuple(candidate), False, False, "no_change")
+        if _risk_fingerprint(before.content) != _risk_fingerprint(after.content):
+            return HumanizerOutcome(
+                tuple(original), False, True, "semantic_risk_changed"
+            )
+    changed = any(
+        before.content != after.content
+        for before, after in zip(original, candidate, strict=True)
+    )
+    return HumanizerOutcome(
+        tuple(candidate), changed, False, None if changed else "no_change"
+    )

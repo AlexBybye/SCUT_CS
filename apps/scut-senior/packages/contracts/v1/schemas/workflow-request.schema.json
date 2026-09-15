@@ -179,6 +179,14 @@
       "title": "ModelSource",
       "type": "string"
     },
+    "PersonaEnhancement": {
+      "enum": [
+        "standard",
+        "humanized"
+      ],
+      "title": "PersonaEnhancement",
+      "type": "string"
+    },
     "ProblemTutorPayload": {
       "additionalProperties": false,
       "properties": {
@@ -500,6 +508,10 @@
     },
     "model_source": {
       "$ref": "#/$defs/ModelSource"
+    },
+    "persona_enhancement": {
+      "$ref": "#/$defs/PersonaEnhancement",
+      "default": "standard"
     },
     "provider_id": {
       "maxLength": 100,

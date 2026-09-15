@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import date, datetime
 from enum import StrEnum
+import re
 from typing import Annotated, Any, Literal
 from urllib.parse import parse_qs, urlsplit
 from uuid import UUID
@@ -42,6 +43,23 @@ class Tone(StrEnum):
     TEACHING_ASSISTANT = "teaching_assistant"
     STUDY_PARTNER = "study_partner"
     SENIOR_STUDENT = "senior_student"
+
+
+class PersonaEnhancement(StrEnum):
+    STANDARD = "standard"
+    HUMANIZED = "humanized"
+
+
+class PersonaEnhancementOutcome(StrEnum):
+    NOT_REQUESTED = "not_requested"
+    APPLIED = "applied"
+    SKIPPED_UNAVAILABLE = "skipped_unavailable"
+    SKIPPED_BUDGET = "skipped_budget"
+    SKIPPED_INELIGIBLE = "skipped_ineligible"
+    NO_CHANGE = "no_change"
+    FALLBACK_TIMEOUT = "fallback_timeout"
+    FALLBACK_PROVIDER = "fallback_provider"
+    FALLBACK_GUARD = "fallback_guard"
 
 
 class KnowledgeScope(StrEnum):
@@ -164,6 +182,7 @@ class WorkflowRunRequest(ContractModel):
     user_input: Annotated[str, Field(min_length=1, max_length=100_000)]
     answer_mode: AnswerMode
     tone: Tone
+    persona_enhancement: PersonaEnhancement = PersonaEnhancement.STANDARD
     knowledge_scope: KnowledgeScope
     include_bilibili_resources: bool
     context_refs: list[str]
@@ -224,6 +243,7 @@ class ByokModel(ContractModel):
     display_name: Annotated[str, Field(min_length=1, max_length=200)]
     context_length: Annotated[int, Field(ge=0, le=10_000_000)] = 0
     max_tokens: Annotated[int | None, Field(gt=0, le=10_000_000)] = None
+    reasoning_effort: Literal["low", "high", "max"] | None = None
 
 
 class ModelCredentialUpsert(ContractModel):
@@ -434,6 +454,9 @@ class TraceSafeResult(ContractModel):
     course_scope: CourseScope | None = None
     course_ids: list[str] | None = None
     knowledge_scope: KnowledgeScope | None = None
+    tone: Tone | None = None
+    persona_enhancement: PersonaEnhancement | None = None
+    persona_enhancement_outcome: PersonaEnhancementOutcome | None = None
     agent_preset_id: TraceCode | None = None
     agent_preset_version: TraceCode | None = None
     auth_mode: Literal["mock", "github_oauth"] | None = None
@@ -465,6 +488,9 @@ class TraceSafeResult(ContractModel):
     decision_fallback_count: Annotated[int | None, Field(ge=0)] = None
     action_rejection_count: Annotated[int | None, Field(ge=0)] = None
     failure_code: TraceCode | None = None
+    # Sanitized upstream status for optional calls.  Response text is never
+    # retained because it may contain provider diagnostics or user content.
+    provider_status_code: Annotated[int | None, Field(ge=100, le=599)] = None
     degradation_code: TraceCode | None = None
     catalog_version: str | None = None
     fixture_only: bool | None = None
@@ -530,6 +556,10 @@ class WorkflowResult(ContractModel):
     model_source: ModelSource
     model: ModelMetadata
     availability_status: str
+    persona_enhancement_effective: PersonaEnhancement = PersonaEnhancement.STANDARD
+    persona_enhancement_outcome: PersonaEnhancementOutcome = (
+        PersonaEnhancementOutcome.NOT_REQUESTED
+    )
 
 
 class AnswerDelta(ContractModel):
@@ -698,6 +728,13 @@ class PrivateKnowledgeCreate(ContractModel):
     title: Annotated[str | None, Field(max_length=200)] = None
     content: Annotated[str, Field(min_length=1, max_length=100_000)]
 
+    @field_validator("content")
+    @classmethod
+    def reject_blank(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("private knowledge content must not be blank")
+        return value
+
     @field_validator("title")
     @classmethod
     def normalize_title(cls, value: str | None) -> str | None:
@@ -712,6 +749,10 @@ class PrivateKnowledgeRecord(ContractModel):
     content_sha256: str
     created_at: datetime
     expires_at: datetime
+
+
+class PrivateKnowledgeDetail(PrivateKnowledgeRecord):
+    content: str
 
 
 class TemporaryMaterialRecord(ContractModel):
@@ -731,6 +772,7 @@ class TemporaryMaterialDetail(TemporaryMaterialRecord):
 
 
 class ContributionState(StrEnum):
+    # Read-only historical value. New submissions cannot create drafts.
     DRAFT = "draft"
     SUBMITTED = "submitted"
     PR_OPEN = "pr_open"
@@ -785,18 +827,25 @@ class ContributionPreview(ContractModel):
 
 
 class ContributionSubmit(ContractModel):
-    material_id: UUID
+    material_id: UUID | None = None
+    content: Annotated[str | None, Field(min_length=1, max_length=100_000)] = None
     course_id: Annotated[str, Field(min_length=1, max_length=100)]
     title: Annotated[str | None, Field(max_length=200)] = None
-    as_draft: bool = False
-    # PLAN-3 C-1 metadata. Optional keeps existing temporary-material clients compatible.
-    github_email: Annotated[str | None, Field(max_length=320)] = None
+    github_email: Annotated[str, Field(min_length=3, max_length=320)]
     workflow_type: WorkflowType | None = None
     run_id: UUID | None = None
     supplementary_text: Annotated[str | None, Field(max_length=20_000)] = None
     citation_metadata: list[dict[str, Any]] = Field(default_factory=list)
     corpus_metadata: dict[str, Any] = Field(default_factory=dict)
     confirmations: ContributionConfirmations
+
+    @model_validator(mode="after")
+    def require_one_source(self) -> "ContributionSubmit":
+        if (self.material_id is None) == (self.content is None):
+            raise ValueError("provide exactly one of material_id or content")
+        if self.content is not None and not self.content.strip():
+            raise ValueError("contribution content must not be blank")
+        return self
 
     @field_validator("github_email", "supplementary_text")
     @classmethod
@@ -809,7 +858,7 @@ class ContributionSubmit(ContractModel):
     @field_validator("github_email")
     @classmethod
     def validate_email_shape(cls, value: str | None) -> str | None:
-        if value is not None and ("@" not in value or value.startswith("@") or value.endswith("@")):
+        if value is None or not re.fullmatch(r"[^\s<>@\x00-\x1f\x7f]+@[^\s<>@\x00-\x1f\x7f]+\.[^\s<>@\x00-\x1f\x7f]+", value):
             raise ValueError("github_email must be a valid email address")
         return value
 
@@ -820,10 +869,6 @@ class ContributionSubmit(ContractModel):
             return None
         normalized = value.strip()
         return normalized or None
-
-
-class ContributionDraftSubmit(ContractModel):
-    confirmations: ContributionConfirmations
 
 
 class ContributionRecord(ContractModel):
@@ -906,6 +951,8 @@ class MaintainerContributionExport(ContractModel):
     char_count: int
     suggested_branch: str
     suggested_commands: list[str] = Field(default_factory=list)
+    github_email: str | None = None
+    coauthor_trailer: str | None = None
 
 
 # ---------------------------------------------------------------------------
@@ -920,6 +967,7 @@ class AccountDeletionSummary(ContractModel):
     workflow_runs: int
     feedback: int
     temporary_materials: int
+    private_knowledge_items: int
     contributions: int
     model_credentials: int
     auth_sessions: int

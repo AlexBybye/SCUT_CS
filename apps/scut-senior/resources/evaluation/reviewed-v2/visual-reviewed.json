@@ -1,0 +1,67 @@
+{
+  "schema_version": "reviewed-visual-v2",
+  "review_date": "2026-09-12",
+  "annotation_scope": "Manually read image-only source pages. These are semantic answer keys for a future OCR or multimodal retrieval path; they are deliberately excluded from text-retrieval Recall/MRR because the active text index has no legible chunk to retrieve.",
+  "entries": [
+    {
+      "case_id": "circuitlab-rlc-resonance-1",
+      "course_id": "circuit_and_electronics_lab",
+      "difficulty": "medium",
+      "query": "RLC串联电路中增大R，谐振频率提高、不变还是降低？说明适用的理想模型。",
+      "image_evidence": [{"path": "knowledge/circuit_and_electronics_lab/assets/circuit-and-electronics-lab-001/page-001.jpg", "source_id": "circuit-and-electronics-lab-001", "page": 1, "sha256": "738FD16D77EE682D285DB4B79AABCE3948808616882DDA5D09960A92EB9EB0F4"}],
+      "reference_answer": "在理想串联RLC模型中，谐振角频率ω0=1/√(LC)，与R无关，因此增大R不改变谐振频率；R会改变阻尼、带宽和品质因数。若讨论有非理想元件的峰值频率，须另行给出模型。",
+      "verification": "目视核对试卷第1题的RLC串联问法和三个选项；独立由阻抗虚部ωL-1/(ωC)=0推导。",
+      "pitfalls": ["把R增大必然降低频率", "不区分理想谐振频率与非理想峰值频率"]
+    },
+    {
+      "case_id": "circuitlab-rlc-resonance-2",
+      "course_id": "circuit_and_electronics_lab",
+      "difficulty": "hard",
+      "query": "为什么R增大后实验中的共振曲线可能变钝，但不能据此把理想谐振频率的变化方向判为降低？",
+      "image_evidence": [{"path": "knowledge/circuit_and_electronics_lab/assets/circuit-and-electronics-lab-001/page-001.jpg", "source_id": "circuit-and-electronics-lab-001", "page": 1, "sha256": "738FD16D77EE682D285DB4B79AABCE3948808616882DDA5D09960A92EB9EB0F4"}],
+      "reference_answer": "阻尼增大使频率响应的选择性下降、峰更宽更钝；理想串联RLC的零相位/电抗抵消条件仍由L和C决定。实际测量中的峰位置若有偏移，应归因于元件损耗、测量定义或完整电路模型，不能从“峰变钝”单独推出频率降低。",
+      "verification": "以同页第1题为证据对象，并从串联阻抗的实部和虚部分别分析。",
+      "pitfalls": ["把带宽变化等同于中心频率变化", "将视觉题中的选项当作不需推导的答案"]
+    },
+    {
+      "case_id": "eenglab-common-emitter-1",
+      "course_id": "electrical_engineering_lab",
+      "difficulty": "medium",
+      "query": "共射极晶体管放大电路的静态工作点，图中给出的UB、IE和UCE近似关系分别是什么？",
+      "image_evidence": [{"path": "knowledge/electrical_engineering_lab/assets/electrical-engineering-lab-001/page-001.jpg", "source_id": "electrical-engineering-lab-001", "page": 1, "sha256": "AEED445C0C0B4132C893964B337B63E86E833B73973D785C65A41B808ED816DA"}],
+      "reference_answer": "图中给出UB≈RB1/(RB1+RB2)UCC，IE≈(UB-UBE)/RE≈(1+β)IB，UCE≈UCC-IC(RC+RE)。这些是该分压偏置共射极近似分析式，使用时应说明忽略或近似了哪些基极电流、晶体管参数效应。",
+      "verification": "目视读取实验十三“静态参数分析”处的三条公式，并按KVL和分压关系复核。",
+      "pitfalls": ["把交流耦合电容纳入直流工作点回路", "把IE和IC无条件写成严格相等"]
+    },
+    {
+      "case_id": "eenglab-common-emitter-2",
+      "course_id": "electrical_engineering_lab",
+      "difficulty": "hard",
+      "query": "该共射极电路的中频电压增益为何有负号？RL接入后如何影响幅值表达式？",
+      "image_evidence": [{"path": "knowledge/electrical_engineering_lab/assets/electrical-engineering-lab-001/page-001.jpg", "source_id": "electrical-engineering-lab-001", "page": 1, "sha256": "AEED445C0C0B4132C893964B337B63E86E833B73973D785C65A41B808ED816DA"}],
+      "reference_answer": "共射极输出取自集电极，输入增大使集电极电流增大并使集电极电压下降，故相位反转，增益近似为Au≈-β(RC∥RL)/rbe。接入RL后等效集电极负载由RC变为RC∥RL，通常使幅值下降。",
+      "verification": "目视核对“动态参数分析”中的增益式，再依据小信号共射极相位关系和并联等效复核。",
+      "pitfalls": ["把共射极输出说成同相", "把RC与RL相加而非并联"]
+    },
+    {
+      "case_id": "ml-linear-svm-1",
+      "course_id": "machine_learning",
+      "difficulty": "medium",
+      "query": "x1=(1,2)、x2=(3,1)，线性核K(xi,xj)=xiᵀxj的核矩阵是什么？",
+      "image_evidence": [{"path": "knowledge/machine_learning/assets/machine-learning-001/page-001.jpg", "source_id": "machine-learning-001", "page": 1, "sha256": "C231BCB89B374B0C22A23CA4C1FDD9488B9CC88777B5128340F998C50DBD9C59"}],
+      "reference_answer": "K=[[x1·x1,x1·x2],[x2·x1,x2·x2]]=[[5,5],[5,10]]。核矩阵对称，不能将x1·x2误算为3或7。",
+      "verification": "目视读取图中两个样本点和线性核定义，逐项点积复算。",
+      "pitfalls": ["漏算交叉项", "认为线性核矩阵必须是单位阵"]
+    },
+    {
+      "case_id": "ml-linear-svm-2",
+      "course_id": "machine_learning",
+      "difficulty": "hard",
+      "query": "对上述两点、y1=+1、y2=-1的硬间隔线性核SVM对偶问题，拉格朗日乘子α1、α2的最优值是多少？",
+      "image_evidence": [{"path": "knowledge/machine_learning/assets/machine-learning-001/page-001.jpg", "source_id": "machine-learning-001", "page": 1, "sha256": "C231BCB89B374B0C22A23CA4C1FDD9488B9CC88777B5128340F998C50DBD9C59"}],
+      "reference_answer": "约束α1y1+α2y2=0给出α1=α2=t≥0。代入核矩阵后的目标为2t-(1/2)(5+10-2·5)t²=2t-(5/2)t²，导数2-5t=0，所以α1=α2=2/5。",
+      "verification": "目视核对题图的样本、标签、对偶目标和等式约束；代入前一题核矩阵并一元求极大。",
+      "pitfalls": ["忽略α1=α2的等式约束", "把带标签的交叉项符号写成正号"]
+    }
+  ]
+}

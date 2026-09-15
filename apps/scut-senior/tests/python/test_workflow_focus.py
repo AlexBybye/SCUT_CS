@@ -202,7 +202,8 @@ def test_answer_mode_and_tone_change_both_provider_prompts_and_mock_output() -> 
         assert concise_system != step_system
         assert build_response_control_directive(concise) in concise_system
         assert build_response_control_directive(step_by_step) in step_system
-        assert "数学公式都必须独占一个 Markdown 段落，并用 `$$...$$` 包裹" in concise_system
+        assert "简短回答的短等式例外" in concise_system
+        assert "可用行内 `$...$`" in concise_system
         assert "所有数学公式必须独占一行" not in concise_system
 
     mock = MockModelGateway()
@@ -294,17 +295,18 @@ def test_visible_tone_callout_is_enforced_once_without_touching_math_or_citation
 
 
 @pytest.mark.parametrize(
-    ("answer_mode", "expected_sections"),
+    ("answer_mode", "expected_sections", "expects_callout"),
     [
-        ("concise", ("## 结论", "## 要点")),
-        ("detailed", ("## 结论", "## 原理与依据", "## 易错点或适用边界")),
-        ("example", ("## 结论", "## 例子", "## 从例子得到的判断")),
-        ("step_by_step", ("## 步骤", "## 结论")),
+        ("concise", (), False),
+        ("detailed", ("## 结论", "## 原理与依据", "## 易错点或适用边界"), True),
+        ("example", ("## 结论", "## 例子", "## 从例子得到的判断"), True),
+        ("step_by_step", ("## 步骤", "## 结论"), True),
     ],
 )
 def test_tone_changes_visible_callout_without_changing_answer_mode_sections(
     answer_mode: str,
     expected_sections: tuple[str, ...],
+    expects_callout: bool,
 ) -> None:
     answers = {}
     requests = {}
@@ -325,18 +327,19 @@ def test_tone_changes_visible_callout_without_changing_answer_mode_sections(
         )
         callout = build_tone_visible_callout(requests[tone].tone)
         assert headings == expected_sections
-        assert answer.count(callout) == 1
-        assert (
-            answer.index(expected_sections[0])
-            < answer.index(callout)
-            < answer.index(expected_sections[1])
-        )
+        assert answer.count(callout) == int(expects_callout)
+        if expects_callout:
+            assert (
+                answer.index(expected_sections[0])
+                < answer.index(callout)
+                < answer.index(expected_sections[1])
+            )
 
 
 @pytest.mark.parametrize(
     ("answer_mode", "required_sections"),
     [
-        ("concise", ("## 结论", "## 要点")),
+        ("concise", ("Fixture 已接收",)),
         ("detailed", ("## 原理与依据", "## 易错点或适用边界")),
         ("example", ("## 例子", "## 从例子得到的判断")),
         ("step_by_step", ("## 步骤", "1. **目的：**")),
@@ -377,7 +380,7 @@ def test_mock_model_visibly_exercises_each_answer_mode(
 @pytest.mark.parametrize(
     ("answer_mode", "required_sections"),
     [
-        ("concise", ("【回答方式：简短】", "## 结论", "## 要点")),
+        ("concise", ("【回答方式：简短】", "用 1～4 句话", "不要强制使用标题")),
         (
             "detailed",
             ("【回答方式：详细】", "## 原理与依据", "## 推导或判断过程"),

@@ -326,18 +326,19 @@ def test_humanizer_falls_back_on_any_protected_content_change(
 
 
 @pytest.mark.parametrize(
-    ("original_content", "candidate_content"),
+    ("original_content", "candidate_content", "expected_reason"),
     [
-        ("公式 A^3=I，见 [S1]。", "公式 B^3=I，见 [S1]。"),
-        ("矩阵可逆，见 [S1]。", "矩阵不可逆，见 [S1]。"),
-        ("计算 x-y，见 [S1]。", "计算 xy，见 [S1]。"),
-        ("代码：\n    return x\n见 [S1]。", "代码：\nreturn x\n见 [S1]。"),
+        ("公式 A^3=I，见 [S1]。", "公式 B^3=I，见 [S1]。", "protected_content_changed"),
+        ("矩阵可逆，见 [S1]。", "矩阵不可逆，见 [S1]。", "semantic_risk_changed"),
+        ("计算 x-y，见 [S1]。", "计算 xy，见 [S1]。", "protected_content_changed"),
+        ("代码：\n    return x\n见 [S1]。", "代码：\nreturn x\n见 [S1]。", "protected_content_changed"),
     ],
     ids=["plain_formula", "negation", "operator", "code_indentation"],
 )
 def test_humanizer_fails_closed_on_unverified_text_change(
     original_content: str,
     candidate_content: str,
+    expected_reason: str,
 ) -> None:
     original = [
         AnswerBlock(type=AnswerBlockType.REPOSITORY, content=original_content)
@@ -356,7 +357,7 @@ def test_humanizer_fails_closed_on_unverified_text_change(
 
     assert outcome.applied is False
     assert outcome.fallback is True
-    assert outcome.reason == "unverified_text_change"
+    assert outcome.reason == expected_reason
     assert list(outcome.blocks) == original
 
 
@@ -420,14 +421,17 @@ def test_runtime_rejects_in_place_humanizer_mutation(tmp_path: Path) -> None:
             del cancel_check
             del request, sources, history
             return GeneratedAnswer(
-                repository_answer="矩阵可逆，见 [S1]。",
+                repository_answer=(
+                    "矩阵可逆，当且仅当它的行列式不等于零，"
+                    "这个条件需要在推导中始终保留，见 [S1]。"
+                ),
                 related_topics=("矩阵",),
                 citation_ids=("S1",),
             )
 
     class InPlaceMutatingHumanizer:
-        def humanize(self, *, blocks, protected_terms):
-            del protected_terms
+        def humanize(self, *, blocks, protected_terms, tone, instructions, cancel_check, timeout_seconds):
+            del protected_terms, tone, instructions, cancel_check, timeout_seconds
             blocks[0].content = blocks[0].content.replace("可逆", "不可逆")
             return blocks
 
@@ -441,25 +445,103 @@ def test_runtime_rejects_in_place_humanizer_mutation(tmp_path: Path) -> None:
         "/api/v1/conversations", json={"course_id": "linear_algebra"}
     ).json()
 
+    payload = _request_dict(conversation["conversation_id"])
+    payload["persona_enhancement"] = "humanized"
     response = client.post(
         "/api/v1/workflow-runs",
-        json=_request_dict(conversation["conversation_id"]),
+        json=payload,
     )
 
     assert response.status_code == 201, response.text
     result = response.json()
     assert result["answer_blocks"][0]["type"] == "repository"
-    assert result["answer_blocks"][0]["content"].startswith("矩阵可逆，见 [S1]。")
+    assert result["answer_blocks"][0]["content"].startswith("矩阵可逆，当且仅当")
     assert result["answer_blocks"][0]["content"].count(
         build_tone_visible_callout(Tone.TEACHING_ASSISTANT)
     ) == 1
     humanizer_event = next(
-        event for event in result["trace"] if event["node"] == "humanizer"
+        event
+        for event in result["trace"]
+        if event["node"] == "persona_enhancement" and event["status"] != "started"
     )
     assert humanizer_event["result"] == {
-        "reason_code": "humanizer_protected_fallback",
-        "degradation_code": "humanizer_unverified_text_change",
+        "tone": "teaching_assistant",
+        "persona_enhancement": "humanized",
+        "persona_enhancement_outcome": "fallback_guard",
+        "reason_code": "fallback_guard",
+        "degradation_code": "semantic_risk_changed",
     }
+
+
+def test_stream_applies_requested_persona_enhancement_before_answer_delta(
+    tmp_path: Path,
+) -> None:
+    class ScriptedModel:
+        def generate(self, request, sources, history=(), *, cancel_check=None):
+            del request, sources, history, cancel_check
+            return GeneratedAnswer(
+                repository_answer=(
+                    "## 结论\n\n这句话的表达有一点绕，我们接下来把关键思路"
+                    "整理清楚，方便后续逐步检查和复习，见 [S1]。"
+                ),
+                citation_ids=("S1",),
+            )
+
+    class RewritingHumanizer:
+        def humanize(self, *, blocks, protected_terms, tone, instructions, cancel_check, timeout_seconds):
+            del protected_terms
+            assert tone == Tone.SENIOR_STUDENT
+            assert "当前人格：学长" in instructions
+            assert cancel_check is not None
+            assert 0 < timeout_seconds <= 45
+            assert "[S1]" not in blocks[0].content
+            blocks[0].content = blocks[0].content.replace(
+                "这句话的表达有一点绕", "这句话说得有点绕"
+            )
+            return blocks
+
+    app = create_app(
+        Settings(app_env="test", database_path=tmp_path / "humanized-stream.db"),
+        humanizer=RewritingHumanizer(),
+    )
+    app.state.service.model = ScriptedModel()
+    client = TestClient(app)
+    conversation = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    ).json()
+    payload = _request_dict(conversation["conversation_id"])
+    payload["tone"] = "senior_student"
+    payload["persona_enhancement"] = "humanized"
+
+    response = client.post("/api/v1/workflow-runs/stream", json=payload)
+
+    assert response.status_code == 200, response.text
+    events = [json.loads(line) for line in response.text.splitlines() if line]
+    started_index = next(
+        index
+        for index, event in enumerate(events)
+        if event["kind"] == "trace"
+        and event["trace_event"]["node"] == "persona_enhancement"
+        and event["trace_event"]["status"] == "started"
+    )
+    first_delta_index = next(
+        index for index, event in enumerate(events) if event["kind"] == "answer_delta"
+    )
+    assert started_index < first_delta_index
+    assert [event["sequence"] for event in events] == list(range(len(events)))
+    assert sum(event["kind"] in {"result", "error"} for event in events) == 1
+
+    result = next(event["result"] for event in events if event["kind"] == "result")
+    assert result["persona_enhancement_effective"] == "humanized"
+    assert result["persona_enhancement_outcome"] == "applied"
+    assert "这句话说得有点绕" in result["answer_blocks"][0]["content"]
+    streamed = "".join(
+        event["answer_delta"]["delta"]
+        for event in events
+        if event["kind"] == "answer_delta"
+        and event["answer_delta"]["block_index"] == 0
+    )
+    assert streamed == result["answer_blocks"][0]["content"]
 
 
 def test_runtime_enforces_the_selected_visible_tone_contract(tmp_path: Path) -> None:

@@ -8,7 +8,7 @@ from contextlib import asynccontextmanager
 from hmac import compare_digest
 from uuid import UUID
 
-from fastapi import Depends, FastAPI, File, HTTPException, Request, UploadFile
+from fastapi import Depends, FastAPI, File, HTTPException, Query, Request, UploadFile
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
@@ -29,6 +29,7 @@ from .adapters.exam_facts import (
     FixtureExamFactsProvider,
     LocalCorpusExamFactsProvider,
 )
+from .agent_loop import ModelAgentDecision, RuleBasedAgentDecision
 from .adapters.local_corpus import LocalCorpusRetrievalGateway
 from .adapters.onnx import OnnxEmbeddingProvider
 from .adapters.mock import (
@@ -75,7 +76,6 @@ from .course_availability import (
 from .contracts import (
     AccountDeletionSummary,
     AccountPreferencesUpdate,
-    ContributionDraftSubmit,
     ContributionPreview,
     ContributionPreviewRequest,
     ContributionRecord,
@@ -97,6 +97,7 @@ from .contracts import (
     ByokModel,
     PrivateKnowledgeCreate,
     PrivateKnowledgeRecord,
+    PrivateKnowledgeDetail,
     TemporaryMaterialCreate,
     TemporaryMaterialDetail,
     TemporaryMaterialRecord,
@@ -120,6 +121,7 @@ from .model_catalog import (
     ModelHealthChecker,
     ModelHealthResult,
     ModelNotRegistered,
+    ModelTemporarilyUnavailable,
 )
 from .model_credentials import (
     ByokDiscoveryHttpClient,
@@ -281,6 +283,11 @@ def create_app(
 ) -> FastAPI:
     active_settings = settings or Settings.from_env()
     active_settings.assert_safe()
+    if active_settings.app_env != "test":
+        if model_http_client is None:
+            model_http_client = CancellableJsonHttpClient(UrllibJsonHttpClient())
+        if zhipu_http_client is None:
+            zhipu_http_client = CancellableJsonHttpClient(UrllibJsonHttpClient())
     if active_settings.app_env != "test" and byok_http_client is None:
         # Enforce the complete provider-call wall clock even when no client
         # cancellation callback is present. The run-level ceiling is 180s.
@@ -307,6 +314,9 @@ def create_app(
             active_settings.corpus_store_path,
             min_score=active_settings.retrieval_min_score,
             embedding=embedding,
+            vector_search_engine=active_settings.vector_search_engine,
+            vector_snapshot_cache_bytes=active_settings.vector_snapshot_cache_bytes,
+            ranking_strategy=active_settings.retrieval_ranking_strategy,
         )
         if active_settings.retrieval_mode == "local_corpus"
         else FixtureRetrievalGateway(registry)
@@ -416,6 +426,11 @@ def create_app(
                 else None
             ),
         )
+    agent_decision = (
+        ModelAgentDecision(model)
+        if active_settings.agent_decision_mode in {"model", "shadow"}
+        else RuleBasedAgentDecision()
+    )
     service = IterationZeroService(
         settings=active_settings,
         registry=registry,
@@ -433,6 +448,7 @@ def create_app(
             if active_settings.retrieval_mode == "local_corpus"
             else FixtureExamFactsProvider()
         ),
+        agent_decision=agent_decision,
     )
 
     maintenance_scheduler: MaintenanceScheduler | None = None
@@ -560,6 +576,12 @@ def create_app(
     async def model_not_registered_handler(_, exc: ModelNotRegistered):
         return _error_response(422, "model_not_registered", str(exc))
 
+    @app.exception_handler(ModelTemporarilyUnavailable)
+    async def model_temporarily_unavailable_handler(
+        _, exc: ModelTemporarilyUnavailable
+    ):
+        return _error_response(503, "platform_model_unavailable", str(exc))
+
     @app.exception_handler(OpenRouterGatewayError)
     async def openrouter_gateway_error_handler(_, exc: OpenRouterGatewayError):
         return _error_response(exc.status_code, exc.code, exc.detail)
@@ -656,7 +678,10 @@ def create_app(
                 "citation_guard": True,
                 "response_style_control": True,
                 "humanizer_guard": True,
-                "humanizer_configured": humanizer is not None,
+                "humanizer_configured": (
+                    humanizer is not None or byok_runtime_enabled
+                    or (platform_credential_configured and (openrouter_configured or zhipu_configured))
+                ),
                 "active_corpus_configured": active_corpus_configured,
                 "production_retrieval": False,
                 "local_corpus_retrieval": active_corpus_configured,
@@ -1265,6 +1290,35 @@ def create_app(
     ) -> PrivateKnowledgeRecord:
         return service.save_private_knowledge(user, payload)
 
+    @app.get("/api/v1/private-knowledge", response_model=list[PrivateKnowledgeRecord])
+    def list_private_knowledge(
+        limit: int = Query(30, ge=1, le=100), offset: int = Query(0, ge=0),
+        course_id: str | None = None,
+        user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
+    ) -> list[PrivateKnowledgeRecord]:
+        return service.list_private_knowledge(user, limit=limit, offset=offset, course_id=course_id)
+
+    @app.get("/api/v1/private-knowledge/{knowledge_id}", response_model=PrivateKnowledgeDetail)
+    def get_private_knowledge(knowledge_id: UUID, user: UserIdentity | AuthenticatedPrincipal = Depends(require_user)) -> PrivateKnowledgeDetail:
+        return service.get_private_knowledge(user, knowledge_id)
+
+    @app.get("/api/v1/private-knowledge/{knowledge_id}/export", response_model=PrivateKnowledgeDetail)
+    def export_private_knowledge(knowledge_id: UUID, user: UserIdentity | AuthenticatedPrincipal = Depends(require_user)) -> Response:
+        record = service.get_private_knowledge(user, knowledge_id)
+        return Response(record.model_dump_json(), media_type="application/json", headers={
+            "Content-Disposition": f'attachment; filename="private-knowledge-{knowledge_id}.json"',
+            "Cache-Control": "no-store",
+        })
+
+    @app.delete("/api/v1/private-knowledge/{knowledge_id}", status_code=204)
+    def delete_private_knowledge(knowledge_id: UUID, user: UserIdentity | AuthenticatedPrincipal = Depends(require_user)) -> Response:
+        service.delete_private_knowledge(user, knowledge_id)
+        return Response(status_code=204)
+
+    @app.post("/api/v1/private-knowledge/{knowledge_id}/renew", response_model=PrivateKnowledgeRecord)
+    def renew_private_knowledge(knowledge_id: UUID, user: UserIdentity | AuthenticatedPrincipal = Depends(require_user)) -> PrivateKnowledgeRecord:
+        return service.renew_private_knowledge(user, knowledge_id)
+
     @app.get(
         "/api/v1/temporary-materials",
         response_model=list[TemporaryMaterialRecord],
@@ -1332,16 +1386,20 @@ def create_app(
     ) -> ContributionRecord:
         return service.get_contribution(user, contribution_id)
 
-    @app.post(
-        "/api/v1/contributions/{contribution_id}/submit",
-        response_model=ContributionRecord,
-    )
-    def submit_contribution_draft(
+    @app.get("/api/v1/contributions/{contribution_id}/detail", response_model=MaintainerContributionDetail)
+    def personal_contribution_detail(
         contribution_id: UUID,
-        payload: ContributionDraftSubmit,
         user: UserIdentity | AuthenticatedPrincipal = Depends(require_user),
-    ) -> ContributionRecord:
-        return service.submit_contribution_draft(user, contribution_id, payload)
+    ) -> MaintainerContributionDetail:
+        return service.personal_contribution_detail(user, contribution_id)
+
+    @app.get("/api/v1/contributions/{contribution_id}/export", response_model=MaintainerContributionDetail)
+    def personal_contribution_export(contribution_id: UUID, user: UserIdentity | AuthenticatedPrincipal = Depends(require_user)) -> Response:
+        detail = service.personal_contribution_detail(user, contribution_id)
+        return Response(detail.model_dump_json(), media_type="application/json", headers={
+            "Content-Disposition": f'attachment; filename="contribution-{contribution_id}.json"',
+            "Cache-Control": "no-store",
+        })
 
     @app.get(
         "/api/v1/maintainer/contributions",
@@ -1497,6 +1555,7 @@ def _is_protected_api_path(path: str) -> bool:
         "/api/v1/model-credentials",
         "/api/v1/feedback",
         "/api/v1/plugin-registry",
+        "/api/v1/private-knowledge",
         "/api/v1/temporary-materials",
         "/api/v1/contributions",
         "/api/v1/maintainer",
@@ -1538,6 +1597,8 @@ def _safe_stream_error(exc: Exception) -> tuple[str, str]:
         return "capability_unavailable", exc.detail
     if isinstance(exc, ModelNotRegistered):
         return "model_not_registered", "所选模型未登记。"
+    if isinstance(exc, ModelTemporarilyUnavailable):
+        return "platform_model_unavailable", str(exc)
     if isinstance(exc, ResourceNotFound):
         return "not_found", "请求的资源不存在。"
     if isinstance(exc, ContractConflict | UnknownCourseError):

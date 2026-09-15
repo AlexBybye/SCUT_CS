@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections.abc import Callable, Collection, Mapping
 from dataclasses import dataclass, replace
 from datetime import UTC, datetime, timedelta
-from threading import Lock
+from threading import Condition, Lock
 from time import monotonic
 from typing import Literal, Protocol
 
@@ -97,6 +97,14 @@ class ModelCatalogEntry:
 
 class ModelNotRegistered(ValueError):
     pass
+
+
+class ModelTemporarilyUnavailable(RuntimeError):
+    """A known catalog entry that failed its current availability gate."""
+
+    def __init__(self, availability_status: ModelAvailabilityStatus):
+        super().__init__("所选模型当前暂时不可用，请稍后重试。")
+        self.availability_status = availability_status
 
 
 class PublicModelCatalogEntry(BaseModel):
@@ -281,6 +289,7 @@ class ModelCatalog:
         self._health_checked_monotonic: float | None = None
         self._health_refreshing = False
         self._health_lock = Lock()
+        self._health_condition = Condition(self._health_lock)
         self.byok_catalog = ByokProviderCatalog(
             runtime_enabled=byok_runtime_enabled
         )
@@ -321,7 +330,7 @@ class ModelCatalog:
             raise ValueError("model catalog clock must be timezone-aware")
         now = now.astimezone(UTC)
         now_monotonic = self._monotonic_clock()
-        with self._health_lock:
+        with self._health_condition:
             if (
                 not force
                 and self._health_checked_monotonic is not None
@@ -330,6 +339,13 @@ class ModelCatalog:
             ):
                 return
             if self._health_refreshing:
+                # Every caller must observe a completed catalog snapshot.  In
+                # particular, simultaneous page loads from different users
+                # must not receive the initial ``health_check_required`` state
+                # while the first request is still checking the providers.
+                self._health_condition.wait_for(
+                    lambda: not self._health_refreshing
+                )
                 return
             self._health_refreshing = True
             model_ids_by_provider = {
@@ -338,19 +354,6 @@ class ModelCatalog:
                 for provider_id, configured in self._credential_configured.items()
                 if configured
             }
-            self.entries = tuple(
-                replace(
-                    entry,
-                    availability_status=(
-                        "health_check_required"
-                        if self._credential_configured[entry.provider_id]
-                        else "platform_credential_not_configured"
-                    ),
-                    user_selectable=False,
-                )
-                for entry in self.entries
-            )
-            self._rebuild_index()
         checked: dict[str, ModelHealthResult] = {}
         for provider_id in model_ids_by_provider:
             checker = self._health_checkers[provider_id]
@@ -426,12 +429,13 @@ class ModelCatalog:
                 for entry in self.entries
             ]
             check_times = [now]
-        with self._health_lock:
+        with self._health_condition:
             self.entries = tuple(refreshed)
             self._health_checked_at = max(check_times, default=now)
             self._health_checked_monotonic = self._monotonic_clock()
             self._rebuild_index()
             self._health_refreshing = False
+            self._health_condition.notify_all()
 
     def resolve(
         self,
@@ -441,8 +445,10 @@ class ModelCatalog:
     ) -> ModelCatalogEntry:
         self.refresh_health()
         entry = self._by_key.get((provider_id, model_id, model_source))
-        if entry is None or not entry.user_selectable:
+        if entry is None:
             raise ModelNotRegistered("所选模型未在当前可用的平台目录中登记。")
+        if not entry.user_selectable:
+            raise ModelTemporarilyUnavailable(entry.availability_status)
         return entry
 
     def public_payload(self) -> dict[str, object]:

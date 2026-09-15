@@ -3,7 +3,12 @@ from __future__ import annotations
 import pytest
 
 from scut_senior_api.embedding import DeterministicHashEmbeddingProvider
-from scut_senior_api.fusion import DEFAULT_RRF_K, reciprocal_rank_fusion
+from scut_senior_api.fusion import (
+    DEFAULT_RRF_K,
+    rank_hybrid_candidates,
+    reciprocal_rank_fusion,
+    weighted_reciprocal_rank_fusion,
+)
 from scut_senior_api.vector_store import VectorStore
 
 
@@ -57,6 +62,27 @@ def test_rrf_fusion_uses_default_k_and_limits_top_n() -> None:
     fused = reciprocal_rank_fusion([["a", "b", "c"]], top_n=2)
     assert fused == ["a", "b"]
     assert DEFAULT_RRF_K == 60
+
+
+def test_weighted_rrf_rejects_mismatched_leg_weights() -> None:
+    with pytest.raises(ValueError, match="same length"):
+        weighted_reciprocal_rank_fusion(
+            [["sparse"], ["dense"]], weights=[1.0], top_n=5
+        )
+
+
+def test_hybrid_rank_allows_dense_result_to_beat_low_ranked_lexical_result() -> None:
+    lexical = [f"lexical-{index}" for index in range(1, 31)]
+    ranked = rank_hybrid_candidates(lexical, ["dense-1"], limit=20)
+
+    assert ranked.index("dense-1") < ranked.index("lexical-12")
+    assert "lexical-20" not in ranked
+
+
+def test_hybrid_rank_keeps_explicit_exact_match_before_fusion() -> None:
+    assert rank_hybrid_candidates(
+        ["lexical", "exact"], ["dense", "exact"], protected_ids={"exact"}, limit=3
+    ) == ["exact", "lexical", "dense"]
 
 
 def test_rrf_fusion_validates_parameters() -> None:

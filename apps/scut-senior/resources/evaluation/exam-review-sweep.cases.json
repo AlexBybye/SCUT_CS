@@ -462,5 +462,6 @@
       }
     }
   ],
-  "_note_1": "2026-08-23：初版漏设 requires_citation，_check_expected 默认 False 反向断言'不得有引用'导致全数误报；备考复习本就应引用仓库资料，补上 true。"
+  "_note_1": "2026-08-23：初版漏设 requires_citation，_check_expected 默认 False 反向断言'不得有引用'导致全数误报；备考复习本就应引用仓库资料，补上 true。",
+  "_evaluation_status_2026_09_12": "pipeline_smoke_only; not a semantic answer-quality benchmark; reviewed in reviewed-v2/legacy-scenarios-audit.json"
 }

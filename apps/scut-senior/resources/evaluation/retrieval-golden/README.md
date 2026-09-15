@@ -1,5 +1,7 @@
 # P0 检索评测 Golden Set（PLAN-2 阶段一 步骤 1）
 
+> **2026-09-12 状态更正：本目录仅用于复现历史指标，不再视为已经确认正确的语义金标准。** 全量引用/文本检查与抽样语义核查发现模板问题、纯图片目标及缺少逐题理由等问题。原文件和历史说明保留，不追溯伪造审核记录。新实验请用 [reviewed-v2](../reviewed-v2/README.md)，逐条审查结果见 [legacy-audit.json](../reviewed-v2/legacy-audit.json)。下文“人工核对”的历史描述未提供足以独立确认的逐题证据，不能当作本次核验结论。
+
 本目录存放检索评测的**人工核对金标准**，是阶段一所有检索改造（BM25F、dense + RRF、
 query 变体、rerank）的评测基线。格式契约见 `retrieval_eval.py` 模块 docstring。
 

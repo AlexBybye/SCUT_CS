@@ -238,6 +238,7 @@ def test_crud_returns_only_masked_metadata_and_database_contains_only_aead(
                 "display_name": "deepseek/deepseek-v4-flash-0731",
                 "context_length": 0,
                 "max_tokens": None,
+                "reasoning_effort": None,
             }
         ],
         "protocol": "openai_chat_completions",
@@ -332,8 +333,8 @@ def test_discover_models_reads_openai_listing_without_persisting_the_key(
 
     assert response.status_code == 200, response.text
     assert response.json() == [
-        {"model_id": "model-a", "display_name": "Model A", "context_length": 8192, "max_tokens": 2048},
-        {"model_id": "model-b", "display_name": "model-b", "context_length": 0, "max_tokens": None},
+        {"model_id": "model-a", "display_name": "Model A", "context_length": 8192, "max_tokens": 2048, "reasoning_effort": None},
+        {"model_id": "model-b", "display_name": "model-b", "context_length": 0, "max_tokens": None, "reasoning_effort": None},
     ]
     assert discovery.calls == [{
         "url": "https://gateway.example/v1/models",

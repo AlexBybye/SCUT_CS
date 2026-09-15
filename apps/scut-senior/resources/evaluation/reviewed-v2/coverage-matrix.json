@@ -1,0 +1,676 @@
+{
+  "schema_version": "coverage-matrix-v2",
+  "corpus_version": "corpus-c1513a68ccd7-b0_2_0-m1200-wworkflow-contract-v1-ooutline-none-v1-ebge-small-zh-v1.5",
+  "courses": [
+    {
+      "course_id": "algorithm_design_and_analysis",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "Algorthm 2023-2024 A",
+        "DAL-2020-Exam Paper A",
+        "1-sort"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "artificial_intelligence_intro",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "人工智能复习题-2024",
+        "一、选择题（每题 1 分，共 20 分）",
+        "一、选择题（每题 1 分，共 20 分）"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "circuit_and_electronics_lab",
+      "coverage_status": "vision_or_extraction_required",
+      "readable_anchor_count": 0,
+      "topics": [],
+      "reason": "The active corpus lacks two legible text passages; semantic topics must wait for OCR/visual review."
+    },
+    {
+      "course_id": "compiler_principles",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "网站和笔记",
+        "2011年编译原理期末考试试卷A答案",
+        "编译复习提纲"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "computer_graphics",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "Polygonal face element (see below)",
+        "6- Hidden Surface Removal (chap 8)",
+        "11 illumination models (chap 6)"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "computer_networks",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "术语和缩写大全",
+        "教学资源试题",
+        "计网"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "computer_organization",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "B",
+        "题",
+        "答案"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "computer_science_intro",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "计算机科学概论",
+        "Final Exam A2021V1",
+        "Summary of Methodology"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "computing_methods",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "数值分析（电子版教材-仅供学生参考-勿对外分享）",
+        "数学系09级数值分析A",
+        "华南理工大学数值分析A"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "cpp",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "C++非应试笔记（全：开源）",
+        "题目",
+        "A"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "data_structure",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "作业及分析",
+        "测试结果",
+        "1"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "database",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "数据库选填要点oz",
+        "2012《数据库系统概论》A试卷",
+        "期末复习总结"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "digital_logic",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "数字逻辑作业",
+        "计算机学院数字逻辑2024级复习大纲",
+        "2012级计算机学院数字逻辑试卷 B卷题目"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "digital_system_creative_design",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "Mindspore口罩检测（yolov3）",
+        "定义训练网络",
+        "昇腾MindSpore作业描述参考"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "discrete_mathematics",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "机试",
+        "离散数学试卷（中文）答案",
+        "机试"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "electrical_engineering",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "电路与电子技术 复习大纲",
+        "电工与电子技术II 复习大纲 修改",
+        "NI"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "electrical_engineering_lab",
+      "coverage_status": "vision_or_extraction_required",
+      "readable_anchor_count": 0,
+      "topics": [],
+      "reason": "The active corpus lacks two legible text passages; semantic topics must wait for OCR/visual review."
+    },
+    {
+      "course_id": "embedded_systems",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "嵌入式期末真题回忆版有答案",
+        "嵌入式期末真题回忆版无答案",
+        "作业内容-2025"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "engineering_math_analysis_1",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "2022A解答",
+        "2017软件工科数学分析上A卷及答案",
+        "2018软件工科数学分析上B卷及答案"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "engineering_math_analysis_2",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "2013级软件 工科数学分析下A附解答",
+        "2019级 工科数学分析（二）A答案",
+        "2013级软件 工科数学分析下A"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "english",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "英语复习",
+        "英语作文竞赛",
+        "英语SUMMARY"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "ideology_morality_and_rule_of_law",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 2,
+      "topics": [
+        "思政题目2024级回忆",
+        "思政2023级试卷赖怡芳老师"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "information_security_intro",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "《信安导论》复习提纲 v1 (精简版)",
+        "《信安导论》复习提纲 v1 (精简版)",
+        "《信安导论》复习提纲 v1 (精简版)"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "information_security_mathematics",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "信息安全数学基础期末试卷",
+        "信息安全数学基础2025回忆版",
+        "信息安全数学基础试卷-B"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "intelligent_algorithms",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "CVRP",
+        "相比GA，它不能做离散优化问题，但优势是参数少，可以在精度和速度中较为平衡。![[3. 差分进化pr(1).pdfpage=16&rect=123,84,783,394|3. 差分",
+        "- 参数选择敏感：算法的性能对参数（如初始温度、降温系数等）的选择较为敏感。"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "linear_algebra",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "2020-2021年度线代解几期末卷A答案",
+        "2019-2020年度线性代数期末卷A答案",
+        "2021-2022年度线代解几期末卷B答案"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "machine_learning",
+      "coverage_status": "vision_or_extraction_required",
+      "readable_anchor_count": 0,
+      "topics": [],
+      "reason": "The active corpus lacks two legible text passages; semantic topics must wait for OCR/visual review."
+    },
+    {
+      "course_id": "mao_zedong_thought_overview",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "演讲大纲",
+        "党的自我革命历史沿革及当代价值",
+        "演讲大纲"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "marxist_basic_principles",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "科技发展与社会变革：生产力与生产关系视角",
+        "演讲观点",
+        "科技发展与社会变革：生产力与生产关系视角"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "mathematical_modeling",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "2000Aart-model-data",
+        "数模大全",
+        "18.第十八章 变分法模型"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "mobile_application_development",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "课程设计要求及报告模板",
+        "GeoQuiz V",
+        "Android 应用开发课程大作业及报告要求2026春季"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "network_application_architecture",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 2,
+      "topics": [
+        "《网络应用开发》复习指南",
+        "《网络应用开发》复习指南"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "network_management",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "实验大纲-2026",
+        "复习题-2026",
+        "综合题(5  8)"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "next_generation_network_architecture",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "天地一体化架构主要应用场景",
+        "网络安全问题",
+        "天地一体化网络研究报告"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "operating_systems",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "OS2018真题Ans",
+        "QT 与 Vulkan的关系",
+        "OS2008EGB真题Que"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "probability_theory",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "2020—2021学年第二学期《概率论与数理统计》A卷答案",
+        "2018春季A卷答案",
+        "2023概率A(1)"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "signals_and_communication",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "信号处理与通信基础-实验手册-v2-2025",
+        "通信基础-差错控制编码-2025F",
+        "【例3-5】已知x(n)=cos(nπ/6)是一个长度N=12的有限长序列，求它的N点DFT。"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "software_engineering",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "4. 类模型（Class Model）",
+        "COCOMOII软件项目管理中的成本估算方法",
+        "华南理工大学《软件工程》样例含答案"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "software_testing",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "二、网络攻击防范措施（针对每种攻击）",
+        "二、 测试模型与方法",
+        "🔬 Offut's 5 Sufficient Mutations / Offut的5种充分变异算子"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "swarm_intelligence",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "rewards",
+        "psoresults",
+        "群体智能大作业题目-2024下学期"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "university_physics_3_1",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "2025级大学物理III(一)期末考试复习纲要（4学分）",
+        "2023级大学物理(上)期末考试复习纲要（4学分）",
+        "2013级大学物理（I）期末试卷解答（A卷）"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "university_physics_3_2",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "2021级大学物理（二）期末试卷解答简版（B卷）",
+        "2006II",
+        "2012级大学物理（2）期末试卷解答（A卷）"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "university_physics_lab_1",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "用惠斯登电桥测电阻",
+        "人体脉搏波测量",
+        "光的等厚干涉测量"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "university_physics_lab_2",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "4.8 交流电桥综合设计性实验",
+        "自组望远镜测量凹透镜焦距施洋",
+        "4.14（定）"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "web_frontend_fundamentals",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "更多关于 font-family",
+        "Hibernate",
+        "选择器特征值"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    },
+    {
+      "course_id": "xi_thought_overview",
+      "coverage_status": "source_snapshot_ready",
+      "readable_anchor_count": 3,
+      "topics": [
+        "主题七：人才计划的广东实践",
+        "主题七：人才计划的广东实践",
+        "主题七：人才计划的广东实践"
+      ],
+      "difficulty_profile": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      }
+    }
+  ],
+  "summary": {
+    "courses": 46,
+    "source_snapshot_ready": 43,
+    "vision_or_extraction_required": 3,
+    "harness_cases": 135
+  }
+}

@@ -603,7 +603,7 @@ def test_followup_turn_regains_anchor_via_context_carry(tmp_path: Path) -> None:
         for event in result["trace"]
         if event["node"] == "retrieval_context_carry"
     )
-    assert carry_event["result"]["hit_count"] == 0
+    assert carry_event["result"]["hit_count"] >= 1
     assert carry_event["result"]["candidate_count"] >= 1
     assert "2019" not in carry_event["result"]["rewritten_query"]
     assert carry_event["result"]["rewritten_query"]

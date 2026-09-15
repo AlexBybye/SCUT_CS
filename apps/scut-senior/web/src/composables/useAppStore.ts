@@ -13,6 +13,7 @@ import {
   getConversation,
   getCourses,
   getModels,
+  getRuntimeHealth,
   githubLoginUrl,
   listConversations,
   logout,
@@ -31,10 +32,13 @@ import {
 import { canManageByokCredentials } from "../byokSession";
 import {
   parseAnswerMode,
+  parsePersonaEnhancement,
   parseTone,
   readStoredAnswerMode,
+  readStoredPersonaEnhancement,
   readStoredTone,
   writeStoredAnswerMode,
+  writeStoredPersonaEnhancement,
   writeStoredTone,
 } from "../assistantPreference";
 import type {
@@ -50,6 +54,7 @@ import type {
   KnowledgeScope,
   ModelCatalog,
   ModelCatalogItem,
+  PersonaEnhancement,
   RetrievalMode,
   Tone,
   WorkflowAttempt,
@@ -68,6 +73,8 @@ import {
   modelsForRuntime,
 } from "../modelSelection";
 import { createRequestEpoch } from "../requestEpoch";
+import { writeContentHandoff, clearContentHandoff } from "../personalContentSession";
+import { openPersonalContent } from "../personalNavigation";
 import {
   applyAccent,
   applyThemeMode,
@@ -111,6 +118,8 @@ function createAppStore() {
   const selectedModelKey = ref("");
   const answerMode = ref<AnswerMode>(readStoredAnswerMode());
   const tone = ref<Tone>(readStoredTone());
+  const personaEnhancement = ref<PersonaEnhancement>(readStoredPersonaEnhancement());
+  const humanizerConfigured = ref(false);
   const knowledgeScope = ref<KnowledgeScope>("course_first");
   const includeBilibiliResources = ref(true);
   const userInput = ref("");
@@ -284,6 +293,10 @@ function createAppStore() {
     writeStoredTone(nextTone);
     persistAccountPreferences();
   });
+  watch(personaEnhancement, (value) => {
+    writeStoredPersonaEnhancement(value);
+    persistAccountPreferences();
+  });
 
   // 个人中心偏好：随 GitHub 账号跨设备同步（服务端 user_preferences）。
   // 主题在本地仍作为即时缓存（登出/未登录可用），登录后再与账号同步。
@@ -294,6 +307,7 @@ function createAppStore() {
     accentTheme: "accent_theme",
     answerMode: "answer_mode",
     tone: "tone",
+    personaEnhancement: "persona_enhancement",
   } as const;
 
   function buildPreferenceSnapshot(): Record<string, string> {
@@ -303,6 +317,7 @@ function createAppStore() {
       [PREFERENCE_KEYS.accentTheme]: accentTheme.value,
       [PREFERENCE_KEYS.answerMode]: answerMode.value,
       [PREFERENCE_KEYS.tone]: tone.value,
+      [PREFERENCE_KEYS.personaEnhancement]: personaEnhancement.value,
     };
   }
 
@@ -337,6 +352,10 @@ function createAppStore() {
       if (answer !== undefined) answerMode.value = parseAnswerMode(answer);
       const storedTone = preferences[PREFERENCE_KEYS.tone];
       if (storedTone !== undefined) tone.value = parseTone(storedTone);
+      const storedEnhancement = preferences[PREFERENCE_KEYS.personaEnhancement];
+      if (storedEnhancement !== undefined) {
+        personaEnhancement.value = parsePersonaEnhancement(storedEnhancement);
+      }
     } finally {
       suppressPreferenceSave = false;
     }
@@ -458,18 +477,7 @@ function createAppStore() {
       !isLoadingModels.value &&
       Boolean(currentUser.value) &&
       Boolean(selectedCourse.value?.selectable) &&
-      Boolean(selectedModel.value?.user_selectable) &&
-      Boolean(userInput.value.trim()) &&
-      (workflowType.value !== "mistake_review" || Boolean(originalAnswer.value.trim())) &&
-      (!crossCourseSearchEnabled.value || (
-        ["knowledge_qa", "problem_tutor"].includes(workflowType.value) &&
-        new Set(selectedCourseIds.value).size >= 2 &&
-        selectedCourseIds.value.every((courseId) =>
-          courses.value.some(
-            (course) => course.course_id === courseId && course.selectable,
-          ),
-        )
-      )),
+      Boolean(selectedModel.value?.user_selectable),
   );
   const runtimeNoticeTitle = computed(() =>
     selectedModelIsMock.value
@@ -612,6 +620,7 @@ function createAppStore() {
   }
 
   function clearPrivateState(): void {
+    clearContentHandoff();
     conversationLoadSequence += 1;
     clearActiveConversation();
     conversationHistory.value = [];
@@ -724,11 +733,21 @@ function createAppStore() {
       errorMessage.value = "本次没有可贡献的回答内容。";
       return;
     }
-    userInput.value = output;
-    materialTitle.value = "本轮回答贡献";
-    workflowOverride.value = "temporary_material_reading";
-    drawerOpen.value = true;
-    noticeMessage.value = "回答已填入贡献入口。请先保存为临时材料，再预览并完成公开分享确认。";
+    if (!currentUser.value) {
+      errorMessage.value = "请先登录后再提交贡献。";
+      return;
+    }
+    writeContentHandoff({
+      user_id: currentUser.value.user_id,
+      course_id: workflowResult.course_ids?.[0] || selectedCourseId.value,
+      title: "本轮回答贡献", content: output,
+      run_id: workflowResult.workflow_run_id,
+      workflow_type: workflowResult.workflow_type,
+      citation_metadata: workflowResult.citations.map((citation) => ({ ...citation })),
+      corpus_metadata: { course_ids: workflowResult.course_ids },
+    });
+    accountMenuOpen.value = false;
+    openPersonalContent("contributions");
   }
 
   async function saveWorkflowOutputToPrivateKnowledge(
@@ -744,11 +763,11 @@ function createAppStore() {
     }
     try {
       await savePrivateKnowledge({
-        course_id: selectedCourseId.value,
+        course_id: workflowResult.course_ids?.[0] || selectedCourseId.value,
         title: `回答：${content.slice(0, 40)}`,
         content,
       });
-      noticeMessage.value = "本轮回答已加入私人知识库，7 天后自动删除。";
+      noticeMessage.value = "本轮回答已加入私人知识库。可在助手设置的「个人知识平台」查看、续期、导出或删除，默认保留 7 天。";
     } catch (error) {
       errorMessage.value = toMessage(error);
     }
@@ -838,6 +857,7 @@ function createAppStore() {
       userInput: userInput.value,
       answerMode: answerMode.value,
       tone: tone.value,
+      personaEnhancement: humanizerConfigured.value ? personaEnhancement.value : "standard",
       knowledgeScope: knowledgeScope.value,
       includeBilibiliResources: includeBilibiliResources.value,
       modelSource: selectedModel.value.model_source,
@@ -873,18 +893,6 @@ function createAppStore() {
     if (!selectedCourse.value?.selectable) return courseSelectionError(selectedCourse.value);
     if (!selectedModel.value?.user_selectable) return "请选择一个当前可用的模型。";
     if (!userInput.value.trim()) return `请填写${activeWorkflow.value.inputLabel}。`;
-    if (crossCourseSearchEnabled.value) {
-      if (!["knowledge_qa", "problem_tutor"].includes(workflowType.value)) {
-        return "当前仅知识问答和题目辅导支持跨课程检索。";
-      }
-      const selectedIds = [...new Set(selectedCourseIds.value)];
-      if (selectedIds.length < 2) return "跨课程检索请至少选择两门课程。";
-      if (selectedIds.some((courseId) => !courses.value.some(
-        (course) => course.course_id === courseId && course.selectable,
-      ))) {
-        return "跨课程检索中包含不可用课程，请重新选择。";
-      }
-    }
     if (workflowType.value === "mistake_review" && !originalAnswer.value.trim()) {
       return "错题复盘需要填写原答案。";
     }
@@ -1175,6 +1183,15 @@ function createAppStore() {
           )
         : "";
       isLoadingModels.value = false;
+    }
+  }
+
+  async function loadRuntimeHealth(): Promise<void> {
+    try {
+      const health = await getRuntimeHealth();
+      humanizerConfigured.value = health.capabilities?.humanizer_configured === true;
+    } catch {
+      humanizerConfigured.value = false;
     }
   }
 
@@ -1542,6 +1559,8 @@ function createAppStore() {
     workflowRouteIsManual,
     answerMode,
     tone,
+    personaEnhancement,
+    humanizerConfigured,
     knowledgeScope,
     includeBilibiliResources,
     userInput,
@@ -1681,6 +1700,7 @@ function createAppStore() {
     loadCourses,
     onPluginChanged,
     loadModels,
+    loadRuntimeHealth,
     abortActiveWorkflow,
   });
 }

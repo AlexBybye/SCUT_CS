@@ -26,6 +26,7 @@ dev = [
   "pytest-cov>=6.2,<7",
 ]
 onnx = [
+  "numpy>=2.0,<3",
   "onnxruntime>=1.18,<2",
   "tokenizers>=0.19,<1",
 ]

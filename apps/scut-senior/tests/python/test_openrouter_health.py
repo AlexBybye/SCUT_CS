@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from datetime import UTC, datetime, timedelta
+from threading import Event, Thread
 from typing import Mapping
 
 from scut_senior_api.adapters.openrouter import HttpResponse
@@ -116,12 +117,12 @@ def test_health_checker_requires_model_presence_zero_price_and_structured_output
                 "Accept": "application/json",
                 "Authorization": "Bearer server-health-secret",
             },
-            "timeout_seconds": 10.0,
+            "timeout_seconds": 20.0,
         },
         {
             "url": OPENROUTER_MODELS_URL,
             "headers": {"Accept": "application/json"},
-            "timeout_seconds": 10.0,
+            "timeout_seconds": 20.0,
         }
     ]
 
@@ -191,6 +192,54 @@ def test_catalog_is_unselectable_until_health_check_and_caches_fresh_result() ->
     ticks[0] += 360
     catalog.public_payload()
     assert checker.calls == 2
+
+
+def test_concurrent_catalog_requests_wait_for_the_same_health_refresh() -> None:
+    checked_at = datetime(2026, 8, 16, 3, 0, tzinfo=UTC)
+    check_started = Event()
+    release_check = Event()
+
+    class BlockingChecker:
+        def __init__(self) -> None:
+            self.calls = 0
+
+        def check(self, model_ids):
+            self.calls += 1
+            check_started.set()
+            assert release_check.wait(timeout=2)
+            return {
+                model_id: ModelHealthResult("available", checked_at)
+                for model_id in model_ids
+            }
+
+    checker = BlockingChecker()
+    catalog = ModelCatalog(
+        openrouter_credential_configured=True,
+        openrouter_health_checker=checker,
+        clock=lambda: checked_at,
+    )
+    payloads: list[dict[str, object]] = []
+    first = Thread(target=lambda: payloads.append(catalog.public_payload()))
+    second = Thread(target=lambda: payloads.append(catalog.public_payload()))
+
+    first.start()
+    assert check_started.wait(timeout=2)
+    second.start()
+    release_check.set()
+    first.join(timeout=2)
+    second.join(timeout=2)
+
+    assert not first.is_alive()
+    assert not second.is_alive()
+    assert checker.calls == 1
+    assert len(payloads) == 2
+    assert all(payload["real_platform_default_available"] for payload in payloads)
+    assert all(
+        model["availability_status"] != "health_check_required"
+        for payload in payloads
+        for model in payload["models"]
+        if model["provider_id"] == "openrouter"
+    )
 
 
 def test_catalog_does_not_claim_structured_output_support_when_health_rejects_it() -> None:

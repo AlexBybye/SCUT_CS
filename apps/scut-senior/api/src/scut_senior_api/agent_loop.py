@@ -9,16 +9,14 @@ introduced incrementally.
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
-from typing import Literal
+import re
+from typing import Literal, Protocol
+
+from .ports import ConversationTurn, GeneratedAnswer, ModelGateway, RetrievedSource
+from .contracts import WorkflowRunRequest
+from .action_registry import ACTION_REGISTRY, ActionKind
 
 
-ActionKind = Literal[
-    "retrieve",
-    "retrieve_with_query_rewrite",
-    "ask_clarification",
-    "generate_answer",
-    "finish",
-]
 EventKind = Literal[
     "decision_produced",
     "action_rejected",
@@ -39,18 +37,138 @@ TerminalStatus = Literal[
     "failed",
 ]
 
-ACTION_KINDS: frozenset[ActionKind] = frozenset(
-    {
-        "retrieve",
-        "retrieve_with_query_rewrite",
-        "ask_clarification",
-        "generate_answer",
-        "finish",
-    }
+ACTION_KINDS = ACTION_REGISTRY.action_kinds
+
+
+def action_allowed_for_workflow(workflow_type: str, action: ActionKind) -> bool:
+    """Return whether an Agent action stays inside the selected Workflow."""
+    return ACTION_REGISTRY.admits(workflow_type, action)
+
+
+class AgentDecisionGateway(Protocol):
+    def decide(
+        self,
+        request: WorkflowRunRequest,
+        state: "AgentState",
+        phase: str,
+        *,
+        sources: list[RetrievedSource] | tuple[RetrievedSource, ...] = (),
+        history: tuple[ConversationTurn, ...] = (),
+    ) -> ActionKind: ...
+
+
+class RuleBasedAgentDecision:
+    """Deterministic fallback used when the model decision experiment is off."""
+
+    def decide(self, request, state, phase, *, sources=(), history=()) -> ActionKind:
+        return choose_next_action(state, phase=phase, workflow_type=request.workflow_type.value)
+
+
+_EXACT_RETRIEVAL_MARKER = re.compile(
+    r"(?:第\s*\d+\s*题|\b20\d{2}\b|\d{4}\s*年)", re.IGNORECASE
 )
 
 
-def choose_next_action(state: "AgentState", *, phase: str) -> ActionKind:
+def should_retrieve_with_rewrite(
+    request: WorkflowRunRequest,
+    sources: list[RetrievedSource] | tuple[RetrievedSource, ...],
+) -> bool:
+    """Small deterministic baseline for the optional second retrieval.
+
+    This intentionally uses only evidence visible to the service: no candidate
+    is always insufficient; an explicitly year/question-shaped request also
+    retries when none of the returned chunks carries a question locator.  It
+    is deliberately conservative so the baseline does not manufacture an
+    agent-like planner or spend a second retrieval on ordinary concept queries.
+    """
+    if not sources:
+        return True
+    question = request.user_input
+    if not _EXACT_RETRIEVAL_MARKER.search(question):
+        return False
+    return not any(source.question_id for source in sources)
+
+
+def parse_model_action(raw: str, *, workflow_type: str, phase: str | None = None) -> ActionKind | None:
+    """Parse a model's single-action response and apply the Workflow allowlist."""
+    normalized = raw.strip().lower().replace("`", "")
+    aliases: dict[str, ActionKind] = {
+        "retrieve": "retrieve",
+        "retrieve_with_query_rewrite": "retrieve_with_query_rewrite",
+        "query_rewrite": "retrieve_with_query_rewrite",
+        "ask_clarification": "ask_clarification",
+        "generate_answer": "generate_answer",
+        "finish": "finish",
+    }
+    # Fail closed: accept a single token only. Explanatory model prose must
+    # never accidentally turn a mention of an Action into an executable one.
+    token = normalized.strip(" .,;:：")
+    action = aliases.get(token)
+    if action is None:
+        return None
+    return action if ACTION_REGISTRY.admits(workflow_type, action, phase) else None
+
+
+class ModelAgentDecision:
+    """Model-backed Action adapter with fail-closed Workflow validation.
+
+    The adapter is intentionally separate from answer generation. Providers
+    that cannot return a clean action fall back to the deterministic policy;
+    an unallowlisted action is never executed.
+    """
+
+    def __init__(self, model: ModelGateway, fallback: AgentDecisionGateway | None = None):
+        self.model = model
+        self.fallback = fallback or RuleBasedAgentDecision()
+        self.last_used_fallback = False
+
+    def decide(self, request, state, phase, *, sources=(), history=()) -> ActionKind:
+        self.last_used_fallback = False
+        allowed_actions = ACTION_REGISTRY.allowed_actions(request.workflow_type.value, phase)
+        if not allowed_actions:
+            self.last_used_fallback = True
+            return self.fallback.decide(request, state, phase, sources=sources, history=history)
+        allowed = ", ".join(allowed_actions)
+        decision_request = request.model_copy(
+            update={
+                "user_input": (
+                    "只输出一个允许的 Action 名称，不要解释。"
+                    f"允许值：{allowed}。"
+                    f"当前 Workflow={request.workflow_type.value}，阶段={phase}，"
+                    f"已检索轮次={state.retrieval_rounds}，已有证据数={len(sources)}。"
+                )
+            }
+        )
+        try:
+            compact_decision = getattr(self.model, "decide_action", None)
+            if callable(compact_decision):
+                raw = compact_decision(
+                    request,
+                    state,
+                    phase,
+                    sources=tuple(sources),
+                    history=history,
+                )
+            else:
+                generated: GeneratedAnswer = self.model.generate(
+                    decision_request, list(sources), history
+                )
+                raw = generated.repository_answer
+            parsed = parse_model_action(
+                raw, workflow_type=request.workflow_type.value
+            )
+            if parsed is not None:
+                return parsed
+        except Exception:
+            self.last_used_fallback = True
+        else:
+            self.last_used_fallback = True
+        return self.fallback.decide(request, state, phase, sources=sources, history=history)
+
+
+def choose_next_action(
+    state: "AgentState", *, phase: str, workflow_type: str = "knowledge_qa"
+) -> ActionKind:
     """Select one bounded action for the compatibility runtime path.
 
     This is deliberately a small policy, not a second planner: retrieval is
@@ -58,17 +176,31 @@ def choose_next_action(state: "AgentState", *, phase: str) -> ActionKind:
     decision adapter can feed the same allowlist and reducer events.
     """
     if phase == "retrieve" and state.retrieval_rounds == 0:
-        return "retrieve"
+        action = "retrieve"
+        if not action_allowed_for_workflow(workflow_type, action):
+            raise ValueError("workflow does not allow retrieval")
+        return action
     if phase == "retrieve_with_query_rewrite":
-        return "retrieve_with_query_rewrite"
+        action = "retrieve_with_query_rewrite"
+        if not action_allowed_for_workflow(workflow_type, action):
+            raise ValueError("workflow does not allow query rewrite retrieval")
+        return action
     if phase == "generate":
-        return "generate_answer"
+        action = "generate_answer"
+        if not action_allowed_for_workflow(workflow_type, action):
+            raise ValueError("workflow does not allow answer generation")
+        return action
+    if phase == "post_retrieval":
+        action = "generate_answer"
+        if not action_allowed_for_workflow(workflow_type, action):
+            raise ValueError("workflow does not allow answer generation")
+        return action
     raise ValueError("unknown agent compatibility phase")
 
 
 @dataclass(frozen=True, slots=True)
 class AgentBudget:
-    max_steps: int = 4
+    max_steps: int = 5
     max_retrieval_rounds: int = 2
     max_query_rewrite: int = 1
     max_same_action_retries: int = 1
@@ -105,6 +237,14 @@ class AgentBudget:
         return self.max_runtime_seconds * self.soft_runtime_ratio
 
     def allows_optional_call(self, elapsed_seconds: float) -> bool:
+        """Admit optional model work only when it can finish before soft cutoff.
+
+        Provider responses are not streamed through the Agent reducer, so the
+        loop cannot observe an in-flight 75% token/time crossing. Once control
+        returns after the 75% mark, optional follow-up work is no longer
+        admitted; the 180-second hard limit remains unchanged.
+        """
+
         return 0 <= elapsed_seconds < self.soft_runtime_seconds
 
 
@@ -308,4 +448,7 @@ def _record_guard_retry(state: AgentState, limits: AgentBudget) -> AgentState:
     retries = state.guard_retries + 1
     if retries > limits.max_guard_retries:
         return replace(state, status="budget_exhausted", budget_reason="max_guard_retries")
-    return replace(state, guard_retries=retries)
+    next_steps = state.step_count + 1
+    if next_steps > limits.max_steps:
+        return replace(state, status="budget_exhausted", budget_reason="max_steps")
+    return replace(state, guard_retries=retries, step_count=next_steps)

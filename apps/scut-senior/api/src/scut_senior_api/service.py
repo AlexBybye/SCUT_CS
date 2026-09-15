@@ -2,18 +2,22 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime, timedelta
+import re
 from time import perf_counter
 from uuid import UUID, uuid4
 
 from .auth import AuthRequired, AuthenticatedPrincipal, utc_now
 from .agent_loop import (
     AgentBudget,
-    AgentState,
-    choose_next_action,
-    reduce_agent_event,
+    AgentDecisionGateway,
+    ModelAgentDecision,
+    RuleBasedAgentDecision,
+    should_retrieve_with_rewrite,
 )
+from .action_registry import ACTION_REGISTRY
 from .adapters.bilibili import derive_question_keywords, normalize_keywords
 from .adapters.exam_facts import ExamFactsUnavailable
+from .adapters.humanizer import SelectedModelHumanizer
 from .config import Settings
 from .contracts import (
     AccountDeletionSummary,
@@ -27,7 +31,6 @@ from .contracts import (
     AnswerStatus,
     Citation,
     ContributionAttachmentRecord,
-    ContributionDraftSubmit,
     ContributionPreview,
     ContributionPreviewRequest,
     ContributionRecord,
@@ -47,9 +50,12 @@ from .contracts import (
     MaintainerContributionTransition,
     ModelMetadata,
     ModelSource,
+    PersonaEnhancement,
+    PersonaEnhancementOutcome,
     RunStatus,
     PrivateKnowledgeCreate,
     PrivateKnowledgeRecord,
+    PrivateKnowledgeDetail,
     TemporaryMaterialCreate,
     TemporaryMaterialDetail,
     TemporaryMaterialRecord,
@@ -68,7 +74,6 @@ from .contributions import (
     normalize_contribution_markdown,
     resolve_transition_target,
     states_allowed_for_target,
-    validate_contribution_transition,
     validate_github_pr_url,
     ContributionTransitionError,
 )
@@ -81,6 +86,11 @@ from .exam_review import (
 from .harness_registry import HARNESS_REGISTRY
 from .model_catalog import ModelCatalog, ModelCatalogEntry
 from .model_credentials import ModelCredentialError, ModelCredentialManager
+from .persona_humanizer import (
+    compose_persona_humanizer_prompt,
+    has_humanizable_chinese,
+    prepare_humanizer_input,
+)
 from .ports import (
     CapabilityUnavailable,
     ConversationTurn,
@@ -88,14 +98,20 @@ from .ports import (
     GeneratedAnswer,
     HumanizerGateway,
     ModelGateway,
-    RetrievalBatch,
     RetrievalGateway,
     RetrievedSource,
+    StoredModelCredential,
     UserKeyModelGateway,
     UserIdentity,
     WorkflowRepository,
 )
 from .registry import CourseRegistry, UnknownCourseError
+from .runtime.lifecycle import RunLifecycle
+from .runtime.persistence import RunPersistence
+from .runtime.retrieval import RetrievalCoordinator
+from .runtime.errors import ContractConflict
+from .runtime.answer import AnswerGenerator
+from .runtime.runner import WorkflowRunner
 from .runtime_guards import (
     GuardedAnswer,
     RuntimeGuardError,
@@ -119,10 +135,6 @@ def _parse_iso(value: str) -> datetime:
     return parsed
 
 
-class ContractConflict(ValueError):
-    pass
-
-
 RequestIdentity = UserIdentity | AuthenticatedPrincipal
 
 
@@ -132,6 +144,43 @@ class ExamReviewPlanContext:
 
     plan: "ExamReviewPlan"
     retrieval_query: str
+
+
+class BoundByokActionGateway:
+    """Bind one decrypted BYOK credential to a compact Agent action call.
+
+    The binding exists only for the lifetime of one workflow run. It keeps
+    the key out of Agent state, trace events and persistence while ensuring
+    the selected BYOK model—not a platform model—owns its optional decision.
+    """
+
+    def __init__(
+        self,
+        model: UserKeyModelGateway,
+        *,
+        api_key: str,
+        connection: StoredModelCredential,
+        timeout_seconds: float,
+    ):
+        self._model = model
+        self._api_key = api_key
+        self._connection = connection
+        self._timeout_seconds = timeout_seconds
+
+    def decide_action(self, request, state, phase, *, sources=(), history=()) -> str:
+        method = getattr(self._model, "decide_action", None)
+        if not callable(method):
+            raise RuntimeError("BYOK model does not support Agent decisions")
+        return method(
+            api_key=self._api_key,
+            connection=self._connection,
+            request=request,
+            state=state,
+            phase=phase,
+            sources=tuple(sources),
+            history=history,
+            timeout_seconds=self._timeout_seconds,
+        )
 
 
 class IterationZeroService:
@@ -149,6 +198,7 @@ class IterationZeroService:
         humanizer: HumanizerGateway | None = None,
         zhipu_model: ModelGateway | None = None,
         exam_facts: object | None = None,
+        agent_decision: AgentDecisionGateway | None = None,
     ):
         self.settings = settings
         self.registry = registry
@@ -164,6 +214,8 @@ class IterationZeroService:
         # Optional iteration-5 exam-review facts provider (fixture or local
         # corpus). ``None`` keeps the pre-iteration-5 behaviour exactly.
         self.exam_facts = exam_facts
+        self.agent_decision = agent_decision or RuleBasedAgentDecision()
+        self._run_persistence = RunPersistence(repository)
 
     def create_conversation(
         self, user: RequestIdentity, course_id_or_alias: str
@@ -378,6 +430,27 @@ class IterationZeroService:
             title=payload.title, content=payload.content,
         )
 
+    def list_private_knowledge(self, user: RequestIdentity, *, limit: int = 30,
+                               offset: int = 0, course_id: str | None = None) -> list[PrivateKnowledgeRecord]:
+        repository = self._require_contribution_capable_repository()
+        return repository.list_private_knowledge(str(user.user_id), limit=limit, offset=offset, course_id=course_id)
+
+    def get_private_knowledge(self, user: RequestIdentity, knowledge_id: UUID) -> PrivateKnowledgeDetail:
+        record = self._require_contribution_capable_repository().get_private_knowledge(str(user.user_id), knowledge_id)
+        if record is None:
+            raise ResourceNotFound("私人知识不存在或已到期。")
+        return record
+
+    def delete_private_knowledge(self, user: RequestIdentity, knowledge_id: UUID) -> None:
+        if not self._require_contribution_capable_repository().delete_private_knowledge(str(user.user_id), knowledge_id):
+            raise ResourceNotFound("私人知识不存在或已删除。")
+
+    def renew_private_knowledge(self, user: RequestIdentity, knowledge_id: UUID) -> PrivateKnowledgeRecord:
+        record = self._require_contribution_capable_repository().renew_private_knowledge(str(user.user_id), knowledge_id)
+        if record is None:
+            raise ResourceNotFound("私人知识不存在或已到期，无法续期。")
+        return record
+
     def list_temporary_materials(
         self, user: RequestIdentity
     ) -> list[TemporaryMaterialRecord]:
@@ -436,54 +509,52 @@ class IterationZeroService:
         user: RequestIdentity,
         payload: ContributionSubmit,
     ) -> ContributionRecord:
-        """从已保存的临时材料创建贡献（add file 语义，落点为学科资料）。
-
-        GitHub App 未确认：`as_draft=False` 直接进入维护者待处理队列
-        （submitted），绝不创建 PR，也不使用用户 OAuth token 冒充自动 PR。
-        """
+        """已确认的正文或本人临时材料直接进入待审队列。"""
 
         course = self._resolve_material_course(payload.course_id)
         repository = self._require_contribution_capable_repository()
-        material = repository.get_temporary_material(
-            str(user.user_id), payload.material_id, include_content=True
-        )
-        if material is None or not isinstance(material, TemporaryMaterialDetail):
-            raise ResourceNotFound("temporary material not found")
-        if material.course_id != payload.course_id:
-            raise ContractConflict(
-                "contribution course must match the temporary material course"
+        content = payload.content
+        material_title = None
+        if payload.material_id is not None:
+            material = repository.get_temporary_material(
+                str(user.user_id), payload.material_id, include_content=True
             )
+            if material is None or not isinstance(material, TemporaryMaterialDetail):
+                raise ResourceNotFound("temporary material not found")
+            if material.course_id != payload.course_id:
+                raise ContractConflict("contribution course must match the temporary material course")
+            content, material_title = material.content, material.title
+        assert content is not None
+        if payload.run_id is not None and repository.get_attempt(str(user.user_id), payload.run_id) is None:
+            raise ResourceNotFound("workflow run not found")
         title = (
             payload.title
-            or material.title
+            or material_title
             or (
-                normalize_contribution_markdown(material.content)
+                normalize_contribution_markdown(content)
                 .split("\n", 1)[0]
                 .lstrip("#")
                 .strip()
                 or f"{course.display_name} 贡献"
             )
         )
-        state = (
-            ContributionState.DRAFT if payload.as_draft else ContributionState.SUBMITTED
-        )
         return repository.create_contribution(
             user_id=str(user.user_id),
             material_id=payload.material_id,
-            course_id=material.course_id,
+            course_id=course.course_id,
             proposed_source_id=derive_proposed_source_id(
-                material.course_id,
-                normalize_contribution_markdown(material.content),
+                course.course_id,
+                normalize_contribution_markdown(content),
             ),
             proposed_repo_path=derive_proposed_repo_path(
                 course.repository_paths,
                 course_id=course.course_id,
                 title=title,
-                content=material.content,
+                content=content,
             ),
             title=title[:200],
-            content_snapshot=material.content,
-            state=state,
+            content_snapshot=content,
+            state=ContributionState.SUBMITTED,
             github_email=payload.github_email,
             workflow_type=payload.workflow_type.value if payload.workflow_type else None,
             run_id=payload.run_id,
@@ -491,27 +562,6 @@ class IterationZeroService:
             citation_metadata=payload.citation_metadata,
             corpus_metadata=payload.corpus_metadata,
         )
-
-    def submit_contribution_draft(
-        self,
-        user: RequestIdentity,
-        contribution_id: UUID,
-        payload: ContributionDraftSubmit,
-    ) -> ContributionRecord:
-        """把草稿推进到 submitted（进入待处理队列），需要完整确认。"""
-
-        repository = self._require_contribution_capable_repository()
-        current = repository.get_contribution(str(user.user_id), contribution_id)
-        if current is None:
-            raise ResourceNotFound("contribution not found")
-        validate_contribution_transition(current.state, action="submit")
-        return repository.transition_contribution(
-            contribution_id,
-            from_states=frozenset({ContributionState.DRAFT}),
-            target_state=ContributionState.SUBMITTED,
-            pr_url=None,
-            note=None,
-        )  # type: ignore[return-value]
 
     def list_contributions(self, user: RequestIdentity) -> list[ContributionRecord]:
         self._require_contribution_capable_repository()
@@ -534,6 +584,11 @@ class IterationZeroService:
         record, content = fetched
         attachments = repository.list_contribution_attachments(contribution_id)
         return MaintainerContributionDetail.model_validate({**record.model_dump(), "content_snapshot": content, "attachments": attachments})
+
+    def personal_contribution_detail(self, user: RequestIdentity, contribution_id: UUID) -> MaintainerContributionDetail:
+        # Ownership must be checked before the privileged payload accessor.
+        self.get_contribution(user, contribution_id)
+        return self.maintainer_contribution_detail(contribution_id)
 
     def maintainer_transition_contribution(
         self,
@@ -599,6 +654,9 @@ class IterationZeroService:
         filename = repo_path.rsplit("/", 1)[-1]
         branch = f"contribution-{record.contribution_id.hex[:8]}"
         directory = repo_path.rsplit("/", 1)[0]
+        login = repository.contributor_login(record.user_id)
+        safe_name = " ".join(login.replace("<", "").replace(">", "").split()) or "SCUT_CS Contributor"
+        coauthor = f"Co-authored-by: {safe_name} <{record.github_email}>" if record.github_email else None
         suggested_commands = [
             f"git checkout -b {branch}",
             f"mkdir -p '{directory}'",
@@ -619,6 +677,8 @@ class IterationZeroService:
             char_count=len(content),
             suggested_branch=branch,
             suggested_commands=suggested_commands,
+            github_email=record.github_email,
+            coauthor_trailer=coauthor,
         )
 
     def delete_account(self, user: AuthenticatedPrincipal) -> AccountDeletionSummary:
@@ -735,7 +795,7 @@ class IterationZeroService:
         return utc_now()
 
     def run(self, user: RequestIdentity, request: WorkflowRunRequest) -> WorkflowResult:
-        return self._run(user, request)
+        return WorkflowRunner(self._run).run(user, request)
 
     def run_stream(
         self,
@@ -743,7 +803,9 @@ class IterationZeroService:
         request: WorkflowRunRequest,
         session: WorkflowStreamSession,
     ) -> WorkflowResult:
-        result = self._run(user, request, stream_session=session)
+        result = WorkflowRunner(self._run).run(
+            user, request, stream_session=session
+        )
         if result.run_status == RunStatus.COMPLETED:
             session.emit_answer_blocks(result.answer_blocks)
         session.emit_result(result)
@@ -755,7 +817,7 @@ class IterationZeroService:
         previous = self.repository.get_attempt(str(user.user_id), run_id)
         if previous is None:
             raise ResourceNotFound("workflow run not found")
-        result = self._run(
+        result = WorkflowRunner(self._run).run(
             user,
             previous.request.model_copy(deep=True),
             attempt_group_id=previous.attempt_group_id,
@@ -786,7 +848,7 @@ class IterationZeroService:
             if not self.settings.cross_course_enabled and not local_fixture_profile:
                 raise CapabilityUnavailable(
                     "cross_course",
-                    "cross-course execution is disabled pending its decision gate",
+                    "跨课程检索已由服务端配置关闭。",
                 )
             if not user.is_mock and not isinstance(user, AuthenticatedPrincipal):
                 raise AuthRequired()
@@ -865,9 +927,7 @@ class IterationZeroService:
             billing_label = "user_provider_billing"
             availability_status = "user_key_enabled"
             mock_only = False
-            # Custom BYOK connections currently advertise the text-only,
-            # OpenAI-compatible contract. Provider-specific capabilities will
-            # be declared explicitly before optional controls are exposed.
+            # Custom OpenAI-compatible BYOK connections advertise text inputs.
             compatibility_reason = preset.check_model_compatibility(
                 input_modalities=("text",),
                 supports_structured_outputs=True,
@@ -919,52 +979,37 @@ class IterationZeroService:
         machine = RunStateMachine()
         machine.transition(RunStatus.RUNNING)
         trace: list[TraceEvent] = StreamingTrace(stream_session)
+        run_id = (
+            stream_session.workflow_run_id
+            if stream_session is not None
+            else uuid4()
+        )
+        message_id = uuid4()
+        answer_id = uuid4()
         # Phase two reducer is request-local and deliberately has no wire
         # contract of its own yet. It governs the existing one-shot path while
         # the action/observation stream is introduced incrementally.
-        agent_budget = AgentBudget()
-        agent_state = AgentState()
-        agent_started = perf_counter()
-        answer_call_count = 0
+        lifecycle = RunLifecycle(
+            repository=self.repository,
+            run_id=run_id,
+            stream_session=stream_session,
+            agent_events_enabled=self.settings.agent_event_stream_enabled,
+            budget=AgentBudget(),
+        )
+        agent_budget = lifecycle.budget
+        agent_state = lifecycle.state
+        agent_metrics = lifecycle.metrics
+        # Resolve a BYOK secret only if the optional model decision is
+        # enabled. The same value is then reused for answer generation and is
+        # cleared in the existing ``finally`` block below.
+        api_key: str | None = None
 
         def optional_model_work_allowed() -> bool:
-            return (
-                answer_call_count < agent_budget.max_answer_calls
-                and agent_budget.allows_optional_call(
-                    perf_counter() - agent_started
-                )
-            )
-
-        def remaining_runtime_seconds() -> float:
-            return max(
-                0.0,
-                agent_budget.max_runtime_seconds
-                - (perf_counter() - agent_started),
-            )
+            return lifecycle.optional_model_work_allowed()
 
         def reduce_agent(kind: str, **payload: object) -> None:
             nonlocal agent_state
-            agent_state = reduce_agent_event(
-                agent_state,
-                {"kind": kind, **payload},
-                budget=agent_budget,
-            )
-            append_event = getattr(self.repository, "append_agent_event", None)
-            if append_event is not None:
-                append_event(
-                    run_id,
-                    {"kind": kind, **payload},
-                    agent_state.to_dict(),
-                )
-            if stream_session is not None and self.settings.agent_event_stream_enabled:
-                stream_session.emit_agent_event(
-                    kind,
-                    action=payload.get("action") if isinstance(payload.get("action"), str) else None,
-                    status=payload.get("status") if isinstance(payload.get("status"), str) else None,
-                    reason=payload.get("reason") if isinstance(payload.get("reason"), str) else agent_state.budget_reason,
-                    step_count=agent_state.step_count,
-                    observation_count=agent_state.observation_count,
-                )
+            agent_state = lifecycle.reduce(kind, **payload)
             if agent_state.status != "running" and kind != "run_finished":
                 raise ContractConflict(
                     f"agent loop budget crossed: {agent_state.budget_reason or agent_state.status}"
@@ -973,13 +1018,98 @@ class IterationZeroService:
         def record_agent_action(action: str) -> None:
             reduce_agent("action_executed", action=action)
 
-        run_id = (
-            stream_session.workflow_run_id
-            if stream_session is not None
-            else uuid4()
-        )
-        message_id = uuid4()
-        answer_id = uuid4()
+        def decide_for_phase(
+            phase: str,
+            expected_action: str,
+            *,
+            sources: list[RetrievedSource] | tuple[RetrievedSource, ...] = (),
+            allow_model: bool = False,
+            accepted_actions: frozenset[str] | None = None,
+        ) -> str:
+            """Record one bounded decision and ensure it matches execution.
+
+            Fixed phases use the deterministic policy. The model decision
+            experiment is retained only for genuinely optional query rewrite;
+            any invalid, unavailable, or phase-incompatible result falls back
+            to the expected server-owned action and leaves an audit event.
+            """
+            nonlocal api_key
+            action = expected_action
+            used_fallback = False
+            active_decision = self.agent_decision
+            decision_source = "rule"
+            mode = self.settings.agent_decision_mode
+            if allow_model and mode == "deterministic":
+                action = (
+                    "retrieve_with_query_rewrite"
+                    if should_retrieve_with_rewrite(request, sources)
+                    else expected_action
+                )
+                decision_source = "deterministic"
+            elif allow_model and mode == "shadow":
+                # Shadow must not consume the answer provider's shared quota
+                # or extend the student-visible critical path. Until replay is
+                # run independently, keep the deterministic baseline and make
+                # the skipped experiment observable in Trace.
+                _append_trace(
+                    trace,
+                    node="agent_shadow_decision",
+                    status=TraceEventStatus.SKIPPED,
+                    result={"reason_code": "online_shadow_not_isolated"},
+                )
+            elif allow_model and mode == "model":
+                agent_metrics["decision_call_count"] += 1
+                if use_user_key:
+                    if api_key is None:
+                        assert isinstance(user, AuthenticatedPrincipal)
+                        api_key = self.credential_manager.load_api_key(
+                            user, request.provider_id
+                        )
+                    assert byok_connection is not None
+                    active_decision = ModelAgentDecision(
+                        BoundByokActionGateway(
+                            self.byok_model,
+                            api_key=api_key,
+                            connection=byok_connection,
+                            timeout_seconds=lifecycle.optional_model_timeout_seconds(),
+                        )
+                    )
+                action = active_decision.decide(
+                    request,
+                    agent_state,
+                    phase,
+                    sources=sources,
+                    history=history,
+                )
+                used_fallback = (
+                    isinstance(active_decision, ModelAgentDecision)
+                    and active_decision.last_used_fallback
+                )
+                if used_fallback:
+                    agent_metrics["decision_fallback_count"] += 1
+                registry_allowed = frozenset(ACTION_REGISTRY.allowed_actions(
+                    request.workflow_type.value, phase
+                ))
+                allowed = (accepted_actions or frozenset({expected_action})) & registry_allowed
+                if action not in allowed:
+                    agent_metrics["action_rejection_count"] += 1
+                    reduce_agent(
+                        "action_rejected",
+                        requested_action=action,
+                        expected_action=expected_action,
+                    )
+                    action = expected_action
+                elif not used_fallback:
+                    agent_metrics["model_action_accepted_count"] += 1
+                    decision_source = "model"
+            reduce_agent(
+                "decision_produced",
+                action=action,
+                phase=phase,
+                expected_action=expected_action,
+                decision_source=decision_source,
+            )
+            return action
 
         _append_trace(
             trace,
@@ -1058,7 +1188,7 @@ class IterationZeroService:
             )
 
         def interrupt_if_step_not_claimed() -> WorkflowResult | None:
-            if perf_counter() - agent_started > agent_budget.max_runtime_seconds:
+            if lifecycle.elapsed_seconds > agent_budget.max_runtime_seconds:
                 if agent_state.status == "running":
                     reduce_agent("budget_crossed", reason="max_runtime_seconds")
                 raise ContractConflict("agent loop budget crossed: max_runtime_seconds")
@@ -1114,6 +1244,7 @@ class IterationZeroService:
                 course_pack_version=course_pack_version,
                 attempt_group_id=attempt_group_id,
                 regenerated_from_run_id=regenerated_from_run_id,
+                agent_metrics=agent_metrics,
             )
             return None
 
@@ -1132,105 +1263,38 @@ class IterationZeroService:
             if exam_plan is not None
             else workflow_focus.authoritative_query
         )
-        reduce_agent(
-            "decision_produced", action=choose_next_action(agent_state, phase="retrieve")
-        )
+        decide_for_phase("retrieve", "retrieve")
         interrupted = interrupt_if_step_not_claimed()
         if interrupted is not None:
             return interrupted
         started = perf_counter()
+        generation_decision_ready = False
         try:
-            retrieval_batch = self.retrieval.search(
-                course_ids, retrieval_query
+            retrieval_outcome = RetrievalCoordinator(
+                settings=self.settings,
+                retrieval=self.retrieval,
+                repository=self.repository,
+                trace=lambda **event: _append_trace(trace, **event),
+            ).retrieve(
+                user_id=str(user.user_id),
+                request=request,
+                course_ids=course_ids,
+                course_display_name=course.display_name,
+                retrieval_query=retrieval_query,
+                history=history,
+                has_exam_plan=exam_plan is not None,
+                use_user_key=use_user_key,
+                initial_corpus_version=corpus_version,
+                initial_course_pack_version=course_pack_version,
+                decide=decide_for_phase,
+                record_action=record_agent_action,
+                record_observation=lambda: reduce_agent("observation_recorded"),
+                optional_work_allowed=optional_model_work_allowed,
             )
-            if (
-                isinstance(retrieval_batch, RetrievalBatch)
-                and not retrieval_batch.sources
-                and history
-                and exam_plan is None
-                and self.settings.retrieval_mode == "local_corpus"
-            ):
-                # 迭代 7.5 检索地板的配套修复：追问轮常丢失词面锚点
-                #（“把这道题再讲一遍”单独检索得分为噪声级），当前查询空结果时
-                # 以最近用户轮次补锚重试一次；不改变课程/范围/工作流语义。
-                context_query = _compose_context_carry_query(
-                    retrieval_query, history
-                )
-                if context_query:
-                    retry_started = perf_counter()
-                    context_batch = self.retrieval.search(
-                        course_ids, context_query
-                    )
-                    if isinstance(context_batch, RetrievalBatch) and (
-                        context_batch.sources
-                    ):
-                        reduce_agent(
-                            "decision_produced",
-                            action=choose_next_action(
-                                agent_state, phase="retrieve_with_query_rewrite"
-                            ),
-                        )
-                        record_agent_action("retrieve_with_query_rewrite")
-                        retrieval_batch = context_batch
-                        _append_trace(
-                            trace,
-                            node="retrieval_context_carry",
-                            result={
-                                "hit_count": 0,
-                                "candidate_count": len(retrieval_batch.sources),
-                                "rewritten_query": context_query[:200],
-                            },
-                            duration_ms=_elapsed_ms(retry_started),
-                        )
-            if not isinstance(retrieval_batch, RetrievalBatch):
-                # Keep injected iteration-1 test doubles compatible, but never
-                # accept an unversioned result in explicit local-corpus mode.
-                if self.settings.retrieval_mode == "local_corpus":
-                    raise ContractConflict(
-                        "local corpus retrieval returned an unversioned candidate set"
-                    )
-                sources = list(retrieval_batch)
-            else:
-                sources = list(retrieval_batch.sources)
-                corpus_version = retrieval_batch.corpus_version
-                course_pack_version = retrieval_batch.course_pack_version
-                if (
-                    not isinstance(corpus_version, str)
-                    or not corpus_version.strip()
-                    or (
-                        course_pack_version is not None
-                        and (
-                            not isinstance(course_pack_version, str)
-                            or not course_pack_version.strip()
-                        )
-                    )
-                ):
-                    raise ContractConflict(
-                        "retrieval returned an invalid corpus version binding"
-                    )
-                if (
-                    self.settings.retrieval_mode == "local_corpus"
-                    and course_pack_version is None
-                ):
-                    raise ContractConflict(
-                        "local corpus retrieval returned no course pack version"
-                    )
-            private_search = getattr(self.repository, "list_private_knowledge_sources", None)
-            if callable(private_search):
-                sources.extend(
-                    private_search(user_id=str(user.user_id), course_ids=course_ids)
-                )
-            invalid_source_ids = [
-                source.chunk_id
-                for source in sources
-                if source.course_id not in course_ids
-            ]
-            if invalid_source_ids:
-                raise ContractConflict(
-                    "source authorization guard rejected a source outside the selected courses"
-                )
-            sources = _dedupe_sources(sources)
-            record_agent_action("retrieve")
+            sources = list(retrieval_outcome.sources)
+            corpus_version = retrieval_outcome.corpus_version
+            course_pack_version = retrieval_outcome.course_pack_version
+            generation_decision_ready = retrieval_outcome.generation_decision_ready
         except Exception:
             interrupted = persist_failed_or_interrupted(
                 failure_node=retrieval_node,
@@ -1239,56 +1303,16 @@ class IterationZeroService:
             if interrupted is not None:
                 return interrupted
             raise
-        _append_trace(
-            trace,
-            node=retrieval_node,
-            duration_ms=_elapsed_ms(started),
-            result={
-                **(
-                    {"mode": "synthetic_fixture_only"}
-                    if self.settings.retrieval_mode == "fixture"
-                    else {}
-                ),
-                "hit_count": len(sources),
-                "candidate_order": [
-                    f"S{index}" for index in range(1, len(sources) + 1)
-                ],
-                "sources": [
-                    {
-                        "course_id": source.course_id,
-                        "title": source.source_title,
-                        "locator": source.locator_start,
-                    }
-                    for source in sources
-                ],
-            },
-        )
-        reduce_agent("observation_recorded")
-        _append_trace(
-            trace,
-            node="source_authorization_guard",
-            result={
-                "candidate_count": len(sources),
-                "accepted_count": len(sources),
-            },
-        )
-        _append_trace(
-            trace,
-            node="cache_policy",
-            status=TraceEventStatus.SKIPPED,
-            result={
-                "cache_hit": False,
-                "reason_code": "runtime_cache_not_configured",
-            },
-        )
 
         interrupted = finish_interrupted()
         if interrupted is not None:
             return interrupted
 
         started = perf_counter()
-        api_key: str | None = None
-        retry_count = 0
+        provider_retry_count = 0
+        guard_retry_count = 0
+        guard_retry_context: str | None = None
+        citation_repair_fallback: tuple[GeneratedAnswer, GuardedAnswer] | None = None
         model_node = (
             "byok_model"
             if use_user_key
@@ -1298,7 +1322,7 @@ class IterationZeroService:
         )
 
         try:
-            if use_user_key:
+            if use_user_key and api_key is None:
                 assert isinstance(user, AuthenticatedPrincipal)
                 interrupted = interrupt_if_step_not_claimed()
                 if interrupted is not None:
@@ -1310,66 +1334,68 @@ class IterationZeroService:
                 # Admission and cancellation share a short lifecycle lock. A
                 # claim that wins is considered in flight; cancel never waits
                 # for the synchronous provider call and wins at the next node.
-                reduce_agent(
-                    "decision_produced",
-                    action=choose_next_action(agent_state, phase="generate"),
-                )
+                if generation_decision_ready:
+                    generation_decision_ready = False
+                else:
+                    decide_for_phase("generate", "generate_answer")
                 interrupted = interrupt_if_step_not_claimed()
                 if interrupted is not None:
                     return interrupted
                 try:
-                    answer_call_count += 1
-                    if use_user_key:
-                        assert api_key is not None
-                        # 迭代 7.5：断开/取消时尽力中止上游等待（cancel_check
-                        # 由可取消 transport 周期检查；结果被弃置不落库）。
-                        cancel_check = (
+                    agent_metrics["answer_call_count"] += 1
+                    generated = AnswerGenerator(
+                        platform_model=self.model,
+                        byok_model=self.byok_model,
+                        zhipu_model=self.zhipu_model,
+                    ).generate(
+                        request=request,
+                        sources=sources,
+                        history=history,
+                        use_user_key=use_user_key,
+                        api_key=api_key,
+                        connection=byok_connection,
+                        provider_id=model_provider_id,
+                        repair_context=guard_retry_context,
+                        timeout_seconds=lifecycle.primary_model_timeout_seconds(),
+                        cancel_check=(
                             (lambda: stream_session.cancelled)
                             if stream_session is not None
                             else None
-                        )
-                        generated = self.byok_model.generate(
-                            api_key=api_key,
-                            connection=byok_connection,
-                            request=request,
-                            sources=sources,
-                            history=history,
-                            cancel_check=cancel_check,
-                            timeout_seconds=remaining_runtime_seconds(),
-                        )
-                    else:
-                        platform_model = (
-                            self.zhipu_model
-                            if model_provider_id == "zhipu"
-                            and self.zhipu_model is not None
-                            else self.model
-                        )
-                        generated = platform_model.generate(
-                            request,
-                            sources,
-                            history=history,
-                            cancel_check=(
-                                (lambda: stream_session.cancelled)
-                                if stream_session is not None
-                                else None
-                            ),
-                        )
+                        ),
+                    )
                 except Exception as model_error:
                     interrupted = finish_interrupted()
                     if interrupted is not None:
                         return interrupted
                     if (
-                        retry_count >= 1
+                        citation_repair_fallback is not None
+                        and not _is_authorization_error(model_error)
+                    ):
+                        generated, guarded = citation_repair_fallback
+                        _append_trace(
+                            trace,
+                            node="model_output_retry",
+                            status=TraceEventStatus.FAILED,
+                            result={
+                                "retry_count": guard_retry_count,
+                                "failure_code": "exam_review_citation_repair_failed",
+                                "degradation_code": _safe_repair_failure_code(model_error),
+                            },
+                        )
+                        break
+                    if (
+                        provider_retry_count >= 1
                         or not optional_model_work_allowed()
                         or not _is_retryable_model_output_error(model_error)
                     ):
                         raise
-                    retry_count += 1
+                    provider_retry_count += 1
+                    agent_metrics["provider_retry_count"] = provider_retry_count
                     _append_trace(
                         trace,
                         node="model_output_retry",
                         result={
-                            "retry_count": retry_count,
+                            "retry_count": provider_retry_count,
                             "failure_code": "model_output_retryable_failure",
                         },
                     )
@@ -1380,6 +1406,10 @@ class IterationZeroService:
                 interrupted = finish_interrupted()
                 if interrupted is not None:
                     return interrupted
+                # The provider call completed, so the generation action has
+                # genuinely executed even if its output is rejected by the
+                # downstream Guard and needs one bounded repair attempt.
+                record_agent_action("generate_answer")
                 try:
                     guarded = build_guarded_answer(
                         request=request,
@@ -1387,7 +1417,8 @@ class IterationZeroService:
                         sources=sources,
                         course_ids=set(course_ids),
                     )
-                except RuntimeGuardError:
+                except RuntimeGuardError as guard_error:
+                    reduce_agent("observation_recorded")
                     interrupted = finish_interrupted()
                     if interrupted is not None:
                         return interrupted
@@ -1399,7 +1430,23 @@ class IterationZeroService:
                         # failing the run after a long model call.
                         guarded = _empty_candidate_insufficient_evidence()
                         break
-                    if retry_count >= 1 or not optional_model_work_allowed():
+                    if citation_repair_fallback is not None:
+                        generated, guarded = citation_repair_fallback
+                        _append_trace(
+                            trace,
+                            node="model_output_retry",
+                            status=TraceEventStatus.FAILED,
+                            result={
+                                "retry_count": guard_retry_count,
+                                "failure_code": "exam_review_citation_repair_failed",
+                                "degradation_code": "citation_guard_rejected",
+                            },
+                        )
+                        break
+                    if (
+                        guard_retry_count >= 1
+                        or not optional_model_work_allowed()
+                    ):
                         interrupted = persist_failed_or_interrupted(
                             failure_node="citation_guard",
                             duration_ms=_elapsed_ms(started),
@@ -1408,12 +1455,14 @@ class IterationZeroService:
                             return interrupted
                         raise
                     reduce_agent("guard_retry_recorded")
-                    retry_count += 1
+                    guard_retry_count += 1
+                    agent_metrics["guard_retry_count"] = guard_retry_count
+                    guard_retry_context = str(guard_error).strip()[:500] or "引用或回答结构未通过校验"
                     _append_trace(
                         trace,
                         node="model_output_retry",
                         result={
-                            "retry_count": retry_count,
+                            "retry_count": guard_retry_count,
                             "failure_code": "model_output_guard_rejected",
                         },
                     )
@@ -1421,6 +1470,61 @@ class IterationZeroService:
                     if interrupted is not None:
                         return interrupted
                     continue
+                reduce_agent("observation_recorded")
+                if (
+                    request.workflow_type == WorkflowType.EXAM_REVIEW
+                    and sources
+                    and not guarded.citation_ids
+                    and guard_retry_count < 1
+                    and optional_model_work_allowed()
+                ):
+                    # An exam-review request with retrieved past-paper
+                    # candidates has not met its evidence contract when the
+                    # model emits no [S#] markers. Give it one explicit repair
+                    # attempt; if it still refuses, retain the existing honest
+                    # partial/insufficient result instead of looping or
+                    # fabricating citations server-side.
+                    reduce_agent("guard_retry_recorded")
+                    guard_retry_count += 1
+                    agent_metrics["guard_retry_count"] = guard_retry_count
+                    citation_repair_fallback = (generated, guarded)
+                    allowed_ids = ", ".join(
+                        f"[S{index}]" for index in range(1, len(sources) + 1)
+                    )
+                    guard_retry_context = (
+                        "当前复习回答检索到了历年卷课程资料，但没有任何可回查引用。"
+                        f"请仅使用确实支持对应说法的候选编号 {allowed_ids}，"
+                        "在相关句子后至少加入一条 [S#]；不要编造编号。"
+                    )
+                    _append_trace(
+                        trace,
+                        node="model_output_retry",
+                        result={
+                            "retry_count": guard_retry_count,
+                            "failure_code": "exam_review_citation_missing",
+                        },
+                    )
+                    interrupted = finish_interrupted()
+                    if interrupted is not None:
+                        return interrupted
+                    continue
+                if (
+                    request.workflow_type == WorkflowType.EXAM_REVIEW
+                    and sources
+                    and not guarded.citation_ids
+                    and citation_repair_fallback is not None
+                ):
+                    generated, guarded = citation_repair_fallback
+                    _append_trace(
+                        trace,
+                        node="model_output_retry",
+                        status=TraceEventStatus.FAILED,
+                        result={
+                            "retry_count": guard_retry_count,
+                            "failure_code": "exam_review_citation_repair_failed",
+                            "degradation_code": "citation_still_missing",
+                        },
+                    )
                 break
         except AuthRequired:
             self.repository.discard_nonterminal_run(str(user.user_id), run_id)
@@ -1448,7 +1552,8 @@ class IterationZeroService:
                 "billing_label": billing_label,
                 "availability_status": availability_status,
                 "real_model_called": not mock_only,
-                "retry_count": retry_count,
+                "retry_count": provider_retry_count + guard_retry_count,
+                **agent_metrics,
             },
         )
 
@@ -1510,20 +1615,56 @@ class IterationZeroService:
             max_items=32,
         )
         original_blocks = [block.model_copy(deep=True) for block in guarded.blocks]
-        if self.humanizer is None or not optional_model_work_allowed():
-            interrupted = finish_interrupted()
-            if interrupted is not None:
-                return interrupted
+        active_humanizer = self.humanizer
+        if active_humanizer is None and not mock_only and request.persona_enhancement == PersonaEnhancement.HUMANIZED:
+            selected_gateway = self.byok_model if use_user_key else (
+                self.zhipu_model if model_provider_id == "zhipu" else self.model
+            )
+            if selected_gateway is not None:
+                active_humanizer = SelectedModelHumanizer(
+                    generate=selected_gateway.generate,
+                    request=request,
+                    load_key=(lambda: self.credential_manager.load_api_key(user, request.provider_id)) if use_user_key else None,
+                    connection=byok_connection,
+                )
+        enhancement_outcome = PersonaEnhancementOutcome.NOT_REQUESTED
+        enhancement_effective = PersonaEnhancement.STANDARD
+        if request.persona_enhancement == PersonaEnhancement.STANDARD:
             answer_blocks = original_blocks
             _append_trace(
                 trace,
                 node="response_style_control",
+                result={"reason_code": "single_pass_model_prompt"},
+            )
+        elif active_humanizer is None:
+            answer_blocks = original_blocks
+            enhancement_outcome = PersonaEnhancementOutcome.SKIPPED_UNAVAILABLE
+            _append_trace(
+                trace,
+                node="persona_enhancement",
+                status=TraceEventStatus.SKIPPED,
                 result={
-                    "reason_code": (
-                        "single_pass_model_prompt"
-                        if self.humanizer is None
-                        else "runtime_soft_limit"
-                    )
+                    "tone": request.tone,
+                    "persona_enhancement": request.persona_enhancement,
+                    "persona_enhancement_outcome": enhancement_outcome,
+                    "reason_code": "skipped_unavailable",
+                },
+            )
+        elif not optional_model_work_allowed():
+            interrupted = finish_interrupted()
+            if interrupted is not None:
+                return interrupted
+            answer_blocks = original_blocks
+            enhancement_outcome = PersonaEnhancementOutcome.SKIPPED_BUDGET
+            _append_trace(
+                trace,
+                node="persona_enhancement",
+                status=TraceEventStatus.SKIPPED,
+                result={
+                    "tone": request.tone,
+                    "persona_enhancement": request.persona_enhancement,
+                    "persona_enhancement_outcome": enhancement_outcome,
+                    "reason_code": "skipped_budget",
                 },
             )
         else:
@@ -1531,50 +1672,119 @@ class IterationZeroService:
             if interrupted is not None:
                 return interrupted
             try:
-                candidate_blocks = self.humanizer.humanize(
-                    blocks=[block.model_copy(deep=True) for block in original_blocks],
-                    protected_terms=protected_terms,
-                )
-                humanizer_outcome = protect_humanizer_output(
-                    original=original_blocks,
-                    candidate=list(candidate_blocks),
-                    protected_terms=protected_terms,
-                )
-            except Exception:
+                prepared = prepare_humanizer_input(original_blocks, protected_terms)
+            except ValueError:
                 answer_blocks = original_blocks
+                enhancement_outcome = PersonaEnhancementOutcome.FALLBACK_GUARD
                 _append_trace(
                     trace,
-                    node="humanizer",
+                    node="persona_enhancement",
                     status=TraceEventStatus.FAILED,
-                    result={"degradation_code": "humanizer_gateway_fallback"},
-                )
-            else:
-                answer_blocks = list(humanizer_outcome.blocks)
-                _append_trace(
-                    trace,
-                    node="humanizer",
                     result={
-                        "reason_code": (
-                            "humanizer_applied"
-                            if humanizer_outcome.applied
-                            else (
-                                "humanizer_protected_fallback"
-                                if humanizer_outcome.fallback
-                                else "humanizer_no_change"
-                            )
-                        ),
-                        **(
-                            {
-                                "degradation_code": (
-                                    "humanizer_"
-                                    + (humanizer_outcome.reason or "fallback")
-                                )
-                            }
-                            if humanizer_outcome.fallback
-                            else {}
-                        ),
+                        "tone": request.tone,
+                        "persona_enhancement": request.persona_enhancement,
+                        "persona_enhancement_outcome": enhancement_outcome,
+                        "reason_code": "fallback_guard",
                     },
                 )
+            else:
+                if not has_humanizable_chinese(prepared.blocks):
+                    answer_blocks = original_blocks
+                    enhancement_outcome = PersonaEnhancementOutcome.SKIPPED_INELIGIBLE
+                    _append_trace(
+                        trace,
+                        node="persona_enhancement",
+                        status=TraceEventStatus.SKIPPED,
+                        result={
+                            "tone": request.tone,
+                            "persona_enhancement": request.persona_enhancement,
+                            "persona_enhancement_outcome": enhancement_outcome,
+                            "reason_code": "skipped_ineligible",
+                        },
+                    )
+                else:
+                    _append_trace(
+                        trace,
+                        node="persona_enhancement",
+                        status=TraceEventStatus.STARTED,
+                        result={
+                            "tone": request.tone,
+                            "persona_enhancement": request.persona_enhancement,
+                            "reason_code": "humanizer_running",
+                        },
+                    )
+                    started = perf_counter()
+                    humanizer_outcome = None
+                    humanizer_failure: dict[str, object] = {}
+                    try:
+                        candidate_blocks = active_humanizer.humanize(
+                            blocks=[block.model_copy(deep=True) for block in prepared.blocks],
+                            protected_terms=protected_terms,
+                            tone=request.tone,
+                            instructions=compose_persona_humanizer_prompt(request.tone),
+                            cancel_check=(
+                                (lambda: stream_session.cancelled)
+                                if stream_session is not None
+                                else None
+                            ),
+                            timeout_seconds=lifecycle.optional_model_timeout_seconds(),
+                        )
+                    except TimeoutError:
+                        answer_blocks = original_blocks
+                        enhancement_outcome = PersonaEnhancementOutcome.FALLBACK_TIMEOUT
+                        humanizer_failure = {"failure_code": "humanizer_timeout"}
+                    except Exception as exc:
+                        answer_blocks = original_blocks
+                        humanizer_failure = _humanizer_failure_metadata(exc)
+                        enhancement_outcome = (
+                            PersonaEnhancementOutcome.FALLBACK_TIMEOUT
+                            if humanizer_failure.get("failure_code", "").endswith("timeout")
+                            else PersonaEnhancementOutcome.FALLBACK_PROVIDER
+                        )
+                    else:
+                        try:
+                            restored_blocks = prepared.restore(list(candidate_blocks))
+                            humanizer_outcome = protect_humanizer_output(
+                                original=original_blocks,
+                                candidate=restored_blocks,
+                                protected_terms=protected_terms,
+                            )
+                        except (TypeError, ValueError):
+                            answer_blocks = original_blocks
+                            enhancement_outcome = PersonaEnhancementOutcome.FALLBACK_GUARD
+                        else:
+                            answer_blocks = list(humanizer_outcome.blocks)
+                            if humanizer_outcome.fallback:
+                                enhancement_outcome = PersonaEnhancementOutcome.FALLBACK_GUARD
+                            elif humanizer_outcome.applied:
+                                enhancement_outcome = PersonaEnhancementOutcome.APPLIED
+                                enhancement_effective = PersonaEnhancement.HUMANIZED
+                            else:
+                                enhancement_outcome = PersonaEnhancementOutcome.NO_CHANGE
+                                enhancement_effective = PersonaEnhancement.HUMANIZED
+                    _append_trace(
+                        trace,
+                        node="persona_enhancement",
+                        status=(
+                            TraceEventStatus.FAILED
+                            if enhancement_outcome.value.startswith("fallback_")
+                            else TraceEventStatus.COMPLETED
+                        ),
+                        duration_ms=_elapsed_ms(started),
+                        result={
+                            "tone": request.tone,
+                            "persona_enhancement": request.persona_enhancement,
+                            "persona_enhancement_outcome": enhancement_outcome,
+                            "reason_code": enhancement_outcome.value,
+                            **humanizer_failure,
+                            **(
+                                {"degradation_code": humanizer_outcome.reason or "guard_rejected"}
+                                if enhancement_outcome == PersonaEnhancementOutcome.FALLBACK_GUARD
+                                and humanizer_outcome is not None
+                                else {}
+                            ),
+                        },
+                    )
 
         answer_blocks = _enforce_primary_answer_tone(answer_blocks, request)
 
@@ -1750,6 +1960,8 @@ class IterationZeroService:
                 mock_only=mock_only,
             ),
             availability_status=availability_status,
+            persona_enhancement_effective=enhancement_effective,
+            persona_enhancement_outcome=enhancement_outcome,
         )
 
         self._save_run_state(
@@ -1914,24 +2126,18 @@ class IterationZeroService:
         attempt_group_id: UUID | None,
         regenerated_from_run_id: UUID | None,
     ) -> None:
-        try:
-            self.repository.save_run(
-                str(user.user_id),
-                request,
-                result,
-                attempt_group_id=attempt_group_id,
-                regenerated_from_run_id=regenerated_from_run_id,
-                auth_session_id=(
-                    user.auth_session_id
-                    if isinstance(user, AuthenticatedPrincipal)
-                    else None
-                ),
-            )
-        except AuthRequired:
-            self.repository.discard_nonterminal_run(
-                str(user.user_id), result.workflow_run_id
-            )
-            raise
+        self._run_persistence.save(
+            user_id=str(user.user_id),
+            auth_session_id=(
+                user.auth_session_id
+                if isinstance(user, AuthenticatedPrincipal)
+                else None
+            ),
+            request=request,
+            result=result,
+            attempt_group_id=attempt_group_id,
+            regenerated_from_run_id=regenerated_from_run_id,
+        )
 
     def _finish_interrupted_if_requested(
         self,
@@ -2073,6 +2279,7 @@ class IterationZeroService:
         course_pack_version: str | None,
         attempt_group_id: UUID | None,
         regenerated_from_run_id: UUID | None,
+        agent_metrics: dict[str, int],
     ) -> None:
         machine.transition(RunStatus.FAILED)
         _append_trace(
@@ -2087,6 +2294,7 @@ class IterationZeroService:
                 "model_id": model_id,
                 "billing_label": billing_label,
                 "availability_status": "execution_failed",
+                **agent_metrics,
             },
         )
         persistence_event = _append_pending_persistence_trace(
@@ -2281,6 +2489,10 @@ def _enforce_primary_answer_tone(
 ) -> list[AnswerBlock]:
     """Apply the visible tone contract once to the first student-facing block."""
 
+    if request.answer_mode.value == "concise":
+        # The selected persona remains in the provider instruction, but short
+        # follow-ups should not gain a boilerplate blockquote after generation.
+        return blocks
     for index, block in enumerate(blocks):
         if not block.content.strip():
             continue
@@ -2345,6 +2557,47 @@ def _is_retryable_model_output_error(error: Exception) -> bool:
     }
 
 
+def _is_authorization_error(error: Exception) -> bool:
+    """Keep revoked authentication ahead of a best-effort answer fallback."""
+
+    return isinstance(error, AuthRequired) or getattr(error, "code", None) in {
+        "byok_provider_authentication_failed",
+        "invalid_model_credential",
+        "byok_route_not_registered",
+    }
+
+
+def _safe_repair_failure_code(error: Exception) -> str:
+    """Map a repair failure to a trace-safe, contract-valid degradation code."""
+
+    if isinstance(error, TimeoutError):
+        return "model_timeout"
+    code = getattr(error, "code", None)
+    if isinstance(code, str) and re.fullmatch(r"[a-z][a-z0-9_]{0,99}", code):
+        return code
+    return "model_repair_failed"
+
+
+def _humanizer_failure_metadata(error: Exception) -> dict[str, object]:
+    """Return trace-safe diagnostics for the optional rewrite call.
+
+    Provider response bodies and exception text are deliberately excluded:
+    they can contain user content or provider-specific implementation details.
+    The stable code and status are enough to distinguish availability,
+    authentication, quota and invalid-response failures.
+    """
+
+    code = getattr(error, "code", None)
+    if isinstance(code, str) and code:
+        metadata: dict[str, object] = {"failure_code": code[:80]}
+    else:
+        metadata = {"failure_code": "humanizer_provider_error"}
+    status_code = getattr(error, "status_code", None)
+    if isinstance(status_code, int) and 100 <= status_code <= 599:
+        metadata["provider_status_code"] = status_code
+    return metadata
+
+
 _MAX_HISTORY_TURNS = 6
 _MAX_HISTORY_TURN_CHARS = 2_000
 _CONTEXT_CARRY_QUERY_CHARS = 1_200
@@ -2371,6 +2624,20 @@ def _compose_context_carry_query(
         return ""
     combined = " ".join([*reversed(prior), current_query])
     return combined[:_CONTEXT_CARRY_QUERY_CHARS].strip()
+
+
+def _compose_agent_rewrite_query(
+    current_query: str,
+    history: tuple[ConversationTurn, ...],
+    course_title: str,
+) -> str:
+    """Build the bounded query executed when the model selects rewrite."""
+
+    carried = _compose_context_carry_query(current_query, history)
+    base = carried or current_query
+    return (
+        f"{course_title} {base} 核心概念 典型题 易错点"
+    )[:_CONTEXT_CARRY_QUERY_CHARS].strip()
 FEEDBACK_TTL = timedelta(days=30)
 
 

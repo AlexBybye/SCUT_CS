@@ -266,8 +266,12 @@ const visibleFlowTrace = computed(() =>
   props.isRunning ? flowTrace.value.slice(0, flowStep.value + 1) : flowTrace.value,
 );
 
-function traceStepHint(event: { node: string; status: string }): string {
+function traceStepHint(event: { node: string; status: string; result?: { tone?: Tone | null } }): string {
   const text = `${event.node} ${event.status}`.toLowerCase();
+  if (text.includes("persona_enhancement")) {
+    const persona = event.result?.tone ? toneLabels[event.result.tone] : "当前";
+    return event.status === "started" ? `正在按“${persona}”人格优化表达…` : "表达优化已处理";
+  }
   if (text.includes("retriev") || text.includes("检索")) {
     return event.status === "completed" ? "检索完成" : "正在检索";
   }
@@ -323,6 +327,19 @@ const toneLabels: Record<Tone, string> = {
 const toneLabel = computed(() => (
   props.tone ? toneLabels[props.tone] : null
 ));
+
+const enhancementLabel = computed(() => {
+  const outcome = props.result?.persona_enhancement_outcome;
+  if (!outcome) return null;
+  if (outcome === "applied" || outcome === "no_change") return "已应用";
+  if (outcome === "not_requested") return "未开启";
+  if (outcome.startsWith("skipped_")) return "已跳过";
+  return "已回退";
+});
+
+const enhancementFallback = computed(() =>
+  props.result?.persona_enhancement_outcome?.startsWith("fallback_") ?? false,
+);
 
 const selectedCourseIds = computed(() => props.result?.trace
   ?.flatMap((event) => {
@@ -388,8 +405,13 @@ function citationLocator(citation: Citation): string {
         <span v-if="result" class="chip">证据状态：{{ result.evidence_status }}</span>
         <span v-if="answerModeLabel" class="chip">输出偏好：{{ answerModeLabel }}</span>
         <span v-if="toneLabel" class="chip">表达风格：{{ toneLabel }}</span>
+        <span v-if="enhancementLabel" class="chip">表达增强：{{ enhancementLabel }}</span>
       </template>
     </header>
+
+    <p v-if="enhancementFallback" class="note note-plain" role="status">
+      本次表达增强未完成，已返回原始回答。
+    </p>
 
     <div v-if="isRunning || flowTrace.length" class="flow" aria-live="polite">
       <div v-if="isRunning" class="flow-head">

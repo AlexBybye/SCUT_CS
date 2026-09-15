@@ -261,6 +261,7 @@ class ModelCredentialManager:
                     display_name=model.display_name.strip(),
                     context_length=model.context_length,
                     max_tokens=model.max_tokens,
+                    reasoning_effort=model.reasoning_effort,
                 )
                 for model in payload.models or ()
             ),
@@ -485,6 +486,7 @@ class ModelCredentialManager:
                     display_name=model.display_name,
                     context_length=model.context_length,
                     max_tokens=model.max_tokens,
+                    reasoning_effort=model.reasoning_effort,
                 )
                 for model in (record.models or (StoredByokModel(record.model_id, record.model_id),))
             ],

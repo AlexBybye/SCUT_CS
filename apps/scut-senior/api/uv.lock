@@ -968,6 +968,7 @@ dev = [
     { name = "pytest-cov" },
 ]
 onnx = [
+    { name = "numpy" },
     { name = "onnxruntime" },
     { name = "tokenizers" },
 ]
@@ -979,6 +980,7 @@ requires-dist = [
     { name = "httpx", marker = "extra == 'dev'", specifier = ">=0.28,<1" },
     { name = "idna", specifier = ">=3.18,<4" },
     { name = "jsonschema", specifier = ">=4.25,<5" },
+    { name = "numpy", marker = "extra == 'onnx'", specifier = ">=2.0,<3" },
     { name = "onnxruntime", marker = "extra == 'onnx'", specifier = ">=1.18,<2" },
     { name = "pydantic", specifier = ">=2.11,<3" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.4,<9" },

@@ -201,11 +201,7 @@ def _render_fixture_answer(
     )
     if answer_mode == AnswerMode.CONCISE:
         return (
-            "## 结论\n\n"
-            f"{context}\n\n"
-            f"{tone_callout}\n\n"
-            "## 要点\n\n"
-            f"- {control_note}{history_note}"
+            f"{context}\n\n{control_note}{history_note}"
         )
     if answer_mode == AnswerMode.DETAILED:
         return (

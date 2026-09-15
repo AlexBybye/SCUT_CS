@@ -36,6 +36,9 @@ class Settings:
     onnx_embedding_model_id: str = "bge-small-zh-v1.5"
     onnx_embedding_dimensions: int = 512
     onnx_embedding_max_length: int = 512
+    vector_search_engine: Literal["scalar", "matrix"] = "matrix"
+    vector_snapshot_cache_bytes: int = 256 * 1024 * 1024
+    retrieval_ranking_strategy: Literal["lexical_first_v1", "protected_rrf_v1"] = "lexical_first_v1"
     database_path: Path = APP_ROOT / ".local" / "iteration-zero.db"
     corpus_store_path: Path = APP_ROOT / ".local" / "corpus-store"
     # Enabled for the local fixture profile so the shipped cross-course UI is
@@ -48,6 +51,9 @@ class Settings:
     exam_review_plan_enabled: bool = True
     # Phase-two agent progress events are opt-in for old NDJSON clients.
     agent_event_stream_enabled: bool = False
+    # AB test only: model asks for the next bounded Action; invalid/unclear
+    # output falls back to the deterministic policy.
+    agent_decision_mode: Literal["rule", "model", "shadow", "deterministic"] = "rule"
     # Iteration 7.5 (SOP §12A Group B): in-process periodic cleanup scheduler.
     # Decision gate confirmed form = in-process daemon thread for single-host
     # deployment; disabling restores startup/access-triggered cleanup only.
@@ -99,6 +105,15 @@ class Settings:
             onnx_embedding_max_length=_env_positive_int(
                 "SCUT_SENIOR_ONNX_MAX_LENGTH", 512
             ),
+            vector_search_engine=os.getenv(
+                "SCUT_SENIOR_VECTOR_SEARCH_ENGINE", "matrix"
+            ),
+            vector_snapshot_cache_bytes=_env_non_negative_int(
+                "SCUT_SENIOR_VECTOR_SNAPSHOT_CACHE_BYTES", 256 * 1024 * 1024
+            ),
+            retrieval_ranking_strategy=os.getenv(
+                "SCUT_SENIOR_RETRIEVAL_RANKING_STRATEGY", "lexical_first_v1"
+            ),
             database_path=Path(
                 os.getenv(
                     "SCUT_SENIOR_DATABASE_PATH",
@@ -111,7 +126,7 @@ class Settings:
                     str(APP_ROOT / ".local" / "corpus-store"),
                 )
             ),
-            cross_course_enabled=_env_bool("SCUT_SENIOR_CROSS_COURSE_ENABLED", False),
+            cross_course_enabled=_env_bool("SCUT_SENIOR_CROSS_COURSE_ENABLED", True),
             bilibili_resources_enabled=_env_bool(
                 "SCUT_SENIOR_BILIBILI_RESOURCES_ENABLED", True
             ),
@@ -121,6 +136,7 @@ class Settings:
             agent_event_stream_enabled=_env_bool(
                 "SCUT_SENIOR_AGENT_EVENT_STREAM_ENABLED", False
             ),
+            agent_decision_mode=os.getenv("SCUT_SENIOR_AGENT_DECISION_MODE", "rule"),
             maintenance_scheduler_enabled=_env_bool(
                 "SCUT_SENIOR_MAINTENANCE_SCHEDULER_ENABLED", True
             ),
@@ -220,6 +236,10 @@ class Settings:
             raise UnsafeRuntimeConfiguration(
                 "SCUT_SENIOR_AGENT_EVENT_STREAM_ENABLED must be boolean"
             )
+        if self.agent_decision_mode not in {"rule", "model", "shadow", "deterministic"}:
+            raise UnsafeRuntimeConfiguration(
+                "SCUT_SENIOR_AGENT_DECISION_MODE must be rule, model, shadow or deterministic"
+            )
         if self.dense_retrieval_enabled and self.retrieval_mode == "local_corpus":
             if self.onnx_embedding_model_path is None:
                 raise UnsafeRuntimeConfiguration(
@@ -236,6 +256,23 @@ class Settings:
         if isinstance(self.onnx_embedding_max_length, bool) or self.onnx_embedding_max_length < 8:
             raise UnsafeRuntimeConfiguration(
                 "SCUT_SENIOR_ONNX_MAX_LENGTH must be an integer >= 8"
+            )
+        if self.vector_search_engine not in {"scalar", "matrix"}:
+            raise UnsafeRuntimeConfiguration(
+                "SCUT_SENIOR_VECTOR_SEARCH_ENGINE must be scalar or matrix"
+            )
+        if isinstance(self.vector_snapshot_cache_bytes, bool) or (
+            self.vector_snapshot_cache_bytes < 0
+        ):
+            raise UnsafeRuntimeConfiguration(
+                "SCUT_SENIOR_VECTOR_SNAPSHOT_CACHE_BYTES must be a non-negative integer"
+            )
+        if self.retrieval_ranking_strategy not in {
+            "lexical_first_v1",
+            "protected_rrf_v1",
+        }:
+            raise UnsafeRuntimeConfiguration(
+                "SCUT_SENIOR_RETRIEVAL_RANKING_STRATEGY must be lexical_first_v1 or protected_rrf_v1"
             )
         if isinstance(self.retrieval_min_score, bool) or not (
             isinstance(self.retrieval_min_score, (int, float))
@@ -331,6 +368,19 @@ def _env_positive_int(name: str, default: int) -> int:
         raise UnsafeRuntimeConfiguration(f"{name} must be a positive integer") from None
     if parsed < 1:
         raise UnsafeRuntimeConfiguration(f"{name} must be a positive integer")
+    return parsed
+
+
+def _env_non_negative_int(name: str, default: int) -> int:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    try:
+        parsed = int(value)
+    except ValueError:
+        raise UnsafeRuntimeConfiguration(f"{name} must be a non-negative integer") from None
+    if parsed < 0:
+        raise UnsafeRuntimeConfiguration(f"{name} must be a non-negative integer")
     return parsed
 
 

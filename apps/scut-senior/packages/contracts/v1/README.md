@@ -10,7 +10,7 @@
 
 ## 枚举
 
-`enums.json` 冻结五个 Workflow、回答方式、表达风格、知识范围、课程范围、模型来源、运行/回答/证据/Trace 状态、回答块来源类型、题目帮助层级，以及 manifest、locator 和 Bilibili 匿名搜索状态。Bilibili 状态只允许 `unreviewed_live_search`，不保留人工视频审核状态。Python、Worker 与 Vue 都有一致性测试；调用方不得通过自由字符串扩展枚举。
+`enums.json` 冻结五个 Workflow、回答方式、表达风格、人格增强请求与执行结果、知识范围、课程范围、模型来源、运行/回答/证据/Trace 状态、回答块来源类型、题目帮助层级，以及 manifest、locator 和 Bilibili 匿名搜索状态。Bilibili 状态只允许 `unreviewed_live_search`，不保留人工视频审核状态。Python、Worker 与 Vue 都有一致性测试；调用方不得通过自由字符串扩展枚举。
 
 ## Workflow 最小结构
 
@@ -28,6 +28,7 @@ model_id
 user_input
 answer_mode
 tone
+persona_enhancement
 knowledge_scope
 include_bilibili_resources
 context_refs

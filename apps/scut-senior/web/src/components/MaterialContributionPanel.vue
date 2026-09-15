@@ -1,534 +1,100 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
-import type {
-  ContributionPreview,
-  ContributionRecord,
-  ContributionState,
-  TemporaryMaterialRecord,
-} from "../contracts";
-import {
-  deleteTemporaryMaterial,
-  getTemporaryMaterial,
-  listContributions,
-  listTemporaryMaterials,
-  previewContribution,
-  saveTemporaryMaterial,
-  submitContribution,
-} from "../api";
+import { ref, watch } from "vue";
+import type { TemporaryMaterialRecord } from "../contracts";
+import { deleteTemporaryMaterial, listTemporaryMaterials, saveTemporaryMaterial } from "../api";
 import { useAppStore } from "../composables/useAppStore";
 
 const store = useAppStore();
-
-// 贡献提交通道暂时对 UI 封闭（后端契约、队列与 TTL 保持原样）：
-// 上线时把 CONTRIBUTION_SUBMIT_CLOSED 改回 false 即可整体恢复。
-const CONTRIBUTION_SUBMIT_CLOSED = false;
-const SUBMIT_CLOSED_TIP = "提交前请完成全部确认。";
-
-// 封闭入口的点击反馈：toast 比原生 title 即时且在触屏上也可用。
-const toastMessage = ref("");
-let toastTimer: ReturnType<typeof setTimeout> | undefined;
-function showToast(message: string): void {
-  toastMessage.value = message;
-  if (toastTimer) clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => (toastMessage.value = ""), 2200);
-}
-
-// 临时材料与贡献面板：只在临时材料精读 Workflow 下展示。
-// 材料正文取当前输入框内容；保存后 7 天自动过期（服务端物理删除）。
+const emit = defineEmits<{ "open-personal": [value: { tab: "contributions"; materialId: string }] }>();
 const materials = ref<TemporaryMaterialRecord[]>([]);
-const contributions = ref<ContributionRecord[]>([]);
 const busy = ref(false);
-const panelMessage = ref("");
-
-const preview = ref<ContributionPreview | null>(null);
-const previewMaterialId = ref<string | null>(null);
-
-const confirmations = ref({
-  course_confirmed: false,
-  source_confirmed: false,
-  public_share_rights_confirmed: false,
-  no_sensitive_info_confirmed: false,
-  public_pr_visibility_acknowledged: false,
-});
-
-const allConfirmed = computed(() =>
-  Object.values(confirmations.value).every((value) => value),
-);
-
-const stateLabels: Record<ContributionState, string> = {
-  draft: "草稿",
-  submitted: "待审核",
-  pr_open: "PR 已创建",
-  merged: "已合并",
-  rejected: "已拒绝",
-  expired: "已过期",
-};
-
-function formatDate(iso: string): string {
-  return new Date(iso).toLocaleString("zh-CN", { hour12: false });
-}
-
+const loading = ref(false);
+const message = ref("");
+const error = ref("");
+const deletingId = ref("");
+let epoch = 0;
 async function refresh(): Promise<void> {
-  if (!store.currentUser) return;
+  const userId = store.currentUser?.user_id;
+  const request = ++epoch;
+  if (!userId) { materials.value = []; loading.value = false; return; }
+  loading.value = true;
   try {
-    materials.value = await listTemporaryMaterials();
-    contributions.value = await listContributions();
-  } catch {
-    // 列表刷新失败不打断输入；下次操作会再次尝试。
-  }
+    const result = await listTemporaryMaterials();
+    if (request === epoch && store.currentUser?.user_id === userId) materials.value = result;
+  } catch (cause) {
+    if (request === epoch) error.value = cause instanceof Error ? cause.message : "材料读取失败，请重试。";
+  } finally { if (request === epoch) loading.value = false; }
 }
-
-onMounted(() => void refresh());
-
-async function onSaveMaterial(): Promise<void> {
-  panelMessage.value = "";
-  if (!store.conversationId) {
-    panelMessage.value = "请先开始一个会话，再保存临时材料。";
-    return;
-  }
+watch(() => store.currentUser?.user_id, () => {
+  materials.value = []; message.value = ""; error.value = ""; deletingId.value = "";
+  void refresh();
+}, { immediate: true });
+async function save(): Promise<void> {
+  if (busy.value) return;
+  error.value = ""; message.value = "";
+  if (!store.currentUser) { error.value = "请先登录。"; return; }
+  if (!store.conversationId) { error.value = "请先开始一个会话，再保存临时材料。"; return; }
   const content = store.userInput.trim();
-  if (!content) {
-    panelMessage.value = "请先在输入框粘贴要精读的文本或 Markdown。";
-    return;
-  }
+  if (!content) { error.value = "请先在输入框粘贴文本或 Markdown。"; return; }
+  const userId = store.currentUser.user_id;
   busy.value = true;
   try {
-    await saveTemporaryMaterial({
-      conversation_id: store.conversationId,
-      course_id: store.selectedCourseId,
-      title: store.materialTitle || null,
-      content,
-    });
-    panelMessage.value = "已保存为临时材料，7 天后自动删除。";
+    await saveTemporaryMaterial({ conversation_id: store.conversationId, course_id: store.selectedCourseId, title: store.materialTitle || null, content });
+    if (store.currentUser?.user_id !== userId) return;
+    message.value = "已保存，7 天后自动删除。可在「个人知识平台」中准备贡献。";
     await refresh();
-  } catch (error) {
-    panelMessage.value = error instanceof Error ? error.message : "保存失败。";
-  } finally {
-    busy.value = false;
-  }
+  } catch (cause) { if (store.currentUser?.user_id === userId) error.value = cause instanceof Error ? cause.message : "保存失败。"; }
+  finally { busy.value = false; }
 }
-
-async function onDeleteMaterial(materialId: string): Promise<void> {
-  busy.value = true;
+async function remove(id: string): Promise<void> {
+  if (busy.value) return;
+  const userId = store.currentUser?.user_id;
+  busy.value = true; error.value = "";
   try {
-    await deleteTemporaryMaterial(materialId);
-    if (previewMaterialId.value === materialId) {
-      preview.value = null;
-      previewMaterialId.value = null;
-    }
-    await refresh();
-  } catch (error) {
-    panelMessage.value = error instanceof Error ? error.message : "删除失败。";
-  } finally {
-    busy.value = false;
-  }
+    await deleteTemporaryMaterial(id);
+    if (store.currentUser?.user_id !== userId) return;
+    materials.value = materials.value.filter(item => item.material_id !== id);
+    deletingId.value = ""; message.value = "临时材料已删除，无法恢复。";
+  } catch (cause) { if (store.currentUser?.user_id === userId) error.value = cause instanceof Error ? cause.message : "删除失败。"; }
+  finally { busy.value = false; }
 }
-
-async function onPreview(materialId: string): Promise<void> {
-  panelMessage.value = "";
-  busy.value = true;
-  try {
-    // 预览需要原文；列表记录不含全文，先从详情端点取。
-    const detail = await getTemporaryMaterial(materialId);
-    preview.value = await previewContribution({
-      course_id: store.selectedCourseId,
-      title: detail.title,
-      content: detail.content,
-    });
-    previewMaterialId.value = materialId;
-  } catch (error) {
-    preview.value = null;
-    previewMaterialId.value = null;
-    panelMessage.value = error instanceof Error ? error.message : "预览失败。";
-  } finally {
-    busy.value = false;
-  }
-}
-
-async function onSubmit(materialId: string, asDraft: boolean): Promise<void> {
-  panelMessage.value = "";
-  if (!allConfirmed.value && !asDraft) {
-    panelMessage.value = "提交前请逐项勾选确认。";
-    return;
-  }
-  busy.value = true;
-  try {
-    await submitContribution({
-      material_id: materialId,
-      course_id: store.selectedCourseId,
-      title: store.materialTitle || null,
-      as_draft: asDraft,
-      confirmations: confirmations.value,
-    });
-    panelMessage.value = asDraft
-      ? "草稿已保存。提交进入待审队列仍需完整确认。"
-      : "已提交到维护者待处理队列；合并前还会经过人工审核与语料验证。";
-    confirmations.value = {
-      course_confirmed: false,
-      source_confirmed: false,
-      public_share_rights_confirmed: false,
-      no_sensitive_info_confirmed: false,
-      public_pr_visibility_acknowledged: false,
-    };
-    await refresh();
-  } catch (error) {
-    panelMessage.value = error instanceof Error ? error.message : "提交失败。";
-  } finally {
-    busy.value = false;
-  }
+function openPersonal(event: MouseEvent, materialId: string): void {
+  if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  emit("open-personal", { tab: "contributions", materialId });
 }
 </script>
 
 <template>
-  <div class="material-panel" aria-label="临时材料保存与贡献">
-    <div v-if="toastMessage" class="panel-toast" role="status">{{ toastMessage }}</div>
-
-    <div class="material-save">
-      <p class="material-hint">
-        粘贴的材料只属于你，默认不进入公共索引或课程包；普通材料 7 天后由服务端实际删除，贡献需人工审核通过后才会进入公共知识库。
-      </p>
-      <div class="material-actions">
-        <button type="button" class="btn btn-primary" :disabled="busy" @click="onSaveMaterial">
-          保存当前输入为临时材料
-        </button>
-      </div>
-      <p v-if="panelMessage" class="material-message" role="status">{{ panelMessage }}</p>
+  <section class="material-panel" aria-label="临时材料">
+    <p class="material-hint">材料仅对你可见，保存 7 天。贡献审核与公开分享确认统一在「个人知识平台」中完成。</p>
+    <div class="material-actions">
+      <button type="button" class="btn btn-primary" :disabled="busy || !store.currentUser" @click="save">{{ busy ? "处理中…" : "保存当前输入为临时材料" }}</button>
+      <button type="button" class="btn btn-quiet" :disabled="loading || busy" @click="refresh">刷新</button>
     </div>
-
-    <section v-if="materials.length" class="material-section" aria-label="你的临时材料">
-      <h4 class="material-heading">
-        你的临时材料
-        <span class="chip">{{ materials.length }}</span>
-      </h4>
-      <ul class="material-list">
-        <li v-for="item in materials" :key="item.material_id" class="material-item">
-          <div class="material-meta">
-            <strong>{{ item.title || "未命名材料" }}</strong>
-            <small>{{ item.char_count }} 字 · 过期于 {{ formatDate(item.expires_at) }}</small>
-          </div>
-          <div class="material-buttons">
-            <button type="button" class="btn btn-quiet" :disabled="busy" @click="onPreview(item.material_id)">
-              预览转换
-            </button>
-            <span
-              class="hover-tip"
-              :class="{ closed: CONTRIBUTION_SUBMIT_CLOSED }"
-              @click="CONTRIBUTION_SUBMIT_CLOSED && showToast(SUBMIT_CLOSED_TIP)"
-            >
-              <button
-                type="button"
-                class="btn btn-quiet"
-                :disabled="CONTRIBUTION_SUBMIT_CLOSED || busy"
-                @click="onSubmit(item.material_id, true)"
-              >
-                存为草稿
-              </button>
-              <span v-if="CONTRIBUTION_SUBMIT_CLOSED" class="hover-bubble" aria-hidden="true">
-                {{ SUBMIT_CLOSED_TIP }}
-              </span>
-            </span>
-            <button type="button" class="btn btn-danger btn-quiet" :disabled="busy" @click="onDeleteMaterial(item.material_id)">
-              删除
-            </button>
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <section v-if="preview" class="material-section material-preview" aria-label="贡献预览">
-      <h4 class="material-heading">转换结果预览</h4>
-      <div class="preview-facts">
-        <span class="chip chip-mono">落点 {{ preview.proposed_repo_path || "由维护者导出时确定" }}</span>
-        <span class="chip chip-mono">来源 {{ preview.proposed_source_id }}</span>
-        <span class="chip">题目标记 {{ preview.question_marker_count }} 处</span>
-      </div>
-      <ul v-if="preview.warnings.length" class="note note-warn material-warnings">
-        <li v-for="warning in preview.warnings" :key="warning">{{ warning }}</li>
-      </ul>
-      <pre class="material-preview-body">{{ preview.normalized_content.slice(0, 1200) }}{{ preview.normalized_content.length > 1200 ? "\n…（预览截断）" : "" }}</pre>
-
-      <fieldset class="material-confirm">
-        <legend>提交前确认（公开 PR 可能长期公开）</legend>
-        <label><input v-model="confirmations.course_confirmed" type="checkbox" /> 我确认归属课程正确</label>
-        <label><input v-model="confirmations.source_confirmed" type="checkbox" /> 我确认来源真实、未篡改</label>
-        <label><input v-model="confirmations.public_share_rights_confirmed" type="checkbox" /> 我拥有公开分享的权利</label>
-        <label><input v-model="confirmations.no_sensitive_info_confirmed" type="checkbox" /> 材料不含隐私或敏感信息</label>
-        <label><input v-model="confirmations.public_pr_visibility_acknowledged" type="checkbox" /> 我了解 PR 可能长期可见</label>
-      </fieldset>
-
-      <div class="material-actions">
-        <span
-          class="hover-tip"
-          :class="{ closed: CONTRIBUTION_SUBMIT_CLOSED }"
-          @click="CONTRIBUTION_SUBMIT_CLOSED && showToast(SUBMIT_CLOSED_TIP)"
-        >
-          <button
-            type="button"
-            class="btn btn-primary"
-            :disabled="CONTRIBUTION_SUBMIT_CLOSED || busy || !allConfirmed || !previewMaterialId"
-            @click="previewMaterialId && onSubmit(previewMaterialId, false)"
-          >
-            提交到待审队列
-          </button>
-          <span v-if="CONTRIBUTION_SUBMIT_CLOSED" class="hover-bubble" aria-hidden="true">
-            {{ SUBMIT_CLOSED_TIP }}
-          </span>
-        </span>
-      </div>
-    </section>
-
-    <section v-if="contributions.length" class="material-section" aria-label="我的贡献">
-      <h4 class="material-heading">
-        我的贡献
-        <span class="chip">{{ contributions.length }}</span>
-      </h4>
-      <ul class="material-list">
-        <li v-for="item in contributions" :key="item.contribution_id" class="material-item">
-          <div class="material-meta">
-            <strong>{{ item.title }}</strong>
-            <small>
-              <span class="chip chip-mono">{{ stateLabels[item.state] }}</span>
-              <span v-if="item.proposed_repo_path">目标 <code>{{ item.proposed_repo_path }}</code></span>
-              <a v-if="item.pr_url" :href="item.pr_url" target="_blank" rel="noreferrer">查看 PR</a>
-              <span v-if="item.maintainer_note">备注：{{ item.maintainer_note }}</span>
-            </small>
-          </div>
-        </li>
-      </ul>
-    </section>
-  </div>
+    <p v-if="message" role="status">{{ message }}</p>
+    <p v-if="error" class="note note-bad" role="alert">{{ error }}</p>
+    <p v-if="loading" role="status">正在读取临时材料…</p>
+    <p v-else-if="!materials.length" class="material-hint">还没有临时材料。保存后可在这里继续使用。</p>
+    <ul v-else class="material-list">
+      <li v-for="item in materials" :key="item.material_id" class="material-item">
+        <div class="material-meta"><strong>{{ item.title || "未命名材料" }}</strong><small>{{ item.char_count }} 字 · {{ new Date(item.expires_at).toLocaleDateString("zh-CN") }} 到期</small></div>
+        <div class="material-actions">
+          <a class="btn btn-quiet" :href="'/personal?tab=contributions&material=' + encodeURIComponent(item.material_id)" @click="openPersonal($event, item.material_id)">准备贡献</a>
+          <button v-if="deletingId !== item.material_id" type="button" class="btn btn-quiet" :disabled="busy" @click="deletingId = item.material_id">删除</button>
+          <template v-else><span>删除后无法恢复。</span><button type="button" class="btn btn-danger" :disabled="busy" @click="remove(item.material_id)">确认删除</button><button type="button" class="btn btn-quiet" :disabled="busy" @click="deletingId = ''">取消</button></template>
+        </div>
+      </li>
+    </ul>
+  </section>
 </template>
 
-<style>
-.material-panel {
-  display: grid;
-  gap: 12px;
-  padding: 12px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-  background: var(--raised);
-}
-
-.material-save {
-  display: grid;
-  gap: 8px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--line);
-}
-
-.material-hint {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: var(--fs-2xs);
-  line-height: 1.55;
-}
-
-.material-message {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: var(--fs-xs);
-}
-
-.material-section {
-  display: grid;
-  gap: 8px;
-}
-
-.material-section + .material-section {
-  padding-top: 4px;
-  border-top: 1px solid var(--line);
-}
-
-.material-heading {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: 0;
-  font-size: var(--fs-xs);
-  font-weight: 700;
-}
-
-.material-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.material-list {
-  display: grid;
-  gap: 6px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.material-item {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-  background: var(--sunken);
-}
-
-.material-meta {
-  display: grid;
-  gap: 2px;
-  min-width: 0;
-}
-
-.material-meta strong {
-  font-size: var(--fs-xs);
-  font-weight: 650;
-}
-
-.material-meta small {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-  color: var(--text-muted);
-  font-size: var(--fs-2xs);
-}
-
-.material-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.material-buttons .btn-quiet {
-  height: 24px;
-  padding: 0 8px;
-  font-size: var(--fs-2xs);
-}
-
-/* 提交前确认：两列排布，减少纵向占用。 */
-.material-confirm {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6px 14px;
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-
-.material-confirm legend {
-  grid-column: 1 / -1;
-  padding: 0;
-  margin-bottom: 2px;
-  font-size: var(--fs-2xs);
-  font-weight: 650;
-  color: var(--text-muted);
-}
-
-.material-confirm label {
-  display: flex;
-  gap: 6px;
-  align-items: flex-start;
-  font-size: var(--fs-2xs);
-  line-height: 1.4;
-}
-
-.material-confirm input {
-  flex: 0 0 auto;
-  margin-top: 2px;
-  accent-color: var(--accent);
-}
-
-/* 预览区 */
-.material-preview {
-  gap: 9px;
-}
-
-.preview-facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.material-warnings {
-  display: grid;
-  gap: 3px;
-  margin: 0;
-  padding-left: 18px;
-}
-
-.material-preview-body {
-  max-height: 220px;
-  overflow: auto;
-  margin: 0;
-  padding: 8px;
-  border-radius: var(--r-sm);
-  background: var(--sunken);
-  color: var(--text-muted);
-  font-size: var(--fs-2xs);
-  line-height: 1.5;
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-/* 封闭中的入口：悬停立即显示气泡，点击弹 toast。
-   禁用按钮会吞掉指针事件，这里显式放行给外层 wrapper。 */
-.hover-tip {
-  position: relative;
-  display: inline-flex;
-}
-
-.hover-tip.closed {
-  cursor: help;
-}
-
-.hover-tip.closed .btn:disabled {
-  pointer-events: none;
-  opacity: 0.6;
-}
-
-.hover-bubble {
-  position: absolute;
-  bottom: calc(100% + 6px);
-  left: 0;
-  z-index: 60;
-  padding: 5px 9px;
-  border-radius: 6px;
-  background: rgba(24, 24, 30, 0.94);
-  color: #fff;
-  font-size: var(--fs-2xs);
-  white-space: nowrap;
-  opacity: 0;
-  transform: translateY(2px);
-  transition:
-    opacity 0.12s ease,
-    transform 0.12s ease;
-  pointer-events: none;
-}
-
-.hover-tip.closed:hover .hover-bubble,
-.hover-tip.closed:focus-within .hover-bubble {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.panel-toast {
-  position: fixed;
-  bottom: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 200;
-  padding: 9px 16px;
-  border-radius: 8px;
-  background: rgba(24, 24, 30, 0.94);
-  color: #fff;
-  font-size: var(--fs-xs);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-}
-
-@media (max-width: 520px) {
-  .material-confirm {
-    grid-template-columns: 1fr;
-  }
-}
+<style scoped>
+.material-panel { display: grid; gap: 12px; padding: 12px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--raised); font-size: var(--fs-xs); }
+.material-panel p { margin: 0; }
+.material-hint, .material-meta small { color: var(--text-muted); line-height: 1.6; }
+.material-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.material-list { display: grid; gap: 8px; padding: 0; margin: 0; list-style: none; }
+.material-item { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; padding: 10px; border-radius: var(--r-sm); background: var(--sunken); }
+.material-meta { display: grid; gap: 3px; min-width: 0; overflow-wrap: anywhere; }
 </style>

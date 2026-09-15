@@ -5,6 +5,7 @@ import json
 import sqlite3
 from collections.abc import Callable
 from concurrent.futures import ThreadPoolExecutor
+from dataclasses import replace
 from pathlib import Path
 from threading import Event
 from urllib.error import URLError
@@ -17,6 +18,8 @@ from scut_senior_api.auth import GitHubUserProfile, SESSION_COOKIE_NAME
 from scut_senior_api.config import Settings
 from scut_senior_api.contracts import RunStatus, WorkflowRunRequest
 from scut_senior_api.main import create_app
+from scut_senior_api.contracts import Tone
+from scut_senior_api.workflow_focus import build_tone_visible_callout
 from scut_senior_api.ports import GeneratedAnswer, RetrievalBatch, RetrievedSource
 from scut_senior_api.workflow_stream import WorkflowStreamSession
 
@@ -132,9 +135,14 @@ def settings(database_path: Path) -> Settings:
 def authenticated_app(
     tmp_path: Path,
     http_client: RecordingHttpClient | None,
+    *,
+    agent_decision_mode: str = "rule",
 ) -> tuple[object, TestClient, str, str]:
     app = create_app(
-        settings(tmp_path / "byok-runtime.db"),
+        replace(
+            settings(tmp_path / "byok-runtime.db"),
+            agent_decision_mode=agent_decision_mode,
+        ),
         byok_http_client=http_client,
     )
     repository = app.state.repository
@@ -203,7 +211,7 @@ def test_custom_byok_connections_use_the_saved_endpoint_and_model(
     assert call["url"] == endpoint
     assert call["headers"]["Authorization"] == f"Bearer {api_key}"
     assert call["payload"]["model"] == model_id
-    assert call["timeout_seconds"] <= 180.0
+    assert call["timeout_seconds"] <= 120.0
     assert call["timeout_seconds"] > 0
     if endpoint == "https://api.deepseek.com/chat/completions":
         assert call["payload"]["max_tokens"] == 8192
@@ -238,6 +246,59 @@ def test_custom_byok_connections_use_the_saved_endpoint_and_model(
             for value in row
         )
     assert api_key not in persisted
+
+
+def test_byok_model_owns_optional_agent_decision_and_reports_real_counts(
+    tmp_path: Path,
+) -> None:
+    action_response = HttpResponse(
+        200,
+        json.dumps(
+            {"choices": [{"message": {"content": "generate_answer"}}]}
+        ).encode(),
+    )
+    http = RecordingHttpClient()
+    http.callback = lambda: (
+        action_response if len(http.calls) == 1 else success_response()
+    )
+    app, client, _, conversation_id = authenticated_app(
+        tmp_path,
+        http,
+        agent_decision_mode="model",
+    )
+    api_key = "sk-byok-agent-loop"
+    assert client.put(
+        "/api/v1/model-credentials/deepseek",
+        json=credential_payload("deepseek", api_key),
+    ).status_code == 200
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(
+            conversation_id,
+            "deepseek",
+            "deepseek-v4-flash",
+        ),
+    )
+
+    assert response.status_code == 201, response.text
+    assert len(http.calls) == 2
+    decision_call, answer_call = http.calls
+    assert decision_call["headers"]["Authorization"] == f"Bearer {api_key}"
+    assert decision_call["payload"]["model"] == "deepseek-v4-flash"
+    assert decision_call["payload"]["max_tokens"] == 16
+    assert decision_call["payload"]["temperature"] == 0
+    assert answer_call["payload"]["max_tokens"] == 8192
+
+    model_trace = next(
+        event["result"]
+        for event in response.json()["trace"]
+        if event["node"] == "byok_model"
+    )
+    assert model_trace["decision_call_count"] == 1
+    assert model_trace["model_action_accepted_count"] == 1
+    assert model_trace["decision_fallback_count"] == 0
+    assert api_key not in response.text
 
 
 def test_one_byok_connection_can_register_and_run_multiple_models(
@@ -294,7 +355,39 @@ def test_deepseek_direct_profile_does_not_depend_on_connection_id(
     assert call["url"] == "https://api.deepseek.com/chat/completions"
     assert call["payload"]["max_tokens"] == 8192
     assert call["payload"]["reasoning_effort"] == "low"
-    assert 0 < call["timeout_seconds"] <= 180
+    assert 0 < call["timeout_seconds"] <= 120
+
+
+def test_deepseek_direct_profile_sends_the_saved_reasoning_effort(
+    tmp_path: Path,
+) -> None:
+    http = RecordingHttpClient()
+    _, client, _, conversation_id = authenticated_app(tmp_path, http)
+    connection_id = "my-deepseek-effort"
+    model_id = "deepseek-v4-flash"
+    saved = client.put(
+        f"/api/v1/model-credentials/{connection_id}",
+        json=credential_payload(
+            connection_id,
+            "sk-deepseek-effort",
+            model_id=model_id,
+            base_url="https://api.deepseek.com",
+            models=[{
+                "model_id": model_id,
+                "display_name": "DeepSeek",
+                "reasoning_effort": "high",
+            }],
+        ),
+    )
+    assert saved.status_code == 200, saved.text
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=workflow_request(conversation_id, connection_id, model_id),
+    )
+
+    assert response.status_code == 201, response.text
+    assert http.calls[0]["payload"]["reasoning_effort"] == "high"
 
 
 def test_byok_accepts_a_plain_text_complex_answer_without_retry(tmp_path: Path) -> None:
@@ -330,7 +423,7 @@ def test_byok_accepts_a_plain_text_complex_answer_without_retry(tmp_path: Path) 
     general_supplement = result["general_supplement"]
     assert general_supplement.startswith(plain_text)
     assert general_supplement.count(
-        "> **助教提示：** 定义、前提、符号先摆齐，少一步都不给分。"
+        build_tone_visible_callout(Tone.TEACHING_ASSISTANT)
     ) == 1
     assert result["answer_blocks"] == [
         {"type": "general", "content": general_supplement}

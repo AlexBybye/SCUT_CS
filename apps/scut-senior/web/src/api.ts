@@ -53,7 +53,7 @@ export class ApiError extends Error {
   }
 }
 
-async function apiRequest<T>(path: string, init?: RequestInit): Promise<T> {
+export async function apiRequest<T>(path: string, init?: RequestInit): Promise<T> {
   const headers = new Headers(init?.headers);
   headers.set("Accept", "application/json");
   if (init?.body && !(init.body instanceof FormData)) {
@@ -118,6 +118,14 @@ export async function getCourses(): Promise<CourseCatalog> {
 
 export async function getModels(): Promise<ModelCatalog> {
   return apiRequest<ModelCatalog>("/api/v1/models");
+}
+
+export interface RuntimeHealth {
+  capabilities?: { humanizer_configured?: boolean };
+}
+
+export async function getRuntimeHealth(): Promise<RuntimeHealth> {
+  return apiRequest<RuntimeHealth>("/api/v1/health");
 }
 
 export async function getPluginRegistry(): Promise<PluginRegistry> {
@@ -422,7 +430,7 @@ export async function submitContribution(payload: {
   material_id: string;
   course_id: string;
   title?: string | null;
-  as_draft?: boolean;
+  github_email: string;
   confirmations: ContributionConfirmations;
 }): Promise<ContributionRecord> {
   return apiRequest<ContributionRecord>("/api/v1/contributions", {
@@ -431,20 +439,10 @@ export async function submitContribution(payload: {
       material_id: payload.material_id,
       course_id: payload.course_id,
       title: payload.title || null,
-      as_draft: payload.as_draft ?? false,
+      github_email: payload.github_email,
       confirmations: payload.confirmations,
     }),
   });
-}
-
-export async function submitContributionDraft(
-  contributionId: string,
-  confirmations: ContributionConfirmations,
-): Promise<ContributionRecord> {
-  return apiRequest<ContributionRecord>(
-    `/api/v1/contributions/${encodeURIComponent(contributionId)}/submit`,
-    { method: "POST", body: JSON.stringify({ confirmations }) },
-  );
 }
 
 export async function listContributions(): Promise<ContributionRecord[]> {

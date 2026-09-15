@@ -57,7 +57,9 @@ class CancellableJsonHttpClient:
         cancel_check: CancelCheck | None = None,
     ) -> HttpResponse:
         if cancel_check is not None and cancel_check():
-            # 已取消的调用直接拒绝，不再发起。
+            # 已取消的调用直接拒绝，不再发起。即使没有取消标记也进入下方
+            # 受监督线程，从而让 timeout_seconds 成为总墙钟上限，而不是
+            # urllib 套接字单次读等待上限。
             raise UpstreamRequestCancelled
 
         result: list[HttpResponse] = []

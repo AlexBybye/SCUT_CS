@@ -45,6 +45,30 @@ def test_passthrough_when_no_cancel_check() -> None:
     assert inner.calls == 1
 
 
+def test_wall_clock_timeout_is_enforced_without_cancel_check() -> None:
+    release_inner = Event()
+
+    class BlockedInner:
+        def post_json(self, url, *, headers, payload, timeout_seconds):
+            del url, headers, payload, timeout_seconds
+            release_inner.wait(timeout=1)
+            return HttpResponse(status_code=200, body=b"{}")
+
+    client = CancellableJsonHttpClient(
+        BlockedInner(), poll_interval_seconds=0.01
+    )
+    started = monotonic()
+    with pytest.raises(TimeoutError, match="supervised"):
+        client.post_json(
+            "https://example.test",
+            headers={},
+            payload={},
+            timeout_seconds=0.05,
+        )
+    assert monotonic() - started < 0.5
+    release_inner.set()
+
+
 def test_cancelled_before_start_never_reaches_upstream() -> None:
     class Inner:
         def __init__(self):

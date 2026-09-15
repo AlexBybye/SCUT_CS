@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 from fastapi.testclient import TestClient
 
+from scut_senior_api.agent_loop import AgentBudget
 from scut_senior_api.config import Settings
 from scut_senior_api.contracts import (
     AnswerBlock,
@@ -186,11 +187,13 @@ def test_runtime_retries_the_same_model_once_after_citation_guard_rejection(
     class ScriptedModel:
         def __init__(self) -> None:
             self.calls = 0
+            self.inputs: list[str] = []
 
         def generate(self, request, sources, history=(), *, cancel_check=None):
             del cancel_check
-            del request, sources, history
+            del sources, history
             self.calls += 1
+            self.inputs.append(request.user_input)
             citation_id = "S999" if self.calls == 1 else "S1"
             return GeneratedAnswer(
                 repository_answer=f"矩阵秩的回答 [{citation_id}]。",
@@ -207,6 +210,8 @@ def test_runtime_retries_the_same_model_once_after_citation_guard_rejection(
 
     assert response.status_code == 201, response.text
     assert model.calls == 2
+    assert "内部引用校验修复提示" not in response.json()["repository_answer"]
+    assert model.inputs == ["请解释矩阵的秩"] * 2
     result = response.json()
     assert [item["citation_id"] for item in result["citations"]] == ["S1"]
     retry = next(item for item in result["trace"] if item["node"] == "model_output_retry")
@@ -214,6 +219,219 @@ def test_runtime_retries_the_same_model_once_after_citation_guard_rejection(
         "retry_count": 1,
         "failure_code": "model_output_guard_rejected",
     }
+
+
+def test_exam_review_retries_once_when_retrieved_sources_are_left_uncited(
+    tmp_path: Path,
+) -> None:
+    app = create_app(Settings(app_env="test", database_path=tmp_path / "exam-citation.db"))
+    client = TestClient(app)
+    conversation = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    ).json()
+
+    class ScriptedExamModel:
+        def __init__(self) -> None:
+            self.calls = 0
+            self.inputs: list[str] = []
+
+        def generate(self, request, sources, history=(), *, cancel_check=None):
+            del sources, history, cancel_check
+            self.calls += 1
+            self.inputs.append(request.user_input)
+            if self.calls == 1:
+                return GeneratedAnswer(repository_answer="按秩与方程组主线复习。")
+            return GeneratedAnswer(
+                repository_answer="按秩与方程组主线复习 [S1]。",
+                citation_ids=("S1",),
+            )
+
+    model = ScriptedExamModel()
+    app.state.service.model = model
+    payload = _request(conversation["conversation_id"])
+    payload.update(
+        {
+            "workflow_type": "exam_review",
+            "user_input": "结合历年卷给我复习大纲",
+            "workflow_payload": {
+                "syllabus": "矩阵的秩与线性方程组",
+                "exam_date": None,
+                "available_hours": 6,
+                "goals": ["通过考试"],
+                "weak_topics": ["矩阵的秩"],
+            },
+        }
+    )
+    response = client.post("/api/v1/workflow-runs", json=payload)
+
+    assert response.status_code == 201, response.text
+    result = response.json()
+    assert model.calls == 2
+    assert "exam_review_citation_missing" not in result["repository_answer"]
+    assert model.inputs == ["结合历年卷给我复习大纲"] * 2
+    assert [citation["citation_id"] for citation in result["citations"]] == ["S1"]
+    model_event = next(event for event in result["trace"] if event["node"] == "mock_model")
+    assert model_event["result"]["answer_call_count"] == 2
+    assert model_event["result"]["guard_retry_count"] == 1
+    retry = next(
+        event
+        for event in result["trace"]
+        if event["node"] == "model_output_retry"
+        and event["result"]["failure_code"] == "exam_review_citation_missing"
+    )
+    assert retry["result"]["retry_count"] == 1
+    agent_events = app.state.repository.list_agent_events(result["workflow_run_id"])
+    assert [
+        event.get("action")
+        for event in agent_events
+        if event["kind"] == "action_executed"
+    ] == ["retrieve", "generate_answer", "generate_answer"]
+    assert sum(event["kind"] == "observation_recorded" for event in agent_events) == 3
+
+
+def test_exam_review_keeps_partial_answer_when_soft_budget_blocks_citation_repair(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    app = create_app(
+        Settings(app_env="test", database_path=tmp_path / "exam-soft-budget.db")
+    )
+    client = TestClient(app)
+    conversation = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    ).json()
+
+    class UncitedExamModel:
+        def __init__(self) -> None:
+            self.calls = 0
+
+        def generate(self, request, sources, history=(), *, cancel_check=None):
+            del request, sources, history, cancel_check
+            self.calls += 1
+            return GeneratedAnswer(repository_answer="按秩与方程组主线复习。")
+
+    model = UncitedExamModel()
+    app.state.service.model = model
+    monkeypatch.setattr(
+        AgentBudget,
+        "allows_optional_call",
+        lambda self, elapsed_seconds: False,
+    )
+    payload = _request(conversation["conversation_id"])
+    payload.update(
+        {
+            "workflow_type": "exam_review",
+            "user_input": "结合历年卷给我复习大纲",
+            "workflow_payload": {
+                "syllabus": "矩阵的秩与线性方程组",
+                "exam_date": None,
+                "available_hours": 6,
+                "goals": ["通过考试"],
+                "weak_topics": ["矩阵的秩"],
+            },
+        }
+    )
+
+    response = client.post("/api/v1/workflow-runs", json=payload)
+
+    assert response.status_code == 201, response.text
+    result = response.json()
+    assert model.calls == 1
+    assert result["answer_status"] == "partial"
+    assert result["evidence_status"] == "insufficient"
+    assert result["citations"] == []
+    assert all(event["node"] != "model_output_retry" for event in result["trace"])
+
+
+@pytest.mark.parametrize(
+    ("repair_result", "expected_degradation"),
+    [
+        (TimeoutError("second call timed out"), "model_timeout"),
+        (
+            GeneratedAnswer(
+                repository_answer="改写后仍没有可回查资料编号。",
+            ),
+            "citation_still_missing",
+        ),
+        (
+            GeneratedAnswer(
+                repository_answer="错误引用 [S99]。",
+                citation_ids=("S99",),
+            ),
+            "citation_guard_rejected",
+        ),
+    ],
+)
+def test_exam_review_keeps_first_guarded_answer_when_citation_repair_fails(
+    tmp_path: Path,
+    repair_result: GeneratedAnswer | Exception,
+    expected_degradation: str,
+) -> None:
+    app = create_app(
+        Settings(app_env="test", database_path=tmp_path / "exam-repair-fallback.db")
+    )
+    client = TestClient(app)
+    conversation = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    ).json()
+
+    class CitationRepairModel:
+        def __init__(self) -> None:
+            self.calls = 0
+            self.inputs: list[str] = []
+            self.repairs: list[str | None] = []
+
+        def generate(
+            self, request, sources, history=(), *, cancel_check=None, repair_context=None
+        ):
+            del sources, history, cancel_check
+            self.calls += 1
+            self.inputs.append(request.user_input)
+            self.repairs.append(repair_context)
+            if self.calls == 1:
+                return GeneratedAnswer(repository_answer="先按秩和方程组复习。")
+            if isinstance(repair_result, Exception):
+                raise repair_result
+            return repair_result
+
+    model = CitationRepairModel()
+    app.state.service.model = model
+    payload = _request(conversation["conversation_id"])
+    payload.update(
+        {
+            "workflow_type": "exam_review",
+            "user_input": "结合历年卷给我复习大纲",
+            "workflow_payload": {
+                "syllabus": "矩阵的秩与线性方程组",
+                "exam_date": None,
+                "available_hours": 6,
+                "goals": ["通过考试"],
+                "weak_topics": ["矩阵的秩"],
+            },
+        }
+    )
+
+    response = client.post("/api/v1/workflow-runs/stream", json=payload)
+    events = [json.loads(line) for line in response.text.splitlines()]
+
+    assert response.status_code == 200, response.text
+    assert sum(event["kind"] in {"result", "error"} for event in events) == 1
+    result = events[-1]["result"]
+    assert result["run_status"] == "completed"
+    assert any(
+        "先按秩和方程组复习。" in block["content"]
+        for block in result["answer_blocks"]
+    )
+    assert model.calls == 2
+    assert model.inputs == ["结合历年卷给我复习大纲"] * 2
+    assert model.repairs[0] is None
+    assert "至少加入一条 [S#]" in (model.repairs[1] or "")
+    fallback = next(
+        event
+        for event in result["trace"]
+        if event["node"] == "model_output_retry"
+        and event["result"].get("failure_code") == "exam_review_citation_repair_failed"
+    )
+    assert fallback["result"]["degradation_code"] == expected_degradation
 
 
 def test_zero_candidates_degrades_to_insufficient_evidence_without_retry(

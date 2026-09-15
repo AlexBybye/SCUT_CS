@@ -52,6 +52,7 @@ describe("buildWorkflowRequest", () => {
       user_input: "请解释矩阵的秩",
       answer_mode: "detailed",
       tone: "teaching_assistant",
+      persona_enhancement: "standard",
       knowledge_scope: "course_first",
       include_bilibili_resources: true,
       context_refs: [],

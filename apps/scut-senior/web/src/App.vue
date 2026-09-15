@@ -1,14 +1,19 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted } from "vue";
+import { computed, defineAsyncComponent, onBeforeUnmount, onMounted } from "vue";
 import AppTopBar from "./components/AppTopBar.vue";
 import ConversationRail from "./components/ConversationRail.vue";
 import TranscriptPanel from "./components/TranscriptPanel.vue";
 import Composer from "./components/Composer.vue";
 import { useAppStore } from "./composables/useAppStore";
 import MaintainerPanel from "./components/MaintainerPanel.vue";
+import { personalLocation, syncPersonalLocation, closePersonalContent } from "./personalNavigation";
+
+const PersonalContentPanel = defineAsyncComponent(() => import("./components/PersonalContentPanel.vue"));
 
 const store = useAppStore();
 const isMaintainerRoute = window.location.pathname === "/maintainer";
+const isPersonalRoute = computed(() => personalLocation.value.split("?")[0] === "/personal");
+const personalQuery = computed(() => new URLSearchParams(personalLocation.value.split("?")[1] || ""));
 
 // 浮层态的左轨与检查器需要 Escape 退出，否则窄屏下只能靠再次点按钮。
 function onGlobalKeydown(event: KeyboardEvent): void {
@@ -29,20 +34,24 @@ onMounted(() => {
   void store.loadAuth();
   void store.loadCourses();
   void store.loadModels();
+  void store.loadRuntimeHealth();
   window.addEventListener("keydown", onGlobalKeydown);
   window.addEventListener("resize", onWindowResize);
+  window.addEventListener("popstate", syncPersonalLocation);
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener("keydown", onGlobalKeydown);
   window.removeEventListener("resize", onWindowResize);
+  window.removeEventListener("popstate", syncPersonalLocation);
   store.abortActiveWorkflow("页面已离开，运行已取消。");
 });
 </script>
 
 <template>
   <MaintainerPanel v-if="isMaintainerRoute" />
-  <div v-else class="shell">
+  <PersonalContentPanel v-if="isPersonalRoute" :initial-tab="personalQuery.get('tab') === 'private' ? 'private' : 'contributions'" :initial-material-id="personalQuery.get('material') || undefined" @back="closePersonalContent" />
+  <div v-if="!isMaintainerRoute" v-show="!isPersonalRoute" class="shell">
     <a href="#transcript" class="skip-link">跳到运行记录</a>
 
     <AppTopBar />

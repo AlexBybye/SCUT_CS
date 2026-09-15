@@ -394,6 +394,29 @@
       "title": "ModelSource",
       "type": "string"
     },
+    "PersonaEnhancement": {
+      "enum": [
+        "standard",
+        "humanized"
+      ],
+      "title": "PersonaEnhancement",
+      "type": "string"
+    },
+    "PersonaEnhancementOutcome": {
+      "enum": [
+        "not_requested",
+        "applied",
+        "skipped_unavailable",
+        "skipped_budget",
+        "skipped_ineligible",
+        "no_change",
+        "fallback_timeout",
+        "fallback_provider",
+        "fallback_guard"
+      ],
+      "title": "PersonaEnhancementOutcome",
+      "type": "string"
+    },
     "RunStatus": {
       "enum": [
         "created",
@@ -403,6 +426,15 @@
         "failed"
       ],
       "title": "RunStatus",
+      "type": "string"
+    },
+    "Tone": {
+      "enum": [
+        "teaching_assistant",
+        "study_partner",
+        "senior_student"
+      ],
+      "title": "Tone",
       "type": "string"
     },
     "TraceEvent": {
@@ -472,6 +504,19 @@
           "default": null,
           "title": "Accepted Count"
         },
+        "action_rejection_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Action Rejection Count"
+        },
         "adapter": {
           "anyOf": [
             {
@@ -513,6 +558,19 @@
           ],
           "default": null,
           "title": "Agent Preset Version"
+        },
+        "answer_call_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Answer Call Count"
         },
         "auth_mode": {
           "anyOf": [
@@ -634,6 +692,32 @@
           ],
           "default": null
         },
+        "decision_call_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Decision Call Count"
+        },
+        "decision_fallback_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Decision Fallback Count"
+        },
         "degradation_code": {
           "anyOf": [
             {
@@ -695,6 +779,19 @@
           "default": null,
           "title": "Fixture Only"
         },
+        "guard_retry_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Guard Retry Count"
+        },
         "hit_count": {
           "anyOf": [
             {
@@ -735,6 +832,32 @@
           "default": null,
           "title": "Mode"
         },
+        "model_action_accepted_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model Action Accepted Count"
+        },
+        "model_action_shadow_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model Action Shadow Count"
+        },
         "model_id": {
           "anyOf": [
             {
@@ -773,6 +896,28 @@
           "default": null,
           "title": "Normalized Topics"
         },
+        "persona_enhancement": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PersonaEnhancement"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "persona_enhancement_outcome": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PersonaEnhancementOutcome"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
         "provider_id": {
           "anyOf": [
             {
@@ -784,6 +929,33 @@
           ],
           "default": null,
           "title": "Provider Id"
+        },
+        "provider_retry_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Provider Retry Count"
+        },
+        "provider_status_code": {
+          "anyOf": [
+            {
+              "maximum": 599,
+              "minimum": 100,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Provider Status Code"
         },
         "real_model_called": {
           "anyOf": [
@@ -906,6 +1078,17 @@
           ],
           "default": null,
           "title": "Stored"
+        },
+        "tone": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Tone"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         },
         "unreviewed_search_returned": {
           "anyOf": [
@@ -1078,6 +1261,14 @@
         },
         "model_source": {
           "$ref": "#/$defs/ModelSource"
+        },
+        "persona_enhancement_effective": {
+          "$ref": "#/$defs/PersonaEnhancement",
+          "default": "standard"
+        },
+        "persona_enhancement_outcome": {
+          "$ref": "#/$defs/PersonaEnhancementOutcome",
+          "default": "not_requested"
         },
         "related_questions": {
           "items": {

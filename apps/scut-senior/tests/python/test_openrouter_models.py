@@ -12,11 +12,16 @@ from fastapi.testclient import TestClient
 from scut_senior_api.adapters.openrouter import (
     OPENROUTER_CHAT_COMPLETIONS_URL,
     HttpResponse,
+    _build_structured_request,
     _quota_reset_at,
 )
+from scut_senior_api.adapters.byok import _build_byok_request
 from scut_senior_api.config import Settings, UnsafeRuntimeConfiguration
 from scut_senior_api.byok_catalog import BYOK_CATALOG_VERSION
 from scut_senior_api.main import create_app
+from scut_senior_api.contracts import Tone, WorkflowRunRequest
+from scut_senior_api.ports import RetrievedSource
+from scut_senior_api.workflow_focus import build_tone_visible_callout
 from scut_senior_api.model_catalog import (
     CATALOG_VERSION,
     ModelHealthResult,
@@ -168,6 +173,16 @@ class HealthyCatalogChecker:
         }
 
 
+class UnavailableCatalogChecker:
+    checked_at = datetime(2026, 8, 16, 0, 0, tzinfo=UTC)
+
+    def check(self, model_ids):
+        return {
+            model_id: ModelHealthResult("health_check_failed", self.checked_at)
+            for model_id in model_ids
+        }
+
+
 def _settings(tmp_path: Path, *, api_key: str = "server-only-secret") -> Settings:
     return Settings(
         app_env="test",
@@ -230,6 +245,56 @@ def _client_with_conversation(
     )
     assert conversation.status_code == 201
     return client, conversation.json()["conversation_id"]
+
+
+def test_provider_prompts_keep_repair_separate_from_authoritative_user_input() -> None:
+    """OpenRouter/Zhipu share one builder; BYOK has its own payload builder."""
+
+    request = WorkflowRunRequest.model_validate(
+        {
+            **_workflow_request("00000000-0000-0000-0000-000000000001", MODEL_FIXTURES[0]["model_id"]),
+            "workflow_type": "exam_review",
+            "user_input": "结合历年卷给我复习大纲",
+            "workflow_payload": {
+                "syllabus": "矩阵的秩",
+                "exam_date": None,
+                "available_hours": 4,
+                "goals": ["通过考试"],
+                "weak_topics": [],
+            },
+        }
+    )
+    sources = [
+        RetrievedSource(
+            chunk_id="linear_algebra:repair:1",
+            course_id="linear_algebra",
+            source_id="repair-source",
+            source_title="历年卷",
+            text="矩阵秩考查重点。",
+            locator_type="page",
+            locator_start=1,
+            locator_end=1,
+            question_id=None,
+            heading_path=(),
+        )
+    ]
+    repair = "请只使用 [S1]，在可支持的说法后加入引用。"
+    payloads = (
+        _build_structured_request(request, sources, repair_context=repair),
+        _build_byok_request(
+            request,
+            sources,
+            max_tokens=1024,
+            temperature=0.2,
+            repair_context=repair,
+        ),
+    )
+
+    for payload in payloads:
+        content = payload["messages"][-1]["content"]
+        assert "结合历年卷给我复习大纲" in content
+        assert "系统引用校验修复要求（服务端生成，非用户问题；仅修复此项）" in content
+        assert repair in content
 
 
 def test_model_catalog_returns_fixed_openrouter_and_zhipu_entries(
@@ -425,6 +490,37 @@ def test_unregistered_model_is_rejected_before_any_upstream_call(tmp_path: Path)
     assert http_client.calls == []
 
 
+def test_registered_model_with_failed_health_is_temporarily_unavailable(
+    tmp_path: Path,
+) -> None:
+    http_client = RecordingHttpClient(_success_response())
+    client = TestClient(
+        create_app(
+            _settings(tmp_path),
+            model_http_client=http_client,
+            model_health_checker=UnavailableCatalogChecker(),
+        )
+    )
+    conversation = client.post(
+        "/api/v1/conversations", json={"course_id": "linear_algebra"}
+    ).json()
+
+    response = client.post(
+        "/api/v1/workflow-runs",
+        json=_workflow_request(
+            conversation["conversation_id"],
+            "nvidia/nemotron-3-super-120b-a12b:free",
+        ),
+    )
+
+    assert response.status_code == 503
+    assert response.json()["error"] == {
+        "code": "platform_model_unavailable",
+        "detail": "所选模型当前暂时不可用，请稍后重试。",
+    }
+    assert http_client.calls == []
+
+
 def test_openrouter_uses_one_exact_model_without_a_structured_output_contract(
     tmp_path: Path,
 ) -> None:
@@ -488,7 +584,7 @@ def test_openrouter_accepts_a_plain_text_complex_answer_without_retry(
     general_supplement = result["general_supplement"]
     assert general_supplement.startswith(plain_text)
     assert general_supplement.count(
-        "> **助教提示：** 定义、前提、符号先摆齐，少一步都不给分。"
+        build_tone_visible_callout(Tone.TEACHING_ASSISTANT)
     ) == 1
     assert result["answer_blocks"] == [
         {"type": "general", "content": general_supplement}
@@ -574,7 +670,7 @@ def test_missing_or_invalid_bilibili_keywords_fall_back_to_model_core_topics(
     result = response.json()
     assert result["repository_answer"].startswith("矩阵秩的说明。[S1]")
     assert result["repository_answer"].count(
-        "> **助教提示：** 定义、前提、符号先摆齐，少一步都不给分。"
+        build_tone_visible_callout(Tone.TEACHING_ASSISTANT)
     ) == 1
     search = result["external_resources"][-1]
     assert search["query_keywords"] == ["线性代数", "矩阵的秩"]

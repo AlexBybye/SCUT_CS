@@ -12,6 +12,7 @@ import csv
 import hashlib
 import json
 import subprocess
+from dataclasses import replace
 from pathlib import Path
 
 from fastapi.testclient import TestClient
@@ -224,6 +225,46 @@ def test_appendix_renders_objective_counts_and_never_predicts() -> None:
     assert "酉空间" in appendix
     # AI 样题边界必须明确。
     assert "AI 生成" in appendix and "非历年真题" in appendix
+    # 学生可见附录只给出未覆盖项摘要，不逐行回显整段大纲。
+    assert "共 1 项：酉空间" in appendix
+
+
+def test_appendix_limits_verbose_groups_suggestions_and_uncovered_preview() -> None:
+    plan = _plan("酉空间")
+    stats = dict(plan.past_exam_stats)
+    stats["question_groups"] = [
+        {
+            "source_title": f"试卷{index}",
+            "year": 2020 + index,
+            "question_count": 9,
+            "questions": [
+                {"question_id": f"Q{index}-{question}"}
+                for question in range(1, 6)
+            ],
+        }
+        for index in range(1, 6)
+    ]
+    verbose = replace(
+        plan,
+        knowledge_points=(),
+        past_exam_stats=stats,
+        review_suggestions=tuple(f"建议{index}" for index in range(1, 7)),
+        uncovered_items=(
+            "这是一个明显超过学生可见摘要长度的未覆盖大纲片段，后面不应完整复制",
+            "Jordan 标准形",
+            "矩阵分块",
+            "正定判定",
+        ),
+    )
+
+    appendix = render_exam_review_appendix(verbose)
+
+    assert "《试卷4》" in appendix and "《试卷5》" not in appendix
+    assert "其余 1 组保留在结构化复习计划中" in appendix
+    assert "Q1-3" in appendix and "Q1-4" not in appendix
+    assert "建议4" in appendix and "建议5" not in appendix
+    assert "后面不应完整复制" not in appendix
+    assert "共 4 项：" in appendix
 
 
 def test_empty_past_exam_corpus_is_reported_honestly() -> None:

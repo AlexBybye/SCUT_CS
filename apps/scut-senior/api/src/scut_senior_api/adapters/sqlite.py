@@ -35,6 +35,7 @@ from ..contracts import (
     ConversationSummary,
     FeedbackRecord,
     PrivateKnowledgeRecord,
+    PrivateKnowledgeDetail,
     TemporaryMaterialDetail,
     TemporaryMaterialRecord,
     WorkflowAttempt,
@@ -57,6 +58,16 @@ HISTORY_TTL = timedelta(days=30)
 BYOK_CREDENTIAL_LIFETIME_DAYS = 365
 PRIVATE_DIRECTORY_MODE = 0o700
 PRIVATE_FILE_MODE = 0o600
+
+
+class _ClosingSQLiteConnection(sqlite3.Connection):
+    """Make ``with repository.connect()`` release Windows file handles too."""
+
+    def __exit__(self, exc_type, exc_value, traceback):  # type: ignore[no-untyped-def]
+        try:
+            return super().__exit__(exc_type, exc_value, traceback)
+        finally:
+            self.close()
 
 
 @dataclass(frozen=True, slots=True)
@@ -200,7 +211,11 @@ class SQLiteWorkflowRepository:
 
     def connect(self) -> sqlite3.Connection:
         expected_identity = _protect_database_bundle(self.database_path)
-        connection = sqlite3.connect(self.database_path, timeout=5.0)
+        connection = sqlite3.connect(
+            self.database_path,
+            timeout=5.0,
+            factory=_ClosingSQLiteConnection,
+        )
         try:
             opened_identity = _protect_database_bundle(self.database_path)
             if (
@@ -523,20 +538,6 @@ class SQLiteWorkflowRepository:
                 "DELETE FROM auth_sessions WHERE revoked_at IS NOT NULL OR expires_at <= ?",
                 (now,),
             ).rowcount
-            tables = {
-                row["name"]
-                for row in connection.execute(
-                    "SELECT name FROM sqlite_master WHERE type = 'table'"
-                )
-            }
-            if "model_credentials" in tables:
-                # BYOK credentials are account-bound, so session cleanup cannot
-                # cascade to them.  Remove expired ciphertext on the same
-                # scheduled path instead of merely hiding it at read time.
-                connection.execute(
-                    "DELETE FROM model_credentials WHERE expires_at <= ?",
-                    (now,),
-                )
         return AuthCleanupCounts(states, sessions)
 
     def cleanup_history_records(self) -> HistoryCleanupCounts:
@@ -617,13 +618,6 @@ class SQLiteWorkflowRepository:
                 """,
                 (now, now),
             ).rowcount
-            if "contribution_attachments" in tables:
-                # Attachment payloads have their own TTL and are not covered
-                # by clearing a contribution's text snapshot.
-                connection.execute(
-                    "DELETE FROM contribution_attachments WHERE expires_at <= ?",
-                    (now,),
-                )
         return MaterialCleanupCounts(materials, cleared)
 
     # ------------------------------------------------------------------
@@ -746,7 +740,7 @@ class SQLiteWorkflowRepository:
         """物理删除该账号的全部私有数据并封锁其 GitHub 身份。
 
         注销语义（§16 待确认项 3 决议）：会话立即失效、历史／反馈／临时材料/
-        贡献副本/模型凭据密文全部物理删除、users 行删除；deleted_accounts 仅
+        贡献副本/私人知识/模型凭据密文全部物理删除、users 行删除；deleted_accounts 仅
         保留 github_user_id 用于登录封锁。导出请先于注销调用。
         """
 
@@ -764,12 +758,12 @@ class SQLiteWorkflowRepository:
                 raise LookupError("account not found")
             github_user_id = int(row["github_user_id"])
             counts = {
-                "temporary_materials": connection.execute(
-                    "DELETE FROM temporary_materials WHERE user_id = ?",
-                    (normalized_user_id,),
-                ).rowcount,
                 "private_knowledge_items": connection.execute(
                     "DELETE FROM private_knowledge_items WHERE user_id = ?",
+                    (normalized_user_id,),
+                ).rowcount,
+                "temporary_materials": connection.execute(
+                    "DELETE FROM temporary_materials WHERE user_id = ?",
                     (normalized_user_id,),
                 ).rowcount,
                 "contributions": connection.execute(
@@ -1133,7 +1127,7 @@ class SQLiteWorkflowRepository:
             rows = connection.execute(
                 f"""SELECT * FROM private_knowledge_items
                     WHERE user_id = ? AND visibility = 'private' AND expires_at > ?
-                    AND course_id IN ({placeholders}) ORDER BY created_at DESC""",
+                    AND course_id IN ({placeholders}) ORDER BY created_at DESC LIMIT 20""",
                 (user_id, self._now().isoformat(), *course_ids),
             ).fetchall()
         return [
@@ -1144,6 +1138,68 @@ class SQLiteWorkflowRepository:
                 locator_end=None, question_id=None, heading_path=(),
             ) for row in rows
         ]
+
+    @staticmethod
+    def _private_record(row: sqlite3.Row) -> PrivateKnowledgeRecord:
+        return PrivateKnowledgeRecord.model_validate({
+            key: row[key] for key in PrivateKnowledgeRecord.model_fields
+        })
+
+    def list_private_knowledge(
+        self, user_id: str, *, limit: int = 30, offset: int = 0,
+        course_id: str | None = None,
+    ) -> list[PrivateKnowledgeRecord]:
+        fields = ", ".join(PrivateKnowledgeRecord.model_fields)
+        with self._connect() as connection:
+            rows = connection.execute(
+                f"SELECT {fields} FROM private_knowledge_items "
+                "WHERE user_id = ? AND visibility = 'private' AND expires_at > ? "
+                + ("AND course_id = ? " if course_id else "")
+                + "ORDER BY created_at DESC, knowledge_id DESC LIMIT ? OFFSET ?",
+                (user_id, self._now().isoformat(), *([course_id] if course_id else []),
+                 min(max(limit, 1), 100), max(offset, 0)),
+            ).fetchall()
+        return [self._private_record(row) for row in rows]
+
+    def get_private_knowledge(self, user_id: str, knowledge_id: UUID) -> PrivateKnowledgeDetail | None:
+        with self._connect() as connection:
+            row = connection.execute(
+                "SELECT * FROM private_knowledge_items WHERE knowledge_id = ? AND user_id = ? "
+                "AND visibility = 'private' AND expires_at > ?",
+                (str(knowledge_id), user_id, self._now().isoformat()),
+            ).fetchone()
+        if row is None:
+            return None
+        return PrivateKnowledgeDetail(**self._private_record(row).model_dump(), content=row["content"])
+
+    def delete_private_knowledge(self, user_id: str, knowledge_id: UUID) -> bool:
+        with self._connect() as connection:
+            return connection.execute(
+                "DELETE FROM private_knowledge_items WHERE knowledge_id = ? AND user_id = ?",
+                (str(knowledge_id), user_id),
+            ).rowcount > 0
+
+    def renew_private_knowledge(self, user_id: str, knowledge_id: UUID) -> PrivateKnowledgeRecord | None:
+        now = self._now()
+        with self._connect() as connection:
+            updated = connection.execute(
+                "UPDATE private_knowledge_items SET expires_at = ? "
+                "WHERE knowledge_id = ? AND user_id = ? AND visibility = 'private' AND expires_at > ?",
+                ((now + timedelta(days=TEMPORARY_MATERIAL_TTL_DAYS)).isoformat(),
+                 str(knowledge_id), user_id, now.isoformat()),
+            ).rowcount
+            if not updated:
+                return None
+            row = connection.execute(
+                "SELECT * FROM private_knowledge_items WHERE knowledge_id = ? AND user_id = ?",
+                (str(knowledge_id), user_id),
+            ).fetchone()
+        return self._private_record(row)
+
+    def contributor_login(self, user_id: str) -> str:
+        with self._connect() as connection:
+            row = connection.execute("SELECT github_login FROM users WHERE user_id = ?", (user_id,)).fetchone()
+        return row["github_login"] if row else "SCUT contributor"
 
     @staticmethod
     def _contribution_record(row: sqlite3.Row) -> ContributionRecord:
@@ -1196,19 +1252,14 @@ class SQLiteWorkflowRepository:
         citation_metadata: list[dict[str, object]] | None = None,
         corpus_metadata: dict[str, object] | None = None,
     ) -> ContributionRecord:
-        """创建贡献记录。
+        """创建已确认的贡献，待审副本保留 30 天。"""
 
-        draft 继承临时材料 7 天期限（随材料一起过期）；
-        submitted/pr_open 及终态使用“必要待审副本”30 天上限。
-        """
+        if state == ContributionState.DRAFT:
+            raise ValueError("contribution drafts are no longer supported")
 
         now = self._now()
         contribution_id = uuid4()
-        ttl_days = (
-            TEMPORARY_MATERIAL_TTL_DAYS
-            if state == ContributionState.DRAFT
-            else CONTRIBUTION_REVIEW_COPY_TTL_DAYS
-        )
+        ttl_days = CONTRIBUTION_REVIEW_COPY_TTL_DAYS
         created_at = now.isoformat()
         updated_at = created_at
         expires_at = (now + timedelta(days=ttl_days)).isoformat()
@@ -1427,6 +1478,7 @@ class SQLiteWorkflowRepository:
                 display_name=item.get("display_name", item["model_id"]),
                 context_length=item.get("context_length", 0),
                 max_tokens=item.get("max_tokens"),
+                reasoning_effort=item.get("reasoning_effort"),
             )
             for item in raw_models
             if isinstance(item, dict)
@@ -1556,6 +1608,7 @@ class SQLiteWorkflowRepository:
                                 "display_name": model.display_name,
                                 "context_length": model.context_length,
                                 "max_tokens": model.max_tokens,
+                                "reasoning_effort": model.reasoning_effort,
                             }
                             for model in models
                         ],
@@ -2146,12 +2199,6 @@ class SQLiteWorkflowRepository:
         if decision not in {"confirmed", "edited", "rejected"}:
             raise ValueError("invalid exam plan decision")
         with self._connect() as connection:
-            owner = connection.execute(
-                "SELECT 1 FROM conversations WHERE conversation_id = ? AND user_id = ?",
-                (str(conversation_id), user_id),
-            ).fetchone()
-            if owner is None:
-                raise LookupError("conversation not found")
             connection.execute(
                 "INSERT INTO exam_plan_decisions "
                 "(decision_id, conversation_id, user_id, decision, plan_json, created_at) "

@@ -12,10 +12,12 @@ from .contracts import (
     ConversationSummary,
     ExternalResource,
     FeedbackRecord,
+    PrivateKnowledgeDetail,
     PrivateKnowledgeRecord,
     WorkflowAttempt,
     WorkflowResult,
     WorkflowRunRequest,
+    Tone,
 )
 
 
@@ -87,6 +89,10 @@ class HumanizerGateway(Protocol):
         *,
         blocks: list[AnswerBlock],
         protected_terms: tuple[str, ...],
+        tone: Tone,
+        instructions: str,
+        cancel_check: Callable[[], bool] | None = None,
+        timeout_seconds: float | None = None,
     ) -> list[AnswerBlock]: ...
 
 
@@ -96,6 +102,7 @@ class StoredByokModel:
     display_name: str
     context_length: int = 0
     max_tokens: int | None = None
+    reasoning_effort: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -135,6 +142,8 @@ class ModelGateway(Protocol):
         # 迭代 7.5：可取消 transport。实现方应在阻塞等待上游期间周期检查该
         # 标记，置位即放弃等待并抛出取消异常；不支持的实现可以忽略。
         cancel_check: Callable[[], bool] | None = None,
+        timeout_seconds: float | None = None,
+        repair_context: str | None = None,
     ) -> GeneratedAnswer: ...
 
 
@@ -149,6 +158,7 @@ class UserKeyModelGateway(Protocol):
         history: tuple[ConversationTurn, ...] = (),
         cancel_check: Callable[[], bool] | None = None,
         timeout_seconds: float | None = None,
+        repair_context: str | None = None,
     ) -> GeneratedAnswer: ...
 
 
@@ -222,6 +232,21 @@ class WorkflowRepository(Protocol):
     def list_private_knowledge_sources(
         self, *, user_id: str, course_ids: list[str]
     ) -> list[RetrievedSource]: ...
+
+    def list_private_knowledge(
+        self, user_id: str, *, limit: int, offset: int,
+        course_id: str | None = None,
+    ) -> list[PrivateKnowledgeRecord]: ...
+
+    def get_private_knowledge(
+        self, user_id: str, knowledge_id: UUID,
+    ) -> PrivateKnowledgeDetail | None: ...
+
+    def delete_private_knowledge(self, user_id: str, knowledge_id: UUID) -> bool: ...
+
+    def renew_private_knowledge(
+        self, user_id: str, knowledge_id: UUID,
+    ) -> PrivateKnowledgeRecord | None: ...
 
     def set_course_plugin_loaded(
         self,
