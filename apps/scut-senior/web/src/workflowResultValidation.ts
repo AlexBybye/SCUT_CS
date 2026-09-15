@@ -86,6 +86,7 @@ const TRACE_RESULT_FIELDS = new Set<keyof TraceSafeResult>([
   "decision_fallback_count",
   "action_rejection_count",
   "failure_code",
+  "provider_status_code",
   "degradation_code",
   "catalog_version",
   "fixture_only",
@@ -615,6 +616,14 @@ export function validateWorkflowRunResult(
   assertEnum(value.model_source, MODEL_SOURCES, "Workflow result model_source");
   if (hasOwn(value, "persona_enhancement_effective")) {
     assertEnum(value.persona_enhancement_effective, PERSONA_ENHANCEMENTS, "Workflow result persona_enhancement_effective");
+  }
+
+  if (hasOwn(value, "provider_status_code") && value.provider_status_code !== null) {
+    const providerStatusCode = value.provider_status_code;
+    if (typeof providerStatusCode !== "number" || !Number.isInteger(providerStatusCode)
+      || providerStatusCode < 100 || providerStatusCode > 599) {
+      throw new WorkflowStreamProtocolError("invalid Trace provider_status_code");
+    }
   }
   if (hasOwn(value, "persona_enhancement_outcome")) {
     assertEnum(value.persona_enhancement_outcome, PERSONA_ENHANCEMENT_OUTCOMES, "Workflow result persona_enhancement_outcome");

@@ -434,6 +434,7 @@ export interface TraceSafeResult {
   decision_fallback_count?: number | null;
   action_rejection_count?: number | null;
   failure_code?: string | null;
+  provider_status_code?: number | null;
   degradation_code?: string | null;
   catalog_version?: string | null;
   fixture_only?: boolean | null;

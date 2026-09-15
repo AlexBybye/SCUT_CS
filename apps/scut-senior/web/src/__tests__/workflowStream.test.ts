@@ -128,6 +128,18 @@ describe("parseWorkflowNdjson", () => {
     );
   });
 
+  it("accepts the sanitized provider status saved in historical Trace events", async () => {
+    const event = JSON.stringify({
+      ...traceEvent(1),
+      trace_event: {
+        ...traceEvent(1).trace_event,
+        result: { provider_status_code: 429 },
+      },
+    });
+
+    await expect(collect(ndjsonStream([`${event}\n`]))).resolves.toHaveLength(1);
+  });
+
   it("accepts legacy BYOK aggregate counters in stored Trace events", async () => {
     const legacy = JSON.stringify({
       ...traceEvent(1),
