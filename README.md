@@ -7,7 +7,7 @@
 <img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=/SCUTCSWeaver/SCUT_CS">
 
 [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/AlexBybye/SCUT_CS/blob/master/LICENSE)
-![index](.github\resources_for_repo\index.png)
+![index](apps\resources_for_repo\index.png)
 
 ## 项目概览
 欢迎来到华南理工大学计算机科学与工程学院学院智能方舱！这里是专属于 SCUTCSer 的’‘鲤工包打听’‘，旨在为同学们提供丰富、实用的学习资料 。**本仓库亦作为华南理工华为智能基座内部开源资料及2026-2027年度试维护项目（即第三期仓库）。欢迎加入SCUT华为智能基座的“特工组”，享受全部免费的资料！**
@@ -172,7 +172,7 @@ SCUT 老学长已完成 PLAN-3：在单课程问答、考试复习、错题讲�
 
 
 **By wechat（通过与相关负责人联系，一般为现任主席）:**
-<a href="https://github.com/SCUTCSWeaver/SCUT_CS/blob/master/.github/resources_for_repo/sponsorship.jpg">
+<a href="apps\resources_for_repo\sponsorship.jpg">
 <img src= "https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" width="160px" align="right">
 </a>
 <br/>
